@@ -1,0 +1,481 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-navy-800 bg-white antialiased font-sans;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display font-bold tracking-tight text-navy-800;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+  }
+
+  /* Cerulean primary CTA — brand spec for forms (bg #1560E6, hover Carmine #BC0E0E). */
+  .btn-cta {
+    @apply inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-white hover:bg-cream-100 text-navy-800 font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md border-2 border-navy-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center gap-2 bg-transparent hover:bg-white/10 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md border-2 border-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold uppercase text-navy-800 tracking-tight;
+  }
+
+  .section-subheading {
+    @apply text-lg text-navy-500 mt-3 max-w-2xl font-sans;
+  }
+
+  .eyebrow {
+    @apply text-brand-600 font-display font-bold uppercase tracking-widest text-sm;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold text-navy-800 mb-1;
+  }
+
+  .form-input {
+    @apply w-full rounded-md border border-navy-100 px-4 py-3 text-navy-900 placeholder-navy-500/60 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-colors bg-white;
+  }
+
+  .form-error {
+    @apply text-sm text-brand-700 mt-1;
+  }
+
+  /* Category-page TikTok headline — theme `.ep-tiktok-headline`
+     (centered, Industry Bold 24px, Midnight #0A1B2E). */
+  .ep-tiktok-headline {
+    @apply text-center font-display font-bold text-[24px] text-navy-800 mb-5;
+    line-height: 1.32;
+    padding: 0 15px;
+  }
+}
+
+/* ============================================================================
+   City v2 (Evanston) — "OUR SERVICES" accordion menu
+   Reproduces the LIVE render: the theme's globals.css overrides city.css so the
+   services panel is a red gradient with WHITE text/icons/caret (NOT the cream +
+   Midnight scheme in city.css alone). Source: jb-blanton/css/globals.css §573–660.
+   Fonts map to the build's self-hosted vars (IBold→industry/700).
+   ========================================================================== */
+.city-services-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+  background: linear-gradient(to bottom, #e63946, #9b0d0d);
+}
+.city-services-row .service-category {
+  flex: 0 1 auto;
+  min-width: 200px;
+  padding: 1rem;
+  background: transparent;
+}
+.city-services-row .service-category > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 0.75rem;
+  list-style: none;
+  transition: background-color 0.2s ease-out;
+}
+.city-services-row .service-category > summary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.city-services-row .service-category > summary::-webkit-details-marker {
+  display: none;
+}
+.city-services-row .service-category > summary::after {
+  content: "▾";
+  margin-left: auto;
+  padding-left: 0.5em;
+  color: #fff;
+  transition: transform 0.2s ease-out;
+}
+.city-services-row .service-category[open] > summary::after {
+  transform: rotate(180deg);
+}
+.city-services-row .service-category > summary img.icon-text {
+  width: 1.5em;
+  height: 1.5em;
+  flex-shrink: 0;
+  margin-right: 0.75em;
+  vertical-align: middle;
+  /* Render the (dark) CDN icons white to sit on the red gradient. */
+  filter: brightness(0) invert(1);
+}
+.city-services-row .service-category ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.city-services-row .service-category ul li {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+.city-services-row .service-category ul li::marker {
+  color: #fff;
+}
+.city-services-row .service-category ul a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.city-services-row .service-category ul a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================================
+   City v2 (Evanston) — "OUR PARTNERS" logo marquee
+   Theme `.image-carousel` + `@keyframes scroll` (city.css 642–676): the track
+   repeats the logo set 3×; this animation scrolls it -100% over 20s, paused on
+   hover. Track sizing/caps are handled with Tailwind on the markup.
+   ========================================================================== */
+@keyframes city-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.city-marquee-track {
+  animation: city-marquee 20s linear infinite;
+}
+.city-marquee:hover .city-marquee-track {
+  animation-play-state: paused;
+}
+
+/* ============================================================================
+   City — Coverage Area image hero
+   Ported from city.css `.city-page-hero` (121–185) + its media queries
+   (442–565): a 45/55 image|contents split that shifts to 50/50 @1550px,
+   55/45 @1280px, and stacks (column-reverse) @1050px. The `.contents` column
+   gets a Midnight (#0A1B2E) backstop behind the (dark) wrench pattern so the
+   white `.w` text stays legible if the CDN overlay is slow/blocked. Fonts map
+   to the build's self-hosted vars (IBold→industry/700, IThin→industry/300).
+   ========================================================================== */
+.city-page-hero {
+  display: flex;
+  position: relative;
+}
+.city-page-hero .city-page-image {
+  position: relative;
+  z-index: 1;
+  width: 45%;
+  object-fit: contain;
+}
+.city-page-hero .contents {
+  width: 55%;
+  position: relative;
+  background: #0a1b2e;
+  min-height: 460px;
+}
+.city-page-hero .contents .wrench {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  object-fit: cover;
+  opacity: 0.5;
+}
+.city-page-hero .contents .w {
+  height: 100%;
+  width: 650px;
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  padding: 40px 0;
+}
+.city-page-hero .contents .w h1 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.3vw;
+  line-height: 1.1;
+}
+.city-page-hero .contents .w .reviews {
+  background: #fff;
+  border-radius: 10px;
+  width: max-content;
+  max-width: 100%;
+  margin: 15px 0;
+}
+.city-page-hero .contents .w .nap {
+  text-transform: none;
+}
+.city-page-hero .contents .w .nap p,
+.city-page-hero .contents .w .nap a {
+  font-size: 1vw;
+}
+.city-page-hero .contents .w .nap a {
+  color: #fff;
+  text-decoration: none;
+}
+.city-page-hero .contents .w .nap a:hover {
+  text-decoration: underline;
+}
+.city-page-hero .contents .w .nap .row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.city-page-hero .contents .w .nap .row p,
+.city-page-hero .contents .w .nap p span {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+}
+.city-page-hero .contents .w .callout {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 300;
+  margin: 10px 0;
+  line-height: 22px;
+  font-size: 1vw;
+}
+
+@media only screen and (max-width: 1550px) {
+  .city-page-hero .city-page-image { width: 50%; }
+  .city-page-hero .contents { width: 50%; }
+}
+@media only screen and (max-width: 1350px) {
+  .city-page-hero .contents .w { width: 600px; }
+}
+@media only screen and (max-width: 1280px) {
+  .city-page-hero .city-page-image { width: 55%; }
+  .city-page-hero .contents { width: 45%; }
+  .city-page-hero .contents .w { width: 500px; }
+  .city-page-hero .contents .w h1 { font-size: 2vw; }
+  .city-page-hero .contents .w .reviews { margin-bottom: 10px; }
+  .city-page-hero .contents .w .nap p,
+  .city-page-hero .contents .w .nap a { font-size: 1.25vw; }
+  .city-page-hero .contents .w .callout { font-size: 1.25vw; margin: 10px 0; }
+}
+@media only screen and (max-width: 1150px) {
+  .city-page-hero .contents .w { width: 450px; }
+}
+@media only screen and (max-width: 1050px) {
+  .city-page-hero {
+    height: auto;
+    flex-direction: column-reverse;
+  }
+  .city-page-hero .city-page-image { width: 100%; object-fit: contain; }
+  .city-page-hero .contents { width: 100%; min-height: 0; padding: 50px 0 30px 0; }
+  .city-page-hero .contents .w { width: 90%; }
+  .city-page-hero .contents .w .nap p,
+  .city-page-hero .contents .w .nap a { font-size: 16px; }
+  .city-page-hero .contents .w .callout { font-size: 16px; }
+}
+@media only screen and (max-width: 680px) {
+  .city-page-hero .contents .w h1 { font-size: 4vw; }
+}
+@media only screen and (max-width: 640px) {
+  .city-page-hero .contents { padding: 20px 0; }
+  .city-page-hero .contents .w h1 { font-size: 5vw; }
+}
+
+/* ============================================================================
+   City — rich `city_content` prose (WE'VE GOT YOU COVERED / manplumber bodies)
+   The ACF `city_content` is rich HTML (subheadings + bullet lists, brief §4),
+   injected via dangerouslySetInnerHTML. Body inherits Nunito; subheadings use
+   Industry Bold in Midnight.
+   ========================================================================== */
+.city-prose h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #0a1b2e;
+  font-size: 20px;
+  margin: 18px 0 8px;
+}
+.city-prose h3:first-child { margin-top: 0; }
+.city-prose p { margin: 8px 0; line-height: 1.6; }
+.city-prose ul { list-style: disc; padding-left: 1.25rem; margin: 8px 0; }
+.city-prose li { margin: 4px 0; }
+
+/* ============================================================================
+   Homepage — No Drip Club section
+   Ported verbatim from the live theme (jb-blanton/css/globals.css §199–260 +
+   its media queries) so the section matches live exactly (brief-07 §11):
+   - red overlay at 0.78 opacity (wrench pattern shows through)
+   - white pill JOIN button (266×45, Carmine text, Industry Medium)
+   - skewed "NO DRIP CLUB" label position/scale + Rosewood shadow copy
+   Font families map to the build's self-hosted vars:
+   IBold→industry/700, IMedium→industry/500, NELight→nunito/300.
+   ========================================================================== */
+.no-drip-club {
+  margin-top: 160px;
+  background: url(/images/no-drip-club.webp) no-repeat center center;
+  background-size: cover;
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+.no-drip-club .character {
+  width: 350px;
+  height: 450px;
+  position: relative;
+  z-index: 1;
+  margin-top: 70px;
+  object-fit: contain;
+}
+.no-drip-club .no-drip-red {
+  position: absolute;
+  inset: 0;
+  background: #bc0e0e;
+  opacity: 0.78;
+  border-radius: 10px;
+}
+.no-drip-club .no-drip-labels {
+  color: #fff;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 120px;
+  width: 260px;
+  line-height: 105px;
+  margin: -450px 0 0 295px;
+}
+.no-drip-club .no-drip-labels p {
+  transform: skew(-7deg, -7deg) rotate(-3deg);
+}
+.no-drip-club .no-drip-labels p:first-child {
+  position: relative;
+  z-index: 2;
+}
+.no-drip-club .no-drip-labels p:last-child {
+  position: relative;
+  z-index: 1;
+  color: #540606;
+  margin: -311px 0 0 -5px;
+}
+.no-drip-club .no-drip-content {
+  width: 450px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 10%;
+  transform: translate(10%, -50%);
+}
+.no-drip-club .no-drip-content p {
+  color: #fff;
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 30px;
+}
+.no-drip-club .no-drip-content a {
+  margin-top: 35px;
+  display: flex;
+  text-decoration: none;
+  cursor: pointer;
+  background: #fff;
+  color: #bc0e0e;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 266px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  height: 45px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .no-drip-club .no-drip-labels {
+    font-size: 100px;
+    line-height: 90px;
+    margin: -400px 0 0 295px;
+  }
+  .no-drip-club .no-drip-labels p:last-child {
+    margin: -266px 0 0 -5px;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .no-drip-club .no-drip-labels {
+    font-size: 90px;
+    line-height: 90px;
+    margin: -400px 0 0 295px;
+  }
+  .no-drip-club .no-drip-labels p:last-child {
+    margin: -266px 0 0 -5px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .no-drip-club .no-drip-content {
+    width: 400px;
+    right: 7%;
+    transform: translate(7%, -50%);
+  }
+}
+@media only screen and (max-width: 1180px) {
+  .no-drip-club {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 10px 30px 30px 30px;
+  }
+  .no-drip-club .character {
+    display: none;
+  }
+  .no-drip-club .no-drip-labels {
+    margin: 0;
+    width: 100%;
+    font-size: 34px;
+    line-height: 1.1;
+  }
+  .no-drip-club .no-drip-labels p {
+    margin: 0;
+    transform: skew(0deg) rotate(0deg);
+  }
+  .no-drip-club .no-drip-labels p:last-child {
+    display: none;
+  }
+  .no-drip-club .no-drip-content {
+    width: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+    transform: translate(0, 0);
+  }
+  .no-drip-club .no-drip-content a {
+    font-family: var(--font-industry), Arial, sans-serif;
+    font-weight: 700;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .no-drip-club {
+    margin-top: 20px;
+  }
+  .no-drip-club .no-drip-red {
+    border-radius: 0;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .no-drip-club .no-drip-content a {
+    width: 100%;
+    text-align: center;
+  }
+}

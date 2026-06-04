@@ -1,0 +1,394 @@
+/* ============================================================================
+   No Drip Club — page-level styles
+   Ported from `jb-blanton/css/ndc.css` (the `.cream`/`.ndc-*` blocks) plus the
+   shared `.hero`, `.hero .contents .w`, `.red-text`, `.w81` and `.link-button`
+   rules this page depends on from the theme's `globals.css`.
+
+   Two faithfulness adaptations (values are otherwise unchanged):
+   1. Everything is scoped under `.ndc-page` so the generic theme class names
+      (`.cream`, `.hero`, `.w81`, `.red-text`, `.link-button`) don't clobber the
+      Tailwind-styled markers of the same name used elsewhere in the build.
+   2. The theme font families map to the build's self-hosted vars, matching the
+      convention already used in `globals.css`:
+        IBold   -> var(--font-industry), 700
+        IMedium -> var(--font-industry), 500
+        NLight  -> var(--font-nunito),   300
+   No `#000000` is used — dark text is Midnight `#0A1B2E`, per the theme's
+   responsive overrides.
+   ========================================================================== */
+
+/* ---- Hero (theme globals.css `.hero`) -------------------------------------- */
+.ndc-page .hero {
+  height: auto;
+  display: flex;
+  position: relative;
+}
+.ndc-page .hero .img-s {
+  object-fit: contain;
+  width: 45%;
+}
+.ndc-page .hero iframe {
+  height: 500px;
+}
+.ndc-page .hero .contents {
+  /* Override Tailwind's `.contents { display: contents }` utility, which
+     collides with this theme class name and would collapse the box to 0 width. */
+  display: block;
+  width: 55%;
+  position: relative;
+  /* Midnight backstop behind the (dark) wrench pattern so the white `.w` text
+     stays legible if the pattern is slow/blocked — same treatment the build
+     already uses on `.city-page-hero .contents` (globals.css). */
+  background: #0a1b2e;
+}
+.ndc-page .hero .contents img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+  object-fit: cover;
+}
+.ndc-page .hero .contents .w {
+  height: 100%;
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+.ndc-page .hero .contents .w h1 {
+  font-size: 2.3vw;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+.ndc-page .hero .contents .w .sub-label {
+  margin-top: 20px;
+  font-size: 1vw;
+}
+.ndc-page .hero .contents .w .hero-desc {
+  margin: 20px 0 30px 0;
+  line-height: 22px;
+  letter-spacing: 1px;
+  font-size: 0.9vw;
+}
+.ndc-page .hero .contents .w .involveme_popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 232px;
+  height: 44px;
+  color: #bc0e0e;
+  background: #fff;
+  border-radius: 50px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.ndc-page .hero .contents .w .involveme_popup:hover {
+  background: #e4e4e4;
+}
+
+/* ---- Shared helpers (theme globals.css) ----------------------------------- */
+.ndc-page .red-text {
+  font-size: 32px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #bc0e0e;
+}
+.ndc-page .w81 {
+  width: 81%;
+  margin: 0 auto;
+}
+.ndc-page .link-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  background: #1560e6;
+  letter-spacing: 1px;
+  width: max-content;
+  height: 45px;
+  padding: 0 35px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+}
+
+/* ---- ndc.css: cream container + benefits card ----------------------------- */
+.ndc-page .cream {
+  background: #f9f3ec;
+  padding: 100px 0;
+}
+
+.ndc-page .ndc-card {
+  background: #bc0e0e;
+  border-radius: 10px;
+  position: relative;
+}
+.ndc-page .ndc-card img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.3;
+  object-fit: cover;
+}
+.ndc-page .ndc-card .i {
+  padding: 50px 0;
+  position: relative;
+  z-index: 2;
+  width: 95%;
+  margin: 0 auto;
+  color: #fff;
+}
+.ndc-page .ndc-card .i .label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+.ndc-page .ndc-card .i .f {
+  display: flex;
+}
+.ndc-page .ndc-card .i .f .sub-label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.ndc-page .ndc-card .i .f .mt {
+  margin-top: 30px;
+}
+.ndc-page .ndc-card .i .f .item {
+  display: flex;
+  align-items: center;
+}
+.ndc-page .ndc-card .i .f .item div {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+.ndc-page .ndc-card .i .f .item div svg {
+  width: 25px;
+  height: 25px;
+}
+.ndc-page .ndc-card .i .f .item p {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+.ndc-page .ndc-card .i .f .l,
+.ndc-page .ndc-card .i .f .r {
+  width: 50%;
+}
+.ndc-page .ndc-card .i .f .r {
+  margin-left: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+/* SIGN UP button: ndc.css gives cursor + centering margin; brief §4 makes it a
+   Cerulean pill (radius 50px) with a Carmine hover (standard primary CTA). */
+.ndc-page .ndc-blue-button {
+  cursor: pointer;
+  margin: 50px auto 80px auto;
+  border-radius: 50px;
+  transition: background 0.3s;
+}
+.ndc-page .ndc-blue-button:hover {
+  background: #bc0e0e;
+}
+
+.ndc-page .ndc-red-text-center {
+  text-align: center;
+}
+
+.ndc-page .ndc-how-it-works {
+  display: flex;
+  justify-content: space-between;
+  margin: 80px 0 150px 0;
+}
+.ndc-page .ndc-how-it-works div .label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+.ndc-page .ndc-how-it-works div .text {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 300;
+  margin-top: 5px;
+}
+.ndc-page .ndc-how-it-works div:nth-child(2) {
+  margin: 0 30px;
+}
+
+.ndc-page .ndc-reviews {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.ndc-page .ndc-gr {
+  overflow: hidden;
+  margin-bottom: 200px;
+}
+
+.ndc-page .ndc-wait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ndc-page .ndc-wait div p:nth-child(3) {
+  font-size: 20px;
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+.ndc-page .ndc-wait div img {
+  display: none;
+}
+.ndc-page .ndc-wait div .link-button {
+  cursor: pointer;
+}
+.ndc-page .ndc-wait img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+
+/* ---- Responsive (ndc.css media queries) ----------------------------------- */
+@media only screen and (max-width: 1050px) {
+  .ndc-page .cream {
+    padding: 50px 0;
+  }
+  .ndc-page .ndc-card {
+    background: transparent;
+  }
+  .ndc-page .ndc-card img {
+    display: none;
+  }
+  .ndc-page .ndc-card .i {
+    color: #bc0e0e;
+  }
+  .ndc-page .ndc-card .i .f {
+    display: block;
+  }
+  .ndc-page .ndc-card .i .f .sub-label {
+    color: #bc0e0e;
+  }
+  .ndc-page .ndc-card .i .f .item {
+    color: #0a1b2e;
+  }
+  .ndc-page .ndc-card .i .f .l,
+  .ndc-page .ndc-card .i .f .r {
+    width: 100%;
+    margin: 0;
+  }
+  .ndc-page .ndc-card .i .f .r {
+    display: block;
+    margin-top: 30px;
+  }
+  .ndc-page .ndc-card .i .f .r div {
+    color: #0a1b2e;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .ndc-page .ndc-how-it-works {
+    display: block;
+    margin: 80px 0;
+  }
+  .ndc-page .ndc-how-it-works div {
+    background: #fff;
+    padding: 20px;
+  }
+  .ndc-page .ndc-how-it-works div:nth-child(2) {
+    margin: 25px 0;
+  }
+  .ndc-page .ndc-reviews {
+    width: 100%;
+  }
+  .ndc-page .ndc-wait {
+    display: block;
+  }
+  .ndc-page .ndc-wait img {
+    display: none;
+  }
+  .ndc-page .ndc-wait div img {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10px 0;
+  }
+}
+@media only screen and (max-width: 680px) {
+  .ndc-page .ndc-wait div img {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .ndc-page .ndc-blue-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .ndc-page .ndc-wait div img {
+    margin-top: -20px;
+  }
+  .ndc-page .ndc-wait div p:nth-child(3) {
+    margin-top: -20px;
+  }
+}
+
+/* ---- Hero responsive (theme globals.css `.hero` media queries) ------------- */
+@media only screen and (max-width: 900px) {
+  .ndc-page .hero {
+    height: auto;
+    flex-direction: column;
+  }
+  .ndc-page .hero .img-s {
+    display: none;
+  }
+  .ndc-page .hero .contents {
+    width: 100%;
+  }
+  .ndc-page .hero .contents .w {
+    width: 90%;
+    flex-direction: column;
+    padding: 50px 0 40px;
+  }
+  .ndc-page .hero .contents .w h1 {
+    font-size: 3vw;
+  }
+  .ndc-page .hero .contents .w .sub-label {
+    font-size: 20px;
+  }
+  .ndc-page .hero .contents .w .hero-desc {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .ndc-page .hero .contents .w h1 {
+    font-size: 5vw;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .ndc-page .hero .contents .w {
+    padding: 20px 0;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .ndc-page .hero .contents .w h1 {
+    font-size: 45px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .ndc-page .hero .contents .w h1 {
+    font-size: 35px;
+  }
+}
