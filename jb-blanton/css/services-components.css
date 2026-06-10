@@ -1,0 +1,120 @@
+.services {
+  width: 100%;
+}
+.services .services-contents-mobile {
+  display: none;
+}
+.services .services-contents-mobile .service-card {
+  background: #BC0E0E;
+  padding: 15px;
+  color: #fff;
+  height: 30px;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.services .services-contents-mobile .service-card:not(:last-child) {
+  border-bottom: 1px solid #fff;
+}
+.services .services-contents-mobile .service-card p {
+  font-size: 24px;
+}
+.services .services-contents-mobile .service-card svg {
+  width: 20px;
+  height: 20px;
+}
+.services .services-contents-mobile .service-card .service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.services .services-contents-mobile .service-card .service-header .service-label {
+  font-family: IBold;
+  margin-bottom: 10px;
+}
+.services .services-contents-mobile .service-card .service-header svg {
+  margin-top: -5px;
+}
+.services .services-contents-mobile .service-card a {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+.services .services-contents-mobile .service-card a p {
+  font-family: IBold;
+}
+.services .services-contents-mobile .service-card a svg {
+  margin: 5px 0 0 8px;
+}
+.services .services-contents-mobile .link-button {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 25px;
+}
+.services .services-contents {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.image-card {
+  background: #fff;
+  width: 350px;
+}
+.image-card .img {
+  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.image-card .img svg {
+  width: 100px;
+  height: 100px;
+  color: #BC0E0E;
+}
+.image-card .img img {
+  width: 100px;
+  height: 100px;
+}
+.image-card .image-card-content {
+  width: 90%;
+  margin: 0 auto;
+  padding: 15px 0;
+  color: #0A1B2E;
+}
+.image-card .image-card-content .desc {
+  letter-spacing: 0.5px;
+}
+.image-card .image-card-content .service-label {
+  font-size: 20px;
+  font-family: IBold;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.image-card .image-card-content a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: #0A1B2E;
+  margin-top: 10px;
+}
+.image-card .image-card-content a p {
+  font-family: IBold;
+}
+.image-card .image-card-content a svg {
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 900px) {
+  .services .services-contents-mobile {
+    display: block;
+  }
+  .services .services-contents {
+    display: none;
+  }
+}/*# sourceMappingURL=services-components.css.map */

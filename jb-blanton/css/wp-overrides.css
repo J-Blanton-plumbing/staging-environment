@@ -1,0 +1,78 @@
+/* WordPress theme overrides */
+
+/* Fix hero for pages - adds top padding for fixed header */
+.page-hero.hero {
+    padding-top: 70px;
+    min-height: 200px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+}
+.page-hero.hero .hero-contents {
+    padding: 40px 20px;
+}
+.page-hero.hero h1 {
+    color: #fff;
+    font-family: IBold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* Page content styling */
+.page-content {
+    font-family: ILight;
+    line-height: 1.7;
+    color: #000;
+}
+.page-content h1, .page-content h2, .page-content h3 {
+    font-family: IBold;
+    color: #BC0E0E;
+    margin: 20px 0 10px;
+}
+.page-content p {
+    margin-bottom: 15px;
+}
+.page-content a {
+    color: #1560E6;
+}
+
+/* Fix body top padding for fixed header */
+.body {
+    padding-top: 70px;
+}
+
+/* City services list */
+.city-services-list {
+    margin-top: 40px;
+}
+.city-services-list .red-text {
+    margin-bottom: 20px;
+}
+
+/* Article full content */
+.article-full {
+    font-family: ILight;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.article-full h1, .article-full h2, .article-full h3 {
+    font-family: IBold;
+    color: #BC0E0E;
+    margin: 25px 0 10px;
+}
+.article-full p {
+    margin-bottom: 15px;
+}
+.article-full img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hero nav — handled by globals.css, no overrides here */
+
+/* Cream section */
+.cream {
+    background: #f9f3ec;
+}
+

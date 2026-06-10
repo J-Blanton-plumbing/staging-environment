@@ -1,0 +1,209 @@
+.cream {
+  background: #F9F3EC;
+  padding: 100px 0;
+}
+
+.ndc-card {
+  background: #BC0E0E;
+  border-radius: 10px;
+  position: relative;
+}
+.ndc-card img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.3;
+}
+.ndc-card .i {
+  padding: 50px 0;
+  position: relative;
+  z-index: 2;
+  width: 95%;
+  margin: 0 auto;
+  color: #fff;
+}
+.ndc-card .i .label {
+  font-family: IBold;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+.ndc-card .i .f {
+  display: flex;
+}
+.ndc-card .i .f .sub-label {
+  font-family: IBold;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.ndc-card .i .f .mt {
+  margin-top: 30px;
+}
+.ndc-card .i .f .item {
+  display: flex;
+  align-items: center;
+}
+.ndc-card .i .f .item div {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+.ndc-card .i .f .item div svg {
+  width: 25px;
+  height: 25px;
+}
+.ndc-card .i .f .item p {
+  font-family: NLight;
+  font-size: 20px;
+}
+.ndc-card .i .f .l,
+.ndc-card .i .f .r {
+  width: 50%;
+}
+.ndc-card .i .f .r {
+  margin-left: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.ndc-blue-button {
+  cursor: pointer;
+  margin: 50px auto 80px auto;
+}
+
+.ndc-red-text-center {
+  text-align: center;
+}
+
+.ndc-how-it-works {
+  display: flex;
+  justify-content: space-between;
+  margin: 80px 0 150px 0;
+}
+.ndc-how-it-works div .label {
+  font-family: IBold;
+  font-size: 20px;
+}
+.ndc-how-it-works div .text {
+  font-family: NLight;
+  margin-top: 5px;
+}
+.ndc-how-it-works div:nth-child(2) {
+  margin: 0 30px;
+}
+
+.ndc-reviews {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.ndc-gr {
+  overflow: hidden;
+  margin-bottom: 200px;
+}
+
+.ndc-wait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ndc-wait div p:nth-child(3) {
+  font-size: 20px;
+  font-family: NLight;
+  margin-bottom: 50px;
+}
+.ndc-wait div img {
+  display: none;
+}
+.ndc-wait div .link-button {
+  cursor: pointer;
+}
+.ndc-wait img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 1050px) {
+  .cream {
+    padding: 50px 0;
+  }
+  .ndc-card {
+    background: transparent;
+  }
+  .ndc-card img {
+    display: none;
+  }
+  .ndc-card .i {
+    color: #BC0E0E;
+  }
+  .ndc-card .i .f {
+    display: block;
+  }
+  .ndc-card .i .f .sub-label {
+    color: #BC0E0E;
+  }
+  .ndc-card .i .f .item {
+    color: #0A1B2E;
+  }
+  .ndc-card .i .f .l,
+  .ndc-card .i .f .r {
+    width: 100%;
+    margin: 0;
+  }
+  .ndc-card .i .f .r {
+    display: block;
+    margin-top: 30px;
+  }
+  .ndc-card .i .f .r div {
+    color: #0A1B2E;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .ndc-how-it-works {
+    display: block;
+    margin: 80px 0;
+  }
+  .ndc-how-it-works div {
+    background: #fff;
+    padding: 20px;
+  }
+  .ndc-how-it-works div:nth-child(2) {
+    margin: 25px 0;
+  }
+  .ndc-reviews {
+    width: 100%;
+  }
+  .ndc-wait {
+    display: block;
+  }
+  .ndc-wait img {
+    display: none;
+  }
+  .ndc-wait div img {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10px 0;
+  }
+}
+@media only screen and (max-width: 680px) {
+  .ndc-wait div img {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .ndc-blue-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .ndc-wait div img {
+    margin-top: -20px;
+  }
+  .ndc-wait div p:nth-child(3) {
+    margin-top: -20px;
+  }
+}
+
+/*# sourceMappingURL=ndc.css.map */

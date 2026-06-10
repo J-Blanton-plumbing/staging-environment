@@ -1,0 +1,552 @@
+/* ============================================================================
+   Financing page — page-level styles
+   Scoped under .financing-page.
+
+   Hero, shared tokens (.w81, .cream, .red-text, .link-button, .pv) and EP
+   section patterns (ep-card, ep-map, f2, f3) all defined here because this
+   project defines shared theme tokens per-page, not in globals.css.
+
+   Font mapping: IBold → var(--font-industry) 700, NRegular → var(--font-nunito) 400.
+   No #000000 — dark text is Midnight #0A1B2E.
+   ========================================================================== */
+
+/* ---- Hero ------------------------------------------------------------------ */
+.financing-page .hero .img-s {
+  object-fit: cover;
+  width: 45%;
+  height: auto;
+}
+.financing-page .hero .hero-contents {
+  width: 55%;
+  position: relative;
+}
+.financing-page .hero .hero-contents .w {
+  height: 100%;
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  padding: 60px 0;
+}
+.financing-page .hero .hero-contents .w h1 {
+  font-size: 36px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+.financing-page .hero .hero-contents .w .hero-desc {
+  margin: 20px 0 30px 0;
+  line-height: 1.6;
+  font-size: 16px;
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+.financing-page .hero .hero-contents .w .link-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  background: #1560e6;
+  width: max-content;
+  height: 52px;
+  padding: 0 28px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.financing-page .hero .hero-contents .w .link-button:hover {
+  background: #0e4fc7;
+}
+
+/* ---- Shared page tokens ---------------------------------------------------- */
+.financing-page .red-text {
+  font-size: 32px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #bc0e0e;
+}
+.financing-page .w81 {
+  width: 81%;
+  margin: 0 auto;
+}
+.financing-page .link-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  background: #1560e6;
+  letter-spacing: 1px;
+  width: max-content;
+  height: 45px;
+  padding: 0 35px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.financing-page .link-button:hover {
+  background: #0e4fc7;
+}
+
+/* ---- Cream background ------------------------------------------------------ */
+.financing-page .cream {
+  width: 100%;
+  background: #f9f3ec;
+  padding: 100px 0;
+}
+
+/* ---- FINANCING SOLUTIONS READY (.pv) — text left, image right -------------- */
+.financing-page .cream .pv {
+  padding: 0 0 50px 0;
+  width: 100%;
+}
+.financing-page .cream .pv .w81 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.financing-page .cream .pv .w81 > div {
+  width: 50%;
+}
+.financing-page .cream .pv .w81 > div p:not(:first-child) {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+  color: #0a1b2e;
+  font-size: 20px;
+  margin: 15px 0 20px 0;
+  line-height: 30px;
+}
+.financing-page .cream .pv .w81 > img {
+  width: 470px;
+  height: 320px;
+  margin-left: 30px;
+  object-fit: contain;
+}
+.financing-page .cream .pv .w81 .red-text-mobile {
+  display: none;
+}
+.financing-page .cream .pv .w81 .mobile-content {
+  display: none;
+}
+.financing-page .cream .pv .w81 .mobile-content p {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+  color: #0a1b2e;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/* ---- ep-card (FINANCING MADE SIMPLE) --------------------------------------- */
+.financing-page .ep-card {
+  margin-top: 100px;
+  background: #bc0e0e;
+  border-radius: 10px;
+  width: 100%;
+  height: 451px;
+  overflow: hidden;
+  position: relative;
+}
+.financing-page .ep-card .ndc {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.3;
+  z-index: 1;
+}
+.financing-page .ep-card > div {
+  z-index: 2;
+  position: relative;
+  height: 100%;
+}
+.financing-page .ep-card > div .char {
+  width: 400px;
+  height: 100%;
+  object-fit: contain;
+  padding-left: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.financing-page .ep-card > div .a {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.financing-page .ep-card > div .a .l {
+  width: 45%;
+}
+.financing-page .ep-card > div .a .r {
+  width: 55%;
+  padding-right: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.financing-page .ep-card > div .a .r > img {
+  display: none;
+}
+.financing-page .ep-card > div .a .r .label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+.financing-page .ep-card > div .a .r .service {
+  display: flex;
+  align-items: center;
+}
+.financing-page .ep-card > div .a .r .service:not(:first-of-type) {
+  margin-top: 10px;
+}
+.financing-page .ep-card > div .a .r .service > div {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.financing-page .ep-card > div .a .r .service > div svg {
+  width: 20px;
+  height: 20px;
+}
+.financing-page .ep-card > div .a .r .service p {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  margin-left: 7px;
+}
+.financing-page .ep-card > div .a .r .link-button {
+  margin-top: 50px;
+}
+
+/* ---- ep-map (WE'RE ALMOST EVERYWHERE) -------------------------------------- */
+.financing-page .ep-map {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.financing-page .ep-map .ep-contents {
+  margin-right: 50px;
+  width: 35%;
+}
+.financing-page .ep-map .ep-contents .map2 {
+  display: none;
+}
+.financing-page .ep-map .ep-contents p:last-child {
+  margin-top: 15px;
+  font-size: 20px;
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+.financing-page .ep-map .map1 {
+  width: 100%;
+}
+
+/* ---- ep-tiktok (Google / social widget) ------------------------------------ */
+.financing-page .ep-tiktok-headline {
+  text-align: center;
+  font-size: 24px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.32;
+  padding: 0 15px;
+  color: #0a1b2e;
+}
+.financing-page .ep-tiktok {
+  overflow: scroll;
+  margin-bottom: 90px;
+}
+
+/* ---- f2 (WE HATE SURPRISE BILLS TOO) --------------------------------------- */
+.financing-page .f2 {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.financing-page .f2 > img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+}
+.financing-page .f2 > div {
+  width: 700px;
+  margin-right: 15px;
+}
+.financing-page .f2 > div > img {
+  display: none;
+}
+.financing-page .f2 > div p:not(:first-child) {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+.financing-page .f2 > div p:nth-child(3) {
+  margin-top: 10px;
+}
+.financing-page .f2 > div a {
+  margin-top: 60px;
+}
+
+/* ---- page-articles --------------------------------------------------------- */
+.financing-page .page-articles {
+  margin-top: 130px;
+}
+
+/* ---- f3 (TURN A TIGHT SPOT INTO A SMART PLAN) ------------------------------ */
+.financing-page .f3 {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.financing-page .f3 > img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+}
+.financing-page .f3 > div {
+  width: 700px;
+  margin-left: 15px;
+}
+.financing-page .f3 > div > img {
+  display: none;
+}
+.financing-page .f3 > div p:not(:first-child) {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+.financing-page .f3 > div p:nth-child(3) {
+  margin-top: 10px;
+}
+.financing-page .f3 > div a {
+  margin-top: 60px;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+/* --- 1280px ----------------------------------------------------------------- */
+@media only screen and (max-width: 1280px) {
+  .financing-page .hero .hero-contents .w {
+    width: 90%;
+  }
+  .financing-page .hero .hero-contents .w h1 {
+    font-size: 2.3vw;
+  }
+  .financing-page .hero .hero-contents .w .hero-desc {
+    font-size: 1.3vw;
+  }
+  .financing-page .cream .pv .w81 {
+    width: 90%;
+  }
+  .financing-page .cream .pv .w81 > div {
+    width: 40%;
+  }
+}
+
+/* --- 1150px ----------------------------------------------------------------- */
+@media only screen and (max-width: 1150px) {
+  .financing-page .ep-card > div > img {
+    width: 410px;
+    height: 100%;
+  }
+  .financing-page .ep-card > div .a .r {
+    width: 400px;
+  }
+}
+
+/* --- 1000px ----------------------------------------------------------------- */
+@media only screen and (max-width: 1000px) {
+  .financing-page .ep-card {
+    background: transparent;
+    border-radius: 0;
+    height: auto;
+    overflow: visible;
+  }
+  .financing-page .ep-card .ndc {
+    display: none;
+  }
+  .financing-page .ep-card > div .char {
+    display: none;
+  }
+  .financing-page .ep-card > div .a {
+    position: relative;
+    display: block;
+  }
+  .financing-page .ep-card > div .a .l {
+    display: none;
+  }
+  .financing-page .ep-card > div .a .r {
+    width: 100%;
+    color: #0a1b2e;
+    padding-right: 0;
+  }
+  .financing-page .ep-card > div .a .r > img {
+    display: block;
+    margin: 15px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 470px;
+    height: 320px;
+    object-fit: contain;
+  }
+  .financing-page .ep-card > div .a .r .label {
+    color: #bc0e0e;
+  }
+  .financing-page .ep-card > div .a .r .service p {
+    font-size: 16px;
+  }
+}
+
+/* --- 900px ------------------------------------------------------------------ */
+@media only screen and (max-width: 900px) {
+  .financing-page .hero .img-s {
+    display: none;
+  }
+  .financing-page .hero .hero-contents {
+    width: 100%;
+  }
+  .financing-page .hero .hero-contents .w {
+    width: 90%;
+    padding: 50px 0 40px;
+  }
+  .financing-page .hero .hero-contents .w h1 {
+    font-size: 3vw;
+  }
+  .financing-page .hero .hero-contents .w .hero-desc {
+    font-size: 16px;
+  }
+
+  /* pv: switch to single-column */
+  .financing-page .cream .pv {
+    width: 90%;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+  .financing-page .cream .pv .w81 {
+    width: 100%;
+    display: block;
+  }
+  .financing-page .cream .pv .w81 > div {
+    display: none;
+  }
+  .financing-page .cream .pv .w81 .red-text-mobile {
+    display: flex;
+  }
+  .financing-page .cream .pv .w81 .mobile-content {
+    display: block;
+    width: 100%;
+  }
+  .financing-page .cream .pv .w81 > img {
+    width: 100%;
+    margin: 15px auto 25px auto;
+    height: 420px;
+  }
+
+  /* f2 / f3: single column */
+  .financing-page .f2 > div,
+  .financing-page .f3 > div {
+    width: 100%;
+    margin: 0;
+  }
+  .financing-page .f2 > div > img,
+  .financing-page .f3 > div > img {
+    display: block;
+    margin: 15px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .financing-page .f2 > img,
+  .financing-page .f3 > img {
+    display: none;
+  }
+
+  /* ep-map: single column */
+  .financing-page .ep-map {
+    display: block;
+  }
+  .financing-page .ep-map .ep-contents {
+    width: 100%;
+    margin-right: 0;
+  }
+  .financing-page .ep-map .ep-contents .map2 {
+    width: 100%;
+    display: block;
+    margin: 0 0 25px 0;
+  }
+  .financing-page .ep-map .map1 {
+    display: none;
+  }
+}
+
+/* --- 770px ------------------------------------------------------------------ */
+@media only screen and (max-width: 770px) {
+  .financing-page .hero .hero-contents .w h1 {
+    font-size: 5vw;
+  }
+}
+
+/* --- 580px ------------------------------------------------------------------ */
+@media only screen and (max-width: 580px) {
+  .financing-page .f2 > div > img,
+  .financing-page .f3 > div > img {
+    width: 100%;
+  }
+  .financing-page .ep-card > div .a .r > img {
+    width: 100%;
+  }
+}
+
+/* --- 480px ------------------------------------------------------------------ */
+@media only screen and (max-width: 480px) {
+  .financing-page .f2 > div > img,
+  .financing-page .f3 > div > img {
+    margin-top: -20px;
+  }
+  .financing-page .f2 > div p:nth-child(3),
+  .financing-page .f3 > div p:nth-child(3) {
+    margin-top: -35px;
+  }
+  .financing-page .f2 > div a,
+  .financing-page .f3 > div a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .financing-page .ep-card > div .a .r > img {
+    margin-top: -20px;
+  }
+  .financing-page .hero .hero-contents .w h1 {
+    font-size: 45px;
+  }
+}
+
+/* --- 380px ------------------------------------------------------------------ */
+@media only screen and (max-width: 380px) {
+  .financing-page .f2 > div > img,
+  .financing-page .f3 > div > img {
+    margin-top: -40px;
+  }
+  .financing-page .f2 > div p:nth-child(3),
+  .financing-page .f3 > div p:nth-child(3) {
+    margin-top: -55px;
+  }
+}

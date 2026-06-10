@@ -1,0 +1,175 @@
+.services-overview {
+  background: #F9F3EC;
+  width: 100%;
+  height: 100%;
+}
+.services-overview .so {
+  padding: 100px 0 150px 0;
+  font-size: 19px;
+  font-family: NRegular;
+}
+.services-overview .so .so-image-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+}
+.services-overview .so .so-image-grid .so-image-card {
+  background: #fff;
+}
+.services-overview .so .so-image-grid .so-image-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+}
+.services-overview .so .so-image-grid .so-image-card div {
+  width: 90%;
+  margin: 0 auto;
+  padding: 15px 0;
+  color: #0A1B2E;
+}
+.services-overview .so .so-image-grid .so-image-card div p {
+  letter-spacing: 0.5px;
+}
+.services-overview .so .so-image-grid .so-image-card div .service-label {
+  font-size: 20px;
+  font-family: IBold;
+  margin-bottom: 10px;
+}
+.services-overview .so .so-image-grid .so-image-card div a {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: #0A1B2E;
+  margin-top: 10px;
+}
+.services-overview .so .so-image-grid .so-image-card div a p {
+  font-family: IBold;
+}
+.services-overview .so .so-image-grid .so-image-card div a svg {
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+}
+.services-overview .services-ndc {
+  width: 81%;
+  margin: 0 auto;
+}
+.services-overview .services-section3 {
+  margin-top: 70px;
+  padding-bottom: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.services-overview .services-section3 div {
+  width: 50%;
+}
+.services-overview .services-section3 div:first-child .m {
+  margin: 10px 0 20px 0;
+}
+.services-overview .services-section3 div:first-child .text {
+  width: 80%;
+  font-family: NRegular;
+  color: #0A1B2E;
+}
+.services-overview .services-section3 div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  position: relative;
+  width: 470px;
+  height: 320px;
+}
+.services-overview .services-section3 div:last-child .red-text {
+  display: none;
+}
+.services-overview .services-section3 div:last-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.services-overview .services-google-reviews {
+  overflow: hidden;
+  padding-bottom: 60px;
+}
+.services-overview .services-tiktok-headline {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.32;
+  padding: 0 15px;
+  color: #0A1B2E;
+}
+.services-overview .services-tiktok {
+  overflow: scroll;
+  padding-bottom: 90px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .services-overview .so .so-image-grid {
+    grid-template-columns: auto auto auto;
+  }
+  .services-overview .so .so-image-grid .so-image-card img {
+    height: 190px;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .services-overview .services-ndc {
+    width: 100%;
+  }
+  .services-overview .so {
+    padding: 30px;
+  }
+  .services-overview .so .so-image-grid {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+  .services-overview .services-section3 {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .services-overview .services-section3 div {
+    width: 100%;
+  }
+  .services-overview .services-section3 div:first-child {
+    margin-top: 25px;
+  }
+  .services-overview .services-section3 div:first-child .red-text {
+    display: none;
+  }
+  .services-overview .services-section3 div:first-child .text {
+    width: 100%;
+  }
+  .services-overview .services-section3 div:last-child {
+    width: 100%;
+    height: 100%;
+    align-items: start;
+  }
+  .services-overview .services-section3 div:last-child .red-text {
+    display: block;
+    margin-bottom: 15px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .services-overview .so .so-image-grid {
+    grid-template-columns: auto;
+  }
+  .services-overview .so .so-image-grid .so-image-card img {
+    height: 240px;
+  }
+  .services-overview .services-section3 {
+    padding: 20px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .services-overview .services-section3 {
+    padding: 30px;
+  }
+}
+
+/*# sourceMappingURL=services-overview.css.map */

@@ -26,7 +26,7 @@ export default function HeroNav({ helpHref }: HeroNavProps) {
   );
 
   return (
-    <nav className="hero-nav bg-white w-full h-20 shadow-[0_0_10px_rgba(0,0,0,0.23)] grid grid-cols-2 md:grid-cols-4 relative z-10">
+    <nav className="hero-nav bg-white w-full h-20 shadow-[0_0_10px_rgba(0,0,0,0.23)] hidden md:grid md:grid-cols-4 relative z-10">
       {items.map((item, i) => (
         <Link
           key={item.label}

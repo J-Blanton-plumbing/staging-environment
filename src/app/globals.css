@@ -166,6 +166,49 @@
   animation-play-state: paused;
 }
 
+/* Shared hero layout — applies to all pages using the .hero pattern.
+   Page-specific overrides (iframe height, img-s sizing, contents width)
+   stay in each page's own CSS file. */
+.hero {
+  height: auto;
+  min-height: 500px;
+  display: flex;
+  position: relative;
+}
+/* Carmine + tiled wrench pattern — shared right panel for all .hero pages.
+   Covers both naming conventions (.hero-contents and .contents).
+   Per-page background overrides are intentionally removed in favour of this. */
+.hero .hero-contents,
+.hero .contents {
+  background-color: #bc0e0e;
+  background-image: url('/images/patterns/Wrench Filled Red BG.png');
+  background-repeat: repeat;
+}
+
+/* ---- Shared hero responsive fixes ----------------------------------------
+   At ≤900px the media-side (img-s / iframe) hides and .hero stacks to a
+   single column. Two issues fixed globally here so every page benefits:
+   1. min-height: 0 — removes the 500px floor that left a white gap between
+      the hero and the section below it once the media column disappeared.
+   2. padding-top: 90px on .w — clears the 70px fixed navbar + breathing room.
+      Covers both naming conventions used across pages (.hero-contents .w and
+      .contents .w). Page-specific CSS can still override per-page if needed. */
+@media only screen and (max-width: 900px) {
+  .hero {
+    min-height: 0;
+  }
+  .hero .hero-contents .w,
+  .hero .contents .w {
+    padding-top: 90px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .hero .hero-contents .w,
+  .hero .contents .w {
+    padding-top: 80px;
+  }
+}
+
 /* ============================================================================
    City — Coverage Area image hero
    Ported from city.css `.city-page-hero` (121–185) + its media queries
@@ -435,7 +478,7 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    padding: 10px 30px 30px 30px;
+    padding: 25px 30px 30px 30px;
   }
   .no-drip-club .character {
     display: none;

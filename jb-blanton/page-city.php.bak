@@ -1,0 +1,334 @@
+<?php
+/**
+ * Template Name: City Page
+ * Template for city overview pages (has _jb_geo meta, no parent).
+ */
+get_header();
+
+if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+$post_id  = get_the_ID();
+$geo      = get_post_meta( $post_id, '_jb_geo', true );
+$gbp      = get_post_meta( $post_id, '_jb_gbp', true );
+// City overview always: "{Geo} Plumber" — matches production Go template behavior
+$h1       = $geo ? $geo . ' Plumber' : get_the_title();
+$callout  = get_post_meta( $post_id, '_jb_callout', true );
+$header2  = get_post_meta( $post_id, '_jb_header2', true );
+$seo_t    = get_post_meta( $post_id, '_jb_seo_title', true );
+$slug     = get_post_field( 'post_name', $post_id );
+
+// Elfsight App IDs — hero reviews (by GBP)
+$elfsight_hero = [
+	'Algonquin'       => '40f0bd27-b99c-4171-87b2-f600ef6d8210',
+	'Arlington Heights' => 'ca133efa-2c1f-4f4b-8095-6c07545044c8',
+	'Elgin'           => '395fbb1e-5f6b-4759-b2db-3d620c51e4e2',
+	'Evanston'        => '978a5a86-73cd-41c5-8b3a-1cb716957341',
+	'Hinsdale'        => '5ce3f59e-a315-4272-a1e9-12f6e0843e75',
+	'McHenry'         => '55b5212b-bef7-488d-a0ce-0629fd1dfaa0',
+	'Naperville'      => '8342aee5-5fc9-4945-a8fd-f5ed625a682e',
+	'Northbrook'      => 'bef726a2-1770-4806-9892-b36e55593142',
+	'Geneva'          => '5915094e-aea7-4fe6-ade1-2d32c34c0e6d',
+];
+$elfsight_hero_id = $elfsight_hero[ $gbp ] ?? ( $slug === 'chicago-lincoln-park' ? '4cd46e30-dbbb-4bd9-be5d-96c6da17ed11' : '266c99c1-530c-4f93-8046-bab90e4a05e5' );
+
+// Elfsight App IDs — content section reviews (by Geo)
+$elfsight_content = [
+	'Algonquin'       => '8a4401fa-c2fb-411e-9bf3-8e691c1a9d5b',
+	'Arlington Heights' => '63cfff20-7624-4c5b-9d7a-1ee39d90d602',
+	'Elgin'           => '54f95d6e-ce23-49c6-b3ac-8e4234199072',
+	'Hinsdale'        => '6a7311e8-5c7b-427d-9517-2a73c6b64d6c',
+	'McHenry'         => 'ce2757ba-58d8-43ec-8e87-5003099a592c',
+	'Naperville'      => '53445308-2ca6-49c1-ac47-da5c3a6401f6',
+	'Northbrook'      => '37a7d292-8861-4ea3-9680-c342123c50bc',
+	'Geneva'          => 'e082be80-78f3-407c-aaba-6cc5442c12ad',
+];
+$elfsight_content_id = $elfsight_content[ $geo ] ?? '67911321-4b72-4209-b157-fc9812eadd3b';
+
+// NAP data by GBP
+$nap = [
+	'Algonquin'       => [ 'url' => 'https://maps.app.goo.gl/egVEqHQJkzFG8Qo56', 'address' => '2390 Esplanade Dr #200f, Algonquin, IL 60102' ],
+	'Arlington Heights' => [ 'url' => 'https://maps.app.goo.gl/Qq4qPYJT8bCgash26', 'address' => '1204 E. Central Road, Suite 3, Arlington Heights, IL 60005' ],
+	'Elgin'           => [ 'url' => 'https://maps.app.goo.gl/5J1K7ZVgFeNwy8VJ8', 'address' => '964 N McLean Blvd, Elgin, IL 60123-2039' ],
+	'Evanston'        => [ 'url' => 'https://maps.app.goo.gl/rqmTxHMcicWhz1yV7', 'address' => '1603 Orrington Ave #600-1085, Evanston, IL 60201' ],
+	'Hinsdale'        => [ 'url' => 'https://maps.app.goo.gl/wKAnlH6CjaqbdW3VA', 'address' => '15 Spinning Wheel Rd #216a, Hinsdale, IL 60521' ],
+	'McHenry'         => [ 'url' => 'https://maps.app.goo.gl/DQ4fP5QXZr7TpBJ48', 'address' => '3406 W Elm St, Mchenry, IL 60050' ],
+	'Naperville'      => [ 'url' => 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8', 'address' => '200 S Main Street, Suite 3, Naperville, IL 60540' ],
+	'Northbrook'      => [ 'url' => 'https://maps.app.goo.gl/pCmmYeescW7Mf6B2A', 'address' => '1945 Techny Road, #11, Northbrook, IL 60062' ],
+	'Geneva'          => [ 'url' => 'https://maps.app.goo.gl/mfdpSC3BSGkQKdQ39', 'address' => '115 Campbell St #201C, Geneva, IL 60134' ],
+];
+if ( $slug === 'chicago-lincoln-park' ) {
+	$nap_data = [ 'url' => 'https://maps.app.goo.gl/ninFDe3tVj7U5sYx6', 'address' => '800 W Diversey Pkwy, Chicago, IL 60614' ];
+} else {
+	$nap_data = $nap[ $gbp ] ?? [ 'url' => 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', 'address' => '5126 N Ravenswood Ave, Chicago, IL 60640' ];
+}
+
+// Areas served by GBP
+$areas_served = [
+	'Algonquin'       => 'Northwest Suburban Chicago',
+	'Arlington Heights' => 'Northwest Suburban Chicago',
+	'Elgin'           => 'Northwest Suburban Chicago',
+	'McHenry'         => 'Northwest Suburban Chicago',
+	'Evanston'        => 'North Shore Chicagoland',
+	'Hinsdale'        => 'Western Suburbs',
+	'Naperville'      => 'Western Suburban Chicago',
+	'Northbrook'      => 'Northern Suburban Chicago',
+	'Geneva'          => 'Western Suburban Chicago',
+];
+$area = $areas_served[ $gbp ] ?? 'Greater Chicago Area';
+
+// Strip leading H1 from content (already displayed in hero)
+$raw_content = get_the_content();
+$clean_content = preg_replace( '/<h1[^>]*>.*?<\/h1>/i', '', $raw_content, 1 );
+
+// Related articles (3 most recent)
+$articles = get_posts( [ 'post_type' => 'jb_article', 'post_status' => 'publish', 'numberposts' => 3 ] );
+
+// FAQs for this city
+$faqs = get_posts( [
+	'post_type'      => 'jb_faq',
+	'post_status'    => 'publish',
+	'posts_per_page' => 6,
+	'meta_query'     => [
+		[ 'key' => '_jb_faq_city', 'value' => $geo, 'compare' => '=' ],
+	],
+] );
+if ( empty( $faqs ) ) {
+	// fallback: generic FAQs
+	$faqs = get_posts( [
+		'post_type'      => 'jb_faq',
+		'post_status'    => 'publish',
+		'posts_per_page' => 6,
+		'meta_query'     => [
+			[ 'key' => '_jb_faq_city', 'compare' => 'NOT EXISTS' ],
+		],
+	] );
+}
+
+// City name for URLs (slug)
+$city_slug = strtolower( str_replace( [ ' ', '.', "'", '/' ], [ '-', '', '', '-' ], $geo ) );
+?>
+
+
+<?php /* ---- HERO ---- */ ?>
+<div class="city-page-hero">
+	<img class="lazy city-page-image"
+		data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+		alt="<?php echo esc_attr( $geo ); ?> Plumber" />
+	<div class="contents">
+		<div class="w">
+			<h1><?php echo esc_html( $h1 ); ?></h1>
+
+			<div class="reviews">
+				<div class="elfsight-app-<?php echo esc_attr( $elfsight_hero_id ); ?>" data-elfsight-app-lazy></div>
+			</div>
+
+			<div class="nap">
+				<div>
+					<p>Local Office:</p>
+					<a target="_blank" href="<?php echo esc_url( $nap_data['url'] ); ?>">
+						J. Blanton Plumbing, Sewer &amp; Drain - <?php echo esc_html( $gbp ?: $geo ); ?>
+					</a>
+				</div>
+				<p><span>Address: </span><?php echo esc_html( $nap_data['address'] ); ?></p>
+				<p><span>Areas Served: </span><?php echo esc_html( $area ); ?></p>
+				<a class="nap-cta" href="tel:+17732352266">Call Now: (773) 235-2266</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php /* ---- HERO NAV ---- */ ?>
+<div class="hero-nav">
+	<a href="<?php echo esc_url( home_url( '/emergency-plumbing' ) ); ?>">EMERGENCY PLUMBING</a>
+	<a href="<?php echo esc_url( home_url( '/knowledge-hub' ) ); ?>">KNOWLEDGE HUB</a>
+	<a href="<?php echo esc_url( home_url( '/financing' ) ); ?>">FINANCING</a>
+	<a href="<?php echo esc_url( home_url( '/help-and-support' ) ); ?>">HELP &amp; SUPPORT</a>
+</div>
+
+<?php /* ---- CONTENT SECTION ---- */ ?>
+<div class="cream">
+	<div class="city-page-content">
+		<div class="f">
+			<div class="l">
+				<p class="red-text">
+					<?php if ( $geo === 'Evanston' ) : ?>
+						WHY J. BLANTON FOR EVANSTON PLUMBING
+					<?php else : ?>
+						WE'VE GOT YOU COVERED, <span><?php echo esc_html( strtoupper( $geo ) ); ?></span>
+					<?php endif; ?>
+				</p>
+
+				<p><?php echo wp_kses_post( $callout ); ?></p>
+			</div>
+
+			<div class="r">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+					alt="<?php echo esc_attr( $geo ); ?> plumbing service" />
+			</div>
+		</div>
+
+		<?php /* Google Map */ ?>
+		<iframe class="city-page-map"
+			width="100%"
+			height="300"
+			frameborder="0"
+			scrolling="no"
+			marginheight="0"
+			marginwidth="0"
+			src="<?php echo esc_url( 'https://maps.google.com/maps?hl=en&q=' . urlencode( $geo . ', Illinois' ) . '&t=&z=14&ie=UTF8&iwloc=B&output=embed' ); ?>"
+			loading="lazy">
+		</iframe>
+
+		<div class="f2">
+			<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp" alt="J. Blanton Plumber" />
+			<div class="r">
+				<p class="red-text"><?php echo esc_html( $seo_t ); ?></p>
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp" alt="J. Blanton Plumber" />
+				<p><?php echo wp_kses_post( $clean_content ); ?></p>
+			</div>
+		</div>
+
+		<?php /* Services Menu */ ?>
+		<div class="services-menu">
+			<p class="red-text2">OUR SERVICES</p>
+			<?php get_template_part( 'template-parts/city', 'services-menu', [ 'city_slug' => $city_slug ] ); ?>
+		</div>
+
+		<?php /* Content Elfsight Reviews */ ?>
+		<div class="city-page-gr">
+			<div class="elfsight-app-<?php echo esc_attr( $elfsight_content_id ); ?>" data-elfsight-app-lazy></div>
+		</div>
+
+		<?php /* TikTok */ ?>
+		<p class="ep-tiktok-headline">J Blanton Plumbing - Turning Bad Calls to Good Calls</p>
+		<div class="city-social-media">
+			<div class="elfsight-app-9f370c11-108b-412b-8529-6b3f093f04a3" data-elfsight-app-lazy></div>
+		</div>
+
+		<?php /* Related Articles */ ?>
+		<?php if ( ! empty( $articles ) ) : ?>
+		<div class="city-articles">
+			<div class="articles-component">
+				<?php foreach ( $articles as $article ) : ?>
+				<div class="article-card">
+					<?php if ( has_post_thumbnail( $article->ID ) ) : ?>
+						<img class="lazy" data-src="<?php echo esc_url( get_the_post_thumbnail_url( $article->ID, 'medium' ) ); ?>"
+							alt="<?php echo esc_attr( $article->post_title ); ?>" />
+					<?php else : ?>
+						<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+							alt="<?php echo esc_attr( $article->post_title ); ?>" />
+					<?php endif; ?>
+					<div>
+						<p class="article-title"><?php echo esc_html( $article->post_title ); ?></p>
+						<p><?php echo esc_html( wp_trim_words( $article->post_content, 20 ) ); ?></p>
+						<a href="<?php echo esc_url( get_permalink( $article->ID ) ); ?>">
+							<p>Read more</p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>
+						</a>
+					</div>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<?php endif; ?>
+
+		<?php /* Locations Grid */ ?>
+		<div class="city-locations">
+			<div class="city-labels">
+				<p>Proudly Serving the Greater Chicagoland Area for 30+ Years</p>
+				<p>Some areas we serve, but are not limited to, include:</p>
+			</div>
+			<div class="l-cities">
+				<?php
+				$all_cities = get_posts( [
+					'post_type'      => 'page',
+					'post_status'    => 'publish',
+					'posts_per_page' => 48,
+					'post_parent'    => 0,
+					'meta_query'     => [ [ 'key' => '_jb_geo', 'compare' => 'EXISTS' ] ],
+					'orderby'        => 'meta_value',
+					'meta_key'       => '_jb_geo',
+					'order'          => 'ASC',
+				] );
+				if ( $all_cities ) :
+					$chunks = array_chunk( $all_cities, ceil( count( $all_cities ) / 4 ) );
+					foreach ( $chunks as $chunk ) : ?>
+					<div>
+						<?php foreach ( $chunk as $city_p ) : ?>
+						<div>
+							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"/></svg>
+							<a href="<?php echo esc_url( get_permalink( $city_p->ID ) ); ?>"><?php echo esc_html( get_post_meta( $city_p->ID, '_jb_geo', true ) ); ?></a>
+						</div>
+						<?php endforeach; ?>
+					</div>
+				<?php endforeach; endif; ?>
+			</div>
+		</div>
+
+		<?php /* FAQ Accordion */ ?>
+		<?php if ( ! empty( $faqs ) ) : ?>
+		<div class="faqs">
+			<?php foreach ( $faqs as $idx => $faq ) : ?>
+			<div class="faq">
+				<div id="faq-head<?php echo $idx; ?>" class="head">
+					<p><?php echo esc_html( $faq->post_title ); ?></p>
+					<div class="svg">
+						<svg id="add<?php echo $idx; ?>" class="add" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M13 6a1 1 0 1 0-2 0v5H6a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"/></svg>
+					</div>
+					<div class="svg minus">
+						<svg id="minus<?php echo $idx; ?>" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/></svg>
+					</div>
+				</div>
+				<div id="faq-content<?php echo $idx; ?>" class="faq-content">
+					<p><?php echo wp_kses_post( get_post_meta( $faq->ID, '_jb_faq_answer', true ) ?: $faq->post_content ); ?></p>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+		<?php endif; ?>
+
+	</div>
+</div>
+
+<?php /* Schedule CTA */ ?>
+<div class="cream-bottom w81">
+	<div class="involveme_popup link-button"
+		data-project="schedule-service-new"
+		data-embed-mode="popup"
+		data-trigger-event="button"
+		data-popup-size="medium"
+		data-organization-url="https://jblantonplumbing.involve.me"
+		style="display:inline-flex;margin:40px 0;"
+	><p>SCHEDULE A SERVICE</p></div>
+</div>
+
+<script>
+(() => {
+	const faq = document.querySelectorAll(".faq");
+	faq.forEach((v, i) => {
+		let isClicked = false;
+		const add = document.getElementById(`add${i}`);
+		const minus = document.getElementById(`minus${i}`);
+		const head = document.getElementById(`faq-head${i}`);
+		const content = document.getElementById(`faq-content${i}`);
+		if (!head || !content) return;
+		const prevHeight = `${head.offsetHeight}px`;
+		v.style.height = prevHeight;
+		v.addEventListener("click", () => {
+			isClicked = !isClicked;
+			if (isClicked) {
+				v.style.height = `${content.offsetHeight + 70}px`;
+				add && (add.style.display = "none");
+				minus && (minus.style.display = "block");
+			} else {
+				v.style.height = prevHeight;
+				add && (add.style.display = "block");
+				minus && (minus.style.display = "none");
+			}
+		});
+	});
+})();
+</script>
+
+<?php endwhile; endif; ?>
+<?php get_footer(); ?>

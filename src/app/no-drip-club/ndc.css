@@ -19,16 +19,14 @@
 
 /* ---- Hero (theme globals.css `.hero`) -------------------------------------- */
 .ndc-page .hero {
-  height: auto;
-  display: flex;
-  position: relative;
+  /* base layout inherited from globals.css .hero */
 }
 .ndc-page .hero .img-s {
   object-fit: contain;
   width: 45%;
 }
 .ndc-page .hero iframe {
-  height: 500px;
+  height: 580px;
 }
 .ndc-page .hero .contents {
   /* Override Tailwind's `.contents { display: contents }` utility, which
@@ -36,18 +34,6 @@
   display: block;
   width: 55%;
   position: relative;
-  /* Midnight backstop behind the (dark) wrench pattern so the white `.w` text
-     stays legible if the pattern is slow/blocked — same treatment the build
-     already uses on `.city-page-hero .contents` (globals.css). */
-  background: #0a1b2e;
-}
-.ndc-page .hero .contents img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  z-index: 1;
-  object-fit: cover;
 }
 .ndc-page .hero .contents .w {
   height: 100%;
@@ -61,37 +47,38 @@
   z-index: 2;
 }
 .ndc-page .hero .contents .w h1 {
-  font-size: 2.3vw;
+  font-size: 40px;
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700;
   color: #fff;
 }
 .ndc-page .hero .contents .w .sub-label {
   margin-top: 20px;
-  font-size: 1vw;
+  font-size: 16px;
 }
 .ndc-page .hero .contents .w .hero-desc {
   margin: 20px 0 30px 0;
-  line-height: 22px;
-  letter-spacing: 1px;
-  font-size: 0.9vw;
+  line-height: 1.6;
+  font-size: 16px;
 }
 .ndc-page .hero .contents .w .involveme_popup {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 232px;
-  height: 44px;
-  color: #bc0e0e;
-  background: #fff;
+  width: max-content;
+  padding: 0 28px;
+  height: 52px;
+  color: #fff;
+  background: #1560e6;
   border-radius: 50px;
   font-family: var(--font-industry), Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background 0.3s;
 }
 .ndc-page .hero .contents .w .involveme_popup:hover {
-  background: #e4e4e4;
+  background: #0e4fc7;
 }
 
 /* ---- Shared helpers (theme globals.css) ----------------------------------- */
@@ -360,7 +347,7 @@
   .ndc-page .hero .contents .w {
     width: 90%;
     flex-direction: column;
-    padding: 50px 0 40px;
+    padding-bottom: 40px;
   }
   .ndc-page .hero .contents .w h1 {
     font-size: 3vw;
@@ -379,7 +366,7 @@
 }
 @media only screen and (max-width: 640px) {
   .ndc-page .hero .contents .w {
-    padding: 20px 0;
+    padding-bottom: 30px;
   }
 }
 @media only screen and (max-width: 425px) {

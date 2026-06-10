@@ -1,0 +1,35 @@
+.pp {
+  padding: 70px 0;
+}
+.pp p {
+  font-size: 18px;
+  line-height: 30px;
+}
+.pp .bold {
+  font-family: IBold;
+  margin-top: 20px;
+}
+.pp .mb {
+  margin-bottom: 20px;
+}
+.pp .mb2 {
+  margin-bottom: 10px;
+}
+.pp .mt {
+  margin-top: 20px;
+}
+.pp .v-center {
+  margin-left: 10px;
+}
+.pp .v-center svg {
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+}
+.pp .v-center p {
+  font-size: 16px;
+}
+.pp .v-center p span {
+  font-family: IBold;
+  margin-right: 3px;
+}/*# sourceMappingURL=privacy.css.map */

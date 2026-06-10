@@ -1,0 +1,184 @@
+</div><!-- /.body -->
+
+<div class="bottom">
+	<div class="w81">
+		<div class="l">
+			<a href="<?php echo esc_url(home_url('/')); ?>" class="i">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/jblogo_white.webp" alt="JBLogo" />
+			</a>
+			<div class="reviews google">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/google.webp" alt="Google" />
+				<a target="_blank" rel="noreferrer" href="https://g.page/r/CW0h_mbUZBu5EAE/review">Leave a Review</a>
+			</div>
+			<div class="reviews yelp">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/yelp.webp" alt="Yelp" />
+				<a target="_blank" rel="noreferrer" href="https://www.yelp.com/writeareview/biz/h-3jgJfNryJ43CN5970iFw?return_url=%2Fbiz%2Fh-3jgJfNryJ43CN5970iFw&review_origin=biz-details-war-button">Leave a Review</a>
+			</div>
+			<a href="https://www.bbb.org/us/il/morton-grove/profile/plumber/j-blanton-plumbing-0654-88664305/#sealclick" class="bbb">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/bbb.webp" alt="BBB" />
+			</a>
+		</div>
+		<div class="r">
+			<div class="bottom-navs">
+				<div>
+					<a href="<?php echo esc_url(home_url('/services')); ?>">Services</a>
+					<a href="<?php echo esc_url(home_url('/why-j-blanton')); ?>">Why J. Blanton</a>
+					<a href="<?php echo esc_url(home_url('/knowledge-hub')); ?>">Knowledge Hub</a>
+				</div>
+				<div>
+					<a href="<?php echo esc_url(home_url('/customer-stories')); ?>">Customer Stories</a>
+					<a href="<?php echo esc_url(home_url('/emergency-plumbing')); ?>">Emergency Plumbing</a>
+					<a href="<?php echo esc_url(home_url('/no-drip-club')); ?>">No Drip Club</a>
+				</div>
+				<div>
+					<a href="<?php echo esc_url(home_url('/help-and-support')); ?>">Help &amp; Support</a>
+					<a href="<?php echo esc_url(home_url('/financing')); ?>">Financing</a>
+					<a href="<?php echo esc_url(home_url('/locations')); ?>">Locations</a>
+				</div>
+			</div>
+
+			<div class="div"></div>
+
+			<div class="bottom-locations">
+				<p class="label">Our Office Locations</p>
+				<div class="offices">
+					<?php
+					$offices = [
+						['northbrook',          'northbrook (corporate)',  '1945 Techny Road, #11, Northbrook, IL 60062'],
+						['algonquin',           'algonquin',               '2390 Esplanade Dr #200f, Algonquin, IL 60102'],
+						['geneva',              'geneva',                  '115 Campbell St #201C, Geneva, IL 60134'],
+						['arlington-heights',   'arlington heights',       '1204 East Central Road - Suite 2, Arlington Heights, IL 60005'],
+						['chicago-lincoln-park','chicago lincoln park',    '800 W Diversey Pkwy, Chicago, IL 60614'],
+						['chicago-ravenswood',  'chicago ravenswood',      '5126 N Ravenswood Ave, Chicago, IL 60640'],
+						['elgin',               'elgin',                   '964 N McLean Blvd, Elgin, IL 60123-2039'],
+						['elmhurst',            'elmhurst',                '130 S York St, Elmhurst, IL 60126'],
+						['evanston',            'evanston',                '1603 Orrington Ave #600-1085, Evanston, IL 60201'],
+						['hinsdale',            'hinsdale',                '15 Spinning Wheel Road, 216A, Hinsdale, IL 60521'],
+						['mchenry',             'mchenry',                 '3406 W Elm St, Mchenry, IL 60050'],
+						['naperville',          'naperville',              '200 S. Main Street, Naperville, IL 60540'],
+						['skokie',              'skokie',                  '8001 Lincoln Ave, Suite 301 Skokie, IL 60077-3695'],
+						['joliet',              'joliet',                  '5126 N Ravenswood Ave, Chicago, IL 60640'],
+					];
+					$home_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 56 56"><path fill="currentColor" d="M.625 27.824c0 1.125.89 1.805 1.992 1.805c.68 0 1.219-.328 1.688-.797L27.18 7.996c.257-.258.539-.352.843-.352c.282 0 .54.094.82.352l22.852 20.836c.492.469 1.031.797 1.688.797c1.101 0 1.992-.68 1.992-1.805c0-.703-.258-1.148-.703-1.547l-8.11-7.382V5.043c0-1.031-.656-1.687-1.687-1.687h-3.07c-1.008 0-1.711.656-1.711 1.687v7.969l-9.282-8.485C29.992 3.754 28.984 3.38 28 3.38c-.985 0-1.969.375-2.813 1.148L1.328 26.277c-.422.399-.703.844-.703 1.547m6.703 19.664c0 3.258 1.969 5.157 5.273 5.157h9.493V35.98c0-1.078.726-1.78 1.804-1.78h8.274c1.078 0 1.781.702 1.781 1.78v16.665h9.469c3.304 0 5.25-1.899 5.25-5.157V30.332l-19.899-17.93c-.258-.234-.539-.351-.82-.351c-.258 0-.516.117-.797.375L7.328 30.449Z"/></svg>';
+					foreach ($offices as $o) {
+						echo '<div class="office"><div><div>' . $home_svg . '</div><a href="' . esc_url(home_url('/' . $o[0])) . '">' . esc_html($o[1]) . '</a></div><p>' . esc_html($o[2]) . '</p></div>';
+					}
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="bottom-socials">
+		<p>Copyright &copy; 2025 J. Blanton Plumbing - All Rights Reserved - <a href="<?php echo esc_url(home_url('/privacy-policy')); ?>">Privacy Policy</a></p>
+		<div>
+			<a href="https://www.linkedin.com/company/j-blanton-plumbing/" target="_blank">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/linkedin.webp" alt="LinkedIn" />
+			</a>
+			<a href="https://www.instagram.com/j.blantonplumbing/" target="_blank">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/ig.webp" alt="Instagram" />
+			</a>
+			<a href="https://www.facebook.com/J.BlantonPlumbing" target="_blank">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/fb.webp" alt="Facebook" />
+			</a>
+			<a href="https://x.com/JBPchicago" target="_blank">
+				<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/x.webp" alt="X" />
+			</a>
+		</div>
+	</div>
+</div>
+
+<script>
+(function() {
+  const bbbMap = {
+	"/algonquin":            "https://www.bbb.org/us/il/algonquin/profile/plumber/j-blanton-plumbing-0654-1000115479/#sealclick",
+	"/arlington-heights":    "https://www.bbb.org/us/il/arlington-heights/profile/plumber/j-blanton-plumbing-0654-1000115474/#sealclick",
+	"/chicago-lincoln-park": "https://www.bbb.org/us/il/chicago/profile/plumber/j-blanton-plumbing-0654-1000115481/#sealclick",
+	"/chicago-ravenswood":   "https://www.bbb.org/us/il/chicago/profile/plumber/j-blanton-plumbing-0654-88664305/#sealclick",
+	"/elgin":                "https://www.bbb.org/us/il/elgin/profile/plumber/j-blanton-plumbing-0654-1000115483/#sealclick",
+	"/elmhurst":             "https://www.bbb.org/us/il/elmhurst/profile/plumber/j-blanton-plumbing-0654-1000120272/#sealclick",
+	"/evanston":             "https://www.bbb.org/us/il/evanston/profile/plumber/j-blanton-plumbing-0654-1000115476/#sealclick",
+	"/hinsdale":             "https://www.bbb.org/us/il/hinsdale/profile/plumber/j-blanton-plumbing-0654-1000115475/#sealclick",
+	"/mchenry":              "https://www.bbb.org/us/il/mchenry/profile/plumber/j-blanton-plumbing-0654-1000115480/#sealclick",
+	"/naperville":           "https://www.bbb.org/us/il/naperville/profile/plumber/j-blanton-plumbing-0654-1000115478/#sealclick",
+	"/northbrook":           "https://www.bbb.org/us/il/northbrook/profile/plumber/j-blanton-plumbing-0654-1000115477/#sealclick",
+	"/skokie":               "https://www.bbb.org/us/il/skokie/profile/plumber/j-blanton-plumbing-0654-1000115482/#sealclick"
+  };
+  const defaultLink = "https://www.bbb.org/us/il/chicago/profile/plumber/j-blanton-plumbing-0654-88664305/#sealclick";
+  let path = window.location.pathname.replace(/\/$/, "");
+  let href = bbbMap[path] || defaultLink;
+  let anchor = document.querySelector('a.bbb');
+  if (anchor) anchor.href = href;
+})();
+</script>
+
+<?php wp_footer(); ?>
+
+<script>
+(() => {
+	const obs = new IntersectionObserver(entries => {
+		entries.forEach(e => {
+			if(e.isIntersecting) {
+				const img = e.target;
+				obs.unobserve(img);
+				img.onload = () => img.classList.remove('lazy');
+				img.src = img.dataset.src;
+			}
+		});
+	});
+	const imgs = document.querySelectorAll(".lazy");
+	imgs.forEach(i => { obs.observe(i); });
+
+	const burger = document.getElementById("burger");
+	const close  = document.getElementById("side-close");
+	const sideMenu = document.getElementById("side-menu");
+
+	if (burger) burger.addEventListener("click", () => { sideMenu.style.display = "block"; });
+	if (close)  close.addEventListener("click",  () => { sideMenu.style.display = "none"; });
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+	const el = event.target.closest('button, a, [data-track-click]');
+	if (el) {
+		const elementId = el.id;
+		const dataTrackClick = el.getAttribute('data-track-click');
+		const innerText = el.innerText;
+		let finalName = '';
+		if (elementId) { finalName = elementId; }
+		else if (dataTrackClick) { finalName = dataTrackClick; }
+		else if (innerText && innerText.trim() !== '') { finalName = innerText.trim().substring(0, 30); }
+		else {
+			const innerImg = el.querySelector('img');
+			if (innerImg && innerImg.alt) { finalName = innerImg.alt.trim().substring(0, 30); }
+			else if (el.tagName.toLowerCase() === 'a' && el.href) { finalName = el.href.substring(0, 50); }
+			else { finalName = 'element_unnamed'; }
+		}
+		const buttonName = finalName || 'unknown';
+		const eventParams = {
+			'element_name': typeof buttonName === 'string' ? buttonName.trim() : buttonName,
+			'element_type': el.tagName.toLowerCase(),
+			'page_location': window.location.href
+		};
+		if (typeof gtag === 'function') { gtag('event', 'element_1_click', eventParams); }
+	}
+});
+</script>
+
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1674876326613103');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1674876326613103&ev=PageView&noscript=1"/></noscript>
+
+</body>
+</html>

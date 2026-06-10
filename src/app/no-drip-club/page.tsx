@@ -103,7 +103,6 @@ export default function NoDripClubPage() {
             <p className="hero-desc">{hero.description}</p>
             <InvolveMePopup label={hero.cta} cfg={involveMe} />
           </div>
-          <Image src={hero.patternImage} alt="" fill sizes="55vw" />
         </div>
       </div>
 

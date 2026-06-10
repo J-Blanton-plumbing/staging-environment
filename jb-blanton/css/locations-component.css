@@ -1,0 +1,71 @@
+.city-labels {
+  text-align: center;
+  margin-top: 25px;
+  padding: 0 15px;
+}
+.city-labels p:first-child {
+  font-size: 34px;
+  font-family: IUltra;
+}
+.city-labels p:last-child {
+  margin: 20px 0 60px 0;
+}
+
+.l-cities {
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 30px;
+}
+.l-cities div div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.l-cities div div svg {
+  width: 20px;
+  height: 20px;
+  color: #BC0E0E;
+}
+.l-cities div div a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9vw;
+}
+
+@media only screen and (max-width: 1280px) {
+  .city-labels p:first-child {
+    font-size: 25px;
+  }
+  .l-cities div div a {
+    font-size: 1.3vw;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .l-cities div div a {
+    font-size: 1.6vw;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .l-cities {
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+  }
+  .l-cities div div a {
+    font-size: 2vw;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .l-cities div div a {
+    font-size: 2.5vw;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .l-cities {
+    grid-template-columns: auto auto;
+  }
+  .l-cities div div a {
+    font-size: 2.8vw;
+  }
+}/*# sourceMappingURL=locations-component.css.map */

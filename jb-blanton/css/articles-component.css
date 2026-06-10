@@ -1,0 +1,53 @@
+.articles-component {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 30px;
+  overflow: hidden;
+}
+.articles-component .article-card {
+  color: #0A1B2E;
+  background: #fff;
+}
+.articles-component .article-card img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding-top: 20px;
+}
+.articles-component .article-card div {
+  width: 95%;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+.articles-component .article-card div .article-title {
+  font-size: 20px;
+  font-family: IBold;
+  margin-bottom: 10px;
+}
+.articles-component .article-card div a {
+  display: flex;
+  text-decoration: none;
+  width: -moz-max-content;
+  width: max-content;
+  margin-top: 10px;
+  color: #0A1B2E;
+  align-items: center;
+}
+.articles-component .article-card div a svg {
+  margin: 3px 0 0 5px;
+}
+.articles-component .article-card div a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 920px) {
+  .articles-component {
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .articles-component {
+    grid-template-columns: auto;
+  }
+}/*# sourceMappingURL=articles-component.css.map */

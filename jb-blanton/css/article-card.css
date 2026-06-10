@@ -1,0 +1,36 @@
+.single-article-card {
+  color: #0A1B2E;
+  background: #fff;
+}
+.single-article-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  padding-top: 20px;
+}
+.single-article-card div {
+  width: 95%;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+.single-article-card div .article-title {
+  font-size: 20px;
+  font-family: IBold;
+  margin-bottom: 10px;
+}
+.single-article-card div a {
+  display: flex;
+  text-decoration: none;
+  width: max-content;
+  margin-top: 10px;
+  color: #0A1B2E;
+  align-items: center;
+}
+.single-article-card div a svg {
+  margin: 3px 0 0 5px;
+}
+.single-article-card div a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=article-card.css.map */

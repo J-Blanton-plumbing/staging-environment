@@ -1,0 +1,705 @@
+<?php
+
+// ── Root-level URLs for jb_article posts (match prod site) ───────────────────
+add_filter( 'request', function( $query_vars ) {
+	// WordPress routes root-level URLs as either 'pagename' or 'name'
+	$slug = '';
+	if ( ! empty( $query_vars['pagename'] ) ) {
+		$slug = $query_vars['pagename'];
+	} elseif ( ! empty( $query_vars['name'] ) && empty( $query_vars['post_type'] ) ) {
+		$slug = $query_vars['name'];
+	}
+	if ( ! $slug ) return $query_vars;
+	$post = get_page_by_path( $slug, OBJECT, 'jb_article' );
+	if ( $post && $post->post_status === 'publish' ) {
+		$query_vars['post_type'] = 'jb_article';
+		$query_vars['name']      = $slug;
+		unset( $query_vars['pagename'] );
+	}
+	return $query_vars;
+} );
+// ── end root-level jb_article URLs ───────────────────────────────────────────
+
+// ── Strip /jb-articles/ prefix from jb_article permalinks (match prod) ──────
+add_filter( 'post_type_link', function( $url, $post ) {
+	if ( $post->post_type === 'jb_article' ) {
+		$url = str_replace( '/jb-articles/', '/', $url );
+	}
+	return $url;
+}, 10, 2 );
+// ── end permalink filter ─────────────────────────────────────────────────────
+// ── Redirect /jb-articles/slug → /slug (301 canonical redirect) ──────────────
+add_action( 'template_redirect', function() {
+	if ( ! is_singular( 'jb_article' ) ) return;
+	$correct = get_permalink( get_queried_object_id() );
+	$current = ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	if ( rtrim( $current, '/' ) !== rtrim( $correct, '/' ) ) {
+		wp_redirect( $correct, 301 );
+		exit;
+	}
+} );
+// ── end redirect ──────────────────────────────────────────────────────────────
+
+
+// ─── Article helper: skip-first from category + fill with global (matches prod) ─
+function jb_get_articles( $cat_slug, $n = 3 ) {
+	$cat_ids = [];
+
+	if ( ! empty( $cat_slug ) ) {
+		$term = get_term_by( 'slug', $cat_slug, 'category' );
+		if ( $term ) {
+			$cat_q = new WP_Query( [
+				'post_type'      => 'jb_article',
+				'post_status'    => 'publish',
+				'posts_per_page' => $n,
+				'orderby'        => 'ID',
+				'order'          => 'DESC',
+				'tax_query'      => [ [
+					'taxonomy' => 'category',
+					'field'    => 'term_id',
+					'terms'    => $term->term_id,
+				] ],
+			] );
+			$first = true;
+			while ( $cat_q->have_posts() ) {
+				$cat_q->the_post();
+				if ( $first ) { $first = false; continue; } // skip most recent
+				$cat_ids[] = get_the_ID();
+			}
+			wp_reset_postdata();
+		}
+	}
+
+	$need = $n - count( $cat_ids );
+	$all_ids = $cat_ids;
+
+	if ( $need > 0 ) {
+		$global_q = new WP_Query( [
+			'post_type'      => 'jb_article',
+			'post_status'    => 'publish',
+			'posts_per_page' => $n + count( $cat_ids ) + 1,
+			'orderby'        => 'ID',
+			'order'          => 'DESC',
+			'post__not_in'   => $cat_ids ?: [ 0 ],
+		] );
+		$global_ids = [];
+		while ( $global_q->have_posts() && count( $global_ids ) < $need ) {
+			$global_q->the_post();
+			$global_ids[] = get_the_ID();
+		}
+		wp_reset_postdata();
+		$all_ids = array_merge( $cat_ids, $global_ids );
+	}
+
+	if ( empty( $all_ids ) ) {
+		return get_posts( [ 'post_type' => 'jb_article', 'post_status' => 'publish', 'numberposts' => $n ] );
+	}
+
+	return get_posts( [
+		'post_type'   => 'jb_article',
+		'post_status' => 'publish',
+		'post__in'    => $all_ids,
+		'orderby'     => 'post__in',
+		'numberposts' => $n,
+	] );
+}
+
+// ─── Elfsight city → app-ID mapping ──────────────────────────────────────────
+function jb_get_elfsight_ids( $city_slug ) {
+	// Widget UUIDs by regional hub
+	$joliet     = '266c99c1-530c-4f93-8046-bab90e4a05e5';  // TODO: replace with Joliet Elfsight widget ID
+	$mchenry    = '55b5212b-bef7-488d-a0ce-0629fd1dfaa0';
+	$elgin      = '395fbb1e-5f6b-4759-b2db-3d620c51e4e2';
+	$arh        = 'ca133efa-2c1f-4f4b-8095-6c07545044c8';
+	$nbrook     = 'bef726a2-1770-4806-9892-b36e55593142';
+	$hinsdale   = '5ce3f59e-a315-4272-a1e9-12f6e0843e75';
+	$naperville = '8342aee5-5fc9-4945-a8fd-f5ed625a682e';
+	$evanston   = '978a5a86-73cd-41c5-8b3a-1cb716957341';
+	$map = [
+		// ── Special / own-address offices ──
+		'chicago-lincoln-park' => '4cd46e30-dbbb-4bd9-be5d-96c6da17ed11',
+		'algonquin'            => '40f0bd27-b99c-4171-87b2-f600ef6d8210',
+		'arlington-heights'    => $arh,
+		'elgin'                => $elgin,
+		'evanston'             => $evanston,
+		'hinsdale'             => $hinsdale,
+		'mchenry'              => $mchenry,
+		'naperville'           => $naperville,
+		'northbrook'           => $nbrook,
+		'geneva'               => '5915094e-aea7-4fe6-ade1-2d32c34c0e6d',
+		'elmhurst'             => '269bffb8-4e1c-4be0-ae5e-f54aeb0f43ab',
+
+		// ── McHenry hub ──
+		'allens-corners'       => $mchenry,
+		'almora'               => $mchenry,
+		'alora-heights'        => $mchenry,
+		'antioch'              => $mchenry,
+		'barrington-hills'     => $mchenry,
+		'belden'               => $mchenry,
+		'bull-valley'          => $mchenry,
+		'burtons-bridge'       => $mchenry,
+		'cary'                 => $mchenry,
+		'channel-lake'         => $mchenry,
+		'crystal-lake'         => $mchenry,
+		'ferndale'             => $mchenry,
+		'forest-lake'          => $mchenry,
+		'fox-lake'             => $mchenry,
+		'fox-lake-hills'       => $mchenry,
+		'franklinville'        => $mchenry,
+		'grandwood-park'       => $mchenry,
+		'greenwood'            => $mchenry,
+		'hainesville'          => $mchenry,
+		'harmony'              => $mchenry,
+		'hartland'             => $mchenry,
+		'hawthorn-woods'       => $mchenry,
+		'holiday-hills'        => $mchenry,
+		'huntley'              => $mchenry,
+		'ingleside'            => $mchenry,
+		'ingleside-shore'      => $mchenry,
+		'island-lake'          => $mchenry,
+		'johnsburg'            => $mchenry,
+		'kildeer'              => $mchenry,
+		'lake-barrington'      => $mchenry,
+		'lake-catherine'       => $mchenry,
+		'lake-in-the-hills'    => $mchenry,
+		'lake-villa'           => $mchenry,
+		'lake-zurich'          => $mchenry,
+		'lakemoor'             => $mchenry,
+		'lindenhurst'          => $mchenry,
+		'long-grove'           => $mchenry,
+		'long-lake'            => $mchenry,
+		'mccullom-lake'        => $mchenry,
+		'mylith-park'          => $mchenry,
+		'oakwood-hills'        => $mchenry,
+		'old-mill-creek'       => $mchenry,
+		'pistakee-highlands'   => $mchenry,
+		'prairie-grove'        => $mchenry,
+		'richmond'             => $mchenry,
+		'ridgefield'           => $mchenry,
+		'ringwood'             => $mchenry,
+		'round-lake'           => $mchenry,
+		'round-lake-beach'     => $mchenry,
+		'round-lake-heights'   => $mchenry,
+		'round-lake-park'      => $mchenry,
+		'solon-mills'          => $mchenry,
+		'spring-grove'         => $mchenry,
+		'trout-valley'         => $mchenry,
+		'venetian-cillage'     => $mchenry,
+		'venetian-village'     => $mchenry,
+		'village-of-lakewood'  => $mchenry,
+		'volo'                 => $mchenry,
+		'wauconda'             => $mchenry,
+		'williams-park'        => $mchenry,
+		'wonder-lake'          => $mchenry,
+		'woodstock'            => $mchenry,
+
+		// ── Elgin hub ──
+		'bartlett'             => $elgin,
+		'burlington'           => $elgin,
+		'campton-hills'        => $elgin,
+		'carol-stream'         => $elgin,
+		'gilberts'             => $elgin,
+		'hampshire'            => $elgin,
+		'knoll-creek-west'     => $elgin,
+		'lily-lake'            => $elgin,
+		'new-lebanon'          => $elgin,
+		'pingree-grove'        => $elgin,
+		'plato-center'         => $elgin,
+		'south-elgin'          => $elgin,
+		'st-charles'           => $elgin,
+		'starks'               => $elgin,
+		'west-highland-acre'   => $elgin,
+		'wildwood-valley'      => $elgin,
+		'williamsburg-green'   => $elgin,
+
+		// ── Arlington Heights hub ──
+		'bloomingdale'         => $arh,
+		'deer-park'            => $arh,
+		'elk-grove'            => $arh,
+		'hanover-park'         => $arh,
+		'hoffman-estates'      => $arh,
+		'inverness'            => $arh,
+		'keeneyville'          => $arh,
+		'mount-prospect'       => $arh,
+		'palatine'             => $arh,
+		'prospect-heights'     => $arh,
+		'rolling-meadows'      => $arh,
+		'roselle'              => $arh,
+		'schaumburg'           => $arh,
+		'wheeling'             => $arh,
+
+		// ── Northbrook hub ──
+		'bannockburn'          => $nbrook,
+		'buffalo-grove'        => $nbrook,
+		'fort-sheridan'        => $nbrook,
+		'glencoe'              => $nbrook,
+		'green-oaks'           => $nbrook,
+		'gurnee'               => $nbrook,
+		'highwood'             => $nbrook,
+		'highland-park'        => $nbrook,
+		'indian-creek'         => $nbrook,
+		'kenilworth'           => $nbrook,
+		'knollwood'            => $nbrook,
+		'lake-bluff'           => $nbrook,
+		'lake-forest'          => $nbrook,
+		'libertyville'         => $nbrook,
+		'lincolnshire'         => $nbrook,
+		'mettawa'              => $nbrook,
+		'mundelein'            => $nbrook,
+		'north-chicago'        => $nbrook,
+		'northfield'           => $nbrook,
+		'rondout'              => $nbrook,
+		'vernon-hills'         => $nbrook,
+		'waukegan'             => $nbrook,
+		'wells-corners'        => $nbrook,
+		'winnetka'             => $nbrook,
+
+		// ── Hinsdale hub ──
+		'burr-ridge'           => $hinsdale,
+		'butterfield'          => $hinsdale,
+		'clarendon-hills'      => $hinsdale,
+		'darien'               => $hinsdale,
+		'downers-grove'        => $hinsdale,
+		'glen-ellyn'           => $hinsdale,
+		'la-grange'            => $hinsdale,
+		'lombard'              => $hinsdale,
+		'oak-brook'            => $hinsdale,
+		'oakbrook-terrace'     => $hinsdale,
+		'villa-park'           => $hinsdale,
+		'westchester'          => $hinsdale,
+		'western-springs'      => $hinsdale,
+		'westmont'             => $hinsdale,
+		'york-center'          => $hinsdale,
+
+		// ── Naperville hub ──
+		'aurora'               => $naperville,
+		'bolingbrook'          => $naperville,
+		'plainfield'           => $naperville,
+		'romeoville'           => $naperville,
+		'welco-corners'        => $naperville,
+		'woodridge'            => $naperville,
+
+
+		// ── Joliet hub (new cities 2026-03-30) ──
+		'alsip'                  => $joliet,
+		'arbury-hills'           => $joliet,
+		'blue-island'            => $joliet,
+		'bonnie-brae'            => $joliet,
+		'chicago-heights'        => $joliet,
+		'country-club-hills'     => $joliet,
+		'crest-hill'             => $joliet,
+		'fairmont'               => $joliet,
+		'flossmoor'              => $joliet,
+		'frankfort'              => $joliet,
+		'frankfort-square'       => $joliet,
+		'harvey'                 => $joliet,
+		'homer-glen'             => $joliet,
+		'homewood'               => $joliet,
+		'ingalls-park'           => $joliet,
+		'joliet'                 => $joliet,
+		'lemont'                 => $joliet,
+		'lockport'               => $joliet,
+		'lockport-heights'       => $joliet,
+		'manhattan'              => $joliet,
+		'markham'                => $joliet,
+		'matteson'               => $joliet,
+		'midlothian'             => $joliet,
+		'mokena'                 => $joliet,
+		'new-lenox'              => $joliet,
+		'oak-forest'             => $joliet,
+		'orland-park'            => $joliet,
+		'palos-heights'          => $joliet,
+		'palos-hills'            => $joliet,
+		'park-forest'            => $joliet,
+		'preston-heights'        => $joliet,
+		'rockdale'               => $joliet,
+		'roseland'               => $joliet,
+		'south-holland'          => $joliet,
+		'tinley-park'            => $joliet,
+		// ── Evanston hub ──
+		'morton-grove'         => $evanston,
+		'skokie'               => $evanston,
+		'wilmette'             => $evanston,
+	];
+	return $map[ $city_slug ] ?? '266c99c1-530c-4f93-8046-bab90e4a05e5';
+}
+
+// ─── Yoast: redirect canonical to production domain ──────────────────────────
+add_filter( 'wpseo_canonical', function( $canonical ) {
+	return str_replace(
+		[ 'https://staging.jblantonplumbing.com', 'http://staging.jblantonplumbing.com' ],
+		'https://jblantonplumbing.com',
+		(string) $canonical
+	);
+} );
+
+// ─── Yoast: title override from ACF / front-page special case ────────────────
+add_filter( 'wpseo_title', function( $title ) {
+	if ( is_front_page() ) {
+		return 'J Blanton Plumbing, Sewer and Drain | Trusted Plumbing Experts in Chicagoland Since 1993';
+	}
+	if ( is_singular() ) {
+		$custom = get_field( 'page_title_seo' );
+		if ( $custom ) return $custom;
+	}
+	return $title;
+} );
+
+// ─── Yoast: meta-description override from ACF ───────────────────────────────
+add_filter( 'wpseo_metadesc', function( $desc ) {
+	if ( is_singular() ) {
+		$custom = get_field( 'meta_description' );
+		if ( $custom ) return $custom;
+	}
+	return $desc;
+} );
+
+// ─── CSS enqueuing ────────────────────────────────────────────────────────────
+add_action( 'wp_enqueue_scripts', function() {
+	$v = '1.0';
+	$t = get_template_directory_uri();
+
+	wp_enqueue_style( 'jb-base',         $t . '/css/base.css',        [], $v );
+	wp_enqueue_style( 'jb-globals',      $t . '/css/globals.css',     [ 'jb-base' ], $v );
+	wp_enqueue_style( 'jb-wp-overrides', $t . '/css/wp-overrides.css',[ 'jb-globals' ], $v );
+
+	if ( is_front_page() ) {
+		wp_enqueue_style( 'jb-home',     $t . '/css/home.css',                [ 'jb-globals' ], $v );
+		wp_enqueue_style( 'jb-articles', $t . '/css/articles-component.css',  [ 'jb-globals' ], $v );
+		wp_enqueue_style( 'jb-services',  $t . '/css/services-components.css', [ 'jb-globals' ], $v );
+		wp_enqueue_style( 'jb-art-card', $t . '/css/article-card.css',         [ 'jb-globals' ], $v );
+		return;
+	}
+
+	if ( is_singular( 'post' ) || is_singular( 'jb_article' ) ) {
+		wp_enqueue_style( 'jb-article-page', $t . '/css/article-page.css',        [ 'jb-globals' ], $v );
+		wp_enqueue_style( 'jb-articles',     $t . '/css/articles-component.css',  [ 'jb-globals' ], $v );
+		return;
+	}
+
+	if ( is_singular( 'jb_sewer' ) ) {
+		wp_enqueue_style( 'jb-city', $t . '/css/city.css', [ 'jb-globals' ], $v );
+		return;
+	}
+
+	if ( is_singular( 'jb_faq' ) ) {
+		wp_enqueue_style( 'jb-page', $t . '/css/page.css', [ 'jb-globals' ], $v );
+		return;
+	}
+
+	if ( is_page() ) {
+		$tmpl = get_page_template_slug();
+
+		if ( $tmpl === 'page-city.php' ) {
+			wp_enqueue_style( 'jb-city',      $t . '/css/city.css',                [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-articles',  $t . '/css/articles-component.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-locations', $t . '/css/locations-component.css', [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-city-service.php' ) {
+			wp_enqueue_style( 'jb-city',      $t . '/css/city.css',                [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-articles',  $t . '/css/articles-component.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-locations', $t . '/css/locations-component.css', [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-city-v2.php' ) {
+			wp_enqueue_style( 'jb-city',      $t . '/css/city.css',                [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-articles',  $t . '/css/articles-component.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-locations', $t . '/css/locations-component.css', [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-service.php' ) {
+			wp_enqueue_style( 'jb-emergency', $t . '/css/emergency-plumbing.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-plumbing',  $t . '/css/plumbing.css',            [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-articles',  $t . '/css/articles-component.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-art-card',  $t . '/css/article-card.css',        [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-services',  $t . '/css/services-components.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-locations', $t . '/css/locations-component.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-ndc',       $t . '/css/ndc.css',                 [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-knowledge-hub.php' ) {
+			wp_enqueue_style( 'jb-articles',  $t . '/css/articles-component.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-art-card', $t . '/css/article-card.css',         [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-knowledge', $t . '/css/knowledge-hub.css',       [ 'jb-globals' ], $v );
+			wp_enqueue_script( 'htmx', 'https://unpkg.com/htmx.org@1.9.2', [], null, true );
+
+		} elseif ( $tmpl === 'page-locations.php' ) {
+			wp_enqueue_style( 'jb-locations',          $t . '/css/locations-component.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-locations-overview', $t . '/css/locations-overview.css',  [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-contact-us.php' ) {
+			wp_enqueue_style( 'jb-contact', $t . '/css/contact-us.css', [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-customer-stories.php' ) {
+			wp_enqueue_style( 'jb-customer', $t . '/css/customer-stories.css', [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-no-drip-club.php' ) {
+			wp_enqueue_style( 'jb-ndc',  $t . '/css/ndc.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-page', $t . '/css/page.css', [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-help-and-support.php' ) {
+			wp_enqueue_style( 'jb-whyjb', $t . '/css/whyjblanton.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-page',  $t . '/css/page.css',        [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-why-j-blanton.php' ) {
+			wp_enqueue_style( 'jb-whyjb', $t . '/css/whyjblanton.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-page',  $t . '/css/page.css',        [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-emergency-plumbing.php' ) {
+			wp_enqueue_style( 'jb-emergency', $t . '/css/emergency-plumbing.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-page',      $t . '/css/page.css',               [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-financing.php' ) {
+			wp_enqueue_style( 'jb-whyjb', $t . '/css/whyjblanton.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-page',  $t . '/css/page.css',        [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-is-hiring.php' ) {
+			wp_enqueue_style( 'jb-is-hiring', $t . '/css/is-hiring.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-page',      $t . '/css/page.css',      [ 'jb-globals' ], $v );
+
+		} elseif ( $tmpl === 'page-services.php' ) {
+			wp_enqueue_style( 'jb-services-ov', $t . '/css/services-overview.css',  [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-services',   $t . '/css/services-components.css',[ 'jb-globals' ], $v );
+
+		} else {
+			// Default page fallback
+			wp_enqueue_style( 'jb-page',      $t . '/css/page.css',               [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-articles',  $t . '/css/articles-component.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-services',  $t . '/css/services-components.css',[ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-emergency', $t . '/css/emergency-plumbing.css', [ 'jb-globals' ], $v );
+			wp_enqueue_style( 'jb-locations', $t . '/css/locations-component.css',[ 'jb-globals' ], $v );
+		}
+	}
+} );
+
+// ─── Remove WordPress default assets that conflict ───────────────────────────
+add_action( 'wp_enqueue_scripts', function() {
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'global-styles' );
+	wp_dequeue_style( 'classic-theme-styles' );
+}, 100 );
+
+// ─── Theme support ───────────────────────────────────────────────────────────
+add_theme_support( 'title-tag' );
+add_theme_support( 'post-thumbnails' );
+
+// ─── Remove emoji and other bloat ────────────────────────────────────────────
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
+
+// ─── Hero-image override helper (used by static page templates) ─────────────
+// Added 2026-04-20 — resolves an ACF `hero_image_override` value to a full URL
+// with a safe fallback to the current hardcoded hero image.
+//   empty           → $fallback_url
+//   http(s)://...   → as-is
+//   bare filename   → CloudFront /images/{filename}.webp (default ext)
+//   filename.ext    → CloudFront /images/{filename}.ext (preserves ext)
+if ( ! function_exists( 'jb_resolve_hero_image' ) ) {
+	function jb_resolve_hero_image( $override, $fallback_url ) {
+		$override = is_string( $override ) ? trim( $override ) : '';
+		if ( $override === '' ) {
+			return $fallback_url;
+		}
+		if ( strpos( $override, 'http://' ) === 0 || strpos( $override, 'https://' ) === 0 ) {
+			return $override;
+		}
+		$has_ext = (bool) preg_match( '/\.[a-zA-Z0-9]{2,5}$/', $override );
+		$file    = $has_ext ? $override : $override . '.webp';
+		return 'https://d1rplazj5a80fb.cloudfront.net/images/' . ltrim( $file, '/' );
+	}
+}
+
+// ─── ACF field groups ────────────────────────────────────────────────────────
+$acf_fields_file = get_template_directory() . '/inc/acf-fields.php';
+if ( file_exists( $acf_fields_file ) ) {
+	require_once $acf_fields_file;
+}
+
+// ─── Article fragment endpoint: /articles/9/{page} (matches production URL) ──
+add_action( 'init', function() {
+	add_rewrite_rule( '^articles/(\d+)/(\d+)/?$', 'index.php?jb_kh_per=$matches[1]&jb_kh_page=$matches[2]', 'top' );
+} );
+
+add_filter( 'query_vars', function( $vars ) {
+	$vars[] = 'jb_kh_per';
+	$vars[] = 'jb_kh_page';
+	return $vars;
+} );
+
+add_action( 'template_redirect', function() {
+	$per  = get_query_var( 'jb_kh_per' );
+	$page = get_query_var( 'jb_kh_page' );
+	if ( $per === '' || $page === '' ) return;
+
+	$per  = max( 1, (int) $per );
+	$page = max( 0, (int) $page );
+	$cf   = 'https://d1rplazj5a80fb.cloudfront.net/images/articles/';
+	$def  = 'https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp';
+
+	$q = new WP_Query( [
+		'post_type'      => 'jb_article',
+		'post_status'    => 'publish',
+		'posts_per_page' => $per,
+		'paged'          => $page + 1,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+	] );
+
+	header( 'Content-Type: text/html; charset=UTF-8' );
+	header( 'Cache-Control: no-store' );
+
+	if ( $q->have_posts() ) :
+		while ( $q->have_posts() ) : $q->the_post();
+			$thumb = get_post_meta( get_the_ID(), 'article_image', true ) ?: $def;
+			echo '<div class="single-article-card">';
+			echo '<img src="' . esc_url( $thumb ) . '" alt="' . esc_attr( get_the_title() ) . '" loading="lazy" />';
+			echo '<div>';
+			$art_title = get_the_title();
+			// Match production Go backend: title + body merged (no space), full first paragraph
+			$_raw    = get_the_content();
+			$_parts  = explode( '</p>', $_raw );
+			$_first  = $_parts[0] ?? $_raw;
+			$_first  = str_replace( '<p>', '', $_first );
+			$_first  = str_replace( '</h1><br /><br />', '', $_first );
+			$_first  = str_replace( '</h1><br/><br/>', '', $_first );
+			$_first  = str_replace( '<h1>', '', $_first );
+			$_first  = wp_strip_all_tags( $_first );
+			$_first  = trim( preg_replace( '/\s+/', ' ', $_first ) );
+			$art_excerpt = ( mb_strlen( $_first ) > 160 ) ? mb_substr( $_first, 0, 160 ) . '...' : $_first . '...';
+			echo '<p class="article-title">' . esc_html( $art_title ) . '</p>';
+			echo '<p>' . esc_html( $art_excerpt ) . '</p>';
+			echo '<a href="' . esc_url( get_permalink() ) . '">';
+			echo '<p>Read more</p>';
+			echo '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>';
+			echo '</a>';
+			echo '</div>';
+			echo '</div>';
+		endwhile;
+		wp_reset_postdata();
+	endif;
+	exit;
+} );
+
+// Prevent WordPress redirect_canonical from guessing URLs
+// Blocks phantom 301 redirects for non-existent parent/child paths
+add_filter('redirect_canonical', function($redirect_url, $requested_url) {
+    if (!$redirect_url) return $redirect_url;
+    
+    $req_path = trim(parse_url($requested_url, PHP_URL_PATH), '/');
+    $red_path = trim(parse_url($redirect_url, PHP_URL_PATH), '/');
+    
+    // Allow same-path redirects (trailing slash, case normalization)
+    if ($req_path === $red_path) return $redirect_url;
+    
+    $req_parts = explode('/', $req_path);
+    $red_parts = explode('/', $red_path);
+    
+    // If request has 2+ segments and redirect changes the first segment,
+    // WordPress is guessing a different parent - block it, let it 404
+    if (count($req_parts) >= 2 && count($red_parts) >= 2) {
+        if ($req_parts[0] !== $red_parts[0]) {
+            return false;
+        }
+    }
+    
+    return $redirect_url;
+}, 10, 2);
+
+
+// Prevent WordPress redirect_canonical from guessing URLs
+// Blocks phantom 301 redirects for non-existent parent/child paths
+add_filter('redirect_canonical', function($redirect_url, $requested_url) {
+    if (!$redirect_url) return $redirect_url;
+    
+    $req_path = trim(parse_url($requested_url, PHP_URL_PATH), '/');
+    $red_path = trim(parse_url($redirect_url, PHP_URL_PATH), '/');
+    
+    // Allow same-path redirects (trailing slash, case normalization)
+    if ($req_path === $red_path) return $redirect_url;
+    
+    $req_parts = explode('/', $req_path);
+    $red_parts = explode('/', $red_path);
+    
+    // If request has 2+ segments, block redirect_canonical guessing
+    if (count($req_parts) >= 2) {
+        // Allow known taxonomy/category parent redirects
+        $allowed_parents = array('jb-articles', 'category', 'tag', 'jb_sewer', 'jb_faq', 'wp-admin', 'wp-content', 'wp-includes', 'wp-json');
+        if (in_array($req_parts[0], $allowed_parents)) {
+            return $redirect_url;
+        }
+        
+        // Block if redirect changes the first segment or reduces segment count
+        // This prevents guessing like /emergency-plumbing/contact → /contact-us
+        if (count($red_parts) < count($req_parts) || $req_parts[0] !== $red_parts[0]) {
+            return false;
+        }
+    }
+    
+    return $redirect_url;
+}, 10, 2);
+
+// Pass URL parameters to involve.me hidden fields
+// Runs in footer (before deferred involve.me script initializes)
+add_action('wp_footer', function() {
+    ?>
+    <script>
+    (function () {
+        var STORAGE_KEY = 'jb_utm_params';
+
+        // Parse URL query parameters from current page
+        var urlParams = {};
+        var search = window.location.search.slice(1);
+        if (search) {
+            search.split('&').forEach(function (pair) {
+                var kv = pair.split('=');
+                if (kv[0]) {
+                    urlParams[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+                }
+            });
+        }
+
+        // If URL has params, store them in sessionStorage (overwrites previous)
+        var hasUrlParams = Object.keys(urlParams).length > 0;
+        if (hasUrlParams) {
+            try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(urlParams)); } catch(e) {}
+        }
+
+        // Read params: prefer URL params, fall back to sessionStorage
+        var params = urlParams;
+        if (!hasUrlParams) {
+            try {
+                var stored = sessionStorage.getItem(STORAGE_KEY);
+                if (stored) params = JSON.parse(stored);
+            } catch(e) {}
+        }
+
+        // Map URL params to involve.me field names
+        var fields = {
+            source:       params['utm_source']   || params['source']       || '',
+            campaignname: params['utm_campaign']  || params['campaignname'] || '',
+            utm_campaign: params['utm_campaign']  || '',
+            utm_adgroup:  params['utm_adgroup']   || params['adgroupid']    || '',
+            keyword:      params['utm_term']      || params['keyword']      || '',
+            network:      params['network']       || '',
+            device:       params['device']        || '',
+            medium:       params['utm_medium']    || params['medium']       || '',
+            gclid:        params['gclid']         || '',
+            msclkid:      params['msclkid']       || ''
+        };
+
+        // Build data-params string (involve.me format: key=value,key=value)
+        var dataParams = Object.keys(fields)
+            .map(function (k) { return k + '=' + fields[k]; })
+            .join(',');
+
+        // Update all involve.me popup buttons on the page
+        document.querySelectorAll('.involveme_popup').forEach(function (el) {
+            el.setAttribute('data-params', dataParams);
+        });
+    })();
+    </script>
+    <?php
+}, 1); // Priority 1 = runs before deferred involve.me script initializes

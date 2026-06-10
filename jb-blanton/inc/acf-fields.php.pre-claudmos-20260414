@@ -1,0 +1,76 @@
+<?php
+/**
+ * ACF Local Field Groups for JB Blanton theme
+ * Registered programmatically so no DB import is needed.
+ */
+if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+	return;
+}
+
+// ─── Group 1: City Page ───────────────────────────────────────────────────────
+acf_add_local_field_group( [
+	'key'      => 'group_city_page',
+	'title'    => 'City Page',
+	'fields'   => [
+		[ 'key' => 'field_city_name',              'label' => 'City Name',              'name' => 'city_name',              'type' => 'text' ],
+		[ 'key' => 'field_city_gbp',               'label' => 'GBP Location Name',      'name' => 'gbp',                   'type' => 'text' ],
+		[ 'key' => 'field_city_address',           'label' => 'Address',                'name' => 'city_address',          'type' => 'text' ],
+		[ 'key' => 'field_city_map_query',         'label' => 'Google Maps URL',        'name' => 'city_map_query',        'type' => 'url' ],
+		[ 'key' => 'field_city_hero_image',        'label' => 'Hero Image',             'name' => 'hero_image',            'type' => 'text',
+		  'instructions' => 'Filename without extension (e.g. "algonquin_hero"), full URL, or "vid_XXX" for video fallback.' ],
+		[ 'key' => 'field_city_category_image',    'label' => 'Category Image',         'name' => 'category_image',        'type' => 'text' ],
+		[ 'key' => 'field_city_elfsight_id',       'label' => 'Elfsight Reviews ID',    'name' => 'elfsight_reviews_id',   'type' => 'text',
+		  'instructions' => 'Override auto-mapped Elfsight app UUID if needed.' ],
+		[ 'key' => 'field_city_callout',           'label' => 'Callout Text',           'name' => 'city_callout',          'type' => 'text' ],
+		[ 'key' => 'field_city_content',           'label' => 'City Content',           'name' => 'city_content',          'type' => 'wysiwyg',
+		  'tabs' => 'all', 'toolbar' => 'full', 'media_upload' => 1 ],
+		[ 'key' => 'field_city_page_title_seo',    'label' => 'Page Title (SEO)',        'name' => 'page_title_seo',        'type' => 'text' ],
+		[ 'key' => 'field_city_meta_description',  'label' => 'Meta Description',       'name' => 'meta_description',      'type' => 'textarea', 'rows' => 3 ],
+	],
+	'location' => [ [ [ 'param' => 'page_template', 'operator' => '==', 'value' => 'page-city.php' ] ] ],
+	'active'   => true,
+] );
+
+// ─── Group 2: City + Service Page ────────────────────────────────────────────
+acf_add_local_field_group( [
+	'key'      => 'group_city_service_page',
+	'title'    => 'City + Service Page',
+	'fields'   => [
+		[ 'key' => 'field_cs_service_header',      'label' => 'Service H1',             'name' => 'service_header',        'type' => 'text' ],
+		[ 'key' => 'field_cs_service_header2',     'label' => 'Service H2',             'name' => 'service_header2',       'type' => 'text' ],
+		[ 'key' => 'field_cs_service_callout',     'label' => 'Callout Text',           'name' => 'service_callout',       'type' => 'text' ],
+		[ 'key' => 'field_cs_service_hero_image',  'label' => 'Hero Image',             'name' => 'service_hero_image',    'type' => 'text',
+		  'instructions' => 'Same format as city hero_image.' ],
+		[ 'key' => 'field_cs_service_content',     'label' => 'Service Content',        'name' => 'service_content',       'type' => 'wysiwyg',
+		  'tabs' => 'all', 'toolbar' => 'full', 'media_upload' => 1 ],
+		[ 'key' => 'field_cs_page_title_seo',      'label' => 'Page Title (SEO)',        'name' => 'page_title_seo',        'type' => 'text' ],
+		[ 'key' => 'field_cs_meta_description',    'label' => 'Meta Description',       'name' => 'meta_description',      'type' => 'textarea', 'rows' => 3 ],
+	],
+	'location' => [ [ [ 'param' => 'page_template', 'operator' => '==', 'value' => 'page-city-service.php' ] ] ],
+	'active'   => true,
+] );
+
+// ─── Group 3: Service Category Page ──────────────────────────────────────────
+acf_add_local_field_group( [
+	'key'      => 'group_service_category_page',
+	'title'    => 'Service Category Page',
+	'fields'   => [
+		[ 'key' => 'field_sc_h1_tag',              'label' => 'H1 Tag',                 'name' => 'h1_tag',                'type' => 'text' ],
+		[ 'key' => 'field_sc_headline',            'label' => 'Hero Headline',          'name' => 'headline',              'type' => 'text' ],
+		[ 'key' => 'field_sc_hero_image',          'label' => 'Hero Image',             'name' => 'hero_image',            'type' => 'text' ],
+		[ 'key' => 'field_sc_h2_tag',              'label' => 'H2 Tag',                 'name' => 'h2_tag',                'type' => 'text' ],
+		[ 'key' => 'field_sc_image2',              'label' => 'Section 2 Image',        'name' => 'image2',                'type' => 'text' ],
+		[ 'key' => 'field_sc_headline2',           'label' => 'Section 2 Headline',     'name' => 'headline2',             'type' => 'text' ],
+		[ 'key' => 'field_sc_benefits',            'label' => 'Benefits',               'name' => 'benefits',              'type' => 'wysiwyg',
+		  'tabs' => 'all', 'toolbar' => 'full', 'media_upload' => 1 ],
+		[ 'key' => 'field_sc_ndc_text',            'label' => 'NDC Text',               'name' => 'ndc_text',              'type' => 'wysiwyg',
+		  'tabs' => 'all', 'toolbar' => 'full', 'media_upload' => 1 ],
+		[ 'key' => 'field_sc_final_pitch_tagline', 'label' => 'Final Pitch Tagline',    'name' => 'final_pitch_tagline',   'type' => 'text' ],
+		[ 'key' => 'field_sc_final_pitch_text',    'label' => 'Final Pitch Text',       'name' => 'final_pitch_text',      'type' => 'wysiwyg',
+		  'tabs' => 'all', 'toolbar' => 'full', 'media_upload' => 1 ],
+		[ 'key' => 'field_sc_page_title_seo',      'label' => 'Page Title (SEO)',        'name' => 'page_title_seo',        'type' => 'text' ],
+		[ 'key' => 'field_sc_meta_description',    'label' => 'Meta Description',       'name' => 'meta_description',      'type' => 'textarea', 'rows' => 3 ],
+	],
+	'location' => [ [ [ 'param' => 'page_template', 'operator' => '==', 'value' => 'page-service.php' ] ] ],
+	'active'   => true,
+] );

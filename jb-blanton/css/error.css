@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+}
+
+@font-face {
+  font-family: IBold;
+  src: url(../fonts/Industry/IBold.otf);
+}
+@font-face {
+  font-family: ILight;
+  src: url(../fonts/Industry/ILight.otf);
+}
+.error-body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 18px;
+  font-family: ILight;
+}
+.error-body p span {
+  color: #BC0E0E;
+  font-family: IBold;
+}
+.error-body a {
+  color: #BC0E0E;
+}/*# sourceMappingURL=error.css.map */

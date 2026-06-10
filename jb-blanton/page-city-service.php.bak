@@ -1,0 +1,215 @@
+<?php
+/**
+ * Template Name: City Service Page
+ * Template for city+service child pages (has _jb_geo meta, has parent).
+ */
+get_header();
+
+if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+$post_id  = get_the_ID();
+$geo      = get_post_meta( $post_id, '_jb_geo', true );
+$gbp      = get_post_meta( $post_id, '_jb_gbp', true );
+$service  = get_post_meta( $post_id, '_jb_service', true );
+$h1       = get_post_meta( $post_id, '_jb_h1_tag', true ) ?: ( $service ? esc_html( $service ) . ' in ' . esc_html( $geo ) : get_the_title() );
+$callout  = get_post_meta( $post_id, '_jb_callout', true );
+$header2  = get_post_meta( $post_id, '_jb_header2', true );
+$seo_desc = get_post_meta( $post_id, '_jb_seo_desc', true );
+
+$city_slug = strtolower( str_replace( [ ' ', '.', "'", '/' ], [ '-', '', '', '-' ], $geo ) );
+$parent_id = get_post_field( 'post_parent', $post_id );
+$parent_url = $parent_id ? get_permalink( $parent_id ) : home_url( '/' . $city_slug . '/' );
+
+// Elfsight — hero reviews (same mapping as city page, by GBP)
+$elfsight_hero = [
+	'Algonquin'       => '40f0bd27-b99c-4171-87b2-f600ef6d8210',
+	'Arlington Heights' => 'ca133efa-2c1f-4f4b-8095-6c07545044c8',
+	'Elgin'           => '395fbb1e-5f6b-4759-b2db-3d620c51e4e2',
+	'Evanston'        => '978a5a86-73cd-41c5-8b3a-1cb716957341',
+	'Hinsdale'        => '5ce3f59e-a315-4272-a1e9-12f6e0843e75',
+	'McHenry'         => '55b5212b-bef7-488d-a0ce-0629fd1dfaa0',
+	'Naperville'      => '8342aee5-5fc9-4945-a8fd-f5ed625a682e',
+	'Northbrook'      => 'bef726a2-1770-4806-9892-b36e55593142',
+	'Geneva'          => '5915094e-aea7-4fe6-ade1-2d32c34c0e6d',
+];
+$elfsight_hero_id = $elfsight_hero[ $gbp ] ?? '266c99c1-530c-4f93-8046-bab90e4a05e5';
+
+// Strip leading H1 from content (already in hero)
+$raw_content   = get_the_content();
+$clean_content = preg_replace( '/<h1[^>]*>.*?<\/h1>/i', '', $raw_content, 1 );
+
+// Related articles
+$articles = get_posts( [ 'post_type' => 'jb_article', 'post_status' => 'publish', 'numberposts' => 3 ] );
+
+// FAQs for this city+service
+$faqs = get_posts( [
+	'post_type'      => 'jb_faq',
+	'post_status'    => 'publish',
+	'posts_per_page' => 4,
+	'meta_query'     => [ 'relation' => 'AND',
+		[ 'key' => '_jb_faq_city',    'value' => $geo,     'compare' => '=' ],
+		[ 'key' => '_jb_faq_service', 'value' => $service, 'compare' => '=' ],
+	],
+] );
+if ( empty( $faqs ) ) {
+	$faqs = get_posts( [
+		'post_type'      => 'jb_faq',
+		'post_status'    => 'publish',
+		'posts_per_page' => 4,
+		'meta_query'     => [
+			[ 'key' => '_jb_faq_city', 'value' => $geo, 'compare' => '=' ],
+		],
+	] );
+}
+?>
+
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
+
+<?php /* ---- HERO ---- */ ?>
+<div class="city-page-hero">
+	<img class="lazy city-page-image"
+		data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+		alt="<?php echo esc_attr( $h1 ); ?>" />
+	<div class="contents">
+		<div class="w">
+			<h1><?php echo esc_html( $h1 ); ?></h1>
+			<div class="reviews">
+				<div class="elfsight-app-<?php echo esc_attr( $elfsight_hero_id ); ?>" data-elfsight-app-lazy></div>
+			</div>
+			<a href="<?php echo esc_url( $parent_url ); ?>" class="city-breadcrumb">
+				← All <?php echo esc_html( $geo ); ?> Services
+			</a>
+		</div>
+	</div>
+</div>
+
+<?php /* ---- HERO NAV ---- */ ?>
+<div class="hero-nav">
+	<a href="<?php echo esc_url( home_url( '/emergency-plumbing' ) ); ?>">EMERGENCY PLUMBING</a>
+	<a href="<?php echo esc_url( home_url( '/knowledge-hub' ) ); ?>">KNOWLEDGE HUB</a>
+	<a href="<?php echo esc_url( home_url( '/financing' ) ); ?>">FINANCING</a>
+	<a href="<?php echo esc_url( home_url( '/help-and-support' ) ); ?>">HELP &amp; SUPPORT</a>
+</div>
+
+<?php /* ---- CONTENT ---- */ ?>
+<div class="cream">
+	<div class="city-page-content city-service-content">
+		<div class="f">
+			<div class="l">
+				<p class="red-text">
+					<?php echo esc_html( strtoupper( $service ) . ' IN ' . strtoupper( $geo ) ); ?>
+				</p>
+				<?php if ( $callout ) : ?>
+					<p class="callout"><?php echo wp_kses_post( $callout ); ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="r">
+				<img class="lazy"
+					data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+					alt="<?php echo esc_attr( $service . ' in ' . $geo ); ?>" />
+			</div>
+		</div>
+
+		<div class="page-content service-body">
+			<?php echo wp_kses_post( $clean_content ); ?>
+		</div>
+
+		<?php if ( $header2 ) : ?>
+		<div class="city-service-header2">
+			<p class="red-text"><?php echo esc_html( $header2 ); ?></p>
+		</div>
+		<?php endif; ?>
+
+		<?php /* Services Menu */ ?>
+		<div class="services-menu">
+			<p class="red-text2">MORE <?php echo esc_html( strtoupper( $geo ) ); ?> SERVICES</p>
+			<?php get_template_part( 'template-parts/city', 'services-menu', [ 'city_slug' => $city_slug ] ); ?>
+		</div>
+
+		<?php /* Related Articles */ ?>
+		<?php if ( ! empty( $articles ) ) : ?>
+		<div class="city-articles">
+			<div class="articles-component">
+				<?php foreach ( $articles as $article ) : ?>
+				<div class="article-card">
+					<?php if ( has_post_thumbnail( $article->ID ) ) : ?>
+						<img class="lazy" data-src="<?php echo esc_url( get_the_post_thumbnail_url( $article->ID, 'medium' ) ); ?>"
+							alt="<?php echo esc_attr( $article->post_title ); ?>" />
+					<?php else : ?>
+						<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+							alt="<?php echo esc_attr( $article->post_title ); ?>" />
+					<?php endif; ?>
+					<div>
+						<p class="article-title"><?php echo esc_html( $article->post_title ); ?></p>
+						<p><?php echo esc_html( wp_trim_words( $article->post_content, 20 ) ); ?></p>
+						<a href="<?php echo esc_url( get_permalink( $article->ID ) ); ?>">
+							<p>Read more</p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>
+						</a>
+					</div>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<?php endif; ?>
+
+		<?php /* FAQ Accordion */ ?>
+		<?php if ( ! empty( $faqs ) ) : ?>
+		<div class="faqs">
+			<?php foreach ( $faqs as $idx => $faq ) : ?>
+			<div class="faq">
+				<div id="faq-head<?php echo $idx; ?>" class="head">
+					<p><?php echo esc_html( $faq->post_title ); ?></p>
+					<div class="svg">
+						<svg id="add<?php echo $idx; ?>" class="add" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M13 6a1 1 0 1 0-2 0v5H6a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"/></svg>
+					</div>
+					<div class="svg minus">
+						<svg id="minus<?php echo $idx; ?>" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/></svg>
+					</div>
+				</div>
+				<div id="faq-content<?php echo $idx; ?>" class="faq-content">
+					<p><?php echo wp_kses_post( get_post_meta( $faq->ID, '_jb_faq_answer', true ) ?: $faq->post_content ); ?></p>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+		<?php endif; ?>
+
+	</div>
+</div>
+
+<div class="cream-bottom w81">
+	<div class="involveme_popup link-button"
+		data-project="schedule-service-new"
+		data-embed-mode="popup"
+		data-trigger-event="button"
+		data-popup-size="medium"
+		data-organization-url="https://jblantonplumbing.involve.me"
+		style="display:inline-flex;margin:40px 0;"
+	><p>SCHEDULE A SERVICE</p></div>
+</div>
+
+<script>
+(() => {
+	const faqs = document.querySelectorAll(".faq");
+	faqs.forEach((v, i) => {
+		let clicked = false;
+		const add = document.getElementById(`add${i}`);
+		const minus = document.getElementById(`minus${i}`);
+		const head = document.getElementById(`faq-head${i}`);
+		const content = document.getElementById(`faq-content${i}`);
+		if (!head || !content) return;
+		const prevH = `${head.offsetHeight}px`;
+		v.style.height = prevH;
+		v.addEventListener("click", () => {
+			clicked = !clicked;
+			v.style.height = clicked ? `${content.offsetHeight + 70}px` : prevH;
+			if (add) add.style.display = clicked ? "none" : "block";
+			if (minus) minus.style.display = clicked ? "block" : "none";
+		});
+	});
+})();
+</script>
+
+<?php endwhile; endif; ?>
+<?php get_footer(); ?>

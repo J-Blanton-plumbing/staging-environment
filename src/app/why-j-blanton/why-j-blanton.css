@@ -1,0 +1,565 @@
+/* ============================================================================
+   Why J. Blanton — page-level styles
+   Ported from `jb-blanton/css/whyjblanton.css` plus the shared `.hero`,
+   `.wte`, `.red-text`, `.w81`, and `.link-button` rules this page depends on
+   from the theme's `globals.css`.
+
+   Scoped under `.why-jb-page` so generic theme class names don't collide with
+   Tailwind utilities used elsewhere in the build.
+
+   Font family mapping (matches ndc.css convention):
+     IBold   -> var(--font-industry), 700
+     IMedium -> var(--font-industry), 500
+     NRegular -> var(--font-nunito), 400
+
+   No `#000000` used — all dark text is Midnight `#0A1B2E`.
+   ========================================================================== */
+
+/* ---- Hero (theme globals.css `.hero`) -------------------------------------- */
+.why-jb-page .hero {
+  /* base layout inherited from globals.css .hero */
+}
+.why-jb-page .hero .img-s {
+  object-fit: contain;
+  width: 45%;
+  height: 580px;
+}
+/* `hero-contents` avoids the Tailwind `.contents { display:contents }` utility
+   that would collapse this column to 0×0 (CLAUDE.md gotcha #1). */
+.why-jb-page .hero .hero-contents {
+  width: 55%;
+  position: relative;
+}
+.why-jb-page .hero .hero-contents .w {
+  height: 100%;
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+.why-jb-page .hero .hero-contents .w h1 {
+  font-size: 40px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+.why-jb-page .hero .hero-contents .w .sub-label {
+  margin-top: 20px;
+  font-size: 16px;
+}
+.why-jb-page .hero .hero-contents .w .hero-desc {
+  margin: 20px 0 30px 0;
+  line-height: 1.6;
+  font-size: 16px;
+}
+.why-jb-page .hero .hero-contents .w .involveme_popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  padding: 0 28px;
+  height: 52px;
+  color: #fff;
+  background: #1560e6;
+  border-radius: 50px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.why-jb-page .hero .hero-contents .w .involveme_popup:hover {
+  background: #0e4fc7;
+}
+
+/* ---- Shared helpers (theme globals.css) ----------------------------------- */
+.why-jb-page .red-text {
+  font-size: 32px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #bc0e0e;
+}
+.why-jb-page .w81 {
+  width: 81%;
+  margin: 0 auto;
+}
+.why-jb-page .link-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  background: #1560e6;
+  letter-spacing: 1px;
+  width: max-content;
+  height: 45px;
+  padding: 0 35px;
+}
+
+/* ---- .w-aboutus wrapper (whyjblanton.css) --------------------------------- */
+.why-jb-page .w-aboutus {
+  width: 100%;
+  background: #f9f3ec;
+}
+
+/* ---- ABOUT US (.pv) — text left, image right ------------------------------ */
+.why-jb-page .w-aboutus .pv {
+  padding: 100px 0 50px 0;
+  width: 100%;
+}
+.why-jb-page .w-aboutus .pv .w81 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.why-jb-page .w-aboutus .pv .w81 div {
+  width: 50%;
+}
+.why-jb-page .w-aboutus .pv .w81 div .red-text {
+  width: 450px;
+}
+.why-jb-page .w-aboutus .pv .w81 div p:not(:first-child) {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+.why-jb-page .w-aboutus .pv .w81 div p:last-child {
+  color: #0a1b2e;
+  font-size: 20px;
+  line-height: 30px;
+}
+.why-jb-page .w-aboutus .pv .w81 div p:nth-child(2) {
+  color: #0a1b2e;
+  font-size: 20px;
+  margin: 15px 0 20px 0;
+  line-height: 30px;
+}
+.why-jb-page .w-aboutus .pv .w81 > img {
+  width: 470px;
+  height: 320px;
+  margin-left: 30px;
+  object-fit: contain;
+}
+.why-jb-page .w-aboutus .pv .w81 .red-text-mobile {
+  display: none;
+}
+.why-jb-page .w-aboutus .pv .w81 .mobile-content {
+  display: none;
+}
+.why-jb-page .w-aboutus .pv .w81 .mobile-content p {
+  color: #0a1b2e;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+
+/* ---- WHAT TO EXPECT / OUR LOCATIONS (.wte) — image left, text right ------ */
+.why-jb-page .w-aboutus .wte {
+  padding: 100px 0 50px 0;
+  width: 100%;
+}
+.why-jb-page .w-aboutus .wte .w81 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.why-jb-page .w-aboutus .wte .w81 .red-text-mobile {
+  display: none;
+}
+.why-jb-page .w-aboutus .wte .w81 div {
+  width: 50%;
+}
+.why-jb-page .w-aboutus .wte .w81 div .red-text {
+  width: 450px;
+}
+.why-jb-page .w-aboutus .wte .w81 div p:not(:first-child) {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+.why-jb-page .w-aboutus .wte .w81 div p:last-child {
+  color: #0a1b2e;
+  font-size: 20px;
+  line-height: 30px;
+}
+.why-jb-page .w-aboutus .wte .w81 div p:nth-child(2) {
+  color: #0a1b2e;
+  font-size: 20px;
+  margin: 15px 0 20px 0;
+  line-height: 30px;
+}
+.why-jb-page .w-aboutus .wte .w81 > img {
+  width: 470px;
+  height: 320px;
+  margin-right: 30px;
+  object-fit: contain;
+}
+
+/* Our Locations (lws): desktop CTA pushes down, mobile resets */
+.why-jb-page .w-aboutus .lws .w81 .red-text-mobile {
+  display: none;
+}
+.why-jb-page .w-aboutus .lws .w81 div a {
+  margin-top: 100px;
+}
+
+/* ---- MEET OUR TEAM (.team) — text left (.l), image right (.r) ------------- */
+.why-jb-page .w-aboutus .team {
+  padding: 100px 0 50px 0;
+  width: 100%;
+}
+.why-jb-page .w-aboutus .team .w81 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.why-jb-page .w-aboutus .team .w81 .l {
+  width: 50%;
+  height: 100%;
+}
+.why-jb-page .w-aboutus .team .w81 .l div {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0;
+}
+.why-jb-page .w-aboutus .team .w81 .l div .red-text {
+  width: 450px;
+}
+.why-jb-page .w-aboutus .team .w81 .l div p:not(:first-child) {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+}
+.why-jb-page .w-aboutus .team .w81 .l div p:last-child {
+  color: #0a1b2e;
+  font-size: 20px;
+  line-height: 30px;
+}
+.why-jb-page .w-aboutus .team .w81 .l div p:nth-child(2) {
+  color: #0a1b2e;
+  font-size: 20px;
+  margin: 15px 0 20px 0;
+  line-height: 30px;
+}
+.why-jb-page .w-aboutus .team .w81 .r {
+  width: 470px;
+  height: 320px;
+  position: relative;
+}
+.why-jb-page .w-aboutus .team .w81 .r .red-text-mobile {
+  display: none;
+}
+.why-jb-page .w-aboutus .team .w81 .r img {
+  width: 470px;
+  height: 320px;
+  margin-left: 30px;
+  object-fit: contain;
+}
+
+/* ---- JOIN OUR TEAM (.guarantee) — text left (.l), image right ------------- */
+.why-jb-page .w-aboutus .guarantee {
+  padding: 100px 0 50px 0;
+  width: 100%;
+}
+.why-jb-page .w-aboutus .guarantee .w81 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.why-jb-page .w-aboutus .guarantee .w81 .l {
+  width: 50%;
+  height: 100%;
+}
+.why-jb-page .w-aboutus .guarantee .w81 .l div {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 100px;
+}
+.why-jb-page .w-aboutus .guarantee .w81 .l div .red-text {
+  width: 450px;
+}
+.why-jb-page .w-aboutus .guarantee .w81 .l div p:not(:first-child) {
+  color: #0a1b2e;
+  font-size: 20px;
+  margin: 15px 0 20px 0;
+  line-height: 30px;
+}
+.why-jb-page .w-aboutus .guarantee .w81 .l div p a {
+  color: #0a1b2e;
+}
+.why-jb-page .w-aboutus .guarantee .w81 .red-text-mobile {
+  display: none;
+}
+.why-jb-page .w-aboutus .guarantee .w81 > img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+  margin-left: 30px;
+}
+
+/* ============================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media only screen and (max-width: 1280px) {
+  .why-jb-page .hero .hero-contents .w {
+    width: 90%;
+  }
+  .why-jb-page .hero .hero-contents .w h1 {
+    font-size: 2.3vw;
+  }
+  .why-jb-page .hero .hero-contents .w .sub-label {
+    font-size: 1.5vw;
+  }
+  .why-jb-page .hero .hero-contents .w .hero-desc {
+    font-size: 1.3vw;
+  }
+  .why-jb-page .w-aboutus .pv .w81 {
+    width: 90%;
+  }
+  .why-jb-page .w-aboutus .pv .w81 div {
+    width: 40%;
+  }
+  .why-jb-page .w-aboutus .lws .w81 a {
+    white-space: nowrap;
+  }
+  .why-jb-page .w-aboutus .team .w81 {
+    width: 90%;
+  }
+  .why-jb-page .w-aboutus .team .w81 .l {
+    width: 40%;
+  }
+  .why-jb-page .w-aboutus .team .w81 .l .red-text {
+    font-size: 25px;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 {
+    width: 90%;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 .l {
+    width: 40%;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 .l div .red-text {
+    font-size: 25px;
+  }
+  .why-jb-page .w-aboutus .wte .w81 {
+    width: 90%;
+  }
+  .why-jb-page .w-aboutus .wte .w81 div {
+    width: 40%;
+  }
+  .why-jb-page .w-aboutus .wte .w81 div .red-text {
+    font-size: 25px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  /* Hero: stack to single column, hide the YouTube embed */
+  .why-jb-page .hero {
+    flex-direction: column;
+  }
+  .why-jb-page .hero .img-s {
+    display: none;
+  }
+  .why-jb-page .hero .hero-contents {
+    width: 100%;
+  }
+  .why-jb-page .hero .hero-contents .w {
+    width: 90%;
+    padding: 50px 0 40px;
+  }
+  .why-jb-page .hero .hero-contents .w h1 {
+    font-size: 3vw;
+  }
+  .why-jb-page .hero .hero-contents .w .sub-label {
+    font-size: 20px;
+  }
+  .why-jb-page .hero .hero-contents .w .hero-desc {
+    font-size: 16px;
+  }
+
+  /* About Us: hide desktop div, show mobile heading + image + mobile-content */
+  .why-jb-page .w-aboutus .pv {
+    padding: 50px 0;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .why-jb-page .w-aboutus .pv .w81 {
+    width: 100%;
+    display: block;
+  }
+  .why-jb-page .w-aboutus .pv .w81 > div {
+    display: none;
+  }
+  .why-jb-page .w-aboutus .pv .w81 .red-text-mobile {
+    display: flex;
+  }
+  .why-jb-page .w-aboutus .pv .w81 .mobile-content {
+    display: block;
+    width: 100%;
+  }
+  .why-jb-page .w-aboutus .pv .w81 > img {
+    width: 100%;
+    margin: 15px auto 25px auto;
+    height: 420px;
+  }
+
+  /* Our Locations (lws) */
+  .why-jb-page .w-aboutus .lws .w81 .red-text-mobile {
+    display: flex;
+  }
+  .why-jb-page .w-aboutus .lws .w81 div a {
+    margin-top: 0;
+    width: 450px;
+    box-sizing: border-box;
+    font-family: var(--font-industry), Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  /* Meet Our Team: reverse so image appears on top */
+  .why-jb-page .w-aboutus .team {
+    padding: 50px 0;
+  }
+  .why-jb-page .w-aboutus .team .w81 {
+    flex-direction: column-reverse;
+  }
+  .why-jb-page .w-aboutus .team .w81 .l {
+    width: 100%;
+    margin-top: 160px;
+  }
+  .why-jb-page .w-aboutus .team .w81 .l div {
+    margin-bottom: 0;
+  }
+  .why-jb-page .w-aboutus .team .w81 .l div .red-text {
+    display: none;
+  }
+  .why-jb-page .w-aboutus .team .w81 .r {
+    width: 100%;
+  }
+  .why-jb-page .w-aboutus .team .w81 .r .red-text-mobile {
+    display: flex;
+  }
+  .why-jb-page .w-aboutus .team .w81 .r img {
+    width: 100%;
+    margin: 15px auto 25px auto;
+    height: 420px;
+  }
+
+  /* Join Our Team: reverse so image appears on top */
+  .why-jb-page .w-aboutus .guarantee {
+    padding: 50px 0;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 {
+    flex-direction: column-reverse;
+    width: 90%;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 .l {
+    width: 100%;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 .l div {
+    margin-bottom: 25px;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 .l div .red-text {
+    display: none;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 .red-text-mobile {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 > img {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* What To Expect / Our Locations (wte) */
+  .why-jb-page .w-aboutus .wte {
+    padding: 20px 0;
+  }
+  .why-jb-page .w-aboutus .wte .w81 {
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .why-jb-page .w-aboutus .wte .w81 .red-text-mobile {
+    display: flex;
+  }
+  .why-jb-page .w-aboutus .wte .w81 div {
+    width: 100%;
+  }
+  .why-jb-page .w-aboutus .wte .w81 div .red-text {
+    display: none;
+  }
+  .why-jb-page .w-aboutus .wte .w81 > img {
+    width: 100%;
+    height: 420px;
+    margin: 25px 0 15px 0;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .why-jb-page .hero .hero-contents .w h1 {
+    font-size: 5vw;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .why-jb-page .hero .hero-contents .w {
+    padding: 20px 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .why-jb-page .w-aboutus .pv .w81 > img {
+    height: 350px;
+  }
+  .why-jb-page .w-aboutus .lws .w81 div a {
+    width: 100%;
+  }
+  .why-jb-page .w-aboutus .team .w81 .l .link-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .why-jb-page .w-aboutus .team .w81 .r {
+    height: 350px;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 .l a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 > img {
+    height: 350px;
+  }
+  .why-jb-page .w-aboutus .wte .w81 > img {
+    height: 350px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .why-jb-page .w-aboutus .pv .w81 > img {
+    height: 300px;
+  }
+  .why-jb-page .w-aboutus .team .w81 .r {
+    height: 300px;
+  }
+  .why-jb-page .w-aboutus .guarantee .w81 > img {
+    height: 300px;
+  }
+  .why-jb-page .hero .hero-contents .w h1 {
+    font-size: 45px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .why-jb-page .hero .hero-contents .w h1 {
+    font-size: 45px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .why-jb-page .hero .hero-contents .w h1 {
+    font-size: 35px;
+  }
+}

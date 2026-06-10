@@ -1,0 +1,48 @@
+.cream {
+  background: #F9F3EC;
+  padding: 100px 0;
+}
+
+.contact-us .ep-map {
+  display: flex;
+  justify-content: space-between;
+}
+.contact-us .ep-map .ep-contents {
+  margin-right: 50px;
+  width: 35%;
+}
+.contact-us .ep-map .ep-contents .map2 {
+  display: none;
+}
+.contact-us .ep-map .ep-contents p:last-child {
+  margin-top: 15px;
+  font-size: 20px;
+  font-family: NRegular;
+}
+.contact-us .ep-map .map1 {
+  width: 100%;
+}
+.contact-us .ep-gr {
+  overflow: scroll;
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 900px) {
+  .contact-us {
+    margin-top: 50px;
+  }
+  .contact-us .ep-map {
+    display: block;
+  }
+  .contact-us .ep-map .ep-contents {
+    width: 100%;
+  }
+  .contact-us .ep-map .ep-contents .map2 {
+    width: 100%;
+    display: block;
+    margin: 0 0 25px 0;
+  }
+  .contact-us .ep-map .map1 {
+    display: none;
+  }
+}/*# sourceMappingURL=contact-us.css.map */

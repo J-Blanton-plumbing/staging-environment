@@ -1,0 +1,432 @@
+@charset "UTF-8";
+
+/* ================================================================
+   CUSTOMER STORIES PAGE — scoped under .customer-stories-page
+   Ported from jb-blanton/css/customer-stories.css with brand corrections:
+   - Text: Midnight #0A1B2E (not #181818 / #222)
+   - "BEHIND THE REVIEW" heading: Carmine #BC0E0E (not #d32f2f)
+   - Buttons: Cerulean #1560E6, hover Carmine #BC0E0E (not #1a73e8 / #1557b0)
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   HERO
+   ---------------------------------------------------------------- */
+.customer-stories-page .cs-hero {
+  position: relative;
+  background: #0A1B2E;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.customer-stories-page .cs-hero-contents {
+  position: relative;
+  z-index: 1;
+  width: 81%;
+  margin: 0 auto;
+  padding: 80px 0 60px;
+}
+
+.customer-stories-page .cs-hero-contents h1 {
+  font-family: var(--font-industry);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #F9F3EC;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.customer-stories-page .cs-hero-contents p {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: #F9F3EC;
+  opacity: 0.85;
+  max-width: 600px;
+}
+
+/* ----------------------------------------------------------------
+   TESTIMONIALS GRID
+   ---------------------------------------------------------------- */
+.customer-stories-page .testimonials-grid {
+  background: #faf4ed;
+  padding: 40px 0 60px;
+  width: 100%;
+}
+
+.customer-stories-page .testimonials-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  justify-items: stretch;
+}
+
+.customer-stories-page .testimonial-card {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 48px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+.customer-stories-page .testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(10, 27, 46, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.customer-stories-page .testimonial-card img {
+  max-width: 270px;
+  max-height: 270px;
+  width: 270px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.customer-stories-page .testimonial-card:hover img {
+  transform: scale(1.05);
+}
+
+.customer-stories-page .testimonial-card-content {
+  max-width: 820px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.customer-stories-page .testimonial-card-content p {
+  margin: 0;
+}
+
+.customer-stories-page .testimonial-card-content .testimonial-name {
+  font-family: var(--font-industry);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #0A1B2E;
+}
+
+.customer-stories-page .testimonial-card-content .testimonial-stars {
+  color: #eab308;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.customer-stories-page .testimonial-card-content .testimonial-text {
+  margin-top: 0;
+  color: #0A1B2E;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+/* Odd/even alternating layout */
+.customer-stories-page .testimonials-container .testimonial-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.customer-stories-page .testimonials-container .testimonial-card:nth-child(odd) {
+  flex-direction: row;
+}
+
+.customer-stories-page .testimonials-container .testimonial-card:nth-child(even) .testimonial-card-content {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.customer-stories-page .testimonials-container .testimonial-card:nth-child(odd) .testimonial-card-content {
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* ----------------------------------------------------------------
+   BEHIND THE REVIEW
+   ---------------------------------------------------------------- */
+.customer-stories-page .behind-the-review-section {
+  background: #F9F3EC;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.customer-stories-page .behind-the-review-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.customer-stories-page .behind-the-review-title {
+  font-family: var(--font-industry);
+  font-size: 2.5rem;
+  color: #BC0E0E;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.customer-stories-page .video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 45%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(10, 27, 46, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.customer-stories-page .video-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(10, 27, 46, 0.3);
+}
+
+.customer-stories-page .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+/* ----------------------------------------------------------------
+   ELFSIGHT / GOOGLE REVIEWS
+   ---------------------------------------------------------------- */
+.customer-stories-page .google-reviews-section {
+  background: #F9F3EC;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.customer-stories-page .google-reviews-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.customer-stories-page .google-reviews-header {
+  margin-bottom: 30px;
+}
+
+.customer-stories-page .google-reviews-header h2 {
+  font-family: var(--font-industry);
+  font-size: 2.5rem;
+  color: #0A1B2E;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.customer-stories-page .google-reviews-button {
+  display: inline-block;
+  background: #1560E6;
+  color: #F9F3EC;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.customer-stories-page .google-reviews-button:hover {
+  background: #BC0E0E;
+}
+
+.customer-stories-page .google-reviews-button::before {
+  content: "⭐";
+  margin-right: 8px;
+}
+
+/* ----------------------------------------------------------------
+   CALL TO ACTION
+   ---------------------------------------------------------------- */
+.customer-stories-page .call-to-action-section {
+  background: #F9F3EC;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.customer-stories-page .call-to-action-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.customer-stories-page .call-to-action-container h2 {
+  font-family: var(--font-industry);
+  font-size: 2.5rem;
+  color: #0A1B2E;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.customer-stories-page .call-to-action-container p {
+  font-size: 1.2rem;
+  color: #0A1B2E;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
+
+.customer-stories-page .call-to-action-button {
+  display: inline-flex;
+  align-items: center;
+  background: #1560E6;
+  color: #F9F3EC;
+  padding: 20px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(10, 27, 46, 0.2);
+}
+
+.customer-stories-page .call-to-action-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(10, 27, 46, 0.3);
+  background: #BC0E0E;
+}
+
+.customer-stories-page .call-to-action-button .phone-icon {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.customer-stories-page .call-to-action-button .phone-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ================================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================================ */
+
+@media (max-width: 1100px) {
+  .customer-stories-page .testimonial-card {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .customer-stories-page .testimonial-card {
+    padding: 0 12px;
+  }
+
+  .customer-stories-page .testimonial-card img {
+    max-width: 210px;
+    max-height: 210px;
+    width: 210px;
+    height: 210px;
+  }
+
+  .customer-stories-page .testimonial-card-content {
+    max-width: 100%;
+  }
+
+  .customer-stories-page .call-to-action-container h2 {
+    font-size: 2rem;
+  }
+
+  .customer-stories-page .call-to-action-container p {
+    font-size: 1.1rem;
+  }
+
+  .customer-stories-page .call-to-action-button {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+  }
+
+  .customer-stories-page .behind-the-review-title {
+    font-size: 2rem;
+  }
+
+  .customer-stories-page .video-container {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 700px) {
+  .customer-stories-page .testimonial-card,
+  .customer-stories-page .testimonials-container .testimonial-card:nth-child(even),
+  .customer-stories-page .testimonials-container .testimonial-card:nth-child(odd) {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .customer-stories-page .testimonial-card-content {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .customer-stories-page .testimonial-card img {
+    max-width: 150px;
+    max-height: 150px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .customer-stories-page .testimonial-card-content .testimonial-name {
+    font-size: 1.4rem;
+  }
+
+  .customer-stories-page .testimonial-card-content .testimonial-stars {
+    font-size: 1.1rem;
+  }
+
+  .customer-stories-page .testimonial-card-content .testimonial-text {
+    font-size: 1rem;
+  }
+
+  .customer-stories-page .testimonials-container .testimonial-card {
+    justify-self: center !important;
+  }
+
+  .customer-stories-page .google-reviews-header h2 {
+    font-size: 2rem;
+  }
+
+  .customer-stories-page .google-reviews-button {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+
+  .customer-stories-page .call-to-action-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .customer-stories-page .call-to-action-container p {
+    font-size: 1rem;
+  }
+
+  .customer-stories-page .call-to-action-button {
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 25px;
+  }
+
+  .customer-stories-page .behind-the-review-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .customer-stories-page .video-container {
+    max-width: 100%;
+    padding-bottom: 56.25%;
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,121 @@
+.plumbing {
+  margin-top: 150px;
+}
+.plumbing .f {
+  display: flex;
+  justify-content: space-between;
+}
+.plumbing .f img {
+  width: 470px;
+  height: 320px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.plumbing .f div {
+  width: 700px;
+  margin-right: 15px;
+}
+.plumbing .f div img {
+  display: none;
+}
+.plumbing .f div p:not(:first-child) {
+  font-family: NRegular;
+}
+.plumbing .f div p:nth-child(3) {
+  margin-top: 10px;
+}
+.plumbing .p-services {
+  margin: 150px 0;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 30px;
+}
+.plumbing .p-services .card {
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.plumbing .p-services .card img {
+  width: 100%;
+  height: 250px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.plumbing .p-services .card div {
+  padding: 15px;
+  color: #0A1B2E;
+}
+.plumbing .p-services .card div .label {
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 18px;
+  font-family: IBold;
+}
+.plumbing .p-services .card div .desc {
+  margin: 15px 0 10px 0;
+}
+.plumbing .p-services .card div a {
+  display: flex;
+  align-items: center;
+  color: #0A1B2E;
+  text-decoration: none;
+  width: -moz-max-content;
+  width: max-content;
+}
+.plumbing .p-services .card div a svg {
+  width: 25px;
+  height: 25px;
+  margin: 3px 0 0 10px;
+}
+.plumbing .p-services .card div a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 1000px) {
+  .plumbing .p-services {
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .plumbing {
+    margin-top: 50px;
+  }
+  .plumbing .f div {
+    width: 100%;
+  }
+  .plumbing .f div img {
+    display: block;
+    margin: 15px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .plumbing .f img {
+    display: none;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .plumbing .p-services {
+    grid-template-columns: auto;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .plumbing .f div img {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .plumbing .f div img {
+    margin-top: -20px;
+  }
+  .plumbing .f div p:nth-child(3) {
+    margin-top: -35px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .plumbing .f div img {
+    margin-top: -40px;
+  }
+  .plumbing .f div p:nth-child(3) {
+    margin-top: -55px;
+  }
+}/*# sourceMappingURL=plumbing.css.map */

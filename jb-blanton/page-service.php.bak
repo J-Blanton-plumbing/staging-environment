@@ -1,0 +1,147 @@
+<?php
+/**
+ * Template Name: Service Page
+ * For general service overview pages (no _jb_geo, matches service slug keywords).
+ */
+get_header();
+
+if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+$post_id  = get_the_ID();
+$h1       = get_post_meta( $post_id, '_jb_h1_tag', true ) ?: get_the_title();
+$callout  = get_post_meta( $post_id, '_jb_callout', true );
+$slug     = get_post_field( 'post_name', $post_id );
+
+// Strip leading H1 from content
+$raw_content   = get_the_content();
+$clean_content = preg_replace( '/<h1[^>]*>.*?<\/h1>/i', '', $raw_content, 1 );
+
+// Child pages = sub-services
+$children = get_posts( [
+	'post_type'      => 'page',
+	'post_status'    => 'publish',
+	'post_parent'    => $post_id,
+	'posts_per_page' => 30,
+	'orderby'        => 'title',
+	'order'          => 'ASC',
+] );
+
+// If no children, show related service pages (root pages with similar slug)
+if ( empty( $children ) ) {
+	$service_keywords = [
+		'plumbing'     => ['bathroom-plumbing','burst-pipe-repair','kitchen-plumbing','leak-repairs','plumbing-maintenance'],
+		'drain'        => ['clogged-drains','drain-cleaning','kitchen-sink-drain','hydro-jetting'],
+		'sewer'        => ['sewer-repair','sewer-rodding','sewer-maintenance','trenchless-sewer-repair','sewer-drain-clearing'],
+		'water-heater' => ['commercial-water-heater','residential-water-heater','tankless-water-heater','water-heater-repair','water-heater-installation'],
+		'water-quality'=> ['water-filtration-systems','water-testing'],
+		'gas-lines'    => ['gas-line-installation','gas-line-repair','gas-line-leak-detection','gas-fireplace'],
+	];
+	$related_slugs = $service_keywords[ $slug ] ?? [];
+	if ( $related_slugs ) {
+		$children = get_posts( [
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'post_parent'    => 0,
+			'posts_per_page' => 20,
+			'post_name__in'  => $related_slugs,
+		] );
+	}
+}
+
+// Related articles
+$articles = get_posts( [ 'post_type' => 'jb_article', 'post_status' => 'publish', 'numberposts' => 3 ] );
+?>
+
+<div class="page-hero hero">
+	<div class="hero-contents w81">
+		<h1><?php echo esc_html( $h1 ); ?></h1>
+	</div>
+</div>
+
+<div class="hero-nav">
+	<a href="<?php echo esc_url( home_url( '/emergency-plumbing' ) ); ?>">EMERGENCY PLUMBING</a>
+	<a href="<?php echo esc_url( home_url( '/knowledge-hub' ) ); ?>">KNOWLEDGE HUB</a>
+	<a href="<?php echo esc_url( home_url( '/financing' ) ); ?>">FINANCING</a>
+	<a href="<?php echo esc_url( home_url( '/help-and-support' ) ); ?>">HELP &amp; SUPPORT</a>
+</div>
+
+<div class="cream">
+	<div class="w81 emergecy-plumbing">
+
+		<?php if ( $callout ) : ?>
+		<div class="f service-intro" style="margin-bottom:32px;">
+			<div>
+				<p class="red-text"><?php echo esc_html( strtoupper( get_the_title() ) ); ?></p>
+				<p><?php echo wp_kses_post( $callout ); ?></p>
+			</div>
+			<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+				alt="<?php echo esc_attr( get_the_title() ); ?>" />
+		</div>
+		<?php endif; ?>
+
+		<div class="page-content">
+			<?php echo wp_kses_post( $clean_content ); ?>
+		</div>
+
+		<?php if ( ! empty( $children ) ) : ?>
+		<div class="city-services-list" style="margin-top:40px;">
+			<p class="red-text">OUR <?php echo esc_html( strtoupper( $slug ) ); ?> SERVICES</p>
+			<div class="services-contents">
+				<?php foreach ( $children as $child ) : ?>
+				<div class="image-card">
+					<div class="image-card-content">
+						<p class="service-label"><?php echo esc_html( $child->post_title ); ?></p>
+						<a href="<?php echo esc_url( get_permalink( $child->ID ) ); ?>">
+							<p>View Service</p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>
+						</a>
+					</div>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $articles ) ) : ?>
+		<div class="city-articles" style="margin-top:48px;">
+			<p class="red-text2">FROM OUR KNOWLEDGE HUB</p>
+			<div class="articles-component">
+				<?php foreach ( $articles as $article ) : ?>
+				<div class="article-card">
+					<?php if ( has_post_thumbnail( $article->ID ) ) : ?>
+						<img class="lazy" data-src="<?php echo esc_url( get_the_post_thumbnail_url( $article->ID, 'medium' ) ); ?>"
+							alt="<?php echo esc_attr( $article->post_title ); ?>" />
+					<?php else : ?>
+						<img class="lazy" data-src="https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp"
+							alt="<?php echo esc_attr( $article->post_title ); ?>" />
+					<?php endif; ?>
+					<div>
+						<p class="article-title"><?php echo esc_html( $article->post_title ); ?></p>
+						<p><?php echo esc_html( wp_trim_words( $article->post_content, 20 ) ); ?></p>
+						<a href="<?php echo esc_url( get_permalink( $article->ID ) ); ?>">
+							<p>Read more</p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>
+						</a>
+					</div>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<?php endif; ?>
+
+	</div>
+</div>
+
+<div class="cream-bottom w81">
+	<div class="involveme_popup link-button"
+		data-project="schedule-service-new"
+		data-embed-mode="popup"
+		data-trigger-event="button"
+		data-popup-size="medium"
+		data-organization-url="https://jblantonplumbing.involve.me"
+		style="display:inline-flex;margin:40px 0;"
+	><p>SCHEDULE A SERVICE</p></div>
+</div>
+
+<?php endwhile; endif; ?>
+<?php get_footer(); ?>

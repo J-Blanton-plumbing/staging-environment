@@ -1,0 +1,26 @@
+.ty {
+  width: 91%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+.ty p {
+  line-height: 40px;
+  font-size: 20px;
+}
+.ty .b {
+  font-size: 29px;
+  font-family: IBold;
+  margin-bottom: 15px;
+}
+.ty .m {
+  font-family: IBold;
+}
+.ty .mb {
+  margin-bottom: 15px;
+}
+.ty a {
+  margin: 15px 0;
+}
+.ty .red-text {
+  font-size: 29px;
+}/*# sourceMappingURL=thank-you.css.map */

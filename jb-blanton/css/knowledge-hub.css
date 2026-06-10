@@ -1,0 +1,352 @@
+.cream {
+  background: #F9F3EC;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.kh {
+  width: 81%;
+  margin: 0 auto;
+}
+.kh .align1 {
+  margin: 0 0 30px 0;
+}
+.kh .articles-nav {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.kh .articles-nav .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #BC0E0E;
+  border-radius: 10px;
+  border: 1px solid #BC0E0E;
+  background: #fff;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100px;
+  user-select: none;
+  padding: 10px 0;
+}
+.kh .articles-nav .button div {
+  width: 20px;
+  height: 20px;
+  margin: 2px 3px 0 0;
+}
+.kh .articles-nav .button div svg {
+  width: 20px;
+  height: 20px;
+}
+.kh .articles-nav .button:nth-child(2) {
+  margin: 0 7px;
+}
+.kh .articles-nav .button:last-child div {
+  margin-left: 3px;
+}
+.kh .articles-nav .button:hover {
+  background: #BC0E0E;
+  color: #fff;
+}
+.kh .articles-nav .disabled {
+  background: rgb(229, 229, 229);
+  border: 1px solid rgb(229, 229, 229);
+  color: #fff;
+  cursor: default;
+}
+.kh .articles-nav .disabled:hover {
+  background: rgb(229, 229, 229);
+  border: 1px solid rgb(229, 229, 229);
+  color: #fff;
+}
+.kh #kh-articles {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+}
+.kh .faqs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+}
+.kh .faqs .l {
+  width: 30%;
+}
+.kh .faqs .l p:last-child {
+  font-size: 20px;
+  color: #0A1B2E;
+  font-family: NRegular;
+  margin-top: 15px;
+}
+.kh .faqs .r {
+  width: 70%;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+.kh .faqs .r .faq {
+  padding: 0 35px 0 35px;
+  color: #fff;
+  width: 80%;
+  background: #BC0E0E;
+  height: auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.kh .faqs .r .faq:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.kh .faqs .r .faq:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.kh .faqs .r .faq:not(:last-child) {
+  margin-bottom: 3px;
+}
+.kh .faqs .r .faq p {
+  letter-spacing: 0.6px;
+  line-height: 30px;
+  user-select: none;
+}
+.kh .faqs .r .faq p:last-child {
+  width: 90%;
+}
+.kh .faqs .r .faq .faq-desc {
+  display: none;
+  padding-bottom: 35px;
+}
+.kh .faqs .r .faq .ii {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+.kh .faqs .r .faq .ii .label {
+  padding-top: 25px;
+  margin: 0 20px 20px 0;
+  font-family: IBold;
+}
+.kh .faqs .r .faq .ii .bottom-arrow {
+  display: none;
+}
+.kh .faqs .r .faq .ii div {
+  margin-top: 5px;
+  width: 22px;
+  height: 22px;
+}
+.kh .faqs .r .faq .ii div svg {
+  width: 22px;
+  height: 22px;
+}
+
+.kh-slider {
+  width: 81%;
+  margin: 150px auto 0 auto;
+  display: flex;
+  align-items: center;
+  height: 600px;
+}
+.kh-slider .arrow {
+  cursor: pointer;
+}
+.kh-slider .arrow svg {
+  width: 35px;
+  height: 35px;
+}
+.kh-slider .middle {
+  margin: 0 30px;
+  flex: 1 1 0%;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.kh-slider .middle .img {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -10000px;
+  user-select: none;
+}
+.kh-slider .middle .img:first-child {
+  left: 0;
+}
+.kh-slider .middle .img img:first-child {
+  border-radius: 10px;
+  width: 100%;
+  height: 600px;
+  left: 0;
+}
+.kh-slider .middle .img img:last-child {
+  width: 113px;
+  height: 113px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.kh-gr {
+  width: 81%;
+  margin: 0 auto;
+  margin-top: 100px;
+  overflow: scroll;
+}
+
+.go-right {
+  animation: ago-right 1s forwards;
+}
+
+@keyframes ago-right {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: 10000px;
+  }
+}
+.go-left {
+  animation: ago-left 1s forwards;
+}
+
+@keyframes ago-left {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: -10000px;
+  }
+}
+.from-left-center {
+  animation: afrom-left-center 0.5s forwards;
+}
+
+@keyframes afrom-left-center {
+  0% {
+    left: -10000px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+.from-right-center {
+  animation: afrom-right-center 0.5s forwards;
+}
+
+@keyframes afrom-right-center {
+  0% {
+    left: 10000px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .kh {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .kh-slider {
+    width: 90%;
+    height: 500px;
+  }
+  .kh-slider .middle .img img:first-child {
+    height: 500px;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .kh .g {
+    grid-template-columns: auto auto;
+  }
+  .kh #kh-articles {
+    grid-template-columns: auto auto;
+  }
+  .kh .faqs {
+    justify-content: start;
+    flex-direction: column;
+    margin-top: 70px;
+  }
+  .kh .faqs .l {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .kh .faqs .r {
+    width: 100%;
+    display: flex;
+    align-items: start;
+  }
+  .kh .faqs .r .faq {
+    width: 100%;
+    padding: 0;
+  }
+  .kh .faqs .r .faq .inner-div {
+    padding: 0 20px;
+  }
+  .kh-slider {
+    margin-top: 50px;
+    height: 400px;
+  }
+  .kh-slider .middle .img img:first-child {
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .kh-slider {
+    height: 300px;
+  }
+  .kh-slider .middle .img img:first-child {
+    height: 300px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .kh #kh-articles {
+    grid-template-columns: auto;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .kh .g {
+    grid-template-columns: auto;
+  }
+  .kh-slider {
+    height: 230px;
+  }
+  .kh-slider .middle .img img:first-child {
+    height: 230px;
+  }
+  .kh-slider .middle .img img:last-child {
+    width: 70px;
+    height: 70px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .kh-slider {
+    height: 230px;
+  }
+  .kh-slider .arrow {
+    cursor: pointer;
+  }
+  .kh-slider .arrow svg {
+    width: 25px;
+    height: 25px;
+  }
+  .kh-slider .middle {
+    margin: 0 15px;
+  }
+  .kh-slider .middle .img img:first-child {
+    height: 230px;
+  }
+  .kh-slider .middle .img img:last-child {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/*# sourceMappingURL=knowledge-hub.css.map */
