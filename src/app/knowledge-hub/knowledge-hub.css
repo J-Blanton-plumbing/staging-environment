@@ -17,9 +17,9 @@
   /* base layout inherited from globals.css .hero */
 }
 .kh-page .hero .img-s {
-  object-fit: cover;
   width: 45%;
-  height: auto;
+  position: relative;
+  flex-shrink: 0;
 }
 /* .hero-contents avoids the Tailwind `.contents { display: contents }` collision
    that would collapse the dark column to 0×0 (same fix as hero-contents on city pages). */

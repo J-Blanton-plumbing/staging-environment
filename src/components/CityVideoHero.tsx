@@ -31,7 +31,7 @@ export default function CityVideoHero({ hero }: { hero: CityContent['hero'] }) {
         playsInline
       />
 
-      <div className="test2-hero-body relative z-[2] flex h-full items-center pt-[80px] min-[781px]:items-end min-[781px]:pt-0">
+      <div className="test2-hero-body relative z-[2] flex h-full items-center pt-[110px] min-[781px]:items-end min-[781px]:pt-0">
         <div className="test2-hero-contents mx-auto flex w-[90%] flex-col mb-[40px] min-[781px]:flex-row min-[781px]:mb-[100px] min-[1281px]:mb-[150px]">
           {/* Left column (50%) */}
           <div className="l relative mb-10 w-full min-[781px]:mb-0 min-[781px]:mr-[15px] min-[781px]:w-1/2">

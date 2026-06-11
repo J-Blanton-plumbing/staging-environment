@@ -28,14 +28,16 @@ export default function WhyJBlantonPage() {
           HERO: YouTube embed (left) + heading/subhead/desc/CTA (right)
           ================================================================ */}
       <div className="hero">
-        <iframe
-          className="img-s"
-          src={hero.videoSrc}
-          title={hero.videoTitle}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        <div className="img-s">
+          <iframe
+            src={hero.videoSrc}
+            title={hero.videoTitle}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{ width: '100%', height: '100%', display: 'block' }}
+          />
+        </div>
         {/* `hero-contents` avoids Tailwind's `.contents { display:contents }` collision */}
         <div className="hero-contents">
           <div className="w">

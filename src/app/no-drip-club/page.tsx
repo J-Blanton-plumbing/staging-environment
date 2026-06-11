@@ -88,15 +88,17 @@ export default function NoDripClubPage() {
     <div className="ndc-page">
       {/* ============== HERO: YouTube embed + heading/desc/CTA ============== */}
       <div className="hero">
-        <iframe
-          className="img-s"
-          src={hero.videoSrc}
-          title={hero.videoTitle}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-        <div className="contents">
+        <div className="img-s">
+          <iframe
+            src={hero.videoSrc}
+            title={hero.videoTitle}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{ width: '100%', height: '100%', display: 'block' }}
+          />
+        </div>
+        <div className="hero-contents">
           <div className="w">
             <h1>{hero.heading}</h1>
             {hero.subheading && <p className="sub-label">{hero.subheading}</p>}

@@ -1,28 +1,27 @@
+const CDN = 'https://d1rplazj5a80fb.cloudfront.net/images';
+const REVIEW_URL =
+  'https://www.google.com/search?q=J+Blanton+Plumbing+Chicago&ludocid=13338365584811630957#lrd=0x880fd23cbc97c273:0xb91b64d466fe216d,3';
+
 export interface Testimonial {
   name: string;
-  location: string;
   body: string;
-  stars: number;
   image: string;
-  imageAlt: string;
+  reviewUrl: string;
 }
 
 export interface CustomerStoriesContent {
   hero: {
     heading: string;
-    subheading: string;
-    patternImage: string;
-  };
-  heroNav: {
-    helpHref?: string;
+    description: string;
+    heroImage: string;
   };
   testimonials: Testimonial[];
+  reviewUrl: string;
   behindTheReview: {
     heading: string;
     videoSrc: string;
     videoTitle: string;
   };
-  elfsightWidgetId: string;
   involveme: {
     project: string;
     embedMode: string;
@@ -33,7 +32,6 @@ export interface CustomerStoriesContent {
   cta: {
     heading: string;
     body: string;
-    buttonLabel: string;
     googleButtonLabel: string;
     googleHref: string;
   };
@@ -41,75 +39,60 @@ export interface CustomerStoriesContent {
 
 export const CUSTOMER_STORIES: CustomerStoriesContent = {
   hero: {
-    heading: 'CUSTOMER STORIES',
-    subheading: 'Real reviews from real Chicagoland homeowners.',
-    patternImage: '/images/pattern.webp',
+    heading: 'SEE WHAT OUR CUSTOMERS ARE SAYING',
+    description: 'Real reviews from real customers - we are proud to share their experience.',
+    heroImage: '/images/header_customer.webp',
   },
-  heroNav: {},
+  reviewUrl: REVIEW_URL,
   testimonials: [
     {
-      name: 'Maria S.',
-      location: 'Evanston, IL',
-      body: 'J. Blanton came out same day when our basement drain backed up. The tech was professional, explained everything clearly, and had us back to normal in under two hours. Best plumbing experience we\'ve ever had — and we\'ve had a lot of plumbers.',
-      stars: 5,
-      image: '/images/character.webp',
-      imageAlt: 'J. Blanton Plumbing technician',
+      name: 'Omar U.',
+      image: `${CDN}/0mar.webp`,
+      reviewUrl: REVIEW_URL,
+      body: 'Alex was fantastic - explained everything really well, talked me through a leak issue in my shower, gave me options and communicated effectively with my building maintenance team. Really put my mind at ease!',
     },
     {
-      name: 'David R.',
-      location: 'Chicago, IL',
-      body: 'Called at 7 AM on a Sunday with a burst pipe. They answered immediately, arrived within the hour, and fixed everything without any emergency upcharge surprise. Honest, fast, and fair. I\'m a customer for life.',
-      stars: 5,
-      image: '/images/character.webp',
-      imageAlt: 'J. Blanton Plumbing technician',
+      name: 'Joseph C.',
+      image: `${CDN}/j0sep.webp`,
+      reviewUrl: REVIEW_URL,
+      body: 'Very informative and professional. Greatly appreciated the time spent.',
     },
     {
-      name: 'Jennifer L.',
-      location: 'Skokie, IL',
-      body: 'We had a stubborn sewer issue that two other companies couldn\'t solve. J. Blanton diagnosed it with a camera inspection and cleared it the same visit. The technician walked me through the footage so I could see exactly what was going on. Truly above and beyond.',
-      stars: 5,
-      image: '/images/character.webp',
-      imageAlt: 'J. Blanton Plumbing technician',
+      name: 'Jorge D.',
+      image: `${CDN}/j0rg.webp`,
+      reviewUrl: REVIEW_URL,
+      body: "Christian was fantastic! He's been here a few times for no drip club visits and he's the man! Did our tankless water heater maintenance and was friendly and efficient, highly recommend",
     },
     {
-      name: 'Tom K.',
-      location: 'Wilmette, IL',
-      body: 'Had a water heater die on a Tuesday night. J. Blanton had a new unit installed by Wednesday afternoon. They were upfront about pricing before any work started and cleaned up after themselves. Exactly what you want from a plumber.',
-      stars: 5,
-      image: '/images/character.webp',
-      imageAlt: 'J. Blanton Plumbing technician',
+      name: 'Benjamin F.',
+      image: `${CDN}/header_custumer.webp`,
+      reviewUrl: REVIEW_URL,
+      body: 'Great experience. Trust 100%. Great prices and super knowledgable. Pic of me and my man Ron below! #satisfied #relieved #happy',
     },
     {
-      name: 'Sarah M.',
-      location: 'Oak Park, IL',
-      body: 'Our No Drip Club membership has already saved us hundreds of dollars. The annual tune-up caught a small issue before it became a big one. Highly recommend signing up — it\'s completely worth it for the peace of mind alone.',
-      stars: 5,
-      image: '/images/character.webp',
-      imageAlt: 'J. Blanton Plumbing technician',
+      name: 'Samantha F.',
+      image: `${CDN}/s4m.webp`,
+      reviewUrl: REVIEW_URL,
+      body: 'Arrived timely and took their time reviewing all of my concerns. Bryan explained his findings clearly and was transparent with pricing. He made sure to walk through next steps and ensure everything was set. Highly recommend!',
     },
     {
-      name: 'Carlos V.',
-      location: 'Naperville, IL',
-      body: 'Professional from first call to job completion. The dispatcher kept me updated on arrival time, the tech arrived exactly when promised, and the work was done right the first time. This is what five-star service actually looks like.',
-      stars: 5,
-      image: '/images/character.webp',
-      imageAlt: 'J. Blanton Plumbing technician',
+      name: 'Jason K.',
+      image: `${CDN}/j4s.webp`,
+      reviewUrl: REVIEW_URL,
+      body: 'Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick.',
     },
     {
-      name: 'Linda P.',
-      location: 'Glenview, IL',
-      body: 'I\'ve used J. Blanton for three different jobs over the past two years — a drain cleaning, a faucet replacement, and a full bathroom rough-in. Every single time the experience has been flawless. They\'ve earned a customer for life.',
-      stars: 5,
-      image: '/images/character.webp',
-      imageAlt: 'J. Blanton Plumbing technician',
+      name: 'George S.',
+      image: `${CDN}/ge0.webp`,
+      reviewUrl: REVIEW_URL,
+      body: 'Ron is the man! He not only walked us through our reason for calling which was a leak in a ceiling but was gracious to answer all the questions we had in a multiple unit condo (which was a lot). Highly recommend and a constant customer going forward!',
     },
   ],
   behindTheReview: {
-    heading: 'BEHIND THE REVIEW',
-    videoSrc: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'J. Blanton Plumbing — Behind the Review',
+    heading: 'BEHIND THE REVIEW:',
+    videoSrc: 'https://www.youtube.com/embed/m8iTyK0vrr8',
+    videoTitle: 'Behind the Review',
   },
-  elfsightWidgetId: '266c99c1-530c-4f93-8046-bab90e4a05e5',
   involveme: {
     project: 'schedule-service-new',
     embedMode: 'popup',
@@ -118,10 +101,9 @@ export const CUSTOMER_STORIES: CustomerStoriesContent = {
     organizationUrl: 'https://jblantonplumbing.involve.me',
   },
   cta: {
-    heading: 'READY TO EXPERIENCE 5-STAR SERVICE?',
-    body: 'Join thousands of Chicagoland homeowners who trust J. Blanton Plumbing for all their plumbing needs.',
-    buttonLabel: 'Schedule Service Today',
-    googleButtonLabel: 'Review Us on Google',
-    googleHref: 'https://g.page/r/CW0h_mbUZBu5EAE/review',
+    heading: 'Need a trusted plumber in Chicago?',
+    body: 'Join thousands of satisfied customers who trust J. Blanton Plumbing for their plumbing needs.',
+    googleButtonLabel: 'Review us on Google',
+    googleHref: REVIEW_URL,
   },
 };

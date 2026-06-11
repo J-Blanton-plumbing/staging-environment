@@ -12,9 +12,9 @@
 
 /* ---- Hero ------------------------------------------------------------------ */
 .financing-page .hero .img-s {
-  object-fit: cover;
   width: 45%;
-  height: auto;
+  position: relative;
+  flex-shrink: 0;
 }
 .financing-page .hero .hero-contents {
   width: 55%;

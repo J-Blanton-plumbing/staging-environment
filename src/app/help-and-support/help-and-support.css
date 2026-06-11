@@ -9,9 +9,10 @@
 
 /* ---- Hero ------------------------------------------------------------------ */
 .help-support-page .hero .img-s {
-  object-fit: contain;
   width: 45%;
   height: 500px;
+  position: relative;
+  flex-shrink: 0;
 }
 /* hero-contents avoids the Tailwind .contents { display:contents } collision */
 .help-support-page .hero .hero-contents {

@@ -1,0 +1,396 @@
+/* ============================================================================
+   Emergency Plumbing — page-level styles
+   Ported from `jb-blanton/css/emergency-plumbing.css`.
+   Scoped under `.ep-page` so theme class names (.cream, .f, .red-text,
+   .link-button, .w81) don't collide with other pages.
+   Font families map to build self-hosted vars:
+     IBold   → var(--font-industry), 700
+     IMedium → var(--font-industry), 500
+     NLight  → var(--font-nunito),   300
+     NRegular → var(--font-nunito),  400
+   No #000000 used — dark text is Midnight #0A1B2E per brand rules.
+   ========================================================================== */
+
+/* ---- Shared helpers ------------------------------------------------------- */
+.ep-page .cream {
+  background: #F9F3EC;
+  padding: 100px 0;
+}
+
+.ep-page .w81 {
+  width: 81%;
+  margin: 0 auto;
+}
+
+.ep-page .red-text {
+  font-size: 32px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #BC0E0E;
+}
+
+.ep-page .link-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  width: max-content;
+  padding: 0 28px;
+  height: 45px;
+  background: #1560E6;
+  border-radius: 50px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+.ep-page .link-button:hover {
+  background: #BC0E0E;
+}
+
+.ep-page .hero-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  width: max-content;
+  padding: 0 28px;
+  height: 45px;
+  background: #1560E6;
+  border-radius: 10px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  gap: 8px;
+  transition: background 0.3s;
+}
+.ep-page .hero-link-button:hover {
+  background: #BC0E0E;
+}
+
+/* ---- Inner content wrapper ------------------------------------------------ */
+.ep-page .emergency-plumbing {
+  margin-top: 0;
+}
+
+/* ---- .f — "PLUMBERS AT THE READY" ---------------------------------------- */
+.ep-page .f {
+  display: flex;
+  justify-content: space-between;
+}
+.ep-page .f img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+}
+.ep-page .f div {
+  width: 700px;
+  margin-right: 15px;
+}
+.ep-page .f div img {
+  display: none;
+}
+.ep-page .f div p:not(:first-child) {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+}
+.ep-page .f div p:nth-child(3) {
+  margin-top: 10px;
+}
+
+/* ---- .ep-card — "EMERGENCIES WE FIX" red card ---------------------------- */
+.ep-page .ep-card {
+  margin-top: 100px;
+  background: #BC0E0E;
+  border-radius: 10px;
+  width: 100%;
+  height: 451px;
+  overflow: hidden;
+  position: relative;
+}
+.ep-page .ep-card .ndc {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.3;
+  z-index: 1;
+}
+.ep-page .ep-card > div {
+  z-index: 2;
+  position: relative;
+  height: 100%;
+}
+.ep-page .ep-card > div .char {
+  width: 400px;
+  height: 100%;
+  object-fit: contain;
+  padding-left: 30px;
+}
+.ep-page .ep-card > div .a {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.ep-page .ep-card > div .a .l {
+  width: 45%;
+}
+.ep-page .ep-card > div .a .r {
+  width: 55%;
+  padding-right: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ep-page .ep-card > div .a .r img {
+  display: none;
+}
+.ep-page .ep-card > div .a .r .label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+.ep-page .ep-card > div .a .r .service {
+  display: flex;
+  align-items: center;
+}
+.ep-page .ep-card > div .a .r .service:not(:first-of-type) {
+  margin-top: 10px;
+}
+.ep-page .ep-card > div .a .r .service div {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.ep-page .ep-card > div .a .r .service div svg {
+  width: 20px;
+  height: 20px;
+}
+.ep-page .ep-card > div .a .r .service p {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  margin-left: 7px;
+}
+.ep-page .ep-card > div .a .r .link-button {
+  margin-top: 50px;
+}
+
+/* ---- .ep-map — "WE'RE ALMOST EVERYWHERE" ---------------------------------- */
+.ep-page .ep-map {
+  margin-top: 100px;
+}
+.ep-page .ep-map .ep-contents p:last-child {
+  margin-top: 15px;
+  font-size: 20px;
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* ---- .ep-gr — Google Reviews --------------------------------------------- */
+.ep-page .ep-gr {
+  overflow: scroll;
+  margin: 90px 0;
+}
+
+/* ---- TikTok --------------------------------------------------------------- */
+.ep-page .ep-tiktok {
+  overflow: scroll;
+  margin-bottom: 90px;
+}
+
+/* ---- .f2 — "WE HATE EMERGENCIES TOO" ------------------------------------- */
+.ep-page .f2 {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ep-page .f2 img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+}
+.ep-page .f2 div {
+  width: 700px;
+  margin-right: 15px;
+}
+.ep-page .f2 div img {
+  display: none;
+}
+.ep-page .f2 div p:not(:first-child) {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+}
+.ep-page .f2 div p:nth-child(3) {
+  margin-top: 10px;
+}
+.ep-page .f2 div a {
+  margin-top: 60px;
+}
+
+/* ---- .f3 — "TURN A BAD SITUATION INTO A GOOD CALL" ----------------------- */
+.ep-page .f3 {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ep-page .f3 img {
+  width: 470px;
+  height: 320px;
+  object-fit: contain;
+}
+.ep-page .f3 div {
+  width: 700px;
+  margin-left: 15px;
+}
+.ep-page .f3 div img {
+  display: none;
+}
+.ep-page .f3 div p:not(:first-child) {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+}
+.ep-page .f3 div p:nth-child(3) {
+  margin-top: 10px;
+}
+.ep-page .f3 div a {
+  margin-top: 60px;
+}
+
+/* ============================================================================
+   Responsive
+   ========================================================================== */
+
+@media only screen and (max-width: 1150px) {
+  .ep-page .ep-card > div img {
+    width: 410px;
+    height: 100%;
+  }
+  .ep-page .ep-card > div .a .r {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .ep-page .ep-card {
+    background: transparent;
+    border-radius: 0;
+    height: auto;
+    overflow: visible;
+  }
+  .ep-page .ep-card .ndc {
+    display: none;
+  }
+  .ep-page .ep-card > div .char {
+    display: none;
+  }
+  .ep-page .ep-card > div .a {
+    position: relative;
+    display: block;
+  }
+  .ep-page .ep-card > div .a .l {
+    display: none;
+  }
+  .ep-page .ep-card > div .a .r {
+    width: 100%;
+    color: #0A1B2E;
+  }
+  .ep-page .ep-card > div .a .r img {
+    display: block;
+    margin: 15px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 470px;
+    height: 320px;
+    object-fit: contain;
+  }
+  .ep-page .ep-card > div .a .r .label {
+    color: #BC0E0E;
+  }
+  .ep-page .ep-card > div .a .r .service p {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .ep-page .emergency-plumbing {
+    margin-top: 50px;
+  }
+  .ep-page .f div,
+  .ep-page .f2 div,
+  .ep-page .f3 div {
+    width: 100%;
+    margin: 0;
+  }
+  .ep-page .f div img,
+  .ep-page .f2 div img,
+  .ep-page .f3 div img {
+    display: block;
+    margin: 15px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .ep-page .f img,
+  .ep-page .f2 img,
+  .ep-page .f3 img {
+    display: none;
+  }
+  .ep-page .w81 {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .ep-page .f div img,
+  .ep-page .f2 div img,
+  .ep-page .f3 div img {
+    width: 100%;
+  }
+  .ep-page .ep-card > div .a .r img {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .ep-page .f div img,
+  .ep-page .f2 div img,
+  .ep-page .f3 div img {
+    margin-top: -20px;
+  }
+  .ep-page .f div p:nth-child(3),
+  .ep-page .f2 div p:nth-child(3),
+  .ep-page .f3 div p:nth-child(3) {
+    margin-top: -35px;
+  }
+  .ep-page .f2 div a,
+  .ep-page .f3 div a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .ep-page .ep-card > div .a .r img {
+    margin-top: -20px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .ep-page .f div img,
+  .ep-page .f2 div img,
+  .ep-page .f3 div img {
+    margin-top: -40px;
+  }
+  .ep-page .f div p:nth-child(3),
+  .ep-page .f2 div p:nth-child(3),
+  .ep-page .f3 div p:nth-child(3) {
+    margin-top: -55px;
+  }
+}

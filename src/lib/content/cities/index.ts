@@ -27,6 +27,7 @@ import type {
 } from './types';
 import { EVANSTON } from './evanston';
 import { ELGIN } from './elgin';
+import { ALGONQUIN } from './algonquin';
 
 /* ── Offices (the distinct dispatch addresses) ──────────────────────────────── */
 export const OFFICES = {
@@ -225,6 +226,7 @@ const BY_SLUG = new Map(CITY_REGISTRY.map((c) => [c.slug, c]));
 
 /* ── Per-city copy lookups ──────────────────────────────────────────────────── */
 const COVERAGE_CONTENT: Record<string, CoverageAreaContent> = {
+  algonquin: ALGONQUIN,
   elgin: ELGIN,
 };
 const LOCAL_OFFICE_CONTENT: Record<string, LocalOfficeContent> = {

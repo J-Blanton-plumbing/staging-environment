@@ -36,7 +36,7 @@ export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) 
       <div className="cream bg-cream-100">
         <div className="city-page-content mx-auto w-[90%] lg:w-[81%] pt-[80px] lg:pt-[130px]">
           {/* ===== 3. WHY J. BLANTON FOR {CITY} ===== */}
-          <section className="f grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2">
+          <section className="f grid grid-cols-1 min-[901px]:grid-cols-2 items-stretch gap-10">
             <div className="flex flex-col justify-center">
               <p className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                 {city.why.heading}
@@ -44,8 +44,16 @@ export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) 
               <div className="leading-relaxed text-navy-800">
                 <p>{city.why.body}</p>
               </div>
+              {/* Inline image — hidden at desktop (≥901px), shown at ≤900px when right-col img hides */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={city.why.image.src}
+                alt={city.why.image.alt}
+                className="mt-4 max-w-[350px] w-full mx-auto rounded-[5px] object-cover min-[901px]:hidden"
+              />
             </div>
-            <div className="relative min-h-[300px] overflow-hidden rounded-[5px]">
+            {/* Right-col image — hidden at ≤900px; inline .l img takes over */}
+            <div className="relative min-h-[300px] overflow-hidden rounded-[5px] max-[900px]:hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={city.why.image.src}
@@ -69,28 +77,21 @@ export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) 
           {/* ===== 5. OUR SERVICES (accordion menu) ===== */}
           <CityServicesAccordion heading={city.services.heading} categories={city.services.categories} />
 
-          {/* ===== 6. REVIEWS (Elfsight — placeholder, wiring pending) ===== */}
-          <section
-            id="reviews"
-            data-elfsight-id={city.reviews.elfsightId}
-            className="mb-[60px] flex min-h-[200px] flex-col items-center justify-center rounded-[10px] border-2 border-dashed border-brand-200 bg-white px-6 py-12 text-center"
-          >
-            <p className="font-display text-[20px] font-bold text-brand-600">★ Customer Reviews</p>
-            <p className="mt-2 max-w-md text-sm text-navy-500">
-              Elfsight reviews widget loads here — integration pending (pre-launch wiring item).
-            </p>
+          {/* ===== 6. REVIEWS (Elfsight) ===== */}
+          <section id="reviews" className="mb-[60px]">
+            <div
+              className={`elfsight-app-${city.reviews.elfsightId}`}
+              data-elfsight-app-lazy
+            />
           </section>
 
-          {/* ===== 7. "Turning Bad Calls to Good Calls" + social (Elfsight placeholder) ===== */}
+          {/* ===== 7. "Turning Bad Calls to Good Calls" + social (Elfsight) ===== */}
           <p className="ep-tiktok-headline">{city.social.headline}</p>
-          <section
-            data-elfsight-id={city.social.elfsightId}
-            className="city-social-media mb-[60px] flex min-h-[200px] flex-col items-center justify-center rounded-[10px] border-2 border-dashed border-navy-100 bg-white px-6 py-12 text-center"
-          >
-            <p className="font-display text-[20px] font-bold text-navy-800">TikTok &amp; Social Feed</p>
-            <p className="mt-2 max-w-md text-sm text-navy-500">
-              Elfsight social/TikTok widget loads here — integration pending (pre-launch wiring item).
-            </p>
+          <section className="city-social-media mb-[60px]">
+            <div
+              className={`elfsight-app-${city.social.elfsightId}`}
+              data-elfsight-app-lazy
+            />
           </section>
 
           {/* ===== 8. RELATED ARTICLES (shared component) ===== */}

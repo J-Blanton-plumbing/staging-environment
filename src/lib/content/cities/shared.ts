@@ -27,9 +27,131 @@ export const MANPLUMBER_IMAGE = `${CDN}/images/manplumber.webp`;
  */
 export function resolveHeroImage(heroImage?: string): string {
   if (!heroImage) return HERO_IMAGE_FALLBACK;
-  if (heroImage.startsWith('http')) return heroImage;
+  if (heroImage.startsWith('http') || heroImage.startsWith('/')) return heroImage;
   const file = heroImage.includes('.') ? heroImage : `${heroImage}.webp`;
   return `${CDN}/images/${file}`;
+}
+
+/* ── Elfsight widget IDs ─────────────────────────────────────────────────────
+ * Ported verbatim from jb-blanton/functions.php `jb_get_elfsight_ids()` (hero
+ * reviews) and page-city.php `$elfsight_content_map` (section reviews).
+ * The social/TikTok widget is shared across all city pages.
+ * ──────────────────────────────────────────────────────────────────────────── */
+
+const _MCHENRY    = '55b5212b-bef7-488d-a0ce-0629fd1dfaa0';
+const _ELGIN      = '395fbb1e-5f6b-4759-b2db-3d620c51e4e2';
+const _ARH        = 'ca133efa-2c1f-4f4b-8095-6c07545044c8';
+const _NBROOK     = 'bef726a2-1770-4806-9892-b36e55593142';
+const _HINSDALE   = '5ce3f59e-a315-4272-a1e9-12f6e0843e75';
+const _NAPERVILLE = '8342aee5-5fc9-4945-a8fd-f5ed625a682e';
+const _EVANSTON   = '978a5a86-73cd-41c5-8b3a-1cb716957341';
+const _JOLIET     = '266c99c1-530c-4f93-8046-bab90e4a05e5';
+
+/** Per-city hero Google Reviews widget IDs (functions.php `jb_get_elfsight_ids`). */
+const ELFSIGHT_HERO_ID_MAP: Record<string, string> = {
+  'chicago-lincoln-park': '4cd46e30-dbbb-4bd9-be5d-96c6da17ed11',
+  'algonquin':            '40f0bd27-b99c-4171-87b2-f600ef6d8210',
+  'arlington-heights':    _ARH,
+  'elgin':                _ELGIN,
+  'evanston':             _EVANSTON,
+  'hinsdale':             _HINSDALE,
+  'mchenry':              _MCHENRY,
+  'naperville':           _NAPERVILLE,
+  'northbrook':           _NBROOK,
+  'geneva':               '5915094e-aea7-4fe6-ade1-2d32c34c0e6d',
+  'elmhurst':             '269bffb8-4e1c-4be0-ae5e-f54aeb0f43ab',
+  // McHenry hub
+  'allens-corners': _MCHENRY, 'almora': _MCHENRY, 'alora-heights': _MCHENRY,
+  'antioch': _MCHENRY, 'barrington-hills': _MCHENRY, 'belden': _MCHENRY,
+  'bull-valley': _MCHENRY, 'burtons-bridge': _MCHENRY, 'cary': _MCHENRY,
+  'channel-lake': _MCHENRY, 'crystal-lake': _MCHENRY, 'ferndale': _MCHENRY,
+  'forest-lake': _MCHENRY, 'fox-lake': _MCHENRY, 'fox-lake-hills': _MCHENRY,
+  'franklinville': _MCHENRY, 'grandwood-park': _MCHENRY, 'greenwood': _MCHENRY,
+  'hainesville': _MCHENRY, 'harmony': _MCHENRY, 'hartland': _MCHENRY,
+  'hawthorn-woods': _MCHENRY, 'holiday-hills': _MCHENRY, 'huntley': _MCHENRY,
+  'ingleside': _MCHENRY, 'ingleside-shore': _MCHENRY, 'island-lake': _MCHENRY,
+  'johnsburg': _MCHENRY, 'kildeer': _MCHENRY, 'lake-barrington': _MCHENRY,
+  'lake-catherine': _MCHENRY, 'lake-in-the-hills': _MCHENRY, 'lake-villa': _MCHENRY,
+  'lake-zurich': _MCHENRY, 'lakemoor': _MCHENRY, 'lindenhurst': _MCHENRY,
+  'long-grove': _MCHENRY, 'long-lake': _MCHENRY, 'mccullom-lake': _MCHENRY,
+  'mylith-park': _MCHENRY, 'oakwood-hills': _MCHENRY, 'old-mill-creek': _MCHENRY,
+  'pistakee-highlands': _MCHENRY, 'prairie-grove': _MCHENRY, 'richmond': _MCHENRY,
+  'ridgefield': _MCHENRY, 'ringwood': _MCHENRY, 'round-lake': _MCHENRY,
+  'round-lake-beach': _MCHENRY, 'round-lake-heights': _MCHENRY, 'round-lake-park': _MCHENRY,
+  'solon-mills': _MCHENRY, 'spring-grove': _MCHENRY, 'trout-valley': _MCHENRY,
+  'venetian-cillage': _MCHENRY, 'venetian-village': _MCHENRY,
+  'village-of-lakewood': _MCHENRY, 'volo': _MCHENRY, 'wauconda': _MCHENRY,
+  'williams-park': _MCHENRY, 'wonder-lake': _MCHENRY, 'woodstock': _MCHENRY,
+  // Elgin hub
+  'bartlett': _ELGIN, 'burlington': _ELGIN, 'campton-hills': _ELGIN,
+  'carol-stream': _ELGIN, 'gilberts': _ELGIN, 'hampshire': _ELGIN,
+  'knoll-creek-west': _ELGIN, 'lily-lake': _ELGIN, 'new-lebanon': _ELGIN,
+  'pingree-grove': _ELGIN, 'plato-center': _ELGIN, 'south-elgin': _ELGIN,
+  'st-charles': _ELGIN, 'starks': _ELGIN, 'west-highland-acre': _ELGIN,
+  'wildwood-valley': _ELGIN, 'williamsburg-green': _ELGIN,
+  // Arlington Heights hub
+  'bloomingdale': _ARH, 'deer-park': _ARH, 'elk-grove': _ARH,
+  'hanover-park': _ARH, 'hoffman-estates': _ARH, 'inverness': _ARH,
+  'keeneyville': _ARH, 'mount-prospect': _ARH, 'palatine': _ARH,
+  'prospect-heights': _ARH, 'rolling-meadows': _ARH, 'roselle': _ARH,
+  'schaumburg': _ARH, 'wheeling': _ARH,
+  // Northbrook hub
+  'bannockburn': _NBROOK, 'buffalo-grove': _NBROOK, 'fort-sheridan': _NBROOK,
+  'glencoe': _NBROOK, 'green-oaks': _NBROOK, 'gurnee': _NBROOK,
+  'highwood': _NBROOK, 'highland-park': _NBROOK, 'indian-creek': _NBROOK,
+  'kenilworth': _NBROOK, 'knollwood': _NBROOK, 'lake-bluff': _NBROOK,
+  'lake-forest': _NBROOK, 'libertyville': _NBROOK, 'lincolnshire': _NBROOK,
+  'mettawa': _NBROOK, 'mundelein': _NBROOK, 'north-chicago': _NBROOK,
+  'northfield': _NBROOK, 'rondout': _NBROOK, 'vernon-hills': _NBROOK,
+  'waukegan': _NBROOK, 'wells-corners': _NBROOK, 'winnetka': _NBROOK,
+  // Hinsdale hub
+  'burr-ridge': _HINSDALE, 'butterfield': _HINSDALE, 'clarendon-hills': _HINSDALE,
+  'darien': _HINSDALE, 'downers-grove': _HINSDALE, 'glen-ellyn': _HINSDALE,
+  'la-grange': _HINSDALE, 'lombard': _HINSDALE, 'oak-brook': _HINSDALE,
+  'oakbrook-terrace': _HINSDALE, 'villa-park': _HINSDALE, 'westchester': _HINSDALE,
+  'western-springs': _HINSDALE, 'westmont': _HINSDALE, 'york-center': _HINSDALE,
+  // Naperville hub
+  'aurora': _NAPERVILLE, 'bolingbrook': _NAPERVILLE, 'plainfield': _NAPERVILLE,
+  'romeoville': _NAPERVILLE, 'welco-corners': _NAPERVILLE, 'woodridge': _NAPERVILLE,
+  // Evanston hub
+  'morton-grove': _EVANSTON, 'skokie': _EVANSTON, 'wilmette': _EVANSTON,
+  // Joliet hub
+  'alsip': _JOLIET, 'arbury-hills': _JOLIET, 'blue-island': _JOLIET,
+  'bonnie-brae': _JOLIET, 'chicago-heights': _JOLIET, 'country-club-hills': _JOLIET,
+  'crest-hill': _JOLIET, 'fairmont': _JOLIET, 'flossmoor': _JOLIET,
+  'frankfort': _JOLIET, 'frankfort-square': _JOLIET, 'harvey': _JOLIET,
+  'homer-glen': _JOLIET, 'homewood': _JOLIET, 'ingalls-park': _JOLIET,
+  'joliet': _JOLIET, 'lemont': _JOLIET, 'lockport': _JOLIET,
+  'lockport-heights': _JOLIET, 'manhattan': _JOLIET, 'markham': _JOLIET,
+  'matteson': _JOLIET, 'midlothian': _JOLIET, 'mokena': _JOLIET,
+  'new-lenox': _JOLIET, 'oak-forest': _JOLIET, 'orland-park': _JOLIET,
+  'palos-heights': _JOLIET, 'palos-hills': _JOLIET, 'park-forest': _JOLIET,
+  'preston-heights': _JOLIET, 'rockdale': _JOLIET, 'roseland': _JOLIET,
+  'south-holland': _JOLIET, 'tinley-park': _JOLIET,
+};
+const ELFSIGHT_HERO_DEFAULT = _JOLIET;
+
+/** Per-city content-section (body) Google Reviews widget IDs (page-city.php `$elfsight_content_map`). */
+const ELFSIGHT_CONTENT_ID_MAP: Record<string, string> = {
+  'algonquin':         '8a4401fa-c2fb-411e-9bf3-8e691c1a9d5b',
+  'arlington-heights': '63cfff20-7624-4c5b-9d7a-1ee39d90d602',
+  'elgin':             '54f95d6e-ce23-49c6-b3ac-8e4234199072',
+  'hinsdale':          '6a7311e8-5c7b-427d-9517-2a73c6b64d6c',
+  'mchenry':           'ce2757ba-58d8-43ec-8e87-5003099a592c',
+  'naperville':        '53445308-2ca6-49c1-ac47-da5c3a6401f6',
+  'northbrook':        '37a7d292-8861-4ea3-9680-c342123c50bc',
+  'geneva':            'e082be80-78f3-407c-aaba-6cc5442c12ad',
+};
+const ELFSIGHT_CONTENT_DEFAULT = '67911321-4b72-4209-b157-fc9812eadd3b';
+
+/** Shared social/TikTok widget ID — same across all city pages. */
+export const ELFSIGHT_SOCIAL_ID = '9f370c11-108b-412b-8529-6b3f093f04a3';
+
+export function getElfsightHeroId(slug: string): string {
+  return ELFSIGHT_HERO_ID_MAP[slug] ?? ELFSIGHT_HERO_DEFAULT;
+}
+export function getElfsightContentId(slug: string): string {
+  return ELFSIGHT_CONTENT_ID_MAP[slug] ?? ELFSIGHT_CONTENT_DEFAULT;
 }
 
 /** Default 3 articles for coverage-area pages that don't name their own (brief §9). */
@@ -112,6 +234,13 @@ const STATIC_SERVICE_MENU: { name: string; icon: string; links: [string, string]
       ['sump-pumps', 'Sump Pumps'],
       ['trenchless-sewer-repair', 'Trenchless Sewer Repair'],
       ['video-camera-sewer-inspections', 'Video Camera Sewer & Drain Inspections'],
+    ],
+  },
+  {
+    name: 'Other Services',
+    icon: 'u_shape_tube.svg',
+    links: [
+      ['sewage-line-backup-services', 'Sewage Line Backup Services'],
     ],
   },
 ];

@@ -6,7 +6,13 @@ import FaqAccordion from '@/components/FaqAccordion';
 import ArticleGrid from '@/components/ArticleGrid';
 import type { Article } from '@/lib/articles';
 import type { CityFaq, CoverageAreaContent, Office } from '@/lib/content/cities/types';
-import { MANPLUMBER_IMAGE, WRENCH_PATTERN, resolveHeroImage } from '@/lib/content/cities/shared';
+import {
+  MANPLUMBER_IMAGE,
+  ELFSIGHT_SOCIAL_ID,
+  getElfsightHeroId,
+  getElfsightContentId,
+  resolveHeroImage,
+} from '@/lib/content/cities/shared';
 
 /**
  * Coverage Area ("image-hero") city template — theme `page-city.php` + `city.css`
@@ -60,6 +66,9 @@ export default function CoverageAreaCity({
     `${name}, Illinois`,
   )}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
 
+  const elfsightHeroId = getElfsightHeroId(slug);
+  const elfsightContentId = getElfsightContentId(slug);
+
   return (
     <>
       {/* ============== 1. IMAGE HERO ============== */}
@@ -67,10 +76,10 @@ export default function CoverageAreaCity({
         cityName={name}
         h1={h1}
         heroImageUrl={heroImageUrl}
-        wrenchPattern={WRENCH_PATTERN}
         office={office}
         gbpLabel={gbpLabel}
         area={area}
+        elfsightHeroId={elfsightHeroId}
         callout={content?.callout}
       />
 
@@ -146,22 +155,16 @@ export default function CoverageAreaCity({
           {/* ===== 6. OUR SERVICES (static menu) ===== */}
           <CityServicesMenu citySlug={slug} />
 
-          {/* ===== 7. CONTENT REVIEWS (Elfsight placeholder) ===== */}
-          <section className="city-page-gr mb-[100px] flex min-h-[200px] flex-col items-center justify-center rounded-[10px] border-2 border-dashed border-brand-200 bg-white px-6 py-12 text-center">
-            <p className="font-display text-[20px] font-bold text-brand-600">★ Customer Reviews</p>
-            <p className="mt-2 max-w-md text-sm text-navy-500">
-              Elfsight reviews widget loads here — integration pending (pre-launch wiring item).
-            </p>
-          </section>
+          {/* ===== 7. CONTENT REVIEWS (Elfsight) ===== */}
+          <div className="city-page-gr mb-[100px]">
+            <div className={`elfsight-app-${elfsightContentId}`} data-elfsight-app-lazy />
+          </div>
 
           {/* ===== 8. "Turning Bad Calls to Good Calls" + social ===== */}
           <p className="ep-tiktok-headline">J Blanton Plumbing - Turning Bad Calls to Good Calls</p>
-          <section className="city-social-media mb-[60px] flex min-h-[200px] flex-col items-center justify-center rounded-[10px] border-2 border-dashed border-navy-100 bg-white px-6 py-12 text-center">
-            <p className="font-display text-[20px] font-bold text-navy-800">TikTok &amp; Social Feed</p>
-            <p className="mt-2 max-w-md text-sm text-navy-500">
-              Elfsight social/TikTok widget loads here — integration pending (pre-launch wiring item).
-            </p>
-          </section>
+          <div className="city-social-media mb-[60px]">
+            <div className={`elfsight-app-${ELFSIGHT_SOCIAL_ID}`} data-elfsight-app-lazy />
+          </div>
 
           {/* ===== 9. RELATED ARTICLES ===== */}
           {articles.length > 0 && (

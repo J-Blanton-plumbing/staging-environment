@@ -4,17 +4,16 @@ import { SITE } from '@/lib/site';
 
 /**
  * Coverage Area city hero — theme `.city-page-hero` (page-city.php 415–463;
- * city.css 121–185). A horizontal split: city image (45%) on the left, a dark
- * wrench-pattern content column (55%) on the right holding the centered `.w`
- * block (H1, reviews pill, NAP, phone CTA, optional callout).
+ * city.css 121–185). A horizontal split: city image (45%) on the left, a
+ * Carmine wrench-pattern content column (55%) on the right holding the
+ * centered `.w` block (H1, reviews widget, NAP, phone CTA, optional callout).
  *
- * The 45/55 → 50/50 → 55/45 responsive splits and the vw-based type scale live
- * in globals.css under `.city-page-hero` (ported from city.css 442–565). The
- * `.contents` column gets a Midnight backstop behind the (dark) wrench pattern
- * so the white text is always legible if the CDN image is slow/blocked.
+ * Background is handled entirely in CSS (globals.css `.city-page-hero
+ * .hero-contents`) — Carmine + tiled Wrench Filled Red BG.png, matching the
+ * global hero pattern. No wrench overlay <img> needed here.
  *
- * Reviews + callout are gated; the Elfsight reviews widget is a styled
- * placeholder (not faked — brief §1 / Brief 09 §6).
+ * `hero-contents` avoids Tailwind's `.contents { display:contents }` collision
+ * (CLAUDE.md gotcha #1) that would collapse the right panel to 0×0.
  */
 export interface CityHeroProps {
   /** Display name, e.g. "Elgin" (used in alt text + NAP label). */
@@ -23,14 +22,14 @@ export interface CityHeroProps {
   h1: string;
   /** Resolved hero image URL. */
   heroImageUrl: string;
-  /** Wrench-pattern overlay URL. */
-  wrenchPattern: string;
   /** The dispatching office (NAP link + address). */
   office: Office;
   /** Google Business Profile label suffix, e.g. "Elgin". */
   gbpLabel: string;
   /** Areas-served region label. */
   area: string;
+  /** Elfsight widget UUID for the hero reviews pill. */
+  elfsightHeroId: string;
   /** Optional hero callout (IThin). */
   callout?: string;
 }
@@ -39,10 +38,10 @@ export default function CityHero({
   cityName,
   h1,
   heroImageUrl,
-  wrenchPattern,
   office,
   gbpLabel,
   area,
+  elfsightHeroId,
   callout,
 }: CityHeroProps) {
   return (
@@ -50,19 +49,14 @@ export default function CityHero({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="city-page-image" src={heroImageUrl} alt={h1} loading="eager" />
 
-      <div className="contents">
-        {/* Wrench-pattern overlay (z-1) behind the content (z-2). Decorative. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="wrench" src={wrenchPattern} alt="" aria-hidden="true" />
-
+      {/* hero-contents avoids Tailwind's `.contents { display:contents }` collision */}
+      <div className="hero-contents">
         <div className="w">
           <h1>{h1}</h1>
 
-          {/* Elfsight reviews pill — placeholder, wiring pending (not faked). */}
+          {/* Google Reviews widget — origin-restricted on localhost, works on production */}
           <div className="reviews">
-            <div className="px-4 py-2 text-center text-[13px] font-semibold text-brand-600">
-              ★ Google Reviews — widget loads here
-            </div>
+            <div className={`elfsight-app-${elfsightHeroId}`} />
           </div>
 
           <div className="nap">

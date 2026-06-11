@@ -1,7 +1,7 @@
 /* ============================================================================
    No Drip Club — page-level styles
    Ported from `jb-blanton/css/ndc.css` (the `.cream`/`.ndc-*` blocks) plus the
-   shared `.hero`, `.hero .contents .w`, `.red-text`, `.w81` and `.link-button`
+   shared `.hero`, `.hero .hero-contents .w`, `.red-text`, `.w81` and `.link-button`
    rules this page depends on from the theme's `globals.css`.
 
    Two faithfulness adaptations (values are otherwise unchanged):
@@ -22,20 +22,18 @@
   /* base layout inherited from globals.css .hero */
 }
 .ndc-page .hero .img-s {
-  object-fit: contain;
   width: 45%;
-}
-.ndc-page .hero iframe {
   height: 580px;
+  flex-shrink: 0;
 }
-.ndc-page .hero .contents {
+.ndc-page .hero .hero-contents {
   /* Override Tailwind's `.contents { display: contents }` utility, which
      collides with this theme class name and would collapse the box to 0 width. */
   display: block;
   width: 55%;
   position: relative;
 }
-.ndc-page .hero .contents .w {
+.ndc-page .hero .hero-contents .w {
   height: 100%;
   width: 600px;
   margin: 0 auto;
@@ -46,22 +44,22 @@
   position: relative;
   z-index: 2;
 }
-.ndc-page .hero .contents .w h1 {
+.ndc-page .hero .hero-contents .w h1 {
   font-size: 40px;
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700;
   color: #fff;
 }
-.ndc-page .hero .contents .w .sub-label {
+.ndc-page .hero .hero-contents .w .sub-label {
   margin-top: 20px;
   font-size: 16px;
 }
-.ndc-page .hero .contents .w .hero-desc {
+.ndc-page .hero .hero-contents .w .hero-desc {
   margin: 20px 0 30px 0;
   line-height: 1.6;
   font-size: 16px;
 }
-.ndc-page .hero .contents .w .involveme_popup {
+.ndc-page .hero .hero-contents .w .involveme_popup {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +75,7 @@
   cursor: pointer;
   transition: background 0.3s;
 }
-.ndc-page .hero .contents .w .involveme_popup:hover {
+.ndc-page .hero .hero-contents .w .involveme_popup:hover {
   background: #0e4fc7;
 }
 
@@ -341,41 +339,41 @@
   .ndc-page .hero .img-s {
     display: none;
   }
-  .ndc-page .hero .contents {
+  .ndc-page .hero .hero-contents {
     width: 100%;
   }
-  .ndc-page .hero .contents .w {
+  .ndc-page .hero .hero-contents .w {
     width: 90%;
     flex-direction: column;
     padding-bottom: 40px;
   }
-  .ndc-page .hero .contents .w h1 {
+  .ndc-page .hero .hero-contents .w h1 {
     font-size: 3vw;
   }
-  .ndc-page .hero .contents .w .sub-label {
+  .ndc-page .hero .hero-contents .w .sub-label {
     font-size: 20px;
   }
-  .ndc-page .hero .contents .w .hero-desc {
+  .ndc-page .hero .hero-contents .w .hero-desc {
     font-size: 16px;
   }
 }
 @media only screen and (max-width: 770px) {
-  .ndc-page .hero .contents .w h1 {
+  .ndc-page .hero .hero-contents .w h1 {
     font-size: 5vw;
   }
 }
 @media only screen and (max-width: 640px) {
-  .ndc-page .hero .contents .w {
+  .ndc-page .hero .hero-contents .w {
     padding-bottom: 30px;
   }
 }
 @media only screen and (max-width: 425px) {
-  .ndc-page .hero .contents .w h1 {
+  .ndc-page .hero .hero-contents .w h1 {
     font-size: 45px;
   }
 }
 @media only screen and (max-width: 380px) {
-  .ndc-page .hero .contents .w h1 {
+  .ndc-page .hero .hero-contents .w h1 {
     font-size: 35px;
   }
 }

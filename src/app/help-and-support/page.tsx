@@ -28,14 +28,16 @@ export default function HelpSupportPage() {
           HERO
           ================================================================ */}
       <div className="hero">
-        <Image
-          className="img-s"
-          src={hero.image}
-          alt={hero.imageAlt}
-          width={900}
-          height={600}
-          priority
-        />
+        <div className="img-s">
+          <Image
+            src={hero.image}
+            alt={hero.imageAlt}
+            fill
+            sizes="45vw"
+            priority
+            style={{ objectFit: 'contain' }}
+          />
+        </div>
         {/* hero-contents avoids Tailwind .contents { display:contents } collision */}
         <div className="hero-contents">
           <div className="w">

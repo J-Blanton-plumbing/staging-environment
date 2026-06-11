@@ -20,9 +20,9 @@
   /* base layout inherited from globals.css .hero */
 }
 .why-jb-page .hero .img-s {
-  object-fit: contain;
   width: 45%;
   height: 580px;
+  flex-shrink: 0;
 }
 /* `hero-contents` avoids the Tailwind `.contents { display:contents }` utility
    that would collapse this column to 0×0 (CLAUDE.md gotcha #1). */

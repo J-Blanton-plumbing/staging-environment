@@ -75,16 +75,25 @@
    Fonts map to the build's self-hosted vars (IBold→industry/700).
    ========================================================================== */
 .city-services-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 1rem;
   background: linear-gradient(to bottom, #e63946, #9b0d0d);
 }
+/* Tablet/medium: 3 per row */
+@media only screen and (min-width: 768px) {
+  .city-services-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Desktop: 6 per row, single row */
+@media only screen and (min-width: 1051px) {
+  .city-services-row {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
 .city-services-row .service-category {
-  flex: 0 1 auto;
-  min-width: 200px;
   padding: 1rem;
   background: transparent;
 }
@@ -98,6 +107,7 @@
   cursor: pointer;
   margin-bottom: 0.75rem;
   list-style: none;
+  width: 100%;
   transition: background-color 0.2s ease-out;
 }
 .city-services-row .service-category > summary:hover {
@@ -209,6 +219,17 @@
   }
 }
 
+/* Service menu — mobile font sizes (base grid is already 1fr) */
+@media only screen and (max-width: 480px) {
+  .city-services-row .service-category > summary {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  .city-services-row .service-category ul a {
+    font-size: 16px;
+  }
+}
+
 /* ============================================================================
    City — Coverage Area image hero
    Ported from city.css `.city-page-hero` (121–185) + its media queries
@@ -221,6 +242,7 @@
 .city-page-hero {
   display: flex;
   position: relative;
+  overflow: hidden;
 }
 .city-page-hero .city-page-image {
   position: relative;
@@ -228,22 +250,15 @@
   width: 45%;
   object-fit: contain;
 }
-.city-page-hero .contents {
+.city-page-hero .hero-contents {
   width: 55%;
   position: relative;
-  background: #0a1b2e;
+  background-color: #bc0e0e;
+  background-image: url('/images/patterns/Wrench Filled Red BG.png');
+  background-repeat: repeat;
   min-height: 460px;
 }
-.city-page-hero .contents .wrench {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  object-fit: cover;
-  opacity: 0.5;
-}
-.city-page-hero .contents .w {
+.city-page-hero .hero-contents .w {
   height: 100%;
   width: 650px;
   max-width: 90%;
@@ -257,44 +272,47 @@
   text-transform: uppercase;
   padding: 40px 0;
 }
-.city-page-hero .contents .w h1 {
+.city-page-hero .hero-contents .w h1 {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700;
   font-size: 2.3vw;
   line-height: 1.1;
+  color: #fff;
 }
-.city-page-hero .contents .w .reviews {
+.city-page-hero .hero-contents .w .reviews {
   background: #fff;
   border-radius: 10px;
   width: max-content;
+  min-width: 180px;
+  min-height: 44px;
   max-width: 100%;
   margin: 15px 0;
 }
-.city-page-hero .contents .w .nap {
+.city-page-hero .hero-contents .w .nap {
   text-transform: none;
 }
-.city-page-hero .contents .w .nap p,
-.city-page-hero .contents .w .nap a {
+.city-page-hero .hero-contents .w .nap p,
+.city-page-hero .hero-contents .w .nap a {
   font-size: 1vw;
 }
-.city-page-hero .contents .w .nap a {
+.city-page-hero .hero-contents .w .nap a {
   color: #fff;
   text-decoration: none;
 }
-.city-page-hero .contents .w .nap a:hover {
+.city-page-hero .hero-contents .w .nap a:hover {
   text-decoration: underline;
 }
-.city-page-hero .contents .w .nap .row {
+.city-page-hero .hero-contents .w .nap .row {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.city-page-hero .contents .w .nap .row p,
-.city-page-hero .contents .w .nap p span {
+.city-page-hero .hero-contents .w .nap .row p,
+.city-page-hero .hero-contents .w .nap p span {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700;
 }
-.city-page-hero .contents .w .callout {
+.city-page-hero .hero-contents .w .callout {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0;
@@ -304,23 +322,23 @@
 
 @media only screen and (max-width: 1550px) {
   .city-page-hero .city-page-image { width: 50%; }
-  .city-page-hero .contents { width: 50%; }
+  .city-page-hero .hero-contents { width: 50%; }
 }
 @media only screen and (max-width: 1350px) {
-  .city-page-hero .contents .w { width: 600px; }
+  .city-page-hero .hero-contents .w { width: 600px; }
 }
 @media only screen and (max-width: 1280px) {
   .city-page-hero .city-page-image { width: 55%; }
-  .city-page-hero .contents { width: 45%; }
-  .city-page-hero .contents .w { width: 500px; }
-  .city-page-hero .contents .w h1 { font-size: 2vw; }
-  .city-page-hero .contents .w .reviews { margin-bottom: 10px; }
-  .city-page-hero .contents .w .nap p,
-  .city-page-hero .contents .w .nap a { font-size: 1.25vw; }
-  .city-page-hero .contents .w .callout { font-size: 1.25vw; margin: 10px 0; }
+  .city-page-hero .hero-contents { width: 45%; }
+  .city-page-hero .hero-contents .w { width: 500px; }
+  .city-page-hero .hero-contents .w h1 { font-size: 2vw; }
+  .city-page-hero .hero-contents .w .reviews { margin-bottom: 10px; }
+  .city-page-hero .hero-contents .w .nap p,
+  .city-page-hero .hero-contents .w .nap a { font-size: 1.25vw; }
+  .city-page-hero .hero-contents .w .callout { font-size: 1.25vw; margin: 10px 0; }
 }
 @media only screen and (max-width: 1150px) {
-  .city-page-hero .contents .w { width: 450px; }
+  .city-page-hero .hero-contents .w { width: 450px; }
 }
 @media only screen and (max-width: 1050px) {
   .city-page-hero {
@@ -328,18 +346,18 @@
     flex-direction: column-reverse;
   }
   .city-page-hero .city-page-image { width: 100%; object-fit: contain; }
-  .city-page-hero .contents { width: 100%; min-height: 0; padding: 50px 0 30px 0; }
-  .city-page-hero .contents .w { width: 90%; }
-  .city-page-hero .contents .w .nap p,
-  .city-page-hero .contents .w .nap a { font-size: 16px; }
-  .city-page-hero .contents .w .callout { font-size: 16px; }
+  .city-page-hero .hero-contents { width: 100%; min-height: 0; padding: 90px 0 30px 0; }
+  .city-page-hero .hero-contents .w { width: 90%; }
+  .city-page-hero .hero-contents .w .nap p,
+  .city-page-hero .hero-contents .w .nap a { font-size: 16px; }
+  .city-page-hero .hero-contents .w .callout { font-size: 16px; }
 }
 @media only screen and (max-width: 680px) {
-  .city-page-hero .contents .w h1 { font-size: 4vw; }
+  .city-page-hero .hero-contents .w h1 { font-size: 4vw; }
 }
 @media only screen and (max-width: 640px) {
-  .city-page-hero .contents { padding: 20px 0; }
-  .city-page-hero .contents .w h1 { font-size: 5vw; }
+  .city-page-hero .hero-contents { padding: 80px 0 20px 0; }
+  .city-page-hero .hero-contents .w h1 { font-size: 5vw; }
 }
 
 /* ============================================================================

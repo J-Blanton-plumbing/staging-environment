@@ -9,39 +9,85 @@
    ================================================================ */
 
 /* ----------------------------------------------------------------
-   HERO
+   HERO — page-scoped sizing for the standard .hero pattern
    ---------------------------------------------------------------- */
-.customer-stories-page .cs-hero {
+.customer-stories-page .hero .img-s {
+  width: 45%;
   position: relative;
-  background: #0A1B2E;
-  min-height: 260px;
+  flex-shrink: 0;
+  min-height: 500px;
+}
+
+.customer-stories-page .hero .hero-contents {
+  width: 55%;
+  position: relative;
+}
+
+.customer-stories-page .hero .hero-contents .w {
+  height: 100%;
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.customer-stories-page .hero .hero-contents .w h1 {
+  font-size: 40px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+
+.customer-stories-page .hero .hero-contents .w .hero-desc {
+  margin: 20px 0 30px 0;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.customer-stories-page .hero .hero-contents .w .involveme_popup {
   display: flex;
   align-items: center;
-  overflow: hidden;
-}
-
-.customer-stories-page .cs-hero-contents {
-  position: relative;
-  z-index: 1;
-  width: 81%;
-  margin: 0 auto;
-  padding: 80px 0 60px;
-}
-
-.customer-stories-page .cs-hero-contents h1 {
-  font-family: var(--font-industry);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  justify-content: center;
+  width: max-content;
+  padding: 0 28px;
+  height: 52px;
+  color: #fff;
+  background: #1560e6;
+  border-radius: 50px;
+  font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700;
-  color: #F9F3EC;
-  text-transform: uppercase;
-  margin-bottom: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.customer-stories-page .cs-hero-contents p {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  color: #F9F3EC;
-  opacity: 0.85;
-  max-width: 600px;
+.customer-stories-page .hero .hero-contents .w .involveme_popup:hover {
+  background: #0e4fc7;
+}
+
+@media only screen and (max-width: 900px) {
+  .customer-stories-page .hero .img-s {
+    display: none;
+  }
+  .customer-stories-page .hero .hero-contents {
+    width: 100%;
+  }
+  .customer-stories-page .hero .hero-contents .w {
+    width: 90%;
+  }
+  .customer-stories-page .hero .hero-contents .w h1 {
+    font-size: 5vw;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .customer-stories-page .hero .hero-contents .w h1 {
+    font-size: 7vw;
+  }
 }
 
 /* ----------------------------------------------------------------
@@ -221,13 +267,6 @@
   margin-bottom: 30px;
 }
 
-.customer-stories-page .google-reviews-header h2 {
-  font-family: var(--font-industry);
-  font-size: 2.5rem;
-  color: #0A1B2E;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
 
 .customer-stories-page .google-reviews-button {
   display: inline-block;
@@ -396,9 +435,6 @@
     justify-self: center !important;
   }
 
-  .customer-stories-page .google-reviews-header h2 {
-    font-size: 2rem;
-  }
 
   .customer-stories-page .google-reviews-button {
     font-size: 1rem;
