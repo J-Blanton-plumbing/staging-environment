@@ -20,8 +20,8 @@ interface Props {
 export default function CategoryHero({ image, heading, intro }: Props) {
   return (
     <section className="hero relative w-full flex flex-col lg:flex-row min-h-[560px] lg:min-h-[600px]">
-      {/* Image column (~45%) — full-bleed cover; build's image treatment kept. */}
-      <div className="img-s relative w-full lg:w-[45%] h-[260px] sm:h-[360px] lg:h-auto lg:min-h-[600px]">
+      {/* Image column (~45%) — hidden on mobile (matches live site), visible lg+. */}
+      <div className="img-s hidden lg:block relative lg:w-[45%] lg:h-auto lg:min-h-[600px]">
         <Image src={image} alt={heading} fill priority className="object-cover" />
       </div>
 

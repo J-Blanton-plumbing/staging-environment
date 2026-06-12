@@ -54,12 +54,7 @@ export default function ServiceCard({
   service: Service;
   className?: string;
 }) {
-  // TEMP (review aid): the Plumbing page currently lives at /services/plumbing;
-  // its top-level /plumbing slug 404s until the routing brief lands. Point the
-  // Plumbing card at the real path so it's clickable during review. The other
-  // cards keep their Brief 07 §7 top-level slugs. Remove this special-case once
-  // the routing brief reconciles the top-level routes.
-  const href = service.slug === 'plumbing' ? '/services/plumbing' : `/${service.slug}`;
+  const href = service.slug === 'emergency-plumbing' ? '/emergency-plumbing' : `/services/${service.slug}`;
 
   return (
     <Link

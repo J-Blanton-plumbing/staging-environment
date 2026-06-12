@@ -56,7 +56,7 @@ export const PLUMBING: PlumbingContent = {
   },
   intro: {
     heading: 'EXPERT PLUMBING SOLUTIONS',
-    body: '', // TODO: intro paragraph
+    body: "When you need plumbing services, trust J. Blanton's team of certified professionals. From kitchen remodels to bathroom upgrades, we deliver expert solutions for all your home's plumbing needs. Our skilled technicians arrive promptly, equipped to handle any residential plumbing challenge in the Chicagoland area.",
   },
   problems: {
     heading: 'Plumbing Problems We Solve',

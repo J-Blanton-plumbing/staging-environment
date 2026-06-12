@@ -10,67 +10,63 @@ import TikTokFeed from '@/components/TikTokFeed';
 import ArticleGrid from '@/components/ArticleGrid';
 import LocationsSection from '@/components/LocationsSection';
 import { getArticles } from '@/lib/articles';
-import { PLUMBING } from '@/lib/content/plumbing';
+import { WATER_HEATER } from '@/lib/content/water-heater';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Plumbing Services',
+  title: 'Water Heater Installation & Repair in Chicagoland | J. Blanton Plumbing',
   description:
-    'Expert residential plumbing services from J. Blanton Plumbing. Bathroom, kitchen, laundry room, gas lines, and more — across Chicago and the suburbs.',
+    'When hot water disappears, our licensed plumbers provide fast water heater repair and expert water heater installation to restore comfort day or night.',
 };
 
-export default function PlumbingPage() {
-  const articles = getArticles(PLUMBING.articles.featuredSlugs);
+export default function WaterHeaterPage() {
+  const articles = getArticles(WATER_HEATER.articles.featuredSlugs);
 
   return (
     <>
-      {/* ============== HERO ============== */}
       <CategoryHero
-        image="/images/service-plumbing-hero.jpg"
-        heading={PLUMBING.hero.heading}
-        intro={PLUMBING.hero.intro}
+        image={WATER_HEATER.heroImage}
+        heading={WATER_HEATER.hero.heading}
+        intro={WATER_HEATER.hero.intro}
       />
 
-      {/* ============== HERO-NAV ============== */}
       <HeroNav />
 
-      {/* ============== CREAM BLOCK ============== */}
       <div className="cream bg-cream-100">
         <div className="w81 emergecy-plumbing w-[90%] lg:w-[81%] mx-auto pt-[80px] lg:pt-[120px]">
 
-          {/* F: intro section — red label + image + paragraph */}
           <section className="f grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-[100px] lg:mb-[140px]">
             <div>
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
-                {PLUMBING.intro.heading}
+                {WATER_HEATER.intro.heading}
               </p>
               <div className="custom-paragraphs space-y-4 text-navy-800 leading-relaxed">
-                <p>{PLUMBING.intro.body}</p>
+                {WATER_HEATER.intro.body.split('\n\n').map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
               </div>
             </div>
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
               <Image
-                src="/images/laundry-room.webp"
-                alt="Plumbing Services in Chicagoland"
+                src={WATER_HEATER.fImage}
+                alt="Water Heater Services in Chicagoland"
                 fill
                 className="object-cover"
               />
             </div>
           </section>
 
-          {/* NDC ep-card section — red bg with character + problems list */}
           <CharacterPanel
             className="ep-card ndc-section mb-[100px] lg:mb-[140px]"
             characterClassName="char hidden lg:block relative lg:w-[400px] lg:h-[520px] flex-shrink-0"
           >
-            {/* Content */}
             <div className="a flex-1 w-full px-8 md:px-12 lg:px-8 lg:pr-16 py-10 lg:py-16 text-white">
               <div className="r">
                 <p className="label font-display font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-tight mb-6 uppercase tracking-tight">
-                  {PLUMBING.problems.heading}
+                  {WATER_HEATER.problems.heading}
                 </p>
                 <ul className="space-y-3 mb-8">
-                  {PLUMBING.problems.items.map((p) => (
+                  {WATER_HEATER.problems.items.map((p) => (
                     <li key={p} className="service flex items-start gap-3 text-[16px] md:text-[18px]">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-brand-600 flex-shrink-0 mt-0.5">
                         <Check className="h-4 w-4" strokeWidth={3} />
@@ -90,13 +86,12 @@ export default function PlumbingPage() {
             </div>
           </CharacterPanel>
 
-          {/* ep-subcategories */}
           <section className="ep-subcategories mb-[100px] lg:mb-[140px]">
             <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-10 text-center">
-              {PLUMBING.subcategories.heading}
+              {WATER_HEATER.subcategories.heading}
             </p>
             <div className="services grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {PLUMBING.subcategories.items.map((sub) => (
+              {WATER_HEATER.subcategories.items.map((sub) => (
                 <Link
                   key={sub.label}
                   href={sub.href}
@@ -127,33 +122,39 @@ export default function PlumbingPage() {
             </div>
           </section>
 
-          {/* ep-map */}
+          {/* ep-new-section 1 — installation pitch (water heater only) */}
+          <section className="ep-new-section mb-[100px] lg:mb-[140px]">
+            <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
+              {WATER_HEATER.extraSection1.heading}
+            </p>
+            <div className="space-y-4 text-navy-800 leading-relaxed">
+              <p>{WATER_HEATER.extraSection1.para1}</p>
+              <p>{WATER_HEATER.extraSection1.para2}</p>
+            </div>
+          </section>
+
           <LocationsSection
             className="ep-map mb-[100px] lg:mb-[140px]"
             contentClassName="ep-contents"
             headingClassName="leading-tight uppercase"
             bodyClassName="text-navy-800 leading-relaxed"
-            heading={PLUMBING.serviceArea.heading}
-            body={[PLUMBING.serviceArea.body]}
+            heading={WATER_HEATER.serviceArea.heading}
+            body={[WATER_HEATER.serviceArea.body]}
             showButton={false}
           />
 
-          {/* ep-gr — Google Reviews */}
           <section className="ep-gr mb-[80px]">
             <GoogleReviews />
           </section>
 
-          {/* ep-tiktok */}
           <section className="ep-tiktok mb-[100px]">
             <TikTokFeed
-              headline={PLUMBING.tiktok.headline}
+              headline={WATER_HEATER.tiktok.headline}
               headlineClassName="ep-tiktok-headline"
             />
           </section>
 
-          {/* F2: preventative + Join No Drip Club */}
           <section className="f2 grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-[100px] lg:mb-[140px]">
-            {/* Image — left col on md+, middle on mobile (order-2) */}
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card order-2 md:order-1">
               <Image
                 src="/images/preventative.webp"
@@ -162,15 +163,13 @@ export default function PlumbingPage() {
                 className="object-cover"
               />
             </div>
-            {/* Text — right col on md+, top on mobile (order-1) */}
             <div className="order-1 md:order-2">
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
-                {PLUMBING.preventative.heading}
+                {WATER_HEATER.preventative.heading}
               </p>
               <p className="text-navy-800 leading-relaxed mb-6 whitespace-pre-line">
-                {PLUMBING.preventative.body}
+                {WATER_HEATER.preventative.body}
               </p>
-              {/* CTA visible on md+ only — mobile gets its own below the image */}
               <Link
                 href="/no-drip-club"
                 className="link-button hidden md:inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors"
@@ -178,7 +177,6 @@ export default function PlumbingPage() {
                 JOIN NOW <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Link>
             </div>
-            {/* CTA mobile only — order-3 places it after the image */}
             <Link
               href="/no-drip-club"
               className="link-button md:hidden order-3 inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors self-start"
@@ -187,16 +185,25 @@ export default function PlumbingPage() {
             </Link>
           </section>
 
-          {/* page-articles */}
+          {/* ep-new-section 2 — maintenance pitch (water heater only) */}
+          <section className="ep-new-section mb-[100px] lg:mb-[140px]">
+            <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
+              {WATER_HEATER.extraSection2.heading}
+            </p>
+            <div className="space-y-4 text-navy-800 leading-relaxed">
+              <p>{WATER_HEATER.extraSection2.para1}</p>
+              <p>{WATER_HEATER.extraSection2.para2}</p>
+            </div>
+          </section>
+
           <section className="page-articles mb-[100px] lg:mb-[140px]">
             <ArticleGrid articles={articles} />
           </section>
 
-          {/* F3: final-pitch conversion block (image left, content right) */}
           <section className="f3 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pb-[100px] lg:pb-[140px]">
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
               <Image
-                src="/images/plumbing-f3.webp"
+                src={WATER_HEATER.f3Image}
                 alt="J. Blanton Plumbing"
                 fill
                 className="object-cover"
@@ -204,10 +211,10 @@ export default function PlumbingPage() {
             </div>
             <div>
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
-                {PLUMBING.finalPitch.tagline}
+                {WATER_HEATER.finalPitch.tagline}
               </p>
               <p className="text-navy-800 leading-relaxed mb-6">
-                {PLUMBING.finalPitch.body}
+                {WATER_HEATER.finalPitch.body}
               </p>
               <Link
                 href={SITE.phoneHref}

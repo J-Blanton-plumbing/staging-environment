@@ -37,7 +37,7 @@ export default function CharacterPanel({
       {/* Red overlay */}
       <div className={cn('absolute inset-0 bg-brand-600/95', overlayClassName)} />
 
-      <div className={cn('relative z-[2] flex flex-col lg:flex-row items-center', innerClassName)}>
+      <div className={cn('relative z-[2] flex flex-col sm:flex-row items-center', innerClassName)}>
         {/* Character — left */}
         <div className={characterClassName}>
           <Image
