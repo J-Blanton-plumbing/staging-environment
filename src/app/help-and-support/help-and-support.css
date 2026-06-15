@@ -260,7 +260,8 @@
   }
   .help-support-page .hero .hero-contents .w {
     width: 90%;
-    padding: 50px 0 40px;
+    padding-top: 90px;
+    padding-bottom: 40px;
   }
   .help-support-page .hero .hero-contents .w h1 {
     font-size: 3vw;
@@ -342,12 +343,6 @@
   }
 }
 
-/* --- 640px ------------------------------------------------------------------ */
-@media only screen and (max-width: 640px) {
-  .help-support-page .hero .hero-contents .w {
-    padding: 20px 0;
-  }
-}
 
 /* --- 600px ------------------------------------------------------------------ */
 @media only screen and (max-width: 600px) {

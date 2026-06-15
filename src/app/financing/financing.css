@@ -256,6 +256,12 @@
 .financing-page .ep-map .map1 {
   width: 100%;
 }
+.financing-page .financing-map {
+  width: 100%;
+  height: 570px;
+  border: 0;
+  display: block;
+}
 
 /* ---- ep-tiktok (Google / social widget) ------------------------------------ */
 .financing-page .ep-tiktok-headline {
@@ -269,7 +275,8 @@
   color: #0a1b2e;
 }
 .financing-page .ep-tiktok {
-  overflow: scroll;
+  overflow-x: auto;
+  margin-top: 90px;
   margin-bottom: 90px;
 }
 
@@ -426,7 +433,8 @@
   }
   .financing-page .hero .hero-contents .w {
     width: 90%;
-    padding: 50px 0 40px;
+    padding-top: 90px;
+    padding-bottom: 40px;
   }
   .financing-page .hero .hero-contents .w h1 {
     font-size: 3vw;
@@ -493,6 +501,9 @@
     display: block;
     margin: 0 0 25px 0;
   }
+  .financing-page .ep-map .ep-contents .map2 .financing-map {
+    height: 300px;
+  }
   .financing-page .ep-map .map1 {
     display: none;
   }
@@ -513,6 +524,22 @@
   }
   .financing-page .ep-card > div .a .r > img {
     width: 100%;
+  }
+}
+
+/* --- 640px ------------------------------------------------------------------ */
+@media only screen and (max-width: 640px) {
+  /* Fix 6: pv section image too tall on mobile */
+  .financing-page .cream .pv .w81 > img {
+    height: 260px;
+  }
+  /* Fix 6: red-text font size reduced for mobile readability */
+  .financing-page .red-text-mobile {
+    font-size: 26px;
+  }
+  /* Fix 7: hide ep-card image on mobile for cleaner list layout */
+  .financing-page .ep-card > div .a .r > img {
+    display: none;
   }
 }
 

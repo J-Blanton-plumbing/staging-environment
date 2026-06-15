@@ -57,9 +57,11 @@ export default function LocationsPage() {
           ================================================================ */}
       <div className="hero">
         <div className="hero-map">
-          <div
-            className="elfsight-app-9da0734e-a27e-4557-85a0-da9b69617829"
-            data-elfsight-app-lazy
+          <iframe
+            className="w-full h-full min-h-[500px]"
+            loading="lazy"
+            src="https://maps.google.com/maps?hl=en&q=J.+Blanton+Plumbing,+Illinois&t=&z=10&ie=UTF8&iwloc=B&output=embed"
+            title="J. Blanton Plumbing service area"
           />
         </div>
         {/* hero-contents avoids Tailwind .contents { display:contents } collision */}

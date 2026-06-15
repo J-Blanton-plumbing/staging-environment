@@ -69,12 +69,6 @@ export default function FinancingPage() {
               {hero.ctaLabel}
             </a>
           </div>
-          <Image
-            src={hero.patternImage}
-            alt=""
-            fill
-            sizes="55vw"
-          />
         </div>
       </div>
 
@@ -140,14 +134,7 @@ export default function FinancingPage() {
                 height={451}
               />
               <div className="a">
-                <div className="l">
-                  <Image
-                    src={financingMadeSimple.leftImage}
-                    alt={financingMadeSimple.leftImageAlt}
-                    width={470}
-                    height={320}
-                  />
-                </div>
+                <div className="l" />
                 <div className="r">
                   <p className="label">{financingMadeSimple.label}</p>
                   {/* Mobile image — shown via CSS at ≤1000px */}
@@ -178,18 +165,27 @@ export default function FinancingPage() {
             <div className="ep-contents">
               {/* map2: shown on mobile only */}
               <div className="map2">
-                <div className={coverage.mapWidgetId} data-elfsight-app-lazy />
+                <iframe
+                  className="financing-map"
+                  loading="lazy"
+                  src="https://maps.google.com/maps?hl=en&q=J.+Blanton+Plumbing,+Illinois&t=&z=10&ie=UTF8&iwloc=B&output=embed"
+                  title="J. Blanton Plumbing service area"
+                />
               </div>
               <p className="red-text">{coverage.heading}</p>
               <p>{coverage.body}</p>
             </div>
             {/* map1: shown on desktop only */}
             <div className="map1">
-              <div className={coverage.mapWidgetId} data-elfsight-app-lazy />
+              <iframe
+                className="financing-map"
+                loading="lazy"
+                src="https://maps.google.com/maps?hl=en&q=J.+Blanton+Plumbing,+Illinois&t=&z=10&ie=UTF8&iwloc=B&output=embed"
+                title="J. Blanton Plumbing service area"
+              />
             </div>
           </div>
 
-          <p className="ep-tiktok-headline">{coverage.tikTokHeadline}</p>
           <div className="ep-tiktok">
             <div className={coverage.socialWidgetId} data-elfsight-app-lazy />
           </div>

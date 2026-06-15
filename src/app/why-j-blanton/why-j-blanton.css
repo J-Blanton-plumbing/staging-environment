@@ -369,7 +369,8 @@
   }
   .why-jb-page .hero .hero-contents .w {
     width: 90%;
-    padding: 50px 0 40px;
+    padding-top: 90px;
+    padding-bottom: 40px;
   }
   .why-jb-page .hero .hero-contents .w h1 {
     font-size: 3vw;
@@ -505,11 +506,6 @@
   }
 }
 
-@media only screen and (max-width: 640px) {
-  .why-jb-page .hero .hero-contents .w {
-    padding: 20px 0;
-  }
-}
 
 @media only screen and (max-width: 600px) {
   .why-jb-page .w-aboutus .pv .w81 > img {

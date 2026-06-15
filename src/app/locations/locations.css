@@ -317,6 +317,12 @@
   .locations-page .hero .hero-contents {
     width: 100%;
   }
+  .locations-page .hero .hero-contents .w {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
   .locations-page .ls-pv .w81 {
     flex-direction: column-reverse;
   }

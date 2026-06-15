@@ -14,7 +14,7 @@ export const FINANCING = {
   financingSolutionsReady: {
     label: 'FINANCING SOLUTIONS READY',
     body: "Don't let finances delay essential plumbing work. With J. Blanton's flexible financing options, you can get expert service now and pay over time. Our team works with trusted financial partners to make repairs and replacements affordable for every budget.",
-    image: 'https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp',
+    image: 'https://d1rplazj5a80fb.cloudfront.net/images/clogged+drain-4.webp',
     imageAlt: 'Financing',
   },
   financingMadeSimple: {

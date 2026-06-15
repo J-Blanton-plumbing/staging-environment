@@ -78,6 +78,8 @@
   }
   .customer-stories-page .hero .hero-contents .w {
     width: 90%;
+    padding-top: 90px;
+    padding-bottom: 40px;
   }
   .customer-stories-page .hero .hero-contents .w h1 {
     font-size: 5vw;

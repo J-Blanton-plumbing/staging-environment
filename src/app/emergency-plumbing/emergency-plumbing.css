@@ -195,13 +195,13 @@
 
 /* ---- .ep-gr — Google Reviews --------------------------------------------- */
 .ep-page .ep-gr {
-  overflow: scroll;
+  overflow-x: auto;
   margin: 90px 0;
 }
 
 /* ---- TikTok --------------------------------------------------------------- */
 .ep-page .ep-tiktok {
-  overflow: scroll;
+  overflow-x: auto;
   margin-bottom: 90px;
 }
 

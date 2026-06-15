@@ -266,7 +266,7 @@
 .kh-page .kh-gr {
   width: 81%;
   margin: 100px auto 0 auto;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /* ---- Slider (block preserved from theme; not wired in Phase 1) ------------ */
@@ -378,7 +378,8 @@
   }
   .kh-page .hero .hero-contents .w {
     width: 90%;
-    padding: 50px 0 40px;
+    padding-top: 90px;
+    padding-bottom: 40px;
   }
   .kh-page .hero .hero-contents .w h1 {
     font-size: 6vw;
@@ -423,24 +424,34 @@
   .kh-page .kh #kh-articles {
     grid-template-columns: auto;
   }
+  /* Stack the intro row vertically and restore heading size */
+  .kh-page .align1 {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
   .kh-page .align1 .red-text {
-    font-size: 18px;
-    min-width: 90px;
-    word-break: break-word;
+    font-size: 28px;
+    min-width: unset;
+    word-break: normal;
+  }
+  .kh-page .align1 div {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 14px;
+    width: 100%;
   }
   .kh-page .align1 div p {
-    width: auto;
-    flex: 1 1 0%;
-    font-size: 13px;
-    line-height: 22px;
-    margin-right: 10px;
+    width: 100%;
+    flex: unset;
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0 0 16px 0;
   }
   .kh-page .align1 .link-button {
-    padding: 0 14px;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    height: 40px;
+    display: none;
   }
+
 }
 @media only screen and (max-width: 480px) {
   .kh-page .kh-slider {

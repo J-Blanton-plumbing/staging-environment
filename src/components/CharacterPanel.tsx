@@ -32,11 +32,13 @@ export default function CharacterPanel({
   return (
     <section
       className={cn('relative rounded-lg overflow-hidden bg-cover bg-center', className)}
-      style={{ backgroundImage: 'url(/images/no-drip-club.webp)' }}
+      style={{
+        backgroundColor: '#BC0E0E',
+        backgroundImage: 'url(/images/no-drip-club.webp)',
+        backgroundBlendMode: 'multiply',
+      }}
     >
-      {/* Red overlay */}
-      <div className={cn('absolute inset-0 bg-brand-600/95', overlayClassName)} />
-
+      <div className={cn('absolute inset-0 bg-brand-600/15', overlayClassName)} />
       <div className={cn('relative z-[2] flex flex-col sm:flex-row items-center', innerClassName)}>
         {/* Character — left */}
         <div className={characterClassName}>

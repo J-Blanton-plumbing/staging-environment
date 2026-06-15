@@ -35,7 +35,7 @@ export default function HelpSupportPage() {
             fill
             sizes="45vw"
             priority
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: 'cover' }}
           />
         </div>
         {/* hero-contents avoids Tailwind .contents { display:contents } collision */}
@@ -57,12 +57,6 @@ export default function HelpSupportPage() {
               {hero.ctaLabel}
             </div>
           </div>
-          <Image
-            src={hero.patternImage}
-            alt=""
-            fill
-            sizes="55vw"
-          />
         </div>
       </div>
 
