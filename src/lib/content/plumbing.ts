@@ -49,7 +49,7 @@ export interface PlumbingContent {
 
 export const PLUMBING: PlumbingContent = {
   hero: {
-    heading: 'Expert Plumbing Services by J. Blanton',
+    heading: 'Expert Plumbing Services near you.',
     // Confirmed live hero description (brief-08 §1) — do not substitute.
     intro:
       'Expert Residential Plumbing Services You Can Trust. From bathroom remodels to water heater installations, our certified plumbers deliver quality solutions for your home. Call J. Blanton for professional plumbing done right!',
