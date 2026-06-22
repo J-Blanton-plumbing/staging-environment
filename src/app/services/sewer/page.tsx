@@ -11,7 +11,12 @@ import ArticleGrid from '@/components/ArticleGrid';
 import LocationsSection from '@/components/LocationsSection';
 import { getArticles } from '@/lib/articles';
 import { SEWER } from '@/lib/content/sewer';
+import { getSewerCmsContent, mergeWithStaticImages } from '@/lib/cms/sewer';
+import type { SewerContent } from '@/lib/content/sewer';
 import type { Metadata } from 'next';
+
+// Force server-side render so DB edits are reflected immediately without a rebuild
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Sewer Repair & Rodding Services in Chicagoland | J. Blanton Plumbing',
@@ -19,15 +24,26 @@ export const metadata: Metadata = {
     "24/7 Emergency Sewer Service: When disaster strikes, we're here. From backed-up lines to overflowing drains, our expert team will respond immediately to protect your home and restore your peace of mind.",
 };
 
-export default function SewerPage() {
-  const articles = getArticles(SEWER.articles.featuredSlugs);
+async function getContent(): Promise<SewerContent> {
+  try {
+    const cms = await getSewerCmsContent();
+    if (cms) return mergeWithStaticImages(cms, SEWER);
+  } catch {
+    // DB unreachable — fall through to static fallback
+  }
+  return SEWER;
+}
+
+export default async function SewerPage() {
+  const content = await getContent();
+  const articles = getArticles(content.articles.featuredSlugs);
 
   return (
     <>
       <CategoryHero
-        image={SEWER.heroImage}
-        heading={SEWER.hero.heading}
-        intro={SEWER.hero.intro}
+        image={content.heroImage}
+        heading={content.hero.heading}
+        intro={content.hero.intro}
       />
 
       <HeroNav />
@@ -38,15 +54,15 @@ export default function SewerPage() {
           <section className="f grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-[100px] lg:mb-[140px]">
             <div>
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
-                {SEWER.intro.heading}
+                {content.intro.heading}
               </p>
               <div className="custom-paragraphs space-y-4 text-navy-800 leading-relaxed">
-                <p>{SEWER.intro.body}</p>
+                <p>{content.intro.body}</p>
               </div>
             </div>
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
               <Image
-                src={SEWER.fImage}
+                src={content.fImage}
                 alt="Sewer Services in Chicagoland"
                 fill
                 className="object-cover"
@@ -61,10 +77,10 @@ export default function SewerPage() {
             <div className="a flex-1 w-full px-8 md:px-12 lg:px-8 lg:pr-16 py-10 lg:py-16 text-white">
               <div className="r">
                 <p className="label font-display font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-tight mb-6 uppercase tracking-tight">
-                  {SEWER.problems.heading}
+                  {content.problems.heading}
                 </p>
                 <ul className="space-y-3 mb-8">
-                  {SEWER.problems.items.map((p) => (
+                  {content.problems.items.map((p) => (
                     <li key={p} className="service flex items-start gap-3 text-[16px] md:text-[18px]">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-brand-600 flex-shrink-0 mt-0.5">
                         <Check className="h-4 w-4" strokeWidth={3} />
@@ -86,10 +102,10 @@ export default function SewerPage() {
 
           <section className="ep-subcategories mb-[100px] lg:mb-[140px]">
             <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-10 text-center">
-              {SEWER.subcategories.heading}
+              {content.subcategories.heading}
             </p>
             <div className="services grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {SEWER.subcategories.items.map((sub) => (
+              {content.subcategories.items.map((sub) => (
                 <Link
                   key={sub.label}
                   href={sub.href}
@@ -125,8 +141,8 @@ export default function SewerPage() {
             contentClassName="ep-contents"
             headingClassName="leading-tight uppercase"
             bodyClassName="text-navy-800 leading-relaxed"
-            heading={SEWER.serviceArea.heading}
-            body={[SEWER.serviceArea.body]}
+            heading={content.serviceArea.heading}
+            body={[content.serviceArea.body]}
             showButton={false}
           />
 
@@ -136,7 +152,7 @@ export default function SewerPage() {
 
           <section className="ep-tiktok mb-[100px]">
             <TikTokFeed
-              headline={SEWER.tiktok.headline}
+              headline={content.tiktok.headline}
               headlineClassName="ep-tiktok-headline"
             />
           </section>
@@ -152,10 +168,10 @@ export default function SewerPage() {
             </div>
             <div className="order-1 md:order-2">
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
-                {SEWER.preventative.heading}
+                {content.preventative.heading}
               </p>
               <p className="text-navy-800 leading-relaxed mb-6 whitespace-pre-line">
-                {SEWER.preventative.body}
+                {content.preventative.body}
               </p>
               <Link
                 href="/no-drip-club"
@@ -179,7 +195,7 @@ export default function SewerPage() {
           <section className="f3 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pb-[100px] lg:pb-[140px]">
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
               <Image
-                src={SEWER.f3Image}
+                src={content.f3Image}
                 alt="J. Blanton Plumbing"
                 fill
                 className="object-cover"
@@ -187,10 +203,10 @@ export default function SewerPage() {
             </div>
             <div>
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
-                {SEWER.finalPitch.tagline}
+                {content.finalPitch.tagline}
               </p>
               <p className="text-navy-800 leading-relaxed mb-6">
-                {SEWER.finalPitch.body}
+                {content.finalPitch.body}
               </p>
               <Link
                 href={SITE.phoneHref}

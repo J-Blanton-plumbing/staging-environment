@@ -7,6 +7,12 @@ export function middleware(req: NextRequest) {
   // Skip auth if credentials not configured (local dev without env vars)
   if (!user || !pass) return NextResponse.next()
 
+  // CMS routes handle their own auth — skip Basic Auth for them
+  const { pathname } = req.nextUrl
+  if (pathname.startsWith('/api/cms') || pathname.startsWith('/admin')) {
+    return NextResponse.next()
+  }
+
   const auth = req.headers.get('authorization')
   if (auth) {
     const [scheme, encoded] = auth.split(' ')
