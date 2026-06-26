@@ -1,0 +1,44 @@
+CMS API Stress Test Results
+Generated: 2026-06-25T20:25:14.024Z
+Target: http://localhost:3000
+
+SUMMARY: 26 passed, 0 failed
+
+ALL RESULTS:
+  [PASS] B-1: GET /api/cms/sewer → 200 with valid shape
+  [PASS] B-1: GET /api/cms/plumbing → 200 with valid shape
+  [PASS] B-1: GET /api/cms/drain → 200 with valid shape
+  [PASS] B-1: GET /api/cms/water-heater → 200 with valid shape
+  [PASS] B-1: GET /api/cms/water-quality → 200 with valid shape
+  [PASS] B-1: GET /api/cms/commercial → 200 with valid shape
+  [PASS] B-2: GET /api/cms/nonexistent-slug-xyz → 404
+  [PASS] B-3: All known slugs have consistent top-level shape
+  [PASS] B-4a: GET /api/cms/sewer%20rodding (space) → 404, not 500
+  [PASS] B-4b: GET /api/cms/../../etc/passwd → 404 or 400, not 500
+  [PASS] B-4c: GET /api/cms/<script>alert(1)</script> → 404, not 500
+  [PASS] C-1: PUT /api/cms/sewer with no auth → 401
+  [PASS] C-2: PUT /api/cms/sewer with wrong password → 401
+  [PASS] C-3: PUT /api/cms/sewer with correct auth → not 401
+  [PASS] D-1: Valid full payload saves and round-trips correctly
+         saved (200) — server did not crash
+  [PASS] D-2: 10,000-char hero_heading → no 500
+  [PASS] D-3: Special characters round-trip without corruption or 500
+         accepted (200) — no crash
+  [PASS] D-4: Empty hero_heading and hero_intro → no crash
+         rejected (400) — no crash
+  [PASS] D-5: Missing hero_heading field → no 500
+         status 400 — no crash
+  [PASS] D-6: Wrong types (subcategories as string, hero_heading as number) → no 500
+         status 400 — no crash
+  [PASS] D-7: Null hero_heading → no 500
+  [PASS] D-8a: Empty subcategories array → no crash
+  [PASS] D-8b: Subcategory with all fields blank → no crash
+         status 400 — no crash
+  [PASS] D-8c: Subcategory missing label field → no crash
+  [PASS] D-9: PUT to existing slug "sewer" updates, does not duplicate
+  [PASS] D-10: stress-test-temp row deleted and GET returns 404
+
+
+══════════════════════════════════════════════
+  RESULTS: 26 passed, 0 failed
+══════════════════════════════════════════════

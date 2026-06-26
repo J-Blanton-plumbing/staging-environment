@@ -9,9 +9,11 @@
  */
 import type { ServiceContent } from '@/types/service';
 import { SEWER_RODDING } from './sewer-rodding';
+import { HYDRO_JETTING_SERVICE } from './hydro-jetting';
 
 const SERVICE_CONTENT: Record<string, ServiceContent> = {
   'sewer-rodding': SEWER_RODDING,
+  'hydro-jetting': HYDRO_JETTING_SERVICE,
 };
 
 /** Resolve a slug to its service content, or `undefined` if unregistered. */

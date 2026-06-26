@@ -2,8 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import { CITY_REGISTRY } from '@/lib/content/cities/index';
+import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getMainPagePreview } from '@/lib/cms/preview';
+import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import './locations.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Locations | J. Blanton Plumbing',
@@ -42,7 +47,16 @@ const SERVICE_CENTERS = [
   ],
 ];
 
-export default function LocationsPage() {
+export default async function LocationsPage() {
+  const preview = await getMainPagePreview('locations');
+  const db = preview?.content ?? await getMainPageContent('locations').catch(() => null);
+  const d = db ?? {};
+  const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  const heroHeading = m(d.hero_heading, 'CHICAGO & SUBURBS TOP-RATED PLUMBING COMPANY');
+  const heroDescription = m(d.hero_description, "For over 30 years, J. Blanton Plumbing has been the trusted choice for plumbing services in Chicago and the surrounding suburbs. From burst pipes to kitchen floods, no matter where you are, our team is ready 24/7 to restore your home's comfort.");
+  const heroCta = m(d.hero_cta, 'SCHEDULE A SERVICE');
+  const introLabel = m(d.intro_label, 'Your Trusted Plumbing Experts Serving Chicago and Suburbs');
+  const introBody = m(d.intro_body, "At J. Blanton Plumbing, we've proudly serving Chicago and its surrounding suburbs for over 30 years. Our team of experienced and certified plumbers is committed to delivering high-quality service that our customers can rely on-day or night. From residential repairs to large-scale plumbing projects, we handle it all with professionalism, efficiency, and a dedication to customer satisfaction.");
   const cityCount = CITY_REGISTRY.length;
   const chunkSize = Math.ceil(cityCount / 5);
   const cityColumns: (typeof CITY_REGISTRY)[] = [];
@@ -52,6 +66,7 @@ export default function LocationsPage() {
 
   return (
     <div className="locations-page">
+      {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/locations" liveUrl="/locations" draftId={preview.meta.id} pageType="main" pageSlug="locations" />}
       {/* ================================================================
           HERO — map widget left, text right
           ================================================================ */}
@@ -67,13 +82,9 @@ export default function LocationsPage() {
         {/* hero-contents avoids Tailwind .contents { display:contents } collision */}
         <div className="hero-contents">
           <div className="w">
-            <h1>CHICAGO &amp; SUBURBS TOP-RATED PLUMBING COMPANY</h1>
+            <h1>{heroHeading}</h1>
             <p className="sub-label"></p>
-            <p className="hero-desc">
-              For over 30 years, J. Blanton Plumbing has been the trusted choice for plumbing
-              services in Chicago and the surrounding suburbs. From burst pipes to kitchen floods,
-              no matter where you are, our team is ready 24/7 to restore your home&apos;s comfort.
-            </p>
+            <p className="hero-desc">{heroDescription}</p>
             <div
               className="involveme_popup"
               data-params="source=,campaignname=,utm_campaign=,utm_adgroup=,keyword=,network=,device=,medium=,gclid=,msclkid="
@@ -83,7 +94,7 @@ export default function LocationsPage() {
               data-popup-size="medium"
               data-organization-url="https://jblantonplumbing.involve.me"
             >
-              <p>SCHEDULE A SERVICE</p>
+              <p>{heroCta}</p>
             </div>
           </div>
         </div>
@@ -103,14 +114,8 @@ export default function LocationsPage() {
         <div className="ls-pv">
           <div className="w81">
             <div className="ls-pv-text">
-              <p className="red-text">Your Trusted Plumbing Experts Serving Chicago and Suburbs</p>
-              <p>
-                At J. Blanton Plumbing, we&apos;ve proudly serving Chicago and its surrounding
-                suburbs for over 30 years. Our team of experienced and certified plumbers is
-                committed to delivering high-quality service that our customers can rely on-day or
-                night. From residential repairs to large-scale plumbing projects, we handle it all
-                with professionalism, efficiency, and a dedication to customer satisfaction.
-              </p>
+              <p className="red-text">{introLabel}</p>
+              <p>{introBody}</p>
               <p>
                 Whether you&apos;re in the heart of the city or in suburbs like Northbrook,
                 Arlington Heights, or Evanston, we&apos;re here to address all your plumbing needs.

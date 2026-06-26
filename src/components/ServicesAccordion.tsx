@@ -71,7 +71,7 @@ export default function ServicesAccordion() {
 
       <Link
         href="/services"
-        className="link-button mt-[25px] flex w-full items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3.5 rounded transition-colors"
+        className="link-button mt-[25px] flex w-full items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3.5 rounded-full transition-colors duration-150"
       >
         VIEW ALL SERVICES <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
       </Link>

@@ -11,18 +11,20 @@ import {
 } from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, WATER_TESTING_FAQS } from '@/lib/content/cities/shared';
 import { getArticles } from '@/lib/articles';
+import { getCityCmsContent } from '@/lib/cms/city-pages';
+import { getCityPreview } from '@/lib/cms/preview';
 import CoverageAreaCity from '@/components/CoverageAreaCity';
 import LocalOfficeCity from '@/components/LocalOfficeCity';
+import PreviewBanner from '@/components/PreviewBanner';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
  *
- * One route tree over the city registry: each entry carries a `type`, and this
- * builder renders the matching template — `coverage-area` → CoverageAreaCity
- * (this brief), `local-office` → LocalOfficeCity (the Brief 09 video-hero layout,
- * folded in from the old standalone `/evanston` route). Adding or re-typing a
- * city is a registry edit, no code change.
+ * Brief 31/32: DB content merged when a city_pages row exists; falls back silently
+ * to static content for the 140+ non-seeded cities.
  */
+
+export const dynamic = 'force-dynamic';
 
 // Only registry slugs are valid pages; anything else 404s.
 export const dynamicParams = false;
@@ -49,28 +51,106 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
   };
 }
 
-export default function CityPage({ params }: { params: { city: string } }) {
+export default async function CityPage({ params }: { params: { city: string } }) {
   const entry = getCity(params.city);
   if (!entry) notFound();
 
-  if (entry.type === 'local-office') {
+  const preview = await getCityPreview(params.city);
+  const previewDraft = preview ? preview.meta : null;
+  let db = preview ? preview.db : await getCityCmsContent(params.city).catch(() => null);
+
+  // Brief 35: use template_type from DB when available; fall back to registry type
+  const templateType: string = db?.templateType ?? entry.type;
+
+  if (templateType === 'local-office') {
     const content = getLocalOfficeContent(entry.slug);
     if (!content) notFound();
-    return <LocalOfficeCity city={content} />;
+
+    const merged = db ? {
+      ...content,
+      hero: {
+        ...content.hero,
+        // poster image: use DB URL when non-empty
+        video: db.heroImage
+          ? { ...content.hero.video, poster: db.heroImage }
+          : content.hero.video,
+        headingLine1: db.heroHeadingLine1 || content.hero.headingLine1,
+        headingLine2: db.heroHeadingLine2 ?? content.hero.headingLine2,
+        intro:        db.heroDescription  || content.hero.intro,
+      },
+      why: {
+        ...content.why,
+        heading: db.contentHeading || content.why.heading,
+        body:    db.contentBody    || content.why.body,
+      },
+      faqs: db.faqs.length > 0 ? db.faqs : content.faqs,
+    } : content;
+
+    return (
+      <>
+        {previewDraft && (
+          <PreviewBanner
+            label={previewDraft.label}
+            creatorName={previewDraft.creator_name}
+            editorUrl={`/admin/city/${params.city}`}
+            liveUrl={`/${params.city}`}
+            draftId={previewDraft.id}
+            pageType="city"
+            pageSlug={params.city}
+          />
+        )}
+        <LocalOfficeCity city={merged} />
+      </>
+    );
   }
 
+  // Coverage Area
   const content = getCoverageContent(entry.slug);
   const articles = getArticles(content?.articleSlugs ?? DEFAULT_ARTICLE_SLUGS);
 
+  let mergedContent = content;
+  if (db) {
+    const base = content ?? { slug: params.city };
+    mergedContent = {
+      ...base,
+      // hero image — non-empty DB URL wins over static file
+      heroImage:         db.heroImage      || base.heroImage,
+      // h1Override — DB line1 wins when non-empty
+      h1Override:        db.heroHeadingLine1 || base.h1Override,
+      // callout uses heroCallout column (separate from heroDescription)
+      callout:           db.heroCallout    || base.callout,
+      // "We've Got You Covered" body
+      coveredBody:       db.contentBody    || base.coveredBody,
+      // "manplumber" block
+      manplumberHeading: db.f2Heading      || base.manplumberHeading,
+      manplumberBody:    db.f2Body         || base.manplumberBody,
+    };
+  }
+
+  const mergedFaqs = db && db.faqs.length > 0 ? db.faqs : WATER_TESTING_FAQS;
+
   return (
-    <CoverageAreaCity
-      name={entry.name}
-      content={content}
-      office={getOffice(entry.slug)}
-      area={getArea(entry.slug)}
-      articles={articles}
-      faqs={WATER_TESTING_FAQS}
-      cities={getGridCities()}
-    />
+    <>
+      {previewDraft && (
+        <PreviewBanner
+          label={previewDraft.label}
+          creatorName={previewDraft.creator_name}
+          editorUrl={`/admin/city/${params.city}`}
+          liveUrl={`/${params.city}`}
+          draftId={previewDraft.id}
+          pageType="city"
+          pageSlug={params.city}
+        />
+      )}
+      <CoverageAreaCity
+        name={entry.name}
+        content={mergedContent}
+        office={getOffice(entry.slug)}
+        area={getArea(entry.slug)}
+        articles={articles}
+        faqs={mergedFaqs}
+        cities={getGridCities()}
+      />
+    </>
   );
 }

@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { writeFile } from 'fs/promises';
 import path from 'path';
+import { getSession } from '@/lib/auth/session';
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
 
 export async function POST(req: NextRequest) {
+  const session = await getSession(req);
   const authHeader = req.headers.get('authorization');
-  const expected = `Bearer ${process.env.CMS_ADMIN_PASSWORD}`;
-  if (!authHeader || authHeader !== expected) {
+  const legacyAuth = authHeader === `Bearer ${process.env.CMS_ADMIN_PASSWORD}`;
+  if (!session && !legacyAuth) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

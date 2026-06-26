@@ -1,17 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { jwtVerify } from 'jose'
 
-export function middleware(req: NextRequest) {
+const COOKIE_NAME = 'cms_session'
+
+async function verifySession(req: NextRequest): Promise<boolean> {
+  try {
+    const token = req.cookies.get(COOKIE_NAME)?.value
+    if (!token) return false
+    const secret = process.env.CMS_SESSION_SECRET
+    if (!secret) return false
+    await jwtVerify(token, new TextEncoder().encode(secret))
+    return true
+  } catch {
+    return false
+  }
+}
+
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl
+
+  // ── CMS admin session gate ─────────────────────────────────────────────
+  if (pathname.startsWith('/admin')) {
+    // Login page and auth API are always allowed through
+    if (pathname === '/admin/login' || pathname.startsWith('/api/auth/')) {
+      return NextResponse.next()
+    }
+
+    const valid = await verifySession(req)
+    if (!valid) {
+      const loginUrl = new URL('/admin/login', req.url)
+      return NextResponse.redirect(loginUrl)
+    }
+
+    return NextResponse.next()
+  }
+
+  // ── Preview Basic Auth (non-admin routes) ──────────────────────────────
+  // Skip for CMS API routes, auth routes, and preview routes
+  if (pathname.startsWith('/api/cms') || pathname.startsWith('/api/auth') || pathname.startsWith('/api/preview')) {
+    return NextResponse.next()
+  }
+
   const user = process.env.PREVIEW_USER
   const pass = process.env.PREVIEW_PASS
 
-  // Skip auth if credentials not configured (local dev without env vars)
+  // Skip Basic Auth if credentials not configured
   if (!user || !pass) return NextResponse.next()
-
-  // CMS routes handle their own auth — skip Basic Auth for them
-  const { pathname } = req.nextUrl
-  if (pathname.startsWith('/api/cms') || pathname.startsWith('/admin')) {
-    return NextResponse.next()
-  }
 
   const auth = req.headers.get('authorization')
   if (auth) {

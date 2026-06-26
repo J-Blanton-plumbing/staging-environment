@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import { HELP_SUPPORT } from '@/lib/content/help-and-support';
+import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getMainPagePreview } from '@/lib/cms/preview';
+import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import './help-and-support.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Help & Support | J. Blanton Plumbing',
@@ -18,11 +23,20 @@ const INVOLVE_ME = {
   organizationUrl: 'https://jblantonplumbing.involve.me',
 };
 
-export default function HelpSupportPage() {
-  const { hero, customerService, billingQuestions, plumbingIssue } = HELP_SUPPORT;
+export default async function HelpSupportPage() {
+  const preview = await getMainPagePreview('help-and-support');
+  const db = preview?.content ?? await getMainPageContent('help-and-support').catch(() => null);
+  const d = db ?? {};
+  const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  const { hero: _hero, customerService: _cs, billingQuestions: _bq, plumbingIssue: _pi } = HELP_SUPPORT;
+  const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description) };
+  const customerService = { ..._cs, label: m(d.customer_service_label, _cs.label), body: m(d.customer_service_body, _cs.body) };
+  const billingQuestions = { ..._bq, label: m(d.billing_questions_label, _bq.label), body: m(d.billing_questions_body, _bq.body) };
+  const plumbingIssue = { ..._pi, label: m(d.plumbing_issue_label, _pi.label), body: m(d.plumbing_issue_body, _pi.body) };
 
   return (
     <div className="help-support-page">
+      {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/help-and-support" liveUrl="/help-and-support" draftId={preview.meta.id} pageType="main" pageSlug="help-and-support" />}
 
       {/* ================================================================
           HERO

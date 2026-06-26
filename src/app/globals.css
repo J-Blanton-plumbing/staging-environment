@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply text-navy-800 bg-white antialiased font-sans;
+    @apply text-navy-800 bg-cream-100 antialiased font-sans;
   }
 
   h1, h2, h3, h4, h5 {
@@ -17,21 +17,22 @@
 }
 
 @layer components {
+  /* Carmine primary — red actions (nav links, secondary CTAs on light bg) */
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-full transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 cursor-pointer;
   }
 
-  /* Cerulean primary CTA — brand spec for forms (bg #1560E6, hover Carmine #BC0E0E). */
+  /* Cerulean primary CTA — brand spec: Cerulean bg #1560E6 → hover Carmine #BC0E0E, pill shape. */
   .btn-cta {
-    @apply inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-full transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 cursor-pointer;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 bg-white hover:bg-cream-100 text-navy-800 font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md border-2 border-navy-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 bg-cream-100 hover:bg-cream-200 text-navy-800 font-display font-bold uppercase tracking-wide px-6 py-3 rounded-full border-2 border-navy-800 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2 cursor-pointer;
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center gap-2 bg-transparent hover:bg-white/10 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-md border-2 border-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 bg-transparent hover:bg-white/10 text-white font-display font-bold uppercase tracking-wide px-6 py-3 rounded-full border-2 border-white transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 cursor-pointer;
   }
 
   .section-heading {
@@ -539,4 +540,65 @@
     width: 100%;
     text-align: center;
   }
+}
+
+/* ============================================================================
+   Scroll entrance animations — fade-in + slight upward slide.
+   Applied via JS IntersectionObserver on `.animate-on-scroll` elements.
+   The `.in-view` class is added once the element crosses the viewport threshold.
+   Respects prefers-reduced-motion: when motion is reduced, elements are simply
+   shown at full opacity with no movement (the class adds opacity:1 only).
+   ========================================================================== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger siblings — each child delays 80ms more than the previous */
+.animate-on-scroll:nth-child(2) { transition-delay: 80ms; }
+.animate-on-scroll:nth-child(3) { transition-delay: 160ms; }
+.animate-on-scroll:nth-child(4) { transition-delay: 240ms; }
+.animate-on-scroll:nth-child(5) { transition-delay: 320ms; }
+.animate-on-scroll:nth-child(6) { transition-delay: 400ms; }
+
+/* ============================================================================
+   prefers-reduced-motion — disable ALL transitions and animations site-wide
+   when the user has opted into reduced motion. This overrides every duration
+   and animation defined above or in component styles.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Scroll animations: skip the animated state entirely */
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-on-scroll.in-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* City marquee — stop the infinite scroll */
+  .city-marquee-track {
+    animation: none;
+  }
+}
+
+/* ── Preview banner: push fixed navbar below the 44px banner ────────────── */
+html[data-preview] header {
+  top: 44px !important;
 }

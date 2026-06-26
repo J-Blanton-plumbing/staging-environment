@@ -44,7 +44,7 @@ export default function ScheduleButton({
       role="button"
       tabIndex={0}
       className={cn(
-        'involveme_popup link-button inline-flex items-center justify-center gap-2 font-display font-semibold tracking-wider rounded transition-colors cursor-pointer',
+        'involveme_popup link-button inline-flex items-center justify-center gap-2 font-display font-semibold tracking-wider rounded-full transition-colors duration-150 cursor-pointer',
         VARIANTS[variant],
         SIZES[size],
         className

@@ -69,7 +69,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center px-[24px] xl:px-[30px] font-display font-medium text-brand-600 hover:text-brand-700 text-[14px] tracking-wide"
+                className="flex items-center px-[24px] xl:px-[30px] font-display font-medium text-brand-600 hover:text-brand-700 hover:bg-brand-50 text-[14px] tracking-wide transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
               >
                 {link.label}
               </Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
             {/* Phone — uses the call-tracking headerPhone (see src/lib/site.ts) */}
             <Link
               href={SITE.headerPhoneHref}
-              className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 font-display font-semibold"
+              className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
             >
               <Phone className="h-[20px] w-[20px] mr-1.5" strokeWidth={2.5} />
               {SITE.headerPhone}

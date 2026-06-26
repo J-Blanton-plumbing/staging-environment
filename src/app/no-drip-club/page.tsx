@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import { NDC, type InvolveMeConfig } from '@/lib/content/ndc';
+import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getMainPagePreview } from '@/lib/cms/preview';
+import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import './ndc.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'No Drip Club',
@@ -81,11 +86,20 @@ function BenefitGroup({
   );
 }
 
-export default function NoDripClubPage() {
-  const { hero, card, how, wait, involveMe } = NDC;
+export default async function NoDripClubPage() {
+  const preview = await getMainPagePreview('no-drip-club');
+  const db = preview?.content ?? await getMainPageContent('no-drip-club').catch(() => null);
+  const d = db ?? {};
+  const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  const { hero: _hero, card, how, wait, involveMe } = NDC;
+  const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description), cta: m(d.hero_cta, _hero.cta) };
+  const howH = m(d.how_heading, how.heading);
+  const waitS = { ...wait, heading: m(d.wait_heading, wait.heading), body: m(d.wait_body, wait.body), cta: m(d.wait_cta, wait.cta) };
+  const pricing = m(d.pricing, card.pricing);
 
   return (
     <div className="ndc-page">
+      {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/no-drip-club" liveUrl="/no-drip-club" draftId={preview.meta.id} pageType="main" pageSlug="no-drip-club" />}
       {/* ============== HERO: YouTube embed + heading/desc/CTA ============== */}
       <div className="hero">
         <div className="img-s">
@@ -140,7 +154,7 @@ export default function NoDripClubPage() {
                         headingClassName="sub-label"
                       />
                     ))}
-                    <p className="sub-label mt">{card.pricing}</p>
+                    <p className="sub-label mt">{pricing}</p>
                     {card.footnotes.map((note) => (
                       <p key={note}>{note}</p>
                     ))}
@@ -154,7 +168,7 @@ export default function NoDripClubPage() {
           <InvolveMePopup label={NDC.signUpCta} className="ndc-blue-button link-button" cfg={involveMe} />
 
           {/* HOW IT WORKS */}
-          <p className="red-text ndc-red-text-center">{how.heading}</p>
+          <p className="red-text ndc-red-text-center">{howH}</p>
           <div className="ndc-how-it-works">
             {how.steps.map((step) => (
               <div key={step.label}>
@@ -172,14 +186,14 @@ export default function NoDripClubPage() {
           {/* WHAT ARE YOU WAITING FOR? */}
           <div className="ndc-wait">
             <div>
-              <p className="red-text">{wait.heading}</p>
+              <p className="red-text">{waitS.heading}</p>
               {/* mobile-only image (hidden on desktop via CSS) */}
-              <Image src={wait.image} alt={wait.imageAlt} width={470} height={320} />
-              <p>{wait.body}</p>
-              <InvolveMePopup label={wait.cta} className="link-button" cfg={involveMe} />
+              <Image src={waitS.image} alt={waitS.imageAlt} width={470} height={320} />
+              <p>{waitS.body}</p>
+              <InvolveMePopup label={waitS.cta} className="link-button" cfg={involveMe} />
             </div>
             {/* desktop image */}
-            <Image src={wait.image} alt={wait.imageAlt} width={470} height={320} />
+            <Image src={waitS.image} alt={waitS.imageAlt} width={470} height={320} />
           </div>
         </div>
       </div>

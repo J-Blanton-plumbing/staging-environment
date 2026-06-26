@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ArrowRight, Check } from 'lucide-react';
 import { SITE } from '@/lib/site';
@@ -11,7 +11,10 @@ import ArticleGrid from '@/components/ArticleGrid';
 import LocationsSection from '@/components/LocationsSection';
 import { getArticles } from '@/lib/articles';
 import { SEWER } from '@/lib/content/sewer';
-import { getSewerCmsContent, mergeWithStaticImages } from '@/lib/cms/sewer';
+import { getServiceCmsContent } from '@/lib/cms/service-pages';
+import { getServicePreview } from '@/lib/cms/preview';
+import type { ServiceCmsContent } from '@/lib/cms/service-pages';
+import PreviewBanner from '@/components/PreviewBanner';
 import type { SewerContent } from '@/lib/content/sewer';
 import type { Metadata } from 'next';
 
@@ -24,10 +27,43 @@ export const metadata: Metadata = {
     "24/7 Emergency Sewer Service: When disaster strikes, we're here. From backed-up lines to overflowing drains, our expert team will respond immediately to protect your home and restore your peace of mind.",
 };
 
-async function getContent(): Promise<SewerContent> {
+async function getContent(cmsOverride?: ServiceCmsContent): Promise<SewerContent> {
   try {
-    const cms = await getSewerCmsContent();
-    if (cms) return mergeWithStaticImages(cms, SEWER);
+    const cms = cmsOverride ?? await getServiceCmsContent('sewer');
+    if (cms) {
+      const { page, subcategories, global: g } = cms;
+
+      // B-3: warn if subcategories grew anomalously (e.g. seed ran multiple times)
+      if (subcategories.length > SEWER.subcategories.items.length * 2) {
+        console.warn(
+          `[CMS] subcategories length anomaly on sewer: got ${subcategories.length}, expected ~${SEWER.subcategories.items.length}`
+        );
+      }
+
+      return {
+        hero: { heading: page.hero_heading, intro: page.hero_intro },
+        intro: { heading: page.intro_heading, body: page.intro_body },
+        problems: { heading: page.problems_heading, items: page.problems_items },
+        subcategories: {
+          heading: page.subcategories_heading,
+          items: subcategories.map((sub, i) => ({
+            label: sub.label,
+            href: sub.href,
+            description: sub.description,
+            image: SEWER.subcategories.items[i]?.image ?? '',
+            desc: sub.description,
+          })),
+        },
+        serviceArea: { heading: g.service_area_heading, body: g.service_area_body },
+        tiktok: { headline: g.tiktok_headline },
+        preventative: { heading: page.preventative_heading, body: page.preventative_body },
+        finalPitch: { tagline: page.final_pitch_tagline, body: page.final_pitch_body },
+        heroImage: page.hero_image || SEWER.heroImage,
+        fImage: page.f_image || SEWER.fImage,
+        f3Image: page.f3_image || SEWER.f3Image,
+        articles: { featuredSlugs: page.articles_featured_slugs },
+      };
+    }
   } catch {
     // DB unreachable — fall through to static fallback
   }
@@ -35,11 +71,24 @@ async function getContent(): Promise<SewerContent> {
 }
 
 export default async function SewerPage() {
-  const content = await getContent();
+  const servicePreview = await getServicePreview('sewer');
+  const previewDraft = servicePreview?.meta ?? null;
+  const content = await getContent(servicePreview?.cms);
   const articles = getArticles(content.articles.featuredSlugs);
 
   return (
     <>
+      {previewDraft && (
+        <PreviewBanner
+          label={previewDraft.label}
+          creatorName={previewDraft.creator_name}
+          editorUrl="/admin/sewer"
+          liveUrl="/services/sewer"
+          draftId={previewDraft.id}
+          pageType="service"
+          pageSlug="sewer"
+        />
+      )}
       <CategoryHero
         image={content.heroImage}
         heading={content.hero.heading}
@@ -91,7 +140,7 @@ export default async function SewerPage() {
                 </ul>
                 <Link
                   href={SITE.phoneHref}
-                  className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors"
+                  className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
                 >
                   <Phone className="h-4 w-4" strokeWidth={2.5} />
                   MAKE A GOOD CALL
@@ -109,7 +158,7 @@ export default async function SewerPage() {
                 <Link
                   key={sub.label}
                   href={sub.href}
-                  className="card group flex flex-col bg-white rounded-lg overflow-hidden hover:shadow-card transition-shadow"
+                  className="card group flex flex-col bg-white rounded-lg overflow-hidden hover:shadow-card hover:-translate-y-1 transition-[box-shadow,transform] duration-200 cursor-pointer"
                 >
                   <div className="aspect-[4/3] bg-cream-200 overflow-hidden">
                     <Image
@@ -175,14 +224,14 @@ export default async function SewerPage() {
               </p>
               <Link
                 href="/no-drip-club"
-                className="link-button hidden md:inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors"
+                className="link-button hidden md:inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
                 JOIN NOW <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Link>
             </div>
             <Link
               href="/no-drip-club"
-              className="link-button md:hidden order-3 inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors self-start"
+              className="link-button md:hidden order-3 inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150 self-start"
             >
               JOIN NOW <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Link>
@@ -210,7 +259,7 @@ export default async function SewerPage() {
               </p>
               <Link
                 href={SITE.phoneHref}
-                className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors"
+                className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
                 <Phone className="h-4 w-4" strokeWidth={2.5} />
                 MAKE A GOOD CALL

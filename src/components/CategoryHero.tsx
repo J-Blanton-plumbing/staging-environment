@@ -1,13 +1,16 @@
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { SITE } from '@/lib/site';
 
 interface Props {
-  /** Page-specific hero image — fills the ~45% image column. */
-  image: string;
+  /** Page-specific hero image — fills the ~45% image column. Omit to hide the image column. */
+  image?: string;
   heading: string;
   intro: string;
+  /** Override the default phone-link CTA with custom content (e.g. a SCHEDULE NOW button). */
+  cta?: React.ReactNode;
 }
 
 /**
@@ -17,19 +20,21 @@ interface Props {
  * category page. (The home page keeps its own full-bleed video hero and does not
  * use this component.)
  */
-export default function CategoryHero({ image, heading, intro }: Props) {
+export default function CategoryHero({ image, heading, intro, cta }: Props) {
   return (
     <section className="hero relative w-full flex flex-col lg:flex-row min-h-[560px] lg:min-h-[600px]">
       {/* Image column (~45%) — hidden on mobile (matches live site), visible lg+. */}
-      <div className="img-s hidden lg:block relative lg:w-[45%] lg:h-auto lg:min-h-[600px]">
-        <Image src={image} alt={heading} fill priority className="object-cover" />
-      </div>
+      {image && (
+        <div className="img-s hidden lg:block relative lg:w-[45%] lg:h-auto lg:min-h-[600px]">
+          <Image src={image} alt={heading} fill priority className="object-cover" />
+        </div>
+      )}
 
-      {/* Dark content column (~55%). NB: the class is `hero-contents`, not the
-          theme's bare `contents` — Tailwind reserves `.contents` for
-          `display:contents`, which would collapse this column to a 0×0 box. */}
-      <div className="hero-contents relative w-full lg:w-[55%] bg-navy-900 overflow-hidden">
-        {/* Faint wrench-pattern overlay — theme `.hero .contents img`. */}
+      {/* Dark content column (~55%, or full-width when no image). NB: the class is
+          `hero-contents`, not the theme's bare `contents` — Tailwind reserves
+          `.contents` for `display:contents`, which would collapse this column. */}
+      <div className={`hero-contents relative bg-navy-900 overflow-hidden ${image ? 'w-full lg:w-[55%]' : 'w-full'}`}>
+        {/* Faint wrench-pattern overlay */}
         <Image
           src="/images/wrench-pattern.webp"
           alt=""
@@ -45,13 +50,15 @@ export default function CategoryHero({ image, heading, intro }: Props) {
           <p className="hero-desc text-white/90 text-[15px] md:text-base leading-[1.5] tracking-[0.5px] mt-5 mb-7">
             {intro}
           </p>
-          <Link
-            href={SITE.headerPhoneHref}
-            className="hero-link-button inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold h-[45px] px-[35px] rounded-[10px] transition-colors"
-          >
-            <Phone className="h-5 w-5 mr-2" strokeWidth={2.5} />
-            <span className="text-base lg:text-lg tracking-wide">{SITE.headerPhone}</span>
-          </Link>
+          {cta ?? (
+            <Link
+              href={SITE.headerPhoneHref}
+              className="hero-link-button inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold h-[45px] px-[35px] rounded-[10px] transition-colors"
+            >
+              <Phone className="h-5 w-5 mr-2" strokeWidth={2.5} />
+              <span className="text-base lg:text-lg tracking-wide">{SITE.headerPhone}</span>
+            </Link>
+          )}
         </div>
       </div>
     </section>

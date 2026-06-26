@@ -1,0 +1,315 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import MetaSection from '@/components/admin/MetaSection';
+import AdminPageHeader from '@/components/admin/AdminPageHeader';
+
+interface FormState {
+  heroHeading: string;
+  heroDescription: string;
+  heroImage: string;
+  fHeading: string;
+  fBody: string;
+  fImage: string;
+  cardHeading: string;
+  cardItems: string;
+  mapHeading: string;
+  mapBody: string;
+  f2Heading: string;
+  f2Body: string;
+  f2Image: string;
+  f3Heading: string;
+  f3Body: string;
+  f3Image: string;
+  metaTitle: string;
+  metaDescription: string;
+}
+
+const EMPTY: FormState = {
+  heroHeading: '', heroDescription: '', heroImage: '',
+  fHeading: '', fBody: '', fImage: '',
+  cardHeading: '', cardItems: '',
+  mapHeading: '', mapBody: '',
+  f2Heading: '', f2Body: '', f2Image: '',
+  f3Heading: '', f3Body: '', f3Image: '',
+  metaTitle: '', metaDescription: '',
+};
+
+function ImageField({
+  label: labelText,
+  value,
+  onChange,
+  labelStyle,
+  inputStyle,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  labelStyle: React.CSSProperties;
+  inputStyle: React.CSSProperties;
+}) {
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState('');
+
+  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setUploadError('');
+    const fd = new FormData();
+    fd.append('file', file);
+    try {
+      const res = await fetch('/api/cms/upload', {
+        method: 'POST',
+        body: fd,
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? 'Upload failed');
+      onChange(json.url);
+    } catch (err: unknown) {
+      setUploadError(err instanceof Error ? err.message : 'Upload failed');
+    } finally {
+      setUploading(false);
+      e.target.value = '';
+    }
+  }
+
+  return (
+    <div style={{ marginBottom: '1.25rem' }}>
+      <label style={labelStyle}>{labelText}</label>
+      {value && (
+        <img
+          src={value}
+          alt="current"
+          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '4px', border: '1px solid #e5e7eb', marginBottom: '0.5rem' }}
+        />
+      )}
+      <input
+        style={{ ...inputStyle, marginBottom: '0.25rem' }}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        placeholder="https://... or leave empty to use default image"
+      />
+      <label style={{ display: 'inline-block', cursor: uploading ? 'not-allowed' : 'pointer' }}>
+        <input type="file" accept="image/jpeg,image/png,image/webp" style={{ display: 'none' }} onChange={handleFile} disabled={uploading} />
+        <span style={{ display: 'inline-block', background: '#f3f4f6', border: '1px solid #d1d5db', borderRadius: '4px', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: '#374151', opacity: uploading ? 0.6 : 1 }}>
+          {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}
+        </span>
+      </label>
+      <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: '#9ca3af' }}>JPEG, PNG or WebP · max 10 MB</span>
+      {uploadError && <p style={{ color: '#dc2626', fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
+    </div>
+  );
+}
+
+export default function AdminEmergencyPlumbingPage() {
+  const [form, setForm] = useState<FormState>(EMPTY);
+  const [status, setStatus] = useState<'loading' | 'idle' | 'saving' | 'saved' | 'error'>('loading');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    fetch('/api/cms/emergency-plumbing')
+      .then(r => r.json())
+      .then(data => {
+        setForm({
+          heroHeading: data.heroHeading ?? '',
+          heroDescription: data.heroDescription ?? '',
+          heroImage: data.heroImage ?? '',
+          fHeading: data.fHeading ?? '',
+          fBody: data.fBody ?? '',
+          fImage: data.fImage ?? '',
+          cardHeading: data.cardHeading ?? '',
+          cardItems: Array.isArray(data.cardItems) ? data.cardItems.join('\n') : '',
+          mapHeading: data.mapHeading ?? '',
+          mapBody: data.mapBody ?? '',
+          f2Heading: data.f2Heading ?? '',
+          f2Body: data.f2Body ?? '',
+          f2Image: data.f2Image ?? '',
+          f3Heading: data.f3Heading ?? '',
+          f3Body: data.f3Body ?? '',
+          f3Image: data.f3Image ?? '',
+          metaTitle: data.metaTitle ?? '',
+          metaDescription: data.metaDescription ?? '',
+        });
+        setStatus('idle');
+      })
+      .catch(() => {
+        setStatus('error');
+        setErrorMsg('Failed to load content from database.');
+      });
+  }, []);
+
+  function set(key: keyof FormState, value: string) {
+    setForm(f => ({ ...f, [key]: value }));
+  }
+
+  async function handleSave() {
+    setStatus('saving');
+    try {
+      const res = await fetch('/api/cms/emergency-plumbing', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          heroHeading: form.heroHeading,
+          heroDescription: form.heroDescription,
+          heroImage: form.heroImage,
+          fHeading: form.fHeading,
+          fBody: form.fBody,
+          fImage: form.fImage,
+          cardHeading: form.cardHeading,
+          cardItems: form.cardItems.split('\n').map(s => s.trim()).filter(Boolean),
+          mapHeading: form.mapHeading,
+          mapBody: form.mapBody,
+          f2Heading: form.f2Heading,
+          f2Body: form.f2Body,
+          f2Image: form.f2Image,
+          f3Heading: form.f3Heading,
+          f3Body: form.f3Body,
+          f3Image: form.f3Image,
+          metaTitle: form.metaTitle || null,
+          metaDescription: form.metaDescription || null,
+        }),
+      });
+      if (!res.ok) {
+        const j = await res.json();
+        throw new Error(j.error ?? 'Unknown error');
+      }
+      setStatus('saved');
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch (err: unknown) {
+      setStatus('error');
+      setErrorMsg(err instanceof Error ? err.message : 'Save failed.');
+    }
+  }
+
+  const s: React.CSSProperties = {
+    display: 'block', width: '100%', padding: '0.4rem 0.5rem',
+    border: '1px solid #d1d5db', borderRadius: '4px', marginBottom: '1rem',
+    fontFamily: 'inherit', fontSize: '0.9rem', boxSizing: 'border-box',
+  };
+  const labelStyle: React.CSSProperties = {
+    display: 'block', fontWeight: 600, marginBottom: '0.25rem',
+    fontSize: '0.85rem', color: '#374151',
+  };
+  const section: React.CSSProperties = {
+    marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb',
+  };
+  const h2Style: React.CSSProperties = {
+    fontWeight: 700, fontSize: '1.1rem', marginBottom: '1rem', color: '#111827',
+  };
+
+  if (status === 'loading') return <div style={{ padding: '2rem' }}>Loading...</div>;
+
+  return (
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <AdminPageHeader
+        title="Emergency Plumbing — CMS Editor"
+        pageType="emergency-plumbing"
+        pageSlug="emergency-plumbing"
+        getContent={() => ({
+          heroHeading: form.heroHeading,
+          heroDescription: form.heroDescription,
+          heroImage: form.heroImage,
+          fHeading: form.fHeading,
+          fBody: form.fBody,
+          fImage: form.fImage,
+          cardHeading: form.cardHeading,
+          cardItems: form.cardItems.split('\n').map((s: string) => s.trim()).filter(Boolean),
+          mapHeading: form.mapHeading,
+          mapBody: form.mapBody,
+          f2Heading: form.f2Heading,
+          f2Body: form.f2Body,
+          f2Image: form.f2Image,
+          f3Heading: form.f3Heading,
+          f3Body: form.f3Body,
+          f3Image: form.f3Image,
+          metaTitle: form.metaTitle || null,
+          metaDescription: form.metaDescription || null,
+        })}
+        templateName="Emergency Plumbing"
+        previewBaseUrl="/emergency-plumbing"
+      />
+    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text and images. Leave an image field empty to use the default asset.</p>
+
+      {/* ── Hero ── */}
+      <div style={section}>
+        <h2 style={h2Style}>Hero</h2>
+        <label style={labelStyle}>Heading</label>
+        <input style={s} value={form.heroHeading} onChange={e => set('heroHeading', e.target.value)} />
+        <label style={labelStyle}>Description</label>
+        <textarea style={{ ...s, minHeight: '80px' }} value={form.heroDescription} onChange={e => set('heroDescription', e.target.value)} />
+        <ImageField label="Hero Image" value={form.heroImage} onChange={v => set('heroImage', v)} labelStyle={labelStyle} inputStyle={s} />
+      </div>
+
+      {/* ── Plumbers at the Ready ── */}
+      <div style={section}>
+        <h2 style={h2Style}>Plumbers at the Ready</h2>
+        <label style={labelStyle}>Heading</label>
+        <input style={s} value={form.fHeading} onChange={e => set('fHeading', e.target.value)} />
+        <label style={labelStyle}>Body</label>
+        <textarea style={{ ...s, minHeight: '80px' }} value={form.fBody} onChange={e => set('fBody', e.target.value)} />
+        <ImageField label="Section Image" value={form.fImage} onChange={v => set('fImage', v)} labelStyle={labelStyle} inputStyle={s} />
+      </div>
+
+      {/* ── Emergencies We Fix ── */}
+      <div style={section}>
+        <h2 style={h2Style}>Emergencies We Fix</h2>
+        <label style={labelStyle}>Heading</label>
+        <input style={s} value={form.cardHeading} onChange={e => set('cardHeading', e.target.value)} />
+        <label style={labelStyle}>Items (one per line)</label>
+        <textarea style={{ ...s, minHeight: '120px' }} value={form.cardItems} onChange={e => set('cardItems', e.target.value)} />
+      </div>
+
+      {/* ── We're Almost Everywhere ── */}
+      <div style={section}>
+        <h2 style={h2Style}>We&rsquo;re Almost Everywhere</h2>
+        <label style={labelStyle}>Heading</label>
+        <input style={s} value={form.mapHeading} onChange={e => set('mapHeading', e.target.value)} />
+        <label style={labelStyle}>Body</label>
+        <textarea style={{ ...s, minHeight: '80px' }} value={form.mapBody} onChange={e => set('mapBody', e.target.value)} />
+      </div>
+
+      {/* ── We Hate Emergencies Too ── */}
+      <div style={section}>
+        <h2 style={h2Style}>We Hate Emergencies Too</h2>
+        <label style={labelStyle}>Heading</label>
+        <input style={s} value={form.f2Heading} onChange={e => set('f2Heading', e.target.value)} />
+        <label style={labelStyle}>Body</label>
+        <textarea style={{ ...s, minHeight: '80px' }} value={form.f2Body} onChange={e => set('f2Body', e.target.value)} />
+        <ImageField label="Section Image" value={form.f2Image} onChange={v => set('f2Image', v)} labelStyle={labelStyle} inputStyle={s} />
+      </div>
+
+      {/* ── Final Pitch ── */}
+      <div style={section}>
+        <h2 style={h2Style}>Final Pitch</h2>
+        <label style={labelStyle}>Heading</label>
+        <input style={s} value={form.f3Heading} onChange={e => set('f3Heading', e.target.value)} />
+        <label style={labelStyle}>Body</label>
+        <textarea style={{ ...s, minHeight: '80px' }} value={form.f3Body} onChange={e => set('f3Body', e.target.value)} />
+        <ImageField label="Section Image" value={form.f3Image} onChange={v => set('f3Image', v)} labelStyle={labelStyle} inputStyle={s} />
+      </div>
+
+      <MetaSection
+        metaTitle={form.metaTitle}
+        metaDescription={form.metaDescription}
+        onMetaTitleChange={v => set('metaTitle', v)}
+        onMetaDescriptionChange={v => set('metaDescription', v)}
+      />
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+        <button
+          onClick={handleSave}
+          disabled={status === 'saving'}
+          style={{ background: '#BC0E0E', color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '4px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1 }}
+        >
+          {status === 'saving' ? 'Saving...' : 'Save'}
+        </button>
+        {status === 'saved' && <span style={{ color: '#16a34a', fontWeight: 600 }}>Saved.</span>}
+        {status === 'error' && <span style={{ color: '#dc2626' }}>{errorMsg}</span>}
+      </div>
+
+    </div>
+    </div>
+  );
+}

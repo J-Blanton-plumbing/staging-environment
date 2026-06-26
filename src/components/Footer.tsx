@@ -26,7 +26,7 @@ const NAV_COLUMNS = [NAV_COL_1, NAV_COL_2, NAV_COL_3];
 
 export default function Footer() {
   return (
-    <footer className="bottom relative bg-brand-600 text-white py-[80px] font-sans">
+    <footer className="bottom relative bg-brand-600 text-cream-100 py-[80px] font-sans">
       <div className="w-[90%] lg:w-[81%] mx-auto flex flex-col lg:flex-row justify-between gap-12">
         {/* LEFT — Logo + review badges */}
         <div className="l lg:w-1/2">
@@ -53,7 +53,7 @@ export default function Footer() {
               href={SITE.reviewLinks.google}
               target="_blank"
               rel="noreferrer"
-              className="ml-[45px] border border-white rounded-md px-3 py-2 text-sm font-display font-semibold hover:bg-white hover:text-brand-600"
+              className="ml-[45px] border border-cream-100 rounded-md px-3 py-2 text-sm font-display font-semibold hover:bg-cream-100 hover:text-navy-800"
             >
               Leave a Review
             </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
               href={SITE.reviewLinks.yelp}
               target="_blank"
               rel="noreferrer"
-              className="ml-[10px] border border-white rounded-md px-3 py-2 text-sm font-display font-semibold hover:bg-white hover:text-brand-600"
+              className="ml-[10px] border border-cream-100 rounded-md px-3 py-2 text-sm font-display font-semibold hover:bg-cream-100 hover:text-navy-800"
             >
               Leave a Review
             </Link>
@@ -115,7 +115,7 @@ export default function Footer() {
           </div>
 
           {/* divider */}
-          <div className="div h-px bg-white w-full mb-[30px]" />
+          <div className="div h-px bg-cream-100/30 w-full mb-[30px]" />
 
           {/* bottom-locations */}
           <div className="bottom-locations mb-[50px]">

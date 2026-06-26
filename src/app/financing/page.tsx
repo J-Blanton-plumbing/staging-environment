@@ -3,9 +3,14 @@ import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
 import ArticleCard from '@/components/ArticleCard';
 import { FINANCING } from '@/lib/content/financing';
+import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getMainPagePreview } from '@/lib/cms/preview';
+import PreviewBanner from '@/components/PreviewBanner';
 import { getArticles } from '@/lib/articles';
 import type { Metadata } from 'next';
 import './financing.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Financing | J. Blanton Plumbing',
@@ -29,21 +34,32 @@ function PhoneIcon() {
   );
 }
 
-export default function FinancingPage() {
+export default async function FinancingPage() {
+  const preview = await getMainPagePreview('financing');
+  const db = preview?.content ?? await getMainPageContent('financing').catch(() => null);
+  const d = db ?? {};
+  const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
   const {
-    hero,
-    financingSolutionsReady,
-    financingMadeSimple,
-    coverage,
-    surpriseBills,
+    hero: _hero,
+    financingSolutionsReady: _fsr,
+    financingMadeSimple: _fms,
+    coverage: _cov,
+    surpriseBills: _sb,
     articleSlugs,
-    bottomCta,
+    bottomCta: _bc,
   } = FINANCING;
+  const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description) };
+  const financingSolutionsReady = { ..._fsr, label: m(d.financing_ready_label, _fsr.label), body: m(d.financing_ready_body, _fsr.body) };
+  const financingMadeSimple = { ..._fms, label: m(d.financing_simple_label, _fms.label) };
+  const coverage = { ..._cov, heading: m(d.coverage_heading, _cov.heading), body: m(d.coverage_body, _cov.body) };
+  const surpriseBills = { ..._sb, label: m(d.surprise_bills_label, _sb.label), body: m(d.surprise_bills_body, _sb.body) };
+  const bottomCta = { ..._bc, label: m(d.bottom_cta_label, _bc.label), body: m(d.bottom_cta_body, _bc.body) };
 
   const articles = getArticles([...articleSlugs]);
 
   return (
     <div className="financing-page">
+      {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/financing" liveUrl="/financing" draftId={preview.meta.id} pageType="main" pageSlug="financing" />}
 
       {/* ================================================================
           HERO

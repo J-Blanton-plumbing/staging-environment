@@ -1,6 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import AdminPageHeader from '@/components/admin/AdminPageHeader';
+import MetaSection from '@/components/admin/MetaSection';
 
 interface SubcategoryField {
   label: string;
@@ -29,6 +32,8 @@ interface FormState {
   service_area_body: string;
   tiktok_headline: string;
   subcategories: SubcategoryField[];
+  meta_title: string;
+  meta_description: string;
 }
 
 const EMPTY: FormState = {
@@ -51,6 +56,19 @@ const EMPTY: FormState = {
   service_area_body: '',
   tiktok_headline: '',
   subcategories: [],
+  meta_title: '',
+  meta_description: '',
+};
+
+const PAGE_LABELS: Record<string, string> = {
+  plumbing: 'Plumbing',
+  sewer: 'Sewer',
+  drain: 'Drain',
+  'water-heater': 'Water Heater',
+  'water-quality': 'Water Quality',
+  commercial: 'Commercial',
+  'hydro-jetting': 'Hydro Jetting',
+  'sewer-rodding': 'Sewer Rodding',
 };
 
 function ImageField({
@@ -72,13 +90,11 @@ function ImageField({
     if (!file) return;
     setUploading(true);
     setUploadError('');
-    const password = sessionStorage.getItem('cms_auth') ?? '';
     const fd = new FormData();
     fd.append('file', file);
     try {
       const res = await fetch('/api/cms/upload', {
         method: 'POST',
-        headers: { Authorization: `Bearer ${password}` },
         body: fd,
       });
       const json = await res.json();
@@ -120,36 +136,45 @@ function ImageField({
   );
 }
 
-export default function AdminSewerPage() {
+export default function AdminServicePage() {
+  const params = useParams();
+  const slug = params?.slug as string;
+
   const [form, setForm] = useState<FormState>(EMPTY);
   const [status, setStatus] = useState<'idle' | 'loading' | 'saving' | 'saved' | 'error'>('loading');
   const [errorMsg, setErrorMsg] = useState('');
+  const [globalOpen, setGlobalOpen] = useState(false);
 
   useEffect(() => {
-    fetch('/api/cms/sewer')
+    if (!slug) return;
+    setStatus('loading');
+    setForm(EMPTY);
+    fetch(`/api/cms/${slug}`)
       .then(r => r.json())
       .then(data => {
         const { page, subcategories, global: g } = data;
         setForm({
-          hero_heading: page.hero_heading,
-          hero_intro: page.hero_intro,
+          hero_heading: page.hero_heading ?? '',
+          hero_intro: page.hero_intro ?? '',
           hero_image: page.hero_image ?? '',
-          intro_heading: page.intro_heading,
-          intro_body: page.intro_body,
+          intro_heading: page.intro_heading ?? '',
+          intro_body: page.intro_body ?? '',
           f_image: page.f_image ?? '',
-          problems_heading: page.problems_heading,
+          problems_heading: page.problems_heading ?? '',
           problems_items: (page.problems_items as string[]).join('\n'),
-          subcategories_heading: page.subcategories_heading,
-          preventative_heading: page.preventative_heading,
-          preventative_body: page.preventative_body,
-          final_pitch_tagline: page.final_pitch_tagline,
-          final_pitch_body: page.final_pitch_body,
+          subcategories_heading: page.subcategories_heading ?? '',
+          preventative_heading: page.preventative_heading ?? '',
+          preventative_body: page.preventative_body ?? '',
+          final_pitch_tagline: page.final_pitch_tagline ?? '',
+          final_pitch_body: page.final_pitch_body ?? '',
           f3_image: page.f3_image ?? '',
           articles_featured_slugs: (page.articles_featured_slugs as string[]).join('\n'),
-          service_area_heading: g.service_area_heading,
-          service_area_body: g.service_area_body,
-          tiktok_headline: g.tiktok_headline,
+          service_area_heading: g?.service_area_heading ?? '',
+          service_area_body: g?.service_area_body ?? '',
+          tiktok_headline: g?.tiktok_headline ?? '',
           subcategories: subcategories.map((s: SubcategoryField) => ({ ...s })),
+          meta_title: page.meta_title ?? '',
+          meta_description: page.meta_description ?? '',
         });
         setStatus('idle');
       })
@@ -157,7 +182,7 @@ export default function AdminSewerPage() {
         setStatus('error');
         setErrorMsg('Failed to load content from database.');
       });
-  }, []);
+  }, [slug]);
 
   function set(key: keyof Omit<FormState, 'subcategories'>, value: string) {
     setForm(f => ({ ...f, [key]: value }));
@@ -165,7 +190,7 @@ export default function AdminSewerPage() {
 
   function setSub(i: number, key: keyof Omit<SubcategoryField, 'sort_order'>, value: string) {
     setForm(f => {
-      const subs = f.subcategories.map((s, idx) => idx === i ? { ...s, [key]: value } : s);
+      const subs = f.subcategories.map((sub, idx) => idx === i ? { ...sub, [key]: value } : sub);
       return { ...f, subcategories: subs };
     });
   }
@@ -186,14 +211,10 @@ export default function AdminSewerPage() {
 
   async function handleSave() {
     setStatus('saving');
-    const password = sessionStorage.getItem('cms_auth') ?? '';
     try {
-      const res = await fetch('/api/cms/sewer', {
+      const res = await fetch(`/api/cms/${slug}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${password}`,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           hero_heading: form.hero_heading,
           hero_intro: form.hero_intro,
@@ -214,6 +235,8 @@ export default function AdminSewerPage() {
           service_area_body: form.service_area_body,
           tiktok_headline: form.tiktok_headline,
           subcategories: form.subcategories,
+          meta_title: form.meta_title || null,
+          meta_description: form.meta_description || null,
         }),
       });
       if (!res.ok) {
@@ -233,15 +256,52 @@ export default function AdminSewerPage() {
     border: '1px solid #d1d5db', borderRadius: '4px', marginBottom: '1rem',
     fontFamily: 'inherit', fontSize: '0.9rem', boxSizing: 'border-box',
   };
-  const labelStyle: React.CSSProperties = { display: 'block', fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.85rem', color: '#374151' };
-  const section: React.CSSProperties = { marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb' };
+  const labelStyle: React.CSSProperties = {
+    display: 'block', fontWeight: 600, marginBottom: '0.25rem',
+    fontSize: '0.85rem', color: '#374151',
+  };
+  const section: React.CSSProperties = {
+    marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb',
+  };
+
+  const pageLabel = PAGE_LABELS[slug] ?? slug;
 
   if (status === 'loading') return <div style={{ padding: '2rem' }}>Loading...</div>;
 
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '0.25rem' }}>Sewer Page — CMS Editor</h1>
-      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text and images. Subcategory card images and article images are managed automatically.</p>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <AdminPageHeader
+        title={`${pageLabel} — CMS Editor`}
+        pageType="service"
+        pageSlug={slug}
+        getContent={() => ({
+          hero_heading: form.hero_heading,
+          hero_intro: form.hero_intro,
+          hero_image: form.hero_image,
+          intro_heading: form.intro_heading,
+          intro_body: form.intro_body,
+          f_image: form.f_image,
+          problems_heading: form.problems_heading,
+          problems_items: form.problems_items.split('\n').map((s: string) => s.trim()).filter(Boolean),
+          subcategories_heading: form.subcategories_heading,
+          preventative_heading: form.preventative_heading,
+          preventative_body: form.preventative_body,
+          final_pitch_tagline: form.final_pitch_tagline,
+          final_pitch_body: form.final_pitch_body,
+          f3_image: form.f3_image,
+          articles_featured_slugs: form.articles_featured_slugs.split('\n').map((s: string) => s.trim()).filter(Boolean),
+          service_area_heading: form.service_area_heading,
+          service_area_body: form.service_area_body,
+          tiktok_headline: form.tiktok_headline,
+          subcategories: form.subcategories,
+          meta_title: form.meta_title || null,
+          meta_description: form.meta_description || null,
+        })}
+        templateName="Service Category"
+        previewBaseUrl={`/services/${slug}`}
+      />
+    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text content. Images on the live page come from static files and are not affected here.</p>
 
       <div style={section}>
         <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Hero</h2>
@@ -301,20 +361,6 @@ export default function AdminSewerPage() {
       </div>
 
       <div style={section}>
-        <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Service Area (Global)</h2>
-        <label style={labelStyle}>Heading</label>
-        <input style={s} value={form.service_area_heading} onChange={e => set('service_area_heading', e.target.value)} />
-        <label style={labelStyle}>Body</label>
-        <textarea style={{ ...s, minHeight: '70px' }} value={form.service_area_body} onChange={e => set('service_area_body', e.target.value)} />
-      </div>
-
-      <div style={section}>
-        <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>TikTok Feed (Global)</h2>
-        <label style={labelStyle}>Headline</label>
-        <input style={s} value={form.tiktok_headline} onChange={e => set('tiktok_headline', e.target.value)} />
-      </div>
-
-      <div style={section}>
         <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Preventative Section</h2>
         <label style={labelStyle}>Heading</label>
         <input style={s} value={form.preventative_heading} onChange={e => set('preventative_heading', e.target.value)} />
@@ -337,7 +383,34 @@ export default function AdminSewerPage() {
         <textarea style={{ ...s, minHeight: '80px' }} value={form.articles_featured_slugs} onChange={e => set('articles_featured_slugs', e.target.value)} />
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <div style={{ ...section, background: '#f9fafb', borderRadius: '6px', padding: '1rem', border: '1px solid #e5e7eb' }}>
+        <button
+          onClick={() => setGlobalOpen(o => !o)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '1rem', color: '#374151', padding: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+        >
+          {globalOpen ? '▾' : '▸'} Global Settings
+        </button>
+        <p style={{ fontSize: '0.8rem', color: '#9ca3af', marginTop: '0.25rem' }}>Shared across all service pages — editing here affects every page.</p>
+        {globalOpen && (
+          <div style={{ marginTop: '1rem' }}>
+            <label style={labelStyle}>Service Area Heading</label>
+            <input style={s} value={form.service_area_heading} onChange={e => set('service_area_heading', e.target.value)} />
+            <label style={labelStyle}>Service Area Body</label>
+            <textarea style={{ ...s, minHeight: '70px' }} value={form.service_area_body} onChange={e => set('service_area_body', e.target.value)} />
+            <label style={labelStyle}>TikTok Headline</label>
+            <input style={s} value={form.tiktok_headline} onChange={e => set('tiktok_headline', e.target.value)} />
+          </div>
+        )}
+      </div>
+
+      <MetaSection
+        metaTitle={form.meta_title}
+        metaDescription={form.meta_description}
+        onMetaTitleChange={v => set('meta_title', v)}
+        onMetaDescriptionChange={v => set('meta_description', v)}
+      />
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
         <button
           onClick={handleSave}
           disabled={status === 'saving'}
@@ -348,6 +421,8 @@ export default function AdminSewerPage() {
         {status === 'saved' && <span style={{ color: '#16a34a', fontWeight: 600 }}>Saved.</span>}
         {status === 'error' && <span style={{ color: '#dc2626' }}>{errorMsg}</span>}
       </div>
+
+    </div>
     </div>
   );
 }

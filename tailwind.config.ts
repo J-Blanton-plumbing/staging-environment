@@ -45,6 +45,12 @@ const config: Config = {
           500: '#1560e6',
           600: '#0f4dbf',
         },
+        // Glaucous — light blue accent (brand spec)
+        glaucous: '#8cb0ec',
+        // Medium Blue — secondary accent (brand spec)
+        'medium-blue': '#0044bf',
+        // Rosewood — dark red hover / dark sections
+        rosewood: '#540606',
       },
       fontFamily: {
         // Industry — the brand display font (self-hosted); web-safe fallback per brand

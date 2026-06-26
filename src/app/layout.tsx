@@ -3,8 +3,7 @@ import Script from 'next/script';
 import localFont from 'next/font/local';
 import { Nunito } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import SiteShell from '@/components/SiteShell';
 import InvolveMeScript from '@/components/InvolveMeScript';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
@@ -59,9 +58,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${industry.variable} ${nunito.variable}`}>
       <body className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SiteShell>{children}</SiteShell>
+        {/* Scroll entrance animations — adds .in-view once elements cross viewport.
+            Runs after page load; respects prefers-reduced-motion (CSS handles that). */}
+        <Script id="scroll-animations" strategy="lazyOnload">{`
+          (function(){
+            if(!('IntersectionObserver' in window)) return;
+            var obs = new IntersectionObserver(function(entries){
+              entries.forEach(function(e){
+                if(e.isIntersecting){ e.target.classList.add('in-view'); obs.unobserve(e.target); }
+              });
+            },{threshold:0.12});
+            document.querySelectorAll('.animate-on-scroll').forEach(function(el){ obs.observe(el); });
+          })();
+        `}</Script>
         {/* Elfsight platform (Google Reviews / TikTok / Locations Map widgets) */}
         <Script src="https://static.elfsight.com/platform/platform.js" strategy="lazyOnload" />
         {/* TikTok embed */}

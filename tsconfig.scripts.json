@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es2017",
+    "noEmit": false,
+    "outDir": ".scripts-out"
+  },
+  "include": ["scripts/**/*.ts"]
+}

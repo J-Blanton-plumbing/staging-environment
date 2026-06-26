@@ -1,0 +1,50 @@
+
+> jblanton-plumbing@0.1.0 dev
+> next dev --port 3001
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3001
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.6s
+ ○ Compiling /src/middleware ...
+ ✓ Compiled /src/middleware in 770ms (127 modules)
+ ○ Compiling /knowledge-hub/[slug] ...
+ ✓ Compiled /knowledge-hub/[slug] in 5s (642 modules)
+ ✓ Compiled in 418ms (305 modules)
+ GET /knowledge-hub/prepare-your-home-plumbing-for-the-chicago-cold-snap 200 in 6083ms
+Error: aborted
+    at abortIncoming (node:_http_server:855:17)
+    at socketOnClose (node:_http_server:848:3)
+    at Socket.emit (node:events:521:24)
+    at TCP.<anonymous> (node:net:350:12) {
+  code: 'ECONNRESET'
+}
+ ⨯ uncaughtException: Error: aborted
+    at abortIncoming (node:_http_server:855:17)
+    at socketOnClose (node:_http_server:848:3)
+    at Socket.emit (node:events:521:24)
+    at TCP.<anonymous> (node:net:350:12) {
+  code: 'ECONNRESET'
+}
+ ⨯ uncaughtException: Error: aborted
+    at abortIncoming (node:_http_server:855:17)
+    at socketOnClose (node:_http_server:848:3)
+    at Socket.emit (node:events:521:24)
+    at TCP.<anonymous> (node:net:350:12) {
+  code: 'ECONNRESET'
+}
+ GET /knowledge-hub/prepare-your-home-plumbing-for-the-chicago-cold-snap 200 in 63ms
+ GET /knowledge-hub/nonexistent-slug 404 in 127ms
+ GET /knowledge-hub/prepare-your-home-plumbing-for-the-chicago-cold-snap 200 in 74ms
+ ○ Compiling /[city]/[service] ...
+ ✓ Compiled /[city]/[service] in 1084ms (662 modules)
+ ✓ Compiled /_not-found in 189ms (665 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /images/wrench_pattern.webp 404 in 2084ms
+ GET /images/wrench_pattern.webp 404 in 352ms
+ GET /knowledge-hub/prepare-your-home-plumbing-for-the-chicago-cold-snap 200 in 112ms
+ GET /images/wrench_pattern.webp 404 in 147ms
+ GET /images/wrench_pattern.webp 404 in 105ms
+[?25h

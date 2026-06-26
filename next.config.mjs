@@ -8,8 +8,23 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/why-us', destination: '/why-j-blanton', permanent: true },
-      { source: '/jb-articles/:slug', destination: '/knowledge-hub/:slug', permanent: true },
+      // Existing redirects
+      { source: '/why-us',              destination: '/why-j-blanton',       permanent: true },
+      { source: '/jb-articles/:slug',   destination: '/knowledge-hub/:slug', permanent: true },
+
+      // Track C — service category slug aliases (live → build paths)
+      { source: '/plumbing',            destination: '/services/plumbing',     permanent: true },
+      { source: '/sewer',               destination: '/services/sewer',        permanent: true },
+      { source: '/drain',               destination: '/services/drain',        permanent: true },
+      { source: '/water-heater',        destination: '/services/water-heater', permanent: true },
+      { source: '/water-quality',       destination: '/services/water-quality',permanent: true },
+      { source: '/commercial',          destination: '/services/commercial',   permanent: true },
+
+      // Emergency slug alias
+      { source: '/emergency',           destination: '/emergency-plumbing',    permanent: true },
+
+      // Stub pages
+      { source: '/booking',             destination: '/contact',               permanent: true },
     ];
   },
 };

@@ -32,7 +32,7 @@ export default function HeroNav({ helpHref }: HeroNavProps) {
           key={item.label}
           href={item.href}
           className={cn(
-            'flex items-center justify-center text-center font-display font-semibold text-[14px] tracking-wide text-brand-600 hover:bg-brand-600 hover:text-white transition-colors',
+            'flex items-center justify-center text-center font-display font-semibold text-[14px] tracking-wide text-brand-600 hover:bg-brand-600 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-600',
             i > 0 && 'md:border-l border-cream-200'
           )}
         >

@@ -60,7 +60,7 @@ export default function ServiceCard({
     <Link
       href={href}
       className={cn(
-        'image-card group flex flex-col bg-white rounded-lg overflow-hidden hover:shadow-card transition-shadow duration-200',
+        'image-card group flex flex-col bg-white rounded-lg overflow-hidden shadow-soft hover:shadow-card hover:-translate-y-1 transition-[box-shadow,transform] duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600',
         className
       )}
     >
@@ -87,8 +87,8 @@ export default function ServiceCard({
         <p className="desc text-navy-800 text-sm leading-relaxed mb-4 flex-1 tracking-[0.5px]">
           {service.shortDesc}
         </p>
-        <div className="inline-flex items-center gap-2 text-navy-800 font-display font-bold text-sm group-hover:text-brand-600 transition-colors">
-          Read more <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+        <div className="inline-flex items-center gap-2 text-navy-800 font-display font-bold text-sm group-hover:text-brand-600 transition-colors duration-150">
+          Read more <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform duration-150" strokeWidth={2.5} />
         </div>
       </div>
     </Link>

@@ -2,8 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
 import { WHY_JB } from '@/lib/content/why-j-blanton';
+import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getMainPagePreview } from '@/lib/cms/preview';
+import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import './why-j-blanton.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Why J. Blanton | J. Blanton Plumbing',
@@ -19,19 +24,31 @@ const INVOLVE_ME = {
   organizationUrl: 'https://jblantonplumbing.involve.me',
 };
 
-export default function WhyJBlantonPage() {
+export default async function WhyJBlantonPage() {
+  const preview = await getMainPagePreview('why-j-blanton');
+  const db = preview?.content ?? await getMainPageContent('why-j-blanton').catch(() => null);
+  const d = db ?? {};
+  const merge = (dbVal: unknown, fallback: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fallback;
+
   const { hero, aboutUs, whatToExpect, meetOurTeam, ourLocations, joinOurTeam } = WHY_JB;
+  const h = { ...hero, heading: merge(d.hero_heading, hero.heading), subheading: merge(d.hero_subheading, hero.subheading), description: merge(d.hero_description, hero.description), cta: merge(d.hero_cta, hero.cta) };
+  const au = { ...aboutUs, heading: merge(d.about_us_heading, aboutUs.heading), body: merge(d.about_us_body, aboutUs.body) };
+  const wte = { ...whatToExpect, heading: merge(d.what_to_expect_heading, whatToExpect.heading), body: merge(d.what_to_expect_body, whatToExpect.body) };
+  const mot = { ...meetOurTeam, heading: merge(d.meet_our_team_heading, meetOurTeam.heading), body: merge(d.meet_our_team_body, meetOurTeam.body) };
+  const ol = { ...ourLocations, heading: merge(d.our_locations_heading, ourLocations.heading), body: merge(d.our_locations_body, ourLocations.body) };
+  const jot = { ...joinOurTeam, heading: merge(d.join_our_team_heading, joinOurTeam.heading), body: merge(d.join_our_team_body, joinOurTeam.body) };
 
   return (
     <div className="why-jb-page">
+      {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/why-j-blanton" liveUrl="/why-j-blanton" draftId={preview.meta.id} pageType="main" pageSlug="why-j-blanton" />}
       {/* ================================================================
           HERO: YouTube embed (left) + heading/subhead/desc/CTA (right)
           ================================================================ */}
       <div className="hero">
         <div className="img-s">
           <iframe
-            src={hero.videoSrc}
-            title={hero.videoTitle}
+            src={h.videoSrc}
+            title={h.videoTitle}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -41,9 +58,9 @@ export default function WhyJBlantonPage() {
         {/* `hero-contents` avoids Tailwind's `.contents { display:contents }` collision */}
         <div className="hero-contents">
           <div className="w">
-            <h1>{hero.heading}</h1>
-            <p className="sub-label">{hero.subheading}</p>
-            <p className="hero-desc">{hero.description}</p>
+            <h1>{h.heading}</h1>
+            <p className="sub-label">{h.subheading}</p>
+            <p className="hero-desc">{h.description}</p>
             <div
               className="involveme_popup"
               role="button"
@@ -54,7 +71,7 @@ export default function WhyJBlantonPage() {
               data-popup-size={INVOLVE_ME.popupSize}
               data-organization-url={INVOLVE_ME.organizationUrl}
             >
-              {hero.cta}
+              {h.cta}
             </div>
           </div>
         </div>
@@ -75,21 +92,21 @@ export default function WhyJBlantonPage() {
           <div className="w81">
             {/* Desktop: heading + body in a div */}
             <div>
-              <p className="red-text">{aboutUs.heading}</p>
-              <p>{aboutUs.body}</p>
+              <p className="red-text">{au.heading}</p>
+              <p>{au.body}</p>
             </div>
             {/* Mobile heading (shown via CSS at ≤900px, hidden on desktop) */}
-            <p className="red-text red-text-mobile">{aboutUs.heading}</p>
+            <p className="red-text red-text-mobile">{au.heading}</p>
             <Image
-              src={aboutUs.image}
-              alt={aboutUs.imageAlt}
+              src={au.image}
+              alt={au.imageAlt}
               width={470}
               height={320}
               sizes="(max-width: 900px) 90vw, 470px"
             />
             {/* Mobile body (shown via CSS at ≤900px, hidden on desktop) */}
             <div className="mobile-content">
-              <p>{aboutUs.body}</p>
+              <p>{au.body}</p>
             </div>
           </div>
         </div>
@@ -98,18 +115,18 @@ export default function WhyJBlantonPage() {
         <div className="wte">
           <div className="w81">
             {/* Mobile heading */}
-            <p className="red-text red-text-mobile">{whatToExpect.heading}</p>
+            <p className="red-text red-text-mobile">{wte.heading}</p>
             <Image
-              src={whatToExpect.image}
-              alt={whatToExpect.imageAlt}
+              src={wte.image}
+              alt={wte.imageAlt}
               width={470}
               height={320}
               sizes="(max-width: 900px) 90vw, 470px"
             />
             {/* Desktop: heading + body in a div */}
             <div>
-              <p className="red-text">{whatToExpect.heading}</p>
-              <p>{whatToExpect.body}</p>
+              <p className="red-text">{wte.heading}</p>
+              <p>{wte.body}</p>
             </div>
           </div>
         </div>
@@ -119,17 +136,17 @@ export default function WhyJBlantonPage() {
           <div className="w81">
             <div className="l">
               <div>
-                <p className="red-text">{meetOurTeam.heading}</p>
-                <p>{meetOurTeam.body}</p>
+                <p className="red-text">{mot.heading}</p>
+                <p>{mot.body}</p>
               </div>
             </div>
             <div className="r">
               {/* Mobile heading lives in .r so it appears above the image on mobile
                   (flex-direction: column-reverse pushes .r to the top) */}
-              <p className="red-text red-text-mobile">{meetOurTeam.heading}</p>
+              <p className="red-text red-text-mobile">{mot.heading}</p>
               <Image
-                src={meetOurTeam.image}
-                alt={meetOurTeam.imageAlt}
+                src={mot.image}
+                alt={mot.imageAlt}
                 width={470}
                 height={320}
                 sizes="(max-width: 900px) 90vw, 470px"
@@ -142,19 +159,19 @@ export default function WhyJBlantonPage() {
         <div className="wte lws">
           <div className="w81">
             {/* Mobile heading */}
-            <p className="red-text red-text-mobile">{ourLocations.heading}</p>
+            <p className="red-text red-text-mobile">{ol.heading}</p>
             <Image
-              src={ourLocations.image}
-              alt={ourLocations.imageAlt}
+              src={ol.image}
+              alt={ol.imageAlt}
               width={470}
               height={320}
               sizes="(max-width: 900px) 90vw, 470px"
             />
             <div>
-              <p className="red-text">{ourLocations.heading}</p>
-              <p>{ourLocations.body}</p>
-              <Link href={ourLocations.cta.href} className="link-button">
-                {ourLocations.cta.label}
+              <p className="red-text">{ol.heading}</p>
+              <p>{ol.body}</p>
+              <Link href={ol.cta.href} className="link-button">
+                {ol.cta.label}
               </Link>
             </div>
           </div>
@@ -165,21 +182,21 @@ export default function WhyJBlantonPage() {
           <div className="w81">
             <div className="l">
               <div>
-                <p className="red-text">{joinOurTeam.heading}</p>
-                <p>{joinOurTeam.body}</p>
+                <p className="red-text">{jot.heading}</p>
+                <p>{jot.body}</p>
               </div>
-              <Link href={joinOurTeam.cta.href} className="link-button">
-                {joinOurTeam.cta.label}
+              <Link href={jot.cta.href} className="link-button">
+                {jot.cta.label}
               </Link>
             </div>
             {/* red-text-mobile: absent from the PHP template (theme bug — the CSS at
                 `.w-aboutus .guarantee .w81 .red-text-mobile` anticipates this element
                 to show the section heading on mobile above the image after column-reverse.
                 We add it here so the heading renders correctly at ≤900px.) */}
-            <p className="red-text red-text-mobile">{joinOurTeam.heading}</p>
+            <p className="red-text red-text-mobile">{jot.heading}</p>
             <Image
-              src={joinOurTeam.image}
-              alt={joinOurTeam.imageAlt}
+              src={jot.image}
+              alt={jot.imageAlt}
               width={470}
               height={320}
               sizes="(max-width: 900px) 90vw, 470px"

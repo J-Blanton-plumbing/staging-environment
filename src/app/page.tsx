@@ -13,18 +13,35 @@ import NoDripClubSection from '@/components/NoDripClubSection';
 import { SERVICES } from '@/lib/services';
 import { getArticles } from '@/lib/articles';
 import { HOME } from '@/lib/content/home';
+import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getMainPagePreview } from '@/lib/cms/preview';
+import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Chicago Plumbing Experts | Make a Good Call',
   description: 'J. Blanton Plumbing — Chicago and suburbs, over 30 years.',
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const preview = await getMainPagePreview('home');
+  const db = preview?.content ?? await getMainPageContent('home').catch(() => null);
+  const d = db ?? {};
+  const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  const home = {
+    hero: { ...HOME.hero, heading: m(d.hero_heading, HOME.hero.heading), headingCta: m(d.hero_cta, HOME.hero.headingCta), headingTagline: m(d.hero_tagline, HOME.hero.headingTagline), intro: m(d.hero_intro, HOME.hero.intro) },
+    services: { ...HOME.services, heading: m(d.services_heading, HOME.services.heading), intro: m(d.services_intro, HOME.services.intro) },
+    why: { ...HOME.why, heading: m(d.why_heading, HOME.why.heading) },
+    knowledgeHub: { ...HOME.knowledgeHub, heading: m(d.knowledge_hub_heading, HOME.knowledgeHub.heading), intro: m(d.knowledge_hub_intro, HOME.knowledgeHub.intro) },
+    findUs: { ...HOME.findUs, heading: m(d.find_us_heading, HOME.findUs.heading) },
+  };
   const articles = getArticles(HOME.knowledgeHub.featuredSlugs);
 
   return (
     <>
+      {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/home" liveUrl="/" draftId={preview.meta.id} pageType="main" pageSlug="home" />}
       {/* ============== HERO: 100vh, bright video, bottom-aligned content ============== */}
       <section className="test-hero relative w-full h-screen overflow-hidden bg-navy-900">
         <video
@@ -51,25 +68,25 @@ export default function HomePage() {
                 className="block mb-4 w-[100px] h-[100px]"
               />
               <h1 className="font-display font-bold uppercase text-white text-[32px] md:text-[40px] leading-[1.05] tracking-tight">
-                {HOME.hero.heading}
+                {home.hero.heading}
               </h1>
               <h1 className="font-display font-bold uppercase text-[40px] md:text-[50px] leading-[1.05] tracking-tight">
                 <Link href={SITE.phoneHref} className="text-white hover:text-brand-400 transition-colors">
-                  {HOME.hero.headingCta}
+                  {home.hero.headingCta}
                 </Link>
               </h1>
               <h1 className="font-display font-bold uppercase text-white text-[28px] md:text-[40px] leading-[1.1] tracking-tight mt-[15px]">
-                {HOME.hero.headingTagline}
+                {home.hero.headingTagline}
               </h1>
             </div>
 
             <div className="r lg:w-1/2 flex flex-col">
               <p className="intro font-display font-medium text-white text-[22px] md:text-[30px] leading-[1.16] mb-7">
-                {HOME.hero.intro}
+                {home.hero.intro}
               </p>
               <Link
                 href={SITE.phoneHref}
-                className="test-hero-contact inline-flex items-center self-start bg-accent-500 hover:bg-accent-600 text-white font-display font-bold px-7 py-4 rounded-[10px] shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors"
+                className="test-hero-contact inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold px-7 py-4 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors duration-150"
               >
                 <span className="w-5 h-5 mr-2.5 flex items-center justify-center">
                   <Phone className="h-5 w-5" strokeWidth={2.5} />
@@ -90,15 +107,15 @@ export default function HomePage() {
         <div className="home-services w-[90%] lg:w-[81%] mx-auto relative z-[2]">
           <div className="align1 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 md:mb-[60px]">
             <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
-              {HOME.services.heading}
+              {home.services.heading}
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-2xl">
               <p className="text-navy-800 text-base leading-relaxed flex-1">
-                {HOME.services.intro}
+                {home.services.intro}
               </p>
               <Link
                 href="/services"
-                className="flex-shrink-0 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded transition-colors whitespace-nowrap"
+                className="flex-shrink-0 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded-full transition-colors duration-150 whitespace-nowrap"
               >
                 VIEW PAGE <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Link>
@@ -139,7 +156,7 @@ export default function HomePage() {
           <section className="why pt-[130px] flex flex-col lg:flex-row lg:items-center justify-between gap-10">
             {/* mobile red label */}
             <p className="red-text why-label-mobile lg:hidden font-display font-bold text-brand-600 text-[28px] tracking-tight leading-none">
-              {HOME.why.heading}
+              {home.why.heading}
             </p>
 
             {/* YouTube embed */}
@@ -157,7 +174,7 @@ export default function HomePage() {
             {/* why-content */}
             <div className="why-content w-full lg:w-1/2 lg:ml-[30px] text-navy-800">
               <p className="red-text hidden lg:block font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none mb-[10px]">
-                {HOME.why.heading}
+                {home.why.heading}
               </p>
               <p className="leading-relaxed text-base">
                 {HOME.why.body[0]}
@@ -167,7 +184,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/why-us"
-                className="link-button inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded transition-colors"
+                className="link-button inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded-full transition-colors duration-150"
               >
                 MEET OUR TEAM <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Link>
@@ -184,15 +201,15 @@ export default function HomePage() {
           <section className="knowledge-hub mt-[120px] pb-[120px]">
             <div className="align1 knowledge-hub flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
-                {HOME.knowledgeHub.heading}
+                {home.knowledgeHub.heading}
               </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-xl">
                 <p className="text-navy-800 text-base leading-relaxed flex-1">
-                  {HOME.knowledgeHub.intro}
+                  {home.knowledgeHub.intro}
                 </p>
                 <Link
                   href="/knowledge-hub"
-                  className="link-button flex-shrink-0 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded transition-colors whitespace-nowrap"
+                  className="link-button flex-shrink-0 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded-full transition-colors duration-150 whitespace-nowrap"
                 >
                   VIEW ALL ARTICLES <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                 </Link>
@@ -210,7 +227,7 @@ export default function HomePage() {
         contentsClassName="find-us-contents w-[90%] lg:w-[81%] mx-auto"
         headingClassName="leading-none"
         bodyClassName="text-navy-800 text-base leading-relaxed"
-        heading={HOME.findUs.heading}
+        heading={home.findUs.heading}
         body={HOME.findUs.body}
         mobileButton
       />

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ArrowRight, Check } from 'lucide-react';
 import { SITE } from '@/lib/site';
@@ -11,7 +11,14 @@ import ArticleGrid from '@/components/ArticleGrid';
 import LocationsSection from '@/components/LocationsSection';
 import { getArticles } from '@/lib/articles';
 import { DRAIN } from '@/lib/content/drain';
+import { getServiceCmsContent } from '@/lib/cms/service-pages';
+import { getServicePreview } from '@/lib/cms/preview';
+import type { ServiceCmsContent } from '@/lib/cms/service-pages';
+import PreviewBanner from '@/components/PreviewBanner';
+import type { DrainContent } from '@/lib/content/drain';
 import type { Metadata } from 'next';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Drain Cleaning & Repair Services in Chicagoland | J. Blanton Plumbing',
@@ -19,15 +26,63 @@ export const metadata: Metadata = {
     'Slow water, bad smells, and recurring clogs are common drain problems that can quickly disrupt daily routines, but at J. Blanton Plumbing, our experienced team has the tools and expertise to diagnose the issue fast and fix it the right way.',
 };
 
-export default function DrainPage() {
-  const articles = getArticles(DRAIN.articles.featuredSlugs);
+async function getContent(cmsOverride?: ServiceCmsContent): Promise<DrainContent> {
+  try {
+    const cms = cmsOverride ?? await getServiceCmsContent('drain');
+    if (cms) {
+      const { page, subcategories, global: g } = cms;
+      return {
+        hero: { heading: page.hero_heading, intro: page.hero_intro },
+        intro: { heading: page.intro_heading, body: page.intro_body },
+        problems: { heading: page.problems_heading, items: page.problems_items },
+        subcategories: {
+          heading: page.subcategories_heading,
+          items: subcategories.map((sub, i) => ({
+            label: sub.label,
+            href: sub.href,
+            image: DRAIN.subcategories.items[i]?.image ?? '',
+            desc: sub.description,
+          })),
+        },
+        serviceArea: { heading: g.service_area_heading, body: g.service_area_body },
+        tiktok: { headline: g.tiktok_headline },
+        preventative: { heading: page.preventative_heading, body: page.preventative_body },
+        finalPitch: { tagline: page.final_pitch_tagline, body: page.final_pitch_body },
+        heroImage: DRAIN.heroImage,
+        fImage: DRAIN.fImage,
+        f3Image: DRAIN.f3Image,
+        articles: { featuredSlugs: page.articles_featured_slugs },
+      };
+    }
+  } catch {
+    // DB unreachable — fall through to static fallback
+  }
+  return DRAIN;
+}
+
+export default async function DrainPage() {
+  const servicePreview = await getServicePreview('drain');
+  const previewDraft = servicePreview?.meta ?? null;
+  const content = await getContent(servicePreview?.cms);
+  const articles = getArticles(content.articles.featuredSlugs);
 
   return (
     <>
+      {previewDraft && (
+        <PreviewBanner
+          label={previewDraft.label}
+          creatorName={previewDraft.creator_name}
+          editorUrl="/admin/drain"
+          liveUrl="/services/drain"
+          draftId={previewDraft.id}
+          pageType="service"
+          pageSlug="drain"
+        />
+      )}
       <CategoryHero
-        image={DRAIN.heroImage}
-        heading={DRAIN.hero.heading}
-        intro={DRAIN.hero.intro}
+        image={content.heroImage}
+        heading={content.hero.heading}
+        intro={content.hero.intro}
       />
 
       <HeroNav />
@@ -38,17 +93,17 @@ export default function DrainPage() {
           <section className="f grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-[100px] lg:mb-[140px]">
             <div>
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
-                {DRAIN.intro.heading}
+                {content.intro.heading}
               </p>
               <div className="custom-paragraphs space-y-4 text-navy-800 leading-relaxed">
-                {DRAIN.intro.body.split('\n\n').map((para, i) => (
+                {content.intro.body.split('\n\n').map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
               </div>
             </div>
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
               <Image
-                src={DRAIN.fImage}
+                src={content.fImage}
                 alt="Drain Services in Chicagoland"
                 fill
                 className="object-cover"
@@ -63,10 +118,10 @@ export default function DrainPage() {
             <div className="a flex-1 w-full px-8 md:px-12 lg:px-8 lg:pr-16 py-10 lg:py-16 text-white">
               <div className="r">
                 <p className="label font-display font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-tight mb-6 uppercase tracking-tight">
-                  {DRAIN.problems.heading}
+                  {content.problems.heading}
                 </p>
                 <ul className="space-y-3 mb-8">
-                  {DRAIN.problems.items.map((p) => (
+                  {content.problems.items.map((p) => (
                     <li key={p} className="service flex items-start gap-3 text-[16px] md:text-[18px]">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-brand-600 flex-shrink-0 mt-0.5">
                         <Check className="h-4 w-4" strokeWidth={3} />
@@ -77,7 +132,7 @@ export default function DrainPage() {
                 </ul>
                 <Link
                   href={SITE.phoneHref}
-                  className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors"
+                  className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
                 >
                   <Phone className="h-4 w-4" strokeWidth={2.5} />
                   MAKE A GOOD CALL
@@ -88,14 +143,14 @@ export default function DrainPage() {
 
           <section className="ep-subcategories mb-[100px] lg:mb-[140px]">
             <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-10 text-center">
-              {DRAIN.subcategories.heading}
+              {content.subcategories.heading}
             </p>
             <div className="services grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {DRAIN.subcategories.items.map((sub) => (
+              {content.subcategories.items.map((sub) => (
                 <Link
                   key={sub.label}
                   href={sub.href}
-                  className="card group flex flex-col bg-white rounded-lg overflow-hidden hover:shadow-card transition-shadow"
+                  className="card group flex flex-col bg-white rounded-lg overflow-hidden hover:shadow-card hover:-translate-y-1 transition-[box-shadow,transform] duration-200 cursor-pointer"
                 >
                   <div className="aspect-[4/3] bg-cream-200 overflow-hidden">
                     <Image
@@ -127,8 +182,8 @@ export default function DrainPage() {
             contentClassName="ep-contents"
             headingClassName="leading-tight uppercase"
             bodyClassName="text-navy-800 leading-relaxed"
-            heading={DRAIN.serviceArea.heading}
-            body={[DRAIN.serviceArea.body]}
+            heading={content.serviceArea.heading}
+            body={[content.serviceArea.body]}
             showButton={false}
           />
 
@@ -138,7 +193,7 @@ export default function DrainPage() {
 
           <section className="ep-tiktok mb-[100px]">
             <TikTokFeed
-              headline={DRAIN.tiktok.headline}
+              headline={content.tiktok.headline}
               headlineClassName="ep-tiktok-headline"
             />
           </section>
@@ -154,21 +209,21 @@ export default function DrainPage() {
             </div>
             <div className="order-1 md:order-2">
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
-                {DRAIN.preventative.heading}
+                {content.preventative.heading}
               </p>
               <p className="text-navy-800 leading-relaxed mb-6 whitespace-pre-line">
-                {DRAIN.preventative.body}
+                {content.preventative.body}
               </p>
               <Link
                 href="/no-drip-club"
-                className="link-button hidden md:inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors"
+                className="link-button hidden md:inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
                 JOIN NOW <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Link>
             </div>
             <Link
               href="/no-drip-club"
-              className="link-button md:hidden order-3 inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors self-start"
+              className="link-button md:hidden order-3 inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150 self-start"
             >
               JOIN NOW <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Link>
@@ -181,7 +236,7 @@ export default function DrainPage() {
           <section className="f3 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pb-[100px] lg:pb-[140px]">
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
               <Image
-                src={DRAIN.f3Image}
+                src={content.f3Image}
                 alt="J. Blanton Plumbing"
                 fill
                 className="object-cover"
@@ -189,14 +244,14 @@ export default function DrainPage() {
             </div>
             <div>
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
-                {DRAIN.finalPitch.tagline}
+                {content.finalPitch.tagline}
               </p>
               <p className="text-navy-800 leading-relaxed mb-6">
-                {DRAIN.finalPitch.body}
+                {content.finalPitch.body}
               </p>
               <Link
                 href={SITE.phoneHref}
-                className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded transition-colors"
+                className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
                 <Phone className="h-4 w-4" strokeWidth={2.5} />
                 MAKE A GOOD CALL

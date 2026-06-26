@@ -2,26 +2,27 @@ export interface Article {
   slug: string;
   title: string;
   excerpt: string;
-  image: string; // /images/...
-  href: string; // /knowledge-hub/<slug>
-  heroImage: string; // Full CDN URL or '' for Cream placeholder
-  subtitle: string;
-  readTime: string;
-  body: string; // Rich HTML string
+  image: string;        // thumbnail used on article cards
+  href: string;         // canonical URL for article cards
+  heroImage: string;    // full CDN URL or '' — no image rendered when empty
+  category: string;
+  date: string;
+  body: string;         // rich HTML; include <h1> at top
 }
 
 export const ARTICLES: Article[] = [
   {
     slug: 'prepare-your-home-plumbing-for-the-chicago-cold-snap',
     title: 'Prepare Your Home Plumbing for the Chicago Cold Snap',
-    subtitle: 'Everything you need to know, directly from the experts.',
-    heroImage: '',
-    readTime: '2 minutes',
+    heroImage: '/images/article-coldsnap.webp',
+    category: 'Winterization',
+    date: '2024-01-01',
     excerpt:
-      'Prepare Your Home Plumbing for the Chicago Cold Snap With the recent forecast predicting a significant drop in temperatures and snow…',
+      'Chicago cold is coming! Learn essential tips to protect your pipes from freezing.',
     image: '/images/article-coldsnap.webp',
     href: '/knowledge-hub/prepare-your-home-plumbing-for-the-chicago-cold-snap',
-    body: `<p>With the recent forecast predicting a significant drop in temperatures and snow for the Chicago area, now is the critical time to prepare your home's plumbing system against the harsh cold. Frozen pipes are one of the most common and costly winter emergencies. A little preparation today can save you from a major headache tomorrow.</p>
+    body: `<h1>Prepare Your Home Plumbing for the Chicago Cold Snap</h1>
+<p>With the recent forecast predicting a significant drop in temperatures and snow for the Chicago area, now is the critical time to prepare your home's plumbing system against the harsh cold. Frozen pipes are one of the most common and costly winter emergencies. A little preparation today can save you from a major headache tomorrow.</p>
 <p>Here are a few essential steps you can take right now to protect your pipes:</p>
 <ul>
   <li><strong>Insulate Exposed Pipes:</strong> Focus on pipes located in unheated areas like basements, crawl spaces, attics, and garages. Use pipe sleeves or heat tape to provide an extra layer of protection.</li>
@@ -36,15 +37,16 @@ export const ARTICLES: Article[] = [
 <p>If you're unsure about your home's readiness or need professional assistance with pipe insulation or winterizing your system, don't hesitate to call us.</p>
 <h3>Plumbing Emergency?</h3>
 <p>If you experience a burst pipe or any other plumbing crisis, know that we are ready to respond quickly. <strong>Do not wait.</strong> Shut off your main water supply immediately and call J. Blanton Plumbing right away.</p>
-<p>Stay warm, stay safe, and let us take care of the rest.</p>`,
+<p>Stay warm, stay safe, and let us take care of the rest.</p>
+<p><a href="tel:+17737249272">Call J. Blanton Plumbing Today!</a></p>`,
   },
   {
     slug: 'brown-friday-plumbing-drain-clog-emergency',
     title:
       'It’s Brown Friday: Is Your Plumbing Paying the Price for Yesterday’s Feast?',
-    subtitle: '',
     heroImage: '',
-    readTime: '',
+    category: 'Drain & Sewer',
+    date: '2023-11-24',
     excerpt:
       'It’s Brown Friday: Is Your Plumbing Paying the Price for Yesterday’s Feast? Today is Brown Friday, historically one of the busiest…',
     image: '/images/article-garbage-disposal.webp',
@@ -55,9 +57,9 @@ export const ARTICLES: Article[] = [
     slug: 'sewer-replacement-old-homes-chicagoland',
     title:
       'Is Your Old House Sewer a Ticking Time Bomb? Why Chicagoland Homeowners Should Consider Replacement',
-    subtitle: '',
     heroImage: '',
-    readTime: '',
+    category: 'Sewer',
+    date: '2023-09-01',
     excerpt:
       'Is Your Old House Sewer a Ticking Time Bomb? Why Chicagoland Homeowners Should Consider Replacement For homeowners in older Chicagoland properties,…',
     image: '/images/article-sewer-lining.webp',
@@ -67,9 +69,9 @@ export const ARTICLES: Article[] = [
   {
     slug: 'where-did-those-pink-stains-in-your-bathroom-come-from',
     title: 'Where Do Pink Water Stains in Your Bathroom Come From?',
-    subtitle: '',
     heroImage: '',
-    readTime: '',
+    category: 'Water Quality',
+    date: '2023-07-15',
     excerpt:
       "If you scrub your bathroom only to discover slimy pink stains returning a few weeks later, you're not alone. These stubborn marks can appear around sink basins, inside toilet bowls, on shower curtains, and around tub drains…",
     image: '/images/article-pink-stains.webp',
@@ -79,9 +81,9 @@ export const ARTICLES: Article[] = [
   {
     slug: '4-headaches-you-can-avoid-with-plumbing-maintenance',
     title: '4 Headaches You Can Avoid With Plumbing Maintenance',
-    subtitle: '',
     heroImage: '',
-    readTime: '',
+    category: 'Maintenance',
+    date: '2023-05-01',
     excerpt:
       'Regular plumbing maintenance can save you from costly emergency repairs. Discover four common headaches — from clogged drains to water heater failures — that a simple preventive check can keep at bay.',
     image: '/images/clogged-drains.webp',
@@ -91,9 +93,9 @@ export const ARTICLES: Article[] = [
   {
     slug: 'pvc-vs-abs-pipes',
     title: 'PVC vs ABS Pipes: Which Is Right for Your Home?',
-    subtitle: '',
     heroImage: '',
-    readTime: '',
+    category: 'Plumbing Tips',
+    date: '2023-03-10',
     excerpt:
       'Both PVC and ABS are popular drain pipe materials, but they perform differently depending on temperature, local codes, and installation method. Here\'s what every homeowner should know before a re-pipe.',
     image: '/images/article-sewer-lining.webp',
@@ -103,9 +105,9 @@ export const ARTICLES: Article[] = [
   {
     slug: '45532-boost-your-water-heaters-efficiency-the-role-of-ventilation-in-arlington-heights-homes',
     title: "Boost Your Water Heater's Efficiency: The Role of Ventilation in Arlington Heights Homes",
-    subtitle: '',
     heroImage: '',
-    readTime: '',
+    category: 'Water Heater',
+    date: '2023-02-01',
     excerpt:
       'Poor ventilation is one of the leading causes of water heater inefficiency and early failure. Learn how proper venting protects your system and keeps energy bills in check for Arlington Heights homeowners.',
     image: '/images/article-coldsnap.webp',

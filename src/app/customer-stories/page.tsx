@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import { CUSTOMER_STORIES } from '@/lib/content/customer-stories';
+import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getMainPagePreview } from '@/lib/cms/preview';
+import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import './customer-stories.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Customer Stories | J. Blanton Plumbing',
@@ -10,11 +15,19 @@ export const metadata: Metadata = {
     'Read real reviews and customer stories from Chicagoland homeowners who trust J. Blanton Plumbing for 5-star plumbing service.',
 };
 
-export default function CustomerStoriesPage() {
-  const { hero, testimonials, reviewUrl, behindTheReview, involveme, cta } = CUSTOMER_STORIES;
+export default async function CustomerStoriesPage() {
+  const preview = await getMainPagePreview('customer-stories');
+  const db = preview?.content ?? await getMainPageContent('customer-stories').catch(() => null);
+  const d = db ?? {};
+  const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  const { hero: _hero, testimonials, reviewUrl, behindTheReview: _btr, involveme, cta: _cta } = CUSTOMER_STORIES;
+  const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description) };
+  const behindTheReview = { ..._btr, heading: m(d.behind_review_heading, _btr.heading) };
+  const cta = { ..._cta, heading: m(d.cta_heading, _cta.heading), body: m(d.cta_body, _cta.body) };
 
   return (
     <div className="customer-stories-page">
+      {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/customer-stories" liveUrl="/customer-stories" draftId={preview.meta.id} pageType="main" pageSlug="customer-stories" />}
       {/* ================================================================
           HERO — standard .hero pattern (image left, text right)
           ================================================================ */}
