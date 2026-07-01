@@ -108,6 +108,35 @@ function NavLink({ href, label, active }: { href: string; label: string; active:
   );
 }
 
+const MANAGE_LINK_BASE: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.4rem',
+  padding: '0 16px 0 28px',
+  height: '32px',
+  fontFamily: 'Industry, sans-serif',
+  fontSize: '12px',
+  fontWeight: 600,
+  color: '#0A1B2E',
+  textDecoration: 'none',
+  boxSizing: 'border-box',
+  letterSpacing: '0.02em',
+};
+
+function ManageLink({ href, label, active }: { href: string; label: string; active: boolean }) {
+  return (
+    <Link
+      href={href}
+      style={{ ...MANAGE_LINK_BASE, ...(active ? ACTIVE_STYLE : {}) }}
+      onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.background = 'rgba(0,0,0,0.04)'; }}
+      onMouseLeave={e => { if (!active) (e.currentTarget as HTMLElement).style.background = ''; }}
+    >
+      <span style={{ fontSize: '11px', lineHeight: 1 }}>☰</span>
+      {label}
+    </Link>
+  );
+}
+
 function TopLink({ href, label, active }: { href: string; label: string; active: boolean }) {
   return (
     <Link
@@ -127,12 +156,14 @@ function CollapsibleSection({
   open,
   onToggle,
   pathname,
+  manageLink,
 }: {
   label: string;
   items: { label: string; href: string }[];
   open: boolean;
   onToggle: () => void;
   pathname: string;
+  manageLink?: { label: string; href: string };
 }) {
   return (
     <>
@@ -146,6 +177,9 @@ function CollapsibleSection({
         <span>{label}</span>
         <span style={{ fontSize: '13px' }}>{open ? '▾' : '▸'}</span>
       </div>
+      {open && manageLink && (
+        <ManageLink href={manageLink.href} label={manageLink.label} active={pathname === manageLink.href} />
+      )}
       {open && items.map(({ label: lbl, href }) => (
         <NavLink key={href} href={href} label={lbl} active={pathname === href} />
       ))}
@@ -165,7 +199,7 @@ export default function AdminSidebar({ userName }: { userName: string }) {
   const [mainOpen, setMainOpen] = useState(() => MAIN_PAGES.some(p => p.href === pathname));
   const [serviceCatOpen, setServiceCatOpen] = useState(() => SERVICE_CATEGORY.some(p => p.href === pathname));
   const [serviceOpen, setServiceOpen] = useState(() =>
-    pathname.startsWith('/admin/sub-service/') || SERVICE_STATIC.some(p => p.href === pathname)
+    pathname.startsWith('/admin/sub-service/') || pathname === '/admin/sub-services' || SERVICE_STATIC.some(p => p.href === pathname)
   );
   const [utilityOpen, setUtilityOpen] = useState(() => UTILITY_PAGES.some(p => p.href === pathname));
 
@@ -254,6 +288,7 @@ export default function AdminSidebar({ userName }: { userName: string }) {
           open={serviceOpen}
           onToggle={() => setServiceOpen(o => !o)}
           pathname={pathname}
+          manageLink={{ label: 'All Sub-Services', href: '/admin/sub-services' }}
         />
 
         {/* ARTICLES */}

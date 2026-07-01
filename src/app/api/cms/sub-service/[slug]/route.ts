@@ -9,10 +9,16 @@ export async function GET(_req: NextRequest, { params }: RouteContext) {
   const client = await pool.connect();
   try {
     const res = await client.query(
-      `SELECT slug, title, hero_heading, hero_intro, intro_heading, intro_body,
-              problems_heading, problems_items, cta_heading, cta_body,
-              status, meta_title, meta_description, created_at, updated_at
-         FROM sub_service_pages WHERE slug = $1`,
+      `SELECT s.slug, s.title, s.hero_heading, s.hero_intro, s.hero_image,
+              s.intro_heading, s.intro_body,
+              s.problems_heading, s.problems_items, s.cta_heading, s.cta_body,
+              s.status, s.meta_title, s.meta_description, s.created_at, s.updated_at,
+              s.parent_slug,
+              cu.name AS created_by_name, uu.name AS updated_by_name
+         FROM sub_service_pages s
+         LEFT JOIN cms_users cu ON cu.id = s.created_by
+         LEFT JOIN cms_users uu ON uu.id = s.updated_by
+        WHERE s.slug = $1`,
       [slug]
     );
     if (!res.rows[0]) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -37,6 +43,23 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
+  // Validate parent_slug if provided
+  const rawParent = 'parentSlug' in body ? body.parentSlug : undefined;
+  if (rawParent !== undefined && rawParent !== null) {
+    const parentCheck = await pool.connect();
+    try {
+      const exists = await parentCheck.query(
+        `SELECT 1 FROM service_category_pages WHERE slug = $1`,
+        [rawParent]
+      );
+      if (exists.rowCount === 0) {
+        return NextResponse.json({ error: 'Invalid parent_slug: not found in service_category_pages' }, { status: 400 });
+      }
+    } finally {
+      parentCheck.release();
+    }
+  }
+
   const client = await pool.connect();
   try {
     const res = await client.query(
@@ -44,23 +67,26 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
          title            = COALESCE($1, title),
          hero_heading     = COALESCE($2, hero_heading),
          hero_intro       = COALESCE($3, hero_intro),
-         intro_heading    = COALESCE($4, intro_heading),
-         intro_body       = COALESCE($5, intro_body),
-         problems_heading = COALESCE($6, problems_heading),
-         problems_items   = COALESCE($7, problems_items),
-         cta_heading      = COALESCE($8, cta_heading),
-         cta_body         = COALESCE($9, cta_body),
-         status           = COALESCE($10, status),
-         meta_title       = $11,
-         meta_description = $12,
-         updated_by       = $13,
+         hero_image       = COALESCE($4, hero_image),
+         intro_heading    = COALESCE($5, intro_heading),
+         intro_body       = COALESCE($6, intro_body),
+         problems_heading = COALESCE($7, problems_heading),
+         problems_items   = COALESCE($8, problems_items),
+         cta_heading      = COALESCE($9, cta_heading),
+         cta_body         = COALESCE($10, cta_body),
+         status           = COALESCE($11, status),
+         meta_title       = $12,
+         meta_description = $13,
+         parent_slug      = $14,
+         updated_by       = $15,
          updated_at       = NOW()
-       WHERE slug = $14
+       WHERE slug = $16
        RETURNING id`,
       [
         (body.title as string) ?? null,
         (body.heroHeading as string) ?? null,
         (body.heroIntro as string) ?? null,
+        (body.heroImage as string) ?? null,
         (body.introHeading as string) ?? null,
         (body.introBody as string) ?? null,
         (body.problemsHeading as string) ?? null,
@@ -70,6 +96,7 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
         (body.status as string) ?? null,
         (body.metaTitle as string) ?? null,
         (body.metaDescription as string) ?? null,
+        rawParent !== undefined ? (rawParent as string | null) : null,
         session.userId,
         slug,
       ]
@@ -78,6 +105,42 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error('[cms/sub-service PUT]', err);
+    return NextResponse.json({ error: 'Database error' }, { status: 500 });
+  } finally {
+    client.release();
+  }
+}
+
+export async function PATCH(req: NextRequest, { params }: RouteContext) {
+  const session = await getSession(req);
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  const { slug } = await params;
+  let body: { status?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  }
+
+  const newStatus = body.status;
+  if (newStatus !== 'published' && newStatus !== 'draft') {
+    return NextResponse.json({ error: 'status must be "published" or "draft"' }, { status: 400 });
+  }
+
+  const client = await pool.connect();
+  try {
+    const res = await client.query(
+      `UPDATE sub_service_pages
+          SET status = $1, updated_by = $2, updated_at = NOW()
+        WHERE slug = $3
+        RETURNING status`,
+      [newStatus, session.userId, slug]
+    );
+    if ((res.rowCount ?? 0) === 0) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json({ success: true, status: res.rows[0].status });
+  } catch (err) {
+    console.error('[cms/sub-service PATCH]', err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   } finally {
     client.release();

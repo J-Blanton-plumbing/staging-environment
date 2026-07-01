@@ -25,14 +25,14 @@ export const SEWER_RODDING: ServiceContent = {
   hero: {
     heading: 'Sewer Rodding in Chicagoland',
     intro:
-      'Our licensed plumbers clear stubborn blockages deep within your sewer lines with professional rodding services built for lasting results.',
+      'Clogged drains, recurring backups, and odors are key signs you may need sewer rodding, and our rodding services deliver fast, safe results with expert sewer rodding services when rodding a blocked drain is the best solution.',
     image: 'https://d1rplazj5a80fb.cloudfront.net/images/hero_image.webp',
   },
 
-  // §3 — expert intro (two-column, Cream)
+  // §3 — expert intro (two-column, Cream) — `.f` dual-image pattern
   expertSection: {
     heading: 'Sewer Rodding Experts You Should Call',
-    image1: '',
+    image1: 'https://d1rplazj5a80fb.cloudfront.net/images/img_sewer-rodding.webp',
     image2: '',
     paragraphs: [
       'Our licensed plumbers provide expert rodding services to clear stubborn blockages deep within your sewer lines.',
@@ -60,14 +60,14 @@ export const SEWER_RODDING: ServiceContent = {
         title: 'Drain Cleaning',
         teaser:
           'Professional drain cleaning services in Chicago transform drainage problems into lasting solutions.',
-        image: '',
+        image: 'https://d1rplazj5a80fb.cloudfront.net/images/image14.webp',
         href: '/drain-cleaning-services-in-chicago',
       },
       {
         title: 'Hydro Jetting',
         teaser:
           'Professional hydro jetting service eliminates stubborn pipe blockages quickly and effectively.',
-        image: '',
+        image: 'https://d1rplazj5a80fb.cloudfront.net/images/img_hydro-jetting.webp',
         href: '/hydro-jetting',
       },
     ],
@@ -83,8 +83,9 @@ export const SEWER_RODDING: ServiceContent = {
     ],
   },
 
-  // §8 — No Drip Club (Carmine, white pill JOIN NOW)
+  // §8 — No Drip Club (Cream, two-column `.f2` variant, white pill JOIN NOW)
   noDropClubSection: {
+    title: 'Premium Protection with Our No Drip Club',
     body: 'Our No Drip Club offers premium plumbing protection and added peace of mind for homeowners. Members enjoy priority scheduling and routine inspections to catch small issues before they become costly repairs.',
   },
 
@@ -99,9 +100,10 @@ export const SEWER_RODDING: ServiceContent = {
     ],
   },
 
-  // §11 — closing CTA (Carmine/Midnight, centered)
+  // §11 — closing CTA (Cream, two-column `.f3.f3-left` with manplumber.webp)
   closingCTA: {
     heading: 'Schedule Sewer Rodding Service Today',
     body: "Don't wait for a minor clog to turn into a major sewer problem. Scheduling professional sewer rodding at the first sign of trouble can save time and money. Our friendly team makes booking easy.",
+    image: 'https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp',
   },
 };

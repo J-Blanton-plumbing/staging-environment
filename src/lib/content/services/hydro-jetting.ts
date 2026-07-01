@@ -84,5 +84,6 @@ export const HYDRO_JETTING_SERVICE: ServiceContent = {
   closingCTA: {
     heading: 'Schedule Hydro Jetting Service Today',
     body: "Don't wait for a minor clog to turn into a major sewer backup. Scheduling professional hydro jetting at the first sign of trouble can save time and money. Our friendly team makes booking easy — same-day service available.",
+    image: 'https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp',
   },
 };

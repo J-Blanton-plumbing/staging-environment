@@ -48,6 +48,7 @@ export interface ServiceContent {
     paragraphs: string[];
   };
   noDropClubSection: {
+    title?: string; // §8 `.f2` red label; defaults in <NoDripClubSimple />
     body: string; // 1–2 sentence paragraph, service-specific or generic
   };
   preventiveSection: {
@@ -56,7 +57,8 @@ export interface ServiceContent {
     paragraphs: string[];
   };
   closingCTA: {
-    heading: string;
+    heading: string; // §11 `.f3` red label / tagline
     body: string;
+    image: string; // CDN URL — left column photo (manplumber.webp on sewer-rodding)
   };
 }

@@ -5,10 +5,16 @@ export async function GET() {
   const client = await pool.connect();
   try {
     const result = await client.query(
-      `SELECT slug, hero_heading FROM service_category_pages ORDER BY slug ASC`
+      `SELECT slug FROM service_category_pages ORDER BY slug ASC`
     );
     return NextResponse.json(
-      result.rows.map(r => ({ slug: r.slug as string, title: r.hero_heading as string }))
+      result.rows.map(r => ({
+        slug: r.slug as string,
+        title: (r.slug as string)
+          .split('-')
+          .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(' '),
+      }))
     );
   } catch (err) {
     console.error('[cms/service-categories GET]', err);

@@ -1,17 +1,16 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { Phone } from 'lucide-react';
+import { Phone, Check } from 'lucide-react';
 import { SITE } from '@/lib/site';
+import CharacterPanel from '@/components/CharacterPanel';
 import type { ServiceContent } from '@/types/service';
 
 /**
- * §4 — common-problems block (brief-11 §4).
- * Carmine `#BC0E0E` background, white H2, styled problem rows, the J. Blanton
- * character, and a phone CTA. Because the section sits on Carmine, the CTA is
- * the white-pill / Carmine-text treatment (the §8 "JOIN NOW" pattern), not the
- * blue hero pill.
- *
- * The character is shared brand chrome (local asset), not per-service data.
+ * §4 — common-problems block (brief-11 §4 / brief-61 fix). Uses the shared
+ * <CharacterPanel> — the same "Problems We Solve" treatment as the service
+ * category pages (`/services/[slug]`): the `no-drip-club.webp` red background,
+ * the J. Blanton character sitting flush at the bottom-left (400×520,
+ * `object-bottom`), check-circle problem rows, and the Cerulean "MAKE A GOOD
+ * CALL" pill. The character is shared brand chrome, not per-service data.
  */
 export default function ServiceProblems({
   problems,
@@ -19,51 +18,43 @@ export default function ServiceProblems({
   problems: ServiceContent['problemsSection'];
 }) {
   return (
-    <section className="bg-brand-600 text-white py-[70px] md:py-[90px]">
-      <div className="w-[90%] lg:w-[81%] mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-[60px]">
-        {/* Character — decorative brand mascot (empty alt) */}
-        <div className="shrink-0 hidden lg:block">
-          <Image
-            src="/images/jbcharacter.webp"
-            alt=""
-            width={280}
-            height={360}
-            className="w-[280px] h-auto object-contain"
-          />
-        </div>
+    // Cream gutter so the panel sits as a contained, centered block.
+    <section className="bg-cream-100 py-[50px] md:py-[80px]">
+      <div className="w-[90%] lg:w-[81%] mx-auto">
+        <CharacterPanel
+          className="ep-card ndc-section"
+          characterClassName="char hidden lg:block relative lg:w-[400px] lg:h-[520px] flex-shrink-0 self-end"
+        >
+          <div className="a flex-1 w-full px-8 md:px-12 lg:px-8 lg:pr-16 py-10 lg:py-16 text-white">
+            <div className="r">
+              <h2 className="label font-display font-bold text-white text-[28px] md:text-[36px] lg:text-[42px] leading-tight tracking-tight mb-6 uppercase">
+                {problems.heading}
+              </h2>
 
-        <div className="flex-1 w-full">
-          <h2 className="font-display font-bold text-white text-[28px] md:text-[32px] leading-tight tracking-tight mb-8">
-            {problems.heading}
-          </h2>
+              <ul className="space-y-3 mb-8">
+                {problems.problems.map((item, i) => (
+                  <li
+                    key={i}
+                    className="service flex items-start gap-3 font-sans text-[16px] md:text-[18px] leading-[24px] text-white"
+                  >
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-brand-600 flex-shrink-0 mt-0.5">
+                      <Check className="h-4 w-4" strokeWidth={3} />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-          {/* Problem rows — styled line items (not <ul> bullets), arrow-prefixed */}
-          <ul className="space-y-3 mb-9">
-            {problems.problems.map((item, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 font-sans text-[16px] leading-[24px] text-cream-100"
+              <Link
+                href={SITE.phoneHref}
+                className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
-                <span
-                  aria-hidden="true"
-                  className="mt-[3px] shrink-0 font-display font-bold text-white"
-                >
-                  ›
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          {/* White pill, Carmine text (legible on the Carmine block) */}
-          <Link
-            href={SITE.phoneHref}
-            className="inline-flex items-center gap-2.5 bg-white hover:bg-cream-100 text-brand-600 font-display font-bold text-[16px] tracking-wide px-7 py-3.5 rounded-full transition-colors"
-          >
-            <Phone className="h-5 w-5" strokeWidth={2.5} />
-            MAKE A GOOD CALL
-          </Link>
-        </div>
+                <Phone className="h-4 w-4" strokeWidth={2.5} />
+                MAKE A GOOD CALL
+              </Link>
+            </div>
+          </div>
+        </CharacterPanel>
       </div>
     </section>
   );

@@ -91,7 +91,7 @@ export const PLUMBING: PlumbingContent = {
       },
       {
         label: 'Gas Lines',
-        href: '/gas-lines-chicago',
+        href: '/gas-lines',
         image: '/images/sub-gas-lines.webp',
         desc: 'Expert gas line technicians provide emergency repairs and solutions for leaks and line issues.',
       },

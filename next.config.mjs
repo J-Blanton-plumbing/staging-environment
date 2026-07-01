@@ -23,6 +23,9 @@ const nextConfig = {
       // Emergency slug alias
       { source: '/emergency',           destination: '/emergency-plumbing',    permanent: true },
 
+      // Gas lines slug alias (live canonical = /gas-lines; DB was incorrectly stored as gas-lines-chicago)
+      { source: '/gas-lines-chicago',   destination: '/gas-lines',             permanent: true },
+
       // Stub pages
       { source: '/booking',             destination: '/contact',               permanent: true },
     ];

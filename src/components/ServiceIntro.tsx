@@ -1,13 +1,16 @@
 import type { ServiceContent } from '@/types/service';
 
 /**
- * §3 — "Experts You Should Call" intro (brief-11 §3).
- * Two-column alternating text/imagery on a Cream `#F9F3EC` background.
- * Heading is Carmine H2; body paragraphs are Midnight Nunito 16/24.
+ * §3 — "Experts You Should Call" intro (brief-11 §3 / brief-61 Track B).
+ * Live `.f` two-column pattern on a Cream `#F9F3EC` background: heading + copy
+ * in the left column with the service photo embedded for mobile, and the same
+ * photo as the right column on desktop. Heading is Carmine H2; body paragraphs
+ * are Midnight Nunito 16/24.
  *
- * Interior images are lazy-loaded on live and their CDN filenames are
- * unconfirmed (brief-11 §1 note): when `image1`/`image2` are empty the photo
- * slots render a Cream placeholder block rather than a broken image.
+ * `image1` is the single service photo, rendered twice (mobile inside the text
+ * column, desktop as the right column) to mirror the WordPress `.f` markup.
+ * When it is empty the slot renders a Cream placeholder rather than a broken
+ * image (brief-11 §1 note).
  */
 export default function ServiceIntro({
   expert,
@@ -17,30 +20,34 @@ export default function ServiceIntro({
   return (
     <section className="bg-cream-100 py-[70px] md:py-[100px]">
       <div className="w-[90%] lg:w-[81%] mx-auto">
-        <h2 className="font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-10">
-          {expert.heading}
-        </h2>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[60px] items-center">
-          {/* Left — primary service photo */}
-          <ServiceImage src={expert.image1} className="aspect-[4/3] w-full" />
+          {/* Left — heading, mobile-only photo, body paragraphs */}
+          <div>
+            <h2 className="font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-8">
+              {expert.heading}
+            </h2>
 
-          {/* Right — three body paragraphs */}
-          <div className="text-navy-800 space-y-5">
-            {expert.paragraphs.map((p, i) => (
-              <p key={i} className="font-sans text-[16px] leading-[24px]">
-                {p}
-              </p>
-            ))}
+            {/* Mobile: photo inside the text column (hidden on desktop) */}
+            <ServiceImage
+              src={expert.image1}
+              className="aspect-[4/3] w-full mb-8 lg:hidden"
+            />
+
+            <div className="text-navy-800 space-y-5">
+              {expert.paragraphs.map((p, i) => (
+                <p key={i} className="font-sans text-[16px] leading-[24px]">
+                  {p}
+                </p>
+              ))}
+            </div>
           </div>
+
+          {/* Right — desktop-only photo column (hidden on mobile) */}
+          <ServiceImage
+            src={expert.image1}
+            className="aspect-[4/3] w-full hidden lg:block"
+          />
         </div>
-
-        {/* Second staggered image row (image → text → image stagger on live) */}
-        {expert.image2 && (
-          <div className="mt-10 lg:mt-[60px]">
-            <ServiceImage src={expert.image2} className="aspect-[21/9] w-full" />
-          </div>
-        )}
       </div>
     </section>
   );

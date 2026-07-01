@@ -42,6 +42,11 @@ export default function ArticlesAdminPage() {
   const [articles, setArticles] = useState<ArticleRow[]>([]);
   const [taxonomy, setTaxonomy] = useState<TaxonomyMap>({});
   const [query, setQuery] = useState('');
+  const [filterStatus, setFilterStatus] = useState('');
+  const [filterUser, setFilterUser] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
+  const [filterDateFrom, setFilterDateFrom] = useState('');
+  const [filterDateTo, setFilterDateTo] = useState('');
   const [loadStatus, setLoadStatus] = useState<'loading' | 'error' | 'done'>('loading');
   const [rowErrors, setRowErrors] = useState<Record<string, string>>({});
 
@@ -64,14 +69,49 @@ export default function ArticlesAdminPage() {
       .catch(() => setLoadStatus('error'));
   }, []);
 
+  // Derive filter option lists from loaded data
+  const allUsers = Array.from(
+    new Set(articles.map(a => a.updatedByName).filter(Boolean) as string[])
+  ).sort();
+
+  const allCategories = Array.from(
+    new Set(articles.flatMap(a => a.category ?? []))
+  ).sort();
+
+  const hasActiveFilter = query || filterStatus || filterUser || filterCategory || filterDateFrom || filterDateTo;
+
   const filtered = articles.filter(a => {
     const q = query.toLowerCase();
-    return (
+    if (q && !(
       a.title.toLowerCase().includes(q) ||
       a.slug.toLowerCase().includes(q) ||
       (a.category ?? []).some(c => c.toLowerCase().includes(q))
-    );
+    )) return false;
+    if (filterStatus && a.status !== filterStatus) return false;
+    if (filterUser && a.updatedByName !== filterUser) return false;
+    if (filterCategory && !(a.category ?? []).includes(filterCategory)) return false;
+    if (filterDateFrom || filterDateTo) {
+      const ts = a.updatedAt ? new Date(a.updatedAt).getTime() : null;
+      if (!ts) return false;
+      if (filterDateFrom && ts < new Date(filterDateFrom).getTime()) return false;
+      if (filterDateTo) {
+        // treat "to" date as end-of-day
+        const to = new Date(filterDateTo);
+        to.setHours(23, 59, 59, 999);
+        if (ts > to.getTime()) return false;
+      }
+    }
+    return true;
   });
+
+  function clearFilters() {
+    setQuery('');
+    setFilterStatus('');
+    setFilterUser('');
+    setFilterCategory('');
+    setFilterDateFrom('');
+    setFilterDateTo('');
+  }
 
   function setRowError(slug: string, msg: string) {
     setRowErrors(prev => ({ ...prev, [slug]: msg }));
@@ -116,25 +156,161 @@ export default function ArticlesAdminPage() {
         {loadStatus === 'done' ? `${articles.length} articles` : ' '}
       </p>
 
-      <input
-        type="search"
-        placeholder="Search articles…"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        style={{
-          display: 'block',
-          width: '100%',
-          maxWidth: '400px',
-          padding: '0.5rem 0.75rem',
-          border: '1px solid rgba(10,27,46,0.2)',
-          borderRadius: '6px',
-          fontSize: '0.9rem',
-          marginBottom: '1.5rem',
-          fontFamily: 'inherit',
-          color: '#0A1B2E',
-          boxSizing: 'border-box',
-        }}
-      />
+      {/* ── Filter bar ── */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'center', marginBottom: '1.5rem' }}>
+        {/* Search */}
+        <input
+          type="search"
+          placeholder="Search title, slug, category…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          style={{
+            padding: '0.45rem 0.75rem',
+            border: '1px solid rgba(10,27,46,0.2)',
+            borderRadius: '6px',
+            fontSize: '0.875rem',
+            fontFamily: 'Nunito, sans-serif',
+            color: '#0A1B2E',
+            width: '260px',
+            boxSizing: 'border-box',
+          }}
+        />
+
+        {/* Status */}
+        <select
+          value={filterStatus}
+          onChange={e => setFilterStatus(e.target.value)}
+          style={{
+            padding: '0.45rem 2rem 0.45rem 0.75rem',
+            border: '1px solid rgba(10,27,46,0.2)',
+            borderRadius: '6px',
+            fontSize: '0.875rem',
+            fontFamily: 'Nunito, sans-serif',
+            color: filterStatus ? '#0A1B2E' : '#5a6a7a',
+            background: '#fff',
+            cursor: 'pointer',
+            appearance: 'none',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 8px center',
+          }}
+        >
+          <option value="">All statuses</option>
+          <option value="published">Published</option>
+          <option value="draft">Draft</option>
+        </select>
+
+        {/* Author */}
+        <select
+          value={filterUser}
+          onChange={e => setFilterUser(e.target.value)}
+          style={{
+            padding: '0.45rem 2rem 0.45rem 0.75rem',
+            border: '1px solid rgba(10,27,46,0.2)',
+            borderRadius: '6px',
+            fontSize: '0.875rem',
+            fontFamily: 'Nunito, sans-serif',
+            color: filterUser ? '#0A1B2E' : '#5a6a7a',
+            background: '#fff',
+            cursor: 'pointer',
+            appearance: 'none',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 8px center',
+          }}
+        >
+          <option value="">All authors</option>
+          {allUsers.map(u => <option key={u} value={u}>{u}</option>)}
+        </select>
+
+        {/* Category */}
+        <select
+          value={filterCategory}
+          onChange={e => setFilterCategory(e.target.value)}
+          style={{
+            padding: '0.45rem 2rem 0.45rem 0.75rem',
+            border: '1px solid rgba(10,27,46,0.2)',
+            borderRadius: '6px',
+            fontSize: '0.875rem',
+            fontFamily: 'Nunito, sans-serif',
+            color: filterCategory ? '#0A1B2E' : '#5a6a7a',
+            background: '#fff',
+            cursor: 'pointer',
+            appearance: 'none',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 8px center',
+          }}
+        >
+          <option value="">All categories</option>
+          {allCategories.map(c => <option key={c} value={c}>{c}</option>)}
+        </select>
+
+        {/* Date range */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+          <input
+            type="date"
+            value={filterDateFrom}
+            onChange={e => setFilterDateFrom(e.target.value)}
+            title="Modified from"
+            style={{
+              padding: '0.45rem 0.5rem',
+              border: '1px solid rgba(10,27,46,0.2)',
+              borderRadius: '6px',
+              fontSize: '0.875rem',
+              fontFamily: 'Nunito, sans-serif',
+              color: filterDateFrom ? '#0A1B2E' : '#5a6a7a',
+              background: '#fff',
+              cursor: 'pointer',
+            }}
+          />
+          <span style={{ fontSize: '12px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>to</span>
+          <input
+            type="date"
+            value={filterDateTo}
+            min={filterDateFrom || undefined}
+            onChange={e => setFilterDateTo(e.target.value)}
+            title="Modified to"
+            style={{
+              padding: '0.45rem 0.5rem',
+              border: '1px solid rgba(10,27,46,0.2)',
+              borderRadius: '6px',
+              fontSize: '0.875rem',
+              fontFamily: 'Nunito, sans-serif',
+              color: filterDateTo ? '#0A1B2E' : '#5a6a7a',
+              background: '#fff',
+              cursor: 'pointer',
+            }}
+          />
+        </div>
+
+        {/* Clear */}
+        {hasActiveFilter && (
+          <button
+            onClick={clearFilters}
+            style={{
+              padding: '0.45rem 0.9rem',
+              border: '1px solid rgba(10,27,46,0.2)',
+              borderRadius: '6px',
+              fontSize: '0.875rem',
+              fontFamily: 'Nunito, sans-serif',
+              fontWeight: 700,
+              color: '#BC0E0E',
+              background: '#fff',
+              cursor: 'pointer',
+            }}
+          >
+            Clear filters
+          </button>
+        )}
+
+        {/* Result count when filtered */}
+        {hasActiveFilter && loadStatus === 'done' && (
+          <span style={{ fontSize: '13px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>
+            {filtered.length} of {articles.length}
+          </span>
+        )}
+      </div>
 
       {loadStatus === 'loading' && <p style={{ color: '#0A1B2E' }}>Loading articles…</p>}
       {loadStatus === 'error' && <p style={{ color: '#BC0E0E' }}>Failed to load articles. Please refresh.</p>}

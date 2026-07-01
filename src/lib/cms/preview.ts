@@ -9,6 +9,8 @@ import type { ServiceCmsContent, ServiceCmsUpdatePayload } from '@/lib/cms/servi
 import type { CityCmsContent } from '@/lib/cms/city-pages';
 import type { EpCmsContent } from '@/lib/cms/emergency-plumbing';
 import type { CityServiceCmsContent } from '@/lib/cms/city-service-pages';
+import { subServiceToServiceContent } from '@/lib/cms/sub-service-pages';
+import type { ServiceContent } from '@/types/service';
 
 const PREVIEW_COOKIE = '__preview_draft';
 
@@ -68,6 +70,54 @@ export async function getServicePreview(slug: string): Promise<{
   };
 
   return { cms, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}
+
+/**
+ * Preview for an individual sub-service page (kitchen-sink-drain, …). Drafts are
+ * saved by `/admin/sub-service/[slug]` with page_type 'service' (same language
+ * the public service pages speak). The draft content is the admin's camelCase
+ * shape — `problems_items` arrives as a newline-joined string — so it is
+ * normalized before mapping onto ServiceContent.
+ */
+export async function getSubServicePreview(slug: string): Promise<{
+  content: ServiceContent;
+  meta: PreviewMeta;
+} | null> {
+  const cookieStore = await cookies();
+  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
+  if (!rawId) return null;
+
+  const id = parseInt(rawId, 10);
+  if (isNaN(id)) return null;
+
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== 'service' || draft.page_slug !== slug) return null;
+
+  const c = draft.content as Record<string, unknown>;
+  const rawProblems = c.problemsItems;
+  const problemsItems = Array.isArray(rawProblems)
+    ? (rawProblems as string[])
+    : typeof rawProblems === 'string'
+      ? rawProblems.split('\n').map((s) => s.trim()).filter(Boolean)
+      : [];
+
+  const content = subServiceToServiceContent({
+    slug,
+    title: (c.title as string) ?? null,
+    heroHeading: (c.heroHeading as string) ?? null,
+    heroIntro: (c.heroIntro as string) ?? null,
+    heroImage: (c.heroImage as string) ?? null,
+    introHeading: (c.introHeading as string) ?? null,
+    introBody: (c.introBody as string) ?? null,
+    problemsHeading: (c.problemsHeading as string) ?? null,
+    problemsItems,
+    ctaHeading: (c.ctaHeading as string) ?? null,
+    ctaBody: (c.ctaBody as string) ?? null,
+    metaTitle: (c.metaTitle as string) ?? null,
+    metaDescription: (c.metaDescription as string) ?? null,
+  });
+
+  return { content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
 }
 
 export async function getCityPreview(slug: string): Promise<{

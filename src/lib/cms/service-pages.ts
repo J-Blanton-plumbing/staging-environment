@@ -64,27 +64,27 @@ export interface ServiceCmsUpdatePayload {
 }
 
 export async function getServiceCmsContent(slug: string): Promise<ServiceCmsContent | null> {
-  const client = await pool.connect();
-  try {
-    const [pageRes, subRes, globalRes] = await Promise.all([
-      client.query<ServicePageRow>('SELECT * FROM service_category_pages WHERE slug = $1', [slug]),
-      client.query<ServiceSubcategoryRow>(
-        'SELECT label, href, description, sort_order FROM service_subcategories WHERE page_slug = $1 ORDER BY sort_order',
-        [slug]
-      ),
-      client.query<ServiceGlobalRow>(
-        'SELECT service_area_heading, service_area_body, tiktok_headline FROM global_content LIMIT 1'
-      ),
-    ]);
-    if (!pageRes.rows[0]) return null;
-    return {
-      page: pageRes.rows[0],
-      subcategories: subRes.rows,
-      global: globalRes.rows[0],
-    };
-  } finally {
-    client.release();
-  }
+  // Each query goes through pool.query() so it gets its own pooled client and
+  // they can run concurrently. Sharing a single client across a Promise.all
+  // violates node-postgres' one-query-per-client rule and throws under the
+  // parallel rendering that `next dev`/`next build` do (surfaces as the opaque
+  // "Jest worker encountered N child process exceptions" error).
+  const [pageRes, subRes, globalRes] = await Promise.all([
+    pool.query<ServicePageRow>('SELECT * FROM service_category_pages WHERE slug = $1', [slug]),
+    pool.query<ServiceSubcategoryRow>(
+      'SELECT label, href, description, sort_order FROM service_subcategories WHERE page_slug = $1 ORDER BY sort_order',
+      [slug]
+    ),
+    pool.query<ServiceGlobalRow>(
+      'SELECT service_area_heading, service_area_body, tiktok_headline FROM global_content LIMIT 1'
+    ),
+  ]);
+  if (!pageRes.rows[0]) return null;
+  return {
+    page: pageRes.rows[0],
+    subcategories: subRes.rows,
+    global: globalRes.rows[0],
+  };
 }
 
 export async function updateServiceCmsContent(

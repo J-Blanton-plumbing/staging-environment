@@ -4,40 +4,57 @@ import { SITE } from '@/lib/site';
 import type { ServiceContent } from '@/types/service';
 
 /**
- * §1 — full-width image hero for a sub-service page (brief-11 §1).
- * H1 + intro + phone CTA over the dark hero image. All copy/image come from
- * the data file; the phone value comes from `site.ts`.
+ * §1 — split image hero for a sub-service page (brief-11 §1, QA brief-60 Fix 1).
  *
- * Plain `<img>` per the brief (the CDN host is not in next/image's
- * remotePatterns and the live page serves a raw <img> here).
+ * Mirrors CategoryHero / the shared `.hero` pattern: a ~45% image column
+ * (`.img-s`) beside a ~55% `.hero-contents` column holding the H1, intro and
+ * phone CTA. The Carmine #BC0E0E background + tiled wrench pattern come from the
+ * shared `.hero .hero-contents` rule in globals.css — this component only has to
+ * use the matching class names (the previous `service-hero` / `service-hero-contents`
+ * names never matched that selector, so the column fell back to a flat navy hero).
+ *
+ * On mobile (≤900px / below lg) the image column hides and `.hero-contents`
+ * fills full width, per the shared `.hero` responsive rules in globals.css.
+ *
+ * Plain `<img>` (not next/image) per the original hero: `hero.image` may be a
+ * local path or a CDN URL, and a raw <img> serves both without remotePatterns.
  */
 export default function ServiceHero({ hero }: { hero: ServiceContent['hero'] }) {
   return (
-    <section className="service-hero relative w-full h-[420px] md:h-[520px] overflow-hidden bg-navy-900">
+    <section className="hero relative w-full flex flex-col lg:flex-row min-h-[420px] lg:min-h-[520px]">
+      {/* Image column (~45%) — hidden on mobile (matches CategoryHero / live site). */}
       {hero.image && (
-        <img
-          src={hero.image}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover z-[1]"
-        />
+        <div className="img-s hidden lg:block relative lg:w-[45%] lg:h-auto lg:min-h-[520px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={hero.image}
+            alt={hero.heading}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
       )}
-      {/* Midnight scrim so white text stays legible over the photo (no #000) */}
-      <div className="absolute inset-0 z-[2] bg-navy-900/55" />
 
-      <div className="service-hero-contents absolute inset-0 z-[3] flex items-end">
-        <div className="w-[90%] lg:w-[81%] mx-auto mb-[60px] md:mb-[80px] max-w-3xl">
-          <h1 className="font-display font-bold text-white text-[32px] md:text-[40px] leading-[1.05] tracking-tight">
+      {/* Carmine content column (~55%, full-width when no image). The Carmine
+          background + tiled wrench pattern are supplied by `.hero .hero-contents`
+          in globals.css — do not set an inline background here. */}
+      <div
+        className={`hero-contents relative overflow-hidden ${
+          hero.image ? 'w-full lg:w-[55%]' : 'w-full'
+        }`}
+      >
+        <div className="w relative z-[2] mx-auto flex h-full max-w-[600px] w-[85%] lg:w-[80%] flex-col justify-center py-16 text-white lg:py-0">
+          <h1 className="font-display font-bold uppercase text-white text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-tight">
             {hero.heading}
           </h1>
-          <p className="mt-4 font-sans text-white text-[16px] leading-[24px] max-w-2xl">
+          <p className="hero-desc text-white/90 text-[15px] md:text-base leading-[1.5] tracking-[0.5px] mt-5 mb-7 max-w-2xl">
             {hero.intro}
           </p>
           <Link
             href={SITE.phoneHref}
-            className="mt-6 inline-flex items-center gap-2.5 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-[16px] tracking-wide px-7 py-3.5 rounded-full transition-colors"
+            className="hero-link-button inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold h-[45px] px-[35px] rounded-[10px] transition-colors"
           >
-            <Phone className="h-5 w-5" strokeWidth={2.5} />
-            {SITE.phone}
+            <Phone className="h-5 w-5 mr-2" strokeWidth={2.5} />
+            <span className="text-base lg:text-lg tracking-wide">{SITE.phone}</span>
           </Link>
         </div>
       </div>

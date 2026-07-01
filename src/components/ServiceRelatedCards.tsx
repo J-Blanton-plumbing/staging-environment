@@ -23,22 +23,27 @@ export default function ServiceRelatedCards({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
           {related.cards.map((card) => (
-            <article key={card.href} className="flex flex-col">
+            <article
+              key={card.href}
+              className="card group flex flex-col bg-white rounded-lg overflow-hidden shadow-card hover:-translate-y-1 transition-transform duration-200"
+            >
               <Link href={card.href} className="block">
-                <ServiceImage src={card.image} className="aspect-[16/10] w-full" />
+                <ServiceImage src={card.image} className="aspect-[16/10] w-full rounded-none" />
               </Link>
-              <h3 className="mt-5 font-display font-bold text-navy-800 text-[20px] leading-tight">
-                {card.title}
-              </h3>
-              <p className="mt-2 font-sans text-navy-800 text-[16px] leading-[24px] flex-1">
-                {card.teaser}
-              </p>
-              <Link
-                href={card.href}
-                className="mt-4 inline-flex items-center gap-2 self-start font-sans text-[16px] text-navy-800 no-underline hover:underline hover:text-brand-600 transition-colors"
-              >
-                Read more <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-              </Link>
+              <div className="flex flex-col flex-1 p-6">
+                <h3 className="font-display font-bold text-navy-800 text-[20px] leading-tight">
+                  {card.title}
+                </h3>
+                <p className="mt-2 font-sans text-navy-800 text-[16px] leading-[24px] flex-1">
+                  {card.teaser}
+                </p>
+                <Link
+                  href={card.href}
+                  className="mt-4 inline-flex items-center gap-2 self-start font-sans text-[16px] text-navy-800 no-underline group-hover:text-brand-600 transition-colors"
+                >
+                  Read more <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </Link>
+              </div>
             </article>
           ))}
         </div>

@@ -209,7 +209,7 @@ const pages = [
   {
     slug: 'sewer-rodding',
     hero_heading: 'Sewer Rodding in Chicagoland',
-    hero_intro: 'Our licensed plumbers clear stubborn blockages deep within your sewer lines with professional rodding services built for lasting results.',
+    hero_intro: 'Clogged drains, recurring backups, and odors are key signs you may need sewer rodding, and our rodding services deliver fast, safe results with expert sewer rodding services when rodding a blocked drain is the best solution.',
     intro_heading: 'Sewer Rodding Experts You Should Call',
     intro_body: 'Our licensed plumbers provide expert rodding services to clear stubborn blockages deep within your sewer lines.\n\nWe use advanced equipment to ensure sewer rodding is thorough and effective without damaging your pipes. From minor clogs to major backups, our sewer rodding services are tailored to your specific situation.\n\nWe focus on long-term results, not temporary fixes. When rodding a blocked drain, our goal is to restore full flow and prevent repeat issues.',
     problems_heading: 'Reliable Solutions for Common Sewer Rodding Problems',
@@ -292,21 +292,15 @@ async function seed() {
         ]
       );
 
-      // Only insert subcategories if none exist yet — prevents duplicate rows on re-runs
-      // (service_subcategories has no unique constraint so ON CONFLICT DO NOTHING is a no-op)
-      const existingSubCount = await client.query(
-        'SELECT COUNT(*) FROM service_subcategories WHERE page_slug = $1',
-        [page.slug]
-      );
-      if (existingSubCount.rows[0].count === '0') {
-        for (let i = 0; i < page.subcategories.length; i++) {
-          const sub = page.subcategories[i];
-          await client.query(
-            `INSERT INTO service_subcategories (page_slug, label, href, description, sort_order)
-             VALUES ($1, $2, $3, $4, $5)`,
-            [page.slug, sub.label, sub.href, sub.desc, i]
-          );
-        }
+      // ON CONFLICT DO NOTHING is safe — unique constraint on (page_slug, href) prevents duplicates
+      for (let i = 0; i < page.subcategories.length; i++) {
+        const sub = page.subcategories[i];
+        await client.query(
+          `INSERT INTO service_subcategories (page_slug, label, href, description, sort_order)
+           VALUES ($1, $2, $3, $4, $5)
+           ON CONFLICT (page_slug, href) DO NOTHING`,
+          [page.slug, sub.label, sub.href, sub.desc, i]
+        );
       }
     }
 

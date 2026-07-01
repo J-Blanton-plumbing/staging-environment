@@ -47,6 +47,14 @@ export async function middleware(req: NextRequest) {
   // Skip Basic Auth if credentials not configured
   if (!user || !pass) return NextResponse.next()
 
+  // Skip Basic Auth for direct localhost access (local dev / QA tooling). The
+  // Cloudflare tunnel arrives with its public host header, so this does not
+  // weaken auth on the staging URL.
+  const host = req.headers.get('host') ?? ''
+  if (host.startsWith('localhost') || host.startsWith('127.0.0.1')) {
+    return NextResponse.next()
+  }
+
   const auth = req.headers.get('authorization')
   if (auth) {
     const [scheme, encoded] = auth.split(' ')

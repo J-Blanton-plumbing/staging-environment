@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
 interface DraftOption {
   id: number;
@@ -15,6 +15,12 @@ interface Props {
 }
 
 export default function DraftControls({ getContent, pageType, pageSlug }: Props) {
+  // The "working draft" identity must survive remounts, refreshes, and going
+  // back and forth to the preview tab — otherwise every Save/Preview falls into
+  // its "create new draft" branch and spawns a duplicate "Version N". We persist
+  // it per page in localStorage and restore/adopt it on mount so Save and
+  // Preview *update* the same version; only "Save as" creates a new one.
+  const storageKey = `jbp-cms-active-draft:${pageType}:${pageSlug}`;
   const activeDraftId = useRef<number | null>(null);
   const [activeDraftLabel, setActiveDraftLabel] = useState<string>('');
   const [drafts, setDrafts] = useState<DraftOption[]>([]);
@@ -29,6 +35,29 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     setTimeout(() => setNotice(''), 2500);
   }
 
+  // Persist / restore / clear the active draft id for this page.
+  const readStored = useCallback((): { id: number; label: string } | null => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const raw = window.localStorage.getItem(storageKey);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      return typeof parsed?.id === 'number' ? { id: parsed.id, label: parsed.label ?? '' } : null;
+    } catch {
+      return null;
+    }
+  }, [storageKey]);
+
+  // Set the active draft (ref for async handlers, state for the label display,
+  // localStorage so it survives reloads). Passing `null` clears it.
+  const setActiveDraft = useCallback((id: number | null, label: string) => {
+    activeDraftId.current = id;
+    setActiveDraftLabel(id === null ? '' : label);
+    if (typeof window === 'undefined') return;
+    if (id === null) window.localStorage.removeItem(storageKey);
+    else window.localStorage.setItem(storageKey, JSON.stringify({ id, label }));
+  }, [storageKey]);
+
   const fetchDrafts = useCallback(async (): Promise<DraftOption[]> => {
     try {
       const res = await fetch(
@@ -41,6 +70,29 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
       return [];
     }
   }, [pageType, pageSlug]);
+
+  // On mount, establish the working draft: prefer the one this browser last
+  // worked on (if it still exists), else adopt the most-recent existing draft
+  // (the list is ordered newest-first) so reopening the editor continues that
+  // version instead of forking a new one. Only when the page has no drafts at
+  // all does the first Save/Preview create "Version 1".
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const rows = await fetchDrafts();
+      if (cancelled) return;
+      const stored = readStored();
+      if (stored && rows.some(r => r.id === stored.id)) {
+        const match = rows.find(r => r.id === stored.id)!;
+        setActiveDraft(match.id, match.label);
+      } else if (rows.length > 0) {
+        setActiveDraft(rows[0].id, rows[0].label);
+      } else {
+        setActiveDraft(null, '');
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [fetchDrafts, readStored, setActiveDraft]);
 
   async function nextVersionName(): Promise<string> {
     const rows = await fetchDrafts();
@@ -76,8 +128,7 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
       } else {
         const label = await nextVersionName();
         const id = await createDraft(label);
-        activeDraftId.current = id;
-        setActiveDraftLabel(label);
+        setActiveDraft(id, label);
         await fetchDrafts();
         flash(`Saved as "${label}" ✓`);
       }
@@ -100,8 +151,7 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     setSaveAsError('');
     try {
       const id = await createDraft(saveAsLabel);
-      activeDraftId.current = id;
-      setActiveDraftLabel(saveAsLabel);
+      setActiveDraft(id, saveAsLabel);
       await fetchDrafts();
       setSaveAsOpen(false);
       flash(`Saved as "${saveAsLabel}" ✓`);
@@ -119,8 +169,7 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
       if (activeDraftId.current === null) {
         const label = await nextVersionName();
         const id = await createDraft(label);
-        activeDraftId.current = id;
-        setActiveDraftLabel(label);
+        setActiveDraft(id, label);
         await fetchDrafts();
         flash(`Saved as "${label}" ✓`);
       } else {
@@ -140,8 +189,7 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     if (isNaN(id)) return;
     const draft = drafts.find(d => d.id === id);
     if (!draft) return;
-    activeDraftId.current = id;
-    setActiveDraftLabel(draft.label);
+    setActiveDraft(id, draft.label);
     flash(`Switched to "${draft.label}"`);
   }
 

@@ -1,0 +1,298 @@
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 3.5s
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 7.8s (742 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/395fef6260135d04.webpack.hot-update.json 404 in 8646ms
+ ✓ Compiled in 775ms (303 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/395fef6260135d04.webpack.hot-update.json 404 in 184ms
+ ○ Compiling /admin/sub-service/[slug] ...
+ ✓ Compiled /admin/sub-service/[slug] in 7.7s (669 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /admin/sub-service/basement-flooding 200 in 7899ms
+ GET /_next/static/webpack/395fef6260135d04.webpack.hot-update.json 404 in 247ms
+ GET /admin/sub-service/basement-flooding 200 in 395ms
+ ✓ Compiled /api/cms/sub-service/[slug] in 238ms (400 modules)
+ ✓ Compiled (404 modules)
+ GET /api/cms/sub-services 200 in 623ms
+ GET /api/cms/service-categories 200 in 625ms
+ GET /api/cms/sub-services 200 in 28ms
+ GET /api/cms/service-categories 200 in 35ms
+ GET /api/cms/sub-service/basement-flooding 200 in 1096ms
+ GET /api/cms/sub-service/basement-flooding 200 in 34ms
+ ○ Compiling /kitchen-sink-drain ...
+ ✓ Compiled /kitchen-sink-drain in 702ms (754 modules)
+ GET /kitchen-sink-drain 200 in 1017ms
+ ✓ Compiled /sewer-rodding in 270ms (760 modules)
+(node:15004) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ GET /sewer-rodding 200 in 528ms
+ ✓ Compiled /api/cms/drafts in 141ms (461 modules)
+ GET /api/cms/drafts?pageType=service&pageSlug=basement-flooding 200 in 261ms
+ POST /api/cms/drafts 201 in 26ms
+ GET /api/cms/drafts?pageType=service&pageSlug=basement-flooding 200 in 21ms
+ ✓ Compiled /api/preview in 240ms (464 modules)
+ GET /api/preview?draftId=15 307 in 348ms
+ ✓ Compiled /basement-flooding in 236ms (767 modules)
+ GET /basement-flooding 200 in 645ms
+ ○ Compiling /[city]/[service] ...
+ ✓ Compiled /[city]/[service] in 1871ms (839 modules)
+ GET /api/cms/drafts?pageType=service&pageSlug=basement-flooding 200 in 175ms
+ GET /api/cms/drafts?pageType=service&pageSlug=basement-flooding 200 in 201ms
+ GET /images/hero-plumbing.webp 404 in 3002ms
+ GET /images/hero-plumbing.webp 404 in 193ms
+ ✓ Compiled in 437ms (419 modules)
+ ○ Compiling /services/plumbing ...
+ ✓ Compiled /gas-lines in 625ms (425 modules)
+ ✓ Compiled in 416ms (748 modules)
+ GET /sewer-rodding 200 in 2261ms
+ GET /sewer-rodding 200 in 1677ms
+ GET /sewer-rodding 200 in 1651ms
+ GET /services/plumbing 200 in 2152ms
+ GET /services/plumbing 200 in 1761ms
+ GET /services/plumbing 200 in 1734ms
+ GET /services/plumbing 200 in 1713ms
+ GET /sewer-rodding 200 in 2149ms
+ GET /services/plumbing 200 in 1716ms
+ GET /gas-lines 200 in 2165ms
+ GET /sewer-rodding 200 in 1823ms
+ GET /gas-lines 200 in 1833ms
+ GET /gas-lines 200 in 1767ms
+ GET /gas-lines 200 in 1745ms
+ GET /gas-lines 200 in 1746ms
+ ✓ Compiled in 179ms (441 modules)
+ GET /basement-flooding 200 in 182ms
+ GET /basement-flooding 200 in 78ms
+ ✓ Compiled /api/cms/service-categories in 384ms (447 modules)
+ ✓ Compiled (451 modules)
+ GET /api/cms/service-categories 200 in 734ms
+ GET /api/cms/sub-service/hydro-jetting 200 in 767ms
+ GET /api/cms/sub-services 200 in 802ms
+ GET /api/cms/service-categories 200 in 66ms
+ GET /api/cms/sub-service/hydro-jetting 200 in 28ms
+ ✓ Compiled /api/cms/drafts in 118ms (453 modules)
+ GET /api/cms/drafts?pageType=service&pageSlug=hydro-jetting 200 in 259ms
+ POST /api/cms/drafts 201 in 35ms
+ GET /api/cms/drafts?pageType=service&pageSlug=hydro-jetting 200 in 23ms
+ ✓ Compiled /api/preview in 146ms (456 modules)
+ GET /api/preview?draftId=16 307 in 326ms
+ ○ Compiling /hydro-jetting ...
+ ✓ Compiled /hydro-jetting in 555ms (769 modules)
+ GET /hydro-jetting 200 in 964ms
+ GET /api/cms/drafts?pageType=service&pageSlug=hydro-jetting 200 in 72ms
+ GET /api/cms/drafts?pageType=service&pageSlug=hydro-jetting 200 in 174ms
+ GET /api/cms/service-categories 200 in 192ms
+ GET /api/cms/sub-service/sewer-rodding 200 in 196ms
+ GET /api/cms/sub-services 200 in 221ms
+ GET /api/cms/service-categories 200 in 58ms
+ GET /api/cms/sub-service/sewer-rodding 200 in 67ms
+ GET /api/cms/drafts?pageType=service&pageSlug=sewer-rodding 200 in 21ms
+ POST /api/cms/drafts 201 in 22ms
+ GET /api/cms/drafts?pageType=service&pageSlug=sewer-rodding 200 in 17ms
+ GET /api/preview?draftId=17 307 in 36ms
+ ✓ Compiled /sewer-rodding in 430ms (464 modules)
+ GET /sewer-rodding 200 in 732ms
+ GET /api/cms/drafts?pageType=service&pageSlug=sewer-rodding 200 in 203ms
+ GET /api/cms/drafts?pageType=service&pageSlug=sewer-rodding 200 in 23ms
+ GET /api/cms/sub-services 200 in 161ms
+ GET /api/cms/service-categories 200 in 202ms
+ GET /api/cms/sub-service/residential-water-heater 200 in 198ms
+ GET /api/cms/service-categories 200 in 77ms
+ GET /api/cms/sub-service/residential-water-heater 200 in 64ms
+ GET /api/cms/drafts?pageType=service&pageSlug=residential-water-heater 200 in 46ms
+ POST /api/cms/drafts 201 in 27ms
+ GET /api/cms/drafts?pageType=service&pageSlug=residential-water-heater 200 in 17ms
+ ✓ Compiled /api/cms/drafts/[id] in 276ms (463 modules)
+ PUT /api/cms/drafts/18 200 in 833ms
+ ✓ Compiled /api/preview in 134ms (466 modules)
+ GET /api/preview?draftId=18 307 in 235ms
+ ○ Compiling /residential-water-heater ...
+ ✓ Compiled /residential-water-heater in 763ms (789 modules)
+ GET /residential-water-heater 200 in 1261ms
+ GET /api/cms/drafts?pageType=service&pageSlug=residential-water-heater 200 in 152ms
+ GET /api/cms/drafts?pageType=service&pageSlug=residential-water-heater 200 in 18ms
+ ✓ Compiled in 1105ms (789 modules)
+[Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\7.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\7.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\7.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\7.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\7.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\7.pack.gz'
+}
+[Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\9.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\9.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\9.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\9.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\9.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\9.pack.gz'
+}
+[Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\10.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\10.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\10.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\10.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\10.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\server-development\\10.pack.gz'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\server-development\7.pack.gz'
+[Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\client-development\5.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\client-development\\5.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\client-development\5.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\client-development\\5.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\client-development\5.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'C:\\staging-environment\\.next\\cache\\webpack\\client-development\\5.pack.gz'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, stat 'C:\staging-environment\.next\cache\webpack\client-development\5.pack.gz'
+ ○ Compiling /[city] ...
+ ✓ Compiled /[city] in 610ms (760 modules)
+ ⨯ Error: Cannot find module './vendor-chunks/tailwind-merge.js'
+Require stack:
+- C:\staging-environment\.next\server\webpack-runtime.js
+- C:\staging-environment\.next\server\app\[city]\page.js
+- C:\staging-environment\node_modules\next\dist\server\require.js
+- C:\staging-environment\node_modules\next\dist\server\load-components.js
+- C:\staging-environment\node_modules\next\dist\build\utils.js
+- C:\staging-environment\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\staging-environment\node_modules\next\dist\compiled\jest-worker\processChild.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1500:15)
+    at C:\staging-environment\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)
+    at Module._load (node:internal/modules/cjs/loader:1285:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1600:12)
+    at mod.require (C:\staging-environment\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16) {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\staging-environment\\.next\\server\\webpack-runtime.js',
+    'C:\\staging-environment\\.next\\server\\app\\[city]\\page.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\dev\\static-paths-worker.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\compiled\\jest-worker\\processChild.js'
+  ],
+  page: '/basement-flooding'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1729ms (984 modules)
+ GET /basement-flooding 500 in 3412ms
+ ✓ Compiled /_not-found in 127ms (495 modules)
+ ⨯ Failed to generate static paths for /admin/sub-service/[slug]:
+Error: Cannot find module './vendor-chunks/tailwind-merge.js'
+Require stack:
+- C:\staging-environment\.next\server\webpack-runtime.js
+- C:\staging-environment\.next\server\app\admin\sub-service\[slug]\page.js
+- C:\staging-environment\node_modules\next\dist\server\require.js
+- C:\staging-environment\node_modules\next\dist\server\load-components.js
+- C:\staging-environment\node_modules\next\dist\build\utils.js
+- C:\staging-environment\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\staging-environment\node_modules\next\dist\compiled\jest-worker\processChild.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1500:15)
+    at C:\staging-environment\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)
+    at Module._load (node:internal/modules/cjs/loader:1285:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1600:12)
+    at mod.require (C:\staging-environment\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16) {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\staging-environment\\.next\\server\\webpack-runtime.js',
+    'C:\\staging-environment\\.next\\server\\app\\admin\\sub-service\\[slug]\\page.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\dev\\static-paths-worker.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\compiled\\jest-worker\\processChild.js'
+  ]
+}
+ ⨯ Failed to generate static paths for /admin/sub-service/[slug]:
+Error: Cannot find module './vendor-chunks/tailwind-merge.js'
+Require stack:
+- C:\staging-environment\.next\server\webpack-runtime.js
+- C:\staging-environment\.next\server\app\admin\sub-service\[slug]\page.js
+- C:\staging-environment\node_modules\next\dist\server\require.js
+- C:\staging-environment\node_modules\next\dist\server\load-components.js
+- C:\staging-environment\node_modules\next\dist\build\utils.js
+- C:\staging-environment\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\staging-environment\node_modules\next\dist\compiled\jest-worker\processChild.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1500:15)
+    at C:\staging-environment\node_modules\next\dist\server\require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)
+    at Module._load (node:internal/modules/cjs/loader:1285:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1600:12)
+    at mod.require (C:\staging-environment\node_modules\next\dist\server\require-hook.js:65:28)
+    at require (node:internal/modules/helpers:153:16) {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\staging-environment\\.next\\server\\webpack-runtime.js',
+    'C:\\staging-environment\\.next\\server\\app\\admin\\sub-service\\[slug]\\page.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\require.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\load-components.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\build\\utils.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\server\\dev\\static-paths-worker.js',
+    'C:\\staging-environment\\node_modules\\next\\dist\\compiled\\jest-worker\\processChild.js'
+  ]
+}
+ GET /_next/static/css/app/layout.css?v=1782855132539 404 in 288ms
+ GET /_next/static/css/app/layout.css?v=1782855132559 404 in 273ms
+[?25h

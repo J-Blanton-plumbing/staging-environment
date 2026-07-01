@@ -10,6 +10,11 @@ interface FaqField {
   answer: string;
 }
 
+interface ServiceCategory {
+  slug: string;
+  title: string;
+}
+
 interface FormState {
   serviceIntroHeading: string;
   serviceIntroText: string;
@@ -20,6 +25,7 @@ interface FormState {
   faqs: FaqField[];
   metaTitle: string;
   metaDescription: string;
+  parentSlug: string | null;
 }
 
 const EMPTY: FormState = {
@@ -32,6 +38,7 @@ const EMPTY: FormState = {
   faqs: [],
   metaTitle: '',
   metaDescription: '',
+  parentSlug: null,
 };
 
 function slugToTitle(slug: string): string {
@@ -108,6 +115,7 @@ export default function AdminCityServicePage() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [status, setStatus] = useState<'idle' | 'loading' | 'not-found' | 'saving' | 'saved' | 'error'>('loading');
   const [errorMsg, setErrorMsg] = useState('');
+  const [serviceCategories, setServiceCategories] = useState<ServiceCategory[]>([]);
 
   const cityTitle = city ? slugToTitle(city) : '';
   const serviceTitle = service ? slugToTitle(service) : '';
@@ -116,14 +124,16 @@ export default function AdminCityServicePage() {
   useEffect(() => {
     if (!city || !service) return;
     setStatus('loading');
-    fetch(`/api/cms/city-service/${city}/${service}`)
-      .then(r => {
-        if (r.status === 404) { setStatus('not-found'); return null; }
-        if (!r.ok) throw new Error('Failed to load');
-        return r.json();
-      })
-      .then(data => {
-        if (!data) return;
+    Promise.all([
+      fetch(`/api/cms/city-service/${city}/${service}`),
+      fetch('/api/cms/service-categories'),
+    ])
+      .then(async ([pageRes, catsRes]) => {
+        if (pageRes.status === 404) { setStatus('not-found'); return; }
+        if (!pageRes.ok) throw new Error('Failed to load');
+        const data = await pageRes.json();
+        const cats = catsRes.ok ? await catsRes.json() : [];
+        setServiceCategories(Array.isArray(cats) ? cats : []);
         const introParagraphs: string[] = data.serviceIntroParagraphs ?? [];
         const secondaryParagraphs: string[] = data.secondaryParagraphs ?? [];
         setForm({
@@ -136,6 +146,7 @@ export default function AdminCityServicePage() {
           faqs: data.faqs ?? [],
           metaTitle: data.metaTitle ?? '',
           metaDescription: data.metaDescription ?? '',
+          parentSlug: data.parentSlug ?? null,
         });
         setStatus('idle');
       })
@@ -171,6 +182,7 @@ export default function AdminCityServicePage() {
       faqs: form.faqs,
       metaTitle: form.metaTitle || null,
       metaDescription: form.metaDescription || null,
+      parentSlug: form.parentSlug || null,
     };
   }
 
@@ -221,6 +233,8 @@ export default function AdminCityServicePage() {
     );
   }
 
+  const parentCategory = serviceCategories.find(c => c.slug === form.parentSlug);
+
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <AdminPageHeader
@@ -230,6 +244,33 @@ export default function AdminCityServicePage() {
         getContent={buildPayload}
         previewBaseUrl={`/${city}/${service}`}
       />
+
+      {/* ── Parent page indicator bar ─────────────────────────────────────── */}
+      <div style={{
+        background: '#F9F3EC',
+        borderBottom: '1px solid rgba(10,27,46,0.1)',
+        padding: '0.45rem 1.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.4rem',
+        fontFamily: 'Nunito, sans-serif',
+        fontSize: '12px',
+      }}>
+        <span style={{ color: 'rgba(10,27,46,0.55)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+          Parent page:
+        </span>
+        {parentCategory ? (
+          <a
+            href={`/admin/${parentCategory.slug}`}
+            style={{ color: '#1560E6', fontWeight: 600, textDecoration: 'none' }}
+          >
+            {parentCategory.title}
+          </a>
+        ) : (
+          <span style={{ color: 'rgba(10,27,46,0.4)', fontStyle: 'italic' }}>None assigned</span>
+        )}
+      </div>
+
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
       <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit city-service page content. Separate paragraphs with a blank line. Changes are saved to the database and applied immediately.
@@ -293,6 +334,34 @@ export default function AdminCityServicePage() {
         >
           + Add FAQ
         </button>
+      </div>
+
+      {/* ── Settings ── */}
+      <div style={{ ...section }}>
+        <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Settings</h2>
+        <label style={labelStyle}>Parent Page</label>
+        <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '-0.5rem 0 0.5rem' }}>
+          The service category this page belongs to. Used for breadcrumbs and internal linking.
+        </p>
+        <select
+          value={form.parentSlug ?? ''}
+          onChange={e => setForm(f => ({ ...f, parentSlug: e.target.value || null }))}
+          style={{
+            ...s,
+            appearance: 'none',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 10px center',
+            paddingRight: '2rem',
+            cursor: 'pointer',
+            marginBottom: 0,
+          }}
+        >
+          <option value="">None</option>
+          {serviceCategories.map(cat => (
+            <option key={cat.slug} value={cat.slug}>{cat.title}</option>
+          ))}
+        </select>
       </div>
 
       <MetaSection

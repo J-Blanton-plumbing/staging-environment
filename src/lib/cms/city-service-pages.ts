@@ -16,6 +16,7 @@ export interface CityServiceCmsContent {
   createdAt?: string | null;
   metaTitle?: string | null;
   metaDescription?: string | null;
+  parentSlug?: string | null;
 }
 
 export interface CityServiceCmsUpdatePayload {
@@ -28,6 +29,7 @@ export interface CityServiceCmsUpdatePayload {
   faqs: Array<{ question: string; answer: string }>;
   metaTitle?: string | null;
   metaDescription?: string | null;
+  parentSlug?: string | null;
 }
 
 export async function getCityServiceCmsContent(
@@ -58,6 +60,7 @@ export async function getCityServiceCmsContent(
       createdAt: r.created_at ?? null,
       metaTitle: r.meta_title ?? null,
       metaDescription: r.meta_description ?? null,
+      parentSlug: r.parent_slug ?? null,
     };
   } finally {
     client.release();
@@ -82,6 +85,7 @@ export async function updateCityServiceCmsContent(
         faqs                     = $7,
         meta_title               = COALESCE($10, meta_title),
         meta_description         = COALESCE($11, meta_description),
+        parent_slug              = $12,
         updated_at               = NOW()
        WHERE city_slug = $8 AND service_slug = $9
        RETURNING id`,
@@ -97,6 +101,7 @@ export async function updateCityServiceCmsContent(
         serviceSlug,
         data.metaTitle ?? null,
         data.metaDescription ?? null,
+        data.parentSlug ?? null,
       ]
     );
     if (res.rowCount === 0) {

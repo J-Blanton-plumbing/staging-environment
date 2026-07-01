@@ -9,9 +9,14 @@ export async function GET(_req: NextRequest, { params }: RouteContext) {
   const client = await pool.connect();
   try {
     const res = await client.query(
-      `SELECT slug, title, excerpt, body->>'html' AS body, image, status,
-              meta_title, meta_description, created_at, updated_at
-         FROM cms_articles WHERE slug = $1`,
+      `SELECT a.slug, a.title, a.excerpt, a.body->>'html' AS body, a.image, a.status,
+              a.meta_title, a.meta_description, a.created_at, a.updated_at,
+              COALESCE(a.category, '{}') AS categories,
+              cu.name AS created_by_name, uu.name AS updated_by_name
+         FROM cms_articles a
+         LEFT JOIN cms_users cu ON cu.id = a.created_by
+         LEFT JOIN cms_users uu ON uu.id = a.updated_by
+        WHERE a.slug = $1`,
       [slug]
     );
     if (!res.rows[0]) {
@@ -100,6 +105,7 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     status?: string;
     metaTitle?: string | null;
     metaDescription?: string | null;
+    categories?: string[];
   };
   try {
     body = await req.json();
@@ -118,9 +124,10 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
          status           = COALESCE($5, status),
          meta_title       = $6,
          meta_description = $7,
-         updated_by       = $8,
+         category         = COALESCE($8, category),
+         updated_by       = $9,
          updated_at       = NOW()
-       WHERE slug = $9
+       WHERE slug = $10
        RETURNING id`,
       [
         body.title ?? null,
@@ -130,6 +137,7 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
         body.status ?? null,
         body.metaTitle ?? null,
         body.metaDescription ?? null,
+        body.categories ?? null,
         session.userId,
         slug,
       ]

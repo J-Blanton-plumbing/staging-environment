@@ -20,6 +20,10 @@ export interface AdminPageHeaderProps {
   createdAt?: string;
   templateName?: string;
   previewBaseUrl?: string;
+  status?: string;
+  // Publish/Unpublish toggle (optional — renders a button in the header when provided)
+  onPublishToggle?: () => Promise<void>;
+  publishBusy?: boolean;
 }
 
 function formatDate(iso: string): string {
@@ -46,6 +50,9 @@ export default function AdminPageHeader({
   createdAt,
   templateName,
   previewBaseUrl,
+  status,
+  onPublishToggle,
+  publishBusy,
 }: AdminPageHeaderProps) {
   const [draftsOpen, setDraftsOpen] = useState(false);
 
@@ -56,15 +63,23 @@ export default function AdminPageHeader({
   // Metadata row: prefer updated_by / updated_at, fall back to created_by / created_at
   let metaLine: string | null = null;
   if (updatedBy && updatedAt) {
-    metaLine = `Last updated by: ${updatedBy}  ·  ${formatDate(updatedAt)}`;
+    metaLine = `Last modified by ${updatedBy}  ·  ${formatDate(updatedAt)}`;
   } else if (createdBy && createdAt) {
-    metaLine = `Created by: ${createdBy}  ·  ${formatDate(createdAt)}`;
+    metaLine = `Created by ${createdBy}  ·  ${formatDate(createdAt)}`;
   }
   if (metaLine && templateName) {
     metaLine += `  ·  Template: ${templateName}`;
   } else if (!metaLine && templateName) {
     metaLine = `Template: ${templateName}`;
   }
+
+  const statusBadgeColor =
+    status === 'published' ? '#15803d' :
+    status === 'scheduled' ? '#b45309' :
+    '#5a6a7a';
+  const statusLabel = status
+    ? status.charAt(0).toUpperCase() + status.slice(1)
+    : null;
 
   return (
     <div style={{ position: 'sticky', top: 0, zIndex: 100 }}>
@@ -89,15 +104,35 @@ export default function AdminPageHeader({
               fontWeight: 600,
               fontSize: '16px',
               color: '#F9F3EC',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
+              lineHeight: 1.3,
             }}
           >
             {title}
           </span>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+            {onPublishToggle && (
+              <button
+                onClick={onPublishToggle}
+                disabled={publishBusy}
+                style={{
+                  background: status === 'published' ? 'transparent' : '#1560E6',
+                  border: status === 'published' ? '1px solid rgba(249,243,236,0.4)' : '1px solid #1560E6',
+                  borderRadius: '4px',
+                  padding: '0.3rem 0.85rem',
+                  fontFamily: 'Nunito, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '0.8rem',
+                  color: '#F9F3EC',
+                  cursor: publishBusy ? 'not-allowed' : 'pointer',
+                  opacity: publishBusy ? 0.6 : 1,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {publishBusy ? '…' : status === 'published' ? 'Unpublish' : 'Publish'}
+              </button>
+            )}
+
             {hasTemplate && pageType && pageSlug && onTemplateSwitched && (
               <TemplateSwitcher
                 pageType={pageType}
@@ -139,7 +174,7 @@ export default function AdminPageHeader({
         </div>
 
         {/* Metadata row */}
-        {metaLine && (
+        {(metaLine || statusLabel) && (
           <div
             style={{
               width: '100%',
@@ -148,9 +183,29 @@ export default function AdminPageHeader({
               color: 'rgba(249,243,236,0.7)',
               paddingBottom: '6px',
               marginTop: '-4px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              flexWrap: 'wrap',
             }}
           >
-            {metaLine}
+            {metaLine && <span>{metaLine}</span>}
+            {statusLabel && (
+              <span
+                style={{
+                  background: statusBadgeColor,
+                  color: '#fff',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  padding: '1px 7px',
+                  borderRadius: '999px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                {statusLabel}
+              </span>
+            )}
           </div>
         )}
       </div>
