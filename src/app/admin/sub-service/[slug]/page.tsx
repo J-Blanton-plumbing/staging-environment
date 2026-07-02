@@ -17,10 +17,14 @@ interface SubServiceData {
   heroImage: string;
   introHeading: string;
   introBody: string;
+  fImage: string;
   problemsHeading: string;
   problemsItems: string;
   ctaHeading: string;
   ctaBody: string;
+  f3Image: string;
+  ndcTitle: string;
+  ndcBody: string;
   status: string;
   metaTitle: string;
   metaDescription: string;
@@ -33,9 +37,10 @@ interface SubServiceData {
 
 const EMPTY: SubServiceData = {
   title: '', heroHeading: '', heroIntro: '', heroImage: '',
-  introHeading: '', introBody: '',
+  introHeading: '', introBody: '', fImage: '',
   problemsHeading: '', problemsItems: '',
-  ctaHeading: '', ctaBody: '',
+  ctaHeading: '', ctaBody: '', f3Image: '',
+  ndcTitle: '', ndcBody: '',
   status: 'draft', metaTitle: '', metaDescription: '',
   parentSlug: null,
 };
@@ -56,9 +61,11 @@ const INPUT: React.CSSProperties = {
 function HeroImageField({
   value,
   onChange,
+  label = 'Hero Image',
 }: {
   value: string;
   onChange: (url: string) => void;
+  label?: string;
 }) {
   const [tab, setTab] = useState<'upload' | 'url'>('upload');
   const [uploading, setUploading] = useState(false);
@@ -114,7 +121,7 @@ function HeroImageField({
 
   return (
     <div style={{ marginBottom: '1.25rem' }}>
-      <label style={LABEL}>Hero Image</label>
+      <label style={LABEL}>{label}</label>
 
       {value && (
         <div style={{ marginBottom: '0.5rem' }}>
@@ -219,12 +226,16 @@ export default function SubServiceAdminPage() {
         heroImage: d.hero_image ?? '',
         introHeading: d.intro_heading ?? '',
         introBody: d.intro_body ?? '',
+        fImage: d.f_image ?? '',
         problemsHeading: d.problems_heading ?? '',
         problemsItems: Array.isArray(d.problems_items)
           ? d.problems_items.join('\n')
           : '',
         ctaHeading: d.cta_heading ?? '',
         ctaBody: d.cta_body ?? '',
+        f3Image: d.f3_image ?? '',
+        ndcTitle: d.ndc_title ?? '',
+        ndcBody: d.ndc_body ?? '',
         status: d.status ?? 'draft',
         metaTitle: d.meta_title ?? '',
         metaDescription: d.meta_description ?? '',
@@ -262,10 +273,14 @@ export default function SubServiceAdminPage() {
           heroImage: form.heroImage || null,
           introHeading: form.introHeading,
           introBody: form.introBody,
+          fImage: form.fImage,
           problemsHeading: form.problemsHeading,
           problemsItems: form.problemsItems.split('\n').map(s => s.trim()).filter(Boolean),
           ctaHeading: form.ctaHeading,
           ctaBody: form.ctaBody,
+          f3Image: form.f3Image,
+          ndcTitle: form.ndcTitle,
+          ndcBody: form.ndcBody,
           status: form.status,
           metaTitle: form.metaTitle || null,
           metaDescription: form.metaDescription || null,
@@ -350,10 +365,14 @@ export default function SubServiceAdminPage() {
           heroImage: form.heroImage,
           introHeading: form.introHeading,
           introBody: form.introBody,
+          fImage: form.fImage,
           problemsHeading: form.problemsHeading,
           problemsItems: form.problemsItems,
           ctaHeading: form.ctaHeading,
           ctaBody: form.ctaBody,
+          f3Image: form.f3Image,
+          ndcTitle: form.ndcTitle,
+          ndcBody: form.ndcBody,
           status: form.status,
           metaTitle: form.metaTitle,
           metaDescription: form.metaDescription,
@@ -400,14 +419,20 @@ export default function SubServiceAdminPage() {
           <h3 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', fontSize: '16px', margin: '1.5rem 0 0.75rem' }}>Intro Section</h3>
           {textField('Intro Heading', 'introHeading')}
           {textareaField('Intro Body', 'introBody', 5)}
+          <HeroImageField value={form.fImage} onChange={url => set('fImage', url)} label="Intro Section Image" />
 
           <h3 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', fontSize: '16px', margin: '1.5rem 0 0.75rem' }}>Problems We Solve</h3>
           {textField('Problems Heading', 'problemsHeading')}
           {textareaField('Problems (one per line)', 'problemsItems', 5, 'Enter one problem per line.')}
 
+          <h3 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', fontSize: '16px', margin: '1.5rem 0 0.75rem' }}>No Drip Club</h3>
+          {textField('NDC Selling Point (label)', 'ndcTitle')}
+          {textareaField('NDC Body', 'ndcBody', 3, 'The per-service No Drip Club pitch. Leave blank to use the generic default copy.')}
+
           <h3 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', fontSize: '16px', margin: '1.5rem 0 0.75rem' }}>Call to Action</h3>
           {textField('CTA Heading', 'ctaHeading')}
           {textareaField('CTA Body', 'ctaBody', 3)}
+          <HeroImageField value={form.f3Image} onChange={url => set('f3Image', url)} label="Closing CTA Image" />
 
           {/* ── Settings ── */}
           <h3 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', fontSize: '16px', margin: '1.5rem 0 0.75rem' }}>Settings</h3>

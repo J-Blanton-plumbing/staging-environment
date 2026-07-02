@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCityServiceCmsContent, updateCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { getSession } from '@/lib/auth/session';
+import { getAllServiceSlugs } from '@/lib/content/city-services';
 import pool from '@/lib/db';
 
 export async function GET(
@@ -38,20 +39,37 @@ export async function PUT(
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
-  // Validate parent_slug if provided
+  // Validate parent_slug if provided. Under Brief 64 the parent is a SERVICE HUB
+  // slug (e.g. `emergency-plumbing`, `hydro-jetting`, `clogged-drains-in-chicago`),
+  // not a broad category. Accept a value that is any of:
+  //   - a city-services registry slug (the common case: hub === service_slug)
+  //   - a `sub_service_pages.slug` (covers location-suffixed hub variants)
+  //   - a `service_category_pages.slug` (backward compat with Brief 63 values)
+  // Anything else still 400s — validation is not silently dropped.
   const rawParent = 'parentSlug' in body ? body.parentSlug : undefined;
   if (rawParent !== undefined && rawParent !== null) {
-    const check = await pool.connect();
-    try {
-      const exists = await check.query(
-        `SELECT 1 FROM service_category_pages WHERE slug = $1`,
-        [rawParent]
-      );
-      if (exists.rowCount === 0) {
-        return NextResponse.json({ error: 'Invalid parentSlug: not found in service_category_pages' }, { status: 400 });
+    const parentStr = String(rawParent);
+    let valid = getAllServiceSlugs().includes(parentStr);
+    if (!valid) {
+      const check = await pool.connect();
+      try {
+        const exists = await check.query(
+          `SELECT 1 FROM sub_service_pages WHERE slug = $1
+           UNION ALL
+           SELECT 1 FROM service_category_pages WHERE slug = $1
+           LIMIT 1`,
+          [parentStr]
+        );
+        valid = (exists.rowCount ?? 0) > 0;
+      } finally {
+        check.release();
       }
-    } finally {
-      check.release();
+    }
+    if (!valid) {
+      return NextResponse.json(
+        { error: 'Invalid parentSlug: not a known service hub, sub-service, or category slug' },
+        { status: 400 }
+      );
     }
   }
 

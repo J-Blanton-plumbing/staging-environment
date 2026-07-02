@@ -2,6 +2,8 @@ import type { ServiceContent } from '@/types/service';
 import { ARTICLES } from '@/lib/articles';
 import { ELFSIGHT_WIDGETS } from '@/lib/widgets';
 import HeroNav from '@/components/HeroNav';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { subServiceCrumbs } from '@/lib/content/service-taxonomy';
 import ServiceHero from '@/components/ServiceHero';
 import ServiceIntro from '@/components/ServiceIntro';
 import ServiceProblems from '@/components/ServiceProblems';
@@ -35,6 +37,11 @@ export default function ServicePageTemplate({
 
       {/* 2 — shared hero-nav strip (brief-07 defaults) */}
       <HeroNav />
+
+      {/* 2b — SEO breadcrumb (Brief 64) — Home › Category › Hub (current) */}
+      <div className="bg-cream-100">
+        <Breadcrumbs items={subServiceCrumbs(content.slug)} />
+      </div>
 
       {/* 3 — expert intro (Cream, `.f` dual-image) */}
       <ServiceIntro expert={content.expertSection} />

@@ -8,7 +8,7 @@ export async function GET(
   const client = await pool.connect();
   try {
     const res = await client.query(
-      `SELECT city_slug, service_slug, updated_at
+      `SELECT city_slug, service_slug, parent_slug, updated_at
        FROM city_service_pages
        WHERE city_slug = $1
        ORDER BY service_slug`,
@@ -18,6 +18,7 @@ export async function GET(
       res.rows.map(r => ({
         city_slug: r.city_slug,
         service_slug: r.service_slug,
+        parent_slug: r.parent_slug ?? null,
         updatedAt: r.updated_at,
       }))
     );

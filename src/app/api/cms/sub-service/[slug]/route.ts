@@ -10,8 +10,9 @@ export async function GET(_req: NextRequest, { params }: RouteContext) {
   try {
     const res = await client.query(
       `SELECT s.slug, s.title, s.hero_heading, s.hero_intro, s.hero_image,
-              s.intro_heading, s.intro_body,
-              s.problems_heading, s.problems_items, s.cta_heading, s.cta_body,
+              s.intro_heading, s.intro_body, s.f_image,
+              s.problems_heading, s.problems_items, s.cta_heading, s.cta_body, s.f3_image,
+              s.ndc_title, s.ndc_body,
               s.status, s.meta_title, s.meta_description, s.created_at, s.updated_at,
               s.parent_slug,
               cu.name AS created_by_name, uu.name AS updated_by_name
@@ -78,6 +79,10 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
          meta_title       = $12,
          meta_description = $13,
          parent_slug      = $14,
+         f_image          = COALESCE($17, f_image),
+         f3_image         = COALESCE($18, f3_image),
+         ndc_title        = COALESCE($19, ndc_title),
+         ndc_body         = COALESCE($20, ndc_body),
          updated_by       = $15,
          updated_at       = NOW()
        WHERE slug = $16
@@ -99,6 +104,10 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
         rawParent !== undefined ? (rawParent as string | null) : null,
         session.userId,
         slug,
+        (body.fImage as string) ?? null,
+        (body.f3Image as string) ?? null,
+        (body.ndcTitle as string) ?? null,
+        (body.ndcBody as string) ?? null,
       ]
     );
     if ((res.rowCount ?? 0) === 0) return NextResponse.json({ error: 'Not found' }, { status: 404 });

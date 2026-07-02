@@ -78,7 +78,10 @@ export default async function CityServicePage({
   if (!cityEntry || !serviceData) notFound();
 
   // Check preview cookie first
-  const preview = await getCityServicePreview(params.city, params.service).catch(() => null);
+  const preview = await getCityServicePreview(params.city, params.service).catch((err) => {
+    console.error(`[city-service] Preview load failed for ${params.city}/${params.service}:`, err);
+    return null;
+  });
   if (preview) {
     const merged = mergeWithDb(serviceData, preview.db);
     return (
@@ -98,7 +101,10 @@ export default async function CityServicePage({
   }
 
   // Load DB content and merge with static fallback
-  const dbContent = await getCityServiceCmsContent(params.city, params.service).catch(() => null);
+  const dbContent = await getCityServiceCmsContent(params.city, params.service).catch((err) => {
+    console.error(`[city-service] DB load failed for ${params.city}/${params.service}:`, err);
+    return null;
+  });
   const merged = dbContent ? mergeWithDb(serviceData, dbContent) : serviceData;
 
   return <CityServicePageTemplate city={cityEntry} service={merged} />;

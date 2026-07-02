@@ -1,5 +1,48 @@
 import pool from '@/lib/db';
 
+/**
+ * Defensive normalisation for the `*_paragraphs` JSONB columns.
+ *
+ * These columns should hold a plain `string[]`, but the WordPress migration
+ * (Brief 50) stored `{ "html": "…" }` objects, which silently broke the
+ * frontend merge (Brief 65). Brief 65's normalisation migration converts the
+ * live data, but this guard means a stale or malformed value can never again
+ * cause a silent fallback: it always returns a clean `string[]`.
+ */
+function normaliseParagraphs(raw: unknown): string[] {
+  if (Array.isArray(raw)) {
+    return raw.filter((x): x is string => typeof x === 'string');
+  }
+  if (raw && typeof raw === 'object' && 'html' in raw) {
+    // Legacy { html: "…" } format.
+    const html = String((raw as { html: unknown }).html ?? '');
+    const pMatches = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi));
+    const chunks =
+      pMatches.length > 0
+        ? pMatches.map((m) => m[1])
+        : html.split(/(?:<br\s*\/?>\s*){2,}/i);
+    const paragraphs = chunks.map(stripToText).filter(Boolean);
+    if (paragraphs.length > 0) return paragraphs;
+    const whole = stripToText(html);
+    return whole ? [whole] : [];
+  }
+  return [];
+}
+
+function stripToText(fragment: string): string {
+  return fragment
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&#0?39;|&apos;/gi, "'")
+    .replace(/&quot;/gi, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export interface CityServiceCmsContent {
   citySlug: string;
   serviceSlug: string;
@@ -48,10 +91,10 @@ export async function getCityServiceCmsContent(
       citySlug: r.city_slug,
       serviceSlug: r.service_slug,
       serviceIntroHeading: r.service_intro_heading,
-      serviceIntroParagraphs: r.service_intro_paragraphs,
+      serviceIntroParagraphs: normaliseParagraphs(r.service_intro_paragraphs),
       serviceIntroImage: r.service_intro_image,
       secondaryHeading: r.secondary_heading,
-      secondaryParagraphs: r.secondary_paragraphs,
+      secondaryParagraphs: normaliseParagraphs(r.secondary_paragraphs),
       secondaryImage: r.secondary_image,
       faqs: r.faqs,
       updatedAt: r.updated_at,

@@ -28,8 +28,9 @@ const AUTHOR_ID = 1; // Admin
 async function main() {
   const rows = (await pool.query(
     `SELECT slug, title, hero_heading, hero_intro, hero_image,
-            intro_heading, intro_body, problems_heading, problems_items,
-            cta_heading, cta_body, status, meta_title, meta_description
+            intro_heading, intro_body, f_image, problems_heading, problems_items,
+            cta_heading, cta_body, f3_image, ndc_title, ndc_body,
+            status, meta_title, meta_description
        FROM sub_service_pages ORDER BY slug`
   )).rows;
 
@@ -60,10 +61,14 @@ async function main() {
       heroImage: r.hero_image ?? '',
       introHeading: r.intro_heading ?? '',
       introBody: r.intro_body ?? '',
+      fImage: r.f_image ?? '',
       problemsHeading: r.problems_heading ?? '',
       problemsItems: problems,
       ctaHeading: r.cta_heading ?? '',
       ctaBody: r.cta_body ?? '',
+      f3Image: r.f3_image ?? '',
+      ndcTitle: r.ndc_title ?? '',
+      ndcBody: r.ndc_body ?? '',
       status: r.status ?? 'published',
       metaTitle: r.meta_title ?? '',
       metaDescription: r.meta_description ?? '',

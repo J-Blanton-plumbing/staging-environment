@@ -1,4 +1,6 @@
 import HeroNav from '@/components/HeroNav';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { cityServiceCrumbs } from '@/lib/content/service-taxonomy';
 import CityVideoHero from '@/components/CityVideoHero';
 import CityServiceHero from '@/components/CityServiceHero';
 import CityServicesAccordion from '@/components/CityServicesAccordion';
@@ -74,6 +76,13 @@ export default function CityServicePageTemplate({ city, service }: Props) {
 
       {/* ── 2. HERO-NAV ──────────────────────────────────────────────────── */}
       <HeroNav />
+
+      {/* ── 2b. SEO BREADCRUMB (Brief 64) — Home › Category › Hub › City Service */}
+      <div className="bg-cream-100">
+        <Breadcrumbs
+          items={cityServiceCrumbs(city.slug, city.name, service.serviceSlug, service.serviceTitle)}
+        />
+      </div>
 
       {/* ── 3–7. CREAM CONTENT WRAPPER (mirrors CoverageAreaCity structure) ── */}
       <div className="cream bg-cream-100">

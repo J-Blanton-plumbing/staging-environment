@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
+import { CATEGORY_DEFS, CATEGORY_KEYS, deriveCategory } from '@/lib/content/service-taxonomy';
 
 interface CityServiceRow {
   city_slug: string;
@@ -11,139 +12,203 @@ interface CityServiceRow {
   status: string | null;
 }
 
-interface ServiceCategory {
-  slug: string;
-  title: string;
-}
-
 function toDisplayName(slug: string): string {
   return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 }
 
-function formatDate(iso?: string | null): string {
-  if (!iso) return '';
-  const d = new Date(iso);
-  if (isNaN(d.getTime())) return '';
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+/**
+ * The Emergency row is keyed off the service_slug (not parent_slug). In the DB the
+ * emergency city-service page has service_slug='emergency-plumbing' with parent_slug NULL,
+ * so it is detected by slug and rendered as a direct link (never a toggle).
+ */
+const EMERGENCY_SLUG = 'emergency-plumbing';
+
+/*
+ * Fixed category order + labels + the service→category mapping now live in the
+ * shared taxonomy (`@/lib/content/service-taxonomy`) so the admin view, the
+ * breadcrumb silo, and the Track-A migration all derive categories the same way.
+ * CATEGORY_DEFS, CATEGORY_KEYS, deriveCategory are imported above.
+ */
+
+/**
+ * Resolve a city-service row to a category key (or null = Uncategorized).
+ *
+ * Brief 64: `parent_slug` now holds the SERVICE HUB slug (e.g. `hydro-jetting`,
+ * `clogged-drains-in-chicago`), not a broad category — so the category is derived
+ * from the hub via deriveCategory(). Order:
+ *   1. Back-compat: a parent_slug that is already one of the 6 category keys
+ *      (a not-yet-migrated Brief 63 value) wins directly.
+ *   2. Derive the category from the hub slug in parent_slug.
+ *   3. Fall back to deriving from the service_slug itself, so nothing regresses
+ *      to Uncategorized if parent_slug is NULL.
+ * `emergency-plumbing` is handled separately as the direct Emergency link, so it
+ * never reaches this function during card building.
+ */
+function categoryOf(row: CityServiceRow): string | null {
+  if (row.parent_slug && CATEGORY_KEYS.includes(row.parent_slug)) return row.parent_slug;
+  const fromHub = row.parent_slug ? deriveCategory(row.parent_slug) : null;
+  return fromHub ?? deriveCategory(row.service_slug);
 }
 
-const STATUS_DOT = (status: string | null): React.CSSProperties => ({
-  display: 'inline-block',
-  width: '7px',
-  height: '7px',
-  borderRadius: '50%',
-  background: status === 'published' ? '#15803d' : '#9ca3af',
-  flexShrink: 0,
-});
+const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-interface GroupedSection {
-  parentSlug: string | null;
-  label: string;
-  rows: CityServiceRow[];
+interface CityCard {
+  slug: string;
+  name: string;
+  letter: string;
+  emergency: CityServiceRow | null;
+  categories: Array<{ key: string; label: string; rows: CityServiceRow[] }>;
+  uncategorized: CityServiceRow[];
 }
+
+// Brand tokens
+const CARMINE = '#BC0E0E';
+const CERULEAN = '#1560E6';
+const CREAM = '#F9F3EC';
+const MIDNIGHT = '#0A1B2E';
 
 export default function CitiesAdminPage() {
   const [cityServiceRows, setCityServiceRows] = useState<CityServiceRow[]>([]);
-  const [catMap, setCatMap] = useState<Record<string, string>>({});
   const [loadStatus, setLoadStatus] = useState<'loading' | 'error' | 'done'>('loading');
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+  const [openToggles, setOpenToggles] = useState<Record<string, boolean>>({});
   const [query, setQuery] = useState('');
+  const [activeLetter, setActiveLetter] = useState<string>('All');
+  const listTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    Promise.all([
-      fetch('/api/cms/cities?view=city-services').then(r => r.json()),
-      fetch('/api/cms/service-categories').then(r => r.json()).catch(() => []),
-    ])
-      .then(([rows, cats]) => {
+    fetch('/api/cms/cities?view=city-services')
+      .then(r => r.json())
+      .then((rows) => {
         setCityServiceRows(Array.isArray(rows) ? rows : []);
-        const map: Record<string, string> = {};
-        if (Array.isArray(cats)) {
-          for (const c of cats as ServiceCategory[]) {
-            map[c.slug] = c.title;
-          }
-        }
-        setCatMap(map);
         setLoadStatus('done');
       })
       .catch(() => setLoadStatus('error'));
   }, []);
 
-  function toggleSection(key: string) {
-    setOpenSections(prev => ({ ...prev, [key]: !prev[key] }));
+  function toggle(key: string) {
+    setOpenToggles(prev => ({ ...prev, [key]: !prev[key] }));
   }
 
-  // Filter rows by search query
-  const filtered = query
-    ? cityServiceRows.filter(r =>
-        r.city_slug.includes(query.toLowerCase()) ||
-        toDisplayName(r.city_slug).toLowerCase().includes(query.toLowerCase()) ||
-        r.service_slug.includes(query.toLowerCase()) ||
-        toDisplayName(r.service_slug).toLowerCase().includes(query.toLowerCase())
-      )
-    : cityServiceRows;
-
-  // Build grouped sections: known categories in order, then Uncategorized
-  const CATEGORY_ORDER = ['plumbing', 'sewer', 'drain', 'water-heater', 'water-quality', 'commercial'];
-  const grouped: GroupedSection[] = [];
-
-  for (const catSlug of CATEGORY_ORDER) {
-    const rows = filtered.filter(r => r.parent_slug === catSlug);
-    if (rows.length > 0 || (!query && cityServiceRows.some(r => r.parent_slug === catSlug))) {
-      grouped.push({
-        parentSlug: catSlug,
-        label: catMap[catSlug] ?? toDisplayName(catSlug),
-        rows,
-      });
+  // Build one card per city, categorizing that city's service pages.
+  const allCards: CityCard[] = useMemo(() => {
+    const byCity = new Map<string, CityServiceRow[]>();
+    for (const r of cityServiceRows) {
+      const list = byCity.get(r.city_slug) ?? [];
+      list.push(r);
+      byCity.set(r.city_slug, list);
     }
-  }
 
-  // Any other assigned parent slugs not in the hardcoded order
-  const extraParents = Array.from(
-    new Set(filtered.map(r => r.parent_slug).filter((s): s is string => !!s && !CATEGORY_ORDER.includes(s)))
-  ).sort();
-  for (const slug of extraParents) {
-    grouped.push({
-      parentSlug: slug,
-      label: catMap[slug] ?? toDisplayName(slug),
-      rows: filtered.filter(r => r.parent_slug === slug),
+    const cards: CityCard[] = [];
+    for (const [slug, rows] of Array.from(byCity.entries())) {
+      const emergency = rows.find(r => r.service_slug === EMERGENCY_SLUG) ?? null;
+      const nonEmergency = rows.filter(r => r.service_slug !== EMERGENCY_SLUG);
+
+      const categories = CATEGORY_DEFS.map(def => ({
+        key: def.key,
+        label: def.label,
+        rows: nonEmergency
+          .filter(r => categoryOf(r) === def.key)
+          .sort((a, b) => a.service_slug.localeCompare(b.service_slug)),
+      }));
+
+      const uncategorized = nonEmergency
+        .filter(r => categoryOf(r) === null)
+        .sort((a, b) => a.service_slug.localeCompare(b.service_slug));
+
+      const name = toDisplayName(slug);
+      const firstChar = name.charAt(0).toUpperCase();
+      const letter = /[A-Z]/.test(firstChar) ? firstChar : '#';
+
+      cards.push({ slug, name, letter, emergency, categories, uncategorized });
+    }
+
+    cards.sort((a, b) => a.name.localeCompare(b.name));
+    return cards;
+  }, [cityServiceRows]);
+
+  // Which first-letters have at least one city (for enabling A–Z buttons).
+  const availableLetters = useMemo(() => {
+    const set = new Set<string>();
+    for (const c of allCards) set.add(c.letter);
+    return set;
+  }, [allCards]);
+
+  const q = query.trim().toLowerCase();
+  const searching = q.length > 0;
+
+  // Search filters which city cards are visible (matches city name OR any of its
+  // service page names — preserves the prior "city or service" search behavior).
+  const visibleCards = useMemo(() => {
+    if (!searching) return allCards;
+    return allCards.filter(card => {
+      if (card.name.toLowerCase().includes(q) || card.slug.includes(q)) return true;
+      const services = [
+        ...(card.emergency ? [card.emergency] : []),
+        ...card.categories.flatMap(c => c.rows),
+        ...card.uncategorized,
+      ];
+      return services.some(
+        r =>
+          r.service_slug.includes(q) ||
+          toDisplayName(r.service_slug).toLowerCase().includes(q)
+      );
     });
+  }, [allCards, searching, q]);
+
+  function handleLetterClick(letter: string) {
+    if (searching) return;
+    if (letter === 'All') {
+      setActiveLetter('All');
+      listTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    if (!availableLetters.has(letter)) return;
+    setActiveLetter(letter);
+    document.getElementById(`letter-${letter}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // Uncategorized
-  const uncategorized = filtered.filter(r => !r.parent_slug);
-  if (uncategorized.length > 0 || (!query && cityServiceRows.some(r => !r.parent_slug))) {
-    grouped.push({ parentSlug: null, label: 'Uncategorized', rows: uncategorized });
-  }
-
-  const totalFiltered = filtered.length;
-
-  const SECTION_HEAD: React.CSSProperties = {
+  // ---- shared styles ----
+  const cardStyle: React.CSSProperties = {
+    border: '1px solid rgba(10,27,46,0.14)',
+    borderRadius: '10px',
+    overflow: 'hidden',
+    background: '#fff',
+  };
+  const cardHeader: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '0 1rem',
-    height: '44px',
-    fontFamily: 'Industry, sans-serif',
-    fontWeight: 700,
-    fontSize: '13px',
-    color: '#0A1B2E',
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    userSelect: 'none',
-    cursor: 'pointer',
-    background: '#F9F3EC',
-    border: '1px solid rgba(10,27,46,0.12)',
-    borderRadius: '6px',
-    boxSizing: 'border-box',
+    padding: '0.85rem 1rem',
+    background: CREAM,
+    borderBottom: '1px solid rgba(10,27,46,0.1)',
+  };
+  const rowBase: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0.6rem 1rem',
+    borderTop: '1px solid rgba(10,27,46,0.06)',
+    fontFamily: 'Nunito, sans-serif',
+    fontSize: '14px',
   };
 
+  let lastLetter = '';
+
   return (
-    <main style={{ padding: '2rem', maxWidth: '960px', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', marginBottom: '0.25rem' }}>
+    <main style={{ padding: '2rem', maxWidth: '860px', fontFamily: 'system-ui, sans-serif' }}>
+      {/* pill hover styles (inline styles can't express :hover) */}
+      <style>{`
+        .az-pill:not(.az-disabled):not(.az-active):hover { background: rgba(0,0,0,0.05); }
+        .svc-item:hover { background: rgba(21,96,230,0.06); }
+      `}</style>
+
+      <h1 style={{ fontFamily: 'Industry, sans-serif', color: MIDNIGHT, marginBottom: '0.25rem' }}>
         City Service Pages
       </h1>
       <p style={{ color: '#5a6a7a', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
-        {loadStatus === 'done' ? `${cityServiceRows.length} city-service pages · grouped by service category` : ' '}
+        {loadStatus === 'done'
+          ? `${allCards.length} cities · browse each city's service pages by category`
+          : ' '}
       </p>
 
       <input
@@ -159,144 +224,233 @@ export default function CitiesAdminPage() {
           border: '1px solid rgba(10,27,46,0.2)',
           borderRadius: '6px',
           fontSize: '0.9rem',
-          marginBottom: '1.5rem',
+          marginBottom: '1rem',
           fontFamily: 'Nunito, sans-serif',
-          color: '#0A1B2E',
+          color: MIDNIGHT,
           boxSizing: 'border-box',
         }}
       />
 
-      {query && loadStatus === 'done' && (
+      {/* A–Z strip — hidden while searching (only applies to the full unfiltered list) */}
+      {loadStatus === 'done' && !searching && (
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '4px',
+            marginBottom: '1.5rem',
+            alignItems: 'center',
+          }}
+        >
+          {['All', ...LETTERS].map(letter => {
+            const isAll = letter === 'All';
+            const enabled = isAll || availableLetters.has(letter);
+            const isActive = activeLetter === letter;
+            const cls =
+              'az-pill' + (isActive ? ' az-active' : '') + (!enabled ? ' az-disabled' : '');
+            return (
+              <button
+                key={letter}
+                className={cls}
+                onClick={() => handleLetterClick(letter)}
+                disabled={!enabled}
+                style={{
+                  fontFamily: 'Nunito, sans-serif',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  padding: '4px 8px',
+                  borderRadius: '999px',
+                  border: isActive ? `1px solid ${CERULEAN}` : '1px solid rgba(10,27,46,0.18)',
+                  background: isActive ? CERULEAN : '#fff',
+                  color: isActive ? '#fff' : MIDNIGHT,
+                  opacity: enabled ? 1 : 0.4,
+                  cursor: enabled ? 'pointer' : 'not-allowed',
+                  minWidth: isAll ? 'auto' : '26px',
+                }}
+              >
+                {letter}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {searching && loadStatus === 'done' && (
         <p style={{ fontSize: '13px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif', marginBottom: '1rem' }}>
-          {totalFiltered} result{totalFiltered !== 1 ? 's' : ''}
+          {visibleCards.length} result{visibleCards.length !== 1 ? 's' : ''}
         </p>
       )}
 
       {loadStatus === 'loading' && <p style={{ color: '#5a6a7a' }}>Loading…</p>}
-      {loadStatus === 'error' && <p style={{ color: '#BC0E0E' }}>Failed to load city service pages. Check database connection.</p>}
+      {loadStatus === 'error' && (
+        <p style={{ color: CARMINE }}>Failed to load city service pages. Check database connection.</p>
+      )}
 
       {loadStatus === 'done' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          {grouped.map(section => {
-            const key = section.parentSlug ?? '__none__';
-            const isOpen = !!openSections[key];
-            const isUncategorized = section.parentSlug === null;
+        <div ref={listTopRef} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {visibleCards.map(card => {
+            // Emit an invisible scroll anchor before the first city of each new letter
+            // (only meaningful when not searching, since the strip is hidden then).
+            const showAnchor = !searching && card.letter !== lastLetter;
+            if (showAnchor) lastLetter = card.letter;
+
+            const activeCats = card.categories.filter(c => c.rows.length > 0);
+            const hasUncategorized = card.uncategorized.length > 0;
 
             return (
-              <div key={key} style={{ borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(10,27,46,0.12)' }}>
-                {/* Toggle header */}
-                <div
-                  style={{
-                    ...SECTION_HEAD,
-                    borderRadius: isOpen ? '6px 6px 0 0' : '6px',
-                    border: 'none',
-                    color: isUncategorized ? '#5a6a7a' : '#0A1B2E',
-                  }}
-                  onClick={() => toggleSection(key)}
-                  role="button"
-                  aria-expanded={isOpen}
-                >
-                  <span>{section.label}</span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{
-                      fontFamily: 'Nunito, sans-serif',
-                      fontWeight: 700,
-                      fontSize: '12px',
-                      color: '#5a6a7a',
-                      background: 'rgba(10,27,46,0.07)',
-                      borderRadius: '999px',
-                      padding: '2px 10px',
-                      textTransform: 'none',
-                      letterSpacing: 0,
-                    }}>
-                      {section.rows.length} page{section.rows.length !== 1 ? 's' : ''}
-                    </span>
-                    <span style={{ fontSize: '12px', color: '#5a6a7a' }}>{isOpen ? '▴' : '▾'}</span>
-                  </span>
-                </div>
-
-                {/* Expanded items */}
-                {isOpen && (
-                  <div style={{ background: '#fff', borderTop: '1px solid rgba(10,27,46,0.08)' }}>
-                    {section.rows.length === 0 ? (
-                      <p style={{ padding: '0.75rem 1rem', fontFamily: 'Nunito, sans-serif', fontSize: '13px', color: 'rgba(10,27,46,0.4)', margin: 0 }}>
-                        No pages in this category.
-                      </p>
-                    ) : (
-                      <div>
-                        {/* Column header */}
-                        <div style={{
-                          display: 'grid',
-                          gridTemplateColumns: '1fr 160px 90px 130px',
-                          gap: '0.5rem',
-                          padding: '0.35rem 1rem',
-                          fontSize: '11px',
-                          fontWeight: 700,
-                          color: 'rgba(10,27,46,0.45)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.04em',
-                          fontFamily: 'Nunito, sans-serif',
-                          borderBottom: '1px solid rgba(10,27,46,0.06)',
-                          background: '#fafaf9',
-                        }}>
-                          <span>City — Service</span>
-                          <span>Last modified</span>
-                          <span>Status</span>
-                          <span>Action</span>
-                        </div>
-
-                        {section.rows.map(row => (
-                          <div
-                            key={`${row.city_slug}/${row.service_slug}`}
-                            style={{
-                              display: 'grid',
-                              gridTemplateColumns: '1fr 160px 90px 130px',
-                              gap: '0.5rem',
-                              padding: '0.6rem 1rem',
-                              borderBottom: '1px solid rgba(10,27,46,0.05)',
-                              alignItems: 'center',
-                            }}
-                          >
-                            {/* City — Service */}
-                            <Link
-                              href={`/admin/city-service/${row.city_slug}/${row.service_slug}`}
-                              style={{ fontFamily: 'Nunito, sans-serif', fontSize: '14px', fontWeight: 600, color: '#0A1B2E', textDecoration: 'none' }}
-                            >
-                              {toDisplayName(row.city_slug)} — {toDisplayName(row.service_slug)}
-                            </Link>
-
-                            {/* Last modified */}
-                            <span style={{ fontFamily: 'Nunito, sans-serif', fontSize: '12px', color: '#5a6a7a' }}>
-                              {formatDate(row.updated_at) || '—'}
-                            </span>
-
-                            {/* Status */}
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                              <span style={STATUS_DOT(row.status)} />
-                              <span style={{ fontFamily: 'Nunito, sans-serif', fontSize: '12px', color: '#5a6a7a', textTransform: 'capitalize' }}>
-                                {row.status ?? '—'}
-                              </span>
-                            </span>
-
-                            {/* Action */}
-                            <Link
-                              href={`/admin/city-service/${row.city_slug}/${row.service_slug}`}
-                              style={{ fontFamily: 'Nunito, sans-serif', fontSize: '13px', color: '#BC0E0E', fontWeight: 700, textDecoration: 'none' }}
-                            >
-                              Edit →
-                            </Link>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+              <div key={card.slug} data-letter={card.letter}>
+                {showAnchor && (
+                  <div
+                    id={`letter-${card.letter}`}
+                    style={{ position: 'relative', top: '-16px', height: 0 }}
+                    aria-hidden
+                  />
                 )}
+                <div style={cardStyle}>
+                  {/* Header */}
+                  <div style={cardHeader}>
+                    <span style={{ fontFamily: 'Industry, sans-serif', fontWeight: 700, fontSize: '18px', color: MIDNIGHT }}>
+                      {card.name}
+                    </span>
+                    <Link
+                      href={`/admin/city/${card.slug}`}
+                      style={{ fontFamily: 'Nunito, sans-serif', fontSize: '13px', fontWeight: 700, color: CARMINE, textDecoration: 'none' }}
+                    >
+                      Edit City →
+                    </Link>
+                  </div>
+
+                  {/* Emergency — direct link, not a toggle. Hidden if no emergency page. */}
+                  {card.emergency && (
+                    <Link
+                      href={`/admin/city-service/${card.slug}/${card.emergency.service_slug}`}
+                      style={{ ...rowBase, borderTop: 'none', textDecoration: 'none', color: CARMINE, fontWeight: 700 }}
+                    >
+                      <span>Emergency</span>
+                      <span style={{ fontSize: '13px', fontWeight: 700 }}>Edit →</span>
+                    </Link>
+                  )}
+
+                  {/* Category toggles (only those with pages) */}
+                  {activeCats.map(cat => {
+                    const key = `${card.slug}:${cat.key}`;
+                    const isOpen = !!openToggles[key];
+                    return (
+                      <div key={key}>
+                        <div
+                          role="button"
+                          aria-expanded={isOpen}
+                          onClick={() => toggle(key)}
+                          style={{ ...rowBase, cursor: 'pointer', color: MIDNIGHT, userSelect: 'none' }}
+                        >
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700 }}>
+                            <span style={{ fontSize: '11px', color: '#5a6a7a' }}>{isOpen ? '▾' : '▸'}</span>
+                            {cat.label}
+                          </span>
+                          <span style={{
+                            fontSize: '12px',
+                            fontWeight: 700,
+                            color: '#5a6a7a',
+                            background: 'rgba(10,27,46,0.06)',
+                            borderRadius: '999px',
+                            padding: '1px 9px',
+                          }}>
+                            {cat.rows.length}
+                          </span>
+                        </div>
+                        {isOpen && (
+                          <div style={{ background: '#fafaf9' }}>
+                            {cat.rows.map(r => (
+                              <Link
+                                key={r.service_slug}
+                                href={`/admin/city-service/${card.slug}/${r.service_slug}`}
+                                className="svc-item"
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between',
+                                  alignItems: 'center',
+                                  padding: '0.5rem 1rem 0.5rem 2.25rem',
+                                  borderTop: '1px solid rgba(10,27,46,0.05)',
+                                  fontFamily: 'Nunito, sans-serif',
+                                  fontSize: '14px',
+                                  color: MIDNIGHT,
+                                  textDecoration: 'none',
+                                }}
+                              >
+                                <span>{toDisplayName(r.service_slug)}</span>
+                                <span style={{ fontSize: '13px', fontWeight: 700, color: CARMINE }}>Edit →</span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+
+                  {/* Uncategorized toggle (only if uncategorized pages exist) */}
+                  {hasUncategorized && (() => {
+                    const key = `${card.slug}:__uncat__`;
+                    const isOpen = !!openToggles[key];
+                    return (
+                      <div>
+                        <div
+                          role="button"
+                          aria-expanded={isOpen}
+                          onClick={() => toggle(key)}
+                          style={{ ...rowBase, cursor: 'pointer', color: '#5a6a7a', userSelect: 'none' }}
+                        >
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700 }}>
+                            <span style={{ fontSize: '11px', color: '#5a6a7a' }}>{isOpen ? '▾' : '▸'}</span>
+                            Uncategorized
+                          </span>
+                          <span style={{
+                            fontSize: '12px',
+                            fontWeight: 700,
+                            color: '#5a6a7a',
+                            background: 'rgba(10,27,46,0.06)',
+                            borderRadius: '999px',
+                            padding: '1px 9px',
+                          }}>
+                            {card.uncategorized.length}
+                          </span>
+                        </div>
+                        {isOpen && (
+                          <div style={{ background: '#fafaf9' }}>
+                            {card.uncategorized.map(r => (
+                              <Link
+                                key={r.service_slug}
+                                href={`/admin/city-service/${card.slug}/${r.service_slug}`}
+                                className="svc-item"
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between',
+                                  alignItems: 'center',
+                                  padding: '0.5rem 1rem 0.5rem 2.25rem',
+                                  borderTop: '1px solid rgba(10,27,46,0.05)',
+                                  fontFamily: 'Nunito, sans-serif',
+                                  fontSize: '14px',
+                                  color: MIDNIGHT,
+                                  textDecoration: 'none',
+                                }}
+                              >
+                                <span>{toDisplayName(r.service_slug)}</span>
+                                <span style={{ fontSize: '13px', fontWeight: 700, color: CARMINE }}>Edit →</span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+                </div>
               </div>
             );
           })}
 
-          {grouped.length === 0 && (
-            <p style={{ color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>No city service pages found.</p>
+          {visibleCards.length === 0 && (
+            <p style={{ color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>
+              {searching ? 'No cities match your search.' : 'No city service pages found.'}
+            </p>
           )}
         </div>
       )}

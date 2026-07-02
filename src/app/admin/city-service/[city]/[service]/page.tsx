@@ -150,7 +150,11 @@ export default function AdminCityServicePage() {
         });
         setStatus('idle');
       })
-      .catch(() => {
+      .catch((err) => {
+        // Brief 64 follow-up: surface the underlying load error so future failures
+        // (e.g. the two-dev-server / stale-.next case in CLAUDE.md gotcha #4) are
+        // diagnosable instead of silently swallowed.
+        console.error(`[admin/city-service/${city}/${service}] load failed`, err);
         setStatus('error');
         setErrorMsg('Failed to load content from database.');
       });

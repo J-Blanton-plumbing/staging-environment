@@ -33,10 +33,14 @@ export interface SubServiceFields {
   heroImage?: string | null;
   introHeading?: string | null;
   introBody?: string | null;
+  fImage?: string | null; // intro/expert section photo (expertSection.image1)
   problemsHeading?: string | null;
   problemsItems?: string[];
   ctaHeading?: string | null;
   ctaBody?: string | null;
+  f3Image?: string | null; // closing-CTA photo (closingCTA.image)
+  ndcTitle?: string | null; // No Drip Club selling point (noDropClubSection.title)
+  ndcBody?: string | null; // No Drip Club body copy (noDropClubSection.body)
   metaTitle?: string | null;
   metaDescription?: string | null;
 }
@@ -61,7 +65,7 @@ export function subServiceToServiceContent(f: SubServiceFields): ServiceContent 
     },
     expertSection: {
       heading: f.introHeading || '',
-      image1: '',
+      image1: f.fImage || '',
       image2: '',
       paragraphs: introParagraphs,
     },
@@ -71,12 +75,15 @@ export function subServiceToServiceContent(f: SubServiceFields): ServiceContent 
     },
     relatedServicesSection: { heading: '', cards: [] },
     secondarySection: { heading: '', paragraphs: [] },
-    noDropClubSection: { body: NDC_DEFAULT_BODY },
+    noDropClubSection: {
+      title: f.ndcTitle || undefined, // undefined → <NoDripClubSimple> default label
+      body: f.ndcBody || NDC_DEFAULT_BODY,
+    },
     preventiveSection: { heading: '', image: '', paragraphs: [] },
     closingCTA: {
       heading: f.ctaHeading || '',
       body: f.ctaBody || '',
-      image: FALLBACK_CTA_IMAGE,
+      image: f.f3Image || FALLBACK_CTA_IMAGE,
     },
   };
 }
@@ -89,10 +96,14 @@ interface SubServiceRow {
   hero_image: string | null;
   intro_heading: string | null;
   intro_body: string | null;
+  f_image: string | null;
   problems_heading: string | null;
   problems_items: string[] | null;
   cta_heading: string | null;
   cta_body: string | null;
+  f3_image: string | null;
+  ndc_title: string | null;
+  ndc_body: string | null;
   meta_title: string | null;
   meta_description: string | null;
 }
@@ -106,10 +117,14 @@ function rowToFields(r: SubServiceRow): SubServiceFields {
     heroImage: r.hero_image,
     introHeading: r.intro_heading,
     introBody: r.intro_body,
+    fImage: r.f_image,
     problemsHeading: r.problems_heading,
     problemsItems: Array.isArray(r.problems_items) ? r.problems_items : [],
     ctaHeading: r.cta_heading,
     ctaBody: r.cta_body,
+    f3Image: r.f3_image,
+    ndcTitle: r.ndc_title,
+    ndcBody: r.ndc_body,
     metaTitle: r.meta_title,
     metaDescription: r.meta_description,
   };
@@ -125,8 +140,9 @@ export async function getSubServiceCmsContent(slug: string): Promise<ServiceCont
   try {
     const res = await client.query<SubServiceRow>(
       `SELECT slug, title, hero_heading, hero_intro, hero_image,
-              intro_heading, intro_body, problems_heading, problems_items,
-              cta_heading, cta_body, meta_title, meta_description
+              intro_heading, intro_body, f_image, problems_heading, problems_items,
+              cta_heading, cta_body, f3_image, ndc_title, ndc_body,
+              meta_title, meta_description
          FROM sub_service_pages
         WHERE slug = $1 AND status = 'published'`,
       [slug]

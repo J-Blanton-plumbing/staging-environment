@@ -3,6 +3,11 @@
  * Import from here instead of hardcoding values (CMS-readiness, audit ref C-05).
  */
 export const SITE = {
+  // Canonical production origin (no trailing slash). Used to build absolute URLs
+  // for structured data (JSON-LD `item` URLs, canonical links). Never hardcode the
+  // domain elsewhere — reference SITE.baseUrl.
+  baseUrl: 'https://jblantonplumbing.com',
+
   // Canonical business number — default for general usage across the site.
   phone: '773-724-9272',
   phoneHref: 'tel:773-724-9272',
