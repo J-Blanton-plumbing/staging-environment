@@ -5,6 +5,7 @@
 
 import { cookies } from 'next/headers';
 import { getDraft } from '@/lib/cms/drafts';
+import { getSession } from '@/lib/auth/session';
 import type { ServiceCmsContent, ServiceCmsUpdatePayload } from '@/lib/cms/service-pages';
 import type { CityCmsContent } from '@/lib/cms/city-pages';
 import type { EpCmsContent } from '@/lib/cms/emergency-plumbing';
@@ -13,6 +14,25 @@ import { subServiceToServiceContent } from '@/lib/cms/sub-service-pages';
 import type { ServiceContent } from '@/types/service';
 
 const PREVIEW_COOKIE = '__preview_draft';
+
+/**
+ * DP-7 — the `__preview_draft` cookie is a plain sequential integer, so on its
+ * own it lets anyone enumerate and read every unpublished draft. Preview is an
+ * editor-only feature, so every getter must confirm a real signed CMS session
+ * before honoring the cookie. Returns the requested draft id ONLY when a valid
+ * session is present; otherwise null (→ getters fall back to published content).
+ */
+async function authorizedPreviewId(): Promise<number | null> {
+  const session = await getSession();
+  if (!session) return null;
+
+  const cookieStore = await cookies();
+  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
+  if (!rawId) return null;
+
+  const id = parseInt(rawId, 10);
+  return isNaN(id) ? null : id;
+}
 
 export interface PreviewMeta {
   id: number;
@@ -24,12 +44,8 @@ export async function getServicePreview(slug: string): Promise<{
   cms: ServiceCmsContent;
   meta: PreviewMeta;
 } | null> {
-  const cookieStore = await cookies();
-  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
-  if (!rawId) return null;
-
-  const id = parseInt(rawId, 10);
-  if (isNaN(id)) return null;
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
 
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== 'service' || draft.page_slug !== slug) return null;
@@ -74,24 +90,20 @@ export async function getServicePreview(slug: string): Promise<{
 
 /**
  * Preview for an individual sub-service page (kitchen-sink-drain, …). Drafts are
- * saved by `/admin/sub-service/[slug]` with page_type 'service' (same language
- * the public service pages speak). The draft content is the admin's camelCase
- * shape — `problems_items` arrives as a newline-joined string — so it is
- * normalized before mapping onto ServiceContent.
+ * saved by `/admin/sub-service/[slug]` with page_type 'sub-service' (Brief 75,
+ * CQ-1 — previously 'service', which collided with the service-category pages).
+ * The draft content is the admin's camelCase shape — `problems_items` arrives as
+ * a newline-joined string — so it is normalized before mapping onto ServiceContent.
  */
 export async function getSubServicePreview(slug: string): Promise<{
   content: ServiceContent;
   meta: PreviewMeta;
 } | null> {
-  const cookieStore = await cookies();
-  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
-  if (!rawId) return null;
-
-  const id = parseInt(rawId, 10);
-  if (isNaN(id)) return null;
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
 
   const draft = await getDraft(id).catch(() => null);
-  if (!draft || draft.page_type !== 'service' || draft.page_slug !== slug) return null;
+  if (!draft || draft.page_type !== 'sub-service' || draft.page_slug !== slug) return null;
 
   const c = draft.content as Record<string, unknown>;
   const rawProblems = c.problemsItems;
@@ -128,18 +140,22 @@ export async function getCityPreview(slug: string): Promise<{
   db: CityCmsContent;
   meta: PreviewMeta;
 } | null> {
-  const cookieStore = await cookies();
-  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
-  if (!rawId) return null;
-
-  const id = parseInt(rawId, 10);
-  if (isNaN(id)) return null;
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
 
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== 'city' || draft.page_slug !== slug) return null;
 
+  // Brief 67 (Track A): the draft's own template_type wins so a V2 draft previewed
+  // on a still-V1 live page renders V2 (and vice versa). Fall back to any
+  // templateType embedded in the content, then to the content's existing value.
+  const content = draft.content as CityCmsContent;
+  const templateType =
+    draft.template_type ??
+    (content && typeof content === 'object' ? content.templateType : undefined);
+
   return {
-    db: draft.content as CityCmsContent,
+    db: { ...content, templateType: templateType ?? content?.templateType },
     meta: { id, label: draft.label, creator_name: draft.creator_name },
   };
 }
@@ -148,12 +164,8 @@ export async function getCityServicePreview(citySlug: string, serviceSlug: strin
   db: CityServiceCmsContent;
   meta: PreviewMeta;
 } | null> {
-  const cookieStore = await cookies();
-  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
-  if (!rawId) return null;
-
-  const id = parseInt(rawId, 10);
-  if (isNaN(id)) return null;
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
 
   const draft = await getDraft(id).catch(() => null);
   if (
@@ -172,12 +184,8 @@ export async function getMainPagePreview(slug: string): Promise<{
   content: Record<string, string>;
   meta: PreviewMeta;
 } | null> {
-  const cookieStore = await cookies();
-  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
-  if (!rawId) return null;
-
-  const id = parseInt(rawId, 10);
-  if (isNaN(id)) return null;
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
 
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== 'main' || draft.page_slug !== slug) return null;
@@ -192,12 +200,8 @@ export async function getEpPreview(): Promise<{
   db: EpCmsContent;
   meta: PreviewMeta;
 } | null> {
-  const cookieStore = await cookies();
-  const rawId = cookieStore.get(PREVIEW_COOKIE)?.value;
-  if (!rawId) return null;
-
-  const id = parseInt(rawId, 10);
-  if (isNaN(id)) return null;
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
 
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== 'emergency-plumbing') return null;

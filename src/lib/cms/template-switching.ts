@@ -19,14 +19,34 @@ const LOCAL_OFFICE_ONLY_FIELDS = ['hero_heading_line2'] as const;
 // Fields required by coverage-area that don't exist in local-office
 const COVERAGE_AREA_ONLY_FIELDS: readonly string[] = [];
 
-type CityTemplate = 'coverage-area' | 'local-office';
+// Brief 67 — V2-only DB columns. These carry no value from V1/coverage, so on a
+// switch TO local-office-v2 they are reported as "missing" (the editor highlights
+// them); on a switch AWAY from local-office-v2 they are reset (below).
+const LOCAL_OFFICE_V2_ONLY_FIELDS = [
+  'trust_bar_stars',
+  'trust_bar_review_count',
+  'services_intro',
+  'most_requested_services',
+  'mid_cta_text',
+  'video_heading',
+  'video_intro',
+  'video_script',
+  'reviews',
+  'ndc_intro',
+  'final_cta_heading',
+  'final_cta_body',
+  'why_points',
+] as const;
+
+type CityTemplate = 'coverage-area' | 'local-office' | 'local-office-v2';
 
 const TEMPLATE_ONLY_FIELDS: Record<CityTemplate, readonly string[]> = {
   'local-office': LOCAL_OFFICE_ONLY_FIELDS,
   'coverage-area': COVERAGE_AREA_ONLY_FIELDS,
+  'local-office-v2': LOCAL_OFFICE_V2_ONLY_FIELDS,
 };
 
-export const VALID_CITY_TEMPLATES: CityTemplate[] = ['coverage-area', 'local-office'];
+export const VALID_CITY_TEMPLATES: CityTemplate[] = ['coverage-area', 'local-office', 'local-office-v2'];
 
 export interface SwitchTemplateParams {
   pageType: 'city';
@@ -122,6 +142,29 @@ export async function switchTemplate({
         pageSlug,
       ]
     );
+
+    // Brief 67 — when leaving local-office-v2, clear the V2-only columns so stale
+    // V2 content doesn't linger on a row now rendered by a V1/coverage template.
+    if (currentTemplate === 'local-office-v2') {
+      await client.query(
+        `UPDATE city_pages SET
+           trust_bar_stars         = '',
+           trust_bar_review_count  = '',
+           services_intro          = '',
+           most_requested_services = '[]'::jsonb,
+           mid_cta_text            = '',
+           video_heading           = '',
+           video_intro             = '',
+           video_script            = '',
+           reviews                 = '[]'::jsonb,
+           ndc_intro               = '',
+           final_cta_heading       = '',
+           final_cta_body          = '',
+           why_points              = '[]'::jsonb
+         WHERE city_slug = $1`,
+        [pageSlug]
+      );
+    }
 
     await client.query('COMMIT');
     return { mapped, missing };

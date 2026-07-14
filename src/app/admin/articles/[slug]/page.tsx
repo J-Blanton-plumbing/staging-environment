@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import RichTextField from '@/components/admin/RichTextField';
 
 interface ArticleData {
   slug: string;
@@ -454,126 +455,6 @@ function CategoriesField({
   );
 }
 
-// ── Fix 5: Body field with HTML / Preview toggle ──────────────────────────────
-
-const PREVIEW_STYLES = `
-  .article-preview h1 { font-size: 32px; font-weight: 700; color: #0a1b2e; margin: 0 0 20px; line-height: 1.2; }
-  .article-preview h2 { font-size: 24px; font-weight: 700; color: #0a1b2e; margin: 24px 0 14px; line-height: 1.3; }
-  .article-preview h3 { font-size: 20px; font-weight: 600; color: #0a1b2e; margin: 20px 0 12px; line-height: 1.4; }
-  .article-preview p  { font-size: 15px; line-height: 1.65; color: #0a1b2e; margin-bottom: 14px; }
-  .article-preview ul { padding-left: 22px; margin-bottom: 14px; list-style-type: disc; }
-  .article-preview li { font-size: 15px; line-height: 1.65; color: #0a1b2e; margin-bottom: 6px; }
-  .article-preview strong { font-weight: 700; }
-  .article-preview a  { color: #1560e6; text-decoration: none; }
-  .article-preview a:hover { color: #BC0E0E; text-decoration: underline; }
-`;
-
-function BodyField({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  const [view, setView] = useState<'html' | 'preview'>('html');
-  const previewRef = useRef<HTMLDivElement>(null);
-
-  // When switching to preview, stamp the current HTML into the contentEditable div.
-  // We manage innerHTML via ref (not dangerouslySetInnerHTML) so React doesn't
-  // clobber user edits on re-render.
-  useEffect(() => {
-    if (view === 'preview' && previewRef.current) {
-      previewRef.current.innerHTML =
-        value || '<p style="color:#5a6a7a;font-style:italic">Nothing to preview yet — switch to HTML and add some content.</p>';
-    }
-  }, [view]); // intentionally omit `value` — only sync on tab switch, not on every keystroke
-
-  function handlePreviewInput() {
-    if (previewRef.current) {
-      onChange(previewRef.current.innerHTML);
-    }
-  }
-
-  const tabBtn = (label: string, v: 'html' | 'preview') => (
-    <button
-      type="button"
-      onClick={() => setView(v)}
-      style={{
-        padding: '0.3rem 0.9rem',
-        fontSize: '12px',
-        fontFamily: 'Nunito, sans-serif',
-        fontWeight: 700,
-        border: '1px solid rgba(10,27,46,0.2)',
-        borderRadius: '4px 4px 0 0',
-        borderBottom: view === v ? '1px solid #fff' : undefined,
-        background: view === v ? '#fff' : '#f5f5f5',
-        color: '#0A1B2E',
-        cursor: 'pointer',
-        marginRight: '2px',
-        position: 'relative',
-        bottom: '-1px',
-      }}
-    >
-      {label}
-    </button>
-  );
-
-  return (
-    <div style={{ marginBottom: '1.25rem' }}>
-      <label style={LABEL}>Body</label>
-      <p style={{ fontSize: '12px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif', margin: '0 0 0.35rem' }}>
-        {view === 'html'
-          ? 'Edit raw HTML below, or switch to Preview to edit visually.'
-          : 'Editing in preview — changes sync back to HTML automatically.'}
-      </p>
-
-      <div style={{ borderBottom: '1px solid rgba(10,27,46,0.2)' }}>
-        {tabBtn('HTML', 'html')}
-        {tabBtn('Preview', 'preview')}
-      </div>
-
-      {view === 'html' ? (
-        <textarea
-          value={value}
-          onChange={e => onChange(e.target.value)}
-          rows={16}
-          style={{
-            ...INPUT,
-            resize: 'vertical',
-            lineHeight: 1.6,
-            borderTop: 'none',
-            borderRadius: '0 4px 4px 4px',
-          }}
-        />
-      ) : (
-        <>
-          <style>{PREVIEW_STYLES}</style>
-          <div
-            ref={previewRef}
-            className="article-preview"
-            contentEditable
-            suppressContentEditableWarning
-            onInput={handlePreviewInput}
-            style={{
-              ...INPUT,
-              borderTop: 'none',
-              borderRadius: '0 4px 4px 4px',
-              minHeight: '300px',
-              padding: '1rem',
-              lineHeight: 1.6,
-              fontFamily: 'Nunito, sans-serif',
-              background: '#fafafa',
-              overflowY: 'auto',
-              outline: 'none',
-              cursor: 'text',
-            }}
-          />
-        </>
-      )}
-    </div>
-  );
-}
-
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function ArticleAdminPage() {
@@ -725,8 +606,8 @@ export default function ArticleAdminPage() {
             />
           </div>
 
-          {/* Fix 5: Body with HTML / Preview toggle */}
-          <BodyField value={form.body} onChange={v => set('body', v)} />
+          {/* Body with HTML / Preview toggle (shared RichTextField — Brief 77) */}
+          <RichTextField label="Body" value={form.body} onChange={v => set('body', v)} rows={16} />
 
           {/* Status */}
           <div style={{ marginBottom: '1.25rem' }}>

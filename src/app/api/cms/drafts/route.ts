@@ -35,12 +35,22 @@ export async function POST(req: NextRequest) {
     if (typeof label !== 'string' || label.trim().length === 0 || label.length > 60) {
       return NextResponse.json({ error: 'label must be 1–60 characters' }, { status: 400 });
     }
+    // Brief 67 (Track A): record which template the draft was authored for so the
+    // preview renders that template even if the live page has since switched. The
+    // city editor includes `templateType` inside the content payload; other page
+    // types simply omit it (stored as null).
+    const templateType =
+      content && typeof content === 'object' && 'templateType' in (content as Record<string, unknown>)
+        ? ((content as Record<string, unknown>).templateType as string | null)
+        : null;
+
     const draft = await createDraft({
       pageType,
       pageSlug,
       label: label.trim(),
       content,
       createdBy: session.userId,
+      templateType,
     });
     return NextResponse.json(draft, { status: 201 });
   } catch (err) {

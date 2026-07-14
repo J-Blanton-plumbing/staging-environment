@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Phone, Check } from 'lucide-react';
-import { SITE } from '@/lib/site';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import CharacterPanel from '@/components/CharacterPanel';
 import type { ServiceContent } from '@/types/service';
 
@@ -12,11 +12,12 @@ import type { ServiceContent } from '@/types/service';
  * `object-bottom`), check-circle problem rows, and the Cerulean "MAKE A GOOD
  * CALL" pill. The character is shared brand chrome, not per-service data.
  */
-export default function ServiceProblems({
+export default async function ServiceProblems({
   problems,
 }: {
   problems: ServiceContent['problemsSection'];
 }) {
+  const settings = await getGlobalSettingsCached();
   return (
     // Cream gutter so the panel sits as a contained, centered block.
     <section className="bg-cream-100 py-[50px] md:py-[80px]">
@@ -46,11 +47,11 @@ export default function ServiceProblems({
               </ul>
 
               <Link
-                href={SITE.phoneHref}
+                href={settings.phoneHref}
                 className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
                 <Phone className="h-4 w-4" strokeWidth={2.5} />
-                MAKE A GOOD CALL
+                {settings.ctaPrimaryLabel}
               </Link>
             </div>
           </div>

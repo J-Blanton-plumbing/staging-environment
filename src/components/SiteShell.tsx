@@ -4,8 +4,15 @@ import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { ReactNode } from 'react';
+import type { GlobalSettings } from '@/lib/cms/global-settings';
 
-export default function SiteShell({ children }: { children: ReactNode }) {
+export default function SiteShell({
+  children,
+  settings,
+}: {
+  children: ReactNode;
+  settings: GlobalSettings;
+}) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith('/admin');
 
@@ -13,7 +20,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar settings={settings} />
       <main className="flex-1">{children}</main>
       <Footer />
     </>

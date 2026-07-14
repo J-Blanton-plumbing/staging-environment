@@ -1,6 +1,6 @@
 import { Phone } from 'lucide-react';
 import type { Office } from '@/lib/content/cities/types';
-import { SITE } from '@/lib/site';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 
 /**
  * Coverage Area city hero — theme `.city-page-hero` (page-city.php 415–463;
@@ -34,7 +34,7 @@ export interface CityHeroProps {
   callout?: string;
 }
 
-export default function CityHero({
+export default async function CityHero({
   cityName,
   h1,
   heroImageUrl,
@@ -44,6 +44,7 @@ export default function CityHero({
   elfsightHeroId,
   callout,
 }: CityHeroProps) {
+  const settings = await getGlobalSettingsCached();
   return (
     <div className="city-page-hero">
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -79,16 +80,16 @@ export default function CityHero({
             </p>
             <div className="row">
               <p>Phone:</p>
-              <a href={SITE.phoneHref}>(773) 724-9272</a>
+              <a href={settings.phoneHref}>(773) 724-9272</a>
             </div>
           </div>
 
           <a
             className="hero-link-button mt-[15px] inline-flex w-max items-center gap-2 rounded-[10px] bg-accent-500 px-[30px] py-[10px] text-white shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors hover:bg-brand-600"
-            href={SITE.phoneHref}
+            href={settings.phoneHref}
           >
             <Phone className="h-5 w-5" strokeWidth={2.5} aria-hidden="true" />
-            <span>{SITE.phone}</span>
+            <span>{settings.phoneDisplay}</span>
           </a>
 
           {callout && <p className="callout">{callout}</p>}

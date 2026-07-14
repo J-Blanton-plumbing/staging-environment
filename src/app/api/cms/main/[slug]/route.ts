@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import { getSession } from '@/lib/auth/session';
+import { sanitizeMainPageContent } from '@/lib/cms/sanitize';
 
 export async function GET(
   _req: NextRequest,
@@ -36,17 +37,17 @@ export async function PATCH(
   { params }: { params: { slug: string } }
 ) {
   const session = await getSession(req);
-  const authHeader = req.headers.get('authorization');
-  const legacyAuth = authHeader === `Bearer ${process.env.CMS_ADMIN_PASSWORD}`;
-
-  if (!session && !legacyAuth) {
+  if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const client = await pool.connect();
   try {
     const body = await req.json();
-    const { meta_title, meta_description, ...content } = body;
+    const { meta_title, meta_description, ...rawContent } = body;
+    // Brief 77 (Feature A): sanitize rich-text fields through the shared Brief 73
+    // allow-list before persisting, so widening HTML input can't store XSS.
+    const content = sanitizeMainPageContent(params.slug, rawContent);
     const updatedBy = session?.userId?.toString() ?? null;
 
     const res = await client.query(

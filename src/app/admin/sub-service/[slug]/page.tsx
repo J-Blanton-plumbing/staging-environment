@@ -29,6 +29,7 @@ interface SubServiceData {
   metaTitle: string;
   metaDescription: string;
   parentSlug: string | null;
+  version: number;
   updatedByName?: string;
   updatedAt?: string;
   createdByName?: string;
@@ -42,7 +43,7 @@ const EMPTY: SubServiceData = {
   ctaHeading: '', ctaBody: '', f3Image: '',
   ndcTitle: '', ndcBody: '',
   status: 'draft', metaTitle: '', metaDescription: '',
-  parentSlug: null,
+  parentSlug: null, version: 0,
 };
 
 const LABEL: React.CSSProperties = {
@@ -240,6 +241,7 @@ export default function SubServiceAdminPage() {
         metaTitle: d.meta_title ?? '',
         metaDescription: d.meta_description ?? '',
         parentSlug: d.parent_slug ?? null,
+        version: d.version ?? 0,
         updatedByName: d.updated_by_name ?? undefined,
         updatedAt: d.updated_at ?? undefined,
         createdByName: d.created_by_name ?? undefined,
@@ -285,9 +287,13 @@ export default function SubServiceAdminPage() {
           metaTitle: form.metaTitle || null,
           metaDescription: form.metaDescription || null,
           parentSlug: form.parentSlug || null,
+          // Brief 75 (DP-1): optimistic-concurrency guard for direct edits.
+          version: form.version,
         }),
       });
-      if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? 'Save failed'); }
+      if (!res.ok) { const j = await res.json().catch(() => ({})); throw new Error(j.error ?? 'Save failed'); }
+      const j = await res.json().catch(() => ({}));
+      if (typeof j.version === 'number') setForm(p => ({ ...p, version: j.version }));
       setSaveStatus('saved');
       setSaveMsg('Draft saved');
     } catch (err: unknown) {
@@ -306,7 +312,9 @@ export default function SubServiceAdminPage() {
         body: JSON.stringify({ status: newStatus }),
       });
       if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? 'Failed'); }
-      setForm(p => ({ ...p, status: newStatus }));
+      // The PATCH bumps the row version server-side; keep our copy in step so the
+      // next content save isn't falsely rejected as stale (Brief 75, DP-1).
+      setForm(p => ({ ...p, status: newStatus, version: (p.version ?? 0) + 1 }));
     } catch (err: unknown) {
       setSaveMsg(err instanceof Error ? err.message : 'Publish toggle failed');
       setSaveStatus('error');
@@ -350,7 +358,7 @@ export default function SubServiceAdminPage() {
     <>
       <AdminPageHeader
         title={form.title || slug}
-        pageType="service"
+        pageType="sub-service"
         pageSlug={slug}
         templateName="Sub-Service"
         status={form.status}

@@ -1,7 +1,7 @@
 ﻿import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ArrowRight, Check } from 'lucide-react';
-import { SITE } from '@/lib/site';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import CategoryHero from '@/components/CategoryHero';
 import HeroNav from '@/components/HeroNav';
 import CharacterPanel from '@/components/CharacterPanel';
@@ -61,6 +61,7 @@ async function getContent(cmsOverride?: ServiceCmsContent): Promise<WaterQuality
 }
 
 export default async function WaterQualityPage() {
+  const settings = await getGlobalSettingsCached();
   const servicePreview = await getServicePreview('water-quality');
   const previewDraft = servicePreview?.meta ?? null;
   const content = await getContent(servicePreview?.cms);
@@ -129,7 +130,7 @@ export default async function WaterQualityPage() {
                   ))}
                 </ul>
                 <Link
-                  href={SITE.phoneHref}
+                  href={settings.phoneHref}
                   className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
                 >
                   <Phone className="h-4 w-4" strokeWidth={2.5} />
@@ -248,7 +249,7 @@ export default async function WaterQualityPage() {
                 {content.finalPitch.body}
               </p>
               <Link
-                href={SITE.phoneHref}
+                href={settings.phoneHref}
                 className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
                 <Phone className="h-4 w-4" strokeWidth={2.5} />

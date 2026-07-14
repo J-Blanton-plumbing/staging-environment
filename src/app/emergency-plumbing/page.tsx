@@ -5,7 +5,7 @@ import HeroNav from '@/components/HeroNav';
 import GoogleReviews from '@/components/GoogleReviews';
 import TikTokFeed from '@/components/TikTokFeed';
 import LocationsSection from '@/components/LocationsSection';
-import { SITE } from '@/lib/site';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { EMERGENCY_PLUMBING } from '@/lib/content/emergency-plumbing';
 import { getEpCmsContent } from '@/lib/cms/emergency-plumbing';
 import { getEpPreview } from '@/lib/cms/preview';
@@ -29,6 +29,7 @@ function CheckIcon() {
 }
 
 export default async function EmergencyPlumbingPage() {
+  const settings = await getGlobalSettingsCached();
   const preview = await getEpPreview();
   const previewDraft = preview ? preview.meta : null;
   let db = preview ? preview.db : await getEpCmsContent().catch(() => null);
@@ -120,7 +121,7 @@ export default async function EmergencyPlumbingPage() {
                         <p>{item}</p>
                       </div>
                     ))}
-                    <Link className="link-button" href={SITE.phoneHref}>MAKE A GOOD CALL</Link>
+                    <Link className="link-button" href={settings.phoneHref}>{settings.ctaPrimaryLabel}</Link>
                   </div>
                 </div>
               </div>
@@ -167,7 +168,7 @@ export default async function EmergencyPlumbingPage() {
                 <p className="red-text">{finalPitch.heading}</p>
                 <Image src={f3ImageSrc} alt="J. Blanton Plumbing" width={470} height={320} />
                 <p>{finalPitch.body}</p>
-                <Link className="link-button button1" href={SITE.phoneHref}>MAKE A GOOD CALL</Link>
+                <Link className="link-button button1" href={settings.phoneHref}>{settings.ctaPrimaryLabel}</Link>
               </div>
             </div>
 

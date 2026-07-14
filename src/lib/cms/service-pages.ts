@@ -1,4 +1,5 @@
 import pool from '@/lib/db';
+import { ConflictError } from '@/lib/cms/errors';
 
 export interface ServicePageRow {
   hero_heading: string;
@@ -90,13 +91,18 @@ export async function getServiceCmsContent(slug: string): Promise<ServiceCmsCont
 export async function updateServiceCmsContent(
   slug: string,
   data: ServiceCmsUpdatePayload,
-  updatedBy: number | null = null
-): Promise<void> {
+  updatedBy: number | null = null,
+  // Brief 75 (DP-1): optional optimistic-concurrency guard, see updateCityCmsContent.
+  expectedVersion?: number | null
+): Promise<number> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
 
-    await client.query(
+    // Brief 75 (CQ-1): this writer previously never checked rowCount, so a slug
+    // that matched no row (e.g. a sub-service draft mis-dispatched here) committed
+    // a silent no-op. Capture the row and fail loudly on zero matches.
+    const pageRes = await client.query(
       `UPDATE service_category_pages SET
         hero_heading = $1, hero_intro = $2, intro_heading = $3, intro_body = $4,
         problems_heading = $5, problems_items = $6, subcategories_heading = $7,
@@ -106,8 +112,11 @@ export async function updateServiceCmsContent(
         updated_by = COALESCE($17, updated_by),
         meta_title = COALESCE($18, meta_title),
         meta_description = COALESCE($19, meta_description),
+        version = version + 1,
         updated_at = NOW()
-       WHERE slug = $16`,
+       WHERE slug = $16
+         AND ($20::int IS NULL OR version = $20::int)
+       RETURNING version`,
       [
         data.hero_heading, data.hero_intro, data.intro_heading, data.intro_body,
         data.problems_heading, JSON.stringify(data.problems_items), data.subcategories_heading,
@@ -118,8 +127,18 @@ export async function updateServiceCmsContent(
         updatedBy,
         data.meta_title ?? null,
         data.meta_description ?? null,
+        expectedVersion ?? null,
       ]
     );
+    if (pageRes.rowCount === 0) {
+      const exists = await client.query('SELECT version FROM service_category_pages WHERE slug = $1', [slug]);
+      if (exists.rowCount === 0) {
+        throw new Error(`No service_category_pages row found for slug "${slug}".`);
+      }
+      throw new ConflictError(
+        'This service page was changed by someone else since you loaded it. Reload before saving.'
+      );
+    }
 
     await client.query(
       `UPDATE global_content SET
@@ -138,6 +157,7 @@ export async function updateServiceCmsContent(
     }
 
     await client.query('COMMIT');
+    return pageRes.rows[0].version as number;
   } catch (err) {
     await client.query('ROLLBACK');
     throw err;

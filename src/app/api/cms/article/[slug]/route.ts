@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
+import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import pool from '@/lib/db';
 
 type RouteContext = { params: Promise<{ slug: string }> };
@@ -132,7 +133,7 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
       [
         body.title ?? null,
         body.excerpt ?? null,
-        body.body != null ? JSON.stringify({ html: body.body }) : null,
+        body.body != null ? JSON.stringify({ html: sanitizeCmsHtml(body.body) }) : null,
         body.image ?? null,
         body.status ?? null,
         body.metaTitle ?? null,

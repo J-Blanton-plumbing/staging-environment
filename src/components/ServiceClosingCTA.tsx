@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
-import { SITE } from '@/lib/site';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { ServiceImage } from '@/components/ServiceIntro';
 import type { ServiceContent } from '@/types/service';
 
@@ -15,11 +15,12 @@ import type { ServiceContent } from '@/types/service';
  * and the left column is hidden; on desktop the photo is the left column.
  * Copy comes from the data file; the phone number comes from `site.ts`.
  */
-export default function ServiceClosingCTA({
+export default async function ServiceClosingCTA({
   cta,
 }: {
   cta: ServiceContent['closingCTA'];
 }) {
+  const settings = await getGlobalSettingsCached();
   return (
     <section className="bg-cream-100 py-[70px] md:py-[100px]">
       <div className="w-[90%] lg:w-[81%] mx-auto">
@@ -41,11 +42,11 @@ export default function ServiceClosingCTA({
             </p>
 
             <Link
-              href={SITE.phoneHref}
+              href={settings.phoneHref}
               className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
             >
               <Phone className="h-4 w-4" strokeWidth={2.5} />
-              MAKE A GOOD CALL
+              {settings.ctaPrimaryLabel}
             </Link>
           </div>
         </div>

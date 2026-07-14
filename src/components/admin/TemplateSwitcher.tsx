@@ -5,6 +5,7 @@ import { useState } from 'react';
 const TEMPLATE_LABELS: Record<string, string> = {
   'coverage-area': 'Coverage Area City',
   'local-office': 'Local Office City',
+  'local-office-v2': 'Local Office V2',
 };
 
 interface Props {

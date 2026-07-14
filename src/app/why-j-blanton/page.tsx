@@ -3,6 +3,9 @@ import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
 import { WHY_JB } from '@/lib/content/why-j-blanton';
 import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsInline } from '@/lib/cms/sanitize';
+import { resolveTokens } from '@/lib/cms/tokens';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
@@ -29,14 +32,19 @@ export default async function WhyJBlantonPage() {
   const db = preview?.content ?? await getMainPageContent('why-j-blanton').catch(() => null);
   const d = db ?? {};
   const merge = (dbVal: unknown, fallback: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fallback;
+  // Variable tokens (Brief 77) resolve against Global Settings for every field.
+  const settings = await getGlobalSettingsCached();
+  // Headings/subheadings/CTAs: resolve {{tokens}} to plain text. Bodies stay raw
+  // here and are rendered as inline HTML via renderCmsInline in the JSX below.
+  const rt = (dbVal: unknown, fb: string) => resolveTokens(merge(dbVal, fb), settings);
 
   const { hero, aboutUs, whatToExpect, meetOurTeam, ourLocations, joinOurTeam } = WHY_JB;
-  const h = { ...hero, heading: merge(d.hero_heading, hero.heading), subheading: merge(d.hero_subheading, hero.subheading), description: merge(d.hero_description, hero.description), cta: merge(d.hero_cta, hero.cta) };
-  const au = { ...aboutUs, heading: merge(d.about_us_heading, aboutUs.heading), body: merge(d.about_us_body, aboutUs.body) };
-  const wte = { ...whatToExpect, heading: merge(d.what_to_expect_heading, whatToExpect.heading), body: merge(d.what_to_expect_body, whatToExpect.body) };
-  const mot = { ...meetOurTeam, heading: merge(d.meet_our_team_heading, meetOurTeam.heading), body: merge(d.meet_our_team_body, meetOurTeam.body) };
-  const ol = { ...ourLocations, heading: merge(d.our_locations_heading, ourLocations.heading), body: merge(d.our_locations_body, ourLocations.body) };
-  const jot = { ...joinOurTeam, heading: merge(d.join_our_team_heading, joinOurTeam.heading), body: merge(d.join_our_team_body, joinOurTeam.body) };
+  const h = { ...hero, heading: rt(d.hero_heading, hero.heading), subheading: rt(d.hero_subheading, hero.subheading), description: merge(d.hero_description, hero.description), cta: rt(d.hero_cta, hero.cta) };
+  const au = { ...aboutUs, heading: rt(d.about_us_heading, aboutUs.heading), body: merge(d.about_us_body, aboutUs.body) };
+  const wte = { ...whatToExpect, heading: rt(d.what_to_expect_heading, whatToExpect.heading), body: merge(d.what_to_expect_body, whatToExpect.body) };
+  const mot = { ...meetOurTeam, heading: rt(d.meet_our_team_heading, meetOurTeam.heading), body: merge(d.meet_our_team_body, meetOurTeam.body) };
+  const ol = { ...ourLocations, heading: rt(d.our_locations_heading, ourLocations.heading), body: merge(d.our_locations_body, ourLocations.body) };
+  const jot = { ...joinOurTeam, heading: rt(d.join_our_team_heading, joinOurTeam.heading), body: merge(d.join_our_team_body, joinOurTeam.body) };
 
   return (
     <div className="why-jb-page">
@@ -60,7 +68,7 @@ export default async function WhyJBlantonPage() {
           <div className="w">
             <h1>{h.heading}</h1>
             <p className="sub-label">{h.subheading}</p>
-            <p className="hero-desc">{h.description}</p>
+            <p className="hero-desc" dangerouslySetInnerHTML={{ __html: renderCmsInline(h.description, settings) }} />
             <div
               className="involveme_popup"
               role="button"
@@ -93,7 +101,7 @@ export default async function WhyJBlantonPage() {
             {/* Desktop: heading + body in a div */}
             <div>
               <p className="red-text">{au.heading}</p>
-              <p>{au.body}</p>
+              <p dangerouslySetInnerHTML={{ __html: renderCmsInline(au.body, settings) }} />
             </div>
             {/* Mobile heading (shown via CSS at ≤900px, hidden on desktop) */}
             <p className="red-text red-text-mobile">{au.heading}</p>
@@ -106,7 +114,7 @@ export default async function WhyJBlantonPage() {
             />
             {/* Mobile body (shown via CSS at ≤900px, hidden on desktop) */}
             <div className="mobile-content">
-              <p>{au.body}</p>
+              <p dangerouslySetInnerHTML={{ __html: renderCmsInline(au.body, settings) }} />
             </div>
           </div>
         </div>
@@ -126,7 +134,7 @@ export default async function WhyJBlantonPage() {
             {/* Desktop: heading + body in a div */}
             <div>
               <p className="red-text">{wte.heading}</p>
-              <p>{wte.body}</p>
+              <p dangerouslySetInnerHTML={{ __html: renderCmsInline(wte.body, settings) }} />
             </div>
           </div>
         </div>
@@ -137,7 +145,7 @@ export default async function WhyJBlantonPage() {
             <div className="l">
               <div>
                 <p className="red-text">{mot.heading}</p>
-                <p>{mot.body}</p>
+                <p dangerouslySetInnerHTML={{ __html: renderCmsInline(mot.body, settings) }} />
               </div>
             </div>
             <div className="r">
@@ -169,9 +177,9 @@ export default async function WhyJBlantonPage() {
             />
             <div>
               <p className="red-text">{ol.heading}</p>
-              <p>{ol.body}</p>
+              <p dangerouslySetInnerHTML={{ __html: renderCmsInline(ol.body, settings) }} />
               <Link href={ol.cta.href} className="link-button">
-                {ol.cta.label}
+                {resolveTokens(ol.cta.label, settings)}
               </Link>
             </div>
           </div>
@@ -183,10 +191,10 @@ export default async function WhyJBlantonPage() {
             <div className="l">
               <div>
                 <p className="red-text">{jot.heading}</p>
-                <p>{jot.body}</p>
+                <p dangerouslySetInnerHTML={{ __html: renderCmsInline(jot.body, settings) }} />
               </div>
               <Link href={jot.cta.href} className="link-button">
-                {jot.cta.label}
+                {resolveTokens(jot.cta.label, settings)}
               </Link>
             </div>
             {/* red-text-mobile: absent from the PHP template (theme bug — the CSS at

@@ -4,6 +4,7 @@ import HeroNav from '@/components/HeroNav';
 import ArticleHero from '@/components/ArticleHero';
 import pool from '@/lib/db';
 import { getSession } from '@/lib/auth/session';
+import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import './article.css';
 
 export const dynamic = 'force-dynamic';
@@ -90,7 +91,7 @@ export default async function ArticlePage({
         {article.body ? (
           <div
             className="article-content"
-            dangerouslySetInnerHTML={{ __html: article.body }}
+            dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(article.body) }}
           />
         ) : null}
       </div>

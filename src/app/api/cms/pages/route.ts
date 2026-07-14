@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import pool from '@/lib/db';
+import { SERVICE_CATEGORY_SLUGS, isServiceCategorySlug } from '@/lib/services';
 
 const SLUG_RE = /^[a-z0-9-]+$/;
 
@@ -106,6 +107,17 @@ export async function POST(req: NextRequest) {
       const { slug, title } = body;
       if (!slug || !SLUG_RE.test(slug)) {
         return NextResponse.json({ error: 'Invalid slug.' }, { status: 400 });
+      }
+      // Brief 76 (DM-2): service categories are a fixed set. Restrict creation
+      // to the canonical slugs so a typo/stray slug can't mint a permanent
+      // crawlable /services/* page (the origin of the `hvac-services` orphan).
+      if (!isServiceCategorySlug(slug)) {
+        return NextResponse.json(
+          {
+            error: `"${slug}" is not a valid service category. Allowed: ${SERVICE_CATEGORY_SLUGS.join(', ')}.`,
+          },
+          { status: 400 }
+        );
       }
       if (!title?.trim()) {
         return NextResponse.json({ error: 'Title is required.' }, { status: 400 });

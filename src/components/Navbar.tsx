@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, Phone, CalendarDays } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SITE } from '@/lib/site';
 import ScheduleButton from './ScheduleButton';
+import type { GlobalSettings } from '@/lib/cms/global-settings';
 
 const TOP_NAV = [
   { href: '/why-j-blanton', label: 'WHY J. BLANTON' },
@@ -28,7 +28,7 @@ const MOBILE_NAV = [
   { href: '/locations', label: 'LOCATIONS' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ settings }: { settings: GlobalSettings }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -75,13 +75,13 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* Phone — uses the call-tracking headerPhone (see src/lib/site.ts) */}
+            {/* Phone — uses the call-tracking headerPhone (Global Settings → DB) */}
             <Link
-              href={SITE.headerPhoneHref}
+              href={settings.headerPhoneHref}
               className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
             >
               <Phone className="h-[20px] w-[20px] mr-1.5" strokeWidth={2.5} />
-              {SITE.headerPhone}
+              {settings.headerPhone}
             </Link>
 
             {/* SCHEDULE A SERVICE — involve.me popup trigger, BLUE */}
@@ -107,7 +107,7 @@ export default function Navbar() {
             </Link>
             <div className="flex items-center gap-2">
               <Link
-                href={SITE.headerPhoneHref}
+                href={settings.headerPhoneHref}
                 aria-label="Call"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-white"
               >
@@ -175,10 +175,10 @@ export default function Navbar() {
             {/* Phone CTA — inverted (white on Carmine) so it reads on the red drawer.
                 Uses the canonical `phone`, not the header tracking line. */}
             <Link
-              href={SITE.phoneHref}
+              href={settings.phoneHref}
               className="mt-5 w-full flex items-center justify-center gap-2 bg-white text-brand-600 font-display font-bold py-3.5 rounded text-sm tracking-wide"
             >
-              <Phone className="h-4 w-4" /> {SITE.phone}
+              <Phone className="h-4 w-4" /> {settings.phoneDisplay}
             </Link>
             <ScheduleButton
               variant="blue"

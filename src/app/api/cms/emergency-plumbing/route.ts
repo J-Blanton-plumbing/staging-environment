@@ -19,10 +19,7 @@ export async function GET() {
 
 export async function PUT(req: NextRequest) {
   const session = await getSession(req);
-  const authHeader = req.headers.get('authorization');
-  const legacyAuth = authHeader === `Bearer ${process.env.CMS_ADMIN_PASSWORD}`;
-
-  if (!session && !legacyAuth) {
+  if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

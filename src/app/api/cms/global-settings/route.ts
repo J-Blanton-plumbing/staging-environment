@@ -24,9 +24,12 @@ export async function PUT(req: NextRequest) {
     await updateGlobalSettings({
       phoneDisplay: body.phoneDisplay ?? undefined,
       phoneHref: body.phoneHref ?? undefined,
+      headerPhone: body.headerPhone ?? undefined,
       ctaPrimaryLabel: body.ctaPrimaryLabel ?? undefined,
       taglineTurning: body.taglineTurning ?? undefined,
       hoursLabel: body.hoursLabel ?? undefined,
+      ndcPrice: body.ndcPrice ?? undefined,
+      serviceDesc: body.serviceDesc ?? undefined,
     });
     return NextResponse.json({ ok: true });
   } catch (err) {

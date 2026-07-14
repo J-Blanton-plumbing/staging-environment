@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDraft, deleteDraft, updateDraftContent } from '@/lib/cms/drafts';
 import { getSession } from '@/lib/auth/session';
+import { errorCode } from '@/lib/cms/errors';
 
 export async function GET(
   req: NextRequest,
@@ -37,9 +38,24 @@ export async function PUT(
     if (body.content === undefined) {
       return NextResponse.json({ error: 'content is required' }, { status: 400 });
     }
-    await updateDraftContent(id, body.content);
-    return NextResponse.json({ ok: true });
+    // Brief 75 (DP-1): the client must send the version it last read so the writer
+    // can detect a concurrent save. Missing/invalid version is a client bug → 400.
+    if (typeof body.version !== 'number') {
+      return NextResponse.json({ error: 'version (number) is required' }, { status: 400 });
+    }
+    const version = await updateDraftContent(id, body.content, body.version);
+    return NextResponse.json({ ok: true, version });
   } catch (err) {
+    const code = errorCode(err);
+    if (code === '404') {
+      return NextResponse.json({ error: 'Draft not found' }, { status: 404 });
+    }
+    if (code === '409') {
+      return NextResponse.json(
+        { error: err instanceof Error ? err.message : 'Conflict' },
+        { status: 409 }
+      );
+    }
     console.error(`[drafts/${id} PUT]`, err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }

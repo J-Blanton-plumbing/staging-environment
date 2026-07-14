@@ -2,6 +2,9 @@ import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import { NDC, type InvolveMeConfig } from '@/lib/content/ndc';
 import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsInline } from '@/lib/cms/sanitize';
+import { resolveTokens } from '@/lib/cms/tokens';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
@@ -91,11 +94,28 @@ export default async function NoDripClubPage() {
   const db = preview?.content ?? await getMainPageContent('no-drip-club').catch(() => null);
   const d = db ?? {};
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  // NDC price is managed in Global Settings (single source of truth); it also
+  // backs the variable-token resolver (Brief 77) applied to every text field.
+  const settings = await getGlobalSettingsCached();
+  // Headings/CTAs: resolve {{tokens}} to plain text (React escapes on render).
+  const rt = (dbVal: unknown, fb: string) => resolveTokens(m(dbVal, fb), settings);
   const { hero: _hero, card, how, wait, involveMe } = NDC;
-  const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description), cta: m(d.hero_cta, _hero.cta) };
-  const howH = m(d.how_heading, how.heading);
-  const waitS = { ...wait, heading: m(d.wait_heading, wait.heading), body: m(d.wait_body, wait.body), cta: m(d.wait_cta, wait.cta) };
-  const pricing = m(d.pricing, card.pricing);
+  const hero = {
+    ..._hero,
+    heading: rt(d.hero_heading, _hero.heading),
+    subheading: resolveTokens(_hero.subheading ?? '', settings),
+    // Body: kept raw here; rendered as inline HTML via renderCmsInline below.
+    description: m(d.hero_description, _hero.description),
+    cta: rt(d.hero_cta, _hero.cta),
+  };
+  const howH = rt(d.how_heading, how.heading);
+  const waitS = {
+    ...wait,
+    heading: rt(d.wait_heading, wait.heading),
+    body: m(d.wait_body, wait.body),
+    cta: rt(d.wait_cta, wait.cta),
+  };
+  const pricing = settings.ndcPrice || card.pricing;
 
   return (
     <div className="ndc-page">
@@ -116,7 +136,7 @@ export default async function NoDripClubPage() {
           <div className="w">
             <h1>{hero.heading}</h1>
             {hero.subheading && <p className="sub-label">{hero.subheading}</p>}
-            <p className="hero-desc">{hero.description}</p>
+            <p className="hero-desc" dangerouslySetInnerHTML={{ __html: renderCmsInline(hero.description, settings) }} />
             <InvolveMePopup label={hero.cta} cfg={involveMe} />
           </div>
         </div>
@@ -189,7 +209,7 @@ export default async function NoDripClubPage() {
               <p className="red-text">{waitS.heading}</p>
               {/* mobile-only image (hidden on desktop via CSS) */}
               <Image src={waitS.image} alt={waitS.imageAlt} width={470} height={320} />
-              <p>{waitS.body}</p>
+              <p dangerouslySetInnerHTML={{ __html: renderCmsInline(waitS.body, settings) }} />
               <InvolveMePopup label={waitS.cta} className="link-button" cfg={involveMe} />
             </div>
             {/* desktop image */}

@@ -1,21 +1,40 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { CITY_REGISTRY, getCity } from '@/lib/content/cities';
-import { getCityService, getAllServiceSlugs } from '@/lib/content/city-services';
+import { getCity } from '@/lib/content/cities';
+import { getCityService } from '@/lib/content/city-services';
 import CityServicePageTemplate, { replaceCityTokens } from '@/components/CityServicePageTemplate';
 import { getCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { getCityServicePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { CityServiceContent } from '@/types/city-service';
 
-export const dynamicParams = false;
 export const dynamic = 'force-dynamic';
 
+/**
+ * Brief 72 — build failure fix (audit CQ-2).
+ *
+ * This route is `force-dynamic`: it renders on demand and (as verified) emits
+ * ZERO static HTML at build. Previously it also declared `dynamicParams = false`
+ * plus a `generateStaticParams()` that returned the full CITY_REGISTRY ×
+ * getAllServiceSlugs() cartesian product — ~10,500 param combinations. Because
+ * the route is force-dynamic, none of those combinations produced a static page;
+ * they only forced the build to enumerate and process 10k dead entries during
+ * "Collecting page data", which intermittently exhausted a build worker's memory
+ * and killed it mid-collection — surfacing as the hard build error
+ * `PageNotFoundError: Cannot find module for page: /api/articles` (the next page
+ * in the dead worker's queue) with a truncated page-data manifest.
+ *
+ * The DB pool was NOT the cause (instrumentation confirmed the pool is never
+ * touched during the build). The fix is to stop the pointless static fan-out.
+ * Unknown slugs are still rejected identically: the `notFound()` guard below
+ * fires whenever `getCity()`/`getCityService()` miss — the exact complement of
+ * the params the old `generateStaticParams()` enumerated — so routing behavior
+ * is unchanged.
+ */
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  const serviceSlugs = getAllServiceSlugs();
-  return CITY_REGISTRY.flatMap((city) =>
-    serviceSlugs.map((service) => ({ city: city.slug, service })),
-  );
+  return [];
 }
 
 export function generateMetadata({

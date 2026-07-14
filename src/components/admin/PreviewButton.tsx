@@ -19,18 +19,30 @@ export default function PreviewButton({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const activeDraftId = useRef<number | null>(null);
+  // Brief 75 (DP-1): track the draft version for optimistic-concurrency saves.
+  const activeDraftVersion = useRef<number | null>(null);
 
   async function handleClick() {
-    // Already have an active draft — update it silently and open preview
+    // Already have an active draft — update it and open preview only if it saved.
     if (activeDraftId.current !== null) {
       setSaving(true);
+      setError('');
       try {
         const content = getContent();
-        await fetch(`/api/cms/drafts/${activeDraftId.current}`, {
+        const res = await fetch(`/api/cms/drafts/${activeDraftId.current}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ content }),
+          body: JSON.stringify({ content, version: activeDraftVersion.current ?? 0 }),
         });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          // Don't open a stale preview on a failed/conflicting save (DP-1).
+          setError(res.status === 409
+            ? (json.error ?? 'Someone else changed this draft. Reload before previewing.')
+            : (json.error ?? 'Preview save failed'));
+          return;
+        }
+        if (typeof json.version === 'number') activeDraftVersion.current = json.version;
         window.open(`/api/preview?draftId=${activeDraftId.current}`, 'jbp-preview');
       } finally {
         setSaving(false);
@@ -65,6 +77,7 @@ export default function PreviewButton({
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? 'Draft save failed');
       activeDraftId.current = json.id;
+      activeDraftVersion.current = json.version ?? 0;
       setDialogOpen(false);
       window.open(`/api/preview?draftId=${json.id}`, 'jbp-preview');
     } catch (err: unknown) {

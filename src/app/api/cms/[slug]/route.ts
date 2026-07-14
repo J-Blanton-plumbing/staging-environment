@@ -24,12 +24,8 @@ export async function PUT(
   req: NextRequest,
   { params }: { params: { slug: string } }
 ) {
-  // Accept session cookie auth (primary) or Bearer token (legacy fallback)
   const session = await getSession(req);
-  const authHeader = req.headers.get('authorization');
-  const legacyAuth = authHeader === `Bearer ${process.env.CMS_ADMIN_PASSWORD}`;
-
-  if (!session && !legacyAuth) {
+  if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

@@ -1,4 +1,5 @@
 import pool from '@/lib/db';
+import { ConflictError } from '@/lib/cms/errors';
 
 export interface EpCmsContent {
   id: number;
@@ -79,11 +80,13 @@ export async function getEpCmsContent(): Promise<EpCmsContent | null> {
 
 export async function updateEpCmsContent(
   data: EpCmsUpdatePayload,
-  updatedBy: number | null = null
-): Promise<void> {
+  updatedBy: number | null = null,
+  // Brief 75 (DP-1): optional optimistic-concurrency guard, see updateCityCmsContent.
+  expectedVersion?: number | null
+): Promise<number> {
   const client = await pool.connect();
   try {
-    await client.query(
+    const res = await client.query(
       `UPDATE emergency_plumbing_page SET
         hero_heading    = COALESCE($1, hero_heading),
         hero_description= COALESCE($2, hero_description),
@@ -104,7 +107,10 @@ export async function updateEpCmsContent(
         updated_by       = COALESCE($17, updated_by),
         meta_title       = COALESCE($18, meta_title),
         meta_description = COALESCE($19, meta_description),
-        updated_at       = NOW()`,
+        version          = version + 1,
+        updated_at       = NOW()
+       WHERE ($20::int IS NULL OR version = $20::int)
+       RETURNING version`,
       [
         data.heroHeading ?? null,
         data.heroDescription ?? null,
@@ -125,8 +131,21 @@ export async function updateEpCmsContent(
         updatedBy,
         data.metaTitle ?? null,
         data.metaDescription ?? null,
+        expectedVersion ?? null,
       ]
     );
+    // Brief 75 (CQ-1): the emergency-plumbing writer had the identical missing
+    // rowCount check — a zero-row UPDATE committed a silent no-op. Fail loudly.
+    if (res.rowCount === 0) {
+      const exists = await client.query('SELECT version FROM emergency_plumbing_page LIMIT 1');
+      if (exists.rowCount === 0) {
+        throw new Error('No emergency_plumbing_page row found. Use the seed script to create it.');
+      }
+      throw new ConflictError(
+        'The emergency plumbing page was changed by someone else since you loaded it. Reload before saving.'
+      );
+    }
+    return res.rows[0].version as number;
   } finally {
     client.release();
   }

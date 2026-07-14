@@ -14,7 +14,7 @@ export async function GET(_req: NextRequest, { params }: RouteContext) {
               s.problems_heading, s.problems_items, s.cta_heading, s.cta_body, s.f3_image,
               s.ndc_title, s.ndc_body,
               s.status, s.meta_title, s.meta_description, s.created_at, s.updated_at,
-              s.parent_slug,
+              s.parent_slug, s.version,
               cu.name AS created_by_name, uu.name AS updated_by_name
          FROM sub_service_pages s
          LEFT JOIN cms_users cu ON cu.id = s.created_by
@@ -61,6 +61,10 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     }
   }
 
+  // Brief 75 (DP-1): optional optimistic-concurrency guard — when the editor sends
+  // the version it loaded, reject a stale direct edit (409) instead of clobbering.
+  const expectedVersion = typeof body.version === 'number' ? body.version : null;
+
   const client = await pool.connect();
   try {
     const res = await client.query(
@@ -84,9 +88,11 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
          ndc_title        = COALESCE($19, ndc_title),
          ndc_body         = COALESCE($20, ndc_body),
          updated_by       = $15,
+         version          = version + 1,
          updated_at       = NOW()
        WHERE slug = $16
-       RETURNING id`,
+         AND ($21::int IS NULL OR version = $21::int)
+       RETURNING id, version`,
       [
         (body.title as string) ?? null,
         (body.heroHeading as string) ?? null,
@@ -108,10 +114,19 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
         (body.f3Image as string) ?? null,
         (body.ndcTitle as string) ?? null,
         (body.ndcBody as string) ?? null,
+        expectedVersion,
       ]
     );
-    if ((res.rowCount ?? 0) === 0) return NextResponse.json({ error: 'Not found' }, { status: 404 });
-    return NextResponse.json({ success: true });
+    if ((res.rowCount ?? 0) === 0) {
+      // Disambiguate a missing row from a version conflict.
+      const exists = await client.query('SELECT 1 FROM sub_service_pages WHERE slug = $1', [slug]);
+      if ((exists.rowCount ?? 0) === 0) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+      return NextResponse.json(
+        { error: 'This sub-service page was changed by someone else since you loaded it. Reload before saving.' },
+        { status: 409 }
+      );
+    }
+    return NextResponse.json({ success: true, version: res.rows[0].version });
   } catch (err) {
     console.error('[cms/sub-service PUT]', err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
@@ -141,7 +156,7 @@ export async function PATCH(req: NextRequest, { params }: RouteContext) {
   try {
     const res = await client.query(
       `UPDATE sub_service_pages
-          SET status = $1, updated_by = $2, updated_at = NOW()
+          SET status = $1, updated_by = $2, version = version + 1, updated_at = NOW()
         WHERE slug = $3
         RETURNING status`,
       [newStatus, session.userId, slug]

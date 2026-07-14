@@ -2,8 +2,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Phone, ArrowRight, Check } from 'lucide-react';
-import { SITE } from '@/lib/site';
-import { SERVICES } from '@/lib/services';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { SERVICE_CATEGORY_SLUGS, isServiceCategorySlug } from '@/lib/services';
 import CategoryHero from '@/components/CategoryHero';
 import HeroNav from '@/components/HeroNav';
 import CharacterPanel from '@/components/CharacterPanel';
@@ -21,9 +21,16 @@ import type { Metadata } from 'next';
 // Force SSR so DB edits and drafts are reflected immediately
 export const dynamic = 'force-dynamic';
 
-// Keep static pre-generation for existing slugs; new CMS slugs render dynamically
+// Brief 76 (DM-1): only the canonical service-category slugs may resolve here.
+// Any other slug (e.g. `hvac-services`, or DB rows like `hydro-jetting` that
+// have their own top-level route) must 404 instead of falling through to
+// on-demand SSR and duplicating a canonical page. `dynamicParams = false`
+// rejects unlisted params, and the explicit allowlist check in the component
+// below is a hard backstop that holds even with `force-dynamic`.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return SERVICES.filter(s => s.slug !== 'plumbing').map(s => ({ slug: s.slug }));
+  return SERVICE_CATEGORY_SLUGS.map(slug => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -32,6 +39,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  if (!isServiceCategorySlug(slug)) return {};
   const cms = await getServiceCmsContent(slug).catch(() => null);
   if (!cms) return {};
   return {
@@ -77,6 +85,12 @@ export default async function ServiceCategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
+  // Brief 76 (DM-1): hard backstop so an unlisted slug can never render a
+  // duplicate/orphaned page, even if `dynamicParams` is bypassed by SSR.
+  if (!isServiceCategorySlug(slug)) notFound();
+
+  const settings = await getGlobalSettingsCached();
 
   const preview = await getServicePreview(slug);
   const cms = preview?.cms ?? await getServiceCmsContent(slug).catch(() => null);
@@ -153,7 +167,7 @@ export default async function ServiceCategoryPage({
                     ))}
                   </ul>
                   <Link
-                    href={SITE.phoneHref}
+                    href={settings.phoneHref}
                     className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
                   >
                     <Phone className="h-4 w-4" strokeWidth={2.5} />
@@ -280,7 +294,7 @@ export default async function ServiceCategoryPage({
                   {content.finalPitch.body}
                 </p>
                 <Link
-                  href={SITE.phoneHref}
+                  href={settings.phoneHref}
                   className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
                 >
                   <Phone className="h-4 w-4" strokeWidth={2.5} />

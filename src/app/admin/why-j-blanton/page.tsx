@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import RichTextField from '@/components/admin/RichTextField';
+import TokenTextInput from '@/components/admin/TokenTextInput';
 
 interface FormState {
   hero_heading: string;
@@ -93,6 +95,7 @@ export default function WhyJBlantonAdminPage() {
 
   const s: React.CSSProperties = { display: 'block', width: '100%', padding: '0.4rem 0.5rem', border: '1px solid #d1d5db', borderRadius: '4px', marginBottom: '1rem', fontFamily: 'inherit', fontSize: '0.9rem', boxSizing: 'border-box' };
   const lbl: React.CSSProperties = { display: 'block', fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.85rem', color: '#374151' };
+  const lblRow: React.CSSProperties = { ...lbl, marginBottom: 0 };
   const sec: React.CSSProperties = { marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb' };
 
   if (status === 'loading') return <div style={{ padding: '2rem' }}>Loading...</div>;
@@ -111,14 +114,10 @@ export default function WhyJBlantonAdminPage() {
 
         <div style={sec}>
           <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Hero</h2>
-          <label style={lbl}>Heading</label>
-          <input style={s} value={form.hero_heading} onChange={e => set('hero_heading', e.target.value)} />
-          <label style={lbl}>Subheading</label>
-          <textarea style={{ ...s, minHeight: '80px' }} value={form.hero_subheading} onChange={e => set('hero_subheading', e.target.value)} />
-          <label style={lbl}>Description</label>
-          <textarea style={{ ...s, minHeight: '80px' }} value={form.hero_description} onChange={e => set('hero_description', e.target.value)} />
-          <label style={lbl}>CTA Label</label>
-          <input style={s} value={form.hero_cta} onChange={e => set('hero_cta', e.target.value)} />
+          <TokenTextInput label="Heading" value={form.hero_heading} onChange={v => set('hero_heading', v)} fieldStyle={s} labelStyle={lblRow} />
+          <TokenTextInput label="Subheading" value={form.hero_subheading} onChange={v => set('hero_subheading', v)} multiline rows={3} fieldStyle={{ ...s, minHeight: '80px' }} labelStyle={lblRow} />
+          <RichTextField label="Description" value={form.hero_description} onChange={v => set('hero_description', v)} rows={5} />
+          <TokenTextInput label="CTA Label" value={form.hero_cta} onChange={v => set('hero_cta', v)} fieldStyle={s} labelStyle={lblRow} />
         </div>
 
         {(
@@ -132,10 +131,19 @@ export default function WhyJBlantonAdminPage() {
         ).map(([title, key]) => (
           <div key={key} style={sec}>
             <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>{title}</h2>
-            <label style={lbl}>Heading</label>
-            <input style={s} value={form[`${key}_heading` as keyof FormState]} onChange={e => set(`${key}_heading` as keyof FormState, e.target.value)} />
-            <label style={lbl}>Body</label>
-            <textarea style={{ ...s, minHeight: '100px' }} value={form[`${key}_body` as keyof FormState]} onChange={e => set(`${key}_body` as keyof FormState, e.target.value)} />
+            <TokenTextInput
+              label="Heading"
+              value={form[`${key}_heading` as keyof FormState]}
+              onChange={v => set(`${key}_heading` as keyof FormState, v)}
+              fieldStyle={s}
+              labelStyle={lblRow}
+            />
+            <RichTextField
+              label="Body"
+              value={form[`${key}_body` as keyof FormState]}
+              onChange={v => set(`${key}_body` as keyof FormState, v)}
+              rows={5}
+            />
           </div>
         ))}
 

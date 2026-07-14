@@ -204,11 +204,25 @@ const OFFICE_HOSTS = new Set<string>([
 const BUILT_LOCAL_OFFICE: RegistryEntry[] = [
   { slug: 'evanston', name: 'Evanston', type: 'local-office', hasOffice: true },
 ];
+
+/**
+ * Brief 67 — Local Office City V2 cities. Registry `type` is `'local-office'`;
+ * the actual V2 rendering is driven by the DB `template_type = 'local-office-v2'`
+ * column (see `[city]/page.tsx`). They keep their `CoverageAreaContent` files
+ * (used for metadata + the static hero-image fallback) — the DB row carries the
+ * V2 body content. Remaining 12 V2 cities land in Brief 68 (data-only).
+ */
+const LOCAL_OFFICE_V2: RegistryEntry[] = [
+  { slug: 'algonquin', name: 'Algonquin', type: 'local-office', hasOffice: true },
+  { slug: 'elgin', name: 'Elgin', type: 'local-office', hasOffice: true },
+];
 /** Local Office slugs not yet built — kept OUT of the registry for now (flagged). */
 const PENDING_LOCAL_OFFICE = new Set<string>(['northbrook']);
 
 /* ── The registry (drives generateStaticParams + the §10 grid) ──────────────── */
-const localOfficeSlugs = new Set(BUILT_LOCAL_OFFICE.map((c) => c.slug));
+const localOfficeSlugs = new Set(
+  [...BUILT_LOCAL_OFFICE, ...LOCAL_OFFICE_V2].map((c) => c.slug),
+);
 
 const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
   .filter((slug) => !localOfficeSlugs.has(slug) && !PENDING_LOCAL_OFFICE.has(slug))
@@ -220,9 +234,11 @@ const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
   }));
 
 /** All city pages, sorted A→Z by display name (the order the live §10 grid uses). */
-export const CITY_REGISTRY: RegistryEntry[] = [...coverageEntries, ...BUILT_LOCAL_OFFICE].sort(
-  (a, b) => a.name.localeCompare(b.name),
-);
+export const CITY_REGISTRY: RegistryEntry[] = [
+  ...coverageEntries,
+  ...BUILT_LOCAL_OFFICE,
+  ...LOCAL_OFFICE_V2,
+].sort((a, b) => a.name.localeCompare(b.name));
 
 const BY_SLUG = new Map(CITY_REGISTRY.map((c) => [c.slug, c]));
 

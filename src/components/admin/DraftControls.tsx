@@ -5,6 +5,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 interface DraftOption {
   id: number;
   label: string;
+  version: number;
   published_at: string | null;
 }
 
@@ -22,6 +23,9 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
   // Preview *update* the same version; only "Save as" creates a new one.
   const storageKey = `jbp-cms-active-draft:${pageType}:${pageSlug}`;
   const activeDraftId = useRef<number | null>(null);
+  // Brief 75 (DP-1): the version this browser last read for the active draft, sent
+  // back on every save so the server can reject a concurrent save (409).
+  const activeDraftVersion = useRef<number | null>(null);
   const [activeDraftLabel, setActiveDraftLabel] = useState<string>('');
   const [drafts, setDrafts] = useState<DraftOption[]>([]);
   const [busy, setBusy] = useState(false);
@@ -29,11 +33,22 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
   const [saveAsLabel, setSaveAsLabel] = useState('');
   const [saveAsError, setSaveAsError] = useState('');
   const [notice, setNotice] = useState('');
+  const [noticeIsError, setNoticeIsError] = useState(false);
 
+  // Success notices auto-clear; error notices (e.g. a 409 conflict) stay until the
+  // next action so the editor can't miss that their save did NOT land.
   function flash(msg: string) {
+    setNoticeIsError(false);
     setNotice(msg);
     setTimeout(() => setNotice(''), 2500);
   }
+  function flashError(msg: string) {
+    setNoticeIsError(true);
+    setNotice(msg);
+  }
+
+  // A concurrent-save conflict raised by updateDraft(); handlers surface it in red.
+  class DraftConflictError extends Error {}
 
   // Persist / restore / clear the active draft id for this page.
   const readStored = useCallback((): { id: number; label: string } | null => {
@@ -49,9 +64,11 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
   }, [storageKey]);
 
   // Set the active draft (ref for async handlers, state for the label display,
-  // localStorage so it survives reloads). Passing `null` clears it.
-  const setActiveDraft = useCallback((id: number | null, label: string) => {
+  // localStorage so it survives reloads). Passing `null` clears it. The version is
+  // tracked in a ref (not persisted — it's re-read from the server on mount).
+  const setActiveDraft = useCallback((id: number | null, label: string, version: number | null) => {
     activeDraftId.current = id;
+    activeDraftVersion.current = id === null ? null : version;
     setActiveDraftLabel(id === null ? '' : label);
     if (typeof window === 'undefined') return;
     if (id === null) window.localStorage.removeItem(storageKey);
@@ -84,11 +101,11 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
       const stored = readStored();
       if (stored && rows.some(r => r.id === stored.id)) {
         const match = rows.find(r => r.id === stored.id)!;
-        setActiveDraft(match.id, match.label);
+        setActiveDraft(match.id, match.label, match.version);
       } else if (rows.length > 0) {
-        setActiveDraft(rows[0].id, rows[0].label);
+        setActiveDraft(rows[0].id, rows[0].label, rows[0].version);
       } else {
-        setActiveDraft(null, '');
+        setActiveDraft(null, '', null);
       }
     })();
     return () => { cancelled = true; };
@@ -99,7 +116,7 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     return `Version ${rows.length + 1}`;
   }
 
-  async function createDraft(label: string): Promise<number> {
+  async function createDraft(label: string): Promise<{ id: number; version: number }> {
     const res = await fetch('/api/cms/drafts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -107,15 +124,29 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     });
     const json = await res.json();
     if (!res.ok) throw new Error(json.error ?? 'Failed to save');
-    return json.id;
+    return { id: json.id, version: json.version ?? 0 };
   }
 
+  // Brief 75 (DP-1): send the version we last read and honestly report the result.
+  // A 409 means someone else saved this draft first — surface it, don't pretend it
+  // saved. On success, advance our tracked version.
   async function updateDraft(): Promise<void> {
-    await fetch(`/api/cms/drafts/${activeDraftId.current}`, {
+    const res = await fetch(`/api/cms/drafts/${activeDraftId.current}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: getContent() }),
+      body: JSON.stringify({ content: getContent(), version: activeDraftVersion.current ?? 0 }),
     });
+    let json: { error?: string; version?: number } = {};
+    try { json = await res.json(); } catch { /* non-JSON error body */ }
+    if (res.status === 409) {
+      throw new DraftConflictError(
+        json.error ?? 'Someone else changed this draft. Reload to get the latest version before saving.'
+      );
+    }
+    if (!res.ok) {
+      throw new Error(json.error ?? `Save failed (${res.status})`);
+    }
+    if (typeof json.version === 'number') activeDraftVersion.current = json.version;
   }
 
   // ── Save ──────────────────────────────────────────────────────────────────
@@ -127,13 +158,13 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
         flash('Saved ✓');
       } else {
         const label = await nextVersionName();
-        const id = await createDraft(label);
-        setActiveDraft(id, label);
+        const { id, version } = await createDraft(label);
+        setActiveDraft(id, label, version);
         await fetchDrafts();
         flash(`Saved as "${label}" ✓`);
       }
     } catch (err) {
-      flash(err instanceof Error ? err.message : 'Save failed');
+      flashError(err instanceof Error ? err.message : 'Save failed');
     } finally {
       setBusy(false);
     }
@@ -150,8 +181,8 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     setBusy(true);
     setSaveAsError('');
     try {
-      const id = await createDraft(saveAsLabel);
-      setActiveDraft(id, saveAsLabel);
+      const { id, version } = await createDraft(saveAsLabel);
+      setActiveDraft(id, saveAsLabel, version);
       await fetchDrafts();
       setSaveAsOpen(false);
       flash(`Saved as "${saveAsLabel}" ✓`);
@@ -168,8 +199,8 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     try {
       if (activeDraftId.current === null) {
         const label = await nextVersionName();
-        const id = await createDraft(label);
-        setActiveDraft(id, label);
+        const { id, version } = await createDraft(label);
+        setActiveDraft(id, label, version);
         await fetchDrafts();
         flash(`Saved as "${label}" ✓`);
       } else {
@@ -177,7 +208,8 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
       }
       window.open(`/api/preview?draftId=${activeDraftId.current}`, 'jbp-preview');
     } catch (err) {
-      flash(err instanceof Error ? err.message : 'Preview failed');
+      // A conflict means the preview save didn't land — don't open a stale preview.
+      flashError(err instanceof Error ? err.message : 'Preview failed');
     } finally {
       setBusy(false);
     }
@@ -189,7 +221,7 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
     if (isNaN(id)) return;
     const draft = drafts.find(d => d.id === id);
     if (!draft) return;
-    setActiveDraft(id, draft.label);
+    setActiveDraft(id, draft.label, draft.version);
     flash(`Switched to "${draft.label}"`);
   }
 
@@ -265,7 +297,7 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
         <span style={{ width: '1px', height: '18px', background: 'rgba(249,243,236,0.2)', flexShrink: 0 }} />
 
         {notice && (
-          <span style={{ color: '#86efac', fontSize: '0.78rem', fontFamily: 'Nunito, sans-serif', whiteSpace: 'nowrap' }}>
+          <span style={{ color: noticeIsError ? '#fca5a5' : '#86efac', fontSize: '0.78rem', fontFamily: 'Nunito, sans-serif', whiteSpace: noticeIsError ? 'normal' : 'nowrap', maxWidth: noticeIsError ? '320px' : undefined, lineHeight: 1.3 }}>
             {notice}
           </span>
         )}

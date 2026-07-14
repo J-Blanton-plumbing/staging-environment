@@ -1,5 +1,6 @@
 import pool from '@/lib/db';
 import type { ServiceContent } from '@/types/service';
+import { ConflictError } from '@/lib/cms/errors';
 
 /**
  * Public reader for individual sub-service pages (kitchen-sink-drain,
@@ -160,6 +161,98 @@ export async function getSubServiceMeta(
 ): Promise<{ title: string; description: string } | null> {
   const content = await getSubServiceCmsContent(slug);
   return content ? content.seo : null;
+}
+
+/**
+ * Brief 75 (CQ-1) — publish-path writer for individual sub-service pages.
+ *
+ * Sub-service drafts previously carried page_type 'service', so publishDraft
+ * routed them to `updateServiceCmsContent` (the `service_category_pages` writer)
+ * — the real `sub_service_pages` row was never touched and orphan rows landed in
+ * `service_subcategories`. This writer targets the correct table and is wired to
+ * the new 'sub-service' page_type in the publishDraft dispatch map.
+ *
+ * The draft content is the admin editor's camelCase shape, where `problemsItems`
+ * may arrive as a newline-joined string; it is normalized before writing.
+ * Publishing a draft makes the content live, so `status` is set to 'published'.
+ */
+export async function updateSubServiceCmsContent(
+  slug: string,
+  data: Record<string, unknown>,
+  updatedBy: number | null = null,
+  // Brief 75 (DP-1): optional optimistic-concurrency guard, see updateCityCmsContent.
+  expectedVersion?: number | null
+): Promise<number> {
+  const str = (v: unknown): string | null => (typeof v === 'string' ? v : null);
+  const rawProblems = data.problemsItems;
+  const problemsItems = Array.isArray(rawProblems)
+    ? (rawProblems as string[])
+    : typeof rawProblems === 'string'
+      ? rawProblems.split('\n').map((s) => s.trim()).filter(Boolean)
+      : [];
+
+  const client = await pool.connect();
+  try {
+    const res = await client.query(
+      `UPDATE sub_service_pages SET
+         title            = COALESCE($1, title),
+         hero_heading     = COALESCE($2, hero_heading),
+         hero_intro       = COALESCE($3, hero_intro),
+         hero_image       = COALESCE($4, hero_image),
+         intro_heading    = COALESCE($5, intro_heading),
+         intro_body       = COALESCE($6, intro_body),
+         f_image          = COALESCE($7, f_image),
+         problems_heading = COALESCE($8, problems_heading),
+         problems_items   = $9,
+         cta_heading      = COALESCE($10, cta_heading),
+         cta_body         = COALESCE($11, cta_body),
+         f3_image         = COALESCE($12, f3_image),
+         ndc_title        = COALESCE($13, ndc_title),
+         ndc_body         = COALESCE($14, ndc_body),
+         meta_title       = COALESCE($15, meta_title),
+         meta_description = COALESCE($16, meta_description),
+         status           = 'published',
+         updated_by       = COALESCE($18, updated_by),
+         version          = version + 1,
+         updated_at       = NOW()
+       WHERE slug = $17
+         AND ($19::int IS NULL OR version = $19::int)
+       RETURNING version`,
+      [
+        str(data.title),
+        str(data.heroHeading),
+        str(data.heroIntro),
+        str(data.heroImage),
+        str(data.introHeading),
+        str(data.introBody),
+        str(data.fImage),
+        str(data.problemsHeading),
+        JSON.stringify(problemsItems),
+        str(data.ctaHeading),
+        str(data.ctaBody),
+        str(data.f3Image),
+        str(data.ndcTitle),
+        str(data.ndcBody),
+        str(data.metaTitle),
+        str(data.metaDescription),
+        slug,
+        updatedBy,
+        expectedVersion ?? null,
+      ]
+    );
+    if (res.rowCount === 0) {
+      const exists = await client.query('SELECT version FROM sub_service_pages WHERE slug = $1', [slug]);
+      if (exists.rowCount === 0) {
+        throw new Error(`No sub_service_pages row found for slug "${slug}".`);
+      }
+      throw new ConflictError(
+        'This sub-service page was changed by someone else since you loaded it. Reload before saving.'
+      );
+    }
+    return res.rows[0].version as number;
+  } finally {
+    client.release();
+  }
 }
 
 /** All published sub-service slugs (used for static-param generation). */

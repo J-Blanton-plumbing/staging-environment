@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
-import { SITE } from '@/lib/site';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 
 interface Props {
   /** Page-specific hero image — fills the ~45% image column. Omit to hide the image column. */
@@ -20,7 +20,8 @@ interface Props {
  * category page. (The home page keeps its own full-bleed video hero and does not
  * use this component.)
  */
-export default function CategoryHero({ image, heading, intro, cta }: Props) {
+export default async function CategoryHero({ image, heading, intro, cta }: Props) {
+  const settings = await getGlobalSettingsCached();
   return (
     <section className="hero relative w-full flex flex-col lg:flex-row min-h-[560px] lg:min-h-[600px]">
       {/* Image column (~45%) — hidden on mobile (matches live site), visible lg+. */}
@@ -52,11 +53,11 @@ export default function CategoryHero({ image, heading, intro, cta }: Props) {
           </p>
           {cta ?? (
             <Link
-              href={SITE.headerPhoneHref}
+              href={settings.headerPhoneHref}
               className="hero-link-button inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold h-[45px] px-[35px] rounded-[10px] transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" strokeWidth={2.5} />
-              <span className="text-base lg:text-lg tracking-wide">{SITE.headerPhone}</span>
+              <span className="text-base lg:text-lg tracking-wide">{settings.headerPhone}</span>
             </Link>
           )}
         </div>

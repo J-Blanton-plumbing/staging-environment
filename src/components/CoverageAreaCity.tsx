@@ -13,6 +13,7 @@ import {
   getElfsightContentId,
   resolveHeroImage,
 } from '@/lib/content/cities/shared';
+import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 
 /**
  * Coverage Area ("image-hero") city template — theme `page-city.php` + `city.css`
@@ -98,7 +99,7 @@ export default function CoverageAreaCity({
               {content?.coveredBody && (
                 <div
                   className="city-prose leading-relaxed text-navy-800"
-                  dangerouslySetInnerHTML={{ __html: content.coveredBody }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(content.coveredBody) }}
                 />
               )}
             </div>
@@ -146,7 +147,7 @@ export default function CoverageAreaCity({
               {content?.manplumberBody && (
                 <div
                   className="city-prose leading-relaxed text-navy-800"
-                  dangerouslySetInnerHTML={{ __html: content.manplumberBody }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(content.manplumberBody) }}
                 />
               )}
             </div>

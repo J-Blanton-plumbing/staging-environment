@@ -5,6 +5,7 @@ import { Nunito } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/SiteShell';
 import InvolveMeScript from '@/components/InvolveMeScript';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
 // Medium (500) → H3 subheadings, Demi (600) → nav/labels, Bold (700) → H1/H2,
@@ -50,15 +51,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Sitewide phone/CTA values — DB-backed with a site.ts fallback (Brief 66, Track C).
+  // Passed down to the client SiteShell → Navbar, which can't read the DB itself.
+  const settings = await getGlobalSettingsCached();
+
   return (
     <html lang="en" className={`${industry.variable} ${nunito.variable}`}>
       <body className="flex min-h-screen flex-col">
-        <SiteShell>{children}</SiteShell>
+        <SiteShell settings={settings}>{children}</SiteShell>
         {/* Scroll entrance animations — adds .in-view once elements cross viewport.
             Runs after page load; respects prefers-reduced-motion (CSS handles that). */}
         <Script id="scroll-animations" strategy="lazyOnload">{`

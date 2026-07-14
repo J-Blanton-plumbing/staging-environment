@@ -8,10 +8,7 @@ const VALID_TEMPLATES_BY_PAGE_TYPE: Record<string, string[]> = {
 
 export async function POST(req: NextRequest) {
   const session = await getSession(req);
-  const authHeader = req.headers.get('authorization');
-  const legacyAuth = authHeader === `Bearer ${process.env.CMS_ADMIN_PASSWORD}`;
-
-  if (!session && !legacyAuth) {
+  if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

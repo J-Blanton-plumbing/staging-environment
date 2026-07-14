@@ -1,4 +1,5 @@
 import pool from '@/lib/db';
+import { ConflictError } from '@/lib/cms/errors';
 
 /**
  * Defensive normalisation for the `*_paragraphs` JSONB columns.
@@ -53,6 +54,7 @@ export interface CityServiceCmsContent {
   secondaryParagraphs: string[];
   secondaryImage: string;
   faqs: Array<{ question: string; answer: string }>;
+  version: number;
   updatedAt: string;
   updatedBy?: string | null;
   createdBy?: string | null;
@@ -97,6 +99,7 @@ export async function getCityServiceCmsContent(
       secondaryParagraphs: normaliseParagraphs(r.secondary_paragraphs),
       secondaryImage: r.secondary_image,
       faqs: r.faqs,
+      version: r.version ?? 0,
       updatedAt: r.updated_at,
       updatedBy: r.updated_by ?? null,
       createdBy: r.created_by ?? null,
@@ -113,8 +116,10 @@ export async function getCityServiceCmsContent(
 export async function updateCityServiceCmsContent(
   citySlug: string,
   serviceSlug: string,
-  data: CityServiceCmsUpdatePayload
-): Promise<void> {
+  data: CityServiceCmsUpdatePayload,
+  // Brief 75 (DP-1): optional optimistic-concurrency guard, see updateCityCmsContent.
+  expectedVersion?: number | null
+): Promise<number> {
   const client = await pool.connect();
   try {
     const res = await client.query(
@@ -129,9 +134,11 @@ export async function updateCityServiceCmsContent(
         meta_title               = COALESCE($10, meta_title),
         meta_description         = COALESCE($11, meta_description),
         parent_slug              = $12,
+        version                  = version + 1,
         updated_at               = NOW()
        WHERE city_slug = $8 AND service_slug = $9
-       RETURNING id`,
+         AND ($13::int IS NULL OR version = $13::int)
+       RETURNING version`,
       [
         data.serviceIntroHeading,
         JSON.stringify(data.serviceIntroParagraphs),
@@ -145,13 +152,24 @@ export async function updateCityServiceCmsContent(
         data.metaTitle ?? null,
         data.metaDescription ?? null,
         data.parentSlug ?? null,
+        expectedVersion ?? null,
       ]
     );
     if (res.rowCount === 0) {
-      throw new Error(
-        `No city_service_pages row found for "${citySlug}/${serviceSlug}". Use the seed script to create rows.`
+      const exists = await client.query(
+        'SELECT version FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2',
+        [citySlug, serviceSlug]
+      );
+      if (exists.rowCount === 0) {
+        throw new Error(
+          `No city_service_pages row found for "${citySlug}/${serviceSlug}". Use the seed script to create rows.`
+        );
+      }
+      throw new ConflictError(
+        'This city-service page was changed by someone else since you loaded it. Reload before saving.'
       );
     }
+    return res.rows[0].version as number;
   } finally {
     client.release();
   }

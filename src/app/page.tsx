@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ArrowRight } from 'lucide-react';
-import { SITE } from '@/lib/site';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import ServiceCard from '@/components/ServiceCard';
 import ServicesAccordion from '@/components/ServicesAccordion';
 import HeroNav from '@/components/HeroNav';
@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
+  const settings = await getGlobalSettingsCached();
   const preview = await getMainPagePreview('home');
   const db = preview?.content ?? await getMainPageContent('home').catch(() => null);
   const d = db ?? {};
@@ -71,7 +72,7 @@ export default async function HomePage() {
                 {home.hero.heading}
               </h1>
               <h1 className="font-display font-bold uppercase text-[40px] md:text-[50px] leading-[1.05] tracking-tight">
-                <Link href={SITE.phoneHref} className="text-white hover:text-brand-400 transition-colors">
+                <Link href={settings.phoneHref} className="text-white hover:text-brand-400 transition-colors">
                   {home.hero.headingCta}
                 </Link>
               </h1>
@@ -85,13 +86,13 @@ export default async function HomePage() {
                 {home.hero.intro}
               </p>
               <Link
-                href={SITE.phoneHref}
+                href={settings.phoneHref}
                 className="test-hero-contact inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold px-7 py-4 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors duration-150"
               >
                 <span className="w-5 h-5 mr-2.5 flex items-center justify-center">
                   <Phone className="h-5 w-5" strokeWidth={2.5} />
                 </span>
-                <span className="text-lg lg:text-xl tracking-wide">{SITE.phone}</span>
+                <span className="text-lg lg:text-xl tracking-wide">{settings.phoneDisplay}</span>
               </Link>
             </div>
           </div>
