@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface Props {
   onClose: () => void;
@@ -40,9 +41,9 @@ interface ServiceOption { slug: string; title: string }
 
 const LABEL_STYLES: React.CSSProperties = {
   display: 'block',
-  fontFamily: 'Nunito, sans-serif',
+  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   fontSize: '13px',
-  color: '#0A1B2E',
+  color: ADMIN_COLORS.onSurface,
   marginBottom: '0.25rem',
   fontWeight: 600,
 };
@@ -51,13 +52,19 @@ const INPUT_STYLES: React.CSSProperties = {
   display: 'block',
   width: '100%',
   padding: '0.5rem',
-  border: '1px solid #d1d5db',
-  borderRadius: '4px',
+  background: ADMIN_COLORS.surfaceContainerLow,
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+  borderRadius: '0.5rem',
   fontFamily: 'inherit',
   fontSize: '0.9rem',
-  color: '#0A1B2E',
+  color: ADMIN_COLORS.onSurface,
   boxSizing: 'border-box',
 };
+
+const FOCUS_RING_STYLE = `
+  .admin-cpm-field:focus { outline: none; box-shadow: 0 0 0 1px ${ADMIN_COLORS.primary}66; }
+  .admin-cpm-cta:hover:not(:disabled) { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+`;
 
 export default function CreatePageModal({ onClose }: Props) {
   const router = useRouter();
@@ -187,23 +194,25 @@ export default function CreatePageModal({ onClose }: Props) {
       <div
         onClick={e => e.stopPropagation()}
         style={{
-          background: '#fff',
-          borderRadius: '8px',
+          background: ADMIN_COLORS.surfaceContainerLow,
+          borderRadius: '1.5rem',
           padding: '24px',
           width: '100%',
           maxWidth: '480px',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
+          border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+          boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
           maxHeight: '90vh',
           overflowY: 'auto',
         }}
       >
+        <style>{FOCUS_RING_STYLE}</style>
         <h2
           style={{
             margin: '0 0 1.5rem',
-            fontFamily: 'Industry, sans-serif',
-            fontWeight: 600,
-            fontSize: '20px',
-            color: '#0A1B2E',
+            fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+            fontWeight: 700,
+            fontSize: '1.25rem',
+            color: ADMIN_COLORS.onSurface,
           }}
         >
           Create New Page
@@ -216,6 +225,7 @@ export default function CreatePageModal({ onClose }: Props) {
             <select
               value={pageType}
               onChange={e => handleTypeChange(e.target.value)}
+              className="admin-cpm-field"
               style={INPUT_STYLES}
             >
               {PAGE_TYPES.map(t => (
@@ -235,16 +245,18 @@ export default function CreatePageModal({ onClose }: Props) {
                   placeholder="Filter cities…"
                   value={citySearch}
                   onChange={e => { setCitySearch(e.target.value); setSelectedCity(''); }}
+                  className="admin-cpm-field"
                   style={{ ...INPUT_STYLES, marginBottom: '0.35rem' }}
                 />
                 {citiesLoading ? (
-                  <p style={{ fontSize: '13px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>Loading cities…</p>
+                  <p style={{ fontSize: '13px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>Loading cities…</p>
                 ) : (
                   <select
                     value={selectedCity}
                     onChange={e => setSelectedCity(e.target.value)}
                     size={Math.min(filteredCities.length, 6) || 3}
-                    style={{ ...INPUT_STYLES, fontFamily: 'Nunito, sans-serif', fontSize: '13px' }}
+                    className="admin-cpm-field"
+                    style={{ ...INPUT_STYLES, fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '13px' }}
                   >
                     <option value="">— select a city —</option>
                     {filteredCities.map(c => (
@@ -259,11 +271,12 @@ export default function CreatePageModal({ onClose }: Props) {
                 <div style={{ marginBottom: '1rem' }}>
                   <label style={LABEL_STYLES}>Service</label>
                   {servicesLoading ? (
-                    <p style={{ fontSize: '13px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>Loading services…</p>
+                    <p style={{ fontSize: '13px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>Loading services…</p>
                   ) : (
                     <select
                       value={selectedService}
                       onChange={e => setSelectedService(e.target.value)}
+                      className="admin-cpm-field"
                       style={INPUT_STYLES}
                     >
                       <option value="">— select a service —</option>
@@ -279,14 +292,14 @@ export default function CreatePageModal({ onClose }: Props) {
               {isDropdownReady() && (
                 <div
                   style={{
-                    background: '#EFF6FF',
-                    border: '1px solid #BFDBFE',
-                    borderRadius: '6px',
+                    background: `${ADMIN_COLORS.cerulean}22`,
+                    border: `1px solid ${ADMIN_COLORS.cerulean}55`,
+                    borderRadius: '0.75rem',
                     padding: '0.75rem 1rem',
                     marginBottom: '1rem',
                     fontSize: '0.875rem',
-                    color: '#1e40af',
-                    fontFamily: 'Nunito, sans-serif',
+                    color: ADMIN_COLORS.onSurface,
+                    fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                   }}
                 >
                   <strong>Smart Fill ready.</strong>{' '}
@@ -309,6 +322,7 @@ export default function CreatePageModal({ onClose }: Props) {
                 placeholder={pageType === 'article' ? 'e.g. How to Fix a Leaky Faucet' : pageType === 'city-coverage' || pageType === 'city-local' ? 'e.g. Evanston' : 'e.g. Bathroom Plumbing'}
                 value={title}
                 onChange={e => { setTitle(e.target.value); setApiError(''); }}
+                className="admin-cpm-field"
                 style={INPUT_STYLES}
               />
             </div>
@@ -323,13 +337,14 @@ export default function CreatePageModal({ onClose }: Props) {
                 placeholder="e.g. my-new-page"
                 value={slug}
                 onChange={e => { setSlug(e.target.value); setApiError(''); }}
+                className="admin-cpm-field"
                 style={{
                   ...INPUT_STYLES,
-                  borderColor: clientSlugError ? '#BC0E0E' : '#d1d5db',
+                  borderColor: clientSlugError ? ADMIN_COLORS.error : `${ADMIN_COLORS.outlineVariant}66`,
                 }}
               />
               {clientSlugError && (
-                <p style={{ color: '#BC0E0E', fontSize: '12px', margin: '0.25rem 0 0', fontFamily: 'Nunito, sans-serif' }}>
+                <p style={{ color: ADMIN_COLORS.error, fontSize: '12px', margin: '0.25rem 0 0', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
                   {clientSlugError}
                 </p>
               )}
@@ -337,7 +352,7 @@ export default function CreatePageModal({ onClose }: Props) {
           )}
 
           {apiError && (
-            <p style={{ color: '#BC0E0E', fontSize: '13px', margin: '0 0 0.75rem', fontFamily: 'Nunito, sans-serif' }}>
+            <p style={{ color: ADMIN_COLORS.error, fontSize: '13px', margin: '0 0 0.75rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
               {apiError}
             </p>
           )}
@@ -348,7 +363,7 @@ export default function CreatePageModal({ onClose }: Props) {
               onClick={onClose}
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                color: '#0A1B2E', fontSize: '13px', fontFamily: 'Nunito, sans-serif',
+                color: ADMIN_COLORS.onSurfaceVariant, fontSize: '13px', fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                 padding: '0.5rem 0.75rem',
               }}
             >
@@ -357,12 +372,15 @@ export default function CreatePageModal({ onClose }: Props) {
             <button
               type="submit"
               disabled={!canSubmit()}
+              className="admin-cpm-cta"
               style={{
-                background: '#BC0E0E', border: 'none', borderRadius: '4px',
-                padding: '0.5rem 1.25rem', color: '#F9F3EC',
-                fontFamily: 'Industry, sans-serif', fontWeight: 600, fontSize: '14px',
+                background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
+                padding: '0.5rem 1.25rem', color: '#fff',
+                fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 600, fontSize: '14px',
                 cursor: !canSubmit() ? 'not-allowed' : 'pointer',
                 opacity: !canSubmit() ? 0.6 : 1,
+                boxShadow: ADMIN_SHADOWS.md,
+                transition: 'box-shadow 0.2s ease, filter 0.2s ease',
               }}
             >
               {submitting ? 'Creating…' : 'Create Page'}

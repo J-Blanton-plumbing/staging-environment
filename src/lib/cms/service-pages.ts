@@ -17,6 +17,9 @@ export interface ServicePageRow {
   hero_image: string | null;
   f_image: string | null;
   f3_image: string | null;
+  // Optimistic-lock counter. Present on rows read from the DB (SELECT *); omitted
+  // when a ServicePageRow is synthesized from a draft payload (see preview.ts).
+  version?: number;
   meta_title: string | null;
   meta_description: string | null;
 }

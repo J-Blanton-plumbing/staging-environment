@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface ServiceDescState {
   emergency: string;
@@ -59,17 +60,20 @@ const DESC_MAX = 120;
 
 const s: React.CSSProperties = {
   display: 'block', width: '100%', padding: '0.4rem 0.5rem',
-  border: '1px solid #d1d5db', borderRadius: '4px', marginBottom: '1rem',
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.75rem', marginBottom: '1rem',
   fontFamily: 'inherit', fontSize: '0.9rem', boxSizing: 'border-box',
+  background: ADMIN_COLORS.surfaceContainerLowest, color: ADMIN_COLORS.onSurface,
 };
 
 const labelStyle: React.CSSProperties = {
   display: 'block', fontWeight: 600, marginBottom: '0.25rem',
-  fontSize: '0.85rem', color: '#374151',
+  fontSize: '0.85rem', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif',
 };
 
 const sectionStyle: React.CSSProperties = {
-  marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb',
+  marginBottom: '2rem', paddingBottom: '2rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+  background: ADMIN_COLORS.surfaceContainerLow, borderRadius: '1.5rem', padding: '1.5rem',
+  boxShadow: ADMIN_SHADOWS.elegant,
 };
 
 export default function GlobalSettingsPage() {
@@ -128,27 +132,32 @@ export default function GlobalSettingsPage() {
     }
   }
 
-  if (status === 'loading') return <div style={{ padding: '2rem' }}>Loading…</div>;
+  if (status === 'loading') return <div style={{ padding: '2rem', background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface, minHeight: '100vh' }}>Loading…</div>;
 
   return (
-    <div style={{ maxWidth: '700px', margin: '0 auto', padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontFamily: 'Industry, sans-serif', fontWeight: 700, fontSize: '1.5rem', color: '#0A1B2E', marginBottom: '0.25rem' }}>
+    <div className="admin-editor-page" style={{ maxWidth: '700px', margin: '0 auto', padding: '2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface, minHeight: '100vh' }}>
+      <style>{`
+        .admin-editor-page input:focus, .admin-editor-page textarea:focus, .admin-editor-page select:focus { outline: none; box-shadow: 0 0 0 2px ${ADMIN_COLORS.primary}66; }
+        .admin-save-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+        .admin-save-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+      `}</style>
+      <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.5rem', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
         Global Settings
       </h1>
-      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>
+      <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Site-wide values. Changes save to the database and are read live by the
         front-end (navbar, page heroes, and CTAs). Allow a moment for cached pages to refresh.
       </p>
 
       {status === 'error' && (
-        <div style={{ background: '#fee2e2', border: '1px solid #fca5a5', borderRadius: '6px', padding: '0.85rem 1rem', marginBottom: '1.5rem', color: '#dc2626', fontSize: '0.875rem' }}>
+        <div style={{ background: `${ADMIN_COLORS.error}1a`, border: `1px solid ${ADMIN_COLORS.error}66`, borderRadius: '1rem', padding: '0.85rem 1rem', marginBottom: '1.5rem', color: ADMIN_COLORS.error, fontSize: '0.875rem' }}>
           {errorMsg}
         </div>
       )}
 
       {/* Contact */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: '#0A1B2E', marginBottom: '1rem' }}>Contact</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Contact</h2>
         <label style={labelStyle}>Phone Number (displayed to users)</label>
         <input style={s} value={form.phoneDisplay} onChange={e => set('phoneDisplay', e.target.value)} placeholder="773-724-9272" />
         <label style={labelStyle}>Phone Link (e.g. tel:773-724-9272)</label>
@@ -159,36 +168,36 @@ export default function GlobalSettingsPage() {
 
       {/* CTAs */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: '#0A1B2E', marginBottom: '1rem' }}>CTAs</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>CTAs</h2>
         <label style={labelStyle}>Primary CTA Button Label</label>
         <input style={s} value={form.ctaPrimaryLabel} onChange={e => set('ctaPrimaryLabel', e.target.value)} placeholder="MAKE A GOOD CALL" />
       </div>
 
       {/* Taglines */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: '#0A1B2E', marginBottom: '1rem' }}>Taglines</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Taglines</h2>
         <label style={labelStyle}>Turning Bad Calls Tagline</label>
         <input style={s} value={form.taglineTurning} onChange={e => set('taglineTurning', e.target.value)} placeholder="J Blanton Plumbing - Turning Bad Calls to Good Calls" />
       </div>
 
       {/* Hours */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: '#0A1B2E', marginBottom: '1rem' }}>Hours</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Hours</h2>
         <label style={labelStyle}>Hours Label (e.g. &quot;24 hours&quot;)</label>
         <input style={s} value={form.hoursLabel} onChange={e => set('hoursLabel', e.target.value)} placeholder="24 hours" />
       </div>
 
       {/* No Drip Club */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: '#0A1B2E', marginBottom: '1rem' }}>No Drip Club</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>No Drip Club</h2>
         <label style={labelStyle}>Membership Price Line (shown on the No Drip Club page)</label>
         <input style={s} value={form.ndcPrice} onChange={e => set('ndcPrice', e.target.value)} placeholder="All for just $29.97/month**" />
       </div>
 
       {/* Service Category Descriptions (Brief 67) */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: '#0A1B2E', marginBottom: '0.35rem' }}>Service Category Descriptions</h2>
-        <p style={{ color: '#6b7280', fontSize: '0.8rem', marginBottom: '1rem', marginTop: 0 }}>
+        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '0.35rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Service Category Descriptions</h2>
+        <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.8rem', marginBottom: '1rem', marginTop: 0 }}>
           Shown under each category card in the Local Office V2 city Services Grid. Keep each under {DESC_MAX} characters.
         </p>
         {SERVICE_DESC_FIELDS.map(({ key, label }) => {
@@ -202,7 +211,7 @@ export default function GlobalSettingsPage() {
                 value={value}
                 onChange={e => setServiceDesc(key, e.target.value)}
               />
-              <span style={{ fontSize: '0.75rem', color: over ? '#BC0E0E' : '#9ca3af' }}>
+              <span style={{ fontSize: '0.75rem', color: over ? ADMIN_COLORS.error : ADMIN_COLORS.onSurfaceVariant }}>
                 {value.length}/{DESC_MAX}
               </span>
             </div>
@@ -212,13 +221,14 @@ export default function GlobalSettingsPage() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <button
+          className="admin-save-btn"
           onClick={handleSave}
           disabled={status === 'saving'}
-          style={{ background: '#BC0E0E', color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '4px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1 }}
+          style={{ background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '9999px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1, boxShadow: ADMIN_SHADOWS.lg }}
         >
           {status === 'saving' ? 'Saving…' : 'Save'}
         </button>
-        {status === 'saved' && <span style={{ color: '#16a34a', fontWeight: 600 }}>Saved.</span>}
+        {status === 'saved' && <span style={{ color: ADMIN_COLORS.success, fontWeight: 600 }}>Saved.</span>}
       </div>
     </div>
   );

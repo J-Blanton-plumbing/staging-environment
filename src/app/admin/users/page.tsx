@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface CmsUser {
   id: number;
@@ -17,11 +18,13 @@ interface EditState {
 
 const INPUT_STYLE: React.CSSProperties = {
   padding: '0.45rem 0.6rem',
-  border: '1px solid #d1d5db',
-  borderRadius: '4px',
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+  borderRadius: '0.5rem',
   fontSize: '0.875rem',
   width: '100%',
   boxSizing: 'border-box',
+  background: ADMIN_COLORS.surfaceContainer,
+  color: ADMIN_COLORS.onSurface,
 };
 
 export default function AdminUsersPage() {
@@ -39,6 +42,8 @@ export default function AdminUsersPage() {
   const [addError, setAddError] = useState('');
   const [addLoading, setAddLoading] = useState(false);
 
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+
   async function loadUsers() {
     try {
       const res = await fetch('/api/cms/users');
@@ -51,7 +56,13 @@ export default function AdminUsersPage() {
     }
   }
 
-  useEffect(() => { loadUsers(); }, []);
+  useEffect(() => {
+    loadUsers();
+    fetch('/api/auth/me')
+      .then(r => (r.ok ? r.json() : null))
+      .then(data => setCurrentUserId(data?.userId ?? null))
+      .catch(() => {});
+  }, []);
 
   function startEdit(user: CmsUser) {
     setEditingId(user.id);
@@ -124,59 +135,89 @@ export default function AdminUsersPage() {
     return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
+  function initials(name: string): string {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+
+  // Display-only convention (no `role` column exists in cms_users): the earliest-created
+  // account reads as "Owner", every other account as "Administrator" — both map to the
+  // same actual DB permissions today, this is purely a label, not an access-control signal.
+  const earliestId = users.length > 0 ? users.reduce((a, b) => (a.created_at < b.created_at ? a : b)).id : null;
+  function userType(user: CmsUser): string {
+    return user.id === earliestId ? 'Owner' : 'Administrator';
+  }
+
   const onlyOne = users.length === 1;
+  const PAGE_SIZE = 10;
+  const totalPages = Math.max(1, Math.ceil(users.length / PAGE_SIZE));
 
   return (
-    <div style={{ maxWidth: '720px', margin: '0 auto', padding: '3rem 2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+    <div style={{ padding: '1rem 2.5rem 2.5rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+      {/* :hover / group-hover states — inline styles can't express these */}
+      <style>{`
+        .admin-users-row:hover { background: ${ADMIN_COLORS.surfaceContainerHigh}66; }
+        .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+        .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        .admin-pagination-pill { transition: background 0.15s ease; cursor: pointer; }
+        .admin-pagination-pill:hover:not(.active) { background: ${ADMIN_COLORS.surfaceContainerHigh}; }
+      `}</style>
+
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginTop: '1rem', marginBottom: '2.5rem' }}>
         <div>
-          <h1 style={{ fontWeight: 700, fontSize: '1.5rem', margin: 0, color: '#0A1B2E' }}>Manage Users</h1>
-          <p style={{ color: '#6b7280', fontSize: '0.875rem', marginTop: '0.25rem' }}>
-            CMS admin accounts
+          <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', margin: 0, color: ADMIN_COLORS.onSurface }}>Manage Users</h1>
+          <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginTop: '0.5rem', maxWidth: '32rem' }}>
+            Centralized administration for internal CMS accounts.
           </p>
         </div>
         <button
+          className="admin-cta-btn"
           onClick={() => { setShowAdd(true); setAddError(''); }}
           style={{
-            background: '#BC0E0E', color: '#fff', border: 'none',
-            padding: '0.55rem 1.25rem', borderRadius: '6px',
-            fontWeight: 700, fontSize: '0.875rem', cursor: 'pointer',
+            background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none',
+            padding: '0.875rem 2rem', borderRadius: '2rem',
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.02em',
+            cursor: 'pointer', boxShadow: ADMIN_SHADOWS.xl, whiteSpace: 'nowrap',
           }}
         >
-          + Add User
+          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>person_add</span>
+          ADD NEW USER
         </button>
       </div>
 
       {/* Add user form */}
       {showAdd && (
-        <div style={{ background: '#f9f3ec', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1.25rem', marginBottom: '1.5rem' }}>
-          <h3 style={{ margin: '0 0 1rem', fontSize: '0.95rem', fontWeight: 700, color: '#0A1B2E' }}>New User</h3>
+        <div style={{ background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1.5rem', padding: '1.25rem', marginBottom: '1.5rem' }}>
+          <h3 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '0.95rem', fontWeight: 700, color: ADMIN_COLORS.onSurface }}>New User</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: '#374151' }}>Name</label>
+              <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: ADMIN_COLORS.onSurfaceVariant }}>Name</label>
               <input style={INPUT_STYLE} value={addState.name} onChange={e => setAddState(s => ({ ...s, name: e.target.value }))} />
             </div>
             <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: '#374151' }}>Email</label>
+              <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: ADMIN_COLORS.onSurfaceVariant }}>Email</label>
               <input type="email" style={INPUT_STYLE} value={addState.email} onChange={e => setAddState(s => ({ ...s, email: e.target.value }))} />
             </div>
             <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: '#374151' }}>Password</label>
+              <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: ADMIN_COLORS.onSurfaceVariant }}>Password</label>
               <input type="password" style={INPUT_STYLE} value={addState.password} onChange={e => setAddState(s => ({ ...s, password: e.target.value }))} />
             </div>
           </div>
-          {addError && <p style={{ color: '#BC0E0E', fontSize: '0.85rem', margin: '0 0 0.5rem' }}>{addError}</p>}
+          {addError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', margin: '0 0 0.5rem' }}>{addError}</p>}
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <button
               onClick={addUser}
               disabled={addLoading}
-              style={{ background: '#BC0E0E', color: '#fff', border: 'none', padding: '0.45rem 1rem', borderRadius: '4px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}
+              style={{ background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none', padding: '0.45rem 1.1rem', borderRadius: '9999px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}
             >
               {addLoading ? 'Creating…' : 'Create User'}
             </button>
             <button
               onClick={() => setShowAdd(false)}
-              style={{ background: '#f3f4f6', color: '#374151', border: 'none', padding: '0.45rem 1rem', borderRadius: '4px', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}
+              style={{ background: ADMIN_COLORS.surfaceContainerHighest, color: ADMIN_COLORS.onSurfaceVariant, border: 'none', padding: '0.45rem 1.1rem', borderRadius: '9999px', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}
             >
               Cancel
             </button>
@@ -184,42 +225,81 @@ export default function AdminUsersPage() {
         </div>
       )}
 
-      {loading && <p style={{ color: '#6b7280' }}>Loading…</p>}
-      {error && <p style={{ color: '#BC0E0E' }}>{error}</p>}
+      {loading && <p style={{ color: ADMIN_COLORS.onSurfaceVariant }}>Loading…</p>}
+      {error && <p style={{ color: ADMIN_COLORS.error }}>{error}</p>}
 
       {!loading && !error && (
-        <div style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
+        <div style={{ background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}0D`, borderRadius: '2rem', overflow: 'hidden', boxShadow: ADMIN_SHADOWS.elegant }}>
+          <div style={{ padding: '1.5rem 2rem', borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}0D` }}>
+            <h3 style={{ margin: 0, fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '0.875rem', fontWeight: 700, color: `${ADMIN_COLORS.onSurface}CC`, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+              Administrative Access
+            </h3>
+          </div>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
-              <tr style={{ background: '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
-                {['Name', 'Email', 'Created', 'Actions'].map(h => (
-                  <th key={h} style={{ padding: '0.75rem 1rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}33` }}>
+                {['User Details', 'Email', 'Role', 'Registered', 'Settings'].map(h => (
+                  <th key={h} style={{ padding: '1rem 2rem', textAlign: 'left', fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '10px', fontWeight: 700, color: `${ADMIN_COLORS.onSurfaceVariant}66`, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
                     {h}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {users.map((user, i) => (
-                <tr key={user.id} style={{ borderBottom: i < users.length - 1 ? '1px solid #f3f4f6' : 'none' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontSize: '0.9rem' }}>
+              {users.map((user, i) => {
+                const active = user.id === currentUserId;
+                return (
+                <tr
+                  key={user.id}
+                  className="admin-users-row"
+                  style={{ borderBottom: i < users.length - 1 ? `1px solid ${ADMIN_COLORS.outlineVariant}1A` : 'none', transition: 'background 0.15s ease' }}
+                >
+                  <td style={{ padding: '1.25rem 2rem', fontSize: '0.9rem' }}>
                     {editingId === user.id ? (
                       <input style={{ ...INPUT_STYLE, width: '120px' }} value={editState.name} onChange={e => setEditState(s => ({ ...s, name: e.target.value }))} />
                     ) : (
-                      <span style={{ fontWeight: 600, color: '#0A1B2E' }}>{user.name}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <div
+                          style={{
+                            width: '2.25rem', height: '2.25rem', borderRadius: '9999px',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', fontWeight: 700,
+                            flexShrink: 0,
+                            background: active ? `${ADMIN_COLORS.secondaryContainer}1A` : ADMIN_COLORS.surfaceContainerHighest,
+                            border: `1px solid ${active ? ADMIN_COLORS.secondaryContainer + '33' : ADMIN_COLORS.outlineVariant + '33'}`,
+                            color: active ? ADMIN_COLORS.secondaryContainer : ADMIN_COLORS.onSurface,
+                          }}
+                        >
+                          {initials(user.name)}
+                        </div>
+                        <span style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '14px', fontWeight: 600, color: ADMIN_COLORS.onSurface }}>{user.name}</span>
+                      </div>
                     )}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', fontSize: '0.875rem', color: '#374151' }}>
+                  <td style={{ padding: '1.25rem 2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                     {editingId === user.id ? (
                       <input type="email" style={{ ...INPUT_STYLE, width: '160px' }} value={editState.email} onChange={e => setEditState(s => ({ ...s, email: e.target.value }))} />
                     ) : (
                       user.email
                     )}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+                  <td style={{ padding: '1.25rem 2rem' }}>
+                    <span
+                      style={{
+                        display: 'inline-block', padding: '3px 10px', borderRadius: '9999px',
+                        fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em',
+                        background: active ? `${ADMIN_COLORS.secondaryContainer}1A` : ADMIN_COLORS.surfaceContainerHighest,
+                        color: active ? ADMIN_COLORS.secondaryContainer : `${ADMIN_COLORS.onSurfaceVariant}CC`,
+                        border: `1px solid ${active ? ADMIN_COLORS.secondaryContainer + '33' : ADMIN_COLORS.outlineVariant + '1A'}`,
+                      }}
+                    >
+                      {userType(user)}
+                    </span>
+                  </td>
+                  <td style={{ padding: '1.25rem 2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                     {formatDate(user.created_at)}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem' }}>
+                  <td style={{ padding: '1.25rem 2rem', textAlign: 'left' }}>
                     {editingId === user.id ? (
                       <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', alignItems: 'center' }}>
                         <input
@@ -232,23 +312,23 @@ export default function AdminUsersPage() {
                         <button
                           onClick={() => saveEdit(user.id)}
                           disabled={editLoading}
-                          style={{ background: '#1560E6', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
+                          style={{ background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
                         >
                           Save
                         </button>
                         <button
                           onClick={() => setEditingId(null)}
-                          style={{ background: '#f3f4f6', color: '#374151', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                          style={{ background: ADMIN_COLORS.surfaceContainerHighest, color: ADMIN_COLORS.onSurfaceVariant, border: 'none', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
                         >
                           Cancel
                         </button>
-                        {editError && <span style={{ color: '#BC0E0E', fontSize: '0.8rem' }}>{editError}</span>}
+                        {editError && <span style={{ color: ADMIN_COLORS.error, fontSize: '0.8rem' }}>{editError}</span>}
                       </div>
                     ) : (
                       <div style={{ display: 'flex', gap: '0.4rem' }}>
                         <button
                           onClick={() => startEdit(user)}
-                          style={{ background: '#f3f4f6', color: '#374151', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                          style={{ background: 'transparent', color: ADMIN_COLORS.onSurfaceVariant, border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`, padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
                         >
                           Edit
                         </button>
@@ -257,11 +337,11 @@ export default function AdminUsersPage() {
                             onClick={() => deleteUser(user.id)}
                             disabled={onlyOne}
                             style={{
-                              background: onlyOne ? '#f3f4f6' : 'rgba(188,14,14,0.08)',
-                              color: onlyOne ? '#9ca3af' : '#BC0E0E',
-                              border: 'none',
-                              padding: '0.4rem 0.8rem',
-                              borderRadius: '4px',
+                              background: onlyOne ? 'transparent' : `${ADMIN_COLORS.error}14`,
+                              color: onlyOne ? `${ADMIN_COLORS.onSurfaceVariant}66` : ADMIN_COLORS.error,
+                              border: `1px solid ${onlyOne ? ADMIN_COLORS.outlineVariant + '33' : ADMIN_COLORS.error + '4D'}`,
+                              padding: '0.4rem 0.9rem',
+                              borderRadius: '9999px',
                               fontSize: '0.8rem',
                               fontWeight: 600,
                               cursor: onlyOne ? 'not-allowed' : 'pointer',
@@ -274,9 +354,47 @@ export default function AdminUsersPage() {
                     )}
                   </td>
                 </tr>
-              ))}
+                );
+              })}
             </tbody>
           </table>
+
+          {/* Footer / pagination */}
+          <div
+            style={{
+              padding: '1.5rem 2rem', borderTop: `1px solid ${ADMIN_COLORS.outlineVariant}0D`,
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '10px', fontWeight: 700,
+              color: `${ADMIN_COLORS.onSurfaceVariant}66`, textTransform: 'uppercase', letterSpacing: '0.1em',
+            }}
+          >
+            <span>Showing {users.length} of {users.length} internal users</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px', opacity: 0.3 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>chevron_left</span> PREV
+              </span>
+              <div style={{ display: 'flex', gap: '6px' }}>
+                {Array.from({ length: totalPages }, (_, p) => p + 1).map(p => (
+                  <span
+                    key={p}
+                    className={`admin-pagination-pill${p === 1 ? ' active' : ''}`}
+                    style={{
+                      width: '1.75rem', height: '1.75rem', borderRadius: '0.5rem',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      background: p === 1 ? ADMIN_COLORS.secondaryContainer : 'transparent',
+                      color: p === 1 ? '#fff' : `${ADMIN_COLORS.onSurfaceVariant}CC`,
+                      boxShadow: p === 1 ? ADMIN_SHADOWS.glowCarmine : 'none',
+                    }}
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px', opacity: totalPages > 1 ? 1 : 0.3 }}>
+                NEXT <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>chevron_right</span>
+              </span>
+            </div>
+          </div>
         </div>
       )}
     </div>

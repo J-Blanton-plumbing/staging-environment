@@ -3,6 +3,7 @@ import { getCityServiceCmsContent, updateCityServiceCmsContent } from '@/lib/cms
 import { getSession } from '@/lib/auth/session';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import pool from '@/lib/db';
+import { errorCode } from '@/lib/cms/errors';
 
 export async function GET(
   _req: NextRequest,
@@ -75,9 +76,17 @@ export async function PUT(
     if (rawParent !== undefined) {
       payload.parentSlug = rawParent as string | null;
     }
-    await updateCityServiceCmsContent(params.city, params.service, payload);
-    return NextResponse.json({ ok: true });
+    // Brief 75/78 (DP-1): optimistic concurrency — reject a stale direct edit (409).
+    const expectedVersion = typeof body.version === 'number' ? body.version : null;
+    const version = await updateCityServiceCmsContent(params.city, params.service, payload, expectedVersion);
+    return NextResponse.json({ ok: true, version });
   } catch (err) {
+    if (errorCode(err) === '409') {
+      return NextResponse.json(
+        { error: err instanceof Error ? err.message : 'Conflict' },
+        { status: 409 }
+      );
+    }
     console.error(`[cms/city-service/${params.city}/${params.service} PUT]`, err);
     return NextResponse.json({ error: 'Failed to save' }, { status: 500 });
   }

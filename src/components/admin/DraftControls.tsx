@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, useEffect, useCallback } from 'react';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface DraftOption {
   id: number;
@@ -231,12 +232,12 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
 
   // ── Styles ────────────────────────────────────────────────────────────────
   const ghostBtn: React.CSSProperties = {
-    background: 'rgba(249,243,236,0.12)',
-    border: '1px solid rgba(249,243,236,0.25)',
-    color: '#F9F3EC',
-    borderRadius: '4px',
+    background: ADMIN_COLORS.surfaceContainer,
+    border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+    color: ADMIN_COLORS.onSurface,
+    borderRadius: '9999px',
     padding: '0.3rem 0.75rem',
-    fontFamily: 'Nunito, sans-serif',
+    fontFamily: 'var(--font-nunito), system-ui, sans-serif',
     fontWeight: 600,
     fontSize: '0.8rem',
     cursor: busy ? 'not-allowed' : 'pointer',
@@ -254,12 +255,12 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
             onChange={handleVersionChange}
             onFocus={handleVersionPickerFocus}
             style={{
-              background: 'rgba(249,243,236,0.08)',
-              border: '1px solid rgba(249,243,236,0.25)',
-              color: activeDraftLabel ? '#F9F3EC' : 'rgba(249,243,236,0.45)',
-              borderRadius: '4px',
+              background: ADMIN_COLORS.surfaceContainer,
+              border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+              color: activeDraftLabel ? ADMIN_COLORS.onSurface : `${ADMIN_COLORS.onSurfaceVariant}99`,
+              borderRadius: '9999px',
               padding: '0.28rem 1.6rem 0.28rem 0.6rem',
-              fontFamily: 'Nunito, sans-serif',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
               fontSize: '0.78rem',
               fontWeight: 500,
               cursor: 'pointer',
@@ -271,17 +272,17 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
             }}
           >
             {!activeDraftLabel && (
-              <option value="" disabled style={{ background: '#0A1B2E', color: 'rgba(249,243,236,0.5)' }}>
+              <option value="" disabled style={{ background: ADMIN_COLORS.surface, color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                 No draft saved
               </option>
             )}
             {drafts.map(d => (
-              <option key={d.id} value={d.id} style={{ background: '#0A1B2E', color: '#F9F3EC' }}>
+              <option key={d.id} value={d.id} style={{ background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface }}>
                 {d.label}{d.published_at ? ' ✓' : ''}
               </option>
             ))}
             {activeDraftLabel && !drafts.find(d => d.id === activeDraftId.current) && (
-              <option value={activeDraftId.current ?? ''} style={{ background: '#0A1B2E', color: '#F9F3EC' }}>
+              <option value={activeDraftId.current ?? ''} style={{ background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface }}>
                 {activeDraftLabel}
               </option>
             )}
@@ -289,15 +290,15 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
           {/* chevron icon */}
           <span style={{
             position: 'absolute', right: '0.4rem', top: '50%', transform: 'translateY(-50%)',
-            pointerEvents: 'none', color: 'rgba(249,243,236,0.5)', fontSize: '0.6rem',
+            pointerEvents: 'none', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.6rem',
           }}>▾</span>
         </div>
 
         {/* Divider */}
-        <span style={{ width: '1px', height: '18px', background: 'rgba(249,243,236,0.2)', flexShrink: 0 }} />
+        <span style={{ width: '1px', height: '18px', background: `${ADMIN_COLORS.outlineVariant}66`, flexShrink: 0 }} />
 
         {notice && (
-          <span style={{ color: noticeIsError ? '#fca5a5' : '#86efac', fontSize: '0.78rem', fontFamily: 'Nunito, sans-serif', whiteSpace: noticeIsError ? 'normal' : 'nowrap', maxWidth: noticeIsError ? '320px' : undefined, lineHeight: 1.3 }}>
+          <span style={{ color: noticeIsError ? ADMIN_COLORS.error : ADMIN_COLORS.success, fontSize: '0.78rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', whiteSpace: noticeIsError ? 'normal' : 'nowrap', maxWidth: noticeIsError ? '320px' : undefined, lineHeight: 1.3 }}>
             {notice}
           </span>
         )}
@@ -322,15 +323,15 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
           <div
             onClick={e => e.stopPropagation()}
             style={{
-              background: '#fff', borderRadius: '8px', padding: '1.5rem',
-              width: '100%', maxWidth: '400px',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
+              background: ADMIN_COLORS.surfaceContainerLow, borderRadius: '1.5rem', padding: '1.5rem',
+              width: '100%', maxWidth: '400px', border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+              boxShadow: ADMIN_SHADOWS.elegant,
             }}
           >
-            <h3 style={{ margin: '0 0 0.75rem', fontFamily: 'Industry, sans-serif', fontSize: '16px', color: '#0A1B2E' }}>
+            <h3 style={{ margin: '0 0 0.75rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '16px', color: ADMIN_COLORS.onSurface }}>
               Save as new version
             </h3>
-            <label style={{ display: 'block', fontSize: '13px', color: '#0A1B2E', marginBottom: '0.25rem', fontFamily: 'Nunito, sans-serif' }}>
+            <label style={{ display: 'block', fontSize: '13px', color: ADMIN_COLORS.onSurfaceVariant, marginBottom: '0.25rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
               Version name:
             </label>
             <input
@@ -341,19 +342,21 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
               onKeyDown={e => { if (e.key === 'Enter' && saveAsLabel.trim()) handleSaveAsConfirm(); }}
               style={{
                 display: 'block', width: '100%', padding: '0.4rem 0.5rem',
-                border: '1px solid #d1d5db', borderRadius: '4px',
+                background: ADMIN_COLORS.surfaceContainerLowest,
+                border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem',
+                color: ADMIN_COLORS.onSurface,
                 fontFamily: 'inherit', fontSize: '0.9rem',
                 boxSizing: 'border-box', marginBottom: '0.75rem',
               }}
             />
             {saveAsError && (
-              <p style={{ color: '#BC0E0E', fontSize: '0.8rem', margin: '0 0 0.75rem' }}>{saveAsError}</p>
+              <p style={{ color: ADMIN_COLORS.error, fontSize: '0.8rem', margin: '0 0 0.75rem' }}>{saveAsError}</p>
             )}
             <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
               <button
                 onClick={() => setSaveAsOpen(false)}
                 disabled={busy}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#0A1B2E', fontSize: '13px', fontFamily: 'Nunito, sans-serif', padding: '0.4rem 0.75rem' }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: ADMIN_COLORS.onSurfaceVariant, fontSize: '13px', fontFamily: 'var(--font-nunito), system-ui, sans-serif', padding: '0.4rem 0.75rem' }}
               >
                 Cancel
               </button>
@@ -361,9 +364,9 @@ export default function DraftControls({ getContent, pageType, pageSlug }: Props)
                 onClick={handleSaveAsConfirm}
                 disabled={busy || !saveAsLabel.trim()}
                 style={{
-                  background: '#BC0E0E', border: 'none', borderRadius: '4px',
-                  padding: '0.4rem 1rem', color: '#F9F3EC',
-                  fontFamily: 'Industry, sans-serif', fontWeight: 600, fontSize: '13px',
+                  background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
+                  padding: '0.4rem 1rem', color: '#fff',
+                  fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 600, fontSize: '13px',
                   cursor: busy || !saveAsLabel.trim() ? 'not-allowed' : 'pointer',
                   opacity: busy || !saveAsLabel.trim() ? 0.7 : 1,
                 }}

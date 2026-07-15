@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface ArticleRow {
   slug: string;
@@ -30,13 +31,15 @@ function formatDate(iso?: string | null): string {
 const PILL_BASE: React.CSSProperties = {
   display: 'inline-block',
   padding: '2px 8px',
-  borderRadius: '999px',
+  borderRadius: '9999px',
   fontSize: '11px',
   fontWeight: 700,
   lineHeight: '1.6',
-  fontFamily: 'Nunito, sans-serif',
+  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   whiteSpace: 'nowrap',
 };
+
+const SELECT_CHEVRON = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4c6cd'/%3E%3C/svg%3E")`;
 
 export default function ArticlesAdminPage() {
   const [articles, setArticles] = useState<ArticleRow[]>([]);
@@ -149,10 +152,15 @@ export default function ArticlesAdminPage() {
 
   return (
     <main style={{ padding: '2rem', maxWidth: '1200px', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', marginBottom: '0.25rem' }}>
+      {/* row hover (inline styles can't express :hover) */}
+      <style>{`
+        .admin-articles-row:hover { background: ${ADMIN_COLORS.surfaceContainerHigh}66; }
+      `}</style>
+
+      <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
         Articles
       </h1>
-      <p style={{ color: '#5a6a7a', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+      <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginBottom: '0.5rem' }}>
         {loadStatus === 'done' ? `${articles.length} articles` : ' '}
       </p>
 
@@ -166,11 +174,12 @@ export default function ArticlesAdminPage() {
           onChange={e => setQuery(e.target.value)}
           style={{
             padding: '0.45rem 0.75rem',
-            border: '1px solid rgba(10,27,46,0.2)',
-            borderRadius: '6px',
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+            borderRadius: '0.75rem',
             fontSize: '0.875rem',
-            fontFamily: 'Nunito, sans-serif',
-            color: '#0A1B2E',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            color: ADMIN_COLORS.onSurface,
+            background: ADMIN_COLORS.surfaceContainer,
             width: '260px',
             boxSizing: 'border-box',
           }}
@@ -182,15 +191,15 @@ export default function ArticlesAdminPage() {
           onChange={e => setFilterStatus(e.target.value)}
           style={{
             padding: '0.45rem 2rem 0.45rem 0.75rem',
-            border: '1px solid rgba(10,27,46,0.2)',
-            borderRadius: '6px',
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+            borderRadius: '0.75rem',
             fontSize: '0.875rem',
-            fontFamily: 'Nunito, sans-serif',
-            color: filterStatus ? '#0A1B2E' : '#5a6a7a',
-            background: '#fff',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            color: filterStatus ? ADMIN_COLORS.onSurface : ADMIN_COLORS.onSurfaceVariant,
+            background: ADMIN_COLORS.surfaceContainer,
             cursor: 'pointer',
             appearance: 'none',
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundImage: SELECT_CHEVRON,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'right 8px center',
           }}
@@ -206,15 +215,15 @@ export default function ArticlesAdminPage() {
           onChange={e => setFilterUser(e.target.value)}
           style={{
             padding: '0.45rem 2rem 0.45rem 0.75rem',
-            border: '1px solid rgba(10,27,46,0.2)',
-            borderRadius: '6px',
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+            borderRadius: '0.75rem',
             fontSize: '0.875rem',
-            fontFamily: 'Nunito, sans-serif',
-            color: filterUser ? '#0A1B2E' : '#5a6a7a',
-            background: '#fff',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            color: filterUser ? ADMIN_COLORS.onSurface : ADMIN_COLORS.onSurfaceVariant,
+            background: ADMIN_COLORS.surfaceContainer,
             cursor: 'pointer',
             appearance: 'none',
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundImage: SELECT_CHEVRON,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'right 8px center',
           }}
@@ -229,15 +238,15 @@ export default function ArticlesAdminPage() {
           onChange={e => setFilterCategory(e.target.value)}
           style={{
             padding: '0.45rem 2rem 0.45rem 0.75rem',
-            border: '1px solid rgba(10,27,46,0.2)',
-            borderRadius: '6px',
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+            borderRadius: '0.75rem',
             fontSize: '0.875rem',
-            fontFamily: 'Nunito, sans-serif',
-            color: filterCategory ? '#0A1B2E' : '#5a6a7a',
-            background: '#fff',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            color: filterCategory ? ADMIN_COLORS.onSurface : ADMIN_COLORS.onSurfaceVariant,
+            background: ADMIN_COLORS.surfaceContainer,
             cursor: 'pointer',
             appearance: 'none',
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundImage: SELECT_CHEVRON,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'right 8px center',
           }}
@@ -255,16 +264,16 @@ export default function ArticlesAdminPage() {
             title="Modified from"
             style={{
               padding: '0.45rem 0.5rem',
-              border: '1px solid rgba(10,27,46,0.2)',
-              borderRadius: '6px',
+              border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+              borderRadius: '0.75rem',
               fontSize: '0.875rem',
-              fontFamily: 'Nunito, sans-serif',
-              color: filterDateFrom ? '#0A1B2E' : '#5a6a7a',
-              background: '#fff',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+              color: filterDateFrom ? ADMIN_COLORS.onSurface : ADMIN_COLORS.onSurfaceVariant,
+              background: ADMIN_COLORS.surfaceContainer,
               cursor: 'pointer',
             }}
           />
-          <span style={{ fontSize: '12px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>to</span>
+          <span style={{ fontSize: '12px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>to</span>
           <input
             type="date"
             value={filterDateTo}
@@ -273,12 +282,12 @@ export default function ArticlesAdminPage() {
             title="Modified to"
             style={{
               padding: '0.45rem 0.5rem',
-              border: '1px solid rgba(10,27,46,0.2)',
-              borderRadius: '6px',
+              border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+              borderRadius: '0.75rem',
               fontSize: '0.875rem',
-              fontFamily: 'Nunito, sans-serif',
-              color: filterDateTo ? '#0A1B2E' : '#5a6a7a',
-              background: '#fff',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+              color: filterDateTo ? ADMIN_COLORS.onSurface : ADMIN_COLORS.onSurfaceVariant,
+              background: ADMIN_COLORS.surfaceContainer,
               cursor: 'pointer',
             }}
           />
@@ -290,13 +299,13 @@ export default function ArticlesAdminPage() {
             onClick={clearFilters}
             style={{
               padding: '0.45rem 0.9rem',
-              border: '1px solid rgba(10,27,46,0.2)',
-              borderRadius: '6px',
+              border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+              borderRadius: '9999px',
               fontSize: '0.875rem',
-              fontFamily: 'Nunito, sans-serif',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
               fontWeight: 700,
-              color: '#BC0E0E',
-              background: '#fff',
+              color: ADMIN_COLORS.onSurfaceVariant,
+              background: 'transparent',
               cursor: 'pointer',
             }}
           >
@@ -306,30 +315,30 @@ export default function ArticlesAdminPage() {
 
         {/* Result count when filtered */}
         {hasActiveFilter && loadStatus === 'done' && (
-          <span style={{ fontSize: '13px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>
+          <span style={{ fontSize: '13px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
             {filtered.length} of {articles.length}
           </span>
         )}
       </div>
 
-      {loadStatus === 'loading' && <p style={{ color: '#0A1B2E' }}>Loading articles…</p>}
-      {loadStatus === 'error' && <p style={{ color: '#BC0E0E' }}>Failed to load articles. Please refresh.</p>}
+      {loadStatus === 'loading' && <p style={{ color: ADMIN_COLORS.onSurfaceVariant }}>Loading articles…</p>}
+      {loadStatus === 'error' && <p style={{ color: ADMIN_COLORS.error }}>Failed to load articles. Please refresh.</p>}
 
       {loadStatus === 'done' && (
-        <div style={{ overflowX: 'auto' }}>
+        <div style={{ background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}1A`, borderRadius: '2rem', overflowX: 'auto', boxShadow: ADMIN_SHADOWS.elegant }}>
           {/* Header */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: gridCols,
             gap: '0.75rem',
-            padding: '0.5rem 0.75rem',
-            borderBottom: '2px solid rgba(10,27,46,0.12)',
-            fontSize: '12px',
+            padding: '0.9rem 1.25rem',
+            borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+            fontSize: '10px',
             fontWeight: 700,
-            color: 'rgba(10,27,46,0.6)',
+            color: `${ADMIN_COLORS.onSurfaceVariant}66`,
             textTransform: 'uppercase',
-            letterSpacing: '0.04em',
-            fontFamily: 'Nunito, sans-serif',
+            letterSpacing: '0.2em',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
             minWidth: '780px',
           }}>
             <span>Title</span>
@@ -341,26 +350,28 @@ export default function ArticlesAdminPage() {
           </div>
 
           {filtered.length === 0 && (
-            <p style={{ color: '#5a6a7a', padding: '1rem 0.75rem' }}>No articles found.</p>
+            <p style={{ color: ADMIN_COLORS.onSurfaceVariant, padding: '1rem 1.25rem' }}>No articles found.</p>
           )}
 
-          {filtered.map(article => (
+          {filtered.map((article, i) => (
             <div key={article.slug}>
               <div
+                className="admin-articles-row"
                 style={{
                   display: 'grid',
                   gridTemplateColumns: gridCols,
                   gap: '0.75rem',
-                  padding: '0.75rem',
-                  borderBottom: '1px solid rgba(10,27,46,0.08)',
+                  padding: '0.9rem 1.25rem',
+                  borderBottom: i < filtered.length - 1 ? `1px solid ${ADMIN_COLORS.outlineVariant}1A` : 'none',
                   alignItems: 'center',
                   minWidth: '780px',
+                  transition: 'background 0.15s ease',
                 }}
               >
                 {/* Title */}
                 <Link
                   href={`/admin/articles/${article.slug}`}
-                  style={{ fontFamily: 'Nunito, sans-serif', fontSize: '14px', fontWeight: 600, color: '#0A1B2E', textDecoration: 'none' }}
+                  style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '14px', fontWeight: 600, color: ADMIN_COLORS.onSurface, textDecoration: 'none' }}
                 >
                   {article.title}
                 </Link>
@@ -370,40 +381,40 @@ export default function ArticlesAdminPage() {
                   value={article.status}
                   onChange={e => handleStatusChange(article, e.target.value as 'published' | 'draft')}
                   style={{
-                    fontFamily: 'Nunito, sans-serif',
+                    fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                     fontSize: '12px',
                     fontWeight: 700,
                     padding: '3px 6px',
-                    borderRadius: '4px',
-                    border: 'none',
+                    borderRadius: '9999px',
+                    border: article.status === 'published' ? `1px solid ${ADMIN_COLORS.outlineVariant}1A` : `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
                     cursor: 'pointer',
-                    background: article.status === 'published' ? '#1560E6' : '#0A1B2E',
-                    color: article.status === 'published' ? '#fff' : '#F9F3EC',
+                    background: article.status === 'published' ? ADMIN_COLORS.surfaceContainerHighest : 'transparent',
+                    color: article.status === 'published' ? `${ADMIN_COLORS.onSurfaceVariant}CC` : ADMIN_COLORS.onSurfaceVariant,
                     appearance: 'none',
                     WebkitAppearance: 'none',
                     width: '100%',
                     maxWidth: '110px',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='white'/%3E%3C/svg%3E")`,
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4c6cd'/%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'right 7px center',
                     paddingRight: '22px',
                   }}
                 >
-                  <option value="published" style={{ background: '#1560E6', color: '#fff' }}>Published</option>
-                  <option value="draft" style={{ background: '#0A1B2E', color: '#F9F3EC' }}>Draft</option>
+                  <option value="published" style={{ background: ADMIN_COLORS.surfaceContainer, color: ADMIN_COLORS.onSurface }}>Published</option>
+                  <option value="draft" style={{ background: ADMIN_COLORS.surfaceContainer, color: ADMIN_COLORS.onSurface }}>Draft</option>
                 </select>
 
                 {/* Categories */}
                 <span style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                   {(article.category ?? []).length === 0 ? (
-                    <span style={{ color: '#5a6a7a', fontSize: '13px' }}>—</span>
+                    <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '13px' }}>—</span>
                   ) : (
                     (article.category ?? []).map(slug => (
                       <span key={slug} style={{
                         ...PILL_BASE,
-                        border: '1.5px solid #BC0E0E',
-                        color: '#BC0E0E',
-                        background: 'transparent',
+                        border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+                        color: ADMIN_COLORS.onSurfaceVariant,
+                        background: ADMIN_COLORS.surfaceContainerHighest,
                       }}>
                         {taxonomy[slug] ?? humanize(slug)}
                       </span>
@@ -412,12 +423,12 @@ export default function ArticlesAdminPage() {
                 </span>
 
                 {/* Author */}
-                <span style={{ fontFamily: 'Nunito, sans-serif', fontSize: '13px', color: '#5a6a7a' }}>
+                <span style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                   {article.updatedByName ?? '—'}
                 </span>
 
                 {/* Last Modified */}
-                <span style={{ fontFamily: 'Nunito, sans-serif', fontSize: '13px', color: '#5a6a7a' }}>
+                <span style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                   {formatDate(article.updatedAt)}
                 </span>
 
@@ -425,7 +436,7 @@ export default function ArticlesAdminPage() {
                 <span style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
                   <Link
                     href={`/admin/articles/${article.slug}`}
-                    style={{ fontSize: '13px', color: '#BC0E0E', fontWeight: 700, textDecoration: 'none', fontFamily: 'Nunito, sans-serif' }}
+                    style={{ fontSize: '13px', color: ADMIN_COLORS.primary, fontWeight: 700, textDecoration: 'none', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}
                   >
                     Edit
                   </Link>
@@ -433,7 +444,7 @@ export default function ArticlesAdminPage() {
                     href={`/knowledge-hub/${article.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ fontSize: '13px', color: '#1560E6', fontWeight: 700, textDecoration: 'none', fontFamily: 'Nunito, sans-serif' }}
+                    style={{ fontSize: '13px', color: ADMIN_COLORS.cerulean, fontWeight: 700, textDecoration: 'none', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}
                   >
                     Preview
                   </a>
@@ -442,13 +453,13 @@ export default function ArticlesAdminPage() {
                     style={{
                       fontSize: '12px',
                       fontWeight: 700,
-                      fontFamily: 'Nunito, sans-serif',
+                      fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                       padding: '3px 10px',
-                      borderRadius: '4px',
-                      border: '1.5px solid #BC0E0E',
+                      borderRadius: '9999px',
+                      border: `1px solid ${ADMIN_COLORS.error}4D`,
                       cursor: 'pointer',
                       background: 'transparent',
-                      color: '#BC0E0E',
+                      color: ADMIN_COLORS.error,
                     }}
                   >
                     Delete
@@ -457,7 +468,7 @@ export default function ArticlesAdminPage() {
               </div>
 
               {rowErrors[article.slug] && (
-                <div style={{ padding: '0.25rem 0.75rem', fontSize: '12px', color: '#BC0E0E', fontFamily: 'Nunito, sans-serif' }}>
+                <div style={{ padding: '0.25rem 1.25rem', fontSize: '12px', color: ADMIN_COLORS.error, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
                   {rowErrors[article.slug]}
                 </div>
               )}

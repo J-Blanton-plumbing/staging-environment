@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { ADMIN_COLORS } from '@/lib/admin/theme';
 
 interface ChangelogEntry {
   id: number;
@@ -97,14 +98,15 @@ export default function ChangelogModal({
     >
       <div
         style={{
-          background: '#fff',
-          borderRadius: '10px',
+          background: ADMIN_COLORS.surfaceContainerLow,
+          borderRadius: '2rem',
           width: '100%',
           maxWidth: '680px',
           maxHeight: '80vh',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '0 8px 40px rgba(0,0,0,0.2)',
+          border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+          boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
         }}
       >
         {/* Header */}
@@ -112,11 +114,11 @@ export default function ChangelogModal({
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '1.25rem 1.5rem',
-            borderBottom: '1px solid #e5e7eb',
+            borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}44`,
             flexShrink: 0,
           }}
         >
-          <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700, color: '#0A1B2E' }}>
+          <h2 style={{ margin: 0, fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '1.25rem', fontWeight: 700, color: ADMIN_COLORS.onSurface }}>
             Change History — {pageName}
           </h2>
           <button
@@ -124,7 +126,7 @@ export default function ChangelogModal({
             aria-label="Close"
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              fontSize: '1.4rem', lineHeight: 1, color: '#6b7280', padding: '0.25rem',
+              fontSize: '1.4rem', lineHeight: 1, color: ADMIN_COLORS.onSurfaceVariant, padding: '0.25rem',
             }}
           >
             ×
@@ -134,13 +136,13 @@ export default function ChangelogModal({
         {/* Body */}
         <div style={{ overflowY: 'auto', padding: '1rem 1.5rem', flex: 1 }}>
           {loading && (
-            <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>Loading…</p>
+            <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.9rem' }}>Loading…</p>
           )}
           {error && (
-            <p style={{ color: '#BC0E0E', fontSize: '0.9rem' }}>{error}</p>
+            <p style={{ color: ADMIN_COLORS.error, fontSize: '0.9rem' }}>{error}</p>
           )}
           {!loading && !error && entries.length === 0 && (
-            <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>No changes recorded yet.</p>
+            <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.9rem' }}>No changes recorded yet.</p>
           )}
           {entries.map((entry, i) => {
             const prevEntry = entries[i + 1] ?? null;
@@ -151,23 +153,23 @@ export default function ChangelogModal({
               <div
                 key={entry.id}
                 style={{
-                  borderBottom: i < entries.length - 1 ? '1px solid #f0f0f0' : 'none',
+                  borderBottom: i < entries.length - 1 ? `1px solid ${ADMIN_COLORS.outlineVariant}22` : 'none',
                   paddingBottom: '1.25rem',
                   marginBottom: '1.25rem',
                 }}
               >
-                <p style={{ margin: '0 0 0.5rem', fontSize: '0.9rem', color: '#374151' }}>
-                  <strong style={{ color: '#0A1B2E' }}>{entry.changed_by_name ?? 'Unknown'}</strong>
+                <p style={{ margin: '0 0 0.5rem', fontSize: '0.9rem', color: ADMIN_COLORS.onSurfaceVariant }}>
+                  <strong style={{ color: ADMIN_COLORS.onSurface }}>{entry.changed_by_name ?? 'Unknown'}</strong>
                   {' · '}
-                  <span style={{ color: '#6b7280' }}>{formatDate(entry.changed_at)}</span>
+                  <span style={{ color: ADMIN_COLORS.onSurfaceVariant }}>{formatDate(entry.changed_at)}</span>
                 </p>
 
                 {isInitial ? (
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#6b7280', fontStyle: 'italic' }}>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: ADMIN_COLORS.onSurfaceVariant, fontStyle: 'italic' }}>
                     Initial save.
                   </p>
                 ) : diffs.length === 0 ? (
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#6b7280', fontStyle: 'italic' }}>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: ADMIN_COLORS.onSurfaceVariant, fontStyle: 'italic' }}>
                     No field changes detected.
                   </p>
                 ) : (
@@ -177,24 +179,24 @@ export default function ChangelogModal({
                         key={diff.field}
                         style={{
                           fontSize: '0.82rem',
-                          color: '#374151',
+                          color: ADMIN_COLORS.onSurfaceVariant,
                           padding: '0.2rem 0',
                           display: 'flex',
                           gap: '0.4rem',
                           alignItems: 'flex-start',
                         }}
                       >
-                        <span style={{ color: '#BC0E0E', flexShrink: 0 }}>•</span>
+                        <span style={{ color: ADMIN_COLORS.secondaryContainer, flexShrink: 0 }}>•</span>
                         <span>
                           <strong>{diff.field}</strong>
                           {diff.from === '(updated)' || diff.to === '(updated)' ? (
-                            <span style={{ color: '#6b7280' }}> (updated)</span>
+                            <span style={{ color: ADMIN_COLORS.onSurfaceVariant }}> (updated)</span>
                           ) : (
                             <>
                               {': '}
-                              <span style={{ color: '#6b7280' }}>&ldquo;{diff.from}&rdquo;</span>
+                              <span style={{ color: ADMIN_COLORS.onSurfaceVariant }}>&ldquo;{diff.from}&rdquo;</span>
                               {' → '}
-                              <span style={{ color: '#0A1B2E' }}>&ldquo;{diff.to}&rdquo;</span>
+                              <span style={{ color: ADMIN_COLORS.onSurface }}>&ldquo;{diff.to}&rdquo;</span>
                             </>
                           )}
                         </span>

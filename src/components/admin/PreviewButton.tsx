@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 export interface PreviewButtonProps {
   getContent: () => unknown;
@@ -94,19 +95,19 @@ export default function PreviewButton({
         disabled={saving}
         style={{
           background: 'transparent',
-          border: '1px solid rgba(249,243,236,0.6)',
-          borderRadius: '4px',
+          border: `1px solid ${ADMIN_COLORS.onSurfaceVariant}66`,
+          borderRadius: '9999px',
           padding: '0.3rem 0.75rem',
-          fontFamily: 'Nunito, sans-serif',
+          fontFamily: 'var(--font-nunito), system-ui, sans-serif',
           fontWeight: 600,
           fontSize: '0.8rem',
           cursor: saving ? 'not-allowed' : 'pointer',
-          color: '#F9F3EC',
+          color: ADMIN_COLORS.onSurface,
           whiteSpace: 'nowrap',
           opacity: saving ? 0.6 : 1,
         }}
         onMouseEnter={e => {
-          if (!saving) (e.currentTarget as HTMLElement).style.background = 'rgba(249,243,236,0.1)';
+          if (!saving) (e.currentTarget as HTMLElement).style.background = ADMIN_COLORS.surfaceContainerHigh;
         }}
         onMouseLeave={e => {
           (e.currentTarget as HTMLElement).style.background = 'transparent';
@@ -127,18 +128,19 @@ export default function PreviewButton({
           <div
             onClick={e => e.stopPropagation()}
             style={{
-              background: '#fff',
-              borderRadius: '8px',
+              background: ADMIN_COLORS.surfaceContainerLow,
+              borderRadius: '1.5rem',
               padding: '1.5rem',
               width: '100%',
               maxWidth: '400px',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
+              border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+              boxShadow: ADMIN_SHADOWS.elegant,
             }}
           >
-            <h3 style={{ margin: '0 0 0.75rem', fontFamily: 'Industry, sans-serif', fontSize: '16px', color: '#0A1B2E' }}>
+            <h3 style={{ margin: '0 0 0.75rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '16px', color: ADMIN_COLORS.onSurface }}>
               Save preview as draft
             </h3>
-            <label style={{ display: 'block', fontSize: '13px', color: '#0A1B2E', marginBottom: '0.25rem', fontFamily: 'Nunito, sans-serif' }}>
+            <label style={{ display: 'block', fontSize: '13px', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
               Version name:
             </label>
             <input
@@ -147,13 +149,15 @@ export default function PreviewButton({
               onChange={e => setLabel(e.target.value)}
               style={{
                 display: 'block', width: '100%', padding: '0.4rem 0.5rem',
-                border: '1px solid #d1d5db', borderRadius: '4px',
+                background: ADMIN_COLORS.surfaceContainerLowest,
+                border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem',
+                color: ADMIN_COLORS.onSurface,
                 fontFamily: 'inherit', fontSize: '0.9rem',
                 boxSizing: 'border-box', marginBottom: '0.75rem',
               }}
             />
             {error && (
-              <p style={{ color: '#BC0E0E', fontSize: '0.8rem', margin: '0 0 0.75rem' }}>
+              <p style={{ color: ADMIN_COLORS.error, fontSize: '0.8rem', margin: '0 0 0.75rem' }}>
                 {error}
               </p>
             )}
@@ -163,7 +167,7 @@ export default function PreviewButton({
                 disabled={saving}
                 style={{
                   background: 'none', border: 'none', cursor: 'pointer',
-                  color: '#0A1B2E', fontSize: '13px', fontFamily: 'Nunito, sans-serif',
+                  color: ADMIN_COLORS.onSurfaceVariant, fontSize: '13px', fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                   padding: '0.4rem 0.75rem',
                 }}
               >
@@ -173,9 +177,9 @@ export default function PreviewButton({
                 onClick={handleConfirm}
                 disabled={saving || !label.trim()}
                 style={{
-                  background: '#BC0E0E', border: 'none', borderRadius: '4px',
-                  padding: '0.4rem 1rem', color: '#F9F3EC',
-                  fontFamily: 'Industry, sans-serif', fontWeight: 600, fontSize: '13px',
+                  background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
+                  padding: '0.4rem 1rem', color: '#fff',
+                  fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 600, fontSize: '13px',
                   cursor: saving ? 'not-allowed' : 'pointer',
                   opacity: saving ? 0.7 : 1,
                 }}

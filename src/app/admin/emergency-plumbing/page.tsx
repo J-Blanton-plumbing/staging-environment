@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import MetaSection from '@/components/admin/MetaSection';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface FormState {
   heroHeading: string;
@@ -81,7 +82,7 @@ function ImageField({
         <img
           src={value}
           alt="current"
-          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '4px', border: '1px solid #e5e7eb', marginBottom: '0.5rem' }}
+          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, marginBottom: '0.5rem' }}
         />
       )}
       <input
@@ -92,12 +93,12 @@ function ImageField({
       />
       <label style={{ display: 'inline-block', cursor: uploading ? 'not-allowed' : 'pointer' }}>
         <input type="file" accept="image/jpeg,image/png,image/webp" style={{ display: 'none' }} onChange={handleFile} disabled={uploading} />
-        <span style={{ display: 'inline-block', background: '#f3f4f6', border: '1px solid #d1d5db', borderRadius: '4px', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: '#374151', opacity: uploading ? 0.6 : 1 }}>
+        <span style={{ display: 'inline-block', background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '9999px', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: ADMIN_COLORS.onSurface, opacity: uploading ? 0.6 : 1 }}>
           {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}
         </span>
       </label>
-      <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: '#9ca3af' }}>JPEG, PNG or WebP · max 10 MB</span>
-      {uploadError && <p style={{ color: '#dc2626', fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
+      <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>JPEG, PNG or WebP · max 10 MB</span>
+      {uploadError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
     </div>
   );
 }
@@ -106,6 +107,9 @@ export default function AdminEmergencyPlumbingPage() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [status, setStatus] = useState<'loading' | 'idle' | 'saving' | 'saved' | 'error'>('loading');
   const [errorMsg, setErrorMsg] = useState('');
+  // Brief 75/78 (DP-1): the row version this editor loaded, sent back on save so a
+  // concurrent direct edit is rejected (409) rather than silently overwritten.
+  const [version, setVersion] = useState<number>(0);
 
   useEffect(() => {
     fetch('/api/cms/emergency-plumbing')
@@ -131,6 +135,7 @@ export default function AdminEmergencyPlumbingPage() {
           metaTitle: data.metaTitle ?? '',
           metaDescription: data.metaDescription ?? '',
         });
+        setVersion(typeof data.version === 'number' ? data.version : 0);
         setStatus('idle');
       })
       .catch(() => {
@@ -168,12 +173,15 @@ export default function AdminEmergencyPlumbingPage() {
           f3Image: form.f3Image,
           metaTitle: form.metaTitle || null,
           metaDescription: form.metaDescription || null,
+          version,
         }),
       });
       if (!res.ok) {
-        const j = await res.json();
+        const j = await res.json().catch(() => ({}));
         throw new Error(j.error ?? 'Unknown error');
       }
+      const j = await res.json().catch(() => ({}));
+      if (typeof j.version === 'number') setVersion(j.version);
       setStatus('saved');
       setTimeout(() => setStatus('idle'), 3000);
     } catch (err: unknown) {
@@ -184,24 +192,32 @@ export default function AdminEmergencyPlumbingPage() {
 
   const s: React.CSSProperties = {
     display: 'block', width: '100%', padding: '0.4rem 0.5rem',
-    border: '1px solid #d1d5db', borderRadius: '4px', marginBottom: '1rem',
+    border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.75rem', marginBottom: '1rem',
     fontFamily: 'inherit', fontSize: '0.9rem', boxSizing: 'border-box',
+    background: ADMIN_COLORS.surfaceContainerLowest, color: ADMIN_COLORS.onSurface,
   };
   const labelStyle: React.CSSProperties = {
     display: 'block', fontWeight: 600, marginBottom: '0.25rem',
-    fontSize: '0.85rem', color: '#374151',
+    fontSize: '0.85rem', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   };
   const section: React.CSSProperties = {
-    marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb',
+    marginBottom: '2rem', paddingBottom: '2rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+    background: ADMIN_COLORS.surfaceContainerLow, borderRadius: '1.5rem', padding: '1.5rem',
+    boxShadow: ADMIN_SHADOWS.elegant,
   };
   const h2Style: React.CSSProperties = {
-    fontWeight: 700, fontSize: '1.1rem', marginBottom: '1rem', color: '#111827',
+    fontWeight: 700, fontSize: '1.1rem', marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif',
   };
 
-  if (status === 'loading') return <div style={{ padding: '2rem' }}>Loading...</div>;
+  if (status === 'loading') return <div style={{ padding: '2rem', background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface, minHeight: '100vh' }}>Loading...</div>;
 
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+    <div className="admin-editor-page" style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface, minHeight: '100vh' }}>
+      <style>{`
+        .admin-editor-page input:focus, .admin-editor-page textarea:focus, .admin-editor-page select:focus { outline: none; box-shadow: 0 0 0 2px ${ADMIN_COLORS.primary}66; }
+        .admin-save-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+        .admin-save-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+      `}</style>
       <AdminPageHeader
         title="Emergency Plumbing — CMS Editor"
         pageType="emergency-plumbing"
@@ -230,7 +246,7 @@ export default function AdminEmergencyPlumbingPage() {
         previewBaseUrl="/emergency-plumbing"
       />
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
-      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text and images. Leave an image field empty to use the default asset.</p>
+      <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text and images. Leave an image field empty to use the default asset.</p>
 
       {/* ── Hero ── */}
       <div style={section}>
@@ -299,14 +315,15 @@ export default function AdminEmergencyPlumbingPage() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
         <button
+          className="admin-save-btn"
           onClick={handleSave}
           disabled={status === 'saving'}
-          style={{ background: '#BC0E0E', color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '4px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1 }}
+          style={{ background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '9999px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1, boxShadow: ADMIN_SHADOWS.lg }}
         >
           {status === 'saving' ? 'Saving...' : 'Save'}
         </button>
-        {status === 'saved' && <span style={{ color: '#16a34a', fontWeight: 600 }}>Saved.</span>}
-        {status === 'error' && <span style={{ color: '#dc2626' }}>{errorMsg}</span>}
+        {status === 'saved' && <span style={{ color: ADMIN_COLORS.success, fontWeight: 600 }}>Saved.</span>}
+        {status === 'error' && <span style={{ color: ADMIN_COLORS.error }}>{errorMsg}</span>}
       </div>
 
     </div>

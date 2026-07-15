@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface FaqField {
   question: string;
@@ -86,7 +87,7 @@ function ImageField({
         <img
           src={value}
           alt="current"
-          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '4px', border: '1px solid #e5e7eb', marginBottom: '0.5rem' }}
+          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: '0.5rem' }}
         />
       )}
       <label style={{ display: 'inline-block', cursor: uploading ? 'not-allowed' : 'pointer' }}>
@@ -97,12 +98,12 @@ function ImageField({
           onChange={handleFile}
           disabled={uploading}
         />
-        <span style={{ display: 'inline-block', background: '#f3f4f6', border: '1px solid #d1d5db', borderRadius: '4px', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: '#374151', opacity: uploading ? 0.6 : 1 }}>
+        <span style={{ display: 'inline-block', background: ADMIN_COLORS.surfaceContainerLow, border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: ADMIN_COLORS.onSurfaceVariant, opacity: uploading ? 0.6 : 1 }}>
           {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}
         </span>
       </label>
-      <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: '#9ca3af' }}>JPEG, PNG or WebP · max 10 MB</span>
-      {uploadError && <p style={{ color: '#dc2626', fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
+      <span style={{ marginLeft: '0.5rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>JPEG, PNG or WebP · max 10 MB</span>
+      {uploadError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
     </div>
   );
 }
@@ -116,6 +117,9 @@ export default function AdminCityServicePage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'not-found' | 'saving' | 'saved' | 'error'>('loading');
   const [errorMsg, setErrorMsg] = useState('');
   const [serviceCategories, setServiceCategories] = useState<ServiceCategory[]>([]);
+  // Brief 75/78 (DP-1): the row version this editor loaded, sent back on save so a
+  // concurrent direct edit is rejected (409) rather than silently overwritten.
+  const [version, setVersion] = useState<number>(0);
 
   const cityTitle = city ? slugToTitle(city) : '';
   const serviceTitle = service ? slugToTitle(service) : '';
@@ -148,6 +152,7 @@ export default function AdminCityServicePage() {
           metaDescription: data.metaDescription ?? '',
           parentSlug: data.parentSlug ?? null,
         });
+        setVersion(typeof data.version === 'number' ? data.version : 0);
         setStatus('idle');
       })
       .catch((err) => {
@@ -197,12 +202,14 @@ export default function AdminCityServicePage() {
       const res = await fetch(`/api/cms/city-service/${city}/${service}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(buildPayload()),
+        body: JSON.stringify({ ...buildPayload(), version }),
       });
       if (!res.ok) {
-        const j = await res.json();
+        const j = await res.json().catch(() => ({}));
         throw new Error(j.error ?? 'Unknown error');
       }
+      const j = await res.json().catch(() => ({}));
+      if (typeof j.version === 'number') setVersion(j.version);
       setStatus('saved');
       setTimeout(() => setStatus('idle'), 3000);
     } catch (err: unknown) {
@@ -213,24 +220,27 @@ export default function AdminCityServicePage() {
 
   const s: React.CSSProperties = {
     display: 'block', width: '100%', padding: '0.4rem 0.5rem',
-    border: '1px solid #d1d5db', borderRadius: '4px', marginBottom: '1rem',
+    border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem', marginBottom: '1rem',
     fontFamily: 'inherit', fontSize: '0.9rem', boxSizing: 'border-box',
+    background: ADMIN_COLORS.surfaceContainerLow, color: ADMIN_COLORS.onSurface,
   };
   const labelStyle: React.CSSProperties = {
     display: 'block', fontWeight: 600, marginBottom: '0.25rem',
-    fontSize: '0.85rem', color: '#374151',
+    fontSize: '13px', color: ADMIN_COLORS.onSurface,
   };
   const section: React.CSSProperties = {
-    marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb',
+    marginBottom: '2rem', padding: '1.5rem', borderRadius: '1.5rem',
+    background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+    boxShadow: ADMIN_SHADOWS.elegant,
   };
 
-  if (status === 'loading') return <div style={{ padding: '2rem' }}>Loading...</div>;
+  if (status === 'loading') return <div style={{ padding: '2rem', color: ADMIN_COLORS.onSurfaceVariant }}>Loading...</div>;
 
   if (status === 'not-found') {
     return (
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-        <h1 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '1rem' }}>{pageTitle}</h1>
-        <p style={{ color: '#6b7280' }}>
+        <h1 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>{pageTitle}</h1>
+        <p style={{ color: ADMIN_COLORS.onSurfaceVariant }}>
           No CMS content found for {city}/{service}. This page uses its static content file.
         </p>
       </div>
@@ -241,6 +251,12 @@ export default function AdminCityServicePage() {
 
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>{`
+        .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+        .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        .field { transition: box-shadow 0.15s ease, border-color 0.15s ease; }
+        .field:focus { outline: none; border-color: ${ADMIN_COLORS.cerulean}; box-shadow: 0 0 0 2px ${ADMIN_COLORS.cerulean}66; }
+      `}</style>
       <AdminPageHeader
         title={pageTitle}
         pageType="city-service"
@@ -251,43 +267,45 @@ export default function AdminCityServicePage() {
 
       {/* ── Parent page indicator bar ─────────────────────────────────────── */}
       <div style={{
-        background: '#F9F3EC',
-        borderBottom: '1px solid rgba(10,27,46,0.1)',
+        background: ADMIN_COLORS.surfaceContainer,
+        borderLeft: `3px solid ${ADMIN_COLORS.cerulean}`,
+        borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}40`,
         padding: '0.45rem 1.5rem',
         display: 'flex',
         alignItems: 'center',
         gap: '0.4rem',
-        fontFamily: 'Nunito, sans-serif',
+        fontFamily: 'var(--font-nunito), system-ui, sans-serif',
         fontSize: '12px',
       }}>
-        <span style={{ color: 'rgba(10,27,46,0.55)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+        <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
           Parent page:
         </span>
         {parentCategory ? (
           <a
             href={`/admin/${parentCategory.slug}`}
-            style={{ color: '#1560E6', fontWeight: 600, textDecoration: 'none' }}
+            style={{ color: ADMIN_COLORS.cerulean, fontWeight: 600, textDecoration: 'none' }}
           >
             {parentCategory.title}
           </a>
         ) : (
-          <span style={{ color: 'rgba(10,27,46,0.4)', fontStyle: 'italic' }}>None assigned</span>
+          <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontStyle: 'italic' }}>None assigned</span>
         )}
       </div>
 
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
-      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>
+      <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit city-service page content. Separate paragraphs with a blank line. Changes are saved to the database and applied immediately.
       </p>
 
       {/* Service Intro */}
       <div style={section}>
-        <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Service Intro</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Service Intro</h2>
         <label style={labelStyle}>Intro Heading</label>
-        <input style={s} value={form.serviceIntroHeading} onChange={e => setForm(f => ({ ...f, serviceIntroHeading: e.target.value }))} />
+        <input className="field" style={s} value={form.serviceIntroHeading} onChange={e => setForm(f => ({ ...f, serviceIntroHeading: e.target.value }))} />
         <label style={labelStyle}>Introduction</label>
-        <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '-0.75rem 0 0.5rem' }}>Separate paragraphs with a blank line (double Enter).</p>
+        <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.75rem 0 0.5rem' }}>Separate paragraphs with a blank line (double Enter).</p>
         <textarea
+          className="field"
           rows={10}
           style={{ ...s, minHeight: '200px' }}
           value={form.serviceIntroText}
@@ -298,12 +316,13 @@ export default function AdminCityServicePage() {
 
       {/* Secondary Section */}
       <div style={section}>
-        <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Secondary Section</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Secondary Section</h2>
         <label style={labelStyle}>Secondary Heading</label>
-        <input style={s} value={form.secondaryHeading} onChange={e => setForm(f => ({ ...f, secondaryHeading: e.target.value }))} />
+        <input className="field" style={s} value={form.secondaryHeading} onChange={e => setForm(f => ({ ...f, secondaryHeading: e.target.value }))} />
         <label style={labelStyle}>Body</label>
-        <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '-0.75rem 0 0.5rem' }}>Separate paragraphs with a blank line (double Enter).</p>
+        <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.75rem 0 0.5rem' }}>Separate paragraphs with a blank line (double Enter).</p>
         <textarea
+          className="field"
           rows={6}
           style={{ ...s, minHeight: '140px' }}
           value={form.secondaryText}
@@ -314,27 +333,28 @@ export default function AdminCityServicePage() {
 
       {/* FAQs */}
       <div style={section}>
-        <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>FAQs</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>FAQs</h2>
         {form.faqs.map((faq, i) => (
-          <div key={i} style={{ background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '6px', padding: '1rem', marginBottom: '0.75rem' }}>
+          <div key={i} style={{ background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1rem', padding: '1rem', marginBottom: '0.75rem', boxShadow: ADMIN_SHADOWS.sm }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <p style={{ fontWeight: 700, fontSize: '0.8rem', color: '#6b7280', margin: 0 }}>FAQ {i + 1}</p>
+              <p style={{ fontWeight: 700, fontSize: '0.8rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: 0 }}>FAQ {i + 1}</p>
               <button
                 onClick={() => removeFaq(i)}
-                style={{ background: 'none', border: '1px solid #fca5a5', color: '#dc2626', borderRadius: '4px', padding: '0.2rem 0.6rem', fontSize: '0.8rem', cursor: 'pointer', fontWeight: 600 }}
+                style={{ background: 'none', border: `1px solid ${ADMIN_COLORS.error}66`, color: ADMIN_COLORS.error, borderRadius: '0.5rem', padding: '0.2rem 0.6rem', fontSize: '0.8rem', cursor: 'pointer', fontWeight: 600 }}
               >
                 Remove
               </button>
             </div>
             <label style={labelStyle}>Question</label>
-            <input style={s} value={faq.question} onChange={e => setFaq(i, 'question', e.target.value)} />
+            <input className="field" style={s} value={faq.question} onChange={e => setFaq(i, 'question', e.target.value)} />
             <label style={labelStyle}>Answer</label>
-            <textarea rows={3} style={{ ...s, minHeight: '70px' }} value={faq.answer} onChange={e => setFaq(i, 'answer', e.target.value)} />
+            <textarea className="field" rows={3} style={{ ...s, minHeight: '70px' }} value={faq.answer} onChange={e => setFaq(i, 'answer', e.target.value)} />
           </div>
         ))}
         <button
+          className="admin-cta-btn"
           onClick={addFaq}
-          style={{ background: '#fff', border: '1px dashed #9ca3af', color: '#374151', borderRadius: '6px', padding: '0.6rem 1.25rem', fontSize: '0.875rem', cursor: 'pointer', fontWeight: 600, width: '100%' }}
+          style={{ background: ADMIN_COLORS.cerulean, border: 'none', color: '#fff', borderRadius: '9999px', padding: '0.6rem 1.25rem', fontSize: '0.875rem', cursor: 'pointer', fontWeight: 600, width: '100%', boxShadow: ADMIN_SHADOWS.lg }}
         >
           + Add FAQ
         </button>
@@ -342,18 +362,19 @@ export default function AdminCityServicePage() {
 
       {/* ── Settings ── */}
       <div style={{ ...section }}>
-        <h2 style={{ fontWeight: 700, marginBottom: '1rem' }}>Settings</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Settings</h2>
         <label style={labelStyle}>Parent Page</label>
-        <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '-0.5rem 0 0.5rem' }}>
+        <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.5rem 0 0.5rem' }}>
           The service category this page belongs to. Used for breadcrumbs and internal linking.
         </p>
         <select
+          className="field"
           value={form.parentSlug ?? ''}
           onChange={e => setForm(f => ({ ...f, parentSlug: e.target.value || null }))}
           style={{
             ...s,
             appearance: 'none',
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4c6cd'/%3E%3C/svg%3E")`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'right 10px center',
             paddingRight: '2rem',
@@ -377,14 +398,15 @@ export default function AdminCityServicePage() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
         <button
+          className="admin-cta-btn"
           onClick={handleSave}
           disabled={status === 'saving'}
-          style={{ background: '#BC0E0E', color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '4px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1 }}
+          style={{ background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '9999px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1, boxShadow: ADMIN_SHADOWS.xl }}
         >
           {status === 'saving' ? 'Saving...' : 'Save'}
         </button>
-        {status === 'saved' && <span style={{ color: '#16a34a', fontWeight: 600 }}>Saved.</span>}
-        {status === 'error' && <span style={{ color: '#dc2626' }}>{errorMsg}</span>}
+        {status === 'saved' && <span style={{ color: ADMIN_COLORS.success, fontWeight: 600 }}>Saved.</span>}
+        {status === 'error' && <span style={{ color: ADMIN_COLORS.error }}>{errorMsg}</span>}
       </div>
 
     </div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import DraftManager from '@/components/admin/DraftManager';
 import TemplateSwitcher from '@/components/admin/TemplateSwitcher';
 import DraftControls from '@/components/admin/DraftControls';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 export interface AdminPageHeaderProps {
   title: string;
@@ -74,9 +75,9 @@ export default function AdminPageHeader({
   }
 
   const statusBadgeColor =
-    status === 'published' ? '#15803d' :
-    status === 'scheduled' ? '#b45309' :
-    '#5a6a7a';
+    status === 'published' ? ADMIN_COLORS.success :
+    status === 'scheduled' ? ADMIN_COLORS.warning :
+    ADMIN_COLORS.onSurfaceVariant;
   const statusLabel = status
     ? status.charAt(0).toUpperCase() + status.slice(1)
     : null;
@@ -86,7 +87,8 @@ export default function AdminPageHeader({
       {/* ── Main bar ───────────────────────────────────────────────────────── */}
       <div
         style={{
-          background: '#0A1B2E',
+          background: ADMIN_COLORS.surface,
+          borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}22`,
           display: 'flex',
           alignItems: 'center',
           padding: '0 1.5rem',
@@ -100,10 +102,10 @@ export default function AdminPageHeader({
           <span
             style={{
               flex: 1,
-              fontFamily: 'Industry, sans-serif',
+              fontFamily: 'var(--font-outfit), system-ui, sans-serif',
               fontWeight: 600,
               fontSize: '16px',
-              color: '#F9F3EC',
+              color: ADMIN_COLORS.onSurface,
               lineHeight: 1.3,
             }}
           >
@@ -116,14 +118,14 @@ export default function AdminPageHeader({
                 onClick={onPublishToggle}
                 disabled={publishBusy}
                 style={{
-                  background: status === 'published' ? 'transparent' : '#1560E6',
-                  border: status === 'published' ? '1px solid rgba(249,243,236,0.4)' : '1px solid #1560E6',
-                  borderRadius: '4px',
+                  background: status === 'published' ? 'transparent' : ADMIN_COLORS.cerulean,
+                  border: status === 'published' ? `1px solid ${ADMIN_COLORS.onSurfaceVariant}66` : `1px solid ${ADMIN_COLORS.cerulean}`,
+                  borderRadius: '9999px',
                   padding: '0.3rem 0.85rem',
-                  fontFamily: 'Nunito, sans-serif',
+                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                   fontWeight: 700,
                   fontSize: '0.8rem',
-                  color: '#F9F3EC',
+                  color: status === 'published' ? ADMIN_COLORS.onSurface : '#fff',
                   cursor: publishBusy ? 'not-allowed' : 'pointer',
                   opacity: publishBusy ? 0.6 : 1,
                   whiteSpace: 'nowrap',
@@ -156,14 +158,14 @@ export default function AdminPageHeader({
               <button
                 onClick={() => setDraftsOpen(o => !o)}
                 style={{
-                  background: draftsOpen ? 'rgba(249,243,236,0.2)' : 'rgba(249,243,236,0.1)',
-                  border: '1px solid rgba(249,243,236,0.25)',
-                  borderRadius: '4px',
+                  background: draftsOpen ? ADMIN_COLORS.surfaceContainerHigh : ADMIN_COLORS.surfaceContainer,
+                  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+                  borderRadius: '9999px',
                   padding: '0.3rem 0.75rem',
                   fontWeight: 600,
                   fontSize: '0.8rem',
                   cursor: 'pointer',
-                  color: '#F9F3EC',
+                  color: ADMIN_COLORS.onSurface,
                   whiteSpace: 'nowrap',
                 }}
               >
@@ -178,9 +180,9 @@ export default function AdminPageHeader({
           <div
             style={{
               width: '100%',
-              fontFamily: 'Nunito, sans-serif',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
               fontSize: '12px',
-              color: 'rgba(249,243,236,0.7)',
+              color: `${ADMIN_COLORS.onSurfaceVariant}99`,
               paddingBottom: '6px',
               marginTop: '-4px',
               display: 'flex',
@@ -194,7 +196,7 @@ export default function AdminPageHeader({
               <span
                 style={{
                   background: statusBadgeColor,
-                  color: '#fff',
+                  color: status === 'published' ? ADMIN_COLORS.successOn : status === 'scheduled' ? ADMIN_COLORS.warningOn : '#fff',
                   fontSize: '10px',
                   fontWeight: 700,
                   padding: '1px 7px',
@@ -214,10 +216,10 @@ export default function AdminPageHeader({
       {hasDrafts && draftsOpen && pageType && pageSlug && getContent && (
         <div
           style={{
-            background: '#fff',
-            borderBottom: '2px solid #e5e7eb',
+            background: ADMIN_COLORS.surfaceContainerLow,
+            borderBottom: `2px solid ${ADMIN_COLORS.outlineVariant}44`,
             padding: '1.5rem',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            boxShadow: ADMIN_SHADOWS.elegant,
           }}
         >
           <DraftManager

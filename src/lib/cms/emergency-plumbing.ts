@@ -19,6 +19,7 @@ export interface EpCmsContent {
   f3Heading: string;
   f3Body: string;
   f3Image: string;
+  version: number;
   updatedAt: string;
   metaTitle?: string | null;
   metaDescription?: string | null;
@@ -69,6 +70,7 @@ export async function getEpCmsContent(): Promise<EpCmsContent | null> {
       f3Heading: r.f3_heading,
       f3Body: r.f3_body,
       f3Image: r.f3_image ?? '',
+      version: r.version ?? 0,
       updatedAt: r.updated_at,
       metaTitle: r.meta_title ?? null,
       metaDescription: r.meta_description ?? null,

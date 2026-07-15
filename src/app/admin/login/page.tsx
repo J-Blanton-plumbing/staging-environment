@@ -37,39 +37,16 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#0A1B2E',
-      }}
-    >
-      <div
-        style={{
-          background: '#F9F3EC',
-          padding: '2.5rem',
-          borderRadius: '10px',
-          minWidth: '340px',
-          boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
-        }}
-      >
-        <div style={{ marginBottom: '1.75rem' }}>
-          <h1 style={{ fontWeight: 700, fontSize: '1.5rem', color: '#0A1B2E', margin: 0 }}>
-            CMS Admin
-          </h1>
-          <p style={{ color: '#6b7280', fontSize: '0.875rem', marginTop: '0.25rem' }}>
-            Sign in to your account
-          </p>
+    <div className="flex min-h-screen items-center justify-center bg-admin-surface font-admin-body px-4">
+      <div className="w-full max-w-[380px] rounded-admin-3xl border border-admin-outline-variant/10 bg-admin-surface-container-low p-10 shadow-2xl">
+        <div className="mb-8">
+          <h1 className="font-admin-headline text-2xl font-bold text-admin-on-surface">CMS Admin</h1>
+          <p className="mt-1 text-sm text-admin-on-surface-variant/60">Sign in to your account</p>
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: '1rem' }}>
-            <label
-              htmlFor="email"
-              style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: '#0A1B2E', marginBottom: '0.375rem' }}
-            >
+          <div className="mb-4">
+            <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-admin-on-surface">
               Email
             </label>
             <input
@@ -79,24 +56,12 @@ export default function AdminLoginPage() {
               onChange={e => setEmail(e.target.value)}
               required
               autoFocus
-              style={{
-                width: '100%',
-                padding: '0.6rem 0.75rem',
-                border: '1px solid #d1d5db',
-                borderRadius: '6px',
-                fontSize: '0.95rem',
-                boxSizing: 'border-box',
-                background: '#fff',
-                color: '#0A1B2E',
-              }}
+              className="w-full rounded-admin-xl border border-admin-outline-variant/20 bg-admin-surface-container-lowest px-3 py-2.5 text-sm text-admin-on-surface placeholder:text-admin-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-admin-primary/40"
             />
           </div>
 
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label
-              htmlFor="password"
-              style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: '#0A1B2E', marginBottom: '0.375rem' }}
-            >
+          <div className="mb-5">
+            <label htmlFor="password" className="mb-1.5 block text-sm font-semibold text-admin-on-surface">
               Password
             </label>
             <input
@@ -105,39 +70,16 @@ export default function AdminLoginPage() {
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
-              style={{
-                width: '100%',
-                padding: '0.6rem 0.75rem',
-                border: '1px solid #d1d5db',
-                borderRadius: '6px',
-                fontSize: '0.95rem',
-                boxSizing: 'border-box',
-                background: '#fff',
-                color: '#0A1B2E',
-              }}
+              className="w-full rounded-admin-xl border border-admin-outline-variant/20 bg-admin-surface-container-lowest px-3 py-2.5 text-sm text-admin-on-surface placeholder:text-admin-on-surface-variant/30 focus:outline-none focus:ring-1 focus:ring-admin-primary/40"
             />
           </div>
 
-          {error && (
-            <p style={{ color: '#BC0E0E', fontSize: '0.875rem', marginBottom: '1rem' }}>
-              {error}
-            </p>
-          )}
+          {error && <p className="mb-4 text-sm text-admin-error">{error}</p>}
 
           <button
             type="submit"
             disabled={loading}
-            style={{
-              width: '100%',
-              background: loading ? '#9b7070' : '#BC0E0E',
-              color: '#fff',
-              border: 'none',
-              padding: '0.7rem 1.25rem',
-              borderRadius: '6px',
-              fontWeight: 700,
-              fontSize: '0.95rem',
-              cursor: loading ? 'not-allowed' : 'pointer',
-            }}
+            className="w-full rounded-admin-3xl bg-admin-secondary-container py-3 text-sm font-bold text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? 'Signing in…' : 'Sign in'}
           </button>

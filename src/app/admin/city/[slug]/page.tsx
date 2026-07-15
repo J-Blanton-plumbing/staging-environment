@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface FaqField {
   question: string;
@@ -84,28 +85,32 @@ type StringFieldKey = keyof Omit<
 
 const inputStyle: React.CSSProperties = {
   display: 'block', width: '100%', padding: '0.4rem 0.5rem',
-  border: '1px solid #d1d5db', borderRadius: '4px', marginBottom: '1rem',
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem', marginBottom: '1rem',
   fontFamily: 'inherit', fontSize: '0.9rem', boxSizing: 'border-box',
+  background: ADMIN_COLORS.surfaceContainerLow, color: ADMIN_COLORS.onSurface,
 };
 
 const labelStyle: React.CSSProperties = {
   display: 'block', fontWeight: 600, marginBottom: '0.25rem',
-  fontSize: '0.85rem', color: '#374151',
+  fontSize: '13px', color: ADMIN_COLORS.onSurface,
 };
 
 const sectionStyle: React.CSSProperties = {
-  marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid #e5e7eb',
+  marginBottom: '1.5rem', padding: '1.5rem', borderRadius: '1.5rem',
+  background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+  boxShadow: ADMIN_SHADOWS.elegant,
 };
 
 const h2Style: React.CSSProperties = {
-  fontWeight: 700, fontSize: '1.1rem', marginBottom: '1rem', color: '#111827',
+  fontWeight: 700, fontSize: '14px', marginBottom: '1rem', color: ADMIN_COLORS.onSurface,
+  fontFamily: 'var(--font-outfit), system-ui, sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em',
 };
 
 // ── Missing field indicator ──────────────────────────────────────────────────
 
 function MissingIndicator() {
   return (
-    <span style={{ color: '#BC0E0E', fontWeight: 600, fontSize: '0.8rem', marginLeft: '0.4rem' }}>
+    <span style={{ color: ADMIN_COLORS.error, fontWeight: 600, fontSize: '0.8rem', marginLeft: '0.4rem' }}>
       ⚠ Required — not yet filled in
     </span>
   );
@@ -126,7 +131,7 @@ function FieldLabel({
   return (
     <label style={labelStyle}>
       {text}
-      {note && <span style={{ fontWeight: 400, color: '#9ca3af' }}> {note}</span>}
+      {note && <span style={{ fontWeight: 400, color: ADMIN_COLORS.onSurfaceVariant }}> {note}</span>}
       {isMissing && <MissingIndicator />}
     </label>
   );
@@ -165,7 +170,7 @@ function ImageField({ value, onChange }: { value: string; onChange: (v: string) 
         <img
           src={value}
           alt="current"
-          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '4px', border: '1px solid #e5e7eb', marginBottom: '0.5rem' }}
+          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: '0.5rem' }}
         />
       )}
       <input
@@ -176,12 +181,12 @@ function ImageField({ value, onChange }: { value: string; onChange: (v: string) 
       />
       <label style={{ display: 'inline-block', cursor: uploading ? 'not-allowed' : 'pointer' }}>
         <input type="file" accept="image/jpeg,image/png,image/webp" style={{ display: 'none' }} onChange={handleFile} disabled={uploading} />
-        <span style={{ display: 'inline-block', background: '#f3f4f6', border: '1px solid #d1d5db', borderRadius: '4px', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: '#374151', opacity: uploading ? 0.6 : 1 }}>
+        <span style={{ display: 'inline-block', background: ADMIN_COLORS.surfaceContainerLow, border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: ADMIN_COLORS.onSurfaceVariant, opacity: uploading ? 0.6 : 1 }}>
           {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}
         </span>
       </label>
-      <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: '#9ca3af' }}>JPEG, PNG or WebP · max 10 MB</span>
-      {uploadError && <p style={{ color: '#BC0E0E', fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
+      <span style={{ marginLeft: '0.5rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>JPEG, PNG or WebP · max 10 MB</span>
+      {uploadError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
     </div>
   );
 }
@@ -218,7 +223,7 @@ function CoverageAreaCityFields({
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Second Content Block</h2>
-        <p style={{ fontSize: '0.8rem', color: '#9ca3af', marginBottom: '1rem', marginTop: '-0.5rem' }}>
+        <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, marginBottom: '1rem', marginTop: '-0.5rem' }}>
           The &ldquo;manplumber&rdquo; section.
         </p>
         <FieldLabel label="Heading" fieldKey="f2_heading" missing={missing} />
@@ -266,18 +271,18 @@ function LocalOfficeCityFields({
 // ── Local Office V2 fields (Brief 67) ─────────────────────────────────────────
 
 const repeaterCardStyle: React.CSSProperties = {
-  background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '6px',
-  padding: '1rem', marginBottom: '0.75rem',
+  background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1rem',
+  padding: '1rem', marginBottom: '0.75rem', boxShadow: ADMIN_SHADOWS.sm,
 };
 
 const addBtnStyle: React.CSSProperties = {
-  background: '#fff', border: '1px dashed #9ca3af', borderRadius: '4px',
-  padding: '0.45rem 1rem', fontWeight: 600, fontSize: '0.85rem',
-  color: '#374151', cursor: 'pointer',
+  background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
+  padding: '0.45rem 1.1rem', fontWeight: 600, fontSize: '0.85rem',
+  color: '#fff', cursor: 'pointer', boxShadow: ADMIN_SHADOWS.lg,
 };
 
 const removeBtnStyle: React.CSSProperties = {
-  background: 'none', border: 'none', color: '#BC0E0E', fontWeight: 600,
+  background: 'none', border: 'none', color: ADMIN_COLORS.error, fontWeight: 600,
   fontSize: '0.8rem', cursor: 'pointer', padding: 0,
 };
 
@@ -343,9 +348,9 @@ function LocalOfficeCityV2Fields({
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Trust Bar</h2>
-        <label style={labelStyle}>Stars <span style={{ fontWeight: 400, color: '#9ca3af' }}>(e.g. &quot;4.8&quot;)</span></label>
+        <label style={labelStyle}>Stars <span style={{ fontWeight: 400, color: ADMIN_COLORS.onSurfaceVariant }}>(e.g. &quot;4.8&quot;)</span></label>
         <input style={inputStyle} value={form.trustBarStars} onChange={e => setField('trustBarStars', e.target.value)} />
-        <label style={labelStyle}>Review Count <span style={{ fontWeight: 400, color: '#9ca3af' }}>(e.g. &quot;300+&quot;)</span></label>
+        <label style={labelStyle}>Review Count <span style={{ fontWeight: 400, color: ADMIN_COLORS.onSurfaceVariant }}>(e.g. &quot;300+&quot;)</span></label>
         <input style={inputStyle} value={form.trustBarReviewCount} onChange={e => setField('trustBarReviewCount', e.target.value)} />
       </div>
 
@@ -360,7 +365,7 @@ function LocalOfficeCityV2Fields({
         {form.mostRequestedServices.map((item, i) => (
           <div key={i} style={repeaterCardStyle}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: '#374151' }}>Service {i + 1}</span>
+              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>Service {i + 1}</span>
               <button type="button" style={removeBtnStyle} onClick={() => removeMostRequested(i)}>Remove</button>
             </div>
             <label style={labelStyle}>Title</label>
@@ -369,7 +374,7 @@ function LocalOfficeCityV2Fields({
             <textarea style={{ ...inputStyle, minHeight: '90px' }} value={item.body} onChange={e => updateMostRequested(i, 'body', e.target.value)} />
           </div>
         ))}
-        <button type="button" style={addBtnStyle} onClick={addMostRequested}>+ Add service</button>
+        <button type="button" className="admin-cta-btn" style={addBtnStyle} onClick={addMostRequested}>+ Add service</button>
       </div>
 
       <div style={sectionStyle}>
@@ -383,7 +388,7 @@ function LocalOfficeCityV2Fields({
         {form.whyPoints.map((item, i) => (
           <div key={i} style={repeaterCardStyle}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: '#374151' }}>Point {i + 1}</span>
+              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>Point {i + 1}</span>
               <button type="button" style={removeBtnStyle} onClick={() => removeWhyPoint(i)}>Remove</button>
             </div>
             <label style={labelStyle}>Heading</label>
@@ -392,11 +397,11 @@ function LocalOfficeCityV2Fields({
             <textarea style={{ ...inputStyle, minHeight: '90px' }} value={item.body} onChange={e => updateWhyPoint(i, 'body', e.target.value)} />
           </div>
         ))}
-        <button type="button" style={addBtnStyle} onClick={addWhyPoint}>+ Add point</button>
+        <button type="button" className="admin-cta-btn" style={addBtnStyle} onClick={addWhyPoint}>+ Add point</button>
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Video Section <span style={{ fontWeight: 400, fontSize: '0.8rem', color: '#9ca3af' }}>(text only — no embed)</span></h2>
+        <h2 style={h2Style}>Video Section <span style={{ fontWeight: 400, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>(text only — no embed)</span></h2>
         <label style={labelStyle}>Heading</label>
         <input style={inputStyle} value={form.videoHeading} onChange={e => setField('videoHeading', e.target.value)} />
         <label style={labelStyle}>Intro</label>
@@ -410,7 +415,7 @@ function LocalOfficeCityV2Fields({
         {form.reviews.map((item, i) => (
           <div key={i} style={repeaterCardStyle}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: '#374151' }}>Review {i + 1}</span>
+              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>Review {i + 1}</span>
               <button type="button" style={removeBtnStyle} onClick={() => removeReview(i)}>Remove</button>
             </div>
             <label style={labelStyle}>Reviewer Name</label>
@@ -422,13 +427,13 @@ function LocalOfficeCityV2Fields({
           </div>
         ))}
         {form.reviews.length < 5 && (
-          <button type="button" style={addBtnStyle} onClick={addReview}>+ Add review</button>
+          <button type="button" className="admin-cta-btn" style={addBtnStyle} onClick={addReview}>+ Add review</button>
         )}
       </div>
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>No Drip Club</h2>
-        <label style={labelStyle}>City Intro <span style={{ fontWeight: 400, color: '#9ca3af' }}>(shown above the standard NDC block)</span></label>
+        <label style={labelStyle}>City Intro <span style={{ fontWeight: 400, color: ADMIN_COLORS.onSurfaceVariant }}>(shown above the standard NDC block)</span></label>
         <textarea style={{ ...inputStyle, minHeight: '120px' }} value={form.ndcIntro} onChange={e => setField('ndcIntro', e.target.value)} />
       </div>
 
@@ -542,13 +547,13 @@ export default function AdminCityPage() {
 
   const cityLabel = slug ? slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : '';
 
-  if (status === 'loading') return <div style={{ padding: '2rem' }}>Loading...</div>;
+  if (status === 'loading') return <div style={{ padding: '2rem', color: ADMIN_COLORS.onSurfaceVariant }}>Loading...</div>;
 
   if (status === 'not-found') {
     return (
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-        <h1 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '1rem' }}>{cityLabel} — CMS Editor</h1>
-        <div style={{ background: '#fef3c7', border: '1px solid #fcd34d', borderRadius: '6px', padding: '1.25rem', color: '#92400e' }}>
+        <h1 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>{cityLabel} — CMS Editor</h1>
+        <div style={{ background: `${ADMIN_COLORS.warning}1a`, border: `1px solid ${ADMIN_COLORS.warning}66`, borderRadius: '1rem', padding: '1.25rem', color: ADMIN_COLORS.warning }}>
           <p style={{ fontWeight: 600, marginBottom: '0.25rem' }}>No CMS content found for &lsquo;{slug}&rsquo;.</p>
           <p style={{ margin: 0, fontSize: '0.9rem' }}>This city uses its static content file. Only Evanston and Elgin have been seeded into the CMS.</p>
         </div>
@@ -557,7 +562,14 @@ export default function AdminCityPage() {
   }
 
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+    <div className="admin-city-editor" style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>{`
+        .admin-city-editor input:focus, .admin-city-editor textarea:focus, .admin-city-editor select:focus {
+          outline: none; border-color: ${ADMIN_COLORS.cerulean}; box-shadow: 0 0 0 2px ${ADMIN_COLORS.cerulean}66;
+        }
+        .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+        .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+      `}</style>
       <AdminPageHeader
         title={`${cityLabel} — CMS Editor`}
         pageType="city"
@@ -574,13 +586,13 @@ export default function AdminCityPage() {
         previewBaseUrl={`/${slug}`}
       />
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
-      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>
+      <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit hero copy, content sections, and FAQs. Office address, services list, video, and partner logos come from the static data file.
       </p>
 
       {/* Switch toast */}
       {switchToast && (
-        <div style={{ background: '#0A1B2E', color: '#F9F3EC', borderRadius: '6px', padding: '0.85rem 1.25rem', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 500 }}>
+        <div style={{ background: ADMIN_COLORS.surfaceContainerHigh, color: ADMIN_COLORS.onSurface, borderRadius: '0.75rem', padding: '0.85rem 1.25rem', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 500, borderLeft: `3px solid ${ADMIN_COLORS.cerulean}` }}>
           {switchToast}
         </div>
       )}
@@ -598,15 +610,15 @@ export default function AdminCityPage() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>FAQs</h2>
         {form.faqs.map((faq, i) => (
-          <div key={i} style={{ background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '6px', padding: '1rem', marginBottom: '0.75rem' }}>
-            <p style={{ fontWeight: 700, fontSize: '0.85rem', color: '#374151', margin: '0 0 0.75rem' }}>FAQ {i + 1}</p>
+          <div key={i} style={repeaterCardStyle}>
+            <p style={{ fontWeight: 700, fontSize: '0.85rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '0 0 0.75rem' }}>FAQ {i + 1}</p>
             <label style={labelStyle}>Question</label>
             <textarea style={{ ...inputStyle, minHeight: '60px' }} value={faq.question} onChange={e => setFaq(i, 'question', e.target.value)} />
             <label style={labelStyle}>Answer</label>
             <textarea style={{ ...inputStyle, minHeight: '80px' }} value={faq.answer} onChange={e => setFaq(i, 'answer', e.target.value)} />
           </div>
         ))}
-        {form.faqs.length === 0 && <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>No FAQs loaded.</p>}
+        {form.faqs.length === 0 && <p style={{ color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '12px' }}>No FAQs loaded.</p>}
       </div>
 
       <MetaSection
@@ -618,14 +630,15 @@ export default function AdminCityPage() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
         <button
+          className="admin-cta-btn"
           onClick={handleSave}
           disabled={status === 'saving'}
-          style={{ background: '#BC0E0E', color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '4px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1 }}
+          style={{ background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none', padding: '0.7rem 2rem', borderRadius: '9999px', fontWeight: 700, fontSize: '1rem', cursor: status === 'saving' ? 'not-allowed' : 'pointer', opacity: status === 'saving' ? 0.7 : 1, boxShadow: ADMIN_SHADOWS.xl }}
         >
           {status === 'saving' ? 'Saving...' : 'Save'}
         </button>
-        {status === 'saved' && <span style={{ color: '#16a34a', fontWeight: 600 }}>Saved.</span>}
-        {status === 'error' && <span style={{ color: '#BC0E0E' }}>{errorMsg}</span>}
+        {status === 'saved' && <span style={{ color: ADMIN_COLORS.success, fontWeight: 600 }}>Saved.</span>}
+        {status === 'error' && <span style={{ color: ADMIN_COLORS.error }}>{errorMsg}</span>}
       </div>
 
     </div>

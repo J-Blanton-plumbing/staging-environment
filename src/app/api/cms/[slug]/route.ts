@@ -3,6 +3,7 @@ import { getServiceCmsContent, updateServiceCmsContent } from '@/lib/cms/service
 import { getSession } from '@/lib/auth/session';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
+import { errorCode } from '@/lib/cms/errors';
 
 export async function GET(
   _req: NextRequest,
@@ -52,7 +53,11 @@ export async function PUT(
     }
 
     const updatedBy = session?.userId ?? null;
-    await updateServiceCmsContent(params.slug, body, updatedBy);
+    // Brief 75/78 (DP-1): if the editor sent the version it loaded, enforce
+    // optimistic concurrency so a stale direct edit is rejected (409) rather than
+    // clobbering another editor's save.
+    const expectedVersion = typeof body.version === 'number' ? body.version : null;
+    const version = await updateServiceCmsContent(params.slug, body, updatedBy, expectedVersion);
 
     if (updatedBy) {
       const client = await pool.connect();
@@ -63,8 +68,14 @@ export async function PUT(
       }
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, version });
   } catch (err) {
+    if (errorCode(err) === '409') {
+      return NextResponse.json(
+        { error: err instanceof Error ? err.message : 'Conflict' },
+        { status: 409 }
+      );
+    }
     console.error(`[cms/${params.slug} PUT]`, err);
     return NextResponse.json({ error: 'Failed to save' }, { status: 500 });
   }

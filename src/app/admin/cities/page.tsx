@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { CATEGORY_DEFS, CATEGORY_KEYS, deriveCategory } from '@/lib/content/service-taxonomy';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface CityServiceRow {
   city_slug: string;
@@ -59,20 +60,26 @@ interface CityCard {
   emergency: CityServiceRow | null;
   categories: Array<{ key: string; label: string; rows: CityServiceRow[] }>;
   uncategorized: CityServiceRow[];
+  latestUpdate: string | null;
 }
 
-// Brand tokens
-const CARMINE = '#BC0E0E';
-const CERULEAN = '#1560E6';
-const CREAM = '#F9F3EC';
-const MIDNIGHT = '#0A1B2E';
+const RECENT_COUNT = 6;
+
+// Brand tokens — sourced from the shared admin theme module (Brief 80) so this
+// file stays in lockstep with the rest of the admin panel instead of re-typing hexes.
+const CERULEAN = ADMIN_COLORS.cerulean;
+const MIDNIGHT = ADMIN_COLORS.onSurface;
+
+type PageTypeFilter = 'all' | 'local-office' | 'coverage-area';
 
 export default function CitiesAdminPage() {
   const [cityServiceRows, setCityServiceRows] = useState<CityServiceRow[]>([]);
+  const [cityTypes, setCityTypes] = useState<Record<string, string>>({});
   const [loadStatus, setLoadStatus] = useState<'loading' | 'error' | 'done'>('loading');
   const [openToggles, setOpenToggles] = useState<Record<string, boolean>>({});
   const [query, setQuery] = useState('');
-  const [activeLetter, setActiveLetter] = useState<string>('All');
+  const [pageTypeFilter, setPageTypeFilter] = useState<PageTypeFilter>('all');
+  const [activeLetter, setActiveLetter] = useState<string>('Recent');
   const listTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -83,6 +90,18 @@ export default function CitiesAdminPage() {
         setLoadStatus('done');
       })
       .catch(() => setLoadStatus('error'));
+
+    // Page-type (Local Office / Coverage Area) comes from the flat city registry,
+    // not city_service_pages — fetched separately and merged in by slug.
+    fetch('/api/cms/cities')
+      .then(r => r.json())
+      .then((data: { slug: string; cityType: string }[]) => {
+        if (!Array.isArray(data)) return;
+        const map: Record<string, string> = {};
+        data.forEach(d => { map[d.slug] = d.cityType; });
+        setCityTypes(map);
+      })
+      .catch(() => {});
   }, []);
 
   function toggle(key: string) {
@@ -119,7 +138,13 @@ export default function CitiesAdminPage() {
       const firstChar = name.charAt(0).toUpperCase();
       const letter = /[A-Z]/.test(firstChar) ? firstChar : '#';
 
-      cards.push({ slug, name, letter, emergency, categories, uncategorized });
+      const latestUpdate = rows.reduce<string | null>((latest, r) => {
+        if (!r.updated_at) return latest;
+        if (!latest || new Date(r.updated_at) > new Date(latest)) return r.updated_at;
+        return latest;
+      }, null);
+
+      cards.push({ slug, name, letter, emergency, categories, uncategorized, latestUpdate });
     }
 
     cards.sort((a, b) => a.name.localeCompare(b.name));
@@ -136,11 +161,28 @@ export default function CitiesAdminPage() {
   const q = query.trim().toLowerCase();
   const searching = q.length > 0;
 
-  // Search filters which city cards are visible (matches city name OR any of its
-  // service page names — preserves the prior "city or service" search behavior).
+  // Search + page-type + A–Z/Recent filters which city cards are visible (matches
+  // city name OR any of its service page names — preserves the prior "city or
+  // service" search behavior — restricts to Local Office / Coverage Area cities,
+  // and restricts to either cities whose name starts with the selected letter, or
+  // (default view) the RECENT_COUNT most-recently-updated cities).
   const visibleCards = useMemo(() => {
-    if (!searching) return allCards;
-    return allCards.filter(card => {
+    let list = allCards;
+    if (pageTypeFilter !== 'all') {
+      list = list.filter(card => cityTypes[card.slug] === pageTypeFilter);
+    }
+    if (!searching) {
+      if (activeLetter === 'Recent') {
+        list = [...list]
+          .filter(card => card.latestUpdate)
+          .sort((a, b) => new Date(b.latestUpdate!).getTime() - new Date(a.latestUpdate!).getTime())
+          .slice(0, RECENT_COUNT);
+      } else if (activeLetter !== 'All') {
+        list = list.filter(card => card.letter === activeLetter);
+      }
+      return list;
+    }
+    return list.filter(card => {
       if (card.name.toLowerCase().includes(q) || card.slug.includes(q)) return true;
       const services = [
         ...(card.emergency ? [card.emergency] : []),
@@ -153,83 +195,118 @@ export default function CitiesAdminPage() {
           toDisplayName(r.service_slug).toLowerCase().includes(q)
       );
     });
-  }, [allCards, searching, q]);
+  }, [allCards, searching, q, pageTypeFilter, cityTypes, activeLetter]);
 
   function handleLetterClick(letter: string) {
     if (searching) return;
-    if (letter === 'All') {
-      setActiveLetter('All');
-      listTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return;
-    }
-    if (!availableLetters.has(letter)) return;
+    if (letter !== 'All' && letter !== 'Recent' && !availableLetters.has(letter)) return;
     setActiveLetter(letter);
-    document.getElementById(`letter-${letter}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    listTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   // ---- shared styles ----
   const cardStyle: React.CSSProperties = {
-    border: '1px solid rgba(10,27,46,0.14)',
-    borderRadius: '10px',
+    border: `1px solid ${ADMIN_COLORS.outlineVariant}2E`,
+    borderRadius: '1.5rem',
     overflow: 'hidden',
-    background: '#fff',
+    background: ADMIN_COLORS.surfaceContainerLow,
+    boxShadow: ADMIN_SHADOWS.elegant,
   };
   const cardHeader: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0.85rem 1rem',
-    background: CREAM,
-    borderBottom: '1px solid rgba(10,27,46,0.1)',
+    background: ADMIN_COLORS.surfaceContainer,
+    borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}26`,
   };
   const rowBase: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0.6rem 1rem',
-    borderTop: '1px solid rgba(10,27,46,0.06)',
-    fontFamily: 'Nunito, sans-serif',
+    borderTop: `1px solid ${ADMIN_COLORS.outlineVariant}14`,
+    fontFamily: 'var(--font-nunito), system-ui, sans-serif',
     fontSize: '14px',
   };
 
-  let lastLetter = '';
-
   return (
-    <main style={{ padding: '2rem', maxWidth: '860px', fontFamily: 'system-ui, sans-serif' }}>
+    <main style={{ padding: '2rem 2.5rem', fontFamily: 'system-ui, sans-serif' }}>
       {/* pill hover styles (inline styles can't express :hover) */}
       <style>{`
-        .az-pill:not(.az-disabled):not(.az-active):hover { background: rgba(0,0,0,0.05); }
-        .svc-item:hover { background: rgba(21,96,230,0.06); }
+        .az-pill:not(.az-disabled):not(.az-active):hover { background: ${ADMIN_COLORS.surfaceContainerHigh}; }
+        .svc-item:hover { background: ${ADMIN_COLORS.surfaceContainerHigh}66; }
+        .page-type-pill:not(.pt-active):hover { background: ${ADMIN_COLORS.surfaceContainerHigh}; }
+        .edit-city-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+        .edit-city-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        @media (max-width: 720px) {
+          .city-cards-grid { grid-template-columns: minmax(0, 1fr) !important; }
+        }
       `}</style>
 
-      <h1 style={{ fontFamily: 'Industry, sans-serif', color: MIDNIGHT, marginBottom: '0.25rem' }}>
+      <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', color: MIDNIGHT, marginBottom: '0.25rem' }}>
         City Service Pages
       </h1>
-      <p style={{ color: '#5a6a7a', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
+      <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginBottom: '1.25rem' }}>
         {loadStatus === 'done'
           ? `${allCards.length} cities · browse each city's service pages by category`
           : ' '}
       </p>
 
-      <input
-        type="search"
-        placeholder="Search by city or service…"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        style={{
-          display: 'block',
-          width: '100%',
-          maxWidth: '360px',
-          padding: '0.5rem 0.75rem',
-          border: '1px solid rgba(10,27,46,0.2)',
-          borderRadius: '6px',
-          fontSize: '0.9rem',
-          marginBottom: '1rem',
-          fontFamily: 'Nunito, sans-serif',
-          color: MIDNIGHT,
-          boxSizing: 'border-box',
-        }}
-      />
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <input
+          type="search"
+          placeholder="Search by city or service…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          style={{
+            display: 'block',
+            width: '100%',
+            maxWidth: '360px',
+            padding: '0.5rem 0.75rem',
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+            borderRadius: '0.75rem',
+            fontSize: '0.9rem',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            color: MIDNIGHT,
+            background: ADMIN_COLORS.surfaceContainer,
+            boxSizing: 'border-box',
+          }}
+        />
+
+        {/* Page-type filter — Local Office vs Coverage Area, sourced from city_pages.city_type */}
+        <div style={{ display: 'flex', gap: '4px' }}>
+          {([
+            { key: 'all', label: 'All Types' },
+            { key: 'local-office', label: 'Local Office' },
+            { key: 'coverage-area', label: 'Coverage Area' },
+          ] as const).map(opt => {
+            const isActive = pageTypeFilter === opt.key;
+            return (
+              <button
+                key={opt.key}
+                type="button"
+                className={`page-type-pill${isActive ? ' pt-active' : ''}`}
+                onClick={() => setPageTypeFilter(opt.key)}
+                style={{
+                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  padding: '6px 12px',
+                  borderRadius: '9999px',
+                  border: isActive ? `1px solid ${CERULEAN}` : `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+                  background: isActive ? CERULEAN : 'transparent',
+                  color: isActive ? '#fff' : MIDNIGHT,
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* A–Z strip — hidden while searching (only applies to the full unfiltered list) */}
       {loadStatus === 'done' && !searching && (
@@ -242,9 +319,9 @@ export default function CitiesAdminPage() {
             alignItems: 'center',
           }}
         >
-          {['All', ...LETTERS].map(letter => {
-            const isAll = letter === 'All';
-            const enabled = isAll || availableLetters.has(letter);
+          {['Recent', 'All', ...LETTERS].map(letter => {
+            const isWide = letter === 'Recent' || letter === 'All';
+            const enabled = isWide || availableLetters.has(letter);
             const isActive = activeLetter === letter;
             const cls =
               'az-pill' + (isActive ? ' az-active' : '') + (!enabled ? ' az-disabled' : '');
@@ -255,17 +332,17 @@ export default function CitiesAdminPage() {
                 onClick={() => handleLetterClick(letter)}
                 disabled={!enabled}
                 style={{
-                  fontFamily: 'Nunito, sans-serif',
+                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                   fontSize: '12px',
                   fontWeight: 700,
                   padding: '4px 8px',
-                  borderRadius: '999px',
-                  border: isActive ? `1px solid ${CERULEAN}` : '1px solid rgba(10,27,46,0.18)',
-                  background: isActive ? CERULEAN : '#fff',
+                  borderRadius: '9999px',
+                  border: isActive ? `1px solid ${CERULEAN}` : `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+                  background: isActive ? CERULEAN : 'transparent',
                   color: isActive ? '#fff' : MIDNIGHT,
                   opacity: enabled ? 1 : 0.4,
                   cursor: enabled ? 'pointer' : 'not-allowed',
-                  minWidth: isAll ? 'auto' : '26px',
+                  minWidth: isWide ? 'auto' : '26px',
                 }}
               >
                 {letter}
@@ -276,47 +353,43 @@ export default function CitiesAdminPage() {
       )}
 
       {searching && loadStatus === 'done' && (
-        <p style={{ fontSize: '13px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif', marginBottom: '1rem' }}>
+        <p style={{ fontSize: '13px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif', marginBottom: '1rem' }}>
           {visibleCards.length} result{visibleCards.length !== 1 ? 's' : ''}
         </p>
       )}
 
-      {loadStatus === 'loading' && <p style={{ color: '#5a6a7a' }}>Loading…</p>}
+      {loadStatus === 'loading' && <p style={{ color: ADMIN_COLORS.onSurfaceVariant }}>Loading…</p>}
       {loadStatus === 'error' && (
-        <p style={{ color: CARMINE }}>Failed to load city service pages. Check database connection.</p>
+        <p style={{ color: ADMIN_COLORS.error }}>Failed to load city service pages. Check database connection.</p>
       )}
 
       {loadStatus === 'done' && (
-        <div ref={listTopRef} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div ref={listTopRef} className="city-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start' }}>
           {visibleCards.map(card => {
-            // Emit an invisible scroll anchor before the first city of each new letter
-            // (only meaningful when not searching, since the strip is hidden then).
-            const showAnchor = !searching && card.letter !== lastLetter;
-            if (showAnchor) lastLetter = card.letter;
-
             const activeCats = card.categories.filter(c => c.rows.length > 0);
             const hasUncategorized = card.uncategorized.length > 0;
 
             return (
               <div key={card.slug} data-letter={card.letter}>
-                {showAnchor && (
-                  <div
-                    id={`letter-${card.letter}`}
-                    style={{ position: 'relative', top: '-16px', height: 0 }}
-                    aria-hidden
-                  />
-                )}
                 <div style={cardStyle}>
                   {/* Header */}
                   <div style={cardHeader}>
-                    <span style={{ fontFamily: 'Industry, sans-serif', fontWeight: 700, fontSize: '18px', color: MIDNIGHT }}>
+                    <span style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '18px', color: MIDNIGHT }}>
                       {card.name}
                     </span>
                     <Link
                       href={`/admin/city/${card.slug}`}
-                      style={{ fontFamily: 'Nunito, sans-serif', fontSize: '13px', fontWeight: 700, color: CARMINE, textDecoration: 'none' }}
+                      className="edit-city-btn"
+                      style={{
+                        background: CERULEAN, color: '#fff', textDecoration: 'none',
+                        padding: '0.4rem 0.9rem', borderRadius: '9999px',
+                        display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+                        fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontWeight: 700, fontSize: '11px', letterSpacing: '0.03em',
+                        boxShadow: ADMIN_SHADOWS.sm, whiteSpace: 'nowrap',
+                      }}
                     >
-                      Edit City →
+                      <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>location_city</span>
+                      EDIT CITY PAGE
                     </Link>
                   </div>
 
@@ -324,10 +397,17 @@ export default function CitiesAdminPage() {
                   {card.emergency && (
                     <Link
                       href={`/admin/city-service/${card.slug}/${card.emergency.service_slug}`}
-                      style={{ ...rowBase, borderTop: 'none', textDecoration: 'none', color: CARMINE, fontWeight: 700 }}
+                      style={{ ...rowBase, borderTop: 'none', textDecoration: 'none' }}
                     >
-                      <span>Emergency</span>
-                      <span style={{ fontSize: '13px', fontWeight: 700 }}>Edit →</span>
+                      <span style={{
+                        color: '#fff', fontWeight: 700, fontSize: '13px',
+                        textTransform: 'uppercase', letterSpacing: '0.04em',
+                      }}>
+                        Emergency
+                      </span>
+                      <span style={{ color: '#fff', fontWeight: 700, fontSize: '13px', textDecoration: 'underline' }}>
+                        Edit service page &gt;
+                      </span>
                     </Link>
                   )}
 
@@ -344,22 +424,22 @@ export default function CitiesAdminPage() {
                           style={{ ...rowBase, cursor: 'pointer', color: MIDNIGHT, userSelect: 'none' }}
                         >
                           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700 }}>
-                            <span style={{ fontSize: '11px', color: '#5a6a7a' }}>{isOpen ? '▾' : '▸'}</span>
+                            <span style={{ fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant }}>{isOpen ? '▾' : '▸'}</span>
                             {cat.label}
                           </span>
                           <span style={{
                             fontSize: '12px',
                             fontWeight: 700,
-                            color: '#5a6a7a',
-                            background: 'rgba(10,27,46,0.06)',
-                            borderRadius: '999px',
+                            color: ADMIN_COLORS.onSurfaceVariant,
+                            background: ADMIN_COLORS.surfaceContainerHighest,
+                            borderRadius: '9999px',
                             padding: '1px 9px',
                           }}>
                             {cat.rows.length}
                           </span>
                         </div>
                         {isOpen && (
-                          <div style={{ background: '#fafaf9' }}>
+                          <div style={{ background: ADMIN_COLORS.surfaceContainerLowest }}>
                             {cat.rows.map(r => (
                               <Link
                                 key={r.service_slug}
@@ -370,15 +450,16 @@ export default function CitiesAdminPage() {
                                   justifyContent: 'space-between',
                                   alignItems: 'center',
                                   padding: '0.5rem 1rem 0.5rem 2.25rem',
-                                  borderTop: '1px solid rgba(10,27,46,0.05)',
-                                  fontFamily: 'Nunito, sans-serif',
+                                  borderTop: `1px solid ${ADMIN_COLORS.outlineVariant}14`,
+                                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                                   fontSize: '14px',
+                                  fontWeight: 600,
                                   color: MIDNIGHT,
                                   textDecoration: 'none',
                                 }}
                               >
                                 <span>{toDisplayName(r.service_slug)}</span>
-                                <span style={{ fontSize: '13px', fontWeight: 700, color: CARMINE }}>Edit →</span>
+                                <span style={{ fontSize: '13px', fontWeight: 700, color: '#fff', textDecoration: 'underline' }}>Edit service page &gt;</span>
                               </Link>
                             ))}
                           </div>
@@ -397,25 +478,25 @@ export default function CitiesAdminPage() {
                           role="button"
                           aria-expanded={isOpen}
                           onClick={() => toggle(key)}
-                          style={{ ...rowBase, cursor: 'pointer', color: '#5a6a7a', userSelect: 'none' }}
+                          style={{ ...rowBase, cursor: 'pointer', color: ADMIN_COLORS.onSurfaceVariant, userSelect: 'none' }}
                         >
                           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700 }}>
-                            <span style={{ fontSize: '11px', color: '#5a6a7a' }}>{isOpen ? '▾' : '▸'}</span>
+                            <span style={{ fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant }}>{isOpen ? '▾' : '▸'}</span>
                             Uncategorized
                           </span>
                           <span style={{
                             fontSize: '12px',
                             fontWeight: 700,
-                            color: '#5a6a7a',
-                            background: 'rgba(10,27,46,0.06)',
-                            borderRadius: '999px',
+                            color: ADMIN_COLORS.onSurfaceVariant,
+                            background: ADMIN_COLORS.surfaceContainerHighest,
+                            borderRadius: '9999px',
                             padding: '1px 9px',
                           }}>
                             {card.uncategorized.length}
                           </span>
                         </div>
                         {isOpen && (
-                          <div style={{ background: '#fafaf9' }}>
+                          <div style={{ background: ADMIN_COLORS.surfaceContainerLowest }}>
                             {card.uncategorized.map(r => (
                               <Link
                                 key={r.service_slug}
@@ -426,15 +507,16 @@ export default function CitiesAdminPage() {
                                   justifyContent: 'space-between',
                                   alignItems: 'center',
                                   padding: '0.5rem 1rem 0.5rem 2.25rem',
-                                  borderTop: '1px solid rgba(10,27,46,0.05)',
-                                  fontFamily: 'Nunito, sans-serif',
+                                  borderTop: `1px solid ${ADMIN_COLORS.outlineVariant}14`,
+                                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                                   fontSize: '14px',
+                                  fontWeight: 600,
                                   color: MIDNIGHT,
                                   textDecoration: 'none',
                                 }}
                               >
                                 <span>{toDisplayName(r.service_slug)}</span>
-                                <span style={{ fontSize: '13px', fontWeight: 700, color: CARMINE }}>Edit →</span>
+                                <span style={{ fontSize: '13px', fontWeight: 700, color: '#fff', textDecoration: 'underline' }}>Edit service page &gt;</span>
                               </Link>
                             ))}
                           </div>
@@ -448,7 +530,7 @@ export default function CitiesAdminPage() {
           })}
 
           {visibleCards.length === 0 && (
-            <p style={{ color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>
+            <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
               {searching ? 'No cities match your search.' : 'No city service pages found.'}
             </p>
           )}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import ChangelogModal from './ChangelogModal';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface PageEntry {
   label: string;
@@ -34,10 +35,10 @@ export default function AdminPageList({
   const [modal, setModal] = useState<{ slug: string; label: string } | null>(null);
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '3rem 2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '0.5rem', color: '#0A1B2E' }}>CMS Admin</h1>
-      <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem' }}>Select a service category page to edit.</p>
-      <p style={{ color: '#9ca3af', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, marginBottom: '0.75rem' }}>
+    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '3rem 2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+      <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', marginBottom: '0.5rem', color: ADMIN_COLORS.onSurface }}>CMS Admin</h1>
+      <p style={{ color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginBottom: '2rem' }}>Select a service category page to edit.</p>
+      <p style={{ color: `${ADMIN_COLORS.onSurfaceVariant}66`, fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 700, marginBottom: '0.75rem' }}>
         Service Category Pages
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -47,23 +48,24 @@ export default function AdminPageList({
             <div
               key={slug}
               style={{
-                background: '#fff',
-                border: '1px solid #e5e7eb',
-                borderRadius: '8px',
+                background: ADMIN_COLORS.surfaceContainerLow,
+                border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+                borderRadius: '1.5rem',
                 padding: '1rem 1.25rem',
+                boxShadow: ADMIN_SHADOWS.elegant,
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div>
-                  <span style={{ fontWeight: 600, fontSize: '0.95rem', color: '#0A1B2E' }}>{label}</span>
+                  <span style={{ fontWeight: 600, fontSize: '0.875rem', color: ADMIN_COLORS.onSurface }}>{label}</span>
                   {edit?.updatedByName ? (
-                    <p style={{ margin: '0.2rem 0 0', fontSize: '0.8rem', color: '#9ca3af' }}>
+                    <p style={{ margin: '0.2rem 0 0', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                       Last edited by{' '}
                       <button
                         onClick={() => setModal({ slug, label })}
                         style={{
                           background: 'none', border: 'none', padding: 0,
-                          color: '#1560E6', cursor: 'pointer', fontSize: '0.8rem',
+                          color: ADMIN_COLORS.cerulean, cursor: 'pointer', fontSize: '12px',
                           textDecoration: 'underline', fontWeight: 600,
                         }}
                       >
@@ -73,20 +75,20 @@ export default function AdminPageList({
                       {edit.updatedAt ? formatShortDate(edit.updatedAt) : ''}
                     </p>
                   ) : (
-                    <p style={{ margin: '0.2rem 0 0', fontSize: '0.8rem', color: '#d1d5db' }}>—</p>
+                    <p style={{ margin: '0.2rem 0 0', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>—</p>
                   )}
                 </div>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                   <Link
                     href={`/admin/${slug}`}
-                    style={{ background: '#BC0E0E', color: '#fff', textDecoration: 'none', padding: '0.4rem 1rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 600 }}
+                    style={{ background: 'transparent', color: ADMIN_COLORS.onSurfaceVariant, border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`, textDecoration: 'none', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600 }}
                   >
                     Edit
                   </Link>
                   <Link
                     href={path}
                     target="_blank"
-                    style={{ background: '#f3f4f6', color: '#374151', textDecoration: 'none', padding: '0.4rem 1rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 600 }}
+                    style={{ background: ADMIN_COLORS.surfaceContainerHighest, color: ADMIN_COLORS.onSurface, textDecoration: 'none', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600 }}
                   >
                     View ↗
                   </Link>

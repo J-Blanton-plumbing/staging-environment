@@ -3,6 +3,7 @@ import { getEpCmsContent, updateEpCmsContent } from '@/lib/cms/emergency-plumbin
 import { getSession } from '@/lib/auth/session';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
+import { errorCode } from '@/lib/cms/errors';
 
 export async function GET() {
   try {
@@ -28,7 +29,9 @@ export async function PUT(req: NextRequest) {
     if (body._ping) return NextResponse.json({ ok: true });
 
     const updatedBy = session?.userId ?? null;
-    await updateEpCmsContent(body, updatedBy);
+    // Brief 75/78 (DP-1): optimistic concurrency — reject a stale direct edit (409).
+    const expectedVersion = typeof body.version === 'number' ? body.version : null;
+    const version = await updateEpCmsContent(body, updatedBy, expectedVersion);
 
     if (updatedBy) {
       const client = await pool.connect();
@@ -39,8 +42,14 @@ export async function PUT(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, version });
   } catch (err) {
+    if (errorCode(err) === '409') {
+      return NextResponse.json(
+        { error: err instanceof Error ? err.message : 'Conflict' },
+        { status: 409 }
+      );
+    }
     console.error('[cms/emergency-plumbing PUT]', err);
     return NextResponse.json({ error: 'Failed to save' }, { status: 500 });
   }

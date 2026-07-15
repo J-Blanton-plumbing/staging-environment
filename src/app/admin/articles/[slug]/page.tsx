@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface ArticleData {
   slug: string;
@@ -81,10 +82,10 @@ const EMPTY: ArticleData = {
 
 const LABEL: React.CSSProperties = {
   display: 'block',
-  fontFamily: 'Nunito, sans-serif',
+  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   fontSize: '13px',
-  fontWeight: 700,
-  color: '#0A1B2E',
+  fontWeight: 600,
+  color: ADMIN_COLORS.onSurface,
   marginBottom: '0.25rem',
 };
 
@@ -92,12 +93,27 @@ const INPUT: React.CSSProperties = {
   display: 'block',
   width: '100%',
   padding: '0.5rem',
-  border: '1px solid rgba(10,27,46,0.2)',
-  borderRadius: '6px',
-  fontFamily: 'Nunito, sans-serif',
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+  borderRadius: '0.5rem',
+  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   fontSize: '0.9rem',
-  color: '#0A1B2E',
+  color: ADMIN_COLORS.onSurface,
+  background: ADMIN_COLORS.surfaceContainerLow,
   boxSizing: 'border-box',
+};
+
+const SECTION: React.CSSProperties = {
+  background: ADMIN_COLORS.surfaceContainerLow,
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+  borderRadius: '1.5rem',
+  padding: '1.5rem',
+  marginBottom: '1.5rem',
+  boxShadow: ADMIN_SHADOWS.elegant,
+};
+const SECTION_HEADING: React.CSSProperties = {
+  fontFamily: 'var(--font-outfit), system-ui, sans-serif', color: ADMIN_COLORS.onSurface,
+  fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
+  margin: '0 0 1rem',
 };
 
 // ── Fix 1: Hero Image Uploader ───────────────────────────────────────────────
@@ -144,13 +160,13 @@ function HeroImageField({
       style={{
         padding: '0.3rem 0.9rem',
         fontSize: '12px',
-        fontFamily: 'Nunito, sans-serif',
+        fontFamily: 'var(--font-nunito), system-ui, sans-serif',
         fontWeight: 700,
-        border: '1px solid rgba(10,27,46,0.2)',
-        borderRadius: '4px 4px 0 0',
-        borderBottom: tab === t ? '1px solid #fff' : undefined,
-        background: tab === t ? '#fff' : '#f5f5f5',
-        color: '#0A1B2E',
+        border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+        borderRadius: '0.5rem 0.5rem 0 0',
+        borderBottom: tab === t ? `2px solid ${ADMIN_COLORS.cerulean}` : undefined,
+        background: tab === t ? ADMIN_COLORS.surfaceContainerHigh : ADMIN_COLORS.surfaceContainer,
+        color: tab === t ? ADMIN_COLORS.cerulean : ADMIN_COLORS.onSurfaceVariant,
         cursor: 'pointer',
         marginRight: '2px',
         position: 'relative',
@@ -172,22 +188,22 @@ function HeroImageField({
           <img
             src={value}
             alt="Hero preview"
-            style={{ maxHeight: '120px', maxWidth: '100%', borderRadius: '6px', border: '1px solid rgba(10,27,46,0.15)' }}
+            style={{ maxHeight: '120px', maxWidth: '100%', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66` }}
           />
-          <div style={{ fontSize: '11px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif', marginTop: '0.25rem', wordBreak: 'break-all' }}>
+          <div style={{ fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif', marginTop: '0.25rem', wordBreak: 'break-all' }}>
             {value}
           </div>
         </div>
       )}
 
       {/* tab bar */}
-      <div style={{ borderBottom: '1px solid rgba(10,27,46,0.2)', marginBottom: 0 }}>
+      <div style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: 0 }}>
         {tabBtn('Upload', 'upload')}
         {tabBtn('URL', 'url')}
       </div>
 
       {/* tab panels */}
-      <div style={{ border: '1px solid rgba(10,27,46,0.2)', borderTop: 'none', borderRadius: '0 4px 4px 4px', padding: '0.75rem', background: '#fff' }}>
+      <div style={{ border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderTop: 'none', borderRadius: '0 0.5rem 0.5rem 0.5rem', padding: '0.75rem', background: ADMIN_COLORS.surfaceContainer }}>
         {tab === 'upload' ? (
           <div>
             <input
@@ -196,24 +212,25 @@ function HeroImageField({
               accept="image/jpeg,image/png,image/webp"
               onChange={handleFileChange}
               disabled={uploading}
-              style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.875rem' }}
+              style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '0.875rem' }}
             />
             {uploading && (
-              <span style={{ marginLeft: '0.75rem', fontSize: '12px', fontFamily: 'Nunito, sans-serif', color: '#5a6a7a' }}>
+              <span style={{ marginLeft: '0.75rem', fontSize: '12px', fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                 Uploading…
               </span>
             )}
             {uploadError && (
-              <div style={{ marginTop: '0.35rem', fontSize: '12px', color: '#BC0E0E', fontFamily: 'Nunito, sans-serif' }}>
+              <div style={{ marginTop: '0.35rem', fontSize: '12px', color: ADMIN_COLORS.error, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
                 {uploadError}
               </div>
             )}
-            <div style={{ marginTop: '0.4rem', fontSize: '11px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>
+            <div style={{ marginTop: '0.4rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
               JPEG, PNG, or WebP · max 10 MB
             </div>
           </div>
         ) : (
           <input
+            className="field"
             type="url"
             value={value}
             onChange={e => onChange(e.target.value)}
@@ -296,10 +313,10 @@ function CategoriesField({
                 alignItems: 'center',
                 gap: '0.3rem',
                 padding: '0.25rem 0.6rem',
-                borderRadius: '999px',
-                background: cat === selectedPrimary?.name ? '#0A1B2E' : '#BC0E0E',
-                color: '#F9F3EC',
-                fontFamily: 'Nunito, sans-serif',
+                borderRadius: '9999px',
+                background: ADMIN_COLORS.cerulean,
+                color: '#fff',
+                fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                 fontSize: '12px',
                 fontWeight: 700,
               }}
@@ -311,7 +328,7 @@ function CategoriesField({
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: 'rgba(249,243,236,0.8)',
+                  color: 'rgba(255,255,255,0.8)',
                   cursor: 'pointer',
                   padding: '0',
                   fontSize: '13px',
@@ -329,18 +346,18 @@ function CategoriesField({
 
       {/* Step 1: primary category */}
       <div style={{
-        border: '1px solid rgba(10,27,46,0.2)',
-        borderRadius: '6px',
+        border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+        borderRadius: '0.75rem',
         overflow: 'hidden',
         marginBottom: selectedPrimary && selectedPrimary.sub.length > 0 ? '0.6rem' : 0,
       }}>
         <div style={{
           padding: '0.4rem 0.75rem',
-          background: '#f5f5f5',
-          fontFamily: 'Nunito, sans-serif',
+          background: ADMIN_COLORS.surfaceContainer,
+          fontFamily: 'var(--font-nunito), system-ui, sans-serif',
           fontSize: '11px',
           fontWeight: 700,
-          color: '#5a6a7a',
+          color: ADMIN_COLORS.onSurfaceVariant,
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
         }}>
@@ -356,11 +373,11 @@ function CategoriesField({
                 onClick={() => selectPrimary(sc.name)}
                 style={{
                   padding: '0.3rem 0.75rem',
-                  borderRadius: '999px',
-                  border: active ? '1.5px solid #0A1B2E' : '1.5px solid rgba(10,27,46,0.2)',
-                  background: active ? '#0A1B2E' : '#fff',
-                  color: active ? '#F9F3EC' : '#0A1B2E',
-                  fontFamily: 'Nunito, sans-serif',
+                  borderRadius: '9999px',
+                  border: active ? `1.5px solid ${ADMIN_COLORS.cerulean}` : `1.5px solid ${ADMIN_COLORS.outlineVariant}66`,
+                  background: active ? ADMIN_COLORS.cerulean : 'transparent',
+                  color: active ? '#fff' : ADMIN_COLORS.onSurfaceVariant,
+                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                   fontSize: '12px',
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -376,17 +393,17 @@ function CategoriesField({
       {/* Step 2: sub-services (only shown when primary has subs) */}
       {selectedPrimary && selectedPrimary.sub.length > 0 && (
         <div style={{
-          border: '1px solid rgba(10,27,46,0.2)',
-          borderRadius: '6px',
+          border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+          borderRadius: '0.75rem',
           overflow: 'hidden',
         }}>
           <div style={{
             padding: '0.4rem 0.75rem',
-            background: '#f5f5f5',
-            fontFamily: 'Nunito, sans-serif',
+            background: ADMIN_COLORS.surfaceContainer,
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
             fontSize: '11px',
             fontWeight: 700,
-            color: '#5a6a7a',
+            color: ADMIN_COLORS.onSurfaceVariant,
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
             display: 'flex',
@@ -400,8 +417,9 @@ function CategoriesField({
           </div>
 
           {/* Search bar */}
-          <div style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid rgba(10,27,46,0.1)' }}>
+          <div style={{ padding: '0.5rem 0.75rem', borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}40` }}>
             <input
+              className="field"
               type="search"
               placeholder="Search sub-services…"
               value={subSearch}
@@ -417,7 +435,7 @@ function CategoriesField({
           {/* Sub-service list */}
           <div style={{ padding: '0.5rem 0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
             {availableSubs.length === 0 ? (
-              <span style={{ fontSize: '12px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif', fontStyle: 'italic' }}>
+              <span style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontStyle: 'italic' }}>
                 No matches
               </span>
             ) : (
@@ -432,11 +450,11 @@ function CategoriesField({
                     disabled={disabled}
                     style={{
                       padding: '0.3rem 0.75rem',
-                      borderRadius: '999px',
-                      border: selected ? '1.5px solid #BC0E0E' : '1.5px solid rgba(10,27,46,0.2)',
-                      background: selected ? '#BC0E0E' : '#fff',
-                      color: selected ? '#F9F3EC' : disabled ? '#aaa' : '#0A1B2E',
-                      fontFamily: 'Nunito, sans-serif',
+                      borderRadius: '9999px',
+                      border: selected ? `1.5px solid ${ADMIN_COLORS.cerulean}` : `1.5px solid ${ADMIN_COLORS.outlineVariant}66`,
+                      background: selected ? ADMIN_COLORS.cerulean : 'transparent',
+                      color: selected ? '#fff' : disabled ? ADMIN_COLORS.outlineVariant : ADMIN_COLORS.onSurfaceVariant,
+                      fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                       fontSize: '12px',
                       fontWeight: 600,
                       cursor: disabled ? 'not-allowed' : 'pointer',
@@ -530,21 +548,21 @@ export default function ArticleAdminPage() {
   }
 
   if (loadStatus === 'loading') {
-    return <div style={{ padding: '2rem', fontFamily: 'Nunito, sans-serif' }}>Loading…</div>;
+    return <div style={{ padding: '2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: ADMIN_COLORS.onSurfaceVariant }}>Loading…</div>;
   }
 
   if (loadStatus === 'not-found') {
     return (
-      <div style={{ padding: '2rem', fontFamily: 'Nunito, sans-serif' }}>
-        <p style={{ color: '#BC0E0E' }}>Article &ldquo;{slug}&rdquo; not found in the database. Run the Brief 45 migration first.</p>
+      <div style={{ padding: '2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+        <p style={{ color: ADMIN_COLORS.error }}>Article &ldquo;{slug}&rdquo; not found in the database. Run the Brief 45 migration first.</p>
       </div>
     );
   }
 
   if (loadStatus === 'error') {
     return (
-      <div style={{ padding: '2rem', fontFamily: 'Nunito, sans-serif' }}>
-        <p style={{ color: '#BC0E0E' }}>Failed to load article. The cms_articles table may not exist — run the Brief 45 migration.</p>
+      <div style={{ padding: '2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+        <p style={{ color: ADMIN_COLORS.error }}>Failed to load article. The cms_articles table may not exist — run the Brief 45 migration.</p>
       </div>
     );
   }
@@ -575,79 +593,101 @@ export default function ArticleAdminPage() {
       />
 
       <div style={{ padding: '2rem', maxWidth: '800px', fontFamily: 'system-ui, sans-serif' }}>
+        <style>{`
+          .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+          .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+          .field { transition: box-shadow 0.15s ease, border-color 0.15s ease; }
+          .field:focus { outline: none; border-color: ${ADMIN_COLORS.cerulean}; box-shadow: 0 0 0 2px ${ADMIN_COLORS.cerulean}66; }
+        `}</style>
         <form onSubmit={handleSave}>
-          {/* Title */}
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label style={LABEL}>Title</label>
-            <input
-              type="text"
-              value={form.title}
-              onChange={e => set('title', e.target.value)}
-              placeholder="Article title"
-              style={INPUT}
-            />
-          </div>
+          {/* Article Details */}
+          <div style={SECTION}>
+            <h3 style={SECTION_HEADING}>Article Details</h3>
+            {/* Title */}
+            <div style={{ marginBottom: '1.25rem' }}>
+              <label style={LABEL}>Title</label>
+              <input
+                className="field"
+                type="text"
+                value={form.title}
+                onChange={e => set('title', e.target.value)}
+                placeholder="Article title"
+                style={INPUT}
+              />
+            </div>
 
-          {/* Fix 1: Hero Image Uploader */}
-          <HeroImageField value={form.image} onChange={url => set('image', url)} />
+            {/* Fix 1: Hero Image Uploader */}
+            <HeroImageField value={form.image} onChange={url => set('image', url)} />
 
-          {/* Fix 3: Categories */}
-          <CategoriesField value={form.categories} onChange={cats => set('categories', cats)} />
+            {/* Fix 3: Categories */}
+            <CategoriesField value={form.categories} onChange={cats => set('categories', cats)} />
 
-          {/* Fix 4: Excerpt as resizable textarea */}
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label style={LABEL}>Excerpt</label>
-            <textarea
-              value={form.excerpt}
-              onChange={e => set('excerpt', e.target.value)}
-              placeholder="One or two sentences summarising the article"
-              rows={3}
-              style={{ ...INPUT, resize: 'vertical', minHeight: '80px', lineHeight: 1.5 }}
-            />
+            {/* Fix 4: Excerpt as resizable textarea */}
+            <div style={{ marginBottom: 0 }}>
+              <label style={LABEL}>Excerpt</label>
+              <textarea
+                className="field"
+                value={form.excerpt}
+                onChange={e => set('excerpt', e.target.value)}
+                placeholder="One or two sentences summarising the article"
+                rows={3}
+                style={{ ...INPUT, resize: 'vertical', minHeight: '80px', lineHeight: 1.5 }}
+              />
+            </div>
           </div>
 
           {/* Body with HTML / Preview toggle (shared RichTextField — Brief 77) */}
-          <RichTextField label="Body" value={form.body} onChange={v => set('body', v)} rows={16} />
-
-          {/* Status */}
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label style={LABEL}>Status</label>
-            <select
-              value={form.status}
-              onChange={e => set('status', e.target.value)}
-              style={INPUT}
-            >
-              <option value="draft">Draft</option>
-              <option value="published">Published</option>
-            </select>
+          <div style={SECTION}>
+            <h3 style={SECTION_HEADING}>Body</h3>
+            <RichTextField label="Body" value={form.body} onChange={v => set('body', v)} rows={16} />
           </div>
 
-          <MetaSection
-            metaTitle={form.metaTitle}
-            metaDescription={form.metaDescription}
-            onMetaTitleChange={v => set('metaTitle', v)}
-            onMetaDescriptionChange={v => set('metaDescription', v)}
-          />
+          {/* Publishing */}
+          <div style={SECTION}>
+            <h3 style={SECTION_HEADING}>Publishing</h3>
+            {/* Status */}
+            <div style={{ marginBottom: '1.25rem' }}>
+              <label style={LABEL}>Status</label>
+              <select
+                className="field"
+                value={form.status}
+                onChange={e => set('status', e.target.value)}
+                style={INPUT}
+              >
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+            </div>
+
+            <MetaSection
+              metaTitle={form.metaTitle}
+              metaDescription={form.metaDescription}
+              onMetaTitleChange={v => set('metaTitle', v)}
+              onMetaDescriptionChange={v => set('metaDescription', v)}
+            />
+          </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1.5rem' }}>
             <button
+              className="admin-cta-btn"
               type="submit"
               disabled={saveStatus === 'saving'}
               style={{
-                background: '#BC0E0E', border: 'none', borderRadius: '6px',
-                padding: '0.6rem 1.5rem', color: '#F9F3EC',
-                fontFamily: 'Industry, sans-serif', fontWeight: 600, fontSize: '14px',
+                background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
+                padding: '0.6rem 1.5rem', color: '#fff',
+                fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 600, fontSize: '14px',
                 cursor: saveStatus === 'saving' ? 'not-allowed' : 'pointer',
                 opacity: saveStatus === 'saving' ? 0.7 : 1,
+                boxShadow: ADMIN_SHADOWS.xl,
               }}
             >
               {saveStatus === 'saving' ? 'Saving…' : 'Save Article'}
             </button>
             {saveMsg && (
               <span style={{
-                fontFamily: 'Nunito, sans-serif',
+                fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                 fontSize: '13px',
-                color: saveStatus === 'error' ? '#BC0E0E' : '#15803d',
+                color: saveStatus === 'error' ? ADMIN_COLORS.error : ADMIN_COLORS.success,
               }}>
                 {saveMsg}
               </span>

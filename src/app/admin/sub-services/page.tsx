@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 interface SubServiceRow {
   slug: string;
@@ -27,14 +28,17 @@ function formatDate(iso?: string | null): string {
 const STATUS_STYLE = (status: string): React.CSSProperties => ({
   display: 'inline-block',
   padding: '2px 8px',
-  borderRadius: '999px',
+  borderRadius: '9999px',
   fontSize: '11px',
   fontWeight: 700,
-  fontFamily: 'Nunito, sans-serif',
+  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   whiteSpace: 'nowrap',
-  background: status === 'published' ? '#1560E6' : '#0A1B2E',
-  color: '#F9F3EC',
+  background: ADMIN_COLORS.surfaceContainerHighest,
+  color: `${ADMIN_COLORS.onSurfaceVariant}CC`,
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}1A`,
 });
+
+const SELECT_CHEVRON = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4c6cd'/%3E%3C/svg%3E")`;
 
 export default function SubServicesAdminPage() {
   const [rows, setRows] = useState<SubServiceRow[]>([]);
@@ -78,14 +82,14 @@ export default function SubServicesAdminPage() {
 
   const SELECT_STYLE: React.CSSProperties = {
     padding: '0.45rem 2rem 0.45rem 0.75rem',
-    border: '1px solid rgba(10,27,46,0.2)',
-    borderRadius: '6px',
+    border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+    borderRadius: '0.75rem',
     fontSize: '0.875rem',
-    fontFamily: 'Nunito, sans-serif',
-    background: '#fff',
+    fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+    background: ADMIN_COLORS.surfaceContainer,
     cursor: 'pointer',
     appearance: 'none',
-    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6a7a'/%3E%3C/svg%3E")`,
+    backgroundImage: SELECT_CHEVRON,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'right 8px center',
   };
@@ -94,10 +98,15 @@ export default function SubServicesAdminPage() {
 
   return (
     <main style={{ padding: '2rem', maxWidth: '1100px', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontFamily: 'Industry, sans-serif', color: '#0A1B2E', marginBottom: '0.25rem' }}>
+      {/* row hover (inline styles can't express :hover) */}
+      <style>{`
+        .admin-subservices-row:hover { background: ${ADMIN_COLORS.surfaceContainerHigh}66; }
+      `}</style>
+
+      <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
         Sub-Service Pages
       </h1>
-      <p style={{ color: '#5a6a7a', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
+      <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginBottom: '1.25rem' }}>
         {loadStatus === 'done' ? `${rows.length} sub-service pages` : ' '}
       </p>
 
@@ -110,18 +119,19 @@ export default function SubServicesAdminPage() {
           onChange={e => setQuery(e.target.value)}
           style={{
             padding: '0.45rem 0.75rem',
-            border: '1px solid rgba(10,27,46,0.2)',
-            borderRadius: '6px',
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+            borderRadius: '0.75rem',
             fontSize: '0.875rem',
-            fontFamily: 'Nunito, sans-serif',
-            color: '#0A1B2E',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            color: ADMIN_COLORS.onSurface,
+            background: ADMIN_COLORS.surfaceContainer,
             width: '240px',
             boxSizing: 'border-box',
           }}
         />
 
         <select value={filterParent} onChange={e => setFilterParent(e.target.value)}
-          style={{ ...SELECT_STYLE, color: filterParent ? '#0A1B2E' : '#5a6a7a' }}>
+          style={{ ...SELECT_STYLE, color: filterParent ? ADMIN_COLORS.onSurface : ADMIN_COLORS.onSurfaceVariant }}>
           <option value="">All parent pages</option>
           {allParents.map(p => (
             <option key={p} value={p}>{catMap[p] ?? p}</option>
@@ -130,7 +140,7 @@ export default function SubServicesAdminPage() {
         </select>
 
         <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)}
-          style={{ ...SELECT_STYLE, color: filterStatus ? '#0A1B2E' : '#5a6a7a' }}>
+          style={{ ...SELECT_STYLE, color: filterStatus ? ADMIN_COLORS.onSurface : ADMIN_COLORS.onSurfaceVariant }}>
           <option value="">All statuses</option>
           <option value="published">Published</option>
           <option value="draft">Draft</option>
@@ -141,13 +151,13 @@ export default function SubServicesAdminPage() {
             onClick={() => { setQuery(''); setFilterParent(''); setFilterStatus(''); }}
             style={{
               padding: '0.45rem 0.9rem',
-              border: '1px solid rgba(10,27,46,0.2)',
-              borderRadius: '6px',
+              border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+              borderRadius: '9999px',
               fontSize: '0.875rem',
-              fontFamily: 'Nunito, sans-serif',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
               fontWeight: 700,
-              color: '#BC0E0E',
-              background: '#fff',
+              color: ADMIN_COLORS.onSurfaceVariant,
+              background: 'transparent',
               cursor: 'pointer',
             }}
           >
@@ -155,30 +165,30 @@ export default function SubServicesAdminPage() {
           </button>
         )}
         {hasActiveFilter && loadStatus === 'done' && (
-          <span style={{ fontSize: '13px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif' }}>
+          <span style={{ fontSize: '13px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
             {filtered.length} of {rows.length}
           </span>
         )}
       </div>
 
-      {loadStatus === 'loading' && <p style={{ color: '#0A1B2E' }}>Loading…</p>}
-      {loadStatus === 'error' && <p style={{ color: '#BC0E0E' }}>Failed to load sub-service pages. Please refresh.</p>}
+      {loadStatus === 'loading' && <p style={{ color: ADMIN_COLORS.onSurfaceVariant }}>Loading…</p>}
+      {loadStatus === 'error' && <p style={{ color: ADMIN_COLORS.error }}>Failed to load sub-service pages. Please refresh.</p>}
 
       {loadStatus === 'done' && (
-        <div style={{ overflowX: 'auto' }}>
+        <div style={{ background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}1A`, borderRadius: '2rem', overflowX: 'auto', boxShadow: ADMIN_SHADOWS.elegant }}>
           {/* Header row */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: gridCols,
             gap: '0.75rem',
-            padding: '0.5rem 0.75rem',
-            borderBottom: '2px solid rgba(10,27,46,0.12)',
-            fontSize: '12px',
+            padding: '0.9rem 1.25rem',
+            borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+            fontSize: '10px',
             fontWeight: 700,
-            color: 'rgba(10,27,46,0.6)',
+            color: `${ADMIN_COLORS.onSurfaceVariant}66`,
             textTransform: 'uppercase',
-            letterSpacing: '0.04em',
-            fontFamily: 'Nunito, sans-serif',
+            letterSpacing: '0.2em',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
             minWidth: '700px',
           }}>
             <span>Title</span>
@@ -189,32 +199,34 @@ export default function SubServicesAdminPage() {
           </div>
 
           {filtered.length === 0 && (
-            <p style={{ color: '#5a6a7a', padding: '1rem 0.75rem' }}>No sub-service pages found.</p>
+            <p style={{ color: ADMIN_COLORS.onSurfaceVariant, padding: '1rem 1.25rem' }}>No sub-service pages found.</p>
           )}
 
-          {filtered.map(row => (
+          {filtered.map((row, i) => (
             <div
               key={row.slug}
+              className="admin-subservices-row"
               style={{
                 display: 'grid',
                 gridTemplateColumns: gridCols,
                 gap: '0.75rem',
-                padding: '0.75rem',
-                borderBottom: '1px solid rgba(10,27,46,0.08)',
+                padding: '0.9rem 1.25rem',
+                borderBottom: i < filtered.length - 1 ? `1px solid ${ADMIN_COLORS.outlineVariant}1A` : 'none',
                 alignItems: 'center',
                 minWidth: '700px',
+                transition: 'background 0.15s ease',
               }}
             >
               {/* Title */}
               <Link
                 href={`/admin/sub-service/${row.slug}`}
-                style={{ fontFamily: 'Nunito, sans-serif', fontSize: '14px', fontWeight: 600, color: '#0A1B2E', textDecoration: 'none' }}
+                style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '14px', fontWeight: 600, color: ADMIN_COLORS.onSurface, textDecoration: 'none' }}
               >
                 {row.title || row.slug}
               </Link>
 
               {/* Parent Page */}
-              <span style={{ fontFamily: 'Nunito, sans-serif', fontSize: '13px', color: row.parent_slug ? '#0A1B2E' : 'rgba(10,27,46,0.4)' }}>
+              <span style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: row.parent_slug ? `${ADMIN_COLORS.onSurfaceVariant}99` : `${ADMIN_COLORS.onSurfaceVariant}66` }}>
                 {row.parent_slug ? (catMap[row.parent_slug] ?? row.parent_slug) : '—'}
               </span>
 
@@ -224,10 +236,10 @@ export default function SubServicesAdminPage() {
               </span>
 
               {/* Last Modified */}
-              <span style={{ fontFamily: 'Nunito, sans-serif', fontSize: '13px', color: '#5a6a7a' }}>
+              <span style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                 {formatDate(row.updated_at)}
                 {row.updated_by_name && (
-                  <span style={{ display: 'block', fontSize: '11px', marginTop: '1px' }}>{row.updated_by_name}</span>
+                  <span style={{ display: 'block', fontSize: '11px', marginTop: '1px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>{row.updated_by_name}</span>
                 )}
               </span>
 
@@ -235,7 +247,7 @@ export default function SubServicesAdminPage() {
               <span>
                 <Link
                   href={`/admin/sub-service/${row.slug}`}
-                  style={{ fontSize: '13px', color: '#BC0E0E', fontWeight: 700, textDecoration: 'none', fontFamily: 'Nunito, sans-serif' }}
+                  style={{ fontSize: '13px', color: ADMIN_COLORS.primary, fontWeight: 700, textDecoration: 'none', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}
                 >
                   Edit
                 </Link>

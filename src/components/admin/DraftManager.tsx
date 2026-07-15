@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { ADMIN_COLORS } from '@/lib/admin/theme';
 
 interface DraftRow {
   id: number;
@@ -127,38 +128,44 @@ export default function DraftManager({ pageType, pageSlug, getContent }: Props) 
   const container: React.CSSProperties = {
     marginTop: '3rem',
     paddingTop: '2rem',
-    borderTop: '2px solid #e5e7eb',
-    fontFamily: 'system-ui, sans-serif',
+    borderTop: `2px solid ${ADMIN_COLORS.outlineVariant}44`,
+    fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   };
   const heading: React.CSSProperties = {
+    fontFamily: 'var(--font-outfit), system-ui, sans-serif',
     fontWeight: 700,
     fontSize: '1.1rem',
-    color: '#0A1B2E',
+    color: ADMIN_COLORS.onSurface,
     marginBottom: '1rem',
   };
   const btnBase: React.CSSProperties = {
     border: 'none',
-    borderRadius: '4px',
+    borderRadius: '9999px',
     fontWeight: 600,
     fontSize: '0.8rem',
     padding: '0.3rem 0.75rem',
     cursor: 'pointer',
   };
-  const btnCerulean: React.CSSProperties = { ...btnBase, background: '#1560E6', color: '#fff' };
-  const btnCarmine: React.CSSProperties = { ...btnBase, background: '#BC0E0E', color: '#fff' };
-  const btnGray: React.CSSProperties = { ...btnBase, background: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db' };
+  const btnCerulean: React.CSSProperties = { ...btnBase, background: ADMIN_COLORS.cerulean, color: '#fff' };
+  const btnError: React.CSSProperties = { ...btnBase, background: ADMIN_COLORS.error, color: ADMIN_COLORS.onError };
+  const btnGray: React.CSSProperties = { ...btnBase, background: ADMIN_COLORS.surfaceContainer, color: ADMIN_COLORS.onSurface, border: `1px solid ${ADMIN_COLORS.outlineVariant}66` };
+  // Publish is a meaningful per-row action, but with one button per draft row it must
+  // not use the solid Cerulean fill (that's reserved for the single page-level primary
+  // CTA — "+ Save as New Draft" above). Use the tinted-accent treatment from the
+  // reference implementation (admin/users.tsx's active-state badge) instead.
+  const btnPublish: React.CSSProperties = { ...btnBase, background: `${ADMIN_COLORS.cerulean}1A`, color: ADMIN_COLORS.cerulean, border: `1px solid ${ADMIN_COLORS.cerulean}33` };
 
   return (
     <div style={container}>
       <h2 style={heading}>Drafts</h2>
 
       {toast && (
-        <div style={{ background: '#dcfce7', border: '1px solid #86efac', borderRadius: '4px', padding: '0.5rem 1rem', marginBottom: '1rem', color: '#15803d', fontSize: '0.875rem', fontWeight: 600 }}>
+        <div style={{ background: `${ADMIN_COLORS.success}22`, border: `1px solid ${ADMIN_COLORS.success}66`, borderRadius: '0.5rem', padding: '0.5rem 1rem', marginBottom: '1rem', color: ADMIN_COLORS.success, fontSize: '0.875rem', fontWeight: 600 }}>
           {toast}
         </div>
       )}
       {toastError && (
-        <div style={{ background: '#fee2e2', border: '1px solid #fca5a5', borderRadius: '4px', padding: '0.5rem 1rem', marginBottom: '1rem', color: '#dc2626', fontSize: '0.875rem', fontWeight: 600 }}>
+        <div style={{ background: `${ADMIN_COLORS.error}22`, border: `1px solid ${ADMIN_COLORS.error}66`, borderRadius: '0.5rem', padding: '0.5rem 1rem', marginBottom: '1rem', color: ADMIN_COLORS.error, fontSize: '0.875rem', fontWeight: 600 }}>
           {toastError}
         </div>
       )}
@@ -175,7 +182,7 @@ export default function DraftManager({ pageType, pageSlug, getContent }: Props) 
             onChange={e => setLabelInput(e.target.value.slice(0, 60))}
             placeholder='Draft label, e.g. "June refresh"'
             maxLength={60}
-            style={{ padding: '0.35rem 0.6rem', border: '1px solid #d1d5db', borderRadius: '4px', fontSize: '0.875rem', minWidth: '220px' }}
+            style={{ padding: '0.35rem 0.6rem', background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem', color: ADMIN_COLORS.onSurface, fontSize: '0.875rem', minWidth: '220px' }}
             onKeyDown={e => {
               if (e.key === 'Enter') handleSaveDraft();
               if (e.key === 'Escape') { setShowLabelForm(false); setLabelInput(''); }
@@ -187,18 +194,18 @@ export default function DraftManager({ pageType, pageSlug, getContent }: Props) 
           <button style={btnGray} onClick={() => { setShowLabelForm(false); setLabelInput(''); }}>
             Cancel
           </button>
-          <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>{labelInput.length}/60</span>
+          <span style={{ fontSize: '0.75rem', color: ADMIN_COLORS.onSurfaceVariant }}>{labelInput.length}/60</span>
         </div>
       )}
 
       {loading ? (
-        <p style={{ color: '#9ca3af', fontSize: '0.875rem', marginTop: '1rem' }}>Loading drafts…</p>
+        <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginTop: '1rem' }}>Loading drafts…</p>
       ) : drafts.length === 0 ? (
-        <p style={{ color: '#9ca3af', fontSize: '0.875rem', marginTop: '1rem' }}>No drafts yet.</p>
+        <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginTop: '1rem' }}>No drafts yet.</p>
       ) : (
         <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem', fontSize: '0.875rem' }}>
           <thead>
-            <tr style={{ borderBottom: '1px solid #e5e7eb', color: '#6b7280', fontWeight: 600 }}>
+            <tr style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}44`, color: `${ADMIN_COLORS.onSurfaceVariant}66`, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '10px' }}>
               <th style={{ textAlign: 'left', padding: '0.4rem 0.5rem' }}>Label</th>
               <th style={{ textAlign: 'left', padding: '0.4rem 0.5rem' }}>Author</th>
               <th style={{ textAlign: 'left', padding: '0.4rem 0.5rem' }}>Created</th>
@@ -208,23 +215,23 @@ export default function DraftManager({ pageType, pageSlug, getContent }: Props) 
           </thead>
           <tbody>
             {drafts.map(draft => (
-              <tr key={draft.id} style={{ borderBottom: '1px solid #f3f4f6' }}>
-                <td style={{ padding: '0.5rem', fontWeight: 600, color: '#111827' }}>{draft.label}</td>
-                <td style={{ padding: '0.5rem', color: '#6b7280' }}>{draft.creator_name}</td>
-                <td style={{ padding: '0.5rem', color: '#6b7280' }}>{formatDate(draft.created_at)}</td>
+              <tr key={draft.id} style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}22` }}>
+                <td style={{ padding: '0.5rem', fontSize: '14px', fontWeight: 600, color: ADMIN_COLORS.onSurface }}>{draft.label}</td>
+                <td style={{ padding: '0.5rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>{draft.creator_name}</td>
+                <td style={{ padding: '0.5rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>{formatDate(draft.created_at)}</td>
                 <td style={{ padding: '0.5rem' }}>
                   {draft.published_at ? (
-                    <span style={{ color: '#16a34a', fontWeight: 600, fontSize: '0.8rem' }}>Published</span>
+                    <span style={{ color: ADMIN_COLORS.success, fontWeight: 600, fontSize: '0.8rem' }}>Published</span>
                   ) : (
-                    <span style={{ color: '#92400e', fontWeight: 600, fontSize: '0.8rem' }}>Draft</span>
+                    <span style={{ color: ADMIN_COLORS.warning, fontWeight: 600, fontSize: '0.8rem' }}>Draft</span>
                   )}
                 </td>
                 <td style={{ padding: '0.5rem', textAlign: 'right' }}>
                   <div style={{ display: 'flex', gap: '0.4rem', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
                     <button style={btnGray} onClick={() => handlePreview(draft)}>Preview</button>
-                    <button style={btnCerulean} onClick={() => handlePublish(draft)}>Publish</button>
+                    <button style={btnPublish} onClick={() => handlePublish(draft)}>Publish</button>
                     {currentUserId !== null && draft.created_by === currentUserId && (
-                      <button style={btnCarmine} onClick={() => handleDelete(draft)}>Delete</button>
+                      <button style={btnError} onClick={() => handleDelete(draft)}>Delete</button>
                     )}
                   </div>
                 </td>

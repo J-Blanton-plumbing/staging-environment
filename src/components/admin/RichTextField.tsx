@@ -21,27 +21,26 @@
 import { useEffect, useRef, useState } from 'react';
 import { tokenSyntax, type CmsToken } from '@/lib/cms/tokens';
 import InsertVariableMenu from './InsertVariableMenu';
-
-const MIDNIGHT = '#0A1B2E';
+import { ADMIN_COLORS } from '@/lib/admin/theme';
 
 const PREVIEW_STYLES = `
-  .rte-preview h1 { font-size: 32px; font-weight: 700; color: #0a1b2e; margin: 0 0 20px; line-height: 1.2; }
-  .rte-preview h2 { font-size: 24px; font-weight: 700; color: #0a1b2e; margin: 24px 0 14px; line-height: 1.3; }
-  .rte-preview h3 { font-size: 20px; font-weight: 600; color: #0a1b2e; margin: 20px 0 12px; line-height: 1.4; }
-  .rte-preview p  { font-size: 15px; line-height: 1.65; color: #0a1b2e; margin-bottom: 14px; }
+  .rte-preview h1 { font-size: 32px; font-weight: 700; color: ${ADMIN_COLORS.onSurface}; margin: 0 0 20px; line-height: 1.2; }
+  .rte-preview h2 { font-size: 24px; font-weight: 700; color: ${ADMIN_COLORS.onSurface}; margin: 24px 0 14px; line-height: 1.3; }
+  .rte-preview h3 { font-size: 20px; font-weight: 600; color: ${ADMIN_COLORS.onSurface}; margin: 20px 0 12px; line-height: 1.4; }
+  .rte-preview p  { font-size: 15px; line-height: 1.65; color: ${ADMIN_COLORS.onSurface}; margin-bottom: 14px; }
   .rte-preview ul { padding-left: 22px; margin-bottom: 14px; list-style-type: disc; }
-  .rte-preview li { font-size: 15px; line-height: 1.65; color: #0a1b2e; margin-bottom: 6px; }
+  .rte-preview li { font-size: 15px; line-height: 1.65; color: ${ADMIN_COLORS.onSurface}; margin-bottom: 6px; }
   .rte-preview strong { font-weight: 700; }
-  .rte-preview a  { color: #1560e6; text-decoration: none; }
-  .rte-preview a:hover { color: #BC0E0E; text-decoration: underline; }
+  .rte-preview a  { color: ${ADMIN_COLORS.cerulean}; text-decoration: none; }
+  .rte-preview a:hover { color: ${ADMIN_COLORS.secondaryContainer}; text-decoration: underline; }
 `;
 
 const LABEL: React.CSSProperties = {
   display: 'block',
-  fontFamily: 'Nunito, sans-serif',
+  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   fontSize: '13px',
-  fontWeight: 700,
-  color: MIDNIGHT,
+  fontWeight: 600,
+  color: ADMIN_COLORS.onSurface,
   marginBottom: '0.25rem',
 };
 
@@ -49,13 +48,18 @@ const FIELD: React.CSSProperties = {
   display: 'block',
   width: '100%',
   padding: '0.5rem',
-  border: '1px solid rgba(10,27,46,0.2)',
-  borderRadius: '6px',
-  fontFamily: 'Nunito, sans-serif',
+  background: ADMIN_COLORS.surfaceContainerLow,
+  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+  borderRadius: '0.5rem',
+  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
   fontSize: '0.9rem',
-  color: MIDNIGHT,
+  color: ADMIN_COLORS.onSurface,
   boxSizing: 'border-box',
 };
+
+const FIELD_FOCUS_STYLE = `
+  .rte-field:focus { outline: none; box-shadow: 0 0 0 1px ${ADMIN_COLORS.primary}66; }
+`;
 
 export default function RichTextField({
   label,
@@ -82,7 +86,7 @@ export default function RichTextField({
   useEffect(() => {
     if (view === 'preview' && previewRef.current) {
       previewRef.current.innerHTML =
-        value || '<p style="color:#5a6a7a;font-style:italic">Nothing to preview yet — switch to HTML and add some content.</p>';
+        value || `<p style="color:${ADMIN_COLORS.onSurfaceVariant};font-style:italic">Nothing to preview yet — switch to HTML and add some content.</p>`;
     }
   }, [view]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -126,13 +130,13 @@ export default function RichTextField({
       style={{
         padding: '0.3rem 0.9rem',
         fontSize: '12px',
-        fontFamily: 'Nunito, sans-serif',
+        fontFamily: 'var(--font-nunito), system-ui, sans-serif',
         fontWeight: 700,
-        border: '1px solid rgba(10,27,46,0.2)',
-        borderRadius: '4px 4px 0 0',
-        borderBottom: view === v ? '1px solid #fff' : undefined,
-        background: view === v ? '#fff' : '#f5f5f5',
-        color: MIDNIGHT,
+        border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+        borderRadius: '0.5rem 0.5rem 0 0',
+        borderBottom: view === v ? `1px solid ${ADMIN_COLORS.surfaceContainerLow}` : undefined,
+        background: view === v ? ADMIN_COLORS.surfaceContainerLow : ADMIN_COLORS.surfaceContainer,
+        color: ADMIN_COLORS.onSurface,
         cursor: 'pointer',
         marginRight: '2px',
         position: 'relative',
@@ -155,7 +159,7 @@ export default function RichTextField({
           marginBottom: '0.35rem',
         }}
       >
-        <p style={{ fontSize: '12px', color: '#5a6a7a', fontFamily: 'Nunito, sans-serif', margin: 0 }}>
+        <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontFamily: 'var(--font-nunito), system-ui, sans-serif', margin: 0 }}>
           {help ??
             (view === 'html'
               ? 'Edit raw HTML below, or switch to Preview to edit visually.'
@@ -164,14 +168,17 @@ export default function RichTextField({
         <InsertVariableMenu onSelect={insertToken} />
       </div>
 
-      <div style={{ borderBottom: '1px solid rgba(10,27,46,0.2)' }}>
+      <div style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}66` }}>
         {tabBtn('HTML', 'html')}
         {tabBtn('Preview', 'preview')}
       </div>
 
+      <style>{FIELD_FOCUS_STYLE}</style>
+
       {view === 'html' ? (
         <textarea
           ref={textareaRef}
+          className="rte-field"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           rows={rows}
@@ -180,7 +187,7 @@ export default function RichTextField({
             resize: 'vertical',
             lineHeight: 1.6,
             borderTop: 'none',
-            borderRadius: '0 4px 4px 4px',
+            borderRadius: '0 0.5rem 0.5rem 0.5rem',
           }}
         />
       ) : (
@@ -188,19 +195,19 @@ export default function RichTextField({
           <style>{PREVIEW_STYLES}</style>
           <div
             ref={previewRef}
-            className="rte-preview"
+            className="rte-preview rte-field"
             contentEditable
             suppressContentEditableWarning
             onInput={handlePreviewInput}
             style={{
               ...FIELD,
               borderTop: 'none',
-              borderRadius: '0 4px 4px 4px',
+              borderRadius: '0 0.5rem 0.5rem 0.5rem',
               minHeight: `${Math.max(rows * 22, 180)}px`,
               padding: '1rem',
               lineHeight: 1.6,
-              fontFamily: 'Nunito, sans-serif',
-              background: '#fafafa',
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+              background: ADMIN_COLORS.surfaceContainer,
               overflowY: 'auto',
               outline: 'none',
               cursor: 'text',

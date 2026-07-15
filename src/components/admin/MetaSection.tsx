@@ -1,5 +1,7 @@
 'use client';
 
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+
 interface MetaSectionProps {
   metaTitle: string;
   metaDescription: string;
@@ -23,18 +25,24 @@ export default function MetaSection({
     <div
       style={{
         marginTop: '2rem',
-        paddingTop: '1.5rem',
-        borderTop: '1px solid rgba(0,0,0,0.1)',
+        background: ADMIN_COLORS.surfaceContainerLow,
+        border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+        borderRadius: '1.5rem',
+        boxShadow: ADMIN_SHADOWS.elegant,
+        padding: '1.5rem',
       }}
     >
+      <style>{`
+        .admin-field:focus { outline: none; box-shadow: 0 0 0 1px ${ADMIN_COLORS.primary}66; }
+      `}</style>
       <p
         style={{
-          fontFamily: 'Industry, sans-serif',
-          fontWeight: 600,
-          fontSize: '13px',
-          color: '#0A1B2E',
+          fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+          fontWeight: 700,
+          fontSize: '0.875rem',
+          color: `${ADMIN_COLORS.onSurface}CC`,
           textTransform: 'uppercase',
-          letterSpacing: '0.05em',
+          letterSpacing: '0.12em',
           margin: '0 0 1rem',
         }}
       >
@@ -46,10 +54,10 @@ export default function MetaSection({
         <label
           style={{
             display: 'block',
-            fontFamily: 'Nunito, sans-serif',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
             fontSize: '13px',
             fontWeight: 600,
-            color: '#0A1B2E',
+            color: ADMIN_COLORS.onSurface,
             marginBottom: '0.25rem',
           }}
         >
@@ -57,14 +65,17 @@ export default function MetaSection({
         </label>
         <input
           type="text"
+          className="admin-field"
           value={metaTitle}
           onChange={e => onMetaTitleChange(e.target.value)}
           style={{
             display: 'block',
             width: '100%',
             padding: '0.4rem 0.5rem',
-            border: '1px solid #d1d5db',
-            borderRadius: '4px',
+            background: ADMIN_COLORS.surfaceContainer,
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+            borderRadius: '0.5rem',
+            color: ADMIN_COLORS.onSurface,
             fontFamily: 'inherit',
             fontSize: '0.9rem',
             boxSizing: 'border-box',
@@ -73,9 +84,9 @@ export default function MetaSection({
         />
         <p
           style={{
-            fontFamily: 'Nunito, sans-serif',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
             fontSize: '12px',
-            color: titleOver ? '#BC0E0E' : '#6b7280',
+            color: titleOver ? ADMIN_COLORS.error : `${ADMIN_COLORS.onSurfaceVariant}99`,
             margin: 0,
           }}
         >
@@ -88,10 +99,10 @@ export default function MetaSection({
         <label
           style={{
             display: 'block',
-            fontFamily: 'Nunito, sans-serif',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
             fontSize: '13px',
             fontWeight: 600,
-            color: '#0A1B2E',
+            color: ADMIN_COLORS.onSurface,
             marginBottom: '0.25rem',
           }}
         >
@@ -99,14 +110,17 @@ export default function MetaSection({
         </label>
         <textarea
           rows={3}
+          className="admin-field"
           value={metaDescription}
           onChange={e => onMetaDescriptionChange(e.target.value)}
           style={{
             display: 'block',
             width: '100%',
             padding: '0.4rem 0.5rem',
-            border: '1px solid #d1d5db',
-            borderRadius: '4px',
+            background: ADMIN_COLORS.surfaceContainer,
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+            borderRadius: '0.5rem',
+            color: ADMIN_COLORS.onSurface,
             fontFamily: 'inherit',
             fontSize: '0.9rem',
             boxSizing: 'border-box',
@@ -116,9 +130,9 @@ export default function MetaSection({
         />
         <p
           style={{
-            fontFamily: 'Nunito, sans-serif',
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
             fontSize: '12px',
-            color: descOver ? '#BC0E0E' : '#6b7280',
+            color: descOver ? ADMIN_COLORS.error : `${ADMIN_COLORS.onSurfaceVariant}99`,
             margin: 0,
           }}
         >

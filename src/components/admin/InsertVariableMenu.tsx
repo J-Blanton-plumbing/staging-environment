@@ -15,9 +15,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { CMS_TOKENS, type CmsToken } from '@/lib/cms/tokens';
-
-const CERULEAN = '#1560E6';
-const MIDNIGHT = '#0A1B2E';
+import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 export default function InsertVariableMenu({
   onSelect,
@@ -55,12 +53,12 @@ export default function InsertVariableMenu({
           gap: '0.35rem',
           padding: '0.3rem 0.7rem',
           fontSize: '12px',
-          fontFamily: 'Nunito, sans-serif',
+          fontFamily: 'var(--font-nunito), system-ui, sans-serif',
           fontWeight: 700,
-          border: `1px solid ${CERULEAN}`,
-          borderRadius: '4px',
-          background: open ? CERULEAN : '#fff',
-          color: open ? '#fff' : CERULEAN,
+          border: `1px solid ${ADMIN_COLORS.cerulean}`,
+          borderRadius: '9999px',
+          background: open ? ADMIN_COLORS.cerulean : 'transparent',
+          color: open ? '#fff' : ADMIN_COLORS.cerulean,
           cursor: 'pointer',
           lineHeight: 1.2,
         }}
@@ -82,10 +80,10 @@ export default function InsertVariableMenu({
             left: 0,
             zIndex: 20,
             minWidth: '240px',
-            background: '#fff',
-            border: `1px solid rgba(10,27,46,0.2)`,
-            borderRadius: '6px',
-            boxShadow: '0 6px 20px rgba(10,27,46,0.18)',
+            background: ADMIN_COLORS.surfaceContainerLow,
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}44`,
+            borderRadius: '0.75rem',
+            boxShadow: ADMIN_SHADOWS.elegant,
             overflow: 'hidden',
           }}
         >
@@ -104,19 +102,19 @@ export default function InsertVariableMenu({
                 textAlign: 'left',
                 padding: '0.55rem 0.75rem',
                 border: 'none',
-                borderBottom: '1px solid rgba(10,27,46,0.08)',
-                background: '#fff',
+                borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}22`,
+                background: ADMIN_COLORS.surfaceContainerLow,
                 cursor: 'pointer',
-                fontFamily: 'Nunito, sans-serif',
+                fontFamily: 'var(--font-nunito), system-ui, sans-serif',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = '#F9F3EC')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = ADMIN_COLORS.surfaceContainerHigh)}
+              onMouseLeave={(e) => (e.currentTarget.style.background = ADMIN_COLORS.surfaceContainerLow)}
             >
-              <span style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: MIDNIGHT }}>
+              <span style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: ADMIN_COLORS.onSurface }}>
                 {t.label}
               </span>
-              <span style={{ display: 'block', fontSize: '11px', color: '#5a6a7a', marginTop: '1px' }}>
-                {t.hint} · <code style={{ color: CERULEAN }}>{`{{${t.token}}}`}</code>
+              <span style={{ display: 'block', fontSize: '11px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, marginTop: '1px' }}>
+                {t.hint} · <code style={{ color: ADMIN_COLORS.cerulean }}>{`{{${t.token}}}`}</code>
               </span>
             </button>
           ))}
