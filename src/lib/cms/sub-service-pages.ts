@@ -1,6 +1,7 @@
 import pool from '@/lib/db';
 import type { ServiceContent } from '@/types/service';
 import { ConflictError } from '@/lib/cms/errors';
+import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 
 /**
  * Public reader for individual sub-service pages (kitchen-sink-drain,
@@ -48,10 +49,12 @@ export interface SubServiceFields {
 
 /** Map a normalized sub-service field set onto the shared ServiceContent shape. */
 export function subServiceToServiceContent(f: SubServiceFields): ServiceContent {
-  const introParagraphs = (f.introBody ?? '')
-    .split(/\n{2,}/)
-    .map((s) => s.trim())
-    .filter(Boolean);
+  // Brief 86 (item 3): intro_body is now a single RichTextField-authored HTML
+  // blob (sanitized on write), not delimiter-joined plain text — so it is no
+  // longer split into multiple paragraphs here. `ServiceIntro` renders this one
+  // entry through `renderCmsInline`, which handles both legacy plain text and
+  // real HTML safely.
+  const introParagraphs = f.introBody ? [f.introBody] : [];
 
   return {
     slug: f.slug,
@@ -184,6 +187,9 @@ export async function updateSubServiceCmsContent(
   expectedVersion?: number | null
 ): Promise<number> {
   const str = (v: unknown): string | null => (typeof v === 'string' ? v : null);
+  // Brief 86 (items 3 & 5): intro_body/ndc_body are RichTextField-backed —
+  // sanitize through the shared Brief 73 allow-list before persisting.
+  const strHtml = (v: unknown): string | null => (typeof v === 'string' ? sanitizeCmsHtml(v) : null);
   const rawProblems = data.problemsItems;
   const problemsItems = Array.isArray(rawProblems)
     ? (rawProblems as string[])
@@ -224,7 +230,7 @@ export async function updateSubServiceCmsContent(
         str(data.heroIntro),
         str(data.heroImage),
         str(data.introHeading),
-        str(data.introBody),
+        strHtml(data.introBody),
         str(data.fImage),
         str(data.problemsHeading),
         JSON.stringify(problemsItems),
@@ -232,7 +238,7 @@ export async function updateSubServiceCmsContent(
         str(data.ctaBody),
         str(data.f3Image),
         str(data.ndcTitle),
-        str(data.ndcBody),
+        strHtml(data.ndcBody),
         str(data.metaTitle),
         str(data.metaDescription),
         slug,

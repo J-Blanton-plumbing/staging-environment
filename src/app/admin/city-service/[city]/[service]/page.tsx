@@ -4,7 +4,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
 
 interface FaqField {
   question: string;
@@ -117,9 +121,11 @@ export default function AdminCityServicePage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'not-found' | 'saving' | 'saved' | 'error'>('loading');
   const [errorMsg, setErrorMsg] = useState('');
   const [serviceCategories, setServiceCategories] = useState<ServiceCategory[]>([]);
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
   // Brief 75/78 (DP-1): the row version this editor loaded, sent back on save so a
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
+  const dv = useDraftVersions('city-service', `${city}/${service}`, buildPayload);
 
   const cityTitle = city ? slugToTitle(city) : '';
   const serviceTitle = service ? slugToTitle(service) : '';
@@ -256,43 +262,28 @@ export default function AdminCityServicePage() {
         .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
         .field { transition: box-shadow 0.15s ease, border-color 0.15s ease; }
         .field:focus { outline: none; border-color: ${ADMIN_COLORS.cerulean}; box-shadow: 0 0 0 2px ${ADMIN_COLORS.cerulean}66; }
+        .admin-editor-content { transition: margin-right 0.2s ease; }
+        @media (min-width: 768px) {
+          .admin-editor-content.attrs-open { margin-right: 280px; }
+        }
       `}</style>
       <AdminPageHeader
         title={pageTitle}
-        pageType="city-service"
-        pageSlug={`${city}/${service}`}
-        getContent={buildPayload}
-        previewBaseUrl={`/${city}/${service}`}
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
       />
 
-      {/* ── Parent page indicator bar ─────────────────────────────────────── */}
-      <div style={{
-        background: ADMIN_COLORS.surfaceContainer,
-        borderLeft: `3px solid ${ADMIN_COLORS.cerulean}`,
-        borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}40`,
-        padding: '0.45rem 1.5rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.4rem',
-        fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-        fontSize: '12px',
-      }}>
-        <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-          Parent page:
-        </span>
-        {parentCategory ? (
-          <a
-            href={`/admin/${parentCategory.slug}`}
-            style={{ color: ADMIN_COLORS.cerulean, fontWeight: 600, textDecoration: 'none' }}
-          >
-            {parentCategory.title}
-          </a>
-        ) : (
-          <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontStyle: 'italic' }}>None assigned</span>
-        )}
-      </div>
-
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit city-service page content. Separate paragraphs with a blank line. Changes are saved to the database and applied immediately.
       </p>
@@ -410,6 +401,34 @@ export default function AdminCityServicePage() {
       </div>
 
     </div>
+
+      <PageAttributesSidebar
+        title={pageTitle}
+        status="published"
+        template={{ value: 'city-service', label: 'City Service', options: [{ value: 'city-service', label: 'City Service' }] }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: `${city}/${service}`, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/${city}/${service}` }}
+        parent={{
+          label: parentCategory ? parentCategory.title : 'None',
+          editable: true,
+          value: form.parentSlug,
+          options: serviceCategories,
+          onChange: (newParentSlug) => setForm(f => ({ ...f, parentSlug: newParentSlug })),
+        }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </div>
   );
 }

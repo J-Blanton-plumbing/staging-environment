@@ -25,6 +25,28 @@ export interface AdminPageHeaderProps {
   // Publish/Unpublish toggle (optional — renders a button in the header when provided)
   onPublishToggle?: () => Promise<void>;
   publishBusy?: boolean;
+  // Page Attributes sidebar toggle (Brief 85) — optional, renders an icon button when provided.
+  pageAttributesOpen?: boolean;
+  onTogglePageAttributes?: () => void;
+  // Brief 85 (iteration 2): when a Page Attributes sidebar is mounted, that sidebar
+  // becomes the source of truth for Title/Last-edited/Status/Template — set this so
+  // the header doesn't render the same information a second time. Save/Publish/
+  // Preview/Drafts controls are unaffected.
+  compact?: boolean;
+  // Brief 85 (iteration 2): when the Page Attributes sidebar owns version history
+  // (its Version popover — see PageAttributesSidebar), pass the save/preview
+  // handlers here instead of getContent/pageType/pageSlug. This replaces the
+  // header's own DraftControls (Version picker + Save as) and Drafts panel with
+  // plain Save/Preview buttons, so there's exactly one place to manage versions.
+  draftVersions?: {
+    busy: boolean;
+    notice: string;
+    noticeIsError: boolean;
+    onSave: () => void;
+    onPreview: () => void;
+    onSaveAsNew: (label: string) => void;
+    nextVersionName: () => Promise<string>;
+  };
 }
 
 function formatDate(iso: string): string {
@@ -54,36 +76,58 @@ export default function AdminPageHeader({
   status,
   onPublishToggle,
   publishBusy,
+  pageAttributesOpen,
+  onTogglePageAttributes,
+  compact,
+  draftVersions,
 }: AdminPageHeaderProps) {
   const [draftsOpen, setDraftsOpen] = useState(false);
+  const [saveAsOpen, setSaveAsOpen] = useState(false);
+  const [saveAsLabel, setSaveAsLabel] = useState('');
 
-  const hasDrafts = !!(pageType && pageSlug && getContent);
-  const hasTemplate = !!(currentTemplate && availableTemplates && onTemplateSwitched);
-  const hasPreview = !!(pageType && pageSlug && getContent);
+  async function openSaveAs() {
+    if (!draftVersions) return;
+    setSaveAsLabel(await draftVersions.nextVersionName());
+    setSaveAsOpen(true);
+  }
+
+  function confirmSaveAs() {
+    if (!draftVersions || !saveAsLabel.trim()) return;
+    draftVersions.onSaveAsNew(saveAsLabel.trim());
+    setSaveAsOpen(false);
+  }
+
+  const hasDrafts = !draftVersions && !!(pageType && pageSlug && getContent);
+  const hasTemplate = !compact && !!(currentTemplate && availableTemplates && onTemplateSwitched);
+  const hasPreview = !draftVersions && !!(pageType && pageSlug && getContent);
 
   // Metadata row: prefer updated_by / updated_at, fall back to created_by / created_at
+  // (Brief 85: this whole row is redundant with the Page Attributes sidebar, so it's
+  // suppressed entirely in compact mode rather than partially duplicated.)
   let metaLine: string | null = null;
-  if (updatedBy && updatedAt) {
-    metaLine = `Last modified by ${updatedBy}  ·  ${formatDate(updatedAt)}`;
-  } else if (createdBy && createdAt) {
-    metaLine = `Created by ${createdBy}  ·  ${formatDate(createdAt)}`;
-  }
-  if (metaLine && templateName) {
-    metaLine += `  ·  Template: ${templateName}`;
-  } else if (!metaLine && templateName) {
-    metaLine = `Template: ${templateName}`;
+  if (!compact) {
+    if (updatedBy && updatedAt) {
+      metaLine = `Last modified by ${updatedBy}  ·  ${formatDate(updatedAt)}`;
+    } else if (createdBy && createdAt) {
+      metaLine = `Created by ${createdBy}  ·  ${formatDate(createdAt)}`;
+    }
+    if (metaLine && templateName) {
+      metaLine += `  ·  Template: ${templateName}`;
+    } else if (!metaLine && templateName) {
+      metaLine = `Template: ${templateName}`;
+    }
   }
 
   const statusBadgeColor =
     status === 'published' ? ADMIN_COLORS.success :
     status === 'scheduled' ? ADMIN_COLORS.warning :
     ADMIN_COLORS.onSurfaceVariant;
-  const statusLabel = status
+  const statusLabel = !compact && status
     ? status.charAt(0).toUpperCase() + status.slice(1)
     : null;
 
   return (
-    <div style={{ position: 'sticky', top: 0, zIndex: 100 }}>
+    <div id="jbp-admin-page-header" style={{ position: 'sticky', top: 0, zIndex: 100 }}>
       {/* ── Main bar ───────────────────────────────────────────────────────── */}
       <div
         style={{
@@ -99,18 +143,20 @@ export default function AdminPageHeader({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '1rem' }}>
-          <span
-            style={{
-              flex: 1,
-              fontFamily: 'var(--font-outfit), system-ui, sans-serif',
-              fontWeight: 600,
-              fontSize: '16px',
-              color: ADMIN_COLORS.onSurface,
-              lineHeight: 1.3,
-            }}
-          >
-            {title}
-          </span>
+          {!compact && (
+            <span
+              style={{
+                flex: 1,
+                fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+                fontWeight: 600,
+                fontSize: '16px',
+                color: ADMIN_COLORS.onSurface,
+                lineHeight: 1.3,
+              }}
+            >
+              {title}
+            </span>
+          )}
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
             {onPublishToggle && (
@@ -152,6 +198,89 @@ export default function AdminPageHeader({
                 pageType={pageType!}
                 pageSlug={pageSlug!}
               />
+            )}
+
+            {draftVersions && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                {draftVersions.notice && (
+                  <span style={{
+                    color: draftVersions.noticeIsError ? ADMIN_COLORS.error : ADMIN_COLORS.success,
+                    fontSize: '0.78rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+                    whiteSpace: 'nowrap',
+                  }}>
+                    {draftVersions.notice}
+                  </span>
+                )}
+                <button
+                  onClick={draftVersions.onSave}
+                  disabled={draftVersions.busy}
+                  style={{
+                    background: ADMIN_COLORS.surfaceContainer,
+                    border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+                    color: ADMIN_COLORS.onSurface,
+                    borderRadius: '9999px', padding: '0.3rem 0.75rem',
+                    fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontWeight: 600, fontSize: '0.8rem',
+                    cursor: draftVersions.busy ? 'not-allowed' : 'pointer',
+                    opacity: draftVersions.busy ? 0.6 : 1, whiteSpace: 'nowrap',
+                  }}
+                >
+                  Save
+                </button>
+                <button
+                  onClick={openSaveAs}
+                  disabled={draftVersions.busy}
+                  style={{
+                    background: ADMIN_COLORS.surfaceContainer,
+                    border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+                    color: ADMIN_COLORS.onSurface,
+                    borderRadius: '9999px', padding: '0.3rem 0.75rem',
+                    fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontWeight: 600, fontSize: '0.8rem',
+                    cursor: draftVersions.busy ? 'not-allowed' : 'pointer',
+                    opacity: draftVersions.busy ? 0.6 : 1, whiteSpace: 'nowrap',
+                  }}
+                >
+                  Save as
+                </button>
+                <button
+                  onClick={draftVersions.onPreview}
+                  disabled={draftVersions.busy}
+                  style={{
+                    background: ADMIN_COLORS.surfaceContainer,
+                    border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+                    color: ADMIN_COLORS.onSurface,
+                    borderRadius: '9999px', padding: '0.3rem 0.75rem',
+                    fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontWeight: 600, fontSize: '0.8rem',
+                    cursor: draftVersions.busy ? 'not-allowed' : 'pointer',
+                    opacity: draftVersions.busy ? 0.6 : 1, whiteSpace: 'nowrap',
+                  }}
+                >
+                  {draftVersions.busy ? 'Saving…' : 'Preview'}
+                </button>
+              </div>
+            )}
+
+            {onTogglePageAttributes && (
+              <button
+                onClick={onTogglePageAttributes}
+                title="Page attributes"
+                aria-label="Toggle Page Attributes sidebar"
+                aria-pressed={!!pageAttributesOpen}
+                style={{
+                  background: pageAttributesOpen ? ADMIN_COLORS.surfaceContainerHigh : ADMIN_COLORS.surfaceContainer,
+                  border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+                  borderRadius: '0.4rem',
+                  width: '30px',
+                  height: '30px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: ADMIN_COLORS.onSurface,
+                  flexShrink: 0,
+                }}
+              >
+                <span aria-hidden style={{ fontSize: '14px', lineHeight: 1 }}>▤</span>
+              </button>
             )}
 
             {hasDrafts && (
@@ -227,6 +356,71 @@ export default function AdminPageHeader({
             pageSlug={pageSlug}
             getContent={getContent}
           />
+        </div>
+      )}
+
+      {/* ── Save-as dialog (draftVersions mode) ─────────────────────────────── */}
+      {saveAsOpen && draftVersions && (
+        <div
+          style={{
+            position: 'fixed', inset: 0, zIndex: 2000,
+            background: 'rgba(0,0,0,0.5)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+          onClick={() => { if (!draftVersions.busy) setSaveAsOpen(false); }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: ADMIN_COLORS.surfaceContainerLow, borderRadius: '1.5rem', padding: '1.5rem',
+              width: '100%', maxWidth: '400px', border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+              boxShadow: ADMIN_SHADOWS.elegant,
+            }}
+          >
+            <h3 style={{ margin: '0 0 0.75rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '16px', color: ADMIN_COLORS.onSurface }}>
+              Save as new version
+            </h3>
+            <label style={{ display: 'block', fontSize: '13px', color: ADMIN_COLORS.onSurfaceVariant, marginBottom: '0.25rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+              Version name:
+            </label>
+            <input
+              autoFocus
+              type="text"
+              value={saveAsLabel}
+              onChange={e => setSaveAsLabel(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter' && saveAsLabel.trim()) confirmSaveAs(); }}
+              style={{
+                display: 'block', width: '100%', padding: '0.4rem 0.5rem',
+                background: ADMIN_COLORS.surfaceContainerLowest,
+                border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem',
+                color: ADMIN_COLORS.onSurface,
+                fontFamily: 'inherit', fontSize: '0.9rem',
+                boxSizing: 'border-box', marginBottom: '0.75rem',
+              }}
+            />
+            <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+              <button
+                onClick={() => setSaveAsOpen(false)}
+                disabled={draftVersions.busy}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: ADMIN_COLORS.onSurfaceVariant, fontSize: '13px', fontFamily: 'var(--font-nunito), system-ui, sans-serif', padding: '0.4rem 0.75rem' }}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmSaveAs}
+                disabled={draftVersions.busy || !saveAsLabel.trim()}
+                style={{
+                  background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
+                  padding: '0.4rem 1rem', color: '#fff',
+                  fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 600, fontSize: '13px',
+                  cursor: draftVersions.busy || !saveAsLabel.trim() ? 'not-allowed' : 'pointer',
+                  opacity: draftVersions.busy || !saveAsLabel.trim() ? 0.7 : 1,
+                }}
+              >
+                {draftVersions.busy ? 'Saving…' : 'Save'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

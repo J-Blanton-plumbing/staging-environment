@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
 
 interface FormState {
   hero_heading: string;
@@ -13,6 +17,7 @@ interface FormState {
   intro_body: string;
   meta_title: string;
   meta_description: string;
+  updated_at?: string;
 }
 
 const EMPTY: FormState = {
@@ -22,7 +27,8 @@ const EMPTY: FormState = {
 };
 
 function buildPayload(form: FormState) {
-  const { meta_title, meta_description, ...content } = form;
+  const { meta_title, meta_description, updated_at, ...content } = form;
+  void updated_at;
   return { ...content, meta_title: meta_title || null, meta_description: meta_description || null };
 }
 
@@ -33,6 +39,8 @@ export default function LocationsAdminPage() {
   // Brief 78 (Track A): the row version this editor loaded, sent back on save so a
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
+  const dv = useDraftVersions('main', 'locations', () => buildPayload(form));
 
   useEffect(() => {
     fetch('/api/cms/main/locations')
@@ -46,6 +54,7 @@ export default function LocationsAdminPage() {
           intro_body: data.intro_body ?? '',
           meta_title: data.meta_title ?? '',
           meta_description: data.meta_description ?? '',
+          updated_at: data.updated_at ?? undefined,
         });
         setVersion(typeof data.version === 'number' ? data.version : 0);
         setStatus('idle');
@@ -88,16 +97,27 @@ export default function LocationsAdminPage() {
       <style>{`
         .admin-save-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
         .admin-field:focus { outline: none; box-shadow: 0 0 0 2px ${ADMIN_COLORS.primary}66; }
+        .admin-editor-content { transition: margin-right 0.2s ease; }
+        @media (min-width: 768px) {
+          .admin-editor-content.attrs-open { margin-right: 280px; }
+        }
       `}</style>
       <AdminPageHeader
         title="Locations — CMS Editor"
-        pageType="main"
-        pageSlug="locations"
-        getContent={() => buildPayload(form)}
-        templateName="Locations"
-        previewBaseUrl="/locations"
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
       />
-      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
 
         <div style={sec}>
           <h2 style={secHead}>Hero</h2>
@@ -133,6 +153,29 @@ export default function LocationsAdminPage() {
         </div>
 
       </div>
+
+      <PageAttributesSidebar
+        title="Locations"
+        updatedAt={form.updated_at}
+        status="published"
+        template={{ value: 'locations', label: 'Locations', options: [{ value: 'locations', label: 'Locations' }] }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: 'locations', editable: false, disabledNote: "This is a fixed system page — its URL can't be changed.", permalink: `${SITE.baseUrl}/locations` }}
+        parent={{ label: 'None', editable: false }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </div>
   );
 }

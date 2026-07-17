@@ -40,7 +40,12 @@ const STATUS_STYLE = (status: string): React.CSSProperties => ({
 
 const SELECT_CHEVRON = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4c6cd'/%3E%3C/svg%3E")`;
 
-export default function SubServicesAdminPage() {
+/**
+ * Search + filter + table for sub-service pages. Extracted from the former standalone
+ * `/admin/sub-services` route (Brief 53/57) so it can be embedded under the category
+ * cards on `/admin/service-pages` (Brief 83) without duplicating the fetch/filter logic.
+ */
+export default function SubServiceTable() {
   const [rows, setRows] = useState<SubServiceRow[]>([]);
   const [catMap, setCatMap] = useState<Record<string, string>>({});
   const [loadStatus, setLoadStatus] = useState<'loading' | 'error' | 'done'>('loading');
@@ -97,15 +102,15 @@ export default function SubServicesAdminPage() {
   const gridCols = '2fr 160px 120px 140px 120px';
 
   return (
-    <main style={{ padding: '2rem', maxWidth: '1100px', fontFamily: 'system-ui, sans-serif' }}>
+    <section>
       {/* row hover (inline styles can't express :hover) */}
       <style>{`
         .admin-subservices-row:hover { background: ${ADMIN_COLORS.surfaceContainerHigh}66; }
       `}</style>
 
-      <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
-        Sub-Service Pages
-      </h1>
+      <h2 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.025em', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
+        Service pages
+      </h2>
       <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginBottom: '1.25rem' }}>
         {loadStatus === 'done' ? `${rows.length} sub-service pages` : ' '}
       </p>
@@ -256,6 +261,6 @@ export default function SubServicesAdminPage() {
           ))}
         </div>
       )}
-    </main>
+    </section>
   );
 }

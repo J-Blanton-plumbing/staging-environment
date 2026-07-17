@@ -13,7 +13,7 @@ export interface GlobalSettings {
   ctaPrimaryLabel: string;
   taglineTurning: string;
   hoursLabel: string;
-  /** No Drip Club membership price line, e.g. "All for just $29.97/month**". */
+  /** No Drip Club price, backing the {{ndc_price}} token — e.g. "$29.97". */
   ndcPrice: string;
   /**
    * Brief 67 (Track F) — service-category descriptions shown under each card in
@@ -51,7 +51,7 @@ const FALLBACK: GlobalSettings = {
   ctaPrimaryLabel: 'MAKE A GOOD CALL',
   taglineTurning: 'J Blanton Plumbing - Turning Bad Calls to Good Calls',
   hoursLabel: '24 hours',
-  ndcPrice: 'All for just $29.97/month**',
+  ndcPrice: '$29.97',
   serviceDesc: {
     emergency: 'Fast response for plumbing emergencies, day or night.',
     plumbing: 'Licensed plumbers for any residential or commercial job.',

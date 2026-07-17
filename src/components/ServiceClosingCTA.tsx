@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { resolveTokens } from '@/lib/cms/tokens';
 import { ServiceImage } from '@/components/ServiceIntro';
 import type { ServiceContent } from '@/types/service';
 
@@ -31,14 +32,14 @@ export default async function ServiceClosingCTA({
           {/* Right — tagline, mobile-only photo, body, MAKE A GOOD CALL */}
           <div>
             <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-8">
-              {cta.heading}
+              {resolveTokens(cta.heading, settings)}
             </p>
 
             {/* Mobile: photo inside the text column (hidden on desktop) */}
             <ServiceImage src={cta.image} className="aspect-[4/3] w-full mb-8 lg:hidden" />
 
             <p className="font-sans text-navy-800 text-[16px] leading-[24px] mb-7">
-              {cta.body}
+              {resolveTokens(cta.body, settings)}
             </p>
 
             <Link

@@ -4,7 +4,13 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import RichTextField from '@/components/admin/RichTextField';
+import ProblemsListField, { padToMinProblems } from '@/components/admin/ProblemsListField';
+import PageAttributesSidebar, { SIDEBAR_WIDTH_PX } from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
 
 interface ServiceCategory {
   slug: string;
@@ -20,7 +26,7 @@ interface SubServiceData {
   introBody: string;
   fImage: string;
   problemsHeading: string;
-  problemsItems: string;
+  problemsItems: string[];
   ctaHeading: string;
   ctaBody: string;
   f3Image: string;
@@ -40,7 +46,7 @@ interface SubServiceData {
 const EMPTY: SubServiceData = {
   title: '', heroHeading: '', heroIntro: '', heroImage: '',
   introHeading: '', introBody: '', fImage: '',
-  problemsHeading: '', problemsItems: '',
+  problemsHeading: '', problemsItems: ['', '', ''],
   ctaHeading: '', ctaBody: '', f3Image: '',
   ndcTitle: '', ndcBody: '',
   status: 'draft', metaTitle: '', metaDescription: '',
@@ -71,6 +77,62 @@ const SECTION_HEADING: React.CSSProperties = {
   fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
   margin: '0 0 1rem',
 };
+
+// ── Read-only placeholder box (Brief 88) ───────────────────────────────────────
+// Blocks that render on the live page but have no editor controls today. Visually
+// distinct from the editable SECTION boxes above (dashed border, muted heading,
+// a badge pill) so there's no confusion about what can be changed here.
+
+function ReadOnlyBlock({
+  title,
+  description,
+  badge,
+}: {
+  title: string;
+  description: string;
+  badge: string;
+}) {
+  return (
+    <div
+      style={{
+        ...SECTION,
+        border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`,
+        boxShadow: 'none',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+        <h3 style={{ ...SECTION_HEADING, color: ADMIN_COLORS.onSurfaceVariant, margin: 0 }}>{title}</h3>
+        <span
+          style={{
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            fontSize: '11px',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            color: ADMIN_COLORS.onSurfaceVariant,
+            background: ADMIN_COLORS.surfaceContainerHigh,
+            border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
+            borderRadius: '9999px',
+            padding: '0.15rem 0.65rem',
+          }}
+        >
+          {badge}
+        </span>
+      </div>
+      <p
+        style={{
+          fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+          fontSize: '13px',
+          color: `${ADMIN_COLORS.onSurfaceVariant}cc`,
+          margin: 0,
+          lineHeight: 1.5,
+        }}
+      >
+        {description}
+      </p>
+    </div>
+  );
+}
 
 // ── Hero Image Uploader (matches article editor pattern) ──────────────────────
 
@@ -139,76 +201,101 @@ function HeroImageField({
     <div style={{ marginBottom: '1.25rem' }}>
       <label style={LABEL}>{label}</label>
 
-      {value && (
-        <div style={{ marginBottom: '0.5rem' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={value}
-            alt="Hero preview"
-            style={{ maxHeight: '120px', maxWidth: '100%', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66` }}
-          />
-          <div style={{ fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif', marginTop: '0.25rem', wordBreak: 'break-all' }}>
-            {value}
-          </div>
-          <button
-            type="button"
-            onClick={() => onChange('')}
-            style={{
-              marginTop: '0.3rem',
-              background: 'none',
-              border: 'none',
-              color: ADMIN_COLORS.error,
-              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-              fontSize: '12px',
-              cursor: 'pointer',
-              padding: 0,
-            }}
-          >
-            Remove image
-          </button>
-        </div>
-      )}
-
-      <div style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: 0 }}>
-        {tabBtn('Upload', 'upload')}
-        {tabBtn('URL', 'url')}
-      </div>
-
-      <div style={{ border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderTop: 'none', borderRadius: '0 0.5rem 0.5rem 0.5rem', padding: '0.75rem', background: ADMIN_COLORS.surfaceContainer }}>
-        {tab === 'upload' ? (
-          <div>
-            <input
-              ref={fileRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              onChange={handleFileChange}
-              disabled={uploading}
-              style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '0.875rem' }}
+      <div className="image-field-grid">
+        {/* Left — preview (or an empty placeholder so the layout doesn't jump) */}
+        <div>
+          {value ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={value}
+              alt="Image preview"
+              style={{ maxHeight: '160px', maxWidth: '100%', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66` }}
             />
-            {uploading && (
-              <span style={{ marginLeft: '0.75rem', fontSize: '12px', fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: ADMIN_COLORS.onSurfaceVariant }}>
-                Uploading…
-              </span>
-            )}
-            {uploadError && (
-              <div style={{ marginTop: '0.35rem', fontSize: '12px', color: ADMIN_COLORS.error, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
-                {uploadError}
-              </div>
-            )}
-            <div style={{ marginTop: '0.4rem', fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
-              JPEG, PNG, or WebP · max 10 MB
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '120px',
+                borderRadius: '0.75rem',
+                border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`,
+                background: ADMIN_COLORS.surfaceContainerLow,
+                color: ADMIN_COLORS.onSurfaceVariant,
+                fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+                fontSize: '12px',
+                textAlign: 'center',
+                padding: '0.5rem',
+              }}
+            >
+              No image selected
             </div>
+          )}
+        </div>
+
+        {/* Right — Upload/URL tabs */}
+        <div>
+          <div style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: 0 }}>
+            {tabBtn('Upload', 'upload')}
+            {tabBtn('URL', 'url')}
           </div>
-        ) : (
-          <input
-            className="field"
-            type="url"
-            value={value}
-            onChange={e => onChange(e.target.value)}
-            placeholder="https://…"
-            style={{ ...INPUT, border: 'none', padding: '0', boxShadow: 'none' }}
-          />
-        )}
+
+          <div style={{ border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderTop: 'none', borderRadius: '0 0.5rem 0.5rem 0.5rem', padding: '0.75rem', background: ADMIN_COLORS.surfaceContainer }}>
+            {tab === 'upload' ? (
+              <div>
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  onChange={handleFileChange}
+                  disabled={uploading}
+                  style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '0.875rem' }}
+                />
+                {uploading && (
+                  <span style={{ marginLeft: '0.75rem', fontSize: '12px', fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: ADMIN_COLORS.onSurfaceVariant }}>
+                    Uploading…
+                  </span>
+                )}
+                {uploadError && (
+                  <div style={{ marginTop: '0.35rem', fontSize: '12px', color: ADMIN_COLORS.error, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+                    {uploadError}
+                  </div>
+                )}
+                <div style={{ marginTop: '0.4rem', fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+                  JPEG, PNG, or WebP · max 10 MB
+                </div>
+              </div>
+            ) : (
+              <input
+                className="field"
+                type="url"
+                value={value}
+                onChange={e => onChange(e.target.value)}
+                placeholder="https://…"
+                style={{ ...INPUT, border: 'none', padding: '0', boxShadow: 'none' }}
+              />
+            )}
+          </div>
+
+          {value && (
+            <button
+              type="button"
+              onClick={() => onChange('')}
+              style={{
+                marginTop: '0.5rem',
+                background: 'none',
+                border: 'none',
+                color: ADMIN_COLORS.error,
+                fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+                fontSize: '12px',
+                cursor: 'pointer',
+                padding: 0,
+              }}
+            >
+              Remove image
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -224,6 +311,26 @@ export default function SubServiceAdminPage() {
   const [saveMsg, setSaveMsg] = useState('');
   const [publishBusy, setPublishBusy] = useState(false);
   const [serviceCategories, setServiceCategories] = useState<ServiceCategory[]>([]);
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
+  const dv = useDraftVersions('sub-service', slug, () => ({
+    title: form.title,
+    heroHeading: form.heroHeading,
+    heroIntro: form.heroIntro,
+    heroImage: form.heroImage,
+    introHeading: form.introHeading,
+    introBody: form.introBody,
+    fImage: form.fImage,
+    problemsHeading: form.problemsHeading,
+    problemsItems: form.problemsItems,
+    ctaHeading: form.ctaHeading,
+    ctaBody: form.ctaBody,
+    f3Image: form.f3Image,
+    ndcTitle: form.ndcTitle,
+    ndcBody: form.ndcBody,
+    status: form.status,
+    metaTitle: form.metaTitle,
+    metaDescription: form.metaDescription,
+  }));
 
   const load = useCallback(async () => {
     try {
@@ -245,9 +352,7 @@ export default function SubServiceAdminPage() {
         introBody: d.intro_body ?? '',
         fImage: d.f_image ?? '',
         problemsHeading: d.problems_heading ?? '',
-        problemsItems: Array.isArray(d.problems_items)
-          ? d.problems_items.join('\n')
-          : '',
+        problemsItems: padToMinProblems(Array.isArray(d.problems_items) ? d.problems_items : []),
         ctaHeading: d.cta_heading ?? '',
         ctaBody: d.cta_body ?? '',
         f3Image: d.f3_image ?? '',
@@ -271,7 +376,7 @@ export default function SubServiceAdminPage() {
 
   useEffect(() => { load(); }, [load]);
 
-  function set(k: keyof SubServiceData, v: string | null) {
+  function set(k: keyof SubServiceData, v: string | string[] | null) {
     setForm(p => ({ ...p, [k]: v }));
     setSaveStatus('idle');
   }
@@ -293,7 +398,7 @@ export default function SubServiceAdminPage() {
           introBody: form.introBody,
           fImage: form.fImage,
           problemsHeading: form.problemsHeading,
-          problemsItems: form.problemsItems.split('\n').map(s => s.trim()).filter(Boolean),
+          problemsItems: form.problemsItems.map(s => s.trim()).filter(Boolean),
           ctaHeading: form.ctaHeading,
           ctaBody: form.ctaBody,
           f3Image: form.f3Image,
@@ -318,8 +423,10 @@ export default function SubServiceAdminPage() {
     }
   }
 
-  async function handlePublishToggle() {
-    const newStatus = form.status === 'published' ? 'draft' : 'published';
+  // Brief 85 (iter. 2): the header's old Publish/Unpublish button was removed —
+  // Status is now set exclusively via the sidebar's Status popover, which calls
+  // this directly with the explicitly selected value.
+  async function handleStatusChange(newStatus: string) {
     setPublishBusy(true);
     try {
       const res = await fetch(`/api/cms/sub-service/${slug}`, {
@@ -332,12 +439,13 @@ export default function SubServiceAdminPage() {
       // next content save isn't falsely rejected as stale (Brief 75, DP-1).
       setForm(p => ({ ...p, status: newStatus, version: (p.version ?? 0) + 1 }));
     } catch (err: unknown) {
-      setSaveMsg(err instanceof Error ? err.message : 'Publish toggle failed');
+      setSaveMsg(err instanceof Error ? err.message : 'Status change failed');
       setSaveStatus('error');
     } finally {
       setPublishBusy(false);
     }
   }
+
 
   const textField = (label: string, k: keyof SubServiceData, placeholder?: string) => (
     <div style={{ marginBottom: '1.25rem' }}>
@@ -374,136 +482,127 @@ export default function SubServiceAdminPage() {
     <>
       <AdminPageHeader
         title={form.title || slug}
-        pageType="sub-service"
-        pageSlug={slug}
         templateName="Sub-Service"
         status={form.status}
-        updatedBy={form.updatedByName}
-        updatedAt={form.updatedAt}
-        createdBy={form.createdByName}
-        createdAt={form.createdAt}
-        getContent={() => ({
-          title: form.title,
-          heroHeading: form.heroHeading,
-          heroIntro: form.heroIntro,
-          heroImage: form.heroImage,
-          introHeading: form.introHeading,
-          introBody: form.introBody,
-          fImage: form.fImage,
-          problemsHeading: form.problemsHeading,
-          problemsItems: form.problemsItems,
-          ctaHeading: form.ctaHeading,
-          ctaBody: form.ctaBody,
-          f3Image: form.f3Image,
-          ndcTitle: form.ndcTitle,
-          ndcBody: form.ndcBody,
-          status: form.status,
-          metaTitle: form.metaTitle,
-          metaDescription: form.metaDescription,
-        })}
-        onPublishToggle={handlePublishToggle}
-        publishBusy={publishBusy}
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
       />
 
-      {/* ── Parent page indicator bar ─────────────────────────────────────── */}
-      <div style={{
-        background: ADMIN_COLORS.surfaceContainer,
-        borderLeft: `3px solid ${ADMIN_COLORS.cerulean}`,
-        borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}40`,
-        padding: '0.45rem 1.5rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.4rem',
-        fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-        fontSize: '12px',
-      }}>
-        <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-          Parent page:
-        </span>
-        {parentCategory ? (
-          <a
-            href={`/admin/${parentCategory.slug}`}
-            style={{ color: ADMIN_COLORS.cerulean, fontWeight: 600, textDecoration: 'none' }}
-          >
-            {parentCategory.title}
-          </a>
-        ) : (
-          <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontStyle: 'italic' }}>None assigned</span>
-        )}
-      </div>
-
-      <div style={{ padding: '2rem', maxWidth: '800px', fontFamily: 'system-ui, sans-serif' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
         <style>{`
           .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
           .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
           .field { transition: box-shadow 0.15s ease, border-color 0.15s ease; }
           .field:focus { outline: none; border-color: ${ADMIN_COLORS.cerulean}; box-shadow: 0 0 0 2px ${ADMIN_COLORS.cerulean}66; }
+          /* Brief 86, item 1: the content column fills the available width instead
+             of being boxed into a fixed reading-width column — it only ever gives
+             up exactly the sidebar's width (reserved via margin-right) when the
+             sidebar is open, and reclaims all of it when collapsed. No auto-margin
+             centering — that was pushing the leftover space to the left instead of
+             letting the boxes actually use it. Reacts live to .attrs-open since
+             that class is driven by attrsOpen state. */
+          .admin-editor-content { transition: margin-right 0.2s ease; }
+          @media (min-width: 768px) {
+            .admin-editor-content.attrs-open { margin-right: ${SIDEBAR_WIDTH_PX}px; }
+          }
+          /* Image uploader fields: preview on the left, Upload/URL tabs on the
+             right. Stacked on narrow viewports. */
+          .image-field-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+          @media (min-width: 640px) {
+            .image-field-grid { grid-template-columns: minmax(160px, 240px) 1fr; gap: 1.25rem; align-items: start; }
+          }
         `}</style>
         <form onSubmit={handleSave}>
           {textField('Page Title (internal)', 'title')}
 
           <div style={SECTION}>
-            <h3 style={SECTION_HEADING}>Hero</h3>
+            <h3 style={SECTION_HEADING}>Hero Section</h3>
             <HeroImageField value={form.heroImage} onChange={url => set('heroImage', url)} />
-            {textField('Hero Heading', 'heroHeading')}
-            {textareaField('Hero Intro', 'heroIntro', 3)}
+            {textField('H1: Main Header', 'heroHeading')}
+            {textareaField('Sub-text', 'heroIntro', 3)}
           </div>
 
           <div style={SECTION}>
             <h3 style={SECTION_HEADING}>Intro Section</h3>
-            {textField('Intro Heading', 'introHeading')}
-            {textareaField('Intro Body', 'introBody', 5)}
+            {textField('H2: Section Header', 'introHeading')}
+            <RichTextField label="Section Body" value={form.introBody} onChange={v => set('introBody', v)} rows={6} />
             <HeroImageField value={form.fImage} onChange={url => set('fImage', url)} label="Intro Section Image" />
           </div>
 
           <div style={SECTION}>
-            <h3 style={SECTION_HEADING}>Problems We Solve</h3>
-            {textField('Problems Heading', 'problemsHeading')}
-            {textareaField('Problems (one per line)', 'problemsItems', 5, 'Enter one problem per line.')}
+            <h3 style={SECTION_HEADING}>List Section</h3>
+            {textField('H2: Section Header', 'problemsHeading')}
+            <ProblemsListField
+              label="List items"
+              items={form.problemsItems}
+              onChange={v => set('problemsItems', v)}
+            />
           </div>
+
+          <ReadOnlyBlock
+            title="Coverage Map"
+            description="Service-area map (&ldquo;We&rsquo;re almost everywhere&rdquo;). Heading and map are shared across all sub-service pages."
+            badge="Managed in Elfsight"
+          />
+
+          <ReadOnlyBlock
+            title="Google Reviews"
+            description="Google reviews carousel, shared across the site."
+            badge="Managed in Elfsight"
+          />
+
+          <ReadOnlyBlock
+            title="TikTok Feed"
+            description="TikTok video feed. Headline is shared across all sub-service pages."
+            badge="Managed in Elfsight"
+          />
 
           <div style={SECTION}>
             <h3 style={SECTION_HEADING}>No Drip Club</h3>
-            {textField('NDC Selling Point (label)', 'ndcTitle')}
-            {textareaField('NDC Body', 'ndcBody', 3, 'The per-service No Drip Club pitch. Leave blank to use the generic default copy.')}
+            {textField('H2: Section Header', 'ndcTitle')}
+            <RichTextField
+              label="Section Body"
+              value={form.ndcBody}
+              onChange={v => set('ndcBody', v)}
+              rows={4}
+              help="The per-service No Drip Club pitch. Leave blank to use the generic default copy."
+            />
+            <p style={{
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+              fontSize: '12px',
+              color: `${ADMIN_COLORS.onSurfaceVariant}99`,
+              margin: '0.5rem 0 0',
+            }}>
+              The No Drip Club image is a fixed default and not editable per page today.
+            </p>
           </div>
 
+          <ReadOnlyBlock
+            title="Related Articles"
+            description="Shows the 3 latest Knowledge Hub articles (same on every sub-service page today; not filtered by service)."
+            badge="Auto-generated"
+          />
+
           <div style={SECTION}>
-            <h3 style={SECTION_HEADING}>Call to Action</h3>
-            {textField('CTA Heading', 'ctaHeading')}
-            {textareaField('CTA Body', 'ctaBody', 3)}
+            <h3 style={SECTION_HEADING}>Final CTA</h3>
+            {textField('Section Header', 'ctaHeading')}
+            {textareaField('Section Body', 'ctaBody', 3)}
             <HeroImageField value={form.f3Image} onChange={url => set('f3Image', url)} label="Closing CTA Image" />
           </div>
 
           {/* ── Settings ── */}
           <div style={SECTION}>
             <h3 style={SECTION_HEADING}>Settings</h3>
-
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label style={LABEL}>Parent Page</label>
-              <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontFamily: 'var(--font-nunito), system-ui, sans-serif', margin: '0 0 0.35rem' }}>
-                The service category this sub-service belongs to. Used for breadcrumbs and internal linking.
-              </p>
-              <select
-                className="field"
-                value={form.parentSlug ?? ''}
-                onChange={e => set('parentSlug', e.target.value || null)}
-                style={{
-                  ...INPUT,
-                  appearance: 'none',
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4c6cd'/%3E%3C/svg%3E")`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'right 10px center',
-                  paddingRight: '2rem',
-                  cursor: 'pointer',
-                }}
-              >
-                <option value="">None</option>
-                {serviceCategories.map(cat => (
-                  <option key={cat.slug} value={cat.slug}>{cat.title}</option>
-                ))}
-              </select>
-            </div>
 
             <MetaSection
               metaTitle={form.metaTitle}
@@ -537,6 +636,41 @@ export default function SubServiceAdminPage() {
           </div>
         </form>
       </div>
+
+      <PageAttributesSidebar
+        title={form.title}
+        updatedAt={form.updatedAt}
+        status={form.status}
+        onStatusChange={handleStatusChange}
+        statusBusy={publishBusy}
+        template={{
+          value: 'sub-service',
+          label: 'Sub-Service',
+          options: [{ value: 'sub-service', label: 'Sub-Service' }],
+        }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: slug, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/${slug}` }}
+        parent={{
+          label: parentCategory ? parentCategory.title : 'None',
+          editable: true,
+          value: form.parentSlug,
+          options: serviceCategories,
+          onChange: (newParentSlug) => set('parentSlug', newParentSlug),
+        }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </>
   );
 }

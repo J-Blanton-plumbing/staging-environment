@@ -155,11 +155,25 @@ export default function GlobalSettingsPage() {
         </div>
       )}
 
+      {/* Template Variables (Brief 77, Feature B) — the {{token}} values every
+          editor's "Insert variable" menu can drop into a headline or body field.
+          Surfaced here first since editing one of these updates every page that
+          uses the token, in one place. */}
+      <div style={sectionStyle}>
+        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '0.35rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Template Variables</h2>
+        <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.8rem', marginBottom: '1rem', marginTop: 0 }}>
+          These back the <code>{'{{phone}}'}</code> and <code>{'{{ndc_price}}'}</code> tokens available from every rich-text
+          field&apos;s &quot;Insert variable&quot; menu. Changing a value here updates it everywhere the token is used.
+        </p>
+        <label style={labelStyle}>Phone Number — <code>{'{{phone}}'}</code></label>
+        <input style={s} value={form.phoneDisplay} onChange={e => set('phoneDisplay', e.target.value)} placeholder="773-724-9272" />
+        <label style={labelStyle}>No Drip Club Price — <code>{'{{ndc_price}}'}</code></label>
+        <input style={s} value={form.ndcPrice} onChange={e => set('ndcPrice', e.target.value)} placeholder="$29.97" />
+      </div>
+
       {/* Contact */}
       <div style={sectionStyle}>
         <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Contact</h2>
-        <label style={labelStyle}>Phone Number (displayed to users)</label>
-        <input style={s} value={form.phoneDisplay} onChange={e => set('phoneDisplay', e.target.value)} placeholder="773-724-9272" />
         <label style={labelStyle}>Phone Link (e.g. tel:773-724-9272)</label>
         <input style={s} value={form.phoneHref} onChange={e => set('phoneHref', e.target.value)} placeholder="tel:773-724-9272" />
         <label style={labelStyle}>Header Phone (call-tracking number — navbar only)</label>
@@ -185,13 +199,6 @@ export default function GlobalSettingsPage() {
         <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Hours</h2>
         <label style={labelStyle}>Hours Label (e.g. &quot;24 hours&quot;)</label>
         <input style={s} value={form.hoursLabel} onChange={e => set('hoursLabel', e.target.value)} placeholder="24 hours" />
-      </div>
-
-      {/* No Drip Club */}
-      <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>No Drip Club</h2>
-        <label style={labelStyle}>Membership Price Line (shown on the No Drip Club page)</label>
-        <input style={s} value={form.ndcPrice} onChange={e => set('ndcPrice', e.target.value)} placeholder="All for just $29.97/month**" />
       </div>
 
       {/* Service Category Descriptions (Brief 67) */}

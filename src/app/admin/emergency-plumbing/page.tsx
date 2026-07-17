@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import MetaSection from '@/components/admin/MetaSection';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
+import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
 
 interface FormState {
   heroHeading: string;
@@ -110,6 +114,27 @@ export default function AdminEmergencyPlumbingPage() {
   // Brief 75/78 (DP-1): the row version this editor loaded, sent back on save so a
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
+  const dv = useDraftVersions('emergency-plumbing', 'emergency-plumbing', () => ({
+    heroHeading: form.heroHeading,
+    heroDescription: form.heroDescription,
+    heroImage: form.heroImage,
+    fHeading: form.fHeading,
+    fBody: form.fBody,
+    fImage: form.fImage,
+    cardHeading: form.cardHeading,
+    cardItems: form.cardItems.split('\n').map((s: string) => s.trim()).filter(Boolean),
+    mapHeading: form.mapHeading,
+    mapBody: form.mapBody,
+    f2Heading: form.f2Heading,
+    f2Body: form.f2Body,
+    f2Image: form.f2Image,
+    f3Heading: form.f3Heading,
+    f3Body: form.f3Body,
+    f3Image: form.f3Image,
+    metaTitle: form.metaTitle || null,
+    metaDescription: form.metaDescription || null,
+  }));
 
   useEffect(() => {
     fetch('/api/cms/emergency-plumbing')
@@ -217,35 +242,27 @@ export default function AdminEmergencyPlumbingPage() {
         .admin-editor-page input:focus, .admin-editor-page textarea:focus, .admin-editor-page select:focus { outline: none; box-shadow: 0 0 0 2px ${ADMIN_COLORS.primary}66; }
         .admin-save-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
         .admin-save-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        .admin-editor-content { transition: margin-right 0.2s ease; }
+        @media (min-width: 768px) {
+          .admin-editor-content.attrs-open { margin-right: 280px; }
+        }
       `}</style>
       <AdminPageHeader
         title="Emergency Plumbing — CMS Editor"
-        pageType="emergency-plumbing"
-        pageSlug="emergency-plumbing"
-        getContent={() => ({
-          heroHeading: form.heroHeading,
-          heroDescription: form.heroDescription,
-          heroImage: form.heroImage,
-          fHeading: form.fHeading,
-          fBody: form.fBody,
-          fImage: form.fImage,
-          cardHeading: form.cardHeading,
-          cardItems: form.cardItems.split('\n').map((s: string) => s.trim()).filter(Boolean),
-          mapHeading: form.mapHeading,
-          mapBody: form.mapBody,
-          f2Heading: form.f2Heading,
-          f2Body: form.f2Body,
-          f2Image: form.f2Image,
-          f3Heading: form.f3Heading,
-          f3Body: form.f3Body,
-          f3Image: form.f3Image,
-          metaTitle: form.metaTitle || null,
-          metaDescription: form.metaDescription || null,
-        })}
-        templateName="Emergency Plumbing"
-        previewBaseUrl="/emergency-plumbing"
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
       />
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text and images. Leave an image field empty to use the default asset.</p>
 
       {/* ── Hero ── */}
@@ -327,6 +344,28 @@ export default function AdminEmergencyPlumbingPage() {
       </div>
 
     </div>
+
+      <PageAttributesSidebar
+        title="Emergency Plumbing"
+        status="published"
+        template={{ value: 'emergency-plumbing', label: 'Emergency Plumbing', options: [{ value: 'emergency-plumbing', label: 'Emergency Plumbing' }] }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: 'emergency-plumbing', editable: false, disabledNote: "This is a fixed system page — its URL can't be changed.", permalink: `${SITE.baseUrl}/emergency-plumbing` }}
+        parent={{ label: 'None', editable: false }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </div>
   );
 }

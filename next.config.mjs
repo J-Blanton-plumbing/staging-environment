@@ -40,6 +40,11 @@ const nextConfig = {
 
       // Stub pages
       { source: '/booking',             destination: '/contact',               permanent: true },
+
+      // Brief 83 — "Service Category" + "Service" sidebar sections merged into
+      // one "Service Pages" landing; the old standalone sub-service list route
+      // now redirects there so no admin bookmarks/links 404.
+      { source: '/admin/sub-services',  destination: '/admin/service-pages',   permanent: true },
     ];
   },
 };

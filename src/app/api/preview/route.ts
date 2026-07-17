@@ -20,6 +20,10 @@ function pageUrl(pageType: string, pageSlug: string): string {
   if (pageType === 'service') {
     return SERVICE_CATEGORY_SLUGS.has(pageSlug) ? `/services/${pageSlug}` : `/${pageSlug}`;
   }
+  // Brief 75 (CQ-1) gave sub-service drafts their own page_type (distinct from
+  // 'service') so they publish to the right table — this route's URL map was
+  // never updated to match, so Preview fell through to the '/' default below.
+  if (pageType === 'sub-service') return `/${pageSlug}`;
   if (pageType === 'city-service' || pageType === 'city-service-standard' || pageType === 'city-service-emergency') {
     return `/${pageSlug}`; // pageSlug is city/service format
   }

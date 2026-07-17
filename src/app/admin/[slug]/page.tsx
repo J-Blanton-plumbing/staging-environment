@@ -4,7 +4,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
 
 interface SubcategoryField {
   label: string;
@@ -35,6 +39,7 @@ interface FormState {
   subcategories: SubcategoryField[];
   meta_title: string;
   meta_description: string;
+  updated_at?: string;
 }
 
 const EMPTY: FormState = {
@@ -145,9 +150,33 @@ export default function AdminServicePage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'saving' | 'saved' | 'error'>('loading');
   const [errorMsg, setErrorMsg] = useState('');
   const [globalOpen, setGlobalOpen] = useState(false);
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
   // Brief 75/78 (DP-1): the row version this editor loaded, sent back on save so a
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
+  const dv = useDraftVersions('service', slug, () => ({
+    hero_heading: form.hero_heading,
+    hero_intro: form.hero_intro,
+    hero_image: form.hero_image,
+    intro_heading: form.intro_heading,
+    intro_body: form.intro_body,
+    f_image: form.f_image,
+    problems_heading: form.problems_heading,
+    problems_items: form.problems_items.split('\n').map((s: string) => s.trim()).filter(Boolean),
+    subcategories_heading: form.subcategories_heading,
+    preventative_heading: form.preventative_heading,
+    preventative_body: form.preventative_body,
+    final_pitch_tagline: form.final_pitch_tagline,
+    final_pitch_body: form.final_pitch_body,
+    f3_image: form.f3_image,
+    articles_featured_slugs: form.articles_featured_slugs.split('\n').map((s: string) => s.trim()).filter(Boolean),
+    service_area_heading: form.service_area_heading,
+    service_area_body: form.service_area_body,
+    tiktok_headline: form.tiktok_headline,
+    subcategories: form.subcategories,
+    meta_title: form.meta_title || null,
+    meta_description: form.meta_description || null,
+  }));
 
   useEffect(() => {
     if (!slug) return;
@@ -179,6 +208,7 @@ export default function AdminServicePage() {
           subcategories: subcategories.map((s: SubcategoryField) => ({ ...s })),
           meta_title: page.meta_title ?? '',
           meta_description: page.meta_description ?? '',
+          updated_at: page.updated_at ?? undefined,
         });
         setVersion(typeof page.version === 'number' ? page.version : 0);
         setStatus('idle');
@@ -285,38 +315,27 @@ export default function AdminServicePage() {
         .admin-editor-page input:focus, .admin-editor-page textarea:focus, .admin-editor-page select:focus { outline: none; box-shadow: 0 0 0 2px ${ADMIN_COLORS.primary}66; }
         .admin-save-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
         .admin-save-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        .admin-editor-content { transition: margin-right 0.2s ease; }
+        @media (min-width: 768px) {
+          .admin-editor-content.attrs-open { margin-right: 280px; }
+        }
       `}</style>
       <AdminPageHeader
         title={`${pageLabel} — CMS Editor`}
-        pageType="service"
-        pageSlug={slug}
-        getContent={() => ({
-          hero_heading: form.hero_heading,
-          hero_intro: form.hero_intro,
-          hero_image: form.hero_image,
-          intro_heading: form.intro_heading,
-          intro_body: form.intro_body,
-          f_image: form.f_image,
-          problems_heading: form.problems_heading,
-          problems_items: form.problems_items.split('\n').map((s: string) => s.trim()).filter(Boolean),
-          subcategories_heading: form.subcategories_heading,
-          preventative_heading: form.preventative_heading,
-          preventative_body: form.preventative_body,
-          final_pitch_tagline: form.final_pitch_tagline,
-          final_pitch_body: form.final_pitch_body,
-          f3_image: form.f3_image,
-          articles_featured_slugs: form.articles_featured_slugs.split('\n').map((s: string) => s.trim()).filter(Boolean),
-          service_area_heading: form.service_area_heading,
-          service_area_body: form.service_area_body,
-          tiktok_headline: form.tiktok_headline,
-          subcategories: form.subcategories,
-          meta_title: form.meta_title || null,
-          meta_description: form.meta_description || null,
-        })}
-        templateName="Service Category"
-        previewBaseUrl={`/services/${slug}`}
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
       />
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text content. Images on the live page come from static files and are not affected here.</p>
 
       <div style={section}>
@@ -440,6 +459,29 @@ export default function AdminServicePage() {
       </div>
 
     </div>
+
+      <PageAttributesSidebar
+        title={pageLabel}
+        updatedAt={form.updated_at}
+        status="published"
+        template={{ value: 'service-category', label: 'Service Category', options: [{ value: 'service-category', label: 'Service Category' }] }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: slug, editable: false, disabledNote: "This page's URL is derived from its service category and can't be changed here.", permalink: `${SITE.baseUrl}/services/${slug}` }}
+        parent={{ label: 'None', editable: false }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </div>
   );
 }

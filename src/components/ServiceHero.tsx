@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { resolveTokens } from '@/lib/cms/tokens';
 import type { ServiceContent } from '@/types/service';
 
 /**
@@ -45,10 +46,10 @@ export default async function ServiceHero({ hero }: { hero: ServiceContent['hero
       >
         <div className="w relative z-[2] mx-auto flex h-full max-w-[600px] w-[85%] lg:w-[80%] flex-col justify-center py-16 text-white lg:py-0">
           <h1 className="font-display font-bold uppercase text-white text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-tight">
-            {hero.heading}
+            {resolveTokens(hero.heading, settings)}
           </h1>
           <p className="hero-desc text-white/90 text-[15px] md:text-base leading-[1.5] tracking-[0.5px] mt-5 mb-7 max-w-2xl">
-            {hero.intro}
+            {resolveTokens(hero.intro, settings)}
           </p>
           <Link
             href={settings.phoneHref}

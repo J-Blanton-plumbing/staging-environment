@@ -1,3 +1,6 @@
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsInline } from '@/lib/cms/sanitize';
+import { resolveTokens } from '@/lib/cms/tokens';
 import type { ServiceContent } from '@/types/service';
 
 /**
@@ -11,12 +14,20 @@ import type { ServiceContent } from '@/types/service';
  * column, desktop as the right column) to mirror the WordPress `.f` markup.
  * When it is empty the slot renders a Cream placeholder rather than a broken
  * image (brief-11 §1 note).
+ *
+ * Brief 86 (item 3): `paragraphs` entries are rendered through `renderCmsInline`
+ * (sanitized against the Brief 73 allow-list) instead of as plain text, so a
+ * DB-backed sub-service's RichTextField-authored intro body (bold/lists/links)
+ * renders correctly. Legacy plain-text paragraphs from the static content
+ * files still render identically — `renderCmsInline` escapes and converts
+ * newlines for non-HTML input.
  */
-export default function ServiceIntro({
+export default async function ServiceIntro({
   expert,
 }: {
   expert: ServiceContent['expertSection'];
 }) {
+  const settings = await getGlobalSettingsCached();
   return (
     <section className="bg-cream-100 py-[70px] md:py-[100px]">
       <div className="w-[90%] lg:w-[81%] mx-auto">
@@ -24,7 +35,7 @@ export default function ServiceIntro({
           {/* Left — heading, mobile-only photo, body paragraphs */}
           <div>
             <h2 className="font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-8">
-              {expert.heading}
+              {resolveTokens(expert.heading, settings)}
             </h2>
 
             {/* Mobile: photo inside the text column (hidden on desktop) */}
@@ -35,9 +46,11 @@ export default function ServiceIntro({
 
             <div className="text-navy-800 space-y-5">
               {expert.paragraphs.map((p, i) => (
-                <p key={i} className="font-sans text-[16px] leading-[24px]">
-                  {p}
-                </p>
+                <p
+                  key={i}
+                  className="font-sans text-[16px] leading-[24px]"
+                  dangerouslySetInnerHTML={{ __html: renderCmsInline(p, settings) }}
+                />
               ))}
             </div>
           </div>

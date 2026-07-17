@@ -5,7 +5,11 @@ import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
+import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
 
 interface ArticleData {
   slug: string;
@@ -481,6 +485,17 @@ export default function ArticleAdminPage() {
   const [loadStatus, setLoadStatus] = useState<'loading' | 'not-found' | 'error' | 'done'>('loading');
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [saveMsg, setSaveMsg] = useState('');
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
+  const dv = useDraftVersions('article', slug, () => ({
+    title: form.title,
+    excerpt: form.excerpt,
+    body: form.body,
+    image: form.image,
+    categories: form.categories,
+    status: form.status,
+    metaTitle: form.metaTitle,
+    metaDescription: form.metaDescription,
+  }));
 
   const load = useCallback(async () => {
     try {
@@ -572,32 +587,30 @@ export default function ArticleAdminPage() {
     <>
       <AdminPageHeader
         title={form.title || slug}
-        pageType="article"
-        pageSlug={slug}
-        templateName="Article"
-        status={form.status}
-        updatedBy={form.updatedByName}
-        updatedAt={form.updatedAt}
-        createdBy={form.createdByName}
-        createdAt={form.createdAt}
-        getContent={() => ({
-          title: form.title,
-          excerpt: form.excerpt,
-          body: form.body,
-          image: form.image,
-          categories: form.categories,
-          status: form.status,
-          metaTitle: form.metaTitle,
-          metaDescription: form.metaDescription,
-        })}
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
       />
 
-      <div style={{ padding: '2rem', maxWidth: '800px', fontFamily: 'system-ui, sans-serif' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem', maxWidth: '800px', fontFamily: 'system-ui, sans-serif' }}>
         <style>{`
           .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
           .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
           .field { transition: box-shadow 0.15s ease, border-color 0.15s ease; }
           .field:focus { outline: none; border-color: ${ADMIN_COLORS.cerulean}; box-shadow: 0 0 0 2px ${ADMIN_COLORS.cerulean}66; }
+          .admin-editor-content { transition: margin-right 0.2s ease; }
+          @media (min-width: 768px) {
+            .admin-editor-content.attrs-open { margin-right: 280px; }
+          }
         `}</style>
         <form onSubmit={handleSave}>
           {/* Article Details */}
@@ -642,23 +655,9 @@ export default function ArticleAdminPage() {
             <RichTextField label="Body" value={form.body} onChange={v => set('body', v)} rows={16} />
           </div>
 
-          {/* Publishing */}
+          {/* SEO — Status now lives exclusively in the Page Attributes sidebar (Brief 85 iter. 3) */}
           <div style={SECTION}>
-            <h3 style={SECTION_HEADING}>Publishing</h3>
-            {/* Status */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label style={LABEL}>Status</label>
-              <select
-                className="field"
-                value={form.status}
-                onChange={e => set('status', e.target.value)}
-                style={INPUT}
-              >
-                <option value="draft">Draft</option>
-                <option value="published">Published</option>
-              </select>
-            </div>
-
+            <h3 style={SECTION_HEADING}>SEO</h3>
             <MetaSection
               metaTitle={form.metaTitle}
               metaDescription={form.metaDescription}
@@ -695,6 +694,30 @@ export default function ArticleAdminPage() {
           </div>
         </form>
       </div>
+
+      <PageAttributesSidebar
+        title={form.title}
+        updatedAt={form.updatedAt}
+        status={form.status}
+        onStatusChange={newStatus => set('status', newStatus)}
+        template={{ value: 'article', label: 'Article', options: [{ value: 'article', label: 'Article' }] }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: slug, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/knowledge-hub/${slug}` }}
+        parent={{ label: 'None', editable: false }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import pool from '@/lib/db';
+import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 
 type RouteContext = { params: Promise<{ slug: string }> };
 
@@ -65,6 +66,22 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
   // the version it loaded, reject a stale direct edit (409) instead of clobbering.
   const expectedVersion = typeof body.version === 'number' ? body.version : null;
 
+  // Brief 86 (items 3 & 5): intro_body/ndc_body are now RichTextField-backed —
+  // sanitize through the shared Brief 73 allow-list before persisting.
+  const introBody = typeof body.introBody === 'string' ? sanitizeCmsHtml(body.introBody) : null;
+  const ndcBody = typeof body.ndcBody === 'string' ? sanitizeCmsHtml(body.ndcBody) : null;
+
+  // Brief 86 fix: meta_title/meta_description/parent_slug were assigned directly
+  // (not COALESCE'd like every other field), so a caller that omits one of these
+  // keys — any partial PUT, not just the full-form admin editor — silently wiped
+  // it to NULL instead of leaving it untouched. Track "was this key present in
+  // the request body" per field so an omitted key preserves the existing value,
+  // while an explicit value (including an intentional `null` to clear it, as the
+  // admin editor sends when a field is emptied) still applies.
+  const metaTitleProvided = 'metaTitle' in body;
+  const metaDescriptionProvided = 'metaDescription' in body;
+  const parentProvided = rawParent !== undefined;
+
   const client = await pool.connect();
   try {
     const res = await client.query(
@@ -80,9 +97,9 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
          cta_heading      = COALESCE($9, cta_heading),
          cta_body         = COALESCE($10, cta_body),
          status           = COALESCE($11, status),
-         meta_title       = $12,
-         meta_description = $13,
-         parent_slug      = $14,
+         meta_title       = CASE WHEN $22 THEN $12 ELSE meta_title END,
+         meta_description = CASE WHEN $23 THEN $13 ELSE meta_description END,
+         parent_slug      = CASE WHEN $24 THEN $14 ELSE parent_slug END,
          f_image          = COALESCE($17, f_image),
          f3_image         = COALESCE($18, f3_image),
          ndc_title        = COALESCE($19, ndc_title),
@@ -99,7 +116,7 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
         (body.heroIntro as string) ?? null,
         (body.heroImage as string) ?? null,
         (body.introHeading as string) ?? null,
-        (body.introBody as string) ?? null,
+        introBody,
         (body.problemsHeading as string) ?? null,
         body.problemsItems ? JSON.stringify(body.problemsItems) : null,
         (body.ctaHeading as string) ?? null,
@@ -113,8 +130,11 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
         (body.fImage as string) ?? null,
         (body.f3Image as string) ?? null,
         (body.ndcTitle as string) ?? null,
-        (body.ndcBody as string) ?? null,
+        ndcBody,
         expectedVersion,
+        metaTitleProvided,
+        metaDescriptionProvided,
+        parentProvided,
       ]
     );
     if ((res.rowCount ?? 0) === 0) {

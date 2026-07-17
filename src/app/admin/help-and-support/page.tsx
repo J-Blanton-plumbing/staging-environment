@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
 
 interface FormState {
   hero_heading: string;
@@ -38,6 +42,9 @@ export default function HelpAndSupportAdminPage() {
   // Brief 78 (Track A): the row version this editor loaded, sent back on save so a
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
+  const [updatedAt, setUpdatedAt] = useState<string | undefined>();
+  const dv = useDraftVersions('main', 'help-and-support', () => buildPayload(form));
 
   useEffect(() => {
     fetch('/api/cms/main/help-and-support')
@@ -55,6 +62,7 @@ export default function HelpAndSupportAdminPage() {
           meta_title: data.meta_title ?? '',
           meta_description: data.meta_description ?? '',
         });
+        setUpdatedAt(data.updated_at ?? undefined);
         setVersion(typeof data.version === 'number' ? data.version : 0);
         setStatus('idle');
       })
@@ -96,16 +104,27 @@ export default function HelpAndSupportAdminPage() {
       <style>{`
         .admin-save-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
         .admin-field:focus { outline: none; box-shadow: 0 0 0 2px ${ADMIN_COLORS.primary}66; }
+        .admin-editor-content { transition: margin-right 0.2s ease; }
+        @media (min-width: 768px) {
+          .admin-editor-content.attrs-open { margin-right: 280px; }
+        }
       `}</style>
       <AdminPageHeader
         title="Help &amp; Support — CMS Editor"
-        pageType="main"
-        pageSlug="help-and-support"
-        getContent={() => buildPayload(form)}
-        templateName="Help & Support"
-        previewBaseUrl="/help-and-support"
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
       />
-      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
 
         <div style={sec}>
           <h2 style={secHead}>Hero</h2>
@@ -147,6 +166,29 @@ export default function HelpAndSupportAdminPage() {
         </div>
 
       </div>
+
+      <PageAttributesSidebar
+        title="Help & Support"
+        updatedAt={updatedAt}
+        status="published"
+        template={{ value: 'help-and-support', label: 'Help & Support', options: [{ value: 'help-and-support', label: 'Help & Support' }] }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: 'help-and-support', editable: false, disabledNote: "This is a fixed system page — its URL can't be changed.", permalink: `${SITE.baseUrl}/help-and-support` }}
+        parent={{ label: 'None', editable: false }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </div>
   );
 }

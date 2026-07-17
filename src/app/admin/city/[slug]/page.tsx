@@ -4,7 +4,14 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import TemplateSwitcher from '@/components/admin/TemplateSwitcher';
+import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
+import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
+import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { SITE } from '@/lib/site';
+
+const CITY_TEMPLATES = ['coverage-area', 'local-office', 'local-office-v2'];
 
 interface FaqField {
   question: string;
@@ -460,9 +467,16 @@ export default function AdminCityPage() {
   const [missingFields, setMissingFields] = useState<string[]>([]);
   const [switchToast, setSwitchToast] = useState('');
   const [pageMeta, setPageMeta] = useState<{ updatedBy?: string; updatedAt?: string; createdBy?: string; createdAt?: string }>({});
+  const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
   // Brief 75 (DP-1): the row version this editor loaded, sent back on save so a
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
+  const dv = useDraftVersions('city', slug, () => buildCityPayload(form));
+  // Brief 85 (iter. 3): the sidebar's Template popover triggers this modal (kept
+  // as-is, archive/warning flow intact) instead of reimplementing template
+  // switching behind a plain radio picker.
+  const [templateSwitcherOpen, setTemplateSwitcherOpen] = useState(false);
+  const [pendingTemplate, setPendingTemplate] = useState('');
 
   useEffect(() => {
     if (!slug) return;
@@ -569,23 +583,43 @@ export default function AdminCityPage() {
         }
         .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
         .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        .admin-editor-content { transition: margin-right 0.2s ease; }
+        @media (min-width: 768px) {
+          .admin-editor-content.attrs-open { margin-right: 280px; }
+        }
       `}</style>
       <AdminPageHeader
         title={`${cityLabel} — CMS Editor`}
+        pageAttributesOpen={attrsOpen}
+        onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
+        draftVersions={{
+          busy: dv.busy,
+          notice: dv.notice,
+          noticeIsError: dv.noticeIsError,
+          onSave: dv.save,
+          onPreview: dv.preview,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        compact
+      />
+
+      {/* Hidden-trigger: opened by the sidebar's Template popover. Same archive/
+          missing-fields flow as before, just triggered from the sidebar now. */}
+      <TemplateSwitcher
         pageType="city"
         pageSlug={slug}
-        getContent={() => buildCityPayload(form)}
         currentTemplate={form.templateType}
-        availableTemplates={['coverage-area', 'local-office', 'local-office-v2']}
-        onTemplateSwitched={handleSwitched}
-        updatedBy={pageMeta.updatedBy}
-        updatedAt={pageMeta.updatedAt}
-        createdBy={pageMeta.createdBy}
-        createdAt={pageMeta.createdAt}
-        templateName={TEMPLATE_DISPLAY_NAMES[form.templateType] ?? 'Coverage Area City'}
-        previewBaseUrl={`/${slug}`}
+        availableTemplates={CITY_TEMPLATES}
+        onSwitched={handleSwitched}
+        getContent={() => buildCityPayload(form)}
+        hideTrigger
+        open={templateSwitcherOpen}
+        onOpenChange={setTemplateSwitcherOpen}
+        initialSelectedTemplate={pendingTemplate}
       />
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+
+    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit hero copy, content sections, and FAQs. Office address, services list, video, and partner logos come from the static data file.
       </p>
@@ -642,6 +676,34 @@ export default function AdminCityPage() {
       </div>
 
     </div>
+
+      <PageAttributesSidebar
+        title={cityLabel}
+        updatedAt={pageMeta.updatedAt}
+        status="published"
+        template={{
+          value: form.templateType,
+          label: TEMPLATE_DISPLAY_NAMES[form.templateType] ?? form.templateType,
+          options: CITY_TEMPLATES.map(t => ({ value: t, label: TEMPLATE_DISPLAY_NAMES[t] ?? t })),
+          onChange: (newTemplate) => { setPendingTemplate(newTemplate); setTemplateSwitcherOpen(true); },
+        }}
+        version={{
+          activeId: dv.activeId,
+          activeLabel: dv.activeLabel,
+          versions: dv.versions,
+          busy: dv.busy,
+          currentUserId: dv.currentUserId,
+          onSwitch: dv.switchTo,
+          onPublish: dv.publish,
+          onDelete: dv.remove,
+          onSaveAsNew: dv.saveAsNew,
+          nextVersionName: dv.nextVersionName,
+        }}
+        slug={{ value: slug, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/${slug}` }}
+        parent={{ label: 'None', editable: false }}
+        open={attrsOpen}
+        onClose={() => setAttrsOpen(false)}
+      />
     </div>
   );
 }

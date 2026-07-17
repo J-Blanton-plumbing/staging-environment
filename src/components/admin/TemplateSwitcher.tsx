@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 const TEMPLATE_LABELS: Record<string, string> = {
@@ -17,6 +17,14 @@ interface Props {
   onSwitched: (newTemplate: string, missingFields: string[]) => void;
   compact?: boolean;
   getContent?: () => unknown;
+  // Brief 85 (iter. 3): lets an external trigger (the sidebar's Template popover)
+  // drive the modal instead of this component's own button — used on city pages,
+  // which have real template variants, so the archive/warning flow is preserved
+  // rather than reimplemented behind a plain radio picker.
+  hideTrigger?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  initialSelectedTemplate?: string;
 }
 
 export default function TemplateSwitcher({
@@ -27,8 +35,14 @@ export default function TemplateSwitcher({
   onSwitched,
   compact = false,
   getContent,
+  hideTrigger = false,
+  open: controlledOpen,
+  onOpenChange,
+  initialSelectedTemplate,
 }: Props) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenState, setModalOpenState] = useState(false);
+  const isControlled = controlledOpen !== undefined;
+  const modalOpen = isControlled ? controlledOpen : modalOpenState;
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   const [switching, setSwitching] = useState(false);
   const [error, setError] = useState('');
@@ -41,13 +55,32 @@ export default function TemplateSwitcher({
     return new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
+  function setModalOpen(next: boolean) {
+    if (onOpenChange) onOpenChange(next);
+    if (!isControlled) setModalOpenState(next);
+  }
+
   function openModal() {
-    setSelectedTemplate(otherTemplates[0] ?? '');
+    setSelectedTemplate(initialSelectedTemplate ?? otherTemplates[0] ?? '');
     setArchiveChecked(false);
     setArchiveName(`${pageSlug} — ${currentTemplate} — ${todayStr()}`);
     setError('');
     setModalOpen(true);
   }
+
+  // When externally controlled and opened (sidebar Template popover), initialize
+  // the same way `openModal()` would — there's no click handler to hook into.
+  const prevControlledOpen = useRef(false);
+  useEffect(() => {
+    if (isControlled && controlledOpen && !prevControlledOpen.current) {
+      setSelectedTemplate(initialSelectedTemplate ?? otherTemplates[0] ?? '');
+      setArchiveChecked(false);
+      setArchiveName(`${pageSlug} — ${currentTemplate} — ${todayStr()}`);
+      setError('');
+    }
+    prevControlledOpen.current = !!controlledOpen;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isControlled, controlledOpen]);
 
   function closeModal() {
     if (switching) return;
@@ -105,7 +138,7 @@ export default function TemplateSwitcher({
         .admin-tswitch-cta:hover:not(:disabled) { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
         .admin-tswitch-field:focus { outline: none; box-shadow: 0 0 0 1px ${ADMIN_COLORS.primary}66; }
       `}</style>
-      {compact ? (
+      {hideTrigger ? null : compact ? (
         /* Compact trigger for AdminPageHeader */
         otherTemplates.length > 0 ? (
           <button

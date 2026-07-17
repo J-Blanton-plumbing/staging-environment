@@ -75,7 +75,7 @@ export default function RichTextField({
   /** Optional helper line under the label; a sensible default is used if omitted. */
   help?: string;
 }) {
-  const [view, setView] = useState<'html' | 'preview'>('html');
+  const [view, setView] = useState<'html' | 'preview'>('preview');
   const previewRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
