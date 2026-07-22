@@ -15,10 +15,14 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: true
           script: |
+            set -e
             sudo chown -R ec2-user:ec2-user /var/www/jblanton
             cd /var/www/jblanton
-            git pull origin main
+            git config --global --add safe.directory /var/www/jblanton
+            git fetch origin
+            git reset --hard origin/main
             npm ci
             npm run build
             sudo PM2_HOME=/root/.pm2 pm2 restart jblanton
