@@ -27,13 +27,14 @@
  *   # apply:
  *   npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/migrate-brief-99-city-v2-blocks.ts commit
  */
-import { readFileSync, mkdirSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
 import { randomUUID } from 'crypto';
 import { join } from 'path';
 import { Pool } from 'pg';
 
-const env = readFileSync('.env.local', 'utf8');
+const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
+  if (process.env[k]) return process.env[k] as string;
   const m = env.match(new RegExp('^' + k + '=(.*)$', 'm'));
   return m ? m[1].trim() : '';
 };

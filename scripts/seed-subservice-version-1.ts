@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 
 /**
@@ -13,8 +13,9 @@ import { Pool } from 'pg';
  *   static content files, not `sub_service_pages`, so they are excluded.
  * Idempotent: re-running only fills gaps.
  */
-const env = readFileSync('.env.local', 'utf8');
+const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
+  if (process.env[k]) return process.env[k] as string;
   const m = env.match(new RegExp('^' + k + '=(.*)$', 'm'));
   return m ? m[1].trim() : '';
 };

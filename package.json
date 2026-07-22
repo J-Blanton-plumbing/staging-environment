@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "seed:cms": "ts-node scripts/seed-cms.ts",
-    "stress:cms": "ts-node scripts/stress-test-cms.ts"
+    "stress:cms": "ts-node scripts/stress-test-cms.ts",
+    "db:setup": "ts-node scripts/setup-db.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
@@ -38,6 +39,8 @@
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5"
   }
 }

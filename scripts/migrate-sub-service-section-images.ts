@@ -7,11 +7,12 @@
  * Mirrors the service_category_pages column names (f_image / f3_image).
  * Run with: npx ts-node scripts/migrate-sub-service-section-images.ts
  */
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 
-const env = readFileSync('.env.local', 'utf8');
+const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
+  if (process.env[k]) return process.env[k] as string;
   const m = env.match(new RegExp('^' + k + '=(.*)$', 'm'));
   return m ? m[1].trim() : '';
 };

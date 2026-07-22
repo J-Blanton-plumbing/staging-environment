@@ -17,7 +17,7 @@ const XML_PATH =
   'C:/Users/marke/OneDrive/Documents/Claude/Projects/JBP Web Migration/jblantonplumbing.WordPress.2026-06-26.xml';
 
 const pool = new Pool({
-  connectionString: 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
 });
 
 function extractTag(xml: string, tag: string): string {
