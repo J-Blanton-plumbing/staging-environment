@@ -141,7 +141,7 @@ export default function WhyJBlantonAdminPage() {
         }}
         compact
       />
-      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
 
         <div style={sec}>
           <h2 style={secHead}>Hero</h2>

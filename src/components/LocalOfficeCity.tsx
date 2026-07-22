@@ -4,6 +4,8 @@ import CityServicesAccordion from '@/components/CityServicesAccordion';
 import PartnersCarousel from '@/components/PartnersCarousel';
 import FaqAccordion from '@/components/FaqAccordion';
 import ArticleGrid from '@/components/ArticleGrid';
+import GoogleReviews from '@/components/GoogleReviews';
+import TikTokFeed from '@/components/TikTokFeed';
 import { getArticles } from '@/lib/articles';
 import type { LocalOfficeContent } from '@/lib/content/cities/types';
 
@@ -79,19 +81,13 @@ export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) 
 
           {/* ===== 6. REVIEWS (Elfsight) ===== */}
           <section id="reviews" className="mb-[60px]">
-            <div
-              className={`elfsight-app-${city.reviews.elfsightId}`}
-              data-elfsight-app-lazy
-            />
+            <GoogleReviews widgetId={city.reviews.elfsightId} />
           </section>
 
           {/* ===== 7. "Turning Bad Calls to Good Calls" + social (Elfsight) ===== */}
           <p className="ep-tiktok-headline">{city.social.headline}</p>
           <section className="city-social-media mb-[60px]">
-            <div
-              className={`elfsight-app-${city.social.elfsightId}`}
-              data-elfsight-app-lazy
-            />
+            <TikTokFeed widgetId={city.social.elfsightId} />
           </section>
 
           {/* ===== 8. RELATED ARTICLES (shared component) ===== */}

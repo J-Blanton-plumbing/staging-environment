@@ -176,7 +176,10 @@ export default async function CityPage({ params }: { params: { city: string } })
       h1Override:        db.heroHeadingLine1 || base.h1Override,
       // callout uses heroCallout column (separate from heroDescription)
       callout:           db.heroCallout    || base.callout,
-      // "We've Got You Covered" body
+      // "We've Got You Covered" body (Brief 95, A.2: intentionally no heading
+      // merge here — db.contentHeading is the local-office Why-heading column
+      // reused across templates; this template's heading stays hard-coded, see
+      // CoverageAreaCity.tsx and CoverageAreaCityFields)
       coveredBody:       db.contentBody    || base.coveredBody,
       // "manplumber" block
       manplumberHeading: db.f2Heading      || base.manplumberHeading,

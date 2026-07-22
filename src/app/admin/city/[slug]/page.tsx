@@ -1,13 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import TemplateSwitcher from '@/components/admin/TemplateSwitcher';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import BlockShell from '@/components/admin/BlockShell';
+import BlockInserter from '@/components/admin/BlockInserter';
+import BlockField from '@/components/admin/BlockField';
+import { BLOCK_CATALOGUE, defaultDataFor, type BlockType } from '@/lib/cms/block-catalogue';
+import {
+  type CityV2BlockInstance,
+  CITY_V2_BLOCK_ORDER,
+  normalizeCityV2Blocks,
+  newCityV2BlockId,
+} from '@/lib/cms/city-v2-blocks';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
@@ -18,11 +29,6 @@ interface FaqField {
   answer: string;
 }
 
-// Brief 67 — V2 repeater item shapes.
-interface MostRequestedField { title: string; body: string }
-interface WhyPointField { heading: string; body: string }
-interface ReviewField { name: string; text: string; gbp_url: string }
-
 interface FormState {
   templateType: string;
   heroImage: string;
@@ -30,6 +36,10 @@ interface FormState {
   heroHeadingLine2: string;
   heroCallout: string;
   heroDescription: string;
+  // Dual meaning by template (Brief 95, A.2): on `local-office` this is the
+  // rendered "Why J. Blanton" heading; on `coverage-area` it is a legacy/unused
+  // column — that template's heading is intentionally hard-coded, see
+  // `CoverageAreaCityFields` above.
   contentHeading: string;
   contentBody: string;
   f2Heading: string;
@@ -37,20 +47,12 @@ interface FormState {
   faqs: FaqField[];
   metaTitle: string;
   metaDescription: string;
-  // ── Brief 67 — Local Office V2 fields ──
-  trustBarStars: string;
-  trustBarReviewCount: string;
-  servicesIntro: string;
-  mostRequestedServices: MostRequestedField[];
-  midCtaText: string;
-  whyPoints: WhyPointField[];
-  videoHeading: string;
-  videoIntro: string;
-  videoScript: string;
-  reviews: ReviewField[];
-  ndcIntro: string;
-  finalCtaHeading: string;
-  finalCtaBody: string;
+  // Brief 99 (Track D): City V2's fixed-position flat fields (trustBarStars,
+  // mostRequestedServices, whyPoints, videoHeading, reviews, ndcIntro,
+  // finalCtaHeading, etc.) are replaced by this per-instance block array —
+  // the same `{id,type,data}` model Brief 90 gave sub-service. Only meaningful
+  // when `templateType === 'local-office-v2'`; empty for V1 templates.
+  blocks: CityV2BlockInstance[];
 }
 
 const EMPTY: FormState = {
@@ -67,26 +69,11 @@ const EMPTY: FormState = {
   faqs: [],
   metaTitle: '',
   metaDescription: '',
-  trustBarStars: '',
-  trustBarReviewCount: '',
-  servicesIntro: '',
-  mostRequestedServices: [],
-  midCtaText: '',
-  whyPoints: [],
-  videoHeading: '',
-  videoIntro: '',
-  videoScript: '',
-  reviews: [],
-  ndcIntro: '',
-  finalCtaHeading: '',
-  finalCtaBody: '',
+  blocks: [],
 };
 
 /** Form keys that hold a plain string value (excludes arrays + templateType). */
-type StringFieldKey = keyof Omit<
-  FormState,
-  'faqs' | 'templateType' | 'mostRequestedServices' | 'whyPoints' | 'reviews'
->;
+type StringFieldKey = keyof Omit<FormState, 'faqs' | 'templateType' | 'blocks'>;
 
 // ── Shared styles ────────────────────────────────────────────────────────────
 
@@ -111,6 +98,12 @@ const sectionStyle: React.CSSProperties = {
 const h2Style: React.CSSProperties = {
   fontWeight: 700, fontSize: '14px', marginBottom: '1rem', color: ADMIN_COLORS.onSurface,
   fontFamily: 'var(--font-outfit), system-ui, sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em',
+};
+
+// Shared repeater-card style — the FAQs section (below, all templates).
+const repeaterCardStyle: React.CSSProperties = {
+  background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1rem',
+  padding: '1rem', marginBottom: '0.75rem', boxShadow: ADMIN_SHADOWS.sm,
 };
 
 // ── Missing field indicator ──────────────────────────────────────────────────
@@ -144,59 +137,6 @@ function FieldLabel({
   );
 }
 
-// ── Image upload field ───────────────────────────────────────────────────────
-
-function ImageField({ value, onChange }: { value: string; onChange: (v: string) => void }) {
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState('');
-
-  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    setUploadError('');
-    const fd = new FormData();
-    fd.append('file', file);
-    try {
-      const res = await fetch('/api/cms/upload', { method: 'POST', body: fd });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? 'Upload failed');
-      onChange(json.url);
-    } catch (err: unknown) {
-      setUploadError(err instanceof Error ? err.message : 'Upload failed');
-    } finally {
-      setUploading(false);
-      e.target.value = '';
-    }
-  }
-
-  return (
-    <div style={{ marginBottom: '1.25rem' }}>
-      <label style={labelStyle}>Hero Image</label>
-      {value && (
-        <img
-          src={value}
-          alt="current"
-          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: '0.5rem' }}
-        />
-      )}
-      <input
-        style={{ ...inputStyle, marginBottom: '0.25rem' }}
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        placeholder="https://... or leave empty to use default image"
-      />
-      <label style={{ display: 'inline-block', cursor: uploading ? 'not-allowed' : 'pointer' }}>
-        <input type="file" accept="image/jpeg,image/png,image/webp" style={{ display: 'none' }} onChange={handleFile} disabled={uploading} />
-        <span style={{ display: 'inline-block', background: ADMIN_COLORS.surfaceContainerLow, border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: ADMIN_COLORS.onSurfaceVariant, opacity: uploading ? 0.6 : 1 }}>
-          {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}
-        </span>
-      </label>
-      <span style={{ marginLeft: '0.5rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>JPEG, PNG or WebP · max 10 MB</span>
-      {uploadError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
-    </div>
-  );
-}
 
 // ── Template-specific field groups ───────────────────────────────────────────
 
@@ -213,7 +153,7 @@ function CoverageAreaCityFields({
     <>
       <div style={sectionStyle}>
         <h2 style={h2Style}>Hero</h2>
-        <ImageField value={form.heroImage} onChange={v => setField('heroImage', v)} />
+        <ImageUploaderField label="Hero Image" value={form.heroImage} onChange={v => setField('heroImage', v)} />
         <FieldLabel label="Hero Heading — Line 1" fieldKey="hero_heading_line1" missing={missing} />
         <input style={inputStyle} value={form.heroHeadingLine1} onChange={e => setField('heroHeadingLine1', e.target.value)} />
         <FieldLabel label="Hero Callout" fieldKey="hero_callout" missing={missing} note="(italic text below the heading)" />
@@ -222,8 +162,13 @@ function CoverageAreaCityFields({
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>We&rsquo;ve Got You Covered</h2>
-        <FieldLabel label="Heading" fieldKey="content_heading" missing={missing} />
-        <input style={inputStyle} value={form.contentHeading} onChange={e => setField('contentHeading', e.target.value)} />
+        {/* Brief 95 (A.2): no Heading field here on purpose — the "WE'VE GOT YOU
+            COVERED, {City}" heading is a templated SEO/geo pattern, not editable
+            copy. The `content_heading` column this template's Heading field used
+            to write to is the SAME column `LocalOfficeCityFields` uses for its
+            Why-J.-Blanton heading below, so wiring a Coverage-Area heading here
+            would collide with that unrelated meaning. If a per-city editable
+            heading is wanted, add a new template-specific column instead. */}
         <FieldLabel label="Body" fieldKey="content_body" missing={missing} />
         <textarea style={{ ...inputStyle, minHeight: '120px' }} value={form.contentBody} onChange={e => setField('contentBody', e.target.value)} />
       </div>
@@ -255,7 +200,7 @@ function LocalOfficeCityFields({
     <>
       <div style={sectionStyle}>
         <h2 style={h2Style}>Hero</h2>
-        <ImageField value={form.heroImage} onChange={v => setField('heroImage', v)} />
+        <ImageUploaderField label="Hero Image" value={form.heroImage} onChange={v => setField('heroImage', v)} />
         <FieldLabel label="Hero Heading — Line 1" fieldKey="hero_heading_line1" missing={missing} />
         <input style={inputStyle} value={form.heroHeadingLine1} onChange={e => setField('heroHeadingLine1', e.target.value)} />
         <FieldLabel label="Hero Heading — Line 2" fieldKey="hero_heading_line2" missing={missing} />
@@ -275,182 +220,100 @@ function LocalOfficeCityFields({
   );
 }
 
-// ── Local Office V2 fields (Brief 67) ─────────────────────────────────────────
+// ── Local Office V2 — block-based editor (Brief 99) ─────────────────────────
+// Reuses the sub-service builder's shared components (BlockShell, BlockInserter,
+// BlockField) rather than forking them (Brief 99 hard rule). Hero is core:
+// pinned first, never removable, and its box carries no "+" inserter above it
+// — the gap-0 inserter is simply never rendered, so nothing can be inserted
+// ahead of the hero and `moveCityV2Block` (below, in AdminCityPage) refuses
+// any move that would displace it from index 0.
 
-const repeaterCardStyle: React.CSSProperties = {
-  background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1rem',
-  padding: '1rem', marginBottom: '0.75rem', boxShadow: ADMIN_SHADOWS.sm,
-};
+const CITY_V2_DEFAULT_RECENT: BlockType[] = ['mostRequestedServices', 'whyPoints', 'reviews', 'faqAccordion'];
+const CITY_V2_RECENT_KEY = 'jbp:recent-blocks:city-v2';
 
-const addBtnStyle: React.CSSProperties = {
-  background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
-  padding: '0.45rem 1.1rem', fontWeight: 600, fontSize: '0.85rem',
-  color: '#fff', cursor: 'pointer', boxShadow: ADMIN_SHADOWS.lg,
-};
-
-const removeBtnStyle: React.CSSProperties = {
-  background: 'none', border: 'none', color: ADMIN_COLORS.error, fontWeight: 600,
-  fontSize: '0.8rem', cursor: 'pointer', padding: 0,
-};
+function CityV2BlockBox({ block }: { block: CityV2BlockInstance }) {
+  const def = BLOCK_CATALOGUE[block.type];
+  return (
+    <h2 style={{ ...h2Style, marginBottom: '1rem' }}>{def.label}</h2>
+  );
+}
 
 function LocalOfficeCityV2Fields({
-  form,
-  setField,
-  setForm,
+  blocks,
+  openGap,
+  selectedBlockId,
+  onOpenGap,
+  onCloseGap,
+  onInsert,
+  onMove,
+  onRemove,
+  onSelect,
+  onUpdateData,
+  recent,
 }: {
-  form: FormState;
-  setField: (k: StringFieldKey, v: string) => void;
-  setForm: React.Dispatch<React.SetStateAction<FormState>>;
+  blocks: CityV2BlockInstance[];
+  openGap: number | null;
+  selectedBlockId: string | null;
+  onOpenGap: (gap: number) => void;
+  onCloseGap: () => void;
+  onInsert: (gapIndex: number, type: BlockType) => void;
+  onMove: (index: number, dir: -1 | 1) => void;
+  onRemove: (index: number) => void;
+  onSelect: (id: string) => void;
+  onUpdateData: (id: string, key: string, value: unknown) => void;
+  recent: BlockType[];
 }) {
-  // ── Repeater helpers ──────────────────────────────────────────────────────
-  function updateMostRequested(i: number, key: keyof MostRequestedField, value: string) {
-    setForm(f => ({
-      ...f,
-      mostRequestedServices: f.mostRequestedServices.map((it, idx) => idx === i ? { ...it, [key]: value } : it),
-    }));
-  }
-  function addMostRequested() {
-    setForm(f => ({ ...f, mostRequestedServices: [...f.mostRequestedServices, { title: '', body: '' }] }));
-  }
-  function removeMostRequested(i: number) {
-    setForm(f => ({ ...f, mostRequestedServices: f.mostRequestedServices.filter((_, idx) => idx !== i) }));
-  }
-
-  function updateWhyPoint(i: number, key: keyof WhyPointField, value: string) {
-    setForm(f => ({
-      ...f,
-      whyPoints: f.whyPoints.map((it, idx) => idx === i ? { ...it, [key]: value } : it),
-    }));
-  }
-  function addWhyPoint() {
-    setForm(f => ({ ...f, whyPoints: [...f.whyPoints, { heading: '', body: '' }] }));
-  }
-  function removeWhyPoint(i: number) {
-    setForm(f => ({ ...f, whyPoints: f.whyPoints.filter((_, idx) => idx !== i) }));
-  }
-
-  function updateReview(i: number, key: keyof ReviewField, value: string) {
-    setForm(f => ({
-      ...f,
-      reviews: f.reviews.map((it, idx) => idx === i ? { ...it, [key]: value } : it),
-    }));
-  }
-  function addReview() {
-    setForm(f => ({ ...f, reviews: [...f.reviews, { name: '', text: '', gbp_url: '' }] }));
-  }
-  function removeReview(i: number) {
-    setForm(f => ({ ...f, reviews: f.reviews.filter((_, idx) => idx !== i) }));
-  }
+  const presentTypes = new Set<BlockType>(blocks.map((b) => b.type));
 
   return (
     <>
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Hero</h2>
-        <ImageField value={form.heroImage} onChange={v => setField('heroImage', v)} />
-        <label style={labelStyle}>Hero Heading — Line 1</label>
-        <input style={inputStyle} value={form.heroHeadingLine1} onChange={e => setField('heroHeadingLine1', e.target.value)} />
-        <label style={labelStyle}>Hero Description</label>
-        <textarea style={{ ...inputStyle, minHeight: '80px' }} value={form.heroDescription} onChange={e => setField('heroDescription', e.target.value)} />
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Trust Bar</h2>
-        <label style={labelStyle}>Stars <span style={{ fontWeight: 400, color: ADMIN_COLORS.onSurfaceVariant }}>(e.g. &quot;4.8&quot;)</span></label>
-        <input style={inputStyle} value={form.trustBarStars} onChange={e => setField('trustBarStars', e.target.value)} />
-        <label style={labelStyle}>Review Count <span style={{ fontWeight: 400, color: ADMIN_COLORS.onSurfaceVariant }}>(e.g. &quot;300+&quot;)</span></label>
-        <input style={inputStyle} value={form.trustBarReviewCount} onChange={e => setField('trustBarReviewCount', e.target.value)} />
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Services Grid</h2>
-        <label style={labelStyle}>Intro Text</label>
-        <textarea style={{ ...inputStyle, minHeight: '80px' }} value={form.servicesIntro} onChange={e => setField('servicesIntro', e.target.value)} />
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Most Requested Services</h2>
-        {form.mostRequestedServices.map((item, i) => (
-          <div key={i} style={repeaterCardStyle}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>Service {i + 1}</span>
-              <button type="button" style={removeBtnStyle} onClick={() => removeMostRequested(i)}>Remove</button>
-            </div>
-            <label style={labelStyle}>Title</label>
-            <input style={inputStyle} value={item.title} onChange={e => updateMostRequested(i, 'title', e.target.value)} />
-            <label style={labelStyle}>Body</label>
-            <textarea style={{ ...inputStyle, minHeight: '90px' }} value={item.body} onChange={e => updateMostRequested(i, 'body', e.target.value)} />
+      {blocks.map((block, i) => {
+        const def = BLOCK_CATALOGUE[block.type];
+        return (
+          <div key={block.id}>
+            <BlockShell
+              index={i}
+              total={blocks.length}
+              removable={def.removable}
+              selected={block.id === selectedBlockId}
+              onMove={onMove}
+              onRemove={onRemove}
+              onSelect={() => onSelect(block.id)}
+            >
+              <div style={sectionStyle}>
+                <CityV2BlockBox block={block} />
+                {def.fields.length === 0 ? (
+                  <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
+                    This block has no editable fields.
+                  </p>
+                ) : (
+                  def.fields.map((field) => (
+                    <BlockField
+                      key={field.key}
+                      field={field}
+                      data={block.data}
+                      onChange={(key, value) => onUpdateData(block.id, key, value)}
+                    />
+                  ))
+                )}
+              </div>
+            </BlockShell>
+            {/* The gap directly above block[0] (hero) is never rendered — hero
+                is core (decisions-log 2026-07-21 #3) — so gap 1 (right after
+                hero) is the first real insertion point. */}
+            <BlockInserter
+              pageType="city-v2"
+              open={openGap === i + 1}
+              onOpen={() => onOpenGap(i + 1)}
+              onClose={onCloseGap}
+              onInsert={(type) => onInsert(i + 1, type)}
+              presentTypes={presentTypes}
+              recent={recent}
+              defaultRecent={CITY_V2_DEFAULT_RECENT}
+            />
           </div>
-        ))}
-        <button type="button" className="admin-cta-btn" style={addBtnStyle} onClick={addMostRequested}>+ Add service</button>
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Mid CTA</h2>
-        <label style={labelStyle}>Text</label>
-        <textarea style={{ ...inputStyle, minHeight: '70px' }} value={form.midCtaText} onChange={e => setField('midCtaText', e.target.value)} />
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Why Section Points</h2>
-        {form.whyPoints.map((item, i) => (
-          <div key={i} style={repeaterCardStyle}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>Point {i + 1}</span>
-              <button type="button" style={removeBtnStyle} onClick={() => removeWhyPoint(i)}>Remove</button>
-            </div>
-            <label style={labelStyle}>Heading</label>
-            <input style={inputStyle} value={item.heading} onChange={e => updateWhyPoint(i, 'heading', e.target.value)} />
-            <label style={labelStyle}>Body</label>
-            <textarea style={{ ...inputStyle, minHeight: '90px' }} value={item.body} onChange={e => updateWhyPoint(i, 'body', e.target.value)} />
-          </div>
-        ))}
-        <button type="button" className="admin-cta-btn" style={addBtnStyle} onClick={addWhyPoint}>+ Add point</button>
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Video Section <span style={{ fontWeight: 400, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>(text only — no embed)</span></h2>
-        <label style={labelStyle}>Heading</label>
-        <input style={inputStyle} value={form.videoHeading} onChange={e => setField('videoHeading', e.target.value)} />
-        <label style={labelStyle}>Intro</label>
-        <textarea style={{ ...inputStyle, minHeight: '70px' }} value={form.videoIntro} onChange={e => setField('videoIntro', e.target.value)} />
-        <label style={labelStyle}>Script</label>
-        <textarea style={{ ...inputStyle, minHeight: '180px' }} value={form.videoScript} onChange={e => setField('videoScript', e.target.value)} />
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Reviews</h2>
-        {form.reviews.map((item, i) => (
-          <div key={i} style={repeaterCardStyle}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span style={{ fontWeight: 700, fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>Review {i + 1}</span>
-              <button type="button" style={removeBtnStyle} onClick={() => removeReview(i)}>Remove</button>
-            </div>
-            <label style={labelStyle}>Reviewer Name</label>
-            <input style={inputStyle} value={item.name} onChange={e => updateReview(i, 'name', e.target.value)} />
-            <label style={labelStyle}>Review Text</label>
-            <textarea style={{ ...inputStyle, minHeight: '90px' }} value={item.text} onChange={e => updateReview(i, 'text', e.target.value)} />
-            <label style={labelStyle}>Google Business Profile URL</label>
-            <input style={inputStyle} value={item.gbp_url} onChange={e => updateReview(i, 'gbp_url', e.target.value)} />
-          </div>
-        ))}
-        {form.reviews.length < 5 && (
-          <button type="button" className="admin-cta-btn" style={addBtnStyle} onClick={addReview}>+ Add review</button>
-        )}
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>No Drip Club</h2>
-        <label style={labelStyle}>City Intro <span style={{ fontWeight: 400, color: ADMIN_COLORS.onSurfaceVariant }}>(shown above the standard NDC block)</span></label>
-        <textarea style={{ ...inputStyle, minHeight: '120px' }} value={form.ndcIntro} onChange={e => setField('ndcIntro', e.target.value)} />
-      </div>
-
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>Final CTA</h2>
-        <label style={labelStyle}>Heading</label>
-        <input style={inputStyle} value={form.finalCtaHeading} onChange={e => setField('finalCtaHeading', e.target.value)} />
-        <label style={labelStyle}>Body</label>
-        <textarea style={{ ...inputStyle, minHeight: '90px' }} value={form.finalCtaBody} onChange={e => setField('finalCtaBody', e.target.value)} />
-      </div>
+        );
+      })}
     </>
   );
 }
@@ -477,6 +340,80 @@ export default function AdminCityPage() {
   // switching behind a plain radio picker.
   const [templateSwitcherOpen, setTemplateSwitcherOpen] = useState(false);
   const [pendingTemplate, setPendingTemplate] = useState('');
+
+  // Brief 99 (Track D): City V2 block-editor UI state — mirrors the
+  // sub-service editor (Briefs 90/91), scoped to this page's `form.blocks`.
+  const [cityV2OpenGap, setCityV2OpenGap] = useState<number | null>(null);
+  const [cityV2SelectedId, setCityV2SelectedId] = useState<string | null>(null);
+  const [cityV2SidebarTab, setCityV2SidebarTab] = useState<'page' | 'block'>('page');
+  const [cityV2Recent, setCityV2Recent] = useState<BlockType[]>([]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(CITY_V2_RECENT_KEY);
+      const parsed = raw ? (JSON.parse(raw) as unknown) : null;
+      if (Array.isArray(parsed)) setCityV2Recent(parsed.filter((t): t is BlockType => typeof t === 'string'));
+    } catch { /* ignore corrupt localStorage */ }
+  }, []);
+
+  function pushCityV2Recent(type: BlockType) {
+    setCityV2Recent((prev) => {
+      const next = [type, ...prev.filter((t) => t !== type)].slice(0, 4);
+      try { localStorage.setItem(CITY_V2_RECENT_KEY, JSON.stringify(next)); } catch { /* ignore */ }
+      return next;
+    });
+  }
+
+  function moveCityV2Block(index: number, dir: -1 | 1) {
+    setForm((f) => {
+      // Hero is core (decisions-log 2026-07-21 #3) — pinned first, never moves,
+      // and nothing may displace it from index 0.
+      if (f.blocks[index]?.type === 'localOfficeV2Hero') return f;
+      const j = index + dir;
+      if (j < 0 || j >= f.blocks.length || j === 0) return f;
+      const next = [...f.blocks];
+      [next[index], next[j]] = [next[j], next[index]];
+      return { ...f, blocks: next };
+    });
+    setStatus('idle');
+  }
+
+  function removeCityV2Block(index: number) {
+    setForm((f) => {
+      const target = f.blocks[index];
+      if (!target || !BLOCK_CATALOGUE[target.type].removable) return f;
+      return { ...f, blocks: f.blocks.filter((_, i) => i !== index) };
+    });
+    setStatus('idle');
+  }
+
+  function insertCityV2Block(gapIndex: number, type: BlockType) {
+    setForm((f) => {
+      const def = BLOCK_CATALOGUE[type];
+      if (f.blocks.some((b) => b.type === type) && !def.allowMultiple) return f; // guard
+      const instance: CityV2BlockInstance = { id: newCityV2BlockId(type), type: type as CityV2BlockInstance['type'], data: defaultDataFor(type, 'city-v2') };
+      const next = [...f.blocks];
+      next.splice(Math.max(1, Math.min(gapIndex, next.length)), 0, instance);
+      return { ...f, blocks: next };
+    });
+    pushCityV2Recent(type);
+    setCityV2OpenGap(null);
+    setStatus('idle');
+  }
+
+  function updateCityV2BlockData(id: string, key: string, value: unknown) {
+    setForm((f) => ({
+      ...f,
+      blocks: f.blocks.map((b) => (b.id === id ? { ...b, data: { ...b.data, [key]: value } } : b)),
+    }));
+    setStatus('idle');
+  }
+
+  function selectCityV2Block(id: string) {
+    setCityV2SelectedId(id);
+    setCityV2SidebarTab('block');
+    setAttrsOpen(true);
+  }
 
   useEffect(() => {
     if (!slug) return;
@@ -523,6 +460,11 @@ export default function AdminCityPage() {
     // Reload the form from the DB to get the post-switch values
     setStatus('loading');
     setMissingFields(missing);
+    // Brief 99: a block selected under the old template is meaningless under
+    // the new one — clear the block-editor selection/tab on every switch.
+    setCityV2SelectedId(null);
+    setCityV2SidebarTab('page');
+    setCityV2OpenGap(null);
     fetch(`/api/cms/city/${slug}`)
       .then(async r => {
         const data = await r.json();
@@ -575,6 +517,26 @@ export default function AdminCityPage() {
     );
   }
 
+  // Brief 99 (Track D): the sidebar's Block tab body. No City V2 block type
+  // declares `styleOptions` in this rollout (the message below is shown for
+  // every one, matching the sub-service editor's own no-style-options state) —
+  // `noDripClub`'s style pickers are deliberately not surfaced for the v1
+  // variant used here (no visual remix exists for the Carmine character-card
+  // look; see the registry's `fieldsByPageType` comment).
+  const cityV2SelectedBlock = form.blocks.find((b) => b.id === cityV2SelectedId) ?? null;
+  const cityV2BlockTab: React.ReactNode = !cityV2SelectedBlock ? (
+    <p style={{ fontSize: '13px', color: `${ADMIN_COLORS.onSurfaceVariant}cc`, margin: 0, lineHeight: 1.6 }}>
+      Select a block to see its options.
+    </p>
+  ) : (
+    <>
+      <h3 style={{ ...h2Style, marginBottom: '0.5rem' }}>{BLOCK_CATALOGUE[cityV2SelectedBlock.type].label}</h3>
+      <p style={{ fontSize: '13px', color: `${ADMIN_COLORS.onSurfaceVariant}cc`, margin: 0, lineHeight: 1.6 }}>
+        This block type doesn&rsquo;t have style options yet.
+      </p>
+    </>
+  );
+
   return (
     <div className="admin-city-editor" style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>{`
@@ -619,7 +581,7 @@ export default function AdminCityPage() {
         initialSelectedTemplate={pendingTemplate}
       />
 
-    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit hero copy, content sections, and FAQs. Office address, services list, video, and partner logos come from the static data file.
       </p>
@@ -633,27 +595,42 @@ export default function AdminCityPage() {
 
       {/* Template-conditional fields */}
       {form.templateType === 'local-office-v2' ? (
-        <LocalOfficeCityV2Fields form={form} setField={setField} setForm={setForm} />
+        <LocalOfficeCityV2Fields
+          blocks={form.blocks}
+          openGap={cityV2OpenGap}
+          selectedBlockId={cityV2SelectedId}
+          onOpenGap={setCityV2OpenGap}
+          onCloseGap={() => setCityV2OpenGap(null)}
+          onInsert={insertCityV2Block}
+          onMove={moveCityV2Block}
+          onRemove={removeCityV2Block}
+          onSelect={selectCityV2Block}
+          onUpdateData={updateCityV2BlockData}
+          recent={cityV2Recent}
+        />
       ) : form.templateType === 'local-office' ? (
         <LocalOfficeCityFields form={form} setField={setField} missing={missingFields} />
       ) : (
         <CoverageAreaCityFields form={form} setField={setField} missing={missingFields} />
       )}
 
-      {/* FAQs (shared by both templates) */}
-      <div style={sectionStyle}>
-        <h2 style={h2Style}>FAQs</h2>
-        {form.faqs.map((faq, i) => (
-          <div key={i} style={repeaterCardStyle}>
-            <p style={{ fontWeight: 700, fontSize: '0.85rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '0 0 0.75rem' }}>FAQ {i + 1}</p>
-            <label style={labelStyle}>Question</label>
-            <textarea style={{ ...inputStyle, minHeight: '60px' }} value={faq.question} onChange={e => setFaq(i, 'question', e.target.value)} />
-            <label style={labelStyle}>Answer</label>
-            <textarea style={{ ...inputStyle, minHeight: '80px' }} value={faq.answer} onChange={e => setFaq(i, 'answer', e.target.value)} />
-          </div>
-        ))}
-        {form.faqs.length === 0 && <p style={{ color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '12px' }}>No FAQs loaded.</p>}
-      </div>
+      {/* FAQs — for City V2 this is its own reorderable `faqAccordion` block
+          (Brief 99, Track A) instead of this fixed shared section. */}
+      {form.templateType !== 'local-office-v2' && (
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>FAQs</h2>
+          {form.faqs.map((faq, i) => (
+            <div key={i} style={repeaterCardStyle}>
+              <p style={{ fontWeight: 700, fontSize: '0.85rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '0 0 0.75rem' }}>FAQ {i + 1}</p>
+              <label style={labelStyle}>Question</label>
+              <textarea style={{ ...inputStyle, minHeight: '60px' }} value={faq.question} onChange={e => setFaq(i, 'question', e.target.value)} />
+              <label style={labelStyle}>Answer</label>
+              <textarea style={{ ...inputStyle, minHeight: '80px' }} value={faq.answer} onChange={e => setFaq(i, 'answer', e.target.value)} />
+            </div>
+          ))}
+          {form.faqs.length === 0 && <p style={{ color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '12px' }}>No FAQs loaded.</p>}
+        </div>
+      )}
 
       <MetaSection
         metaTitle={form.metaTitle}
@@ -703,6 +680,9 @@ export default function AdminCityPage() {
         parent={{ label: 'None', editable: false }}
         open={attrsOpen}
         onClose={() => setAttrsOpen(false)}
+        {...(form.templateType === 'local-office-v2'
+          ? { blockTab: cityV2BlockTab, activeTab: cityV2SidebarTab, onTabChange: setCityV2SidebarTab }
+          : {})}
       />
     </div>
   );
@@ -733,19 +713,10 @@ function formFromApi(data: Record<string, unknown>, fallbackTemplate: string): F
     faqs: arr<FaqField>(data.faqs),
     metaTitle: str(data.metaTitle),
     metaDescription: str(data.metaDescription),
-    trustBarStars: str(data.trustBarStars),
-    trustBarReviewCount: str(data.trustBarReviewCount),
-    servicesIntro: str(data.servicesIntro),
-    mostRequestedServices: arr<MostRequestedField>(data.mostRequestedServices),
-    midCtaText: str(data.midCtaText),
-    whyPoints: arr<WhyPointField>(data.whyPoints),
-    videoHeading: str(data.videoHeading),
-    videoIntro: str(data.videoIntro),
-    videoScript: str(data.videoScript),
-    reviews: arr<ReviewField>(data.reviews),
-    ndcIntro: str(data.ndcIntro),
-    finalCtaHeading: str(data.finalCtaHeading),
-    finalCtaBody: str(data.finalCtaBody),
+    // Brief 99 (Track D): City V2's authoritative per-instance blocks. The
+    // reader already normalizes/synthesizes this for a V2 row (see
+    // `getCityCmsContent`); re-normalized here too for safety.
+    blocks: normalizeCityV2Blocks(data.blocks),
   };
 }
 
@@ -766,19 +737,10 @@ function buildCityPayload(form: FormState) {
     faqs: form.faqs,
     metaTitle: form.metaTitle || null,
     metaDescription: form.metaDescription || null,
-    trustBarStars: form.trustBarStars,
-    trustBarReviewCount: form.trustBarReviewCount,
-    servicesIntro: form.servicesIntro,
-    mostRequestedServices: form.mostRequestedServices,
-    midCtaText: form.midCtaText,
-    whyPoints: form.whyPoints,
-    videoHeading: form.videoHeading,
-    videoIntro: form.videoIntro,
-    videoScript: form.videoScript,
-    reviews: form.reviews,
-    ndcIntro: form.ndcIntro,
-    finalCtaHeading: form.finalCtaHeading,
-    finalCtaBody: form.finalCtaBody,
+    // Brief 99 (Track D): only City V2 saves carry `blocks` — the writer
+    // treats its presence as "this save is authoritative for the V2 block
+    // model," so a V1 template save must never include even an empty array.
+    ...(form.templateType === 'local-office-v2' ? { blocks: form.blocks } : {}),
   };
 }
 

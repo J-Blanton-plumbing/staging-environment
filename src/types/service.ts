@@ -20,6 +20,22 @@ export interface RelatedServiceCard {
 
 export interface ServiceContent {
   slug: string;
+  /**
+   * Brief 89 (Track B): ordered list of rendering-block types for DB-backed
+   * sub-service pages. When present, `ServicePageTemplate` renders its sections
+   * in this order; when absent (static-content service pages), it uses the fixed
+   * default order. Only sub-service pages set this.
+   */
+  blockOrder?: string[];
+  /**
+   * Brief 90 (Track B): the authoritative per-instance block list for DB-backed
+   * sub-service pages — `{ id, type, data }[]`, where the same type may appear
+   * more than once (free page-builder). When present, `ServicePageTemplate`
+   * renders each instance from its own `data` (supporting duplicates); when
+   * absent (static-content pages), it falls back to `blockOrder`/default order
+   * driven by the flat section fields below. Only sub-service pages set this.
+   */
+  blocks?: Array<{ id: string; type: string; data: Record<string, unknown> }>;
   seo: {
     title: string;
     description: string;

@@ -5,6 +5,7 @@ import { getCityService } from '@/lib/content/city-services';
 import CityServicePageTemplate, { replaceCityTokens } from '@/components/CityServicePageTemplate';
 import { getCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { getCityServicePreview } from '@/lib/cms/preview';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { CityServiceContent } from '@/types/city-service';
 
@@ -96,6 +97,8 @@ export default async function CityServicePage({
   const serviceData = getCityService(params.service);
   if (!cityEntry || !serviceData) notFound();
 
+  const settings = await getGlobalSettingsCached();
+
   // Check preview cookie first
   const preview = await getCityServicePreview(params.city, params.service).catch((err) => {
     console.error(`[city-service] Preview load failed for ${params.city}/${params.service}:`, err);
@@ -114,7 +117,7 @@ export default async function CityServicePage({
           pageType="city-service"
           pageSlug={`${params.city}/${params.service}`}
         />
-        <CityServicePageTemplate city={cityEntry} service={merged} />
+        <CityServicePageTemplate city={cityEntry} service={merged} settings={settings} />
       </>
     );
   }
@@ -126,5 +129,5 @@ export default async function CityServicePage({
   });
   const merged = dbContent ? mergeWithDb(serviceData, dbContent) : serviceData;
 
-  return <CityServicePageTemplate city={cityEntry} service={merged} />;
+  return <CityServicePageTemplate city={cityEntry} service={merged} settings={settings} />;
 }

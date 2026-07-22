@@ -10,7 +10,7 @@ import type { ServiceCmsContent, ServiceCmsUpdatePayload } from '@/lib/cms/servi
 import type { CityCmsContent } from '@/lib/cms/city-pages';
 import type { EpCmsContent } from '@/lib/cms/emergency-plumbing';
 import type { CityServiceCmsContent } from '@/lib/cms/city-service-pages';
-import { subServiceToServiceContent } from '@/lib/cms/sub-service-pages';
+import { subServiceToServiceContent, normalizeBlockOrder, normalizeBlocks, blocksToFields } from '@/lib/cms/sub-service-pages';
 import type { ServiceContent } from '@/types/service';
 
 const PREVIEW_COOKIE = '__preview_draft';
@@ -72,12 +72,18 @@ export async function getServicePreview(slug: string): Promise<{
       meta_title: payload.meta_title ?? null,
       meta_description: payload.meta_description ?? null,
     },
-    subcategories: (payload.subcategories ?? []).map((s, i) => ({
-      label: s.label,
-      href: s.href,
-      description: s.description,
-      sort_order: s.sort_order ?? i,
-    })),
+    // Brief 98: preview synthesizes the same `subcategoriesBlock` shape the DB
+    // read path derives from `blocks` — built directly from the draft's
+    // subcategories array (array position is order, matching the write path).
+    subcategoriesBlock: {
+      heading: payload.subcategories_heading || null,
+      items: (payload.subcategories ?? []).map((s) => ({
+        label: s.label,
+        href: s.href,
+        desc: s.description,
+        image: s.image ?? '',
+      })),
+    },
     global: {
       service_area_heading: payload.service_area_heading,
       service_area_body: payload.service_area_body,
@@ -106,6 +112,28 @@ export async function getSubServicePreview(slug: string): Promise<{
   if (!draft || draft.page_type !== 'sub-service' || draft.page_slug !== slug) return null;
 
   const c = draft.content as Record<string, unknown>;
+
+  // Brief 90 (Track B): the editor's draft carries the authoritative per-instance
+  // `blocks` array. Reconstruct the primary (first-instance) snapshot for the
+  // SEO/hero ServiceContent shape, and attach the instances for the ordered,
+  // duplicate-aware render. Rich text is sanitized on the render path
+  // (renderCmsInline), so drafts preview safely without pre-sanitizing here.
+  const instances = normalizeBlocks(c.blocks);
+  if (instances.length > 0) {
+    const { fields, order } = blocksToFields(instances);
+    const content = subServiceToServiceContent({
+      ...fields,
+      slug,
+      title: (c.title as string) ?? null,
+      metaTitle: (c.metaTitle as string) ?? null,
+      metaDescription: (c.metaDescription as string) ?? null,
+    });
+    content.blockOrder = order;
+    content.blocks = instances;
+    return { content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+  }
+
+  // Legacy draft (flat fields + optional blockOrder).
   const rawProblems = c.problemsItems;
   const problemsItems = Array.isArray(rawProblems)
     ? (rawProblems as string[])
@@ -132,6 +160,8 @@ export async function getSubServicePreview(slug: string): Promise<{
     metaTitle: (c.metaTitle as string) ?? null,
     metaDescription: (c.metaDescription as string) ?? null,
   });
+  // Brief 89 (Track B): honor the draft's block order in preview too.
+  content.blockOrder = normalizeBlockOrder(c.blockOrder);
 
   return { content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
 }

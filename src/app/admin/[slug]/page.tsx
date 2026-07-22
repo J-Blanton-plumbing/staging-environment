@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import RichTextField from '@/components/admin/RichTextField';
+import ListItemsField, { padToMin } from '@/components/admin/ListItemsField';
+import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -14,7 +17,9 @@ interface SubcategoryField {
   label: string;
   href: string;
   description: string;
-  sort_order: number;
+  // Brief 98: the subcategory's card thumbnail — now part of the editable
+  // `serviceSubcategories` block instead of a static per-category fallback.
+  image: string;
 }
 
 interface FormState {
@@ -25,14 +30,14 @@ interface FormState {
   intro_body: string;
   f_image: string;
   problems_heading: string;
-  problems_items: string;
+  problems_items: string[];
   subcategories_heading: string;
   preventative_heading: string;
   preventative_body: string;
   final_pitch_tagline: string;
   final_pitch_body: string;
   f3_image: string;
-  articles_featured_slugs: string;
+  articles_featured_slugs: string[];
   service_area_heading: string;
   service_area_body: string;
   tiktok_headline: string;
@@ -50,14 +55,14 @@ const EMPTY: FormState = {
   intro_body: '',
   f_image: '',
   problems_heading: '',
-  problems_items: '',
+  problems_items: ['', '', ''],
   subcategories_heading: '',
   preventative_heading: '',
   preventative_body: '',
   final_pitch_tagline: '',
   final_pitch_body: '',
   f3_image: '',
-  articles_featured_slugs: '',
+  articles_featured_slugs: [],
   service_area_heading: '',
   service_area_body: '',
   tiktok_headline: '',
@@ -76,71 +81,6 @@ const PAGE_LABELS: Record<string, string> = {
   'hydro-jetting': 'Hydro Jetting',
   'sewer-rodding': 'Sewer Rodding',
 };
-
-function ImageField({
-  label: labelText,
-  value,
-  onChange,
-  labelStyle,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  labelStyle: React.CSSProperties;
-}) {
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState('');
-
-  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    setUploadError('');
-    const fd = new FormData();
-    fd.append('file', file);
-    try {
-      const res = await fetch('/api/cms/upload', {
-        method: 'POST',
-        body: fd,
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? 'Upload failed');
-      onChange(json.url);
-    } catch (err: unknown) {
-      setUploadError(err instanceof Error ? err.message : 'Upload failed');
-    } finally {
-      setUploading(false);
-      e.target.value = '';
-    }
-  }
-
-  return (
-    <div style={{ marginBottom: '1.25rem' }}>
-      <label style={labelStyle}>{labelText}</label>
-      {value && (
-        <img
-          src={value}
-          alt="current"
-          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, marginBottom: '0.5rem' }}
-        />
-      )}
-      <label style={{ display: 'inline-block', cursor: uploading ? 'not-allowed' : 'pointer' }}>
-        <input
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          style={{ display: 'none' }}
-          onChange={handleFile}
-          disabled={uploading}
-        />
-        <span style={{ display: 'inline-block', background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '9999px', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: ADMIN_COLORS.onSurface, opacity: uploading ? 0.6 : 1 }}>
-          {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}
-        </span>
-      </label>
-      <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: ADMIN_COLORS.onSurfaceVariant }}>JPEG, PNG or WebP · max 10 MB</span>
-      {uploadError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
-    </div>
-  );
-}
 
 export default function AdminServicePage() {
   const params = useParams();
@@ -162,14 +102,14 @@ export default function AdminServicePage() {
     intro_body: form.intro_body,
     f_image: form.f_image,
     problems_heading: form.problems_heading,
-    problems_items: form.problems_items.split('\n').map((s: string) => s.trim()).filter(Boolean),
+    problems_items: form.problems_items.map((s: string) => s.trim()).filter(Boolean),
     subcategories_heading: form.subcategories_heading,
     preventative_heading: form.preventative_heading,
     preventative_body: form.preventative_body,
     final_pitch_tagline: form.final_pitch_tagline,
     final_pitch_body: form.final_pitch_body,
     f3_image: form.f3_image,
-    articles_featured_slugs: form.articles_featured_slugs.split('\n').map((s: string) => s.trim()).filter(Boolean),
+    articles_featured_slugs: form.articles_featured_slugs.map((s: string) => s.trim()).filter(Boolean),
     service_area_heading: form.service_area_heading,
     service_area_body: form.service_area_body,
     tiktok_headline: form.tiktok_headline,
@@ -185,7 +125,15 @@ export default function AdminServicePage() {
     fetch(`/api/cms/${slug}`)
       .then(r => r.json())
       .then(data => {
-        const { page, subcategories, global: g } = data;
+        const { page, subcategoriesBlock, global: g } = data;
+        const subcategories: SubcategoryField[] = (subcategoriesBlock?.items ?? []).map(
+          (item: { label: string; href: string; desc: string; image: string }) => ({
+            label: item.label,
+            href: item.href,
+            description: item.desc,
+            image: item.image,
+          })
+        );
         setForm({
           hero_heading: page.hero_heading ?? '',
           hero_intro: page.hero_intro ?? '',
@@ -194,18 +142,18 @@ export default function AdminServicePage() {
           intro_body: page.intro_body ?? '',
           f_image: page.f_image ?? '',
           problems_heading: page.problems_heading ?? '',
-          problems_items: (page.problems_items as string[]).join('\n'),
+          problems_items: padToMin(Array.isArray(page.problems_items) ? page.problems_items : [], 3),
           subcategories_heading: page.subcategories_heading ?? '',
           preventative_heading: page.preventative_heading ?? '',
           preventative_body: page.preventative_body ?? '',
           final_pitch_tagline: page.final_pitch_tagline ?? '',
           final_pitch_body: page.final_pitch_body ?? '',
           f3_image: page.f3_image ?? '',
-          articles_featured_slugs: (page.articles_featured_slugs as string[]).join('\n'),
+          articles_featured_slugs: Array.isArray(page.articles_featured_slugs) ? page.articles_featured_slugs : [],
           service_area_heading: g?.service_area_heading ?? '',
           service_area_body: g?.service_area_body ?? '',
           tiktok_headline: g?.tiktok_headline ?? '',
-          subcategories: subcategories.map((s: SubcategoryField) => ({ ...s })),
+          subcategories,
           meta_title: page.meta_title ?? '',
           meta_description: page.meta_description ?? '',
           updated_at: page.updated_at ?? undefined,
@@ -219,11 +167,11 @@ export default function AdminServicePage() {
       });
   }, [slug]);
 
-  function set(key: keyof Omit<FormState, 'subcategories'>, value: string) {
+  function set(key: keyof Omit<FormState, 'subcategories'>, value: string | string[]) {
     setForm(f => ({ ...f, [key]: value }));
   }
 
-  function setSub(i: number, key: keyof Omit<SubcategoryField, 'sort_order'>, value: string) {
+  function setSub(i: number, key: keyof SubcategoryField, value: string) {
     setForm(f => {
       const subs = f.subcategories.map((sub, idx) => idx === i ? { ...sub, [key]: value } : sub);
       return { ...f, subcategories: subs };
@@ -233,8 +181,20 @@ export default function AdminServicePage() {
   function addSub() {
     setForm(f => ({
       ...f,
-      subcategories: [...f.subcategories, { label: '', href: '', description: '', sort_order: f.subcategories.length }],
+      subcategories: [...f.subcategories, { label: '', href: '', description: '', image: '' }],
     }));
+  }
+
+  // Brief 98: array position IS the order now (no more `sort_order` column) —
+  // reorder is a plain array swap.
+  function moveSub(i: number, direction: -1 | 1) {
+    setForm(f => {
+      const j = i + direction;
+      if (j < 0 || j >= f.subcategories.length) return f;
+      const subs = [...f.subcategories];
+      [subs[i], subs[j]] = [subs[j], subs[i]];
+      return { ...f, subcategories: subs };
+    });
   }
 
   function removeSub(i: number) {
@@ -258,14 +218,14 @@ export default function AdminServicePage() {
           intro_body: form.intro_body,
           f_image: form.f_image,
           problems_heading: form.problems_heading,
-          problems_items: form.problems_items.split('\n').map(s => s.trim()).filter(Boolean),
+          problems_items: form.problems_items.map(s => s.trim()).filter(Boolean),
           subcategories_heading: form.subcategories_heading,
           preventative_heading: form.preventative_heading,
           preventative_body: form.preventative_body,
           final_pitch_tagline: form.final_pitch_tagline,
           final_pitch_body: form.final_pitch_body,
           f3_image: form.f3_image,
-          articles_featured_slugs: form.articles_featured_slugs.split('\n').map(s => s.trim()).filter(Boolean),
+          articles_featured_slugs: form.articles_featured_slugs.map(s => s.trim()).filter(Boolean),
           service_area_heading: form.service_area_heading,
           service_area_body: form.service_area_body,
           tiktok_headline: form.tiktok_headline,
@@ -335,7 +295,7 @@ export default function AdminServicePage() {
         }}
         compact
       />
-    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>Edit text content. Images on the live page come from static files and are not affected here.</p>
 
       <div style={section}>
@@ -344,24 +304,26 @@ export default function AdminServicePage() {
         <input style={s} value={form.hero_heading} onChange={e => set('hero_heading', e.target.value)} />
         <label style={labelStyle}>Intro</label>
         <textarea style={{ ...s, minHeight: '80px' }} value={form.hero_intro} onChange={e => set('hero_intro', e.target.value)} />
-        <ImageField label="Background Image" value={form.hero_image} onChange={v => set('hero_image', v)} labelStyle={labelStyle} />
+        <ImageUploaderField label="Background Image" value={form.hero_image} onChange={v => set('hero_image', v)} />
       </div>
 
       <div style={section}>
         <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Intro Section</h2>
         <label style={labelStyle}>Heading</label>
         <input style={s} value={form.intro_heading} onChange={e => set('intro_heading', e.target.value)} />
-        <label style={labelStyle}>Body</label>
-        <textarea style={{ ...s, minHeight: '100px' }} value={form.intro_body} onChange={e => set('intro_body', e.target.value)} />
-        <ImageField label="Section Image" value={form.f_image} onChange={v => set('f_image', v)} labelStyle={labelStyle} />
+        <RichTextField label="Body" value={form.intro_body} onChange={v => set('intro_body', v)} rows={5} />
+        <ImageUploaderField label="Section Image" value={form.f_image} onChange={v => set('f_image', v)} />
       </div>
 
       <div style={section}>
         <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Problems Panel</h2>
         <label style={labelStyle}>Heading</label>
         <input style={s} value={form.problems_heading} onChange={e => set('problems_heading', e.target.value)} />
-        <label style={labelStyle}>Items (one per line)</label>
-        <textarea style={{ ...s, minHeight: '120px' }} value={form.problems_items} onChange={e => set('problems_items', e.target.value)} />
+        <ListItemsField
+          label="Items"
+          items={form.problems_items}
+          onChange={v => set('problems_items', v)}
+        />
       </div>
 
       <div style={section}>
@@ -372,13 +334,34 @@ export default function AdminServicePage() {
           <div key={i} style={{ background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1rem', padding: '1rem', marginBottom: '0.75rem', boxShadow: ADMIN_SHADOWS.sm }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
               <p style={{ fontWeight: 700, fontSize: '0.85rem', color: ADMIN_COLORS.onSurface, margin: 0, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>Card {i + 1}</p>
-              <button
-                onClick={() => removeSub(i)}
-                style={{ background: 'none', border: `1px solid ${ADMIN_COLORS.error}66`, color: ADMIN_COLORS.error, borderRadius: '9999px', padding: '0.2rem 0.6rem', fontSize: '0.8rem', cursor: 'pointer', fontWeight: 600 }}
-              >
-                Remove
-              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <button
+                  type="button"
+                  onClick={() => moveSub(i, -1)}
+                  disabled={i === 0}
+                  aria-label={`Move card ${i + 1} up`}
+                  style={{ background: 'none', border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, color: ADMIN_COLORS.onSurfaceVariant, borderRadius: '9999px', width: '1.6rem', height: '1.6rem', fontSize: '0.8rem', cursor: i === 0 ? 'default' : 'pointer', opacity: i === 0 ? 0.4 : 1, lineHeight: 1 }}
+                >
+                  ▲
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveSub(i, 1)}
+                  disabled={i === form.subcategories.length - 1}
+                  aria-label={`Move card ${i + 1} down`}
+                  style={{ background: 'none', border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, color: ADMIN_COLORS.onSurfaceVariant, borderRadius: '9999px', width: '1.6rem', height: '1.6rem', fontSize: '0.8rem', cursor: i === form.subcategories.length - 1 ? 'default' : 'pointer', opacity: i === form.subcategories.length - 1 ? 0.4 : 1, lineHeight: 1 }}
+                >
+                  ▼
+                </button>
+                <button
+                  onClick={() => removeSub(i)}
+                  style={{ background: 'none', border: `1px solid ${ADMIN_COLORS.error}66`, color: ADMIN_COLORS.error, borderRadius: '9999px', padding: '0.2rem 0.6rem', fontSize: '0.8rem', cursor: 'pointer', fontWeight: 600 }}
+                >
+                  Remove
+                </button>
+              </div>
             </div>
+            <ImageUploaderField label="Image" value={sub.image} onChange={v => setSub(i, 'image', v)} />
             <label style={labelStyle}>Label</label>
             <input style={s} value={sub.label} onChange={e => setSub(i, 'label', e.target.value)} />
             <label style={labelStyle}>Href</label>
@@ -399,23 +382,27 @@ export default function AdminServicePage() {
         <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Preventative Section</h2>
         <label style={labelStyle}>Heading</label>
         <input style={s} value={form.preventative_heading} onChange={e => set('preventative_heading', e.target.value)} />
-        <label style={labelStyle}>Body</label>
-        <textarea style={{ ...s, minHeight: '80px' }} value={form.preventative_body} onChange={e => set('preventative_body', e.target.value)} />
+        <RichTextField label="Body" value={form.preventative_body} onChange={v => set('preventative_body', v)} rows={4} />
       </div>
 
       <div style={section}>
         <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Final Pitch</h2>
         <label style={labelStyle}>Tagline</label>
         <input style={s} value={form.final_pitch_tagline} onChange={e => set('final_pitch_tagline', e.target.value)} />
-        <label style={labelStyle}>Body</label>
-        <textarea style={{ ...s, minHeight: '80px' }} value={form.final_pitch_body} onChange={e => set('final_pitch_body', e.target.value)} />
-        <ImageField label="Section Image" value={form.f3_image} onChange={v => set('f3_image', v)} labelStyle={labelStyle} />
+        <RichTextField label="Body" value={form.final_pitch_body} onChange={v => set('final_pitch_body', v)} rows={4} />
+        <ImageUploaderField label="Section Image" value={form.f3_image} onChange={v => set('f3_image', v)} />
       </div>
 
       <div style={section}>
         <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Featured Article Slugs</h2>
-        <label style={labelStyle}>Slugs (one per line)</label>
-        <textarea style={{ ...s, minHeight: '80px' }} value={form.articles_featured_slugs} onChange={e => set('articles_featured_slugs', e.target.value)} />
+        <ListItemsField
+          label="Slugs"
+          items={form.articles_featured_slugs}
+          onChange={v => set('articles_featured_slugs', v)}
+          minItems={0}
+          addLabel="+ Add slug"
+          placeholder="article-slug-{n}"
+        />
       </div>
 
       <div style={{ ...section, background: ADMIN_COLORS.surfaceContainer, borderRadius: '1.5rem', padding: '1rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}33` }}>

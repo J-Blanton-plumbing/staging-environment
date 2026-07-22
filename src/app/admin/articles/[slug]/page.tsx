@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
+import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -120,132 +121,6 @@ const SECTION_HEADING: React.CSSProperties = {
   margin: '0 0 1rem',
 };
 
-// ── Fix 1: Hero Image Uploader ───────────────────────────────────────────────
-
-function HeroImageField({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (url: string) => void;
-}) {
-  const [tab, setTab] = useState<'upload' | 'url'>('upload');
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState('');
-  const fileRef = useRef<HTMLInputElement>(null);
-
-  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    setUploadError('');
-    try {
-      const fd = new FormData();
-      fd.append('file', file);
-      const res = await fetch('/api/cms/upload', { method: 'POST', body: fd });
-      if (!res.ok) {
-        const j = await res.json();
-        throw new Error(j.error ?? 'Upload failed');
-      }
-      const { url } = await res.json();
-      onChange(url);
-    } catch (err: unknown) {
-      setUploadError(err instanceof Error ? err.message : 'Upload failed');
-    } finally {
-      setUploading(false);
-      if (fileRef.current) fileRef.current.value = '';
-    }
-  }
-
-  const tabBtn = (label: string, t: 'upload' | 'url') => (
-    <button
-      type="button"
-      onClick={() => setTab(t)}
-      style={{
-        padding: '0.3rem 0.9rem',
-        fontSize: '12px',
-        fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-        fontWeight: 700,
-        border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
-        borderRadius: '0.5rem 0.5rem 0 0',
-        borderBottom: tab === t ? `2px solid ${ADMIN_COLORS.cerulean}` : undefined,
-        background: tab === t ? ADMIN_COLORS.surfaceContainerHigh : ADMIN_COLORS.surfaceContainer,
-        color: tab === t ? ADMIN_COLORS.cerulean : ADMIN_COLORS.onSurfaceVariant,
-        cursor: 'pointer',
-        marginRight: '2px',
-        position: 'relative',
-        bottom: '-1px',
-      }}
-    >
-      {label}
-    </button>
-  );
-
-  return (
-    <div style={{ marginBottom: '1.25rem' }}>
-      <label style={LABEL}>Hero Image</label>
-
-      {/* thumbnail preview */}
-      {value && (
-        <div style={{ marginBottom: '0.5rem' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={value}
-            alt="Hero preview"
-            style={{ maxHeight: '120px', maxWidth: '100%', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66` }}
-          />
-          <div style={{ fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif', marginTop: '0.25rem', wordBreak: 'break-all' }}>
-            {value}
-          </div>
-        </div>
-      )}
-
-      {/* tab bar */}
-      <div style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: 0 }}>
-        {tabBtn('Upload', 'upload')}
-        {tabBtn('URL', 'url')}
-      </div>
-
-      {/* tab panels */}
-      <div style={{ border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderTop: 'none', borderRadius: '0 0.5rem 0.5rem 0.5rem', padding: '0.75rem', background: ADMIN_COLORS.surfaceContainer }}>
-        {tab === 'upload' ? (
-          <div>
-            <input
-              ref={fileRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              onChange={handleFileChange}
-              disabled={uploading}
-              style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '0.875rem' }}
-            />
-            {uploading && (
-              <span style={{ marginLeft: '0.75rem', fontSize: '12px', fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
-                Uploading…
-              </span>
-            )}
-            {uploadError && (
-              <div style={{ marginTop: '0.35rem', fontSize: '12px', color: ADMIN_COLORS.error, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
-                {uploadError}
-              </div>
-            )}
-            <div style={{ marginTop: '0.4rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
-              JPEG, PNG, or WebP · max 10 MB
-            </div>
-          </div>
-        ) : (
-          <input
-            className="field"
-            type="url"
-            value={value}
-            onChange={e => onChange(e.target.value)}
-            placeholder="https://…"
-            style={{ ...INPUT, border: 'none', padding: '0', boxShadow: 'none' }}
-          />
-        )}
-      </div>
-    </div>
-  );
-}
 
 // ── Fix 3: Hierarchical Category Selector ────────────────────────────────────
 
@@ -601,7 +476,7 @@ export default function ArticleAdminPage() {
         compact
       />
 
-      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem', maxWidth: '800px', fontFamily: 'system-ui, sans-serif' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
         <style>{`
           .admin-cta-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
           .admin-cta-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
@@ -630,7 +505,7 @@ export default function ArticleAdminPage() {
             </div>
 
             {/* Fix 1: Hero Image Uploader */}
-            <HeroImageField value={form.image} onChange={url => set('image', url)} />
+            <ImageUploaderField label="Hero Image" value={form.image} onChange={url => set('image', url)} />
 
             {/* Fix 3: Categories */}
             <CategoriesField value={form.categories} onChange={cats => set('categories', cats)} />

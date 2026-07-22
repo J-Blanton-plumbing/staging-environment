@@ -1,5 +1,11 @@
 import pool from '@/lib/db';
 import { ConflictError } from '@/lib/cms/errors';
+import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import {
+  getSubcategoriesBlockData,
+  buildSubcategoriesBlocks,
+  type ServiceSubcategoriesBlockData,
+} from '@/lib/cms/service-category-blocks';
 
 export interface ServicePageRow {
   hero_heading: string;
@@ -17,18 +23,15 @@ export interface ServicePageRow {
   hero_image: string | null;
   f_image: string | null;
   f3_image: string | null;
+  // Brief 98: the `serviceSubcategories` block instance array — see
+  // `service-category-blocks.ts`. Present on rows read from the DB (SELECT *);
+  // omitted when a ServicePageRow is synthesized from a draft payload.
+  blocks?: unknown;
   // Optimistic-lock counter. Present on rows read from the DB (SELECT *); omitted
   // when a ServicePageRow is synthesized from a draft payload (see preview.ts).
   version?: number;
   meta_title: string | null;
   meta_description: string | null;
-}
-
-export interface ServiceSubcategoryRow {
-  label: string;
-  href: string;
-  description: string;
-  sort_order: number;
 }
 
 export interface ServiceGlobalRow {
@@ -39,7 +42,10 @@ export interface ServiceGlobalRow {
 
 export interface ServiceCmsContent {
   page: ServicePageRow;
-  subcategories: ServiceSubcategoryRow[];
+  // Brief 98: derived from `page.blocks` (the `serviceSubcategories` instance),
+  // not a separate `service_subcategories` table read. Null when the page has
+  // no subcategories block — callers must fall back to rendering nothing.
+  subcategoriesBlock: ServiceSubcategoriesBlockData | null;
   global: ServiceGlobalRow;
 }
 
@@ -62,7 +68,10 @@ export interface ServiceCmsUpdatePayload {
   service_area_heading: string;
   service_area_body: string;
   tiktok_headline: string;
-  subcategories: Array<{ label: string; href: string; description: string; sort_order: number }>;
+  // Brief 98: `sort_order` is no longer persisted anywhere — array position IS
+  // the order (kept optional on the wire type only so any still-in-flight
+  // client payload carrying it doesn't fail to type-check).
+  subcategories: Array<{ label: string; href: string; description: string; image?: string; sort_order?: number }>;
   meta_title?: string | null;
   meta_description?: string | null;
 }
@@ -73,12 +82,10 @@ export async function getServiceCmsContent(slug: string): Promise<ServiceCmsCont
   // violates node-postgres' one-query-per-client rule and throws under the
   // parallel rendering that `next dev`/`next build` do (surfaces as the opaque
   // "Jest worker encountered N child process exceptions" error).
-  const [pageRes, subRes, globalRes] = await Promise.all([
+  // Brief 98: the subcategories read is now folded into `blocks` (SELECT *
+  // already includes it) — `service_subcategories` is no longer queried here.
+  const [pageRes, globalRes] = await Promise.all([
     pool.query<ServicePageRow>('SELECT * FROM service_category_pages WHERE slug = $1', [slug]),
-    pool.query<ServiceSubcategoryRow>(
-      'SELECT label, href, description, sort_order FROM service_subcategories WHERE page_slug = $1 ORDER BY sort_order',
-      [slug]
-    ),
     pool.query<ServiceGlobalRow>(
       'SELECT service_area_heading, service_area_body, tiktok_headline FROM global_content LIMIT 1'
     ),
@@ -86,7 +93,7 @@ export async function getServiceCmsContent(slug: string): Promise<ServiceCmsCont
   if (!pageRes.rows[0]) return null;
   return {
     page: pageRes.rows[0],
-    subcategories: subRes.rows,
+    subcategoriesBlock: getSubcategoriesBlockData(pageRes.rows[0].blocks),
     global: globalRes.rows[0],
   };
 }
@@ -98,9 +105,34 @@ export async function updateServiceCmsContent(
   // Brief 75 (DP-1): optional optimistic-concurrency guard, see updateCityCmsContent.
   expectedVersion?: number | null
 ): Promise<number> {
+  // Brief 89 (A1): the large body fields are now RichTextField (HTML). Sanitize
+  // through the shared Brief 73 allow-list before persisting — same treatment the
+  // main_pages and sub-service writers apply. Applies to both the direct PUT and
+  // the draft-publish path, which both route here.
+  const introBody = sanitizeCmsHtml(data.intro_body);
+  const preventativeBody = sanitizeCmsHtml(data.preventative_body);
+  const finalPitchBody = sanitizeCmsHtml(data.final_pitch_body);
+
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+
+    // Brief 98: read the current `blocks` (row-locked for the duration of this
+    // transaction) so the rebuilt serviceSubcategories instance reuses its
+    // existing stable id instead of churning a fresh one on every save.
+    const currentRes = await client.query<{ blocks: unknown }>(
+      'SELECT blocks FROM service_category_pages WHERE slug = $1 FOR UPDATE',
+      [slug]
+    );
+    const nextBlocks = buildSubcategoriesBlocks(currentRes.rows[0]?.blocks, {
+      heading: data.subcategories_heading || null,
+      items: data.subcategories.map((sub) => ({
+        label: sub.label,
+        href: sub.href,
+        desc: sub.description,
+        image: sub.image ?? '',
+      })),
+    });
 
     // Brief 75 (CQ-1): this writer previously never checked rowCount, so a slug
     // that matched no row (e.g. a sub-service draft mis-dispatched here) committed
@@ -115,22 +147,24 @@ export async function updateServiceCmsContent(
         updated_by = COALESCE($17, updated_by),
         meta_title = COALESCE($18, meta_title),
         meta_description = COALESCE($19, meta_description),
+        blocks = $21::jsonb,
         version = version + 1,
         updated_at = NOW()
        WHERE slug = $16
          AND ($20::int IS NULL OR version = $20::int)
        RETURNING version`,
       [
-        data.hero_heading, data.hero_intro, data.intro_heading, data.intro_body,
+        data.hero_heading, data.hero_intro, data.intro_heading, introBody,
         data.problems_heading, JSON.stringify(data.problems_items), data.subcategories_heading,
-        data.preventative_heading, data.preventative_body, data.final_pitch_tagline,
-        data.final_pitch_body, JSON.stringify(data.articles_featured_slugs),
+        data.preventative_heading, preventativeBody, data.final_pitch_tagline,
+        finalPitchBody, JSON.stringify(data.articles_featured_slugs),
         data.hero_image ?? null, data.f_image ?? null, data.f3_image ?? null,
         slug,
         updatedBy,
         data.meta_title ?? null,
         data.meta_description ?? null,
         expectedVersion ?? null,
+        JSON.stringify(nextBlocks),
       ]
     );
     if (pageRes.rowCount === 0) {
@@ -149,15 +183,9 @@ export async function updateServiceCmsContent(
       [data.service_area_heading, data.service_area_body, data.tiktok_headline]
     );
 
-    await client.query(`DELETE FROM service_subcategories WHERE page_slug = $1`, [slug]);
-    for (let i = 0; i < data.subcategories.length; i++) {
-      const sub = data.subcategories[i];
-      await client.query(
-        `INSERT INTO service_subcategories (page_slug, label, href, description, sort_order)
-         VALUES ($1, $2, $3, $4, $5)`,
-        [slug, sub.label, sub.href, sub.description, i]
-      );
-    }
+    // Brief 98: `service_subcategories` is no longer written — it is kept only
+    // as a read-only rollback snapshot from before the migration. The
+    // authoritative subcategories data now lives in `blocks` above.
 
     await client.query('COMMIT');
     return pageRes.rows[0].version as number;

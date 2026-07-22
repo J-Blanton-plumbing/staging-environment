@@ -3,6 +3,7 @@ import ServicePageTemplate from '@/components/ServicePageTemplate';
 import PreviewBanner from '@/components/PreviewBanner';
 import { getSubServiceCmsContent } from '@/lib/cms/sub-service-pages';
 import { getSubServicePreview } from '@/lib/cms/preview';
+import { getRelatedArticlesPool } from '@/lib/cms/related-articles-pool';
 
 /**
  * Public renderer for a DB-backed sub-service page. Each routeless sub-service
@@ -21,6 +22,9 @@ export default async function SubServicePageView({ slug }: { slug: string }) {
 
   if (!content) notFound();
 
+  // Brief 92: the pool the Related Articles block resolves against (DB + static).
+  const articlePool = await getRelatedArticlesPool();
+
   return (
     <>
       {preview?.meta && (
@@ -34,7 +38,7 @@ export default async function SubServicePageView({ slug }: { slug: string }) {
           pageSlug={slug}
         />
       )}
-      <ServicePageTemplate content={content} />
+      <ServicePageTemplate content={content} blockOrder={content.blockOrder} blocks={content.blocks} articlePool={articlePool} />
     </>
   );
 }

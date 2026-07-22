@@ -14,6 +14,7 @@ import LocationsSection from '@/components/LocationsSection';
 import PreviewBanner from '@/components/PreviewBanner';
 import { getArticles } from '@/lib/articles';
 import { getServiceCmsContent } from '@/lib/cms/service-pages';
+import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getServicePreview } from '@/lib/cms/preview';
 import type { ServiceCmsContent } from '@/lib/cms/service-pages';
 import type { Metadata } from 'next';
@@ -53,18 +54,19 @@ const FALLBACK_F    = '/images/preventative.webp';
 const FALLBACK_F3   = '/images/plumbing-f3.webp';
 
 function buildContent(cms: ServiceCmsContent) {
-  const { page, subcategories, global: g } = cms;
+  // NOTE (Brief 98): this file is dead code — shadowed for all 6 canonical
+  // category slugs by the static `src/app/services/<slug>/page.tsx` routes,
+  // which Next.js's router always prefers over this dynamic catch-all (see
+  // the Brief 98 report). Left in place, only type-updated to compile against
+  // the new `subcategoriesBlock` shape — not wired to SubcategoriesGrid.
+  const { page, subcategoriesBlock, global: g } = cms;
   return {
     hero:          { heading: page.hero_heading,           intro: page.hero_intro },
     intro:         { heading: page.intro_heading,          body:  page.intro_body },
     problems:      { heading: page.problems_heading,       items: page.problems_items },
     subcategories: {
       heading: page.subcategories_heading,
-      items: subcategories.map(s => ({
-        label: s.label,
-        href:  s.href,
-        desc:  s.description,
-      })),
+      items: subcategoriesBlock?.items ?? [],
     },
     serviceArea:   { heading: g?.service_area_heading ?? '', body: g?.service_area_body ?? '' },
     tiktok:        { headline: g?.tiktok_headline ?? '' },
@@ -99,6 +101,8 @@ export default async function ServiceCategoryPage({
 
   const content  = buildContent(cms);
   const articles = getArticles(content.articles.featuredSlugs);
+  // Brief 89 (A1): intro/preventative/final-pitch bodies are now rich text.
+  const html = (v: string) => ({ __html: renderCmsInline(v, settings) });
 
   return (
     <>
@@ -132,7 +136,7 @@ export default async function ServiceCategoryPage({
                 {content.intro.heading}
               </p>
               <div className="custom-paragraphs space-y-4 text-navy-800 leading-relaxed">
-                <p>{content.intro.body}</p>
+                <p dangerouslySetInnerHTML={html(content.intro.body)} />
               </div>
             </div>
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
@@ -249,9 +253,7 @@ export default async function ServiceCategoryPage({
                 <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                   {content.preventative.heading}
                 </p>
-                <p className="text-navy-800 leading-relaxed mb-6 whitespace-pre-line">
-                  {content.preventative.body}
-                </p>
+                <p className="text-navy-800 leading-relaxed mb-6 whitespace-pre-line" dangerouslySetInnerHTML={html(content.preventative.body)} />
                 <Link
                   href="/no-drip-club"
                   className="link-button hidden md:inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
@@ -290,9 +292,7 @@ export default async function ServiceCategoryPage({
                 <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                   {content.finalPitch.tagline}
                 </p>
-                <p className="text-navy-800 leading-relaxed mb-6">
-                  {content.finalPitch.body}
-                </p>
+                <p className="text-navy-800 leading-relaxed mb-6" dangerouslySetInnerHTML={html(content.finalPitch.body)} />
                 <Link
                   href={settings.phoneHref}
                   className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"

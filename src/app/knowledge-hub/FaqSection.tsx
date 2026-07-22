@@ -1,11 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { KNOWLEDGE_HUB } from '@/lib/content/knowledge-hub';
+import type { FaqItem } from '@/lib/content/knowledge-hub';
 
-export default function FaqSection() {
+interface FaqSectionProps {
+  label: string;
+  body: string;
+  items: FaqItem[];
+}
+
+export default function FaqSection({ label, body, items }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { faqs } = KNOWLEDGE_HUB;
 
   function toggle(i: number) {
     setOpenIndex((prev) => (prev === i ? null : i));
@@ -14,11 +19,11 @@ export default function FaqSection() {
   return (
     <div className="faqs">
       <div className="l">
-        <p className="red-text">{faqs.label}</p>
-        <p>{faqs.body}</p>
+        <p className="red-text">{label}</p>
+        <p>{body}</p>
       </div>
       <div className="r">
-        {faqs.items.map((item, i) => {
+        {items.map((item, i) => {
           const isOpen = openIndex === i;
           return (
             <div

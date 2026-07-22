@@ -81,6 +81,18 @@ export interface PageAttributesSidebarProps {
   open: boolean;
   /** Dismisses the sidebar when its mobile backdrop is tapped. */
   onClose?: () => void;
+  /**
+   * Brief 91 (Track A) — when provided, the sidebar renders a two-tab bar
+   * (Page / Block) at the top: the Page tab is the existing attributes panel
+   * below, the Block tab renders this node (block selection prompt / style
+   * options). Omitted by all other editors, which keep today's single panel with
+   * no tab bar. Sub-service editor only.
+   */
+  blockTab?: React.ReactNode;
+  /** Controlled active tab (defaults to 'page'). Only meaningful with `blockTab`. */
+  activeTab?: 'page' | 'block';
+  /** Fired when a tab is clicked. */
+  onTabChange?: (tab: 'page' | 'block') => void;
 }
 
 const fontHead = 'var(--font-outfit), system-ui, sans-serif';
@@ -120,8 +132,18 @@ export default function PageAttributesSidebar({
   author = '—',
   open,
   onClose,
+  blockTab,
+  activeTab,
+  onTabChange,
 }: PageAttributesSidebarProps) {
   const [topPx, setTopPx] = useState(FALLBACK_TOP_PX);
+  // Track A: tabs only exist when a blockTab is supplied. Controlled by the parent
+  // when `activeTab`/`onTabChange` are passed (so the gear icon can switch tabs);
+  // falls back to internal state otherwise. Default tab = Page (today's behavior).
+  const tabbed = blockTab !== undefined;
+  const [internalTab, setInternalTab] = useState<'page' | 'block'>('page');
+  const tab = activeTab ?? internalTab;
+  const setTab = onTabChange ?? setInternalTab;
 
   useLayoutEffect(() => {
     const headerEl = document.getElementById('jbp-admin-page-header');
@@ -169,6 +191,51 @@ export default function PageAttributesSidebar({
         }}
         aria-hidden={!open}
       >
+        {tabbed && (
+          <div
+            role="tablist"
+            aria-label="Sidebar sections"
+            style={{
+              display: 'flex',
+              borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+              background: ADMIN_COLORS.surfaceContainerLow,
+              position: 'sticky',
+              top: 0,
+              zIndex: 1,
+            }}
+          >
+            {(['page', 'block'] as const).map((t) => {
+              const active = tab === t;
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setTab(t)}
+                  style={{
+                    flex: 1,
+                    padding: '0.75rem 0.5rem',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                    fontFamily: fontHead,
+                    fontWeight: 700,
+                    fontSize: '13px',
+                    letterSpacing: '0.02em',
+                    color: active ? ADMIN_COLORS.onSurface : `${ADMIN_COLORS.onSurfaceVariant}99`,
+                    borderBottom: `2px solid ${active ? ADMIN_COLORS.cerulean : 'transparent'}`,
+                  }}
+                >
+                  {t === 'page' ? 'Page' : 'Block'}
+                </button>
+              );
+            })}
+          </div>
+        )}
+        {tabbed && tab === 'block' ? (
+          <div style={{ padding: '1.1rem 1.25rem', boxSizing: 'border-box' }}>{blockTab}</div>
+        ) : (
         <div style={{ padding: '1.1rem 1.25rem', boxSizing: 'border-box' }}>
           {/* Page title */}
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.35rem' }}>
@@ -280,6 +347,7 @@ export default function PageAttributesSidebar({
             </div>
           </div>
         </div>
+        )}
       </aside>
     </>
   );

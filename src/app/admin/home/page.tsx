@@ -134,7 +134,7 @@ export default function HomeAdminPage() {
         }}
         compact
       />
-      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
 
         <div style={sec}>
           <h2 style={secHead}>Hero</h2>
@@ -161,6 +161,7 @@ export default function HomeAdminPage() {
           <label style={lbl}>Heading</label>
           <input className="admin-field" style={s} value={form.why_heading} onChange={e => set('why_heading', e.target.value)} />
           <label style={lbl}>Body</label>
+          <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.5rem 0 0.5rem' }}>Separate paragraphs with a blank line (double Enter).</p>
           <textarea className="admin-field" style={{ ...s, minHeight: '100px' }} value={form.why_body} onChange={e => set('why_body', e.target.value)} />
         </div>
 
@@ -177,6 +178,7 @@ export default function HomeAdminPage() {
           <label style={lbl}>Heading</label>
           <input className="admin-field" style={s} value={form.find_us_heading} onChange={e => set('find_us_heading', e.target.value)} />
           <label style={lbl}>Body</label>
+          <p style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.5rem 0 0.5rem' }}>Separate paragraphs with a blank line (double Enter).</p>
           <textarea className="admin-field" style={{ ...s, minHeight: '80px' }} value={form.find_us_body} onChange={e => set('find_us_body', e.target.value)} />
         </div>
 

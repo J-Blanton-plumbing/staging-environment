@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -48,68 +49,6 @@ const EMPTY: FormState = {
 
 function slugToTitle(slug: string): string {
   return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-}
-
-function ImageField({
-  label: labelText,
-  value,
-  onChange,
-  labelStyle,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  labelStyle: React.CSSProperties;
-}) {
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState('');
-
-  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    setUploadError('');
-    const fd = new FormData();
-    fd.append('file', file);
-    try {
-      const res = await fetch('/api/cms/upload', { method: 'POST', body: fd });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? 'Upload failed');
-      onChange(json.url);
-    } catch (err: unknown) {
-      setUploadError(err instanceof Error ? err.message : 'Upload failed');
-    } finally {
-      setUploading(false);
-      e.target.value = '';
-    }
-  }
-
-  return (
-    <div style={{ marginBottom: '1.25rem' }}>
-      <label style={labelStyle}>{labelText}</label>
-      {value && (
-        <img
-          src={value}
-          alt="current"
-          style={{ display: 'block', maxHeight: '140px', maxWidth: '100%', objectFit: 'cover', borderRadius: '0.75rem', border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, marginBottom: '0.5rem' }}
-        />
-      )}
-      <label style={{ display: 'inline-block', cursor: uploading ? 'not-allowed' : 'pointer' }}>
-        <input
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          style={{ display: 'none' }}
-          onChange={handleFile}
-          disabled={uploading}
-        />
-        <span style={{ display: 'inline-block', background: ADMIN_COLORS.surfaceContainerLow, border: `1px dashed ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem', padding: '0.35rem 0.85rem', fontSize: '0.85rem', fontWeight: 600, color: ADMIN_COLORS.onSurfaceVariant, opacity: uploading ? 0.6 : 1 }}>
-          {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}
-        </span>
-      </label>
-      <span style={{ marginLeft: '0.5rem', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>JPEG, PNG or WebP · max 10 MB</span>
-      {uploadError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', marginTop: '0.25rem' }}>{uploadError}</p>}
-    </div>
-  );
 }
 
 export default function AdminCityServicePage() {
@@ -283,7 +222,7 @@ export default function AdminCityServicePage() {
         compact
       />
 
-    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+    <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit city-service page content. Separate paragraphs with a blank line. Changes are saved to the database and applied immediately.
       </p>
@@ -302,7 +241,7 @@ export default function AdminCityServicePage() {
           value={form.serviceIntroText}
           onChange={e => setForm(f => ({ ...f, serviceIntroText: e.target.value }))}
         />
-        <ImageField label="Intro Image" value={form.serviceIntroImage} onChange={v => setForm(f => ({ ...f, serviceIntroImage: v }))} labelStyle={labelStyle} />
+        <ImageUploaderField label="Intro Image" value={form.serviceIntroImage} onChange={v => setForm(f => ({ ...f, serviceIntroImage: v }))} />
       </div>
 
       {/* Secondary Section */}
@@ -319,7 +258,7 @@ export default function AdminCityServicePage() {
           value={form.secondaryText}
           onChange={e => setForm(f => ({ ...f, secondaryText: e.target.value }))}
         />
-        <ImageField label="Secondary Image" value={form.secondaryImage} onChange={v => setForm(f => ({ ...f, secondaryImage: v }))} labelStyle={labelStyle} />
+        <ImageUploaderField label="Secondary Image" value={form.secondaryImage} onChange={v => setForm(f => ({ ...f, secondaryImage: v }))} />
       </div>
 
       {/* FAQs */}

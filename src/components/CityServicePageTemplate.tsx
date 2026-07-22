@@ -8,8 +8,10 @@ import CityServicesMenu from '@/components/CityServicesMenu';
 import FaqAccordion from '@/components/FaqAccordion';
 import CityLocationsGrid from '@/components/CityLocationsGrid';
 import ArticleGrid from '@/components/ArticleGrid';
+import GoogleReviews from '@/components/GoogleReviews';
 import type { RegistryEntry } from '@/lib/content/cities/types';
 import type { CityServiceContent } from '@/types/city-service';
+import type { GlobalSettings } from '@/lib/cms/global-settings';
 import { getOffice, getArea, getLocalOfficeContent, getGridCities } from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, getElfsightContentId } from '@/lib/content/cities/shared';
 import { getArticles } from '@/lib/articles';
@@ -44,9 +46,10 @@ function replaceAll(obj: CityServiceContent, cityName: string): CityServiceConte
 interface Props {
   city: RegistryEntry;
   service: CityServiceContent;
+  settings: GlobalSettings;
 }
 
-export default function CityServicePageTemplate({ city, service }: Props) {
+export default function CityServicePageTemplate({ city, service, settings }: Props) {
   const s = replaceAll(service, city.name);
   const office = getOffice(city.slug);
   const area = getArea(city.slug);
@@ -91,8 +94,12 @@ export default function CityServicePageTemplate({ city, service }: Props) {
           {/* ── 3 + 4. SERVICE INTRO (heading + body + image) ────────────── */}
           <section className="f grid grid-cols-1 items-stretch gap-10 pt-[50px] lg:grid-cols-2 lg:pt-[130px]">
             <div className="flex flex-col justify-start">
+              {/* Brief 95 (A.3): serviceIntro.heading was saved + merged but never
+                  rendered — wire it, falling back to the old hard-coded literal
+                  when empty (Secondary Section below proves this template's
+                  headings are meant to be per-page editable). */}
               <p className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
-                WE&apos;VE GOT YOU COVERED, {cityNameUpper}
+                {s.serviceIntro.heading || `WE'VE GOT YOU COVERED, ${cityNameUpper}`}
               </p>
               <div className="space-y-4">
                 {s.serviceIntro.paragraphs.map((p, i) => (
@@ -176,7 +183,7 @@ export default function CityServicePageTemplate({ city, service }: Props) {
                 : getElfsightContentId(city.slug);
             return (
               <div className="city-page-gr mb-[100px]">
-                <div className={`elfsight-app-${elfsightId}`} data-elfsight-app-lazy />
+                <GoogleReviews widgetId={elfsightId} />
               </div>
             );
           })()}
@@ -185,9 +192,11 @@ export default function CityServicePageTemplate({ city, service }: Props) {
       </div>
 
       {/* ── 9. "TURNING BAD CALLS TO GOOD CALLS" TAGLINE ────────────────── */}
+      {/* Brief 95 (B.3): Global Settings is the single source for this tagline —
+          do not re-hard-code it here. */}
       <div className="py-[40px] text-center">
         <p className="ep-tiktok-headline font-display text-[24px] font-bold text-navy-800">
-          J Blanton Plumbing - Turning Bad Calls to Good Calls
+          {settings.taglineTurning || 'J Blanton Plumbing - Turning Bad Calls to Good Calls'}
         </p>
       </div>
 

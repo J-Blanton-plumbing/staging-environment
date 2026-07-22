@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import RichTextField from '@/components/admin/RichTextField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -118,14 +119,13 @@ export default function CustomerStoriesAdminPage() {
         }}
         compact
       />
-      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
 
         <div style={sec}>
           <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Hero</h2>
           <label style={lbl}>Heading</label>
           <input style={s} value={form.hero_heading} onChange={e => set('hero_heading', e.target.value)} />
-          <label style={lbl}>Description</label>
-          <textarea style={{ ...s, minHeight: '80px' }} value={form.hero_description} onChange={e => set('hero_description', e.target.value)} />
+          <RichTextField label="Description" value={form.hero_description} onChange={v => set('hero_description', v)} rows={5} />
         </div>
 
         <div style={sec}>
@@ -138,8 +138,7 @@ export default function CustomerStoriesAdminPage() {
           <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Bottom CTA</h2>
           <label style={lbl}>Heading</label>
           <input style={s} value={form.cta_heading} onChange={e => set('cta_heading', e.target.value)} />
-          <label style={lbl}>Body</label>
-          <textarea style={{ ...s, minHeight: '80px' }} value={form.cta_body} onChange={e => set('cta_body', e.target.value)} />
+          <RichTextField label="Body" value={form.cta_body} onChange={v => set('cta_body', v)} rows={4} />
         </div>
 
         <MetaSection

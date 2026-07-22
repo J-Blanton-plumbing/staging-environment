@@ -4,8 +4,12 @@ import HeroNav from '@/components/HeroNav';
 import ArticleCard from '@/components/ArticleCard';
 import { FINANCING } from '@/lib/content/financing';
 import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
+import GoogleReviews from '@/components/GoogleReviews';
+import TikTokFeed from '@/components/TikTokFeed';
 import { getArticles } from '@/lib/articles';
 import type { Metadata } from 'next';
 import './financing.css';
@@ -38,7 +42,10 @@ export default async function FinancingPage() {
   const preview = await getMainPagePreview('financing');
   const db = preview?.content ?? await getMainPageContent('financing').catch(() => null);
   const d = db ?? {};
+  const settings = await getGlobalSettingsCached();
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  // Rich-text bodies (Brief 89, A1) render as sanitized inline HTML.
+  const html = (v: string) => ({ __html: renderCmsInline(v, settings) });
   const {
     hero: _hero,
     financingSolutionsReady: _fsr,
@@ -48,12 +55,15 @@ export default async function FinancingPage() {
     articleSlugs,
     bottomCta: _bc,
   } = FINANCING;
-  const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description) };
+  // Brief 95 (B.2): Global Settings is the single source for phone CTAs on this
+  // page — hero/financingMadeSimple/bottomCta no longer carry their own
+  // SITE.phone/SITE.phoneHref literals (see financing.ts).
+  const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description), ctaLabel: settings.phoneDisplay, ctaHref: settings.phoneHref };
   const financingSolutionsReady = { ..._fsr, label: m(d.financing_ready_label, _fsr.label), body: m(d.financing_ready_body, _fsr.body) };
-  const financingMadeSimple = { ..._fms, label: m(d.financing_simple_label, _fms.label) };
+  const financingMadeSimple = { ..._fms, label: m(d.financing_simple_label, _fms.label), ctaHref: settings.phoneHref };
   const coverage = { ..._cov, heading: m(d.coverage_heading, _cov.heading), body: m(d.coverage_body, _cov.body) };
   const surpriseBills = { ..._sb, label: m(d.surprise_bills_label, _sb.label), body: m(d.surprise_bills_body, _sb.body) };
-  const bottomCta = { ..._bc, label: m(d.bottom_cta_label, _bc.label), body: m(d.bottom_cta_body, _bc.body) };
+  const bottomCta = { ..._bc, label: m(d.bottom_cta_label, _bc.label), body: m(d.bottom_cta_body, _bc.body), ctaHref: settings.phoneHref };
 
   const articles = getArticles([...articleSlugs]);
 
@@ -79,7 +89,7 @@ export default async function FinancingPage() {
         <div className="hero-contents">
           <div className="w">
             <h1>{hero.heading}</h1>
-            <p className="hero-desc">{hero.description}</p>
+            <p className="hero-desc" dangerouslySetInnerHTML={html(hero.description)} />
             <a href={hero.ctaHref} className="link-button">
               <PhoneIcon />
               {hero.ctaLabel}
@@ -107,7 +117,7 @@ export default async function FinancingPage() {
             {/* Desktop: label + body */}
             <div>
               <p className="red-text">{financingSolutionsReady.label}</p>
-              <p>{financingSolutionsReady.body}</p>
+              <p dangerouslySetInnerHTML={html(financingSolutionsReady.body)} />
             </div>
             {/* Mobile heading (hidden on desktop) */}
             <p className="red-text red-text-mobile">{financingSolutionsReady.label}</p>
@@ -120,7 +130,7 @@ export default async function FinancingPage() {
             />
             {/* Mobile body (hidden on desktop) */}
             <div className="mobile-content">
-              <p>{financingSolutionsReady.body}</p>
+              <p dangerouslySetInnerHTML={html(financingSolutionsReady.body)} />
             </div>
           </div>
         </div>
@@ -189,7 +199,7 @@ export default async function FinancingPage() {
                 />
               </div>
               <p className="red-text">{coverage.heading}</p>
-              <p>{coverage.body}</p>
+              <p dangerouslySetInnerHTML={html(coverage.body)} />
             </div>
             {/* map1: shown on desktop only */}
             <div className="map1">
@@ -202,8 +212,19 @@ export default async function FinancingPage() {
             </div>
           </div>
 
+          {/* ------------------------------------------------------------
+              GOOGLE REVIEWS — live site has this as its own block ahead of
+              the TikTok feed; ported page was missing it (Brief 96 follow-up)
+              ------------------------------------------------------------ */}
+          <div className="ep-gr">
+            <GoogleReviews />
+          </div>
+
+          <p className="ep-tiktok-headline">
+            {settings.taglineTurning || 'J Blanton Plumbing - Turning Bad Calls to Good Calls'}
+          </p>
           <div className="ep-tiktok">
-            <div className={coverage.socialWidgetId} data-elfsight-app-lazy />
+            <TikTokFeed widgetId={coverage.socialWidgetId} />
           </div>
 
           {/* ------------------------------------------------------------
@@ -219,7 +240,7 @@ export default async function FinancingPage() {
                 width={470}
                 height={320}
               />
-              <p>{surpriseBills.body}</p>
+              <p dangerouslySetInnerHTML={html(surpriseBills.body)} />
               <Link href={surpriseBills.ctaHref} className="link-button">
                 {surpriseBills.ctaLabel}
               </Link>
@@ -264,7 +285,7 @@ export default async function FinancingPage() {
                 width={470}
                 height={320}
               />
-              <p>{bottomCta.body}</p>
+              <p dangerouslySetInnerHTML={html(bottomCta.body)} />
               <a href={bottomCta.ctaHref} className="link-button button1">
                 {bottomCta.ctaLabel}
               </a>

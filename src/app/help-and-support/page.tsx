@@ -2,6 +2,8 @@ import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import { HELP_SUPPORT } from '@/lib/content/help-and-support';
 import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
@@ -27,6 +29,8 @@ export default async function HelpSupportPage() {
   const preview = await getMainPagePreview('help-and-support');
   const db = preview?.content ?? await getMainPageContent('help-and-support').catch(() => null);
   const d = db ?? {};
+  const settings = await getGlobalSettingsCached();
+  const html = (v: string) => ({ __html: renderCmsInline(v, settings) });
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
   const { hero: _hero, customerService: _cs, billingQuestions: _bq, plumbingIssue: _pi } = HELP_SUPPORT;
   const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description) };
@@ -57,7 +61,7 @@ export default async function HelpSupportPage() {
           <div className="w">
             <h1>{hero.heading}</h1>
             {hero.subLabel && <p className="sub-label">{hero.subLabel}</p>}
-            <p className="hero-desc">{hero.description}</p>
+            <p className="hero-desc" dangerouslySetInnerHTML={html(hero.description)} />
             <div
               className="involveme_popup"
               role="button"
@@ -92,7 +96,7 @@ export default async function HelpSupportPage() {
             {/* Desktop: label + body */}
             <div>
               <p className="red-text">{customerService.label}</p>
-              <p>{customerService.body}</p>
+              <p dangerouslySetInnerHTML={html(customerService.body)} />
             </div>
             {/* Mobile heading */}
             <p className="red-text red-text-mobile">{customerService.label}</p>
@@ -105,7 +109,7 @@ export default async function HelpSupportPage() {
             />
             {/* Mobile body */}
             <div className="mobile-content">
-              <p>{customerService.body}</p>
+              <p dangerouslySetInnerHTML={html(customerService.body)} />
             </div>
           </div>
         </div>
@@ -127,7 +131,7 @@ export default async function HelpSupportPage() {
             {/* Desktop: label + body */}
             <div>
               <p className="red-text">{billingQuestions.label}</p>
-              <p>{billingQuestions.body}</p>
+              <p dangerouslySetInnerHTML={html(billingQuestions.body)} />
             </div>
           </div>
         </div>
@@ -140,7 +144,7 @@ export default async function HelpSupportPage() {
             {/* Desktop: label + body */}
             <div>
               <p className="red-text">{plumbingIssue.label}</p>
-              <p>{plumbingIssue.body}</p>
+              <p dangerouslySetInnerHTML={html(plumbingIssue.body)} />
             </div>
             {/* Mobile heading */}
             <p className="red-text red-text-mobile">{plumbingIssue.label}</p>
@@ -153,7 +157,7 @@ export default async function HelpSupportPage() {
             />
             {/* Mobile body */}
             <div className="mobile-content">
-              <p>{plumbingIssue.body}</p>
+              <p dangerouslySetInnerHTML={html(plumbingIssue.body)} />
             </div>
           </div>
         </div>

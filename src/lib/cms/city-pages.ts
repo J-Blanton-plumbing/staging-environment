@@ -1,25 +1,20 @@
 import pool from '@/lib/db';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import { ConflictError } from '@/lib/cms/errors';
+import type { CityV2BlockInstance } from '@/lib/cms/city-v2-blocks';
+import {
+  CITY_V2_BLOCK_ORDER,
+  normalizeCityV2Blocks,
+  assembleCityV2Blocks,
+  cityV2BlocksToFields,
+} from '@/lib/cms/city-v2-blocks';
 
-/** Brief 67 — V2 "Most Requested Services" item. */
-export interface MostRequestedService {
-  title: string;
-  body: string;
-}
-
-/** Brief 67 — V2 "Why … Call Us First" point. */
-export interface WhyPoint {
-  heading: string;
-  body: string;
-}
-
-/** Brief 67 — V2 review card. */
-export interface CityReview {
-  name: string;
-  text: string;
-  gbp_url: string;
-}
+// Brief 99: the V2 repeater item shapes now live in a pure types module so
+// client-safe code can import them; re-exported here for existing importers.
+export type { MostRequestedService, WhyPoint, CityReview } from '@/lib/cms/city-pages-types';
+import type { MostRequestedService, WhyPoint, CityReview } from '@/lib/cms/city-pages-types';
+export type { CityV2BlockType, CityV2BlockInstance } from '@/lib/cms/city-v2-blocks';
+export { CITY_V2_BLOCK_ORDER, normalizeCityV2Blocks, newCityV2BlockId } from '@/lib/cms/city-v2-blocks';
 
 export interface CityCmsContent {
   id: number;
@@ -50,6 +45,10 @@ export interface CityCmsContent {
   finalCtaHeading: string;
   finalCtaBody: string;
   whyPoints: WhyPoint[];
+  // Brief 99 (Track B): authoritative render order + content for
+  // `template_type='local-office-v2'` pages, as an array of `{id,type,data}`
+  // instances (Brief 90 shape). Undefined/empty for V1 templates — untouched.
+  blocks?: CityV2BlockInstance[];
   version: number;
   updatedAt: string;
   updatedBy?: string | null;
@@ -86,6 +85,11 @@ export interface CityCmsUpdatePayload {
   whyPoints?: WhyPoint[];
   metaTitle?: string | null;
   metaDescription?: string | null;
+  // Brief 99 (Track B): when present, the full per-instance City V2 `blocks`
+  // array is authoritative for order + content; the V2-scoped fields above
+  // are then derived from it (first-instance-per-type) rather than read
+  // directly. Absent for V1 template saves — unchanged legacy behavior.
+  blocks?: unknown[];
 }
 
 /** Coerce a JSONB column that may be null/string/array into a typed array. */
@@ -111,11 +115,48 @@ export async function getCityCmsContent(slug: string): Promise<CityCmsContent | 
     );
     if (!res.rows[0]) return null;
     const r = res.rows[0];
+    const templateType = r.template_type ?? r.city_type ?? 'coverage-area';
+    const faqs = asArray<{ question: string; answer: string }>(r.faqs);
+    const mostRequestedServices = asArray<MostRequestedService>(r.most_requested_services);
+    const reviews = asArray<CityReview>(r.reviews);
+    const whyPoints = asArray<WhyPoint>(r.why_points);
+
+    // Brief 99 (Track B): `blocks` is the source of truth for order + content
+    // on V2 pages only — mirrors the sub-service reader exactly. A row's
+    // `blocks` wins when present; a row migrated/created before `blocks`
+    // existed gets one instance synthesised per type from the named columns,
+    // in canonical order (byte-identical to the pre-blocks fixed-JSX render).
+    let blocks: CityV2BlockInstance[] | undefined;
+    if (templateType === 'local-office-v2') {
+      const stored = normalizeCityV2Blocks(r.blocks);
+      blocks = stored.length > 0
+        ? stored
+        : assembleCityV2Blocks({
+            heroImage: r.hero_image ?? null,
+            heroHeadingLine1: r.hero_heading_line1 ?? null,
+            heroDescription: r.hero_description ?? null,
+            trustBarStars: r.trust_bar_stars ?? null,
+            trustBarReviewCount: r.trust_bar_review_count ?? null,
+            servicesIntro: r.services_intro ?? null,
+            mostRequestedServices,
+            midCtaText: r.mid_cta_text ?? null,
+            whyPoints,
+            videoHeading: r.video_heading ?? null,
+            videoIntro: r.video_intro ?? null,
+            videoScript: r.video_script ?? null,
+            reviews,
+            faqs,
+            ndcIntro: r.ndc_intro ?? null,
+            finalCtaHeading: r.final_cta_heading ?? null,
+            finalCtaBody: r.final_cta_body ?? null,
+          }, CITY_V2_BLOCK_ORDER);
+    }
+
     return {
       id: r.id,
       citySlug: r.city_slug,
       cityType: r.city_type,
-      templateType: r.template_type ?? r.city_type ?? 'coverage-area',
+      templateType,
       heroImage: r.hero_image ?? '',
       heroHeadingLine1: r.hero_heading_line1,
       heroHeadingLine2: r.hero_heading_line2,
@@ -125,21 +166,23 @@ export async function getCityCmsContent(slug: string): Promise<CityCmsContent | 
       contentBody: r.content_body ?? '',
       f2Heading: r.f2_heading ?? '',
       f2Body: r.f2_body ?? '',
-      faqs: asArray<{ question: string; answer: string }>(r.faqs),
-      // ── Brief 67 — V2 fields (graceful empty fallbacks) ──
+      faqs,
+      // ── Brief 67 — V2 fields (graceful empty fallbacks) — kept populated as
+      // the Brief 99 rollback snapshot; the live V2 render uses `blocks` below. ──
       trustBarStars: r.trust_bar_stars ?? '',
       trustBarReviewCount: r.trust_bar_review_count ?? '',
       servicesIntro: r.services_intro ?? '',
-      mostRequestedServices: asArray<MostRequestedService>(r.most_requested_services),
+      mostRequestedServices,
       midCtaText: r.mid_cta_text ?? '',
       videoHeading: r.video_heading ?? '',
       videoIntro: r.video_intro ?? '',
       videoScript: r.video_script ?? '',
-      reviews: asArray<CityReview>(r.reviews),
+      reviews,
       ndcIntro: r.ndc_intro ?? '',
       finalCtaHeading: r.final_cta_heading ?? '',
       finalCtaBody: r.final_cta_body ?? '',
-      whyPoints: asArray<WhyPoint>(r.why_points),
+      whyPoints,
+      blocks,
       version: r.version ?? 0,
       updatedAt: r.updated_at,
       updatedBy: r.updated_by_email ?? null,
@@ -169,6 +212,27 @@ export async function updateCityCmsContent(
   // route that already sanitized is unaffected.
   if (typeof data.contentBody === 'string') data.contentBody = sanitizeCmsHtml(data.contentBody);
   if (typeof data.f2Body === 'string') data.f2Body = sanitizeCmsHtml(data.f2Body);
+
+  // Brief 99 (Track B): when the editor sends the full per-instance City V2
+  // `blocks` array, it is authoritative for content + order. Derive the
+  // PRIMARY (first-instance) snapshot to keep the named V2 columns (+ the
+  // shared hero/faqs columns) populated as a rollback snapshot — exactly the
+  // Brief 90 sub-service approach. No `blocks` sent (every V1 template save,
+  // and any V2 save from a not-yet-updated caller) leaves this branch untaken
+  // and behavior is byte-identical to before this brief.
+  let blocksJson: string | null = null;
+  let primary: ReturnType<typeof cityV2BlocksToFields> = {};
+  if (Array.isArray(data.blocks)) {
+    const normalized = normalizeCityV2Blocks(data.blocks);
+    primary = cityV2BlocksToFields(normalized);
+    blocksJson = JSON.stringify(normalized);
+  }
+  // Merge helper: the blocks-derived primary snapshot wins when present,
+  // else fall back to whatever the caller sent directly (legacy path).
+  function pick<K extends keyof CityCmsUpdatePayload>(key: K): CityCmsUpdatePayload[K] {
+    const fromBlocks = (primary as unknown as Partial<CityCmsUpdatePayload>)[key];
+    return fromBlocks !== undefined ? fromBlocks : data[key];
+  }
 
   const client = await pool.connect();
   try {
@@ -201,40 +265,43 @@ export async function updateCityCmsContent(
         final_cta_heading      = COALESCE($25, final_cta_heading),
         final_cta_body         = COALESCE($26, final_cta_body),
         why_points             = COALESCE($27::jsonb, why_points),
+        -- Brief 99 (Track B) — the authoritative City V2 blocks array
+        blocks                 = COALESCE($29::jsonb, blocks),
         version                = version + 1,
         updated_at             = NOW()
        WHERE city_slug = $11
          AND ($28::int IS NULL OR version = $28::int)
        RETURNING id, version`,
       [
-        data.heroImage ?? null,
-        data.heroHeadingLine1 ?? null,
+        pick('heroImage') ?? null,
+        pick('heroHeadingLine1') ?? null,
         data.heroHeadingLine2 !== undefined ? (data.heroHeadingLine2 ?? null) : null,
         data.heroCallout ?? null,
-        data.heroDescription ?? null,
+        pick('heroDescription') ?? null,
         data.contentHeading ?? null,
         data.contentBody ?? null,
         data.f2Heading ?? null,
         data.f2Body ?? null,
-        data.faqs ? JSON.stringify(data.faqs) : null,
+        pick('faqs') ? JSON.stringify(pick('faqs')) : null,
         slug,
         updatedBy,
         data.metaTitle ?? null,
         data.metaDescription ?? null,
-        data.trustBarStars ?? null,
-        data.trustBarReviewCount ?? null,
-        data.servicesIntro ?? null,
-        data.mostRequestedServices ? JSON.stringify(data.mostRequestedServices) : null,
-        data.midCtaText ?? null,
-        data.videoHeading ?? null,
-        data.videoIntro ?? null,
-        data.videoScript ?? null,
-        data.reviews ? JSON.stringify(data.reviews) : null,
-        data.ndcIntro ?? null,
-        data.finalCtaHeading ?? null,
-        data.finalCtaBody ?? null,
-        data.whyPoints ? JSON.stringify(data.whyPoints) : null,
+        pick('trustBarStars') ?? null,
+        pick('trustBarReviewCount') ?? null,
+        pick('servicesIntro') ?? null,
+        pick('mostRequestedServices') ? JSON.stringify(pick('mostRequestedServices')) : null,
+        pick('midCtaText') ?? null,
+        pick('videoHeading') ?? null,
+        pick('videoIntro') ?? null,
+        pick('videoScript') ?? null,
+        pick('reviews') ? JSON.stringify(pick('reviews')) : null,
+        pick('ndcIntro') ?? null,
+        pick('finalCtaHeading') ?? null,
+        pick('finalCtaBody') ?? null,
+        pick('whyPoints') ? JSON.stringify(pick('whyPoints')) : null,
         expectedVersion ?? null,
+        blocksJson,
       ]
     );
     if (res.rowCount === 0) {

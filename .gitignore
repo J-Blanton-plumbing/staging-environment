@@ -13,3 +13,6 @@ out/
 # OS
 .DS_Store
 Thumbs.db
+
+# Pre-migration DB backups (Brief 74 rule) — local safety snapshots, not source
+scripts/backups/

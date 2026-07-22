@@ -19,6 +19,25 @@ export const MAIN_PAGE_RICH_TEXT_FIELDS: Record<string, string[]> = {
     'our_locations_body',
     'join_our_team_body',
   ],
+  // Brief 89 (A1): large marketing body fields upgraded from plain textareas to
+  // RichTextField. Only fields whose public page renders the value from the DB
+  // (via renderCmsInline) are listed — static-only / short-intro fields are not.
+  financing: [
+    'hero_description',
+    'financing_ready_body',
+    'coverage_body',
+    'surprise_bills_body',
+    'bottom_cta_body',
+  ],
+  'customer-stories': ['hero_description', 'cta_body'],
+  locations: ['hero_description', 'intro_body'],
+  'help-and-support': [
+    'hero_description',
+    'customer_service_body',
+    'billing_questions_body',
+    'plumbing_issue_body',
+  ],
+  'knowledge-hub': ['intro_body'],
 };
 
 /** True if `field` on the given main-page slug is a rich-text (HTML) field. */

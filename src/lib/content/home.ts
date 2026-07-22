@@ -15,6 +15,11 @@ export interface HomeContent {
     intro: string;
   };
   tiktok: {
+    /**
+     * Brief 95 (A.7): intentionally static — no DB column/editor field. This
+     * headline rarely changes; adding a column is out of proportion to a
+     * cleanup brief. Revisit if per-page TikTok headlines are wanted later.
+     */
     headline: string;
   };
   why: {

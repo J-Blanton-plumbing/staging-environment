@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import RichTextField from '@/components/admin/RichTextField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -133,22 +134,20 @@ export default function FinancingAdminPage() {
         }}
         compact
       />
-      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
 
         <div style={sec}>
           <h2 style={secHead}>Hero</h2>
           <label style={lbl}>Heading</label>
           <input className="admin-field" style={s} value={form.hero_heading} onChange={e => set('hero_heading', e.target.value)} />
-          <label style={lbl}>Description</label>
-          <textarea className="admin-field" style={{ ...s, minHeight: '100px' }} value={form.hero_description} onChange={e => set('hero_description', e.target.value)} />
+          <RichTextField label="Description" value={form.hero_description} onChange={v => set('hero_description', v)} rows={5} />
         </div>
 
         <div style={sec}>
           <h2 style={secHead}>Financing Solutions Ready</h2>
           <label style={lbl}>Label</label>
           <input className="admin-field" style={s} value={form.financing_ready_label} onChange={e => set('financing_ready_label', e.target.value)} />
-          <label style={lbl}>Body</label>
-          <textarea className="admin-field" style={{ ...s, minHeight: '80px' }} value={form.financing_ready_body} onChange={e => set('financing_ready_body', e.target.value)} />
+          <RichTextField label="Body" value={form.financing_ready_body} onChange={v => set('financing_ready_body', v)} rows={4} />
         </div>
 
         <div style={sec}>
@@ -161,24 +160,21 @@ export default function FinancingAdminPage() {
           <h2 style={secHead}>Coverage Section</h2>
           <label style={lbl}>Heading</label>
           <input className="admin-field" style={s} value={form.coverage_heading} onChange={e => set('coverage_heading', e.target.value)} />
-          <label style={lbl}>Body</label>
-          <textarea className="admin-field" style={{ ...s, minHeight: '80px' }} value={form.coverage_body} onChange={e => set('coverage_body', e.target.value)} />
+          <RichTextField label="Body" value={form.coverage_body} onChange={v => set('coverage_body', v)} rows={4} />
         </div>
 
         <div style={sec}>
           <h2 style={secHead}>We Hate Surprise Bills Too</h2>
           <label style={lbl}>Label</label>
           <input className="admin-field" style={s} value={form.surprise_bills_label} onChange={e => set('surprise_bills_label', e.target.value)} />
-          <label style={lbl}>Body</label>
-          <textarea className="admin-field" style={{ ...s, minHeight: '80px' }} value={form.surprise_bills_body} onChange={e => set('surprise_bills_body', e.target.value)} />
+          <RichTextField label="Body" value={form.surprise_bills_body} onChange={v => set('surprise_bills_body', v)} rows={4} />
         </div>
 
         <div style={sec}>
           <h2 style={secHead}>Bottom CTA</h2>
           <label style={lbl}>Label</label>
           <input className="admin-field" style={s} value={form.bottom_cta_label} onChange={e => set('bottom_cta_label', e.target.value)} />
-          <label style={lbl}>Body</label>
-          <textarea className="admin-field" style={{ ...s, minHeight: '80px' }} value={form.bottom_cta_body} onChange={e => set('bottom_cta_body', e.target.value)} />
+          <RichTextField label="Body" value={form.bottom_cta_body} onChange={v => set('bottom_cta_body', v)} rows={4} />
         </div>
 
         <MetaSection

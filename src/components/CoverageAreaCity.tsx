@@ -4,6 +4,8 @@ import CityServicesMenu from '@/components/CityServicesMenu';
 import CityLocationsGrid from '@/components/CityLocationsGrid';
 import FaqAccordion from '@/components/FaqAccordion';
 import ArticleGrid from '@/components/ArticleGrid';
+import GoogleReviews from '@/components/GoogleReviews';
+import TikTokFeed from '@/components/TikTokFeed';
 import type { Article } from '@/lib/articles';
 import type { CityFaq, CoverageAreaContent, Office } from '@/lib/content/cities/types';
 import {
@@ -93,6 +95,9 @@ export default function CoverageAreaCity({
           {/* ===== 3. WE'VE GOT YOU COVERED, {CITY} ===== */}
           <section className="f grid grid-cols-1 items-stretch gap-10 pt-[50px] lg:grid-cols-2 lg:pt-[130px]">
             <div className="flex flex-col justify-center">
+              {/* Brief 95 (A.2): intentionally hard-coded, not DB-driven — this is
+                  a templated SEO/geo pattern; wiring it risks colliding with
+                  `contentHeading`'s other meaning on the Local-Office template. */}
               <p className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                 WE&apos;VE GOT YOU COVERED, <span>{name}</span>
               </p>
@@ -158,13 +163,13 @@ export default function CoverageAreaCity({
 
           {/* ===== 7. CONTENT REVIEWS (Elfsight) ===== */}
           <div className="city-page-gr mb-[100px]">
-            <div className={`elfsight-app-${elfsightContentId}`} data-elfsight-app-lazy />
+            <GoogleReviews widgetId={elfsightContentId} />
           </div>
 
           {/* ===== 8. "Turning Bad Calls to Good Calls" + social ===== */}
           <p className="ep-tiktok-headline">J Blanton Plumbing - Turning Bad Calls to Good Calls</p>
           <div className="city-social-media mb-[60px]">
-            <div className={`elfsight-app-${ELFSIGHT_SOCIAL_ID}`} data-elfsight-app-lazy />
+            <TikTokFeed widgetId={ELFSIGHT_SOCIAL_ID} />
           </div>
 
           {/* ===== 9. RELATED ARTICLES ===== */}

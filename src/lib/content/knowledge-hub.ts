@@ -19,7 +19,8 @@ export interface KnowledgeHubContent {
     body: string;
     items: FaqItem[];
   };
-  reviewsWidgetClass: string;
+  /** Elfsight Google Reviews widget UUID (Brief 96 — bare ID, not a class name). */
+  reviewsWidgetId: string;
 }
 
 export const KNOWLEDGE_HUB: KnowledgeHubContent = {
@@ -54,5 +55,5 @@ export const KNOWLEDGE_HUB: KnowledgeHubContent = {
       },
     ],
   },
-  reviewsWidgetClass: 'elfsight-app-67911321-4b72-4209-b157-fc9812eadd3b',
+  reviewsWidgetId: '67911321-4b72-4209-b157-fc9812eadd3b',
 };

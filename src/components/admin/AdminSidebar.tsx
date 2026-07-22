@@ -123,6 +123,11 @@ export default function AdminSidebar({
               active={pathname === '/admin/global-settings'}
             />
           </div>
+
+          {/* Brief 90 (Track C): block library — opens the /admin/blocks landing. */}
+          <div className="border-t border-admin-outline-variant/10 pt-2">
+            <TopLink href="/admin/blocks" label="Blocks" icon="widgets" active={pathname === '/admin/blocks'} />
+          </div>
         </nav>
 
         {/* Footer */}

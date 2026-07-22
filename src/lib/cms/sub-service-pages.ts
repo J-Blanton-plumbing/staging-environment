@@ -2,6 +2,18 @@ import pool from '@/lib/db';
 import type { ServiceContent } from '@/types/service';
 import { ConflictError } from '@/lib/cms/errors';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import type { SubServiceFields } from '@/lib/cms/sub-service-fields';
+import type { SubServiceBlockInstance } from '@/lib/cms/sub-service-blocks';
+import {
+  SUB_SERVICE_BLOCK_ORDER,
+  FALLBACK_HERO,
+  FALLBACK_CTA_IMAGE,
+  NDC_DEFAULT_BODY,
+  assembleBlocks,
+  blocksToFields,
+  normalizeBlocks,
+  sanitizeBlockInstances,
+} from '@/lib/cms/sub-service-blocks';
 
 /**
  * Public reader for individual sub-service pages (kitchen-sink-drain,
@@ -10,42 +22,27 @@ import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
  * shared `ServiceContent` shape so the same `ServicePageTemplate` that renders
  * `/sewer-rodding` renders every DB-backed sub-service.
  *
- * The table only covers a subset of the rich `ServiceContent` (hero, expert
- * intro, problems, closing CTA). Sections with no DB column (related cards,
- * secondary, preventive) are left empty — `ServicePageTemplate` skips a section
- * when it has no content, so DB-only pages render clean.
+ * Brief 90 (Track B): the `blocks` JSONB column is fully authoritative for both
+ * content AND order — an array of `{ id, type, data }` INSTANCE records, so the
+ * same block type may appear more than once. The 13 named columns are kept
+ * populated as a rollback snapshot of each page's PRIMARY (first) instance only
+ * — they can no longer represent duplicate instances.
  */
 
-const FALLBACK_HERO = '/images/hero_image.webp';
-
-// Generic closing-CTA photo (live `.f3` uses manplumber.webp on most slugs).
-const FALLBACK_CTA_IMAGE =
-  'https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp';
-
-// Generic No Drip Club body, matching the tone of the hand-built service pages.
-const NDC_DEFAULT_BODY =
-  'Our No Drip Club offers premium plumbing protection and added peace of mind for homeowners. Members enjoy priority scheduling and routine inspections to catch small issues before they become costly repairs.';
-
-/** Normalized field set shared by published rows and preview drafts. */
-export interface SubServiceFields {
-  slug: string;
-  title?: string | null;
-  heroHeading?: string | null;
-  heroIntro?: string | null;
-  heroImage?: string | null;
-  introHeading?: string | null;
-  introBody?: string | null;
-  fImage?: string | null; // intro/expert section photo (expertSection.image1)
-  problemsHeading?: string | null;
-  problemsItems?: string[];
-  ctaHeading?: string | null;
-  ctaBody?: string | null;
-  f3Image?: string | null; // closing-CTA photo (closingCTA.image)
-  ndcTitle?: string | null; // No Drip Club selling point (noDropClubSection.title)
-  ndcBody?: string | null; // No Drip Club body copy (noDropClubSection.body)
-  metaTitle?: string | null;
-  metaDescription?: string | null;
-}
+// Brief 89/90 (Track B): the unified block structure + render fallbacks live in a
+// pure, client-safe module so the admin editor / registry can import them without
+// pulling this DB-bound module into the client bundle. Re-exported for importers.
+export type { SubServiceBlockType, SubServiceBlock, SubServiceBlockInstance } from '@/lib/cms/sub-service-blocks';
+export {
+  SUB_SERVICE_BLOCK_ORDER,
+  normalizeBlockOrder,
+  normalizeBlocks,
+  assembleBlocks,
+  blocksToFields,
+  sanitizeBlockInstances,
+  newBlockId,
+} from '@/lib/cms/sub-service-blocks';
+export type { SubServiceFields } from '@/lib/cms/sub-service-fields';
 
 /** Map a normalized sub-service field set onto the shared ServiceContent shape. */
 export function subServiceToServiceContent(f: SubServiceFields): ServiceContent {
@@ -110,6 +107,7 @@ interface SubServiceRow {
   ndc_body: string | null;
   meta_title: string | null;
   meta_description: string | null;
+  blocks: SubServiceBlockInstance[] | null;
 }
 
 function rowToFields(r: SubServiceRow): SubServiceFields {
@@ -146,13 +144,40 @@ export async function getSubServiceCmsContent(slug: string): Promise<ServiceCont
       `SELECT slug, title, hero_heading, hero_intro, hero_image,
               intro_heading, intro_body, f_image, problems_heading, problems_items,
               cta_heading, cta_body, f3_image, ndc_title, ndc_body,
-              meta_title, meta_description
+              meta_title, meta_description, blocks
          FROM sub_service_pages
         WHERE slug = $1 AND status = 'published'`,
       [slug]
     );
-    if (!res.rows[0]) return null;
-    return subServiceToServiceContent(rowToFields(res.rows[0]));
+    const row = res.rows[0];
+    if (!row) return null;
+    // Brief 90 (Track B): `blocks` is the source of truth for order + content, as
+    // an array of `{ id, type, data }` INSTANCE records (duplicates allowed).
+    const instances = normalizeBlocks(row.blocks);
+    if (instances.length > 0) {
+      // Primary snapshot (first instance of each type) drives SEO/hero + the
+      // ServiceContent shape used for static-parity; per-instance `blocks` drives
+      // the actual ordered render (supporting duplicate instances).
+      const { fields, order } = blocksToFields(instances);
+      // Title + meta live in the excluded Settings/SEO box, not in `blocks`, so
+      // they are still sourced from the named columns (Brief 89 keeps them populated).
+      const content = subServiceToServiceContent({
+        ...fields,
+        slug: row.slug,
+        title: row.title,
+        metaTitle: row.meta_title,
+        metaDescription: row.meta_description,
+      });
+      content.blockOrder = order;
+      content.blocks = instances;
+      return content;
+    }
+    // Fallback: a row migrated before `blocks` existed — synthesise one instance
+    // per type from the named columns, in the canonical order.
+    const content = subServiceToServiceContent(rowToFields(row));
+    content.blockOrder = SUB_SERVICE_BLOCK_ORDER;
+    content.blocks = assembleBlocks(rowToFields(row), SUB_SERVICE_BLOCK_ORDER);
+    return content;
   } finally {
     client.release();
   }
@@ -187,15 +212,51 @@ export async function updateSubServiceCmsContent(
   expectedVersion?: number | null
 ): Promise<number> {
   const str = (v: unknown): string | null => (typeof v === 'string' ? v : null);
+  const nn = (v: string | null | undefined): string | null => (v == null ? null : v);
   // Brief 86 (items 3 & 5): intro_body/ndc_body are RichTextField-backed —
   // sanitize through the shared Brief 73 allow-list before persisting.
   const strHtml = (v: unknown): string | null => (typeof v === 'string' ? sanitizeCmsHtml(v) : null);
-  const rawProblems = data.problemsItems;
-  const problemsItems = Array.isArray(rawProblems)
-    ? (rawProblems as string[])
-    : typeof rawProblems === 'string'
-      ? rawProblems.split('\n').map((s) => s.trim()).filter(Boolean)
-      : [];
+
+  // Brief 90 (Track B): the editor now sends the full per-instance `blocks` array
+  // as the authoritative source of content + order. Sanitize every instance's
+  // rich-text keys (intro/ndc body — a page may carry more than one), then derive
+  // the PRIMARY (first-instance) snapshot to keep the 13 named columns populated
+  // as a rollback snapshot. Older/partial callers that send flat fields +
+  // `blockOrder` (Brief 89) still work via the legacy branch.
+  let blocks: SubServiceBlockInstance[];
+  let primary: SubServiceFields;
+  if (Array.isArray(data.blocks)) {
+    blocks = sanitizeBlockInstances(normalizeBlocks(data.blocks), sanitizeCmsHtml);
+    primary = blocksToFields(blocks).fields;
+  } else {
+    const rawProblems = data.problemsItems;
+    const problemsItems = Array.isArray(rawProblems)
+      ? (rawProblems as string[])
+      : typeof rawProblems === 'string'
+        ? rawProblems.split('\n').map((s) => s.trim()).filter(Boolean)
+        : [];
+    primary = {
+      slug,
+      heroHeading: str(data.heroHeading),
+      heroIntro: str(data.heroIntro),
+      heroImage: str(data.heroImage),
+      introHeading: str(data.introHeading),
+      introBody: strHtml(data.introBody), // sanitized rich text at the nested path
+      fImage: str(data.fImage),
+      problemsHeading: str(data.problemsHeading),
+      problemsItems,
+      ctaHeading: str(data.ctaHeading),
+      ctaBody: str(data.ctaBody),
+      f3Image: str(data.f3Image),
+      ndcTitle: str(data.ndcTitle),
+      ndcBody: strHtml(data.ndcBody), // sanitized rich text at the nested path
+    };
+    blocks = assembleBlocks(primary, data.blockOrder);
+  }
+  // Named-column snapshot values, drawn from the primary instance. An absent type
+  // (e.g. a removed block) leaves its columns untouched via COALESCE.
+  const problemsSnapshot =
+    primary.problemsItems !== undefined ? JSON.stringify(primary.problemsItems) : null;
 
   const client = await pool.connect();
   try {
@@ -209,7 +270,7 @@ export async function updateSubServiceCmsContent(
          intro_body       = COALESCE($6, intro_body),
          f_image          = COALESCE($7, f_image),
          problems_heading = COALESCE($8, problems_heading),
-         problems_items   = $9,
+         problems_items   = COALESCE($9, problems_items),
          cta_heading      = COALESCE($10, cta_heading),
          cta_body         = COALESCE($11, cta_body),
          f3_image         = COALESCE($12, f3_image),
@@ -217,6 +278,7 @@ export async function updateSubServiceCmsContent(
          ndc_body         = COALESCE($14, ndc_body),
          meta_title       = COALESCE($15, meta_title),
          meta_description = COALESCE($16, meta_description),
+         blocks           = $20::jsonb,
          status           = 'published',
          updated_by       = COALESCE($18, updated_by),
          version          = version + 1,
@@ -226,24 +288,25 @@ export async function updateSubServiceCmsContent(
        RETURNING version`,
       [
         str(data.title),
-        str(data.heroHeading),
-        str(data.heroIntro),
-        str(data.heroImage),
-        str(data.introHeading),
-        strHtml(data.introBody),
-        str(data.fImage),
-        str(data.problemsHeading),
-        JSON.stringify(problemsItems),
-        str(data.ctaHeading),
-        str(data.ctaBody),
-        str(data.f3Image),
-        str(data.ndcTitle),
-        strHtml(data.ndcBody),
+        nn(primary.heroHeading),
+        nn(primary.heroIntro),
+        nn(primary.heroImage),
+        nn(primary.introHeading),
+        nn(primary.introBody), // already sanitized (blocks path + legacy path)
+        nn(primary.fImage),
+        nn(primary.problemsHeading),
+        problemsSnapshot,
+        nn(primary.ctaHeading),
+        nn(primary.ctaBody),
+        nn(primary.f3Image),
+        nn(primary.ndcTitle),
+        nn(primary.ndcBody), // already sanitized
         str(data.metaTitle),
         str(data.metaDescription),
         slug,
         updatedBy,
         expectedVersion ?? null,
+        JSON.stringify(blocks),
       ]
     );
     if (res.rowCount === 0) {

@@ -1,15 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import type { Article } from '@/lib/articles';
+import { FALLBACK_ARTICLE_IMAGE, type ArticleCardData } from '@/lib/cms/related-articles';
 
 /** A single Knowledge Hub article card (image + title + excerpt + "Read more"). */
-export default function ArticleCard({ article }: { article: Article }) {
+export default function ArticleCard({ article }: { article: ArticleCardData }) {
+  // Migrated DB articles often have no hero image; never pass an empty src to
+  // next/image (it renders broken) — fall back to a brand thumbnail.
+  const imageSrc = article.image || FALLBACK_ARTICLE_IMAGE;
   return (
     <article className="article-card bg-white rounded-lg overflow-hidden shadow-soft flex flex-col">
       <Link href={article.href} className="aspect-[16/10] bg-cream-200 overflow-hidden block">
         <Image
-          src={article.image}
+          src={imageSrc}
           alt={article.title}
           width={400}
           height={250}

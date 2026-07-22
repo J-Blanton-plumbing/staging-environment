@@ -8,12 +8,12 @@ export async function GET() {
   try {
     // Return DB articles first, then append any static articles not yet migrated
     let dbArticles: Array<{
-      slug: string; title: string; excerpt: string; status: string;
+      slug: string; title: string; excerpt: string; image: string | null; status: string;
       category: string[]; updated_at: string | null; updated_by_name: string | null;
     }> = [];
     try {
       const res = await client.query(
-        `SELECT a.slug, a.title, a.excerpt, a.status,
+        `SELECT a.slug, a.title, a.excerpt, a.image, a.status,
                 COALESCE(a.category, '{}') AS category,
                 a.updated_at,
                 u.name AS updated_by_name
@@ -33,6 +33,8 @@ export async function GET() {
         slug: a.slug,
         title: a.title,
         excerpt: a.excerpt,
+        // Brief 92: `image`/`href` are consumed by the Related Articles picker + its
+        // live preview grid. Static articles already carry both.
         image: a.image,
         href: a.href,
         status: 'published',
@@ -45,6 +47,10 @@ export async function GET() {
       slug: a.slug,
       title: a.title,
       excerpt: a.excerpt,
+      // Brief 92: DB articles have an `image` column; the public article URL is
+      // `/knowledge-hub/{slug}`. Both feed the Related Articles block's picker/preview.
+      image: a.image ?? '',
+      href: `/knowledge-hub/${a.slug}`,
       status: a.status,
       category: a.category ?? [],
       updatedAt: a.updated_at ?? null,

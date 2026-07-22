@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import pool from '@/lib/db';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import type { SubServiceBlockInstance } from '@/lib/cms/sub-service-blocks';
+import type { SubServiceFields } from '@/lib/cms/sub-service-fields';
+import {
+  assembleBlocks,
+  normalizeBlocks,
+  sanitizeBlockInstances,
+  blocksToFields,
+} from '@/lib/cms/sub-service-blocks';
+
+const nn = (v: string | null | undefined): string | null => (v == null ? null : v);
 
 type RouteContext = { params: Promise<{ slug: string }> };
 
@@ -13,7 +23,7 @@ export async function GET(_req: NextRequest, { params }: RouteContext) {
       `SELECT s.slug, s.title, s.hero_heading, s.hero_intro, s.hero_image,
               s.intro_heading, s.intro_body, s.f_image,
               s.problems_heading, s.problems_items, s.cta_heading, s.cta_body, s.f3_image,
-              s.ndc_title, s.ndc_body,
+              s.ndc_title, s.ndc_body, s.blocks,
               s.status, s.meta_title, s.meta_description, s.created_at, s.updated_at,
               s.parent_slug, s.version,
               cu.name AS created_by_name, uu.name AS updated_by_name
@@ -82,6 +92,59 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
   const metaDescriptionProvided = 'metaDescription' in body;
   const parentProvided = rawParent !== undefined;
 
+  // Brief 90 (Track B): the editor sends the full per-instance `blocks` array as
+  // the authoritative source of content + order. Sanitize every instance's
+  // rich-text keys, then derive the PRIMARY (first-instance) snapshot so the 13
+  // named columns stay populated as a rollback snapshot. A partial PUT that sends
+  // neither `blocks` nor `blockOrder` leaves the existing blocks untouched; a
+  // Brief 89-style caller sending flat fields + `blockOrder` still works.
+  const blocksProvided = Array.isArray(body.blocks);
+  const blockOrderProvided = Array.isArray(body.blockOrder);
+  let blocks: SubServiceBlockInstance[] | null = null;
+  let primary: SubServiceFields | null = null;
+  if (blocksProvided) {
+    blocks = sanitizeBlockInstances(normalizeBlocks(body.blocks), sanitizeCmsHtml);
+    primary = blocksToFields(blocks).fields;
+  } else if (blockOrderProvided) {
+    blocks = assembleBlocks(
+      {
+        slug,
+        heroHeading: (body.heroHeading as string) ?? null,
+        heroIntro: (body.heroIntro as string) ?? null,
+        heroImage: (body.heroImage as string) ?? null,
+        introHeading: (body.introHeading as string) ?? null,
+        introBody, // already sanitized above
+        fImage: (body.fImage as string) ?? null,
+        problemsHeading: (body.problemsHeading as string) ?? null,
+        problemsItems: Array.isArray(body.problemsItems) ? (body.problemsItems as string[]) : [],
+        ctaHeading: (body.ctaHeading as string) ?? null,
+        ctaBody: (body.ctaBody as string) ?? null,
+        f3Image: (body.f3Image as string) ?? null,
+        ndcTitle: (body.ndcTitle as string) ?? null,
+        ndcBody, // already sanitized above
+      },
+      body.blockOrder
+    );
+  }
+
+  // Effective named-column values: from the primary instance when `blocks` is
+  // authoritative, else from the request's flat fields (Brief 89 / partial PUT).
+  const heroHeadingV = blocksProvided ? nn(primary!.heroHeading) : ((body.heroHeading as string) ?? null);
+  const heroIntroV   = blocksProvided ? nn(primary!.heroIntro)   : ((body.heroIntro as string) ?? null);
+  const heroImageV   = blocksProvided ? nn(primary!.heroImage)   : ((body.heroImage as string) ?? null);
+  const introHeadingV = blocksProvided ? nn(primary!.introHeading) : ((body.introHeading as string) ?? null);
+  const introBodyV   = blocksProvided ? nn(primary!.introBody)   : introBody;
+  const fImageV      = blocksProvided ? nn(primary!.fImage)      : ((body.fImage as string) ?? null);
+  const problemsHeadingV = blocksProvided ? nn(primary!.problemsHeading) : ((body.problemsHeading as string) ?? null);
+  const problemsItemsV = blocksProvided
+    ? (primary!.problemsItems !== undefined ? JSON.stringify(primary!.problemsItems) : null)
+    : (body.problemsItems ? JSON.stringify(body.problemsItems) : null);
+  const ctaHeadingV  = blocksProvided ? nn(primary!.ctaHeading)  : ((body.ctaHeading as string) ?? null);
+  const ctaBodyV     = blocksProvided ? nn(primary!.ctaBody)     : ((body.ctaBody as string) ?? null);
+  const f3ImageV     = blocksProvided ? nn(primary!.f3Image)     : ((body.f3Image as string) ?? null);
+  const ndcTitleV    = blocksProvided ? nn(primary!.ndcTitle)    : ((body.ndcTitle as string) ?? null);
+  const ndcBodyV     = blocksProvided ? nn(primary!.ndcBody)     : ndcBody;
+
   const client = await pool.connect();
   try {
     const res = await client.query(
@@ -104,6 +167,7 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
          f3_image         = COALESCE($18, f3_image),
          ndc_title        = COALESCE($19, ndc_title),
          ndc_body         = COALESCE($20, ndc_body),
+         blocks           = CASE WHEN $25 THEN $26::jsonb ELSE blocks END,
          updated_by       = $15,
          version          = version + 1,
          updated_at       = NOW()
@@ -112,29 +176,31 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
        RETURNING id, version`,
       [
         (body.title as string) ?? null,
-        (body.heroHeading as string) ?? null,
-        (body.heroIntro as string) ?? null,
-        (body.heroImage as string) ?? null,
-        (body.introHeading as string) ?? null,
-        introBody,
-        (body.problemsHeading as string) ?? null,
-        body.problemsItems ? JSON.stringify(body.problemsItems) : null,
-        (body.ctaHeading as string) ?? null,
-        (body.ctaBody as string) ?? null,
+        heroHeadingV,
+        heroIntroV,
+        heroImageV,
+        introHeadingV,
+        introBodyV,
+        problemsHeadingV,
+        problemsItemsV,
+        ctaHeadingV,
+        ctaBodyV,
         (body.status as string) ?? null,
         (body.metaTitle as string) ?? null,
         (body.metaDescription as string) ?? null,
         rawParent !== undefined ? (rawParent as string | null) : null,
         session.userId,
         slug,
-        (body.fImage as string) ?? null,
-        (body.f3Image as string) ?? null,
-        (body.ndcTitle as string) ?? null,
-        ndcBody,
+        fImageV,
+        f3ImageV,
+        ndcTitleV,
+        ndcBodyV,
         expectedVersion,
         metaTitleProvided,
         metaDescriptionProvided,
         parentProvided,
+        blocks !== null,
+        blocks ? JSON.stringify(blocks) : null,
       ]
     );
     if ((res.rowCount ?? 0) === 0) {

@@ -3,11 +3,17 @@
 import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import RichTextField from '@/components/admin/RichTextField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
+
+interface FaqField {
+  question: string;
+  answer: string;
+}
 
 interface FormState {
   hero_heading: string;
@@ -16,6 +22,7 @@ interface FormState {
   intro_cta: string;
   faqs_label: string;
   faqs_body: string;
+  faqs: FaqField[];
   meta_title: string;
   meta_description: string;
   updated_at?: string;
@@ -23,7 +30,7 @@ interface FormState {
 
 const EMPTY: FormState = {
   hero_heading: '', intro_label: '', intro_body: '', intro_cta: '',
-  faqs_label: '', faqs_body: '',
+  faqs_label: '', faqs_body: '', faqs: [],
   meta_title: '', meta_description: '',
 };
 
@@ -54,6 +61,7 @@ export default function KnowledgeHubAdminPage() {
           intro_cta: data.intro_cta ?? '',
           faqs_label: data.faqs_label ?? '',
           faqs_body: data.faqs_body ?? '',
+          faqs: Array.isArray(data.faqs) ? data.faqs : [],
           meta_title: data.meta_title ?? '',
           meta_description: data.meta_description ?? '',
           updated_at: data.updated_at ?? undefined,
@@ -66,6 +74,18 @@ export default function KnowledgeHubAdminPage() {
 
   function set(key: keyof FormState, value: string) {
     setForm(f => ({ ...f, [key]: value }));
+  }
+
+  function setFaqItem(i: number, key: keyof FaqField, value: string) {
+    setForm(f => ({ ...f, faqs: f.faqs.map((faq, idx) => idx === i ? { ...faq, [key]: value } : faq) }));
+  }
+
+  function addFaqItem() {
+    setForm(f => ({ ...f, faqs: [...f.faqs, { question: '', answer: '' }] }));
+  }
+
+  function removeFaqItem(i: number) {
+    setForm(f => ({ ...f, faqs: f.faqs.filter((_, idx) => idx !== i) }));
   }
 
   async function handleSave() {
@@ -119,7 +139,7 @@ export default function KnowledgeHubAdminPage() {
         }}
         compact
       />
-      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+      <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
 
         <div style={sec}>
           <h2 style={secHead}>Hero</h2>
@@ -131,8 +151,7 @@ export default function KnowledgeHubAdminPage() {
           <h2 style={secHead}>Articles Section</h2>
           <label style={lbl}>Label</label>
           <input className="admin-field" style={s} value={form.intro_label} onChange={e => set('intro_label', e.target.value)} />
-          <label style={lbl}>Body</label>
-          <textarea className="admin-field" style={{ ...s, minHeight: '80px' }} value={form.intro_body} onChange={e => set('intro_body', e.target.value)} />
+          <RichTextField label="Body" value={form.intro_body} onChange={v => set('intro_body', v)} rows={4} />
           <label style={lbl}>CTA Label</label>
           <input className="admin-field" style={s} value={form.intro_cta} onChange={e => set('intro_cta', e.target.value)} />
         </div>
@@ -143,6 +162,31 @@ export default function KnowledgeHubAdminPage() {
           <input className="admin-field" style={s} value={form.faqs_label} onChange={e => set('faqs_label', e.target.value)} />
           <label style={lbl}>Intro</label>
           <textarea className="admin-field" style={{ ...s, minHeight: '80px' }} value={form.faqs_body} onChange={e => set('faqs_body', e.target.value)} />
+
+          <label style={lbl}>Questions &amp; Answers</label>
+          {form.faqs.map((faq, i) => (
+            <div key={i} style={{ background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1rem', padding: '1rem', marginBottom: '0.75rem', boxShadow: ADMIN_SHADOWS.sm }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                <p style={{ fontWeight: 700, fontSize: '0.8rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: 0 }}>FAQ {i + 1}</p>
+                <button
+                  onClick={() => removeFaqItem(i)}
+                  style={{ background: 'none', border: `1px solid ${ADMIN_COLORS.error}66`, color: ADMIN_COLORS.error, borderRadius: '0.5rem', padding: '0.2rem 0.6rem', fontSize: '0.8rem', cursor: 'pointer', fontWeight: 600 }}
+                >
+                  Remove
+                </button>
+              </div>
+              <label style={lbl}>Question</label>
+              <input className="admin-field" style={s} value={faq.question} onChange={e => setFaqItem(i, 'question', e.target.value)} />
+              <label style={lbl}>Answer</label>
+              <textarea className="admin-field" style={{ ...s, minHeight: '70px' }} value={faq.answer} onChange={e => setFaqItem(i, 'answer', e.target.value)} />
+            </div>
+          ))}
+          <button
+            onClick={addFaqItem}
+            style={{ background: ADMIN_COLORS.cerulean, border: 'none', color: '#fff', borderRadius: '9999px', padding: '0.6rem 1.25rem', fontSize: '0.875rem', cursor: 'pointer', fontWeight: 600, width: '100%', boxShadow: ADMIN_SHADOWS.lg }}
+          >
+            + Add FAQ
+          </button>
         </div>
 
         <MetaSection

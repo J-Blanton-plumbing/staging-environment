@@ -3,8 +3,11 @@ import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
 import { KNOWLEDGE_HUB } from '@/lib/content/knowledge-hub';
 import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
+import GoogleReviews from '@/components/GoogleReviews';
 import type { Metadata } from 'next';
 import ArticlesSection from './ArticlesSection';
 import FaqSection from './FaqSection';
@@ -22,10 +25,28 @@ export default async function KnowledgeHubPage() {
   const preview = await getMainPagePreview('knowledge-hub');
   const db = preview?.content ?? await getMainPageContent('knowledge-hub').catch(() => null);
   const d = db ?? {};
+  const settings = await getGlobalSettingsCached();
+  const html = (v: string) => ({ __html: renderCmsInline(v, settings) });
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
-  const { hero: _hero, intro: _intro, reviewsWidgetClass } = KNOWLEDGE_HUB;
+  const { hero: _hero, intro: _intro, faqs: _faqs, reviewsWidgetId } = KNOWLEDGE_HUB;
   const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading) };
   const intro = { ..._intro, label: m(d.intro_label, _intro.label), body: m(d.intro_body, _intro.body), cta: m(d.intro_cta, _intro.cta) };
+  // Brief 95 (A.1): faqs_label/faqs_body were saved but never rendered — wire
+  // them, plus the new `faqs` JSONB repeater, falling back to the static file.
+  const rawFaqItems = (d as unknown as Record<string, unknown>).faqs;
+  const faqItems = Array.isArray(rawFaqItems)
+    ? rawFaqItems.filter(
+        (it): it is { question: string; answer: string } =>
+          typeof it === 'object' && it !== null &&
+          typeof (it as Record<string, unknown>).question === 'string' &&
+          typeof (it as Record<string, unknown>).answer === 'string'
+      )
+    : [];
+  const faqs = {
+    label: m(d.faqs_label, _faqs.label),
+    body: m(d.faqs_body, _faqs.body),
+    items: faqItems.length > 0 ? faqItems : _faqs.items,
+  };
 
   return (
     <div className="kh-page">
@@ -72,7 +93,7 @@ export default async function KnowledgeHubPage() {
           <div className="align1">
             <p className="red-text">{intro.label}</p>
             <div>
-              <p>{intro.body}</p>
+              <p dangerouslySetInnerHTML={html(intro.body)} />
               <Link className="link-button" href={intro.ctaHref}>
                 {intro.cta}
               </Link>
@@ -83,11 +104,11 @@ export default async function KnowledgeHubPage() {
           <ArticlesSection />
 
           {/* FAQ accordion */}
-          <FaqSection />
+          <FaqSection label={faqs.label} body={faqs.body} items={faqs.items} />
 
           {/* Elfsight Google Reviews widget */}
           <div className="kh-gr">
-            <div className={reviewsWidgetClass} data-elfsight-app-lazy />
+            <GoogleReviews widgetId={reviewsWidgetId} />
           </div>
         </div>
       </div>

@@ -5,7 +5,8 @@
     "moduleResolution": "node",
     "target": "es2017",
     "noEmit": false,
-    "outDir": ".scripts-out"
+    "outDir": ".scripts-out",
+    "baseUrl": "."
   },
   "include": ["scripts/**/*.ts"]
 }

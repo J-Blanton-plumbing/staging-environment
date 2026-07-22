@@ -31,6 +31,16 @@ export default async function HomePage() {
   const db = preview?.content ?? await getMainPageContent('home').catch(() => null);
   const d = db ?? {};
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
+  // Brief 95 (A.4): why_body/find_us_body were saved but page.tsx always rendered
+  // the static arrays — wire them. Textareas are multi-paragraph, blank-line
+  // separated (matches the convention used elsewhere, e.g. admin/city-service).
+  const paragraphs = (dbVal: unknown, fb: string[]): string[] => {
+    if (typeof dbVal !== 'string' || !dbVal.trim()) return fb;
+    const parts = dbVal.split('\n\n').map(s => s.trim()).filter(Boolean);
+    return parts.length > 0 ? parts : fb;
+  };
+  const whyBody = paragraphs(d.why_body, HOME.why.body);
+  const findUsBody = paragraphs(d.find_us_body, HOME.findUs.body);
   const home = {
     hero: { ...HOME.hero, heading: m(d.hero_heading, HOME.hero.heading), headingCta: m(d.hero_cta, HOME.hero.headingCta), headingTagline: m(d.hero_tagline, HOME.hero.headingTagline), intro: m(d.hero_intro, HOME.hero.intro) },
     services: { ...HOME.services, heading: m(d.services_heading, HOME.services.heading), intro: m(d.services_intro, HOME.services.intro) },
@@ -177,12 +187,11 @@ export default async function HomePage() {
               <p className="red-text hidden lg:block font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none mb-[10px]">
                 {home.why.heading}
               </p>
-              <p className="leading-relaxed text-base">
-                {HOME.why.body[0]}
-              </p>
-              <p className="my-5 leading-relaxed text-base">
-                {HOME.why.body[1]}
-              </p>
+              {whyBody.map((p, i) => (
+                <p key={i} className={i === 0 ? 'leading-relaxed text-base' : 'my-5 leading-relaxed text-base'}>
+                  {p}
+                </p>
+              ))}
               <Link
                 href="/why-us"
                 className="link-button inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded-full transition-colors duration-150"
@@ -229,7 +238,7 @@ export default async function HomePage() {
         headingClassName="leading-none"
         bodyClassName="text-navy-800 text-base leading-relaxed"
         heading={home.findUs.heading}
-        body={HOME.findUs.body}
+        body={findUsBody}
         mobileButton
       />
     </>

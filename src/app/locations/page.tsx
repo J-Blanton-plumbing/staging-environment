@@ -3,6 +3,8 @@ import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import { CITY_REGISTRY } from '@/lib/content/cities/index';
 import { getMainPageContent } from '@/lib/cms/main-pages';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
@@ -51,6 +53,8 @@ export default async function LocationsPage() {
   const preview = await getMainPagePreview('locations');
   const db = preview?.content ?? await getMainPageContent('locations').catch(() => null);
   const d = db ?? {};
+  const settings = await getGlobalSettingsCached();
+  const html = (v: string) => ({ __html: renderCmsInline(v, settings) });
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
   const heroHeading = m(d.hero_heading, 'CHICAGO & SUBURBS TOP-RATED PLUMBING COMPANY');
   const heroDescription = m(d.hero_description, "For over 30 years, J. Blanton Plumbing has been the trusted choice for plumbing services in Chicago and the surrounding suburbs. From burst pipes to kitchen floods, no matter where you are, our team is ready 24/7 to restore your home's comfort.");
@@ -84,7 +88,7 @@ export default async function LocationsPage() {
           <div className="w">
             <h1>{heroHeading}</h1>
             <p className="sub-label"></p>
-            <p className="hero-desc">{heroDescription}</p>
+            <p className="hero-desc" dangerouslySetInnerHTML={html(heroDescription)} />
             <div
               className="involveme_popup"
               data-params="source=,campaignname=,utm_campaign=,utm_adgroup=,keyword=,network=,device=,medium=,gclid=,msclkid="
@@ -115,7 +119,7 @@ export default async function LocationsPage() {
           <div className="w81">
             <div className="ls-pv-text">
               <p className="red-text">{introLabel}</p>
-              <p>{introBody}</p>
+              <p dangerouslySetInnerHTML={html(introBody)} />
               <p>
                 Whether you&apos;re in the heart of the city or in suburbs like Northbrook,
                 Arlington Heights, or Evanston, we&apos;re here to address all your plumbing needs.

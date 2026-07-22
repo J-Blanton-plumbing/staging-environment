@@ -263,7 +263,14 @@
   display: block;
 }
 
-/* ---- ep-tiktok (Google / social widget) ------------------------------------ */
+/* ---- ep-gr (Google Reviews) — matches live site's .ep-gr spacing --------- */
+.financing-page .ep-gr {
+  overflow-x: auto;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+/* ---- ep-tiktok (TikTok / social widget) ------------------------------------ */
 .financing-page .ep-tiktok-headline {
   text-align: center;
   font-size: 24px;
