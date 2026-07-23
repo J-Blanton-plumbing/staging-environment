@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import CreatePageModal from '@/components/admin/CreatePageModal';
@@ -66,10 +67,14 @@ export default function AdminSidebar({
       >
         {/* Logo */}
         <div className="flex flex-col gap-1 p-8">
-          <h1 className="font-admin-headline text-xl font-bold leading-none tracking-tight text-admin-on-surface">
-            J. Blanton
-          </h1>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-admin-on-surface-variant/50">CMS Admin</p>
+          <Image
+            src="/images/admin/cms-admin-logo.png"
+            alt="J. Blanton CMS Admin"
+            width={600}
+            height={388}
+            className="h-20 w-auto self-start"
+            priority
+          />
         </div>
 
         <nav className="flex-1 space-y-1 overflow-y-auto pb-4">

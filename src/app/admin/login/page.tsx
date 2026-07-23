@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function AdminLoginPage() {
@@ -40,8 +41,15 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-admin-surface font-admin-body px-4">
       <div className="w-full max-w-[380px] rounded-admin-3xl border border-admin-outline-variant/10 bg-admin-surface-container-low p-10 shadow-2xl">
         <div className="mb-8">
-          <h1 className="font-admin-headline text-2xl font-bold text-admin-on-surface">CMS Admin</h1>
-          <p className="mt-1 text-sm text-admin-on-surface-variant/60">Sign in to your account</p>
+          <Image
+            src="/images/admin/cms-admin-logo.png"
+            alt="J. Blanton CMS Admin"
+            width={600}
+            height={388}
+            className="h-24 w-auto"
+            priority
+          />
+          <p className="mt-3 text-sm text-admin-on-surface-variant/60">Sign in to your account</p>
         </div>
 
         <form onSubmit={handleSubmit}>
