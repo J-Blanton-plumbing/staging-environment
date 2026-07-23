@@ -51,7 +51,7 @@ interface Props {
 
 export default function CityServicePageTemplate({ city, service, settings }: Props) {
   const s = replaceAll(service, city.name);
-  const office = getOffice(city.slug);
+  const office = getOffice(city.slug, settings.offices);
   const area = getArea(city.slug);
   const articles = getArticles(DEFAULT_ARTICLE_SLUGS);
   const gridCities = getGridCities();

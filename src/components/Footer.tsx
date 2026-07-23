@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin } from 'lucide-react';
-import { FOOTER_OFFICES } from '@/lib/locations';
 import { SITE } from '@/lib/site';
+import { formatOfficeAddress } from '@/lib/cms/offices';
+import type { GlobalSettings } from '@/lib/cms/global-settings';
+import LocalBusinessSchema from '@/components/LocalBusinessSchema';
 
 // Footer nav — 3 columns, order/grouping per the live theme (brief-06 §3).
 // Mixed case (no uppercase transform), live slugs (brief-06 §4/§5).
@@ -24,7 +26,13 @@ const NAV_COL_3 = [
 
 const NAV_COLUMNS = [NAV_COL_1, NAV_COL_2, NAV_COL_3];
 
-export default function Footer() {
+/**
+ * Brief 102 (Track C/D): `settings` is fetched once by the root layout (a
+ * Server Component) and threaded down through `SiteShell` — Footer itself is
+ * imported by the 'use client' SiteShell, so it can't fetch the DB directly
+ * (mirrors how Navbar already receives `settings` for the same reason).
+ */
+export default function Footer({ settings }: { settings: GlobalSettings }) {
   return (
     <footer className="bottom relative bg-brand-600 text-cream-100 py-[80px] font-sans">
       <div className="w-[90%] lg:w-[81%] mx-auto flex flex-col lg:flex-row justify-between gap-12">
@@ -123,7 +131,7 @@ export default function Footer() {
               Our Office Locations
             </p>
             <div className="offices grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-[30px]">
-              {FOOTER_OFFICES.map((office) => (
+              {settings.offices.map((office) => (
                 <div key={office.slug} className="office">
                   <div className="flex items-center gap-[7px] mb-[7px]">
                     <MapPin className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
@@ -134,7 +142,7 @@ export default function Footer() {
                       {office.name}
                     </Link>
                   </div>
-                  <p className="text-sm leading-snug">{office.address}</p>
+                  <p className="text-sm leading-snug">{formatOfficeAddress(office)}</p>
                 </div>
               ))}
             </div>
@@ -168,6 +176,15 @@ export default function Footer() {
           ))}
         </div>
       </div>
+
+      {/* Brief 102 (Track D) — LocalBusiness JSON-LD, one graph node per office.
+          Mounted here (present on every page) so it never duplicates. */}
+      <LocalBusinessSchema
+        offices={settings.offices}
+        phoneDisplay={settings.phoneDisplay}
+        phoneHref={settings.phoneHref}
+        hoursLabel={settings.hoursLabel}
+      />
     </footer>
   );
 }

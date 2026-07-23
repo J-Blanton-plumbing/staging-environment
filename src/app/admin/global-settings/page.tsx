@@ -13,6 +13,20 @@ interface ServiceDescState {
   commercial: string;
 }
 
+/** Form-state shape for one office card — lat/lng are strings here (blank = not set yet)
+ * and are converted to number|null on save (see `toCmsOffice`). */
+interface OfficeFormState {
+  slug: string;
+  name: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  zip: string;
+  mapUrl: string;
+  lat: string;
+  lng: string;
+}
+
 interface FormState {
   phoneDisplay: string;
   phoneHref: string;
@@ -22,6 +36,7 @@ interface FormState {
   hoursLabel: string;
   ndcPrice: string;
   serviceDesc: ServiceDescState;
+  offices: OfficeFormState[];
 }
 
 const EMPTY_SERVICE_DESC: ServiceDescState = {
@@ -34,6 +49,10 @@ const EMPTY_SERVICE_DESC: ServiceDescState = {
   commercial: '',
 };
 
+const EMPTY_OFFICE: OfficeFormState = {
+  slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', lat: '', lng: '',
+};
+
 const EMPTY: FormState = {
   phoneDisplay: '',
   phoneHref: '',
@@ -43,6 +62,7 @@ const EMPTY: FormState = {
   hoursLabel: '',
   ndcPrice: '',
   serviceDesc: { ...EMPTY_SERVICE_DESC },
+  offices: [],
 };
 
 // Service categories in display order, with editor labels.
@@ -57,6 +77,24 @@ const SERVICE_DESC_FIELDS: Array<{ key: keyof ServiceDescState; label: string }>
 ];
 
 const DESC_MAX = 120;
+
+// Office-card sub-fields, in the order they render within each card.
+const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng'>; label: string; placeholder?: string }> = [
+  { key: 'name', label: 'Office Name', placeholder: 'Northbrook (Corporate)' },
+  { key: 'slug', label: 'Page Slug', placeholder: 'northbrook' },
+  { key: 'streetAddress', label: 'Street Address', placeholder: '1945 Techny Road, #11' },
+  { key: 'city', label: 'City', placeholder: 'Northbrook' },
+  { key: 'state', label: 'State', placeholder: 'IL' },
+  { key: 'zip', label: 'ZIP', placeholder: '60062' },
+  { key: 'mapUrl', label: 'Google Maps Link', placeholder: 'https://maps.app.goo.gl/…' },
+];
+
+function toNum(v: string): number | null {
+  const trimmed = v.trim();
+  if (trimmed === '') return null;
+  const n = Number(trimmed);
+  return Number.isFinite(n) ? n : null;
+}
 
 const s: React.CSSProperties = {
   display: 'block', width: '100%', padding: '0.4rem 0.5rem',
@@ -76,6 +114,45 @@ const sectionStyle: React.CSSProperties = {
   boxShadow: ADMIN_SHADOWS.elegant,
 };
 
+const sectionTitleStyle: React.CSSProperties = {
+  fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '0.35rem',
+  fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+};
+
+const sectionDescStyle: React.CSSProperties = {
+  color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.8rem', marginBottom: '1.25rem', marginTop: 0,
+};
+
+const officeCardStyle: React.CSSProperties = {
+  background: ADMIN_COLORS.surfaceContainer, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
+  borderRadius: '1rem', padding: '1.25rem', marginBottom: '1rem', boxShadow: ADMIN_SHADOWS.sm,
+};
+
+const addBtnStyle: React.CSSProperties = {
+  background: ADMIN_COLORS.cerulean, border: 'none', borderRadius: '9999px',
+  padding: '0.5rem 1.25rem', fontWeight: 700, fontSize: '0.85rem',
+  color: '#fff', cursor: 'pointer', boxShadow: ADMIN_SHADOWS.lg,
+};
+
+const removeBtnStyle: React.CSSProperties = {
+  background: 'none', border: 'none', color: ADMIN_COLORS.error, fontWeight: 600,
+  fontSize: '0.8rem', cursor: 'pointer', padding: '0.25rem 0.5rem',
+};
+
+function toCmsOffice(o: OfficeFormState) {
+  return {
+    slug: o.slug.trim(),
+    name: o.name,
+    streetAddress: o.streetAddress,
+    city: o.city,
+    state: o.state,
+    zip: o.zip,
+    mapUrl: o.mapUrl,
+    lat: toNum(o.lat),
+    lng: toNum(o.lng),
+  };
+}
+
 export default function GlobalSettingsPage() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [status, setStatus] = useState<'loading' | 'idle' | 'saving' | 'saved' | 'error'>('loading');
@@ -85,6 +162,19 @@ export default function GlobalSettingsPage() {
     fetch('/api/cms/global-settings')
       .then(r => r.json())
       .then(data => {
+        const offices: OfficeFormState[] = Array.isArray(data.offices)
+          ? data.offices.map((o: Record<string, unknown>) => ({
+              slug: typeof o.slug === 'string' ? o.slug : '',
+              name: typeof o.name === 'string' ? o.name : '',
+              streetAddress: typeof o.streetAddress === 'string' ? o.streetAddress : '',
+              city: typeof o.city === 'string' ? o.city : '',
+              state: typeof o.state === 'string' ? o.state : '',
+              zip: typeof o.zip === 'string' ? o.zip : '',
+              mapUrl: typeof o.mapUrl === 'string' ? o.mapUrl : '',
+              lat: o.lat == null ? '' : String(o.lat),
+              lng: o.lng == null ? '' : String(o.lng),
+            }))
+          : [];
         setForm({
           phoneDisplay: data.phoneDisplay ?? '',
           phoneHref: data.phoneHref ?? '',
@@ -94,6 +184,7 @@ export default function GlobalSettingsPage() {
           hoursLabel: data.hoursLabel ?? '',
           ndcPrice: data.ndcPrice ?? '',
           serviceDesc: { ...EMPTY_SERVICE_DESC, ...(data.serviceDesc ?? {}) },
+          offices,
         });
         setStatus('idle');
       })
@@ -103,7 +194,7 @@ export default function GlobalSettingsPage() {
       });
   }, []);
 
-  function set(key: keyof Omit<FormState, 'serviceDesc'>, value: string) {
+  function set(key: keyof Omit<FormState, 'serviceDesc' | 'offices'>, value: string) {
     setForm(f => ({ ...f, [key]: value }));
   }
 
@@ -111,14 +202,33 @@ export default function GlobalSettingsPage() {
     setForm(f => ({ ...f, serviceDesc: { ...f.serviceDesc, [key]: value } }));
   }
 
+  function setOffice(i: number, key: keyof OfficeFormState, value: string) {
+    setForm(f => ({
+      ...f,
+      offices: f.offices.map((o, idx) => (idx === i ? { ...o, [key]: value } : o)),
+    }));
+  }
+
+  function addOffice() {
+    setForm(f => ({ ...f, offices: [...f.offices, { ...EMPTY_OFFICE }] }));
+  }
+
+  function removeOffice(i: number) {
+    setForm(f => {
+      if (f.offices.length <= 1) return f;
+      return { ...f, offices: f.offices.filter((_, idx) => idx !== i) };
+    });
+  }
+
   async function handleSave() {
     setStatus('saving');
     setErrorMsg('');
     try {
+      const payload = { ...form, offices: form.offices.map(toCmsOffice) };
       const res = await fetch('/api/cms/global-settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) {
         const j = await res.json();
@@ -135,18 +245,30 @@ export default function GlobalSettingsPage() {
   if (status === 'loading') return <div style={{ padding: '2rem', background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface, minHeight: '100vh' }}>Loading…</div>;
 
   return (
-    <div className="admin-editor-page" style={{ maxWidth: '700px', margin: '0 auto', padding: '2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface, minHeight: '100vh' }}>
+    <div className="admin-editor-page" style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', background: ADMIN_COLORS.surface, color: ADMIN_COLORS.onSurface, minHeight: '100vh' }}>
       <style>{`
         .admin-editor-page input:focus, .admin-editor-page textarea:focus, .admin-editor-page select:focus { outline: none; box-shadow: 0 0 0 2px ${ADMIN_COLORS.primary}66; }
         .admin-save-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
         .admin-save-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        .admin-add-btn { transition: box-shadow 0.2s ease, filter 0.2s ease; }
+        .admin-add-btn:hover { box-shadow: ${ADMIN_SHADOWS.glowCerulean}; filter: brightness(1.05); }
+        .admin-two-col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0 1.5rem;
+        }
+        .admin-two-col > * { min-width: 0; }
+        .admin-span-2 { grid-column: 1 / -1; }
+        @media (max-width: 899px) {
+          .admin-two-col { grid-template-columns: 1fr; }
+        }
       `}</style>
       <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.5rem', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
         Global Settings
       </h1>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Site-wide values. Changes save to the database and are read live by the
-        front-end (navbar, page heroes, and CTAs). Allow a moment for cached pages to refresh.
+        front-end (navbar, page heroes, footer, and CTAs). Allow a moment for cached pages to refresh.
       </p>
 
       {status === 'error' && (
@@ -155,75 +277,129 @@ export default function GlobalSettingsPage() {
         </div>
       )}
 
-      {/* Template Variables (Brief 77, Feature B) — the {{token}} values every
-          editor's "Insert variable" menu can drop into a headline or body field.
-          Surfaced here first since editing one of these updates every page that
-          uses the token, in one place. */}
+      {/* ── Section 1: Variables ──────────────────────────────────────────── */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '0.35rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Template Variables</h2>
-        <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.8rem', marginBottom: '1rem', marginTop: 0 }}>
-          These back the <code>{'{{phone}}'}</code> and <code>{'{{ndc_price}}'}</code> tokens available from every rich-text
-          field&apos;s &quot;Insert variable&quot; menu. Changing a value here updates it everywhere the token is used.
+        <h2 style={sectionTitleStyle}>Variables</h2>
+        <p style={sectionDescStyle}>
+          Site-wide values used across the website — phone numbers, calls to action, taglines and hours.
         </p>
-        <label style={labelStyle}>Phone Number — <code>{'{{phone}}'}</code></label>
-        <input style={s} value={form.phoneDisplay} onChange={e => set('phoneDisplay', e.target.value)} placeholder="773-724-9272" />
-        <label style={labelStyle}>No Drip Club Price — <code>{'{{ndc_price}}'}</code></label>
-        <input style={s} value={form.ndcPrice} onChange={e => set('ndcPrice', e.target.value)} placeholder="$29.97" />
+        <div className="admin-two-col">
+          <div>
+            <label style={labelStyle}>Phone Number — <code>{'{{phone}}'}</code></label>
+            <input style={s} value={form.phoneDisplay} onChange={e => set('phoneDisplay', e.target.value)} placeholder="773-724-9272" />
+          </div>
+          <div>
+            <label style={labelStyle}>No Drip Club Price — <code>{'{{ndc_price}}'}</code></label>
+            <input style={s} value={form.ndcPrice} onChange={e => set('ndcPrice', e.target.value)} placeholder="$29.97" />
+          </div>
+          <div>
+            <label style={labelStyle}>Phone Link (e.g. tel:773-724-9272)</label>
+            <input style={s} value={form.phoneHref} onChange={e => set('phoneHref', e.target.value)} placeholder="tel:773-724-9272" />
+          </div>
+          <div>
+            <label style={labelStyle}>Header Phone (call-tracking number — navbar only)</label>
+            <input style={s} value={form.headerPhone} onChange={e => set('headerPhone', e.target.value)} placeholder="773-900-8690" />
+          </div>
+          <div>
+            <label style={labelStyle}>Primary CTA Button Label</label>
+            <input style={s} value={form.ctaPrimaryLabel} onChange={e => set('ctaPrimaryLabel', e.target.value)} placeholder="MAKE A GOOD CALL" />
+          </div>
+          <div>
+            <label style={labelStyle}>Hours Label (e.g. &quot;24 hours&quot;)</label>
+            <input style={s} value={form.hoursLabel} onChange={e => set('hoursLabel', e.target.value)} placeholder="24 hours" />
+          </div>
+          <div className="admin-span-2">
+            <label style={labelStyle}>Turning Bad Calls Tagline</label>
+            <input style={s} value={form.taglineTurning} onChange={e => set('taglineTurning', e.target.value)} placeholder="J Blanton Plumbing - Turning Bad Calls to Good Calls" />
+          </div>
+        </div>
       </div>
 
-      {/* Contact */}
+      {/* ── Section 2: Service Category Descriptions (Brief 67) ──────────── */}
       <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Contact</h2>
-        <label style={labelStyle}>Phone Link (e.g. tel:773-724-9272)</label>
-        <input style={s} value={form.phoneHref} onChange={e => set('phoneHref', e.target.value)} placeholder="tel:773-724-9272" />
-        <label style={labelStyle}>Header Phone (call-tracking number — navbar only)</label>
-        <input style={s} value={form.headerPhone} onChange={e => set('headerPhone', e.target.value)} placeholder="773-900-8690" />
-      </div>
-
-      {/* CTAs */}
-      <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>CTAs</h2>
-        <label style={labelStyle}>Primary CTA Button Label</label>
-        <input style={s} value={form.ctaPrimaryLabel} onChange={e => set('ctaPrimaryLabel', e.target.value)} placeholder="MAKE A GOOD CALL" />
-      </div>
-
-      {/* Taglines */}
-      <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Taglines</h2>
-        <label style={labelStyle}>Turning Bad Calls Tagline</label>
-        <input style={s} value={form.taglineTurning} onChange={e => set('taglineTurning', e.target.value)} placeholder="J Blanton Plumbing - Turning Bad Calls to Good Calls" />
-      </div>
-
-      {/* Hours */}
-      <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Hours</h2>
-        <label style={labelStyle}>Hours Label (e.g. &quot;24 hours&quot;)</label>
-        <input style={s} value={form.hoursLabel} onChange={e => set('hoursLabel', e.target.value)} placeholder="24 hours" />
-      </div>
-
-      {/* Service Category Descriptions (Brief 67) */}
-      <div style={sectionStyle}>
-        <h2 style={{ fontWeight: 700, fontSize: '1rem', color: ADMIN_COLORS.onSurface, marginBottom: '0.35rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Service Category Descriptions</h2>
-        <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.8rem', marginBottom: '1rem', marginTop: 0 }}>
-          Shown under each category card in the Local Office V2 city Services Grid. Keep each under {DESC_MAX} characters.
+        <h2 style={sectionTitleStyle}>Service Category Descriptions</h2>
+        <p style={sectionDescStyle}>
+          Short blurbs shown for each service category. Keep each under ~{DESC_MAX} characters.
         </p>
-        {SERVICE_DESC_FIELDS.map(({ key, label }) => {
-          const value = form.serviceDesc[key];
-          const over = value.length > DESC_MAX;
-          return (
-            <div key={key} style={{ marginBottom: '1rem' }}>
-              <label style={labelStyle}>{label}</label>
-              <textarea
-                style={{ ...s, minHeight: '52px', marginBottom: '0.2rem' }}
-                value={value}
-                onChange={e => setServiceDesc(key, e.target.value)}
-              />
-              <span style={{ fontSize: '0.75rem', color: over ? ADMIN_COLORS.error : ADMIN_COLORS.onSurfaceVariant }}>
-                {value.length}/{DESC_MAX}
+        <div className="admin-two-col">
+          {SERVICE_DESC_FIELDS.map(({ key, label }) => {
+            const value = form.serviceDesc[key];
+            const over = value.length > DESC_MAX;
+            return (
+              <div key={key} style={{ marginBottom: '1rem' }}>
+                <label style={labelStyle}>{label}</label>
+                <textarea
+                  style={{ ...s, minHeight: '52px', marginBottom: '0.2rem' }}
+                  value={value}
+                  onChange={e => setServiceDesc(key, e.target.value)}
+                />
+                <span style={{ fontSize: '0.75rem', color: over ? ADMIN_COLORS.error : ADMIN_COLORS.onSurfaceVariant }}>
+                  {value.length}/{DESC_MAX}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ── Section 3: Office Addresses (Brief 102, Track C) ──────────────── */}
+      <div style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>Office Addresses</h2>
+        <p style={sectionDescStyle}>
+          Manage the office locations shown in the footer and across the site. Edit an
+          address or add a new office — changes apply everywhere the address appears.
+        </p>
+
+        {form.offices.map((office, i) => (
+          <div key={i} style={officeCardStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+              <span style={{ fontWeight: 700, fontSize: '0.85rem', color: `${ADMIN_COLORS.onSurfaceVariant}` }}>
+                {office.name || `Office ${i + 1}`}
               </span>
+              {form.offices.length > 1 && (
+                <button type="button" style={removeBtnStyle} onClick={() => removeOffice(i)}>Remove</button>
+              )}
             </div>
-          );
-        })}
+
+            <div className="admin-two-col">
+              {OFFICE_FIELDS.map(({ key, label, placeholder }) => (
+                <div key={key} className={key === 'mapUrl' ? 'admin-span-2' : undefined}>
+                  <label style={labelStyle}>{label}</label>
+                  <input
+                    style={s}
+                    value={office[key]}
+                    onChange={e => setOffice(i, key, e.target.value)}
+                    placeholder={placeholder}
+                  />
+                  {key === 'slug' && (
+                    <p style={{ fontSize: '0.7rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.75rem 0 1rem' }}>
+                      Used for this office&apos;s page link (/{office.slug || 'slug'}). Renaming an
+                      existing office&apos;s slug can break its city page link.
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <p style={{ ...labelStyle, marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+              Latitude / Longitude <span style={{ fontWeight: 400, color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>(optional — used for SEO structured data)</span>
+            </p>
+            <div className="admin-two-col">
+              <div>
+                <label style={labelStyle}>Latitude</label>
+                <input style={s} value={office.lat} onChange={e => setOffice(i, 'lat', e.target.value)} placeholder="42.1278" />
+              </div>
+              <div>
+                <label style={labelStyle}>Longitude</label>
+                <input style={s} value={office.lng} onChange={e => setOffice(i, 'lng', e.target.value)} placeholder="-87.8451" />
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <button type="button" className="admin-add-btn" style={addBtnStyle} onClick={addOffice}>
+          + Add Office
+        </button>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

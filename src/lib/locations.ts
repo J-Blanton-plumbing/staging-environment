@@ -27,39 +27,7 @@ export const LOCATIONS: Location[] = [
   { slug: 'joliet',               name: 'Joliet',                  address: 'Service area office',              city: 'Joliet',             state: 'IL', zip: '60431', lat: 41.5250, lng: -88.0817 },
 ];
 
-export interface FooterOffice {
-  /** Top-level location slug — footer links to `/{slug}` (routing brief makes these resolve). */
-  slug: string;
-  /** Lowercase display name; the footer renders it uppercase via CSS, matching the theme. */
-  name: string;
-  /** Full single-line address exactly as the live theme prints it. */
-  address: string;
-}
-
-/**
- * Footer office list — mirrors the live theme's `footer.php` `$offices` array verbatim
- * (brief-06 §1/§2). Kept SEPARATE from LOCATIONS on purpose, because the footer reproduces
- * the live site exactly while LOCATIONS holds the clean canonical records used by the
- * /locations page + map. Known divergences preserved here to match live:
- *   - Elgin / Skokie carry ZIP+4 codes the canonical records omit.
- *   - ⚠️ Joliet uses the Ravenswood address (5126 N Ravenswood Ave, Chicago) — almost
- *     certainly a data bug on the live site. Reproduced as-is to match live for now;
- *     flagged for correction. Do NOT propagate this into the canonical LOCATIONS above.
- */
-export const FOOTER_OFFICES: FooterOffice[] = [
-  { slug: 'northbrook',           name: 'northbrook (corporate)', address: '1945 Techny Road, #11, Northbrook, IL 60062' },
-  { slug: 'algonquin',            name: 'algonquin',              address: '2390 Esplanade Dr #200f, Algonquin, IL 60102' },
-  { slug: 'geneva',               name: 'geneva',                 address: '115 Campbell St #201C, Geneva, IL 60134' },
-  { slug: 'arlington-heights',    name: 'arlington heights',      address: '1204 East Central Road - Suite 2, Arlington Heights, IL 60005' },
-  { slug: 'chicago-lincoln-park', name: 'chicago lincoln park',   address: '800 W Diversey Pkwy, Chicago, IL 60614' },
-  { slug: 'chicago-ravenswood',   name: 'chicago ravenswood',     address: '5126 N Ravenswood Ave, Chicago, IL 60640' },
-  { slug: 'elgin',                name: 'elgin',                  address: '964 N McLean Blvd, Elgin, IL 60123-2039' },
-  { slug: 'elmhurst',             name: 'elmhurst',               address: '130 S York St, Elmhurst, IL 60126' },
-  { slug: 'evanston',             name: 'evanston',               address: '1603 Orrington Ave #600-1085, Evanston, IL 60201' },
-  { slug: 'hinsdale',             name: 'hinsdale',               address: '15 Spinning Wheel Road, 216A, Hinsdale, IL 60521' },
-  { slug: 'mchenry',              name: 'mchenry',                address: '3406 W Elm St, Mchenry, IL 60050' },
-  { slug: 'naperville',           name: 'naperville',             address: '200 S. Main Street, Naperville, IL 60540' },
-  { slug: 'skokie',               name: 'skokie',                 address: '8001 Lincoln Ave, Suite 301 Skokie, IL 60077-3695' },
-  // ⚠️ Live theme bug — Ravenswood address on the Joliet entry. Reproduced to match live.
-  { slug: 'joliet',               name: 'joliet',                 address: '5126 N Ravenswood Ave, Chicago, IL 60640' },
-];
+// Brief 102 (Track C): the former FOOTER_OFFICES list (footer.php's $offices array)
+// moved to the CMS as the single source of truth for every office address on the
+// site — see CmsOffice / FALLBACK.offices in src/lib/cms/global-settings.ts, and
+// Footer.tsx, which now reads settings.offices instead of this file.

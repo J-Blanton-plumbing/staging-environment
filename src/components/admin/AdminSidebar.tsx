@@ -118,7 +118,7 @@ export default function AdminSidebar({
           <div className="border-t border-admin-outline-variant/10 pt-2">
             <TopLink
               href="/admin/global-settings"
-              label="Settings"
+              label="Global Settings"
               icon="settings"
               active={pathname === '/admin/global-settings'}
             />

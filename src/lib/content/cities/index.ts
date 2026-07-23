@@ -2,12 +2,19 @@
  * City registry + office/area data — the single source the shared `[city]`
  * builder reads (brief-10 §3).
  *
- * `OFFICES` + `cityToOffice` + `cityToArea` are ported VERBATIM from
- * `jb-blanton/page-city.php` ($nap_map 55–232, $areas_map 235–402). Each office's
- * city list is declared once and reused for BOTH maps so a slug can't get an
- * office without an area (or drift between them). Cities outside the maps fall to
- * the Ravenswood office + "North and Northwest Side Chicago" — reproducing the
- * known Joliet bug (live maps Joliet to Ravenswood), flagged not fixed.
+ * `cityToOffice` + `cityToArea` are ported VERBATIM from `jb-blanton/page-city.php`
+ * ($nap_map 55–232, $areas_map 235–402). Each office's city list is declared once
+ * and reused for BOTH maps so a slug can't get an office without an area (or drift
+ * between them). Cities outside the maps fall to the Ravenswood office + "North
+ * and Northwest Side Chicago" — reproducing the known Joliet bug (live maps
+ * Joliet to Ravenswood), flagged not fixed.
+ *
+ * Brief 102 (Track C): the office ADDRESS DATA itself (street/city/state/zip,
+ * Google Maps link, lat/lng) moved out of this file into the CMS
+ * (`global_settings.offices`, see `CmsOffice` in `lib/cms/global-settings.ts`) —
+ * marketing edits it from /admin/global-settings. This file keeps only the
+ * routing: which office KEY a given city slug dispatches to. `getOffice()` now
+ * takes the live CMS offices list and resolves the key against it.
  *
  * ⚠️ REGISTRY SCOPE DEVIATION (flagged): the brief calls for the FULL ~230-city
  * list from the canonical Sitemap Google Sheet. That sheet is an external
@@ -25,61 +32,27 @@ import type {
   Office,
   RegistryEntry,
 } from './types';
+import type { CmsOffice } from '@/lib/cms/offices';
+import { formatOfficeAddress } from '@/lib/cms/offices';
 import { EVANSTON } from './evanston';
 import { ELGIN } from './elgin';
 import { ALGONQUIN } from './algonquin';
 
-/* ── Offices (the distinct dispatch addresses) ──────────────────────────────── */
-export const OFFICES = {
-  ravenswood: {
-    url: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9',
-    address: '5126 N Ravenswood Ave, Chicago, IL 60640',
-  },
-  mchenry: {
-    url: 'https://maps.app.goo.gl/DQ4fP5QXZr7TpBJ48',
-    address: '3406 W Elm St, Mchenry, IL 60050',
-  },
-  elgin: {
-    url: 'https://maps.app.goo.gl/5J1K7ZVgFeNwy8VJ8',
-    address: '964 N McLean Blvd, Elgin, IL 60123-2039',
-  },
-  'arlington-heights': {
-    url: 'https://maps.app.goo.gl/Qq4qPYJT8bCgash26',
-    address: '1204 E. Central Road, Suite 3, Arlington Heights, IL 60005',
-  },
-  northbrook: {
-    url: 'https://maps.app.goo.gl/pCmmYeescW7Mf6B2A',
-    address: '1945 Techny Road, #11, Northbrook, IL 60062',
-  },
-  hinsdale: {
-    url: 'https://maps.app.goo.gl/UfWAoTRbWkAPR6WYA',
-    address: '15 Spinning Wheel Rd #216a, Hinsdale, IL 60521',
-  },
-  naperville: {
-    url: 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8',
-    address: '200 S Main Street, Suite 3, Naperville, IL 60540',
-  },
-  evanston: {
-    url: 'https://maps.app.goo.gl/rqmTxHMcicWhz1yV7',
-    address: '1603 Orrington Ave #600-1085, Evanston, IL 60201',
-  },
-  algonquin: {
-    url: 'https://maps.app.goo.gl/egVEqHQJkzFG8Qo56',
-    address: '2390 Esplanade Dr #200f, Algonquin, IL 60102',
-  },
-  geneva: {
-    url: 'https://maps.app.goo.gl/mfdpSC3BSGkQKdQ39',
-    address: '115 Campbell St #201C, Geneva, IL 60134',
-  },
-  'chicago-lincoln-park': {
-    url: 'https://maps.app.goo.gl/ninFDe3tVj7U5sYx6',
-    address: '800 W Diversey Pkwy, Chicago, IL 60614',
-  },
-} satisfies Record<string, Office>;
+/** The 11 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102). */
+export type OfficeKey =
+  | 'chicago-ravenswood'
+  | 'mchenry'
+  | 'elgin'
+  | 'arlington-heights'
+  | 'northbrook'
+  | 'hinsdale'
+  | 'naperville'
+  | 'evanston'
+  | 'algonquin'
+  | 'geneva'
+  | 'chicago-lincoln-park';
 
-export type OfficeKey = keyof typeof OFFICES;
-
-const DEFAULT_OFFICE: OfficeKey = 'ravenswood';
+const DEFAULT_OFFICE: OfficeKey = 'chicago-ravenswood';
 const DEFAULT_AREA = 'North and Northwest Side Chicago';
 
 /* ── Each office's served cities (declared once, reused for both maps) ──────── */
@@ -145,7 +118,7 @@ assignOffice('algonquin', ['algonquin']);
 assignOffice('geneva', ['geneva']);
 assignOffice('chicago-lincoln-park', ['chicago-lincoln-park']);
 // ── Cities imported from WordPress XML export (brief-50, Track C) ──────────
-assignOffice('ravenswood', ['alsip', 'arbury-hills', 'blue-island', 'bonnie-brae', 'chicago', 'chicago-albany-park', 'chicago-andersonville', 'chicago-austin', 'chicago-avondale', 'chicago-belmont-cragin', 'chicago-dunning', 'chicago-edgewater', 'chicago-edison-park', 'chicago-forest-glen', 'chicago-heights', 'chicago-hermosa', 'chicago-humboldt-park', 'chicago-irving-park', 'chicago-jefferson-park', 'chicago-lake-view', 'chicago-lincoln-square', 'chicago-logan-square', 'chicago-montclare', 'chicago-north-center', 'chicago-north-park', 'chicago-norwood-park', 'chicago-ohare', 'chicago-portage-park', 'chicago-ravenswood', 'chicago-rogers-park', 'chicago-uptown', 'chicago-west-ridge', 'chicago-west-town', 'country-club-hills', 'crest-hill', 'des-plaines', 'fairmont', 'flossmoor', 'forest-park', 'frankfort', 'frankfort-square', 'glenview', 'golf', 'harvey', 'homer-glen', 'homewood', 'ingalls-park', 'joliet', 'lemont', 'lincolnwood', 'lockport', 'lockport-heights', 'manhattan', 'markham', 'matteson', 'midlothian', 'mokena', 'new-lenox', 'niles', 'norridge', 'oak-forest', 'oak-park', 'orland-park', 'palos-heights', 'palos-hills', 'park-forest', 'park-ridge', 'preston-heights', 'river-forest', 'riverside', 'rockdale', 'roseland', 'rosemont', 'schiller-park', 'south-holland', 'tinley-park']);
+assignOffice('chicago-ravenswood', ['alsip', 'arbury-hills', 'blue-island', 'bonnie-brae', 'chicago', 'chicago-albany-park', 'chicago-andersonville', 'chicago-austin', 'chicago-avondale', 'chicago-belmont-cragin', 'chicago-dunning', 'chicago-edgewater', 'chicago-edison-park', 'chicago-forest-glen', 'chicago-heights', 'chicago-hermosa', 'chicago-humboldt-park', 'chicago-irving-park', 'chicago-jefferson-park', 'chicago-lake-view', 'chicago-lincoln-square', 'chicago-logan-square', 'chicago-montclare', 'chicago-north-center', 'chicago-north-park', 'chicago-norwood-park', 'chicago-ohare', 'chicago-portage-park', 'chicago-ravenswood', 'chicago-rogers-park', 'chicago-uptown', 'chicago-west-ridge', 'chicago-west-town', 'country-club-hills', 'crest-hill', 'des-plaines', 'fairmont', 'flossmoor', 'forest-park', 'frankfort', 'frankfort-square', 'glenview', 'golf', 'harvey', 'homer-glen', 'homewood', 'ingalls-park', 'joliet', 'lemont', 'lincolnwood', 'lockport', 'lockport-heights', 'manhattan', 'markham', 'matteson', 'midlothian', 'mokena', 'new-lenox', 'niles', 'norridge', 'oak-forest', 'oak-park', 'orland-park', 'palos-heights', 'palos-hills', 'park-forest', 'park-ridge', 'preston-heights', 'river-forest', 'riverside', 'rockdale', 'roseland', 'rosemont', 'schiller-park', 'south-holland', 'tinley-park']);
 
 /* ── cityToArea — every suburb → its region label ($areas_map) ──────────────── */
 const cityToArea: Record<string, string> = {};
@@ -166,8 +139,17 @@ assignArea('North Shore Chicagoland', ['evanston', ...EVANSTON_CITIES]);
 // default area, exactly as live. Don't add it here.
 
 /* ── Resolvers ──────────────────────────────────────────────────────────────── */
-export function getOffice(slug: string): Office {
-  return OFFICES[cityToOffice[slug] ?? DEFAULT_OFFICE];
+/**
+ * Resolve a city slug to its dispatching office's NAP data. `offices` is the
+ * live CMS list (`getGlobalSettingsCached().offices`) — callers already have it
+ * in scope wherever they render a NAP block, so this stays a plain sync lookup
+ * rather than reaching into the DB itself.
+ */
+export function getOffice(slug: string, offices: CmsOffice[]): Office {
+  const key = cityToOffice[slug] ?? DEFAULT_OFFICE;
+  const office = offices.find((o) => o.slug === key);
+  if (!office) return { url: '', address: '' };
+  return { url: office.mapUrl, address: formatOfficeAddress(office) };
 }
 export function getArea(slug: string): string {
   return cityToArea[slug] ?? DEFAULT_AREA;

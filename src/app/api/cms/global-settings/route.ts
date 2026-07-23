@@ -30,6 +30,7 @@ export async function PUT(req: NextRequest) {
       hoursLabel: body.hoursLabel ?? undefined,
       ndcPrice: body.ndcPrice ?? undefined,
       serviceDesc: body.serviceDesc ?? undefined,
+      offices: body.offices ?? undefined,
     });
     return NextResponse.json({ ok: true });
   } catch (err) {

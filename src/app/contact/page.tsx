@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
 import { CONTACT } from '@/lib/content/contact';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { formatOfficeAddress } from '@/lib/cms/offices';
 import type { Metadata } from 'next';
 import './contact.css';
 
@@ -17,8 +19,20 @@ const INVOLVE_ME = {
   organizationUrl: 'https://jblantonplumbing.involve.me',
 };
 
-export default function ContactPage() {
-  const { hero, getInTouch, offices } = CONTACT;
+/**
+ * Brief 102 (Track C): the 5 offices this page has always shown, in the same
+ * order — filtered from the single CMS offices list (global_settings.offices)
+ * so the addresses stay in sync with the footer/locations page instead of a
+ * second hard-coded copy.
+ */
+const CONTACT_OFFICE_SLUGS = ['northbrook', 'algonquin', 'chicago-ravenswood', 'arlington-heights', 'evanston'];
+
+export default async function ContactPage() {
+  const { hero, getInTouch } = CONTACT;
+  const settings = await getGlobalSettingsCached();
+  const offices = CONTACT_OFFICE_SLUGS
+    .map((slug) => settings.offices.find((o) => o.slug === slug))
+    .filter((o): o is NonNullable<typeof o> => o != null);
 
   return (
     <div className="contact-page">
@@ -83,9 +97,9 @@ export default function ContactPage() {
             <div>
               <p className="red-text">OUR LOCATIONS</p>
               {offices.map((office) => (
-                <div key={office.name} className="office-block">
+                <div key={office.slug} className="office-block">
                   <strong>{office.name}</strong>
-                  <span>{office.address}</span>
+                  <span>{formatOfficeAddress(office)}</span>
                 </div>
               ))}
               <Link href="/locations" className="locations-link">

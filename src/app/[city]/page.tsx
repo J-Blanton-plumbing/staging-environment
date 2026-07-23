@@ -75,13 +75,16 @@ export default async function CityPage({ params }: { params: { city: string } })
   const previewDraft = preview ? preview.meta : null;
   let db = preview ? preview.db : await getCityCmsContent(params.city).catch(() => null);
 
+  // Brief 102 (Track C): fetched once up-front — every branch below needs
+  // settings.offices to resolve the city's NAP data via getOffice().
+  const settings = await getGlobalSettingsCached();
+
   // Brief 35: use template_type from DB when available; fall back to registry type
   const templateType: string = db?.templateType ?? entry.type;
 
   // Brief 67: Local Office City V2 — DB-driven 12-section template.
   if (templateType === 'local-office-v2') {
     if (!db) notFound();
-    const settings = await getGlobalSettingsCached();
     const coverage = getCoverageContent(entry.slug);
     const localOffice = getLocalOfficeContent(entry.slug);
 
@@ -103,7 +106,7 @@ export default async function CityPage({ params }: { params: { city: string } })
             name: entry.name,
             slug: entry.slug,
             heroImage: coverage?.heroImage,
-            officeAddress: getOffice(entry.slug).address,
+            officeAddress: getOffice(entry.slug, settings.offices).address,
             reviewsElfsightId: localOffice?.reviews.elfsightId,
             whyFallback: localOffice ? { heading: localOffice.why.heading, body: localOffice.why.body } : null,
           }}
@@ -205,7 +208,7 @@ export default async function CityPage({ params }: { params: { city: string } })
       <CoverageAreaCity
         name={entry.name}
         content={mergedContent}
-        office={getOffice(entry.slug)}
+        office={getOffice(entry.slug, settings.offices)}
         area={getArea(entry.slug)}
         articles={articles}
         faqs={mergedFaqs}
