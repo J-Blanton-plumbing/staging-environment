@@ -265,7 +265,11 @@ export default function GlobalSettingsPage() {
       });
       if (!res.ok) {
         const j = await res.json();
-        throw new Error(j.error ?? 'Unknown error');
+        // TEMP DIAGNOSTIC (Brief 107 follow-up) — the API now returns the real
+        // server-side DB error under `detail`/`code`; show it so we can see
+        // exactly why a save fails on staging.
+        const parts = [j.error ?? 'Unknown error', j.detail, j.code].filter(Boolean);
+        throw new Error(parts.join(' — '));
       }
       setStatus('saved');
       setTimeout(() => setStatus('idle'), 3000);
