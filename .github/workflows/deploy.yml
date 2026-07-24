@@ -24,8 +24,9 @@ jobs:
             git fetch origin
             git reset --hard origin/main
             npm ci
+            rm -rf /var/www/jblanton/.next
             npm run build
-            sudo PM2_HOME=/root/.pm2 pm2 restart jblanton
+            pm2 restart jblanton --update-env
 
       - name: Post-deploy health check
         uses: appleboy/ssh-action@v1.0.0
