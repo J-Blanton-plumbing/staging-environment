@@ -3,6 +3,17 @@ import { revalidatePath } from 'next/cache';
 import { getGlobalSettings, updateGlobalSettings } from '@/lib/cms/global-settings';
 import { getSession } from '@/lib/auth/session';
 
+// Brief 107 follow-up — this GET took no `NextRequest`/`cookies()`/`headers()`,
+// so `next build` treats it as a static Route Handler and caches its response
+// once, at build/first-request time, on a real production deploy (this repo's
+// staging environment runs `next build && pm2 restart`, not `next dev`, which
+// never applies this optimization — that's why the bug didn't reproduce
+// locally). Every page in the app already opts out of the equivalent Full
+// Route Cache behavior with `dynamic = 'force-dynamic'`; this route needs the
+// same opt-out so the admin editor (and anything else hitting this endpoint)
+// always reads the live DB row instead of a stale build-time snapshot.
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const settings = await getGlobalSettings();

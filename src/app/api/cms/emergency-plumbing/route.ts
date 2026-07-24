@@ -5,6 +5,11 @@ import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { errorCode } from '@/lib/cms/errors';
 
+// See src/app/api/cms/global-settings/route.ts for why this is needed: a GET
+// handler with no dynamic function usage gets statically cached at build time
+// on a real `next build` deploy, serving one build-time snapshot forever.
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const data = await getEpCmsContent();

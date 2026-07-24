@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 
+// See src/app/api/cms/global-settings/route.ts for why this is needed: a GET
+// handler with no dynamic function usage gets statically cached at build time
+// on a real `next build` deploy — here that would mean the admin service-pages
+// list (titles/status/parent) never reflects new saves after the first deploy.
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const client = await pool.connect();
   try {

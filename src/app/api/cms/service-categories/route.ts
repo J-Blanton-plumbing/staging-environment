@@ -21,6 +21,12 @@ function titleCase(slug: string): string {
  * deduped and sorted, so a hub-parented page resolves in the editor and its parent
  * is preserved on save (previously a hub value showed as "None assigned").
  */
+// See src/app/api/cms/global-settings/route.ts for why this is needed: a GET
+// handler with no dynamic function usage gets statically cached at build time
+// on a real `next build` deploy, serving one build-time snapshot forever —
+// here that would mean newly added/renamed pages never appear in this dropdown.
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const client = await pool.connect();
   try {
