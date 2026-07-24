@@ -460,6 +460,10 @@ export default function GlobalSettingsPage() {
           {status === 'saving' ? 'Saving…' : 'Save'}
         </button>
         {status === 'saved' && <span style={{ color: ADMIN_COLORS.success, fontWeight: 600 }}>Saved.</span>}
+        {/* The office list can run to 14+ cards, so the top error banner can be
+            scrolled well out of view by the time someone clicks Save down here
+            — repeat the error right next to the button that was just clicked. */}
+        {status === 'error' && <span style={{ color: ADMIN_COLORS.error, fontWeight: 600 }}>{errorMsg || 'Save failed.'}</span>}
       </div>
     </div>
   );
