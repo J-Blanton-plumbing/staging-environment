@@ -53,16 +53,6 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error('PUT /api/cms/global-settings error:', err);
-    // Brief 107 follow-up (TEMP DIAGNOSTIC) — the generic message hid a
-    // server-side DB error that only reproduces on the staging deploy. This
-    // endpoint is admin-authenticated (checked above), so echoing the real
-    // Postgres error/code to the logged-in admin is safe and lets us pin the
-    // cause. Revert to the generic message once the root cause is fixed.
-    const detail = err instanceof Error ? err.message : String(err);
-    const code = (err as { code?: string })?.code;
-    return NextResponse.json(
-      { error: 'Failed to save global settings', detail, code },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to save global settings' }, { status: 500 });
   }
 }

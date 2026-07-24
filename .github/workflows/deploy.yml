@@ -38,6 +38,11 @@ jobs:
             for envfile in .env .env.production .env.local; do
               if [ -f "$envfile" ]; then set -a; . "./$envfile"; set +a; fi
             done
+            # ensure-schema reconciles EVERY CMS table's columns (idempotent
+            # ADD COLUMN IF NOT EXISTS across all tables), so no editor can hit a
+            # missing-column 500 again. Then migrate-global-settings seeds the
+            # offices data. Both are safe no-ops once the DB is in sync.
+            npx ts-node --project tsconfig.scripts.json scripts/ensure-schema.ts
             npx ts-node --project tsconfig.scripts.json scripts/migrate-global-settings.ts
             pm2 restart jblanton --update-env
 
