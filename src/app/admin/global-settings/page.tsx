@@ -25,6 +25,8 @@ interface OfficeFormState {
   mapUrl: string;
   lat: string;
   lng: string;
+  /** Brief 107 (Track B) — whether this office appears in the public footer directory. */
+  showInFooter: boolean;
 }
 
 interface FormState {
@@ -51,6 +53,7 @@ const EMPTY_SERVICE_DESC: ServiceDescState = {
 
 const EMPTY_OFFICE: OfficeFormState = {
   slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', lat: '', lng: '',
+  showInFooter: true,
 };
 
 const EMPTY: FormState = {
@@ -79,7 +82,7 @@ const SERVICE_DESC_FIELDS: Array<{ key: keyof ServiceDescState; label: string }>
 const DESC_MAX = 120;
 
 // Office-card sub-fields, in the order they render within each card.
-const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng'>; label: string; placeholder?: string }> = [
+const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng' | 'showInFooter'>; label: string; placeholder?: string }> = [
   { key: 'name', label: 'Office Name', placeholder: 'Northbrook (Corporate)' },
   { key: 'slug', label: 'Page Slug', placeholder: 'northbrook' },
   { key: 'streetAddress', label: 'Street Address', placeholder: '1945 Techny Road, #11' },
@@ -139,6 +142,27 @@ const removeBtnStyle: React.CSSProperties = {
   fontSize: '0.8rem', cursor: 'pointer', padding: '0.25rem 0.5rem',
 };
 
+// Brief 107 (Track B2) — no existing switch/toggle component was found anywhere
+// in the admin (checked TemplateSwitcher.tsx, StatusPopover.tsx, the cities
+// filter pills); built from the same ADMIN_COLORS tokens as everything else
+// here rather than introducing a new visual language.
+function switchTrackStyle(on: boolean): React.CSSProperties {
+  return {
+    position: 'relative', width: '40px', height: '22px', borderRadius: '9999px',
+    border: 'none', cursor: 'pointer', flexShrink: 0, padding: 0,
+    background: on ? ADMIN_COLORS.cerulean : `${ADMIN_COLORS.outlineVariant}66`,
+    transition: 'background 0.15s ease',
+  };
+}
+
+function switchThumbStyle(on: boolean): React.CSSProperties {
+  return {
+    position: 'absolute', top: '2px', left: on ? '20px' : '2px',
+    width: '18px', height: '18px', borderRadius: '9999px', background: '#fff',
+    transition: 'left 0.15s ease', boxShadow: ADMIN_SHADOWS.sm,
+  };
+}
+
 function toCmsOffice(o: OfficeFormState) {
   return {
     slug: o.slug.trim(),
@@ -150,6 +174,7 @@ function toCmsOffice(o: OfficeFormState) {
     mapUrl: o.mapUrl,
     lat: toNum(o.lat),
     lng: toNum(o.lng),
+    showInFooter: o.showInFooter,
   };
 }
 
@@ -173,6 +198,7 @@ export default function GlobalSettingsPage() {
               mapUrl: typeof o.mapUrl === 'string' ? o.mapUrl : '',
               lat: o.lat == null ? '' : String(o.lat),
               lng: o.lng == null ? '' : String(o.lng),
+              showInFooter: o.showInFooter !== false,
             }))
           : [];
         setForm({
@@ -202,10 +228,17 @@ export default function GlobalSettingsPage() {
     setForm(f => ({ ...f, serviceDesc: { ...f.serviceDesc, [key]: value } }));
   }
 
-  function setOffice(i: number, key: keyof OfficeFormState, value: string) {
+  function setOffice(i: number, key: keyof Omit<OfficeFormState, 'showInFooter'>, value: string) {
     setForm(f => ({
       ...f,
       offices: f.offices.map((o, idx) => (idx === i ? { ...o, [key]: value } : o)),
+    }));
+  }
+
+  function toggleOfficeShowInFooter(i: number) {
+    setForm(f => ({
+      ...f,
+      offices: f.offices.map((o, idx) => (idx === i ? { ...o, showInFooter: !o.showInFooter } : o)),
     }));
   }
 
@@ -360,6 +393,21 @@ export default function GlobalSettingsPage() {
                 <button type="button" style={removeBtnStyle} onClick={() => removeOffice(i)}>Remove</button>
               )}
             </div>
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem', cursor: 'pointer' }}>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={office.showInFooter}
+                style={switchTrackStyle(office.showInFooter)}
+                onClick={() => toggleOfficeShowInFooter(i)}
+              >
+                <span style={switchThumbStyle(office.showInFooter)} />
+              </button>
+              <span style={{ fontWeight: 600, fontSize: '0.85rem', color: ADMIN_COLORS.onSurface }}>
+                Show in footer
+              </span>
+            </label>
 
             <div className="admin-two-col">
               {OFFICE_FIELDS.map(({ key, label, placeholder }) => (

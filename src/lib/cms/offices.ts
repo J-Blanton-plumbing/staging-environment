@@ -31,6 +31,13 @@ export interface CmsOffice {
   mapUrl: string;
   lat: number | null;
   lng: number | null;
+  /**
+   * Brief 107 (Track B) — controls whether this office appears in the footer's
+   * office directory. Optional; absent/undefined is treated as `true` (shown)
+   * so pre-existing records default to the current footer output unchanged.
+   * Does NOT affect `LocalBusinessSchema` — see that component's docblock.
+   */
+  showInFooter?: boolean;
 }
 
 /** `${streetAddress}, ${city}, ${state} ${zip}` — the single-line NAP/footer format used everywhere. */

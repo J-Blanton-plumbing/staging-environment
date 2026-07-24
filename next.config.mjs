@@ -5,6 +5,18 @@ const nextConfig = {
   // server components), so leave it external and require it at runtime.
   experimental: {
     serverComponentsExternalPackages: ['sanitize-html'],
+    // Brief 107 — Next 14.2's client Router Cache defaults to holding dynamic
+    // segments for 30s after a soft (Link/router.push) navigation, even though
+    // every page here is `force-dynamic` and reads live CMS data on every
+    // request. That mismatch is why CMS edits (e.g. Office Addresses) didn't
+    // show up after Save: a hard reload always saw the fresh DB row (proven in
+    // this brief's diagnosis), but clicking between pages served the RSC
+    // payload cached from before the edit. Setting `dynamic: 0` makes every
+    // soft navigation refetch dynamic segments, matching the site's
+    // force-dynamic rendering model everywhere else.
+    staleTimes: {
+      dynamic: 0,
+    },
   },
   images: {
     remotePatterns: [

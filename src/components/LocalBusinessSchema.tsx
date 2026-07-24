@@ -13,6 +13,12 @@ import type { CmsOffice } from '@/lib/cms/offices';
  *
  * `geo` is included only when both `lat`/`lng` are present for that office —
  * the schema stays valid for offices that haven't had coordinates filled in yet.
+ *
+ * Brief 107 (Track B4): deliberately NOT filtered by `showInFooter` — that toggle
+ * controls the visible footer directory only. Every real office still gets a
+ * LocalBusiness node here regardless of its footer-visibility setting, since
+ * structured data is invisible to users and more valid locations generally helps
+ * local SEO. `Footer.tsx` passes the full, unfiltered `settings.offices` list in.
  */
 export interface LocalBusinessSchemaProps {
   offices: CmsOffice[];

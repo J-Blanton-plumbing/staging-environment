@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getGlobalSettings, updateGlobalSettings } from '@/lib/cms/global-settings';
 import { getSession } from '@/lib/auth/session';
 
@@ -32,6 +33,12 @@ export async function PUT(req: NextRequest) {
       serviceDesc: body.serviceDesc ?? undefined,
       offices: body.offices ?? undefined,
     });
+    // Brief 107 — settings are read by the shared root layout (Navbar, Footer,
+    // LocalBusinessSchema) on every force-dynamic page, so revalidating the
+    // root layout covers every route in one call. Combined with the
+    // `staleTimes.dynamic: 0` config (next.config.mjs), this ensures both
+    // fresh server renders and immediate client-side (soft-nav) pickup.
+    revalidatePath('/', 'layout');
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error('PUT /api/cms/global-settings error:', err);

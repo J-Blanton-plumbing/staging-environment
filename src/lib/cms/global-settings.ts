@@ -71,24 +71,24 @@ const FALLBACK: GlobalSettings = {
     commercial: 'Commercial plumbing built for business reliability.',
   },
   offices: [
-    { slug: 'northbrook', name: 'Northbrook (Corporate)', streetAddress: '1945 Techny Road, #11', city: 'Northbrook', state: 'IL', zip: '60062', mapUrl: 'https://maps.app.goo.gl/pCmmYeescW7Mf6B2A', lat: 42.1278, lng: -87.8451 },
-    { slug: 'algonquin', name: 'Algonquin', streetAddress: '2390 Esplanade Dr #200f', city: 'Algonquin', state: 'IL', zip: '60102', mapUrl: 'https://maps.app.goo.gl/egVEqHQJkzFG8Qo56', lat: 42.1656, lng: -88.2942 },
-    { slug: 'geneva', name: 'Geneva', streetAddress: '115 Campbell St #201C', city: 'Geneva', state: 'IL', zip: '60134', mapUrl: 'https://maps.app.goo.gl/mfdpSC3BSGkQKdQ39', lat: 41.8875, lng: -88.3054 },
-    { slug: 'arlington-heights', name: 'Arlington Heights', streetAddress: '1204 E. Central Road, Suite 3', city: 'Arlington Heights', state: 'IL', zip: '60005', mapUrl: 'https://maps.app.goo.gl/Qq4qPYJT8bCgash26', lat: 42.0884, lng: -87.9806 },
-    { slug: 'chicago-lincoln-park', name: 'Chicago Lincoln Park', streetAddress: '800 W Diversey Pkwy', city: 'Chicago', state: 'IL', zip: '60614', mapUrl: 'https://maps.app.goo.gl/ninFDe3tVj7U5sYx6', lat: 41.9325, lng: -87.6437 },
-    { slug: 'chicago-ravenswood', name: 'Chicago Ravenswood', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: 41.9745, lng: -87.6745 },
-    { slug: 'elgin', name: 'Elgin', streetAddress: '964 N McLean Blvd', city: 'Elgin', state: 'IL', zip: '60123-2039', mapUrl: 'https://maps.app.goo.gl/5J1K7ZVgFeNwy8VJ8', lat: 42.0354, lng: -88.2826 },
-    { slug: 'elmhurst', name: 'Elmhurst', streetAddress: '130 S York St', city: 'Elmhurst', state: 'IL', zip: '60126', mapUrl: '', lat: 41.8995, lng: -87.9403 },
-    { slug: 'evanston', name: 'Evanston', streetAddress: '1603 Orrington Ave #600-1085', city: 'Evanston', state: 'IL', zip: '60201', mapUrl: 'https://maps.app.goo.gl/rqmTxHMcicWhz1yV7', lat: 42.0451, lng: -87.6877 },
-    { slug: 'hinsdale', name: 'Hinsdale', streetAddress: '15 Spinning Wheel Rd #216a', city: 'Hinsdale', state: 'IL', zip: '60521', mapUrl: 'https://maps.app.goo.gl/UfWAoTRbWkAPR6WYA', lat: 41.8009, lng: -87.9370 },
-    { slug: 'mchenry', name: 'McHenry', streetAddress: '3406 W Elm St', city: 'Mchenry', state: 'IL', zip: '60050', mapUrl: 'https://maps.app.goo.gl/DQ4fP5QXZr7TpBJ48', lat: 42.3334, lng: -88.2670 },
-    { slug: 'naperville', name: 'Naperville', streetAddress: '200 S Main Street, Suite 3', city: 'Naperville', state: 'IL', zip: '60540', mapUrl: 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8', lat: 41.7508, lng: -88.1535 },
-    { slug: 'skokie', name: 'Skokie', streetAddress: '8001 Lincoln Ave, Suite 301', city: 'Skokie', state: 'IL', zip: '60077-3695', mapUrl: '', lat: 42.0334, lng: -87.7334 },
+    { slug: 'northbrook', name: 'Northbrook (Corporate)', streetAddress: '1945 Techny Road, #11', city: 'Northbrook', state: 'IL', zip: '60062', mapUrl: 'https://maps.app.goo.gl/pCmmYeescW7Mf6B2A', lat: 42.1278, lng: -87.8451, showInFooter: true },
+    { slug: 'algonquin', name: 'Algonquin', streetAddress: '2390 Esplanade Dr #200f', city: 'Algonquin', state: 'IL', zip: '60102', mapUrl: 'https://maps.app.goo.gl/egVEqHQJkzFG8Qo56', lat: 42.1656, lng: -88.2942, showInFooter: true },
+    { slug: 'geneva', name: 'Geneva', streetAddress: '115 Campbell St #201C', city: 'Geneva', state: 'IL', zip: '60134', mapUrl: 'https://maps.app.goo.gl/mfdpSC3BSGkQKdQ39', lat: 41.8875, lng: -88.3054, showInFooter: true },
+    { slug: 'arlington-heights', name: 'Arlington Heights', streetAddress: '1204 E. Central Road, Suite 3', city: 'Arlington Heights', state: 'IL', zip: '60005', mapUrl: 'https://maps.app.goo.gl/Qq4qPYJT8bCgash26', lat: 42.0884, lng: -87.9806, showInFooter: true },
+    { slug: 'chicago-lincoln-park', name: 'Chicago Lincoln Park', streetAddress: '800 W Diversey Pkwy', city: 'Chicago', state: 'IL', zip: '60614', mapUrl: 'https://maps.app.goo.gl/ninFDe3tVj7U5sYx6', lat: 41.9325, lng: -87.6437, showInFooter: true },
+    { slug: 'chicago-ravenswood', name: 'Chicago Ravenswood', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: 41.9745, lng: -87.6745, showInFooter: true },
+    { slug: 'elgin', name: 'Elgin', streetAddress: '964 N McLean Blvd', city: 'Elgin', state: 'IL', zip: '60123-2039', mapUrl: 'https://maps.app.goo.gl/5J1K7ZVgFeNwy8VJ8', lat: 42.0354, lng: -88.2826, showInFooter: true },
+    { slug: 'elmhurst', name: 'Elmhurst', streetAddress: '130 S York St', city: 'Elmhurst', state: 'IL', zip: '60126', mapUrl: '', lat: 41.8995, lng: -87.9403, showInFooter: true },
+    { slug: 'evanston', name: 'Evanston', streetAddress: '1603 Orrington Ave #600-1085', city: 'Evanston', state: 'IL', zip: '60201', mapUrl: 'https://maps.app.goo.gl/rqmTxHMcicWhz1yV7', lat: 42.0451, lng: -87.6877, showInFooter: true },
+    { slug: 'hinsdale', name: 'Hinsdale', streetAddress: '15 Spinning Wheel Rd #216a', city: 'Hinsdale', state: 'IL', zip: '60521', mapUrl: 'https://maps.app.goo.gl/UfWAoTRbWkAPR6WYA', lat: 41.8009, lng: -87.9370, showInFooter: true },
+    { slug: 'mchenry', name: 'McHenry', streetAddress: '3406 W Elm St', city: 'Mchenry', state: 'IL', zip: '60050', mapUrl: 'https://maps.app.goo.gl/DQ4fP5QXZr7TpBJ48', lat: 42.3334, lng: -88.2670, showInFooter: true },
+    { slug: 'naperville', name: 'Naperville', streetAddress: '200 S Main Street, Suite 3', city: 'Naperville', state: 'IL', zip: '60540', mapUrl: 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8', lat: 41.7508, lng: -88.1535, showInFooter: true },
+    { slug: 'skokie', name: 'Skokie', streetAddress: '8001 Lincoln Ave, Suite 301', city: 'Skokie', state: 'IL', zip: '60077-3695', mapUrl: '', lat: 42.0334, lng: -87.7334, showInFooter: true },
     // ⚠️ Live theme bug (pre-existing, reproduced verbatim) — Joliet has no office
     // of its own; both the footer and the /joliet NAP block show the Ravenswood
     // office's address. Lat/lng left blank on purpose rather than pairing
     // Joliet's real coordinates with Ravenswood's street address.
-    { slug: 'joliet', name: 'Joliet', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: null, lng: null },
+    { slug: 'joliet', name: 'Joliet', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: null, lng: null, showInFooter: true },
   ],
   updatedAt: null,
 };

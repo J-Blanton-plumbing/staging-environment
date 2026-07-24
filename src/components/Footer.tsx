@@ -131,7 +131,7 @@ export default function Footer({ settings }: { settings: GlobalSettings }) {
               Our Office Locations
             </p>
             <div className="offices grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-[30px]">
-              {settings.offices.map((office) => (
+              {settings.offices.filter((office) => office.showInFooter !== false).map((office) => (
                 <div key={office.slug} className="office">
                   <div className="flex items-center gap-[7px] mb-[7px]">
                     <MapPin className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
