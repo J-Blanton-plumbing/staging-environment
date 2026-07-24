@@ -26,6 +26,19 @@ jobs:
             npm ci
             rm -rf /var/www/jblanton/.next
             npm run build
+            # Apply idempotent DB schema migrations BEFORE restarting, so the
+            # running app never references a column that doesn't exist yet.
+            # This step was missing entirely: the pipeline only built + restarted,
+            # so every schema change had to be run by hand on the box. Brief 102's
+            # `offices` JSONB column was never applied to staging, so every Global
+            # Settings save 500'd ("column \"offices\" ... does not exist"). The
+            # migration is idempotent (ADD COLUMN IF NOT EXISTS / ON CONFLICT DO
+            # NOTHING), so running it on every deploy is a safe no-op once applied.
+            # Load DATABASE_URL the same way Next.js does — from the env file on the box.
+            for envfile in .env .env.production .env.local; do
+              if [ -f "$envfile" ]; then set -a; . "./$envfile"; set +a; fi
+            done
+            npx ts-node --project tsconfig.scripts.json scripts/migrate-global-settings.ts
             pm2 restart jblanton --update-env
 
       - name: Post-deploy health check
