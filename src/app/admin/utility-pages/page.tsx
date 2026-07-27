@@ -18,6 +18,10 @@ const UTILITY_PAGE_CARDS: { slug: string; title: string; href: string }[] = [
   { slug: 'financing',         title: 'Financing',          href: '/admin/financing' },
   { slug: 'locations',         title: 'Locations',          href: '/admin/locations' },
   { slug: 'help-and-support',  title: 'Help & Support',     href: '/admin/help-and-support' },
+  // Brief 109: the /j-blanton-is-hiring "Join Our Team" recruiting page.
+  { slug: 'j-blanton-is-hiring', title: 'Join Our Team',    href: '/admin/j-blanton-is-hiring' },
+  // Brief 110: the /privacy-policy "Terms of Use & Privacy Policy" legal page.
+  { slug: 'privacy-policy',    title: 'Privacy Policy',     href: '/admin/privacy-policy' },
 ];
 
 function formatDate(iso?: string | null): string {

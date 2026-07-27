@@ -124,6 +124,31 @@ export function renderCmsInline(
 }
 
 /**
+ * Render a CMS rich-text value for injection into a BLOCK context via
+ * `dangerouslySetInnerHTML` — i.e. a standalone container that WANTS the block
+ * structure (multiple `<p>` clauses, `<h2>` sub-headings, lists). Unlike
+ * `renderCmsInline`, this does NOT flatten block tags to `<br>`, so a long-form
+ * document (e.g. the Terms of Use & Privacy Policy legal body, Brief 110) keeps
+ * its paragraphs and headings. Same safe order otherwise:
+ *   1. Legacy plain text (no markup) → escape it and turn newlines into `<br>`.
+ *   2. Sanitize through the shared Brief 73 allow-list (block tags are allowed).
+ *   3. Resolve `{{tokens}}` LAST, with escaping.
+ * The consuming page is responsible for styling the block children in CSS
+ * (Tailwind cannot reach tags produced by `dangerouslySetInnerHTML`).
+ */
+export function renderCmsBlock(
+  value: string | null | undefined,
+  settings: GlobalSettings
+): string {
+  if (value == null || value === '') return '';
+  const html = looksLikeHtml(value)
+    ? value
+    : escapeHtml(value).replace(/\r?\n/g, '<br>');
+  const clean = sanitizeCmsHtml(html);
+  return resolveTokens(clean, settings, { escape: true });
+}
+
+/**
  * Sanitize the rich-text fields of a `main_pages` content payload before it is
  * persisted (Brief 77, Feature A — write-path hardening). Only the keys
  * registered as rich text for `slug` are sanitized; every other field passes

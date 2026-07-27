@@ -15,16 +15,44 @@ export default function ArticlesSection() {
   const [page, setPage] = useState(0);
   const [data, setData] = useState<ArticlesResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [reloadNonce, setReloadNonce] = useState(0);
 
   useEffect(() => {
+    // Brief 108 (Group D1): the previous version had no error/abort handling, so
+    // any failed /api/articles request (e.g. a 500 with a non-JSON body) left the
+    // promise rejected and `loading` stuck at `true` forever — the permanent
+    // "Loading…" the QC saw (OC-08). Reset loading in every outcome, ignore
+    // out-of-order responses when paginating quickly, and surface a retryable
+    // error instead of hanging.
+    const controller = new AbortController();
+    let active = true;
+
     setLoading(true);
-    fetch(`/api/articles?page=${page}`)
-      .then((r) => r.json())
+    setError(false);
+
+    fetch(`/api/articles?page=${page}`, { signal: controller.signal })
+      .then((r) => {
+        if (!r.ok) throw new Error(`articles endpoint returned ${r.status}`);
+        return r.json();
+      })
       .then((d: ArticlesResponse) => {
+        if (!active) return;
         setData(d);
         setLoading(false);
+      })
+      .catch((err) => {
+        if (controller.signal.aborted || !active) return;
+        console.error('ArticlesSection: failed to load articles', err);
+        setError(true);
+        setLoading(false);
       });
-  }, [page]);
+
+    return () => {
+      active = false;
+      controller.abort();
+    };
+  }, [page, reloadNonce]);
 
   const hasPrev = page > 0;
   const hasNext = data ? (page + 1) * data.pageSize < data.total : false;
@@ -58,9 +86,16 @@ export default function ArticlesSection() {
         </button>
       </div>
       <div id="kh-articles">
-        {data?.articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        {error ? (
+          <p className="articles-error">
+            We couldn&rsquo;t load articles right now.{' '}
+            <button type="button" onClick={() => setReloadNonce((n) => n + 1)}>Try again</button>
+          </p>
+        ) : (
+          data?.articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))
+        )}
       </div>
     </div>
   );

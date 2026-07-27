@@ -24,14 +24,24 @@ export interface CityHeroProps {
   heroImageUrl: string;
   /** The dispatching office (NAP link + address). */
   office: Office;
-  /** Google Business Profile label suffix, e.g. "Elgin". */
-  gbpLabel: string;
+  /**
+   * Google Business Profile label suffix, e.g. "Elgin" → "…Sewer & Drain -
+   * Elgin". Omit (or pass empty) to render the bare "…Sewer & Drain" name — used
+   * by non-city consumers like the Join Our Team page (Brief 109).
+   */
+  gbpLabel?: string;
   /** Areas-served region label. */
   area: string;
   /** Elfsight widget UUID for the hero reviews pill. */
   elfsightHeroId: string;
   /** Optional hero callout (IThin). */
   callout?: string;
+  /**
+   * Optional CTA override (Brief 109). When provided, replaces the default phone
+   * button — e.g. the Join Our Team hero's "JOIN US" → external careers portal.
+   * `external` opens in a new tab. City pages omit this and keep the phone CTA.
+   */
+  cta?: { label: string; href: string; external?: boolean };
 }
 
 export default async function CityHero({
@@ -43,6 +53,7 @@ export default async function CityHero({
   area,
   elfsightHeroId,
   callout,
+  cta,
 }: CityHeroProps) {
   const settings = await getGlobalSettingsCached();
   return (
@@ -64,7 +75,7 @@ export default async function CityHero({
             <div className="row">
               <p>Local Office:</p>
               <a target="_blank" rel="noreferrer" href={office.url}>
-                J. Blanton Plumbing, Sewer &amp; Drain - {gbpLabel}
+                J. Blanton Plumbing, Sewer &amp; Drain{gbpLabel ? ` - ${gbpLabel}` : ''}
               </a>
             </div>
             <p>
@@ -84,13 +95,23 @@ export default async function CityHero({
             </div>
           </div>
 
-          <a
-            className="hero-link-button mt-[15px] inline-flex w-max items-center gap-2 rounded-[10px] bg-accent-500 px-[30px] py-[10px] text-white shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors hover:bg-brand-600"
-            href={settings.phoneHref}
-          >
-            <Phone className="h-5 w-5" strokeWidth={2.5} aria-hidden="true" />
-            <span>{settings.phoneDisplay}</span>
-          </a>
+          {cta ? (
+            <a
+              className="hero-link-button mt-[15px] inline-flex w-max items-center gap-2 rounded-[10px] bg-accent-500 px-[30px] py-[10px] text-white shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors hover:bg-brand-600"
+              href={cta.href}
+              {...(cta.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+            >
+              <span>{cta.label}</span>
+            </a>
+          ) : (
+            <a
+              className="hero-link-button mt-[15px] inline-flex w-max items-center gap-2 rounded-[10px] bg-accent-500 px-[30px] py-[10px] text-white shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors hover:bg-brand-600"
+              href={settings.phoneHref}
+            >
+              <Phone className="h-5 w-5" strokeWidth={2.5} aria-hidden="true" />
+              <span>{settings.phoneDisplay}</span>
+            </a>
+          )}
 
           {callout && <p className="callout">{callout}</p>}
         </div>

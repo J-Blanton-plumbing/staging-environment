@@ -180,6 +180,20 @@
   grid-template-columns: auto auto auto;
   gap: 20px;
 }
+/* Brief 108 (Group D1): retryable notice shown if the articles endpoint fails,
+   so the section degrades gracefully instead of hanging in "Loading…". */
+.kh-page .kh #kh-articles .articles-error {
+  grid-column: 1 / -1;
+  font-family: var(--font-nunito), sans-serif;
+  font-size: 18px;
+  color: #0a1b2e;
+}
+.kh-page .kh #kh-articles .articles-error button {
+  color: #bc0e0e;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 /* ---- FAQs ------------------------------------------------------------------ */
 .kh-page .kh .faqs {

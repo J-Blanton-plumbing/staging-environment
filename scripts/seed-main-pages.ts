@@ -1,4 +1,6 @@
 import { Pool } from 'pg';
+import { HIRING_CMS_FIELDS } from '../src/lib/content/is-hiring';
+import { PRIVACY_POLICY_CMS_FIELDS } from '../src/lib/content/privacy-policy';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
@@ -113,6 +115,20 @@ const pages: Array<{ slug: string; content: Record<string, unknown> }> = [
       plumbing_issue_label: 'HAVE A PLUMBING ISSUE?',
       plumbing_issue_body: "Dealing with a plumbing problem? Don't worry – J Blanton Plumbing is here to help. From emergency repairs to routine maintenance, our licensed professionals are just a call away. Click the button below to schedule a service and let us quickly diagnose the issue and provide reliable, high-quality solutions to get your home or business back on track.",
     },
+  },
+  {
+    // Brief 109: "Join Our Team" recruiting page. Copy lives canonically in
+    // src/lib/content/is-hiring.ts so the seed, the CMS editor and the live
+    // page never drift.
+    slug: 'j-blanton-is-hiring',
+    content: HIRING_CMS_FIELDS,
+  },
+  {
+    // Brief 110: "Terms of Use & Privacy Policy" legal page. Copy lives
+    // canonically in src/lib/content/privacy-policy.ts so the seed, the CMS
+    // editor and the live page never drift.
+    slug: 'privacy-policy',
+    content: PRIVACY_POLICY_CMS_FIELDS,
   },
 ];
 

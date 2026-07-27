@@ -1,0 +1,48 @@
+/*
+ * Privacy Policy legal body (Brief 110).
+ *
+ * The Terms of Use & Privacy Policy body is injected via
+ * `dangerouslySetInnerHTML` from a CMS rich-text field, so Tailwind utility
+ * classes cannot reach its child tags — the block styling lives here.
+ *
+ * Single-column long-form document: Carmine (#BC0E0E) sub-headings, Midnight
+ * (#0A1B2E) body copy on the cream content wrapper. No pure black. Colours are
+ * the brand constants from brand-rules.md.
+ */
+
+.privacy-body {
+  max-width: 900px;
+}
+
+.privacy-body h2 {
+  font-family: var(--font-industry), system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: #bc0e0e; /* Carmine */
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.privacy-body h2:not(:first-child) {
+  /* Space before the "Privacy Policy for J. Blanton" sub-heading. */
+  margin-top: 2.5rem;
+}
+
+.privacy-body p {
+  color: #0a1b2e; /* Midnight */
+  line-height: 1.7;
+  margin-bottom: 1.1rem;
+}
+
+.privacy-body a {
+  color: #1560e6; /* Cerulean */
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  .privacy-body h2 {
+    font-size: 2rem;
+  }
+}

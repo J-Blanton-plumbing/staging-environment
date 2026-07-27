@@ -3,13 +3,20 @@ import pool from '@/lib/db';
 
 const PAGE_SIZE = 9;
 
+// Brief 108 (Group D1): this handler reads query params and hits the DB per
+// request — force it dynamic so it is never statically evaluated/cached at build
+// time (cf. the CMS admin GET-route caching fix), which would otherwise serve a
+// stale/empty payload and leave the Knowledge Hub grid blank.
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   const pageParam = request.nextUrl.searchParams.get('page');
   const page = Math.max(0, parseInt(pageParam ?? '0', 10) || 0);
   const offset = page * PAGE_SIZE;
 
-  const client = await pool.connect();
+  let client;
   try {
+    client = await pool.connect();
     const [rows, countRow] = await Promise.all([
       client.query(
         `SELECT slug, title, excerpt, image, created_at
@@ -39,7 +46,17 @@ export async function GET(request: NextRequest) {
     }));
 
     return NextResponse.json({ articles, total, page, pageSize: PAGE_SIZE });
+  } catch (err) {
+    // Never surface a non-JSON 500 to the client: the fetch in ArticlesSection
+    // parses the body as JSON, and a raw error page would reject the promise and
+    // hang the "Loading…" state (OC-08). Return a well-formed empty payload with
+    // a 500 status so the client can show its retryable error state cleanly.
+    console.error('GET /api/articles failed:', err);
+    return NextResponse.json(
+      { articles: [], total: 0, page, pageSize: PAGE_SIZE, error: 'articles_unavailable' },
+      { status: 500 }
+    );
   } finally {
-    client.release();
+    client?.release();
   }
 }

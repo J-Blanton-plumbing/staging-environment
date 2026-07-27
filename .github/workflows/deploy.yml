@@ -44,6 +44,15 @@ jobs:
             # offices data. Both are safe no-ops once the DB is in sync.
             npx ts-node --project tsconfig.scripts.json scripts/ensure-schema.ts
             npx ts-node --project tsconfig.scripts.json scripts/migrate-global-settings.ts
+            # Brief 109: seed the "Join Our Team" (/j-blanton-is-hiring) main_pages
+            # row so its CMS editor loads/saves. Idempotent INSERT ... ON CONFLICT
+            # DO NOTHING — a safe no-op once the row exists, never clobbers edits.
+            npx ts-node --project tsconfig.scripts.json scripts/seed-hiring-page.ts
+            # Brief 110: seed the "Terms of Use & Privacy Policy" (/privacy-policy)
+            # main_pages row so its CMS editor loads/saves. Idempotent INSERT ...
+            # ON CONFLICT DO NOTHING — a safe no-op once the row exists, never
+            # clobbers edits.
+            npx ts-node --project tsconfig.scripts.json scripts/seed-privacy-policy-page.ts
             pm2 restart jblanton --update-env
 
       - name: Post-deploy health check

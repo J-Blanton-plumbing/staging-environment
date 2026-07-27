@@ -45,6 +45,7 @@ export type OfficeKey =
   | 'elgin'
   | 'arlington-heights'
   | 'northbrook'
+  | 'elmhurst'
   | 'hinsdale'
   | 'naperville'
   | 'evanston'
@@ -117,6 +118,13 @@ assignOffice('evanston', ['evanston', ...EVANSTON_CITIES]);
 assignOffice('algonquin', ['algonquin']);
 assignOffice('geneva', ['geneva']);
 assignOffice('chicago-lincoln-park', ['chicago-lincoln-park']);
+// Brief 108 (Group A): Elmhurst is its own service-center office (see
+// global_settings.offices) but was never in the theme's $nap_map, so it had no
+// registry entry and `/elmhurst` 404'd from the shared footer. Map it to its own
+// office key so its NAP block resolves to the Elmhurst address. Northbrook is
+// already mapped above (it's a NORTHBROOK_CITIES host); it only needed removing
+// from PENDING_LOCAL_OFFICE below.
+assignOffice('elmhurst', ['elmhurst']);
 // ── Cities imported from WordPress XML export (brief-50, Track C) ──────────
 assignOffice('chicago-ravenswood', ['alsip', 'arbury-hills', 'blue-island', 'bonnie-brae', 'chicago', 'chicago-albany-park', 'chicago-andersonville', 'chicago-austin', 'chicago-avondale', 'chicago-belmont-cragin', 'chicago-dunning', 'chicago-edgewater', 'chicago-edison-park', 'chicago-forest-glen', 'chicago-heights', 'chicago-hermosa', 'chicago-humboldt-park', 'chicago-irving-park', 'chicago-jefferson-park', 'chicago-lake-view', 'chicago-lincoln-square', 'chicago-logan-square', 'chicago-montclare', 'chicago-north-center', 'chicago-north-park', 'chicago-norwood-park', 'chicago-ohare', 'chicago-portage-park', 'chicago-ravenswood', 'chicago-rogers-park', 'chicago-uptown', 'chicago-west-ridge', 'chicago-west-town', 'country-club-hills', 'crest-hill', 'des-plaines', 'fairmont', 'flossmoor', 'forest-park', 'frankfort', 'frankfort-square', 'glenview', 'golf', 'harvey', 'homer-glen', 'homewood', 'ingalls-park', 'joliet', 'lemont', 'lincolnwood', 'lockport', 'lockport-heights', 'manhattan', 'markham', 'matteson', 'midlothian', 'mokena', 'new-lenox', 'niles', 'norridge', 'oak-forest', 'oak-park', 'orland-park', 'palos-heights', 'palos-hills', 'park-forest', 'park-ridge', 'preston-heights', 'river-forest', 'riverside', 'rockdale', 'roseland', 'rosemont', 'schiller-park', 'south-holland', 'tinley-park']);
 
@@ -133,6 +141,9 @@ assignArea('Northwest Suburban Chicago', [
 ]);
 assignArea('Northern Suburban Chicago', ['northbrook', ...NORTHBROOK_CITIES]);
 assignArea('Western Suburbs', ['hinsdale', ...HINSDALE_CITIES]);
+// Brief 108 (Group A): Elmhurst (DuPage County) sits with the other western
+// suburbs — same region label as the Hinsdale-office group above.
+assignArea('Western Suburbs', ['elmhurst']);
 assignArea('Western Suburban Chicago', ['naperville', ...NAPERVILLE_CITIES, 'geneva']);
 assignArea('North Shore Chicagoland', ['evanston', ...EVANSTON_CITIES]);
 // NB: 'chicago-lincoln-park' is in $nap_map but NOT $areas_map → it falls to the
@@ -173,15 +184,22 @@ function displayName(slug: string): string {
 /* ── Page-type assignment ───────────────────────────────────────────────────── */
 /** Office host cities (factual `hasOffice: true`). */
 const OFFICE_HOSTS = new Set<string>([
-  'mchenry', 'elgin', 'arlington-heights', 'northbrook', 'hinsdale', 'naperville', 'evanston',
+  'mchenry', 'elgin', 'arlington-heights', 'northbrook', 'elmhurst', 'hinsdale', 'naperville', 'evanston',
   'algonquin', 'geneva', 'chicago-lincoln-park',
 ]);
 
 /**
  * Local Office cities currently BUILT (have a copy file + the video-hero data).
- * Northbrook + Elmhurst are also Local Office but await their Brief-09 data drop,
- * so they're excluded here (Elmhurst isn't in the theme maps at all). They render
- * once `northbrook.ts` / `elmhurst.ts` land + a registry line is added.
+ *
+ * Brief 108 (Group A): Northbrook + Elmhurst are office locations shown in the
+ * shared footer, so their `/{slug}` links must resolve site-wide. They don't yet
+ * have a dedicated Local Office copy file or a DB `city_pages` row, so rather than
+ * 404 them (the bug) or mark them `local-office-v2` (which `notFound()`s without a
+ * DB row), they render as Coverage-Area office-host pages — the same working
+ * template the other office hosts without a copy file use (Arlington Heights,
+ * Hinsdale, Naperville, …). Northbrook auto-generates its coverage entry from the
+ * `cityToOffice`/`cityToArea` maps; Elmhurst gains its own office key above. When
+ * the Local Office copy drop lands, add a `local-office`/`-v2` entry + copy file.
  */
 const BUILT_LOCAL_OFFICE: RegistryEntry[] = [
   { slug: 'evanston', name: 'Evanston', type: 'local-office', hasOffice: true },
@@ -198,8 +216,12 @@ const LOCAL_OFFICE_V2: RegistryEntry[] = [
   { slug: 'algonquin', name: 'Algonquin', type: 'local-office', hasOffice: true },
   { slug: 'elgin', name: 'Elgin', type: 'local-office', hasOffice: true },
 ];
-/** Local Office slugs not yet built — kept OUT of the registry for now (flagged). */
-const PENDING_LOCAL_OFFICE = new Set<string>(['northbrook']);
+/**
+ * Local Office slugs not yet built — kept OUT of the registry for now (flagged).
+ * Brief 108 (Group A): Northbrook removed — it now renders as a Coverage-Area
+ * office-host page so its shared-footer link resolves (see BUILT_LOCAL_OFFICE).
+ */
+const PENDING_LOCAL_OFFICE = new Set<string>([]);
 
 /* ── The registry (drives generateStaticParams + the §10 grid) ──────────────── */
 const localOfficeSlugs = new Set(

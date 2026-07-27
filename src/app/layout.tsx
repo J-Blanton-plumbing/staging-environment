@@ -5,6 +5,7 @@ import { Nunito } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/SiteShell';
 import InvolveMeScript from '@/components/InvolveMeScript';
+import InvolveMePopupBinder from '@/components/InvolveMePopupBinder';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
@@ -83,6 +84,9 @@ export default async function RootLayout({
         <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />
         {/* involve.me popup ("schedule-service-new") + UTM tracker */}
         <InvolveMeScript />
+        {/* Brief 108 (Group B): re-binds involve.me CTAs that mount after a
+            client-side navigation, which the embed script's one-time scan misses. */}
+        <InvolveMePopupBinder />
       </body>
     </html>
   );
