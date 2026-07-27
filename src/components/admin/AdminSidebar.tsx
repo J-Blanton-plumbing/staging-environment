@@ -133,6 +133,11 @@ export default function AdminSidebar({
           <div className="border-t border-admin-outline-variant/10 pt-2">
             <TopLink href="/admin/blocks" label="Blocks" icon="widgets" active={pathname === '/admin/blocks'} />
           </div>
+
+          {/* Brief 112 (Track D): media library — browse/manage all uploaded media. */}
+          <div className="border-t border-admin-outline-variant/10 pt-2">
+            <TopLink href="/admin/media" label="Media Library" icon="perm_media" active={pathname === '/admin/media'} />
+          </div>
         </nav>
 
         {/* Footer */}

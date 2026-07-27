@@ -44,6 +44,11 @@ jobs:
             # offices data. Both are safe no-ops once the DB is in sync.
             npx ts-node --project tsconfig.scripts.json scripts/ensure-schema.ts
             npx ts-node --project tsconfig.scripts.json scripts/migrate-global-settings.ts
+            # Brief 112: create the cms_media catalog table and backfill a row for
+            # every file already in public/uploads/cms/. Idempotent — CREATE TABLE
+            # IF NOT EXISTS + INSERT ... ON CONFLICT (url) DO NOTHING, so re-running
+            # never duplicates rows or clobbers editor-added alt text/captions.
+            npx ts-node --project tsconfig.scripts.json scripts/migrate-brief-112-media.ts
             # Brief 109: seed the "Join Our Team" (/j-blanton-is-hiring) main_pages
             # row so its CMS editor loads/saves. Idempotent INSERT ... ON CONFLICT
             # DO NOTHING — a safe no-op once the row exists, never clobbers edits.
