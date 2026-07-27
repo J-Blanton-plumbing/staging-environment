@@ -22,6 +22,8 @@ export interface HiringContent {
   hero: {
     /** H1. */
     heading: string;
+    /** Hero background image (CMS-editable via ImageUploaderField). */
+    image: string;
     /** Primary CTA — external application portal (fixed, not CMS-editable). */
     cta: { label: string; href: string };
   };
@@ -29,6 +31,8 @@ export interface HiringContent {
     heading: string;
     intro: string;
     paragraph: string;
+    /** Body section image beside the hiring copy (CMS-editable). */
+    image: string;
     benefitsLabel: string;
     benefits: string[];
     candidatesLabel: string;
@@ -39,6 +43,9 @@ export interface HiringContent {
     positions: string[];
   };
 }
+
+/** CDN base for the default brand imagery (same host the rest of the site uses). */
+const CDN = 'https://d1rplazj5a80fb.cloudfront.net';
 
 export const IS_HIRING: HiringContent = {
   meta: {
@@ -51,6 +58,7 @@ export const IS_HIRING: HiringContent = {
   hero: {
     heading:
       'Join Our Team: Exciting Opportunities at JBP for Skilled Plumbers – Benefits & Signing Bonus Included!',
+    image: `${CDN}/images/hiring.webp`,
     cta: { label: 'JOIN US', href: 'https://i.jblantonplumbing.com/careers' },
   },
   body: {
@@ -58,6 +66,7 @@ export const IS_HIRING: HiringContent = {
     intro: 'Grow with us! Submit your application to join the JBP team!',
     paragraph:
       'We are a third-generation company with a family-oriented, teamwork-focused culture. We value one another and constantly work to improve our relationships, work, and knowledge. We strive every day to give our employees the best working environment possible and provide our customers with 5-star service every time we knock on their door. Members of the J. Blanton team receive ongoing education in sales, leadership, and mechanical techniques, as well as the advantage of using technology to assist you throughout your daily tasks.',
+    image: `${CDN}/images/manplumber.webp`,
     benefitsLabel: 'Employees Receive:',
     benefits: [
       'Hourly Pay',
@@ -95,9 +104,11 @@ export const IS_HIRING: HiringContent = {
  */
 export const HIRING_CMS_FIELDS = {
   hero_heading: IS_HIRING.hero.heading,
+  hero_image: IS_HIRING.hero.image,
   body_heading: IS_HIRING.body.heading,
   body_intro: IS_HIRING.body.intro,
   body_paragraph: IS_HIRING.body.paragraph,
+  body_image: IS_HIRING.body.image,
   benefits_label: IS_HIRING.body.benefitsLabel,
   benefits: IS_HIRING.body.benefits.join('\n'),
   candidates_label: IS_HIRING.body.candidatesLabel,

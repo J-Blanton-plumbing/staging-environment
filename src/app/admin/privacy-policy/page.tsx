@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
+import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
+import { PRIVACY_POLICY } from '@/lib/content/privacy-policy';
 
 /**
  * /admin/privacy-policy — CMS editor for the "Terms of Use & Privacy Policy"
@@ -29,6 +31,7 @@ import { SITE } from '@/lib/site';
 
 interface FormState {
   hero_heading: string;
+  hero_image: string;
   body_html: string;
   meta_title: string;
   meta_description: string;
@@ -37,6 +40,7 @@ interface FormState {
 
 const EMPTY: FormState = {
   hero_heading: '',
+  hero_image: '',
   body_html: '',
   meta_title: '',
   meta_description: '',
@@ -64,6 +68,9 @@ export default function PrivacyPolicyAdminPage() {
       .then(data => {
         setForm({
           hero_heading: data.hero_heading ?? '',
+          // Fall back to the static default so the editor always shows the
+          // current hero image, even against a row seeded before this field existed.
+          hero_image: data.hero_image || PRIVACY_POLICY.hero.image,
           body_html: data.body_html ?? '',
           meta_title: data.meta_title ?? '',
           meta_description: data.meta_description ?? '',
@@ -140,6 +147,7 @@ export default function PrivacyPolicyAdminPage() {
           <h2 style={secHead}>Hero</h2>
           <label style={lbl}>Heading (H1)</label>
           <input className="admin-field" style={s} value={form.hero_heading} onChange={e => set('hero_heading', e.target.value)} />
+          <ImageUploaderField label="Hero Image" value={form.hero_image} onChange={v => set('hero_image', v)} />
         </div>
 
         <div style={sec}>

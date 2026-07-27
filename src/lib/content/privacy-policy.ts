@@ -33,6 +33,8 @@ export interface PrivacyPolicyContent {
   hero: {
     /** H1 (CityHero CSS uppercases it). */
     heading: string;
+    /** Hero background/side image URL (CMS-editable, ImageUploaderField). */
+    image: string;
   };
   body: {
     /** Long-form Terms of Use + Privacy Policy, verbatim from the live page. */
@@ -69,6 +71,7 @@ export const PRIVACY_POLICY: PrivacyPolicyContent = {
   },
   hero: {
     heading: 'Terms of Use & Privacy Policy – J. Blanton Plumbing Plumber',
+    image: 'https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp',
   },
   body: {
     html: BODY_HTML,
@@ -84,5 +87,6 @@ export const PRIVACY_POLICY: PrivacyPolicyContent = {
  */
 export const PRIVACY_POLICY_CMS_FIELDS = {
   hero_heading: PRIVACY_POLICY.hero.heading,
+  hero_image: PRIVACY_POLICY.hero.image,
   body_html: PRIVACY_POLICY.body.html,
 } as const;

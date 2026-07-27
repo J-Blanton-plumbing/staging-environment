@@ -71,6 +71,7 @@ export default async function PrivacyPolicyPage() {
 
   const S = PRIVACY_POLICY;
   const heroHeading = m(d.hero_heading, S.hero.heading);
+  const heroImage = m(d.hero_image, S.hero.image);
   const bodyHtml = renderCmsBlock(m(d.body_html, S.body.html), settings);
 
   const articles = getArticles(DEFAULT_ARTICLE_SLUGS);
@@ -97,7 +98,7 @@ export default async function PrivacyPolicyPage() {
       <CityHero
         cityName="J. Blanton Plumbing"
         h1={heroHeading}
-        heroImageUrl="https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp"
+        heroImageUrl={heroImage}
         office={getOffice(SLUG, settings.offices)}
         area={getArea(SLUG)}
         elfsightHeroId={elfsightHeroId}

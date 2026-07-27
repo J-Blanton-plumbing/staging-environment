@@ -61,12 +61,14 @@ export default async function JoinOurTeamPage() {
   const S = IS_HIRING;
   const hero = {
     heading: m(d.hero_heading, S.hero.heading),
+    image: m(d.hero_image, S.hero.image),
     cta: S.hero.cta, // fixed external careers link — not DB-driven
   };
   const body = {
     heading: m(d.body_heading, S.body.heading),
     intro: m(d.body_intro, S.body.intro),
     paragraph: m(d.body_paragraph, S.body.paragraph),
+    image: m(d.body_image, S.body.image),
     benefitsLabel: m(d.benefits_label, S.body.benefitsLabel),
     benefits: splitHiringList(d.benefits, S.body.benefits),
     candidatesLabel: m(d.candidates_label, S.body.candidatesLabel),
@@ -101,7 +103,7 @@ export default async function JoinOurTeamPage() {
       <CityHero
         cityName="J. Blanton Plumbing"
         h1={hero.heading}
-        heroImageUrl="https://d1rplazj5a80fb.cloudfront.net/images/hiring.webp"
+        heroImageUrl={hero.image}
         office={getOffice(SLUG, settings.offices)}
         area={getArea(SLUG)}
         elfsightHeroId={elfsightHeroId}
@@ -122,18 +124,40 @@ export default async function JoinOurTeamPage() {
             title="J. Blanton Plumbing service area"
           />
 
-          {/* ===== 4. "We Are Hiring!" body (the only bespoke section) ===== */}
-          <section className="hiring-body my-[70px] lg:my-[100px]">
-            <p className="mb-2 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
-              {body.heading}
-            </p>
-            <p className="mb-6 font-display text-[18px] font-bold text-navy-800">{body.intro}</p>
-            <p className="mb-10 max-w-[900px] leading-relaxed text-navy-800">{body.paragraph}</p>
+          {/* ===== 4. "We Are Hiring!" body =====
+              Two-column .f2 layout matching the live page: editable image on the
+              left (default manplumber), hiring copy on the right. Stacks on
+              mobile. Same grid pattern as CoverageAreaCity's manplumber block. */}
+          <section className="hiring-body my-[70px] grid grid-cols-1 items-start gap-10 lg:my-[100px] lg:grid-cols-[470px_1fr]">
+            {/* Image column — hidden on mobile; a mobile copy renders inside the
+                text column below (mirrors the theme's .f2 behavior). */}
+            <div className="relative hidden min-h-[300px] overflow-hidden rounded-[5px] lg:block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={body.image}
+                alt="J. Blanton Plumbing team"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
 
-            {/* Two lists render STACKED (one above the other), matching the live
-                page's actual layout — verified against jblantonplumbing.com at
-                desktop; they are NOT side-by-side (Brief 109 §5 note). */}
-            <div className="max-w-[900px]">
+            <div>
+              <p className="mb-2 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
+                {body.heading}
+              </p>
+              <p className="mb-6 font-display text-[18px] font-bold text-navy-800">{body.intro}</p>
+
+              {/* Mobile-only image (theme shows the .f2 image above the copy under 1024px). */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={body.image}
+                alt=""
+                className="mb-6 block w-full max-w-[470px] rounded-[5px] lg:hidden"
+              />
+
+              <p className="mb-10 leading-relaxed text-navy-800">{body.paragraph}</p>
+
+              {/* Two lists render STACKED (one above the other), matching the live
+                  page's actual layout — verified against jblantonplumbing.com. */}
               <p className="mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
                 {body.benefitsLabel}
               </p>
@@ -151,31 +175,31 @@ export default async function JoinOurTeamPage() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+
+              <p className="mt-10 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
+                {body.signingBonus}
+              </p>
+              <p className="mt-4 leading-relaxed text-navy-800">{body.readyParagraph}</p>
+
+              <p className="mt-8 mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
+                {body.positionsLabel}
+              </p>
+              <ul className="list-disc space-y-1 pl-6 leading-relaxed text-navy-800">
+                {body.positions.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              {/* Primary apply CTA (mirrors the hero button — fixed external portal). */}
+              <a
+                className="hero-link-button mt-8 inline-flex w-max items-center gap-2 rounded-[10px] bg-accent-500 px-[30px] py-[10px] text-white shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors hover:bg-brand-600"
+                href={hero.cta.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>{hero.cta.label}</span>
+              </a>
             </div>
-
-            <p className="mt-10 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
-              {body.signingBonus}
-            </p>
-            <p className="mt-4 max-w-[900px] leading-relaxed text-navy-800">{body.readyParagraph}</p>
-
-            <p className="mt-8 mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
-              {body.positionsLabel}
-            </p>
-            <ul className="list-disc space-y-1 pl-6 leading-relaxed text-navy-800">
-              {body.positions.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-
-            {/* Primary apply CTA (mirrors the hero button — fixed external portal). */}
-            <a
-              className="hero-link-button mt-8 inline-flex w-max items-center gap-2 rounded-[10px] bg-accent-500 px-[30px] py-[10px] text-white shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors hover:bg-brand-600"
-              href={hero.cta.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span>{hero.cta.label}</span>
-            </a>
           </section>
 
           {/* ===== 5. OUR SERVICES (shared static menu) ===== */}

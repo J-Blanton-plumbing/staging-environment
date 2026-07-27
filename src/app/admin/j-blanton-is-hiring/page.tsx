@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
+import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
 /**
@@ -23,9 +24,11 @@ const SLUG = 'j-blanton-is-hiring';
 
 interface FormState {
   hero_heading: string;
+  hero_image: string;
   body_heading: string;
   body_intro: string;
   body_paragraph: string;
+  body_image: string;
   benefits_label: string;
   benefits: string;
   candidates_label: string;
@@ -40,9 +43,11 @@ interface FormState {
 
 const EMPTY: FormState = {
   hero_heading: '',
+  hero_image: '',
   body_heading: '',
   body_intro: '',
   body_paragraph: '',
+  body_image: '',
   benefits_label: '',
   benefits: '',
   candidates_label: '',
@@ -77,9 +82,11 @@ export default function JoinOurTeamAdminPage() {
       .then(data => {
         setForm({
           hero_heading: data.hero_heading ?? '',
+          hero_image: data.hero_image ?? '',
           body_heading: data.body_heading ?? '',
           body_intro: data.body_intro ?? '',
           body_paragraph: data.body_paragraph ?? '',
+          body_image: data.body_image ?? '',
           benefits_label: data.benefits_label ?? '',
           benefits: data.benefits ?? '',
           candidates_label: data.candidates_label ?? '',
@@ -153,6 +160,7 @@ export default function JoinOurTeamAdminPage() {
           <h2 style={secHead}>Hero</h2>
           <label style={lbl}>H1 Heading</label>
           <textarea className="admin-field" style={{ ...s, minHeight: '4rem' }} value={form.hero_heading} onChange={e => set('hero_heading', e.target.value)} />
+          <ImageUploaderField label="Hero Image" value={form.hero_image} onChange={v => set('hero_image', v)} />
         </div>
 
         <div style={sec}>
@@ -163,6 +171,7 @@ export default function JoinOurTeamAdminPage() {
           <input className="admin-field" style={s} value={form.body_intro} onChange={e => set('body_intro', e.target.value)} />
           <label style={lbl}>Paragraph</label>
           <textarea className="admin-field" style={{ ...s, minHeight: '8rem' }} value={form.body_paragraph} onChange={e => set('body_paragraph', e.target.value)} />
+          <ImageUploaderField label="Body Image (beside the hiring copy)" value={form.body_image} onChange={v => set('body_image', v)} />
         </div>
 
         <div style={sec}>
