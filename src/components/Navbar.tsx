@@ -69,7 +69,7 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center px-[24px] xl:px-[30px] font-display font-medium text-brand-600 hover:text-brand-700 hover:bg-brand-50 text-[14px] tracking-wide transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
+                className="flex items-center px-[15px] min-[1525px]:px-[30px] font-display font-medium text-brand-600 hover:text-brand-700 hover:bg-brand-50 text-[1.05vw] min-[1525px]:text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
               >
                 {link.label}
               </Link>
@@ -78,9 +78,9 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
             {/* Phone — uses the call-tracking headerPhone (Global Settings → DB) */}
             <Link
               href={settings.headerPhoneHref}
-              className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
+              className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-medium text-[1.05vw] min-[1525px]:text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
             >
-              <Phone className="h-[20px] w-[20px] mr-1.5" strokeWidth={2.5} />
+              <Phone className="h-[22px] w-[22px] mr-1.5" strokeWidth={2.5} />
               {settings.headerPhone}
             </Link>
 
@@ -88,7 +88,7 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
             <ScheduleButton
               variant="blue"
               size="md"
-              className="rounded-none px-8 h-full text-[14px] tracking-wide font-semibold"
+              className="rounded-none px-[15px] xl:px-[30px] h-full text-[1vw] tracking-normal font-medium"
             />
 
           </div>

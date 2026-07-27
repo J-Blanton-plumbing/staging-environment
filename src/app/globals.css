@@ -257,7 +257,7 @@
   background-color: #bc0e0e;
   background-image: url('/images/patterns/Wrench Filled Red BG.png');
   background-repeat: repeat;
-  min-height: 460px;
+  min-height: 620px;
 }
 .city-page-hero .hero-contents .w {
   height: 100%;
@@ -271,7 +271,7 @@
   position: relative;
   z-index: 2;
   text-transform: uppercase;
-  padding: 40px 0;
+  padding: 90px 0 40px;
 }
 .city-page-hero .hero-contents .w h1 {
   font-family: var(--font-industry), Arial, sans-serif;
