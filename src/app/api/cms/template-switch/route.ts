@@ -38,14 +38,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { missing } = await switchTemplate({
+    const { missing, restored } = await switchTemplate({
       pageType: pageType as 'city',
       pageSlug,
       toTemplate,
       switchedBy: session?.userId ?? null,
     });
 
-    return NextResponse.json({ success: true, missingFields: missing });
+    // Brief 116 (Track B): restoredFields = template-only fields pre-filled from
+    // the last time this page was on the target template (template_switch_archive).
+    return NextResponse.json({ success: true, missingFields: missing, restoredFields: restored });
   } catch (err) {
     console.error('[cms/template-switch POST]', err);
     const msg = err instanceof Error ? err.message : 'Failed to switch template';

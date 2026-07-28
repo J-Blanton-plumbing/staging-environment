@@ -12,10 +12,12 @@
  * a rollback snapshot of each page's PRIMARY (first) instance per type — they
  * no longer drive the render once `blocks` is present.
  *
- * No HTML sanitization is needed here: every City V2 field renders as plain
- * JSX text (`{value}`), never `dangerouslySetInnerHTML` — confirmed by
- * reading `LocalOfficeCityV2.tsx`. Unlike sub-service's `ndcBody`/`introBody`,
- * nothing here needs the Brief 73 rich-text allow-list.
+ * Brief 115: this claim no longer holds for `noDripClub.ndcBody` — it now
+ * renders via `renderCmsBlock` + `dangerouslySetInnerHTML` (fixing the
+ * Algonquin `<ul>`/`&amp;` escaping bug), so it DOES need the Brief 73
+ * allow-list. See `CITY_V2_RICH_TEXT_DATA_KEYS` + `sanitizeCityV2BlockInstances`
+ * below, invoked from `city-pages.ts`'s writer. Every other City V2 field is
+ * still plain JSX text and still needs no sanitization.
  */
 
 import type {
@@ -167,6 +169,39 @@ export function assembleCityV2Blocks(f: CityV2LegacyFields, order: CityV2BlockTy
  * key out of the returned object entirely, so the caller's COALESCE preserves
  * whatever that column already held — it is a snapshot, not a live mirror.
  */
+/**
+ * Rich-text data keys per block type — sanitized on every instance on write
+ * (Brief 115, Track A). Mirrors `RICH_TEXT_DATA_KEYS` in `sub-service-blocks.ts`
+ * exactly, including its scope: only the long-form body copy field that is
+ * actually rendered as HTML is registered, not headings or the `finalCta`
+ * CTA body (which stays plain JSX, matching the sub-service precedent).
+ */
+export const CITY_V2_RICH_TEXT_DATA_KEYS: Partial<Record<CityV2BlockType, string[]>> = {
+  noDripClub: ['ndcBody'],
+};
+
+/**
+ * Return a copy of `blocks` with every instance's rich-text data keys sanitized
+ * via `sanitize` (the caller passes the shared Brief 73 `sanitizeCmsHtml`).
+ * Closes the write-path gap Brief 114 §4.1 found: City V2's `blocks` JSONB
+ * previously had no sanitization of any kind. Mirrors `sanitizeBlockInstances`
+ * in `sub-service-blocks.ts`.
+ */
+export function sanitizeCityV2BlockInstances(
+  blocks: CityV2BlockInstance[],
+  sanitize: (v: string | null | undefined) => string
+): CityV2BlockInstance[] {
+  return blocks.map((b) => {
+    const keys = CITY_V2_RICH_TEXT_DATA_KEYS[b.type];
+    if (!keys || keys.length === 0) return b;
+    const data = { ...b.data };
+    for (const key of keys) {
+      if (typeof data[key] === 'string') data[key] = sanitize(data[key] as string);
+    }
+    return { ...b, data };
+  });
+}
+
 export function cityV2BlocksToFields(blocks: unknown): CityV2LegacyFields {
   const norm = normalizeCityV2Blocks(blocks);
   const fields: CityV2LegacyFields = {};

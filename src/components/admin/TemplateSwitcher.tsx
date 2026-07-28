@@ -25,6 +25,10 @@ interface Props {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   initialSelectedTemplate?: string;
+  // Brief 116 (Track C): the page's saved drafts/versions, so the warning can say
+  // what happens to them — a live switch does NOT move drafts along; they need
+  // the editor's "Move draft" action before they can publish again.
+  drafts?: Array<{ label: string; templateType: string | null }>;
 }
 
 export default function TemplateSwitcher({
@@ -39,6 +43,7 @@ export default function TemplateSwitcher({
   open: controlledOpen,
   onOpenChange,
   initialSelectedTemplate,
+  drafts,
 }: Props) {
   const [modalOpenState, setModalOpenState] = useState(false);
   const isControlled = controlledOpen !== undefined;
@@ -129,6 +134,13 @@ export default function TemplateSwitcher({
   }
 
   const cityLabel = pageSlug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
+  // Brief 116 (Track C): drafts that would be stranded by switching the live page
+  // to `selectedTemplate`. Drafts with no template stamp (older/non-city) publish
+  // regardless of template, so they never strand.
+  const strandedDrafts = (drafts ?? []).filter(
+    (d) => d.templateType != null && d.templateType !== selectedTemplate
+  );
 
   return (
     <>
@@ -268,6 +280,24 @@ export default function TemplateSwitcher({
               fields to the new template. Fields that don&rsquo;t carry over will need to be filled
               in manually.
             </div>
+
+            {/* Brief 116 (Track C): drafts do NOT come along on a live switch —
+                say so up front instead of letting Publish break the news. */}
+            {strandedDrafts.length > 0 && (
+              <div
+                style={{
+                  background: `${ADMIN_COLORS.warning}22`, border: `1px solid ${ADMIN_COLORS.warning}66`,
+                  borderRadius: '0.75rem', padding: '0.9rem 1rem',
+                  color: ADMIN_COLORS.onSurface, fontSize: '0.875rem', marginBottom: '1.5rem',
+                }}
+              >
+                <strong>⚠ {strandedDrafts.length === 1 ? 'You have a saved draft' : `You have ${strandedDrafts.length} saved drafts`} for this page
+                {strandedDrafts.length === 1 ? ` ("${strandedDrafts[0].label}")` : ''}.</strong>{' '}
+                {strandedDrafts.length === 1 ? 'It' : 'They'} will <em>not</em> move to the new template
+                automatically and can&rsquo;t be published until moved. After switching, use the
+                &ldquo;Move draft&rdquo; banner in the editor to re-template {strandedDrafts.length === 1 ? 'it' : 'them'}.
+              </div>
+            )}
 
             {/* Archive option */}
             <div style={{ marginBottom: '1.25rem' }}>
