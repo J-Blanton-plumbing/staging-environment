@@ -24,8 +24,19 @@ jobs:
             git fetch origin
             git reset --hard origin/main
             npm ci
-            rm -rf /var/www/jblanton/.next
-            npm run build
+            # Zero-downtime build (2026-07-28): the old `rm -rf .next && npm run
+            # build` wiped the live build out from under the running `next start`,
+            # so EVERY deploy served completely unstyled pages (all /_next/static
+            # assets 404'd) for the full multi-minute build — seen as "CSS totally
+            # broke" after each push. It also meant a failed build left the site
+            # dead. Instead, build into a side directory (next.config.mjs reads
+            # NEXT_DIST_DIR — set inline for this one command only, NEVER exported,
+            # so the pm2 app started below with --update-env can't inherit it and
+            # look for its build in the wrong place) while the live `.next` keeps
+            # serving untouched. If the build fails, `set -e` aborts here and the
+            # old version just keeps running.
+            rm -rf .next-build .next-prev
+            NEXT_DIST_DIR=.next-build npm run build
             # Apply idempotent DB schema migrations BEFORE restarting, so the
             # running app never references a column that doesn't exist yet.
             # This step was missing entirely: the pipeline only built + restarted,
@@ -58,6 +69,14 @@ jobs:
             # ON CONFLICT DO NOTHING — a safe no-op once the row exists, never
             # clobbers edits.
             npx ts-node --project tsconfig.scripts.json scripts/seed-privacy-policy-page.ts
+            # Swap the finished build into place — two renames, milliseconds of
+            # exposure instead of minutes. Then union the OLD build's static chunks
+            # into the new dir: filenames are content-hashed (never collide), and
+            # browsers holding pages rendered by the old process keep resolving
+            # their CSS/JS during the pm2 restart window instead of 404ing.
+            if [ -d .next ]; then mv .next .next-prev; fi
+            mv .next-build .next
+            if [ -d .next-prev/static ]; then cp -an .next-prev/static/. .next/static/ || true; fi
             # `pm2 restart jblanton` silently no-ops if pm2 has never registered an
             # app under that name — discovered 2026-07-28 when `pm2 list` on staging
             # returned zero processes despite the site being up (it was running as a
@@ -67,6 +86,7 @@ jobs:
             # deploy after that, so this step can never again quietly fail to apply
             # new code. See ecosystem.config.js for the process definition.
             pm2 startOrReload ecosystem.config.js --update-env
+            rm -rf .next-prev
 
       - name: Post-deploy health check
         uses: appleboy/ssh-action@v1.0.0

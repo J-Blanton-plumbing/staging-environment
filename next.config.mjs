@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Zero-downtime deploys: deploy.yml builds into a side directory
+  // (`NEXT_DIST_DIR=.next-build npm run build`) while the running `next start`
+  // keeps serving the untouched live `.next`, then swaps the finished build in.
+  // The env var is set ONLY for the build step — at runtime it is unset, so
+  // `next start` always serves plain `.next`. Local dev/builds are unaffected.
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   // sanitize-html pulls in ESM-only htmlparser2, which Next's webpack pass
   // cannot bundle (Brief 73). It only ever runs server-side (API routes +
   // server components), so leave it external and require it at runtime.
