@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, ArrowRight } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import ServiceCard from '@/components/ServiceCard';
 import ServicesAccordion from '@/components/ServicesAccordion';
@@ -69,24 +69,27 @@ export default async function HomePage() {
         <div className="test-hero-body absolute inset-0 z-[2] flex items-end">
           <div className="test-hero-contents w-[90%] mx-auto mb-[80px] lg:mb-[150px] flex flex-col lg:flex-row">
             <div className="l lg:w-1/2 lg:mr-[15px] relative mb-10 lg:mb-0">
-              {/* 24/7 badge sits ABOVE the headline, clear of the text (F-13 / §8) */}
+              {/* 24/7 badge overlaps the top of the headline, matching the live
+                  `.test-hero .l img` overlay (home.css:35-40, 119-123, 148-150) —
+                  absolutely positioned so it sits integrated into the title block
+                  instead of stacked above it as a separate element (brief-113 B1). */}
               <Image
                 src="/images/247.webp"
                 alt="24/7"
                 width={100}
                 height={100}
                 priority
-                className="block mb-4 w-[100px] h-[100px]"
+                className="absolute z-10 top-[-33px] left-[-35px] w-[100px] h-[100px] max-[780px]:w-[80px] max-[780px]:h-[80px] max-[780px]:top-[-30px] max-[780px]:left-[-20px] max-[390px]:left-[-10px]"
               />
-              <h1 className="font-display font-bold uppercase text-white text-[32px] md:text-[40px] leading-[1.05] tracking-tight">
+              <h1 className="font-display font-bold uppercase text-white text-[40px] leading-[1.05] tracking-tight max-[1280px]:text-[30px] max-[780px]:text-[26px]">
                 {home.hero.heading}
               </h1>
-              <h1 className="font-display font-bold uppercase text-[40px] md:text-[50px] leading-[1.05] tracking-tight">
+              <h1 className="font-display font-bold uppercase text-[50px] leading-[1.05] tracking-tight max-[780px]:text-[26px]">
                 <Link href={settings.phoneHref} className="text-white hover:text-brand-400 transition-colors">
                   {home.hero.headingCta}
                 </Link>
               </h1>
-              <h1 className="font-display font-bold uppercase text-white text-[28px] md:text-[40px] leading-[1.1] tracking-tight mt-[15px]">
+              <h1 className="font-display font-bold uppercase text-white text-[40px] leading-[1.1] tracking-tight mt-[15px] max-[1280px]:text-[30px] max-[780px]:text-[26px]">
                 {home.hero.headingTagline}
               </h1>
             </div>
@@ -121,14 +124,16 @@ export default async function HomePage() {
               {home.services.heading}
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-2xl">
-              <p className="text-navy-800 text-base leading-relaxed flex-1">
+              <p className="text-navy-800 font-sans text-[19px] leading-[30px] max-[1280px]:text-[16px] max-[770px]:leading-[26px] flex-1">
                 {home.services.intro}
               </p>
+              {/* Desktop-only — live hides this row's CTA on mobile (the accordion
+                  below has its own full-width "VIEW ALL SERVICES" button; brief-113 B2). */}
               <Link
                 href="/services"
-                className="flex-shrink-0 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded-full transition-colors duration-150 whitespace-nowrap"
+                className="link-button hidden md:flex flex-shrink-0"
               >
-                VIEW PAGE <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                VIEW PAGE
               </Link>
             </div>
           </div>
@@ -164,7 +169,7 @@ export default async function HomePage() {
         <div className="w-[90%] lg:w-[81%] mx-auto">
 
           {/* WHY — pt-130, flex space-between, YouTube iframe + content split */}
-          <section className="why pt-[130px] flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+          <section className="why pt-[130px] max-[900px]:pt-[50px] flex flex-col lg:flex-row lg:items-center justify-between gap-10">
             {/* mobile red label */}
             <p className="red-text why-label-mobile lg:hidden font-display font-bold text-brand-600 text-[28px] tracking-tight leading-none">
               {home.why.heading}
@@ -194,9 +199,9 @@ export default async function HomePage() {
               ))}
               <Link
                 href="/why-us"
-                className="link-button inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded-full transition-colors duration-150"
+                className="link-button max-[480px]:w-full"
               >
-                MEET OUR TEAM <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                MEET OUR TEAM
               </Link>
             </div>
           </section>
@@ -208,20 +213,22 @@ export default async function HomePage() {
           <NoDripClubSection body={HOME.noDripClub.body} />
 
           {/* KNOWLEDGE HUB — 120px top margin, 3-column articles grid */}
-          <section className="knowledge-hub mt-[120px] pb-[120px]">
+          <section className="knowledge-hub mt-[120px] max-[768px]:mt-[30px] pb-[120px] max-[768px]:pb-0">
             <div className="align1 knowledge-hub flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
                 {home.knowledgeHub.heading}
               </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-xl">
-                <p className="text-navy-800 text-base leading-relaxed flex-1">
+                <p className="text-navy-800 font-sans text-[19px] leading-[30px] max-[1280px]:text-[16px] max-[770px]:leading-[26px] flex-1">
                   {home.knowledgeHub.intro}
                 </p>
+                {/* Desktop-only — removes the phantom mobile button (brief-113 B4);
+                    live shows no "view all articles" CTA below ~770px. */}
                 <Link
                   href="/knowledge-hub"
-                  className="link-button flex-shrink-0 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-display font-semibold text-sm tracking-wider px-5 py-3 rounded-full transition-colors duration-150 whitespace-nowrap"
+                  className="link-button hidden md:flex flex-shrink-0"
                 >
-                  VIEW ALL ARTICLES <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                  VIEW ALL ARTICLES
                 </Link>
               </div>
             </div>

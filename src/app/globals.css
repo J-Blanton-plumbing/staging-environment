@@ -66,6 +66,40 @@
     line-height: 1.32;
     padding: 0 15px;
   }
+
+  /* Homepage — canonical section-CTA pill (brief-113 A1)
+     Live ground truth is jb-blanton/css/globals.css §110-122 (`.link-button`),
+     which OVERRIDES the 50px-radius `.home-link-button` quoted in home.css for
+     an unused hero variant — confirmed against the live "VIEW PAGE" screenshot
+     (cerulean, ~10px corner radius, no arrow). One class, no per-instance color/
+     radius/arrow overrides. Section CTAs (View all services / Meet our team /
+     View all articles) should carry ONLY this class plus layout utilities
+     (w-full, mt-*, hidden/flex) — never a color or shape utility. Placed
+     inside @layer components (not appended unlayered) so those Tailwind
+     layout utilities keep the ability to override it responsively. */
+  .link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #1560E6;
+    color: #fff;
+    border-radius: 10px;
+    height: 45px;
+    padding: 0 35px;
+    width: max-content;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: var(--font-industry), Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 150ms ease;
+  }
+  .link-button:hover {
+    /* Darker cerulean, never Carmine (brief-113 hard rule). */
+    background: #0f4dbf;
+  }
 }
 
 /* ============================================================================
@@ -503,7 +537,7 @@
     display: none;
   }
   .no-drip-club .no-drip-labels {
-    margin: 0;
+    margin: 0 0 15px 0;
     width: 100%;
     font-size: 34px;
     line-height: 1.1;
