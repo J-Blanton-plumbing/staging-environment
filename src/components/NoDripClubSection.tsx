@@ -12,22 +12,13 @@ import Image from 'next/image';
  *
  * Renders just the `.no-drip-club` card; the caller supplies the surrounding
  * Cream-width wrapper (homepage already does, the service template adds one).
- *
- * Brief 115: this is a shared component (homepage, Services index, and every
- * City V2 city all render it), so it does NOT call the renderer itself — each
- * caller renders its own `bodyHtml` (via `renderCmsBlock`) and hands this
- * component a ready-to-inject string. That way a change to one consumer's
- * render path can never regress the others. `bodyHtml` is injected via
- * `dangerouslySetInnerHTML` so block markup (real `<ul>`/`<li>`, `<h2>`/`<h3>`)
- * survives instead of being escaped — fixes the Algonquin City V2 bug where
- * raw `<ul>`/`&amp;` leaked into the page as visible text.
  */
 export default function NoDripClubSection({
-  bodyHtml,
+  body,
   ctaLabel = 'JOIN THE NO DRIP CLUB',
   ctaHref = '/no-drip-club',
 }: {
-  bodyHtml: string;
+  body: string;
   ctaLabel?: string;
   ctaHref?: string;
 }) {
@@ -46,7 +37,7 @@ export default function NoDripClubSection({
         <p>NO DRIP CLUB</p>
       </div>
       <div className="no-drip-content">
-        <div className="no-drip-body" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+        <p>{body}</p>
         <Link href={ctaHref}>{ctaLabel}</Link>
       </div>
     </div>

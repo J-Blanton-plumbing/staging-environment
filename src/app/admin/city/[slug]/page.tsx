@@ -340,10 +340,6 @@ export default function AdminCityPage() {
   // switching behind a plain radio picker.
   const [templateSwitcherOpen, setTemplateSwitcherOpen] = useState(false);
   const [pendingTemplate, setPendingTemplate] = useState('');
-  // Brief 116 (Track C): draft-reconciliation UI state — which draft a "Move
-  // draft" call is in flight for, and any error it produced.
-  const [movingDraftId, setMovingDraftId] = useState<number | null>(null);
-  const [reconcileError, setReconcileError] = useState('');
 
   // Brief 99 (Track D): City V2 block-editor UI state — mirrors the
   // sub-service editor (Briefs 90/91), scoped to this page's `form.blocks`.
@@ -483,55 +479,6 @@ export default function AdminCityPage() {
       .catch(() => { setStatus('error'); setErrorMsg('Failed to reload content after switch.'); });
   }
 
-  // Brief 116 (Track C): re-stamp + migrate a mismatched draft to the live page's
-  // template via the Track A endpoint, then re-read it (fresh content + new
-  // optimistic-lock version) so the form shows the migrated draft and the next
-  // save doesn't 409.
-  async function handleMoveDraft(draftId: number) {
-    setMovingDraftId(draftId);
-    setReconcileError('');
-    try {
-      const res = await fetch(`/api/cms/drafts/${draftId}/retemplate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ toTemplate: form.templateType }),
-      });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(json.error ?? 'Failed to move draft');
-
-      const dRes = await fetch(`/api/cms/drafts/${draftId}`);
-      if (dRes.ok) {
-        const draft = await dRes.json();
-        if (draft?.content && typeof draft.content === 'object') {
-          setForm(formFromApi(draft.content as Record<string, unknown>, form.templateType));
-        }
-      }
-      await dv.reloadAndActivate(draftId);
-
-      // A block selected under the old template is meaningless under the new one.
-      setCityV2SelectedId(null);
-      setCityV2SidebarTab('page');
-      setCityV2OpenGap(null);
-
-      const missing: string[] = Array.isArray(json.missingFields) ? json.missingFields : [];
-      const restoredCount = Array.isArray(json.restoredFields) ? json.restoredFields.length : 0;
-      setMissingFields(missing);
-      const templateLabel = TEMPLATE_DISPLAY_NAMES[form.templateType] ?? form.templateType;
-      setSwitchToast(
-        `Draft moved to ${templateLabel}.` +
-        (restoredCount > 0 ? ` ${restoredCount} field${restoredCount === 1 ? '' : 's'} restored from this page's previous ${templateLabel} content.` : '') +
-        (missing.length > 0
-          ? ` ${missing.length} field${missing.length === 1 ? '' : 's'} need${missing.length === 1 ? 's' : ''} your attention — ${missing.length === 1 ? 'it\'s' : 'they\'re'} highlighted below.`
-          : ' It can now be published.')
-      );
-      setTimeout(() => setSwitchToast(''), 8000);
-    } catch (err: unknown) {
-      setReconcileError(err instanceof Error ? err.message : 'Failed to move draft');
-    } finally {
-      setMovingDraftId(null);
-    }
-  }
-
   async function handleSave() {
     setStatus('saving');
     try {
@@ -576,13 +523,6 @@ export default function AdminCityPage() {
   // `noDripClub`'s style pickers are deliberately not surfaced for the v1
   // variant used here (no visual remix exists for the Carmine character-card
   // look; see the registry's `fieldsByPageType` comment).
-  // Brief 116 (Track C): drafts stamped for a different template than the live
-  // page can't publish (DP-4) until they're moved — surface them, don't strand them.
-  const mismatchedDrafts = dv.versions.filter(
-    (v) => v.template_type != null && v.template_type !== form.templateType
-  );
-  const liveTemplateLabel = TEMPLATE_DISPLAY_NAMES[form.templateType] ?? form.templateType;
-
   const cityV2SelectedBlock = form.blocks.find((b) => b.id === cityV2SelectedId) ?? null;
   const cityV2BlockTab: React.ReactNode = !cityV2SelectedBlock ? (
     <p style={{ fontSize: '13px', color: `${ADMIN_COLORS.onSurfaceVariant}cc`, margin: 0, lineHeight: 1.6 }}>
@@ -639,78 +579,12 @@ export default function AdminCityPage() {
         open={templateSwitcherOpen}
         onOpenChange={setTemplateSwitcherOpen}
         initialSelectedTemplate={pendingTemplate}
-        drafts={dv.versions.map(v => ({ label: v.label, templateType: v.template_type }))}
       />
 
     <div className={`admin-editor-content${attrsOpen ? ' attrs-open' : ''}`} style={{ padding: '2rem' }}>
       <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '0.875rem', marginBottom: '2rem' }}>
         Edit hero copy, content sections, and FAQs. Office address, services list, video, and partner logos come from the static data file.
       </p>
-
-      {/* Brief 116 (Track C): draft-reconciliation banner — a draft authored for a
-          different template can't publish until it's moved to the live template. */}
-      {mismatchedDrafts.length > 0 && (
-        <div
-          style={{
-            background: `${ADMIN_COLORS.warning}1a`,
-            border: `1px solid ${ADMIN_COLORS.warning}66`,
-            borderRadius: '1rem',
-            padding: '1rem 1.25rem',
-            marginBottom: '1.5rem',
-          }}
-        >
-          <p style={{ margin: '0 0 0.75rem', fontWeight: 600, color: ADMIN_COLORS.onSurface, fontSize: '0.9rem' }}>
-            This page is now on <strong>{liveTemplateLabel}</strong>. You have{' '}
-            {mismatchedDrafts.length === 1 ? '1 draft' : `${mismatchedDrafts.length} drafts`} authored for a
-            different template that can&rsquo;t be published until {mismatchedDrafts.length === 1 ? 'it\'s' : 'they\'re'} moved to this template.
-          </p>
-          {mismatchedDrafts.map((d) => (
-            <div
-              key={d.id}
-              style={{
-                display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem',
-                padding: '0.6rem 0.75rem', borderRadius: '0.75rem', marginBottom: '0.5rem',
-                background: ADMIN_COLORS.surfaceContainer,
-                border: `1px solid ${ADMIN_COLORS.outlineVariant}33`,
-              }}
-            >
-              <span style={{ flex: 1, minWidth: '200px', fontSize: '0.875rem', color: ADMIN_COLORS.onSurface }}>
-                <strong>&ldquo;{d.label}&rdquo;</strong>
-                <span style={{ color: ADMIN_COLORS.onSurfaceVariant }}>
-                  {' '}— authored for {TEMPLATE_DISPLAY_NAMES[d.template_type ?? ''] ?? d.template_type}
-                </span>
-              </span>
-              <button
-                className="admin-cta-btn"
-                onClick={() => handleMoveDraft(d.id)}
-                disabled={movingDraftId !== null}
-                style={{
-                  background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none',
-                  padding: '0.45rem 1rem', borderRadius: '9999px', fontWeight: 600, fontSize: '0.85rem',
-                  cursor: movingDraftId !== null ? 'not-allowed' : 'pointer',
-                  opacity: movingDraftId !== null && movingDraftId !== d.id ? 0.6 : 1,
-                }}
-              >
-                {movingDraftId === d.id ? 'Moving…' : `Move draft to ${liveTemplateLabel}`}
-              </button>
-              <button
-                onClick={() => dv.remove(d.id)}
-                disabled={movingDraftId !== null}
-                style={{
-                  background: 'transparent', border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
-                  padding: '0.45rem 1rem', borderRadius: '9999px', fontWeight: 600, fontSize: '0.85rem',
-                  color: ADMIN_COLORS.onSurfaceVariant, cursor: movingDraftId !== null ? 'not-allowed' : 'pointer',
-                }}
-              >
-                Discard draft
-              </button>
-            </div>
-          ))}
-          {reconcileError && (
-            <p style={{ margin: '0.5rem 0 0', color: ADMIN_COLORS.error, fontSize: '0.875rem' }}>{reconcileError}</p>
-          )}
-        </div>
-      )}
 
       {/* Switch toast */}
       {switchToast && (

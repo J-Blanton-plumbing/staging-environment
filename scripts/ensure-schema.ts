@@ -202,10 +202,6 @@ const STATEMENTS: string[] = [
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS archived_content JSONB`,
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS switched_by INTEGER`,
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS switched_at TIMESTAMPTZ NOT NULL DEFAULT now()`,
-  // Brief 116 — draft re-templates archive to the same table (page_type
-  // 'city-draft'); draft_id keys their restore lookups apart from live-page
-  // switches (which leave it NULL).
-  `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS draft_id INTEGER`,
 ];
 
 async function run() {

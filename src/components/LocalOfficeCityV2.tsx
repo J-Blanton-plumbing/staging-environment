@@ -1,7 +1,6 @@
 import HeroNav from '@/components/HeroNav';
 import FaqAccordion from '@/components/FaqAccordion';
 import NoDripClubSection from '@/components/NoDripClubSection';
-import { renderCmsBlock } from '@/lib/cms/sanitize';
 import ServiceCard from '@/components/ServiceCard';
 import ServicesAccordion from '@/components/ServicesAccordion';
 import GoogleReviews from '@/components/GoogleReviews';
@@ -430,15 +429,10 @@ function BlockRenderer({
       // Brief 99: reconciled `noDripClub` type — City V2 always uses the v1
       // Carmine character-card look (`NoDripClubSection.tsx`); `ndcBody` is the
       // shared copy key with sub-service's v2 variant (Brief 94 decisions log #2).
-      // Brief 115: render through `renderCmsBlock` (real `<ul>`/`<h2>` survive)
-      // instead of passing the raw string as a plain JSX child — this was the
-      // Algonquin bug (raw `<ul>`/`&amp;` showing as visible text). The write
-      // path (`sanitizeCityV2BlockInstances` in `city-pages.ts`) guarantees
-      // `d.ndcBody` is already sanitized before it reaches this render.
       return (
         <section className="bg-white py-[40px]">
           <div className={CONTAINER}>
-            <NoDripClubSection bodyHtml={renderCmsBlock(asStr(d.ndcBody) || NDC_DEFAULT_BODY, settings)} />
+            <NoDripClubSection body={asStr(d.ndcBody) || NDC_DEFAULT_BODY} />
           </div>
         </section>
       );
