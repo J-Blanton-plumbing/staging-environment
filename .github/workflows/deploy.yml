@@ -58,7 +58,15 @@ jobs:
             # ON CONFLICT DO NOTHING — a safe no-op once the row exists, never
             # clobbers edits.
             npx ts-node --project tsconfig.scripts.json scripts/seed-privacy-policy-page.ts
-            pm2 restart jblanton --update-env
+            # `pm2 restart jblanton` silently no-ops if pm2 has never registered an
+            # app under that name — discovered 2026-07-28 when `pm2 list` on staging
+            # returned zero processes despite the site being up (it was running as a
+            # bare `next start`, started outside pm2, with nothing supervising it or
+            # restarting it on deploy). `startOrReload` against the checked-in
+            # ecosystem file registers the app the first time and reloads it on every
+            # deploy after that, so this step can never again quietly fail to apply
+            # new code. See ecosystem.config.js for the process definition.
+            pm2 startOrReload ecosystem.config.js --update-env
 
       - name: Post-deploy health check
         uses: appleboy/ssh-action@v1.0.0
