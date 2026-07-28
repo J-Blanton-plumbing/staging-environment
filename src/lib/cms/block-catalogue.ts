@@ -559,8 +559,10 @@ export const BLOCK_CATALOGUE: Record<BlockType, BlockDefinition> = {
   // Built from the Brief 94 §4 City V2 trace (`briefs/brief-94-all-editors-
   // block-inventory.md`) — data keys are the exact `city_pages` DB columns
   // (camelCased) so the migration/reader/writer fold 1:1 with no translation
-  // layer. All fields render as plain JSX text on the public page (never
-  // `dangerouslySetInnerHTML`), so none need the Brief 73 rich-text sanitizer.
+  // layer. Brief 115: this used to say every field renders as plain JSX text
+  // and none need the Brief 73 sanitizer — no longer true for `noDripClub.ndcBody`,
+  // which now renders as HTML (see `city-v2-blocks.ts`). Every other field here
+  // is still plain JSX text and still needs no sanitization.
 
   localOfficeV2Hero: {
     // Core chrome, exactly like sub-service's `hero` — one per page, pinned

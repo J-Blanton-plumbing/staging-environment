@@ -14,6 +14,7 @@ import { getArticles } from '@/lib/articles';
 import { COMMERCIAL } from '@/lib/content/commercial';
 import { getServiceCmsContent } from '@/lib/cms/service-pages';
 import { getServicePreview } from '@/lib/cms/preview';
+import { renderCmsBlock } from '@/lib/cms/sanitize';
 import type { ServiceCmsContent } from '@/lib/cms/service-pages';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { CommercialContent } from '@/lib/content/commercial';
@@ -94,9 +95,10 @@ export default async function CommercialPage() {
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
                 {content.intro.heading}
               </p>
-              <div className="custom-paragraphs space-y-4 text-navy-800 leading-relaxed">
-                <p>{content.intro.body}</p>
-              </div>
+              <div
+                className="custom-paragraphs cms-block-content space-y-4 text-navy-800 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: renderCmsBlock(content.intro.body, settings) }}
+              />
             </div>
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-card">
               <Image
@@ -176,9 +178,10 @@ export default async function CommercialPage() {
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                 {content.preventative.heading}
               </p>
-              <p className="text-navy-800 leading-relaxed mb-6 whitespace-pre-line">
-                {content.preventative.body}
-              </p>
+              <div
+                className="cms-block-content text-navy-800 leading-relaxed mb-6"
+                dangerouslySetInnerHTML={{ __html: renderCmsBlock(content.preventative.body, settings) }}
+              />
               <Link
                 href="/no-drip-club"
                 className="link-button hidden md:inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
@@ -211,9 +214,10 @@ export default async function CommercialPage() {
               <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                 {content.finalPitch.tagline}
               </p>
-              <p className="text-navy-800 leading-relaxed mb-6">
-                {content.finalPitch.body}
-              </p>
+              <div
+                className="cms-block-content text-navy-800 leading-relaxed mb-6"
+                dangerouslySetInnerHTML={{ __html: renderCmsBlock(content.finalPitch.body, settings) }}
+              />
               <Link
                 href={settings.phoneHref}
                 className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"

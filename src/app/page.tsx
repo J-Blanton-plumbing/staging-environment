@@ -10,6 +10,7 @@ import TikTokFeed from '@/components/TikTokFeed';
 import ArticleGrid from '@/components/ArticleGrid';
 import LocationsSection from '@/components/LocationsSection';
 import NoDripClubSection from '@/components/NoDripClubSection';
+import { renderCmsBlock } from '@/lib/cms/sanitize';
 import { SERVICES } from '@/lib/services';
 import { getArticles } from '@/lib/articles';
 import { HOME } from '@/lib/content/home';
@@ -210,7 +211,7 @@ export default async function HomePage() {
               Styling lives in globals.css under `.no-drip-club` so the exact theme
               values (overlay 0.78, skew label offsets, white pill) are matched
               rather than approximated (§11). */}
-          <NoDripClubSection body={HOME.noDripClub.body} />
+          <NoDripClubSection bodyHtml={renderCmsBlock(HOME.noDripClub.body, settings)} />
 
           {/* KNOWLEDGE HUB — 120px top margin, 3-column articles grid */}
           <section className="knowledge-hub mt-[120px] max-[768px]:mt-[30px] pb-[120px] max-[768px]:pb-0">

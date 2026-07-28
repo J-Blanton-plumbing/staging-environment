@@ -8,6 +8,8 @@ import TikTokFeed from '@/components/TikTokFeed';
 import ScheduleButton from '@/components/ScheduleButton';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { renderCmsBlock } from '@/lib/cms/sanitize';
 
 export const metadata: Metadata = {
   title: 'Plumbing Services',
@@ -15,7 +17,8 @@ export const metadata: Metadata = {
     'J. Blanton Plumbing offers emergency, residential, commercial, sewer, drain, water heater, and water quality services throughout the Chicago metro.',
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const settings = await getGlobalSettingsCached();
   return (
     <div className="services-overview">
 
@@ -92,7 +95,10 @@ export default function ServicesPage() {
       {/* w-full on mobile (bleeds edge-to-edge), 81% centered on md+ */}
       <div className="w-full md:w-[81%] md:mx-auto">
         <NoDripClubSection
-          body="There are Good Calls—and then there's the No Drip Club. Members enjoy significant annual savings on home checkups, emergency repairs, and unlock exclusive perks, including VIP treatment whenever they call for service."
+          bodyHtml={renderCmsBlock(
+            "There are Good Calls—and then there's the No Drip Club. Members enjoy significant annual savings on home checkups, emergency repairs, and unlock exclusive perks, including VIP treatment whenever they call for service.",
+            settings
+          )}
         />
       </div>
 

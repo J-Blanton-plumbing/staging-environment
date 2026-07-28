@@ -271,20 +271,39 @@ export async function updateDraftContent(
   content: unknown,
   expectedVersion?: number | null
 ): Promise<number> {
+  // Brief 116 (Track C): a plain save must never silently contradict the
+  // template the draft was stamped with — that's how "Save says OK, Publish
+  // says no" happened. If the payload carries a templateType (city editor),
+  // it must match the draft's stamp; changing it is retemplateDraft's job.
+  const contentTemplate =
+    content && typeof content === 'object' && typeof (content as Record<string, unknown>).templateType === 'string'
+      ? ((content as Record<string, unknown>).templateType as string)
+      : null;
+
   const client = await pool.connect();
   try {
     const res = await client.query<{ version: number }>(
       `UPDATE page_drafts
           SET content = $1, version = version + 1
         WHERE id = $2 AND ($3::int IS NULL OR version = $3::int)
+          AND ($4::text IS NULL OR template_type IS NULL OR template_type = $4::text)
         RETURNING version`,
-      [JSON.stringify(content), id, expectedVersion ?? null]
+      [JSON.stringify(content), id, expectedVersion ?? null, contentTemplate]
     );
     if (res.rowCount === 0) {
-      const exists = await client.query('SELECT version FROM page_drafts WHERE id = $1', [id]);
+      const exists = await client.query<{ version: number; template_type: string | null }>(
+        'SELECT version, template_type FROM page_drafts WHERE id = $1',
+        [id]
+      );
       if (exists.rowCount === 0) throw new NotFoundError(`Draft ${id} not found`);
+      const row = exists.rows[0];
+      if (expectedVersion != null && row.version !== expectedVersion) {
+        throw new ConflictError(
+          'This draft was changed elsewhere since you loaded it. Reload to see the latest version before saving.'
+        );
+      }
       throw new ConflictError(
-        'This draft was changed elsewhere since you loaded it. Reload to see the latest version before saving.'
+        `This draft was authored for the "${row.template_type}" template, but you're saving "${contentTemplate}" content onto it. Use "Move draft" to re-template the draft first — a plain save can't change a draft's template.`
       );
     }
     return res.rows[0].version;

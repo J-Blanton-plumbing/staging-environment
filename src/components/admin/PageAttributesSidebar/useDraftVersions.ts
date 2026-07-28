@@ -6,6 +6,12 @@ export interface DraftVersionRow {
   id: number;
   label: string;
   version: number;
+  /**
+   * Brief 116 — the template the draft was authored for (page_drafts.template_type;
+   * null for page types without a template concept). Lets editors detect drafts
+   * that mismatch the live page's template and offer reconciliation.
+   */
+  template_type: string | null;
   creator_name: string;
   created_by: number;
   created_at: string;
@@ -183,6 +189,18 @@ export function useDraftVersions(pageType: string, pageSlug: string, getContent:
     }
   }
 
+  /**
+   * Brief 116 — re-read a draft's row (fresh optimistic-lock version) and make it
+   * the active draft. Used after an out-of-band mutation like the re-template
+   * endpoint bumps the draft's version: without this the next save would 409.
+   */
+  async function reloadAndActivate(id: number): Promise<DraftVersionRow | null> {
+    const rows = await refresh();
+    const row = rows.find(r => r.id === id) ?? null;
+    if (row) setActive(row.id, row.label, row.version);
+    return row;
+  }
+
   function switchTo(id: number) {
     const draft = versions.find(d => d.id === id);
     if (!draft) return;
@@ -225,6 +243,7 @@ export function useDraftVersions(pageType: string, pageSlug: string, getContent:
   return {
     activeId, activeLabel, versions, busy, notice, noticeIsError, currentUserId,
     refresh, save, saveAsNew, preview, switchTo, publish, remove, nextVersionName,
+    reloadAndActivate,
   };
 }
 

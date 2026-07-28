@@ -7,6 +7,7 @@ import {
   normalizeCityV2Blocks,
   assembleCityV2Blocks,
   cityV2BlocksToFields,
+  sanitizeCityV2BlockInstances,
 } from '@/lib/cms/city-v2-blocks';
 
 // Brief 99: the V2 repeater item shapes now live in a pure types module so
@@ -223,7 +224,11 @@ export async function updateCityCmsContent(
   let blocksJson: string | null = null;
   let primary: ReturnType<typeof cityV2BlocksToFields> = {};
   if (Array.isArray(data.blocks)) {
-    const normalized = normalizeCityV2Blocks(data.blocks);
+    // Brief 115 (Track A): sanitize rich-text-capable block data (currently
+    // just `noDripClub.ndcBody`) through the shared Brief 73 allow-list before
+    // it is ever persisted — this was the one completely-unsanitized CMS write
+    // path (Brief 114 §4.1).
+    const normalized = sanitizeCityV2BlockInstances(normalizeCityV2Blocks(data.blocks), sanitizeCmsHtml);
     primary = cityV2BlocksToFields(normalized);
     blocksJson = JSON.stringify(normalized);
   }

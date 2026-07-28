@@ -475,15 +475,20 @@
   top: 50%;
   right: 10%;
   transform: translate(10%, -50%);
-}
-.no-drip-club .no-drip-content p {
+  /* Base type lives on the container (not just `p`) so it also covers the
+     no-markup case, where `renderCmsBlock` emits bare text/`<br>` with no
+     wrapping `<p>` (Brief 115). */
   color: #fff;
   font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
   font-weight: 300;
   font-size: 20px;
   line-height: 30px;
 }
-.no-drip-club .no-drip-content a {
+/* Direct-child combinator: the CTA pill is always a direct child of
+   `.no-drip-content` (siblings with `.no-drip-body`), so this can never match
+   an `<a>` an editor puts inside the body copy itself (Brief 115 — those are
+   styled separately, below, as plain inline links). */
+.no-drip-club .no-drip-content > a {
   margin-top: 35px;
   display: flex;
   text-decoration: none;
@@ -497,6 +502,50 @@
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 500;
   height: 45px;
+}
+
+/* Brief 115 (Track C) — `.no-drip-body` is the block-rendered CMS copy
+   (`renderCmsBlock` + `dangerouslySetInnerHTML`, real `<p>/<h2>/<h3>/<ul>/<li>`
+   instead of an escaped string). Scoped to this section only — does not
+   affect Category-B inline-rendered fields elsewhere (Phases 2/3). */
+.no-drip-club .no-drip-content .no-drip-body p {
+  margin: 0 0 14px;
+}
+.no-drip-club .no-drip-content .no-drip-body p:last-child {
+  margin-bottom: 0;
+}
+.no-drip-club .no-drip-content .no-drip-body h2,
+.no-drip-club .no-drip-content .no-drip-body h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0 0 10px;
+}
+.no-drip-club .no-drip-content .no-drip-body ul,
+.no-drip-club .no-drip-content .no-drip-body ol {
+  margin: 0 0 14px 20px;
+  padding: 0;
+}
+.no-drip-club .no-drip-content .no-drip-body ul:last-child,
+.no-drip-club .no-drip-content .no-drip-body ol:last-child {
+  margin-bottom: 0;
+}
+.no-drip-club .no-drip-content .no-drip-body ul { list-style: disc; }
+.no-drip-club .no-drip-content .no-drip-body ol { list-style: decimal; }
+.no-drip-club .no-drip-content .no-drip-body li {
+  margin-bottom: 6px;
+}
+.no-drip-club .no-drip-content .no-drip-body li:last-child {
+  margin-bottom: 0;
+}
+.no-drip-club .no-drip-content .no-drip-body a {
+  color: #f9f3ec;
+  text-decoration: underline;
+}
+.no-drip-club .no-drip-content .no-drip-body strong,
+.no-drip-club .no-drip-content .no-drip-body b {
+  font-weight: 700;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -556,7 +605,7 @@
     right: 0;
     transform: translate(0, 0);
   }
-  .no-drip-club .no-drip-content a {
+  .no-drip-club .no-drip-content > a {
     font-family: var(--font-industry), Arial, sans-serif;
     font-weight: 700;
   }
@@ -570,7 +619,7 @@
   }
 }
 @media only screen and (max-width: 425px) {
-  .no-drip-club .no-drip-content a {
+  .no-drip-club .no-drip-content > a {
     width: 100%;
     text-align: center;
   }
@@ -635,4 +684,69 @@
 /* ── Preview banner: push fixed navbar below the 44px banner ────────────── */
 html[data-preview] header {
   top: 44px !important;
+}
+
+/* ============================================================================
+   Brief 115 (Track C) — `.cms-block-content` styles real block HTML (`<p>`,
+   `<h2>`/`<h3>`, `<ul>`/`<ol>`/`<li>`, `<a>`, `<strong>`/`<em>`) rendered via
+   `renderCmsBlock` + `dangerouslySetInnerHTML` for the 6 service-category
+   pages' `intro.body` / `preventative.body` / `finalPitch.body` fields (18
+   instances — Plumbing, Sewer, Drain, Water Heater, Water Quality, Commercial).
+   Base text color/size comes from the wrapper's own `text-navy-800
+   leading-relaxed` Tailwind classes (Midnight, inherited); this block only
+   supplies what Tailwind utility classes can't reach: heading type/color, list
+   markers/indentation, and link color. Scoped by class name — it cannot affect
+   any Category-B inline-rendered field (Phases 2/3), which never contains
+   these tags in the first place (`renderCmsInline` flattens them to `<br>`).
+   ========================================================================== */
+.cms-block-content p {
+  margin: 0 0 1em;
+}
+.cms-block-content p:last-child {
+  margin-bottom: 0;
+}
+.cms-block-content h2,
+.cms-block-content h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #bc0e0e;
+  line-height: 1.25;
+  margin: 1em 0 0.5em;
+}
+.cms-block-content h2:first-child,
+.cms-block-content h3:first-child {
+  margin-top: 0;
+}
+.cms-block-content ul,
+.cms-block-content ol {
+  margin: 0 0 1em 1.25em;
+  padding: 0;
+}
+.cms-block-content ul:last-child,
+.cms-block-content ol:last-child {
+  margin-bottom: 0;
+}
+.cms-block-content ul {
+  list-style: disc;
+}
+.cms-block-content ol {
+  list-style: decimal;
+}
+.cms-block-content li {
+  margin-bottom: 0.4em;
+}
+.cms-block-content li:last-child {
+  margin-bottom: 0;
+}
+.cms-block-content a {
+  color: #1560e6;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cms-block-content a:hover {
+  color: #bc0e0e;
+}
+.cms-block-content strong,
+.cms-block-content b {
+  font-weight: 700;
 }
