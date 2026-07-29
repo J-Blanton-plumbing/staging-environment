@@ -3,11 +3,15 @@
 import { useState, useEffect } from 'react';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 
+type UserStatus = 'pending_approval' | 'invited' | 'active' | 'declined' | 'disabled';
+
 interface CmsUser {
   id: number;
   name: string;
   email: string;
+  status: UserStatus;
   created_at: string;
+  invited_by_name: string | null;
 }
 
 interface EditState {
@@ -15,6 +19,21 @@ interface EditState {
   email: string;
   password: string;
 }
+
+interface AddState {
+  name: string;
+  email: string;
+}
+
+// Brief 119 — account lifecycle labels + pill colors (status accents from the
+// admin theme; kept distinct from Carmine per the theme's own convention).
+const STATUS_META: Record<UserStatus, { label: string; color: string }> = {
+  active: { label: 'Active', color: ADMIN_COLORS.success },
+  pending_approval: { label: 'Pending approval', color: ADMIN_COLORS.warning },
+  invited: { label: 'Invited', color: ADMIN_COLORS.cerulean },
+  declined: { label: 'Declined', color: ADMIN_COLORS.error },
+  disabled: { label: 'Disabled', color: ADMIN_COLORS.outlineVariant },
+};
 
 const INPUT_STYLE: React.CSSProperties = {
   padding: '0.45rem 0.6rem',
@@ -38,9 +57,12 @@ export default function AdminUsersPage() {
   const [editLoading, setEditLoading] = useState(false);
 
   const [showAdd, setShowAdd] = useState(false);
-  const [addState, setAddState] = useState<EditState>({ name: '', email: '', password: '' });
+  const [addState, setAddState] = useState<AddState>({ name: '', email: '' });
   const [addError, setAddError] = useState('');
   const [addLoading, setAddLoading] = useState(false);
+  const [notice, setNotice] = useState('');
+  const [noticeIsWarning, setNoticeIsWarning] = useState(false);
+  const [resendingId, setResendingId] = useState<number | null>(null);
 
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
 
@@ -110,24 +132,55 @@ export default function AdminUsersPage() {
   async function addUser() {
     setAddLoading(true);
     setAddError('');
+    setNotice('');
     try {
       const res = await fetch('/api/cms/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(addState),
       });
+      const data = await res.json();
       if (res.ok) {
         setShowAdd(false);
-        setAddState({ name: '', email: '', password: '' });
+        setAddState({ name: '', email: '' });
+        if (data.emailSent) {
+          setNotice(`Approval request for ${data.name} sent to ${data.approver}. The account stays "Pending approval" until they approve it.`);
+          setNoticeIsWarning(false);
+        } else {
+          setNotice(`Account for ${data.name} saved as "Pending approval", but the approval email failed: ${data.emailError || 'unknown error'}`);
+          setNoticeIsWarning(true);
+        }
         await loadUsers();
       } else {
-        const data = await res.json();
         setAddError(data.error || 'Failed to create user');
       }
     } catch {
       setAddError('Failed to create user');
     } finally {
       setAddLoading(false);
+    }
+  }
+
+  // Brief 119 — re-send the stuck email for a pending/invited account.
+  // Issues a fresh token; the previously emailed link stops working.
+  async function resendInvite(user: CmsUser) {
+    setResendingId(user.id);
+    setNotice('');
+    try {
+      const res = await fetch(`/api/cms/users/${user.id}/resend`, { method: 'POST' });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        setNotice(`Email re-sent to ${data.recipient}.`);
+        setNoticeIsWarning(false);
+      } else {
+        setNotice(data.error || 'Failed to resend email');
+        setNoticeIsWarning(true);
+      }
+    } catch {
+      setNotice('Failed to resend email');
+      setNoticeIsWarning(true);
+    } finally {
+      setResendingId(null);
     }
   }
 
@@ -150,7 +203,10 @@ export default function AdminUsersPage() {
     return user.id === earliestId ? 'Owner' : 'Administrator';
   }
 
-  const onlyOne = users.length === 1;
+  // Deleting is blocked only for the last ACTIVE account (server enforces the
+  // same rule) — pending/invited/declined rows can't log in, so removing them
+  // can never lock anyone out.
+  const activeCount = users.filter(u => u.status === 'active').length;
   const PAGE_SIZE = 10;
   const totalPages = Math.max(1, Math.ceil(users.length / PAGE_SIZE));
 
@@ -188,11 +244,37 @@ export default function AdminUsersPage() {
         </button>
       </div>
 
-      {/* Add user form */}
+      {/* Post-action notice (approval email sent / resend / email failure) */}
+      {notice && (
+        <div
+          style={{
+            background: noticeIsWarning ? `${ADMIN_COLORS.warning}1A` : `${ADMIN_COLORS.success}14`,
+            border: `1px solid ${noticeIsWarning ? ADMIN_COLORS.warning : ADMIN_COLORS.success}4D`,
+            color: noticeIsWarning ? ADMIN_COLORS.warning : ADMIN_COLORS.success,
+            borderRadius: '1rem', padding: '0.75rem 1.25rem', marginBottom: '1.5rem',
+            fontSize: '0.875rem', display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'center',
+          }}
+        >
+          <span>{notice}</span>
+          <button
+            onClick={() => setNotice('')}
+            style={{ background: 'transparent', border: 'none', color: 'inherit', cursor: 'pointer', fontWeight: 700, fontSize: '0.875rem' }}
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {/* Add user form — Brief 119: name + email only. No password here; the
+          new user sets their own after marketing@ approves the request. */}
       {showAdd && (
         <div style={{ background: ADMIN_COLORS.surfaceContainerLow, border: `1px solid ${ADMIN_COLORS.outlineVariant}33`, borderRadius: '1.5rem', padding: '1.25rem', marginBottom: '1.5rem' }}>
-          <h3 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '0.95rem', fontWeight: 700, color: ADMIN_COLORS.onSurface }}>New User</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+          <h3 style={{ margin: '0 0 0.35rem', fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '0.95rem', fontWeight: 700, color: ADMIN_COLORS.onSurface }}>New User</h3>
+          <p style={{ margin: '0 0 1rem', fontSize: '0.8rem', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
+            An approval request is emailed to marketing@jblantonplumbing.com. Once approved, the new user gets a link to set their own password.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div>
               <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: ADMIN_COLORS.onSurfaceVariant }}>Name</label>
               <input style={INPUT_STYLE} value={addState.name} onChange={e => setAddState(s => ({ ...s, name: e.target.value }))} />
@@ -200,10 +282,6 @@ export default function AdminUsersPage() {
             <div>
               <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: ADMIN_COLORS.onSurfaceVariant }}>Email</label>
               <input type="email" style={INPUT_STYLE} value={addState.email} onChange={e => setAddState(s => ({ ...s, email: e.target.value }))} />
-            </div>
-            <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.25rem', color: ADMIN_COLORS.onSurfaceVariant }}>Password</label>
-              <input type="password" style={INPUT_STYLE} value={addState.password} onChange={e => setAddState(s => ({ ...s, password: e.target.value }))} />
             </div>
           </div>
           {addError && <p style={{ color: ADMIN_COLORS.error, fontSize: '0.85rem', margin: '0 0 0.5rem' }}>{addError}</p>}
@@ -213,7 +291,7 @@ export default function AdminUsersPage() {
               disabled={addLoading}
               style={{ background: ADMIN_COLORS.cerulean, color: '#fff', border: 'none', padding: '0.45rem 1.1rem', borderRadius: '9999px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}
             >
-              {addLoading ? 'Creating…' : 'Create User'}
+              {addLoading ? 'Sending request…' : 'Request Account'}
             </button>
             <button
               onClick={() => setShowAdd(false)}
@@ -238,7 +316,7 @@ export default function AdminUsersPage() {
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}33` }}>
-                {['User Details', 'Email', 'Role', 'Registered', 'Settings'].map(h => (
+                {['User Details', 'Email', 'Role', 'Status', 'Registered', 'Settings'].map(h => (
                   <th key={h} style={{ padding: '1rem 2rem', textAlign: 'left', fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '10px', fontWeight: 700, color: `${ADMIN_COLORS.onSurfaceVariant}66`, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
                     {h}
                   </th>
@@ -296,6 +374,25 @@ export default function AdminUsersPage() {
                       {userType(user)}
                     </span>
                   </td>
+                  <td style={{ padding: '1.25rem 2rem' }}>
+                    {(() => {
+                      const meta = STATUS_META[user.status] ?? STATUS_META.active;
+                      return (
+                        <span
+                          title={user.invited_by_name ? `Initiated by ${user.invited_by_name}` : undefined}
+                          style={{
+                            display: 'inline-block', padding: '3px 10px', borderRadius: '9999px', whiteSpace: 'nowrap',
+                            fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em',
+                            background: `${meta.color}1A`,
+                            color: meta.color,
+                            border: `1px solid ${meta.color}4D`,
+                          }}
+                        >
+                          {meta.label}
+                        </span>
+                      );
+                    })()}
+                  </td>
                   <td style={{ padding: '1.25rem 2rem', fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99` }}>
                     {formatDate(user.created_at)}
                   </td>
@@ -326,30 +423,47 @@ export default function AdminUsersPage() {
                       </div>
                     ) : (
                       <div style={{ display: 'flex', gap: '0.4rem' }}>
-                        <button
-                          onClick={() => startEdit(user)}
-                          style={{ background: 'transparent', color: ADMIN_COLORS.onSurfaceVariant, border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`, padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
-                        >
-                          Edit
-                        </button>
-                        <div title={onlyOne ? 'Cannot delete the only user' : ''}>
+                        {(user.status === 'pending_approval' || user.status === 'invited') && (
+                          <button
+                            onClick={() => resendInvite(user)}
+                            disabled={resendingId === user.id}
+                            title={user.status === 'pending_approval' ? 'Re-send the approval email to marketing@' : 'Re-send the set-password invite to the user'}
+                            style={{ background: `${ADMIN_COLORS.cerulean}1A`, color: ADMIN_COLORS.cerulean, border: `1px solid ${ADMIN_COLORS.cerulean}4D`, padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                          >
+                            {resendingId === user.id ? 'Sending…' : 'Resend'}
+                          </button>
+                        )}
+                        {user.status === 'active' && (
+                          <button
+                            onClick={() => startEdit(user)}
+                            style={{ background: 'transparent', color: ADMIN_COLORS.onSurfaceVariant, border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`, padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                          >
+                            Edit
+                          </button>
+                        )}
+                        {(() => {
+                          const lastActive = user.status === 'active' && activeCount <= 1;
+                          return (
+                        <div title={lastActive ? 'Cannot delete the only active user' : ''}>
                           <button
                             onClick={() => deleteUser(user.id)}
-                            disabled={onlyOne}
+                            disabled={lastActive}
                             style={{
-                              background: onlyOne ? 'transparent' : `${ADMIN_COLORS.error}14`,
-                              color: onlyOne ? `${ADMIN_COLORS.onSurfaceVariant}66` : ADMIN_COLORS.error,
-                              border: `1px solid ${onlyOne ? ADMIN_COLORS.outlineVariant + '33' : ADMIN_COLORS.error + '4D'}`,
+                              background: lastActive ? 'transparent' : `${ADMIN_COLORS.error}14`,
+                              color: lastActive ? `${ADMIN_COLORS.onSurfaceVariant}66` : ADMIN_COLORS.error,
+                              border: `1px solid ${lastActive ? ADMIN_COLORS.outlineVariant + '33' : ADMIN_COLORS.error + '4D'}`,
                               padding: '0.4rem 0.9rem',
                               borderRadius: '9999px',
                               fontSize: '0.8rem',
                               fontWeight: 600,
-                              cursor: onlyOne ? 'not-allowed' : 'pointer',
+                              cursor: lastActive ? 'not-allowed' : 'pointer',
                             }}
                           >
                             Delete
                           </button>
                         </div>
+                          );
+                        })()}
                       </div>
                     )}
                   </td>

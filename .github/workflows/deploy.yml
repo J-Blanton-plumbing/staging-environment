@@ -69,6 +69,11 @@ jobs:
             # ON CONFLICT DO NOTHING — a safe no-op once the row exists, never
             # clobbers edits.
             npx ts-node --project tsconfig.scripts.json scripts/seed-privacy-policy-page.ts
+            # Brief 119: invite-based user creation — adds cms_users.status +
+            # audit columns, makes password_hash nullable, and creates the
+            # cms_user_invites token table. Idempotent (ADD COLUMN / CREATE
+            # TABLE IF NOT EXISTS), safe no-op once applied.
+            npx ts-node --project tsconfig.scripts.json scripts/migrate-invite-users.ts
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and

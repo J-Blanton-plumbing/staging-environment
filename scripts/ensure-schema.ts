@@ -97,6 +97,16 @@ const STATEMENTS: string[] = [
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ`,
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS category TEXT[] DEFAULT '{}'::text[]`,
 
+  // ── cms_users (Brief 119 — invite-based user creation) ─────────────────
+  // Table creation + the password_hash DROP NOT NULL live in
+  // migrate-invite-users.ts (run on deploy); these keep the columns present.
+  `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'active'`,
+  `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS invited_by INTEGER`,
+  `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS approved_by TEXT`,
+  `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS approved_at TIMESTAMPTZ`,
+  `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS activated_at TIMESTAMPTZ`,
+  `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS declined_at TIMESTAMPTZ`,
+
   // ── emergency_plumbing_page ─────────────────────────────────────────────
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS card_items JSONB NOT NULL DEFAULT '[]'::jsonb`,
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT now()`,

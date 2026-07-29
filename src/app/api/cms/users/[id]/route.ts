@@ -63,13 +63,21 @@ export async function DELETE(
   try {
     const client = await pool.connect();
     try {
-      const countResult = await client.query('SELECT COUNT(*) FROM cms_users');
-      const count = parseInt(countResult.rows[0].count, 10);
-      if (count <= 1) {
-        return NextResponse.json(
-          { error: 'Cannot delete the only remaining user' },
-          { status: 400 }
-        );
+      // Brief 119: the lock-out guard protects the last ACTIVE account —
+      // pending/invited/declined rows can't log in, so they neither count
+      // toward the minimum nor are protected by it.
+      const targetResult = await client.query('SELECT status FROM cms_users WHERE id = $1', [userId]);
+      if (!targetResult.rows[0]) {
+        return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      }
+      if (targetResult.rows[0].status === 'active') {
+        const countResult = await client.query(`SELECT COUNT(*) FROM cms_users WHERE status = 'active'`);
+        if (parseInt(countResult.rows[0].count, 10) <= 1) {
+          return NextResponse.json(
+            { error: 'Cannot delete the only remaining active user' },
+            { status: 400 }
+          );
+        }
       }
 
       const result = await client.query(

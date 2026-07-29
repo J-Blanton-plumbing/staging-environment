@@ -21,8 +21,17 @@ export async function middleware(req: NextRequest) {
 
   // ── CMS admin session gate ─────────────────────────────────────────────
   if (pathname.startsWith('/admin')) {
-    // Login page and auth API are always allowed through
-    if (pathname === '/admin/login' || pathname.startsWith('/api/auth/')) {
+    // Login page and auth API are always allowed through.
+    // Brief 119: the approval + set-password landing pages are token-gated
+    // (signed single-use links from email), not session-gated — they must be
+    // reachable by people who cannot log in yet. Everything else under
+    // /admin/* stays behind the session gate.
+    if (
+      pathname === '/admin/login' ||
+      pathname === '/admin/approve-user' ||
+      pathname === '/admin/set-password' ||
+      pathname.startsWith('/api/auth/')
+    ) {
       return NextResponse.next()
     }
 

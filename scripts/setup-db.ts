@@ -233,6 +233,8 @@ const STEPS: Step[] = [
   // Group F
   { group: 'F', label: 'seed-subservice-version-1', file: 'seed-subservice-version-1.ts' },
   { group: 'F', label: 'migrate-draft-publish-safety', file: 'migrate-draft-publish-safety.ts' },
+  // Brief 119 — invite-based user creation (needs cms_users from step 3)
+  { group: 'F', label: 'migrate-invite-users', file: 'migrate-invite-users.ts' },
 ];
 
 /** Returns true if the step's own script reported success (exit code 0). */
