@@ -16,6 +16,9 @@
    ========================================================================== */
 
 /* ---- Hero (theme globals.css `.hero`) -------------------------------------- */
+/* Desktop 70px top offset (clears the fixed navbar, like live's
+   `div.body { padding-top: 70px }`) comes from the shared theme-hero-page rule
+   in globals.css (Brief 120 re-diagnosis). */
 .why-jb-page .hero {
   /* base layout inherited from globals.css .hero */
 }

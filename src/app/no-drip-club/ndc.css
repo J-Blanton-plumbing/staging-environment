@@ -18,6 +18,9 @@
    ========================================================================== */
 
 /* ---- Hero (theme globals.css `.hero`) -------------------------------------- */
+/* Desktop 70px top offset (clears the fixed navbar, like live's
+   `div.body { padding-top: 70px }`) comes from the shared theme-hero-page rule
+   in globals.css (Brief 120 re-diagnosis). */
 .ndc-page .hero {
   /* base layout inherited from globals.css .hero */
 }
@@ -174,6 +177,20 @@
   margin-left: 20px;
   display: flex;
   justify-content: end;
+}
+/* Brief 121 — Benefits Card column-count overrides. The default 2-column card
+   renders the bare `.f` (the 50/50 rules above, unchanged); these modifiers
+   only exist for the block's new 1- and 3-column layouts. The ≤1050px collapse
+   below already resets `.l`/`.r` to width:100%/margin:0 regardless of these. */
+.ndc-page .ndc-card .i .f.cols-1 .l {
+  width: 100%;
+}
+.ndc-page .ndc-card .i .f.cols-3 .l,
+.ndc-page .ndc-card .i .f.cols-3 .r {
+  width: 33.333%;
+}
+.ndc-page .ndc-card .i .f.cols-3 .r {
+  justify-content: flex-start;
 }
 
 /* SIGN UP button: ndc.css gives cursor + centering margin; brief §4 makes it a

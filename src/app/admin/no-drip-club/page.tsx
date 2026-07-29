@@ -5,6 +5,15 @@ import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
 import TokenTextInput from '@/components/admin/TokenTextInput';
+import BlockField from '@/components/admin/BlockField';
+import { BLOCK_CATALOGUE, fieldsFor } from '@/lib/cms/block-catalogue';
+import {
+  BENEFITS_CARD_COLUMNS,
+  normalizeBenefitsCardInstance,
+  staticNdcBenefitsCardData,
+  type BenefitsCardColumns,
+  type BenefitsCardInstance,
+} from '@/lib/cms/benefits-card';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -19,6 +28,12 @@ interface FormState {
   wait_heading: string;
   wait_body: string;
   wait_cta: string;
+  /**
+   * Brief 121 — the page's contained `benefitsCard` block instance (the
+   * "MEMBERS GET:" card), stored under `content.benefits_card`. Null only
+   * until the initial fetch resolves.
+   */
+  benefits_card: BenefitsCardInstance | null;
   meta_title: string;
   meta_description: string;
   updated_at?: string;
@@ -28,8 +43,26 @@ const EMPTY: FormState = {
   hero_heading: '', hero_description: '', hero_cta: '',
   how_heading: '',
   wait_heading: '', wait_body: '', wait_cta: '',
+  benefits_card: null,
   meta_title: '', meta_description: '',
 };
+
+/**
+ * Brief 121 — the editor's starting instance when the DB row has no
+ * `benefits_card` yet (i.e. the seed script hasn't run): the SAME static
+ * mapper the public page's fallback and the seed script use, so editing
+ * before/without the seed still starts from exactly today's card — no path
+ * ever starts from an empty card.
+ */
+function initialBenefitsCard(raw: unknown): BenefitsCardInstance {
+  return (
+    normalizeBenefitsCardInstance(raw) ?? {
+      id: `benefitsCard-${crypto.randomUUID()}`,
+      type: 'benefitsCard',
+      data: staticNdcBenefitsCardData(),
+    }
+  );
+}
 
 function buildPayload(form: FormState) {
   const { meta_title, meta_description, updated_at, ...content } = form;
@@ -59,6 +92,7 @@ export default function NoDripClubAdminPage() {
           wait_heading: data.wait_heading ?? '',
           wait_body: data.wait_body ?? '',
           wait_cta: data.wait_cta ?? '',
+          benefits_card: initialBenefitsCard(data.benefits_card),
           meta_title: data.meta_title ?? '',
           meta_description: data.meta_description ?? '',
           updated_at: data.updated_at ?? undefined,
@@ -71,6 +105,16 @@ export default function NoDripClubAdminPage() {
 
   function set(key: keyof FormState, value: string) {
     setForm(f => ({ ...f, [key]: value }));
+  }
+
+  // Brief 121 — patch one key of the benefits-card block's `data` (the shape
+  // BlockField's onChange emits). The instance id is preserved across edits.
+  function setCardData(key: string, value: unknown) {
+    setForm(f =>
+      f.benefits_card
+        ? { ...f, benefits_card: { ...f.benefits_card, data: { ...f.benefits_card.data, [key]: value } } }
+        : f
+    );
   }
 
   async function handleSave() {
@@ -134,12 +178,45 @@ export default function NoDripClubAdminPage() {
           <TokenTextInput label="CTA Label" value={form.hero_cta} onChange={v => set('hero_cta', v)} fieldStyle={s} labelStyle={lblRow} />
         </div>
 
+        {/* Brief 121 — the "MEMBERS GET:" card is a contained `benefitsCard`
+            block instance. Fields render registry-driven through the shared
+            BlockField (the same renderer the block-builder editors use); the
+            column count is the block's structural style option, surfaced here
+            because this standalone editor has no Block-tab sidebar. */}
         <div style={sec}>
-          <h2 style={{ fontWeight: 700, marginBottom: '1rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Membership Card</h2>
-          <p style={{ fontSize: '0.85rem', color: ADMIN_COLORS.onSurfaceVariant, margin: 0 }}>
-            The membership price is now managed in{' '}
-            <a href="/admin/global-settings" style={{ color: ADMIN_COLORS.secondaryContainer, fontWeight: 600 }}>Global Settings → No Drip Club</a>.
+          <h2 style={{ fontWeight: 700, marginBottom: '0.25rem', color: ADMIN_COLORS.onSurface, fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}>Membership Card — Benefits Card block</h2>
+          <p style={{ fontSize: '0.85rem', color: ADMIN_COLORS.onSurfaceVariant, margin: '0 0 1.25rem' }}>
+            The price line stays driven by{' '}
+            <a href="/admin/global-settings" style={{ color: ADMIN_COLORS.secondaryContainer, fontWeight: 600 }}>Global Settings → No Drip Club</a>{' '}
+            via the {'{{ndc_price}}'} variable. Mobile always stacks to one column.
           </p>
+          {form.benefits_card && (
+            <>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <label style={lbl}>Columns (desktop layout)</label>
+                <div style={{ display: 'flex', gap: '0.4rem' }}>
+                  {BENEFITS_CARD_COLUMNS.map((c: BenefitsCardColumns) => {
+                    const active = form.benefits_card!.data.columns === c;
+                    return (
+                      <button key={c} type="button" aria-pressed={active}
+                        onClick={() => setCardData('columns', c)}
+                        style={{
+                          flex: '0 0 auto', padding: '0.45rem 1rem', borderRadius: '0.5rem',
+                          border: `2px solid ${active ? ADMIN_COLORS.cerulean : `${ADMIN_COLORS.outlineVariant}55`}`,
+                          background: active ? `${ADMIN_COLORS.cerulean}22` : ADMIN_COLORS.surfaceContainerLowest,
+                          color: ADMIN_COLORS.onSurface, fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer',
+                        }}>
+                        {c} {c === 1 ? 'column' : 'columns'}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              {fieldsFor(BLOCK_CATALOGUE.benefitsCard, 'no-drip-club').map((f) => (
+                <BlockField key={f.key} field={f} data={form.benefits_card!.data as unknown as Record<string, unknown>} onChange={setCardData} />
+              ))}
+            </>
+          )}
         </div>
 
         <div style={sec}>

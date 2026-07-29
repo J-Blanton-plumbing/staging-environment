@@ -230,6 +230,28 @@
   background-repeat: repeat;
 }
 
+/* ---- Theme-hero pages: 70px desktop top offset (Brief 120 re-diagnosis) ---
+   Live pushes ALL page content below the 70px fixed header via the WP shell's
+   `div.body { padding-top: 70px }`. The build has no global offset — the
+   full-screen home/city heroes and the ServiceHero/CategoryHero templates sit
+   under the navbar by design — so on the pages built on the theme's 500px
+   split `.hero` pattern the opaque navbar hid the hero's top 70px (video
+   previews looked cut; the hero band ended 70px too high). Applied per page
+   wrapper, NOT on `.hero`, so the service templates are unaffected.
+   Desktop only: at ≤900px the stacked hero already clears the navbar via the
+   shared `.w { padding-top: 90px }` fix below. */
+@media only screen and (min-width: 901px) {
+  .why-jb-page,
+  .ndc-page,
+  .contact-page,
+  .customer-stories-page,
+  .kh-page,
+  .help-support-page,
+  .financing-page {
+    padding-top: 70px;
+  }
+}
+
 /* ---- Universal hero VIDEO sizing (Brief 120) ------------------------------
    Any side-by-side .hero whose media column holds a video embed renders it at
    the live theme's dimensions: `.hero .img-s { width: 45% }` +

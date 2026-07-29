@@ -74,6 +74,11 @@ async function getLivePageState(
       );
       break;
     }
+    // Brief 121 fix: 'main' is the page_type every main_pages editor actually
+    // sends (the four named types below are legacy pre-unification values kept
+    // for old draft rows). Without this case, main-page drafts were created
+    // with base_version NULL — silently skipping the DP-2 staleness guard.
+    case 'main':
     case 'financing':
     case 'customer-stories':
     case 'help-and-support':
@@ -202,6 +207,12 @@ export async function publishDraft(id: number, publishedBy: number): Promise<voi
       );
     },
     // Standalone pages — write to the main_pages table (Brief 66, Track D).
+    // Brief 121 fix: every main_pages editor saves drafts with page_type
+    // 'main' (see useDraftVersions call sites), but only these four legacy
+    // pre-unification keys were registered — so publishing ANY main-page
+    // draft threw `No writer for page_type "main"`. The 'main' key routes to
+    // the same shared writer; the four legacy keys stay for any old rows.
+    main:               mainPageWriter,
     financing:          mainPageWriter,
     'customer-stories': mainPageWriter,
     'help-and-support': mainPageWriter,

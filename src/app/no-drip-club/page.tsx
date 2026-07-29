@@ -1,11 +1,17 @@
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
+import BenefitsCard from '@/components/BenefitsCard';
 import { NDC, type InvolveMeConfig } from '@/lib/content/ndc';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { renderCmsInline } from '@/lib/cms/sanitize';
 import { resolveTokens } from '@/lib/cms/tokens';
 import { getMainPagePreview } from '@/lib/cms/preview';
+import {
+  normalizeBenefitsCardInstance,
+  staticNdcBenefitsCardData,
+  NDC_BENEFITS_CARD_CONTENT_KEY,
+} from '@/lib/cms/benefits-card';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import './ndc.css';
@@ -17,22 +23,6 @@ export const metadata: Metadata = {
   description:
     'Join the No Drip Club for serious savings, VIP priority scheduling, and complimentary annual home maintenance from J. Blanton Plumbing.',
 };
-
-/** Inline checkmark icon (matches the theme SVG used on every benefit line). */
-function Check() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m5 13l4 4L19 7"
-      />
-    </svg>
-  );
-}
 
 /**
  * involve.me popup trigger. The global <InvolveMeScript /> (mounted in layout)
@@ -64,31 +54,6 @@ function InvolveMePopup({
   );
 }
 
-/** A sub-heading followed by its checkmark benefit lines. */
-function BenefitGroup({
-  heading,
-  items,
-  headingClassName,
-}: {
-  heading: string;
-  items: string[];
-  headingClassName: string;
-}) {
-  return (
-    <>
-      <p className={headingClassName}>{heading}</p>
-      {items.map((item) => (
-        <div className="item" key={item}>
-          <div>
-            <Check />
-          </div>
-          <p>{item}</p>
-        </div>
-      ))}
-    </>
-  );
-}
-
 export default async function NoDripClubPage() {
   const preview = await getMainPagePreview('no-drip-club');
   const db = preview?.content ?? await getMainPageContent('no-drip-club').catch(() => null);
@@ -99,7 +64,7 @@ export default async function NoDripClubPage() {
   const settings = await getGlobalSettingsCached();
   // Headings/CTAs: resolve {{tokens}} to plain text (React escapes on render).
   const rt = (dbVal: unknown, fb: string) => resolveTokens(m(dbVal, fb), settings);
-  const { hero: _hero, card, how, wait, involveMe } = NDC;
+  const { hero: _hero, how, wait, involveMe } = NDC;
   const hero = {
     ..._hero,
     heading: rt(d.hero_heading, _hero.heading),
@@ -115,7 +80,16 @@ export default async function NoDripClubPage() {
     body: m(d.wait_body, wait.body),
     cta: rt(d.wait_cta, wait.cta),
   };
-  const pricing = settings.ndcPrice || card.pricing;
+  // Brief 121 — the "MEMBERS GET:" card renders from the page's stored
+  // `benefitsCard` block instance (content.benefits_card, seeded by
+  // scripts/seed-brief-121-ndc-benefits-card.ts and editable in the admin).
+  // Until the seed has run, the SAME component renders the SAME data mapped
+  // from the static `ndc.ts` card — one markup path, no visual difference.
+  // The price line inside the card is the {{ndc_price}} token, resolved from
+  // Global Settings exactly like the previous `settings.ndcPrice` render.
+  const benefitsCard =
+    normalizeBenefitsCardInstance(d[NDC_BENEFITS_CARD_CONTENT_KEY])?.data ??
+    staticNdcBenefitsCardData();
 
   return (
     <div className="ndc-page">
@@ -148,41 +122,8 @@ export default async function NoDripClubPage() {
       {/* ============== CREAM block: benefits card + CTAs + how + reviews + wait ============== */}
       <div className="cream">
         <div className="w81">
-          {/* NDC benefits card */}
-          <div className="ndc-card">
-            <Image src={card.overlayImage} alt={card.overlayAlt} fill sizes="81vw" />
-            <div className="i">
-              <p className="label">{card.label}</p>
-              <div className="f">
-                <div className="l">
-                  {card.leftColumn.map((group, i) => (
-                    <BenefitGroup
-                      key={group.heading}
-                      heading={group.heading}
-                      items={group.items}
-                      headingClassName={i === 0 ? 'sub-label' : 'sub-label mt'}
-                    />
-                  ))}
-                </div>
-                <div className="r">
-                  <div>
-                    {card.rightColumn.map((group) => (
-                      <BenefitGroup
-                        key={group.heading}
-                        heading={group.heading}
-                        items={group.items}
-                        headingClassName="sub-label"
-                      />
-                    ))}
-                    <p className="sub-label mt">{pricing}</p>
-                    {card.footnotes.map((note) => (
-                      <p key={note}>{note}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* NDC benefits card — Brief 121 `benefitsCard` block */}
+          <BenefitsCard data={benefitsCard} settings={settings} />
 
           {/* SIGN UP — Cerulean pill, involve.me popup */}
           <InvolveMePopup label={NDC.signUpCta} className="ndc-blue-button link-button" cfg={involveMe} />

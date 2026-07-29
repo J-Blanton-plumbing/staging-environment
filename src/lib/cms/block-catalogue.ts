@@ -36,6 +36,7 @@ import {
   type RelatedArticlesMode,
   type RelatedArticlesCount,
 } from '@/lib/cms/related-articles';
+import { BENEFITS_CARD_COLUMNS, type BenefitsCardColumns } from '@/lib/cms/benefits-card';
 
 /**
  * `content`      — per-page authored content; the free-builder candidates.
@@ -64,7 +65,12 @@ export type BlockFieldType =
   // faqRepeater/subcategoryRepeater precedent rather than one generic type.
   | 'mostRequestedRepeater'
   | 'whyPointRepeater'
-  | 'reviewRepeater';
+  | 'reviewRepeater'
+  // Brief 121 — Benefits Card: benefit groups (heading + nested checkmark
+  // lines + optional column placement) and the price on/off + amount + caption
+  // cluster. Named per shape, matching the repeater precedent above.
+  | 'benefitsGroupRepeater'
+  | 'priceConfig';
 
 export interface BlockFieldDef {
   /** Key inside the block instance's `data`. */
@@ -100,7 +106,12 @@ export type PageType =
   | 'knowledge-hub'
   | 'customer-stories'
   | 'financing'
-  | 'emergency-plumbing';
+  | 'emergency-plumbing'
+  // Brief 121 — the No Drip Club page (src/app/no-drip-club/page.tsx, a
+  // standalone main_pages-backed template). Registered so `benefitsCard` has a
+  // real page-type scope; the page hosts a single contained block instance
+  // (stored in main_pages.content.benefits_card), not a full block builder.
+  | 'no-drip-club';
 
 /**
  * Brief 97 (Track A) — the general block-type union. `SubServiceBlockType` (the
@@ -121,7 +132,9 @@ export type BlockType =
   | 'midCta'
   | 'whyPoints'
   | 'videoPlaceholder'
-  | 'reviews';
+  | 'reviews'
+  // Brief 121 — reusable Benefits Card (first consumer: the No Drip Club page).
+  | 'benefitsCard';
 
 /**
  * Brief 91 — the closed lists of style choices a block type exposes in the
@@ -141,6 +154,13 @@ export interface BlockStyleOptions {
   background?: BlockBackground[];
   illustration?: BlockIllustration[];
   position?: BlockPosition[];
+  /**
+   * Brief 121 — desktop column count (Benefits Card). A closed numeric list,
+   * exactly like the other style controls: the sidebar/style surface renders
+   * one button per allowed count. Stored top-level in the block's `data`
+   * (`data.columns`, per the Brief 121 data shape), not inside `data.style`.
+   */
+  columns?: readonly BenefitsCardColumns[];
 }
 
 /**
@@ -699,6 +719,55 @@ export const BLOCK_CATALOGUE: Record<BlockType, BlockDefinition> = {
     ],
     defaultData: { items: [] },
   },
+
+  // ── Brief 121 — Benefits Card ──────────────────────────────────────────────
+  benefitsCard: {
+    // A titled Carmine card of benefit groups (sub-heading + checkmark lines)
+    // across 1–3 desktop columns, with an optional price line and footnotes.
+    // Ported from the No Drip Club page's hardcoded "MEMBERS GET:" card
+    // (Brief 12 / `ndc.css`); layout, checkmarks, fonts and colors are fixed by
+    // the template — only text/structure is editable. Data shape + normalizer
+    // live in `@/lib/cms/benefits-card.ts`.
+    type: 'benefitsCard',
+    label: 'Benefits Card',
+    variant: 'Carmine benefits/pricing card',
+    category: 'content',
+    description: 'Benefit groups with checkmark lists across 1–3 columns, optional price line + footnotes.',
+    isInsertable: true,
+    allowMultiple: true,
+    removable: true,
+    // First consumer is the No Drip Club page; deliberately NOT hard-scoped in
+    // any structural way — widening to another template is a one-line addition
+    // here once that template's editor wires an inserter to it.
+    pageTypes: ['no-drip-club'],
+    fields: [
+      {
+        key: 'label',
+        label: 'Admin Label',
+        type: 'text',
+        help: 'Editor-only instance name — never shown on the public page.',
+        placeholder: 'e.g. Members Get card',
+      },
+      { key: 'title', label: 'Card Title', type: 'text', placeholder: 'e.g. MEMBERS GET:', help: 'Optional — hidden when empty.' },
+      { key: 'groups', label: 'Benefit Groups', type: 'benefitsGroupRepeater', minItems: 0, addLabel: '+ Add group' },
+      { key: 'price', label: 'Price', type: 'priceConfig' },
+      { key: 'footnotes', label: 'Footnotes', type: 'list', minItems: 0, addLabel: '+ Add footnote', placeholder: 'Fine-print line {n}' },
+    ],
+    // Fresh insert: one empty group, 2 columns, price enabled and driven by the
+    // {{ndc_price}} Global Settings token (Brief 77), no footnotes.
+    defaultData: {
+      label: null,
+      title: null,
+      columns: 2,
+      groups: [{ heading: null, items: [], column: null }],
+      price: { enabled: true, amount: '{{ndc_price}}', caption: null },
+      footnotes: [],
+    },
+    // Structural control (desktop column count) — a style option per the
+    // Brief 91 principle: structure in the Block tab / style surface, content
+    // in the block's box. Stored as top-level `data.columns`.
+    styleOptions: { columns: BENEFITS_CARD_COLUMNS },
+  },
 };
 
 /** All block TYPES the registry knows about, in a stable canonical order. */
@@ -715,6 +784,8 @@ const ALL_BLOCK_TYPES: BlockType[] = [
   'whyPoints',
   'videoPlaceholder',
   'reviews',
+  // Brief 121 — reusable Benefits Card.
+  'benefitsCard',
 ];
 
 /** Every block definition in canonical order (all page types). */
