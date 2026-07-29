@@ -230,6 +230,34 @@
   background-repeat: repeat;
 }
 
+/* ---- Universal hero VIDEO sizing (Brief 120) ------------------------------
+   Any side-by-side .hero whose media column holds a video embed renders it at
+   the live theme's dimensions: `.hero .img-s { width: 45% }` +
+   `.hero iframe { height: 500px }` (theme globals.css:22–26; verified computed
+   644×500 at 1440px on the live why-j-blanton and no-drip-club pages).
+   Keyed on the <iframe> so IMAGE heroes are untouched — swapping a hero image
+   for a video on any template picks this sizing up automatically. Covers both
+   markup shapes: wrapper div (build) and bare iframe.img-s (theme). */
+.hero .img-s:has(> iframe),
+.hero > iframe.img-s {
+  width: 45%;
+  height: 500px;
+  flex-shrink: 0;
+}
+.hero .img-s > iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media only screen and (max-width: 900px) {
+  /* Matches the theme's ≤900px `.hero .img-s { display: none }` (Brief 15). */
+  .hero .img-s:has(> iframe),
+  .hero > iframe.img-s {
+    display: none;
+  }
+}
+
 /* ---- Shared hero responsive fixes ----------------------------------------
    At ≤900px the media-side (img-s / iframe) hides and .hero stacks to a
    single column. Two issues fixed globally here so every page benefits:

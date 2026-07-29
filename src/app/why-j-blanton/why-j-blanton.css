@@ -19,11 +19,9 @@
 .why-jb-page .hero {
   /* base layout inherited from globals.css .hero */
 }
-.why-jb-page .hero .img-s {
-  width: 45%;
-  height: 580px;
-  flex-shrink: 0;
-}
+/* Hero video sizing (45% × 500px, hidden ≤900px) comes from the universal
+   `.hero .img-s:has(> iframe)` rule in globals.css (Brief 120) — do not set a
+   height here or it will shadow the shared rule. */
 /* `hero-contents` avoids the Tailwind `.contents { display:contents }` utility
    that would collapse this column to 0×0 (CLAUDE.md gotcha #1). */
 .why-jb-page .hero .hero-contents {
@@ -536,6 +534,12 @@
 @media only screen and (max-width: 480px) {
   .why-jb-page .w-aboutus .pv .w81 > img {
     height: 300px;
+  }
+  /* Theme globals.css:557 `.wte .w81 img { height: auto }` — without it the
+     fixed 350px box letterboxes the contained image (~80px dead space above
+     and below) at phone widths (Brief 120). */
+  .why-jb-page .w-aboutus .wte .w81 > img {
+    height: auto;
   }
   .why-jb-page .w-aboutus .team .w81 .r {
     height: 300px;

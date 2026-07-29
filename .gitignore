@@ -18,3 +18,6 @@ Thumbs.db
 
 # Pre-migration DB backups (Brief 74 rule) — local safety snapshots, not source
 scripts/backups/
+human qa/clone-whyjblanton-hero.png
+human qa/clone-whyjblanton-mobile.png
+human qa/live-whyjblanton-hero.png

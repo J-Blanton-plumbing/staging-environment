@@ -21,11 +21,9 @@
 .ndc-page .hero {
   /* base layout inherited from globals.css .hero */
 }
-.ndc-page .hero .img-s {
-  width: 45%;
-  height: 580px;
-  flex-shrink: 0;
-}
+/* Hero video sizing (45% × 500px, hidden ≤900px) comes from the universal
+   `.hero .img-s:has(> iframe)` rule in globals.css (Brief 120) — do not set a
+   height here or it will shadow the shared rule. */
 .ndc-page .hero .hero-contents {
   /* Override Tailwind's `.contents { display: contents }` utility, which
      collides with this theme class name and would collapse the box to 0 width. */
