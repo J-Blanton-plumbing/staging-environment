@@ -5,6 +5,7 @@ import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import ServiceCard from '@/components/ServiceCard';
 import ServicesAccordion from '@/components/ServicesAccordion';
 import HeroNav from '@/components/HeroNav';
+import HomeHeroVideo from '@/components/HomeHeroVideo';
 import GoogleReviews from '@/components/GoogleReviews';
 import TikTokFeed from '@/components/TikTokFeed';
 import ArticleGrid from '@/components/ArticleGrid';
@@ -56,16 +57,7 @@ export default async function HomePage() {
       {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/home" liveUrl="/" draftId={preview.meta.id} pageType="main" pageSlug="home" />}
       {/* ============== HERO: 100vh, bright video, bottom-aligned content ============== */}
       <section className="test-hero relative w-full h-screen overflow-hidden bg-navy-900">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/images/hero-poster.webp"
-          className="absolute inset-0 w-full h-full object-cover z-[1]"
-        >
-          <source src="/videos/chicago-plumbing.webm" type="video/webm" />
-        </video>
+        <HomeHeroVideo />
 
         <div className="test-hero-body absolute inset-0 z-[2] flex items-end">
           <div className="test-hero-contents w-[90%] mx-auto mb-[80px] lg:mb-[150px] flex flex-col lg:flex-row">
