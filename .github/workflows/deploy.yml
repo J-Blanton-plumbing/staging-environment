@@ -74,6 +74,19 @@ jobs:
             # cms_user_invites token table. Idempotent (ADD COLUMN / CREATE
             # TABLE IF NOT EXISTS), safe no-op once applied.
             npx ts-node --project tsconfig.scripts.json scripts/migrate-invite-users.ts
+            # Brief 122: stamp imported articles with their original WordPress
+            # post ID (from the checked-in scripts/data/wp-article-ids.json) so
+            # the public Knowledge Hub feed can reproduce the live site's
+            # ordering — all 812 WP articles share a ~33s post_date window, so
+            # created_at alone can't order them. Idempotent UPDATE by slug of a
+            # single nullable column; safe no-op re-run on every deploy.
+            npx ts-node --project tsconfig.scripts.json scripts/backfill-article-wp-ids.ts
+            # Brief 123: fill blank article hero images from the checked-in
+            # scripts/data/article-hero-images.json (generated on the dev
+            # machine from the WP export + live-site fallback). Only rows whose
+            # image is NULL/'' are updated — editor-set images are never
+            # overwritten, so re-running on every deploy is a safe no-op.
+            npx ts-node --project tsconfig.scripts.json scripts/backfill-article-hero-images.ts
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and

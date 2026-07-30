@@ -96,6 +96,11 @@ const STATEMENTS: string[] = [
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS updated_by INTEGER`,
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ`,
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS category TEXT[] DEFAULT '{}'::text[]`,
+  // Brief 122: original WordPress post ID — the public feed's tiebreaker for
+  // articles whose post_date is identical (the WP export has all 812 articles
+  // clustered in a 33-second window, so created_at alone can't reproduce the
+  // live site's ordering). Backfilled by backfill-article-wp-ids.ts on deploy.
+  `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS wp_post_id INTEGER`,
 
   // ── cms_users (Brief 119 — invite-based user creation) ─────────────────
   // Table creation + the password_hash DROP NOT NULL live in

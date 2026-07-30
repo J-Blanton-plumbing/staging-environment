@@ -19,10 +19,18 @@ export async function GET(request: NextRequest) {
     client = await pool.connect();
     const [rows, countRow] = await Promise.all([
       client.query(
+        // Brief 122: created_at alone can't reproduce the live site's order —
+        // the WP import left all 812 articles' post_dates inside a ~33-second
+        // window, so nearly every row ties and Postgres returned them in
+        // arbitrary (even request-to-request unstable) order. The live site
+        // breaks those ties by WP post ID, so we do too (wp_post_id, backfilled
+        // by scripts/backfill-article-wp-ids.ts; NULL for CMS-created articles,
+        // whose genuinely-newer created_at already places them first). id DESC
+        // is the final tiebreaker so pagination is always deterministic.
         `SELECT slug, title, excerpt, image, created_at
          FROM cms_articles
          WHERE status = 'published' AND (body->>'html') IS NOT NULL AND (body->>'html') != ''
-         ORDER BY created_at DESC
+         ORDER BY created_at DESC, wp_post_id DESC NULLS LAST, id DESC
          LIMIT $1 OFFSET $2`,
         [PAGE_SIZE, offset]
       ),
