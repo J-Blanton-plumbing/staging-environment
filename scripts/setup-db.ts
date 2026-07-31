@@ -235,6 +235,10 @@ const STEPS: Step[] = [
   { group: 'F', label: 'migrate-draft-publish-safety', file: 'migrate-draft-publish-safety.ts' },
   // Brief 119 — invite-based user creation (needs cms_users from step 3)
   { group: 'F', label: 'migrate-invite-users', file: 'migrate-invite-users.ts' },
+  // Brief 126 — clear dead WordPress image URLs from city_pages.hero_image and
+  // city_service_pages.service_intro_image so the code fallback applies. Must
+  // run after Group C's WP import (the source of those values). Idempotent.
+  { group: 'F', label: 'migrate-brief-126-clear-wp-image-refs', file: 'migrate-brief-126-clear-wp-image-refs.ts' },
 ];
 
 /** Returns true if the step's own script reported success (exit code 0). */

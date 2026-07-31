@@ -1,6 +1,7 @@
 import { Phone } from 'lucide-react';
 import type { Office } from '@/lib/content/cities/types';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import CityPageImage from '@/components/CityPageImage';
 
 /**
  * Coverage Area city-SERVICE hero — brief-21 §1b.
@@ -40,10 +41,10 @@ export default async function CityServiceHero({
 
   return (
     <div className="city-page-hero" style={{ height: '560px' }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <CityPageImage
         className="city-page-image"
         src={serviceHeroImage || '/images/img_hydro-jetting.webp'}
+        fallbackSrc="/images/img_hydro-jetting.webp"
         alt={h1}
         loading="eager"
         style={{ objectFit: 'cover', height: '100%' }}

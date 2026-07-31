@@ -27,6 +27,11 @@ export const MANPLUMBER_IMAGE = `${CDN}/images/manplumber.webp`;
  */
 export function resolveHeroImage(heroImage?: string): string {
   if (!heroImage) return HERO_IMAGE_FALLBACK;
+  // Brief 126 (Fix A): the old WordPress uploads tree is gone — any value still
+  // pointing there (e.g. Plumbing-Rough-In-800x600.jpg, cleared from the CMS by
+  // scripts/migrate-brief-126-clear-wp-image-refs.ts) can never load. Treat it
+  // as unset so the standard fallback applies even if stale data reappears.
+  if (heroImage.includes('wp-content/uploads')) return HERO_IMAGE_FALLBACK;
   if (heroImage.startsWith('http') || heroImage.startsWith('/')) return heroImage;
   const file = heroImage.includes('.') ? heroImage : `${heroImage}.webp`;
   return `${CDN}/images/${file}`;
@@ -59,7 +64,12 @@ const ELFSIGHT_HERO_ID_MAP: Record<string, string> = {
   'naperville':           _NAPERVILLE,
   'northbrook':           _NBROOK,
   'geneva':               '5915094e-aea7-4fe6-ade1-2d32c34c0e6d',
-  'elmhurst':             '269bffb8-4e1c-4be0-ae5e-f54aeb0f43ab',
+  // Brief 126 (Fix C): Elmhurst's dedicated widget 269bffb8-4e1c-4be0-ae5e-f54aeb0f43ab
+  // returns WIDGET_NOT_FOUND from Elfsight (badge rendered blank). Mapped to the
+  // site-wide default hero badge (_JOLIET, used on 78 pages) until Marketing
+  // creates a dedicated Elmhurst widget in the Elfsight account — swap the ID
+  // here when they do.
+  'elmhurst':             _JOLIET,
   // McHenry hub
   'allens-corners': _MCHENRY, 'almora': _MCHENRY, 'alora-heights': _MCHENRY,
   'antioch': _MCHENRY, 'barrington-hills': _MCHENRY, 'belden': _MCHENRY,

@@ -87,6 +87,14 @@ jobs:
             # image is NULL/'' are updated — editor-set images are never
             # overwritten, so re-running on every deploy is a safe no-op.
             npx ts-node --project tsconfig.scripts.json scripts/backfill-article-hero-images.ts
+            # Brief 126: clear dead WordPress image URLs (the 404ing
+            # Plumbing-Rough-In-800x600.jpg) out of city_pages.hero_image and
+            # city_service_pages.service_intro_image so those pages use the
+            # hero_image.webp code fallback like the working pages. Backs up
+            # affected values to brief126_wp_image_backup first; the LIKE
+            # predicate matches nothing after the first run, so re-running on
+            # every deploy is a safe no-op.
+            npx ts-node --project tsconfig.scripts.json scripts/migrate-brief-126-clear-wp-image-refs.ts
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and

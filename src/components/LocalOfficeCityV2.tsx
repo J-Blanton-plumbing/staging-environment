@@ -10,6 +10,7 @@ import type { CityCmsContent } from '@/lib/cms/city-pages';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
 import type { CityV2BlockInstance } from '@/lib/cms/city-v2-blocks';
 import { CITY_V2_BLOCK_ORDER, assembleCityV2Blocks, normalizeCityV2Blocks } from '@/lib/cms/city-v2-blocks';
+import CityPageImage from '@/components/CityPageImage';
 
 /**
  * Local Office City V2 template (Brief 67, QA fixes Brief 68).
@@ -161,8 +162,7 @@ function BlockRenderer({
             {/* Left — hero image (Cream placeholder when empty) */}
             <div className="relative min-h-[300px] min-[901px]:min-h-[500px] min-[901px]:w-1/2 bg-cream-100">
               {heroImage && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={heroImage} alt={`${name} plumbing`} className="absolute inset-0 h-full w-full object-cover" />
+                <CityPageImage src={heroImage} alt={`${name} plumbing`} className="absolute inset-0 h-full w-full object-cover" />
               )}
             </div>
             {/* Right — Carmine + wrench pattern (shared .hero .hero-contents rule) */}

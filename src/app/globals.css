@@ -333,7 +333,10 @@
   position: relative;
   z-index: 1;
   width: 45%;
-  object-fit: contain;
+  /* Brief 126 (Fix B): cover, not contain — the image must fill the panel
+     edge-to-edge (the flex row stretches it to the .hero-contents height;
+     contain letterboxed/cut it). */
+  object-fit: cover;
 }
 .city-page-hero .hero-contents {
   width: 55%;
@@ -430,7 +433,7 @@
     height: auto;
     flex-direction: column-reverse;
   }
-  .city-page-hero .city-page-image { width: 100%; object-fit: contain; }
+  .city-page-hero .city-page-image { width: 100%; object-fit: cover; }
   .city-page-hero .hero-contents { width: 100%; min-height: 0; padding: 90px 0 30px 0; }
   .city-page-hero .hero-contents .w { width: 90%; }
   .city-page-hero .hero-contents .w .nap p,

@@ -15,6 +15,7 @@ import type { GlobalSettings } from '@/lib/cms/global-settings';
 import { getOffice, getArea, getLocalOfficeContent, getGridCities } from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, getElfsightContentId } from '@/lib/content/cities/shared';
 import { getArticles } from '@/lib/articles';
+import CityPageImage from '@/components/CityPageImage';
 
 /**
  * Replace every `{city}` token in a string with the city's display name.
@@ -111,8 +112,7 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
             </div>
             <div className="relative min-h-[300px] overflow-hidden rounded-[5px]">
               {s.serviceIntro.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <CityPageImage
                   src={s.serviceIntro.image}
                   alt={city.name}
                   className="absolute inset-0 h-full w-full object-cover"
@@ -135,8 +135,7 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
           <section className="secondary-section mb-[50px] grid grid-cols-1 items-stretch gap-10 lg:mb-[130px] lg:grid-cols-[470px_1fr]">
             <div className="relative min-h-[250px] overflow-hidden rounded-[5px]">
               {s.secondarySection.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <CityPageImage
                   src={s.secondarySection.image}
                   alt=""
                   aria-hidden="true"

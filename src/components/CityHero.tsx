@@ -1,6 +1,7 @@
 import { Phone } from 'lucide-react';
 import type { Office } from '@/lib/content/cities/types';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import CityPageImage from '@/components/CityPageImage';
 
 /**
  * Coverage Area city hero — theme `.city-page-hero` (page-city.php 415–463;
@@ -58,8 +59,7 @@ export default async function CityHero({
   const settings = await getGlobalSettingsCached();
   return (
     <div className="city-page-hero">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="city-page-image" src={heroImageUrl} alt={h1} loading="eager" />
+      <CityPageImage className="city-page-image" src={heroImageUrl} alt={h1} loading="eager" />
 
       {/* hero-contents avoids Tailwind's `.contents { display:contents }` collision */}
       <div className="hero-contents">

@@ -16,6 +16,7 @@ import {
   resolveHeroImage,
 } from '@/lib/content/cities/shared';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import CityPageImage from '@/components/CityPageImage';
 
 /**
  * Coverage Area ("image-hero") city template — theme `page-city.php` + `city.css`
@@ -109,8 +110,7 @@ export default function CoverageAreaCity({
               )}
             </div>
             <div className="relative min-h-[300px] overflow-hidden rounded-[5px]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <CityPageImage
                 src={heroImageUrl}
                 alt={name}
                 className="absolute inset-0 h-full w-full object-cover"
