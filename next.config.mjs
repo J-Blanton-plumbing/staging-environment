@@ -41,33 +41,41 @@ const nextConfig = {
     };
   },
   async redirects() {
+    // Brief 127 (Track B): every public-facing redirect uses statusCode 301 —
+    // the classic permanent redirect search engines consolidate on — instead of
+    // `permanent: true`, which Next emits as 308. Same permanence, but the SEO
+    // audit (and most crawler tooling) expects an explicit 301.
     return [
       // Existing redirects
-      { source: '/why-us',              destination: '/why-j-blanton',       permanent: true },
-      { source: '/jb-articles/:slug',   destination: '/knowledge-hub/:slug', permanent: true },
+      { source: '/why-us',              destination: '/why-j-blanton',       statusCode: 301 },
+      { source: '/jb-articles/:slug',   destination: '/knowledge-hub/:slug', statusCode: 301 },
 
       // Track C — service category slug aliases (live → build paths)
-      { source: '/plumbing',            destination: '/services/plumbing',     permanent: true },
-      { source: '/sewer',               destination: '/services/sewer',        permanent: true },
-      { source: '/drain',               destination: '/services/drain',        permanent: true },
-      { source: '/water-heater',        destination: '/services/water-heater', permanent: true },
-      { source: '/water-quality',       destination: '/services/water-quality',permanent: true },
-      { source: '/commercial',          destination: '/services/commercial',   permanent: true },
+      { source: '/plumbing',            destination: '/services/plumbing',     statusCode: 301 },
+      { source: '/sewer',               destination: '/services/sewer',        statusCode: 301 },
+      { source: '/drain',               destination: '/services/drain',        statusCode: 301 },
+      { source: '/water-heater',        destination: '/services/water-heater', statusCode: 301 },
+      { source: '/water-quality',       destination: '/services/water-quality',statusCode: 301 },
+      { source: '/commercial',          destination: '/services/commercial',   statusCode: 301 },
 
       // Emergency slug alias
-      { source: '/emergency',           destination: '/emergency-plumbing',    permanent: true },
+      { source: '/emergency',           destination: '/emergency-plumbing',    statusCode: 301 },
 
       // Brief 76 (DM-1) — sub-services that had duplicate /services/* rows.
       // Canonical page is the dedicated top-level route; 301 the /services/*
       // variant so link equity consolidates instead of splitting indexing.
-      { source: '/services/hydro-jetting', destination: '/hydro-jetting', permanent: true },
-      { source: '/services/sewer-rodding', destination: '/sewer-rodding', permanent: true },
+      { source: '/services/hydro-jetting', destination: '/hydro-jetting', statusCode: 301 },
+      { source: '/services/sewer-rodding', destination: '/sewer-rodding', statusCode: 301 },
+
+      // Brief 127 (Track B) — dead slugs the stale sitemap still advertised.
+      { source: '/services/emergency-plumbing', destination: '/emergency-plumbing', statusCode: 301 },
+      { source: '/reviews',             destination: '/customer-stories',      statusCode: 301 },
 
       // Gas lines slug alias (live canonical = /gas-lines; DB was incorrectly stored as gas-lines-chicago)
-      { source: '/gas-lines-chicago',   destination: '/gas-lines',             permanent: true },
+      { source: '/gas-lines-chicago',   destination: '/gas-lines',             statusCode: 301 },
 
       // Stub pages
-      { source: '/booking',             destination: '/contact',               permanent: true },
+      { source: '/booking',             destination: '/contact',               statusCode: 301 },
 
       // Brief 83 — "Service Category" + "Service" sidebar sections merged into
       // one "Service Pages" landing; the old standalone sub-service list route

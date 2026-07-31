@@ -19,6 +19,14 @@ async function verifySession(req: NextRequest): Promise<boolean> {
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
+  // Brief 127 (Track A): expose the request pathname to the root layout's
+  // generateMetadata (layouts can't read the URL otherwise) so every page can
+  // render a self-referencing <link rel="canonical">. `set` (not append)
+  // overwrites any client-supplied x-pathname, so the value is trustworthy.
+  const requestHeaders = new Headers(req.headers)
+  requestHeaders.set('x-pathname', pathname)
+  const passThrough = () => NextResponse.next({ request: { headers: requestHeaders } })
+
   // ── CMS admin session gate ─────────────────────────────────────────────
   if (pathname.startsWith('/admin')) {
     // Login page and auth API are always allowed through.
@@ -32,7 +40,7 @@ export async function middleware(req: NextRequest) {
       pathname === '/admin/set-password' ||
       pathname.startsWith('/api/auth/')
     ) {
-      return NextResponse.next()
+      return passThrough()
     }
 
     const valid = await verifySession(req)
@@ -41,27 +49,27 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(loginUrl)
     }
 
-    return NextResponse.next()
+    return passThrough()
   }
 
   // ── Preview Basic Auth (non-admin routes) ──────────────────────────────
   // Skip for CMS API routes, auth routes, and preview routes
   if (pathname.startsWith('/api/cms') || pathname.startsWith('/api/auth') || pathname.startsWith('/api/preview')) {
-    return NextResponse.next()
+    return passThrough()
   }
 
   const user = process.env.PREVIEW_USER
   const pass = process.env.PREVIEW_PASS
 
   // Skip Basic Auth if credentials not configured
-  if (!user || !pass) return NextResponse.next()
+  if (!user || !pass) return passThrough()
 
   // Skip Basic Auth for direct localhost access (local dev / QA tooling). The
   // Cloudflare tunnel arrives with its public host header, so this does not
   // weaken auth on the staging URL.
   const host = req.headers.get('host') ?? ''
   if (host.startsWith('localhost') || host.startsWith('127.0.0.1')) {
-    return NextResponse.next()
+    return passThrough()
   }
 
   const auth = req.headers.get('authorization')
@@ -70,7 +78,7 @@ export async function middleware(req: NextRequest) {
     if (scheme === 'Basic' && encoded) {
       const decoded = Buffer.from(encoded, 'base64').toString()
       const [u, p] = decoded.split(':')
-      if (u === user && p === pass) return NextResponse.next()
+      if (u === user && p === pass) return passThrough()
     }
   }
 

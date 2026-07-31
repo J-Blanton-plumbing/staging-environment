@@ -64,6 +64,8 @@ const STATEMENTS: string[] = [
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS why_points JSONB`,
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS blocks JSONB`,
+  // Brief 127 — optional per-page canonical override (blank = self-referencing)
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
 
   // ── city_service_pages ──────────────────────────────────────────────────
   `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS service_intro_heading TEXT NOT NULL DEFAULT ''::text`,
@@ -82,6 +84,7 @@ const STATEMENTS: string[] = [
   `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS updated_by_email TEXT`,
   `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS parent_slug TEXT`,
   `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
+  `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
 
   // ── cms_articles ────────────────────────────────────────────────────────
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS title TEXT NOT NULL DEFAULT 'New article — edit me.'::text`,
@@ -101,6 +104,7 @@ const STATEMENTS: string[] = [
   // clustered in a 33-second window, so created_at alone can't reproduce the
   // live site's ordering). Backfilled by backfill-article-wp-ids.ts on deploy.
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS wp_post_id INTEGER`,
+  `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
 
   // ── cms_users (Brief 119 — invite-based user creation) ─────────────────
   // Table creation + the password_hash DROP NOT NULL live in
@@ -126,6 +130,7 @@ const STATEMENTS: string[] = [
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT now()`,
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS updated_by_email TEXT`,
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
+  `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
 
   // ── global_settings ─────────────────────────────────────────────────────
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS header_phone TEXT`,
@@ -148,6 +153,7 @@ const STATEMENTS: string[] = [
   `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT now()`,
   `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS page_type TEXT`,
   `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
+  `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
 
   // ── page_archives ───────────────────────────────────────────────────────
   `ALTER TABLE page_archives ADD COLUMN IF NOT EXISTS archive_name TEXT NOT NULL DEFAULT ''::text`,
@@ -180,6 +186,7 @@ const STATEMENTS: string[] = [
   `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS updated_by_email TEXT`,
   `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS blocks JSONB`,
+  `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
 
   // ── service_subcategories ───────────────────────────────────────────────
   `ALTER TABLE service_subcategories ADD COLUMN IF NOT EXISTS sort_order INTEGER NOT NULL DEFAULT 0`,
@@ -210,6 +217,7 @@ const STATEMENTS: string[] = [
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS ndc_body TEXT`,
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS blocks JSONB`,
+  `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
 
   // ── template_switch_archive ─────────────────────────────────────────────
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS from_template TEXT NOT NULL DEFAULT ''::text`,

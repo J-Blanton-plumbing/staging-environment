@@ -191,7 +191,7 @@ export default async function HomePage() {
                 </p>
               ))}
               <Link
-                href="/why-us"
+                href="/why-j-blanton"
                 className="link-button max-[480px]:w-full"
               >
                 MEET OUR TEAM

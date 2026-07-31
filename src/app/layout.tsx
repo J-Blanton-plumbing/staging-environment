@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import Script from 'next/script';
 import localFont from 'next/font/local';
 import { Nunito } from 'next/font/google';
@@ -7,6 +8,8 @@ import SiteShell from '@/components/SiteShell';
 import InvolveMeScript from '@/components/InvolveMeScript';
 import InvolveMePopupBinder from '@/components/InvolveMePopupBinder';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
+import { CANONICAL_BASE, canonicalUrlFor, normalizePath } from '@/lib/seo';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
 // Medium (500) → H3 subheadings, Demi (600) → nav/labels, Bold (700) → H1/H2,
@@ -29,7 +32,8 @@ const nunito = Nunito({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+const BASE_METADATA: Metadata = {
+  metadataBase: new URL(CANONICAL_BASE),
   title: {
     default: 'J. Blanton Plumbing | Chicago & Suburbs',
     template: '%s | J. Blanton Plumbing',
@@ -51,6 +55,28 @@ export const metadata: Metadata = {
     siteName: 'J. Blanton Plumbing',
   },
 };
+
+/**
+ * Brief 127 (Track A): every public page gets a self-referencing
+ * <link rel="canonical"> built from the env-configured PRODUCTION origin plus
+ * the request's normalized pathname (via the x-pathname header set in
+ * middleware — layouts can't read the URL any other way). A page whose CMS row
+ * has a non-blank canonical_url override renders that instead. Child-page
+ * metadata merges over this, but no page defines `alternates`, so the
+ * canonical always survives.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const pathname = headers().get('x-pathname');
+  // No header (e.g. static prerender of error shells) or non-indexable
+  // sections: emit no canonical rather than a wrong one.
+  if (!pathname || pathname.startsWith('/admin') || pathname.startsWith('/api')) {
+    return BASE_METADATA;
+  }
+  const overrides = await getCanonicalOverridesCached();
+  const canonical =
+    overrides.get(normalizePath(pathname)) ?? canonicalUrlFor(pathname);
+  return { ...BASE_METADATA, alternates: { canonical } };
+}
 
 export default async function RootLayout({
   children,
