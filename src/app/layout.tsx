@@ -7,6 +7,7 @@ import './globals.css';
 import SiteShell from '@/components/SiteShell';
 import InvolveMeScript from '@/components/InvolveMeScript';
 import InvolveMePopupBinder from '@/components/InvolveMePopupBinder';
+import SiteAnalytics from '@/components/analytics/SiteAnalytics';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
 import { CANONICAL_BASE, canonicalUrlFor, normalizePath } from '@/lib/seo';
@@ -113,6 +114,11 @@ export default async function RootLayout({
         {/* Brief 108 (Group B): re-binds involve.me CTAs that mount after a
             client-side navigation, which the embed script's one-time scan misses. */}
         <InvolveMePopupBinder />
+        {/* Brief 128: GA4 + Google Ads + Meta Pixel + Bing UET base tags,
+            client-side route-change pageviews, and the element_1_click tracker.
+            Every ID is env-gated — blank env var = that tag never loads, which is
+            how staging stays out of the production analytics accounts. */}
+        <SiteAnalytics />
       </body>
     </html>
   );
