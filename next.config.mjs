@@ -74,6 +74,15 @@ const nextConfig = {
       // Gas lines slug alias (live canonical = /gas-lines; DB was incorrectly stored as gas-lines-chicago)
       { source: '/gas-lines-chicago',   destination: '/gas-lines',             statusCode: 301 },
 
+      // Live contact slug. The live site's ONLY contact page is
+      // https://jblantonplumbing.com/contact-us (verified against the WordPress
+      // export: one published page, post_name `contact-us`; there is no
+      // `/contact` on live). The build renamed it to `/contact`, so without this
+      // the live indexed URL 404s at cutover — flagged in Brief 128's report as
+      // an unmet dependency alongside /thank-you. Same live-slug → build-slug
+      // direction as /why-us above.
+      { source: '/contact-us',          destination: '/contact',               statusCode: 301 },
+
       // Stub pages
       { source: '/booking',             destination: '/contact',               statusCode: 301 },
 
