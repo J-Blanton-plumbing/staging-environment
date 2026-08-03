@@ -1,0 +1,224 @@
+/* ============================================================================
+   Thank You page — page-level styles (Brief 129)
+   Everything is scoped under `.thank-you-page`, and every class carries a `ty-`
+   prefix so none of the generic theme token names (`.cream`, `.w81`,
+   `.red-text`, `.link-button`) are re-declared here — that per-page
+   redefinition is what makes those tokens drift between pages, and this page
+   shares no markup with the theme's split-panel `.hero` template.
+
+   Font mapping follows the convention used by the other page CSS files:
+     Industry Bold   -> var(--font-industry), 700
+     Nunito Regular  -> var(--font-nunito),   400
+
+   Brand colors only (brand-rules.md): Carmine #BC0E0E, Cerulean #1560E6,
+   Cream #F9F3EC, Midnight #0A1B2E. No `#000000` anywhere — dark text is
+   Midnight. (`#fff` on the mobile step cards is ported from the No Drip Club
+   "HOW IT WORKS" pattern; pure white is permitted, pure black is not.)
+   ========================================================================== */
+
+/* ---- Page shell ------------------------------------------------------------
+   This page has NO hero, so it gets no top offset from the shared theme-hero
+   rules in globals.css. The 70px pad clears the fixed navbar itself, at every
+   breakpoint (the navbar is h-[70px] on desktop AND mobile). */
+.thank-you-page {
+  background: #f9f3ec; /* Cream */
+  overflow-x: hidden;
+  padding-top: 70px;
+}
+
+/* Shared content width — 81% desktop, 90% on narrow screens, matching the
+   `.w81` measure used by every other content page. */
+.thank-you-page .ty-w {
+  width: 81%;
+  margin: 0 auto;
+}
+
+/* ---- 1. Confirmation headline --------------------------------------------- */
+.thank-you-page .ty-confirm {
+  padding: 100px 0 70px 0;
+  text-align: center;
+}
+.thank-you-page .ty-confirm h1 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px; /* brand-rules H1 */
+  line-height: 1.15;
+  color: #bc0e0e; /* Carmine — overrides globals' @layer base h1 navy */
+}
+
+/* ---- 2. What happens next -------------------------------------------------
+   Ported from `.ndc-how-it-works` in no-drip-club/ndc.css: flex +
+   space-between on desktop, block with white cards ≤900px, middle step gets
+   the side/vertical margin. `flex: 1` is the one addition — the three step
+   texts here differ in length and space-between alone left ragged columns. */
+.thank-you-page .ty-next {
+  padding-bottom: 100px;
+}
+.thank-you-page .ty-section-heading {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 32px; /* brand-rules H2 */
+  color: #bc0e0e; /* Carmine */
+  text-align: center;
+}
+.thank-you-page .ty-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+.thank-you-page .ty-steps > div {
+  flex: 1;
+}
+.thank-you-page .ty-steps > div .label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #0a1b2e; /* Midnight */
+}
+.thank-you-page .ty-steps > div .text {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0a1b2e; /* Midnight */
+  margin-top: 5px;
+}
+.thank-you-page .ty-steps > div:nth-child(2) {
+  margin: 0 30px;
+}
+
+/* ---- 3. Trust block (video + reviews) -------------------------------------
+   Side-by-side desktop / stacked ≤900px, the two-column convention used on
+   contact + financing. `min-width: 0` on both columns is required: flex items
+   default to `min-width: auto`, which would let the Elfsight carousel's
+   intrinsic width push the row past 100% and break the no-overflow rule. */
+.thank-you-page .ty-trust {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 100px;
+}
+.thank-you-page .ty-trust > * {
+  width: 50%;
+  min-width: 0;
+}
+.thank-you-page .ty-video {
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.thank-you-page .ty-video iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+/* Reviews widget can render wider than its column; scroll it internally rather
+   than letting it overflow the page (same approach as financing's `.ep-gr`). */
+.thank-you-page .ty-reviews {
+  overflow-x: auto;
+}
+
+/* ---- 4. Secondary CTA (No Drip Club) -------------------------------------- */
+.thank-you-page .ty-cta {
+  padding-bottom: 120px;
+  text-align: center;
+}
+.thank-you-page .ty-cta-text {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #0a1b2e; /* Midnight */
+  margin-bottom: 30px;
+}
+/* Standard primary CTA (brand-rules.md): Cerulean pill -> Carmine on hover,
+   Industry Bold 16px, white text. Height matches the site's other primary
+   pills (52px) rather than brand-rules' 32px print-scale figure. */
+.thank-you-page .ty-cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  margin: 0 auto;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 50px;
+  background: #1560e6; /* Cerulean */
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+.thank-you-page .ty-cta-button:hover {
+  background: #bc0e0e; /* Carmine */
+}
+.thank-you-page .ty-cta-button:focus-visible {
+  outline: 2px solid #0a1b2e;
+  outline-offset: 2px;
+}
+
+/* ---- Responsive ----------------------------------------------------------- */
+@media only screen and (max-width: 900px) {
+  .thank-you-page .ty-w {
+    width: 90%;
+  }
+  .thank-you-page .ty-confirm {
+    padding: 60px 0 50px 0;
+  }
+  .thank-you-page .ty-confirm h1 {
+    font-size: 32px;
+  }
+  .thank-you-page .ty-next {
+    padding-bottom: 70px;
+  }
+  .thank-you-page .ty-section-heading {
+    font-size: 28px;
+  }
+  /* ndc.css `.ndc-how-it-works` ≤900px: stack, white cards, middle spacer */
+  .thank-you-page .ty-steps {
+    display: block;
+    margin-top: 40px;
+  }
+  .thank-you-page .ty-steps > div {
+    background: #fff;
+    padding: 20px;
+  }
+  .thank-you-page .ty-steps > div:nth-child(2) {
+    margin: 25px 0;
+  }
+  .thank-you-page .ty-trust {
+    display: block;
+    padding-bottom: 70px;
+  }
+  .thank-you-page .ty-trust > * {
+    width: 100%;
+  }
+  .thank-you-page .ty-reviews {
+    margin-top: 40px;
+  }
+  .thank-you-page .ty-cta {
+    padding-bottom: 80px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .thank-you-page .ty-confirm h1 {
+    font-size: 28px;
+  }
+  .thank-you-page .ty-section-heading {
+    font-size: 24px;
+  }
+  .thank-you-page .ty-cta-text {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  .thank-you-page .ty-cta-button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 16px;
+  }
+}
