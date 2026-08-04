@@ -18,6 +18,17 @@ Thumbs.db
 
 # Pre-migration DB backups (Brief 74 rule) — local safety snapshots, not source
 scripts/backups/
+
+# CMS media uploads (Brief 134). Bytes belong in S3 + CloudFront, never in git.
+# Note the `/*` — ignoring the directory itself would stop git descending into
+# it, and the .gitkeep negation below would never take effect. The directory is
+# kept because the un-provisioned fallback path in
+# src/app/api/cms/upload/route.ts still writes here.
+# The 19 files committed before this rule stay tracked until they are explicitly
+# untracked (`git rm -r --cached public/uploads/cms`) — do that only AFTER the
+# S3 migration is confirmed serving. See the Brief 134 report.
+public/uploads/cms/*
+!public/uploads/cms/.gitkeep
 human qa/clone-whyjblanton-hero.png
 human qa/clone-whyjblanton-mobile.png
 human qa/live-whyjblanton-hero.png

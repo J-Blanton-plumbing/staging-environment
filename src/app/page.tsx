@@ -77,14 +77,20 @@ export default async function HomePage() {
               <h1 className="font-display font-bold uppercase text-white text-[40px] leading-[1.05] tracking-tight max-[1280px]:text-[30px] max-[780px]:text-[26px]">
                 {home.hero.heading}
               </h1>
-              <h1 className="font-display font-bold uppercase text-[50px] leading-[1.05] tracking-tight max-[780px]:text-[26px]">
+              {/* Brief 132: these two lines were <h1> and are now <p> — a page must
+                  have exactly one H1 (line 1 above), and a linked phone number should
+                  never be a heading. Classes are unchanged, so rendering is identical
+                  (Tailwind preflight zeroes margins and normalizes font-size for both
+                  tags, and every property globals.css sets on h1 — font-display,
+                  font-bold, tracking-tight, text colour — is restated inline here). */}
+              <p className="font-display font-bold uppercase text-navy-800 text-[50px] leading-[1.05] tracking-tight max-[780px]:text-[26px]">
                 <Link href={settings.phoneHref} className="text-white hover:text-brand-400 transition-colors">
                   {home.hero.headingCta}
                 </Link>
-              </h1>
-              <h1 className="font-display font-bold uppercase text-white text-[40px] leading-[1.1] tracking-tight mt-[15px] max-[1280px]:text-[30px] max-[780px]:text-[26px]">
+              </p>
+              <p className="font-display font-bold uppercase text-white text-[40px] leading-[1.1] tracking-tight mt-[15px] max-[1280px]:text-[30px] max-[780px]:text-[26px]">
                 {home.hero.headingTagline}
-              </h1>
+              </p>
             </div>
 
             <div className="r lg:w-1/2 flex flex-col">

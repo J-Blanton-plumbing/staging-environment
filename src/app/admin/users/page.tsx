@@ -63,6 +63,8 @@ export default function AdminUsersPage() {
   const [notice, setNotice] = useState('');
   const [noticeIsWarning, setNoticeIsWarning] = useState(false);
   const [resendingId, setResendingId] = useState<number | null>(null);
+  // Brief 133 — row-level busy flag for the disable / enable / force-sign-out actions.
+  const [actingId, setActingId] = useState<number | null>(null);
 
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
 
@@ -115,6 +117,63 @@ export default function AdminUsersPage() {
       setEditError('Failed to save');
     } finally {
       setEditLoading(false);
+    }
+  }
+
+  // Brief 133 (Track B) — account revocation actions. Both go through the
+  // existing PUT /api/cms/users/[id]; the server bumps `session_epoch`, which
+  // invalidates every live token for that user on their next request.
+  async function setUserStatus(user: CmsUser, status: 'active' | 'disabled') {
+    const verb = status === 'disabled' ? 'Disable' : 'Enable';
+    if (!confirm(`${verb} ${user.name}?${status === 'disabled' ? ' They will be signed out everywhere and cannot log back in.' : ''}`)) return;
+    setActingId(user.id);
+    setNotice('');
+    try {
+      const res = await fetch(`/api/cms/users/${user.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setNotice(status === 'disabled' ? `${user.name} is disabled and signed out everywhere.` : `${user.name} can sign in again.`);
+        setNoticeIsWarning(false);
+        await loadUsers();
+      } else {
+        setNotice(data.error || `Failed to ${verb.toLowerCase()} user`);
+        setNoticeIsWarning(true);
+      }
+    } catch {
+      setNotice(`Failed to ${verb.toLowerCase()} user`);
+      setNoticeIsWarning(true);
+    } finally {
+      setActingId(null);
+    }
+  }
+
+  async function forceSignOut(user: CmsUser) {
+    if (!confirm(`Sign ${user.name} out of every device? They keep their account and can log back in.`)) return;
+    setActingId(user.id);
+    setNotice('');
+    try {
+      const res = await fetch(`/api/cms/users/${user.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ forceSignOut: true }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setNotice(`${user.name} has been signed out of all sessions.`);
+        setNoticeIsWarning(false);
+      } else {
+        setNotice(data.error || 'Failed to sign the user out');
+        setNoticeIsWarning(true);
+      }
+    } catch {
+      setNotice('Failed to sign the user out');
+      setNoticeIsWarning(true);
+    } finally {
+      setActingId(null);
     }
   }
 
@@ -439,6 +498,48 @@ export default function AdminUsersPage() {
                             style={{ background: 'transparent', color: ADMIN_COLORS.onSurfaceVariant, border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`, padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
                           >
                             Edit
+                          </button>
+                        )}
+                        {/* Brief 133 — force sign-out revokes live tokens without
+                            touching the account; disable revokes AND blocks login. */}
+                        {user.status === 'active' && (
+                          <button
+                            onClick={() => forceSignOut(user)}
+                            disabled={actingId === user.id}
+                            title="Invalidate every signed-in session for this user. They can log back in."
+                            style={{ background: 'transparent', color: ADMIN_COLORS.onSurfaceVariant, border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`, padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                          >
+                            {actingId === user.id ? 'Working…' : 'Force sign-out'}
+                          </button>
+                        )}
+                        {user.status === 'active' && (() => {
+                          const lastActive = activeCount <= 1;
+                          return (
+                            <div title={lastActive ? 'Cannot disable the only active user' : 'Sign out and block this account from logging in'}>
+                              <button
+                                onClick={() => setUserStatus(user, 'disabled')}
+                                disabled={lastActive || actingId === user.id}
+                                style={{
+                                  background: lastActive ? 'transparent' : `${ADMIN_COLORS.warning}14`,
+                                  color: lastActive ? `${ADMIN_COLORS.onSurfaceVariant}66` : ADMIN_COLORS.warning,
+                                  border: `1px solid ${lastActive ? ADMIN_COLORS.outlineVariant + '33' : ADMIN_COLORS.warning + '4D'}`,
+                                  padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600,
+                                  cursor: lastActive ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap',
+                                }}
+                              >
+                                Disable
+                              </button>
+                            </div>
+                          );
+                        })()}
+                        {user.status === 'disabled' && (
+                          <button
+                            onClick={() => setUserStatus(user, 'active')}
+                            disabled={actingId === user.id}
+                            title="Allow this account to sign in again"
+                            style={{ background: `${ADMIN_COLORS.success}14`, color: ADMIN_COLORS.success, border: `1px solid ${ADMIN_COLORS.success}4D`, padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                          >
+                            {actingId === user.id ? 'Working…' : 'Enable'}
                           </button>
                         )}
                         {(() => {

@@ -111,7 +111,8 @@ When building or auditing a page, open the matching `jb-blanton/css/[page].css` 
 
 2. **`globals.css` overrides `city.css` and other page CSS.** The OUR SERVICES panel on city pages uses a red gradient (`#e63946 → #9b0d0d`) + white text/icons/caret from `globals.css` — not the cream/Midnight version you see in `city.css`. Always check both files.
 
-3. **Two `<h1>` elements on city v2 pages** — the badge `<img>` is `:nth-child(1)`, so the H1 CSS selectors using `nth-child` are reversed from what you'd expect. Line 1 = 50px, line 2 = 40px.
+3. **Hero headline sizing on city video-hero pages is "reversed".** The badge `<img>` is `:nth-child(1)`, so the original theme's `nth-child` H1 selectors target one element later than you'd expect: the FIRST headline line renders at 50px and the LAST at 40px. `CityVideoHero.tsx` reproduces those sizes with explicit Tailwind classes, so nothing depends on `nth-child` any more — but keep the 50/40 order if you touch it.
+   **These pages render exactly ONE `<h1>` (the city heading).** They used to render two, mirroring a multiple-H1 defect on the live WordPress page; that was fixed — do not "restore fidelity" by adding H1s back. Same rule as the homepage hero: one H1 per page, and a linked phone number is never a heading.
 
 4. **Never run `next dev` on a stale production `.next` build.** It deadlocks the dev compiler with false "build failure" errors. Always wipe `.next` when switching between `next build` and `next dev`.
 

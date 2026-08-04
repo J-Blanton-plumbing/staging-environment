@@ -1,3 +1,39 @@
+/**
+ * Brief 134 — the CloudFront host that fronts the CMS uploads bucket is
+ * configured per environment via `S3_UPLOAD_PUBLIC_BASE_URL`, so its hostname
+ * has to be added to `images.remotePatterns` or every uploaded image throws
+ * `hostname is not configured under images` in next/image.
+ *
+ * NOTE: like every build-time config value, this is baked into the build. After
+ * changing `S3_UPLOAD_PUBLIC_BASE_URL` the app must be REBUILT — a pm2 restart
+ * alone will not pick it up. The deploy workflow builds on the box, so setting
+ * the var in the box's env file before deploying is sufficient.
+ */
+const uploadsCdn = (() => {
+  const raw = process.env.S3_UPLOAD_PUBLIC_BASE_URL?.trim();
+  if (!raw) return null;
+  try {
+    const u = new URL(raw);
+    // Protocol comes from the URL rather than being hardcoded https, so a
+    // non-TLS base (a local S3-compatible stub used for testing the upload
+    // path) is matched too. Production is https either way.
+    return { protocol: u.protocol.replace(':', ''), hostname: u.hostname };
+  } catch {
+    console.warn(`[next.config] S3_UPLOAD_PUBLIC_BASE_URL is not a valid URL: "${raw}" — ignoring.`);
+    return null;
+  }
+})();
+
+const imageRemotePatterns = [
+  { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+  // Existing WordPress-era asset CDN — still referenced by migrated content.
+  { protocol: 'https', hostname: 'd1rplazj5a80fb.cloudfront.net' },
+];
+
+if (uploadsCdn && !imageRemotePatterns.some(p => p.hostname === uploadsCdn.hostname)) {
+  imageRemotePatterns.push(uploadsCdn);
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Zero-downtime deploys: deploy.yml builds into a side directory
@@ -25,10 +61,7 @@ const nextConfig = {
     },
   },
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
-      { protocol: 'https', hostname: 'd1rplazj5a80fb.cloudfront.net' },
-    ],
+    remotePatterns: imageRemotePatterns,
   },
   async rewrites() {
     return {

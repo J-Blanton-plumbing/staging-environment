@@ -66,10 +66,15 @@ const MCHENRY_CITIES = [
   'lake-zurich', 'lakemoor', 'lindenhurst', 'long-grove', 'long-lake', 'mccullom-lake',
   'mylith-park', 'oakwood-hills', 'old-mill-creek', 'pistakee-highlands', 'prairie-grove',
   'richmond', 'ridgefield', 'ringwood', 'round-lake', 'round-lake-beach', 'round-lake-heights',
-  'round-lake-park', 'solon-mills', 'spring-grove', 'trout-valley', 'venetian-cillage',
+  'round-lake-park', 'solon-mills', 'spring-grove', 'trout-valley',
   'venetian-village', 'village-of-lakewood', 'volo', 'wauconda', 'williams-park', 'wonder-lake',
   'woodstock',
 ];
+// Brief 131 (Track A.2): `venetian-cillage` was a duplicate typo row — the live
+// site 301s /venetian-cillage → /venetian-village, so serving both as 200s (and
+// listing both in sitemap.ts) was a self-inflicted duplicate city page. Dropped
+// here; the legacy redirect map emits /venetian-cillage[/{service}] →
+// /venetian-village[/{service}] so all 46 live URLs are preserved.
 
 const ELGIN_CITIES = [
   'bartlett', 'allens-corners', 'almora', 'alora-heights', 'burlington', 'campton-hills',
@@ -125,6 +130,40 @@ assignOffice('chicago-lincoln-park', ['chicago-lincoln-park']);
 // already mapped above (it's a NORTHBROOK_CITIES host); it only needed removing
 // from PENDING_LOCAL_OFFICE below.
 assignOffice('elmhurst', ['elmhurst']);
+/**
+ * Brief 131 (Track A.1) — the 21 cities Brief 130 found as live URLs with no
+ * registry entry: the 20 unmapped flat `/{city}-il-sewer-rodding` sources
+ * (report §5) plus Willowbrook / Deerfield / Harwood Heights from the
+ * `/sewer-service/` geo set (report §7). Deerfield is in both lists, so the
+ * brief's "23" dedupes to 22; `rodgers-park` is then aliased rather than
+ * registered (see below), leaving 21 here.
+ *
+ * They are declared with the BARE live slug (`bucktown`, not `chicago-bucktown`)
+ * even for the Chicago neighbourhoods, unlike the brief-50 import below. That is
+ * deliberate: live serves these as bare top-level slugs (`/bucktown` 301s to
+ * `/bucktown-il-sewer-rodding`), so the bare form is the URL that must 200 at
+ * cutover. Registering them here does that AND makes the flat `-il-` sources
+ * resolve to `/{city}/sewer-rodding` with no generator change.
+ *
+ * ⚠️ NOT registered: `rodgers-park`. It is a MISSPELLING of Rogers Park, which is
+ * already here as `chicago-rogers-park` — registering both would serve two 200
+ * city pages (and two sitemap rows) for one neighbourhood, the exact duplicate
+ * `venetian-cillage` was dropped for. It is handled as a redirect instead:
+ * CITY_ALIASES sends `/rodgers-park-il-sewer-rodding` →
+ * `/chicago-rogers-park/sewer-rodding`, and EXTRA_REDIRECTS sends the bare
+ * `/rodgers-park` → `/chicago-rogers-park` (both in
+ * scripts/build-legacy-redirect-map.ts).
+ *
+ * No office/area assignment beyond this line, so each falls to the default
+ * Ravenswood office + "North and Northwest Side Chicago" area — the same
+ * treatment the brief-50 import cities get.
+ */
+assignOffice('chicago-ravenswood', [
+  'bucktown', 'buena-park', 'deerfield', 'gold-coast', 'grayslake', 'harwood-heights',
+  'hyde-park', 'lake-view-east', 'north-barrington', 'north-halsted', 'old-town',
+  'river-grove', 'riverwoods', 'sauganash', 'sheridan-park', 'third-lake',
+  'tower-lakes', 'wadsworth', 'west-lakeview', 'willowbrook', 'wrigleyville',
+]);
 // ── Cities imported from WordPress XML export (brief-50, Track C) ──────────
 assignOffice('chicago-ravenswood', ['alsip', 'arbury-hills', 'blue-island', 'bonnie-brae', 'chicago', 'chicago-albany-park', 'chicago-andersonville', 'chicago-austin', 'chicago-avondale', 'chicago-belmont-cragin', 'chicago-dunning', 'chicago-edgewater', 'chicago-edison-park', 'chicago-forest-glen', 'chicago-heights', 'chicago-hermosa', 'chicago-humboldt-park', 'chicago-irving-park', 'chicago-jefferson-park', 'chicago-lake-view', 'chicago-lincoln-square', 'chicago-logan-square', 'chicago-montclare', 'chicago-north-center', 'chicago-north-park', 'chicago-norwood-park', 'chicago-ohare', 'chicago-portage-park', 'chicago-ravenswood', 'chicago-rogers-park', 'chicago-uptown', 'chicago-west-ridge', 'chicago-west-town', 'country-club-hills', 'crest-hill', 'des-plaines', 'fairmont', 'flossmoor', 'forest-park', 'frankfort', 'frankfort-square', 'glenview', 'golf', 'harvey', 'homer-glen', 'homewood', 'ingalls-park', 'joliet', 'lemont', 'lincolnwood', 'lockport', 'lockport-heights', 'manhattan', 'markham', 'matteson', 'midlothian', 'mokena', 'new-lenox', 'niles', 'norridge', 'oak-forest', 'oak-park', 'orland-park', 'palos-heights', 'palos-hills', 'park-forest', 'park-ridge', 'preston-heights', 'river-forest', 'riverside', 'rockdale', 'roseland', 'rosemont', 'schiller-park', 'south-holland', 'tinley-park']);
 

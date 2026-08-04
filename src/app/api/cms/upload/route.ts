@@ -11,6 +11,7 @@ import {
   MAX_IMAGE_BYTES,
   MAX_VIDEO_BYTES,
 } from '@/lib/cms/media-types';
+import { getS3Config, missingS3EnvVars, putObject } from '@/lib/storage/s3';
 
 // Human-readable size cap for error messages.
 const MB = (bytes: number) => `${Math.round(bytes / (1024 * 1024))} MB`;
@@ -45,17 +46,38 @@ export async function POST(req: NextRequest) {
 
     const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
     const filename = `${safeName}`;
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'cms');
-    const filePath = path.join(uploadDir, filename);
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    await writeFile(filePath, buffer);
 
-    const url = `/uploads/cms/${filename}`;
+    // ── Brief 134: store the bytes ────────────────────────────────────────
+    // S3 when the environment is provisioned; local disk otherwise, so an
+    // un-provisioned environment (local dev, or staging before ops creates the
+    // bucket) keeps working exactly as it did instead of failing every upload.
+    // Seeing the warning below in production means the env vars were never set
+    // and uploads are landing on ephemeral disk — see the Brief 134 ops note.
+    const s3 = getS3Config();
+    let url: string;
+    let storage: 's3' | 'local';
+
+    if (s3) {
+      const put = await putObject(filename, buffer, file.type, s3);
+      url = put.url;
+      storage = 's3';
+    } else {
+      console.warn(
+        `[cms/upload] S3 is not configured (missing ${missingS3EnvVars().join(', ')}) — writing "${filename}" to local disk. On cloud hosting this file is LOST on the next redeploy.`
+      );
+      const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'cms');
+      await writeFile(path.join(uploadDir, filename), buffer);
+      url = `/uploads/cms/${filename}`;
+      storage = 'local';
+    }
 
     // Derive dimensions for images (sharp is already a dep via next/image). Video
     // dimensions are intentionally skipped (Brief 112 — no probing/transcoding).
+    // Probed from the in-memory buffer, so it is unaffected by where the bytes
+    // were stored.
     let width: number | null = null;
     let height: number | null = null;
     if (mediaTypeForMime(file.type) === 'image') {
@@ -90,7 +112,7 @@ export async function POST(req: NextRequest) {
         client.release();
       }
     } catch (err) {
-      console.error('[cms/upload] file written but catalog insert failed:', err);
+      console.error(`[cms/upload] file stored (${storage}: ${url}) but catalog insert failed:`, err);
     }
 
     // Backward-compatible: existing callers read `url`. New callers (the rebuilt

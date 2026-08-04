@@ -7,12 +7,19 @@ import type { CityContent } from '@/lib/content/cities/evanston';
  * viewport autoplay video with a bottom-aligned two-column content row.
  *
  * Fidelity notes (match live, not a redesign):
- * - Two `<h1>`s are intentional — a known multiple-H1 SEO quirk on the live
- *   page (brief-09 §1). Reproduced as-is, flagged not fixed.
- * - The first `<h1>` (city name + CTA link) renders LARGER (50px) than the
- *   second (40px): the theme's `.l h1:nth-child(2)` selector targets the first
- *   heading because the badge `<img>` is `:nth-child(1)`. This is the opposite
- *   of the brief's literal 40/50 reading, but matches what the live CSS renders.
+ * - EXACTLY ONE `<h1>`: the city heading line. The live WordPress page renders
+ *   three headline lines as three `<h1>`s (brief-09 §1); that is a WordPress
+ *   defect, not a design decision, and it is deliberately NOT reproduced — one
+ *   H1 per page is the rule, and a linked phone number is never a heading. The
+ *   other two lines are `<p>`s carrying the identical classes, so the rendering
+ *   is pixel-identical to the three-H1 version (verified at 1440/1280/900/375).
+ *   Same fix as the homepage hero (Brief 132).
+ * - Line 1 and the CTA line render LARGER (50px) than the closing line (40px).
+ *   That mirrors what the live CSS actually produces — the theme's
+ *   `.l h1:nth-child(2)` selector hits the first heading because the badge
+ *   `<img>` is `:nth-child(1)` — and is the opposite of brief-09's literal
+ *   40/50 reading. The sizes are set by the Tailwind classes below, not by any
+ *   nth-child rule, so they are unaffected by the tag change.
  * - The "MAKE A GOOD CALL!" link is WHITE in the theme even though it's the CTA
  *   (`.l h1 a { color:#fff }`) — kept white per theme.
  * - Evanston passes `contact: null` (no right-column phone button); Northbrook/
@@ -42,16 +49,21 @@ export default function CityVideoHero({ hero }: { hero: CityContent['hero'] }) {
               alt={hero.badge.alt}
               className="absolute left-0 top-0 -ml-[10px] -mt-[30px] h-[80px] w-[80px] min-[781px]:-ml-[35px] min-[781px]:-mt-[33px] min-[781px]:h-[100px] min-[781px]:w-[100px]"
             />
+            {/* The page's single H1 — the city heading, nothing else. */}
             <h1 className="font-display font-bold uppercase leading-[1.05] tracking-tight text-white text-[26px] min-[781px]:text-[30px] min-[1281px]:text-[50px]">
               {hero.headingLine1}
-              <br />
+            </h1>
+            {/* CTA line — same classes as the H1 above, so it keeps the 50px
+                size and sits on the next line exactly as the old `<br />` did
+                (both are block boxes with margin 0 and the same line-height). */}
+            <p className="font-display font-bold uppercase leading-[1.05] tracking-tight text-white text-[26px] min-[781px]:text-[30px] min-[1281px]:text-[50px]">
               <Link href={hero.ctaHref} className="text-white transition-colors hover:text-brand-400">
                 {hero.ctaLabel}
               </Link>
-            </h1>
-            <h1 className="mt-[15px] font-display font-bold uppercase leading-[1.05] tracking-tight text-white text-[26px] min-[781px]:text-[30px] min-[1281px]:text-[40px]">
+            </p>
+            <p className="mt-[15px] font-display font-bold uppercase leading-[1.05] tracking-tight text-white text-[26px] min-[781px]:text-[30px] min-[1281px]:text-[40px]">
               {hero.headingLine2}
-            </h1>
+            </p>
           </div>
 
           {/* Right column (50%) */}

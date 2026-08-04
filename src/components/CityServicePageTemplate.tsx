@@ -58,14 +58,26 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
   const gridCities = getGridCities();
   const cityNameUpper = city.name.toUpperCase();
 
+  // Local Office cities render the video hero, which carries the page's <h1> —
+  // but only if the city actually has a LocalOfficeContent file. Elgin and
+  // Algonquin are registry type 'local-office' with Coverage Area content only
+  // (Brief 70), so they hit the `null` branch below and get NO hero at all.
+  // That left those 90 routes with no <h1> — in fact no heading of any kind.
+  const localHeroContent = city.type === 'local-office' ? getLocalOfficeContent(city.slug) : null;
+  const heroProvidesH1 = city.type !== 'local-office' || Boolean(localHeroContent);
+
+  // When no hero rendered, the Service Intro heading below — which is already
+  // the first and largest thing on the page ("Hydro Jetting Services in Elgin,
+  // Illinois", 32px Carmine) — becomes the <h1> instead of a <p>. Semantics
+  // only: the classes are identical either way, so nothing moves on screen, and
+  // pages that DO have a hero keep exactly one <h1> (the hero's).
+  const IntroHeading = heroProvidesH1 ? 'p' : 'h1';
+
   return (
     <>
       {/* ── 1. HERO ──────────────────────────────────────────────────────── */}
       {city.type === 'local-office' ? (
-        (() => {
-          const localContent = getLocalOfficeContent(city.slug);
-          return localContent ? <CityVideoHero hero={localContent.hero} /> : null;
-        })()
+        localHeroContent ? <CityVideoHero hero={localHeroContent.hero} /> : null
       ) : (
         <CityServiceHero
           serviceTitle={s.serviceTitle}
@@ -99,9 +111,9 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
                   rendered — wire it, falling back to the old hard-coded literal
                   when empty (Secondary Section below proves this template's
                   headings are meant to be per-page editable). */}
-              <p className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
+              <IntroHeading className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                 {s.serviceIntro.heading || `WE'VE GOT YOU COVERED, ${cityNameUpper}`}
-              </p>
+              </IntroHeading>
               <div className="space-y-4">
                 {s.serviceIntro.paragraphs.map((p, i) => (
                   <p key={i} className="font-body text-[16px] leading-[24px] text-navy-800">

@@ -20,9 +20,13 @@
  *   already exist in every environment — the site's reads would fail otherwise —
  *   so their ADD is always a no-op. Every column that could actually be missing
  *   is nullable or carries a DEFAULT, so adding it to a populated table is safe.
- * - This script does NOT create tables (all CMS tables already exist wherever the
- *   app runs) and does NOT touch row data. Data seeds/backfills stay in their own
- *   migration scripts (e.g. migrate-global-settings.ts seeds `offices`).
+ * - This script does NOT create CMS content tables (they already exist wherever
+ *   the app runs) and does NOT touch row data. Data seeds/backfills stay in their
+ *   own migration scripts (e.g. migrate-global-settings.ts seeds `offices`).
+ *   The one exception is `login_attempts` (Brief 133): it is a brand-new,
+ *   app-owned, data-free table with no seed script of its own, so its
+ *   `CREATE TABLE IF NOT EXISTS` lives here. It is idempotent like everything
+ *   else in this file.
  *
  * If you add a new column to a CMS table in code, add its ADD COLUMN line here so
  * the next deploy provisions it automatically.
@@ -115,6 +119,22 @@ const STATEMENTS: string[] = [
   `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS approved_at TIMESTAMPTZ`,
   `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS activated_at TIMESTAMPTZ`,
   `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS declined_at TIMESTAMPTZ`,
+
+  // Brief 133 (Track B / SEC-3) — session revocation. Every JWT is stamped with
+  // the epoch current at login; bumping this column invalidates every live token
+  // for that user on their next request. Defaults to 0 so tokens minted before
+  // Brief 133 (which carry no `epoch` claim and are read as 0) keep validating.
+  `ALTER TABLE cms_users ADD COLUMN IF NOT EXISTS session_epoch INTEGER NOT NULL DEFAULT 0`,
+
+  // ── login_attempts (Brief 133 — Track A / SEC-5) ────────────────────────
+  // Brute-force throttle counters, keyed `email:<addr>` and `ip:<addr>`.
+  // Purely operational: rows are counters with a rolling window and are GC'd by
+  // src/lib/auth/rate-limit.ts, so dropping the table only resets throttling.
+  `CREATE TABLE IF NOT EXISTS login_attempts (
+     key          TEXT PRIMARY KEY,
+     window_start TIMESTAMPTZ NOT NULL DEFAULT now(),
+     count        INTEGER NOT NULL DEFAULT 0
+   )`,
 
   // ── emergency_plumbing_page ─────────────────────────────────────────────
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS card_items JSONB NOT NULL DEFAULT '[]'::jsonb`,
@@ -254,7 +274,7 @@ async function run() {
     await pool.end();
   }
 
-  console.log(`ensure-schema: ran ${applied}/${STATEMENTS.length} ADD COLUMN statements (existing columns are no-ops).`);
+  console.log(`ensure-schema: ran ${applied}/${STATEMENTS.length} schema statements (existing columns/tables are no-ops).`);
   if (failures.length) {
     console.error(`ensure-schema: ${failures.length} statement(s) failed:`);
     for (const f of failures) console.error(`  - ${f.stmt}\n    → ${f.error}`);
