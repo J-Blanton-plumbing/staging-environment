@@ -47,6 +47,12 @@ const nextConfig = {
   // server components), so leave it external and require it at runtime.
   experimental: {
     serverComponentsExternalPackages: ['sanitize-html'],
+    // Brief 135 — enables src/instrumentation.ts, whose `register()` Next runs
+    // once per server process before the first request. That is the hook the
+    // production env guard (src/lib/env-guards.ts) needs: it must be able to
+    // abort startup, which nothing per-request or per-render can do.
+    // REMOVING THIS FLAG SILENTLY DISABLES THAT GUARD.
+    instrumentationHook: true,
     // Brief 107 — Next 14.2's client Router Cache defaults to holding dynamic
     // segments for 30s after a soft (Link/router.push) navigation, even though
     // every page here is `force-dynamic` and reads live CMS data on every

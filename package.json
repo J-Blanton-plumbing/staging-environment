@@ -9,7 +9,10 @@
     "lint": "next lint",
     "seed:cms": "ts-node scripts/seed-cms.ts",
     "stress:cms": "ts-node scripts/stress-test-cms.ts",
-    "db:setup": "ts-node scripts/setup-db.ts"
+    "db:setup": "ts-node scripts/setup-db.ts",
+    "db:backup": "bash scripts/backup-db.sh",
+    "db:restore": "bash scripts/restore-db.sh",
+    "env:check": "ts-node --project tsconfig.scripts.json scripts/check-env.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1102.0",
