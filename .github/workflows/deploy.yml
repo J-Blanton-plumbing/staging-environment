@@ -95,6 +95,19 @@ jobs:
             # predicate matches nothing after the first run, so re-running on
             # every deploy is a safe no-op.
             npx ts-node --project tsconfig.scripts.json scripts/migrate-brief-126-clear-wp-image-refs.ts
+            # Brief 140: give the 21 Brief-131 coverage-area cities their legacy
+            # "We've Got You Covered" body copy from the checked-in
+            # scripts/data/brief140-city-content.json (generated on the dev machine
+            # from the WP export — the box has no 146 MB export, same split as
+            # Briefs 122/123). Those 21 slugs were registered by Brief 131 but never
+            # got a city_pages row, so the section rendered as a heading + image with
+            # an empty text column. Allow-listed to exactly those 21 slugs; a city
+            # whose content_body is already non-empty is skipped, so re-running on
+            # every deploy is a safe no-op and never clobbers a CMS edit.
+            # `-r tsconfig-paths/register` is REQUIRED — this script imports the
+            # shared sanitizer from src/, which resolves `@/…` path aliases. Do not
+            # drop it when copying this line.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/backfill-brief131-city-content.ts --commit
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and
