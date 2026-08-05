@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import pool from '@/lib/db';
 import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { CITY_REGISTRY } from '@/lib/content/cities';
+import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { CANONICAL_BASE } from '@/lib/seo';
 
 /**
@@ -24,38 +25,14 @@ import { CANONICAL_BASE } from '@/lib/seo';
 // Reflect CMS publishes/edits immediately instead of serving a build-time snapshot.
 export const dynamic = 'force-dynamic';
 
-/**
- * Top-level sub-service routes — each is an explicit static route directory in
- * src/app/ (a top-level [service] dynamic segment would collide with [city],
- * see CLAUDE.md). A slug listed here 200s only when its sub_service_pages row
- * is published (SubServicePageView 404s otherwise), so the sitemap intersects
- * this list with the DB's published slugs. If you add a new top-level
- * sub-service route directory, add its slug here.
+/*
+ * `SUB_SERVICE_ROUTES` (the top-level sub-service route allowlist) now lives in
+ * `@/lib/content/service-taxonomy` — Brief 138 moved it there so the sitemap,
+ * the breadcrumb live-route check and the global services-menu link resolver all
+ * read one list instead of three that can drift. A slug listed there 200s only
+ * when its sub_service_pages row is published (SubServicePageView 404s
+ * otherwise), so the sitemap still intersects it with the DB's published slugs.
  */
-const SUB_SERVICE_ROUTES = [
-  'basement-flooding',
-  'bathroom-plumbing-chicago',
-  'clogged-drains-in-chicago',
-  'commercial-drain-service',
-  'commercial-jetting',
-  'commercial-water-heater',
-  'drain-cleaning-services-in-chicago',
-  'gas-lines',
-  'home-repipe',
-  'hydro-jetting',
-  'kitchen-plumbing',
-  'kitchen-sink-drain',
-  'laundry-room-plumbing',
-  'residential-water-heater',
-  'restaurant-drain-clearing',
-  'restaurant-plumbing-services',
-  'restaurant-water-heater',
-  'sewer-maintenance',
-  'sewer-rodding',
-  'sewer-repair',
-  'tankless-water-heater',
-  'water-filtration-systems',
-];
 
 /**
  * Legacy sub-services with a full static-content fallback (ServicePageTemplate

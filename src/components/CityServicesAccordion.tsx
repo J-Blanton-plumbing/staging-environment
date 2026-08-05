@@ -36,8 +36,16 @@ export default function CityServicesAccordion({
               </summary>
               <ul>
                 {cat.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href}>{link.label}</Link>
+                  <li key={link.label}>
+                    {link.href ? (
+                      <Link href={link.href}>{link.label}</Link>
+                    ) : (
+                      // Brief 138: `href: null` = no verified destination —
+                      // render the label rather than guess a URL. The Local
+                      // Office data files always supply an href, so this branch
+                      // is a type guard, not live behavior.
+                      <span>{link.label}</span>
+                    )}
                   </li>
                 ))}
               </ul>

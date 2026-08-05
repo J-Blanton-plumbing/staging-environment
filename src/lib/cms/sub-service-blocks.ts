@@ -28,9 +28,22 @@ export type SubServiceBlockType =
   | 'tiktokFeed'
   | 'noDripClub'
   | 'relatedArticles'
-  | 'finalCta';
+  | 'finalCta'
+  // Brief 139 — placement-only OUR SERVICES menu. Deliberately NOT in
+  // SUB_SERVICE_BLOCK_ORDER; see the two-list note below.
+  | 'servicesMenu';
 
-/** Canonical top-to-bottom order — matches Brief 87 Section A (rendering blocks only). */
+/**
+ * Canonical DEFAULT top-to-bottom order — matches Brief 87 Section A (rendering
+ * blocks only). This is the SEED list: a page with no stored `blocks` gets one
+ * instance of every type listed here (`assembleBlocks`, and the
+ * `sub-service-pages.ts` / editor un-migrated-row fallbacks).
+ *
+ * ⚠️ Brief 139: this is deliberately NOT the same thing as "which types are
+ * valid". Adding an opt-in block (`servicesMenu`) here would auto-insert it on
+ * every page that has never been block-migrated — so the two roles are now two
+ * lists. Add to ORDER only for a block that should appear on a page by default.
+ */
 export const SUB_SERVICE_BLOCK_ORDER: SubServiceBlockType[] = [
   'hero',
   'intro',
@@ -41,6 +54,18 @@ export const SUB_SERVICE_BLOCK_ORDER: SubServiceBlockType[] = [
   'noDripClub',
   'relatedArticles',
   'finalCta',
+];
+
+/**
+ * Brief 139 — every type a stored sub-service block instance may legally carry:
+ * the default-order set plus opt-in types that only exist once an editor inserts
+ * them. `normalizeBlocks` validates against THIS list, so an inserted
+ * `servicesMenu` survives a save/load round trip; `SUB_SERVICE_BLOCK_ORDER`
+ * stays the seed order so no page gains a block it wasn't given.
+ */
+export const SUB_SERVICE_BLOCK_TYPES: SubServiceBlockType[] = [
+  ...SUB_SERVICE_BLOCK_ORDER,
+  'servicesMenu',
 ];
 
 /** Human labels for the editor's block boxes. */
@@ -57,6 +82,8 @@ export const SUB_SERVICE_BLOCK_LABELS: Record<SubServiceBlockType, string> = {
   noDripClub: 'No Drip Club',
   relatedArticles: 'Related Articles',
   finalCta: 'Final CTA',
+  // Brief 139 — placement-only block (no content fields).
+  servicesMenu: 'Our Services Menu',
 };
 
 /**
@@ -317,7 +344,10 @@ export function newBlockId(type: string): string {
 
 /** Coerce an arbitrary value to a valid, complete, de-duplicated block ORDER (types only). */
 export function normalizeBlockOrder(raw: unknown): SubServiceBlockType[] {
-  const valid = new Set<string>(SUB_SERVICE_BLOCK_ORDER);
+  // Brief 139: validate against the full TYPE set (so a stored opt-in type is
+  // kept), but the "append what's missing" pass below still walks the narrower
+  // default ORDER — an opt-in block is never added to a page that lacks it.
+  const valid = new Set<string>(SUB_SERVICE_BLOCK_TYPES);
   const seen = new Set<string>();
   const out: SubServiceBlockType[] = [];
   if (Array.isArray(raw)) {
@@ -344,7 +374,9 @@ export function normalizeBlockOrder(raw: unknown): SubServiceBlockType[] {
  */
 export function normalizeBlocks(raw: unknown): SubServiceBlockInstance[] {
   if (!Array.isArray(raw)) return [];
-  const valid = new Set<string>(SUB_SERVICE_BLOCK_ORDER);
+  // Brief 139: the full TYPE set, not the default ORDER — otherwise an inserted
+  // opt-in block (servicesMenu) would be silently dropped on every load.
+  const valid = new Set<string>(SUB_SERVICE_BLOCK_TYPES);
   const entries = raw.filter(
     (b): b is Record<string, unknown> => !!b && typeof b === 'object'
   );

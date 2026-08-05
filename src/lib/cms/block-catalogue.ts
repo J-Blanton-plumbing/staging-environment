@@ -114,11 +114,19 @@ export type PageType =
   | 'no-drip-club';
 
 /**
- * Brief 97 (Track A) — the general block-type union. `SubServiceBlockType` (the
- * original 9) is untouched — code that keys narrowly off it (SUB_SERVICE_BLOCK_ORDER,
- * `normalizeBlocks`, `blockDataFor`, etc. in `sub-service-blocks.ts`) keeps compiling
- * and behaving exactly as before. `BlockType` is strictly additive: the 9 plus
- * whatever net-new types the registry gains (`faqAccordion`, Track B).
+ * Brief 97 (Track A) — the general block-type union. `BlockType` is strictly
+ * additive: the sub-service set plus whatever net-new types the registry gains
+ * (`faqAccordion`, Track B; the City V2 types, Brief 99; …).
+ *
+ * Brief 139: `SubServiceBlockType` gained one entry (`servicesMenu`). A block
+ * that is VALID ON sub-service pages has to be in that union — the sub-service
+ * instance type, `normalizeBlocks`' validity check and the editor's
+ * `insertBlock` all key off it, so a type outside it can't be inserted or even
+ * survive a load. What did NOT change is `SUB_SERVICE_BLOCK_ORDER` (still the
+ * original 9): that is the DEFAULT SEED order, and keeping `servicesMenu` out of
+ * it is what stops every un-migrated page from sprouting a services menu. The
+ * faqAccordion precedent (net-new in `BlockType` only) works there solely
+ * because faqAccordion is not valid on sub-service pages.
  */
 export type BlockType =
   | SubServiceBlockType
@@ -134,7 +142,9 @@ export type BlockType =
   | 'videoPlaceholder'
   | 'reviews'
   // Brief 121 — reusable Benefits Card (first consumer: the No Drip Club page).
-  | 'benefitsCard';
+  | 'benefitsCard'
+  // Brief 139 — placement-only OUR SERVICES menu (no content fields).
+  | 'servicesMenu';
 
 /**
  * Brief 91 — the closed lists of style choices a block type exposes in the
@@ -768,6 +778,39 @@ export const BLOCK_CATALOGUE: Record<BlockType, BlockDefinition> = {
     // in the block's box. Stored as top-level `data.columns`.
     styleOptions: { columns: BENEFITS_CARD_COLUMNS },
   },
+
+  // ── Brief 139 — OUR SERVICES menu (placement block) ────────────────────────
+  servicesMenu: {
+    // A PLACEMENT block, not a content block: it renders the existing shared
+    // `CityServicesMenu` where the editor drops it and nothing more. Brief 94
+    // classifies this menu as "shared-by-construction" — the same static
+    // 6-category / 41-item list on every page — so zero content fields is the
+    // correct shape, not an oversight. Do NOT add speculative fields here
+    // (Brief 97's `faqAccordion.heading` ghost-field is the cautionary tale).
+    //
+    // Link routing is derived from PAGE CONTEXT by the template, never stored:
+    // sub-service pages render `<CityServicesMenu />` (global links via
+    // `globalServiceHref`), City V2 pages pass their own city slug (city-scoped
+    // `/{city}/{service}`). `citySlug` deliberately never appears in `data` —
+    // a copied stale value would silently pin the wrong links.
+    type: 'servicesMenu',
+    label: 'Our Services Menu',
+    variant: 'Red gradient category menu',
+    category: 'shared-embed',
+    description: 'The OUR SERVICES category menu. Links follow the page automatically.',
+    isInsertable: true,
+    allowMultiple: false,
+    removable: true,
+    // Only the two templates that render from a `blocks` array today. Widen
+    // (plus a render case with the right context) as the block model reaches
+    // more templates — same discipline Brief 97 applied.
+    pageTypes: ['sub-service', 'city-v2'],
+    fields: [],
+    badge: 'No settings — links follow the page',
+    defaultData: {},
+    // No styleOptions: the panel's look is fixed by globals.css
+    // (`.city-services-row` red gradient + white text/icons/caret).
+  },
 };
 
 /** All block TYPES the registry knows about, in a stable canonical order. */
@@ -786,6 +829,10 @@ const ALL_BLOCK_TYPES: BlockType[] = [
   'reviews',
   // Brief 121 — reusable Benefits Card.
   'benefitsCard',
+  // Brief 139 — OUR SERVICES menu. Listed here (not via SUB_SERVICE_BLOCK_ORDER,
+  // which stays the 9-entry default seed order) so it appears in the catalogue
+  // and inserter without being auto-added to any page.
+  'servicesMenu',
 ];
 
 /** Every block definition in canonical order (all page types). */
@@ -826,8 +873,10 @@ export function insertableBlocksByCategoryFor(
 //
 // `BlockDefinition.type` is now the general `BlockType`, but every entry reachable
 // through these sub-service-scoped exports is (by construction — filtered on
-// `pageTypes.includes('sub-service')`, which `faqAccordion` never is) one of the
-// original 9. `SubServiceBlockDefinition` re-narrows `.type` back to
+// `pageTypes.includes('sub-service')`) a member of `SubServiceBlockType`: the
+// original 9 plus Brief 139's `servicesMenu`. Types that are never valid on
+// sub-service (faqAccordion, the City V2 set, benefitsCard) can't reach them.
+// `SubServiceBlockDefinition` re-narrows `.type` back to
 // `SubServiceBlockType` at the type level so the sub-service editor's existing
 // `SubServiceBlockType`-typed call sites (`disabledFor`, `onInsert`, `insertBlock`)
 // keep compiling and behaving exactly as before this brief. Exported so the one

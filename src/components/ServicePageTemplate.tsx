@@ -28,6 +28,7 @@ import GoogleReviews from '@/components/GoogleReviews';
 import TikTokFeed from '@/components/TikTokFeed';
 import ArticleGrid from '@/components/ArticleGrid';
 import ServiceClosingCTA from '@/components/ServiceClosingCTA';
+import CityServicesMenu from '@/components/CityServicesMenu';
 
 /**
  * Generic sub-service page (brief-11, restructured brief-61). Renders the live
@@ -159,6 +160,28 @@ function ndcNode(title: string | undefined, body: string, key: string, style?: R
   return <NoDripClubSimple key={key} title={title} body={body} style={style} />;
 }
 
+function servicesMenuNode(key: string): ReactNode {
+  // Brief 139 — the OUR SERVICES menu as an insertable placement block.
+  //
+  // NO `citySlug`: a sub-service page is not a city, so the menu resolves every
+  // item to its GLOBAL destination through `globalServiceHref()` (own hub page →
+  // /emergency-plumbing special case → parent /services/{category} fallback).
+  // Passing a slug here would emit `/{slug}/{service}` links with no route
+  // behind them — the exact Brief 138 bug.
+  //
+  // The wrapper reproduces the CONTEXT the menu already has on city pages (cream
+  // background + the shared 90%/81% content column, cf. `.city-page-content`),
+  // matching this template's own section convention. The component itself is
+  // untouched — no style overrides, no fork.
+  return (
+    <section key={key} className="bg-cream-100">
+      <div className="w-[90%] lg:w-[81%] mx-auto">
+        <CityServicesMenu />
+      </div>
+    </section>
+  );
+}
+
 function relatedArticlesNode(articles: ArticleCardData[], key: string): ReactNode {
   // 12 — related articles (shared component, no section heading on live).
   // Brief 92: `articles` is now the RESOLVED list (mode/count/category/handpick),
@@ -255,6 +278,9 @@ export default function ServicePageTemplate({
               return googleReviewsNode(b.id);
             case 'tiktokFeed':
               return tiktokNode(b.id);
+            case 'servicesMenu':
+              // Brief 139 — placement only; `data` is empty by design.
+              return servicesMenuNode(b.id);
             case 'noDripClub':
               return ndcNode(
                 asStr(d.ndcTitle) || undefined,

@@ -5,14 +5,16 @@
  *    city page (topic-mismatched water-testing Q&As; reproduced for fidelity,
  *    flagged for copy review). Used by BOTH the Local Office (Evanston) and
  *    Coverage Area templates so the data lives in one place.
- *  - `coverageServiceCategories(slug)` — the STATIC OUR SERVICES menu from
+ *  - `coverageServiceCategories(slug?)` — the STATIC OUR SERVICES menu from
  *    `template-parts/city-services-menu.php`, identical across coverage-area
  *    cities; only the per-city slug in each href differs. (No "Other Services"
  *    category and gas-line-leak-detection sits under Gas Lines, NOT Plumbing —
  *    the two differences from the Local Office accordion, brief §7.)
+ *    Called with NO slug it emits global (non-city) service hrefs — Brief 138.
  *  - `resolveHeroImage()` — the PHP hero-image fallback logic (page-city.php 25–39).
  */
 import type { CityFaq, CityServiceCategory } from './types';
+import { globalServiceHref } from '../service-taxonomy';
 
 const CDN = 'https://d1rplazj5a80fb.cloudfront.net';
 
@@ -255,12 +257,26 @@ const STATIC_SERVICE_MENU: { name: string; icon: string; links: [string, string]
   },
 ];
 
-/** Build the static OUR SERVICES categories for a given city slug. */
-export function coverageServiceCategories(citySlug: string): CityServiceCategory[] {
+/**
+ * Build the static OUR SERVICES categories.
+ *
+ * With a `citySlug` (city pages) each item is city-scoped `/{city}/{service}` —
+ * the `[city]/[service]` route renders every one of them.
+ *
+ * WITHOUT a `citySlug` (Brief 138 — utility/static pages that reuse this menu,
+ * e.g. /j-blanton-is-hiring, /privacy-policy) items resolve to the GLOBAL
+ * service pages via `globalServiceHref`. Passing a non-city slug used to emit
+ * ~40 dead `/{page}/{service}` links; omitting it is now the correct call and
+ * `CityServicesMenu` additionally refuses any slug that isn't a registered city.
+ */
+export function coverageServiceCategories(citySlug?: string): CityServiceCategory[] {
   return STATIC_SERVICE_MENU.map((cat) => ({
     name: cat.name,
     icon: `${CDN}/images/${cat.icon}`,
-    links: cat.links.map(([slug, label]) => ({ label, href: `/${citySlug}/${slug}` })),
+    links: cat.links.map(([slug, label]) => ({
+      label,
+      href: citySlug ? `/${citySlug}/${slug}` : globalServiceHref(slug),
+    })),
   }));
 }
 

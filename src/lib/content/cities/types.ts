@@ -17,8 +17,16 @@ export type CityType = 'local-office' | 'coverage-area';
 export interface CityServiceLink {
   /** Display label, e.g. "Burst Pipe Repair". */
   label: string;
-  /** Full href, e.g. "/elgin/burst-pipe-repair". */
-  href: string;
+  /**
+   * Full href, e.g. "/elgin/burst-pipe-repair" — or "/sewer-rodding" /
+   * "/services/sewer" in the global (non-city) mode added by Brief 138.
+   *
+   * `null` means "no verified destination exists for this item"; renderers show
+   * it as plain text rather than guessing a URL that would 404. Nothing in the
+   * current menu resolves to `null` — it is the guard for future menu items
+   * whose category can't be derived from the service taxonomy.
+   */
+  href: string | null;
 }
 
 /** One OUR SERVICES category (icon + its links). */

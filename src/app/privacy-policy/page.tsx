@@ -124,8 +124,12 @@ export default async function PrivacyPolicyPage() {
             dangerouslySetInnerHTML={{ __html: bodyHtml }}
           />
 
-          {/* ===== 5. OUR SERVICES (shared static menu) ===== */}
-          <CityServicesMenu citySlug={SLUG} />
+          {/* ===== 5. OUR SERVICES (shared static menu) =====
+              Brief 138: NO citySlug — this is not a city page, so the menu must
+              emit global service links (/sewer-rodding, /services/plumbing, …).
+              Passing SLUG here produced ~40 dead /privacy-policy/{service}
+              links. */}
+          <CityServicesMenu />
 
           {/* ===== 6. CONTENT REVIEWS (Elfsight — live on production) ===== */}
           <div className="city-page-gr mb-[100px]">

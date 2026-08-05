@@ -37,9 +37,20 @@ export type CityV2BlockType =
   | 'reviews'
   | 'faqAccordion'
   | 'noDripClub'
-  | 'finalCta';
+  | 'finalCta'
+  // Brief 139 — placement-only OUR SERVICES menu. Deliberately NOT in
+  // CITY_V2_BLOCK_ORDER; see the two-list note below.
+  | 'servicesMenu';
 
-/** Canonical top-to-bottom order (Brief 99, Track B). */
+/**
+ * Canonical DEFAULT top-to-bottom order (Brief 99, Track B) — the SEED list. A
+ * city with no stored `blocks` gets one instance of every type here
+ * (`assembleCityV2Blocks`, and the reader/template un-migrated-row fallbacks).
+ *
+ * ⚠️ Brief 139: NOT the same thing as "which types are valid" — adding an opt-in
+ * block here would auto-insert it on every un-migrated V2 city. See
+ * `CITY_V2_BLOCK_TYPES`.
+ */
 export const CITY_V2_BLOCK_ORDER: CityV2BlockType[] = [
   'localOfficeV2Hero',
   'trustBar',
@@ -52,6 +63,16 @@ export const CITY_V2_BLOCK_ORDER: CityV2BlockType[] = [
   'faqAccordion',
   'noDripClub',
   'finalCta',
+];
+
+/**
+ * Brief 139 — every type a stored City V2 block instance may legally carry: the
+ * default-order set plus opt-in types that exist only once an editor inserts
+ * them. `normalizeCityV2Blocks` validates against THIS list.
+ */
+export const CITY_V2_BLOCK_TYPES: CityV2BlockType[] = [
+  ...CITY_V2_BLOCK_ORDER,
+  'servicesMenu',
 ];
 
 /** A single City V2 block instance — same `{id,type,data}` shape as sub-service. */
@@ -135,7 +156,9 @@ export function cityV2BlockDataFor(type: CityV2BlockType, f: CityV2LegacyFields)
 /** Coerce an arbitrary value into a valid, de-duplicated-id City V2 block instance array. */
 export function normalizeCityV2Blocks(raw: unknown): CityV2BlockInstance[] {
   if (!Array.isArray(raw)) return [];
-  const valid = new Set<string>(CITY_V2_BLOCK_ORDER);
+  // Brief 139: the full TYPE set, not the default ORDER — otherwise an inserted
+  // opt-in block (servicesMenu) would be silently dropped on every load.
+  const valid = new Set<string>(CITY_V2_BLOCK_TYPES);
   const seenIds = new Set<string>();
   const out: CityV2BlockInstance[] = [];
   for (const b of raw) {

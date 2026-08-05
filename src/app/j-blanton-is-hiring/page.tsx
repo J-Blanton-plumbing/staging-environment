@@ -202,8 +202,12 @@ export default async function JoinOurTeamPage() {
             </div>
           </section>
 
-          {/* ===== 5. OUR SERVICES (shared static menu) ===== */}
-          <CityServicesMenu citySlug={SLUG} />
+          {/* ===== 5. OUR SERVICES (shared static menu) =====
+              Brief 138: NO citySlug — this is not a city page, so the menu must
+              emit global service links (/sewer-rodding, /services/plumbing, …).
+              Passing SLUG here produced ~40 dead /j-blanton-is-hiring/{service}
+              links (the live WordPress page has the same bug — 410 Gone). */}
+          <CityServicesMenu />
 
           {/* ===== 6. CONTENT REVIEWS (Elfsight — live on production) ===== */}
           <div className="city-page-gr mb-[100px]">

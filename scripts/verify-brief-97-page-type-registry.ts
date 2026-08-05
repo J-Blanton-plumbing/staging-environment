@@ -10,6 +10,7 @@
  */
 import {
   BLOCK_CATALOGUE,
+  ALL_BLOCKS,
   blockDefFor,
   insertableBlocksFor,
   INSERTABLE_BLOCKS,
@@ -57,16 +58,37 @@ check('does NOT include tiktokFeed (city-v2 has no TikTok embed)', !cityV2Types.
 check('does NOT include relatedArticles (city-v2 has no ArticleGrid)', !cityV2Types.includes('relatedArticles'));
 check('does NOT include map (sub-service-only)', !cityV2Types.includes('map'));
 
-console.log('\n6. Sub-service scope is unchanged (9 registry entries, same insertable set as before Brief 97):');
-// Brief 98 added a 10th+1 entry (serviceSubcategories, pageTypes: ['service-category']
-// only) — bumps the total to 11 without touching sub-service scope, which the
-// checks below independently verify.
-check('BLOCK_CATALOGUE has exactly the 9 original + faqAccordion + serviceSubcategories = 11 entries', Object.keys(BLOCK_CATALOGUE).length === 11);
-check('SUB_SERVICE_BLOCK_ORDER still has 9 entries', SUB_SERVICE_BLOCK_ORDER.length === 9);
-const expectedInsertable = SUB_SERVICE_BLOCK_ORDER.filter((t) => BLOCK_CATALOGUE[t].isInsertable);
+console.log('\n6. Sub-service scope (default seed order untouched; insertable set = registry-scoped):');
+// The old "total catalogue size" assertion was a maintenance trap: it hard-coded
+// 11 and had been silently failing since Brief 99 (+8 City V2 types) and Brief
+// 121 (+benefitsCard) — it measured the whole registry while claiming to guard
+// SUB-SERVICE scope. Replaced with a check that actually expresses the invariant:
+// every entry reachable through the sub-service-scoped exports must declare
+// 'sub-service' in its pageTypes. Total registry size is free to grow.
 check(
-  `INSERTABLE_BLOCKS is still exactly the ${expectedInsertable.length} sub-service-insertable types, same order`,
-  JSON.stringify(INSERTABLE_BLOCKS.map((b) => b.type)) === JSON.stringify(expectedInsertable)
+  'every sub-service-scoped entry really declares pageTypes: sub-service',
+  INSERTABLE_BLOCKS.every((b) => b.pageTypes.includes('sub-service'))
+);
+check('SUB_SERVICE_BLOCK_ORDER still has 9 entries', SUB_SERVICE_BLOCK_ORDER.length === 9);
+// Brief 139: `servicesMenu` is sub-service-insertable but deliberately NOT in
+// SUB_SERVICE_BLOCK_ORDER (that array is the DEFAULT SEED order — putting an
+// opt-in block there would auto-insert it on every un-migrated page). So the
+// expected inserter set is the seed-order insertables PLUS the opt-in types,
+// in ALL_BLOCKS canonical order.
+const expectedInsertable = ALL_BLOCKS.filter(
+  (b) => b.pageTypes.includes('sub-service') && b.isInsertable
+).map((b) => b.type);
+check(
+  `INSERTABLE_BLOCKS is exactly the ${expectedInsertable.length} sub-service-insertable types, same order`,
+  JSON.stringify(INSERTABLE_BLOCKS.map((b) => b.type)) === JSON.stringify(expectedInsertable),
+);
+check(
+  'servicesMenu IS offered on sub-service (Brief 139)',
+  INSERTABLE_BLOCKS.some((b) => (b.type as string) === 'servicesMenu')
+);
+check(
+  'servicesMenu is absent from the default seed order (no page gains it automatically)',
+  !(SUB_SERVICE_BLOCK_ORDER as string[]).includes('servicesMenu')
 );
 check(
   'faqAccordion is absent from INSERTABLE_BLOCKS (sub-service scope)',

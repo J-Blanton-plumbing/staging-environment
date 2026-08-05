@@ -10,6 +10,7 @@ import {
   type BlockStyle,
   type BlockPosition,
   SUB_SERVICE_BLOCK_ORDER,
+  SUB_SERVICE_BLOCK_TYPES,
   normalizeBlocks,
   assembleBlocks,
   newBlockId,
@@ -192,7 +193,9 @@ export default function SubServiceAdminPage() {
       const raw = localStorage.getItem(RECENT_BLOCKS_KEY);
       const parsed = raw ? (JSON.parse(raw) as unknown) : null;
       if (Array.isArray(parsed)) {
-        const valid = new Set<string>(SUB_SERVICE_BLOCK_ORDER);
+        // Brief 139: the full valid-type set, not the default seed order — an
+        // opt-in block (servicesMenu) is still legitimately "recently used".
+        const valid = new Set<string>(SUB_SERVICE_BLOCK_TYPES);
         setRecent(parsed.filter((t): t is SubServiceBlockType => typeof t === 'string' && valid.has(t)));
       }
     } catch { /* ignore corrupt localStorage */ }

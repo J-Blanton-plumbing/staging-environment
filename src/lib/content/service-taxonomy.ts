@@ -125,15 +125,31 @@ export function deriveCategory(slug: string): string | null {
 }
 
 /**
- * A city-service `service_slug` whose top-level hub page lives at a
- * location-suffixed slug (there is no bare `/{service_slug}` hub, but there IS a
- * location-suffixed one). Mirrors `CITY_SLUG_TO_SUB_SLUG_ALIAS` in
- * scripts/copy-sub-service-parents-to-city.ts and the Track-A migration.
+ * A service_slug whose top-level hub page lives at a DIFFERENT slug (there is no
+ * bare `/{service_slug}` hub route). Two kinds of entry:
+ *
+ *  1. Location-suffixed hubs — the original three. Mirrors
+ *     `CITY_SLUG_TO_SUB_SLUG_ALIAS` in scripts/copy-sub-service-parents-to-city.ts
+ *     and the Track-A migration.
+ *  2. Brief 138 follow-up (approved by marketing lead 2026-08-05) — the four gas
+ *     services fold into the single `/gas-lines` hub, which covers installation,
+ *     repair, leak detection and inspection in one page. Without these they fell
+ *     through to rule (c) and landed on `/services/plumbing`, and their breadcrumb
+ *     hub crumb pointed at a dead `/gas-line-*` route (rendered as plain text).
+ *     Both now resolve to `/gas-lines`.
+ *
+ * ⚠️ This map feeds `hubSlugFor()`, which is used by BOTH `globalServiceHref()`
+ * (the services menu) and `cityServiceCrumbs()` (breadcrumbs on every
+ * `/{city}/{service}` page) — an entry here changes both surfaces.
  */
 export const CITY_SLUG_TO_HUB_ALIAS: Record<string, string> = {
   'bathroom-plumbing': 'bathroom-plumbing-chicago',
   'clogged-drains': 'clogged-drains-in-chicago',
   'drain-cleaning': 'drain-cleaning-services-in-chicago',
+  'gas-line-installation': 'gas-lines',
+  'gas-line-repair': 'gas-lines',
+  'gas-line-leak-detection': 'gas-lines',
+  'gas-fireplace': 'gas-lines',
 };
 
 /** The hub slug (top-level `/{hub}` page) for a city-service service_slug. */
@@ -142,39 +158,97 @@ export function hubSlugFor(serviceSlug: string): string {
 }
 
 /**
+ * Top-level sub-service routes — each is an explicit static route directory in
+ * src/app/ (a top-level [service] dynamic segment would collide with [city],
+ * see CLAUDE.md). A slug listed here 200s only when its `sub_service_pages` row
+ * is published (SubServicePageView 404s otherwise), except for the
+ * static-fallback trio (sewer-rodding / hydro-jetting / gas-lines) which render
+ * from `src/lib/content/services/*` regardless of DB status.
+ *
+ * If you add a new top-level sub-service route directory, add its slug HERE —
+ * this is the one list. Brief 138 moved it out of `sitemap.ts` (which now
+ * imports it) so the sitemap, the breadcrumb live-route check and the global
+ * services-menu resolver can never drift apart.
+ */
+export const SUB_SERVICE_ROUTES = [
+  'basement-flooding',
+  'bathroom-plumbing-chicago',
+  'clogged-drains-in-chicago',
+  'commercial-drain-service',
+  'commercial-jetting',
+  'commercial-water-heater',
+  'drain-cleaning-services-in-chicago',
+  'gas-lines',
+  'home-repipe',
+  'hydro-jetting',
+  'kitchen-plumbing',
+  'kitchen-sink-drain',
+  'laundry-room-plumbing',
+  'residential-water-heater',
+  'restaurant-drain-clearing',
+  'restaurant-plumbing-services',
+  'restaurant-water-heater',
+  'sewer-maintenance',
+  'sewer-rodding',
+  'sewer-repair',
+  'tankless-water-heater',
+  'water-filtration-systems',
+] as const;
+
+const SUB_SERVICE_ROUTE_SET: ReadonlySet<string> = new Set<string>(SUB_SERVICE_ROUTES);
+
+/** True if `/{slug}` is a real top-level sub-service route in the build. */
+export function hasSubServiceRoute(slug: string): boolean {
+  return SUB_SERVICE_ROUTE_SET.has(slug);
+}
+
+/**
  * Hub/service routes confirmed live in the build (CLAUDE.md + Brief 64 addendum
  * 2026-07-02). Ancestor breadcrumb crumbs pointing at a NON-live route render as
  * plain text (still emitted in the JSON-LD with the intended canonical URL); once
  * the page ships, adding its slug here flips the crumb to a real link.
+ *
+ * Brief 138: derived from SUB_SERVICE_ROUTES (identical membership to the old
+ * hand-kept literal) plus `emergency-plumbing`, which is its own top-level
+ * template rather than a `sub_service_pages` row (Brief 76).
  */
-export const LIVE_HUB_SLUGS = new Set<string>([
-  'emergency-plumbing',
-  'gas-lines',
-  'hydro-jetting',
-  'sewer-rodding',
-  'sewer-repair',
-  'sewer-maintenance',
-  'basement-flooding',
-  'commercial-water-heater',
-  'residential-water-heater',
-  'tankless-water-heater',
-  'water-filtration-systems',
-  'kitchen-plumbing',
-  'kitchen-sink-drain',
-  'home-repipe',
-  'laundry-room-plumbing',
-  'clogged-drains-in-chicago',
-  'drain-cleaning-services-in-chicago',
-  'bathroom-plumbing-chicago',
-  'commercial-drain-service',
-  'commercial-jetting',
-  'restaurant-drain-clearing',
-  'restaurant-plumbing-services',
-  'restaurant-water-heater',
-]);
+export const LIVE_HUB_SLUGS = new Set<string>([...SUB_SERVICE_ROUTES, 'emergency-plumbing']);
 
 /** Category hub pages that are live: `/services/{category}` (all 6 per addendum). */
 export const LIVE_CATEGORY_SLUGS = new Set<string>(CATEGORY_KEYS);
+
+/**
+ * Brief 138 — resolve a services-menu item to a GLOBAL (non-city-scoped) href.
+ *
+ * The static OUR SERVICES menu is a marketing list of ~40 service slugs; only
+ * ~22 of them have a top-level page of their own. On a city page every item is
+ * legitimately `/{city}/{service}` (the `[city]/[service]` route renders them
+ * all), but on a non-city page that shape has nothing behind it — which is the
+ * 404 bug this brief fixes. Resolution order:
+ *
+ *   (a) the service (or its location-suffixed hub alias, e.g.
+ *       `clogged-drains` → `clogged-drains-in-chicago`) has its own top-level
+ *       route          → `/{hub}`
+ *   (b) `emergency-plumbing` is its own template, not a `/services/*` category
+ *       and not a sub-service row (Brief 76) → `/emergency-plumbing`
+ *   (c) otherwise the parent category page → `/services/{category}`, derived
+ *       from the taxonomy (marketing-lead decision 2026-08-05: fall back to the
+ *       parent category, do not unlink or hide the item)
+ *
+ * Returns `null` when the slug has no derivable category at all. Callers MUST
+ * render such an item unlinked — never guess a URL (brief Track B item 5).
+ */
+export function globalServiceHref(serviceSlug: string): string | null {
+  if (serviceSlug === 'emergency-plumbing') return '/emergency-plumbing';
+
+  const hub = hubSlugFor(serviceSlug);
+  if (SUB_SERVICE_ROUTE_SET.has(hub)) return `/${hub}`;
+
+  const category = deriveCategory(serviceSlug);
+  if (category && LIVE_CATEGORY_SLUGS.has(category)) return `/services/${category}`;
+
+  return null;
+}
 
 /** True if a breadcrumb href points at a route that actually exists in the build. */
 export function isLiveBreadcrumbRoute(href: string): boolean {

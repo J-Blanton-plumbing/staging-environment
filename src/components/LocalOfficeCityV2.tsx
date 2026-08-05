@@ -11,6 +11,7 @@ import type { GlobalSettings } from '@/lib/cms/global-settings';
 import type { CityV2BlockInstance } from '@/lib/cms/city-v2-blocks';
 import { CITY_V2_BLOCK_ORDER, assembleCityV2Blocks, normalizeCityV2Blocks } from '@/lib/cms/city-v2-blocks';
 import CityPageImage from '@/components/CityPageImage';
+import CityServicesMenu from '@/components/CityServicesMenu';
 
 /**
  * Local Office City V2 template (Brief 67, QA fixes Brief 68).
@@ -439,6 +440,27 @@ function BlockRenderer({
         <section className="bg-white py-[40px]">
           <div className={CONTAINER}>
             <NoDripClubSection bodyHtml={renderCmsBlock(asStr(d.ndcBody) || NDC_DEFAULT_BODY, settings)} />
+          </div>
+        </section>
+      );
+    }
+
+    // ============== OUR SERVICES MENU (Brief 139 — placement block) ==============
+    case 'servicesMenu': {
+      // City-scoped links: this page IS a city, so every item points at
+      // `/{city}/{service}` (rendered by the `[city]/[service]` route). The slug
+      // comes from the page's own registry entry — NEVER from block `data`, so a
+      // block copied between cities can't pin another city's links.
+      //
+      // Distinct from the `servicesGrid` block above: that one is the
+      // homepage-shared ServiceCard/ServicesAccordion card grid; this is the
+      // `.city-services-row` OUR SERVICES link menu. Different components,
+      // different markup — a page carrying both shows two different sections,
+      // not the same menu twice.
+      return (
+        <section className="bg-cream-100">
+          <div className={CONTAINER}>
+            <CityServicesMenu citySlug={city.slug} />
           </div>
         </section>
       );
