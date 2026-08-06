@@ -129,6 +129,17 @@ jobs:
             # variant there without the $29.97 → annual price sweep would advertise
             # two prices at once — see production-migration-checklist.md.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-141-ndc-comparison.ts commit
+            # Brief 143: apply the APPROVED No Drip Club offer copy — 6 service
+            # headlines, 6 service paragraphs, both stored copies of the Elgin and
+            # Algonquin city text, and 4 Knowledge Hub article sentences. Backs the
+            # old value up to brief143_ndc_content_backup first. Every write is
+            # gated on an EXACT match against the expected old string, so a row an
+            # editor has since changed is skipped and logged rather than clobbered,
+            # and a re-run reports "already-applied" and writes nothing — safe on
+            # every deploy. Staging and dev legitimately hold different data
+            # (Brief 142 §1.2), so skips are logged, NOT fatal: read the step's
+            # output after the first deploy to see which rows staging actually had.
+            npx ts-node --project tsconfig.scripts.json scripts/seed-brief-143-ndc-offer-content.ts commit
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and

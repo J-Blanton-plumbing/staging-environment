@@ -325,6 +325,26 @@ export async function updateSubServiceCmsContent(
 }
 
 /** All published sub-service slugs (used for static-param generation). */
+/**
+ * Brief 143 (Track A): the page's category slug, used to decide whether the
+ * No Drip Club section is suppressed (see `isCommercialServicePage`). Read
+ * separately from `getSubServiceCmsContent` because the suppression rule must
+ * also apply to DRAFT PREVIEWS, whose content comes from `page_drafts` and
+ * carries no `parent_slug`. Returns null when there is no row for the slug.
+ */
+export async function getSubServiceParentSlug(slug: string): Promise<string | null> {
+  const client = await pool.connect();
+  try {
+    const res = await client.query<{ parent_slug: string | null }>(
+      'SELECT parent_slug FROM sub_service_pages WHERE slug = $1',
+      [slug]
+    );
+    return res.rows[0]?.parent_slug ?? null;
+  } finally {
+    client.release();
+  }
+}
+
 export async function getPublishedSubServiceSlugs(): Promise<string[]> {
   const client = await pool.connect();
   try {

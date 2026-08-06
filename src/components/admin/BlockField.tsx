@@ -279,7 +279,13 @@ function PriceConfigField({
             </div>
             <div>
               <label style={LABEL}>Caption (optional line under the price)</label>
-              <input style={INPUT} type="text" value={price.caption ?? ''} placeholder="e.g. All for just … /month"
+              {/* Brief 143 (Track F): this placeholder used to read
+                  "All for just … /month". Typing a cadence suffix beside the
+                  price TOKEN is what produced strings that render as a monthly
+                  price while containing no literal price at all — invisible to
+                  every price search (Brief 142, Pattern B). The example is now
+                  annual, matching the current offer. */}
+              <input style={INPUT} type="text" value={price.caption ?? ''} placeholder="e.g. Billed annually"
                 onChange={(e) => onChange({ ...price, caption: e.target.value || null })} />
             </div>
           </>

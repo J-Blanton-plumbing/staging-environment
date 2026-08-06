@@ -219,6 +219,7 @@ export default function ServicePageTemplate({
   blockOrder,
   blocks,
   articlePool,
+  hideNoDripClub = false,
 }: {
   content: ServiceContent;
   /** Brief 89: ordered block-type list for DB-backed pages (legacy fallback). */
@@ -231,6 +232,16 @@ export default function ServicePageTemplate({
    * it and fall back to the static article list.
    */
   articlePool?: ResolvableArticle[];
+  /**
+   * Brief 143 (Track A): suppress the No Drip Club section entirely. Set for
+   * COMMERCIAL pages — the membership is residential-only, so the section must
+   * not appear there regardless of what `ndc_title`/`ndc_body` contain. The
+   * caller decides via `isCommercialServicePage`; the content rows are left
+   * populated on purpose, so this is reversible by flipping the rule alone.
+   * Applies to BOTH render paths below (per-instance blocks and static content),
+   * and to every duplicate `noDripClub` instance on a page.
+   */
+  hideNoDripClub?: boolean;
 }) {
   // §12 — reuse the shared articles component. Static-content pages that carry no
   // config still show the 3 most recent static posts (unchanged behavior).
@@ -282,6 +293,9 @@ export default function ServicePageTemplate({
               // Brief 139 — placement only; `data` is empty by design.
               return servicesMenuNode(b.id);
             case 'noDripClub':
+              // Brief 143 (Track A): commercial pages never render this section.
+              // Checked per instance so a page carrying more than one is fully covered.
+              if (hideNoDripClub) return null;
               return ndcNode(
                 asStr(d.ndcTitle) || undefined,
                 asStr(d.ndcBody) || NDC_DEFAULT_BODY,
@@ -344,7 +358,10 @@ export default function ServicePageTemplate({
     map: mapNode('map'),
     googleReviews: googleReviewsNode('googleReviews'),
     tiktokFeed: tiktokNode('tiktokFeed'),
-    noDripClub: ndcNode(content.noDropClubSection.title, content.noDropClubSection.body, 'noDripClub'),
+    // Brief 143 (Track A): null on commercial pages — same rule as the blocks path.
+    noDripClub: hideNoDripClub
+      ? null
+      : ndcNode(content.noDropClubSection.title, content.noDropClubSection.body, 'noDripClub'),
 
     // 11 — body copy block 2 / preventive maintenance (Cream, text only) — ghost
     preventive:
