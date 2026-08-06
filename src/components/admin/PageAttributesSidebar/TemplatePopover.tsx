@@ -18,11 +18,17 @@ export interface TemplatePopoverProps {
   /** Omit when this page type has no real template-switch pathway yet (single-option case). */
   onChange?: (newTemplate: string) => Promise<void> | void;
   busy?: boolean;
+  /**
+   * Brief 141 — optional helper line under the options, for page types where the
+   * consequences of switching need spelling out (e.g. the No Drip Club page,
+   * where each template keeps its OWN content and switching discards nothing).
+   */
+  note?: string;
 }
 
 const WIDTH = 240;
 
-export default function TemplatePopover({ value, label, options, onChange, busy }: TemplatePopoverProps) {
+export default function TemplatePopover({ value, label, options, onChange, busy, note }: TemplatePopoverProps) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -115,6 +121,12 @@ export default function TemplatePopover({ value, label, options, onChange, busy 
               </span>
             </label>
           ))}
+
+          {note && (
+            <p style={{ fontSize: '11px', color: ADMIN_COLORS.onSurfaceVariant, fontFamily: fontBody, margin: '0.5rem 0 0', lineHeight: 1.45 }}>
+              {note}
+            </p>
+          )}
 
           {options.length <= 1 && (
             <p style={{ fontSize: '11px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontFamily: fontBody, margin: '0.4rem 0 0' }}>

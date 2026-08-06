@@ -21,6 +21,11 @@ import {
   type BenefitsCardPrice,
   type BenefitsCardColumns,
 } from '@/lib/cms/benefits-card';
+import {
+  MEMBERSHIP_COMPARISON_MAX_PRICES,
+  type ComparisonRowData,
+  type ComparisonPriceData,
+} from '@/lib/cms/membership-comparison';
 
 const LABEL: React.CSSProperties = {
   display: 'block', fontFamily: 'var(--font-nunito), system-ui, sans-serif',
@@ -284,6 +289,224 @@ function PriceConfigField({
   );
 }
 
+// ── Brief 141 — Membership Comparison repeaters ─────────────────────────────
+
+const asRows = (v: unknown): ComparisonRowData[] =>
+  Array.isArray(v)
+    ? (v as Array<Record<string, unknown>>).map((r) => ({
+        label: typeof r?.label === 'string' ? r.label : '',
+        caveat: typeof r?.caveat === 'string' && r.caveat !== '' ? r.caveat : null,
+        child: r?.child === true,
+        member: r?.member !== false,
+        nonMember: r?.nonMember === true,
+      }))
+    : [];
+
+/** A small check/cross segmented control for one column's cell. */
+function MarkToggle({
+  columnLabel, value, onChange,
+}: {
+  columnLabel: string; value: boolean; onChange: (next: boolean) => void;
+}) {
+  const btn = (active: boolean, ok: boolean): React.CSSProperties => ({
+    flex: '0 0 auto', width: '30px', height: '26px', padding: 0, cursor: 'pointer',
+    fontSize: '0.85rem', fontWeight: 700, lineHeight: 1,
+    borderRadius: '0.4rem',
+    border: `2px solid ${active ? (ok ? ADMIN_COLORS.success : ADMIN_COLORS.error) : `${ADMIN_COLORS.outlineVariant}55`}`,
+    background: active ? `${ok ? ADMIN_COLORS.success : ADMIN_COLORS.error}22` : ADMIN_COLORS.surfaceContainerLowest,
+    color: active ? (ok ? ADMIN_COLORS.success : ADMIN_COLORS.error) : ADMIN_COLORS.onSurfaceVariant,
+  });
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+      <span style={{ ...LABEL, marginBottom: 0, fontSize: '11px', fontWeight: 700 }}>{columnLabel}</span>
+      <div style={{ display: 'flex', gap: '0.25rem' }}>
+        <button type="button" aria-label={`${columnLabel}: included`} aria-pressed={value}
+          title="Included (check)" style={btn(value, true)} onClick={() => onChange(true)}>✓</button>
+        <button type="button" aria-label={`${columnLabel}: not included`} aria-pressed={!value}
+          title="Not included (cross)" style={btn(!value, false)} onClick={() => onChange(false)}>✕</button>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Benefit-rows repeater (Brief 141, Track E): add / remove / reorder rows; per
+ * row a label, an optional caveat, a prominent "child row" toggle, and a
+ * check/cross toggle for each column.
+ *
+ * The child toggle is the control most likely to confuse an editor, so it gets
+ * a full-width tinted band and the card itself is visibly indented + labelled
+ * "Sub-item" when it's on — the editor list mirrors the rendered indentation.
+ */
+function ComparisonRowsField({
+  label, value, minItems = 0, addLabel = '+ Add row', onChange,
+}: {
+  label: string; value: unknown; minItems?: number; addLabel?: string;
+  onChange: (rows: ComparisonRowData[]) => void;
+}) {
+  const rows = asRows(value);
+  function patch(i: number, p: Partial<ComparisonRowData>) {
+    onChange(rows.map((r, idx) => (idx === i ? { ...r, ...p } : r)));
+  }
+  return (
+    <div style={{ marginBottom: '1.25rem' }}>
+      <label style={LABEL}>{label}</label>
+      <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '0 0 0.6rem' }}>
+        Every row shows one mark per column. Turn on <strong>Sub-item</strong> to indent a row
+        as a bullet under the row above it.
+      </p>
+      {rows.map((row, i) => (
+        <div key={i} style={{ ...CARD, marginLeft: row.child ? '1.5rem' : 0, borderLeft: row.child ? `3px solid ${ADMIN_COLORS.cerulean}` : CARD.border as string }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', gap: '0.35rem' }}>
+            <span style={CARD_LABEL}>{row.child ? `Sub-item ${i + 1}` : `Row ${i + 1}`}</span>
+            <span style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
+              <MoveButtons index={i} total={rows.length} onMove={(idx, dir) => onChange(moveItem(rows, idx, dir))} />
+              {rows.length > minItems && (
+                <button type="button" style={REMOVE_BTN} onClick={() => onChange(rows.filter((_, idx) => idx !== i))}>Remove</button>
+              )}
+            </span>
+          </div>
+
+          <div style={{ marginBottom: '0.6rem' }}>
+            <label style={LABEL}>Benefit</label>
+            <input style={INPUT} type="text" value={row.label} placeholder="e.g. NO EMERGENCY FEES OR TRIP CHARGES"
+              onChange={(e) => patch(i, { label: e.target.value })} />
+          </div>
+
+          <div style={{ marginBottom: '0.6rem' }}>
+            <label style={LABEL}>Caveat (small line under the benefit — optional)</label>
+            <input style={INPUT} type="text" value={row.caveat ?? ''} placeholder="e.g. (as needed, only during maintenance visits)"
+              onChange={(e) => patch(i, { caveat: e.target.value || null })} />
+          </div>
+
+          <label style={{
+            display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', marginBottom: '0.75rem',
+            padding: '0.5rem 0.65rem', borderRadius: '0.5rem',
+            background: row.child ? `${ADMIN_COLORS.cerulean}1f` : ADMIN_COLORS.surfaceContainerLowest,
+            border: `1px solid ${row.child ? ADMIN_COLORS.cerulean : `${ADMIN_COLORS.outlineVariant}44`}`,
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '0.85rem', fontWeight: 700,
+            color: ADMIN_COLORS.onSurface,
+          }}>
+            <input type="checkbox" checked={row.child} onChange={(e) => patch(i, { child: e.target.checked })} />
+            Sub-item — indent this row as a bullet under the row above
+          </label>
+
+          <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+            <MarkToggle columnLabel="Member column" value={row.member} onChange={(v) => patch(i, { member: v })} />
+            <MarkToggle columnLabel="Non-member column" value={row.nonMember} onChange={(v) => patch(i, { nonMember: v })} />
+          </div>
+        </div>
+      ))}
+      <button type="button" className="admin-cta-btn" style={ADD_BTN}
+        onClick={() => onChange([...rows, { label: '', caveat: null, child: false, member: true, nonMember: false }])}>
+        {addLabel}
+      </button>
+    </div>
+  );
+}
+
+const asPriceCards = (v: unknown): ComparisonPriceData[] =>
+  Array.isArray(v)
+    ? (v as Array<Record<string, unknown>>).map((p) => ({
+        termLabel: typeof p?.termLabel === 'string' ? p.termLabel : '',
+        amount: typeof p?.amount === 'string' ? p.amount : '',
+        buttonLabel: typeof p?.buttonLabel === 'string' && p.buttonLabel !== '' ? p.buttonLabel : 'Join Today',
+        emphasized: p?.emphasized === true,
+      }))
+    : [];
+
+/** True when `amount` is exactly a Global Settings price token (not a literal). */
+function isPriceToken(amount: string): boolean {
+  return /^\s*\{\{\s*ndc_price(_1yr|_2yr)?\s*\}\}\s*$/i.test(amount);
+}
+
+/**
+ * Price-cards repeater (Brief 141, Track E): add / remove / reorder, capped at
+ * `MEMBERSHIP_COMPARISON_MAX_PRICES` to protect the layout. Per card: term
+ * label, amount, button label and an "emphasize" toggle that is single-choice —
+ * selecting one clears the others.
+ *
+ * The amount uses TokenTextInput so the Brief 77 "Insert variable" affordance is
+ * available, and the field shows the raw token rather than a pre-resolved value.
+ * A per-card note says whether that card is still driven by Global Settings or
+ * has been detached by a typed literal — the one thing an editor can't otherwise
+ * see (Brief 141, "two places to edit a price").
+ */
+function PriceCardsField({
+  label, value, minItems = 0, addLabel = '+ Add price card', onChange,
+}: {
+  label: string; value: unknown; minItems?: number; addLabel?: string;
+  onChange: (prices: ComparisonPriceData[]) => void;
+}) {
+  const prices = asPriceCards(value);
+  function patch(i: number, p: Partial<ComparisonPriceData>) {
+    onChange(prices.map((c, idx) => (idx === i ? { ...c, ...p } : c)));
+  }
+  // At most ONE emphasized card: setting it clears every other card's flag.
+  function setEmphasis(i: number, on: boolean) {
+    onChange(prices.map((c, idx) => ({ ...c, emphasized: on ? idx === i : idx === i ? false : c.emphasized })));
+  }
+  return (
+    <div style={{ marginBottom: '1.25rem' }}>
+      <label style={LABEL}>{label}</label>
+      {prices.map((price, i) => {
+        const token = isPriceToken(price.amount);
+        return (
+          <div key={i} style={CARD}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', gap: '0.35rem' }}>
+              <span style={CARD_LABEL}>Card {i + 1}</span>
+              <span style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
+                <MoveButtons index={i} total={prices.length} onMove={(idx, dir) => onChange(moveItem(prices, idx, dir))} />
+                {prices.length > minItems && (
+                  <button type="button" style={REMOVE_BTN} onClick={() => onChange(prices.filter((_, idx) => idx !== i))}>Remove</button>
+                )}
+              </span>
+            </div>
+
+            <div style={{ marginBottom: '0.6rem' }}>
+              <label style={LABEL}>Term label</label>
+              <input style={INPUT} type="text" value={price.termLabel} placeholder="e.g. 1 YEAR"
+                onChange={(e) => patch(i, { termLabel: e.target.value })} />
+            </div>
+
+            <div style={{ marginBottom: '0.6rem' }}>
+              <TokenTextInput label="Amount" value={price.amount}
+                onChange={(v) => patch(i, { amount: v })}
+                fieldStyle={INPUT} labelStyle={{ ...LABEL, marginBottom: 0 }} />
+              <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', margin: '0.35rem 0 0', color: token ? `${ADMIN_COLORS.onSurfaceVariant}99` : ADMIN_COLORS.error }}>
+                {token
+                  ? 'Driven by Global Settings → No Drip Club Membership Prices. Edit the price there.'
+                  : 'Detached from Global Settings — this card shows the literal text above. Insert a price variable to reconnect it.'}
+              </p>
+            </div>
+
+            <div style={{ marginBottom: '0.6rem' }}>
+              <label style={LABEL}>Button label</label>
+              <input style={INPUT} type="text" value={price.buttonLabel} placeholder="e.g. Join Today"
+                onChange={(e) => patch(i, { buttonLabel: e.target.value })} />
+            </div>
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '0.85rem', color: ADMIN_COLORS.onSurface }}>
+              <input type="checkbox" checked={price.emphasized} onChange={(e) => setEmphasis(i, e.target.checked)} />
+              Emphasize this card (red border + shadow) — only one card can be emphasized
+            </label>
+          </div>
+        );
+      })}
+      {prices.length < MEMBERSHIP_COMPARISON_MAX_PRICES ? (
+        <button type="button" className="admin-cta-btn" style={ADD_BTN}
+          onClick={() => onChange([...prices, { termLabel: '', amount: '', buttonLabel: 'Join Today', emphasized: false }])}>
+          {addLabel}
+        </button>
+      ) : (
+        <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: 0 }}>
+          Maximum of {MEMBERSHIP_COMPARISON_MAX_PRICES} price cards — remove one to add another.
+        </p>
+      )}
+    </div>
+  );
+}
+
 // ── Registry-driven field renderer for one block instance ──────────────────
 
 export default function BlockField({
@@ -412,6 +635,26 @@ export default function BlockField({
           label={field.label}
           value={value}
           onChange={(price) => onChange(field.key, price)}
+        />
+      );
+    case 'comparisonRowRepeater':
+      return (
+        <ComparisonRowsField
+          label={field.label}
+          value={value}
+          minItems={field.minItems ?? 0}
+          addLabel={field.addLabel ?? '+ Add row'}
+          onChange={(rows) => onChange(field.key, rows)}
+        />
+      );
+    case 'priceCardRepeater':
+      return (
+        <PriceCardsField
+          label={field.label}
+          value={value}
+          minItems={field.minItems ?? 0}
+          addLabel={field.addLabel ?? '+ Add price card'}
+          onChange={(prices) => onChange(field.key, prices)}
         />
       );
     case 'subcategoryRepeater':

@@ -37,6 +37,9 @@ interface FormState {
   taglineTurning: string;
   hoursLabel: string;
   ndcPrice: string;
+  /** Brief 141 — No Drip Club annual term prices (comparison template). */
+  ndcPrice1yr: string;
+  ndcPrice2yr: string;
   serviceDesc: ServiceDescState;
   offices: OfficeFormState[];
 }
@@ -64,9 +67,48 @@ const EMPTY: FormState = {
   taglineTurning: '',
   hoursLabel: '',
   ndcPrice: '',
+  ndcPrice1yr: '',
+  ndcPrice2yr: '',
   serviceDesc: { ...EMPTY_SERVICE_DESC },
   offices: [],
 };
+
+/**
+ * Brief 141 (Track A) — the three No Drip Club prices, rendered as one grouped
+ * section so an editor can see at a glance which price drives which template.
+ * All three are permanent: `ndc_price` is the classic template's monthly price
+ * (unchanged value + token, label clarified), the two annual prices drive the
+ * comparison template's cards.
+ */
+const NDC_PRICE_FIELDS: Array<{
+  key: 'ndcPrice' | 'ndcPrice1yr' | 'ndcPrice2yr';
+  label: string;
+  token: string;
+  placeholder: string;
+  help: string;
+}> = [
+  {
+    key: 'ndcPrice',
+    label: 'No Drip Club — Monthly Price (Classic template)',
+    token: '{{ndc_price}}',
+    placeholder: '$29.97',
+    help: 'Drives the CLASSIC No Drip Club page (the “MEMBERS GET:” card) and every {{ndc_price}} token site-wide.',
+  },
+  {
+    key: 'ndcPrice1yr',
+    label: 'No Drip Club — 1 Year Price',
+    token: '{{ndc_price_1yr}}',
+    placeholder: '$149',
+    help: 'Drives the 1 YEAR card on the COMPARISON No Drip Club page.',
+  },
+  {
+    key: 'ndcPrice2yr',
+    label: 'No Drip Club — 2 Year Price',
+    token: '{{ndc_price_2yr}}',
+    placeholder: '$229',
+    help: 'Drives the 2 YEARS card on the COMPARISON No Drip Club page.',
+  },
+];
 
 // Service categories in display order, with editor labels.
 const SERVICE_DESC_FIELDS: Array<{ key: keyof ServiceDescState; label: string }> = [
@@ -209,6 +251,8 @@ export default function GlobalSettingsPage() {
           taglineTurning: data.taglineTurning ?? '',
           hoursLabel: data.hoursLabel ?? '',
           ndcPrice: data.ndcPrice ?? '',
+          ndcPrice1yr: data.ndcPrice1yr ?? '',
+          ndcPrice2yr: data.ndcPrice2yr ?? '',
           serviceDesc: { ...EMPTY_SERVICE_DESC, ...(data.serviceDesc ?? {}) },
           offices,
         });
@@ -322,10 +366,6 @@ export default function GlobalSettingsPage() {
             <input style={s} value={form.phoneDisplay} onChange={e => set('phoneDisplay', e.target.value)} placeholder="773-724-9272" />
           </div>
           <div>
-            <label style={labelStyle}>No Drip Club Price — <code>{'{{ndc_price}}'}</code></label>
-            <input style={s} value={form.ndcPrice} onChange={e => set('ndcPrice', e.target.value)} placeholder="$29.97" />
-          </div>
-          <div>
             <label style={labelStyle}>Phone Link (e.g. tel:773-724-9272)</label>
             <input style={s} value={form.phoneHref} onChange={e => set('phoneHref', e.target.value)} placeholder="tel:773-724-9272" />
           </div>
@@ -345,6 +385,37 @@ export default function GlobalSettingsPage() {
             <label style={labelStyle}>Turning Bad Calls Tagline</label>
             <input style={s} value={form.taglineTurning} onChange={e => set('taglineTurning', e.target.value)} placeholder="J Blanton Plumbing - Turning Bad Calls to Good Calls" />
           </div>
+        </div>
+      </div>
+
+      {/* ── Brief 141 (Track A): No Drip Club prices ─────────────────────────
+          Three permanent, independent prices. They live in one section — rather
+          than scattered through "Variables" — because the single most likely
+          support question is "why didn't my price change?", and the answer is
+          always "you edited the price for the other template". Each field names
+          its template and its token. */}
+      <div style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>No Drip Club Membership Prices</h2>
+        <p style={sectionDescStyle}>
+          The No Drip Club page has two templates, and each uses its own price. Check which
+          template is selected in the{' '}
+          <a href="/admin/no-drip-club" style={{ color: ADMIN_COLORS.secondaryContainer, fontWeight: 600 }}>No Drip Club editor</a>{' '}
+          (Page Attributes → Template) before editing. Type the value exactly as it should appear,
+          <strong> including the “$”</strong> — the page never adds a currency symbol.
+        </p>
+        <div className="admin-two-col">
+          {NDC_PRICE_FIELDS.map(({ key, label, token, placeholder, help }) => (
+            <div key={key} className={key === 'ndcPrice' ? 'admin-span-2' : undefined}>
+              <label style={labelStyle}>{label} — <code>{token}</code></label>
+              <input
+                style={{ ...s, marginBottom: '0.35rem' }}
+                value={form[key]}
+                onChange={e => set(key, e.target.value)}
+                placeholder={placeholder}
+              />
+              <p style={{ ...sectionDescStyle, fontSize: '0.75rem', marginBottom: '1rem' }}>{help}</p>
+            </div>
+          ))}
         </div>
       </div>
 

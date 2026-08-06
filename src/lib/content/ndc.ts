@@ -26,6 +26,49 @@ export interface HowStep {
   text: string;
 }
 
+/**
+ * Brief 141 — one row of the `comparison` variant's membership table. Transcribed
+ * verbatim from the approved sell sheet (`ndc-sell-sheet/Back.png`).
+ */
+export interface ComparisonRow {
+  label: string;
+  /** Small qualifying line under the label. Null on most rows. */
+  caveat: string | null;
+  /** True = indented bullet child of the preceding parent row. */
+  child: boolean;
+  member: boolean;
+  nonMember: boolean;
+}
+
+/** Brief 141 — one annual-term price card. `amount` is a Global Settings token. */
+export interface ComparisonPriceCard {
+  termLabel: string;
+  amount: string;
+  buttonLabel: string;
+  /** Carmine border + shadow treatment. At most one card carries it. */
+  emphasized: boolean;
+}
+
+/** Brief 141 — the `comparison` variant's Member vs. Non-Member section copy. */
+export interface ComparisonContent {
+  title: string;
+  subtitle: string | null;
+  memberColumnLabel: string;
+  nonMemberColumnLabel: string;
+  rows: ComparisonRow[];
+  closingLine: string | null;
+  prices: ComparisonPriceCard[];
+  priceFootnote: string | null;
+  /**
+   * The two-line callout under HOW IT WORKS on the Carmine band. The sell sheet
+   * also prints `CALL 773-724-9272` and `OR GO ONLINE JBLANTONPLUMBING.COM`
+   * beneath these lines; both were removed on purpose by the marketing lead
+   * (the phone is already in the site header and the URL is meaningless on the
+   * site itself). Do not add them back.
+   */
+  callout: string[];
+}
+
 export interface NdcContent {
   hero: {
     heading: string;
@@ -53,6 +96,12 @@ export interface NdcContent {
     heading: string;
     steps: HowStep[];
   };
+  /**
+   * Brief 141 — the `comparison` template variant's content. Used as the seed
+   * source and as the pre-seed static fallback (`staticNdcMembershipComparisonData()`
+   * in `@/lib/cms/membership-comparison`). The `classic` variant never reads it.
+   */
+  comparison: ComparisonContent;
   /** Elfsight widget class id (script is loaded globally in layout). */
   reviewsWidgetClass: string;
   wait: {
@@ -132,6 +181,50 @@ export const NDC: NdcContent = {
         text: "Rest easy knowing you're getting a good deal and even better service.",
       },
     ],
+  },
+  // Brief 141 — every string below is transcribed verbatim from the approved
+  // sell sheet (`ndc-sell-sheet/Back.png`) and signed off. Wording,
+  // capitalization and punctuation are as printed; do not "fix" them.
+  comparison: {
+    title: 'MEMBERSHIP BENEFITS',
+    subtitle: 'RESIDENTIAL HOMES ONLY',
+    memberColumnLabel: 'NO DRIP CLUB',
+    nonMemberColumnLabel: 'NON MEMBER',
+    rows: [
+      { label: 'VIP - PRIORITY SCHEDULING', caveat: null, child: false, member: true, nonMember: false },
+      { label: '10% DISCOUNT (INCLUDING SERVICE AND EQUIPMENT)', caveat: null, child: false, member: true, nonMember: false },
+      { label: 'NO EMERGENCY FEES OR TRIP CHARGES', caveat: null, child: false, member: true, nonMember: false },
+      { label: 'NO AFTER HOURS OR HOLIDAY CHARGES', caveat: null, child: false, member: true, nonMember: false },
+      { label: '2 PREVENTATIVE MAINTENANCE VISITS PER YEAR:', caveat: null, child: false, member: true, nonMember: false },
+      { label: 'FREE WATER HEATER FLUSH & MAINTENANCE', caveat: null, child: true, member: true, nonMember: false },
+      { label: 'FREE SEWER CAMERA INSPECTION', caveat: null, child: true, member: true, nonMember: false },
+      { label: 'FREE WHOLE HOME PLUMBING TUNE-UP', caveat: null, child: true, member: true, nonMember: false },
+      {
+        label: 'FREE CHEMICAL WATER TEST',
+        caveat: '(as needed, only during maintenance visits)',
+        child: true,
+        member: true,
+        nonMember: false,
+      },
+      {
+        label: '1 FREE INTERIOR DRAIN CLEARING - TUB, KITCHEN, SINK',
+        caveat: '(as needed, only during maintenance visits)',
+        child: true,
+        member: true,
+        nonMember: false,
+      },
+    ],
+    closingLine: 'Increases standard labor warranty from 1-year to 5-years',
+    // Amounts are Global Settings TOKENS, not literals (Brief 141, Track A), so
+    // the prices stay editable in one place. A literal typed here (or in the
+    // block editor) silently detaches that card from Global Settings.
+    prices: [
+      { termLabel: '1 YEAR', amount: '{{ndc_price_1yr}}', buttonLabel: 'Join Today', emphasized: false },
+      { termLabel: '2 YEARS', amount: '{{ndc_price_2yr}}', buttonLabel: 'Join Today', emphasized: true },
+    ],
+    priceFootnote:
+      '*Charged upfront, auto renewal unless given 30-day notice, must save valid card on file to activate',
+    callout: ['MAKE A GOOD CALL.', 'JOIN THE NO DRIP CLUB TODAY.'],
   },
   reviewsWidgetClass: 'elfsight-app-67911321-4b72-4209-b157-fc9812eadd3b',
   wait: {

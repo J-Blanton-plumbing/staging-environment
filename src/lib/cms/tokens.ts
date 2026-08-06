@@ -45,9 +45,25 @@ export const CMS_TOKENS: CmsToken[] = [
   },
   {
     token: 'ndc_price',
-    label: 'No Drip Club price',
-    hint: 'Membership price line (from Global Settings)',
+    label: 'No Drip Club price — monthly (classic template)',
+    hint: 'Monthly membership price, e.g. $29.97 (from Global Settings)',
     resolve: (s) => s.ndcPrice,
+  },
+  // Brief 141 (Track A) — the annual offer. Three prices coexist permanently:
+  // {{ndc_price}} drives the `classic` No Drip Club template, these two drive the
+  // `comparison` template's 1-year / 2-year cards. Labels name the template so
+  // the "Insert variable" menu makes the distinction obvious at the point of use.
+  {
+    token: 'ndc_price_1yr',
+    label: 'No Drip Club price — 1 year (comparison template)',
+    hint: '1-year membership price, e.g. $149 (from Global Settings)',
+    resolve: (s) => s.ndcPrice1yr,
+  },
+  {
+    token: 'ndc_price_2yr',
+    label: 'No Drip Club price — 2 years (comparison template)',
+    hint: '2-year membership price, e.g. $229 (from Global Settings)',
+    resolve: (s) => s.ndcPrice2yr,
   },
 ];
 

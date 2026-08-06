@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
-import BenefitsCard from '@/components/BenefitsCard';
-import { NDC, type InvolveMeConfig } from '@/lib/content/ndc';
+import InvolveMePopup from '@/components/InvolveMePopup';
+import NoDripClubClassic from '@/components/NoDripClubClassic';
+import NoDripClubComparison from '@/components/NoDripClubComparison';
+import { NDC } from '@/lib/content/ndc';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { renderCmsInline } from '@/lib/cms/sanitize';
@@ -12,6 +14,15 @@ import {
   staticNdcBenefitsCardData,
   NDC_BENEFITS_CARD_CONTENT_KEY,
 } from '@/lib/cms/benefits-card';
+import {
+  normalizeMembershipComparisonInstance,
+  staticNdcMembershipComparisonData,
+  NDC_MEMBERSHIP_COMPARISON_CONTENT_KEY,
+} from '@/lib/cms/membership-comparison';
+import {
+  normalizeNdcTemplateVariant,
+  NDC_TEMPLATE_VARIANT_CONTENT_KEY,
+} from '@/lib/cms/ndc-template-variant';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import './ndc.css';
@@ -25,35 +36,28 @@ export const metadata: Metadata = {
 };
 
 /**
- * involve.me popup trigger. The global <InvolveMeScript /> (mounted in layout)
- * binds every `.involveme_popup` element on click; this stays a plain element
- * so the page can remain a server component.
+ * Brief 141 (Track B) — this page is a thin SHELL over two permanent template
+ * variants:
+ *
+ *   page.tsx
+ *   ├─ shared: hero (YouTube embed + H1 + description + Join Today), hero-nav strip
+ *   ├─ variant === 'comparison' ? <NoDripClubComparison/> : <NoDripClubClassic/>
+ *   ├─ shared: Elfsight reviews mount, "WHAT ARE YOU WAITING FOR?" closer
+ *   └─ shared: header/footer (from the root layout)
+ *
+ * Everything identical in both variants stays HERE, outside the variant branch —
+ * both templates are supported indefinitely, so shared markup must live in
+ * exactly one place. The `.cream > .w81` wrapper is shared too: `classic`
+ * renders its body inside it (which is what keeps that variant's HTML
+ * byte-identical to the pre-brief page), while `comparison` renders its own
+ * full-bleed sections above it and uses it only for the closer.
+ *
+ * Content isolation: `classic` reads ONLY `content.benefits_card`, `comparison`
+ * reads ONLY `content.membership_comparison`. Neither path touches the other's
+ * key, so switching variants — in either direction, any number of times — can
+ * never migrate, clear or overwrite content. There is no archive and nothing to
+ * restore; that is the whole point of the design.
  */
-function InvolveMePopup({
-  label,
-  className = '',
-  cfg,
-}: {
-  label: string;
-  className?: string;
-  cfg: InvolveMeConfig;
-}) {
-  return (
-    <div
-      className={`involveme_popup${className ? ` ${className}` : ''}`}
-      role="button"
-      tabIndex={0}
-      data-project={cfg.project}
-      data-embed-mode={cfg.embedMode}
-      data-trigger-event={cfg.triggerEvent}
-      data-popup-size={cfg.popupSize}
-      data-organization-url={cfg.organizationUrl}
-    >
-      {label}
-    </div>
-  );
-}
-
 export default async function NoDripClubPage() {
   const preview = await getMainPagePreview('no-drip-club');
   const db = preview?.content ?? await getMainPageContent('no-drip-club').catch(() => null);
@@ -80,6 +84,9 @@ export default async function NoDripClubPage() {
     body: m(d.wait_body, wait.body),
     cta: rt(d.wait_cta, wait.cta),
   };
+  // Brief 141 — which template variant renders. Absent or unrecognised → 'classic',
+  // so an environment that hasn't run the seed keeps rendering today's page.
+  const variant = normalizeNdcTemplateVariant(d[NDC_TEMPLATE_VARIANT_CONTENT_KEY]);
   // Brief 121 — the "MEMBERS GET:" card renders from the page's stored
   // `benefitsCard` block instance (content.benefits_card, seeded by
   // scripts/seed-brief-121-ndc-benefits-card.ts and editable in the admin).
@@ -90,11 +97,17 @@ export default async function NoDripClubPage() {
   const benefitsCard =
     normalizeBenefitsCardInstance(d[NDC_BENEFITS_CARD_CONTENT_KEY])?.data ??
     staticNdcBenefitsCardData();
+  // Brief 141 — same dual-path pattern for the comparison table: the stored
+  // instance when there is a valid one, else the static mapper. No code path can
+  // produce an empty section.
+  const membershipComparison =
+    normalizeMembershipComparisonInstance(d[NDC_MEMBERSHIP_COMPARISON_CONTENT_KEY])?.data ??
+    staticNdcMembershipComparisonData();
 
   return (
-    <div className="ndc-page">
+    <div className={variant === 'comparison' ? 'ndc-page ndc-variant-comparison' : 'ndc-page'}>
       {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/no-drip-club" liveUrl="/no-drip-club" draftId={preview.meta.id} pageType="main" pageSlug="no-drip-club" />}
-      {/* ============== HERO: YouTube embed + heading/desc/CTA ============== */}
+      {/* ============== HERO: YouTube embed + heading/desc/CTA (shared) ============== */}
       <div className="hero">
         <div className="img-s">
           <iframe
@@ -119,25 +132,31 @@ export default async function NoDripClubPage() {
       {/* ============== HERO-NAV (shared, default props) ============== */}
       <HeroNav />
 
-      {/* ============== CREAM block: benefits card + CTAs + how + reviews + wait ============== */}
+      {/* ============== VARIANT BODY: comparison sections are full-bleed and sit
+           ABOVE the shared cream closer block; classic renders inside it. ====== */}
+      {variant === 'comparison' && (
+        <NoDripClubComparison
+          data={membershipComparison}
+          settings={settings}
+          involveMe={involveMe}
+          howHeading={howH}
+          howSteps={how.steps}
+          callout={NDC.comparison.callout}
+        />
+      )}
+
+      {/* ============== CREAM block: variant body (classic) + reviews + wait ============== */}
       <div className="cream">
         <div className="w81">
-          {/* NDC benefits card — Brief 121 `benefitsCard` block */}
-          <BenefitsCard data={benefitsCard} settings={settings} />
-
-          {/* SIGN UP — Cerulean pill, involve.me popup */}
-          <InvolveMePopup label={NDC.signUpCta} className="ndc-blue-button link-button" cfg={involveMe} />
-
-          {/* HOW IT WORKS */}
-          <p className="red-text ndc-red-text-center">{howH}</p>
-          <div className="ndc-how-it-works">
-            {how.steps.map((step) => (
-              <div key={step.label}>
-                <p className="label">{step.label}</p>
-                <p className="text">{step.text}</p>
-              </div>
-            ))}
-          </div>
+          {variant !== 'comparison' && (
+            <NoDripClubClassic
+              benefitsCard={benefitsCard}
+              settings={settings}
+              involveMe={involveMe}
+              howHeading={howH}
+              howSteps={how.steps}
+            />
+          )}
 
           {/* Elfsight reviews widget (script loaded globally) */}
           <div className="ndc-gr">

@@ -345,6 +345,543 @@
   }
 }
 
+/* ============================================================================
+   Brief 141 — `comparison` template variant
+   Ported from the approved design (`claude-design-kit/ndc-redesign/
+   ndc-redesign-flat.html`, §SECTION 3 + §SECTION 4). The export carried 134
+   inline `style=` attributes and used `!important` for every responsive
+   override — both are export artifacts of having no classes to work with, not a
+   target. Everything below is class-driven and cascades normally: zero inline
+   styles, zero `!important`.
+
+   Font mapping follows the convention at the top of this file:
+     IBold    -> var(--font-industry), 700
+     IMedium  -> var(--font-industry), 500
+     NRegular -> var(--font-nunito),   400
+   Colors are brand-only: Carmine #bc0e0e, Cerulean #1560e6, Cream #f9f3ec,
+   Midnight #0a1b2e, Medium Blue #0044bf (member column — deliberately NOT
+   Cerulean, which stays reserved for CTA buttons). No `#000000`.
+   ========================================================================== */
+
+/* Visually-hidden text (the check/cross alternatives). */
+.ndc-page .ndc-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  margin: -1px;
+}
+
+/* The comparison variant's closer block sits closer to the reviews widget than
+   the classic variant's (design §SECTION 5: 120px, not the classic 200px). */
+.ndc-page.ndc-variant-comparison .ndc-gr {
+  margin-bottom: 120px;
+}
+
+/* ---- Section 3: membership comparison ------------------------------------- */
+.ndc-page .ndc-mc {
+  background: #f9f3ec;
+  padding: 96px 0 104px 0;
+}
+.ndc-page .ndc-mc-inner {
+  /* SINGLE source of truth for the table geometry. The column widths AND the
+     member-column tab both derive from these two properties, so the tab can
+     never drift out of alignment with the column it sits behind. */
+  --ndc-mc-label-col: 58%;
+  --ndc-mc-mark-col: 21%;
+  /* Reserved height of the column-heading row. The table is pulled up by
+     exactly this much so the headings sit beside the title (bottom-aligned),
+     reproducing the design now that the <h2> has moved out of the <thead>. */
+  --ndc-mc-colhead-h: 72px;
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.ndc-page .ndc-mc-card {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  padding: 56px 56px 48px 56px;
+  box-shadow: 0 24px 60px rgba(10, 27, 46, 0.1);
+}
+.ndc-page .ndc-mc-tabwrap {
+  position: relative;
+}
+.ndc-page .ndc-mc-tab {
+  position: absolute;
+  left: var(--ndc-mc-label-col);
+  width: var(--ndc-mc-mark-col);
+  top: -104px;
+  bottom: -96px;
+  background: #0044bf;
+  border-radius: 46px;
+  z-index: 1;
+}
+
+/* Heading block — ABOVE the table (Track G, correction 3), sized to the label
+   column so it occupies the same horizontal band the design's title cell did. */
+.ndc-page .ndc-mc-head {
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+  width: var(--ndc-mc-label-col);
+  padding: 0 24px 22px 0;
+}
+.ndc-page .ndc-mc-title {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.02;
+  letter-spacing: 0.5px;
+  color: #bc0e0e;
+  margin: 0;
+}
+.ndc-page .ndc-mc-subtitle {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: 1.4px;
+  color: #bc0e0e;
+  margin: 10px 0 0 0;
+}
+
+.ndc-page .ndc-mc-table {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  /* Lift the heading row back alongside the title (see --ndc-mc-colhead-h). */
+  margin-top: calc(-1 * var(--ndc-mc-colhead-h));
+}
+.ndc-page .ndc-mc-table th,
+.ndc-page .ndc-mc-table td {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+.ndc-page .ndc-mc-table .ndc-mc-labelhead {
+  width: var(--ndc-mc-label-col);
+  padding: 0;
+}
+.ndc-page .ndc-mc-table .ndc-mc-colhead {
+  width: var(--ndc-mc-mark-col);
+  height: var(--ndc-mc-colhead-h);
+  vertical-align: bottom;
+  text-align: center;
+  padding: 0 8px 22px 8px;
+}
+.ndc-page .ndc-mc-table .ndc-mc-colhead span {
+  display: block;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  color: rgba(10, 27, 46, 0.62);
+}
+.ndc-page .ndc-mc-table .ndc-mc-colhead-member span {
+  color: #fff;
+}
+
+.ndc-page .ndc-mc-rowhead {
+  text-align: left;
+  padding: 15px 24px 15px 0;
+  border-top: 1px solid rgba(10, 27, 46, 0.12);
+}
+.ndc-page .ndc-mc-row-child .ndc-mc-rowhead {
+  padding: 13px 24px 13px 22px;
+  border-top-color: rgba(10, 27, 46, 0.06);
+}
+.ndc-page .ndc-mc-label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.4px;
+  color: #0a1b2e;
+}
+.ndc-page .ndc-mc-row-child .ndc-mc-label {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: rgba(10, 27, 46, 0.7);
+}
+/* Track G, correction 1 — the qualifying line on a paid offer must be readable.
+   The design had rgba(10,27,46,0.55) on white = 3.92:1 (below the 4.5:1 AA
+   minimum at 12.5px). 0.62 measures 4.92:1. */
+.ndc-page .ndc-mc-caveat {
+  display: block;
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 12.5px;
+  letter-spacing: 0;
+  color: rgba(10, 27, 46, 0.62);
+  margin-top: 3px;
+}
+.ndc-page .ndc-mc-bullet-row {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.ndc-page .ndc-mc-bullet {
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(10, 27, 46, 0.4);
+  transform: translateY(-4px);
+}
+.ndc-page .ndc-mc-labelwrap {
+  flex: 1 1 auto;
+}
+
+.ndc-page .ndc-mc-mark {
+  text-align: center;
+  padding: 15px 8px;
+  border-top: 1px solid rgba(10, 27, 46, 0.12);
+}
+.ndc-page .ndc-mc-row-child .ndc-mc-mark {
+  padding: 13px 8px;
+  border-top-color: rgba(10, 27, 46, 0.06);
+}
+/* Cells over the blue tab need a light divider, not a dark one. */
+.ndc-page .ndc-mc-mark-member {
+  border-top-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+.ndc-page .ndc-mc-row-child .ndc-mc-mark-member {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+.ndc-page .ndc-mc-mark-nonmember {
+  color: #0a1b2e;
+}
+.ndc-page .ndc-mc-icon-check {
+  width: 34px;
+  height: 34px;
+}
+.ndc-page .ndc-mc-icon-cross {
+  width: 26px;
+  height: 26px;
+  opacity: 0.34;
+}
+/* A cross inside the blue member column (an editor can flip any cell) inherits
+   the column's light `color`; bump the opacity so it stays legible there. */
+.ndc-page .ndc-mc-mark-member .ndc-mc-icon-cross {
+  opacity: 0.6;
+}
+.ndc-page .ndc-mc-row-child .ndc-mc-icon-check,
+.ndc-page .ndc-mc-row-child .ndc-mc-icon-cross {
+  width: 28px;
+  height: 28px;
+}
+
+.ndc-page .ndc-mc-closing {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.4;
+  color: #0a1b2e;
+  text-align: center;
+  max-width: 640px;
+  margin: 68px auto 0 auto;
+}
+
+/* Price cards — 1–3 terms. `grid-template-columns` is derived from the rendered
+   count via the `data-count` attribute (no inline styles). */
+.ndc-page .ndc-mc-prices {
+  display: grid;
+  gap: 24px;
+  max-width: 720px;
+  margin: 44px auto 0 auto;
+  align-items: stretch;
+}
+.ndc-page .ndc-mc-prices[data-count='1'] {
+  grid-template-columns: 1fr;
+  max-width: 360px;
+}
+.ndc-page .ndc-mc-prices[data-count='2'] {
+  grid-template-columns: 1fr 1fr;
+}
+.ndc-page .ndc-mc-prices[data-count='3'] {
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1000px;
+}
+.ndc-page .ndc-mc-price {
+  background: #fff;
+  border: 1px solid rgba(10, 27, 46, 0.14);
+  border-radius: 18px;
+  padding: 34px 28px 30px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ndc-page .ndc-mc-price-best {
+  border: 2px solid #bc0e0e;
+  box-shadow: 0 18px 44px rgba(188, 14, 14, 0.14);
+}
+.ndc-page .ndc-mc-term {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 1.6px;
+  color: rgba(10, 27, 46, 0.66);
+  margin: 0;
+}
+.ndc-page .ndc-mc-amount {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  color: #bc0e0e;
+  margin: 6px 0 0 0;
+}
+.ndc-page .ndc-mc-join {
+  margin: 22px auto 0 auto;
+  border: 0;
+  cursor: pointer;
+  background: #1560e6;
+  color: #fff;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  height: 46px;
+  padding: 0 40px;
+  border-radius: 50px;
+  transition: background 0.25s;
+}
+.ndc-page .ndc-mc-join:hover {
+  background: #bc0e0e;
+}
+.ndc-page .ndc-mc-footnote {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(10, 27, 46, 0.72);
+  text-align: center;
+  max-width: 640px;
+  margin: 18px auto 0 auto;
+}
+
+/* ---- Section 4: HOW IT WORKS on the Carmine hex-pattern band --------------- */
+.ndc-page .ndc-band {
+  background: #bc0e0e url('/images/ndc-red-pattern.webp') center / cover no-repeat;
+  padding: 96px 0;
+}
+.ndc-page .ndc-band-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.ndc-page .ndc-band-title {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  letter-spacing: 0.5px;
+  color: #f9f3ec;
+  text-align: center;
+  margin: 0;
+}
+.ndc-page .ndc-band-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  margin-top: 34px;
+}
+.ndc-page .ndc-band-step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+/* Track G, correction 2 — the large numerals were rgba(249,243,236,0.55) on
+   Carmine = 2.56:1. The brief prescribes "0.8 (4.16:1) or above"; 0.85 measures
+   4.57:1, which also clears the acceptance checklist's flat 4.5:1 bar — the two
+   only agree at 0.85+, so that is the value used (0.8 would satisfy Track G but
+   not the checklist). Visually indistinguishable from 0.8. */
+.ndc-page .ndc-band-num {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0.86;
+  color: rgba(249, 243, 236, 0.85);
+  margin: 0;
+}
+.ndc-page .ndc-band-step-label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.6px;
+  color: #f9f3ec;
+  margin: 0;
+}
+.ndc-page .ndc-band-step-text {
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(249, 243, 236, 0.9);
+  margin: 8px 0 0 0;
+}
+.ndc-page .ndc-band-callout {
+  text-align: center;
+  max-width: 620px;
+  margin: 76px auto 0 auto;
+}
+.ndc-page .ndc-band-callout p {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  color: rgba(249, 243, 236, 0.92);
+  margin: 0;
+}
+
+/* ---- Comparison responsive ------------------------------------------------ */
+@media only screen and (max-width: 1200px) {
+  .ndc-page .ndc-mc-title {
+    font-size: 38px;
+  }
+  .ndc-page .ndc-band-title {
+    font-size: 36px;
+  }
+}
+/* Below ~860px the three-column MATRIX is preserved on purpose (it tested better
+   than a stacked list): the white card frame drops away, the mark columns shrink
+   to 56px, and the blue tab is replaced by the member cells' own background so
+   the column reads as one continuous block. */
+@media only screen and (max-width: 860px) {
+  .ndc-page .ndc-mc {
+    padding: 56px 0 64px 0;
+  }
+  .ndc-page .ndc-mc-w {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 18px;
+  }
+  .ndc-page .ndc-mc-card {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .ndc-page .ndc-mc-tab {
+    display: none;
+  }
+  .ndc-page .ndc-mc-head {
+    width: auto;
+    padding: 0 14px 18px 0;
+  }
+  .ndc-page .ndc-mc-title {
+    font-size: 26px;
+  }
+  .ndc-page .ndc-mc-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    /* The heading no longer shares a row with the title on narrow screens. */
+    margin-top: 0;
+  }
+  .ndc-page .ndc-mc-table .ndc-mc-labelhead {
+    width: auto;
+  }
+  .ndc-page .ndc-mc-table .ndc-mc-colhead {
+    width: 56px;
+    height: auto;
+    padding: 10px 4px;
+    vertical-align: middle;
+  }
+  .ndc-page .ndc-mc-table .ndc-mc-colhead span {
+    font-size: 13px;
+    line-height: 1.15;
+  }
+  .ndc-page .ndc-mc-table .ndc-mc-colhead-member {
+    background: #0044bf;
+    border-radius: 14px 14px 0 0;
+  }
+  .ndc-page .ndc-mc-mark-member {
+    background: #0044bf;
+  }
+  .ndc-page .ndc-mc-table tbody tr:last-child .ndc-mc-mark-member {
+    border-radius: 0 0 14px 14px;
+  }
+  .ndc-page .ndc-mc-rowhead {
+    padding: 13px 14px 13px 0;
+  }
+  .ndc-page .ndc-mc-row-child .ndc-mc-rowhead {
+    padding: 13px 14px 13px 12px;
+  }
+  .ndc-page .ndc-mc-mark,
+  .ndc-page .ndc-mc-row-child .ndc-mc-mark {
+    padding: 13px 4px;
+  }
+  .ndc-page .ndc-mc-label {
+    font-size: 14px;
+  }
+  .ndc-page .ndc-mc-row-child .ndc-mc-label {
+    font-size: 13.5px;
+  }
+  .ndc-page .ndc-mc-caveat {
+    font-size: 11.5px;
+  }
+  .ndc-page .ndc-mc-icon-check,
+  .ndc-page .ndc-mc-icon-cross,
+  .ndc-page .ndc-mc-row-child .ndc-mc-icon-check,
+  .ndc-page .ndc-mc-row-child .ndc-mc-icon-cross {
+    width: 20px;
+    height: 20px;
+  }
+  .ndc-page .ndc-mc-closing {
+    margin-top: 34px;
+  }
+  .ndc-page .ndc-mc-prices[data-count='2'],
+  .ndc-page .ndc-mc-prices[data-count='3'] {
+    grid-template-columns: 1fr;
+  }
+  .ndc-page .ndc-band {
+    padding: 64px 0;
+  }
+  .ndc-page .ndc-band-steps {
+    grid-template-columns: 1fr;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .ndc-page .ndc-mc-title {
+    font-size: 22px;
+  }
+  .ndc-page .ndc-mc-table .ndc-mc-colhead {
+    width: 48px;
+  }
+  .ndc-page .ndc-mc-table .ndc-mc-colhead span {
+    font-size: 11.5px;
+  }
+  .ndc-page .ndc-mc-label {
+    font-size: 13px;
+  }
+  .ndc-page .ndc-mc-row-child .ndc-mc-label {
+    font-size: 12.5px;
+  }
+  .ndc-page .ndc-mc-icon-check,
+  .ndc-page .ndc-mc-icon-cross,
+  .ndc-page .ndc-mc-row-child .ndc-mc-icon-check,
+  .ndc-page .ndc-mc-row-child .ndc-mc-icon-cross {
+    width: 18px;
+    height: 18px;
+  }
+  .ndc-page .ndc-mc-amount {
+    font-size: 44px;
+  }
+  .ndc-page .ndc-band-title {
+    font-size: 30px;
+  }
+  .ndc-page .ndc-band-callout p {
+    font-size: 19px;
+  }
+}
+
 /* ---- Hero responsive (theme globals.css `.hero` media queries) ------------- */
 @media only screen and (max-width: 900px) {
   .ndc-page .hero {

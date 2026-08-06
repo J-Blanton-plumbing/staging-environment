@@ -155,6 +155,13 @@ const STATEMENTS: string[] = [
   // ── global_settings ─────────────────────────────────────────────────────
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS header_phone TEXT`,
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS ndc_price TEXT`,
+  // Brief 141 (Track A) — the membership is now sold on an annual term. All THREE
+  // prices are permanent and independent: `ndc_price` is the classic template's
+  // monthly price (not deprecated), the two new columns drive the comparison
+  // template's 1-year / 2-year cards. Values are stored WITH the currency symbol,
+  // matching the ndc_price convention, so a template never prepends "$".
+  `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS ndc_price_1yr TEXT`,
+  `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS ndc_price_2yr TEXT`,
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS service_desc_emergency TEXT DEFAULT 'Fast response for plumbing emergencies, day or night.'::text`,
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS service_desc_plumbing TEXT DEFAULT 'Licensed plumbers for any residential or commercial job.'::text`,
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS service_desc_sewer TEXT DEFAULT 'Sewer inspections, repairs, and full line replacements.'::text`,

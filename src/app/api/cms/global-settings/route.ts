@@ -41,6 +41,9 @@ export async function PUT(req: NextRequest) {
       taglineTurning: body.taglineTurning ?? undefined,
       hoursLabel: body.hoursLabel ?? undefined,
       ndcPrice: body.ndcPrice ?? undefined,
+      // Brief 141 (Track A) — the two annual membership prices.
+      ndcPrice1yr: body.ndcPrice1yr ?? undefined,
+      ndcPrice2yr: body.ndcPrice2yr ?? undefined,
       serviceDesc: body.serviceDesc ?? undefined,
       offices: body.offices ?? undefined,
     });

@@ -20,8 +20,17 @@ export interface GlobalSettings {
   ctaPrimaryLabel: string;
   taglineTurning: string;
   hoursLabel: string;
-  /** No Drip Club price, backing the {{ndc_price}} token — e.g. "$29.97". */
+  /**
+   * No Drip Club MONTHLY price, backing the {{ndc_price}} token — e.g. "$29.97".
+   * Brief 141: this is the `classic` No Drip Club template's price. It is NOT
+   * deprecated — the classic template is permanent, so this field, its value and
+   * its token all stay exactly as they were.
+   */
   ndcPrice: string;
+  /** Brief 141 — No Drip Club 1-year term price, backing {{ndc_price_1yr}} (comparison template). */
+  ndcPrice1yr: string;
+  /** Brief 141 — No Drip Club 2-year term price, backing {{ndc_price_2yr}} (comparison template). */
+  ndcPrice2yr: string;
   /**
    * Brief 67 (Track F) — service-category descriptions shown under each card in
    * the Local Office V2 Services Grid. Keyed by service registry slug. Same copy
@@ -43,7 +52,7 @@ export interface GlobalSettings {
 
 // Only these columns are user-editable via /admin/global-settings.
 export type GlobalSettingsUpdate = Partial<
-  Pick<GlobalSettings, 'phoneDisplay' | 'phoneHref' | 'headerPhone' | 'ctaPrimaryLabel' | 'taglineTurning' | 'hoursLabel' | 'ndcPrice' | 'serviceDesc' | 'offices'>
+  Pick<GlobalSettings, 'phoneDisplay' | 'phoneHref' | 'headerPhone' | 'ctaPrimaryLabel' | 'taglineTurning' | 'hoursLabel' | 'ndcPrice' | 'ndcPrice1yr' | 'ndcPrice2yr' | 'serviceDesc' | 'offices'>
 >;
 
 /**
@@ -61,6 +70,9 @@ const FALLBACK: GlobalSettings = {
   taglineTurning: 'J Blanton Plumbing - Turning Bad Calls to Good Calls',
   hoursLabel: '24 hours',
   ndcPrice: '$29.97',
+  // Brief 141 — the annual offer transcribed from the approved sell sheet.
+  ndcPrice1yr: '$149',
+  ndcPrice2yr: '$229',
   serviceDesc: {
     emergency: 'Fast response for plumbing emergencies, day or night.',
     plumbing: 'Licensed plumbers for any residential or commercial job.',
@@ -114,6 +126,8 @@ export async function getGlobalSettings(): Promise<GlobalSettings | null> {
       taglineTurning: r.tagline_turning,
       hoursLabel: r.hours_label,
       ndcPrice: r.ndc_price ?? FALLBACK.ndcPrice,
+      ndcPrice1yr: r.ndc_price_1yr ?? FALLBACK.ndcPrice1yr,
+      ndcPrice2yr: r.ndc_price_2yr ?? FALLBACK.ndcPrice2yr,
       serviceDesc: {
         emergency: r.service_desc_emergency ?? FALLBACK.serviceDesc.emergency,
         plumbing: r.service_desc_plumbing ?? FALLBACK.serviceDesc.plumbing,
@@ -154,8 +168,8 @@ export async function updateGlobalSettings(data: GlobalSettingsUpdate): Promise<
     await client.query(
       `INSERT INTO global_settings (id, phone_display, phone_href, header_phone, cta_primary_label, tagline_turning, hours_label, ndc_price,
          service_desc_emergency, service_desc_plumbing, service_desc_sewer, service_desc_drain, service_desc_water_heater, service_desc_water_quality, service_desc_commercial,
-         offices)
-       VALUES (1, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+         offices, ndc_price_1yr, ndc_price_2yr)
+       VALUES (1, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
        ON CONFLICT (id) DO UPDATE SET
          phone_display              = COALESCE($1, global_settings.phone_display),
          phone_href                 = COALESCE($2, global_settings.phone_href),
@@ -172,6 +186,11 @@ export async function updateGlobalSettings(data: GlobalSettingsUpdate): Promise<
          service_desc_water_quality = COALESCE($13, global_settings.service_desc_water_quality),
          service_desc_commercial    = COALESCE($14, global_settings.service_desc_commercial),
          offices                    = COALESCE($15::jsonb, global_settings.offices),
+         -- Brief 141 (Track A): the two annual prices, added alongside the
+         -- untouched monthly ndc_price. COALESCE, like every other column here,
+         -- so a partial payload never blanks a price.
+         ndc_price_1yr              = COALESCE($16, global_settings.ndc_price_1yr),
+         ndc_price_2yr              = COALESCE($17, global_settings.ndc_price_2yr),
          updated_at                 = NOW()`,
       [
         data.phoneDisplay ?? null,
@@ -189,6 +208,8 @@ export async function updateGlobalSettings(data: GlobalSettingsUpdate): Promise<
         sd?.['water-quality'] ?? null,
         sd?.commercial ?? null,
         data.offices ? JSON.stringify(data.offices) : null,
+        data.ndcPrice1yr ?? null,
+        data.ndcPrice2yr ?? null,
       ]
     );
   } finally {

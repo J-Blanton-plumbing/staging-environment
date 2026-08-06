@@ -108,6 +108,27 @@ jobs:
             # shared sanitizer from src/, which resolves `@/…` path aliases. Do not
             # drop it when copying this line.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/backfill-brief131-city-content.ts --commit
+            # Brief 141 (Track A): fill the three No Drip Club membership prices —
+            # ndc_price "$29.97" (classic/monthly, pre-existing), ndc_price_1yr
+            # "$149" and ndc_price_2yr "$229" (the annual offer). ensure-schema
+            # above creates the two new columns. Only NULL/'' values are filled, so
+            # an editor's price change is never clobbered and re-running on every
+            # deploy is a safe no-op. Must run BEFORE the comparison seed: the
+            # price cards store TOKENS, so unseeded prices render blank cards.
+            npx ts-node --project tsconfig.scripts.json scripts/seed-brief-141-ndc-prices.ts commit
+            # Brief 141 (Track F): seed the No Drip Club page's membershipComparison
+            # block (approved sell-sheet content) and switch content.template_variant
+            # to 'comparison' — the new template goes live on STAGING, confirmed with
+            # the marketing lead. The classic variant's content.benefits_card is not
+            # touched and switching back is one selection in the admin. Each key is
+            # written only when absent, and an existing template_variant is never
+            # re-flipped, so a deliberate switch back to 'classic' survives every
+            # later deploy. `-r tsconfig-paths/register` is REQUIRED (imports src/).
+            #
+            # ⚠️ PRODUCTION: do NOT assume this belongs on production. Flipping the
+            # variant there without the $29.97 → annual price sweep would advertise
+            # two prices at once — see production-migration-checklist.md.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-141-ndc-comparison.ts commit
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and

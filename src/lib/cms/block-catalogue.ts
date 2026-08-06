@@ -37,6 +37,7 @@ import {
   type RelatedArticlesCount,
 } from '@/lib/cms/related-articles';
 import { BENEFITS_CARD_COLUMNS, type BenefitsCardColumns } from '@/lib/cms/benefits-card';
+import { staticNdcMembershipComparisonData } from '@/lib/cms/membership-comparison';
 
 /**
  * `content`      — per-page authored content; the free-builder candidates.
@@ -70,7 +71,13 @@ export type BlockFieldType =
   // lines + optional column placement) and the price on/off + amount + caption
   // cluster. Named per shape, matching the repeater precedent above.
   | 'benefitsGroupRepeater'
-  | 'priceConfig';
+  | 'priceConfig'
+  // Brief 141 — Membership Comparison: the benefit-row repeater (label + caveat
+  // + child flag + a check/cross per column) and the annual price-card repeater
+  // (term + amount + button label + single-choice emphasis). Named per shape,
+  // matching the precedent above.
+  | 'comparisonRowRepeater'
+  | 'priceCardRepeater';
 
 export interface BlockFieldDef {
   /** Key inside the block instance's `data`. */
@@ -144,7 +151,9 @@ export type BlockType =
   // Brief 121 — reusable Benefits Card (first consumer: the No Drip Club page).
   | 'benefitsCard'
   // Brief 139 — placement-only OUR SERVICES menu (no content fields).
-  | 'servicesMenu';
+  | 'servicesMenu'
+  // Brief 141 — Member vs. Non-Member comparison table + annual price cards.
+  | 'membershipComparison';
 
 /**
  * Brief 91 — the closed lists of style choices a block type exposes in the
@@ -779,6 +788,64 @@ export const BLOCK_CATALOGUE: Record<BlockType, BlockDefinition> = {
     styleOptions: { columns: BENEFITS_CARD_COLUMNS },
   },
 
+  // ── Brief 141 — Membership Comparison ──────────────────────────────────────
+  membershipComparison: {
+    // The `comparison` No Drip Club template's primary content: the Member vs.
+    // Non-Member benefits table, the annual price cards and the purchase-term
+    // footnote — one block, because they are one visual section and always
+    // co-occur (same reasoning as `benefitsCard` bundling groups + price +
+    // footnotes). Data shape + normalizer live in
+    // `@/lib/cms/membership-comparison.ts`; layout, card chrome, the blue member
+    // column tab, the check/cross iconography, fonts and colors are fixed by the
+    // template and deliberately NOT editable.
+    type: 'membershipComparison',
+    label: 'Membership Comparison',
+    variant: 'Member vs. non-member table + price cards',
+    category: 'content',
+    description: 'Benefit-by-benefit member/non-member table with annual price cards and footnotes.',
+    isInsertable: true,
+    // One known instance per page — this IS the comparison template's body.
+    allowMultiple: false,
+    removable: false,
+    // Reuses the PageType Brief 121 registered; not re-added.
+    pageTypes: ['no-drip-club'],
+    fields: [
+      {
+        key: 'label',
+        label: 'Admin Label',
+        type: 'text',
+        help: 'Editor-only instance name — never shown on the public page.',
+        placeholder: 'e.g. Membership comparison',
+      },
+      { key: 'title', label: 'Section Title (H2)', type: 'text', placeholder: 'e.g. MEMBERSHIP BENEFITS' },
+      { key: 'subtitle', label: 'Subtitle', type: 'text', placeholder: 'e.g. RESIDENTIAL HOMES ONLY', help: 'Optional — hidden when empty.' },
+      { key: 'memberColumnLabel', label: 'Member Column Heading', type: 'text', placeholder: 'e.g. NO DRIP CLUB' },
+      { key: 'nonMemberColumnLabel', label: 'Non-Member Column Heading', type: 'text', placeholder: 'e.g. NON MEMBER' },
+      { key: 'rows', label: 'Benefit Rows', type: 'comparisonRowRepeater', minItems: 1, addLabel: '+ Add row' },
+      {
+        key: 'closingLine',
+        label: 'Closing Line (between table and prices)',
+        type: 'text',
+        placeholder: 'e.g. Increases standard labor warranty from 1-year to 5-years',
+        help: 'Optional — hidden when empty.',
+      },
+      { key: 'prices', label: 'Price Cards', type: 'priceCardRepeater', minItems: 1, addLabel: '+ Add price card' },
+      {
+        key: 'priceFootnote',
+        label: 'Pricing Footnote (under the cards)',
+        type: 'text',
+        placeholder: 'e.g. *Charged upfront, auto renewal unless…',
+        help: 'Purchase terms. Kept next to the Join buttons on purpose — do not move it into a page footer.',
+      },
+    ],
+    // Unlike `benefitsCard` (which defaults empty), a fresh insert defaults to
+    // the approved sell-sheet content: this block has a single known instance, so
+    // a useful default beats a blank one. Built from the same static mapper the
+    // seed and the public fallback use, so the three can never drift.
+    defaultData: staticNdcMembershipComparisonData() as unknown as Record<string, unknown>,
+    // No styleOptions: every visual choice is fixed by the approved design.
+  },
+
   // ── Brief 139 — OUR SERVICES menu (placement block) ────────────────────────
   servicesMenu: {
     // A PLACEMENT block, not a content block: it renders the existing shared
@@ -833,6 +900,8 @@ const ALL_BLOCK_TYPES: BlockType[] = [
   // which stays the 9-entry default seed order) so it appears in the catalogue
   // and inserter without being auto-added to any page.
   'servicesMenu',
+  // Brief 141 — Membership Comparison (No Drip Club `comparison` variant).
+  'membershipComparison',
 ];
 
 /** Every block definition in canonical order (all page types). */

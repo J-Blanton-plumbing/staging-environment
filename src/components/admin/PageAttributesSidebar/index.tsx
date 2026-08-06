@@ -48,6 +48,8 @@ export interface PageAttributesTemplate {
   /** Omit when this page type has no real template-switch pathway yet. */
   onChange?: (newTemplate: string) => Promise<void> | void;
   busy?: boolean;
+  /** Brief 141 — optional helper line under the template options. */
+  note?: string;
 }
 
 export interface PageAttributesVersions {
@@ -290,6 +292,7 @@ export default function PageAttributesSidebar({
                   options={template.options}
                   onChange={template.onChange}
                   busy={template.busy}
+                  note={template.note}
                 />
               </div>
             )}
