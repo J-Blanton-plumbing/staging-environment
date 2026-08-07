@@ -38,8 +38,13 @@ export const dynamic = 'force-dynamic';
  * Legacy sub-services with a full static-content fallback (ServicePageTemplate
  * + src/lib/content/services/*). These render 200 regardless of DB status, so
  * they are always listed.
+ *
+ * Brief 146 (Track B): `gas-lines` left this set — its static content file was
+ * retired and `/gas-lines` now renders from `sub_service_pages` like the other
+ * 19 sub-service routes, so it 404s if that row is ever unpublished and must be
+ * listed on the same "published row exists" condition as they are.
  */
-const STATIC_FALLBACK_SUB_SERVICES = new Set(['sewer-rodding', 'hydro-jetting', 'gas-lines']);
+const STATIC_FALLBACK_SUB_SERVICES = new Set(['sewer-rodding', 'hydro-jetting']);
 
 /**
  * Static top-level pages that always return 200. Slug 'home' in main_pages maps
@@ -104,7 +109,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
            FROM sub_service_pages WHERE status = 'published'`
       ),
       safeQuery<{ slug: string; updated_at: Date | null }>(
-        `SELECT slug, updated_at FROM city_pages`
+        // `city_pages` keys on `city_slug`, not `slug` — the same column-name trap
+        // Brief 144 hit in the canonical-override resolver. This query threw
+        // `column "slug" does not exist` on every request; `safeQuery` swallowed
+        // it, so the 248 city URLs shipped with NO <lastmod> at all and nothing
+        // surfaced but a server-log line.
+        `SELECT city_slug AS slug, updated_at FROM city_pages`
       ),
       safeQuery<{ slug: string; updated_at: Date | null }>(
         `SELECT slug, COALESCE(updated_at, created_at) AS updated_at

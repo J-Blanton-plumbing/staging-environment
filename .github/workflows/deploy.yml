@@ -180,6 +180,29 @@ jobs:
             # could change what /emergency-plumbing renders). Same exit-0 banner
             # convention as the Track B step above.
             npx ts-node --project tsconfig.scripts.json scripts/fix-brief-145-emergency-plumbing-dedupe.ts commit
+            # Brief 146 (Track A): port the APPROVED Gas Lines copy into the
+            # `gas-lines` sub_service_pages row. MUST run before the swap below,
+            # because that build repoints /gas-lines at SubServicePageView — onto
+            # this row. Brief 145 (D-4) found the row unfit to render (scraped
+            # WordPress nav-menu text in intro_body, empty problems/CTA fields), so
+            # shipping the route change without this would visibly degrade the page.
+            # TEXT ONLY — it never writes hero_image/f_image/f3_image, because
+            # marketing's CMS image uploads on that row are the whole point of the
+            # brief. It patches the `blocks` JSONB in place when the row has one
+            # (staging may; dev does not), first instance per type, images untouched.
+            # ONE-TIME: the backup row in brief146_row_backup is the applied-marker,
+            # so a later CMS edit to this copy is never re-clobbered by a deploy.
+            # `-r tsconfig-paths/register` is REQUIRED — it imports the shared
+            # sanitizer from src/. Same exit-0 banner convention as the steps above.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-146-gas-lines-content.ts commit
+            # Brief 146 (Track D): delete the phantom `gas-lines-chicago`
+            # sub_service_pages row (Brief 145 D-5 verified it byte-identical to
+            # `gas-lines`; its URL 301s to /gas-lines so nothing on it can render)
+            # plus any orphan drafts for that slug. Marketing approved 2026-08-07.
+            # Refuses if the next.config.mjs 301 has gone, or if the row has picked
+            # up content matching neither the current nor the pre-Track-A gas-lines
+            # row. Reports "already-applied" once the row is gone.
+            npx ts-node --project tsconfig.scripts.json scripts/fix-brief-146-delete-gas-lines-chicago.ts commit
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and

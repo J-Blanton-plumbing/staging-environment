@@ -13,7 +13,7 @@ import './locations.css';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Locations | J. Blanton Plumbing',
+  title: 'Locations',
   description:
     'J. Blanton Plumbing serves Chicago and the surrounding suburbs. Find your nearest service center or browse all Chicagoland areas we cover.',
 };

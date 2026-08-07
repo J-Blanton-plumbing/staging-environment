@@ -20,6 +20,7 @@ import { getMainPagePreview } from '@/lib/cms/preview';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { renderCmsBlock } from '@/lib/cms/sanitize';
 import { PRIVACY_POLICY } from '@/lib/content/privacy-policy';
+import { pageTitle } from '@/lib/seo';
 import './privacy-policy.css';
 
 /**
@@ -54,7 +55,7 @@ const SLUG = 'privacy-policy';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: PRIVACY_POLICY.meta.title,
+  title: pageTitle(PRIVACY_POLICY.meta.title),
   description: PRIVACY_POLICY.meta.description,
   robots: { index: true, follow: true },
 };

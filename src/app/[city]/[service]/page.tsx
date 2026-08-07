@@ -7,6 +7,7 @@ import { getCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { getCityServicePreview } from '@/lib/cms/preview';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import PreviewBanner from '@/components/PreviewBanner';
+import { pageTitle } from '@/lib/seo';
 import type { CityServiceContent } from '@/types/city-service';
 
 export const dynamic = 'force-dynamic';
@@ -47,7 +48,11 @@ export function generateMetadata({
   const serviceData = getCityService(params.service);
   if (!cityEntry || !serviceData) return {};
   return {
-    title: replaceCityTokens(serviceData.seo.title, cityEntry.name),
+    // Every one of the 45 city-service content files ends its seo.title with
+    // "| J. Blanton Plumbing", which the root layout's template appends again —
+    // ~9,700 URLs were shipping the brand twice. Normalized here rather than in
+    // 45 files so a new service file can't reintroduce it.
+    title: pageTitle(replaceCityTokens(serviceData.seo.title, cityEntry.name)),
     description: replaceCityTokens(serviceData.seo.description, cityEntry.name),
   };
 }

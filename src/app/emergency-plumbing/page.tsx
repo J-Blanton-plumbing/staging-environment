@@ -11,12 +11,13 @@ import { getEpCmsContent } from '@/lib/cms/emergency-plumbing';
 import { getEpPreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
+import { pageTitle } from '@/lib/seo';
 import './emergency-plumbing.css';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: EMERGENCY_PLUMBING.meta.title,
+  title: pageTitle(EMERGENCY_PLUMBING.meta.title),
   description: EMERGENCY_PLUMBING.meta.description,
 };
 

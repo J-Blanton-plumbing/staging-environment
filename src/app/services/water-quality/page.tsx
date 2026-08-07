@@ -23,7 +23,7 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Water Filtration & Quality Testing in Chicagoland | J. Blanton Plumbing',
+  title: 'Water Filtration & Quality Testing in Chicagoland',
   description:
     "Pure, Clean Water 24/7: Expert Water Quality Solutions at Your Service. Don't compromise with contaminated or hard water—call us now!",
 };

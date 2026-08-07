@@ -5,6 +5,7 @@ import ArticleHero from '@/components/ArticleHero';
 import pool from '@/lib/db';
 import { getSession } from '@/lib/auth/session';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import { pageTitle } from '@/lib/seo';
 import './article.css';
 
 export const dynamic = 'force-dynamic';
@@ -43,7 +44,10 @@ export async function generateMetadata({
   const article = await getArticleFromDb(slug, false);
   if (!article) return {};
   return {
-    title: article.metaTitle || `${article.title} - J. Blanton Plumbing`,
+    // The root layout's title template appends the brand — so neither the stored
+    // meta title nor the fallback may carry it (the fallback used to hardcode
+    // " - J. Blanton Plumbing", doubling it on all 812 articles).
+    title: pageTitle(article.metaTitle) || article.title,
     description: article.metaDescription || article.excerpt,
   };
 }

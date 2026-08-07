@@ -17,6 +17,7 @@ import CoverageAreaCity from '@/components/CoverageAreaCity';
 import LocalOfficeCity from '@/components/LocalOfficeCity';
 import LocalOfficeCityV2 from '@/components/LocalOfficeCityV2';
 import PreviewBanner from '@/components/PreviewBanner';
+import { pageTitle } from '@/lib/seo';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
@@ -53,14 +54,14 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
   // V1 local-office cities (Evanston) have a dedicated content file.
   if (entry.type === 'local-office') {
     const localContent = getLocalOfficeContent(entry.slug);
-    if (localContent) return { title: localContent.meta.title, description: localContent.meta.description };
+    if (localContent) return { title: pageTitle(localContent.meta.title), description: localContent.meta.description };
     // Brief 67: V2 local-office cities (Algonquin, Elgin) keep their coverage
     // content file for metadata — fall through rather than returning empty.
   }
 
   const content = getCoverageContent(entry.slug);
   return {
-    title: content?.meta?.title ?? `${entry.name} Plumber`,
+    title: pageTitle(content?.meta?.title) || `${entry.name} Plumber`,
     description:
       content?.meta?.description ??
       `J. Blanton Plumbing serves ${entry.name}, IL with 24/7 emergency plumbing, drain, sewer, and water heater service. 30+ years, same-day available. Call (773) 724-9272.`,

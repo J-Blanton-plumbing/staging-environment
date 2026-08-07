@@ -23,7 +23,7 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Water Heater Installation & Repair in Chicagoland | J. Blanton Plumbing',
+  title: 'Water Heater Installation & Repair in Chicagoland',
   description:
     'When hot water disappears, our licensed plumbers provide fast water heater repair and expert water heater installation to restore comfort day or night.',
 };

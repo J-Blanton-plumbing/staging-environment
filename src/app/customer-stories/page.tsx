@@ -13,7 +13,7 @@ import './customer-stories.css';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Customer Stories | J. Blanton Plumbing',
+  title: 'Customer Stories',
   description:
     'Read real reviews and customer stories from Chicagoland homeowners who trust J. Blanton Plumbing for 5-star plumbing service.',
 };

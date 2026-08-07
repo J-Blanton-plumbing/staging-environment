@@ -17,6 +17,7 @@ import { getServiceCmsContent } from '@/lib/cms/service-pages';
 import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getServicePreview } from '@/lib/cms/preview';
 import type { ServiceCmsContent } from '@/lib/cms/service-pages';
+import { pageTitle } from '@/lib/seo';
 import type { Metadata } from 'next';
 
 // Force SSR so DB edits and drafts are reflected immediately
@@ -44,7 +45,7 @@ export async function generateMetadata({
   const cms = await getServiceCmsContent(slug).catch(() => null);
   if (!cms) return {};
   return {
-    title: cms.page.meta_title ?? cms.page.hero_heading ?? slug,
+    title: pageTitle(cms.page.meta_title ?? cms.page.hero_heading ?? slug),
     description: cms.page.meta_description ?? cms.page.hero_intro ?? undefined,
   };
 }

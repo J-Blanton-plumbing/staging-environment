@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import GoogleReviews from '@/components/GoogleReviews';
 import { THANK_YOU } from '@/lib/content/thank-you';
+import { pageTitle } from '@/lib/seo';
 import './thank-you.css';
 
 /**
@@ -35,7 +36,7 @@ import './thank-you.css';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: THANK_YOU.meta.title,
+  title: pageTitle(THANK_YOU.meta.title),
   description: THANK_YOU.meta.description,
   /**
    * `noindex, follow` — Marketing's call (Brief 129 follow-up).

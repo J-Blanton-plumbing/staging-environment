@@ -1,6 +1,7 @@
 import pool from '@/lib/db';
 import type { ServiceContent } from '@/types/service';
 import { ConflictError } from '@/lib/cms/errors';
+import { pageTitle } from '@/lib/seo';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import type { SubServiceFields } from '@/lib/cms/sub-service-fields';
 import type { SubServiceBlockInstance } from '@/lib/cms/sub-service-blocks';
@@ -183,12 +184,22 @@ export async function getSubServiceCmsContent(slug: string): Promise<ServiceCont
   }
 }
 
-/** SEO metadata for a published sub-service, or null when not published. */
+/**
+ * SEO metadata for a published sub-service, or null when not published.
+ *
+ * The title is normalized through `pageTitle()`: 11 of these rows store a
+ * `meta_title` that already ends in "| J. Blanton Plumbing", which the root
+ * layout's title template appends again — `/kitchen-plumbing` was shipping
+ * "…in Chicagoland | J. Blanton Plumbing | J. Blanton Plumbing". Normalizing
+ * here rather than sweeping the column keeps it fixed for whatever an editor
+ * types into the CMS tomorrow. `content.seo.title` itself is left alone — it is
+ * the stored value, and only the rendered <title> needs the suffix removed.
+ */
 export async function getSubServiceMeta(
   slug: string
 ): Promise<{ title: string; description: string } | null> {
   const content = await getSubServiceCmsContent(slug);
-  return content ? content.seo : null;
+  return content ? { ...content.seo, title: pageTitle(content.seo.title) } : null;
 }
 
 /**

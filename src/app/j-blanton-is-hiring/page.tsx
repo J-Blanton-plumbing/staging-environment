@@ -19,6 +19,7 @@ import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { IS_HIRING, splitHiringList } from '@/lib/content/is-hiring';
+import { pageTitle } from '@/lib/seo';
 
 /**
  * /j-blanton-is-hiring — "Join Our Team" recruiting page (Brief 109).
@@ -43,7 +44,7 @@ const SLUG = 'j-blanton-is-hiring';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: IS_HIRING.meta.title,
+  title: pageTitle(IS_HIRING.meta.title),
   description: IS_HIRING.meta.description,
   robots: { index: true, follow: true },
 };

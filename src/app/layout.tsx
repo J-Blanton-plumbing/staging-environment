@@ -10,7 +10,7 @@ import InvolveMePopupBinder from '@/components/InvolveMePopupBinder';
 import SiteAnalytics from '@/components/analytics/SiteAnalytics';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
-import { CANONICAL_BASE, canonicalUrlFor, normalizePath } from '@/lib/seo';
+import { BRAND_SUFFIX, CANONICAL_BASE, TITLE_TEMPLATE, canonicalUrlFor, normalizePath } from '@/lib/seo';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
 // Medium (500) → H3 subheadings, Demi (600) → nav/labels, Bold (700) → H1/H2,
@@ -35,9 +35,12 @@ const nunito = Nunito({
 
 const BASE_METADATA: Metadata = {
   metadataBase: new URL(CANONICAL_BASE),
+  // The template is the ONE place the brand is appended to a page title. Every
+  // title source normalizes through `pageTitle()` (or is a suffix-free literal)
+  // so it can never be composed twice — see the note in @/lib/seo.
   title: {
-    default: 'J. Blanton Plumbing | Chicago & Suburbs',
-    template: '%s | J. Blanton Plumbing',
+    default: `${BRAND_SUFFIX} | Chicago & Suburbs`,
+    template: TITLE_TEMPLATE,
   },
   description:
     'Trusted plumbing experts serving Chicago and the surrounding suburbs for over 30 years. Emergency, residential, commercial, sewer, drain, and water heater service.',

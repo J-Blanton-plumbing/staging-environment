@@ -23,7 +23,7 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Drain Cleaning & Repair Services in Chicagoland | J. Blanton Plumbing',
+  title: 'Drain Cleaning & Repair Services in Chicagoland',
   description:
     'Slow water, bad smells, and recurring clogs are common drain problems that can quickly disrupt daily routines, but at J. Blanton Plumbing, our experienced team has the tools and expertise to diagnose the issue fast and fix it the right way.',
 };

@@ -4,10 +4,11 @@ import { CONTACT } from '@/lib/content/contact';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { formatOfficeAddress } from '@/lib/cms/offices';
 import type { Metadata } from 'next';
+import { pageTitle } from '@/lib/seo';
 import './contact.css';
 
 export const metadata: Metadata = {
-  title: CONTACT.meta.title,
+  title: pageTitle(CONTACT.meta.title),
   description: CONTACT.meta.description,
 };
 

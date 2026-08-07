@@ -24,7 +24,7 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Sewer Repair & Rodding Services in Chicagoland | J. Blanton Plumbing',
+  title: 'Sewer Repair & Rodding Services in Chicagoland',
   description:
     "24/7 Emergency Sewer Service: When disaster strikes, we're here. From backed-up lines to overflowing drains, our expert team will respond immediately to protect your home and restore your peace of mind.",
 };

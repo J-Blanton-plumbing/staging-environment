@@ -12,7 +12,7 @@ import './help-and-support.css';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Help & Support | J. Blanton Plumbing',
+  title: 'Help & Support',
   description:
     'Find answers, support, and solutions for all your plumbing needs – right when you need them. Contact J. Blanton Plumbing today.',
 };

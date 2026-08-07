@@ -17,7 +17,7 @@ import './financing.css';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Financing | J. Blanton Plumbing',
+  title: 'Financing',
   description:
     "Flexible financing options for your plumbing needs. Don't let budget concerns stop essential repairs — easy payment plans and quick approval with J. Blanton Plumbing.",
 };

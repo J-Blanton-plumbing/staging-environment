@@ -23,7 +23,7 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Commercial Plumbing & Restaurant Services | J. Blanton Plumbing',
+  title: 'Commercial Plumbing & Restaurant Services',
   description:
     "If your business is experiencing plumbing issues, we're here to help! From clogged drains to water heater problems, our expert team delivers fast, reliable solutions to keep your operations running smoothly.",
 };

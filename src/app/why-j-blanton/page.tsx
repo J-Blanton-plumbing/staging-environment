@@ -14,7 +14,7 @@ import './why-j-blanton.css';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Why J. Blanton | J. Blanton Plumbing',
+  title: 'Why J. Blanton',
   description:
     "For over 30 years J. Blanton Plumbing has served Chicagoland with 5-star plumbing service. Learn about our team, what to expect, and why we’re the right choice.",
 };

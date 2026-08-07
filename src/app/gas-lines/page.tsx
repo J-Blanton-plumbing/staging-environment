@@ -1,78 +1,38 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getService } from '@/lib/content/services';
-import { getServiceCmsContent } from '@/lib/cms/service-pages';
-import { getServicePreview } from '@/lib/cms/preview';
-import type { ServiceCmsContent } from '@/lib/cms/service-pages';
-import type { ServiceContent } from '@/types/service';
-import ServicePageTemplate from '@/components/ServicePageTemplate';
-import PreviewBanner from '@/components/PreviewBanner';
+import SubServicePageView from '@/components/SubServicePageView';
+import { getSubServiceMeta } from '@/lib/cms/sub-service-pages';
 
+/**
+ * Brief 146 (Track B) — `/gas-lines` was the one top-level sub-service route that
+ * ignored the CMS. It rendered 100% static content from
+ * `src/lib/content/services/gas-lines.ts` through the old hand-built route
+ * (Brief 54), merging in `getServiceCmsContent('gas-lines')` — a
+ * `service_category_pages` lookup that has never matched a row, so the merge was
+ * always null and `sub_service_pages` id 26 was editable in the admin but never
+ * read (Brief 145, finding D-3).
+ *
+ * It is now the identical three-line shape as the other 19 sub-service routes:
+ * `SubServicePageView` reads the published `sub_service_pages` row (and honours
+ * the preview cookie), so CMS text AND image edits render. The static content
+ * file was retired with this change — those 19 routes carry no static fallback,
+ * and the brief's rule was to follow them rather than invent a variant.
+ *
+ * Side effect (Brief 146 Track C): the doubled `<title>` is gone. The old route
+ * hardcoded `metadata.title` WITH the `| J. Blanton Plumbing` suffix that the
+ * root layout's title template already appends. The suffix now comes from the
+ * template alone, over the row's `meta_title`.
+ */
+
+// Force SSR so DB edits and drafts are reflected immediately.
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: 'Gas Line Services in Chicagoland | J. Blanton Plumbing',
-  description:
-    'Gas line repair, installation, and leak detection done right. We send licensed techs who are thorough and transparent about what they find.',
-};
+const SLUG = 'gas-lines';
 
-function mergeWithCms(staticContent: ServiceContent, cms: ServiceCmsContent): ServiceContent {
-  const { page } = cms;
-  const staticProblemsCount = staticContent.problemsSection.problems.length;
-
-  const merged: ServiceContent = {
-    ...staticContent,
-    hero: {
-      ...staticContent.hero,
-      heading: page.hero_heading || staticContent.hero.heading,
-      intro: page.hero_intro || staticContent.hero.intro,
-    },
-    problemsSection: {
-      ...staticContent.problemsSection,
-      heading: page.problems_heading || staticContent.problemsSection.heading,
-      problems: page.problems_items?.length
-        ? page.problems_items
-        : staticContent.problemsSection.problems,
-    },
-  };
-
-  if (merged.problemsSection.problems.length > staticProblemsCount * 2) {
-    console.warn(
-      `[CMS] problems_items length anomaly on gas-lines: got ${merged.problemsSection.problems.length}, expected ~${staticProblemsCount}`
-    );
-  }
-
-  return merged;
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getSubServiceMeta(SLUG);
+  return meta ? { title: meta.title, description: meta.description } : {};
 }
 
-export default async function GasLinesPage() {
-  const staticContent = getService('gas-lines');
-  if (!staticContent) notFound();
-
-  const servicePreview = await getServicePreview('gas-lines');
-  const previewDraft = servicePreview?.meta ?? null;
-
-  let cms: ServiceCmsContent | null = servicePreview?.cms ?? null;
-  if (!cms) {
-    cms = await getServiceCmsContent('gas-lines').catch(() => null);
-  }
-
-  const content = cms ? mergeWithCms(staticContent, cms) : staticContent;
-
-  return (
-    <>
-      {previewDraft && (
-        <PreviewBanner
-          label={previewDraft.label}
-          creatorName={previewDraft.creator_name}
-          editorUrl="/admin/sub-service/gas-lines"
-          liveUrl="/gas-lines"
-          draftId={previewDraft.id}
-          pageType="service"
-          pageSlug="gas-lines"
-        />
-      )}
-      <ServicePageTemplate content={content} />
-    </>
-  );
+export default function Page() {
+  return <SubServicePageView slug={SLUG} />;
 }
