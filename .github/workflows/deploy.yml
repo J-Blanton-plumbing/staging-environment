@@ -401,16 +401,55 @@ jobs:
             echo ''
             echo '=============== CONTENT MARKER CHECKS ==============='
             CONTENT_FAILED=0
+            CHECKS_RUN=0
+            CHECKS_WARNED=0
+            # Fetch a page and decode the HTML entities a browser would render, so a
+            # marker can be written as the copy Marketing actually sees rather than as
+            # escaped HTML source.
+            #
+            # `&` is the trap that made this necessary (Brief 149 follow-up). React
+            # renders the heading "More Drain & Sewer Solutions" into the markup as
+            # "More Drain &amp; Sewer Solutions", so a marker containing a literal `&`
+            # matched ZERO times and failed a deploy over copy that was present and
+            # correct. Decoding here fixes the whole class: `&`, apostrophes and
+            # quotes in any future marker now behave the way whoever writes them
+            # expects. `&amp;` is decoded LAST so an escaped entity like `&amp;quot;`
+            # is not double-decoded into `"`.
+            fetch_text() {
+              curl -s --max-time 20 "http://localhost:3000${1}" \
+                | sed -e 's/&quot;/"/g' \
+                      -e "s/&#0*39;/'/g" \
+                      -e "s/&#x0*27;/'/g" \
+                      -e 's/&nbsp;/ /g' \
+                      -e 's/&amp;/\&/g'
+            }
+            # A string that MUST be present. severity=fail blocks the deploy.
             check_marker() {
               path="$1"; marker="$2"; severity="$3"
-              body=$(curl -s --max-time 20 "http://localhost:3000${path}") || body=""
+              CHECKS_RUN=$((CHECKS_RUN + 1))
+              body=$(fetch_text "$path") || body=""
               if printf '%s' "$body" | grep -qF -- "$marker"; then
                 echo "OK: ${path} contains \"${marker}\""
               elif [ "$severity" = "warn" ]; then
                 echo "WARNING: ${path} is missing \"${marker}\" — that section is empty on the live page."
+                CHECKS_WARNED=$((CHECKS_WARNED + 1))
               else
                 echo "CONTENT MISSING: ${path} does not contain \"${marker}\""
                 CONTENT_FAILED=1
+              fi
+            }
+            # A string that must NOT be present — migration junk that would render as
+            # real copy. A function rather than an inline `if … grep` so both kinds of
+            # check share one shape, one counter, and one `set -e`-safe construct.
+            check_absent() {
+              path="$1"; marker="$2"; label="$3"
+              CHECKS_RUN=$((CHECKS_RUN + 1))
+              body=$(fetch_text "$path") || body=""
+              if printf '%s' "$body" | grep -qF -- "$marker"; then
+                echo "CONTENT JUNK: ${path} still renders the ${label}"
+                CONTENT_FAILED=1
+              else
+                echo "OK: ${path} — no ${label}"
               fi
             }
             # Hard gate — the brief's named marker. /gas-lines renders from
@@ -437,25 +476,18 @@ jobs:
             check_marker "/sewer-rodding" "Professional Sewer Line Installation Done Right" "fail"
             check_marker "/sewer-rodding" "Preventive Maintenance for Healthier Sewer Lines" "warn"
             # The Brief 145 D-4 junk must never reach a rendered page again.
-            body=$(curl -s --max-time 20 "http://localhost:3000/sewer-rodding") || body=""
-            if printf '%s' "$body" | grep -qF -- "aaaaaa"; then
-              echo 'CONTENT MISSING: /sewer-rodding still renders the "aaaaaa" placeholder heading'
-              CONTENT_FAILED=1
-            else
-              echo 'OK: /sewer-rodding contains no "aaaaaa" placeholder'
-            fi
+            check_absent "/sewer-rodding" "aaaaaa" '"aaaaaa" placeholder heading'
             check_marker "/hydro-jetting" "More Drain & Sewer Solutions" "fail"
             check_marker "/hydro-jetting" "Hydro Jetting: Clearing Drains with Precision" "fail"
             check_marker "/hydro-jetting" "Preventive Hydro Jetting for Healthier Pipes" "warn"
             # Scraped WordPress nav text was in id 23's intro_body and would render as
             # body copy the moment that route flipped.
-            body=$(curl -s --max-time 20 "http://localhost:3000/hydro-jetting") || body=""
-            if printf '%s' "$body" | grep -qF -- "SCHEDULE A SERVICE SERVICES"; then
-              echo 'CONTENT MISSING: /hydro-jetting still renders scraped WordPress nav text'
-              CONTENT_FAILED=1
-            else
-              echo 'OK: /hydro-jetting contains no scraped nav text'
-            fi
+            check_absent "/hydro-jetting" "SCHEDULE A SERVICE SERVICES" "scraped WordPress nav text"
+            # Completion sentinel. Without it there is no way to tell a script that
+            # crashed mid-way from a log whose tail was truncated — the ambiguity that
+            # made the first failure of this step take longer to read than it should
+            # have. If you do not see this line, the step did NOT finish.
+            echo "content checks complete: ${CHECKS_RUN} run, ${CHECKS_WARNED} warning(s), CONTENT_FAILED=${CONTENT_FAILED}"
             if [ "$CONTENT_FAILED" -eq 1 ]; then
               echo ''
               echo 'Content marker check FAILED. The page is serving 200 with missing copy.'
