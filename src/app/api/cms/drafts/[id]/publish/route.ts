@@ -14,8 +14,12 @@ export async function POST(
   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 });
 
   try {
-    await publishDraft(id, session.userId);
-    return NextResponse.json({ ok: true });
+    // Brief 147 (Track B): hand the live row's NEW version back to the editor.
+    // Publishing bumps it, and the editor is holding the optimistic-lock token it
+    // read at page load — without this, every save after a publish 409'd with
+    // "changed by someone else" until a full browser reload.
+    const { liveVersion } = await publishDraft(id, session.userId);
+    return NextResponse.json({ ok: true, liveVersion });
   } catch (err) {
     // Brief 75 (DP-2/DP-4): a staleness/template conflict is a 409, not a 500, so
     // the editor gets a clear "review the conflict" message instead of a generic error.

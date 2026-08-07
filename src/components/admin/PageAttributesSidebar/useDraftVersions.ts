@@ -19,12 +19,35 @@ export interface DraftVersionRow {
 }
 
 /**
+ * Brief 147 (Track B) — optional wiring so an editor's LIVE-row optimistic-lock
+ * token and this hook's draft state stay in sync with each other.
+ *
+ * `onLiveVersionChange` is called with the live row's new `version` whenever this
+ * hook causes the live row to move (i.e. a publish). Every editor holds that
+ * version in its own state and echoes it back on a direct save; when a publish
+ * bumped it behind the editor's back, the next save 409'd with "changed by
+ * someone else" — about the editor's own publish — until a full browser reload.
+ */
+export interface UseDraftVersionsOptions {
+  onLiveVersionChange?: (version: number) => void;
+}
+
+/**
  * Single source of truth for a page's saved versions — replaces the old split
  * between AdminPageHeader's "Version N" picker (DraftControls) and the separate
  * "Drafts" table panel (DraftManager). One hook, one API surface, consumed by the
  * header's Save/Preview buttons and the sidebar's Version popover (Brief 85 iter. 2).
  */
-export function useDraftVersions(pageType: string, pageSlug: string, getContent: () => unknown) {
+export function useDraftVersions(
+  pageType: string,
+  pageSlug: string,
+  getContent: () => unknown,
+  options: UseDraftVersionsOptions = {}
+) {
+  // Held in a ref so `publish` always sees the caller's latest setter without
+  // making every consumer memoize the callback.
+  const onLiveVersionChangeRef = useRef(options.onLiveVersionChange);
+  onLiveVersionChangeRef.current = options.onLiveVersionChange;
   const storageKey = `jbp-cms-active-draft:${pageType}:${pageSlug}`;
   const activeIdRef = useRef<number | null>(null);
   const activeVersionRef = useRef<number | null>(null);
@@ -208,6 +231,30 @@ export function useDraftVersions(pageType: string, pageSlug: string, getContent:
     flash(`Switched to "${draft.label}"`);
   }
 
+  /**
+   * Brief 147 (Track B) — call this after a DIRECT save of the live row landed
+   * (the editor's own "Save Page" button). That save bumps the live row's
+   * `version`, which used to leave the author's own active draft looking stale to
+   * the publish guard forever after: Publish reported "The live page has changed
+   * since this draft was created" about a change made seconds earlier in the same
+   * tab, and no amount of reloading cleared it (the baseline lives on the draft
+   * row). Moving the baseline forward is safe here precisely because the direct
+   * save passed the optimistic lock — a foreign session's edit would have failed
+   * that save with a 409 instead, leaving the real warning in place.
+   *
+   * Fire-and-forget by design: a failure here must never turn a successful save
+   * into a visible error, and the next save retries it.
+   */
+  const syncAfterLiveSave = useCallback(async () => {
+    const id = activeIdRef.current;
+    if (id === null) return;
+    try {
+      await fetch(`/api/cms/drafts/${id}/rebaseline`, { method: 'POST' });
+    } catch {
+      /* non-fatal — the draft is simply left on its old baseline */
+    }
+  }, []);
+
   async function publish(id: number) {
     const draft = versions.find(d => d.id === id);
     if (!draft) return;
@@ -216,7 +263,13 @@ export function useDraftVersions(pageType: string, pageSlug: string, getContent:
     try {
       const res = await fetch(`/api/cms/drafts/${id}/publish`, { method: 'POST' });
       if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? 'Failed to publish'); }
-      await refresh();
+      // Brief 147 (Track B): publishing moved the live row on. Push its new
+      // version back into the editor's own optimistic-lock token, and re-read this
+      // draft's row so its own version ref is fresh too — otherwise the next
+      // direct save AND the next draft save both 409 until a browser reload.
+      const j: { liveVersion?: number | null } = await res.json().catch(() => ({}));
+      if (typeof j.liveVersion === 'number') onLiveVersionChangeRef.current?.(j.liveVersion);
+      await reloadAndActivate(id);
       flash('Published successfully.');
     } catch (err) {
       flashError(err instanceof Error ? err.message : 'Publish failed');
@@ -243,7 +296,7 @@ export function useDraftVersions(pageType: string, pageSlug: string, getContent:
   return {
     activeId, activeLabel, versions, busy, notice, noticeIsError, currentUserId,
     refresh, save, saveAsNew, preview, switchTo, publish, remove, nextVersionName,
-    reloadAndActivate,
+    reloadAndActivate, syncAfterLiveSave,
   };
 }
 

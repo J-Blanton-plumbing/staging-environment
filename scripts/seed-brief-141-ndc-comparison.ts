@@ -59,6 +59,7 @@ import {
   type MembershipComparisonInstance,
 } from '@/lib/cms/membership-comparison';
 import { NDC_TEMPLATE_VARIANT_CONTENT_KEY } from '@/lib/cms/ndc-template-variant';
+import { resolveRunMode, announceMode } from './lib/run-mode';
 
 const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
@@ -70,7 +71,13 @@ const pool = new Pool({
   connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
 });
 
-const mode = process.argv[2] === 'commit' ? 'commit' : 'dry';
+// Brief 147 (Track A): one shared rule for apply-vs-preview. Still dry-run by
+// default at a terminal — but a PIPELINE run (JBP_PIPELINE/CI set) with no
+// explicit `commit` or `--dry-run` now exits NON-ZERO instead of quietly
+// previewing and letting the deploy report success. That silent-no-op path is
+// how the Brief 146 content port shipped an empty page. See scripts/lib/run-mode.ts.
+const SCRIPT = 'seed-brief-141-ndc-comparison';
+const mode = resolveRunMode(SCRIPT);
 const SLUG = 'no-drip-club';
 const TARGET_VARIANT = 'comparison';
 
@@ -87,7 +94,7 @@ async function backup(client: import('pg').PoolClient) {
 async function main() {
   const client = await pool.connect();
   try {
-    console.log(mode === 'commit' ? 'MODE: COMMIT (writing changes)\n' : 'MODE: DRY RUN (no writes — pass "commit" to apply)\n');
+    announceMode(SCRIPT, mode);
 
     const row = await backup(client);
     if (!row) {

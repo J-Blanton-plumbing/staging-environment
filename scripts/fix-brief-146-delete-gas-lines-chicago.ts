@@ -23,14 +23,30 @@
  * content, and the same reasoning was applied in Brief 145.
  *
  * ── GUARDS ──────────────────────────────────────────────────────────────────
- *   • The `/gas-lines-chicago` → `/gas-lines` redirect must still be present in
- *     next.config.mjs. Without it the URL could serve, and deleting the row would
- *     turn a live page into a 404.
- *   • The row's content must match the `gas-lines` row — either as it is now, or
- *     as it was before the Track A content port (the pre-port snapshot in
- *     `brief146_row_backup`). If someone has typed unique content into this row
- *     since Brief 145 audited it, the script stops and reports the differing
- *     columns rather than destroying it.
+ *   • THE ONLY BLOCKING GUARD: the `/gas-lines-chicago` → `/gas-lines` redirect
+ *     must still be present in next.config.mjs. Without it the URL could serve,
+ *     and deleting the row would turn a live page into a 404.
+ *   • The content comparison against the `gas-lines` row is REPORT-ONLY (Brief
+ *     147). It used to block. See the note below.
+ *
+ * ── WHY THE CONTENT GUARD NO LONGER BLOCKS (Brief 147, 2026-08-07) ──────────
+ * It blocked on staging, and correctly by its own logic: marketing uploaded images
+ * to the live `gas-lines` row, so this row no longer matched it on `hero_image` /
+ * `f_image`, and the script refused to delete — leaving the phantom row in the
+ * admin list through the whole Brief 146 release (staging showed 23 sub-service
+ * rows, not the 22 the Brief 146 report claimed).
+ *
+ * The marketing lead's call, 2026-08-07: "As long as the slug /gas-lines-chicago is
+ * redirecting to /gas-lines we can delete it. We only need the redirect." That is
+ * the right call and it is what the guard was really protecting: content on this
+ * row can NEVER render, because the URL 301s away before anything reads the row.
+ * There is no copy to lose — only a duplicate admin entry to lose. Verified live
+ * the same day: `/gas-lines-chicago` → 301 → `/gas-lines`, which 200s.
+ *
+ * So the comparison still runs and still PRINTS every differing column and both
+ * values, and the full row still goes into `brief146_row_backup` before the delete
+ * — the audit trail is unchanged, and the row is restorable. It simply no longer
+ * stops the deletion. If the redirect ever goes, the FIRST guard stops everything.
  *
  * ── SAFETY ──────────────────────────────────────────────────────────────────
  * SAFE BY DEFAULT: dry run unless invoked with `commit`.
@@ -46,6 +62,7 @@
 import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { Pool } from 'pg';
+import { resolveRunMode, announceMode, verdict } from './lib/run-mode';
 
 const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
@@ -57,7 +74,13 @@ const pool = new Pool({
   connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
 });
 
-const mode = process.argv[2] === 'commit' ? 'commit' : 'dry';
+// Brief 147 (Track A): one shared rule for apply-vs-preview. Still dry-run by
+// default at a terminal — but a PIPELINE run (JBP_PIPELINE/CI set) with no
+// explicit `commit` or `--dry-run` now exits NON-ZERO instead of quietly
+// previewing and letting the deploy report success. That silent-no-op path is
+// how the Brief 146 content port shipped an empty page. See scripts/lib/run-mode.ts.
+const SCRIPT = 'fix-brief-146-delete-gas-lines-chicago';
+const mode = resolveRunMode(SCRIPT);
 
 const DOOMED_SLUG = 'gas-lines-chicago';
 const CANONICAL_SLUG = 'gas-lines';
@@ -97,11 +120,7 @@ function diffColumns(a: Record<string, unknown>, b: Record<string, unknown>): st
 async function main() {
   const client = await pool.connect();
   try {
-    console.log(
-      mode === 'commit'
-        ? 'MODE: COMMIT (writing changes)\n'
-        : 'MODE: DRY RUN (no writes — pass "commit" to apply)\n'
-    );
+    announceMode(SCRIPT, mode);
 
     await client.query(`
       CREATE TABLE IF NOT EXISTS brief146_row_backup (
@@ -132,6 +151,7 @@ async function main() {
       if (leftover.rowCount) {
         console.log(`note: ${leftover.rowCount} orphan page_drafts row(s) remain — see below.`);
       } else {
+        verdict(SCRIPT, 'ALREADY-APPLIED', 'the phantom row and its drafts are gone');
         return;
       }
     }
@@ -165,28 +185,40 @@ async function main() {
       const candidates: Array<{ label: string; row: Record<string, unknown> }> = [];
       if (canonical) candidates.push({ label: `current ${CANONICAL_SLUG} row`, row: canonical.row_json });
       if (prePort) candidates.push({ label: `pre-Track-A ${CANONICAL_SLUG} snapshot`, row: prePort.row_json });
-      if (candidates.length === 0) {
-        stop(`no "${CANONICAL_SLUG}" row to compare against — refusing to delete blind.`);
-      }
 
+      // Brief 147: no longer a reason to stop. Nothing to compare against just means
+      // nothing to compare against — the delete is authorised by the redirect
+      // (guard 1) and covered by the backup below, not by this comparison.
       const diffs = candidates.map((c) => ({ label: c.label, cols: diffColumns(doomed.row_json, c.row) }));
       const match = diffs.find((d) => d.cols.length === 0);
       if (!match) {
-        console.error(`\n"${DOOMED_SLUG}" holds content that matches neither comparison:`);
+        // REPORT ONLY as of Brief 147 — this used to `stop()`. See the header note:
+        // marketing's image uploads on the live row made this comparison fail on
+        // staging, and the marketing lead's decision is that the redirect is the only
+        // condition. Print everything, then continue to the backup + delete.
+        console.log('');
+        console.log('!'.repeat(72));
+        console.log(`NOTE: "${DOOMED_SLUG}" does not match the ${CANONICAL_SLUG} row exactly:`);
         for (const d of diffs) {
-          console.error(`  vs ${d.label}: differs on ${d.cols.join(', ')}`);
+          console.log(`  vs ${d.label}: differs on ${d.cols.join(', ')}`);
           for (const col of d.cols) {
             const other = candidates.find((c) => c.label === d.label)!.row;
-            console.error(`      ${DOOMED_SLUG}: ${JSON.stringify(doomed.row_json[col])?.slice(0, 160)}`);
-            console.error(`      ${d.label}: ${JSON.stringify(other[col])?.slice(0, 160)}`);
+            console.log(`      ${DOOMED_SLUG}: ${JSON.stringify(doomed.row_json[col])?.slice(0, 160)}`);
+            console.log(`      ${d.label}: ${JSON.stringify(other[col])?.slice(0, 160)}`);
           }
         }
-        stop(
-          'this row may hold unique content someone typed in. It can never render (the URL ' +
-            '301s away), but deleting it would destroy that copy — decide by hand first.'
-        );
+        if (candidates.length === 0) {
+          console.log(`  (no "${CANONICAL_SLUG}" row or snapshot exists to compare against)`);
+        }
+        console.log('');
+        console.log('Deleting anyway — approved by the marketing lead 2026-08-07: the URL 301s to');
+        console.log(`/${CANONICAL_SLUG}, so nothing on this row can ever render and there is no copy`);
+        console.log('to lose. The full row is backed up to brief146_row_backup below.');
+        console.log('!'.repeat(72));
+        console.log('');
+      } else {
+        console.log(`content check — identical to the ${match.label} on every content column.`);
       }
-      console.log(`guard OK — identical to the ${match.label} on every content column.`);
     }
 
     // ── Orphan drafts ─────────────────────────────────────────────────────────
@@ -207,6 +239,7 @@ async function main() {
         `\nwould delete sub_service_pages id ${doomed ? doomed.id : '(none)'} and ${drafts.length} draft(s).`
       );
       console.log('No changes were written. Re-run with `commit` to apply.');
+      verdict(SCRIPT, 'NOT-APPLIED (dry run)');
       return;
     }
 
@@ -263,6 +296,7 @@ async function main() {
       JSON.stringify({ mode, generated: stamp, deletedRow: doomed ?? null, deletedDrafts: drafts }, null, 2)
     );
     console.log(`log: ${file}`);
+    verdict(SCRIPT, 'APPLIED', `${doomed ? 1 : 0} row + ${drafts.length} draft(s) deleted`);
   } finally {
     client.release();
     await pool.end();
@@ -276,6 +310,11 @@ main().catch((e) => {
     console.log(e.message);
     console.log('This is a data condition that needs a human decision, not a deploy failure.');
     console.log('!'.repeat(72) + '\n');
+    // Brief 147 (Track A): make a non-deletion greppable in the deploy log. This
+    // guard HAS tripped on staging — the phantom row is still there (23 sub-service
+    // rows, not 22), because marketing's image uploads made the live `gas-lines`
+    // row differ from it on the image columns. See the Brief 147 report.
+    verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', e.message.split('.')[0]);
     return; // exit 0 — see the StopAndReport docstring
   }
   console.error('FAILED:', e);

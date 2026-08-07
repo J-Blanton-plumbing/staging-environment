@@ -55,6 +55,7 @@
 import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { Pool } from 'pg';
+import { resolveRunMode, announceMode } from './lib/run-mode';
 
 const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
@@ -66,7 +67,13 @@ const pool = new Pool({
   connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
 });
 
-const mode = process.argv[2] === 'commit' ? 'commit' : 'dry';
+// Brief 147 (Track A): one shared rule for apply-vs-preview. Still dry-run by
+// default at a terminal — but a PIPELINE run (JBP_PIPELINE/CI set) with no
+// explicit `commit` or `--dry-run` now exits NON-ZERO instead of quietly
+// previewing and letting the deploy report success. That silent-no-op path is
+// how the Brief 146 content port shipped an empty page. See scripts/lib/run-mode.ts.
+const SCRIPT = 'fix-brief-145-emergency-plumbing-dedupe';
+const mode = resolveRunMode(SCRIPT);
 
 const GUARD_INDEX = 'emergency_plumbing_page_singleton';
 
@@ -97,11 +104,7 @@ function stop(msg: string): never {
 async function main() {
   const client = await pool.connect();
   try {
-    console.log(
-      mode === 'commit'
-        ? 'MODE: COMMIT (writing changes)\n'
-        : 'MODE: DRY RUN (no writes — pass "commit" to apply)\n'
-    );
+    announceMode(SCRIPT, mode);
 
     await client.query(`
       CREATE TABLE IF NOT EXISTS brief145_row_backup (

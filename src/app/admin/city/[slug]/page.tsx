@@ -334,7 +334,12 @@ export default function AdminCityPage() {
   // Brief 75 (DP-1): the row version this editor loaded, sent back on save so a
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
-  const dv = useDraftVersions('city', slug, () => buildCityPayload(form));
+  const dv = useDraftVersions('city', slug, () => buildCityPayload(form), {
+    // Brief 147 (Track B): publishing bumps the live row's version, so the token
+    // this editor loaded goes stale the instant a publish succeeds. Take the fresh
+    // one from the publish response instead of forcing a full browser reload.
+    onLiveVersionChange: setVersion,
+  });
   // Brief 85 (iter. 3): the sidebar's Template popover triggers this modal (kept
   // as-is, archive/warning flow intact) instead of reimplementing template
   // switching behind a plain radio picker.
@@ -546,6 +551,10 @@ export default function AdminCityPage() {
       }
       const j = await res.json().catch(() => ({}));
       if (typeof j.version === 'number') setVersion(j.version);
+      // Brief 147 (Track B): this save moved the live row on, so the active draft's
+      // publish baseline has to move with it — otherwise Publish reports "the live
+      // page has changed since this draft was created" about this very save.
+      void dv.syncAfterLiveSave();
       setStatus('saved');
       setTimeout(() => setStatus('idle'), 3000);
     } catch (err: unknown) {

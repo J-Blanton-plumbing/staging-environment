@@ -244,11 +244,15 @@ export async function PATCH(req: NextRequest, { params }: RouteContext) {
       `UPDATE sub_service_pages
           SET status = $1, updated_by = $2, version = version + 1, updated_at = NOW()
         WHERE slug = $3
-        RETURNING status`,
+        RETURNING status, version`,
       [newStatus, session.userId, slug]
     );
     if ((res.rowCount ?? 0) === 0) return NextResponse.json({ error: 'Not found' }, { status: 404 });
-    return NextResponse.json({ success: true, status: res.rows[0].status });
+    // Brief 147 (Track B): return the new version. This PATCH bumps it, and the
+    // editor was guessing `version + 1` client-side — a guess that silently
+    // desynced the optimistic-lock token whenever anything else had moved the row,
+    // turning the next save into a false "changed by someone else" conflict.
+    return NextResponse.json({ success: true, status: res.rows[0].status, version: res.rows[0].version });
   } catch (err) {
     console.error('[cms/sub-service PATCH]', err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });

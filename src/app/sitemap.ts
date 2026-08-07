@@ -70,13 +70,41 @@ const STATIC_PAGES: Array<{ path: string; mainSlug?: string; changeFrequency: 'w
 
 type LastModMap = Map<string, Date>;
 
-/** One resilient query — a DB hiccup degrades to "no lastmod", never a 500. */
-async function safeQuery<T extends { [k: string]: unknown }>(sql: string): Promise<T[]> {
+/**
+ * One resilient query — a DB hiccup degrades to "no lastmod", never a 500.
+ *
+ * Brief 147 (Track D): the swallow is deliberate, but it was also SILENT enough to
+ * hide a hard defect for weeks. `SELECT slug … FROM city_pages` referenced a column
+ * that does not exist (it is `city_slug`), so it threw on every single request and
+ * all 248 city URLs shipped with no `<lastmod>` at all — visible only as one
+ * unlabelled `console.error` line among thousands. Failures now announce
+ * themselves: a named source, the failing SQL, the Postgres error code, and a
+ * greppable `SITEMAP SOURCE FAILED` banner, plus a one-line summary below so a
+ * partial sitemap can be spotted without reading the whole log.
+ *
+ * `scripts/verify-sitemap-queries.ts` (wired into deploy.yml) runs the same
+ * queries before the build and FAILS the deploy on a column/table/syntax error, so
+ * the next typo of this class cannot reach staging at all.
+ */
+async function safeQuery<T extends { [k: string]: unknown }>(
+  source: string,
+  sql: string,
+  // Collected per render (never module state — sitemap renders can overlap).
+  failed: string[]
+): Promise<T[]> {
   try {
     const res = await pool.query(sql);
     return res.rows as T[];
   } catch (err) {
-    console.error('[sitemap] query failed, continuing without this source:', err);
+    const e = err as { message?: string; code?: string };
+    console.error(
+      `\n${'!'.repeat(72)}\n[sitemap] SITEMAP SOURCE FAILED: "${source}" — its URLs will ship with NO <lastmod>.\n` +
+        `  postgres ${e.code ?? '(no code)'}: ${e.message ?? String(err)}\n` +
+        `  sql: ${sql.replace(/\s+/g, ' ').trim()}\n` +
+        `  A 42703/42P01 code is a code defect (wrong column/table name), not a DB hiccup — fix the query.\n` +
+        `${'!'.repeat(72)}\n`
+    );
+    failed.push(source);
     return [];
   }
 }
@@ -95,35 +123,46 @@ function entry(
   };
 }
 
+/**
+ * The six `<lastmod>` sources, as `[name, sql]`. Exported so
+ * `scripts/verify-sitemap-queries.ts` can run the EXACT same SQL against the
+ * database on deploy and fail the pipeline on a wrong column/table name — the
+ * defect class that shipped 248 city URLs with no lastmod for weeks (Brief 147,
+ * Track D). Keep every sitemap query in here; a query written inline below would
+ * escape that check.
+ */
+export const SITEMAP_LASTMOD_SOURCES = {
+  main: `SELECT slug, updated_at FROM main_pages`,
+  category: `SELECT slug, updated_at FROM service_category_pages`,
+  subService: `SELECT slug, COALESCE(updated_at, created_at) AS updated_at
+           FROM sub_service_pages WHERE status = 'published'`,
+  // `city_pages` keys on `city_slug`, not `slug` — the same column-name trap
+  // Brief 144 hit in the canonical-override resolver. This query threw
+  // `column "slug" does not exist` on every request; `safeQuery` swallowed
+  // it, so the 248 city URLs shipped with NO <lastmod> at all and nothing
+  // surfaced but a server-log line.
+  city: `SELECT city_slug AS slug, updated_at FROM city_pages`,
+  article: `SELECT slug, COALESCE(updated_at, created_at) AS updated_at
+           FROM cms_articles WHERE status = 'published'`,
+  emergencyPlumbing: `SELECT updated_at FROM emergency_plumbing_page ORDER BY updated_at DESC NULLS LAST LIMIT 1`,
+} as const;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const failed: string[] = [];
   const [mainRows, categoryRows, subServiceRows, cityRows, articleRows, epRows] =
     await Promise.all([
-      safeQuery<{ slug: string; updated_at: Date | null }>(
-        `SELECT slug, updated_at FROM main_pages`
-      ),
-      safeQuery<{ slug: string; updated_at: Date | null }>(
-        `SELECT slug, updated_at FROM service_category_pages`
-      ),
-      safeQuery<{ slug: string; updated_at: Date | null }>(
-        `SELECT slug, COALESCE(updated_at, created_at) AS updated_at
-           FROM sub_service_pages WHERE status = 'published'`
-      ),
-      safeQuery<{ slug: string; updated_at: Date | null }>(
-        // `city_pages` keys on `city_slug`, not `slug` — the same column-name trap
-        // Brief 144 hit in the canonical-override resolver. This query threw
-        // `column "slug" does not exist` on every request; `safeQuery` swallowed
-        // it, so the 248 city URLs shipped with NO <lastmod> at all and nothing
-        // surfaced but a server-log line.
-        `SELECT city_slug AS slug, updated_at FROM city_pages`
-      ),
-      safeQuery<{ slug: string; updated_at: Date | null }>(
-        `SELECT slug, COALESCE(updated_at, created_at) AS updated_at
-           FROM cms_articles WHERE status = 'published'`
-      ),
-      safeQuery<{ updated_at: Date | null }>(
-        `SELECT updated_at FROM emergency_plumbing_page ORDER BY updated_at DESC NULLS LAST LIMIT 1`
-      ),
+      safeQuery<{ slug: string; updated_at: Date | null }>('main_pages', SITEMAP_LASTMOD_SOURCES.main, failed),
+      safeQuery<{ slug: string; updated_at: Date | null }>('service_category_pages', SITEMAP_LASTMOD_SOURCES.category, failed),
+      safeQuery<{ slug: string; updated_at: Date | null }>('sub_service_pages', SITEMAP_LASTMOD_SOURCES.subService, failed),
+      safeQuery<{ slug: string; updated_at: Date | null }>('city_pages', SITEMAP_LASTMOD_SOURCES.city, failed),
+      safeQuery<{ slug: string; updated_at: Date | null }>('cms_articles', SITEMAP_LASTMOD_SOURCES.article, failed),
+      safeQuery<{ updated_at: Date | null }>('emergency_plumbing_page', SITEMAP_LASTMOD_SOURCES.emergencyPlumbing, failed),
     ]);
+  if (failed.length > 0) {
+    console.error(
+      `[sitemap] ${failed.length} of ${Object.keys(SITEMAP_LASTMOD_SOURCES).length} lastmod sources FAILED: ${failed.join(', ')}`
+    );
+  }
 
   const toMap = (rows: Array<{ slug: string; updated_at: Date | null }>): LastModMap => {
     const m: LastModMap = new Map();

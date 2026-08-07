@@ -51,7 +51,12 @@ export default function FinancingAdminPage() {
   // concurrent direct edit is rejected (409) rather than silently overwritten.
   const [version, setVersion] = useState<number>(0);
   const [attrsOpen, setAttrsOpen] = usePageAttributesOpen();
-  const dv = useDraftVersions('main', 'financing', () => buildPayload(form));
+  const dv = useDraftVersions('main', 'financing', () => buildPayload(form), {
+    // Brief 147 (Track B): publishing bumps the live row's version, so the token
+    // this editor loaded goes stale the instant a publish succeeds. Take the fresh
+    // one from the publish response instead of forcing a full browser reload.
+    onLiveVersionChange: setVersion,
+  });
 
   useEffect(() => {
     fetch('/api/cms/main/financing')
@@ -94,6 +99,10 @@ export default function FinancingAdminPage() {
       if (!res.ok) { const j = await res.json().catch(() => ({})); throw new Error(j.error ?? 'Unknown error'); }
       const j = await res.json().catch(() => ({}));
       if (typeof j.version === 'number') setVersion(j.version);
+      // Brief 147 (Track B): this save moved the live row on, so the active draft's
+      // publish baseline has to move with it — otherwise Publish reports "the live
+      // page has changed since this draft was created" about this very save.
+      void dv.syncAfterLiveSave();
       setStatus('saved');
       setTimeout(() => setStatus('idle'), 3000);
     } catch (err: unknown) {

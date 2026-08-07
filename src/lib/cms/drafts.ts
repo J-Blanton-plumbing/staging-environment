@@ -173,7 +173,67 @@ export async function getDraft(id: number): Promise<DraftRow | null> {
   }
 }
 
-export async function publishDraft(id: number, publishedBy: number): Promise<void> {
+/**
+ * Brief 147 (Track B) — re-baseline a draft's DP-2 staleness marker onto the
+ * live row's CURRENT version.
+ *
+ * WHY THIS EXISTS. `base_version` was snapshotted once, when the draft was
+ * created, and never moved again. But the editor that owns the draft can also
+ * write the live row directly (the "Save Page" button) — and that write bumps
+ * `version`. From then on the author's OWN draft looked stale to publishDraft,
+ * so Publish reported "The live page has changed since this draft was created"
+ * about a change the author had just made themselves, in the same browser tab.
+ * Reloading did not help: `base_version` is stored on the draft row, so the
+ * false conflict survived until the draft was deleted and re-created.
+ *
+ * WHY THIS IS STILL SAFE. The live version is re-read HERE, server-side — the
+ * caller cannot supply it. And the client only calls this after a direct save
+ * that the optimistic lock already accepted, which is only possible when the
+ * live row was still at the version this editor loaded. A foreign session's
+ * edit therefore fails that save with a 409 BEFORE anything is re-baselined, so
+ * the genuine "someone else changed the live page" warning is untouched.
+ *
+ * Only the draft's own creator may re-baseline it (the same rule deleteDraft
+ * uses), so one editor can never quietly clear another editor's staleness flag.
+ */
+export async function rebaselineDraft(
+  id: number,
+  requestingUserId: number
+): Promise<{ baseVersion: number | null }> {
+  const draft = await getDraft(id);
+  if (!draft) throw new NotFoundError(`Draft ${id} not found`);
+  if (draft.created_by !== requestingUserId) {
+    const err = new Error('Forbidden: you can only re-baseline your own drafts');
+    (err as NodeJS.ErrnoException).code = '403';
+    throw err;
+  }
+  const live = await getLivePageState(draft.page_type, draft.page_slug);
+  // A page type with no live table (e.g. 'article') has no version to track —
+  // base_version stays null and the DP-2 guard stays skipped, as before.
+  if (!live) return { baseVersion: draft.base_version };
+
+  const client = await pool.connect();
+  try {
+    await client.query('UPDATE page_drafts SET base_version = $1 WHERE id = $2', [live.version, id]);
+    return { baseVersion: live.version };
+  } finally {
+    client.release();
+  }
+}
+
+/**
+ * Publishes a draft onto its live row and returns the live row's NEW version.
+ *
+ * Brief 147 (Track B): the new version is returned so the editor can refresh
+ * the optimistic-lock token it is holding. Publishing bumps `version` (the
+ * writers below all do `version = version + 1`), and until this returned it,
+ * every direct save after a publish 409'd with "changed by someone else" until
+ * the editor did a full browser reload.
+ */
+export async function publishDraft(
+  id: number,
+  publishedBy: number
+): Promise<{ liveVersion: number | null }> {
   const draft = await getDraft(id);
   if (!draft) throw new Error(`Draft ${id} not found`);
 
@@ -181,8 +241,10 @@ export async function publishDraft(id: number, publishedBy: number): Promise<voi
   const mainPageWriter = (slug: string, content: unknown, by: number) =>
     updateMainPage(slug, content, by);
 
-  // Writers return the new content-row version; publishDraft ignores it, so the
-  // map value is typed loosely (Promise<unknown>) to accept every writer shape.
+  // Writers return the new content-row version, but not all of them and not in one
+  // shape — the map value stays loose (Promise<unknown>) to accept every writer.
+  // Brief 147 re-reads the version from getLivePageState after the write instead of
+  // trying to unify those return types.
   const writers: Record<string, (slug: string, content: unknown, by: number) => Promise<unknown>> = {
     city: (slug, content, by) =>
       updateCityCmsContent(slug, content as Parameters<typeof updateCityCmsContent>[1], by),
@@ -251,12 +313,22 @@ export async function publishDraft(id: number, publishedBy: number): Promise<voi
 
   await writer(draft.page_slug, draft.content, publishedBy);
 
+  // Brief 147 (Track B): re-read the live version AFTER the write rather than
+  // trusting each writer's return shape (they differ), so this is one authority
+  // for every page type — including the ones whose writer returns nothing.
+  const after = await getLivePageState(draft.page_type, draft.page_slug);
+  const liveVersion = after?.version ?? null;
+
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    // Brief 147 (Track B): publishing bumps the live row's version, which used to
+    // leave THIS draft instantly stale against its own publish — a second publish
+    // of the same draft, or any later edit-and-publish cycle, false-positived the
+    // DP-2 guard. Move its baseline forward to the state it just created.
     await client.query(
-      `UPDATE page_drafts SET published_at = NOW() WHERE id = $1`,
-      [id]
+      `UPDATE page_drafts SET published_at = NOW(), base_version = COALESCE($2, base_version) WHERE id = $1`,
+      [id, liveVersion]
     );
     await writeChangelog(client, draft.page_type, draft.page_slug, publishedBy, {
       source: 'draft-publish',
@@ -271,6 +343,8 @@ export async function publishDraft(id: number, publishedBy: number): Promise<voi
   } finally {
     client.release();
   }
+
+  return { liveVersion };
 }
 
 /**

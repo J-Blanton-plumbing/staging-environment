@@ -68,6 +68,7 @@ import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { Pool } from 'pg';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import { resolveRunMode, announceMode, verdict } from './lib/run-mode';
 
 const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
@@ -79,7 +80,13 @@ const pool = new Pool({
   connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
 });
 
-const mode = process.argv[2] === 'commit' ? 'commit' : 'dry';
+// Brief 147 (Track A): one shared rule for apply-vs-preview. Still dry-run by
+// default at a terminal — but a PIPELINE run (JBP_PIPELINE/CI set) with no
+// explicit `commit` or `--dry-run` now exits NON-ZERO instead of quietly
+// previewing and letting the deploy report success. That silent-no-op path is
+// how the Brief 146 content port shipped an empty page. See scripts/lib/run-mode.ts.
+const SCRIPT = 'seed-brief-146-gas-lines-content';
+const mode = resolveRunMode(SCRIPT);
 const SLUG = 'gas-lines';
 
 // ── APPROVED COPY — Brief 146 Track A, verbatim. Do not reword or re-case. ────
@@ -146,11 +153,7 @@ interface BlockInstance {
 async function main() {
   const client = await pool.connect();
   try {
-    console.log(
-      mode === 'commit'
-        ? 'MODE: COMMIT (writing changes)\n'
-        : 'MODE: DRY RUN (no writes — pass "commit" to apply)\n'
-    );
+    announceMode(SCRIPT, mode);
 
     await client.query(`
       CREATE TABLE IF NOT EXISTS brief146_row_backup (
@@ -200,6 +203,7 @@ async function main() {
         'already-applied: the approved copy was ported on an earlier run (a backup row ' +
           'exists). Nothing written — later CMS edits to this copy are never re-clobbered.'
       );
+      verdict(SCRIPT, 'ALREADY-APPLIED', 'brief146_row_backup holds the pre-port snapshot');
       return;
     }
 
@@ -266,6 +270,7 @@ async function main() {
 
     if (mode !== 'commit') {
       console.log('\nNo changes were written. Re-run with `commit` to apply.');
+      verdict(SCRIPT, 'NOT-APPLIED (dry run)');
       return;
     }
 
@@ -336,6 +341,7 @@ async function main() {
     const file = join(dir, `brief-146-gas-lines-content-${mode}-${stamp}.json`);
     writeFileSync(file, JSON.stringify({ mode, generated: stamp, slug: SLUG, before, after }, null, 2));
     console.log(`log: ${file}`);
+    verdict(SCRIPT, 'APPLIED', '8 text fields written; 3 image columns unchanged');
   } finally {
     client.release();
     await pool.end();
@@ -349,6 +355,10 @@ main().catch((e) => {
     console.log(e.message);
     console.log('This is a data condition that needs a human decision, not a deploy failure.');
     console.log('!'.repeat(72) + '\n');
+    // Brief 147 (Track A): the banner alone was missable in a long deploy log —
+    // the verdict line makes a non-application greppable, and deploy.yml collects
+    // every script's verdict into one summary step.
+    verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', e.message.split('.')[0]);
     return; // exit 0 — see the StopAndReport docstring
   }
   console.error('FAILED:', e);

@@ -223,14 +223,23 @@ export default function SubServiceAdminPage() {
       return { ...b, data };
     }), []);
 
-  const dv = useDraftVersions('sub-service', slug, () => ({
-    title: meta.title,
-    status: meta.status,
-    metaTitle: meta.metaTitle,
-    metaDescription: meta.metaDescription,
-    // Brief 90 (Track B/D): the draft carries the authoritative per-instance blocks.
-    blocks: serializeBlocks(blocksRef.current),
-  }));
+  const dv = useDraftVersions(
+    'sub-service',
+    slug,
+    () => ({
+      title: meta.title,
+      status: meta.status,
+      metaTitle: meta.metaTitle,
+      metaDescription: meta.metaDescription,
+      // Brief 90 (Track B/D): the draft carries the authoritative per-instance blocks.
+      blocks: serializeBlocks(blocksRef.current),
+    }),
+    // Brief 147 (Track B): publishing bumps sub_service_pages.version, so the
+    // token this editor loaded goes stale the moment a publish succeeds. Take the
+    // fresh one straight from the publish response instead of making the editor
+    // reload the whole page to get it.
+    { onLiveVersionChange: (version) => setMeta((p) => ({ ...p, version })) }
+  );
 
   const load = useCallback(async () => {
     try {
@@ -458,8 +467,12 @@ export default function SubServiceAdminPage() {
       if (!res.ok) { const j = await res.json().catch(() => ({})); throw new Error(j.error ?? 'Save failed'); }
       const j = await res.json().catch(() => ({}));
       if (typeof j.version === 'number') setMeta((p) => ({ ...p, version: j.version }));
+      // Brief 147 (Track B): this save moved the live row, so the active draft's
+      // publish baseline has to move with it — otherwise Publish reports "the live
+      // page has changed since this draft was created" about this very save.
+      void dv.syncAfterLiveSave();
       setSaveStatus('saved');
-      setSaveMsg('Draft saved');
+      setSaveMsg('Page saved');
     } catch (err: unknown) {
       setSaveStatus('error');
       setSaveMsg(err instanceof Error ? err.message : 'Save failed');
@@ -475,7 +488,19 @@ export default function SubServiceAdminPage() {
         body: JSON.stringify({ status: newStatus }),
       });
       if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? 'Failed'); }
-      setMeta((p) => ({ ...p, status: newStatus, version: (p.version ?? 0) + 1 }));
+      // Brief 147 (Track B): take the version the server actually landed on. This
+      // used to assume `version + 1`, which is only right when nothing else has
+      // touched the row since page load — otherwise the token desynced and the
+      // next save 409'd as a phantom concurrent edit.
+      const j = await res.json().catch(() => ({}));
+      setMeta((p) => ({
+        ...p,
+        status: newStatus,
+        version: typeof j.version === 'number' ? j.version : (p.version ?? 0) + 1,
+      }));
+      // A status flip is a live-row write like any other — move the active draft's
+      // publish baseline with it.
+      void dv.syncAfterLiveSave();
     } catch (err: unknown) {
       setSaveMsg(err instanceof Error ? err.message : 'Status change failed');
       setSaveStatus('error');

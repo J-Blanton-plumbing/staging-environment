@@ -35,6 +35,7 @@
  */
 import { readFileSync } from 'fs';
 import { Pool } from 'pg';
+import { resolveRunMode, announceMode } from './lib/run-mode';
 
 const env = readFileSync('.env.local', 'utf8');
 const get = (k: string) => {
@@ -54,7 +55,13 @@ const FALLBACK_PHONE_HREF = 'tel:773-724-9272';
 // placeholder — the converted output then matches the alias render exactly.
 const FALLBACK_CTA_IMAGE = 'https://d1rplazj5a80fb.cloudfront.net/images/manplumber.webp';
 
-const mode = process.argv[2] === 'commit' ? 'commit' : 'dry';
+// Brief 147 (Track A): one shared rule for apply-vs-preview. Still dry-run by
+// default at a terminal — but a PIPELINE run (JBP_PIPELINE/CI set) with no
+// explicit `commit` or `--dry-run` now exits NON-ZERO instead of quietly
+// previewing and letting the deploy report success. That silent-no-op path is
+// how the Brief 146 content port shipped an empty page. See scripts/lib/run-mode.ts.
+const SCRIPT = 'convert-finalcta-to-twocolumn';
+const mode = resolveRunMode(SCRIPT);
 
 type Block = { id: string; type: string; data: Record<string, unknown> };
 
@@ -78,7 +85,7 @@ async function main() {
       console.log('  (global_settings unavailable — using site.ts fallbacks)');
     }
     console.log(`Button preserved as: label="${ctaLabel}"  href="${phoneHref}"`);
-    console.log(mode === 'commit' ? '\nMODE: COMMIT (writing changes)\n' : '\nMODE: DRY RUN (no writes — pass "commit" to apply)\n');
+    announceMode(SCRIPT, mode);
 
     const { rows } = await client.query<{ slug: string; blocks: unknown }>(
       `SELECT slug, blocks FROM sub_service_pages ORDER BY slug`
