@@ -1,79 +1,37 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getService } from '@/lib/content/services';
-import { getServiceCmsContent } from '@/lib/cms/service-pages';
-import { getServicePreview } from '@/lib/cms/preview';
-import type { ServiceCmsContent } from '@/lib/cms/service-pages';
-import type { ServiceContent } from '@/types/service';
-import ServicePageTemplate from '@/components/ServicePageTemplate';
-import PreviewBanner from '@/components/PreviewBanner';
+import SubServicePageView from '@/components/SubServicePageView';
+import { getSubServiceMeta } from '@/lib/cms/sub-service-pages';
 
+/**
+ * Brief 149 (Track A) — `/sewer-rodding` was one of the last two top-level
+ * sub-service routes that ignored the CMS. It rendered a static content file
+ * (`src/lib/content/services/sewer-rodding.ts`) with four fields overlaid from
+ * `service_category_pages` id 25, while `sub_service_pages` id 2 sat editable in
+ * the admin and was never read — nine fields written into the void
+ * (Brief 145, finding D-1).
+ *
+ * It is now the identical three-line shape as the other 21 sub-service routes:
+ * `SubServicePageView` reads the published `sub_service_pages` row (and honours
+ * the preview cookie), so CMS text AND image edits render. Both former sources
+ * were retired with this change — the static file is deleted and category row 25
+ * is archived (see `scripts/retire-brief-149-legacy-sources.ts`).
+ *
+ * The three sections this page carries that no block type could express before
+ * (`relatedServices`, and the two centred text bands) are now real blocks, added
+ * by this brief for exactly this reason — see `src/lib/cms/block-catalogue.ts`.
+ * Without them the flip would have silently dropped three sections of live copy.
+ */
+
+// Force SSR so DB edits and drafts are reflected immediately.
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: 'Sewer Rodding Services in Chicagoland',
-  description:
-    "Annual or emergency sewer rodding done right the first time. Camera inspection before and after so you see exactly what's cleared. No upsell.",
-};
+const SLUG = 'sewer-rodding';
 
-function mergeWithCms(staticContent: ServiceContent, cms: ServiceCmsContent): ServiceContent {
-  const { page } = cms;
-  const staticProblemsCount = staticContent.problemsSection.problems.length;
-
-  const merged: ServiceContent = {
-    ...staticContent,
-    hero: {
-      ...staticContent.hero,
-      heading: page.hero_heading || staticContent.hero.heading,
-      intro: page.hero_intro || staticContent.hero.intro,
-    },
-    problemsSection: {
-      ...staticContent.problemsSection,
-      heading: page.problems_heading || staticContent.problemsSection.heading,
-      problems: page.problems_items?.length
-        ? page.problems_items
-        : staticContent.problemsSection.problems,
-    },
-  };
-
-  // B-3: warn on anomalous array growth (guards against future data corruption)
-  if (merged.problemsSection.problems.length > staticProblemsCount * 2) {
-    console.warn(
-      `[CMS] problems_items length anomaly on sewer-rodding: got ${merged.problemsSection.problems.length}, expected ~${staticProblemsCount}`
-    );
-  }
-
-  return merged;
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getSubServiceMeta(SLUG);
+  return meta ? { title: meta.title, description: meta.description } : {};
 }
 
-export default async function SewerRoddingPage() {
-  const staticContent = getService('sewer-rodding');
-  if (!staticContent) notFound();
-
-  const servicePreview = await getServicePreview('sewer-rodding');
-  const previewDraft = servicePreview?.meta ?? null;
-
-  let cms: ServiceCmsContent | null = servicePreview?.cms ?? null;
-  if (!cms) {
-    cms = await getServiceCmsContent('sewer-rodding').catch(() => null);
-  }
-
-  const content = cms ? mergeWithCms(staticContent, cms) : staticContent;
-
-  return (
-    <>
-      {previewDraft && (
-        <PreviewBanner
-          label={previewDraft.label}
-          creatorName={previewDraft.creator_name}
-          editorUrl="/admin/sewer-rodding"
-          liveUrl="/sewer-rodding"
-          draftId={previewDraft.id}
-          pageType="service"
-          pageSlug="sewer-rodding"
-        />
-      )}
-      <ServicePageTemplate content={content} />
-    </>
-  );
+export default function Page() {
+  return <SubServicePageView slug={SLUG} />;
 }

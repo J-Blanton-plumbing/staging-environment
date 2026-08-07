@@ -269,6 +269,48 @@ jobs:
             # reports `ALREADY-APPLIED` once nothing ends in the suffix.
             # `-r tsconfig-paths/register` is REQUIRED — it imports @/lib/seo.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/fix-brief-147-meta-title-suffix.ts commit
+            # Brief 149 (Tracks A + B): make `sub_service_pages` fit to render for
+            # /sewer-rodding (id 2) and /hydro-jetting (id 23) BEFORE the swap below
+            # repoints those routes at SubServicePageView. This ordering is the whole
+            # Brief 146 lesson — that release flipped /gas-lines onto a row nothing had
+            # filled and shipped a page with no copy on it.
+            #
+            # FILL-THE-GAPS, not a copy-over: a field already holding real content is
+            # kept. That matters here — staging's rows carry human-written copy that has
+            # never rendered (the Brief 145 D-1 "edits go into the void" symptom), and
+            # this brief exists to make it render, not to bulldoze it. Only empty fields
+            # and the four specifically identified junk values (problems_heading
+            # "aaaaaa", a paragraph pasted into problems_items, scraped WordPress nav
+            # text in intro_body, raw &#039; entities in meta_description) are written.
+            # It also INSERTS the three sections that had no block type until this brief
+            # (relatedServices + two textSection instances) at their historical
+            # positions — without them the flip would silently drop three sections.
+            # No applied-marker: a fill-the-gaps pass stays correct on every deploy and
+            # reports ALREADY-APPLIED once nothing is empty.
+            # `-r tsconfig-paths/register` is REQUIRED — it imports from src/.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-149-subservice-consolidation.ts commit
+            # Brief 149 (Tracks A + B, step 3): retire the now-unread
+            # `service_category_pages` rows 25 (sewer-rodding) and 24 (hydro-jetting),
+            # plus the 4 `service_subcategories` rows FK'd to them (the DB mirror of the
+            # "More … Solutions" cards, which now live in the relatedServices block).
+            # Two editable records for one page is the confusion this brief ends.
+            # REFUSES unless the route is already repointed AND the sub_service_pages row
+            # is published, has a hero_heading, and carries every required block — i.e.
+            # it will not delete the old source until the new one demonstrably works.
+            # Must run AFTER the seed above. Same exit-0 banner convention.
+            npx ts-node --project tsconfig.scripts.json scripts/retire-brief-149-legacy-sources.ts commit
+            # Brief 149 (Track C): fill blank `city_pages` / `main_pages` meta_title and
+            # meta_description with the value each page renders today. The build above
+            # wires those fields into generateMetadata (they were editable and read by
+            # nothing); without this backfill an editor would open a city page and see an
+            # EMPTY SEO Title field with no way to know the page has a title at all.
+            # Only blank fields are written — never an editor's SEO copy — and the write
+            # is re-guarded on still-blank, so a concurrent save is not clobbered.
+            # Deliberately does NOT bump version/updated_at: the value written is the
+            # value already rendering, so it must not move 248 sitemap lastmods.
+            # Idempotent — reports ALREADY-APPLIED once nothing is blank.
+            # `-r tsconfig-paths/register` is REQUIRED — it imports from src/.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/backfill-brief-149-page-meta.ts commit
             # Brief 147 (Track A): print every DB script's verdict together. A
             # `NOT-APPLIED` line here is the signal the Brief 146 release had no way
             # to show — those scripts exit 0 when a guard trips ON PURPOSE (a non-zero
@@ -380,6 +422,40 @@ jobs:
             # section Marketing may still be editing.
             check_marker "/gas-lines" "Signs of Gas Line Issues" "warn"
             check_marker "/gas-lines" "Reliable Gas Lines Plumbing in the Chicagoland Area" "warn"
+            # ── Brief 149: the two newly consolidated pages ───────────────────────
+            # Same reasoning as /gas-lines above — these routes now render from
+            # `sub_service_pages` instead of a static file, so a 200 no longer implies
+            # there is copy on the page. The HARD markers are the two sections that had
+            # no block type before this brief; if either is missing, the consolidation
+            # dropped a section and the page is degraded for every visitor.
+            #
+            # NOTE these are the SECTION HEADINGS, deliberately, not the H1: the H1 comes
+            # from a CMS field marketing may reword, while these headings came across
+            # with the port. If Marketing rewords one, update the marker here in the
+            # same change.
+            check_marker "/sewer-rodding" "More Sewer Rodding Solutions" "fail"
+            check_marker "/sewer-rodding" "Professional Sewer Line Installation Done Right" "fail"
+            check_marker "/sewer-rodding" "Preventive Maintenance for Healthier Sewer Lines" "warn"
+            # The Brief 145 D-4 junk must never reach a rendered page again.
+            body=$(curl -s --max-time 20 "http://localhost:3000/sewer-rodding") || body=""
+            if printf '%s' "$body" | grep -qF -- "aaaaaa"; then
+              echo 'CONTENT MISSING: /sewer-rodding still renders the "aaaaaa" placeholder heading'
+              CONTENT_FAILED=1
+            else
+              echo 'OK: /sewer-rodding contains no "aaaaaa" placeholder'
+            fi
+            check_marker "/hydro-jetting" "More Drain & Sewer Solutions" "fail"
+            check_marker "/hydro-jetting" "Hydro Jetting: Clearing Drains with Precision" "fail"
+            check_marker "/hydro-jetting" "Preventive Hydro Jetting for Healthier Pipes" "warn"
+            # Scraped WordPress nav text was in id 23's intro_body and would render as
+            # body copy the moment that route flipped.
+            body=$(curl -s --max-time 20 "http://localhost:3000/hydro-jetting") || body=""
+            if printf '%s' "$body" | grep -qF -- "SCHEDULE A SERVICE SERVICES"; then
+              echo 'CONTENT MISSING: /hydro-jetting still renders scraped WordPress nav text'
+              CONTENT_FAILED=1
+            else
+              echo 'OK: /hydro-jetting contains no scraped nav text'
+            fi
             if [ "$CONTENT_FAILED" -eq 1 ]; then
               echo ''
               echo 'Content marker check FAILED. The page is serving 200 with missing copy.'

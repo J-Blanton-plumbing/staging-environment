@@ -7,15 +7,29 @@ import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
+import { getMainPageMeta } from '@/lib/cms/page-meta';
 import './help-and-support.css';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
+/**
+ * Brief 149 (Track C) — the `main_pages.meta_title` / `meta_description`
+ * fields were editable in the admin and read by nothing: this page's <title>
+ * came from the literal below. They now drive the page, with the literal kept
+ * as the fallback for a blank field. `getMainPageMeta` normalizes the brand
+ * suffix so the root layout's title template appends it exactly once, whatever
+ * an editor types.
+ */
+const STATIC_META = {
   title: 'Help & Support',
   description:
     'Find answers, support, and solutions for all your plumbing needs – right when you need them. Contact J. Blanton Plumbing today.',
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getMainPageMeta('help-and-support', STATIC_META);
+  return { title: meta.title, description: meta.description };
+}
 
 const INVOLVE_ME = {
   project: 'contact-us',

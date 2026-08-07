@@ -663,6 +663,30 @@ export default function BlockField({
           onChange={(prices) => onChange(field.key, prices)}
         />
       );
+    case 'serviceCardRepeater':
+      // Brief 149 — Related Services cards. `image` and `href` are plain text
+      // inputs on purpose: the two live pages carry absolute CDN URLs and
+      // in-site paths respectively, and the media picker cannot express either.
+      return (
+        <ObjectRepeaterField
+          label={field.label}
+          items={
+            Array.isArray(value)
+              ? (value as Array<{ title: string; teaser: string; image: string; href: string }>)
+              : []
+          }
+          empty={{ title: '', teaser: '', image: '', href: '' }}
+          subFields={[
+            { key: 'title', label: 'Card Title' },
+            { key: 'teaser', label: 'Teaser', multiline: true },
+            { key: 'image', label: 'Image URL' },
+            { key: 'href', label: 'Link (e.g. /hydro-jetting)' },
+          ]}
+          minItems={field.minItems ?? 0}
+          addLabel={field.addLabel ?? '+ Add card'}
+          onChange={(items) => onChange(field.key, items)}
+        />
+      );
     case 'subcategoryRepeater':
       // Not wired to any editor yet (Brief 98 registered the type; no template
       // in this brief's scope uses it) — matches the pre-existing gap.

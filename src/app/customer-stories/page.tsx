@@ -8,15 +8,29 @@ import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import GoogleReviews from '@/components/GoogleReviews';
 import type { Metadata } from 'next';
+import { getMainPageMeta } from '@/lib/cms/page-meta';
 import './customer-stories.css';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
+/**
+ * Brief 149 (Track C) — the `main_pages.meta_title` / `meta_description`
+ * fields were editable in the admin and read by nothing: this page's <title>
+ * came from the literal below. They now drive the page, with the literal kept
+ * as the fallback for a blank field. `getMainPageMeta` normalizes the brand
+ * suffix so the root layout's title template appends it exactly once, whatever
+ * an editor types.
+ */
+const STATIC_META = {
   title: 'Customer Stories',
   description:
     'Read real reviews and customer stories from Chicagoland homeowners who trust J. Blanton Plumbing for 5-star plumbing service.',
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getMainPageMeta('customer-stories', STATIC_META);
+  return { title: meta.title, description: meta.description };
+}
 
 export default async function CustomerStoriesPage() {
   const preview = await getMainPagePreview('customer-stories');

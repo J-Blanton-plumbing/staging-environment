@@ -214,6 +214,45 @@ function finalCtaNode(cta: ServiceContent['closingCTA'], key: string): ReactNode
   return <ServiceClosingCTA key={key} cta={cta} />;
 }
 
+function relatedServicesNode(related: ServiceContent['relatedServicesSection'], key: string): ReactNode {
+  // 5 — related-services cards (Cream). Brief 149: promoted from a static-only
+  // "ghost" section to a real block, so a DB-backed page can carry it too.
+  if (related.cards.length === 0) return null;
+  return <ServiceRelatedCards key={key} related={related} />;
+}
+
+/**
+ * 6 / 11 — a centred band of plain paragraphs under a Carmine H2.
+ *
+ * Brief 149: the `secondary` and `preventive` sections were byte-identical markup
+ * fed by two different fields, and BOTH were static-only. They are now one shared
+ * helper behind one block type (`textSection`), which is what lets a consolidated
+ * page reproduce them exactly — the static path and the block path call this same
+ * function, so there is no second copy of the markup to drift.
+ *
+ * Paragraphs render as TEXT, not HTML: `{p}` in JSX, exactly as the two ghost
+ * sections always did. That is why `sectionParagraphs` needs no sanitizer entry.
+ */
+function textSectionNode(heading: string, paragraphs: string[], key: string): ReactNode {
+  if (paragraphs.length === 0) return null;
+  return (
+    <section key={key} className="bg-cream-100 py-[70px] md:py-[100px]">
+      <div className="w-[90%] lg:w-[81%] mx-auto max-w-4xl">
+        <h2 className="font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-8">
+          {heading}
+        </h2>
+        <div className="text-navy-800 space-y-5">
+          {paragraphs.map((p, i) => (
+            <p key={i} className="font-sans text-[16px] leading-[24px]">
+              {p}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function ServicePageTemplate({
   content,
   blockOrder,
@@ -292,6 +331,24 @@ export default function ServicePageTemplate({
             case 'servicesMenu':
               // Brief 139 — placement only; `data` is empty by design.
               return servicesMenuNode(b.id);
+            case 'textSection':
+              // Brief 149 — the former `secondary` / `preventive` ghost sections.
+              return textSectionNode(
+                asStr(d.sectionHeading),
+                Array.isArray(d.sectionParagraphs) ? (d.sectionParagraphs as string[]) : [],
+                b.id
+              );
+            case 'relatedServices':
+              // Brief 149 — the former `relatedServices` ghost section.
+              return relatedServicesNode(
+                {
+                  heading: asStr(d.relatedHeading),
+                  cards: Array.isArray(d.relatedCards)
+                    ? (d.relatedCards as ServiceContent['relatedServicesSection']['cards'])
+                    : [],
+                },
+                b.id
+              );
             case 'noDripClub':
               // Brief 143 (Track A): commercial pages never render this section.
               // Checked per instance so a page carrying more than one is fully covered.
@@ -330,30 +387,17 @@ export default function ServicePageTemplate({
     intro: introNode(content.expertSection, 'intro'),
     listSection: listNode(content.problemsSection, 'listSection'),
 
-    // 5 — related services cards (Cream) — ghost: only static pages populate it
-    relatedServices:
-      content.relatedServicesSection.cards.length > 0 ? (
-        <ServiceRelatedCards key="relatedServices" related={content.relatedServicesSection} />
-      ) : null,
+    // 5 — related services cards (Cream). Brief 149: shared helper, also
+    // reachable from the `relatedServices` block on DB-backed pages.
+    relatedServices: relatedServicesNode(content.relatedServicesSection, 'relatedServices'),
 
-    // 6 — body copy block 1 (Cream, text only) — ghost: skip when empty
-    secondary:
-      content.secondarySection.paragraphs.length > 0 ? (
-        <section key="secondary" className="bg-cream-100 py-[70px] md:py-[100px]">
-          <div className="w-[90%] lg:w-[81%] mx-auto max-w-4xl">
-            <h2 className="font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-8">
-              {content.secondarySection.heading}
-            </h2>
-            <div className="text-navy-800 space-y-5">
-              {content.secondarySection.paragraphs.map((p, i) => (
-                <p key={i} className="font-sans text-[16px] leading-[24px]">
-                  {p}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null,
+    // 6 — body copy block 1 (Cream, text only). Brief 149: shared helper, also
+    // reachable from a `textSection` block on DB-backed pages.
+    secondary: textSectionNode(
+      content.secondarySection.heading,
+      content.secondarySection.paragraphs,
+      'secondary'
+    ),
 
     map: mapNode('map'),
     googleReviews: googleReviewsNode('googleReviews'),
@@ -363,24 +407,14 @@ export default function ServicePageTemplate({
       ? null
       : ndcNode(content.noDropClubSection.title, content.noDropClubSection.body, 'noDripClub'),
 
-    // 11 — body copy block 2 / preventive maintenance (Cream, text only) — ghost
-    preventive:
-      content.preventiveSection.paragraphs.length > 0 ? (
-        <section key="preventive" className="bg-cream-100 py-[70px] md:py-[100px]">
-          <div className="w-[90%] lg:w-[81%] mx-auto max-w-4xl">
-            <h2 className="font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-8">
-              {content.preventiveSection.heading}
-            </h2>
-            <div className="text-navy-800 space-y-5">
-              {content.preventiveSection.paragraphs.map((p, i) => (
-                <p key={i} className="font-sans text-[16px] leading-[24px]">
-                  {p}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null,
+    // 11 — body copy block 2 / preventive maintenance (Cream, text only).
+    // Brief 149: same shared helper as `secondary` — the two were always
+    // identical markup, and are now one function behind one block type.
+    preventive: textSectionNode(
+      content.preventiveSection.heading,
+      content.preventiveSection.paragraphs,
+      'preventive'
+    ),
 
     relatedArticles: relatedArticlesNode(articles, 'relatedArticles'),
     finalCta: finalCtaNode(content.closingCTA, 'finalCta'),

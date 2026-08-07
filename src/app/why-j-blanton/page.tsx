@@ -9,15 +9,29 @@ import { resolveTokens } from '@/lib/cms/tokens';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
+import { getMainPageMeta } from '@/lib/cms/page-meta';
 import './why-j-blanton.css';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
+/**
+ * Brief 149 (Track C) — the `main_pages.meta_title` / `meta_description`
+ * fields were editable in the admin and read by nothing: this page's <title>
+ * came from the literal below. They now drive the page, with the literal kept
+ * as the fallback for a blank field. `getMainPageMeta` normalizes the brand
+ * suffix so the root layout's title template appends it exactly once, whatever
+ * an editor types.
+ */
+const STATIC_META = {
   title: 'Why J. Blanton',
   description:
     "For over 30 years J. Blanton Plumbing has served Chicagoland with 5-star plumbing service. Learn about our team, what to expect, and why we’re the right choice.",
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getMainPageMeta('why-j-blanton', STATIC_META);
+  return { title: meta.title, description: meta.description };
+}
 
 const INVOLVE_ME = {
   project: 'schedule-service-new',

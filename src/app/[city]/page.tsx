@@ -7,6 +7,7 @@ import {
   getGridCities,
   getLocalOfficeContent,
   getOffice,
+  staticCityMeta,
 } from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, WATER_TESTING_FAQS } from '@/lib/content/cities/shared';
 import { getArticles } from '@/lib/articles';
@@ -17,7 +18,7 @@ import CoverageAreaCity from '@/components/CoverageAreaCity';
 import LocalOfficeCity from '@/components/LocalOfficeCity';
 import LocalOfficeCityV2 from '@/components/LocalOfficeCityV2';
 import PreviewBanner from '@/components/PreviewBanner';
-import { pageTitle } from '@/lib/seo';
+import { getCityPageMeta } from '@/lib/cms/page-meta';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
@@ -47,25 +48,20 @@ export function generateStaticParams() {
   return [];
 }
 
-export function generateMetadata({ params }: { params: { city: string } }): Metadata {
-  const entry = getCity(params.city);
-  if (!entry) return {};
-
-  // V1 local-office cities (Evanston) have a dedicated content file.
-  if (entry.type === 'local-office') {
-    const localContent = getLocalOfficeContent(entry.slug);
-    if (localContent) return { title: pageTitle(localContent.meta.title), description: localContent.meta.description };
-    // Brief 67: V2 local-office cities (Algonquin, Elgin) keep their coverage
-    // content file for metadata — fall through rather than returning empty.
-  }
-
-  const content = getCoverageContent(entry.slug);
-  return {
-    title: pageTitle(content?.meta?.title) || `${entry.name} Plumber`,
-    description:
-      content?.meta?.description ??
-      `J. Blanton Plumbing serves ${entry.name}, IL with 24/7 emergency plumbing, drain, sewer, and water heater service. 30+ years, same-day available. Call (773) 724-9272.`,
-  };
+/**
+ * Brief 149 (Track C): reads the `city_pages` SEO fields, falling back to the
+ * static content file. Those fields were editable in the admin and read by
+ * nothing — the same shadow Tracks A and B close for sub-service pages.
+ *
+ * Now async (it queries), which is fine: the route is already `force-dynamic`.
+ * `getCityPageMeta` never throws — a DB blip yields the static values rather
+ * than a 500 on a page whose body renders fine.
+ */
+export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
+  const fallback = staticCityMeta(params.city);
+  if (!fallback) return {};
+  const meta = await getCityPageMeta(params.city, fallback);
+  return { title: meta.title, description: meta.description };
 }
 
 export default async function CityPage({ params }: { params: { city: string } }) {

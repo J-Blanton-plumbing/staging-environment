@@ -19,13 +19,30 @@ import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
+import { getMainPageMeta } from '@/lib/cms/page-meta';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
+/**
+ * Brief 149 (Track C) — the `main_pages.meta_title` / `meta_description` fields
+ * for `home` were editable in the admin and read by nothing: this page's <title>
+ * came from the literal below. They now drive the page, with the literal kept as
+ * the fallback for a blank field. `getMainPageMeta` normalizes the brand suffix
+ * so the root layout's title template appends it exactly once.
+ *
+ * Note the fallback title's internal pipe — "Chicago Plumbing Experts | Make a
+ * Good Call" — which is copy, not a suffix. `pageTitle()` only strips a TRAILING
+ * brand suffix, so it is left alone; a brand name mid-string always was.
+ */
+const STATIC_META = {
   title: 'Chicago Plumbing Experts | Make a Good Call',
   description: 'J. Blanton Plumbing — Chicago and suburbs, over 30 years.',
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getMainPageMeta('home', STATIC_META);
+  return { title: meta.title, description: meta.description };
+}
 
 export default async function HomePage() {
   const settings = await getGlobalSettingsCached();

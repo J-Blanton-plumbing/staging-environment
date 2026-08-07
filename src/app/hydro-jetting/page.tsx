@@ -1,79 +1,28 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getService } from '@/lib/content/services';
-import { getServiceCmsContent } from '@/lib/cms/service-pages';
-import { getServicePreview } from '@/lib/cms/preview';
-import type { ServiceCmsContent } from '@/lib/cms/service-pages';
-import type { ServiceContent } from '@/types/service';
-import ServicePageTemplate from '@/components/ServicePageTemplate';
-import PreviewBanner from '@/components/PreviewBanner';
+import SubServicePageView from '@/components/SubServicePageView';
+import { getSubServiceMeta } from '@/lib/cms/sub-service-pages';
 
+/**
+ * Brief 149 (Track B) — the twin of `/sewer-rodding`, same defect and same fix
+ * (Brief 145, finding D-2): the page rendered a static content file with four
+ * fields overlaid from `service_category_pages` id 24, while `sub_service_pages`
+ * id 23 was editable in the admin and never read.
+ *
+ * Now the identical three-line shape as the other 21 sub-service routes. Both
+ * former sources were retired with this change. See `src/app/sewer-rodding/page.tsx`
+ * for the full note.
+ */
+
+// Force SSR so DB edits and drafts are reflected immediately.
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: 'Hydro Jetting Services in Chicagoland',
-  description:
-    'Professional hydro jetting in Chicagoland. High-pressure drain and sewer cleaning that removes grease, roots, and scale. Same-day service available.',
-};
+const SLUG = 'hydro-jetting';
 
-function mergeWithCms(staticContent: ServiceContent, cms: ServiceCmsContent): ServiceContent {
-  const { page } = cms;
-  const staticProblemsCount = staticContent.problemsSection.problems.length;
-
-  const merged: ServiceContent = {
-    ...staticContent,
-    hero: {
-      ...staticContent.hero,
-      heading: page.hero_heading || staticContent.hero.heading,
-      intro: page.hero_intro || staticContent.hero.intro,
-    },
-    problemsSection: {
-      ...staticContent.problemsSection,
-      heading: page.problems_heading || staticContent.problemsSection.heading,
-      problems: page.problems_items?.length
-        ? page.problems_items
-        : staticContent.problemsSection.problems,
-    },
-  };
-
-  // B-3: warn on anomalous array growth (guards against future data corruption)
-  if (merged.problemsSection.problems.length > staticProblemsCount * 2) {
-    console.warn(
-      `[CMS] problems_items length anomaly on hydro-jetting: got ${merged.problemsSection.problems.length}, expected ~${staticProblemsCount}`
-    );
-  }
-
-  return merged;
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getSubServiceMeta(SLUG);
+  return meta ? { title: meta.title, description: meta.description } : {};
 }
 
-export default async function HydroJettingPage() {
-  const staticContent = getService('hydro-jetting');
-  if (!staticContent) notFound();
-
-  const servicePreview = await getServicePreview('hydro-jetting');
-  const previewDraft = servicePreview?.meta ?? null;
-
-  let cms: ServiceCmsContent | null = servicePreview?.cms ?? null;
-  if (!cms) {
-    cms = await getServiceCmsContent('hydro-jetting').catch(() => null);
-  }
-
-  const content = cms ? mergeWithCms(staticContent, cms) : staticContent;
-
-  return (
-    <>
-      {previewDraft && (
-        <PreviewBanner
-          label={previewDraft.label}
-          creatorName={previewDraft.creator_name}
-          editorUrl="/admin/hydro-jetting"
-          liveUrl="/hydro-jetting"
-          draftId={previewDraft.id}
-          pageType="service"
-          pageSlug="hydro-jetting"
-        />
-      )}
-      <ServicePageTemplate content={content} />
-    </>
-  );
+export default function Page() {
+  return <SubServicePageView slug={SLUG} />;
 }

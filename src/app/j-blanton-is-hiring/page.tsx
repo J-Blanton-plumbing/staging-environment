@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getMainPageMeta } from '@/lib/cms/page-meta';
 import HeroNav from '@/components/HeroNav';
 import CityHero from '@/components/CityHero';
 import CityServicesMenu from '@/components/CityServicesMenu';
@@ -19,7 +20,6 @@ import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { IS_HIRING, splitHiringList } from '@/lib/content/is-hiring';
-import { pageTitle } from '@/lib/seo';
 
 /**
  * /j-blanton-is-hiring — "Join Our Team" recruiting page (Brief 109).
@@ -43,11 +43,23 @@ const SLUG = 'j-blanton-is-hiring';
 // Force-dynamic so CMS edits are reflected immediately (same as other main pages).
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: pageTitle(IS_HIRING.meta.title),
-  description: IS_HIRING.meta.description,
-  robots: { index: true, follow: true },
-};
+/**
+ * Brief 149 (Track C) — the `main_pages` meta fields for this page were editable
+ * in the admin and read by nothing. They now drive it, with the static content
+ * file kept as the fallback for a blank field. `getMainPageMeta` applies
+ * `pageTitle()` itself, so the explicit call here is gone rather than doubled.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getMainPageMeta(SLUG, {
+    title: IS_HIRING.meta.title,
+    description: IS_HIRING.meta.description,
+  });
+  return {
+    title: meta.title,
+    description: meta.description,
+    robots: { index: true, follow: true },
+  };
+}
 
 export default async function JoinOurTeamPage() {
   // Preview draft (authorized CMS session) wins over the live DB row.

@@ -77,7 +77,10 @@ export type BlockFieldType =
   // (term + amount + button label + single-choice emphasis). Named per shape,
   // matching the precedent above.
   | 'comparisonRowRepeater'
-  | 'priceCardRepeater';
+  | 'priceCardRepeater'
+  // Brief 149 — Related Services cards (title + teaser + image + link, two per
+  // row on the live pages). Named per shape, matching the precedent above.
+  | 'serviceCardRepeater';
 
 export interface BlockFieldDef {
   /** Key inside the block instance's `data`. */
@@ -878,6 +881,64 @@ export const BLOCK_CATALOGUE: Record<BlockType, BlockDefinition> = {
     // No styleOptions: the panel's look is fixed by globals.css
     // (`.city-services-row` red gradient + white text/icons/caret).
   },
+
+  // ── Brief 149 — the two former "ghost" sections ────────────────────────────
+  // `ServicePageTemplate` could always render both, but only from a static
+  // content file: no block type existed, so no CMS page could author them. That
+  // is why `/sewer-rodding` and `/hydro-jetting` could not be consolidated onto
+  // `sub_service_pages` without dropping three sections of live copy. Each entry
+  // below maps to markup that already exists in the template — nothing new was
+  // designed, and both render paths call the same helper, so a DB-authored
+  // instance is byte-identical to the static section it replaces.
+  textSection: {
+    type: 'textSection',
+    label: 'Text Section',
+    variant: 'Centred heading + paragraphs',
+    category: 'content',
+    description:
+      'Cream band, Carmine H2, and plain paragraphs in a narrow centred column. No image. Use for body copy that sits between the photo sections.',
+    isInsertable: true,
+    allowMultiple: true,
+    removable: true,
+    pageTypes: ['sub-service'],
+    fields: [
+      { key: 'sectionHeading', label: 'H2: Section Header', type: 'text' },
+      {
+        key: 'sectionParagraphs',
+        label: 'Paragraphs',
+        type: 'list',
+        minItems: 1,
+        addLabel: '+ Add paragraph',
+        help: 'One entry per paragraph. Plain text — this section renders no markup.',
+      },
+    ],
+    defaultData: { sectionHeading: null, sectionParagraphs: [] },
+    // No styleOptions: a centred text band has no image to flip and no character
+    // panel to recolour.
+  },
+  relatedServices: {
+    type: 'relatedServices',
+    label: 'Related Services',
+    variant: 'Two service cards',
+    category: 'content',
+    description:
+      'Heading plus sibling-service cards (photo, title, teaser, "Read more →"). Two per row on desktop.',
+    isInsertable: true,
+    allowMultiple: true,
+    removable: true,
+    pageTypes: ['sub-service'],
+    fields: [
+      { key: 'relatedHeading', label: 'H2: Section Header', type: 'text' },
+      {
+        key: 'relatedCards',
+        label: 'Cards',
+        type: 'serviceCardRepeater',
+        minItems: 2,
+        addLabel: '+ Add card',
+      },
+    ],
+    defaultData: { relatedHeading: null, relatedCards: [] },
+  },
 };
 
 /** All block TYPES the registry knows about, in a stable canonical order. */
@@ -902,6 +963,11 @@ const ALL_BLOCK_TYPES: BlockType[] = [
   'servicesMenu',
   // Brief 141 — Membership Comparison (No Drip Club `comparison` variant).
   'membershipComparison',
+  // Brief 149 — the two former ghost sections. Same reasoning as servicesMenu:
+  // listed here so they reach the catalogue and inserter, kept out of
+  // SUB_SERVICE_BLOCK_ORDER so no page is auto-given one.
+  'textSection',
+  'relatedServices',
 ];
 
 /** Every block definition in canonical order (all page types). */

@@ -307,3 +307,38 @@ export function getLocalOfficeContent(slug: string): LocalOfficeContent | undefi
 export function getGridCities(): { slug: string; name: string }[] {
   return CITY_REGISTRY.map((c) => ({ slug: c.slug, name: c.name }));
 }
+
+/**
+ * Brief 149 (Track C) — the title/description a city page rendered BEFORE its
+ * `city_pages` meta fields were wired up. Now the fallback behind those fields,
+ * not the source (see `getCityPageMeta` in `src/lib/cms/page-meta.ts`).
+ *
+ * It lives here, not in the route file, for two reasons: a Next.js `page.tsx`
+ * may only export the framework's own symbols (anything else is a build-time
+ * type error), and the Track C backfill script needs the exact same value —
+ * it copies what each page renders today into its empty CMS field, so a second
+ * hand-maintained copy of this rule would drift the moment either changed.
+ *
+ * Returns the RAW title, with no brand suffix handling; `pageTitle()` normalizes
+ * at the render boundary so the layout's template appends the suffix once.
+ */
+export function staticCityMeta(slug: string): { title: string; description: string } | null {
+  const entry = getCity(slug);
+  if (!entry) return null;
+
+  // V1 local-office cities (Evanston) have a dedicated content file.
+  if (entry.type === 'local-office') {
+    const localContent = getLocalOfficeContent(entry.slug);
+    if (localContent) return { title: localContent.meta.title, description: localContent.meta.description };
+    // Brief 67: V2 local-office cities (Algonquin, Elgin) keep their coverage
+    // content file for metadata — fall through rather than returning empty.
+  }
+
+  const content = getCoverageContent(entry.slug);
+  return {
+    title: content?.meta?.title || `${entry.name} Plumber`,
+    description:
+      content?.meta?.description ??
+      `J. Blanton Plumbing serves ${entry.name}, IL with 24/7 emergency plumbing, drain, sewer, and water heater service. 30+ years, same-day available. Call (773) 724-9272.`,
+  };
+}

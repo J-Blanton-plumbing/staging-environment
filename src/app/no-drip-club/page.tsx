@@ -25,15 +25,28 @@ import {
 } from '@/lib/cms/ndc-template-variant';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
+import { getMainPageMeta } from '@/lib/cms/page-meta';
 import './ndc.css';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
+/**
+ * Brief 149 (Track C) — the `main_pages.meta_title` / `meta_description` fields
+ * were editable in the admin and read by nothing: this page's <title> came from
+ * the literal below. They now drive the page, with the literal kept as the
+ * fallback for a blank field. `getMainPageMeta` normalizes the brand suffix so
+ * the root layout's title template appends it exactly once.
+ */
+const STATIC_META = {
   title: 'No Drip Club',
   description:
     'Join the No Drip Club for serious savings, VIP priority scheduling, and complimentary annual home maintenance from J. Blanton Plumbing.',
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getMainPageMeta('no-drip-club', STATIC_META);
+  return { title: meta.title, description: meta.description };
+}
 
 /**
  * Brief 141 (Track B) — this page is a thin SHELL over two permanent template

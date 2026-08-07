@@ -31,7 +31,20 @@ export type SubServiceBlockType =
   | 'finalCta'
   // Brief 139 — placement-only OUR SERVICES menu. Deliberately NOT in
   // SUB_SERVICE_BLOCK_ORDER; see the two-list note below.
-  | 'servicesMenu';
+  | 'servicesMenu'
+  // Brief 149 — the last two "ghost" sections. `ServicePageTemplate` has always
+  // been able to render a centred text block (its `secondary` / `preventive`
+  // sections) and a two-card related-services row, but ONLY from a static content
+  // file — there was no block type, so no CMS page could author them and no
+  // DB-backed page could render them. That is the same shadow this brief exists
+  // to close, in the other direction: markup with no editor behind it.
+  //
+  // They exist so `/sewer-rodding` and `/hydro-jetting` can move onto
+  // `sub_service_pages` without dropping three sections of live copy. Like
+  // `servicesMenu`, both are OPT-IN — absent from SUB_SERVICE_BLOCK_ORDER, so no
+  // existing page sprouts one.
+  | 'textSection'
+  | 'relatedServices';
 
 /**
  * Canonical DEFAULT top-to-bottom order — matches Brief 87 Section A (rendering
@@ -66,6 +79,10 @@ export const SUB_SERVICE_BLOCK_ORDER: SubServiceBlockType[] = [
 export const SUB_SERVICE_BLOCK_TYPES: SubServiceBlockType[] = [
   ...SUB_SERVICE_BLOCK_ORDER,
   'servicesMenu',
+  // Brief 149 — opt-in, same rule as servicesMenu: valid to store and insert,
+  // never seeded onto a page that has not been given one.
+  'textSection',
+  'relatedServices',
 ];
 
 /** Human labels for the editor's block boxes. */
@@ -84,6 +101,9 @@ export const SUB_SERVICE_BLOCK_LABELS: Record<SubServiceBlockType, string> = {
   finalCta: 'Final CTA',
   // Brief 139 — placement-only block (no content fields).
   servicesMenu: 'Our Services Menu',
+  // Brief 149 — the two former ghost sections.
+  textSection: 'Text Section',
+  relatedServices: 'Related Services',
 };
 
 /**
