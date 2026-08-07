@@ -221,14 +221,22 @@ jobs:
             # `-r tsconfig-paths/register` is REQUIRED — it imports the shared
             # sanitizer from src/. Same exit-0 banner convention as the steps above.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-146-gas-lines-content.ts commit
-            # Brief 146 (Track D): delete the phantom `gas-lines-chicago`
-            # sub_service_pages row (Brief 145 D-5 verified it byte-identical to
-            # `gas-lines`; its URL 301s to /gas-lines so nothing on it can render)
-            # plus any orphan drafts for that slug. Marketing approved 2026-08-07.
-            # Refuses if the next.config.mjs 301 has gone, or if the row has picked
-            # up content matching neither the current nor the pre-Track-A gas-lines
-            # row. Reports "already-applied" once the row is gone.
-            npx ts-node --project tsconfig.scripts.json scripts/fix-brief-146-delete-gas-lines-chicago.ts commit
+            # Brief 146 (Track D) + Brief 148 (Track B): delete the phantom
+            # `gas-lines-chicago` sub_service_pages row (Brief 145 D-5; its URL 301s
+            # to /gas-lines so nothing on it can ever render) plus any orphan drafts
+            # for that slug.
+            #
+            # `--approved-id=48` is marketing's 2026-08-08 approval, carried as an
+            # argument rather than baked into the script. The content-divergence
+            # guard is BLOCKING again (Brief 147 had made it report-only for every
+            # future run to unstick this one delete); the flag answers it for this
+            # row only, and only because the row is unreachable behind the 301.
+            # Id 48 is the dev/Brief-145 serial — staging's may differ, and the
+            # script says so loudly and continues, because the selector is the slug.
+            # The delete can never touch id 26 (`gas-lines`, marketing's live copy
+            # and images): different slug, and the transaction rolls back unless
+            # exactly one row goes. Reports "already-applied" once the row is gone.
+            npx ts-node --project tsconfig.scripts.json scripts/fix-brief-146-delete-gas-lines-chicago.ts commit --approved-id=48
             # Brief 147 (Track A): the Brief 146 content port did NOT reach staging —
             # /gas-lines went live with no copy on it and marketing re-typed the
             # approved text by hand on 2026-08-08. Their text is now the source of

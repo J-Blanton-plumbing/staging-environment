@@ -1,4 +1,5 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 
 // See src/app/api/cms/global-settings/route.ts for why this is needed: a GET
@@ -7,7 +8,10 @@ import pool from '@/lib/db';
 // never appear in this list after the first deploy.
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   const client = await pool.connect();
   try {
     // Distinct sub-services from the subcategories table, slug derived from href

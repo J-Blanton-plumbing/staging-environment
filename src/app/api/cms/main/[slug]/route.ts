@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import { getSession } from '@/lib/auth/session';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import { sanitizeMainPageContent } from '@/lib/cms/sanitize';
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: { slug: string } }
 ) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   const client = await pool.connect();
   try {
     const res = await client.query(

@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 
 export async function GET(req: NextRequest) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   const { searchParams } = new URL(req.url);
   const view = searchParams.get('view');
 

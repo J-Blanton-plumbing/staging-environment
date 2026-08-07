@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import type { SubServiceBlockInstance } from '@/lib/cms/sub-service-blocks';
@@ -15,7 +16,10 @@ const nn = (v: string | null | undefined): string | null => (v == null ? null : 
 
 type RouteContext = { params: Promise<{ slug: string }> };
 
-export async function GET(_req: NextRequest, { params }: RouteContext) {
+export async function GET(req: NextRequest, { params }: RouteContext) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   const { slug } = await params;
   const client = await pool.connect();
   try {

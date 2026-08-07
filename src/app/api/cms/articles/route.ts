@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { ARTICLES } from '@/lib/articles';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   const client = await pool.connect();
   try {
     // Return DB articles first, then append any static articles not yet migrated

@@ -1,14 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServiceCmsContent, updateServiceCmsContent } from '@/lib/cms/service-pages';
 import { getSession } from '@/lib/auth/session';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { errorCode } from '@/lib/cms/errors';
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: { slug: string } }
 ) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   try {
     const data = await getServiceCmsContent(params.slug);
     if (!data) {

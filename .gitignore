@@ -5,6 +5,11 @@ node_modules/
 .next/
 .next-build/
 .next-prev/
+# Isolated verification builds (NEXT_DIST_DIR=.next-<brief>) — see Brief 141's
+# note on verifying against a fresh build rather than a stale `next start`.
+# Without this catch-all every brief that needs one has to remember to add its
+# own line, and a `git add -A` sweeps a ~200 MB build directory into the commit.
+.next-*/
 out/
 
 # environment files

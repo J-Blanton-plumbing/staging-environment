@@ -1,4 +1,5 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 
@@ -27,7 +28,10 @@ function titleCase(slug: string): string {
 // here that would mean newly added/renamed pages never appear in this dropdown.
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   const client = await pool.connect();
   try {
     const [cats, subs] = await Promise.all([

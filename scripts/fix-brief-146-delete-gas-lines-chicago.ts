@@ -23,30 +23,45 @@
  * content, and the same reasoning was applied in Brief 145.
  *
  * ── GUARDS ──────────────────────────────────────────────────────────────────
- *   • THE ONLY BLOCKING GUARD: the `/gas-lines-chicago` → `/gas-lines` redirect
- *     must still be present in next.config.mjs. Without it the URL could serve,
- *     and deleting the row would turn a live page into a 404.
- *   • The content comparison against the `gas-lines` row is REPORT-ONLY (Brief
- *     147). It used to block. See the note below.
+ * Three blocking guards, none of which any flag can switch off:
+ *   1. The `/gas-lines-chicago` → `/gas-lines` redirect must still be present in
+ *      next.config.mjs. Without it the URL could serve, and deleting the row
+ *      would turn a live page into a 404.
+ *   2. Exactly one row may carry the doomed slug, and the canonical `gas-lines`
+ *      row must exist and be a different row. `gas-lines` (id 26 on dev) carries
+ *      marketing's live copy and image uploads and must never be the target.
+ *   3. The content comparison against the `gas-lines` row — unless the run
+ *      carries the explicit marketing approval described below.
  *
- * ── WHY THE CONTENT GUARD NO LONGER BLOCKS (Brief 147, 2026-08-07) ──────────
- * It blocked on staging, and correctly by its own logic: marketing uploaded images
- * to the live `gas-lines` row, so this row no longer matched it on `hero_image` /
- * `f_image`, and the script refused to delete — leaving the phantom row in the
- * admin list through the whole Brief 146 release (staging showed 23 sub-service
- * rows, not the 22 the Brief 146 report claimed).
+ * ── THE `--approved-id` OVERRIDE (Brief 148, Track B, 2026-08-08) ───────────
+ * Guard 3 blocked the Brief 146 release, and correctly by its own logic:
+ * marketing uploaded images to the live `gas-lines` row, so this row no longer
+ * matched it on `hero_image` / `f_image` and the script refused to delete —
+ * leaving the phantom row in the admin list for the whole release (staging showed
+ * 23 sub-service rows, not the 22 the Brief 146 report claimed). Brief 147
+ * downgraded the guard to report-only to unstick it, which quietly removed the
+ * protection for every future run as well.
  *
- * The marketing lead's call, 2026-08-07: "As long as the slug /gas-lines-chicago is
- * redirecting to /gas-lines we can delete it. We only need the redirect." That is
- * the right call and it is what the guard was really protecting: content on this
- * row can NEVER render, because the URL 301s away before anything reads the row.
- * There is no copy to lose — only a duplicate admin entry to lose. Verified live
- * the same day: `/gas-lines-chicago` → 301 → `/gas-lines`, which 200s.
+ * Brief 148 puts guard 3 back and answers it properly instead. The marketing lead
+ * approved this specific deletion on 2026-08-08 — "as long as /gas-lines-chicago
+ * redirects to /gas-lines we can delete it; we only need the redirect" — and that
+ * approval now travels with the invocation, not with the source:
  *
- * So the comparison still runs and still PRINTS every differing column and both
- * values, and the full row still goes into `brief146_row_backup` before the delete
- * — the audit trail is unchanged, and the row is restorable. It simply no longer
- * stops the deletion. If the redirect ever goes, the FIRST guard stops everything.
+ *     ... scripts/fix-brief-146-delete-gas-lines-chicago.ts commit --approved-id=48
+ *
+ * With the flag, a content mismatch is printed in full and the delete proceeds.
+ * Without it, a mismatch stops the run exactly as it did before Brief 147. So the
+ * general "don't delete a row that has diverged" rule is intact, and unsticking a
+ * future phantom row takes a deliberate, greppable, human-approved argument.
+ *
+ * WHY THE ID IS A LABEL AND NOT THE SELECTOR: the row is selected by SLUG, which
+ * is unique in the table. `--approved-id=48` records WHICH row marketing looked
+ * at (id 48 on dev and in the Brief 145 audit). Dev and staging were seeded
+ * independently, so staging's serial for the same phantom row may differ — an id
+ * mismatch therefore prints a loud notice and continues rather than blocking a
+ * deletion marketing has already approved. It is not a safety property: guards 1
+ * and 2 are, and the DELETE is `WHERE slug = 'gas-lines-chicago'` inside a
+ * transaction that rolls back unless exactly one row goes.
  *
  * ── SAFETY ──────────────────────────────────────────────────────────────────
  * SAFE BY DEFAULT: dry run unless invoked with `commit`.
@@ -56,8 +71,8 @@
  *
  *   # preview (no writes):
  *   npx ts-node --project tsconfig.scripts.json scripts/fix-brief-146-delete-gas-lines-chicago.ts
- *   # apply:
- *   ... scripts/fix-brief-146-delete-gas-lines-chicago.ts commit
+ *   # apply, carrying marketing's 2026-08-08 approval:
+ *   ... scripts/fix-brief-146-delete-gas-lines-chicago.ts commit --approved-id=48
  */
 import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
@@ -84,6 +99,23 @@ const mode = resolveRunMode(SCRIPT);
 
 const DOOMED_SLUG = 'gas-lines-chicago';
 const CANONICAL_SLUG = 'gas-lines';
+
+/**
+ * Brief 148 (Track B): `--approved-id=<n>` carries the marketing lead's explicit
+ * 2026-08-08 approval for this deletion. Its only power is to let the content
+ * comparison (guard 3) report instead of block; see the header for why the id is
+ * a label rather than the selector.
+ */
+const APPROVED_ID: number | null = (() => {
+  const arg = process.argv.slice(2).find((a) => a.startsWith('--approved-id='));
+  if (!arg) return null;
+  const n = Number(arg.slice('--approved-id='.length));
+  if (!Number.isInteger(n) || n <= 0) {
+    console.error(`\n${SCRIPT}: --approved-id must be a positive integer (got "${arg}").\n`);
+    process.exit(2);
+  }
+  return n;
+})();
 
 /** Columns that differ by construction and say nothing about what the page holds. */
 const IGNORED_COLUMNS = new Set([
@@ -134,12 +166,26 @@ async function main() {
         backed_up_at  TIMESTAMPTZ NOT NULL DEFAULT now()
       )`);
 
-    const doomed = (
+    const doomedRows = (
       await client.query<{ id: number; row_json: Record<string, unknown> }>(
-        `SELECT id, row_to_json(t)::jsonb AS row_json FROM sub_service_pages t WHERE slug = $1`,
+        `SELECT id, row_to_json(t)::jsonb AS row_json FROM sub_service_pages t WHERE slug = $1 ORDER BY id`,
         [DOOMED_SLUG]
       )
-    ).rows[0];
+    ).rows;
+
+    // Brief 148 (Track B), part of guard 2: the delete below asserts it removed
+    // exactly one row and rolls back otherwise, but finding two here means the
+    // table is in a state nobody has looked at — stop before the backup, not
+    // after a rollback.
+    if (doomedRows.length > 1) {
+      stop(
+        `${doomedRows.length} sub_service_pages rows carry the slug "${DOOMED_SLUG}" ` +
+          `(ids ${doomedRows.map((r) => r.id).join(', ')}). This script deletes one phantom row, ` +
+          'not an unexamined set. Investigate before re-running.'
+      );
+    }
+
+    const doomed = doomedRows[0];
 
     if (!doomed) {
       console.log(`already-applied: no sub_service_pages row with slug "${DOOMED_SLUG}".`);
@@ -165,14 +211,49 @@ async function main() {
     }
     console.log(`guard OK — /${DOOMED_SLUG} still 301s to /${CANONICAL_SLUG} (next.config.mjs).`);
 
-    // ── Guard 2: no unique content ────────────────────────────────────────────
+    // ── Guard 2: the canonical row must exist, and must not be the target ─────
+    const canonicalRow = (
+      await client.query<{ id: number; row_json: Record<string, unknown> }>(
+        `SELECT id, row_to_json(t)::jsonb AS row_json FROM sub_service_pages t WHERE slug = $1`,
+        [CANONICAL_SLUG]
+      )
+    ).rows[0];
+
+    if (!canonicalRow) {
+      stop(
+        `there is no "${CANONICAL_SLUG}" row to redirect to. Deleting "${DOOMED_SLUG}" now ` +
+          'would leave the 301 pointing at a 404.'
+      );
+    }
+    if (doomed && doomed.id === canonicalRow.id) {
+      // Impossible while the slugs differ, and cheap enough to assert anyway:
+      // id 26 carries marketing's live Gas Lines copy and image uploads.
+      stop(
+        `the row selected for deletion IS the canonical "${CANONICAL_SLUG}" row (id ${canonicalRow.id}). ` +
+          'Refusing.'
+      );
+    }
+    console.log(
+      `guard OK — canonical "${CANONICAL_SLUG}" row present (id ${canonicalRow.id})` +
+        `${doomed ? `, distinct from the target (id ${doomed.id})` : ''}.`
+    );
+
+    // ── Guard 3: no unique content, unless marketing approved this deletion ───
     if (doomed) {
-      const canonical = (
-        await client.query<{ row_json: Record<string, unknown> }>(
-          `SELECT row_to_json(t)::jsonb AS row_json FROM sub_service_pages t WHERE slug = $1`,
-          [CANONICAL_SLUG]
-        )
-      ).rows[0];
+      if (APPROVED_ID !== null && APPROVED_ID !== doomed.id) {
+        // See the header: the id is a label for WHICH row was approved, not the
+        // selector. Dev and staging were seeded separately, so their serials for
+        // the same phantom row differ. Say so loudly, then honour the approval.
+        console.log('');
+        console.log('!'.repeat(72));
+        console.log(`ID MISMATCH: --approved-id=${APPROVED_ID} but the "${DOOMED_SLUG}" row here is id ${doomed.id}.`);
+        console.log('The row is selected by slug (unique), not by id, and ids differ between dev');
+        console.log('and staging because they were seeded independently. Continuing — the approval');
+        console.log('is for the phantom gas-lines-chicago row, whatever serial it happens to hold.');
+        console.log('!'.repeat(72));
+        console.log('');
+      }
+
       const prePort = (
         await client.query<{ row_json: Record<string, unknown> }>(
           `SELECT row_json FROM brief146_row_backup
@@ -182,20 +263,18 @@ async function main() {
         )
       ).rows[0];
 
-      const candidates: Array<{ label: string; row: Record<string, unknown> }> = [];
-      if (canonical) candidates.push({ label: `current ${CANONICAL_SLUG} row`, row: canonical.row_json });
+      const candidates: Array<{ label: string; row: Record<string, unknown> }> = [
+        { label: `current ${CANONICAL_SLUG} row`, row: canonicalRow.row_json },
+      ];
       if (prePort) candidates.push({ label: `pre-Track-A ${CANONICAL_SLUG} snapshot`, row: prePort.row_json });
 
-      // Brief 147: no longer a reason to stop. Nothing to compare against just means
-      // nothing to compare against — the delete is authorised by the redirect
-      // (guard 1) and covered by the backup below, not by this comparison.
       const diffs = candidates.map((c) => ({ label: c.label, cols: diffColumns(doomed.row_json, c.row) }));
       const match = diffs.find((d) => d.cols.length === 0);
       if (!match) {
-        // REPORT ONLY as of Brief 147 — this used to `stop()`. See the header note:
-        // marketing's image uploads on the live row made this comparison fail on
-        // staging, and the marketing lead's decision is that the redirect is the only
-        // condition. Print everything, then continue to the backup + delete.
+        // Brief 148 (Track B) restored this as a BLOCKING guard (Brief 147 had
+        // made it report-only for every run, which removed the protection
+        // permanently instead of answering it once). Print everything either way;
+        // only an explicit --approved-id lets the run continue.
         console.log('');
         console.log('!'.repeat(72));
         console.log(`NOTE: "${DOOMED_SLUG}" does not match the ${CANONICAL_SLUG} row exactly:`);
@@ -210,12 +289,24 @@ async function main() {
         if (candidates.length === 0) {
           console.log(`  (no "${CANONICAL_SLUG}" row or snapshot exists to compare against)`);
         }
-        console.log('');
-        console.log('Deleting anyway — approved by the marketing lead 2026-08-07: the URL 301s to');
-        console.log(`/${CANONICAL_SLUG}, so nothing on this row can ever render and there is no copy`);
-        console.log('to lose. The full row is backed up to brief146_row_backup below.');
         console.log('!'.repeat(72));
         console.log('');
+
+        if (APPROVED_ID === null) {
+          stop(
+            `"${DOOMED_SLUG}" has diverged from the "${CANONICAL_SLUG}" row (see the columns above), ` +
+              'so this run cannot prove it is a content-free duplicate. If a human has looked at ' +
+              'those columns and approved the deletion anyway, re-run with ' +
+              `\`--approved-id=${doomed.id}\`. Marketing approved exactly this on 2026-08-08 ` +
+              '(Brief 148, Track B); deploy.yml passes the flag.'
+          );
+        }
+
+        console.log(
+          `Deleting anyway — carrying --approved-id=${APPROVED_ID} (marketing lead, 2026-08-08).\n` +
+            `The URL 301s to /${CANONICAL_SLUG}, so nothing on this row can ever render and there is\n` +
+            'no copy to lose. The full row is backed up to brief146_row_backup below.\n'
+        );
       } else {
         console.log(`content check — identical to the ${match.label} on every content column.`);
       }

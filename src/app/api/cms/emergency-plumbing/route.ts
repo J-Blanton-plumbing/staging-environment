@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getEpCmsContent, updateEpCmsContent } from '@/lib/cms/emergency-plumbing';
 import { getSession } from '@/lib/auth/session';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { errorCode } from '@/lib/cms/errors';
@@ -10,7 +11,10 @@ import { errorCode } from '@/lib/cms/errors';
 // on a real `next build` deploy, serving one build-time snapshot forever.
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   try {
     const data = await getEpCmsContent();
     if (!data) {

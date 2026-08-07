@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { getGlobalSettings, updateGlobalSettings } from '@/lib/cms/global-settings';
 import { getSession } from '@/lib/auth/session';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 
 // Brief 107 follow-up — this GET took no `NextRequest`/`cookies()`/`headers()`,
 // so `next build` treats it as a static Route Handler and caches its response
@@ -14,7 +15,10 @@ import { getSession } from '@/lib/auth/session';
 // always reads the live DB row instead of a stale build-time snapshot.
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   try {
     const settings = await getGlobalSettings();
     if (!settings) {

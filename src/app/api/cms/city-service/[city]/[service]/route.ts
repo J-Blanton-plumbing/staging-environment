@@ -1,14 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCityServiceCmsContent, updateCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { getSession } from '@/lib/auth/session';
+import { requireCmsSession } from '@/lib/auth/api-guard';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import pool from '@/lib/db';
 import { errorCode } from '@/lib/cms/errors';
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: { city: string; service: string } }
 ) {
+  const auth = await requireCmsSession(req);
+  if (!auth.ok) return auth.response;
+
   try {
     const data = await getCityServiceCmsContent(params.city, params.service);
     if (!data) {

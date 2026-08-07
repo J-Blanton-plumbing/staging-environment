@@ -112,9 +112,29 @@ export async function middleware(req: NextRequest) {
     return passThrough()
   }
 
+  // ── CMS API gate (Brief 148, Track A) ──────────────────────────────────
+  // Everything under /api/cms serves or mutates admin data — the page inventory,
+  // page bodies, city rows, global settings, media, users. Nothing on the public
+  // site fetches any of it (the front end reads Postgres directly through
+  // src/lib/cms/*); every caller is under /admin or src/components/admin.
+  //
+  // Protection used to be opt-in per handler, so the default for a new route was
+  // OPEN, and fourteen GET handlers were answering anonymous requests with real
+  // data. This flips the default: no valid session cookie, no /api/cms, whatever
+  // the route file says. `requireCmsSession` still runs inside each handler for
+  // the revocation check this Edge context cannot perform (see api-guard.ts).
+  //
+  // 401 JSON, never a redirect — these are fetch() targets, and bouncing them to
+  // an HTML login page would hand the admin UI unparseable JSON on expiry.
+  if (pathname.startsWith('/api/cms')) {
+    if (await verifySession(req)) return passThrough()
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   // ── Preview Basic Auth (non-admin routes) ──────────────────────────────
-  // Skip for CMS API routes, auth routes, and preview routes
-  if (pathname.startsWith('/api/cms') || pathname.startsWith('/api/auth') || pathname.startsWith('/api/preview')) {
+  // Skip for auth routes (login must be reachable while signed out) and preview
+  // routes (session-gated in the handler itself).
+  if (pathname.startsWith('/api/auth') || pathname.startsWith('/api/preview')) {
     return passThrough()
   }
 

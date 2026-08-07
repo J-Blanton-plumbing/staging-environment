@@ -1,6 +1,21 @@
 /**
  * Brief 43 — CMS API Stress Test
  * Safe to re-run. Cleans up stress-test-temp on every run.
+ *
+ * ⚠️ SUPERSEDED IN PART — DO NOT READ ITS FAILURES AS REGRESSIONS.
+ *
+ * This script predates the current auth model twice over:
+ *   • Its group B asserts that an UNAUTHENTICATED `GET /api/cms/{slug}` returns
+ *     200 with a valid shape. Brief 148 (Track A) closed that hole on purpose —
+ *     every /api/cms route now requires a CMS session, so B-1/B-2/B-4* will
+ *     report 401 and "fail" here. That is the fix working.
+ *   • Its group C authenticates with `Authorization: Bearer $CMS_ADMIN_PASSWORD`,
+ *     which stopped being the login mechanism when sessions moved to a signed
+ *     `cms_session` cookie (Brief 119/133).
+ *
+ * For the current contract use `scripts/verify-brief-148-cms-api-auth.ts`
+ * (static audit always; live 401 checks with BASE_URL set). The shape/edge-case
+ * value in groups A and D here is still real; only the auth expectations are stale.
  */
 
 import * as fs from 'fs';
