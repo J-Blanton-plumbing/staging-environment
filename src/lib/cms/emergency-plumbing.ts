@@ -49,7 +49,13 @@ export interface EpCmsUpdatePayload {
 export async function getEpCmsContent(): Promise<EpCmsContent | null> {
   const client = await pool.connect();
   try {
-    const res = await client.query(`SELECT * FROM emergency_plumbing_page LIMIT 1`);
+    // Brief 145 (Track D): `ORDER BY id` — the table is a singleton, but it held
+    // 7 identical rows and an unordered LIMIT 1 let Postgres return any of them.
+    // The duplicates are gone and a unique index on `(true)` now makes a second
+    // row impossible, so this can only ever match one row; the ORDER BY makes
+    // that guarantee explicit and matches the pin the canonical-override
+    // resolver already uses (src/lib/cms/canonical-overrides.ts).
+    const res = await client.query(`SELECT * FROM emergency_plumbing_page ORDER BY id LIMIT 1`);
     if (!res.rows[0]) return null;
     const r = res.rows[0];
     return {

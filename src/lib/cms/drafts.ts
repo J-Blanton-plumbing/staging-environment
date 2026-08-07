@@ -64,7 +64,11 @@ async function getLivePageState(
       res = await pool.query('SELECT version, NULL::text AS template_type FROM sub_service_pages WHERE slug = $1', [pageSlug]);
       break;
     case 'emergency-plumbing':
-      res = await pool.query('SELECT version, NULL::text AS template_type FROM emergency_plumbing_page LIMIT 1');
+      // Brief 145 (Track D): ORDER BY id for the same reason as the reader in
+      // cms/emergency-plumbing.ts — this singleton table held 7 rows with
+      // independent `version` counters, so an unordered LIMIT 1 could read the
+      // optimistic-lock version off a different row than the one it guards.
+      res = await pool.query('SELECT version, NULL::text AS template_type FROM emergency_plumbing_page ORDER BY id LIMIT 1');
       break;
     case 'city-service': {
       const [citySlug, serviceSlug] = pageSlug.split('/');

@@ -331,6 +331,20 @@ async function seed() {
         ADD COLUMN IF NOT EXISTS f3_image    TEXT NOT NULL DEFAULT ''
     `);
 
+    // Brief 145 (Track D) — this seed used to end with `ON CONFLICT DO NOTHING`,
+    // which suppresses an insert ONLY when a UNIQUE/EXCLUDE constraint would be
+    // violated. This is the one CMS page table with no unique key (every sibling
+    // has one: main_pages.slug, service_category_pages.slug, sub_service_pages.slug,
+    // city_pages.city_slug, city_service_pages(city_slug, service_slug),
+    // cms_articles.slug), so there was nothing to conflict on and EVERY
+    // `npm run seed:cms` / `npm run db:setup` appended another identical row —
+    // 4 rows by Brief 78, 7 by Brief 145. `INSERT … SELECT … WHERE NOT EXISTS`
+    // is the check-then-insert form that works without a constraint, so this
+    // seed is a true no-op once the singleton row exists.
+    //
+    // The belt-and-braces half of the fix is the UNIQUE INDEX on `(true)` that
+    // scripts/fix-brief-145-emergency-plumbing-dedupe.ts installs: it makes a
+    // second row impossible from ANY writer, including ones added later.
     await client.query(
       `INSERT INTO emergency_plumbing_page (
          hero_heading, hero_description,
@@ -340,8 +354,12 @@ async function seed() {
          map_heading, map_body,
          f2_heading, f2_body,
          f3_heading, f3_body
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)
-       ON CONFLICT DO NOTHING`,
+       )
+       SELECT $1::text,  $2::text,  $3::text,  $4::text,
+              $5::text,  $6::text,  $7::text,  $8::text,
+              $9::text,  $10::jsonb, $11::text, $12::text,
+              $13::text, $14::text, $15::text, $16::text
+        WHERE NOT EXISTS (SELECT 1 FROM emergency_plumbing_page)`,
       [
         "J. BLANTON, WHAT'S YOUR EMERGENCY?",
         "We provide 24/7 service for plumbing emergencies. If you're facing an urgent issue like a burst pipe or clogged drain, don't hesitate—pick up the phone and call us! We'll be there to turn an unexpected problem into a Good Call.",

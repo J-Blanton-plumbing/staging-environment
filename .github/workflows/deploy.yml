@@ -140,6 +140,46 @@ jobs:
             # (Brief 142 §1.2), so skips are logged, NOT fatal: read the step's
             # output after the first deploy to see which rows staging actually had.
             npx ts-node --project tsconfig.scripts.json scripts/seed-brief-143-ndc-offer-content.ts commit
+            # Brief 143 follow-up: the ONE sentence the migration above stopped on
+            # — article id 464's closing paragraph, which still promised "service
+            # within 24 hours". Its Brief 143 fragment could not be substituted
+            # grammatically, so Track E's rule left the row alone and reported it;
+            # the marketing lead approved a full replacement sentence on
+            # 2026-08-07 (drops the 24-hour guarantee and the orphaned footnote
+            # asterisk). Must run AFTER the migration above: both write
+            # cms_articles.body.html and share brief143_ndc_content_backup, and
+            # this row is the one that migration deliberately skips. Same exact-
+            # match gate and the same "already-applied" no-op on re-run, so it is
+            # safe on every deploy and safe on dev and staging alike.
+            npx ts-node --project tsconfig.scripts.json scripts/seed-brief-143-article-464-sentence.ts commit
+            # Brief 145 (Track B): rename the `venetian-cillage` city slug to
+            # `venetian-village` on the 45 city_service_pages rows carrying it.
+            # Brief 131 dropped `venetian-cillage` from CITY_REGISTRY as a typo
+            # duplicate, so all 45 URLs 404 and their content can never render.
+            # The script backs every row up to brief145_row_backup first, refuses
+            # to run if a `venetian-village` row already exists for any of those
+            # services (it never overwrites), and reports "already-applied" once
+            # no old-slug rows remain — a safe no-op on every deploy after the
+            # first. `-r tsconfig-paths/register` is REQUIRED: it imports
+            # CITY_REGISTRY and the city-service registry from src/ to verify the
+            # rename lands on a route that actually serves. Do not drop it.
+            #
+            # If a guard trips it prints a loud banner and exits 0 ON PURPOSE —
+            # `script_stop: true` means a non-zero exit here would abort the build
+            # swap and pm2 reload below, turning a data question into an outage.
+            # Read the step output after a deploy; do not assume silence = applied.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/fix-brief-145-venetian-cillage-slug.ts commit
+            # Brief 145 (Track D): collapse `emergency_plumbing_page` back to the
+            # single row it is supposed to hold (7 on dev, flagged at 4 back in
+            # Brief 78) and install a UNIQUE INDEX on `(true)` so a second row
+            # becomes impossible. The duplicates came from seed-cms.ts's
+            # `ON CONFLICT DO NOTHING`, which is a no-op on the one CMS page table
+            # with no unique key — that insert is now `INSERT … WHERE NOT EXISTS`.
+            # Backs all rows up to brief145_row_backup and REFUSES to delete if the
+            # rows differ on any content column (which would mean de-duplicating
+            # could change what /emergency-plumbing renders). Same exit-0 banner
+            # convention as the Track B step above.
+            npx ts-node --project tsconfig.scripts.json scripts/fix-brief-145-emergency-plumbing-dedupe.ts commit
             # Swap the finished build into place — two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and

@@ -282,7 +282,13 @@ const ARTICLE_SENTENCES: Array<{ id: number; from: string; to: string }> = [
   },
 ];
 
-type Status = 'applied' | 'already-applied' | 'skipped-mismatch' | 'skipped-missing-row';
+type Status =
+  | 'applied'
+  | 'already-applied'
+  | 'skipped-mismatch'
+  | 'skipped-missing-row'
+  /** This storage does not exist on this row — expected, not a problem. */
+  | 'no-blocks';
 interface Result {
   track: string;
   target: string;
@@ -339,15 +345,31 @@ async function main() {
       );
     }
 
-    // ── Tracks B & C — sub_service_pages named columns ────────────────────────
-    for (const [track, column, items] of [
-      ['B', 'ndc_title', HEADLINES],
-      ['C', 'ndc_body', BODIES],
+    // ── Tracks B & C — sub_service_pages ──────────────────────────────────────
+    // TWO storages, exactly like city_pages, and BOTH must be written:
+    //
+    //   `ndc_title` / `ndc_body`      — the named columns
+    //   `blocks[<noDripClub>].data.ndcTitle` / `.ndcBody`  — the per-instance blob
+    //
+    // `getSubServiceCmsContent` renders from `blocks` WHENEVER it has instances
+    // and IGNORES the named columns entirely (sub-service-pages.ts:157); it only
+    // falls back to the columns when `blocks` is NULL/empty. Brief 90 keeps the
+    // columns populated as a rollback snapshot of the primary instance, so a page
+    // an editor has ever saved holds the same text twice.
+    //
+    // The dev database has `blocks = NULL` on all six of these rows, so the
+    // columns drive the render there and writing them alone was enough. Staging
+    // does NOT: its rows carry blocks, so a column-only write left the old copy
+    // rendering. Writing both is correct on either shape — where `blocks` is
+    // NULL there is simply nothing to write and it is reported as `no-blocks`.
+    for (const [track, column, dataKey, items] of [
+      ['B', 'ndc_title', 'ndcTitle', HEADLINES],
+      ['C', 'ndc_body', 'ndcBody', BODIES],
     ] as const) {
       for (const it of items) {
         const target = `sub_service_pages.${column} [${it.slug}]`;
-        const res = await client.query<{ id: number; v: string | null }>(
-          `SELECT id, ${column} AS v FROM sub_service_pages WHERE slug = $1`,
+        const res = await client.query<{ id: number; v: string | null; blocks: unknown }>(
+          `SELECT id, ${column} AS v, blocks FROM sub_service_pages WHERE slug = $1`,
           [it.slug]
         );
         const row = res.rows[0];
@@ -355,19 +377,57 @@ async function main() {
           record(track, target, 'skipped-missing-row', 'no row with this slug in this database');
           continue;
         }
+
+        // (a) the named column
         if (row.v === it.to) {
           record(track, target, 'already-applied');
-          continue;
-        }
-        if (row.v !== it.from) {
+        } else if (row.v !== it.from) {
           record(track, target, 'skipped-mismatch', 'current value is neither the expected old nor the approved new string — left untouched');
+        } else {
+          await backup('sub_service_pages', row.id, it.slug, column, row.v);
+          if (mode === 'commit') {
+            await client.query(`UPDATE sub_service_pages SET ${column} = $1 WHERE id = $2`, [it.to, row.id]);
+          }
+          record(track, target, 'applied');
+        }
+
+        // (b) the blocks copy — this is what actually renders when it exists.
+        // Located BY TYPE, never by a hardcoded index; every instance is covered.
+        const blocks = Array.isArray(row.blocks) ? (row.blocks as Array<Record<string, any>>) : null;
+        if (!blocks || blocks.length === 0) {
+          record(track, `sub_service_pages.blocks[noDripClub].data.${dataKey} [${it.slug}]`, 'no-blocks', 'blocks is NULL/empty on this row — the named column drives the render here');
           continue;
         }
-        await backup('sub_service_pages', row.id, it.slug, column, row.v);
-        if (mode === 'commit') {
-          await client.query(`UPDATE sub_service_pages SET ${column} = $1 WHERE id = $2`, [it.to, row.id]);
+        const idxs = blocks
+          .map((b, i) => [i, b?.type] as const)
+          .filter(([, t]) => t === 'noDripClub')
+          .map(([i]) => i);
+        if (idxs.length === 0) {
+          record(track, `sub_service_pages.blocks[noDripClub].data.${dataKey} [${it.slug}]`, 'no-blocks', 'no noDripClub block on this page');
+          continue;
         }
-        record(track, target, 'applied');
+        for (const i of idxs) {
+          const blockTarget = `sub_service_pages.blocks[${i}].data.${dataKey} [${it.slug}]`;
+          const cur = blocks[i]?.data?.[dataKey] ?? null;
+          if (cur === it.to) {
+            record(track, blockTarget, 'already-applied');
+            continue;
+          }
+          if (cur !== it.from) {
+            record(track, blockTarget, 'skipped-mismatch', 'current value is neither the expected old nor the approved new string — left untouched');
+            continue;
+          }
+          await backup('sub_service_pages', row.id, it.slug, `blocks[${i}].data.${dataKey}`, cur);
+          if (mode === 'commit') {
+            await client.query(
+              `UPDATE sub_service_pages
+                  SET blocks = jsonb_set(blocks, $1::text[], to_jsonb($2::text), false)
+                WHERE id = $3`,
+              [`{${i},data,${dataKey}}`, it.to, row.id]
+            );
+          }
+          record(track, blockTarget, 'applied');
+        }
       }
     }
 
@@ -505,7 +565,9 @@ async function main() {
 
     // A mismatch is not fatal — dev and staging legitimately hold different data
     // (Brief 142 §1.2) — but it must be visible in the deploy log.
-    const misses = results.filter((r) => r.status !== 'applied' && r.status !== 'already-applied');
+    const misses = results.filter(
+      (r) => r.status !== 'applied' && r.status !== 'already-applied' && r.status !== 'no-blocks'
+    );
     if (misses.length) {
       console.log(`\nNOTE: ${misses.length} target(s) skipped. Listed above; not an error.`);
     }
