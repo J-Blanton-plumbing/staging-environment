@@ -109,6 +109,12 @@ interface Target {
   column: string;
   blockType: string;
   dataKey: string;
+  /**
+   * The same field's key on a CONVERTED block instance (see CONVERTED_CTA_LABEL).
+   * Only the Final CTA has one, because it is the only block type that has ever
+   * been converted to another type.
+   */
+  convertedDataKey?: string;
   value: unknown;
 }
 const TARGETS: Target[] = [
@@ -118,9 +124,29 @@ const TARGETS: Target[] = [
   { column: 'intro_body', blockType: 'intro', dataKey: 'introBody', value: INTRO_BODY_CLEAN },
   { column: 'problems_heading', blockType: 'listSection', dataKey: 'problemsHeading', value: PROBLEMS_HEADING },
   { column: 'problems_items', blockType: 'listSection', dataKey: 'problemsItems', value: PROBLEMS_ITEMS },
-  { column: 'cta_heading', blockType: 'finalCta', dataKey: 'ctaHeading', value: CTA_HEADING },
-  { column: 'cta_body', blockType: 'finalCta', dataKey: 'ctaBody', value: CTA_BODY_CLEAN },
+  { column: 'cta_heading', blockType: 'finalCta', dataKey: 'ctaHeading', convertedDataKey: 'introHeading', value: CTA_HEADING },
+  { column: 'cta_body', blockType: 'finalCta', dataKey: 'ctaBody', convertedDataKey: 'introBody', value: CTA_BODY_CLEAN },
 ];
+
+/**
+ * ⚠️ THE FINAL CTA MAY NOT BE A `finalCta` BLOCK.
+ *
+ * `scripts/convert-finalcta-to-twocolumn.ts` (Brief 93, Track E) rewrote every
+ * stored `finalCta` instance into an `intro` ("2 Column Section") carrying
+ * `data.label = 'Final CTA'`, the phone button, and the CTA photo in `fImage` —
+ * with the copy moved to `introHeading` / `introBody`. `finalCta` is no longer
+ * insertable in the editor at all.
+ *
+ * The first version of this script missed that and matched on TYPE alone. On
+ * staging it therefore decided the Final CTA section was "missing", inserted a
+ * fresh `finalCta` block, and the page rendered the empty converted section
+ * immediately followed by the new filled one — a visible duplicate. Fixed by
+ * resolving the CTA target through this label as well as the type, and by
+ * cleaning up the stray block that mistake created (see `findStrayFinalCta`).
+ *
+ * Anything that looks for a block by type must account for this alias.
+ */
+const CONVERTED_CTA_LABEL = 'Final CTA';
 
 /** Columns this script must never write, and asserts it did not. */
 const IMAGE_COLUMNS = ['hero_image', 'f_image', 'f3_image'];
@@ -160,6 +186,50 @@ interface BlockInstance {
   id?: string;
   type?: string;
   data?: Record<string, unknown>;
+}
+
+/** A converted Final CTA: an `intro` instance labelled "Final CTA" (Brief 93 E). */
+function isConvertedCta(b: BlockInstance): boolean {
+  return b?.type === 'intro' && (b.data as { label?: unknown } | undefined)?.label === CONVERTED_CTA_LABEL;
+}
+
+/**
+ * Where a block type's copy belongs, accounting for the converted-CTA alias.
+ *
+ * For `finalCta` the CONVERTED instance wins when both exist: it is the one that
+ * actually renders the section the visitor sees, and it carries the phone button
+ * and the CTA photo. A plain `finalCta` instance alongside it is a stray.
+ */
+function resolveTarget(
+  instances: BlockInstance[],
+  type: string
+): { index: number; converted: boolean } | null {
+  if (type === 'finalCta') {
+    const conv = instances.findIndex(isConvertedCta);
+    if (conv !== -1) return { index: conv, converted: true };
+  }
+  const idx = instances.findIndex((b) => b?.type === type && !isConvertedCta(b));
+  return idx === -1 ? null : { index: idx, converted: false };
+}
+
+/**
+ * The `finalCta` instance the FIRST version of this script wrongly inserted next
+ * to an already-present converted CTA — and only that.
+ *
+ * Deliberately narrow, because deleting a block is a different class of action
+ * from filling a blank one: it must carry this script's own approved copy
+ * verbatim, hold no image, and carry no other keys (no style, no button, no
+ * label). Anything else is somebody's block and is reported, never removed.
+ */
+function findStrayFinalCta(instances: BlockInstance[]): number {
+  if (!instances.some(isConvertedCta)) return -1; // no converted CTA → nothing is a duplicate
+  return instances.findIndex((b) => {
+    if (b?.type !== 'finalCta') return false;
+    const d = b.data ?? {};
+    const keys = Object.keys(d).sort().join(',');
+    if (keys !== 'ctaBody,ctaHeading') return false;
+    return d.ctaHeading === CTA_HEADING && d.ctaBody === CTA_BODY_CLEAN;
+  });
 }
 
 const trunc = (v: unknown) => {
@@ -237,13 +307,22 @@ async function main() {
 
     if (hasBlocks) {
       const instances = [...(rawBlocks as BlockInstance[])];
-      const firstOf = new Map<string, number>();
-      instances.forEach((b, i) => {
-        const type = typeof b?.type === 'string' ? b.type : '';
-        if (type && !firstOf.has(type)) firstOf.set(type, i);
-      });
-
       let touched = false;
+
+      // Remove the stray `finalCta` the first version of this script inserted next
+      // to an already-present converted CTA. Narrow by construction — see
+      // findStrayFinalCta. Done FIRST so the fill pass below sees the real target.
+      const stray = findStrayFinalCta(instances);
+      if (stray !== -1) {
+        instances.splice(stray, 1);
+        touched = true;
+        blockNotes.push(
+          `REMOVED the duplicate "finalCta" block at position ${stray + 1} — this script ` +
+            `inserted it before it knew a converted "${CONVERTED_CTA_LABEL}" block was already there, ` +
+            'and the page rendered an empty CTA section followed by a filled one'
+        );
+      }
+
       // Group the targets by block type so each instance is visited once.
       const byType = new Map<string, Target[]>();
       for (const t of TARGETS) {
@@ -252,10 +331,11 @@ async function main() {
       }
 
       for (const [type, targets] of byType) {
-        const idx = firstOf.get(type);
-        if (idx === undefined) {
-          // No instance of this type: the copy would have nowhere to render, which
-          // is the whole defect. Insert one in its canonical position.
+        const resolved = resolveTarget(instances, type);
+        if (resolved === null) {
+          // No instance of this type at all — not even a converted one. The copy
+          // would have nowhere to render, which is the whole defect. Insert one in
+          // its canonical position.
           const data: Record<string, unknown> = {};
           for (const t of targets) data[t.dataKey] = t.value;
           const instance: BlockInstance = { id: newBlockId(type), type, data };
@@ -267,31 +347,32 @@ async function main() {
             if (p > canonical && p !== -1) { at = i; break; }
           }
           instances.splice(at, 0, instance);
-          // Recompute first-instance indices after the splice.
-          firstOf.clear();
-          instances.forEach((b, i) => {
-            const ty = typeof b?.type === 'string' ? b.type : '';
-            if (ty && !firstOf.has(ty)) firstOf.set(ty, i);
-          });
           touched = true;
           blockNotes.push(`INSERTED a "${type}" block at position ${at + 1} (none existed) with ${targets.length} field(s)`);
           continue;
         }
+        const { index: idx, converted } = resolved;
+        // A converted block stores the same copy under different keys.
+        const keyOf = (t: Target) => (converted && t.convertedDataKey ? t.convertedDataKey : t.dataKey);
+        const label = converted
+          ? `converted "${CONVERTED_CTA_LABEL}" (intro) instance #${idx + 1}`
+          : `"${type}" instance #${idx + 1}`;
         const b = instances[idx];
         const data = { ...(b.data ?? {}) };
         const filled: string[] = [];
         for (const t of targets) {
-          if (isFillable(data[t.dataKey])) {
-            data[t.dataKey] = t.value;
-            filled.push(t.dataKey);
+          const key = keyOf(t);
+          if (isFillable(data[key])) {
+            data[key] = t.value;
+            filled.push(key);
           }
         }
         if (filled.length > 0) {
           instances[idx] = { ...b, data };
           touched = true;
-          blockNotes.push(`patched "${type}" instance #${idx + 1}: filled ${filled.join(', ')}`);
+          blockNotes.push(`patched ${label}: filled ${filled.join(', ')}`);
         } else {
-          blockNotes.push(`"${type}" instance #${idx + 1}: every field already holds copy — untouched`);
+          blockNotes.push(`${label}: every field already holds copy — untouched`);
         }
       }
       blocks = touched ? instances : null;
