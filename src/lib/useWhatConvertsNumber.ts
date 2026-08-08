@@ -1,41 +1,32 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { formatUs, resolveSwap, type ResolvedSwap } from './whatconverts-swap';
 
 /**
- * Returns the WhatConverts tracking number for this visitor, so React can RENDER
- * it rather than have it patched into the DOM afterwards.
+ * Returns the WhatConverts tracking number for this visitor so React can RENDER
+ * it, rather than having the vendor patch it into DOM that React owns.
  *
- * WHY THIS EXISTS — the whole class of bug this ends.
+ * WHY. WhatConverts does dynamic number insertion by mutating the DOM after load.
+ * React also owns those nodes, and re-renders from props — so it reverts the
+ * swap, and patching afterwards can only narrow the window, never close it. On
+ * iOS this is worse than a narrow window: Safari resolves a tel: target from the
+ * touch gesture, so a repair applied at click time lands too late to change what
+ * is dialled.
  *
- * WhatConverts does dynamic number insertion by mutating the DOM: it rewrites
- * phone text nodes and `href` attributes after the page loads. React also owns
- * those nodes. The two fight, and React wins whenever it re-renders or
- * re-creates an element, because it writes `phoneHref` back from props. Patching
- * the DOM again afterwards only ever narrows the window; it never closes it.
+ * Confirmed in the field: once the site header rendered this value through React
+ * it dialled correctly on the device that had been failing, while server-rendered
+ * CTAs still relying on the vendor's DOM patch continued to display the tracking
+ * number and dial the default one. React ownership works where patching does not,
+ * which is why this hook backs every phone CTA rather than just the header.
  *
- * On iOS that window is not merely narrow, it is in the wrong place. Safari
- * resolves a `tel:` link's target from the touch gesture, not after event
- * dispatch the way desktop browsers do. So a repair applied during the click
- * lands too late to change what actually gets dialled — which is exactly the
- * confirmed failure: the button rendered the tracking number and dialled the
- * default one. Mutating `href` mid-gesture also appears to break the link for
- * subsequent taps, matching the report that the button stops working after one
- * tap and a cancel.
+ * Hydration safety: returns null on first render so client markup matches the
+ * server, then updates in an effect. Seeding from storage during render would be
+ * a hydration mismatch and React would patch it straight back.
  *
- * The fix is to stop fighting. React renders the tracking number itself, so the
- * href is already correct before any tap, nothing mutates during the gesture,
- * and a re-render re-renders the CORRECT value instead of reverting it.
- *
- * Hydration safety: this returns null on the first render so the client's markup
- * matches the server's, then updates in an effect. Seeding state from the cookie
- * directly would be a hydration mismatch and React would patch it straight back.
- *
- * The mapping comes from the `wc_swap` cookie the vendor script populates:
- * triplets joined by "+..+" as [trackingNumber, originalNumber, keywordId, …].
- * Polling is bounded — the cookie appears once the vendor's round-trip finishes
- * (or immediately for a returning visitor), so there is no reason to watch
- * forever.
+ * Sources and their precedence live in ./whatconverts-swap — deliberately more
+ * than just the cookie, because a device where the cookie is unreadable is one of
+ * the shapes that produces "shows swapped, dials default".
  */
 
 export interface SwappedNumber {
@@ -43,40 +34,8 @@ export interface SwappedNumber {
   display: string;
   /** Dial target, e.g. `tel:773-364-1541`. */
   href: string;
-}
-
-const digitsOf = (value: string) => value.replace(/\D/g, '');
-
-/** 7733641541 → 773-364-1541, matching the format used sitewide. */
-function formatUs(digits: string): string {
-  return digits.length === 10
-    ? `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
-    : digits;
-}
-
-/**
- * Reads the tracking number that replaces `originalDisplay`. Returns null when
- * no pool number has been assigned — in which case the caller must keep showing
- * its own default, which is correct behaviour and not a failure.
- */
-function readSwap(originalDisplay: string): SwappedNumber | null {
-  if (typeof document === 'undefined') return null;
-  const raw = document.cookie.match(/(?:^|;\s*)wc_swap=([^;]*)/)?.[1];
-  if (!raw) return null;
-
-  const wanted = digitsOf(originalDisplay);
-  const parts = decodeURIComponent(raw).split('+..+');
-  for (let i = 0; i + 1 < parts.length; i += 3) {
-    const tracking = digitsOf(parts[i] ?? '');
-    const original = digitsOf(parts[i + 1] ?? '');
-    // Both must be complete. A blank would otherwise match anything and swap a
-    // number the pool never mapped.
-    if (tracking.length !== 10 || original.length !== 10) continue;
-    if (wanted && original !== wanted) continue;
-    const display = formatUs(tracking);
-    return { display, href: `tel:${display}` };
-  }
-  return null;
+  /** Which evidence source resolved it — surfaced by ?wcdebug=1. */
+  source: ResolvedSwap['source'];
 }
 
 export function useWhatConvertsNumber(originalDisplay: string): SwappedNumber | null {
@@ -87,20 +46,27 @@ export function useWhatConvertsNumber(originalDisplay: string): SwappedNumber | 
     let attempts = 0;
 
     const check = () => {
-      if (cancelled) return;
-      const next = readSwap(originalDisplay);
-      if (next) {
-        // Only set when the value actually changes, so this never loops.
-        setSwapped((prev) => (prev?.href === next.href ? prev : next));
-        return true;
-      }
-      return false;
+      if (cancelled) return true;
+      const resolved = resolveSwap(originalDisplay);
+      if (!resolved) return false;
+      const display = formatUs(resolved.pair.tracking);
+      const next: SwappedNumber = {
+        display,
+        href: `tel:${display}`,
+        source: resolved.source,
+      };
+      // Only set on change, so this can never loop.
+      setSwapped((prev) =>
+        prev?.href === next.href && prev?.source === next.source ? prev : next,
+      );
+      return true;
     };
 
     if (check()) return;
 
     // ~15s of polling: long enough for the vendor's number request on a slow
-    // mobile connection, short enough not to run for the life of the page.
+    // mobile connection, short enough not to run for the life of the page. Also
+    // gives the DOM-derived sources time to see the vendor's own swap land.
     const timer = window.setInterval(() => {
       attempts += 1;
       if (check() || attempts > 30) window.clearInterval(timer);
@@ -111,6 +77,16 @@ export function useWhatConvertsNumber(originalDisplay: string): SwappedNumber | 
       window.clearInterval(timer);
     };
   }, [originalDisplay]);
+
+  // Expose for ?wcdebug=1 without another render path.
+  if (typeof window !== 'undefined' && swapped) {
+    const diag = ((window as unknown as Record<string, unknown>).__wc ??= {}) as Record<
+      string,
+      unknown
+    >;
+    diag.reactNumber = swapped.display;
+    diag.reactSource = swapped.source;
+  }
 
   return swapped;
 }

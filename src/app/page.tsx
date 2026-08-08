@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ServiceCard from '@/components/ServiceCard';
 import ServicesAccordion from '@/components/ServicesAccordion';
 import HeroNav from '@/components/HeroNav';
@@ -101,9 +102,13 @@ export default async function HomePage() {
                   tags, and every property globals.css sets on h1 — font-display,
                   font-bold, tracking-tight, text colour — is restated inline here). */}
               <p className="font-display font-bold uppercase text-navy-800 text-[50px] leading-[1.05] tracking-tight max-[780px]:text-[26px]">
-                <Link href={settings.phoneHref} className="text-white hover:text-brand-400 transition-colors">
+                <PhoneLink
+                  href={settings.phoneHref}
+                  display={settings.phoneDisplay}
+                  className="text-white hover:text-brand-400 transition-colors"
+                >
                   {home.hero.headingCta}
-                </Link>
+                </PhoneLink>
               </p>
               <p className="font-display font-bold uppercase text-white text-[40px] leading-[1.1] tracking-tight mt-[15px] max-[1280px]:text-[30px] max-[780px]:text-[26px]">
                 {home.hero.headingTagline}
@@ -114,15 +119,24 @@ export default async function HomePage() {
               <p className="intro font-display font-medium text-white text-[22px] md:text-[30px] leading-[1.16] mb-7">
                 {home.hero.intro}
               </p>
-              <Link
+              {/* PhoneLink/PhoneNumber so React renders the WhatConverts tracking
+                  number rather than letting the vendor patch it in. This CTA was
+                  confirmed on iOS to DISPLAY the tracking number and DIAL the
+                  default one — the vendor swapped the text but the href did not
+                  hold. Markup is unchanged; only the anchor and the number text
+                  are now React-owned. */}
+              <PhoneLink
                 href={settings.phoneHref}
+                display={settings.phoneDisplay}
                 className="test-hero-contact inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold px-7 py-4 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors duration-150"
               >
                 <span className="w-5 h-5 mr-2.5 flex items-center justify-center">
                   <Phone className="h-5 w-5" strokeWidth={2.5} />
                 </span>
-                <span className="text-lg lg:text-xl tracking-wide">{settings.phoneDisplay}</span>
-              </Link>
+                <span className="text-lg lg:text-xl tracking-wide">
+                  <PhoneNumber value={settings.phoneDisplay} />
+                </span>
+              </PhoneLink>
             </div>
           </div>
         </div>

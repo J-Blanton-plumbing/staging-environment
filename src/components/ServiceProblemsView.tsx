@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PhoneLink, PhoneNumber } from './PhoneLink';
 import { Phone, Check } from 'lucide-react';
 import CharacterPanel from '@/components/CharacterPanel';
 import type { ResolvedBlockStyle } from '@/lib/cms/sub-service-blocks';
@@ -87,13 +88,14 @@ export default function ServiceProblemsView({
                 ))}
               </ul>
 
-              <Link
+              <PhoneLink
                 href={phoneHref}
+                display={phoneHref.replace(/^tel:/, '')}
                 className="link-button inline-flex items-center gap-2 bg-accent-500 hover:bg-brand-600 text-white font-display font-bold text-sm tracking-wider px-6 py-3.5 rounded-full transition-colors duration-150"
               >
                 <Phone className="h-4 w-4" strokeWidth={2.5} />
                 {ctaLabel}
-              </Link>
+              </PhoneLink>
             </div>
           </div>
         </CharacterPanel>

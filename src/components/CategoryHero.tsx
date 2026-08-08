@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
+import { PhoneLink, PhoneNumber } from './PhoneLink';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 
 interface Props {
@@ -52,13 +53,16 @@ export default async function CategoryHero({ image, heading, intro, cta }: Props
             {intro}
           </p>
           {cta ?? (
-            <Link
+            <PhoneLink
               href={settings.phoneHref}
+              display={settings.phoneDisplay}
               className="hero-link-button inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold h-[45px] px-[35px] rounded-[10px] transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" strokeWidth={2.5} />
-              <span className="text-base lg:text-lg tracking-wide">{settings.phoneDisplay}</span>
-            </Link>
+              <span className="text-base lg:text-lg tracking-wide">
+                <PhoneNumber value={settings.phoneDisplay} />
+              </span>
+            </PhoneLink>
           )}
         </div>
       </div>

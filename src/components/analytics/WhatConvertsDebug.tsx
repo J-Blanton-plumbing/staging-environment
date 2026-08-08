@@ -76,6 +76,20 @@ export default function WhatConvertsDebug() {
         ),
         wcLeads: typeof (window as unknown as Record<string, unknown>).$wc_leads,
         mapping: tracking && original ? `${original} -> ${tracking}` : '(no pool number assigned)',
+        // Which evidence source React resolved from. `cookie`/`localStorage` mean
+        // vendor storage was readable; `dom-href`/`dom-text` mean it was not and
+        // the number was read back off the page instead — the fallback that keeps
+        // the dial target correct on a device whose storage is restricted.
+        reactRenders: (diag?.reactNumber as string) ?? '(not resolved yet)',
+        reactSource: (diag?.reactSource as string) ?? '(none)',
+        cookieReadable: document.cookie.includes('wc_swap=') ? 'yes' : 'NO',
+        localStorageReadable: (() => {
+          try {
+            return window.localStorage.getItem('wc_swap') ? 'yes' : 'empty';
+          } catch {
+            return 'BLOCKED';
+          }
+        })(),
       });
 
       setRows(
