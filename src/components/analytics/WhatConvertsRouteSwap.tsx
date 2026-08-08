@@ -2,6 +2,13 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+import {
+  digitsOf,
+  formatUs,
+  knownPairs,
+  resolveSwap,
+  type SwapPair,
+} from '@/lib/whatconverts-swap';
 
 /**
  * Bumped by hand whenever this file changes, and surfaced by ?wcdebug=1. Its
@@ -9,7 +16,7 @@ import { useEffect, useRef } from 'react';
  * shipped, or a cached one?" — which is otherwise unanswerable remotely and cost
  * several rounds of misdiagnosis.
  */
-export const WC_DEBUG_BUILD = 'wc-5-react-owned';
+export const WC_DEBUG_BUILD = 'wc-6-dom-evidence';
 
 /**
  * Drives the WhatConverts number swap on this App Router site, and keeps it
@@ -55,7 +62,18 @@ export const WC_DEBUG_BUILD = 'wc-5-react-owned';
  * To exempt a number from swapping, give its element the vendor's `no-swap`
  * class; the DOM walker skips those subtrees.
  */
-export default function WhatConvertsRouteSwap({ src }: { src: string }) {
+export default function WhatConvertsRouteSwap({
+  src,
+  defaultDisplay,
+}: {
+  src: string;
+  /**
+   * The site's canonical phone number as rendered by the server. Needed so the
+   * DOM-derived fallback can tell "this anchor still holds the default" from
+   * "this anchor already holds a pool number".
+   */
+  defaultDisplay: string;
+}) {
   const pathname = usePathname();
   // Guards against two injections racing each other (e.g. the watchdog firing
   // while a navigation-triggered injection is still in flight).
@@ -103,37 +121,26 @@ export default function WhatConvertsRouteSwap({ src }: { src: string }) {
     // [trackingNumber, originalNumber, keywordId, …]. No mapping (no pool
     // number assigned for this visitor) means there is nothing to restore and
     // the watchdog stays inert.
-    const digitsOf = (value: string) => value.replace(/\D/g, '');
-
     /**
-     * The mapping the vendor itself cached, as [tracking, original] pairs.
-     * `wc_swap` holds triplets joined by "+..+":
-     * [trackingNumber, originalNumber, keywordId, …].
+     * Mappings available for repairing arbitrary tel: anchors.
+     *
+     * Storage first (the vendor writes both a cookie and localStorage), then
+     * whatever can be read back off the page. That DOM-derived fallback is what
+     * makes this work on a device where storage is restricted: the vendor's own
+     * swap of a rendered number becomes the evidence, so every remaining anchor
+     * — including the many server-rendered CTAs that React does not own — still
+     * gets the correct dial target. Without it, a page whose text was swapped but
+     * whose hrefs were not would keep dialling the default number, which is the
+     * confirmed field failure.
      */
-    const mappings = () => {
-      const raw = document.cookie.match(/(?:^|;\s*)wc_swap=([^;]*)/)?.[1];
-      if (!raw) return [] as Array<{ tracking: string; original: string }>;
-      const parts = decodeURIComponent(raw).split('+..+');
-      const pairs: Array<{ tracking: string; original: string }> = [];
-      for (let i = 0; i + 1 < parts.length; i += 3) {
-        const tracking = digitsOf(parts[i] ?? '');
-        const original = digitsOf(parts[i + 1] ?? '');
-        // Both must be full numbers. A blank here would make the `includes`
-        // checks below match everything and rewrite unrelated links.
-        if (tracking.length === 10 && original.length === 10) {
-          pairs.push({ tracking, original });
-        }
-      }
-      return pairs;
+    const mappings = (): SwapPair[] => {
+      const stored = knownPairs();
+      if (stored.length) return stored;
+      const resolved = defaultDisplay ? resolveSwap(defaultDisplay) : null;
+      return resolved ? [resolved.pair] : [];
     };
 
     const mappedOriginals = () => mappings().map((m) => m.original);
-
-    /** 7733641541 → 773-364-1541, matching the format used sitewide. */
-    const formatUs = (digits: string) =>
-      digits.length === 10
-        ? `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
-        : digits;
 
     /**
      * Repairs tel: anchors directly, instead of re-running the vendor script and
@@ -266,7 +273,7 @@ export default function WhatConvertsRouteSwap({ src }: { src: string }) {
       observer.disconnect();
       sweeps.forEach(window.clearTimeout);
     };
-  }, [pathname, src]);
+  }, [pathname, src, defaultDisplay]);
 
   return null;
 }

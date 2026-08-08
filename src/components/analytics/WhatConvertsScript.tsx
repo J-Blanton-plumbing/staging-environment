@@ -5,6 +5,7 @@ import {
 } from '@/lib/whatconverts';
 import WhatConvertsRouteSwap from './WhatConvertsRouteSwap';
 import WhatConvertsDebug from './WhatConvertsDebug';
+import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 
 /**
  * WhatConverts call tracking — the snippet the live WordPress theme carried in
@@ -42,14 +43,22 @@ import WhatConvertsDebug from './WhatConvertsDebug';
  * "inside the <body> tag". An App Router root layout cannot author <head>, so
  * the bootstrap takes the documented second option, ahead of all page markup.
  */
-export default function WhatConvertsScript() {
+export default async function WhatConvertsScript() {
   const config = getWhatConvertsConfig();
   if (!config.profileId) return null;
+
+  // `cache()`-deduped, so this shares the root layout's existing query rather
+  // than adding one. Needed so the DOM-derived fallback knows which number counts
+  // as "the default" on this page.
+  const settings = await getGlobalSettingsCached();
 
   return (
     <>
       <script dangerouslySetInnerHTML={{ __html: WHATCONVERTS_BOOTSTRAP }} />
-      <WhatConvertsRouteSwap src={whatConvertsScriptUrl(config)} />
+      <WhatConvertsRouteSwap
+        src={whatConvertsScriptUrl(config)}
+        defaultDisplay={settings.phoneDisplay}
+      />
       {/* Renders null unless the URL carries ?wcdebug=1 — a field diagnostic for
           device-specific swap failures that cannot be reproduced in a desktop
           browser. Remove once the iOS dial-target issue is closed out. */}
