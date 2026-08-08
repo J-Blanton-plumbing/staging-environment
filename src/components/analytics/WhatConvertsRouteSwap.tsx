@@ -84,16 +84,88 @@ export default function WhatConvertsRouteSwap({ src }: { src: string }) {
     // the watchdog stays inert.
     const digitsOf = (value: string) => value.replace(/\D/g, '');
 
-    const mappedOriginals = () => {
+    /**
+     * The mapping the vendor itself cached, as [tracking, original] pairs.
+     * `wc_swap` holds triplets joined by "+..+":
+     * [trackingNumber, originalNumber, keywordId, …].
+     */
+    const mappings = () => {
       const raw = document.cookie.match(/(?:^|;\s*)wc_swap=([^;]*)/)?.[1];
-      if (!raw) return [];
+      if (!raw) return [] as Array<{ tracking: string; original: string }>;
       const parts = decodeURIComponent(raw).split('+..+');
-      const originals: string[] = [];
+      const pairs: Array<{ tracking: string; original: string }> = [];
       for (let i = 0; i + 1 < parts.length; i += 3) {
+        const tracking = digitsOf(parts[i] ?? '');
         const original = digitsOf(parts[i + 1] ?? '');
-        if (original.length >= 10) originals.push(original);
+        // Both must be full numbers. A blank here would make the `includes`
+        // checks below match everything and rewrite unrelated links.
+        if (tracking.length === 10 && original.length === 10) {
+          pairs.push({ tracking, original });
+        }
       }
-      return originals;
+      return pairs;
+    };
+
+    const mappedOriginals = () => mappings().map((m) => m.original);
+
+    /** 7733641541 → 773-364-1541, matching the format used sitewide. */
+    const formatUs = (digits: string) =>
+      digits.length === 10
+        ? `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+        : digits;
+
+    /**
+     * Repairs tel: anchors directly, instead of re-running the vendor script and
+     * hoping it wins.
+     *
+     * This exists because of a confirmed production failure: on iOS the hero
+     * button rendered the tracking number while the header's icon-only call
+     * button still DIALLED 773-724-9272 — the visible text was swapped and the
+     * href was not. React owns that attribute; when it re-creates the element it
+     * writes `phoneHref` back from props, and the vendor script has already run
+     * its single pass and will not revisit it. Re-injecting the script is both
+     * slower (a network fetch) and unreliable (the same race can repeat), so the
+     * href is rewritten in place from the cached mapping instead. No network, no
+     * dependency on vendor internals, and it cannot lose to a re-render.
+     *
+     * The dialled number is the revenue-critical value: a reverted href sends the
+     * call to an untracked line and the lead is attributed to nothing, while the
+     * page still LOOKS correct. That asymmetry is exactly what made this hard to
+     * spot.
+     */
+    const repairTelAnchors = () => {
+      const pairs = mappings();
+      if (!pairs.length) return;
+      Array.from(document.querySelectorAll('a[href^="tel:"]')).forEach((anchor) => {
+        const href = anchor.getAttribute('href') ?? '';
+        const hrefDigits = digitsOf(href);
+        const hit = pairs.find((m) => hrefDigits.includes(m.original));
+        if (hit) anchor.setAttribute('href', `tel:${formatUs(hit.tracking)}`);
+
+        // The inverse case — href swapped, visible text reverted by hydration.
+        // Walks ALL descendant text nodes, not just direct children: several
+        // CTAs wrap the number in a <span> (CategoryHero, the mobile drawer), and
+        // a direct-children-only pass left those reading the original number.
+        // Still scoped to inside the anchor, so no unrelated body copy is touched.
+        const textNodes: Text[] = [];
+        const walker = document.createTreeWalker(anchor, NodeFilter.SHOW_TEXT);
+        for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+          textNodes.push(n as Text);
+        }
+        textNodes.forEach((node) => {
+          const text = node.nodeValue ?? '';
+          const textDigits = digitsOf(text);
+          const textHit = pairs.find((m) => textDigits.includes(m.original));
+          if (!textHit) return;
+          // Rebuild from the digits actually present so the on-screen separator
+          // style survives (773-724-9272 vs (773) 724-9272 vs 773.724.9272).
+          const pattern = new RegExp(
+            textHit.original.split('').join('[^0-9]?'),
+            'g',
+          );
+          node.nodeValue = text.replace(pattern, formatUs(textHit.tracking));
+        });
+      });
     };
 
     // Only the tel: anchors are checked — they are the elements that carry the
@@ -111,15 +183,21 @@ export default function WhatConvertsRouteSwap({ src }: { src: string }) {
       });
     };
 
+    // Repair immediately. For a visitor who already has a mapping cached this
+    // applies the swap synchronously, before the vendor script has even loaded.
+    repairTelAnchors();
+
     let queued = false;
     const observer = new MutationObserver(() => {
-      if (queued || injecting.current) return;
+      if (queued) return;
       queued = true;
-      // Coalesce a mutation burst (hydration, a route render) into one check.
+      // Coalesce a mutation burst (hydration, a route render) into one pass.
+      // repairTelAnchors mutates the DOM and so re-triggers this observer, but
+      // the second pass finds nothing left to fix and stops — no loop.
       setTimeout(() => {
         queued = false;
-        if (hasRevertedNumber()) inject();
-      }, 300);
+        if (hasRevertedNumber()) repairTelAnchors();
+      }, 150);
     });
     observer.observe(document.body, {
       childList: true,
@@ -128,15 +206,18 @@ export default function WhatConvertsRouteSwap({ src }: { src: string }) {
       attributeFilter: ['href'],
     });
 
-    // A single delayed sweep covers a revert that produces no further mutations
-    // after the observer is attached.
-    const sweep = window.setTimeout(() => {
-      if (hasRevertedNumber()) inject();
-    }, 1500);
+    // Belt and braces: React can reclaim an attribute at a moment that produces
+    // no observable mutation of its own, and the pool number may not arrive
+    // until the vendor script's round-trip completes. These sweeps cover both.
+    const sweeps = [300, 1200, 3000, 6000].map((delay) =>
+      window.setTimeout(() => {
+        if (hasRevertedNumber()) repairTelAnchors();
+      }, delay),
+    );
 
     return () => {
       observer.disconnect();
-      window.clearTimeout(sweep);
+      sweeps.forEach(window.clearTimeout);
     };
   }, [pathname, src]);
 
