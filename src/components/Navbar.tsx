@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Menu, X, Phone, CalendarDays } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ScheduleButton from './ScheduleButton';
+import { useWhatConvertsNumber } from '@/lib/useWhatConvertsNumber';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
 
 const TOP_NAV = [
@@ -30,6 +31,19 @@ const MOBILE_NAV = [
 
 export default function Navbar({ settings }: { settings: GlobalSettings }) {
   const [open, setOpen] = useState(false);
+
+  // React renders the WhatConverts tracking number itself instead of letting the
+  // vendor script patch it in afterwards. The header's icon-only call button was
+  // confirmed on iOS to DIAL the default number while the page displayed the
+  // tracking one: React reclaims an href it owns, and on iOS the dial target is
+  // resolved from the touch gesture, so no after-the-fact repair can win. Owning
+  // the value here means the href is already correct before any tap and a
+  // re-render re-renders the correct number rather than reverting it.
+  // Null until the pool number is known (or when none is assigned), in which
+  // case the canonical number below is the right thing to show.
+  const swapped = useWhatConvertsNumber(settings.phoneDisplay);
+  const phoneHref = swapped?.href ?? settings.phoneHref;
+  const phoneDisplay = swapped?.display ?? settings.phoneDisplay;
 
   return (
     <>
@@ -80,11 +94,11 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
                 that WhatConverts does dynamic number insertion, a second static
                 number here would just be a number DNI never swaps. */}
             <Link
-              href={settings.phoneHref}
+              href={phoneHref}
               className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-medium text-[1.05vw] min-[1525px]:text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
             >
               <Phone className="h-[22px] w-[22px] mr-1.5" strokeWidth={2.5} />
-              {settings.phoneDisplay}
+              {phoneDisplay}
             </Link>
 
             {/* SCHEDULE A SERVICE — involve.me popup trigger, BLUE */}
@@ -110,7 +124,7 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
             </Link>
             <div className="flex items-center gap-2">
               <Link
-                href={settings.phoneHref}
+                href={phoneHref}
                 aria-label="Call"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-white"
               >
@@ -178,10 +192,10 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
             {/* Phone CTA — inverted (white on Carmine) so it reads on the red drawer.
                 Uses the canonical `phone`, not the header tracking line. */}
             <Link
-              href={settings.phoneHref}
+              href={phoneHref}
               className="mt-5 w-full flex items-center justify-center gap-2 bg-white text-brand-600 font-display font-bold py-3.5 rounded text-sm tracking-wide"
             >
-              <Phone className="h-4 w-4" /> {settings.phoneDisplay}
+              <Phone className="h-4 w-4" /> {phoneDisplay}
             </Link>
             <ScheduleButton
               variant="blue"

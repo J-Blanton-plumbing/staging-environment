@@ -9,7 +9,7 @@ import { useEffect, useRef } from 'react';
  * shipped, or a cached one?" — which is otherwise unanswerable remotely and cost
  * several rounds of misdiagnosis.
  */
-export const WC_DEBUG_BUILD = 'wc-4-click-capture';
+export const WC_DEBUG_BUILD = 'wc-5-react-owned';
 
 /**
  * Drives the WhatConverts number swap on this App Router site, and keeps it
@@ -238,25 +238,20 @@ export default function WhatConvertsRouteSwap({ src }: { src: string }) {
       attributeFilter: ['href'],
     });
 
-    // Last line of defence, and the only one whose timing is guaranteed: repair
-    // during the CAPTURE phase of a click on any tel: link, before the browser
-    // reads the href to place the call. The observer and sweeps below close the
-    // window to ~150ms, but "small window" is not good enough for the dialled
-    // number — this makes it zero. The browser resolves the default action after
-    // event dispatch finishes, so an href rewritten here is the one that dials.
+    // DELIBERATELY NO click-time or touch-time repair.
     //
-    // Deliberately passive: it never calls preventDefault and never returns
-    // false, so the link keeps behaving like a link. An earlier debugging
-    // iteration hung a preventDefault on this element and killed the second tap;
-    // that must not happen to a real visitor.
-    const onClickCapture = (event: Event) => {
-      const target = event.target as Element | null;
-      if (target?.closest?.('a[href^="tel:"]')) repairTelAnchors();
-    };
-    document.addEventListener('click', onClickCapture, true);
-    // iOS can commit to a tel: navigation off the touch sequence, so repair on
-    // first contact too rather than waiting for the synthesized click.
-    document.addEventListener('touchstart', onClickCapture, true);
+    // An earlier version repaired during the capture phase of click/touchstart, on
+    // the assumption that a browser resolves a link's target after event dispatch
+    // completes. That holds on desktop but NOT on iOS Safari, which commits to a
+    // tel: target from the touch gesture itself. So the repair landed too late to
+    // change what was actually dialled — matching the report that the button
+    // displayed the tracking number and dialled the default one — and mutating an
+    // href mid-gesture is the best available explanation for the other symptom:
+    // tap once, cancel, and the button no longer responds.
+    //
+    // The header number is now RENDERED correct by React instead
+    // (@/lib/useWhatConvertsNumber), so there is nothing left to fix at tap time.
+    // Every repair below runs well before any tap.
 
     // Belt and braces: React can reclaim an attribute at a moment that produces
     // no observable mutation of its own, and the pool number may not arrive
@@ -270,12 +265,6 @@ export default function WhatConvertsRouteSwap({ src }: { src: string }) {
     return () => {
       observer.disconnect();
       sweeps.forEach(window.clearTimeout);
-      // Must be removed. The effect re-runs on every pathname change, so leaking
-      // these would stack one pair of listeners per navigation — the same
-      // unbounded accumulation that made the old re-injecting watchdog degrade
-      // the page until taps stopped registering.
-      document.removeEventListener('click', onClickCapture, true);
-      document.removeEventListener('touchstart', onClickCapture, true);
     };
   }, [pathname, src]);
 
