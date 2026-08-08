@@ -35,6 +35,39 @@ jobs:
             # look for its build in the wrong place) while the live `.next` keeps
             # serving untouched. If the build fails, `set -e` aborts here and the
             # old version just keeps running.
+            # Marketing / conversion tracking IDs (2026-08-08).
+            #
+            # These MUST be exported into the shell that runs `next build`:
+            # NEXT_PUBLIC_* values are inlined into the client bundle at BUILD
+            # time, so setting one at runtime (or restarting pm2) does nothing.
+            #
+            # They live here, in version control, rather than in the box's env
+            # file because that file is untracked and invisible from anywhere but
+            # the box — which is exactly how the site went live with EVERY one of
+            # these blank. GA4, Google Ads, Meta Pixel, Bing UET and WhatConverts
+            # were all dark on production, verified against
+            # https://jblantonplumbing.com on 2026-08-08, long after Brief 128
+            # shipped the code that expects them. Nothing warned anyone, because
+            # blank is a deliberate no-op in that code.
+            #
+            # Safe to commit: every value below is a PUBLIC client-side ID that
+            # ships inside the browser bundle and was readable in the old
+            # WordPress page source. Real secrets stay in GitHub Secrets.
+            #
+            # These are the same IDs the live WordPress site used, so GA4
+            # history, Ads conversion actions and Meta/Bing audiences reconnect
+            # rather than starting over.
+            #
+            # ⚠️ This workflow deploys to exactly ONE host. If a second (staging)
+            # target is ever added it must NOT inherit these — give it its own
+            # workflow with them left blank, or staging traffic lands in the
+            # production analytics accounts and burns numbers out of the live
+            # WhatConverts pool.
+            export NEXT_PUBLIC_GA4_ID=G-SQZLV0V58J
+            export NEXT_PUBLIC_GOOGLE_ADS_ID=AW-661617195
+            export NEXT_PUBLIC_META_PIXEL_ID=1674876326613103
+            export NEXT_PUBLIC_BING_UET_ID=97007877
+            export NEXT_PUBLIC_WHATCONVERTS_PROFILE_ID=102905
             rm -rf .next-build .next-prev
             NEXT_DIST_DIR=.next-build npm run build
             # Apply idempotent DB schema migrations BEFORE restarting, so the
