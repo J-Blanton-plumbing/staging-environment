@@ -4,6 +4,7 @@ import {
   whatConvertsScriptUrl,
 } from '@/lib/whatconverts';
 import WhatConvertsRouteSwap from './WhatConvertsRouteSwap';
+import WhatConvertsDebug from './WhatConvertsDebug';
 
 /**
  * WhatConverts call tracking — the snippet the live WordPress theme carried in
@@ -49,6 +50,10 @@ export default function WhatConvertsScript() {
     <>
       <script dangerouslySetInnerHTML={{ __html: WHATCONVERTS_BOOTSTRAP }} />
       <WhatConvertsRouteSwap src={whatConvertsScriptUrl(config)} />
+      {/* Renders null unless the URL carries ?wcdebug=1 — a field diagnostic for
+          device-specific swap failures that cannot be reproduced in a desktop
+          browser. Remove once the iOS dial-target issue is closed out. */}
+      <WhatConvertsDebug />
     </>
   );
 }
