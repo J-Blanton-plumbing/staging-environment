@@ -53,11 +53,11 @@ export default async function CategoryHero({ image, heading, intro, cta }: Props
           </p>
           {cta ?? (
             <Link
-              href={settings.headerPhoneHref}
+              href={settings.phoneHref}
               className="hero-link-button inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold h-[45px] px-[35px] rounded-[10px] transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" strokeWidth={2.5} />
-              <span className="text-base lg:text-lg tracking-wide">{settings.headerPhone}</span>
+              <span className="text-base lg:text-lg tracking-wide">{settings.phoneDisplay}</span>
             </Link>
           )}
         </div>

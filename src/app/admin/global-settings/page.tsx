@@ -370,7 +370,7 @@ export default function GlobalSettingsPage() {
             <input style={s} value={form.phoneHref} onChange={e => set('phoneHref', e.target.value)} placeholder="tel:773-724-9272" />
           </div>
           <div>
-            <label style={labelStyle}>Header Phone (call-tracking number — navbar only)</label>
+            <label style={labelStyle}>Header Phone — NOT USED (WhatConverts swaps the number above)</label>
             <input style={s} value={form.headerPhone} onChange={e => set('headerPhone', e.target.value)} placeholder="773-900-8690" />
           </div>
           <div>

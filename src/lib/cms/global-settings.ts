@@ -13,9 +13,14 @@ export interface GlobalSettings {
   id: number;
   phoneDisplay: string;
   phoneHref: string;
-  /** Call-tracking number shown ONLY in the navbar header (see SITE.headerPhone). */
+  /**
+   * DEPRECATED, and no longer read by any component. WhatConverts DNI now swaps
+   * the canonical `phoneDisplay` sitewide, so the header shows that number too.
+   * The column and this field survive only so existing rows and the admin form
+   * keep round-tripping; see SITE.headerPhone.
+   */
   headerPhone: string;
-  /** tel: link for the header number — derived from headerPhone. */
+  /** DEPRECATED — derived from headerPhone, and likewise unrendered. */
   headerPhoneHref: string;
   ctaPrimaryLabel: string;
   taglineTurning: string;

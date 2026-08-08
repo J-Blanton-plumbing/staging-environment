@@ -75,13 +75,16 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
               </Link>
             ))}
 
-            {/* Phone — uses the call-tracking headerPhone (Global Settings → DB) */}
+            {/* Phone — the canonical number, same as everywhere else on the site.
+                This used to render the hardcoded `headerPhone` tracking line; now
+                that WhatConverts does dynamic number insertion, a second static
+                number here would just be a number DNI never swaps. */}
             <Link
-              href={settings.headerPhoneHref}
+              href={settings.phoneHref}
               className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-medium text-[1.05vw] min-[1525px]:text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
             >
               <Phone className="h-[22px] w-[22px] mr-1.5" strokeWidth={2.5} />
-              {settings.headerPhone}
+              {settings.phoneDisplay}
             </Link>
 
             {/* SCHEDULE A SERVICE — involve.me popup trigger, BLUE */}
@@ -107,7 +110,7 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
             </Link>
             <div className="flex items-center gap-2">
               <Link
-                href={settings.headerPhoneHref}
+                href={settings.phoneHref}
                 aria-label="Call"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-white"
               >

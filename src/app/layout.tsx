@@ -8,6 +8,7 @@ import SiteShell from '@/components/SiteShell';
 import InvolveMeScript from '@/components/InvolveMeScript';
 import InvolveMePopupBinder from '@/components/InvolveMePopupBinder';
 import SiteAnalytics from '@/components/analytics/SiteAnalytics';
+import WhatConvertsScript from '@/components/analytics/WhatConvertsScript';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
 import { BRAND_SUFFIX, CANONICAL_BASE, TITLE_TEMPLATE, canonicalUrlFor, normalizePath } from '@/lib/seo';
@@ -94,6 +95,12 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${industry.variable} ${nunito.variable}`}>
       <body className="flex min-h-screen flex-col">
+        {/* WhatConverts call tracking / dynamic number insertion. FIRST child of
+            <body> on purpose: the vendor wants it as early in the document as
+            possible, and its inline bootstrap has to snapshot the entry URL and
+            referrer before anything else runs. Env-gated — blank profile ID
+            renders nothing. */}
+        <WhatConvertsScript />
         <SiteShell settings={settings}>{children}</SiteShell>
         {/* Scroll entrance animations — adds .in-view once elements cross viewport.
             Runs after page load; respects prefers-reduced-motion (CSS handles that). */}

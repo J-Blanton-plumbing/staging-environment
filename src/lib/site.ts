@@ -12,11 +12,18 @@ export const SITE = {
   phone: '773-724-9272',
   phoneHref: 'tel:773-724-9272',
 
-  // Call-tracking number — used ONLY in the navbar header display + its tel: link.
-  // This is intentionally DIFFERENT from `phone` above: it is a tracking line that
-  // routes through call-attribution, matching what the live site shows in its header.
-  // Do not "correct" these to match `phone` — the divergence is on purpose, and keeping
-  // them as two named variables lets us swap either number from one place.
+  // DEPRECATED — no longer rendered anywhere. This was a hardcoded call-tracking
+  // line shown only in the navbar header, back when call attribution meant
+  // baking a second static number into the markup.
+  //
+  // WhatConverts now does dynamic number insertion sitewide (src/lib/whatconverts.ts):
+  // it rewrites the canonical `phone` above into a per-visitor tracking number at
+  // runtime. A second hardcoded number defeats that — DNI is configured to swap
+  // `phone`, so anything else on the page is simply a number that never gets
+  // attributed. Marketing's call (2026-08-08): 773-724-9272 everywhere, all places.
+  //
+  // Kept as a named constant only so the DB fallback below still type-checks;
+  // remove both once the `global_settings.header_phone` column is dropped.
   headerPhone: '773-900-8690',
   headerPhoneHref: 'tel:773-900-8690',
 
