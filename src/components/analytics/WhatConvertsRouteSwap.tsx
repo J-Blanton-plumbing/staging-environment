@@ -4,67 +4,140 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 /**
- * Re-applies WhatConverts' number swap after client-side navigations.
+ * Drives the WhatConverts number swap on this App Router site, and keeps it
+ * applied. Everything here exists because the vendor script assumes a classic
+ * multi-page site and this is a hydrated SPA.
  *
- * WHY THIS IS NEEDED — the vendor script (`<host>/<profile>.js`) swaps numbers
- * exactly once, on DOM ready: it walks `document.body` recursively and rewrites
- * matching text nodes plus `href`/`title`/`data-actions` attributes. Inspecting
- * the shipped script confirms it installs NO MutationObserver and NO
- * `pushState`/`popstate` hook. That was fine on WordPress, where every page was
- * a full document load, but this site is an App Router SPA: after a <Link>
- * navigation React mounts fresh markup containing the ORIGINAL number from
- * Global Settings, and nothing swaps it back. Only the very first page a
- * visitor landed on would ever be tracked.
+ * THREE PROBLEMS IT SOLVES.
  *
- * WHY RE-INJECTING THE SCRIPT IS THE RIGHT FIX. The swap routine is a closure
- * with no exported handle, so it cannot be called directly, and re-deriving the
- * mapping ourselves would mean reimplementing the vendor's number-format regex
- * against an undocumented cookie layout. Re-running the script is safe here,
- * which the shipped source bears out:
- *   - It is idempotent for beacons. The one-time reporting POST is guarded by
- *     profile-keyed globals (`…_102905`) that persist across re-executions.
- *   - It does not burn pool numbers. Once the `wc_swap` cookie exists it
- *     re-applies the cached original→tracking mapping with no network call.
- *   - It does not double-bind lead tracking. Its `form_init()` always
- *     `removeEventListener`s a handler before re-adding it, and the script
- *     already re-runs `form_init()` on every document click by design.
- * Known cost: each re-execution adds one more anonymous document-level `click`
- * listener that calls the (idempotent) `form_init()`. It is bounded by
- * navigations in a session and each call is cheap, so we accept it rather than
- * fork the vendor's swap logic.
+ * 1. Hydration undoing the swap (the revenue-critical one). The vendor script
+ *    mutates the DOM on DOMContentLoaded. React then hydrates, compares the live
+ *    DOM against the server-rendered HTML, and on a TEXT mismatch patches the
+ *    node back to the server value — i.e. straight back to the default number.
+ *    Whether that happens is a pure race: with the script cached and the mapping
+ *    already in the `wc_swap` cookie the swap lands early and loses. That is the
+ *    reported "swaps, then swaps back to default". So the script is injected
+ *    from an effect, which React only runs AFTER hydration has committed — the
+ *    swap can no longer be overwritten by it. The cost is that the default
+ *    number is briefly visible, which is inherent to any DNI setup.
  *
- * The effect runs after React commits, so the new page's markup — and its
- * unswapped numbers — is already in the DOM when the script re-scans it.
+ * 2. Client-side navigation. The vendor script swaps exactly once and installs
+ *    no MutationObserver and no pushState/popstate hook (verified by reading the
+ *    shipped source). After a <Link> navigation React mounts fresh markup
+ *    carrying the original number and nothing swaps it, so only the landing page
+ *    would ever be tracked. Hence the re-injection on every pathname change.
  *
- * NOTE: `$wc_leads` is intentionally NOT refreshed on navigation. It is a
- * frozen snapshot of the entry URL and referrer, which is what attribution
- * should be credited to. See WHATCONVERTS_BOOTSTRAP in src/lib/whatconverts.ts.
+ * 3. Anything else that resurfaces the original number — a re-render, a cached
+ *    RSC tree restored on back-navigation (this app runs the `staleTimes`
+ *    experiment), a late-mounting section. The watchdog below catches those
+ *    without needing to know why they happened.
  *
- * To keep a specific number from ever being swapped, give its element the
- * vendor's `no-swap` class — the DOM walker skips those subtrees.
+ * WHY RE-INJECTING IS SAFE, from the vendor source: the one-time reporting
+ * beacon is guarded by profile-keyed globals (`…_102905`) that persist across
+ * executions; once the `wc_swap` cookie exists a repeat run re-applies the
+ * cached mapping with no network call, so no extra pool number is consumed; and
+ * `form_init()` always removeEventListener's a handler before re-adding it.
+ * Known cost: one extra anonymous document `click` listener per injection,
+ * each calling the idempotent `form_init()`.
+ *
+ * `$wc_leads` is deliberately NOT refreshed — it is a frozen snapshot of the
+ * entry URL and referrer, which is what a lead should be credited to. See
+ * WHATCONVERTS_BOOTSTRAP in src/lib/whatconverts.ts.
+ *
+ * To exempt a number from swapping, give its element the vendor's `no-swap`
+ * class; the DOM walker skips those subtrees.
  */
 export default function WhatConvertsRouteSwap({ src }: { src: string }) {
   const pathname = usePathname();
-  // The initial page load is already covered by the tags rendered into the
-  // document itself; only subsequent navigations need a re-scan.
-  const isFirstRender = useRef(true);
+  // Guards against two injections racing each other (e.g. the watchdog firing
+  // while a navigation-triggered injection is still in flight).
+  const injecting = useRef(false);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    const inject = () => {
+      if (injecting.current) return;
+      injecting.current = true;
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.setAttribute('data-wc-reswap', '');
+      const done = () => {
+        injecting.current = false;
+        // Drop the tag so a long session doesn't accumulate a dead <script>
+        // node per navigation. The code has already executed by now.
+        script.remove();
+      };
+      script.addEventListener('load', done);
+      script.addEventListener('error', done);
+      document.head.appendChild(script);
+    };
 
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    script.setAttribute('data-wc-reswap', '');
-    // The script has executed by the time either fires; drop the tag so a long
-    // session doesn't accumulate one dead <script> node per navigation.
-    const remove = () => script.remove();
-    script.addEventListener('load', remove);
-    script.addEventListener('error', remove);
-    document.head.appendChild(script);
+    // Runs after hydration commits on first mount, and after React has painted
+    // the new page on every subsequent navigation.
+    inject();
+
+    // ── Watchdog ────────────────────────────────────────────────────────────
+    // Re-swaps if the original number ever reappears. Reads the mapping the
+    // vendor itself cached: `wc_swap` holds triplets joined by "+..+" as
+    // [trackingNumber, originalNumber, keywordId, …]. No mapping (no pool
+    // number assigned for this visitor) means there is nothing to restore and
+    // the watchdog stays inert.
+    const digitsOf = (value: string) => value.replace(/\D/g, '');
+
+    const mappedOriginals = () => {
+      const raw = document.cookie.match(/(?:^|;\s*)wc_swap=([^;]*)/)?.[1];
+      if (!raw) return [];
+      const parts = decodeURIComponent(raw).split('+..+');
+      const originals: string[] = [];
+      for (let i = 0; i + 1 < parts.length; i += 3) {
+        const original = digitsOf(parts[i + 1] ?? '');
+        if (original.length >= 10) originals.push(original);
+      }
+      return originals;
+    };
+
+    // Only the tel: anchors are checked — they are the elements that carry the
+    // number, and there are a handful, so this stays cheap enough to run on
+    // every mutation batch. Both the href and the visible text are inspected:
+    // React's hydration patches TEXT but leaves attributes alone, so a revert
+    // can show up in one and not the other.
+    const hasRevertedNumber = () => {
+      const originals = mappedOriginals();
+      if (!originals.length) return false;
+      return Array.from(document.querySelectorAll('a[href^="tel:"]')).some((anchor) => {
+        const href = digitsOf(anchor.getAttribute('href') ?? '');
+        const text = digitsOf(anchor.textContent ?? '');
+        return originals.some((o) => href.includes(o) || text.includes(o));
+      });
+    };
+
+    let queued = false;
+    const observer = new MutationObserver(() => {
+      if (queued || injecting.current) return;
+      queued = true;
+      // Coalesce a mutation burst (hydration, a route render) into one check.
+      setTimeout(() => {
+        queued = false;
+        if (hasRevertedNumber()) inject();
+      }, 300);
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributeFilter: ['href'],
+    });
+
+    // A single delayed sweep covers a revert that produces no further mutations
+    // after the observer is attached.
+    const sweep = window.setTimeout(() => {
+      if (hasRevertedNumber()) inject();
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(sweep);
+    };
   }, [pathname, src]);
 
   return null;
