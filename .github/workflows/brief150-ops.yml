@@ -80,6 +80,11 @@ jobs:
       # .env.local is ignored. This phase proves it (MATCH/MISMATCH between the
       # file's secret and the process environ — values never printed), then
       # restarts pm2 from a shell holding the NEW env and re-verifies.
+      # Written to survive the drone-ssh failure mode both red runs showed:
+      # when the remote script exits non-zero, the output TAIL is dropped and
+      # the log ends mid-script with no reason shown. So: script_stop off,
+      # set +e, every probe prints a marker, the script ALWAYS exits 0, and
+      # success is judged from the printed VERDICT/DONE markers, not the code.
       - name: Verify + fix the process env (phase verify-secret)
         if: ${{ contains(github.event.head_commit.message, '[phase:verify-secret]') }}
         uses: appleboy/ssh-action@v1.0.0
@@ -87,52 +92,63 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script_stop: true
+          script_stop: false
           script: |
-            set -e
+            set +e
             exec 2>&1
-            cd /var/www/jblanton
-            check_env_match() {
-              FILE_SECRET=$(grep -E '^CMS_SESSION_SECRET=' .env.local | head -1 | cut -d= -f2-)
-              PID=$(pgrep -f 'next-server' | head -1)
-              if [ -z "$PID" ]; then PID=$(pgrep -fo 'next start' | head -1); fi
-              echo "serving process pid: $PID ($(ps -o etime= -p "$PID" | tr -d ' ') up)"
-              PROC_SECRET=$(tr '\0' '\n' < "/proc/$PID/environ" | grep -E '^CMS_SESSION_SECRET=' | head -1 | cut -d= -f2-) || PROC_SECRET=''
-              if [ -z "$PROC_SECRET" ]; then
-                echo 'process environ carries NO CMS_SESSION_SECRET (Next loaded it from .env.local at boot)'
-                return 0
-              elif [ "$FILE_SECRET" = "$PROC_SECRET" ]; then
-                echo 'MATCH: process environ secret == .env.local secret'
-                return 0
-              else
-                echo 'MISMATCH: process environ carries a DIFFERENT (stale) CMS_SESSION_SECRET than .env.local'
-                return 1
-              fi
-            }
+            cd /var/www/jblanton || echo 'cd failed'
             echo '=== diagnosis ==='
-            if check_env_match; then
-              echo 'no remediation needed'
-              exit 0
-            fi
-            echo ''
-            echo '=== remediation: pm2 restart from a shell holding the CURRENT .env.local ==='
-            set -a; . ./.env.local; set +a
-            pm2 restart jblanton --update-env
-            sleep 8
-            echo ''
-            echo '=== re-check ==='
-            if check_env_match; then
-              echo 'remediation OK — process now runs with the rotated secret'
+            FILE_SECRET=$(grep -E '^CMS_SESSION_SECRET=' .env.local 2>&1 | head -1 | cut -d= -f2-)
+            echo "file secret present: $([ -n "$FILE_SECRET" ] && echo yes || echo NO), length ${#FILE_SECRET}"
+            echo '--- processes matching next:'
+            pgrep -af 'next' 2>&1 | head -5
+            PID=$(pgrep -f 'next-server' 2>/dev/null | head -1)
+            [ -z "$PID" ] && PID=$(pgrep -fo 'next start' 2>/dev/null | head -1)
+            echo "chosen pid: ${PID:-none}"
+            PROC_SECRET=$(sudo cat "/proc/$PID/environ" 2>&1 | tr '\0' '\n' | grep -E '^CMS_SESSION_SECRET=' | head -1 | cut -d= -f2-)
+            echo "proc environ secret present: $([ -n "$PROC_SECRET" ] && echo yes || echo NO), length ${#PROC_SECRET}"
+            echo '--- pm2 saved env (names only):'
+            pm2 env 1 2>&1 | grep -oE '^[A-Za-z0-9_]+' | sort | head -40
+            if [ -z "$PROC_SECRET" ]; then
+              echo 'VERDICT: PROC-HAS-NONE (Next loaded .env.local at boot; rotation should be live)'
+              NEED_FIX=0
+            elif [ "$FILE_SECRET" = "$PROC_SECRET" ]; then
+              echo 'VERDICT: MATCH (process already runs the rotated secret)'
+              NEED_FIX=0
             else
-              echo 'STILL MISMATCHED after restart --update-env; forcing delete + start from the sourced shell'
-              pm2 delete jblanton
-              pm2 start ecosystem.config.js
-              pm2 save
-              sleep 8
-              check_env_match || { echo 'STILL stale after delete+start — manual investigation needed'; exit 1; }
-              echo 'remediation OK after delete+start'
+              echo 'VERDICT: MISMATCH (process carries a stale CMS_SESSION_SECRET)'
+              NEED_FIX=1
             fi
-            curl -s -o /dev/null -w 'localhost:3000/ -> %{http_code}\n' http://localhost:3000/
+            if [ "$NEED_FIX" = "1" ]; then
+              echo ''
+              echo '=== remediation: pm2 restart from a shell holding the CURRENT .env.local ==='
+              set -a; . ./.env.local; set +a
+              pm2 restart jblanton --update-env 2>&1 | tail -3
+              sleep 8
+              PID=$(pgrep -f 'next-server' 2>/dev/null | head -1)
+              [ -z "$PID" ] && PID=$(pgrep -fo 'next start' 2>/dev/null | head -1)
+              PROC_SECRET=$(sudo cat "/proc/$PID/environ" 2>&1 | tr '\0' '\n' | grep -E '^CMS_SESSION_SECRET=' | head -1 | cut -d= -f2-)
+              if [ "$FILE_SECRET" = "$PROC_SECRET" ] || [ -z "$PROC_SECRET" ]; then
+                echo 'RECHECK: fixed — process now runs with the rotated secret'
+              else
+                echo 'RECHECK: STILL STALE — escalating to pm2 delete + start'
+                pm2 delete jblanton 2>&1 | tail -1
+                pm2 start ecosystem.config.js 2>&1 | tail -1
+                pm2 save 2>&1 | tail -1
+                sleep 8
+                PID=$(pgrep -f 'next-server' 2>/dev/null | head -1)
+                PROC_SECRET=$(sudo cat "/proc/$PID/environ" 2>&1 | tr '\0' '\n' | grep -E '^CMS_SESSION_SECRET=' | head -1 | cut -d= -f2-)
+                if [ "$FILE_SECRET" = "$PROC_SECRET" ] || [ -z "$PROC_SECRET" ]; then
+                  echo 'RECHECK-2: fixed after delete+start'
+                else
+                  echo 'RECHECK-2: STILL STALE — manual investigation needed'
+                fi
+              fi
+            fi
+            echo ''
+            curl -s -o /dev/null -w 'localhost:3000/ -> %{http_code}\n' --max-time 30 http://localhost:3000/
+            echo 'DONE (verify-secret sentinel)'
+            exit 0
 
       - name: Rotate secrets (env edits only — NO restart, NO rebuild)
         if: ${{ contains(github.event.head_commit.message, '[phase:rotate]') }}
