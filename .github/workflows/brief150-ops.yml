@@ -71,6 +71,69 @@ jobs:
             set -e
             echo 'preflight complete'
 
+      # The post-deploy check found the running process still honouring the
+      # pre-rotation session secret: a session cookie minted BEFORE the rotation
+      # kept validating AFTER the deploy's pm2 reload. Hypothesis: pm2's saved
+      # process environment (snapshotted from a deploy shell that had sourced
+      # the old .env.local) is re-injected at exec time, and Next's env loader
+      # never overrides an already-set process var — so the rotated value in
+      # .env.local is ignored. This phase proves it (MATCH/MISMATCH between the
+      # file's secret and the process environ — values never printed), then
+      # restarts pm2 from a shell holding the NEW env and re-verifies.
+      - name: Verify + fix the process env (phase verify-secret)
+        if: ${{ contains(github.event.head_commit.message, '[phase:verify-secret]') }}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: true
+          script: |
+            set -e
+            exec 2>&1
+            cd /var/www/jblanton
+            check_env_match() {
+              FILE_SECRET=$(grep -E '^CMS_SESSION_SECRET=' .env.local | head -1 | cut -d= -f2-)
+              PID=$(pgrep -f 'next-server' | head -1)
+              if [ -z "$PID" ]; then PID=$(pgrep -fo 'next start' | head -1); fi
+              echo "serving process pid: $PID ($(ps -o etime= -p "$PID" | tr -d ' ') up)"
+              PROC_SECRET=$(tr '\0' '\n' < "/proc/$PID/environ" | grep -E '^CMS_SESSION_SECRET=' | head -1 | cut -d= -f2-) || PROC_SECRET=''
+              if [ -z "$PROC_SECRET" ]; then
+                echo 'process environ carries NO CMS_SESSION_SECRET (Next loaded it from .env.local at boot)'
+                return 0
+              elif [ "$FILE_SECRET" = "$PROC_SECRET" ]; then
+                echo 'MATCH: process environ secret == .env.local secret'
+                return 0
+              else
+                echo 'MISMATCH: process environ carries a DIFFERENT (stale) CMS_SESSION_SECRET than .env.local'
+                return 1
+              fi
+            }
+            echo '=== diagnosis ==='
+            if check_env_match; then
+              echo 'no remediation needed'
+              exit 0
+            fi
+            echo ''
+            echo '=== remediation: pm2 restart from a shell holding the CURRENT .env.local ==='
+            set -a; . ./.env.local; set +a
+            pm2 restart jblanton --update-env
+            sleep 8
+            echo ''
+            echo '=== re-check ==='
+            if check_env_match; then
+              echo 'remediation OK — process now runs with the rotated secret'
+            else
+              echo 'STILL MISMATCHED after restart --update-env; forcing delete + start from the sourced shell'
+              pm2 delete jblanton
+              pm2 start ecosystem.config.js
+              pm2 save
+              sleep 8
+              check_env_match || { echo 'STILL stale after delete+start — manual investigation needed'; exit 1; }
+              echo 'remediation OK after delete+start'
+            fi
+            curl -s -o /dev/null -w 'localhost:3000/ -> %{http_code}\n' http://localhost:3000/
+
       - name: Rotate secrets (env edits only — NO restart, NO rebuild)
         if: ${{ contains(github.event.head_commit.message, '[phase:rotate]') }}
         uses: appleboy/ssh-action@v1.0.0
