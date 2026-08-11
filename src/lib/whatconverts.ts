@@ -31,6 +31,25 @@
  */
 const DEFAULT_HOST = 's.ksrndkehqnwntyxlhgto.com';
 
+/**
+ * The live WhatConverts profile, used whenever the env var is unset.
+ *
+ * Default flipped 2026-08-11. Previously blank meant "off", so that a staging box
+ * could never consume numbers from the live pool. When the compromised live site
+ * was replaced by the staging environment in an emergency, that box had no env
+ * vars — so call tracking went dark on the real site and every call came back
+ * unattributed. The safeguard was protecting an environment that no longer existed.
+ *
+ * ⚠️ A future staging environment must set NEXT_PUBLIC_TRACKING_DISABLED=1 (and
+ * rebuild), or it will check out numbers from the live pool. With a small pool that
+ * can leave REAL visitors seeing the untracked default number.
+ */
+const PRODUCTION_PROFILE_ID = '102905';
+
+/** Single explicit off switch, shared with src/lib/analytics.ts. */
+const TRACKING_DISABLED =
+  (process.env.NEXT_PUBLIC_TRACKING_DISABLED ?? '').trim() === '1';
+
 export interface WhatConvertsConfig {
   /** Numeric profile ID, e.g. `102905`. Blank = WhatConverts off. */
   profileId: string;
@@ -54,14 +73,18 @@ export function getWhatConvertsConfig(): WhatConvertsConfig {
   const rawId = (process.env.NEXT_PUBLIC_WHATCONVERTS_PROFILE_ID ?? '').trim();
   const rawHost = (process.env.NEXT_PUBLIC_WHATCONVERTS_HOST ?? '').trim().toLowerCase();
 
-  let profileId = '';
-  if (rawId) {
+  // Unset/blank now means "use the live profile", not "off". Switching call
+  // tracking off is done with NEXT_PUBLIC_TRACKING_DISABLED=1.
+  let profileId = TRACKING_DISABLED ? '' : PRODUCTION_PROFILE_ID;
+  if (rawId && !TRACKING_DISABLED) {
     if (PROFILE_ID_PATTERN.test(rawId)) {
       profileId = rawId;
     } else {
       console.warn(
         `[whatconverts] Ignoring NEXT_PUBLIC_WHATCONVERTS_PROFILE_ID="${rawId}" — ` +
-          'expected digits only (e.g. 102905). Call tracking will not load.',
+          `expected digits only (e.g. 102905). Falling back to the live profile ` +
+          `${PRODUCTION_PROFILE_ID}. To switch call tracking OFF, set ` +
+          'NEXT_PUBLIC_TRACKING_DISABLED=1 instead.',
       );
     }
   }

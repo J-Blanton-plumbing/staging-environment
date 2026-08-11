@@ -1,26 +1,46 @@
 /**
- * Analytics & conversion tracking config (Brief 128).
+ * Analytics & conversion tracking config (Brief 128, revised 2026-08-11).
  *
- * HARD RULE (brief-128): every tracking ID comes from environment config — never
- * a hardcoded literal, and never derived from the request hostname. When an ID's
- * env var is blank, that platform's tag must not load and its events must not
- * fire. That is the code-level guarantee that staging/dev test traffic can never
- * reach the production GA4 property, Google Ads account, Meta Pixel, or Bing UET
- * tag. Same pattern as Brief 127's env-sourced CANONICAL_BASE_URL (src/lib/seo.ts).
+ * ORIGINAL RULE, AND WHY IT CHANGED. Brief 128 required every tracking ID to come
+ * from env config with a blank value meaning "tag off". That existed to guarantee
+ * staging/dev traffic could never reach the production GA4 property, Google Ads
+ * account, Meta Pixel or Bing UET tag.
  *
- * Production values (public client-side IDs, carried over from the live
- * WordPress site so GA4 history, Ads conversion actions, and Meta/Bing
- * audiences all stay intact):
- *   NEXT_PUBLIC_GA4_ID=G-SQZLV0V58J
- *   NEXT_PUBLIC_GOOGLE_ADS_ID=AW-661617195
- *   NEXT_PUBLIC_META_PIXEL_ID=1674876326613103
- *   NEXT_PUBLIC_BING_UET_ID=97007877
+ * On 2026-08-11 the old live site was compromised and the staging environment was
+ * promoted to serve jblantonplumbing.com in an emergency. That box never had the
+ * tracking env vars, so ALL FIVE tags (these four plus WhatConverts) went dark on
+ * the live site and every conversion went unrecorded — the safeguard was protecting
+ * an environment that no longer exists, at the cost of the real one.
+ *
+ * So the default is inverted: these IDs now apply unless explicitly switched off.
+ * An env var still overrides, so nothing is locked in.
+ *
+ * ⚠️ WHEN A NEW STAGING ENVIRONMENT IS BUILT, set NEXT_PUBLIC_TRACKING_DISABLED=1
+ * on it (and rebuild). Without that flag it WILL report into the production
+ * analytics accounts and burn numbers out of the live WhatConverts pool. That is
+ * the trade this inversion makes: the live site can no longer be silently
+ * untracked, and a future staging must opt out on purpose.
+ *
+ * These are public client-side IDs, carried over from the live WordPress site so
+ * GA4 history, Ads conversion actions and Meta/Bing audiences stay intact. They
+ * ship inside the browser bundle and were readable in the old page source, so
+ * holding them in code leaks nothing.
  *
  * NOTE: `NEXT_PUBLIC_*` values are inlined at BUILD time. Changing one on a
- * server requires a rebuild (`npm run build`), not just a pm2 restart — the
- * deploy workflow builds on the box, so setting them in the box's env file
- * before a deploy is enough.
+ * server requires a rebuild (`npm run build`), not just a pm2 restart.
  */
+
+/** Live account IDs, used whenever the matching env var is unset. */
+const PRODUCTION_IDS = {
+  ga4: 'G-SQZLV0V58J',
+  googleAds: 'AW-661617195',
+  metaPixel: '1674876326613103',
+  bingUet: '97007877',
+} as const;
+
+/** The single explicit off switch for every tag below. Set to `1` on staging. */
+const TRACKING_DISABLED =
+  (process.env.NEXT_PUBLIC_TRACKING_DISABLED ?? '').trim() === '1';
 
 export interface TrackingIds {
   /** GA4 measurement ID, e.g. `G-SQZLV0V58J`. Blank = GA4 off. */
@@ -42,9 +62,12 @@ export interface TrackingIds {
  */
 const ID_PATTERN = /^[A-Za-z0-9_-]+$/;
 
-function readId(envName: string, raw: string | undefined): string {
+function readId(envName: string, raw: string | undefined, fallback: string): string {
+  if (TRACKING_DISABLED) return '';
   const value = (raw ?? '').trim();
-  if (!value) return '';
+  // Unset/blank now means "use the live ID", not "off" — see the docblock above.
+  // Turning a tag off is done with NEXT_PUBLIC_TRACKING_DISABLED=1.
+  if (!value) return fallback;
   if (!ID_PATTERN.test(value)) {
     console.warn(
       `[analytics] Ignoring ${envName}="${value}" — not a valid tracking ID ` +
@@ -64,10 +87,10 @@ let cached: TrackingIds | null = null;
 export function getTrackingIds(): TrackingIds {
   if (!cached) {
     cached = {
-      ga4: readId('NEXT_PUBLIC_GA4_ID', process.env.NEXT_PUBLIC_GA4_ID),
-      googleAds: readId('NEXT_PUBLIC_GOOGLE_ADS_ID', process.env.NEXT_PUBLIC_GOOGLE_ADS_ID),
-      metaPixel: readId('NEXT_PUBLIC_META_PIXEL_ID', process.env.NEXT_PUBLIC_META_PIXEL_ID),
-      bingUet: readId('NEXT_PUBLIC_BING_UET_ID', process.env.NEXT_PUBLIC_BING_UET_ID),
+      ga4: readId('NEXT_PUBLIC_GA4_ID', process.env.NEXT_PUBLIC_GA4_ID, PRODUCTION_IDS.ga4),
+      googleAds: readId('NEXT_PUBLIC_GOOGLE_ADS_ID', process.env.NEXT_PUBLIC_GOOGLE_ADS_ID, PRODUCTION_IDS.googleAds),
+      metaPixel: readId('NEXT_PUBLIC_META_PIXEL_ID', process.env.NEXT_PUBLIC_META_PIXEL_ID, PRODUCTION_IDS.metaPixel),
+      bingUet: readId('NEXT_PUBLIC_BING_UET_ID', process.env.NEXT_PUBLIC_BING_UET_ID, PRODUCTION_IDS.bingUet),
     };
   }
   return cached;
