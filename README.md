@@ -19,6 +19,30 @@ npm run dev
 
 Open http://localhost:3000
 
+## Environment variables
+
+`.env.local.example` documents every variable. Two of them are load-bearing enough
+to repeat here.
+
+### ⚠️ Any future staging/dev environment MUST set BOTH of these
+
+Since the 2026-08-11 incident recovery (commits `05cf029`→`e060706`), tracking and
+robots.txt **fail open**: the five tracking tags (GA4, Google Ads, Meta Pixel,
+Bing UET, WhatConverts) load with their live production IDs even when their env
+vars are blank, and robots.txt serves `Allow` to any host on the brand domain.
+That is correct for the one live box. A new staging or dev environment that
+doesn't opt out will report into the production analytics accounts, burn numbers
+out of the live WhatConverts dynamic-number pool, and be indexable by Google:
+
+```bash
+NEXT_PUBLIC_TRACKING_DISABLED=1   # switches off GA4 / Google Ads / Meta / Bing / WhatConverts
+ROBOTS_DISALLOW=1                 # robots.txt serves "Disallow: /" regardless of host
+```
+
+Both are build-time-sensitive: `NEXT_PUBLIC_TRACKING_DISABLED` is inlined into the
+client bundle at `npm run build`, so set it **before** building; `ROBOTS_DISALLOW`
+is read per request but needs a process restart to be picked up.
+
 ## Pages
 
 | Route | Description |
