@@ -29,9 +29,9 @@ scripts/backups/
 # it, and the .gitkeep negation below would never take effect. The directory is
 # kept because the un-provisioned fallback path in
 # src/app/api/cms/upload/route.ts still writes here.
-# The 19 files committed before this rule stay tracked until they are explicitly
-# untracked (`git rm -r --cached public/uploads/cms`) — do that only AFTER the
-# S3 migration is confirmed serving. See the Brief 134 report.
+# The 19 files committed before this rule were untracked and deleted by
+# Brief 150 (Track D), after the Brief 134 S3 migration was confirmed serving
+# them from CloudFront. Only .gitkeep remains tracked.
 public/uploads/cms/*
 !public/uploads/cms/.gitkeep
 human qa/clone-whyjblanton-hero.png

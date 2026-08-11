@@ -95,6 +95,11 @@ async function run() {
         continue;
       }
       if (!stats.isFile()) continue;
+      // Brief 150 (Track D): never catalog dotfiles. `.gitkeep` is a git
+      // placeholder, not media — this backfill had been re-inserting a
+      // cms_media row for it on every deploy (the row Brief 150 deletes),
+      // and the row's URL 404s whether it points at local disk or CloudFront.
+      if (filename.startsWith('.')) continue;
 
       const ext = filename.split('.').pop()?.toLowerCase() ?? '';
       const mimeType = mimeForExtension(ext);

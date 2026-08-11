@@ -119,6 +119,15 @@ jobs:
             # IF NOT EXISTS + INSERT ... ON CONFLICT (url) DO NOTHING, so re-running
             # never duplicates rows or clobbers editor-added alt text/captions.
             npx ts-node --project tsconfig.scripts.json scripts/migrate-brief-112-media.ts
+            # Brief 150 (Track D): delete the `.gitkeep` placeholder row(s) the
+            # step above used to backfill into cms_media (row #398 on the live
+            # box) — the backfill now skips dotfiles, and this removes what it
+            # already created. Backup-first (brief150_row_backup), selects by
+            # filename not id, refuses if a row was ever human-curated, reports
+            # ALREADY-APPLIED once none remain — a safe no-op on every deploy.
+            # Runs AFTER the backfill so any row an older build re-inserted in
+            # the same pipeline is swept too.
+            npx ts-node --project tsconfig.scripts.json scripts/fix-brief-150-delete-gitkeep-media-row.ts commit
             # Brief 109: seed the "Join Our Team" (/j-blanton-is-hiring) main_pages
             # row so its CMS editor loads/saves. Idempotent INSERT ... ON CONFLICT
             # DO NOTHING - a safe no-op once the row exists, never clobbers edits.
