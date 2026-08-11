@@ -25,18 +25,17 @@
 # admin password arrives via a GitHub secret (masked in logs) and is only ever
 # passed through an env var to the reset script, and every env-file listing is
 # filtered to variable NAMES only.
+# HOW IT IS TRIGGERED: GitHub does not register a workflow_dispatch-only
+# workflow that exists on a non-default branch, and merging this to main would
+# fire deploy.yml (an extra restart this brief forbids). So the trigger is a
+# push to this ops branch, and the phase is selected by a commit-message
+# marker: an empty commit whose message contains [phase:preflight] or
+# [phase:rotate]. A push with neither marker runs nothing.
 name: Brief 150 — Live-box ops
 
 on:
-  workflow_dispatch:
-    inputs:
-      phase:
-        description: "Which phase to run (preflight = read-only, rotate = Brief 135 §4.4 secret rotation)"
-        required: true
-        type: choice
-        options:
-          - preflight
-          - rotate
+  push:
+    branches: [ops/brief-150]
 
 jobs:
   ops:
@@ -44,7 +43,7 @@ jobs:
 
     steps:
       - name: Pre-flight (read-only)
-        if: ${{ inputs.phase == 'preflight' }}
+        if: ${{ contains(github.event.head_commit.message, '[phase:preflight]') }}
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -73,7 +72,7 @@ jobs:
             echo 'preflight complete'
 
       - name: Rotate secrets (env edits only — NO restart, NO rebuild)
-        if: ${{ inputs.phase == 'rotate' }}
+        if: ${{ contains(github.event.head_commit.message, '[phase:rotate]') }}
         uses: appleboy/ssh-action@v1.0.0
         env:
           BRIEF150_ADMIN_PASSWORD: ${{ secrets.BRIEF150_ADMIN_PASSWORD }}
