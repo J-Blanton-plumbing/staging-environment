@@ -1,0 +1,116 @@
+
+# Brief 150 — Live-box ops (2026-08-11).
+#
+# The box that serves jblantonplumbing.com is reachable only over the same SSH
+# credentials deploy.yml uses (GitHub Secrets); there is no other automated
+# path to it. This workflow is the Brief 150 vehicle for the two on-box
+# operations that cannot ride in a deploy:
+#
+#   preflight — READ-ONLY fact-finding (Track A): run the Brief 131 redirect-
+#               target verification against the live CMS DB, list the env var
+#               NAMES present in /var/www/jblanton/.env.local, and dump the
+#               nginx server_name inventory for the Track C subdomain audit.
+#
+#   rotate    — the Brief 135 §4.4 secret rotation (Track F): rotate
+#               CMS_SESSION_SECRET (generated ON the box, never leaves it),
+#               delete CMS_ADMIN_PASSWORD, unset PREVIEW_USER/PREVIEW_PASS,
+#               set SITE_ENV=production, reset the admin account password from
+#               the BRIEF150_ADMIN_PASSWORD repo secret (Brief 118 script),
+#               and gate on `npm run env:check`. Deliberately does NOT restart
+#               or rebuild anything — the one restart happens on the next
+#               normal deploy, per the brief's "one restart total" rule.
+#
+# ⚠️ This repo is PUBLIC, so these logs are public. Nothing here may print a
+# secret VALUE: the session secret is generated and consumed on the box, the
+# admin password arrives via a GitHub secret (masked in logs) and is only ever
+# passed through an env var to the reset script, and every env-file listing is
+# filtered to variable NAMES only.
+name: Brief 150 — Live-box ops
+
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: "Which phase to run (preflight = read-only, rotate = Brief 135 §4.4 secret rotation)"
+        required: true
+        type: choice
+        options:
+          - preflight
+          - rotate
+
+jobs:
+  ops:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pre-flight (read-only)
+        if: ${{ inputs.phase == 'preflight' }}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: true
+          script: |
+            set -e
+            exec 2>&1
+            cd /var/www/jblanton
+            echo '=== Track A.3: env var NAMES present in .env.local (names only, never values) ==='
+            grep -oE '^[A-Za-z0-9_]+' .env.local | sort
+            echo ''
+            echo "=== Track A.3 / F.4: current SITE_ENV value (not a secret) ==="
+            grep -E '^SITE_ENV=' .env.local || echo 'SITE_ENV: (no line in .env.local)'
+            echo ''
+            echo '=== Track C: nginx server_name inventory ==='
+            (sudo nginx -T 2>/dev/null | grep -E 'server_name' | sed 's/^ *//' | sort -u) || echo '(nginx -T unavailable)'
+            echo ''
+            echo '=== Track A.1: redirect-target verification against the live CMS DB (Brief 131 Track D) ==='
+            set -a; . ./.env.local; set +a
+            set +e
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/verify-redirect-targets.ts
+            echo "redirect verification exit code: $?"
+            set -e
+            echo 'preflight complete'
+
+      - name: Rotate secrets (env edits only — NO restart, NO rebuild)
+        if: ${{ inputs.phase == 'rotate' }}
+        uses: appleboy/ssh-action@v1.0.0
+        env:
+          BRIEF150_ADMIN_PASSWORD: ${{ secrets.BRIEF150_ADMIN_PASSWORD }}
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          envs: BRIEF150_ADMIN_PASSWORD
+          script_stop: true
+          script: |
+            set -e
+            exec 2>&1
+            cd /var/www/jblanton
+            umask 077
+            if [ -z "$BRIEF150_ADMIN_PASSWORD" ]; then
+              echo 'BRIEF150_ADMIN_PASSWORD repo secret is not set - refusing to run the rotation without it.'
+              exit 1
+            fi
+            cp -p .env.local ".env.local.bak-brief150"
+            echo 'backup written: .env.local.bak-brief150 (on-box only)'
+            NEW_SECRET=$(openssl rand -base64 48 | tr -d '\n')
+            grep -vE '^(CMS_SESSION_SECRET|CMS_ADMIN_PASSWORD|PREVIEW_USER|PREVIEW_PASS|PREVIEW_AUTH_IN_PRODUCTION|SITE_ENV)=' .env.local > .env.local.brief150.tmp
+            printf 'CMS_SESSION_SECRET=%s\n' "$NEW_SECRET" >> .env.local.brief150.tmp
+            printf 'SITE_ENV=production\n' >> .env.local.brief150.tmp
+            mv .env.local.brief150.tmp .env.local
+            echo 'env edits applied: CMS_SESSION_SECRET rotated (fresh openssl rand -base64 48, generated on-box);'
+            echo '                   CMS_ADMIN_PASSWORD / PREVIEW_USER / PREVIEW_PASS / PREVIEW_AUTH_IN_PRODUCTION removed;'
+            echo '                   SITE_ENV=production set.'
+            echo ''
+            echo '=== resulting env var NAMES in .env.local (names only) ==='
+            grep -oE '^[A-Za-z0-9_]+' .env.local | sort
+            echo ''
+            echo '=== Track F.5: admin password reset (Brief 118 env-var-driven script) ==='
+            set -a; . ./.env.local; set +a
+            RESET_ADMIN_PASSWORD="$BRIEF150_ADMIN_PASSWORD" npx ts-node --project tsconfig.scripts.json scripts/reset-admin-password.ts
+            echo ''
+            echo '=== Track F.6: env:check with the new values ==='
+            npm run env:check
+            echo ''
+            echo 'rotation complete - NOTHING was restarted. The new env takes effect on the next deploy.'
