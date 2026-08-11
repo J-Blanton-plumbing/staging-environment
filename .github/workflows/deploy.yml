@@ -27,10 +27,10 @@ jobs:
             # Zero-downtime build (2026-07-28): the old `rm -rf .next && npm run
             # build` wiped the live build out from under the running `next start`,
             # so EVERY deploy served completely unstyled pages (all /_next/static
-            # assets 404'd) for the full multi-minute build — seen as "CSS totally
+            # assets 404'd) for the full multi-minute build - seen as "CSS totally
             # broke" after each push. It also meant a failed build left the site
             # dead. Instead, build into a side directory (next.config.mjs reads
-            # NEXT_DIST_DIR — set inline for this one command only, NEVER exported,
+            # NEXT_DIST_DIR - set inline for this one command only, NEVER exported,
             # so the pm2 app started below with --update-env can't inherit it and
             # look for its build in the wrong place) while the live `.next` keeps
             # serving untouched. If the build fails, `set -e` aborts here and the
@@ -43,7 +43,7 @@ jobs:
             #
             # They live here, in version control, rather than in the box's env
             # file because that file is untracked and invisible from anywhere but
-            # the box — which is exactly how the site went live with EVERY one of
+            # the box - which is exactly how the site went live with EVERY one of
             # these blank. GA4, Google Ads, Meta Pixel, Bing UET and WhatConverts
             # were all dark on production, verified against
             # https://jblantonplumbing.com on 2026-08-08, long after Brief 128
@@ -59,7 +59,7 @@ jobs:
             # rather than starting over.
             #
             # ⚠️ This workflow deploys to exactly ONE host. If a second (staging)
-            # target is ever added it must NOT inherit these — give it its own
+            # target is ever added it must NOT inherit these - give it its own
             # workflow with them left blank, or staging traffic lands in the
             # production analytics accounts and burns numbers out of the live
             # WhatConverts pool.
@@ -78,12 +78,12 @@ jobs:
             # Settings save 500'd ("column \"offices\" ... does not exist"). The
             # migration is idempotent (ADD COLUMN IF NOT EXISTS / ON CONFLICT DO
             # NOTHING), so running it on every deploy is a safe no-op once applied.
-            # Load DATABASE_URL the same way Next.js does — from the env file on the box.
+            # Load DATABASE_URL the same way Next.js does - from the env file on the box.
             for envfile in .env .env.production .env.local; do
               if [ -f "$envfile" ]; then set -a; . "./$envfile"; set +a; fi
             done
             # Brief 147 (Track A): tell every DB script it is running in a pipeline,
-            # not at somebody's terminal. All of them are dry-run by DEFAULT — the
+            # not at somebody's terminal. All of them are dry-run by DEFAULT - the
             # right default for a human, a trap here: drop the `commit` argument from
             # a step below and the script logs what it WOULD do, exits 0, and this
             # deploy reports success having written nothing. That silent no-op is
@@ -92,7 +92,7 @@ jobs:
             # With JBP_PIPELINE set, scripts/lib/run-mode.ts REFUSES to guess: a step
             # with no explicit `commit` or `--dry-run` exits non-zero and `set -e`
             # fails the deploy here, before the build swap, with the old build still
-            # serving. Never remove this export to "fix" a failing step — add the
+            # serving. Never remove this export to "fix" a failing step - add the
             # missing flag to the step instead.
             export JBP_PIPELINE=1
             # Every script writes one greppable `PIPELINE VERDICT:` line here, printed
@@ -105,7 +105,7 @@ jobs:
             # design, so a wrong column name (city_pages.slug → city_slug) shipped 248
             # city URLs with no freshness signal for weeks with nothing but one server
             # log line to show for it. This step exits non-zero on a bad column/table/
-            # syntax — a code defect that no deploy should carry — and exits 0 (with a
+            # syntax - a code defect that no deploy should carry - and exits 0 (with a
             # banner) if the DB is simply unreachable.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/verify-sitemap-queries.ts
             # ensure-schema reconciles EVERY CMS table's columns (idempotent
@@ -115,20 +115,20 @@ jobs:
             npx ts-node --project tsconfig.scripts.json scripts/ensure-schema.ts
             npx ts-node --project tsconfig.scripts.json scripts/migrate-global-settings.ts
             # Brief 112: create the cms_media catalog table and backfill a row for
-            # every file already in public/uploads/cms/. Idempotent — CREATE TABLE
+            # every file already in public/uploads/cms/. Idempotent - CREATE TABLE
             # IF NOT EXISTS + INSERT ... ON CONFLICT (url) DO NOTHING, so re-running
             # never duplicates rows or clobbers editor-added alt text/captions.
             npx ts-node --project tsconfig.scripts.json scripts/migrate-brief-112-media.ts
             # Brief 109: seed the "Join Our Team" (/j-blanton-is-hiring) main_pages
             # row so its CMS editor loads/saves. Idempotent INSERT ... ON CONFLICT
-            # DO NOTHING — a safe no-op once the row exists, never clobbers edits.
+            # DO NOTHING - a safe no-op once the row exists, never clobbers edits.
             npx ts-node --project tsconfig.scripts.json scripts/seed-hiring-page.ts
             # Brief 110: seed the "Terms of Use & Privacy Policy" (/privacy-policy)
             # main_pages row so its CMS editor loads/saves. Idempotent INSERT ...
-            # ON CONFLICT DO NOTHING — a safe no-op once the row exists, never
+            # ON CONFLICT DO NOTHING - a safe no-op once the row exists, never
             # clobbers edits.
             npx ts-node --project tsconfig.scripts.json scripts/seed-privacy-policy-page.ts
-            # Brief 119: invite-based user creation — adds cms_users.status +
+            # Brief 119: invite-based user creation - adds cms_users.status +
             # audit columns, makes password_hash nullable, and creates the
             # cms_user_invites token table. Idempotent (ADD COLUMN / CREATE
             # TABLE IF NOT EXISTS), safe no-op once applied.
@@ -136,14 +136,14 @@ jobs:
             # Brief 122: stamp imported articles with their original WordPress
             # post ID (from the checked-in scripts/data/wp-article-ids.json) so
             # the public Knowledge Hub feed can reproduce the live site's
-            # ordering — all 812 WP articles share a ~33s post_date window, so
+            # ordering - all 812 WP articles share a ~33s post_date window, so
             # created_at alone can't order them. Idempotent UPDATE by slug of a
             # single nullable column; safe no-op re-run on every deploy.
             npx ts-node --project tsconfig.scripts.json scripts/backfill-article-wp-ids.ts
             # Brief 123: fill blank article hero images from the checked-in
             # scripts/data/article-hero-images.json (generated on the dev
             # machine from the WP export + live-site fallback). Only rows whose
-            # image is NULL/'' are updated — editor-set images are never
+            # image is NULL/'' are updated - editor-set images are never
             # overwritten, so re-running on every deploy is a safe no-op.
             npx ts-node --project tsconfig.scripts.json scripts/backfill-article-hero-images.ts
             # Brief 126: clear dead WordPress image URLs (the 404ing
@@ -157,17 +157,17 @@ jobs:
             # Brief 140: give the 21 Brief-131 coverage-area cities their legacy
             # "We've Got You Covered" body copy from the checked-in
             # scripts/data/brief140-city-content.json (generated on the dev machine
-            # from the WP export — the box has no 146 MB export, same split as
+            # from the WP export - the box has no 146 MB export, same split as
             # Briefs 122/123). Those 21 slugs were registered by Brief 131 but never
             # got a city_pages row, so the section rendered as a heading + image with
             # an empty text column. Allow-listed to exactly those 21 slugs; a city
             # whose content_body is already non-empty is skipped, so re-running on
             # every deploy is a safe no-op and never clobbers a CMS edit.
-            # `-r tsconfig-paths/register` is REQUIRED — this script imports the
-            # shared sanitizer from src/, which resolves `@/…` path aliases. Do not
+            # `-r tsconfig-paths/register` is REQUIRED - this script imports the
+            # shared sanitizer from src/, which resolves `@/...` path aliases. Do not
             # drop it when copying this line.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/backfill-brief131-city-content.ts --commit
-            # Brief 141 (Track A): fill the three No Drip Club membership prices —
+            # Brief 141 (Track A): fill the three No Drip Club membership prices -
             # ndc_price "$29.97" (classic/monthly, pre-existing), ndc_price_1yr
             # "$149" and ndc_price_2yr "$229" (the annual offer). ensure-schema
             # above creates the two new columns. Only NULL/'' values are filled, so
@@ -177,7 +177,7 @@ jobs:
             npx ts-node --project tsconfig.scripts.json scripts/seed-brief-141-ndc-prices.ts commit
             # Brief 141 (Track F): seed the No Drip Club page's membershipComparison
             # block (approved sell-sheet content) and switch content.template_variant
-            # to 'comparison' — the new template goes live on STAGING, confirmed with
+            # to 'comparison' - the new template goes live on STAGING, confirmed with
             # the marketing lead. The classic variant's content.benefits_card is not
             # touched and switching back is one selection in the admin. Each key is
             # written only when absent, and an existing template_variant is never
@@ -186,21 +186,21 @@ jobs:
             #
             # ⚠️ PRODUCTION: do NOT assume this belongs on production. Flipping the
             # variant there without the $29.97 → annual price sweep would advertise
-            # two prices at once — see production-migration-checklist.md.
+            # two prices at once - see production-migration-checklist.md.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-141-ndc-comparison.ts commit
-            # Brief 143: apply the APPROVED No Drip Club offer copy — 6 service
+            # Brief 143: apply the APPROVED No Drip Club offer copy - 6 service
             # headlines, 6 service paragraphs, both stored copies of the Elgin and
             # Algonquin city text, and 4 Knowledge Hub article sentences. Backs the
             # old value up to brief143_ndc_content_backup first. Every write is
             # gated on an EXACT match against the expected old string, so a row an
             # editor has since changed is skipped and logged rather than clobbered,
-            # and a re-run reports "already-applied" and writes nothing — safe on
+            # and a re-run reports "already-applied" and writes nothing - safe on
             # every deploy. Staging and dev legitimately hold different data
             # (Brief 142 §1.2), so skips are logged, NOT fatal: read the step's
             # output after the first deploy to see which rows staging actually had.
             npx ts-node --project tsconfig.scripts.json scripts/seed-brief-143-ndc-offer-content.ts commit
             # Brief 143 follow-up: the ONE sentence the migration above stopped on
-            # — article id 464's closing paragraph, which still promised "service
+            # - article id 464's closing paragraph, which still promised "service
             # within 24 hours". Its Brief 143 fragment could not be substituted
             # grammatically, so Track E's rule left the row alone and reported it;
             # the marketing lead approved a full replacement sentence on
@@ -218,12 +218,12 @@ jobs:
             # The script backs every row up to brief145_row_backup first, refuses
             # to run if a `venetian-village` row already exists for any of those
             # services (it never overwrites), and reports "already-applied" once
-            # no old-slug rows remain — a safe no-op on every deploy after the
+            # no old-slug rows remain - a safe no-op on every deploy after the
             # first. `-r tsconfig-paths/register` is REQUIRED: it imports
             # CITY_REGISTRY and the city-service registry from src/ to verify the
             # rename lands on a route that actually serves. Do not drop it.
             #
-            # If a guard trips it prints a loud banner and exits 0 ON PURPOSE —
+            # If a guard trips it prints a loud banner and exits 0 ON PURPOSE -
             # `script_stop: true` means a non-zero exit here would abort the build
             # swap and pm2 reload below, turning a data question into an outage.
             # Read the step output after a deploy; do not assume silence = applied.
@@ -233,7 +233,7 @@ jobs:
             # Brief 78) and install a UNIQUE INDEX on `(true)` so a second row
             # becomes impossible. The duplicates came from seed-cms.ts's
             # `ON CONFLICT DO NOTHING`, which is a no-op on the one CMS page table
-            # with no unique key — that insert is now `INSERT … WHERE NOT EXISTS`.
+            # with no unique key - that insert is now `INSERT ... WHERE NOT EXISTS`.
             # Backs all rows up to brief145_row_backup and REFUSES to delete if the
             # rows differ on any content column (which would mean de-duplicating
             # could change what /emergency-plumbing renders). Same exit-0 banner
@@ -241,17 +241,17 @@ jobs:
             npx ts-node --project tsconfig.scripts.json scripts/fix-brief-145-emergency-plumbing-dedupe.ts commit
             # Brief 146 (Track A): port the APPROVED Gas Lines copy into the
             # `gas-lines` sub_service_pages row. MUST run before the swap below,
-            # because that build repoints /gas-lines at SubServicePageView — onto
+            # because that build repoints /gas-lines at SubServicePageView - onto
             # this row. Brief 145 (D-4) found the row unfit to render (scraped
             # WordPress nav-menu text in intro_body, empty problems/CTA fields), so
             # shipping the route change without this would visibly degrade the page.
-            # TEXT ONLY — it never writes hero_image/f_image/f3_image, because
+            # TEXT ONLY - it never writes hero_image/f_image/f3_image, because
             # marketing's CMS image uploads on that row are the whole point of the
             # brief. It patches the `blocks` JSONB in place when the row has one
             # (staging may; dev does not), first instance per type, images untouched.
             # ONE-TIME: the backup row in brief146_row_backup is the applied-marker,
             # so a later CMS edit to this copy is never re-clobbered by a deploy.
-            # `-r tsconfig-paths/register` is REQUIRED — it imports the shared
+            # `-r tsconfig-paths/register` is REQUIRED - it imports the shared
             # sanitizer from src/. Same exit-0 banner convention as the steps above.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-146-gas-lines-content.ts commit
             # Brief 146 (Track D) + Brief 148 (Track B): delete the phantom
@@ -264,13 +264,13 @@ jobs:
             # guard is BLOCKING again (Brief 147 had made it report-only for every
             # future run to unstick this one delete); the flag answers it for this
             # row only, and only because the row is unreachable behind the 301.
-            # Id 48 is the dev/Brief-145 serial — staging's may differ, and the
+            # Id 48 is the dev/Brief-145 serial - staging's may differ, and the
             # script says so loudly and continues, because the selector is the slug.
             # The delete can never touch id 26 (`gas-lines`, marketing's live copy
             # and images): different slug, and the transaction rolls back unless
             # exactly one row goes. Reports "already-applied" once the row is gone.
             npx ts-node --project tsconfig.scripts.json scripts/fix-brief-146-delete-gas-lines-chicago.ts commit --approved-id=48
-            # Brief 147 (Track A): the Brief 146 content port did NOT reach staging —
+            # Brief 147 (Track A): the Brief 146 content port did NOT reach staging -
             # /gas-lines went live with no copy on it and marketing re-typed the
             # approved text by hand on 2026-08-08. Their text is now the source of
             # truth, but the page is still not whole: staging renders an EMPTY Final
@@ -279,7 +279,7 @@ jobs:
             #
             # This step FILLS THE GAPS ONLY. A field is written when it is empty or
             # still holds the identifiable pre-146 scraped-nav junk; anything an
-            # editor has typed — even a reworded version of the brief's copy — is
+            # editor has typed - even a reworded version of the brief's copy - is
             # reported and left alone. The three image columns are NEVER written and
             # are asserted unchanged afterwards. If the row's `blocks` array has no
             # instance for a section, one is inserted, because approved copy sitting
@@ -287,29 +287,29 @@ jobs:
             # Deliberately has NO applied-marker: it is a fill-the-gaps pass, not a
             # one-time port, so it stays correct on every deploy and reports
             # `ALREADY-APPLIED` once nothing is empty.
-            # `-r tsconfig-paths/register` is REQUIRED — it imports from src/.
+            # `-r tsconfig-paths/register` is REQUIRED - it imports from src/.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/fix-brief-147-gas-lines-content-verify.ts commit
             # Brief 147 (Track C): strip the duplicated "| J. Blanton Plumbing" out of
             # stored CMS meta-titles. Brief 146 §6.1 already stops the DOUBLED <title>
-            # from rendering (pageTitle() normalizes at the boundary, and that stays) —
+            # from rendering (pageTitle() normalizes at the boundary, and that stays) -
             # this cleans the stored values so an editor opening the meta-title field
             # no longer sees a redundant suffix and assume it is required.
             # Trailing suffix only: a brand name mid-string is marketing copy and is
             # left alone, and cms_articles.title (the visible H1) is reported, never
-            # rewritten. Does NOT bump version/updated_at — it changes no rendered
+            # rewritten. Does NOT bump version/updated_at - it changes no rendered
             # output, so it must not move 200+ sitemap lastmods or invalidate the
             # optimistic-lock token of an editor who has a page open. Idempotent:
             # reports `ALREADY-APPLIED` once nothing ends in the suffix.
-            # `-r tsconfig-paths/register` is REQUIRED — it imports @/lib/seo.
+            # `-r tsconfig-paths/register` is REQUIRED - it imports @/lib/seo.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/fix-brief-147-meta-title-suffix.ts commit
             # Brief 149 (Tracks A + B): make `sub_service_pages` fit to render for
             # /sewer-rodding (id 2) and /hydro-jetting (id 23) BEFORE the swap below
             # repoints those routes at SubServicePageView. This ordering is the whole
-            # Brief 146 lesson — that release flipped /gas-lines onto a row nothing had
+            # Brief 146 lesson - that release flipped /gas-lines onto a row nothing had
             # filled and shipped a page with no copy on it.
             #
             # FILL-THE-GAPS, not a copy-over: a field already holding real content is
-            # kept. That matters here — staging's rows carry human-written copy that has
+            # kept. That matters here - staging's rows carry human-written copy that has
             # never rendered (the Brief 145 D-1 "edits go into the void" symptom), and
             # this brief exists to make it render, not to bulldoze it. Only empty fields
             # and the four specifically identified junk values (problems_heading
@@ -317,18 +317,18 @@ jobs:
             # text in intro_body, raw &#039; entities in meta_description) are written.
             # It also INSERTS the three sections that had no block type until this brief
             # (relatedServices + two textSection instances) at their historical
-            # positions — without them the flip would silently drop three sections.
+            # positions - without them the flip would silently drop three sections.
             # No applied-marker: a fill-the-gaps pass stays correct on every deploy and
             # reports ALREADY-APPLIED once nothing is empty.
-            # `-r tsconfig-paths/register` is REQUIRED — it imports from src/.
+            # `-r tsconfig-paths/register` is REQUIRED - it imports from src/.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-149-subservice-consolidation.ts commit
             # Brief 149 (Tracks A + B, step 3): retire the now-unread
             # `service_category_pages` rows 25 (sewer-rodding) and 24 (hydro-jetting),
             # plus the 4 `service_subcategories` rows FK'd to them (the DB mirror of the
-            # "More … Solutions" cards, which now live in the relatedServices block).
+            # "More ... Solutions" cards, which now live in the relatedServices block).
             # Two editable records for one page is the confusion this brief ends.
             # REFUSES unless the route is already repointed AND the sub_service_pages row
-            # is published, has a hero_heading, and carries every required block — i.e.
+            # is published, has a hero_heading, and carries every required block - i.e.
             # it will not delete the old source until the new one demonstrably works.
             # Must run AFTER the seed above. Same exit-0 banner convention.
             npx ts-node --project tsconfig.scripts.json scripts/retire-brief-149-legacy-sources.ts commit
@@ -337,16 +337,16 @@ jobs:
             # wires those fields into generateMetadata (they were editable and read by
             # nothing); without this backfill an editor would open a city page and see an
             # EMPTY SEO Title field with no way to know the page has a title at all.
-            # Only blank fields are written — never an editor's SEO copy — and the write
+            # Only blank fields are written - never an editor's SEO copy - and the write
             # is re-guarded on still-blank, so a concurrent save is not clobbered.
             # Deliberately does NOT bump version/updated_at: the value written is the
             # value already rendering, so it must not move 248 sitemap lastmods.
-            # Idempotent — reports ALREADY-APPLIED once nothing is blank.
-            # `-r tsconfig-paths/register` is REQUIRED — it imports from src/.
+            # Idempotent - reports ALREADY-APPLIED once nothing is blank.
+            # `-r tsconfig-paths/register` is REQUIRED - it imports from src/.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/backfill-brief-149-page-meta.ts commit
             # Brief 147 (Track A): print every DB script's verdict together. A
             # `NOT-APPLIED` line here is the signal the Brief 146 release had no way
-            # to show — those scripts exit 0 when a guard trips ON PURPOSE (a non-zero
+            # to show - those scripts exit 0 when a guard trips ON PURPOSE (a non-zero
             # exit would abort the swap below and take the site down over a content
             # question), so silence never meant success. Read this block after a deploy.
             echo ''
@@ -357,14 +357,14 @@ jobs:
                 echo ''
                 echo 'NOTE: at least one script did NOT apply (see the lines above and'
                 echo 'its own !!!! banner earlier in this log). This does not fail the'
-                echo 'deploy — but it means a data change you expected did not happen.'
+                echo 'deploy - but it means a data change you expected did not happen.'
               fi
             else
-              echo '(no verdict file — no retrofitted script ran)'
+              echo '(no verdict file - no retrofitted script ran)'
             fi
             echo '=============================================================='
             echo ''
-            # Swap the finished build into place — two renames, milliseconds of
+            # Swap the finished build into place - two renames, milliseconds of
             # exposure instead of minutes. Then union the OLD build's static chunks
             # into the new dir: filenames are content-hashed (never collide), and
             # browsers holding pages rendered by the old process keep resolving
@@ -373,7 +373,7 @@ jobs:
             mv .next-build .next
             if [ -d .next-prev/static ]; then cp -an .next-prev/static/. .next/static/ || true; fi
             # `pm2 restart jblanton` silently no-ops if pm2 has never registered an
-            # app under that name — discovered 2026-07-28 when `pm2 list` on staging
+            # app under that name - discovered 2026-07-28 when `pm2 list` on staging
             # returned zero processes despite the site being up (it was running as a
             # bare `next start`, started outside pm2, with nothing supervising it or
             # restarting it on deploy). `startOrReload` against the checked-in
@@ -392,6 +392,30 @@ jobs:
           script_stop: true
           script: |
             set -e
+            # Send stderr into stdout. Without this, appleboy/ssh-action prefixes
+            # stdout with "out:" and stderr with "err:", and any diagnostic the
+            # shell itself emits (a "command not found", an arithmetic error, a
+            # curl failure) lands in a stream that is easy to scroll past. This
+            # step failed on seven consecutive deploys printing nothing but its
+            # successful lines, because the one line naming the cause was on
+            # stderr. A verification step that cannot say why it failed is not
+            # verification.
+            exec 2>&1
+
+            # Pinpoint reporting. Each check records what it is about to do; if the
+            # script dies partway, the EXIT trap names the exact check that was
+            # running. Costs no output on success, unlike tracing every check.
+            LAST_CHECK="(startup)"
+            on_exit() {
+              status=$?
+              if [ "$status" -ne 0 ]; then
+                echo ''
+                echo "STEP ABORTED with exit ${status} while running: ${LAST_CHECK}"
+                echo 'Anything printed immediately above this line is the reason.'
+              fi
+            }
+            trap on_exit EXIT
+
             sleep 12
             FAILED=0
             for path in "/" "/services/sewer" "/services/plumbing" "/services/water-heater" "/contact"; do
@@ -421,14 +445,14 @@ jobs:
             fi
             echo "All 5 pages healthy"
 
-            # ── Brief 147 (Track A): CONTENT check, not just a status code ────────
+            # -- Brief 147 (Track A): CONTENT check, not just a status code --------
             # A 200 was never the question. /gas-lines returned 200 for the whole
             # Brief 146 release while rendering no copy at all, because the route had
             # been repointed at a CMS row the seed step never filled. Nothing in this
             # pipeline looked at what came back, so marketing found it instead of us.
             #
             # These are content markers: a page that 200s with the marker missing is a
-            # FAILURE. Keep them to strings that are approved, stable copy — never a
+            # FAILURE. Keep them to strings that are approved, stable copy - never a
             # heading Marketing is still iterating on. If Marketing rewords one of
             # these headings, update the marker here in the same change.
             echo ''
@@ -459,33 +483,35 @@ jobs:
             # A string that MUST be present. severity=fail blocks the deploy.
             check_marker() {
               path="$1"; marker="$2"; severity="$3"
+              LAST_CHECK="check_marker $path ($severity) :: $marker"
               CHECKS_RUN=$((CHECKS_RUN + 1))
               body=$(fetch_text "$path") || body=""
               if printf '%s' "$body" | grep -qF -- "$marker"; then
                 echo "OK: ${path} contains \"${marker}\""
               elif [ "$severity" = "warn" ]; then
-                echo "WARNING: ${path} is missing \"${marker}\" — that section is empty on the live page."
+                echo "WARNING: ${path} is missing \"${marker}\" - that section is empty on the live page."
                 CHECKS_WARNED=$((CHECKS_WARNED + 1))
               else
                 echo "CONTENT MISSING: ${path} does not contain \"${marker}\""
                 CONTENT_FAILED=1
               fi
             }
-            # A string that must NOT be present — migration junk that would render as
-            # real copy. A function rather than an inline `if … grep` so both kinds of
+            # A string that must NOT be present - migration junk that would render as
+            # real copy. A function rather than an inline `if ... grep` so both kinds of
             # check share one shape, one counter, and one `set -e`-safe construct.
             check_absent() {
               path="$1"; marker="$2"; label="$3"
+              LAST_CHECK="check_absent $path :: $marker"
               CHECKS_RUN=$((CHECKS_RUN + 1))
               body=$(fetch_text "$path") || body=""
               if printf '%s' "$body" | grep -qF -- "$marker"; then
                 echo "CONTENT JUNK: ${path} still renders the ${label}"
                 CONTENT_FAILED=1
               else
-                echo "OK: ${path} — no ${label}"
+                echo "OK: ${path} - no ${label}"
               fi
             }
-            # Hard gate — the brief's named marker. /gas-lines renders from
+            # Hard gate - the brief's named marker. /gas-lines renders from
             # sub_service_pages; an empty hero heading means the row is not fit to
             # render and the page is degraded for every visitor.
             check_marker "/gas-lines" "Gas Line Services in Chicagoland Plumber" "fail"
@@ -494,8 +520,8 @@ jobs:
             # section Marketing may still be editing.
             check_marker "/gas-lines" "Signs of Gas Line Issues" "warn"
             check_marker "/gas-lines" "Reliable Gas Lines Plumbing in the Chicagoland Area" "warn"
-            # ── Brief 149: the two newly consolidated pages ───────────────────────
-            # Same reasoning as /gas-lines above — these routes now render from
+            # -- Brief 149: the two newly consolidated pages -----------------------
+            # Same reasoning as /gas-lines above - these routes now render from
             # `sub_service_pages` instead of a static file, so a 200 no longer implies
             # there is copy on the page. The HARD markers are the two sections that had
             # no block type before this brief; if either is missing, the consolidation
@@ -517,7 +543,7 @@ jobs:
             # body copy the moment that route flipped.
             check_absent "/hydro-jetting" "SCHEDULE A SERVICE SERVICES" "scraped WordPress nav text"
             # Completion sentinel. Without it there is no way to tell a script that
-            # crashed mid-way from a log whose tail was truncated — the ambiguity that
+            # crashed mid-way from a log whose tail was truncated - the ambiguity that
             # made the first failure of this step take longer to read than it should
             # have. If you do not see this line, the step did NOT finish.
             echo "content checks complete: ${CHECKS_RUN} run, ${CHECKS_WARNED} warning(s), CONTENT_FAILED=${CONTENT_FAILED}"
