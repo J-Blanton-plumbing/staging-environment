@@ -150,6 +150,32 @@ jobs:
             echo 'DONE (verify-secret sentinel)'
             exit 0
 
+      # The post-deploy health check died after check 6 of 11 on BOTH attempts
+      # of run 31522697171, printing no reason (the transport drops the output
+      # tail when the remote script exits non-zero) — while every marker
+      # verifies fine over HTTPS. This phase runs the VERBATIM health-check
+      # script (extracted on-box from the checked-out deploy.yml) with output
+      # to a file, so the trap/summary lines survive whatever kills it.
+      - name: Reproduce the health check on-box (phase healthcheck-debug)
+        if: ${{ contains(github.event.head_commit.message, '[phase:healthcheck-debug]') }}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: false
+          script: |
+            set +e
+            cd /var/www/jblanton || echo 'cd failed'
+            awk '/Post-deploy health check/,0' .github/workflows/deploy.yml | awk '/script: \|/{found=1; next} found' | sed 's/^            //' > /tmp/hc-repro.sh
+            echo "extracted $(wc -l < /tmp/hc-repro.sh) lines; first line: $(head -1 /tmp/hc-repro.sh)"
+            bash /tmp/hc-repro.sh > /tmp/hc-repro.out 2>&1
+            echo "REPRO EXIT CODE: $?"
+            echo '--- last 30 lines of the reproduction output:'
+            tail -30 /tmp/hc-repro.out
+            echo 'DONE (healthcheck-debug sentinel)'
+            exit 0
+
       - name: Rotate secrets (env edits only — NO restart, NO rebuild)
         if: ${{ contains(github.event.head_commit.message, '[phase:rotate]') }}
         uses: appleboy/ssh-action@v1.0.0
