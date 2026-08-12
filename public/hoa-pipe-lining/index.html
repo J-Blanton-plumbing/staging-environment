@@ -29,6 +29,16 @@
   .jbp-cta-text{display:contents !important;}
   .jbp-cta-text > h2{order:1;} .jbp-cta-text > p{order:2;} .jbp-cta-form{order:3;} .jbp-cta-text > div{order:4;}
 }
+
+@media(max-width:768px){
+  .jbp-hero-media{display:none !important;}
+  section[data-screen-label="01 Hero"] > div{padding:40px 22px !important;}
+  .jbp-process-grid{grid-template-columns:1fr !important;}
+  .jbp-cta-grid{padding:48px 22px !important;}
+  .jbp-cta-form{margin-left:-22px !important;margin-right:-22px !important;padding:24px 22px !important;}
+  .jbp-cta-call{flex-direction:column;align-items:flex-start !important;gap:6px !important;}
+  .jbp-cta-call > a{white-space:nowrap;}
+}
 </style>
 <style id="jbp-brand">
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/assets/fonts/IMedium.otf') format('opentype');font-weight:500;font-display:swap;}
@@ -134,7 +144,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
 </div></div>
 
   <section data-screen-label="01 Hero" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); min-height: 560px; background: #BC0F0E">
-    <div style="position: relative; overflow: hidden; min-height: 380px">
+    <div class="jbp-hero-media" style="position: relative; overflow: hidden; min-height: 380px">
       <img src="/hoa-pipe-lining/assets/photo-uv-liner.png" alt="Technician installing UV liner" style="width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0">
     </div>
     <div style="position: relative; overflow: hidden; background: #BC0F0E; padding: 78px 72px; display: flex; flex-direction: column; justify-content: center; gap: 24px">
@@ -228,7 +238,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
         <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 44px; line-height: 1.05; letter-spacing: -0.015em">Six Steps, Every Time</h2>
         <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3a3a3a">Every successful lining project begins long before the liner is installed. Our standardized process ensures every pipe is properly prepared, installed, inspected, and documented.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(35,31,32,0.12); border: 1px solid rgba(35,31,32,0.12)">
+      <div class="jbp-process-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(35,31,32,0.12); border: 1px solid rgba(35,31,32,0.12)">
         <div style="background: #ffffff; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 15px; color: #BC0F0E">01</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.25">Camera Inspection</h3><p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3a3a3a">Identify defects, determine suitability for lining, and create a repair plan.</p></div>
         <div style="background: #ffffff; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 15px; color: #BC0F0E">02</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.25">Professional Cleaning</h3><p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3a3a3a">Heavy scale, roots, debris, and buildup are removed to prepare the pipe.</p></div>
         <div style="background: #ffffff; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 15px; color: #BC0F0E">03</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.25">Quality Verification</h3><p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3a3a3a">A second inspection confirms the pipe is ready before installation begins.</p></div>
@@ -359,7 +369,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
       <div class="jbp-cta-text" style="display: flex; flex-direction: column; gap: 24px">
         <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 46px; line-height: 1.05; letter-spacing: -0.02em; color: #fff; max-width: 20ch">Protect Your Community's Sewer Infrastructure Before Small Problems Become Major Repairs</h2>
         <p style="margin: 0; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.86); max-width: 54ch">Whether you're planning reserve projects or responding to active sewer issues, our HOA specialists can help you determine the most effective long-term solution.</p>
-        <div style="display: flex; align-items: center; gap: 16px; margin-top: 8px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.20)">
+        <div class="jbp-cta-call" style="display: flex; align-items: center; gap: 16px; margin-top: 8px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.20)">
           <div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 500; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55)">Or call the HOA line</div>
           <a class="jbp-phone-dim" href="tel:2246572472" style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 30px; color: #fff; letter-spacing: -0.01em">(224) 657-2472</a>
         </div>

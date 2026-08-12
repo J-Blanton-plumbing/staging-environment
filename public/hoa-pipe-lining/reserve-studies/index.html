@@ -16,6 +16,28 @@
   * { box-sizing: border-box; }
   body { margin: 0; background: #F9F3EC; }
   a { color: inherit; text-decoration: none; }
+
+@media(max-width:768px){
+  .jbp-stack3{grid-template-columns:1fr !important;}
+  .jbp-hero-tag{position:static !important;width:auto !important;height:auto !important;right:auto !important;top:auto !important;text-align:left !important;display:block;margin-top:14px;}
+  .jbp-truway-bg{display:none !important;}
+  .jbp-truway-grid{grid-template-columns:1fr !important;}
+  .jbp-truway-text{padding:52px 22px !important;}
+  .jbp-truway-media{display:none !important;}
+  .jbp-things{grid-template-columns:1fr !important;}
+  .jbp-proc-step{display:flex !important;flex-direction:column;gap:14px !important;}
+  .jbp-proc-text{display:contents !important;}
+  .jbp-proc-text > *:nth-child(1){order:1;} .jbp-proc-text > *:nth-child(2){order:2;}
+  .jbp-proc-img{order:3;max-width:100% !important;margin:0 !important;}
+  .jbp-proc-text > *:nth-child(3){order:4;}
+  .jbp-team-track{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .jbp-team-track::-webkit-scrollbar{display:none;}
+  .jbp-team-track > div{flex:0 0 78% !important;scroll-snap-align:center;}
+  .jbp-team-car-prev,.jbp-team-car-next{display:flex;}
+}
+.jbp-team-carousel{position:relative;}
+.jbp-team-car-prev,.jbp-team-car-next{display:none;align-items:center;justify-content:center;position:absolute;top:38%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:9999px;background:rgba(10,27,46,0.72);color:#fff;font-size:26px;line-height:1;cursor:pointer;z-index:5;padding:0 0 4px;}
+.jbp-team-car-prev{left:6px;} .jbp-team-car-next{right:6px;}
 </style>
 <style id="jbp-brand">
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/reserve-studies/assets/fonts/IMedium.otf') format('opentype');font-weight:500;font-display:swap;}
@@ -143,21 +165,21 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
     <h1 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 50px; line-height: 1.08; letter-spacing: -0.015em; color: #fff; max-width: 20ch;">SEWER AND DRAIN RESERVE STUDY for HOAs</h1>
     <p style="margin: 0; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.9); max-width: 56ch;"><b>A true way to predict, plan and avoid sewer and drain emergencies<br>&nbsp;for Aging Condo and Townhome Associations<br></b></p>
     <div class="jbp-hero-cta" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px;">
-      <a class="jbp-btn-white" href="tel:2246572472" style="display: flex; align-items: center; padding: 15px 26px; background: #fff; color: #BC0F0E; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; border-radius: 8px;">Call (224) 657-2472</a>
+      <a class="jbp-btn-blue" href="tel:2246572472" style="display: flex; align-items: center; padding: 15px 26px; background: #1560E6; color: #fff; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; border-radius: 8px;">Call (224) 657-2472</a>
       <a class="jbp-btn-ghost" href="#book" style="display: flex; align-items: center; padding: 15px 26px; border: 2px solid #fff; color: #fff; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; border-radius: 8px;">Schedule A Consultation</a>
     </div>
-  <b style="font-size: 19px; width: 309px; height: 31px; position: absolute; right: 64px; top: 286px; font-family: 'Industry', 'Arial', sans-serif; color: rgb(255, 255, 255); text-align: right; font-style: italic">Unique Service Designed and Created by HOA Sewer Team at J Blanton Plumbing&nbsp;</b></section>
+  <b class="jbp-hero-tag" style="font-size: 19px; width: 309px; height: 31px; position: absolute; right: 64px; top: 286px; font-family: 'Industry', 'Arial', sans-serif; color: rgb(255, 255, 255); text-align: right; font-style: italic">Unique Service Designed and Created by HOA Sewer Team at J Blanton Plumbing&nbsp;</b></section>
 
-  <div style="background: #ffffff; border-bottom: 1px solid rgba(35,31,32,0.12); display: grid; grid-template-columns: repeat(3, 1fr);">
+  <div class="jbp-stack3" style="background: #ffffff; border-bottom: 1px solid rgba(35,31,32,0.12); display: grid; grid-template-columns: repeat(3, 1fr);">
     <div style="padding: 26px 30px; border-right: 1px solid rgba(35,31,32,0.12);"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 30px; line-height: 1;">510+&nbsp;</div><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.10em; text-transform: uppercase; color: #6b6b6b; margin-top: 6px;">SEWER AND DRAIN RESERVE STUDIES<br>Completed</div></div>
     <div style="padding: 26px 30px; border-right: 1px solid rgba(35,31,32,0.12);"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 30px; line-height: 1;">$750k</div><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.10em; text-transform: uppercase; color: #6b6b6b; margin-top: 6px;">Saved per HOA in long-term budgeting</div></div>
     <div style="padding: 26px 30px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 30px; line-height: 1;">55,650+&nbsp;</div><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.10em; text-transform: uppercase; color: #6b6b6b; margin-top: 6px;">EMERGENCIES AVOIDED IN THE NEXT 10 YEARS</div></div>
   </div>
 
   <section id="basics" style="position: relative;">
-    <div style="position: absolute; inset: 0; left: 50%; background: #BC0F0E;"></div>
-    <div style="position: relative; max-width: 1560px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center;">
-      <div style="display: flex; flex-direction: column; gap: 28px; padding: 96px 64px; padding-right: 48px;">
+    <div class="jbp-truway-bg" style="position: absolute; inset: 0; left: 50%; background: #BC0F0E;"></div>
+    <div class="jbp-truway-grid" style="position: relative; max-width: 1560px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center;">
+      <div class="jbp-truway-text" style="display: flex; flex-direction: column; gap: 28px; padding: 96px 64px; padding-right: 48px;">
         <div>
           <div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #BC0F0E; margin-bottom: 10px;">The Basics</div>
           <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em;">The True Way to Predict, Plan &amp; Avoid Emergencies</h2>
@@ -185,7 +207,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
           </div>
         </div>
       </div>
-      <div style="height: 100%; display: flex; align-items: stretch;">
+      <div class="jbp-truway-media" style="height: 100%; display: flex; align-items: stretch;">
         <img src="/hoa-pipe-lining/reserve-studies/assets/basics-visual-2.jpg" alt="Sewer and drain reserve study system map and camera footage" style="width: 100%; height: 100%; display: block; object-fit: cover;">
       </div>
     </div>
@@ -198,7 +220,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
         <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 36px; line-height: 1.15; letter-spacing: -0.01em; color: #fff;">Reading a Sewer Camera Feed and Scoring Pipe Condition Takes Real Expertise</h2>
         <p style="margin: 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.75); max-width: 62ch;">Every community's underground system is different. Mapping it accurately, spotting problem areas, and turning this into an actionable report takes a dedicated team who does this every day — not a general contractor running a camera through a pipe once.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;">
+      <div class="jbp-team-carousel"><div class="jbp-team-track" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;">
         <div style="display: flex; flex-direction: column; gap: 14px;">
 <img src="/hoa-pipe-lining/reserve-studies/assets/team-danyil.png" alt="Danyil, Head of HOA Sewer SEAL Team" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block;">
           <div><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 17px; color: #fff;">Danyil</div><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 14px; color: #BC0F0E;">Head of HOA Sewer "SEAL" Team</div></div>
@@ -215,7 +237,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
 <img src="/hoa-pipe-lining/reserve-studies/assets/team-christian.png" alt="Christian, Mr. Project Supervision and Making Customers Happy" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block;">
           <div><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 17px; color: #fff;">Christian</div><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 14px; color: #BC0F0E;">Mr. Project Supervision and Making Customers Happy</div></div>
         </div>
-      </div>
+      </div><button class="jbp-team-car-prev" type="button" aria-label="Previous">‹</button><button class="jbp-team-car-next" type="button" aria-label="Next">›</button></div>
     </div>
   </section>
 
@@ -226,29 +248,29 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
         <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 36px; line-height: 1.15; letter-spacing: -0.01em; color: #fff;">What You Get, Step by Step</h2>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
-        <div style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 01</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Site Walk &amp; Scheduling</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">We coordinate with your property manager on building access, previous history of back-ups and other building specific nuances.&nbsp;</p></div>
-        <div style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step1-scheduling.png" alt="J. Blanton team member scheduling a reserve study" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+      <div class="jbp-proc-step" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
+        <div class="jbp-proc-text" style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 01</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Site Walk &amp; Scheduling</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">We coordinate with your property manager on building access, previous history of back-ups and other building specific nuances.&nbsp;</p></div>
+        <div class="jbp-proc-img" style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step1-scheduling.png" alt="J. Blanton team member scheduling a reserve study" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
-        <div style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 02</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Camera and Line Tracing - Inspection Day</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">Our crews run a sewer camera through every accessible common area line, building by building, and record footage of the full run.</p></div>
-        <div style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step2-camera.png" alt="Sewer camera inspection in progress" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+      <div class="jbp-proc-step" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
+        <div class="jbp-proc-text" style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 02</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Camera and Line Tracing - Inspection Day</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">Our crews run a sewer camera through every accessible common area line, building by building, and record footage of the full run.</p></div>
+        <div class="jbp-proc-img" style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step2-camera.png" alt="Sewer camera inspection in progress" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
-        <div style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 03</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Report Generating&nbsp;</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">Every foot of the pipe is carefully analyzed and&nbsp; reviewed by HOA Diagnostic Manager for accuracy and repair suggestions</p></div>
-        <div style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step3-scoring.png" alt="Technician reviewing condition scoring footage" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+      <div class="jbp-proc-step" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
+        <div class="jbp-proc-text" style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 03</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Report Generating&nbsp;</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">Every foot of the pipe is carefully analyzed and&nbsp; reviewed by HOA Diagnostic Manager for accuracy and repair suggestions</p></div>
+        <div class="jbp-proc-img" style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step3-scoring.png" alt="Technician reviewing condition scoring footage" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
-        <div style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 04</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Report Delivery</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">You receive a pipe-by-pipe condition table, a prioritized repair list as well as general educational information.</p></div>
-        <div style="background: #fff; padding: 10px; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/sampleReport.png" alt="Sample reserve study report table" style="width: 100%; height: auto; display: block;"></div>
+      <div class="jbp-proc-step" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25);">
+        <div class="jbp-proc-text" style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 04</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Report Delivery</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">You receive a pipe-by-pipe condition table, a prioritized repair list as well as general educational information.</p></div>
+        <div class="jbp-proc-img" style="background: #fff; padding: 10px; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/sampleReport.png" alt="Sample reserve study report table" style="width: 100%; height: auto; display: block;"></div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25); border-bottom: 1px solid rgba(255,255,255,0.25);">
-        <div style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 05</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Planning Walkthrough</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">An HOA advisor performs virtual presenation and walks your board through the findings, answers questions, and helps prioritize repairs against your reserve fund.&nbsp;</p></div>
-        <div style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step5-walkthrough.png" alt="HOA board planning walkthrough with findings" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+      <div class="jbp-proc-step" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.25); border-bottom: 1px solid rgba(255,255,255,0.25);">
+        <div class="jbp-proc-text" style="display: flex; flex-direction: column; gap: 12px;"><div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;">Step 05</div><h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; color: #fff;">Planning Walkthrough</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85);">An HOA advisor performs virtual presenation and walks your board through the findings, answers questions, and helps prioritize repairs against your reserve fund.&nbsp;</p></div>
+        <div class="jbp-proc-img" style="background: #fff; padding: 8px; aspect-ratio: 4 / 3; overflow: hidden; max-width: 70%; margin: 0 auto;"><img src="/hoa-pipe-lining/reserve-studies/assets/step5-walkthrough.png" alt="HOA board planning walkthrough with findings" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
       </div>
     </div>
   </section>
@@ -256,7 +278,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
   
 
   <section id="faq" style="padding: 96px 64px;">
-    <div style="max-width: 1560px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px;">
+    <div class="jbp-things" style="max-width: 1560px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px;">
       <div style="display: flex; flex-direction: column; gap: 18px;">
         <div style="font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #BC0F0E;">Pricing &amp; Timeline</div>
         <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 32px; line-height: 1.15; letter-spacing: -0.01em;">Things to Consider</h2>
@@ -326,5 +348,5 @@ if(ov&&b){var o=function(){ov.classList.add('open');b.setAttribute('aria-expande
 b.addEventListener('click',o);ov.addEventListener('click',function(e){if(e.target===ov)c();});var x=ov.querySelector('.jbp-drawer-close');if(x)x.addEventListener('click',c);
 ov.querySelectorAll('.jbp-drawer-nav a,.jbp-drawer-cta,.jbp-drawer-phone').forEach(function(a){a.addEventListener('click',c);});}
 var f=document.getElementById('hoa-form');if(f)f.addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('hoa-success');if(m){m.style.display='block';m.scrollIntoView({behavior:'smooth',block:'nearest'});}});
-})();</script></body>
+})();</script><script>(function(){var t=document.querySelector('.jbp-team-track');if(!t)return;var p=document.querySelector('.jbp-team-car-prev'),n=document.querySelector('.jbp-team-car-next');if(p)p.addEventListener('click',function(){t.scrollBy({left:-t.clientWidth*0.8,behavior:'smooth'});});if(n)n.addEventListener('click',function(){t.scrollBy({left:t.clientWidth*0.8,behavior:'smooth'});});})();</script></body>
 </html>
