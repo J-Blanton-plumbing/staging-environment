@@ -71,11 +71,14 @@ const nextConfig = {
   },
   async rewrites() {
     return {
-      // beforeFiles so the standalone HOA landing page (a static file in
-      // public/, Brief 124) wins over the [city] dynamic route, which would
-      // otherwise 404 the clean URL (dynamicParams = false).
+      // beforeFiles so the standalone HOA pipe-lining cluster (static files in
+      // public/, Brief 125 — supersedes Brief 124's /hoa-line-piping) wins over
+      // the [city] dynamic route, which would otherwise 404 the clean URLs
+      // (dynamicParams = false).
       beforeFiles: [
-        { source: '/hoa-line-piping', destination: '/hoa-line-piping/index.html' },
+        { source: '/hoa-pipe-lining',                 destination: '/hoa-pipe-lining/index.html' },
+        { source: '/hoa-pipe-lining/team',            destination: '/hoa-pipe-lining/team/index.html' },
+        { source: '/hoa-pipe-lining/reserve-studies', destination: '/hoa-pipe-lining/reserve-studies/index.html' },
       ],
     };
   },
