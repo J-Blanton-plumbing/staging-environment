@@ -11,14 +11,6 @@ import {
 } from '@/lib/whatconverts-swap';
 
 /**
- * Bumped by hand whenever this file changes, and surfaced by ?wcdebug=1. Its
- * only job is to answer "is the device actually running the build I just
- * shipped, or a cached one?" — which is otherwise unanswerable remotely and cost
- * several rounds of misdiagnosis.
- */
-export const WC_DEBUG_BUILD = 'wc-6-dom-evidence';
-
-/**
  * Drives the WhatConverts number swap on this App Router site, and keeps it
  * applied. Everything here exists because the vendor script assumes a classic
  * multi-page site and this is a hydrated SPA.
@@ -80,18 +72,6 @@ export default function WhatConvertsRouteSwap({
   const injecting = useRef(false);
 
   useEffect(() => {
-    // Created FIRST, before anything can report into it. It previously came into
-    // existence inside repairTelAnchors, which runs after inject() — so the
-    // injection counter read 0 even when the script had been injected, i.e. the
-    // diagnostic lied about the exact thing it exists to measure.
-    const diag = ((window as unknown as Record<string, unknown>).__wc ??= {
-      installed: true,
-      build: WC_DEBUG_BUILD,
-      repairs: 0,
-      passes: 0,
-      injections: 0,
-    }) as Record<string, unknown>;
-
     const inject = () => {
       if (injecting.current) return;
       injecting.current = true;
@@ -108,7 +88,6 @@ export default function WhatConvertsRouteSwap({
       script.addEventListener('load', done);
       script.addEventListener('error', done);
       document.head.appendChild(script);
-      diag.injections = ((diag.injections as number) ?? 0) + 1;
     };
 
     // Runs after hydration commits on first mount, and after React has painted
@@ -163,13 +142,6 @@ export default function WhatConvertsRouteSwap({
      */
     const repairTelAnchors = () => {
       const pairs = mappings();
-      // Diagnostics for ?wcdebug=1 (WhatConvertsDebug). Deliberately written even
-      // when there is no mapping, so the panel can distinguish "this code never
-      // ran" from "it ran and had nothing to do" — the exact ambiguity that made
-      // a device-specific failure impossible to reason about remotely.
-      diag.passes = (diag.passes as number) + 1;
-      diag.mappingPairs = pairs.length;
-      diag.lastMapping = pairs[0] ? `${pairs[0].original}->${pairs[0].tracking}` : null;
       if (!pairs.length) return;
       Array.from(document.querySelectorAll('a[href^="tel:"]')).forEach((anchor) => {
         const href = anchor.getAttribute('href') ?? '';
@@ -177,8 +149,6 @@ export default function WhatConvertsRouteSwap({
         const hit = pairs.find((m) => hrefDigits.includes(m.original));
         if (hit) {
           anchor.setAttribute('href', `tel:${formatUs(hit.tracking)}`);
-          diag.repairs = (diag.repairs as number) + 1;
-          diag.lastRepairKind = 'href';
         }
 
         // The inverse case — href swapped, visible text reverted by hydration.

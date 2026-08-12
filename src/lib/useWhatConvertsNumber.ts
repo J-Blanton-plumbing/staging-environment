@@ -34,7 +34,7 @@ export interface SwappedNumber {
   display: string;
   /** Dial target, e.g. `tel:773-364-1541`. */
   href: string;
-  /** Which evidence source resolved it — surfaced by ?wcdebug=1. */
+  /** Which evidence source resolved it — see ./whatconverts-swap. */
   source: ResolvedSwap['source'];
 }
 
@@ -77,16 +77,6 @@ export function useWhatConvertsNumber(originalDisplay: string): SwappedNumber | 
       window.clearInterval(timer);
     };
   }, [originalDisplay]);
-
-  // Expose for ?wcdebug=1 without another render path.
-  if (typeof window !== 'undefined' && swapped) {
-    const diag = ((window as unknown as Record<string, unknown>).__wc ??= {}) as Record<
-      string,
-      unknown
-    >;
-    diag.reactNumber = swapped.display;
-    diag.reactSource = swapped.source;
-  }
 
   return swapped;
 }

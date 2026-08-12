@@ -389,8 +389,77 @@ jobs:
             # ecosystem file registers the app the first time and reloads it on every
             # deploy after that, so this step can never again quietly fail to apply
             # new code. See ecosystem.config.js for the process definition.
-            pm2 startOrReload ecosystem.config.js --update-env
+            # Brief 151: `startOrReload --update-env` provably did NOT push a
+            # changed .env.local into the running process — after the Brief 150
+            # secret rotation the live app kept validating sessions with the
+            # OLD CMS_SESSION_SECRET straight through a deploy (Brief 150 §7).
+            # pm2 re-injects its saved env snapshot at exec time and Next's env
+            # loader never overrides an already-set process var, so a stale
+            # snapshot silently defeats every .env.local change. The pattern
+            # proven on the live box is a hard restart with --update-env from a
+            # shell that has the new env loaded. Downtime is unchanged: the app
+            # runs in fork mode (ecosystem.config.js), where pm2's "reload" was
+            # a stop-then-start anyway. startOrRestart still registers the app
+            # on a first-ever deploy, same as startOrReload did.
+            #
+            # Re-source the env files IMMEDIATELY before the restart so this
+            # shell provably holds what .env.local holds right now — never rely
+            # on the sourcing further up this script surviving future edits.
+            for envfile in .env .env.production .env.local; do
+              if [ -f "$envfile" ]; then set -a; . "./$envfile"; set +a; fi
+            done
+            pm2 startOrRestart ecosystem.config.js --update-env
+            # Refresh pm2's saved snapshot so a box reboot resurrects the
+            # process with the env it is running NOW — without this, the stale
+            # pre-rotation snapshot comes back on the next reboot.
+            pm2 save
             rm -rf .next-prev
+            # Brief 151: prove the restart delivered .env.local to the process.
+            # Reads the live process environ and compares each sensitive var
+            # against the file. ⚠️ This repo is PUBLIC and these logs are
+            # world-readable: print var NAMES and MATCH/MISMATCH only, NEVER a
+            # value (same rule as the Brief 150 verify-secret phase this is
+            # lifted from). The sleep gives npm time to spawn the actual
+            # next-server child whose environ we read.
+            #
+            # ⚠️ SHAPE WARNING: this step runs with script_stop: true, which
+            # makes the transport insert an exit-code check AFTER EVERY LINE
+            # (drone-ssh scriptCommands). A multi-line `else` branch reached
+            # via a failed test is fatal: the injected check is the first
+            # statement of the branch and sees the test's $? of 1 — the exact
+            # mechanism that killed the health-check step for seven deploys
+            # (Brief 150 §8). So everything below keeps condition fallbacks on
+            # ONE line (atomic to the transport) and uses no multi-line `else`.
+            sleep 8
+            APP_PID=$(pgrep -f 'next-server' | head -1)
+            if [ -z "$APP_PID" ]; then APP_PID=$(pgrep -fo 'next start' | head -1); fi
+            echo ''
+            echo '================== PM2 ENV VERIFICATION =================='
+            ENV_MISMATCH=0
+            if [ -z "$APP_PID" ]; then echo 'ENV-VERIFY: SKIPPED - could not locate the next-server process. Not failing the deploy on a pgrep pattern - the health-check step below still gates on the site serving; if it is green, fix the pgrep patterns here.'; fi
+            if [ -n "$APP_PID" ]; then
+              for var in CMS_SESSION_SECRET DATABASE_URL; do
+                FILE_VAL=$(grep -E "^${var}=" .env.local | head -1 | cut -d= -f2-)
+                PROC_VAL=$(sudo cat "/proc/${APP_PID}/environ" | tr '\0' '\n' | grep -E "^${var}=" | head -1 | cut -d= -f2-)
+                # "Not in the exec env at all" counts as MATCH: it means the pm2
+                # snapshot no longer carries the var, so Next reads it from
+                # .env.local at boot - which is by definition the current value.
+                VERDICT=''
+                if [ -z "$FILE_VAL" ]; then VERDICT='not set in .env.local, skipped'; elif [ -z "$PROC_VAL" ]; then VERDICT='MATCH (not in exec env; process loads it from .env.local directly)'; elif [ "$FILE_VAL" = "$PROC_VAL" ]; then VERDICT='MATCH'; fi
+                if [ -z "$VERDICT" ]; then VERDICT='MISMATCH (process is running a STALE value)'; ENV_MISMATCH=1; fi
+                echo "ENV-VERIFY: ${var} - ${VERDICT}"
+              done
+            fi
+            if [ "$ENV_MISMATCH" -eq 1 ]; then
+              echo ''
+              echo 'pm2 env verification FAILED: the restart did not deliver .env.local'
+              echo 'to the process. The new BUILD is already serving - this red step'
+              echo 'means at least one var named above is stale in the live process.'
+              echo 'Fix on-box: load .env.local into a shell (set -a; . ./.env.local;'
+              echo 'set +a) then: pm2 restart jblanton --update-env && pm2 save'
+              exit 1
+            fi
+            echo '=========================================================='
 
       - name: Post-deploy health check
         uses: appleboy/ssh-action@v1.0.0
@@ -398,7 +467,15 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script_stop: true
+          # Brief 151: MUST stay false for this step. With script_stop: true the
+          # transport aborts the remote script at the first intermediate
+          # non-zero exit — deterministically at check 7, the first
+          # check_absent, whose HEALTHY path has grep exit 1 — and drops the
+          # output tail, so every deploy went red here even when all 11 checks
+          # pass when the same script is run on the box (Brief 150 §8). The
+          # script below manages its own `set -e` and exit codes: a genuinely
+          # failing check still exits non-zero and turns this step red.
+          script_stop: false
           script: |
             set -e
             # Send stderr into stdout. Without this, appleboy/ssh-action prefixes

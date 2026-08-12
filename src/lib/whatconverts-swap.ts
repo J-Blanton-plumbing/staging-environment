@@ -42,7 +42,7 @@ export interface SwapPair {
 
 export interface ResolvedSwap {
   pair: SwapPair;
-  /** Which evidence source won — surfaced by ?wcdebug=1. */
+  /** Which evidence source won. */
   source: 'cookie' | 'localStorage' | 'dom-href' | 'dom-text';
 }
 

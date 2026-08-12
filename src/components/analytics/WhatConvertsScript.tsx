@@ -4,7 +4,6 @@ import {
   whatConvertsScriptUrl,
 } from '@/lib/whatconverts';
 import WhatConvertsRouteSwap from './WhatConvertsRouteSwap';
-import WhatConvertsDebug from './WhatConvertsDebug';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 
 /**
@@ -59,10 +58,6 @@ export default async function WhatConvertsScript() {
         src={whatConvertsScriptUrl(config)}
         defaultDisplay={settings.phoneDisplay}
       />
-      {/* Renders null unless the URL carries ?wcdebug=1 — a field diagnostic for
-          device-specific swap failures that cannot be reproduced in a desktop
-          browser. Remove once the iOS dial-target issue is closed out. */}
-      <WhatConvertsDebug />
     </>
   );
 }
