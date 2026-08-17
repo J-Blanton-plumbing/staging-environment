@@ -488,6 +488,20 @@ jobs:
             # verification.
             exec 2>&1
 
+            # Brief 153 follow-up: this step is a SEPARATE ssh-action invocation from
+            # "Deploy via SSH", so it opens a NEW SSH session starting in $HOME — the
+            # `cd /var/www/jblanton` in that step does NOT carry over. Every other
+            # repo-script call in this pipeline lives in that step and is therefore
+            # already in the app directory; the SEO validator at the bottom of THIS step
+            # was the first one that is not, and it died instantly on
+            # "Cannot find module '/home/ec2-user/scripts/validate-seo-routing.mjs'",
+            # turning two consecutive deploys red for a reason that had nothing to do
+            # with the code they shipped (runs 78 and 79).
+            #
+            # `cd` here rather than on the node line, so any future repo-relative command
+            # in this step is correct by default.
+            cd /var/www/jblanton
+
             # Pinpoint reporting. Each check records what it is about to do; if the
             # script dies partway, the EXIT trap names the exact check that was
             # running. Costs no output on success, unlike tracing every check.
@@ -671,5 +685,14 @@ jobs:
             # swap, so the new build is already serving — read the ✗ lines, fix, redeploy.
             echo ''
             echo '=============== SEO / ROUTING VALIDATION ==============='
+            LAST_CHECK="SEO / ROUTING VALIDATION"
+            # Fail LOUDLY and specifically if the script is not where we think it is,
+            # rather than letting node print a raw "Cannot find module" stack trace that
+            # reads like a code defect. This is the guard runs 78/79 needed.
+            if [ ! -f scripts/validate-seo-routing.mjs ]; then
+              echo "MISSING: $(pwd)/scripts/validate-seo-routing.mjs does not exist."
+              echo "This step must run from the app directory (/var/www/jblanton) — check the cd above."
+              exit 1
+            fi
             node scripts/validate-seo-routing.mjs --base=http://localhost:3000 --articles-sample=60 --city-services-sample=40
             echo '======================================================='
