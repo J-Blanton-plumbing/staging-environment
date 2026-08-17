@@ -82,12 +82,22 @@ export function GET() {
 
   const crawlable = forceDisallow ? false : siteEnv === 'production' || onBrandDomain;
 
+  // Brief 152 (Fix 4): NO `Disallow` lines. `Disallow: /admin` + `Disallow: /api`
+  // were removed on purpose — see the block comment above the `X-Robots-Tag`
+  // headers() rules in next.config.mjs. Blocking the crawl left 25 of those URLs
+  // permanently stuck in Google's index (indexed from links, un-fetchable, so the
+  // noindex could never be read). Those two prefixes now answer
+  // `X-Robots-Tag: noindex, nofollow` instead, which is the instruction that
+  // actually removes a page.
+  //
+  // ⚠️ DO NOT "tidy up" by re-adding a Disallow for /admin or /api. It would
+  // re-block the crawl and make the noindex header unreadable, restoring the
+  // exact defect this replaced. Access control is unrelated to and unaffected by
+  // this file.
   const body = crawlable
     ? [
         'User-agent: *',
         'Allow: /',
-        'Disallow: /admin',
-        'Disallow: /api',
         '',
         `Sitemap: ${CANONICAL_BASE}/sitemap.xml`,
         '',

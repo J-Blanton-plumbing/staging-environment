@@ -69,6 +69,56 @@ const nextConfig = {
   images: {
     remotePatterns: imageRemotePatterns,
   },
+  // Brief 152 (Fix 1) — hand the trailing-slash redirect to src/middleware.ts.
+  //
+  // Next's built-in rule is unshifted onto the front of `redirects()`, so it runs
+  // before middleware and ALWAYS wins. That turned every slashed alias into a
+  // two-hop chain on production: `/bathroom-plumbing/` → 308
+  // `/bathroom-plumbing` → 301 `/bathroom-plumbing-chicago`. Since every legacy
+  // WordPress URL ended in a slash, that is the shape Google holds for
+  // effectively the whole site. `normalizeTrailingSlash()` in middleware does the
+  // strip AND the alias lookup in one pass, so the crawler gets a single 301 to
+  // the final 200.
+  //
+  // ⚠️ REMOVING THIS FLAG silently restores Next's 308 and re-creates every
+  // chain — the middleware branch becomes dead code because it never runs.
+  skipTrailingSlashRedirect: true,
+  /**
+   * Brief 152 (Fix 4) — search-visibility headers.
+   *
+   * `robots.txt` used to `Disallow: /admin` and `Disallow: /api`, which blocks
+   * CRAWLING but not INDEXING: Google indexed 25 of those URLs anyway (from
+   * links) and then could not fetch them to discover a `noindex`, so they were
+   * stuck in the index permanently. The fix is counterintuitive — allow the
+   * crawl (see src/app/robots.txt/route.ts) and answer with a `noindex` header
+   * so Google can read it and drop the page.
+   *
+   * This is a SEARCH-VISIBILITY change only. Access control on /admin and /api
+   * is unchanged (session gate in src/middleware.ts + getSession). A response
+   * header alters no status code, no body and no CORS behaviour, so the live
+   * `POST /api/leads` endpoint is untouched.
+   *
+   * Both the bare and the `/:path*` form are listed because path-to-regexp does
+   * not reliably match the zero-segment case across versions, and `/admin`
+   * itself (which 307s to /admin/login) must carry the header too.
+   *
+   * next.config `headers()` resolve BEFORE middleware and are applied to the
+   * final response by the router, so they land on middleware-generated responses
+   * (the /admin → /admin/login redirect, the /api/cms 401 JSON) as well as on
+   * rendered ones.
+   *
+   * /robots.txt and /sitemap.xml are deliberately NOT matched — they must stay
+   * fetchable AND indexable-neutral.
+   */
+  async headers() {
+    const noindex = [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }];
+    return [
+      { source: '/admin', headers: noindex },
+      { source: '/admin/:path*', headers: noindex },
+      { source: '/api', headers: noindex },
+      { source: '/api/:path*', headers: noindex },
+    ];
+  },
   async rewrites() {
     return {
       // beforeFiles so the standalone HOA pipe-lining cluster (static files in

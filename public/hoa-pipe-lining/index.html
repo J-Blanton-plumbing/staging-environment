@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HOA Sewer Pipe Lining | J. Blanton Plumbing</title>
+<!-- Brief 152 (Fix 3): self-referencing canonical. These three pages are static
+     HTML served through the beforeFiles rewrites in next.config.mjs, so they
+     never pass through the root layout's generateMetadata and had NO canonical
+     tag at all. They are listed in sitemap.xml as of Brief 152 (replacing the
+     404ing /hoa-line-piping), and scripts/validate-sitemap-live.mjs asserts each
+     sitemap URL declares exactly this canonical. Keep in sync with the rewrite
+     source, not the file path. -->
+<link rel="canonical" href="https://jblantonplumbing.com/hoa-pipe-lining">
 
 </head>
 <body>

@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/validate-sitemap.ts",
     "build": "next build",
+    "validate:sitemap": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/validate-sitemap.ts",
+    "validate:seo": "node scripts/validate-seo-routing.mjs",
     "start": "next start",
     "lint": "next lint",
     "seed:cms": "ts-node scripts/seed-cms.ts",

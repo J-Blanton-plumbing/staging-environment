@@ -4,6 +4,7 @@ import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { CITY_REGISTRY } from '@/lib/content/cities';
 import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { CANONICAL_BASE } from '@/lib/seo';
+import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
 
 /**
  * Brief 127 (Track C): the sitemap is generated from the CMS's live, published
@@ -48,25 +49,14 @@ const STATIC_FALLBACK_SUB_SERVICES = new Set(['sewer-rodding', 'hydro-jetting'])
 
 /**
  * Static top-level pages that always return 200. Slug 'home' in main_pages maps
- * to '/'. /hoa-line-piping is the standalone Brief 124 landing page (static
- * HTML in public/, served via rewrite).
+ * to '/'.
+ *
+ * Brief 152 (Fix 3) moved the list to `src/lib/sitemap-pages.ts` so
+ * `scripts/validate-sitemap.ts` can import it at build time without pulling in
+ * `pg`. Add or remove entries THERE — and read the rules in that file's header
+ * first, because the validator enforces them and will fail the build.
  */
-const STATIC_PAGES: Array<{ path: string; mainSlug?: string; changeFrequency: 'weekly' | 'monthly' | 'yearly'; priority: number }> = [
-  { path: '',                    mainSlug: 'home',             changeFrequency: 'weekly',  priority: 1 },
-  { path: '/services',                                         changeFrequency: 'monthly', priority: 0.9 },
-  { path: '/emergency-plumbing',                               changeFrequency: 'monthly', priority: 0.9 },
-  { path: '/contact',                                          changeFrequency: 'monthly', priority: 0.8 },
-  { path: '/no-drip-club',       mainSlug: 'no-drip-club',     changeFrequency: 'monthly', priority: 0.8 },
-  { path: '/customer-stories',   mainSlug: 'customer-stories', changeFrequency: 'weekly',  priority: 0.7 },
-  { path: '/why-j-blanton',      mainSlug: 'why-j-blanton',    changeFrequency: 'monthly', priority: 0.7 },
-  { path: '/locations',          mainSlug: 'locations',        changeFrequency: 'monthly', priority: 0.7 },
-  { path: '/knowledge-hub',      mainSlug: 'knowledge-hub',    changeFrequency: 'weekly',  priority: 0.7 },
-  { path: '/financing',          mainSlug: 'financing',        changeFrequency: 'monthly', priority: 0.6 },
-  { path: '/help-and-support',   mainSlug: 'help-and-support', changeFrequency: 'monthly', priority: 0.6 },
-  { path: '/hoa-line-piping',                                  changeFrequency: 'monthly', priority: 0.6 },
-  { path: '/j-blanton-is-hiring',                              changeFrequency: 'monthly', priority: 0.4 },
-  { path: '/privacy-policy',                                   changeFrequency: 'yearly',  priority: 0.3 },
-];
+const STATIC_PAGES = SITEMAP_STATIC_PAGES;
 
 type LastModMap = Map<string, Date>;
 

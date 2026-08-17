@@ -642,3 +642,28 @@ jobs:
             fi
             echo 'All content markers present.'
             echo '====================================================='
+
+            # -- Brief 152 (Fix 3): LIVE SEO/routing validation --------------------
+            # The build-time half of this runs as `prebuild`
+            # (scripts/validate-sitemap.ts) and cannot see a database or a serving
+            # app. This half can: it asserts every sitemap <loc> returns 200 AND
+            # declares a canonical equal to itself, that robots.txt carries no
+            # Disallow, that /admin + /api answer X-Robots-Tag: noindex while
+            # /robots.txt and /sitemap.xml do not, and that the trailing-slash and
+            # alias redirects each reach a 200 in exactly ONE hop.
+            #
+            # This is the check that /hoa-line-piping needed: it sat in sitemap.xml
+            # returning 404 for weeks, and nothing in this pipeline looked.
+            #
+            # Runs against localhost:3000 (the app, not nginx) like the checks above.
+            # `--articles-sample` bounds ONLY the 812 /knowledge-hub/* URLs; every
+            # other sitemap URL is checked in full, and the script prints exactly how
+            # many articles it skipped so a bounded run cannot read as full coverage.
+            # Raise it (or pass --articles-sample=0 for all 812) when investigating.
+            #
+            # A failure here is a real SEO defect and SHOULD be red. It runs after the
+            # swap, so the new build is already serving — read the ✗ lines, fix, redeploy.
+            echo ''
+            echo '=============== SEO / ROUTING VALIDATION ==============='
+            node scripts/validate-seo-routing.mjs --base=http://localhost:3000 --articles-sample=60
+            echo '======================================================='

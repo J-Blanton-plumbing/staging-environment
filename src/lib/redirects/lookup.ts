@@ -19,6 +19,7 @@
  * the Edge runtime middleware executes in.
  */
 import legacyRedirectMap from './legacy-redirect-map.json';
+import { ALIAS_REDIRECTS } from './alias-redirects';
 
 /**
  * 410 is supported for forward-compatibility: if a bucket is ever retired
@@ -41,15 +42,37 @@ interface LegacyRedirectRow {
   bucket: string;
 }
 
-const REDIRECTS: ReadonlyMap<string, LegacyRedirect> = new Map(
-  (legacyRedirectMap as LegacyRedirectRow[]).map((row) => [
-    row.from,
-    { to: row.to, status: row.status === 410 ? 410 : 301 },
-  ])
-);
+/**
+ * Brief 152: the generated WordPress map is the BASE and the hand-maintained
+ * alias map (src/lib/redirects/alias-redirects.ts) is overlaid on top, so a
+ * post-migration slug decision always wins over whatever the export happened to
+ * contain. Both are exact-path Maps built once at module scope.
+ */
+const REDIRECTS: ReadonlyMap<string, LegacyRedirect> = new Map<string, LegacyRedirect>([
+  ...(legacyRedirectMap as LegacyRedirectRow[]).map(
+    (row) => [row.from, { to: row.to, status: row.status === 410 ? 410 : 301 }] as const
+  ),
+  ...Object.entries(ALIAS_REDIRECTS).map(
+    ([from, to]) => [from, { to, status: 301 }] as const
+  ),
+]);
 
 /** Entry count — exposed for diagnostics/tests, not used by routing. */
 export const LEGACY_REDIRECT_COUNT = REDIRECTS.size;
+
+/**
+ * Every path that redirects, for the build-time sitemap validator: a URL the
+ * sitemap advertises must never also be a redirect source, and a redirect target
+ * must never be one either (that is a chain).
+ */
+export function allRedirectSources(): string[] {
+  return Array.from(REDIRECTS.keys());
+}
+
+/** Every (from → to) pair, for the same validator's chain check. */
+export function allRedirectPairs(): Array<{ from: string; to: string; status: number }> {
+  return Array.from(REDIRECTS.entries(), ([from, r]) => ({ from, to: r.to, status: r.status }));
+}
 
 /**
  * Look up a legacy path. `pathname` must already be `normalizePath()`-normalized

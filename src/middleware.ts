@@ -53,8 +53,56 @@ async function verifySession(req: NextRequest): Promise<boolean> {
   }
 }
 
+/**
+ * Brief 152 (Fix 1) — trailing-slash normalization, moved here from Next's
+ * built-in handler via `skipTrailingSlashRedirect: true` in next.config.mjs.
+ *
+ * WHY MOVE IT. Next's internal rule is prepended to `redirects()` and therefore
+ * runs BEFORE middleware, which made every slashed alias a two-hop chain:
+ * `/bathroom-plumbing/` → 308 `/bathroom-plumbing` → 301
+ * `/bathroom-plumbing-chicago` (verified on production 2026-08-17, and the same
+ * for `/why-us/`, `/reviews/`, `/plumbing/` and every other alias). Because the
+ * old WordPress site ended every URL in a slash, that shape is what Google holds
+ * for essentially the whole site. Doing the strip HERE lets the same pass consult
+ * the redirect map and land on the final target in ONE hop.
+ *
+ * It also emits 301 rather than Next's 308. Google treats them identically, but
+ * the SEO tooling this brief is answering to reports on 301 (same reasoning as
+ * the `statusCode: 301` choice in next.config.mjs, Brief 127 Track B).
+ *
+ * METHOD SAFETY: 301/302 let a client rewrite a POST into a GET, so a non-GET
+ * request gets 308/307-style method-preserving semantics instead — `POST
+ * /api/leads/` must never silently become `GET /api/leads`. The live lead form
+ * posts to the unslashed path, so this is belt-and-braces.
+ */
+function normalizeTrailingSlash(req: NextRequest, pathname: string): NextResponse | null {
+  if (pathname === '/' || !pathname.endsWith('/')) return null
+  // Framework internals normalize themselves; never touch them.
+  if (pathname.startsWith('/_next') || pathname.startsWith('/.well-known')) return null
+
+  const stripped = pathname.replace(/\/+$/, '') || '/'
+
+  // Single hop: if the de-slashed path is itself a redirect source, go straight
+  // to its final target instead of bouncing the crawler through it.
+  const hit = skipsRedirectLookup(stripped) ? undefined : lookupRedirect(normalizePath(stripped))
+  if (hit?.status === 410) return new NextResponse('Gone', { status: 410 })
+
+  const url = new URL(hit ? hit.to : stripped, req.url)
+  url.search = req.nextUrl.search
+  const methodSafe = req.method === 'GET' || req.method === 'HEAD'
+  return NextResponse.redirect(url, methodSafe ? 301 : 308)
+}
+
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
+
+  // ── Trailing-slash → canonical form (Brief 152) ────────────────────────
+  // FIRST of all, ahead of even the legacy map: every other branch below
+  // (including the Basic-Auth gate and the /admin session gate) assumes it is
+  // looking at a canonical path, and a crawler asking for `/evanston/` must get
+  // its 301 rather than a 401 or a rendered duplicate.
+  const slashRedirect = normalizeTrailingSlash(req, pathname)
+  if (slashRedirect) return slashRedirect
 
   // ── Legacy 301s (Brief 131) ────────────────────────────────────────────
   // FIRST, before every other branch: these are indexed WordPress URLs that do
