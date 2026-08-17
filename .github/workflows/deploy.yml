@@ -656,14 +656,20 @@ jobs:
             # returning 404 for weeks, and nothing in this pipeline looked.
             #
             # Runs against localhost:3000 (the app, not nginx) like the checks above.
-            # `--articles-sample` bounds ONLY the 812 /knowledge-hub/* URLs; every
-            # other sitemap URL is checked in full, and the script prints exactly how
-            # many articles it skipped so a bounded run cannot read as full coverage.
-            # Raise it (or pass --articles-sample=0 for all 812) when investigating.
+            #
+            # Brief 153 made /sitemap.xml a <sitemapindex>: the validator now walks
+            # the index, fetches every child, and checks ~12,264 URLs' worth of
+            # <loc> entries. Two sampling bounds keep the health check quick:
+            #   --articles-sample       the 812 /knowledge-hub/* URLs
+            #   --city-services-sample  the 11,160 /{city}/{service} URLs
+            # Everything else (the 292 pages + city landings) is checked in FULL on
+            # every run, samples are evenly spread across the whole list rather than
+            # truncated, and the script prints exactly how many of each class it
+            # skipped so a bounded run cannot read as full coverage. Pass 0 for all.
             #
             # A failure here is a real SEO defect and SHOULD be red. It runs after the
             # swap, so the new build is already serving — read the ✗ lines, fix, redeploy.
             echo ''
             echo '=============== SEO / ROUTING VALIDATION ==============='
-            node scripts/validate-seo-routing.mjs --base=http://localhost:3000 --articles-sample=60
+            node scripts/validate-seo-routing.mjs --base=http://localhost:3000 --articles-sample=60 --city-services-sample=40
             echo '======================================================='

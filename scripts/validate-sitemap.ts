@@ -53,10 +53,22 @@ import path from 'path';
 
 import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { CITY_REGISTRY } from '@/lib/content/cities';
-import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
+import { getAllServiceSlugs } from '@/lib/content/city-services';
+import { LEGACY_CATEGORY_TARGETS, SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
 import { allRedirectPairs, allRedirectSources } from '@/lib/redirects/lookup';
 import { ALIAS_REDIRECTS, MANUAL_ALIAS_REDIRECTS } from '@/lib/redirects/alias-redirects';
+import {
+  allCityScopedRedirectPairs,
+  lookupCityScopedRedirect,
+} from '@/lib/redirects/city-scoped';
+import {
+  CITY_SERVICE_SHARDS,
+  SHARD_URL_CEILING,
+  SITEMAP_CHILDREN,
+  citySlugsForShard,
+} from '@/lib/sitemap/manifest';
+import { NON_PUBLIC_SUBDOMAINS } from '@/lib/non-public-hosts';
 import legacyRedirectMap from '@/lib/redirects/legacy-redirect-map.json';
 
 const REPO = path.resolve(__dirname, '..');
@@ -80,7 +92,11 @@ interface NextConfigDump {
   redirects: NextRedirect[];
   rewrites: { beforeFiles?: Array<{ source: string; destination: string }> };
   skipTrailingSlashRedirect: boolean;
-  headers: Array<{ source: string; headers: Array<{ key: string; value: string }> }>;
+  headers: Array<{
+    source: string;
+    has?: Array<{ type: string; value: string }>;
+    headers: Array<{ key: string; value: string }>;
+  }>;
 }
 
 function loadNextConfig(): NextConfigDump {
@@ -100,12 +116,23 @@ function pageFileIn(dir: string): string | null {
   return null;
 }
 
+/**
+ * Memoized — Brief 153 pushed the checked URL count from 293 to ~11,500, and an
+ * un-cached readdir+stat per path segment turned a sub-second `prebuild` into a
+ * minute of syscalls.
+ */
+const DIR_CACHE = new Map<string, string[]>();
 function dirsIn(dir: string): string[] {
+  const hit = DIR_CACHE.get(dir);
+  if (hit) return hit;
+  let out: string[] = [];
   try {
-    return readdirSync(dir).filter((n) => statSync(path.join(dir, n)).isDirectory());
+    out = readdirSync(dir).filter((n) => statSync(path.join(dir, n)).isDirectory());
   } catch {
-    return [];
+    out = [];
   }
+  DIR_CACHE.set(dir, out);
+  return out;
 }
 
 interface RouteMatch {
@@ -163,9 +190,17 @@ function resolveAppRoute(urlPath: string): RouteMatch | null {
  * statically and is reported rather than waved through.
  */
 const CITY_SLUGS = new Set(CITY_REGISTRY.map((c) => c.slug));
+const CITY_SERVICE_SLUGS = new Set(getAllServiceSlugs());
 const PROVABLE_DYNAMIC_ROUTES: Record<string, (urlPath: string) => boolean> = {
   // `dynamicParams = false` — only registered slugs render.
   '[city]/page.tsx': (p) => CITY_SLUGS.has(p.replace(/^\//, '')),
+  // Brief 153: `[city]/[service]` is `dynamicParams = true`, but its body calls
+  // `notFound()` unless BOTH lookups resolve — so registry membership is the
+  // proof, exactly as it is for `[city]`.
+  '[city]/[service]/page.tsx': (p) => {
+    const [city, service] = p.split('/').filter(Boolean);
+    return CITY_SLUGS.has(city) && CITY_SERVICE_SLUGS.has(service);
+  },
   // Article slugs live in the CMS; the live validator (scripts/validate-seo-routing.mjs)
   // is the only thing that can confirm a given one is published.
   'knowledge-hub/[slug]/page.tsx': () => true,
@@ -223,11 +258,148 @@ const main = () => {
     }
   }
 
-  // ── Redirect sources, from all three places they can live ────────────────
+  // ── Brief 153 (Track E): the clone-host noindex rules ────────────────────
+  const hostNoindexValues = new Set(
+    cfg.headers
+      .filter((h) =>
+        h.headers.some((x) => x.key.toLowerCase() === 'x-robots-tag' && /noindex/i.test(x.value))
+      )
+      .flatMap((h) => (h.has ?? []).filter((c) => c.type === 'host').map((c) => c.value))
+  );
+  for (const sub of NON_PUBLIC_SUBDOMAINS) {
+    const host = `${sub}.jblantonplumbing.com`;
+    if (!hostNoindexValues.has(host)) {
+      fail(
+        `next.config.mjs headers(): no host-scoped \`X-Robots-Tag: noindex\` rule for "${host}", ` +
+          'but src/lib/non-public-hosts.ts lists it in NON_PUBLIC_SUBDOMAINS. The two must agree ' +
+          '(Brief 153 Track E): robots.txt Disallow stops new discovery, the header removes what ' +
+          'is already indexed, and neither works alone.'
+      );
+    }
+  }
+  for (const host of hostNoindexValues) {
+    const sub = host.replace(/\.jblantonplumbing\.com$/, '');
+    if (!NON_PUBLIC_SUBDOMAINS.includes(sub)) {
+      fail(
+        `next.config.mjs headers(): host-scoped noindex rule for "${host}" has no matching entry ` +
+          'in NON_PUBLIC_SUBDOMAINS (src/lib/non-public-hosts.ts), so that host is served ' +
+          '`Allow: /` in robots.txt while being told noindex. Add it there or drop the rule.'
+      );
+    }
+  }
+
+  // ── Brief 153 (Track C): the legacy category map vs next.config ──────────
+  // `/{city}/{category}` 301s are derived from LEGACY_CATEGORY_TARGETS; the bare
+  // `/{category}` 301s live in next.config. They must send the same slug to the
+  // same page or the city-scoped and top-level forms disagree.
+  const configRedirectBySource = new Map(cfg.redirects.map((r) => [r.source, r.destination]));
+  for (const [slug, target] of Object.entries(LEGACY_CATEGORY_TARGETS)) {
+    const topLevel = configRedirectBySource.get(`/${slug}`);
+    if (!topLevel) {
+      fail(
+        `LEGACY_CATEGORY_TARGETS lists "${slug}" but next.config.mjs has no \`/${slug}\` redirect. ` +
+          `The city-scoped form /{city}/${slug} 301s to ${target} while the bare /${slug} 404s.`
+      );
+    } else if (topLevel !== target) {
+      fail(
+        `LEGACY_CATEGORY_TARGETS sends "${slug}" to ${target}, but next.config.mjs sends ` +
+          `/${slug} to ${topLevel}. Same slug, two destinations.`
+      );
+    }
+  }
+
+  // ── Brief 153 (Track D): the -2/-3 strip rule must not shadow a real slug ──
+  const digitSuffixed = [
+    ...[...CITY_SLUGS].map((s) => ({ kind: 'city slug', slug: s })),
+    ...[...CITY_SERVICE_SLUGS].map((s) => ({ kind: 'city-service slug', slug: s })),
+    ...SUB_SERVICE_ROUTES.map((s) => ({ kind: 'sub-service route', slug: s })),
+  ].filter((x) => /-(?:2|3)$/.test(x.slug));
+  for (const x of digitSuffixed) {
+    fail(
+      `${x.kind} "${x.slug}" ends in -2/-3, which the WordPress duplicate-slug rule in ` +
+        'src/lib/redirects/city-scoped.ts strips. That rule would redirect a real page away. ' +
+        'Rename the slug or narrow WP_DUPLICATE_SUFFIX.'
+    );
+  }
+
+  // ── Redirect sources, from all the places they can live ──────────────────
   const configSources = new Set(cfg.redirects.map((r) => r.source));
   const mapSources = new Set(allRedirectSources());
   const isRedirectSource = (p: string) =>
-    configSources.has(p) || mapSources.has(p) || configSources.has(`${p}/`);
+    configSources.has(p) ||
+    mapSources.has(p) ||
+    configSources.has(`${p}/`) ||
+    // Brief 153: the city-scoped rule is a shape, not a Map entry, so it has to
+    // be asked directly. Without this the validator could not prove that none of
+    // the 11,160 /{city}/{service} URLs the sitemap now lists is also redirected.
+    lookupCityScopedRedirect(p) !== null;
+
+  // ── Brief 153 (Track B): the sitemap index and its children ──────────────
+  // Every child must itself be served by a route — an index advertising a child
+  // that 404s is the /hoa-line-piping defect one level up.
+  for (const child of SITEMAP_CHILDREN) {
+    const routeFile = path.join(APP_DIR, child.path.replace(/^\//, ''), 'route.ts');
+    if (!existsSync(routeFile)) {
+      fail(
+        `SITEMAP INDEX: child "${child.path}" has no route — expected ` +
+          `src/app${child.path}/route.ts. The index would advertise a 404.`
+      );
+    }
+  }
+
+  // Shard ranges must be contiguous and total, so every city slug — including
+  // one starting with a digit or a 'z' — lands in exactly one child.
+  const shards = [...CITY_SERVICE_SHARDS].sort((a, b) => a.id - b.id);
+  if (shards.length === 0 || shards[0].from !== '' || shards[shards.length - 1].to !== '') {
+    fail(
+      'CITY_SERVICE_SHARDS must start with an unbounded `from` and end with an unbounded `to`, ' +
+        'or some city slugs fall outside every shard and vanish from the sitemap.'
+    );
+  }
+  for (let i = 1; i < shards.length; i++) {
+    if (shards[i].from !== shards[i - 1].to) {
+      fail(
+        `CITY_SERVICE_SHARDS: shard ${shards[i - 1].id} ends at "${shards[i - 1].to}" but shard ` +
+          `${shards[i].id} starts at "${shards[i].from}" — the ranges leave a gap or overlap.`
+      );
+    }
+  }
+  const shardRouteDirs = dirsIn(APP_DIR).filter((d) => /^sitemap-city-services-\d+\.xml$/.test(d));
+  const declaredShardDirs = new Set(shards.map((s) => `sitemap-city-services-${s.id}.xml`));
+  for (const d of declaredShardDirs) {
+    if (!shardRouteDirs.includes(d)) {
+      fail(`CITY_SERVICE_SHARDS declares "${d}" but src/app/${d}/ does not exist. Add the route.`);
+    }
+  }
+  for (const d of shardRouteDirs) {
+    if (!declaredShardDirs.has(d)) {
+      fail(
+        `src/app/${d}/ exists but no shard in CITY_SERVICE_SHARDS claims it — the route would ` +
+          'throw at module scope and the index never advertises it. Remove it or declare the shard.'
+      );
+    }
+  }
+  const seenCityInShard = new Map<string, number>();
+  for (const shard of shards) {
+    const cities = citySlugsForShard(shard);
+    const urls = cities.length * CITY_SERVICE_SLUGS.size;
+    if (urls > SHARD_URL_CEILING) {
+      fail(
+        `Shard ${shard.id} ("${shard.from || '*'}"–"${shard.to || '*'}") would emit ${urls} URLs, ` +
+          `over the ${SHARD_URL_CEILING} ceiling. Split its range and add a shard.`
+      );
+    }
+    for (const c of cities) {
+      const prev = seenCityInShard.get(c);
+      if (prev !== undefined) fail(`City "${c}" falls in both shard ${prev} and shard ${shard.id}.`);
+      seenCityInShard.set(c, shard.id);
+    }
+  }
+  for (const c of CITY_SLUGS) {
+    if (!seenCityInShard.has(c)) {
+      fail(`City "${c}" falls in NO city-service shard — its ${CITY_SERVICE_SLUGS.size} service URLs would be missing.`);
+    }
+  }
 
   // ── Every path the sitemap can emit, with its provenance ─────────────────
   const sitemapPaths: Array<{ path: string; from: string }> = [
@@ -235,6 +407,14 @@ const main = () => {
     ...SERVICE_CATEGORY_SLUGS.map((s) => ({ path: `/services/${s}`, from: 'SERVICE_CATEGORY_SLUGS' })),
     ...SUB_SERVICE_ROUTES.map((s) => ({ path: `/${s}`, from: 'SUB_SERVICE_ROUTES' })),
     ...CITY_REGISTRY.map((c) => ({ path: `/${c.slug}`, from: 'CITY_REGISTRY' })),
+    // Brief 153: the /{city}/{service} layer — 11,160 URLs, the whole point of
+    // this brief. Enumerated from the manifest, i.e. the same function the routes
+    // call, so "listed" and "checked" cannot drift.
+    ...shards.flatMap((shard) =>
+      SITEMAP_CHILDREN.find((c) => c.shard?.id === shard.id)!
+        .paths()!
+        .map((p) => ({ path: p, from: `sitemap-city-services-${shard.id}.xml` }))
+    ),
     // Articles are DB-driven; only the route shape can be checked statically.
     { path: '/knowledge-hub/__article__', from: 'cms_articles (route shape only)' },
   ];
@@ -364,10 +544,54 @@ const main = () => {
       }
     }
   }
+  // ── Brief 153: the city-scoped redirect rule's targets ───────────────────
+  // Same three rules as any other redirect: the target must be served, must not
+  // itself redirect, and must not carry a trailing slash. Checked once per
+  // DISTINCT target (there are ~17, not ~4,200) with the sources counted for the
+  // summary line.
+  const cityScopedPairs = allCityScopedRedirectPairs();
+  const cityScopedTargets = new Map<string, string>();
+  for (const { from, to } of cityScopedPairs) if (!cityScopedTargets.has(to)) cityScopedTargets.set(to, from);
+  for (const [to, example] of cityScopedTargets) {
+    if (to !== '/' && to.endsWith('/')) {
+      fail(`City-scoped redirect ${example} → ${to} targets a TRAILING-SLASH URL — a two-hop chain.`);
+    }
+    if (isRedirectSource(to)) {
+      chains++;
+      fail(`Redirect CHAIN: city-scoped ${example} → ${to}, but ${to} is itself a redirect source.`);
+    }
+    if (!resolveRewrittenStatic(to, cfg) && !resolveAppRoute(to)) {
+      fail(
+        `City-scoped redirect ${example} → ${to}, but nothing under src/app serves ${to}. ` +
+          'A redirect must land on a 200.'
+      );
+    }
+  }
+  // A sitemap URL must never also be a city-scoped redirect source. The rule is
+  // written so it cannot happen (it returns null whenever getCityService()
+  // resolves), but that is exactly the kind of invariant worth proving rather
+  // than trusting — the sitemap now advertises 11,160 URLs of that shape.
+  for (const { from } of cityScopedPairs) {
+    if (seen.has(from)) {
+      fail(
+        `"${from}" is BOTH a sitemap URL (${seen.get(from)}) and a city-scoped redirect source. ` +
+          'The sitemap would advertise a 301.'
+      );
+    }
+  }
+
   notes.push(
     `${Object.keys(MANUAL_ALIAS_REDIRECTS).length} manual alias(es), ` +
       `${Object.keys(ALIAS_REDIRECTS).length} total alias 301s, ` +
-      `${mapSources.size} redirect sources overall, ${chains} chain(s).`
+      `${mapSources.size} exact-path redirect sources, ` +
+      `${cityScopedPairs.length} derived city-scoped 301s over ${cityScopedTargets.size} distinct targets, ` +
+      `${chains} chain(s).`
+  );
+  notes.push(
+    `sitemap index: ${SITEMAP_CHILDREN.length} children ` +
+      `(${shards.length} city-service shard(s), largest ${Math.max(
+        ...shards.map((s) => citySlugsForShard(s).length * CITY_SERVICE_SLUGS.size)
+      )} URLs, ceiling ${SHARD_URL_CEILING}).`
   );
 
   // ── Verdict ──────────────────────────────────────────────────────────────

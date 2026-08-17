@@ -112,11 +112,42 @@ const nextConfig = {
    */
   async headers() {
     const noindex = [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }];
+    /**
+     * Brief 153 (Fix E) — the non-public clone hosts.
+     *
+     * `dev.jblantonplumbing.com` and `prod.jblantonplumbing.com` both resolve
+     * publicly and serve a copy of the site. They now answer `Disallow: /`
+     * (src/app/robots.txt/route.ts) AND `X-Robots-Tag: noindex` on every
+     * response — deliberately both. Brief 152's Fix 4 established why: a
+     * `Disallow` alone cannot remove an already-indexed URL, because a blocked
+     * crawl can never fetch the page to read the noindex. The Disallow stops new
+     * discovery; the header removes what is already in.
+     *
+     * Unlike the /admin and /api rules above, this one covers EVERY path
+     * including /robots.txt and /sitemap.xml — the goal here is to de-index a
+     * whole host, not to exempt part of it.
+     *
+     * ⚠️ Keep the host list in sync with `NON_PUBLIC_SUBDOMAINS` in
+     * src/lib/non-public-hosts.ts. This file is ESM JavaScript and cannot import
+     * that module, so `scripts/validate-sitemap.ts` cross-checks the two and
+     * fails the build if they drift.
+     */
+    const nonPublicHosts = ['dev.jblantonplumbing.com', 'prod.jblantonplumbing.com'];
+    const hostNoindex = nonPublicHosts.flatMap((value) =>
+      // Both forms: path-to-regexp does not reliably match the zero-segment case
+      // with `/:path*`, and the bare `/` of these hosts must carry the header too.
+      ['/', '/:path*'].map((source) => ({
+        source,
+        has: [{ type: 'host', value }],
+        headers: noindex,
+      }))
+    );
     return [
       { source: '/admin', headers: noindex },
       { source: '/admin/:path*', headers: noindex },
       { source: '/api', headers: noindex },
       { source: '/api/:path*', headers: noindex },
+      ...hostNoindex,
     ];
   },
   async rewrites() {

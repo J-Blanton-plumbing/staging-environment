@@ -3,7 +3,7 @@
  * against the real database and FAIL LOUDLY on a wrong column or table name.
  *
  * ── WHY ─────────────────────────────────────────────────────────────────────
- * `src/app/sitemap.ts` wraps each source in `safeQuery`, which swallows errors on
+ * `src/lib/sitemap/render.ts` wraps each source in `safeQuery`, which swallows errors on
  * purpose so a DB hiccup degrades to "no lastmod" instead of a 500. That is the
  * right runtime behaviour and the wrong build-time behaviour: the city source
  * selected `slug` from `city_pages`, a column that does not exist (it is
@@ -35,7 +35,9 @@
 import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 
-import { SITEMAP_LASTMOD_SOURCES } from '@/app/sitemap';
+// Brief 153: `src/app/sitemap.ts` is gone — /sitemap.xml is now a Route Handler
+// emitting a <sitemapindex>, and the queries moved to the shared render module.
+import { SITEMAP_LASTMOD_SOURCES } from '@/lib/sitemap/render';
 
 const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) => {
@@ -69,8 +71,14 @@ async function main() {
     // LIMIT 0 validates every identifier without transferring rows. Wrapping in a
     // subselect keeps it correct for queries that already carry their own LIMIT.
     const probe = `SELECT * FROM (${sql}) AS sitemap_probe LIMIT 0`;
+    // Brief 153: the city-service query is parameterised ($1/$2 = the shard's
+    // city-slug bounds). Postgres refuses to prepare a statement whose
+    // parameters are unbound, so supply one empty string per placeholder —
+    // `LIMIT 0` means the values never matter, only the identifiers do.
+    const paramCount = Math.max(0, ...[...sql.matchAll(/\$(\d+)/g)].map((m) => Number(m[1])));
+    const params = Array.from({ length: paramCount }, () => '');
     try {
-      await pool.query(probe);
+      await pool.query(probe, params);
       console.log(`  ok   ${name}`);
     } catch (err) {
       const e = err as { code?: string; message?: string };
@@ -89,8 +97,8 @@ async function main() {
     banner([
       'SITEMAP QUERY DEFECT — the checked-in SQL references something that does',
       'not exist in this database. Every URL from the affected source(s) would ship',
-      'with NO <lastmod>, and sitemap.ts swallows the error at runtime so nothing',
-      'else would surface it. Fix the query in src/app/sitemap.ts.',
+      'with NO <lastmod>, and the render module swallows the error at runtime so',
+      'nothing else would surface it. Fix the query in src/lib/sitemap/render.ts.',
       '',
       ...defects.flatMap((d) => [
         `  ${d.name}: postgres ${d.code}: ${d.message}`,

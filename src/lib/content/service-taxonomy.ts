@@ -218,6 +218,30 @@ export const LIVE_HUB_SLUGS = new Set<string>([...SUB_SERVICE_ROUTES, 'emergency
 export const LIVE_CATEGORY_SLUGS = new Set<string>(CATEGORY_KEYS);
 
 /**
+ * Brief 153 (Track C) — the legacy TOP-LEVEL category slugs and the page each
+ * one resolves to today.
+ *
+ * These seven bare slugs are already 301'd by `next.config.mjs`
+ * (`/plumbing` → `/services/plumbing`, … `/emergency` → `/emergency-plumbing`).
+ * This map exists because the same seven also appear as the SECOND segment of
+ * ~71 URLs Google still holds — `/keeneyville/drain`, `/mchenry/sewer`,
+ * `/inverness/plumbing` — which hard-404 because `[city]/[service]` only
+ * renders real sub-service slugs. `CITY_CATEGORY_REDIRECTS` in
+ * `src/lib/redirects/alias-redirects.ts` derives a city-scoped 301 for every
+ * combination from this map, so the two shapes can never disagree, and
+ * `scripts/validate-sitemap.ts` asserts next.config's top-level rules still
+ * match it entry for entry.
+ *
+ * `emergency` is the odd one out and the reason this is a map rather than a
+ * list: it is NOT in `CATEGORY_KEYS` (there is no `/services/emergency`) — the
+ * emergency page is its own top-level template (Brief 76).
+ */
+export const LEGACY_CATEGORY_TARGETS: Readonly<Record<string, string>> = Object.freeze({
+  ...Object.fromEntries(CATEGORY_KEYS.map((k) => [k, `/services/${k}`])),
+  emergency: '/emergency-plumbing',
+});
+
+/**
  * Brief 138 — resolve a services-menu item to a GLOBAL (non-city-scoped) href.
  *
  * The static OUR SERVICES menu is a marketing list of ~40 service slugs; only

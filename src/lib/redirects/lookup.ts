@@ -20,6 +20,7 @@
  */
 import legacyRedirectMap from './legacy-redirect-map.json';
 import { ALIAS_REDIRECTS } from './alias-redirects';
+import { lookupCityScopedRedirect } from './city-scoped';
 
 /**
  * 410 is supported for forward-compatibility: if a bucket is ever retired
@@ -78,7 +79,16 @@ export function allRedirectPairs(): Array<{ from: string; to: string; status: nu
  * Look up a legacy path. `pathname` must already be `normalizePath()`-normalized
  * (lowercase, leading slash, no trailing slash, no query) — every `from` in the
  * map is stored in that form, so an un-normalized caller silently misses.
+ *
+ * Brief 153: after the exact-path Maps miss, the city-scoped RULE gets a look
+ * (`/{city}/{category}` → `/services/{category}`, and the other ~4,200 pairs it
+ * derives). It is consulted last on purpose — an explicit entry in the
+ * generated map or the alias map always wins — and it only ever fires on a path
+ * that 404s today, so it cannot redirect a working page away.
  */
 export function lookupRedirect(pathname: string): LegacyRedirect | undefined {
-  return REDIRECTS.get(pathname);
+  const exact = REDIRECTS.get(pathname);
+  if (exact) return exact;
+  const cityScoped = lookupCityScopedRedirect(pathname);
+  return cityScoped ? { to: cityScoped, status: 301 } : undefined;
 }

@@ -45,7 +45,76 @@ import { CITY_SLUG_TO_HUB_ALIAS, hasSubServiceRoute } from '@/lib/content/servic
 export const MANUAL_ALIAS_REDIRECTS: Readonly<Record<string, string>> = {
   '/bathroom-plumbing': '/bathroom-plumbing-chicago',
   '/hoa-line-piping': '/hoa-pipe-lining',
+
+  /* ── Brief 153, Track D — the residual 404 batch ───────────────────────────
+   * Every entry below is a URL Google is still holding from
+   * `seo-audit/residual-404s.csv`. The two-segment `/{city}/…` shapes are NOT
+   * here: they are derived by `src/lib/redirects/city-scoped.ts`.
+   *
+   * Targets are the FINAL destination, never an intermediate. `/water-testing-2`
+   * points at `/water-filtration-systems` rather than `/water-testing`, and the
+   * two article artifacts point at `/knowledge-hub/{slug}` rather than the bare
+   * slug, because those bases are themselves 301s and routing through them
+   * would be a two-hop chain — which `scripts/validate-sitemap.ts` fails on.
+   */
+
+  // WordPress duplicate-slug artifacts (the single-segment four). A derived
+  // "strip -2/-3" rule handles the six `/{city}/{service}-3` forms, but could
+  // not handle these: `/catch-basin` is a hard 404 and `/water-testing` is
+  // itself a redirect, so a derived rule would emit a broken target and a chain.
+  '/catch-basin-2': '/services/drain', // /catch-basin does not exist; catch-basin is a drain service
+  '/thank-you-2': '/thank-you',
+  '/emergency-plumbing-2': '/emergency-plumbing',
+  '/water-testing-2': '/water-filtration-systems', // direct — /water-testing is a 301
+
+  // Legacy one-offs with a clear current equivalent.
+  '/blog/category/plumbing': '/knowledge-hub', // WP category archive; the hub is the only index
+  '/baths': '/bathroom-plumbing-chicago',
+  '/meet-our-team': '/why-j-blanton', // the about/team page on the new site
+  '/schedule-service': '/contact', // matches the existing /booking → /contact rule
+
+  // URL-encoding artifacts. Both the raw and the percent-encoded form are
+  // listed because whether middleware sees `&`/`'` decoded depends on the
+  // client, and `normalizePath()` only lowercases and strips slashes.
+  '/faucet-installation-&-repair': '/services/plumbing', // no top-level faucet route; plumbing is its category
+  '/faucet-installation-%26-repair': '/services/plumbing',
+  "/45443-5-signs-it's-time-to-replace-a-water-heater-in-mchenry":
+    '/knowledge-hub/45443-5-signs-its-time-to-replace-a-water-heater-in-mchenry',
+  '/45443-5-signs-it%27s-time-to-replace-a-water-heater-in-mchenry':
+    '/knowledge-hub/45443-5-signs-its-time-to-replace-a-water-heater-in-mchenry',
+
+  // WordPress feed URL for an article that migrated to the Knowledge Hub.
+  '/how-to-install-plumbing-for-kitchen-sink/feed':
+    '/knowledge-hub/how-to-install-plumbing-for-kitchen-sink',
 };
+
+/**
+ * Brief 153, Track D — URLs deliberately LEFT as a clean 404, recorded here so
+ * the decision is visible next to the ones that were redirected. A 404 is a
+ * legitimate answer; inventing a destination to avoid one produces soft-404s
+ * and dilutes the redirects that mean something.
+ *
+ *   /default.aspx                  ASP.NET convention; this site has never run
+ *                                  on that stack. Scanner traffic.
+ *   /index                         Same class — a directory-index convention,
+ *                                  not a URL this site ever served.
+ *   /lander                        Generic landing-page artifact with no
+ *                                  matching page in the WordPress export.
+ *   /wp-content/themes/jb-blanton/*  A literal asterisk. Not a URL.
+ *   /media/mp4/*.mp4               Nine stray asset paths under five different
+ *   /assets/content/v/*.mp4        prefixes, all carrying third-party video
+ *   /assets/mp4/v/*.mp4            player query strings (`?vpe_id=`,
+ *   /public/video/*.mp4            `?t={seek_to_start_number}`, `?view=player`).
+ *   /resource/video_files/*.mp4    Grepped for in the Next repo, the WordPress
+ *   /v/media/storage/*.mp4         theme AND the full WordPress export: ZERO
+ *                                  references in any of them. They are not page
+ *                                  URLs and must never 301 to a page.
+ */
+export const DELIBERATE_404S: readonly string[] = [
+  '/default.aspx',
+  '/index',
+  '/lander',
+];
 
 /**
  * Alias 301s DERIVED from `CITY_SLUG_TO_HUB_ALIAS` — the map that already

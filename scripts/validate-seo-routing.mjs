@@ -10,24 +10,35 @@
  * counterpart and runs as `prebuild`.
  *
  * Phases:
- *   1. SITEMAP     — every <loc> returns 200 and declares a canonical equal to
- *                    itself. This is the check that would have caught
+ *   1. SITEMAP     — /sitemap.xml is a <sitemapindex>; every child fetches; every
+ *                    <loc> across every child returns 200 and declares a canonical
+ *                    equal to itself. This is the check that would have caught
  *                    /hoa-line-piping (404, advertised in sitemap.xml for weeks).
  *   2. ROBOTS      — robots.txt carries no `Disallow` line and does advertise the
  *                    sitemap (Brief 152 Fix 4).
  *   3. NOINDEX     — /admin and /api answer `X-Robots-Tag: noindex`, while
  *                    /robots.txt and /sitemap.xml do NOT.
- *   4. REDIRECTS   — a trailing-slash URL, an alias slug and a slashed alias each
- *                    reach a 200 in exactly ONE hop, with a permanent status.
+ *   4. REDIRECTS   — a trailing-slash URL, an alias slug, a slashed alias, a
+ *                    `/{city}/{category}` and a WordPress duplicate-slug artifact
+ *                    each reach a 200 in exactly ONE hop, with a permanent status.
  *
  * Usage:
  *   node scripts/validate-seo-routing.mjs [--base=http://localhost:3000]
- *                                         [--articles-sample=60] [--concurrency=6]
+ *                                         [--articles-sample=60]
+ *                                         [--city-services-sample=40]
+ *                                         [--concurrency=6]
  *
- * `--articles-sample` bounds the /knowledge-hub/* portion only (812 URLs, the
- * bulk of the sitemap); EVERY non-article URL is checked in full on every run.
- * The script prints exactly how many articles it checked and how many it did not,
- * so a bounded run can never read as full coverage.
+ * Brief 153 moved the sitemap to an index with children, one of which
+ * (/sitemap-city-services-N.xml) carries 11,160 URLs. Two independent bounds
+ * exist so a deploy health check stays quick:
+ *
+ *   --articles-sample=N        bounds /knowledge-hub/*        (812 URLs)
+ *   --city-services-sample=N   bounds /{city}/{service}       (11,160 URLs)
+ *
+ * `0` means "all". EVERY other sitemap URL is checked in full on every run, and
+ * the script prints exactly how many of each class it skipped, so a bounded run
+ * can never read as full coverage. Samples are evenly spaced across the list,
+ * never truncated, so they span every shard.
  */
 
 const args = new Map(
@@ -38,6 +49,7 @@ const args = new Map(
 );
 const BASE = (args.get('base') || 'http://localhost:3000').replace(/\/+$/, '');
 const ARTICLES_SAMPLE = Number(args.get('articles-sample') ?? 60);
+const CITY_SERVICES_SAMPLE = Number(args.get('city-services-sample') ?? 40);
 const CONCURRENCY = Number(args.get('concurrency') ?? 6);
 /**
  * The sitemap always emits the PRODUCTION origin (CANONICAL_BASE), by design —
@@ -83,33 +95,91 @@ async function readHead(res) {
 
 const strip = (u) => u.replace(/\/+$/, '');
 
-// ── Phase 1: sitemap ────────────────────────────────────────────────────────
-async function checkSitemap() {
-  const res = await fetch(`${BASE}/sitemap.xml`);
+// ── Phase 1: sitemap index + children ───────────────────────────────────────
+
+/** Evenly-spaced sample across the WHOLE list — never `slice(0, n)`, which would
+ *  only ever exercise the first shard and the alphabetically-earliest cities. */
+function spread(list, n) {
+  if (n <= 0 || list.length <= n) return list;
+  const step = list.length / n;
+  return Array.from({ length: n }, (_, i) => list[Math.floor(i * step)]);
+}
+
+async function fetchLocs(url, tag) {
+  const res = await fetch(url, { headers: { 'user-agent': 'jbp-seo-validate' } });
   if (!res.ok) {
-    fail(`sitemap.xml returned ${res.status} — nothing else in phase 1 can be checked.`);
-    return;
+    await res.arrayBuffer().catch(() => {});
+    fail(`${tag} returned ${res.status} — ${url}`);
+    return null;
   }
   const xml = await res.text();
-  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
-  if (locs.length === 0) {
-    fail('sitemap.xml contained no <loc> entries.');
+  return {
+    xml,
+    locs: [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim()),
+  };
+}
+
+async function checkSitemap() {
+  const index = await fetchLocs(`${BASE}/sitemap.xml`, 'sitemap.xml');
+  if (!index) return;
+
+  // Brief 153: /sitemap.xml is an INDEX. A flat <urlset> here means the index
+  // was reverted and the ~11,160 /{city}/{service} URLs are invisible again.
+  if (!/<sitemapindex[\s>]/.test(index.xml)) {
+    fail(
+      'sitemap.xml is not a <sitemapindex>. Brief 153 Track B replaced the flat urlset with an ' +
+        'index; a flat file here means the whole /{city}/{service} layer is missing from the sitemap.'
+    );
     return;
+  }
+  if (index.locs.length === 0) {
+    fail('sitemap.xml is a <sitemapindex> with no children.');
+    return;
+  }
+
+  // Fetch every child. A child that 404s is the /hoa-line-piping defect one
+  // level up: the index advertises something that does not serve.
+  const locs = [];
+  const cityServiceLocs = new Set();
+  for (const childLoc of index.locs) {
+    const childPath = new URL(childLoc).pathname;
+    const child = await fetchLocs(`${BASE}${childPath}`, `sitemap child ${childPath}`);
+    if (!child) continue;
+    if (child.locs.length === 0) {
+      fail(`sitemap child ${childPath} contained no <loc> entries.`);
+      continue;
+    }
+    console.log(`[seo-validate]   child ${childPath.padEnd(32)} ${child.locs.length} URLs`);
+    locs.push(...child.locs);
+    if (childPath.startsWith('/sitemap-city-services-')) {
+      for (const l of child.locs) cityServiceLocs.add(l);
+    }
+  }
+  if (locs.length === 0) {
+    fail('sitemap index children contained no <loc> entries between them.');
+    return;
+  }
+
+  const dupes = locs.length - new Set(locs).size;
+  if (dupes > 0) {
+    fail(`${dupes} URL(s) appear in more than one sitemap child — each URL must be listed once.`);
   }
 
   const articles = locs.filter((u) => u.includes('/knowledge-hub/'));
-  const others = locs.filter((u) => !u.includes('/knowledge-hub/'));
-  let articleSlice = articles;
-  if (ARTICLES_SAMPLE > 0 && articles.length > ARTICLES_SAMPLE) {
-    const step = articles.length / ARTICLES_SAMPLE;
-    articleSlice = Array.from({ length: ARTICLES_SAMPLE }, (_, i) => articles[Math.floor(i * step)]);
-  }
-  const targets = [...others, ...articleSlice];
+  const cityServices = [...cityServiceLocs];
+  const others = locs.filter((u) => !u.includes('/knowledge-hub/') && !cityServiceLocs.has(u));
+
+  const articleSlice = spread(articles, ARTICLES_SAMPLE);
+  const cityServiceSlice = spread(cityServices, CITY_SERVICES_SAMPLE);
+  const targets = [...others, ...articleSlice, ...cityServiceSlice];
 
   console.log(
-    `[seo-validate] sitemap: ${locs.length} URLs. Checking ${others.length}/${others.length} ` +
-      `non-article URLs and ${articleSlice.length}/${articles.length} articles ` +
-      `(${articles.length - articleSlice.length} article URLs NOT checked this run).`
+    `[seo-validate] sitemap index: ${index.locs.length} children, ${locs.length} URLs total.\n` +
+      `[seo-validate]   checking ${others.length}/${others.length} pages+cities (all), ` +
+      `${articleSlice.length}/${articles.length} articles ` +
+      `(${articles.length - articleSlice.length} NOT checked), ` +
+      `${cityServiceSlice.length}/${cityServices.length} city-services ` +
+      `(${cityServices.length - cityServiceSlice.length} NOT checked).`
   );
 
   const results = await mapLimit(targets, CONCURRENCY, async (loc) => {
@@ -218,6 +288,16 @@ async function checkRedirects() {
     { path: '/why-us/', label: 'slashed config redirect source' },
     { path: '/hoa-line-piping', label: 'corrected HOA slug (Brief 152 Fix 2.4)' },
     { path: '/clogged-drains', label: 'derived hub alias' },
+    // Brief 153 Track C — the city-scoped category rule, both the /services/*
+    // arm and the /emergency-plumbing arm.
+    { path: '/keeneyville/drain', label: 'city-scoped category → /services/drain' },
+    { path: '/algonquin/emergency', label: 'city-scoped category → /emergency-plumbing' },
+    { path: '/keeneyville/drain/', label: 'slashed city-scoped category — must not chain' },
+    // Brief 153 Track D — a service with a hub page but no per-city content file,
+    // and a WordPress duplicate-slug artifact.
+    { path: '/fort-sheridan/laundry-room-plumbing', label: 'hub-only service → /laundry-room-plumbing' },
+    { path: '/naperville/shower-repair-3', label: 'WP duplicate-slug artifact (-3)' },
+    { path: '/catch-basin-2', label: 'WP duplicate-slug artifact, single segment' },
   ];
   for (const c of cases) {
     const chain = await hops(c.path);

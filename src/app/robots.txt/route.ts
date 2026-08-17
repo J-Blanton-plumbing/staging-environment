@@ -1,5 +1,6 @@
 import { headers } from 'next/headers';
 import { CANONICAL_BASE } from '@/lib/seo';
+import { isNonPublicHost } from '@/lib/non-public-hosts';
 
 /**
  * Brief 127 (Track D): environment-aware robots.txt. Revised 2026-08-11.
@@ -80,7 +81,21 @@ export function GET() {
   const onBrandDomain =
     Boolean(domain) && (requestHost === domain || requestHost.endsWith(`.${domain}`));
 
-  const crawlable = forceDisallow ? false : siteEnv === 'production' || onBrandDomain;
+  /**
+   * Brief 153 (Track E): `dev.` and `prod.` are clone boxes that happen to sit on
+   * the brand domain, so `onBrandDomain` was handing them `Allow: /` — two extra
+   * hosts serving duplicate content. They are denied HERE, ahead of every other
+   * rule including `SITE_ENV=production`, because being on the brand domain is
+   * precisely what made them crawlable and no env var on those boxes can be
+   * relied upon to be set (CLAUDE.md gotcha #12: robots fails OPEN). Their
+   * responses also carry `X-Robots-Tag: noindex, nofollow` via next.config
+   * `headers()` — deliberately both, because a `Disallow` alone cannot remove an
+   * already-indexed URL: a blocked crawl can never read the noindex.
+   */
+  const nonPublicHost = isNonPublicHost(requestHost, domain);
+
+  const crawlable =
+    forceDisallow || nonPublicHost ? false : siteEnv === 'production' || onBrandDomain;
 
   // Brief 152 (Fix 4): NO `Disallow` lines. `Disallow: /admin` + `Disallow: /api`
   // were removed on purpose — see the block comment above the `X-Robots-Tag`
