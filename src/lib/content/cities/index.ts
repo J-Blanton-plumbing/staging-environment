@@ -37,6 +37,7 @@ import { formatOfficeAddress } from '@/lib/cms/offices';
 import { EVANSTON } from './evanston';
 import { ELGIN } from './elgin';
 import { ALGONQUIN } from './algonquin';
+import { COLUMBUS } from './columbus';
 
 /** The 12 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102).
  * Brief 154 adds `columbus` — the first OUT-OF-STATE office; every other key
@@ -281,12 +282,12 @@ const localOfficeSlugs = new Set(
  * Brief 154: Columbus, OH is deliberately rendered as `coverage-area` — Marketing
  * decided the video-hero Local Office template doesn't suit dummy content (it
  * requires a hero video that doesn't exist yet), so Columbus instead follows the
- * SAME auto-generated "office host, no copy file" path Arlington Heights,
- * Hinsdale, Naperville, Geneva, and Chicago-Lincoln-Park already use — every
- * section that would need fabricated content (hero video, WHY photo, partners)
- * simply doesn't render, rather than showing placeholder/borrowed assets. Revisit
- * when real Columbus content exists — it may stay `coverage-area` for good, or
- * move to `local-office`; either is a one-line change here.
+ * SAME auto-generated "office host" path Arlington Heights, Hinsdale, Naperville,
+ * Geneva, and Chicago-Lincoln-Park use for the registry TYPE — but unlike those,
+ * it DOES have a dedicated copy file (`./columbus.ts`, a dummy Elgin clone; see
+ * `COVERAGE_CONTENT` below), so the prose sections render instead of hiding.
+ * Revisit when real Columbus content exists — it may stay `coverage-area` for
+ * good, or move to `local-office`; either is a small, contained change.
  */
 const STATE_OVERRIDES: Record<string, string> = {
   columbus: 'Ohio',
@@ -315,6 +316,8 @@ const BY_SLUG = new Map(CITY_REGISTRY.map((c) => [c.slug, c]));
 const COVERAGE_CONTENT: Record<string, CoverageAreaContent> = {
   algonquin: ALGONQUIN,
   elgin: ELGIN,
+  // Brief 154: dummy copy (Elgin clone, name/state substituted) — see columbus.ts.
+  columbus: COLUMBUS,
 };
 const LOCAL_OFFICE_CONTENT: Record<string, LocalOfficeContent> = {
   evanston: EVANSTON,
