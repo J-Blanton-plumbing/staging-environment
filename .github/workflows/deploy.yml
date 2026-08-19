@@ -655,12 +655,18 @@ jobs:
             # /columbus is a NEW route (Track A/B) and the footer/JSON-LD office
             # directory is a NEW DB write (Track C) - both are exactly the "200 with
             # nothing on it" failure mode the markers above exist for. The H1 marker
-            # catches the city page rendering with no content (dummy copy shipped
-            # empty); the footer marker on "/" catches the add-columbus-office.ts
-            # script silently not applying (a NOT-APPLIED verdict in the DB SCRIPT
-            # VERDICTS block above would be the same failure, but this proves the
-            # write actually reached what a visitor sees).
-            check_marker "/columbus" "COLUMBUS PLUMBING EXPERTS" "fail"
+            # catches the city page rendering with no content; the footer marker on
+            # "/" catches the add-columbus-office.ts script silently not applying (a
+            # NOT-APPLIED verdict in the DB SCRIPT VERDICTS block above would be the
+            # same failure, but this proves the write actually reached what a
+            # visitor sees).
+            #
+            # Marker is "Columbus Plumber" (the default coverage-area <h1>), not a
+            # custom heading - Columbus deliberately renders as `coverage-area` with
+            # NO copy file (Marketing decision: the video-hero Local Office template
+            # doesn't suit dummy content), the same auto-generated path Arlington
+            # Heights/Hinsdale/Naperville/Geneva/Chicago-Lincoln-Park already use.
+            check_marker "/columbus" "Columbus Plumber" "fail"
             check_marker "/" "1387 W. Goodale Blvd" "fail"
             check_marker "/locations" "Columbus, OH" "fail"
             # Completion sentinel. Without it there is no way to tell a script that

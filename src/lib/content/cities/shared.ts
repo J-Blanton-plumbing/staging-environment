@@ -141,9 +141,7 @@ const ELFSIGHT_HERO_ID_MAP: Record<string, string> = {
   'preston-heights': _JOLIET, 'rockdale': _JOLIET, 'roseland': _JOLIET,
   'south-holland': _JOLIET, 'tinley-park': _JOLIET,
 };
-// Brief 154: exported so a NEW city's content file (Columbus) can opt into the
-// same "no widget yet" default Elmhurst uses, without duplicating the literal.
-export const ELFSIGHT_HERO_DEFAULT = _JOLIET;
+const ELFSIGHT_HERO_DEFAULT = _JOLIET;
 
 /** Per-city content-section (body) Google Reviews widget IDs (page-city.php `$elfsight_content_map`). */
 const ELFSIGHT_CONTENT_ID_MAP: Record<string, string> = {

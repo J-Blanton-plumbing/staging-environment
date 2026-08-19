@@ -37,7 +37,6 @@ import { formatOfficeAddress } from '@/lib/cms/offices';
 import { EVANSTON } from './evanston';
 import { ELGIN } from './elgin';
 import { ALGONQUIN } from './algonquin';
-import { COLUMBUS } from './columbus';
 
 /** The 12 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102).
  * Brief 154 adds `columbus` — the first OUT-OF-STATE office; every other key
@@ -253,10 +252,6 @@ const OFFICE_HOSTS = new Set<string>([
  */
 const BUILT_LOCAL_OFFICE: RegistryEntry[] = [
   { slug: 'evanston', name: 'Evanston', type: 'local-office', hasOffice: true },
-  // Brief 154: Columbus, OH — the first out-of-state Local Office city. Dummy
-  // content cloned from Evanston (see ./columbus.ts); `state` drives the
-  // Google-map embed + title (Track E1) so it doesn't render "Columbus, Illinois".
-  { slug: 'columbus', name: 'Columbus', type: 'local-office', hasOffice: true, state: 'Ohio' },
 ];
 
 /**
@@ -282,6 +277,21 @@ const localOfficeSlugs = new Set(
   [...BUILT_LOCAL_OFFICE, ...LOCAL_OFFICE_V2].map((c) => c.slug),
 );
 
+/**
+ * Brief 154: Columbus, OH is deliberately rendered as `coverage-area` — Marketing
+ * decided the video-hero Local Office template doesn't suit dummy content (it
+ * requires a hero video that doesn't exist yet), so Columbus instead follows the
+ * SAME auto-generated "office host, no copy file" path Arlington Heights,
+ * Hinsdale, Naperville, Geneva, and Chicago-Lincoln-Park already use — every
+ * section that would need fabricated content (hero video, WHY photo, partners)
+ * simply doesn't render, rather than showing placeholder/borrowed assets. Revisit
+ * when real Columbus content exists — it may stay `coverage-area` for good, or
+ * move to `local-office`; either is a one-line change here.
+ */
+const STATE_OVERRIDES: Record<string, string> = {
+  columbus: 'Ohio',
+};
+
 const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
   .filter((slug) => !localOfficeSlugs.has(slug) && !PENDING_LOCAL_OFFICE.has(slug))
   .map((slug) => ({
@@ -289,6 +299,7 @@ const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
     name: displayName(slug),
     type: 'coverage-area' as CityType,
     hasOffice: OFFICE_HOSTS.has(slug),
+    state: STATE_OVERRIDES[slug],
   }));
 
 /** All city pages, sorted A→Z by display name (the order the live §10 grid uses). */
@@ -307,7 +318,6 @@ const COVERAGE_CONTENT: Record<string, CoverageAreaContent> = {
 };
 const LOCAL_OFFICE_CONTENT: Record<string, LocalOfficeContent> = {
   evanston: EVANSTON,
-  columbus: COLUMBUS,
 };
 
 export function getCity(slug: string): RegistryEntry | undefined {
@@ -351,10 +361,15 @@ export function staticCityMeta(slug: string): { title: string; description: stri
   }
 
   const content = getCoverageContent(entry.slug);
+  // Brief 154 (Track E3 follow-up): this fallback used to hardcode ", IL" — fine
+  // while every coverage-area city was Illinois, wrong the moment Columbus (OH)
+  // started rendering through this exact branch. Derives the abbreviation from
+  // `entry.state` (unset ⇒ 'IL', matching every pre-existing city unchanged).
+  const stateAbbr = entry.state === 'Ohio' ? 'OH' : 'IL';
   return {
     title: content?.meta?.title || `${entry.name} Plumber`,
     description:
       content?.meta?.description ??
-      `J. Blanton Plumbing serves ${entry.name}, IL with 24/7 emergency plumbing, drain, sewer, and water heater service. 30+ years, same-day available. Call (773) 724-9272.`,
+      `J. Blanton Plumbing serves ${entry.name}, ${stateAbbr} with 24/7 emergency plumbing, drain, sewer, and water heater service. 30+ years, same-day available. Call (773) 724-9272.`,
   };
 }
