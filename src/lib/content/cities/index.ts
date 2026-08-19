@@ -37,8 +37,11 @@ import { formatOfficeAddress } from '@/lib/cms/offices';
 import { EVANSTON } from './evanston';
 import { ELGIN } from './elgin';
 import { ALGONQUIN } from './algonquin';
+import { COLUMBUS } from './columbus';
 
-/** The 11 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102). */
+/** The 12 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102).
+ * Brief 154 adds `columbus` — the first OUT-OF-STATE office; every other key
+ * here dispatches to an Illinois address. */
 export type OfficeKey =
   | 'chicago-ravenswood'
   | 'mchenry'
@@ -51,7 +54,8 @@ export type OfficeKey =
   | 'evanston'
   | 'algonquin'
   | 'geneva'
-  | 'chicago-lincoln-park';
+  | 'chicago-lincoln-park'
+  | 'columbus';
 
 const DEFAULT_OFFICE: OfficeKey = 'chicago-ravenswood';
 const DEFAULT_AREA = 'North and Northwest Side Chicago';
@@ -130,6 +134,9 @@ assignOffice('chicago-lincoln-park', ['chicago-lincoln-park']);
 // already mapped above (it's a NORTHBROOK_CITIES host); it only needed removing
 // from PENDING_LOCAL_OFFICE below.
 assignOffice('elmhurst', ['elmhurst']);
+// Brief 154 (Track A): Columbus, OH — the first out-of-state office. Its own
+// office key, dispatching to its own address (never the Ravenswood default).
+assignOffice('columbus', ['columbus']);
 /**
  * Brief 131 (Track A.1) — the 21 cities Brief 130 found as live URLs with no
  * registry entry: the 20 unmapped flat `/{city}-il-sewer-rodding` sources
@@ -185,6 +192,10 @@ assignArea('Western Suburbs', ['hinsdale', ...HINSDALE_CITIES]);
 assignArea('Western Suburbs', ['elmhurst']);
 assignArea('Western Suburban Chicago', ['naperville', ...NAPERVILLE_CITIES, 'geneva']);
 assignArea('North Shore Chicagoland', ['evanston', ...EVANSTON_CITIES]);
+// Brief 154 (Track A): PLACEHOLDER — every other area label is a Chicagoland
+// region, so there is no existing convention to copy for an Ohio office.
+// Flagged in the Brief 154 report for Marketing to confirm or replace.
+assignArea('Central Ohio', ['columbus']);
 // NB: 'chicago-lincoln-park' is in $nap_map but NOT $areas_map → it falls to the
 // default area, exactly as live. Don't add it here.
 
@@ -224,7 +235,7 @@ function displayName(slug: string): string {
 /** Office host cities (factual `hasOffice: true`). */
 const OFFICE_HOSTS = new Set<string>([
   'mchenry', 'elgin', 'arlington-heights', 'northbrook', 'elmhurst', 'hinsdale', 'naperville', 'evanston',
-  'algonquin', 'geneva', 'chicago-lincoln-park',
+  'algonquin', 'geneva', 'chicago-lincoln-park', 'columbus',
 ]);
 
 /**
@@ -242,6 +253,10 @@ const OFFICE_HOSTS = new Set<string>([
  */
 const BUILT_LOCAL_OFFICE: RegistryEntry[] = [
   { slug: 'evanston', name: 'Evanston', type: 'local-office', hasOffice: true },
+  // Brief 154: Columbus, OH — the first out-of-state Local Office city. Dummy
+  // content cloned from Evanston (see ./columbus.ts); `state` drives the
+  // Google-map embed + title (Track E1) so it doesn't render "Columbus, Illinois".
+  { slug: 'columbus', name: 'Columbus', type: 'local-office', hasOffice: true, state: 'Ohio' },
 ];
 
 /**
@@ -292,6 +307,7 @@ const COVERAGE_CONTENT: Record<string, CoverageAreaContent> = {
 };
 const LOCAL_OFFICE_CONTENT: Record<string, LocalOfficeContent> = {
   evanston: EVANSTON,
+  columbus: COLUMBUS,
 };
 
 export function getCity(slug: string): RegistryEntry | undefined {

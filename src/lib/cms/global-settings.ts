@@ -106,6 +106,11 @@ const FALLBACK: GlobalSettings = {
     // office's address. Lat/lng left blank on purpose rather than pairing
     // Joliet's real coordinates with Ravenswood's street address.
     { slug: 'joliet', name: 'Joliet', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: null, lng: null, showInFooter: true },
+    // Brief 154 — Columbus, OH, the first out-of-state office. Kept in sync by
+    // hand with scripts/migrate-global-settings.ts's SEED_OFFICES (see that
+    // file's docblock). `mapUrl` is a placeholder Maps search link pending a
+    // real Google Business Profile link from Marketing; `lat`/`lng` stay null.
+    { slug: 'columbus', name: 'Columbus', streetAddress: '1387 W. Goodale Blvd', city: 'Columbus', state: 'OH', zip: '43212', mapUrl: 'https://www.google.com/maps/search/?api=1&query=1387+W.+Goodale+Blvd%2C+Columbus%2C+OH+43212', lat: null, lng: null, showInFooter: true },
   ],
   updatedAt: null,
 };

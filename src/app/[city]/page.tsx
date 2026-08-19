@@ -210,6 +210,7 @@ export default async function CityPage({ params }: { params: { city: string } })
         articles={articles}
         faqs={mergedFaqs}
         cities={getGridCities()}
+        state={entry.state}
       />
     </>
   );

@@ -136,11 +136,13 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
           </section>
 
           {/* ── 5. GOOGLE MAP ────────────────────────────────────────────── */}
+          {/* Brief 154 (Track E1): state from the registry entry, defaulting
+              to 'Illinois' so every existing city's embed URL is unchanged. */}
           <iframe
             className="city-page-map my-[100px] h-[570px] w-full border-0"
             loading="lazy"
-            src={`https://maps.google.com/maps?hl=en&q=${encodeURIComponent(`${city.name}, Illinois`)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`}
-            title={`Map of ${city.name}, Illinois`}
+            src={`https://maps.google.com/maps?hl=en&q=${encodeURIComponent(`${city.name}, ${city.state ?? 'Illinois'}`)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`}
+            title={`Map of ${city.name}, ${city.state ?? 'Illinois'}`}
           />
 
           {/* ── 6. SECONDARY CONTENT (LOCAL SEO) ────────────────────────── */}

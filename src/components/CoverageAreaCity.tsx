@@ -51,6 +51,12 @@ export interface CoverageAreaCityProps {
   faqs: CityFaq[];
   /** Full A→Z city list for the locations grid. */
   cities: { slug: string; name: string }[];
+  /**
+   * Brief 154 (Track E1): state used in the map-embed query + title, from
+   * `RegistryEntry.state`. Defaults to `'Illinois'` so every existing city's
+   * embed URL is byte-identical to before this prop existed.
+   */
+  state?: string;
 }
 
 export default function CoverageAreaCity({
@@ -61,13 +67,14 @@ export default function CoverageAreaCity({
   articles,
   faqs,
   cities,
+  state = 'Illinois',
 }: CoverageAreaCityProps) {
   const slug = content?.slug ?? name.toLowerCase();
   const h1 = content?.h1Override ?? `${name} Plumber`;
   const gbpLabel = content?.gbp ?? name;
   const heroImageUrl = resolveHeroImage(content?.heroImage);
   const mapUrl = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(
-    `${name}, Illinois`,
+    `${name}, ${state}`,
   )}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
 
   const elfsightHeroId = getElfsightHeroId(slug);
@@ -123,7 +130,7 @@ export default function CoverageAreaCity({
             className="city-page-map my-[100px] h-[570px] w-full border-0"
             loading="lazy"
             src={mapUrl}
-            title={`Map of ${name}, Illinois`}
+            title={`Map of ${name}, ${state}`}
           />
 
           {/* ===== 5. "manplumber" .f2 ===== */}

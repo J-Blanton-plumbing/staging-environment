@@ -28,6 +28,15 @@ const SEED_OFFICES = [
   { slug: 'naperville', name: 'Naperville', streetAddress: '200 S Main Street, Suite 3', city: 'Naperville', state: 'IL', zip: '60540', mapUrl: 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8', lat: 41.7508, lng: -88.1535, showInFooter: true },
   { slug: 'skokie', name: 'Skokie', streetAddress: '8001 Lincoln Ave, Suite 301', city: 'Skokie', state: 'IL', zip: '60077-3695', mapUrl: '', lat: 42.0334, lng: -87.7334, showInFooter: true },
   { slug: 'joliet', name: 'Joliet', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: null, lng: null, showInFooter: true },
+  // Brief 154 — Columbus, OH: the first OUT-OF-STATE office. `mapUrl` is a Google
+  // Maps SEARCH link (placeholder) — Marketing has not supplied a Google Business
+  // Profile link yet; swap it in when they do. `lat`/`lng` left null per Brief 102
+  // Decision 6 — the LocalBusiness JSON-LD omits `geo` entirely when either is
+  // missing, and that stays valid; do not guess coordinates. This seed entry is
+  // for a FRESH database only — the live box's existing `global_settings` row
+  // needs the fill-gaps `scripts/add-columbus-office.ts` (this INSERT only ever
+  // fires `ON CONFLICT (id) DO NOTHING` against an existing row).
+  { slug: 'columbus', name: 'Columbus', streetAddress: '1387 W. Goodale Blvd', city: 'Columbus', state: 'OH', zip: '43212', mapUrl: 'https://www.google.com/maps/search/?api=1&query=1387+W.+Goodale+Blvd%2C+Columbus%2C+OH+43212', lat: null, lng: null, showInFooter: true },
 ];
 
 async function run() {

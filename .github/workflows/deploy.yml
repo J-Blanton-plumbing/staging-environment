@@ -114,6 +114,15 @@ jobs:
             # offices data. Both are safe no-ops once the DB is in sync.
             npx ts-node --project tsconfig.scripts.json scripts/ensure-schema.ts
             npx ts-node --project tsconfig.scripts.json scripts/migrate-global-settings.ts
+            # Brief 154 (Track C): append the Columbus, OH office to the EXISTING
+            # `global_settings.offices` JSONB. The seed step above only reaches a
+            # brand-new row (`WHERE offices IS NULL`), which is a no-op on this box
+            # since offices was seeded long ago - this is the fill-gaps path for an
+            # existing database. Selects by slug (never index/serial), backs the
+            # prior value up to brief154_row_backup, appends without reordering or
+            # touching any of the other 14 offices, and reports ALREADY-APPLIED
+            # once Columbus exists - a safe no-op on every deploy after the first.
+            npx ts-node --project tsconfig.scripts.json scripts/add-columbus-office.ts commit
             # Brief 112: create the cms_media catalog table and backfill a row for
             # every file already in public/uploads/cms/. Idempotent - CREATE TABLE
             # IF NOT EXISTS + INSERT ... ON CONFLICT (url) DO NOTHING, so re-running
@@ -518,7 +527,7 @@ jobs:
 
             sleep 12
             FAILED=0
-            for path in "/" "/services/sewer" "/services/plumbing" "/services/water-heater" "/contact"; do
+            for path in "/" "/services/sewer" "/services/plumbing" "/services/water-heater" "/contact" "/columbus"; do
               attempt=1
               max_attempts=3
               healthy=0
@@ -642,6 +651,18 @@ jobs:
             # Scraped WordPress nav text was in id 23's intro_body and would render as
             # body copy the moment that route flipped.
             check_absent "/hydro-jetting" "SCHEDULE A SERVICE SERVICES" "scraped WordPress nav text"
+            # -- Brief 154: Columbus, OH office + city page ------------------------
+            # /columbus is a NEW route (Track A/B) and the footer/JSON-LD office
+            # directory is a NEW DB write (Track C) - both are exactly the "200 with
+            # nothing on it" failure mode the markers above exist for. The H1 marker
+            # catches the city page rendering with no content (dummy copy shipped
+            # empty); the footer marker on "/" catches the add-columbus-office.ts
+            # script silently not applying (a NOT-APPLIED verdict in the DB SCRIPT
+            # VERDICTS block above would be the same failure, but this proves the
+            # write actually reached what a visitor sees).
+            check_marker "/columbus" "COLUMBUS PLUMBING EXPERTS" "fail"
+            check_marker "/" "1387 W. Goodale Blvd" "fail"
+            check_marker "/locations" "Columbus, OH" "fail"
             # Completion sentinel. Without it there is no way to tell a script that
             # crashed mid-way from a log whose tail was truncated - the ambiguity that
             # made the first failure of this step take longer to read than it should

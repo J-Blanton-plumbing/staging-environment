@@ -46,6 +46,10 @@ const SERVICE_CENTERS = [
     { label: 'Algonquin, IL', href: '/algonquin' },
     { label: 'Arlington Heights, IL', href: '/arlington-heights' },
     { label: 'Chicago - Lincoln Park', href: '/chicago-lincoln-park' },
+    // Brief 154 — Columbus, OH: the first out-of-state service center. Added
+    // here (column 1 was the shortest at 4, columns 2/3 already had 5) to keep
+    // the 3-column grid balanced at 5/5/5.
+    { label: 'Columbus, OH', href: '/columbus' },
   ],
   [
     { label: 'Chicago - Ravenswood', href: '/chicago-ravenswood' },

@@ -67,6 +67,15 @@ export interface RegistryEntry {
   type: CityType;
   /** Factual: does J. Blanton have an office in this city? (Separate from `type`.) */
   hasOffice: boolean;
+  /**
+   * Brief 154 (Track E1): the state name used to build this city's Google-map
+   * embed query (`"{name}, {state}"`) and its `<title>`. Every existing city is
+   * Illinois and leaves this UNSET so its embed URL stays byte-identical to
+   * before this field existed — `CoverageAreaCity`/`CityServicePageTemplate`
+   * default to `'Illinois'` when absent. Only set this for an out-of-state
+   * city (Columbus → `'Ohio'`).
+   */
+  state?: string;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
