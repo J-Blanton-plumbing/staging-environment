@@ -1,23 +1,80 @@
-<!DOCTYPE html>
-<html><head>
-<meta charset="utf-8">
-<title>HOA Sewer & Drain Services | J. Blanton Plumbing</title>
-<!-- Brief 152 (Fix 3): self-referencing canonical — see public/hoa-pipe-lining/index.html. -->
-<link rel="canonical" href="https://jblantonplumbing.com/hoa-pipe-lining/team">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/hoa-pipe-lining/team/assets/3c41a415-0554-4798-a23a-fb324cfbf0c0.js"></script>
+import type { Metadata } from 'next';
+import HoaLandingScripts from '@/components/hoa-pipe-lining/HoaLandingScripts';
+import HoaClusterLinks from '@/components/hoa-pipe-lining/HoaClusterLinks';
 
+// Brief 127 — Team page (`/hoa-pipe-lining/team`).
+//
+// Source deviation: the brief names this page's source as
+// `…\HOA-line-piping\clean\hoa-line-piping.html`, which does not exist on
+// disk. Per the brief's own note that this page's content is unchanged from
+// the prior Brief 125/126 deployment, the CURRENTLY DEPLOYED static file
+// (`public/hoa-pipe-lining/team/index.html`) was used as the source of truth
+// instead.
+//
+// Dropped from that source (dead builder-tool cruft, verified unused):
+//   - `<x-dc>` / `<helmet>` wrapper tags.
+//   - The head `<script src=".../3c41a415-....js">` builder-support script —
+//     the real burger/carousel/form/sewer-sync logic lives in the plain
+//     `<script>` IIFEs near the end of the file (reimplemented below via
+//     `HoaLandingScripts`), not in this file.
+//   - A ~260-line `<style>` block of `@font-face` rules for "IBM Plex Mono"
+//     and "Kanit" — grepped the full source file and neither family name is
+//     referenced anywhere outside that block itself (the page only uses
+//     Industry/Nunito). Treated as builder-tool default-typography cruft,
+//     same category as the DCLogic script, and dropped for the same reason.
+//     Its `<link rel="preconnect" ...>` tags (googleapis/gstatic) were
+//     dropped alongside it since the actual font files here are self-hosted,
+//     not Google Fonts.
+//   - The trailing `<script type="text/x-dc" data-dc-script="">class
+//     Component extends DCLogic {...}</script>` block — DCLogic is not a
+//     real runtime; never executed in production.
+//   - The trailing plain `<script>` IIFEs (drawer, carousel, form,
+//     sewer-camera poll) — reimplemented via `HoaLandingScripts` below with
+//     the exact same selectors/ids.
+//   - `<footer class="jbp-footer">...</footer>` — replaced by the shared
+//     `<Footer>` (via `SiteShell`) + `<HoaClusterLinks current="team" />`.
+//     Its now-unused CSS (`.jbp-footer*`, `.jbp-loc-*`, `.jbp-badge-row`,
+//     `.jbp-review-btn`, `.jbp-socials`, and their two media-query rules)
+//     was removed from PAGE_CSS too, since nothing in BODY_HTML carries
+//     those classes any more.
+//   - The `<link rel="canonical">` tag — the root layout generates this
+//     automatically from the request pathname.
+//
+// CSS scoping: `.jbp-*` rules and class-keyed `@media` blocks are unchanged.
+// The two bare/element-level rules found were rescoped under `.hoa-landing`:
+//   - the single `body{font-family:...}` rule inside the `jbp-brand` style
+//     block, and
+//   - the small second `<style>` block inside `<helmet>` (`body`, `*`, `a`,
+//     `a:hover`, `::selection`) — the brief flagged this as something to
+//     check for; it IS present in this source, unlike what the brief assumed.
+// No `x-dc{display:block}` rule was present in this source (nothing to drop
+// there).
+//
+// The outer wrapper `<div style="...">` became `<div className="hoa-landing">`;
+// its `background`/`font-family` were dropped as duplicates of the scoped
+// `.hoa-landing` CSS rule, and its non-duplicate `color`/`overflow-x` were
+// kept as an inline `style` prop on the JSX div instead.
+//
+// Asset paths were already absolute (`/hoa-pipe-lining/team/assets/...`)
+// since this source came from the already-deployed file — verified via grep,
+// zero bare `assets/` references. Every referenced asset (fonts, the four
+// `team-*` headshots, badges, social icons, `sewer-camera-sync.html`) was
+// confirmed present under `public/hoa-pipe-lining/team/assets/`.
+//
+// Inline poll script right after the iframe
+// (`window.__resources.sewerSync` / 200×50ms fallback) removed — its exact
+// behavior is the `sewerCameraSync` prop below.
 
+export const metadata: Metadata = { title: 'Meet the HOA Sewer & Drain Team' };
 
-<style id="jbp-brand">
-/* ===== Brand fonts (self-hosted, from staging) ===== */
+const PAGE_CSS = `
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/team/assets/fonts/IMedium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/team/assets/fonts/IDemi.otf') format('opentype');font-weight:600;font-style:normal;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/team/assets/fonts/IBold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/team/assets/fonts/IBlack.otf') format('opentype');font-weight:800;font-style:normal;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/team/assets/fonts/IBlack.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap;}
 @font-face{font-family:'Nunito';src:url('/hoa-pipe-lining/team/assets/fonts/Nunito-Variable.ttf') format('truetype');font-weight:300 800;font-style:normal;font-display:swap;}
-body{font-family:'Nunito',system-ui,sans-serif;}
+.hoa-landing{font-family:'Nunito',system-ui,sans-serif;}
 
 /* ===== Header — matches staging Navbar (cream bar, red rectangle logo, blue CTA) ===== */
 .jbp-header{position:sticky;top:0;left:0;right:0;z-index:60;display:flex;width:100%;box-shadow:0 0 10px rgba(0,0,0,.3);}
@@ -43,34 +100,6 @@ body{font-family:'Nunito',system-ui,sans-serif;}
   .jbp-logo-sm img{height:44px;width:auto;}
 }
 
-/* ===== Footer — matches staging Footer.tsx (carmine, white logo, badges, locations) ===== */
-.jbp-footer{position:relative;overflow:hidden;background:#BC0E0E;color:#F9F3EC;padding:80px 64px 96px;font-family:'Nunito',system-ui,sans-serif;}
-.jbp-footer__inner{position:relative;max-width:1560px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:56px;}
-.jbp-footer__left{flex:1 1 420px;display:flex;flex-direction:column;gap:28px;}
-.jbp-footer__logo img{width:340px;max-width:100%;height:auto;object-fit:contain;display:block;}
-.jbp-badge-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-.jbp-badge-row img{object-fit:contain;display:block;}
-.jbp-review-btn{border:1px solid #F9F3EC;border-radius:6px;padding:9px 14px;font-family:'Industry','Arial',sans-serif;font-weight:600;font-size:14px;color:#F9F3EC;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s;}
-.jbp-review-btn:hover{background:#F9F3EC;color:#0A1B2E;}
-.jbp-footer__right{flex:1 1 460px;}
-.jbp-footer__navs{display:flex;flex-wrap:wrap;gap:10px 64px;margin-bottom:44px;}
-.jbp-footer__navs a{display:block;margin-bottom:14px;font-family:'Industry','Arial',sans-serif;font-weight:600;font-size:14px;letter-spacing:.03em;color:#F9F3EC;text-decoration:none;transition:opacity .15s;}
-.jbp-footer__navs a:hover{opacity:.75;}
-.jbp-footer__divider{height:1px;background:rgba(249,243,236,.3);width:100%;margin-bottom:30px;}
-.jbp-loc-title{font-family:'Industry','Arial',sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:0 0 26px;}
-.jbp-loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 24px;}
-.jbp-loc__name{display:flex;align-items:center;gap:7px;font-family:'Industry','Arial',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.02em;text-transform:uppercase;line-height:1.15;margin-bottom:6px;}
-.jbp-loc__name svg{width:18px;height:18px;flex:0 0 auto;}
-.jbp-loc__addr{font-size:13px;line-height:1.4;color:rgba(249,243,236,.82);margin:0;}
-.jbp-footer__bottom{position:relative;margin-top:72px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
-.jbp-footer__bottom p{margin:0;font-size:12.5px;color:rgba(249,243,236,.9);}
-.jbp-footer__bottom a.priv{color:#F9F3EC;text-decoration:underline;}
-.jbp-socials{display:flex;gap:14px;align-items:center;}
-.jbp-socials a{display:flex;opacity:.9;transition:opacity .15s;}
-.jbp-socials a:hover{opacity:1;}
-.jbp-socials img{width:18px;height:18px;object-fit:contain;display:block;}
-@media(max-width:900px){.jbp-footer{padding:56px 28px 80px;}.jbp-loc-grid{grid-template-columns:repeat(2,1fr);}.jbp-footer__bottom{flex-direction:column;text-align:center;}}
-@media(max-width:560px){.jbp-loc-grid{grid-template-columns:1fr;}}
 .jbp-role-select{width:100%;min-width:0;font-family:'Nunito',system-ui,sans-serif;font-size:17px;padding:12px 40px 12px 14px;border:1px solid rgba(35,31,32,0.25);border-radius:6px;background-color:#fff;color:#231F20;letter-spacing:0;appearance:none;-webkit-appearance:none;-moz-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23231F20' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:14px;cursor:pointer;}
 .jbp-btn-blue{transition:background-color .15s ease,color .15s ease;}.jbp-btn-blue:hover{background:#0A1B2E !important;color:#fff !important;}.jbp-btn-white{transition:background-color .15s ease,color .15s ease;}.jbp-btn-white:hover{background:#F9F3EC !important;color:#9B0D0D !important;}.jbp-navlink{transition:color .15s ease;}.jbp-navlink:hover{color:#BC0E0E !important;}.jbp-phone-dim{transition:color .15s ease;}.jbp-phone-dim:hover{color:rgba(255,255,255,0.78) !important;}
 
@@ -146,291 +175,15 @@ body{font-family:'Nunito',system-ui,sans-serif;}
   .jbp-cta-form{margin-left:-22px !important;margin-right:-22px !important;padding:24px 22px !important;}
   .jbp-cta-call{flex-direction:column;align-items:flex-start !important;gap:6px !important;}
   .jbp-cta-call > a{white-space:nowrap;}
-  /* 8 - footer: smaller centered logo + centered review rows */
-  .jbp-footer__left{align-items:center;text-align:center;}
-  .jbp-footer__logo{display:flex;justify-content:center;}
-  .jbp-footer__logo img{width:200px;}
-  .jbp-badge-row{justify-content:center;}
 }
-</style>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<style>/* cyrillic-ext */
-@font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/ae02b848-66a1-4b8d-b8b6-6085519856c7.woff2") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/26602478-b22a-4b2c-b16c-8492741815a2.woff2") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/b50e3e67-607f-41ae-b377-2f1f8d1208c7.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/4d9607b4-deed-4d4a-b9ae-cac2db4fd26e.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/b8ebcc64-4948-4a95-a041-e8e5be14b984.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* thai */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/2a71d2a8-f5ac-4f49-ba45-fd3eec1b742b.woff2") format('woff2');
-  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/2ff565d1-9dc3-4550-b160-a66c7174abc2.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/82616243-ae28-4914-a7fe-605c870be78e.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/954907c0-3314-4c4f-b2b7-e09910c4fc45.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* thai */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/cc1e56f9-9648-489e-88e7-1d9eff348f71.woff2") format('woff2');
-  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/04ddf54d-8433-42fd-84be-24cd46586510.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/430fc52d-a2ee-4314-9eec-51d85cd944f9.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/f2e87208-01bc-4f2c-9d46-ec6e6a6945d3.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* thai */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/46e97297-df02-497b-8fed-c1023c667d35.woff2") format('woff2');
-  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/f8ca662e-21ff-4c27-aa67-03a385a2bc37.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/a686f1ee-69c8-4075-af87-f2009b935f31.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/5396acee-8a82-488f-81f8-25e459c8330d.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* thai */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/c603e5a8-7f95-47bf-a25e-6da074b7a16d.woff2") format('woff2');
-  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/98b81506-27c4-4e27-8366-96b2d3b4c50a.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/f7d9d562-cc4d-4bc7-b4b5-4e7e4f89a373.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/8a4f187e-a478-4906-ab01-21101cc07d03.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* thai */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/2d114068-e306-4342-801c-5dc088fdb3c1.woff2") format('woff2');
-  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/408e0c76-bccc-4db8-a675-d89586de718e.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/a8a832f1-7ead-470e-bdab-2fa51ad7fede.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/b7b925b0-c68f-4b93-80d2-7bc223715b2a.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* thai */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/5a631e15-de40-461b-a913-a1cf36cbdd33.woff2") format('woff2');
-  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/6089d8db-3218-4ed4-90d9-6100aa2eecd2.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/a005e6ce-5ccb-41fe-844b-503057d09c3c.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("/hoa-pipe-lining/team/assets/b7df640d-1ee4-4bd5-979d-ba4d269612e9.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-</style>
-<style>
-  body { margin: 0; background: #F9F3EC; -webkit-font-smoothing: antialiased; }
-  * { box-sizing: border-box; }
-  a { color: #BC0F0E; text-decoration: none; }
-  a:hover { color: #231F20; }
-  ::selection { background: #BC0F0E; color: #fff; }
-</style>
-</helmet>
-<div style="font-family: 'Nunito', system-ui, sans-serif; color: #231F20; background: #F9F3EC; overflow-x: hidden">
+  .hoa-landing { margin: 0; background: #F9F3EC; -webkit-font-smoothing: antialiased; }
+  .hoa-landing * { box-sizing: border-box; }
+  .hoa-landing a { color: #BC0F0E; text-decoration: none; }
+  .hoa-landing a:hover { color: #231F20; }
+  .hoa-landing ::selection { background: #BC0F0E; color: #fff; }
+`;
 
+const BODY_HTML = `
   <header class="jbp-header">
   <div class="jbp-logo">
     <img class="jbp-logo-bg" src="/hoa-pipe-lining/team/assets/rectangle.webp" alt="" aria-hidden="true">
@@ -471,7 +224,6 @@ body{font-family:'Nunito',system-ui,sans-serif;}
   <section data-screen-label="01 Hero" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); min-height: 560px; background: #BC0F0E">
     <div style="position: relative; overflow: hidden; background: #0e1116; min-height: 380px">
       <iframe id="sewerSyncFrame" src="/hoa-pipe-lining/team/assets/sewer-camera-sync.html" title="Sewer camera position synced to street map" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block"></iframe>
-      <script>(function(){var f=document.getElementById('sewerSyncFrame');var tries=0;(function poll(){if(window.__resources&&window.__resources.sewerSync){f.src=window.__resources.sewerSync;}else if(tries++<200){setTimeout(poll,50);}else{f.src='/hoa-pipe-lining/team/assets/sewer-camera-sync.html';}})();})();</script>
     </div>
     <div style="position: relative; overflow: hidden; background: #BC0F0E; padding: 78px 72px; display: flex; flex-direction: column; justify-content: center; gap: 24px">
       <img src="https://d1rplazj5a80fb.cloudfront.net/images/wrench_pattern.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; display: block; pointer-events: none">
@@ -479,7 +231,7 @@ body{font-family:'Nunito',system-ui,sans-serif;}
       <p style="position: relative; margin: 0; font-size: 18.5px; line-height: 1.6; color: #fff; max-width: 52ch">A dedicated team for condominium associations and townhome communities — diagnosing, documenting, and rehabilitating aging common area sewer infrastructure across Chicagoland.</p>
       <div class="jbp-hero-cta" style="position: relative; display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
         <a class="jbp-btn-blue" href="tel:2246572472" style="display: flex; align-items: center; gap: 10px; padding: 15px 26px; background: #1560E6; color: #fff; font-family: 'Nunito', system-ui, sans-serif; font-weight: 500; font-size: 18px; border-radius: 8px">
-          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" sc-camel-view-box="0 0 24 24" style="display: block"><path fill="currentColor" d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999"></path><path fill="currentColor" d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5zm3.422 5.443a1 1 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66c-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a1 1 0 0 0 .648-.291l1.86-2.171a1 1 0 0 0-.086-1.391z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" style="display: block"><path fill="currentColor" d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999"></path><path fill="currentColor" d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5zm3.422 5.443a1 1 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66c-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a1 1 0 0 0 .648-.291l1.86-2.171a1 1 0 0 0-.086-1.391z"></path></svg>
           (224) 657-2472
         </a>
         <a class="jbp-btn-white" href="#book" style="display: flex; align-items: center; padding: 15px 26px; background: #fff; color: #BC0F0E; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; border-radius: 8px"><span class="lbl-full">Schedule A Consultation</span><span class="lbl-short">Schedule</span></a>
@@ -507,9 +259,7 @@ body{font-family:'Nunito',system-ui,sans-serif;}
       <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.06; letter-spacing: -0.015em; max-width: 22ch">Why We Created a Dedicated HOA Sewer Team</h2>
       <p style="margin: 0; font-size: 19.5px; line-height: 1.62; color: #2b2b2b; max-width: 56ch">Most plumbing companies are designed to respond to service calls. They clear the immediate blockage, make the repair, and move on.</p>
       <p style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.35; color: #BC0F0E">Managing the sewer infrastructure of a condominium association is different.</p>
-      <sc-if value="{{ isFull }}" hint-placeholder-val="{{ true }}">
-        <p style="margin: 0; font-size: 19.5px; line-height: 1.62; color: #2b2b2b; max-width: 56ch">A single property may contain hundreds of plumbing fixtures, multiple underground main lines, branch drains, vertical stacks, clean-outs, and decades of aging cast iron. These systems function as one interconnected network, where recurring backups often indicate larger infrastructure issues rather than isolated plumbing problems.</p>
-      </sc-if>
+      <p style="margin: 0; font-size: 19.5px; line-height: 1.62; color: #2b2b2b; max-width: 56ch">A single property may contain hundreds of plumbing fixtures, multiple underground main lines, branch drains, vertical stacks, clean-outs, and decades of aging cast iron. These systems function as one interconnected network, where recurring backups often indicate larger infrastructure issues rather than isolated plumbing problems.</p>
       <p style="margin: 0; font-size: 19.5px; line-height: 1.62; color: #2b2b2b; max-width: 56ch">Our HOA Team was created to help boards and property managers understand the entire system, identify the true root cause of recurring issues, and develop long-term repair strategies that reduce emergencies and protect property values.</p>
     </div>
 
@@ -526,9 +276,7 @@ body{font-family:'Nunito',system-ui,sans-serif;}
         <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 54px; line-height: 1.02; letter-spacing: -0.02em; max-width: 20ch">We Don't Chase Backups. We Solve Them.</h2>
         <p style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.35; color: #BC0F0E">Every recurring backup has a reason.</p>
         <p style="margin: 0; font-size: 19.5px; line-height: 1.62; color: #2b2b2b; max-width: 58ch">Our goal is not simply to clear the blockage. Our goal is to determine why it occurred, document the condition of the system, and recommend the most appropriate long-term solution.</p>
-        <sc-if value="{{ isFull }}" hint-placeholder-val="{{ true }}">
-          <p style="margin: 0; font-size: 19.5px; line-height: 1.62; color: #2b2b2b; max-width: 58ch">This philosophy guides every inspection, reserve study, repair recommendation, and rehabilitation project we perform.</p>
-        </sc-if>
+        <p style="margin: 0; font-size: 19.5px; line-height: 1.62; color: #2b2b2b; max-width: 58ch">This philosophy guides every inspection, reserve study, repair recommendation, and rehabilitation project we perform.</p>
       </div>
     </div>
 
@@ -755,7 +503,7 @@ body{font-family:'Nunito',system-ui,sans-serif;}
         </div>
         <p style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 18px; color: rgba(255,255,255,0.92)">Make a good call — for the whole association.</p>
       </div>
-      <form id="hoa-form" class="jbp-cta-form" sc-camel-on-submit="{{ onSubmit }}" style="background: #F9F3EC; padding: 36px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <form id="hoa-form" class="jbp-cta-form" style="background: #F9F3EC; padding: 36px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
         <div style="display: flex; flex-direction: column; gap: 6px">
           <h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">Schedule a Consultation</h3>
           <p style="margin: 0; font-size: 16.5px; line-height: 1.5; color: #4a4a4a">An HOA advisor responds within one business day.</p>
@@ -788,74 +536,29 @@ body{font-family:'Nunito',system-ui,sans-serif;}
       </form>
     </div>
   </section>
+`;
 
-  <footer class="jbp-footer">
-  <div class="jbp-footer__inner">
-    <div class="jbp-footer__left">
-      <div class="jbp-footer__logo"><img src="/hoa-pipe-lining/team/assets/logo-white.webp" alt="J. Blanton Plumbing"></div>
-      <div class="jbp-badge-row">
-        <img src="/hoa-pipe-lining/team/assets/google-badge.webp" alt="Google Reviews" style="width:84px;height:84px">
-        <a class="jbp-review-btn" href="https://g.page/r/CW0h_mbUZBu5EAE/review" target="_blank" rel="noreferrer">Leave a Review</a>
-      </div>
-      <div class="jbp-badge-row">
-        <img src="/hoa-pipe-lining/team/assets/yelp-badge.webp" alt="Yelp" style="width:118px;height:auto">
-        <a class="jbp-review-btn" href="https://www.yelp.com/writeareview/biz/h-3jgJfNryJ43CN5970iFw?return_url=%2Fbiz%2Fh-3jgJfNryJ43CN5970iFw&review_origin=biz-details-war-button" target="_blank" rel="noreferrer">Leave a Review</a>
-      </div>
-      <a href="https://www.bbb.org/us/il/morton-grove/profile/plumber/j-blanton-plumbing-0654-88664305/#sealclick" target="_blank" rel="noreferrer" style="display:inline-block"><img src="/hoa-pipe-lining/team/assets/bbb-badge.webp" alt="BBB Accredited Business" style="width:260px;height:auto"></a>
-    </div>
-    <div class="jbp-footer__right">
-      <div class="jbp-footer__navs">
-        <div><a href="#why">Why This Team</a><a href="#team">The Specialists</a></div>
-        <div><a href="#services">Why Boards Choose Us</a><a href="#process">Our Process</a></div>
-        <div><a href="#resources">Reserve Studies</a><a href="#book">Schedule a Consultation</a></div>
-      </div>
-      <div style="margin:6px 0 34px;font-family:'Nunito',system-ui,sans-serif;font-size:13.5px;color:rgba(249,243,236,.85)"><span style="font-family:'Industry','Arial',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:#fff;margin-right:6px">Explore HOA pipe lining:</span><a href="/hoa-pipe-lining" style="color:#F9F3EC;text-decoration:underline;margin:0 4px">Pipe Lining Overview</a> &middot; <a href="/hoa-pipe-lining/reserve-studies" style="color:#F9F3EC;text-decoration:underline;margin:0 4px">Reserve Studies</a> &middot; <span style="color:#fff;font-weight:700;margin:0 4px">Meet the Team</span></div><div class="jbp-footer__divider"></div>
-      <p class="jbp-loc-title">Our Office Locations</p>
-      <div class="jbp-loc-grid"><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Northbrook (Corporate)</span></div><p class="jbp-loc__addr">1945 Techny Road, #11, Northbrook, IL 60062</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Algonquin</span></div><p class="jbp-loc__addr">2390 Esplanade Dr #200f, Algonquin, IL 60102</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Geneva</span></div><p class="jbp-loc__addr">115 Campbell St #201C, Geneva, IL 60134</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Arlington Heights</span></div><p class="jbp-loc__addr">1204 E. Central Road, Suite 3, Arlington Heights, IL 60005</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Chicago Lincoln Park</span></div><p class="jbp-loc__addr">800 W Diversey Pkwy, Chicago, IL 60614</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Chicago Ravenswood</span></div><p class="jbp-loc__addr">5126 N Ravenswood Ave, Chicago, IL 60640</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Elgin</span></div><p class="jbp-loc__addr">964 N McLean Blvd, Elgin, IL 60123-2039</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Elmhurst</span></div><p class="jbp-loc__addr">130 S York St, Elmhurst, IL 60126</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Evanston</span></div><p class="jbp-loc__addr">1603 Orrington Ave #600-1085, Evanston, IL 60201</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Hinsdale</span></div><p class="jbp-loc__addr">15 Spinning Wheel Rd #216a, Hinsdale, IL 60521</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>McHenry</span></div><p class="jbp-loc__addr">3406 W Elm St, McHenry, IL 60050</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Naperville</span></div><p class="jbp-loc__addr">200 S Main Street, Suite 3, Naperville, IL 60540</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Skokie</span></div><p class="jbp-loc__addr">8001 Lincoln Ave, Suite 301, Skokie, IL 60077-3695</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Joliet</span></div><p class="jbp-loc__addr">311 N Ottawa St Ste 2, Joliet, IL 60432</p></div></div>
-    </div>
-  </div>
-  <div class="jbp-footer__bottom">
-    <p>Copyright &copy; 2026 J. Blanton Plumbing - All Rights Reserved - <a class="priv" href="https://jblantonplumbing.com/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a></p>
-    <div class="jbp-socials"><a href="https://www.linkedin.com/company/j-blanton-plumbing/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><img src="/hoa-pipe-lining/team/assets/social/linkedin.webp" alt="LinkedIn"></a><a href="https://www.instagram.com/j.blantonplumbing/" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="/hoa-pipe-lining/team/assets/social/ig.webp" alt="Instagram"></a><a href="https://www.facebook.com/J.BlantonPlumbing" target="_blank" rel="noreferrer" aria-label="Facebook"><img src="/hoa-pipe-lining/team/assets/social/fb.webp" alt="Facebook"></a><a href="https://x.com/JBPchicago" target="_blank" rel="noreferrer" aria-label="X"><img src="/hoa-pipe-lining/team/assets/social/x.webp" alt="X"></a></div>
-  </div>
-</footer>
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;pageLength&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;tightened&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;'full' | 'tightened'&quot;,&quot;section&quot;:&quot;Page&quot;}}">
-class Component extends DCLogic {
-  state = { submitted: false };
-  renderVals() {
-    return {
-      isFull: (this.props.pageLength ?? "full") === "full",
-      submitted: this.state.submitted,
-      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); }
-    };
-  }
+export default function Page() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: PAGE_CSS }} />
+      <div
+        className="hoa-landing"
+        style={{ color: '#231F20', overflowX: 'hidden' }}
+        dangerouslySetInnerHTML={{ __html: BODY_HTML }}
+      />
+      <HoaLandingScripts
+        carousel={{
+          trackSelector: '#conditions-track',
+          prevSelector: '.jbp-car-prev',
+          nextSelector: '.jbp-car-next',
+        }}
+        sewerCameraSync={{
+          frameId: 'sewerSyncFrame',
+          fallbackSrc: '/hoa-pipe-lining/team/assets/sewer-camera-sync.html',
+        }}
+      />
+      <HoaClusterLinks current="team" />
+    </>
+  );
 }
-</script>
-
-
-
-<script>(function(){var f=document.getElementById("hoa-form");if(!f)return;f.addEventListener("submit",function(e){e.preventDefault();var m=document.getElementById("hoa-success");if(m){m.style.display="block";m.scrollIntoView({behavior:"smooth",block:"nearest"});}});})();</script>
-
-<script>
-(function(){
-  var ov=document.getElementById('jbp-drawer');
-  var burger=document.querySelector('.jbp-burger');
-  if(ov&&burger){
-    var openM=function(){ov.classList.add('open');burger.setAttribute('aria-expanded','true');};
-    var closeM=function(){ov.classList.remove('open');burger.setAttribute('aria-expanded','false');};
-    burger.addEventListener('click',openM);
-    ov.addEventListener('click',function(e){if(e.target===ov)closeM();});
-    var cl=ov.querySelector('.jbp-drawer-close'); if(cl)cl.addEventListener('click',closeM);
-    ov.querySelectorAll('.jbp-drawer-nav a, .jbp-drawer-cta, .jbp-drawer-phone').forEach(function(a){a.addEventListener('click',closeM);});
-  }
-  var t=document.getElementById('conditions-track');
-  if(t){
-    var p=document.querySelector('.jbp-car-prev'), n=document.querySelector('.jbp-car-next');
-    if(p)p.addEventListener('click',function(){t.scrollBy({left:-t.clientWidth,behavior:'smooth'});});
-    if(n)n.addEventListener('click',function(){t.scrollBy({left:t.clientWidth,behavior:'smooth'});});
-  }
-})();
-</script>
-</body></html>
