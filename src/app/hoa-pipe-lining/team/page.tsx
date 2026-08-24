@@ -316,7 +316,7 @@ const BODY_HTML = `
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 26px">
       <div style="background: #fff; border: 1px solid rgba(35,31,32,0.12); display: flex; flex-direction: column">
-        <img src="/hoa-pipe-lining/team/assets/0ae5d9c4-0541-4746-a523-b7a2c9eecee0.jpg" alt="Danyil" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
+        <img src="/hoa-pipe-lining/team/assets/team-danyil.png" alt="Danyil" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
         <div style="padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 10px">
           <h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">Danyil</h3>
           <p style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 16.5px; line-height: 1.35; color: #BC0F0E">Head of HOA Sewer “SEAL” Team</p>
@@ -324,7 +324,7 @@ const BODY_HTML = `
         </div>
       </div>
       <div style="background: #fff; border: 1px solid rgba(35,31,32,0.12); display: flex; flex-direction: column">
-        <img src="/hoa-pipe-lining/team/assets/87ef1100-e5a4-4659-962a-68f16a5c69d7.jpg" alt="Dino" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
+        <img src="/hoa-pipe-lining/team/assets/team-dino.png" alt="Dino" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
         <div style="padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 10px">
           <h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">Dino</h3>
           <p style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 16.5px; line-height: 1.35; color: #BC0F0E">Mr. X-Ray Complex Sewer Infrastructures</p>
@@ -332,7 +332,7 @@ const BODY_HTML = `
         </div>
       </div>
       <div style="background: #fff; border: 1px solid rgba(35,31,32,0.12); display: flex; flex-direction: column">
-        <img src="/hoa-pipe-lining/team/assets/8ad8a44d-de7e-4cf5-81e4-c9ebc42741d6.jpg" alt="Oswaldo" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
+        <img src="/hoa-pipe-lining/team/assets/team-oswaldo.png" alt="Oswaldo" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
         <div style="padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 10px">
           <h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">Oswaldo</h3>
           <p style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 16.5px; line-height: 1.35; color: #BC0F0E">Mr. Everything Is Set and Ready to Go</p>
@@ -340,7 +340,7 @@ const BODY_HTML = `
         </div>
       </div>
       <div style="background: #fff; border: 1px solid rgba(35,31,32,0.12); display: flex; flex-direction: column">
-        <img src="/hoa-pipe-lining/team/assets/12d884c6-c356-4b80-b7b5-c4047a08f1ff.jpg" alt="Christian" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
+        <img src="/hoa-pipe-lining/team/assets/team-christian.png" alt="Christian" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; display: block">
         <div style="padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 10px">
           <h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">Christian</h3>
           <p style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 600; font-size: 16.5px; line-height: 1.35; color: #BC0F0E">Mr. Project Supervision and Making Customers Happy</p>
