@@ -150,19 +150,11 @@ const nextConfig = {
       ...hostNoindex,
     ];
   },
-  async rewrites() {
-    return {
-      // beforeFiles so the standalone HOA pipe-lining cluster (static files in
-      // public/, Brief 125 — supersedes Brief 124's /hoa-line-piping) wins over
-      // the [city] dynamic route, which would otherwise 404 the clean URLs
-      // (dynamicParams = false).
-      beforeFiles: [
-        { source: '/hoa-pipe-lining',                 destination: '/hoa-pipe-lining/index.html' },
-        { source: '/hoa-pipe-lining/team',            destination: '/hoa-pipe-lining/team/index.html' },
-        { source: '/hoa-pipe-lining/reserve-studies', destination: '/hoa-pipe-lining/reserve-studies/index.html' },
-      ],
-    };
-  },
+  // Brief 127 (HOA cluster app-routes migration) — the Brief 125 rewrites that
+  // pointed the three clean HOA URLs at static public/*/index.html files are
+  // removed. The cluster now lives at real routes under src/app/hoa-pipe-lining/,
+  // which — being an explicit path — already wins over the [city] dynamic route
+  // (dynamicParams = false) with no rewrite needed. Do not restore this block.
   async redirects() {
     // Brief 127 (Track B): every public-facing redirect uses statusCode 301 —
     // the classic permanent redirect search engines consolidate on — instead of

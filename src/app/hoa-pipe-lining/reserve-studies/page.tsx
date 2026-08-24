@@ -1,23 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HOA Sewer &amp; Drain Reserve Studies | J. Blanton Plumbing</title>
-<!-- Brief 152 (Fix 3): self-referencing canonical — see public/hoa-pipe-lining/index.html. -->
-<link rel="canonical" href="https://jblantonplumbing.com/hoa-pipe-lining/reserve-studies">
+import type { Metadata } from 'next';
+import HoaLandingScripts from '@/components/hoa-pipe-lining/HoaLandingScripts';
+import HoaClusterLinks from '@/components/hoa-pipe-lining/HoaClusterLinks';
 
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; }
-  body { margin: 0; background: #F9F3EC; }
-  a { color: inherit; text-decoration: none; }
+/**
+ * Brief 127 — /hoa-pipe-lining/reserve-studies
+ *
+ * Ported verbatim (minus the footer) from the finished static build at
+ * `New Pages\Reserve Studies page layout\clean\index.html`. See
+ * src/components/hoa-pipe-lining/HoaLandingScripts.tsx and
+ * HoaClusterLinks.tsx for the shared drawer/form/carousel JS and the
+ * cross-link strip — this file owns only the page's own CSS + markup.
+ *
+ * Do NOT set `alternates` here — the root layout already generates a
+ * self-referencing canonical per route from the request pathname.
+ */
+
+export const metadata: Metadata = {
+  title: 'HOA Sewer & Drain Reserve Studies',
+};
+
+const PAGE_CSS = `
+.hoa-landing { margin: 0; background: #F9F3EC; font-family: 'Nunito', system-ui, sans-serif; color: #231F20; }
+.hoa-landing * { box-sizing: border-box; }
+.hoa-landing a { color: inherit; text-decoration: none; }
 
 @media(max-width:768px){
   .jbp-stack3{grid-template-columns:1fr !important;}
@@ -40,15 +45,13 @@
 .jbp-team-carousel{position:relative;}
 .jbp-team-car-prev,.jbp-team-car-next{display:none;align-items:center;justify-content:center;position:absolute;top:38%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:9999px;background:rgba(10,27,46,0.72);color:#fff;font-size:26px;line-height:1;cursor:pointer;z-index:5;padding:0 0 4px;}
 .jbp-team-car-prev{left:6px;} .jbp-team-car-next{right:6px;}
-</style>
-<style id="jbp-brand">
+
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/reserve-studies/assets/fonts/IMedium.otf') format('opentype');font-weight:500;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/reserve-studies/assets/fonts/IDemi.otf') format('opentype');font-weight:600;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/reserve-studies/assets/fonts/IBold.otf') format('opentype');font-weight:700;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/reserve-studies/assets/fonts/IBlack.otf') format('opentype');font-weight:800;font-display:swap;}
 @font-face{font-family:'Industry';src:url('/hoa-pipe-lining/reserve-studies/assets/fonts/IBlack.otf') format('opentype');font-weight:900;font-display:swap;}
 @font-face{font-family:'Nunito';src:url('/hoa-pipe-lining/reserve-studies/assets/fonts/Nunito-Variable.ttf') format('truetype');font-weight:300 800;font-display:swap;}
-body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
 .jbp-header{position:sticky;top:0;left:0;right:0;z-index:60;display:flex;width:100%;box-shadow:0 0 10px rgba(0,0,0,.3);}
 .jbp-logo{position:absolute;z-index:20;width:225px;height:158px;pointer-events:none;}
 .jbp-logo-bg{position:absolute;inset:0;width:100%;height:100%;}
@@ -92,35 +95,9 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
 .jbp-subnav{}
 .jbp-navlink{transition:color .15s;} .jbp-navlink:hover{color:#BC0E0E !important;}
 .jbp-phone-dim{transition:color .15s;} .jbp-phone-dim:hover{color:rgba(255,255,255,0.78) !important;}
-.jbp-footer{position:relative;overflow:hidden;background:#BC0E0E;color:#F9F3EC;padding:80px 64px 96px;font-family:'Nunito',system-ui,sans-serif;}
-.jbp-footer__inner{position:relative;max-width:1560px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:56px;}
-.jbp-footer__left{flex:1 1 420px;display:flex;flex-direction:column;gap:28px;}
-.jbp-footer__logo img{width:340px;max-width:100%;height:auto;object-fit:contain;display:block;}
-.jbp-badge-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-.jbp-badge-row img{object-fit:contain;display:block;}
-.jbp-review-btn{border:1px solid #F9F3EC;border-radius:6px;padding:9px 14px;font-family:'Industry','Arial',sans-serif;font-weight:600;font-size:14px;color:#F9F3EC;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s;}
-.jbp-review-btn:hover{background:#F9F3EC;color:#0A1B2E;}
-.jbp-footer__right{flex:1 1 460px;}
-.jbp-footer__navs{display:flex;flex-wrap:wrap;gap:10px 64px;margin-bottom:44px;}
-.jbp-footer__navs a{display:block;margin-bottom:14px;font-family:'Industry','Arial',sans-serif;font-weight:600;font-size:14px;letter-spacing:.03em;color:#F9F3EC;text-decoration:none;transition:opacity .15s;}
-.jbp-footer__navs a:hover{opacity:.75;color:#F9F3EC;}
-.jbp-footer__divider{height:1px;background:rgba(249,243,236,.3);width:100%;margin-bottom:30px;}
-.jbp-loc-title{font-family:'Industry','Arial',sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:0 0 26px;}
-.jbp-loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 24px;}
-.jbp-loc__name{display:flex;align-items:center;gap:7px;font-family:'Industry','Arial',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.02em;text-transform:uppercase;line-height:1.15;margin-bottom:6px;}
-.jbp-loc__name svg{width:18px;height:18px;flex:0 0 auto;}
-.jbp-loc__addr{font-size:13px;line-height:1.4;color:rgba(249,243,236,.82);margin:0;}
-.jbp-footer__bottom{position:relative;margin-top:72px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
-.jbp-footer__bottom p{margin:0;font-size:12.5px;color:rgba(249,243,236,.9);}
-.jbp-footer__bottom a.priv{color:#F9F3EC;text-decoration:underline;}
-.jbp-socials{display:flex;gap:14px;align-items:center;}
-.jbp-socials a{display:flex;opacity:.9;transition:opacity .15s;} .jbp-socials a:hover{opacity:1;}
-.jbp-socials img{width:18px;height:18px;object-fit:contain;display:block;}
 @media(max-width:1070px){ .jbp-phone,.jbp-cta{display:none;} .jbp-mobile-actions{display:flex;} .jbp-drawer-overlay{display:block;}
   .jbp-logo{display:none;} .jbp-bar{padding-left:16px;justify-content:space-between;align-items:center;} .jbp-nav{display:none;}
   .jbp-logo-sm{display:flex;align-items:center;} .jbp-logo-sm img{height:44px;width:auto;} }
-@media(max-width:900px){ .jbp-footer{padding:56px 28px 80px;} .jbp-loc-grid{grid-template-columns:repeat(2,1fr);} .jbp-footer__bottom{flex-direction:column;text-align:center;}
-  .jbp-footer__left{align-items:center;text-align:center;} .jbp-footer__logo{display:flex;justify-content:center;} .jbp-footer__logo img{width:200px;} .jbp-badge-row{justify-content:center;} }
 @media(max-width:768px){
   .jbp-subnav{display:none !important;}
   [data-screen-label]{padding-left:22px !important;padding-right:22px !important;}
@@ -128,12 +105,9 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
   .jbp-cta-grid{display:flex !important;flex-direction:column;gap:28px !important;}
   .jbp-cta-text{display:contents !important;} .jbp-cta-text > h2{order:1;} .jbp-cta-text > p{order:2;} .jbp-cta-form{order:3;} .jbp-cta-text > div{order:4;}
 }
-@media(max-width:560px){ .jbp-loc-grid{grid-template-columns:1fr;} }
-</style>
-</helmet>
+`;
 
-<div style="font-family: 'Nunito', system-ui, sans-serif; color: #231F20;">
-
+const BODY_HTML = `
   <header class="jbp-header">
   <div class="jbp-logo"><img class="jbp-logo-bg" src="/hoa-pipe-lining/reserve-studies/assets/rectangle.webp" alt="" aria-hidden="true"><a class="jbp-logo-link" href="#" aria-label="J. Blanton Plumbing"><img src="/hoa-pipe-lining/reserve-studies/assets/logo-text.webp" alt="J. Blanton Plumbing"></a></div>
   <div class="jbp-bar">
@@ -277,8 +251,6 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
     </div>
   </section>
 
-  
-
   <section id="faq" style="padding: 96px 64px;">
     <div class="jbp-things" style="max-width: 1560px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px;">
       <div style="display: flex; flex-direction: column; gap: 18px;">
@@ -311,7 +283,7 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
           <p style="margin: 0; font-size: 16px; color: #4a4a4a;">An HOA advisor will reach out within one business day.</p>
         </div>
       </div>
-      
+
         <div style="background: #F9F3EC; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
           <h3 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 24px;">Request a Reserve Study</h3>
           <form id="hoa-form" class="jbp-cta-form" style="display: flex; flex-direction: column; gap: 12px;">
@@ -321,34 +293,25 @@ body{font-family:'Nunito',system-ui,sans-serif;} x-dc{display:block;}
             <button class="jbp-btn-red" type="submit" style="margin-top: 4px; padding: 14px 22px; background: #BC0F0E; color: #fff; font-family: 'Industry', 'Arial', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; border: none; border-radius: 6px; cursor: pointer;">Request Consultation</button>
           </form>
         </div>
-      
+
     </div>
   </section>
+`;
 
-  <footer class="jbp-footer"><div class="jbp-footer__inner">
-  <div class="jbp-footer__left">
-    <div class="jbp-footer__logo"><img src="/hoa-pipe-lining/reserve-studies/assets/logo-white.webp" alt="J. Blanton Plumbing"></div>
-    <div class="jbp-badge-row"><img src="/hoa-pipe-lining/reserve-studies/assets/google-badge.webp" alt="Google Reviews" style="width:84px;height:84px"><a class="jbp-review-btn" href="https://g.page/r/CW0h_mbUZBu5EAE/review" target="_blank" rel="noreferrer">Leave a Review</a></div>
-    <div class="jbp-badge-row"><img src="/hoa-pipe-lining/reserve-studies/assets/yelp-badge.webp" alt="Yelp" style="width:118px;height:auto"><a class="jbp-review-btn" href="https://www.yelp.com/writeareview/biz/h-3jgJfNryJ43CN5970iFw" target="_blank" rel="noreferrer">Leave a Review</a></div>
-    <a href="https://www.bbb.org/us/il/morton-grove/profile/plumber/j-blanton-plumbing-0654-88664305/#sealclick" target="_blank" rel="noreferrer" style="display:inline-block"><img src="/hoa-pipe-lining/reserve-studies/assets/bbb-badge.webp" alt="BBB Accredited Business" style="width:260px;height:auto"></a>
-  </div>
-  <div class="jbp-footer__right">
-    <div class="jbp-footer__navs"><div><a href="#basics">The Basics</a><a href="#matters">Why It Matters</a></div><div><a href="#process">Our Process</a><a href="#report">Sample Report</a></div><div><a href="#faq">Pricing &amp; FAQ</a><a href="#book">Request a Reserve Study</a></div></div>
-    <div style="margin:6px 0 34px;font-family:'Nunito',system-ui,sans-serif;font-size:13.5px;color:rgba(249,243,236,.85)"><span style="font-family:'Industry','Arial',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:#fff;margin-right:6px">Explore HOA pipe lining:</span><a href="/hoa-pipe-lining" style="color:#F9F3EC;text-decoration:underline;margin:0 4px">Pipe Lining Overview</a> &middot; <span style="color:#fff;font-weight:700;margin:0 4px">Reserve Studies</span> &middot; <a href="/hoa-pipe-lining/team" style="color:#F9F3EC;text-decoration:underline;margin:0 4px">Meet the Team</a></div><div class="jbp-footer__divider"></div>
-    <p class="jbp-loc-title">Our Office Locations</p>
-    <div class="jbp-loc-grid"><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Northbrook (Corporate)</span></div><p class="jbp-loc__addr">1945 Techny Road, #11, Northbrook, IL 60062</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Algonquin</span></div><p class="jbp-loc__addr">2390 Esplanade Dr #200f, Algonquin, IL 60102</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Geneva</span></div><p class="jbp-loc__addr">115 Campbell St #201C, Geneva, IL 60134</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Arlington Heights</span></div><p class="jbp-loc__addr">1204 E. Central Road, Suite 3, Arlington Heights, IL 60005</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Chicago Lincoln Park</span></div><p class="jbp-loc__addr">800 W Diversey Pkwy, Chicago, IL 60614</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Chicago Ravenswood</span></div><p class="jbp-loc__addr">5126 N Ravenswood Ave, Chicago, IL 60640</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Elgin</span></div><p class="jbp-loc__addr">964 N McLean Blvd, Elgin, IL 60123-2039</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Elmhurst</span></div><p class="jbp-loc__addr">130 S York St, Elmhurst, IL 60126</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Evanston</span></div><p class="jbp-loc__addr">1603 Orrington Ave #600-1085, Evanston, IL 60201</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Hinsdale</span></div><p class="jbp-loc__addr">15 Spinning Wheel Rd #216a, Hinsdale, IL 60521</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>McHenry</span></div><p class="jbp-loc__addr">3406 W Elm St, McHenry, IL 60050</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Naperville</span></div><p class="jbp-loc__addr">200 S Main Street, Suite 3, Naperville, IL 60540</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Skokie</span></div><p class="jbp-loc__addr">8001 Lincoln Ave, Suite 301, Skokie, IL 60077-3695</p></div><div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Joliet</span></div><p class="jbp-loc__addr">311 N Ottawa St Ste 2, Joliet, IL 60432</p></div></div>
-  </div></div>
-  <div class="jbp-footer__bottom"><p>Copyright &copy; 2026 J. Blanton Plumbing - All Rights Reserved - <a class="priv" href="https://jblantonplumbing.com/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a></p><div class="jbp-socials"><a href="https://www.linkedin.com/company/j-blanton-plumbing/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><img src="/hoa-pipe-lining/reserve-studies/assets/social/linkedin.webp" alt="LinkedIn"></a><a href="https://www.instagram.com/j.blantonplumbing/" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="/hoa-pipe-lining/reserve-studies/assets/social/ig.webp" alt="Instagram"></a><a href="https://www.facebook.com/J.BlantonPlumbing" target="_blank" rel="noreferrer" aria-label="Facebook"><img src="/hoa-pipe-lining/reserve-studies/assets/social/fb.webp" alt="Facebook"></a><a href="https://x.com/JBPchicago" target="_blank" rel="noreferrer" aria-label="X"><img src="/hoa-pipe-lining/reserve-studies/assets/social/x.webp" alt="X"></a></div></div>
-</footer>
-</div>
-
-</x-dc>
-
-<script>
-(function(){var ov=document.getElementById('jbp-drawer'),b=document.querySelector('.jbp-burger');
-if(ov&&b){var o=function(){ov.classList.add('open');b.setAttribute('aria-expanded','true');},c=function(){ov.classList.remove('open');b.setAttribute('aria-expanded','false');};
-b.addEventListener('click',o);ov.addEventListener('click',function(e){if(e.target===ov)c();});var x=ov.querySelector('.jbp-drawer-close');if(x)x.addEventListener('click',c);
-ov.querySelectorAll('.jbp-drawer-nav a,.jbp-drawer-cta,.jbp-drawer-phone').forEach(function(a){a.addEventListener('click',c);});}
-var f=document.getElementById('hoa-form');if(f)f.addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('hoa-success');if(m){m.style.display='block';m.scrollIntoView({behavior:'smooth',block:'nearest'});}});
-})();</script><script>(function(){var t=document.querySelector('.jbp-team-track');if(!t)return;var p=document.querySelector('.jbp-team-car-prev'),n=document.querySelector('.jbp-team-car-next');if(p)p.addEventListener('click',function(){t.scrollBy({left:-t.clientWidth*0.8,behavior:'smooth'});});if(n)n.addEventListener('click',function(){t.scrollBy({left:t.clientWidth*0.8,behavior:'smooth'});});})();</script></body>
-</html>
+export default function Page() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: PAGE_CSS }} />
+      <div className="hoa-landing" dangerouslySetInnerHTML={{ __html: BODY_HTML }} />
+      <HoaLandingScripts
+        carousel={{
+          trackSelector: '.jbp-team-track',
+          prevSelector: '.jbp-team-car-prev',
+          nextSelector: '.jbp-team-car-next',
+          scrollRatio: 0.8,
+        }}
+      />
+      <HoaClusterLinks current="reserve-studies" />
+    </>
+  );
+}

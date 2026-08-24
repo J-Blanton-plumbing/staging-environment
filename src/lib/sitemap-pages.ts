@@ -37,10 +37,13 @@ export interface SitemapStaticPage {
  * Static top-level pages that always return 200.
  *
  * Brief 152: `/hoa-line-piping` REMOVED (404 — Brief 125 renamed the cluster) and
- * replaced by the three pages that actually serve, all static HTML in
- * `public/hoa-pipe-lining/` reached through the `beforeFiles` rewrites in
- * next.config.mjs. Their `<link rel="canonical">` tags were added in the same
- * change so they satisfy the validator's self-canonical rule.
+ * replaced by the three pages that actually serve. Brief 127 (HOA cluster
+ * app-routes migration) moved those three off static HTML + `beforeFiles`
+ * rewrites and onto real routes under `src/app/hoa-pipe-lining/` so they
+ * render inside `SiteShell` and pick up the shared, CMS-backed `<Footer>`;
+ * their self-referencing canonical now comes from the root layout's
+ * `generateMetadata` (via the `x-pathname` header) like every other route,
+ * same as before.
  */
 export const SITEMAP_STATIC_PAGES: readonly SitemapStaticPage[] = [
   { path: '',                    mainSlug: 'home',             changeFrequency: 'weekly',  priority: 1 },
