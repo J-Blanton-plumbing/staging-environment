@@ -362,6 +362,22 @@ jobs:
             # Idempotent - reports ALREADY-APPLIED once nothing is blank.
             # `-r tsconfig-paths/register` is REQUIRED - it imports from src/.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/backfill-brief-149-page-meta.ts commit
+            # Brief 155: strip a leaked content-outline label ("H1: ", "H2: ") off the
+            # FRONT of four CMS heading columns (city_pages.hero_heading_line1/2,
+            # city_service_pages.service_intro_heading/secondary_heading). A batch of
+            # south-suburbs copy was authored from a labelled outline and the label was
+            # pasted into the CMS field along with the copy, so the literal string
+            # "H1:" was rendering inside the visible <h1> on money pages like
+            # /tinley-park and /joliet/water-heater-repair.
+            # Schema-driven (information_schema), not a hard-coded id list, so it also
+            # catches anything that ships between the July scoping pass and this
+            # deploy. Every write is guarded on the exact old value (WHERE id = $1 AND
+            # col = $2), so a concurrent editor save is skipped, never clobbered - and
+            # version/updated_at are deliberately left untouched (see the Brief 155
+            # report for what was verified to support that). Idempotent: a field that
+            # no longer matches the leading-label pattern is never touched again, so
+            # this is a safe no-op on every deploy after the first.
+            npx ts-node --project tsconfig.scripts.json scripts/strip-leaked-heading-labels.ts commit
             # Brief 147 (Track A): print every DB script's verdict together. A
             # `NOT-APPLIED` line here is the signal the Brief 146 release had no way
             # to show - those scripts exit 0 when a guard trips ON PURPOSE (a non-zero
@@ -669,6 +685,33 @@ jobs:
             check_marker "/columbus" "Columbus Plumber" "fail"
             check_marker "/" "1387 W. Goodale Blvd" "fail"
             check_marker "/locations" "Columbus, OH" "fail"
+
+            # -- Brief 155: no leaked "H1:"/"H2:" outline label on a rendered heading --
+            # A 200 was never the question here either - the page rendered fine, it just
+            # had the literal string "H1: " sitting inside the visible headline. This is
+            # a CONTENT-SHAPE check, not a fixed-string marker: it greps the fetched HTML
+            # for the label pattern appearing right after any tag close (i.e. the start of
+            # a real text node), so it would catch this defect on ANY page, not just the
+            # four the DB script is known to have fixed today - a future leaked label ships
+            # red instead of shipping quietly.
+            check_no_leaked_heading_label() {
+              path="$1"
+              LAST_CHECK="check_no_leaked_heading_label $path"
+              CHECKS_RUN=$((CHECKS_RUN + 1))
+              body=$(fetch_text "$path") || body=""
+              hit=$(printf '%s' "$body" | grep -oiE '>[[:space:]]*H[1-6][[:space:]]*[:.-][[:space:]]*[A-Za-z]' | head -1)
+              if [ -n "$hit" ]; then
+                echo "CONTENT JUNK: ${path} still renders a leaked heading label: \"${hit}\""
+                CONTENT_FAILED=1
+              else
+                echo "OK: ${path} - no leaked H1:/H2: heading label"
+              fi
+            }
+            check_no_leaked_heading_label "/tinley-park"
+            check_no_leaked_heading_label "/ingalls-park"
+            check_no_leaked_heading_label "/joliet/water-heater-repair"
+            check_no_leaked_heading_label "/homer-glen/water-heater-installation"
+
             # Completion sentinel. Without it there is no way to tell a script that
             # crashed mid-way from a log whose tail was truncated - the ambiguity that
             # made the first failure of this step take longer to read than it should
