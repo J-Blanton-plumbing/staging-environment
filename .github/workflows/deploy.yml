@@ -100,14 +100,12 @@ jobs:
             # NOT-APPLIED is readable at a glance instead of buried in the log.
             export JBP_DEPLOY_VERDICTS="$PWD/.deploy-verdicts.log"
             rm -f "$JBP_DEPLOY_VERDICTS"
-            # Brief 147 (Track D): validate every sitemap <lastmod> query against the
-            # real schema BEFORE the swap. `safeQuery` swallows these at runtime by
-            # design, so a wrong column name (city_pages.slug → city_slug) shipped 248
-            # city URLs with no freshness signal for weeks with nothing but one server
-            # log line to show for it. This step exits non-zero on a bad column/table/
-            # syntax - a code defect that no deploy should carry - and exits 0 (with a
-            # banner) if the DB is simply unreachable.
-            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/verify-sitemap-queries.ts
+            # NOTE (Brief 158, Track C): scripts/verify-sitemap-queries.ts used to run
+            # HERE. It now runs further down, AFTER the seed/backfill scripts, because
+            # it also asserts that every registered city has a `city_pages` row - run
+            # it above the seeds and the very deploy that creates a missing row aborts
+            # before creating it. It is still well before the build swap, so a hard
+            # failure there still leaves the previous build serving.
             # ensure-schema reconciles EVERY CMS table's columns (idempotent
             # ADD COLUMN IF NOT EXISTS across all tables), so no editor can hit a
             # missing-column 500 again. Then migrate-global-settings seeds the
@@ -123,6 +121,21 @@ jobs:
             # touching any of the other 14 offices, and reports ALREADY-APPLIED
             # once Columbus exists - a safe no-op on every deploy after the first.
             npx ts-node --project tsconfig.scripts.json scripts/add-columbus-office.ts commit
+            # Brief 158 (Track A): create the ONE missing `city_pages` row - columbus -
+            # pre-filled verbatim from src/lib/content/cities/columbus.ts, so
+            # /admin/city/columbus opens a POPULATED editor instead of the "No CMS
+            # content found" card. Columbus is the first city born after the WordPress
+            # migration and every automated row-creating path is driven off the WP
+            # export, so nothing in this pipeline would ever have created it
+            # (Brief 157, Q6). The live page does not move: the coverage-area merge is
+            # `db.X || staticFile.X` per field and every seeded value equals what the
+            # file already supplies, with `hero_heading_line1` seeded EMPTY so the H1
+            # stays "Columbus Plumber". Fill-gaps only (a non-empty column is never
+            # overwritten), backed up to brief158_row_backup, ALREADY-APPLIED once the
+            # row is populated - a safe no-op on every deploy after the first.
+            # `-r tsconfig-paths/register` is REQUIRED - it imports the content file
+            # and the shared sanitizer from src/, which resolve `@/...` path aliases.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-columbus-city-page.ts commit
             # Brief 112: create the cms_media catalog table and backfill a row for
             # every file already in public/uploads/cms/. Idempotent - CREATE TABLE
             # IF NOT EXISTS + INSERT ... ON CONFLICT (url) DO NOTHING, so re-running
@@ -378,6 +391,25 @@ jobs:
             # no longer matches the leading-label pattern is never touched again, so
             # this is a safe no-op on every deploy after the first.
             npx ts-node --project tsconfig.scripts.json scripts/strip-leaked-heading-labels.ts commit
+            # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
+            # what the checked-in code assumes, BEFORE the swap below.
+            #  - every sitemap <lastmod> source query runs against the real schema.
+            #    `safeQuery` swallows these at runtime by design, so a wrong column
+            #    name (city_pages.slug -> city_slug) shipped 248 city URLs with no
+            #    freshness signal for weeks with nothing but one server log line.
+            #  - every CITY_REGISTRY slug has a `city_pages` row. Without one, the
+            #    page is live and indexed and Marketing cannot edit a word of it -
+            #    the editor shows "No CMS content found" and its save path is
+            #    UPDATE-only, so it cannot create the row itself. That is how
+            #    Columbus shipped (Brief 157).
+            # Exits non-zero on either - a condition no deploy should carry - and
+            # exits 0 with a banner if the DB is simply unreachable.
+            # ORDER MATTERS: this runs AFTER the seed/backfill scripts above so the
+            # coverage assertion sees the state this deploy actually produced. Move it
+            # back above them and the deploy that creates a missing row aborts before
+            # creating it. It is still pre-swap, so a failure here leaves the previous
+            # build serving - nothing goes down.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/verify-sitemap-queries.ts
             # Brief 147 (Track A): print every DB script's verdict together. A
             # `NOT-APPLIED` line here is the signal the Brief 146 release had no way
             # to show - those scripts exit 0 when a guard trips ON PURPOSE (a non-zero
@@ -636,6 +668,51 @@ jobs:
                 echo "OK: ${path} - no ${label}"
               fi
             }
+            # Brief 158 (Track C): assert the page's <h1> ELEMENT, not just that a
+            # string appears somewhere in the document.
+            #
+            # `check_marker "/columbus" "Columbus Plumber"` looked like an H1 check and
+            # was not: that string appears 10 times on the page (<title>, og:title,
+            # twitter:title, the hero image alt, RSC payload copies), so the H1 could
+            # be rewritten to anything at all and the check would still pass. On a city
+            # page the H1 is `city_pages.hero_heading_line1` when non-empty, which is
+            # one field in the CMS - a silent H1 regression on an indexed page was one
+            # accidental keystroke away with nothing in the pipeline looking.
+            #
+            # Extraction is deliberately tolerant of attributes and of inline markup
+            # inside the heading: split at the first `<h1`, drop the rest of the open
+            # tag, cut at `</h1>`, then strip any remaining tags. A heading whose shape
+            # this cannot read yields a mismatch - a LOUD failure, never a silent pass.
+            check_h1() {
+              path="$1"; expected="$2"
+              LAST_CHECK="check_h1 $path :: $expected"
+              CHECKS_RUN=$((CHECKS_RUN + 1))
+              # Name the cause explicitly if the one non-obvious tool this check
+              # needs is missing, so a toolchain gap can never read as an H1 defect.
+              if ! command -v awk >/dev/null 2>&1; then
+                echo "CHECK CANNOT RUN: awk is not on PATH, so check_h1 cannot parse ${path}."
+                echo "  This is a box/toolchain problem, NOT an H1 regression."
+                CONTENT_FAILED=1
+                return
+              fi
+              body=$(fetch_text "$path") || body=""
+              h1_count=$(printf '%s' "$body" | grep -oE '<h1[[:space:]>]' | wc -l | tr -d '[:space:]')
+              h1_text=$(printf '%s' "$body" | tr '\n' ' ' \
+                | awk -F'<h1' 'NF>1{print $2}' \
+                | sed -e 's/^[^>]*>//' -e 's|</h1>.*$||' -e 's/<[^>]*>//g' \
+                | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+              if [ "$h1_count" != "1" ]; then
+                echo "H1 DEFECT: ${path} renders ${h1_count} <h1> element(s), expected exactly 1 (first was \"${h1_text}\")"
+                CONTENT_FAILED=1
+              elif [ "$h1_text" = "$expected" ]; then
+                echo "OK: ${path} renders exactly one <h1>${expected}</h1>"
+              else
+                echo "H1 DEFECT: ${path} renders <h1>${h1_text}</h1>, expected <h1>${expected}</h1>"
+                echo "  On a city page the H1 comes from city_pages.hero_heading_line1 when that"
+                echo "  column is non-empty. Clearing it restores the default \"{City} Plumber\"."
+                CONTENT_FAILED=1
+              fi
+            }
             # Hard gate - the brief's named marker. /gas-lines renders from
             # sub_service_pages; an empty hero heading means the row is not fit to
             # render and the page is degraded for every visitor.
@@ -677,12 +754,16 @@ jobs:
             # same failure, but this proves the write actually reached what a
             # visitor sees).
             #
-            # Marker is "Columbus Plumber" (the default coverage-area <h1>), not a
-            # custom heading - Columbus deliberately renders as `coverage-area` with
-            # NO copy file (Marketing decision: the video-hero Local Office template
-            # doesn't suit dummy content), the same auto-generated path Arlington
-            # Heights/Hinsdale/Naperville/Geneva/Chicago-Lincoln-Park already use.
-            check_marker "/columbus" "Columbus Plumber" "fail"
+            # Brief 158 (Track C): the /columbus check is now an H1 assertion, not a
+            # whole-document grep. `check_marker "/columbus" "Columbus Plumber"` passed
+            # on ten separate occurrences of that string - <title>, og:title,
+            # twitter:title, the hero image alt, RSC payload copies - only ONE of which
+            # is the H1. So the exact regression Brief 158 Track A guards against (a
+            # non-empty `city_pages.hero_heading_line1` silently replacing the H1 of an
+            # indexed page) would have deployed green. This asserts the H1 element
+            # specifically, and that there is exactly one of them (CLAUDE.md gotcha #3:
+            # one H1 per page, and a linked phone number is never a heading).
+            check_h1 "/columbus" "Columbus Plumber"
             check_marker "/" "1387 W. Goodale Blvd" "fail"
             check_marker "/locations" "Columbus, OH" "fail"
 

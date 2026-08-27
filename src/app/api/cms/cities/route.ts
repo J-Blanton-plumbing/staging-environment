@@ -24,12 +24,23 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(result.rows);
     }
 
-    // Default: return flat city list (existing behaviour — do not break sidebar/other callers)
+    // Default: return flat city list (existing behaviour — do not break sidebar/other callers).
+    //
+    // Brief 158 (Track B): `updated_at` is ADDITIVE. /admin/cities now builds its
+    // card set from the UNION of this list and the city-service rows, so a city
+    // with a `city_pages` row but no service pages gets a card — and needs a
+    // freshness value of its own, or it could never surface in the "Recent" view
+    // no matter how recently someone edited its city page. Existing callers
+    // (CreatePageModal) read `slug`/`cityType` and are unaffected by an extra key.
     const result = await client.query(
-      `SELECT city_slug, city_type FROM city_pages ORDER BY city_slug ASC`
+      `SELECT city_slug, city_type, updated_at FROM city_pages ORDER BY city_slug ASC`
     );
     return NextResponse.json(
-      result.rows.map(r => ({ slug: r.city_slug as string, cityType: r.city_type as string }))
+      result.rows.map(r => ({
+        slug: r.city_slug as string,
+        cityType: r.city_type as string,
+        updatedAt: r.updated_at ? new Date(r.updated_at as string | Date).toISOString() : null,
+      }))
     );
   } catch (err) {
     console.error('GET /api/cms/cities error:', err);

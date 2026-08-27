@@ -13,6 +13,23 @@ interface CityServiceRow {
   status: string | null;
 }
 
+/**
+ * A `city_pages` row, as returned by `GET /api/cms/cities` (no `view`).
+ *
+ * Brief 158 (Track B): this list used to feed the Local Office / Coverage Area
+ * filter pills and NOTHING else — the card set was built exclusively from
+ * `city_service_pages`, so a city with no service pages could not have a card in
+ * any view: not Recent, not All, not an A–Z letter, not a search. That hid 26 of
+ * 249 cities, including office-host **Geneva** (a fully populated, editable city
+ * page reachable only by typing the URL) and **Columbus**, which is what
+ * Marketing reported. Cards now come from the UNION of the two sources.
+ */
+interface CityPageRow {
+  slug: string;
+  cityType: string;
+  updatedAt: string | null;
+}
+
 function toDisplayName(slug: string): string {
   return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 }
@@ -61,7 +78,17 @@ interface CityCard {
   categories: Array<{ key: string; label: string; rows: CityServiceRow[] }>;
   uncategorized: CityServiceRow[];
   latestUpdate: string | null;
+  /** False for a city that has a `city_pages` row but no service pages (Brief 158). */
+  hasServicePages: boolean;
+  /** From `city_pages.city_type`; undefined only if the city has no `city_pages` row. */
+  cityType?: string;
 }
+
+const CITY_TYPE_LABELS: Record<string, string> = {
+  'local-office': 'Local Office',
+  'local-office-v2': 'Local Office',
+  'coverage-area': 'Coverage Area',
+};
 
 const RECENT_COUNT = 6;
 
@@ -74,7 +101,7 @@ type PageTypeFilter = 'all' | 'local-office' | 'coverage-area';
 
 export default function CitiesAdminPage() {
   const [cityServiceRows, setCityServiceRows] = useState<CityServiceRow[]>([]);
-  const [cityTypes, setCityTypes] = useState<Record<string, string>>({});
+  const [cityPageRows, setCityPageRows] = useState<CityPageRow[]>([]);
   const [loadStatus, setLoadStatus] = useState<'loading' | 'error' | 'done'>('loading');
   const [openToggles, setOpenToggles] = useState<Record<string, boolean>>({});
   const [query, setQuery] = useState('');
@@ -83,32 +110,55 @@ export default function CitiesAdminPage() {
   const listTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch('/api/cms/cities?view=city-services')
-      .then(r => r.json())
-      .then((rows) => {
-        setCityServiceRows(Array.isArray(rows) ? rows : []);
-        setLoadStatus('done');
-      })
-      .catch(() => setLoadStatus('error'));
+    // Brief 158 (Track B): BOTH fetches now feed the card set, so `loadStatus`
+    // waits for both to settle — otherwise the city-pages-only cards would pop
+    // in a beat after the rest and read as a rendering glitch.
+    //
+    // Failure handling is deliberately asymmetric, and matches what each source
+    // is worth: the city-service fetch failing is still a hard error (it is most
+    // of the page), while the city-pages fetch failing degrades to exactly the
+    // pre-Brief-158 behaviour — cards from service rows only, and the type
+    // filter inert — rather than blanking a working screen.
+    let serviceRows: CityServiceRow[] = [];
+    let pageRows: CityPageRow[] = [];
+    let serviceFailed = false;
 
-    // Page-type (Local Office / Coverage Area) comes from the flat city registry,
-    // not city_service_pages — fetched separately and merged in by slug.
-    fetch('/api/cms/cities')
-      .then(r => r.json())
-      .then((data: { slug: string; cityType: string }[]) => {
-        if (!Array.isArray(data)) return;
-        const map: Record<string, string> = {};
-        data.forEach(d => { map[d.slug] = d.cityType; });
-        setCityTypes(map);
-      })
-      .catch(() => {});
+    Promise.allSettled([
+      fetch('/api/cms/cities?view=city-services')
+        .then(r => r.json())
+        .then((rows) => { serviceRows = Array.isArray(rows) ? rows : []; })
+        .catch(() => { serviceFailed = true; }),
+      // Page-type (Local Office / Coverage Area) and the city page's own
+      // freshness come from `city_pages` — fetched separately, merged in by slug.
+      fetch('/api/cms/cities')
+        .then(r => r.json())
+        .then((data: CityPageRow[]) => { pageRows = Array.isArray(data) ? data : []; })
+        .catch(() => {}),
+    ]).then(() => {
+      setCityServiceRows(serviceRows);
+      setCityPageRows(pageRows);
+      setLoadStatus(serviceFailed ? 'error' : 'done');
+    });
   }, []);
+
+  const cityTypes = useMemo(() => {
+    const map: Record<string, string> = {};
+    cityPageRows.forEach(r => { map[r.slug] = r.cityType; });
+    return map;
+  }, [cityPageRows]);
 
   function toggle(key: string) {
     setOpenToggles(prev => ({ ...prev, [key]: !prev[key] }));
   }
 
   // Build one card per city, categorizing that city's service pages.
+  //
+  // Brief 158 (Track B): the card set is the UNION of the two sources — a city
+  // gets a card if it has ≥1 `city_service_pages` row OR a `city_pages` row.
+  // It is deliberately NOT unioned with `CITY_REGISTRY`: a registry-only city
+  // would get a card whose EDIT CITY PAGE button leads to the editor's "No CMS
+  // content found" dead end, which is worse than a clean absence. The Brief 158
+  // Track C coverage assertion is what catches that case, at deploy time.
   const allCards: CityCard[] = useMemo(() => {
     const byCity = new Map<string, CityServiceRow[]>();
     for (const r of cityServiceRows) {
@@ -117,8 +167,15 @@ export default function CitiesAdminPage() {
       byCity.set(r.city_slug, list);
     }
 
+    const slugs = new Set<string>(byCity.keys());
+    for (const r of cityPageRows) slugs.add(r.slug);
+    const cityPageUpdatedAt = new Map<string, string | null>(
+      cityPageRows.map(r => [r.slug, r.updatedAt])
+    );
+
     const cards: CityCard[] = [];
-    for (const [slug, rows] of Array.from(byCity.entries())) {
+    for (const slug of Array.from(slugs)) {
+      const rows = byCity.get(slug) ?? [];
       const emergency = rows.find(r => r.service_slug === EMERGENCY_SLUG) ?? null;
       const nonEmergency = rows.filter(r => r.service_slug !== EMERGENCY_SLUG);
 
@@ -138,18 +195,32 @@ export default function CitiesAdminPage() {
       const firstChar = name.charAt(0).toUpperCase();
       const letter = /[A-Z]/.test(firstChar) ? firstChar : '#';
 
-      const latestUpdate = rows.reduce<string | null>((latest, r) => {
-        if (!r.updated_at) return latest;
-        if (!latest || new Date(r.updated_at) > new Date(latest)) return r.updated_at;
-        return latest;
-      }, null);
+      // Freshness is the newest of the city's service pages AND its own city
+      // page — without the latter a city-page-only card could never reach the
+      // Recent view, however recently someone edited it in the city editor.
+      const latestUpdate = [...rows.map(r => r.updated_at), cityPageUpdatedAt.get(slug) ?? null]
+        .reduce<string | null>((latest, ts) => {
+          if (!ts) return latest;
+          if (!latest || new Date(ts) > new Date(latest)) return ts;
+          return latest;
+        }, null);
 
-      cards.push({ slug, name, letter, emergency, categories, uncategorized, latestUpdate });
+      cards.push({
+        slug,
+        name,
+        letter,
+        emergency,
+        categories,
+        uncategorized,
+        latestUpdate,
+        hasServicePages: rows.length > 0,
+        cityType: cityTypes[slug],
+      });
     }
 
     cards.sort((a, b) => a.name.localeCompare(b.name));
     return cards;
-  }, [cityServiceRows]);
+  }, [cityServiceRows, cityPageRows, cityTypes]);
 
   // Which first-letters have at least one city (for enabling A–Z buttons).
   const availableLetters = useMemo(() => {
@@ -169,6 +240,12 @@ export default function CitiesAdminPage() {
   const visibleCards = useMemo(() => {
     let list = allCards;
     if (pageTypeFilter !== 'all') {
+      // A card with no `city_pages` row has no type at all (`undefined`), so it
+      // is hidden by a specific type filter and shown under "All Types" — never
+      // crashes, never silently vanishes from the default view. That set is
+      // empty today (every city with service rows also has a city_pages row,
+      // verified 2026-08-27) and would only appear if a `city_service_pages` row
+      // were created for an unseeded city.
       list = list.filter(card => cityTypes[card.slug] === pageTypeFilter);
     }
     if (!searching) {
@@ -245,11 +322,18 @@ export default function CitiesAdminPage() {
       `}</style>
 
       <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', color: MIDNIGHT, marginBottom: '0.25rem' }}>
-        City Service Pages
+        {/* Brief 158 (Track B): renamed from "City Service Pages". The view used
+            to list only cities that HAD service pages, so the old heading was
+            accurate and the sidebar link ("City Pages") was the thing setting a
+            false expectation. Now that the card set is the union of city pages
+            and city-service pages, this is a genuine city index and the two
+            labels agree. The count also moves 223 → ~249 for the same reason —
+            not a regression. */}
+        City Pages
       </h1>
       <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginBottom: '1.25rem' }}>
         {loadStatus === 'done'
-          ? `${allCards.length} cities · browse each city's service pages by category`
+          ? `${allCards.length} cities · edit a city page, or browse its service pages by category`
           : ' '}
       </p>
 
@@ -524,6 +608,40 @@ export default function CitiesAdminPage() {
                       </div>
                     );
                   })()}
+
+                  {/* Brief 158 (Track B): the empty state for a city that has a
+                      `city_pages` row but no service pages — 26 cities today,
+                      including Columbus and office-host Geneva. Without this the
+                      card would render as a bare header strip and read as broken.
+                      The card's own type is shown here rather than as a new badge
+                      on every card, so nothing changes for the other ~223. */}
+                  {!card.hasServicePages && (
+                    <div
+                      style={{
+                        ...rowBase,
+                        borderTop: 'none',
+                        color: ADMIN_COLORS.onSurfaceVariant,
+                        gap: '0.75rem',
+                      }}
+                    >
+                      <span>No service pages for this city yet — the city page itself is editable above.</span>
+                      {card.cityType && (
+                        <span
+                          style={{
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            color: ADMIN_COLORS.onSurfaceVariant,
+                            background: ADMIN_COLORS.surfaceContainerHighest,
+                            borderRadius: '9999px',
+                            padding: '1px 9px',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          {CITY_TYPE_LABELS[card.cityType] ?? card.cityType}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -531,7 +649,7 @@ export default function CitiesAdminPage() {
 
           {visibleCards.length === 0 && (
             <p style={{ color: ADMIN_COLORS.onSurfaceVariant, fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
-              {searching ? 'No cities match your search.' : 'No city service pages found.'}
+              {searching ? 'No cities match your search.' : 'No city pages found.'}
             </p>
           )}
         </div>
