@@ -1,0 +1,331 @@
+/*
+ * Brief 156 — the /bathrooms landing page's DESIGN SYSTEM.
+ *
+ * This is a CSS module, so every class below is hashed at build time and cannot
+ * leak into the shared <Footer> or any other page — the single biggest risk in
+ * Brief 156's hard rules. Do NOT move any of this into globals.css.
+ *
+ * WHY A MODULE AND NOT UTILITIES. The first pass built this page with Tailwind
+ * arbitrary values read off the live page element by element, and it drifted:
+ * Tailwind's `text-base` carries line-height 1.5 (24px→28.8px), but every body
+ * style on the source is 170% (27.2px), and every heading is 115% or 130%. Those
+ * few pixels per line are what broke the CTA buttons onto four lines and made the
+ * countdown wrap. The source is a systematic scale, so it is reproduced here as
+ * one — read off the compiled Webflow stylesheet and verified against computed
+ * styles on the live page at 1440px.
+ *
+ * Breakpoints are Webflow's, not Tailwind's: 991 / 767 / 479.
+ *
+ * ⚠️ SPACING RULE. Every type class below zeroes its margins with the `margin`
+ * SHORTHAND (as the source does). A shorthand beats a Tailwind `mb-*`/`mt-*`
+ * longhand from a different stylesheet, so a margin utility placed directly on a
+ * heading collapses to 0 with no warning — that is what put the "How the Process
+ * Works" cards flush against their heading. Space headings from a WRAPPER element
+ * or a flex/grid `gap`, never with a margin utility on the heading itself.
+ *
+ * ── TYPE SCALE ────────────────────────────────────────────────────────────────
+ * Display font  --font-jakarta (Plus Jakarta Sans), headings, always 700
+ * Body font     --font-inter   (Inter), body copy, 400 (600 where marked)
+ *
+ *   heading-1   80 / 64 / 56 / 36   line-height 110%
+ *   heading-2   64 / 56 / 48 / 36   line-height 115%
+ *   heading-3   40 / 40 / 40 / 28   line-height 115%
+ *   heading-4   24                  line-height 130%
+ *   display     104 / 80 / 64 / 42  line-height 105%   (the "87" review count)
+ *   size-48     48                  line-height 115%   (Materials H2)
+ *   size-30     30                  line-height 130%   (Why-us H3)
+ *   size-24     24                  line-height 115%   (offer + process titles)
+ *   eyebrow     16 700 uppercase    line-height 125%
+ *   body-20/18/16/14                line-height 170%
+ *
+ * ── BUTTONS ───────────────────────────────────────────────────────────────────
+ * Three variants, all radius 16 with a 4px drop shadow. Getting these wrong is
+ * what produced the wrapped labels, so the numbers are exact:
+ *
+ *   .btnHeader    padding 14px          text 14/600 Inter     (site header)
+ *   .btnHero      padding 26px 30 21px  text 16/600 Jakarta   (hero offer card)
+ *   .btnService   padding 18px 30px     text 16/700 Jakarta   (all 5 CTA bands)
+ *
+ * And two group layouts — the one the first pass got backwards:
+ *   .ctaStack   column, gap 24, buttons FULL WIDTH   ← Why-us, Materials
+ *   .ctaRow     row nowrap, gap 24, centred, auto    ← gallery, process, team
+ * `.hero-buttons` on the source is `flex-flow: column` by DEFAULT; only the
+ * `.horizontal` modifier makes it a row. Building every band as a row is what
+ * broke the Why-us and Materials CTAs.
+ */
+
+/* ── Colour tokens ─────────────────────────────────────────────────────────── */
+.page {
+  --bx-ink: #171714;      /* neutral-07 — headings */
+  --bx-muted: #434338;    /* neutral-06 — body copy */
+  --bx-faint: #adad9f;    /* neutral-04 — the "87" */
+  --bx-cream: #f9f3ec;    /* neutral-02 — every section background */
+  --bx-cerulean: #1560e6; /* theme-color-1 — primary CTA */
+  --bx-slate: #606057;    /* theme-color-2 — phone CTA */
+  --bx-carmine: #bc0e0e;  /* snapped from the source's off-brand #9B0D0D (§4.2) */
+  /* Shadows use the page's own warm ink, never #000000 (§4.2). */
+  --bx-shadow: 0 4px 0 0 rgba(23, 23, 20, 0.15);
+}
+
+/* ── Hero background ───────────────────────────────────────────────────────────
+ * The live page has TWO hero photos: `bath (2).png` is the base (desktop)
+ * background and the COLOURBOX jpg overrides it at max-width 991px. The brief's
+ * manifest listed only the second; the first was fetched as asset #47.
+ *
+ * background-position 50% 60% is the source's own value — at 50% 50% the frame
+ * sits low enough to bring the shower head into the first viewport.
+ *
+ * The scrim is the page's warm ink at 33%, matching the source's `#00000054`
+ * density. Midnight was used here first and visibly cooled the whole photo;
+ * #171714 is one of §4.2's "keep as neutrals" values and reads warm like the
+ * original while still keeping pure black off the page.
+ */
+.hero {
+  background-image:
+    linear-gradient(rgba(23, 23, 20, 0.33), rgba(23, 23, 20, 0.33)),
+    url('/bathrooms/hero/hero-bathroom-bg-desktop.png');
+  background-position: 0 0, 50% 60%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
+}
+
+@media screen and (max-width: 991px) {
+  .hero {
+    background-image:
+      linear-gradient(rgba(23, 23, 20, 0.33), rgba(23, 23, 20, 0.33)),
+      url('/bathrooms/hero/hero-bathroom-bg.jpg');
+  }
+}
+
+/* ── Type scale ────────────────────────────────────────────────────────────── */
+.h1,
+.h2,
+.h3,
+.h4,
+.size48,
+.size30,
+.size24,
+.display,
+.eyebrow {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+.h1 { font-size: 80px; line-height: 110%; }
+.h2 { font-size: 64px; line-height: 115%; }
+.h3 { font-size: 40px; line-height: 115%; }
+.h4 { font-size: 24px; line-height: 130%; }
+.size48 { font-size: 48px; line-height: 115%; }
+.size30 { font-size: 30px; line-height: 130%; }
+.size24 { font-size: 24px; line-height: 115%; }
+.display { font-size: 104px; line-height: 105%; }
+
+.eyebrow {
+  font-size: 16px;
+  line-height: 125%;
+  text-transform: uppercase;
+  color: var(--bx-carmine);
+}
+
+.body20,
+.body18,
+.body16,
+.body14 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 170%;
+  margin: 0;
+}
+
+.body20 { font-size: 20px; }
+.body18 { font-size: 18px; }
+.body16 { font-size: 16px; }
+.body14 { font-size: 14px; }
+
+.semibold { font-weight: 600; }
+.bold { font-weight: 700; }
+
+@media screen and (max-width: 991px) {
+  .h1 { font-size: 64px; }
+  .h2 { font-size: 56px; }
+  .display { font-size: 80px; }
+  .size48 { font-size: 40px; }
+}
+
+@media screen and (max-width: 767px) {
+  .h1 { font-size: 56px; }
+  .h2 { font-size: 48px; }
+  .display { font-size: 64px; }
+  .size48 { font-size: 36px; }
+}
+
+@media screen and (max-width: 479px) {
+  .h1,
+  .h2 { font-size: 36px; }
+  .h3 { font-size: 28px; }
+  .size48 { font-size: 32px; }
+  .size30 { font-size: 24px; }
+  .display { font-size: 42px; }
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+.btnBase {
+  display: block;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: var(--bx-shadow);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.btnBase:hover { box-shadow: none; }
+
+.btnPrimary { background-color: var(--bx-cerulean); }
+.btnSecondary { background-color: var(--bx-slate); }
+
+.btnHeader {
+  padding: 14px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 170%;
+}
+
+/* The hero offer card's pair. 600, not 700 — at 700 the label is wide enough to
+   wrap inside the 428px card, which is what put it on multiple lines. */
+@media screen and (max-width: 479px) {
+  .btnHeader { padding-left: 10px; padding-right: 10px; }
+}
+
+.btnHero {
+  padding: 26px 30px 21px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 170%;
+  text-align: center;
+}
+
+.btnService {
+  padding: 18px 30px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 170%;
+  text-align: center;
+}
+
+/* Icon + label row inside the phone buttons. */
+.btnInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+/* ── CTA group layouts ─────────────────────────────────────────────────────── */
+.ctaStack {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 24px;
+  width: 100%;
+}
+
+.ctaStack > * { width: 100%; }
+
+.ctaRow {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* Below the tablet breakpoint the source collapses the centred row to a stack so
+   the two labels stop competing for width. */
+@media screen and (max-width: 767px) {
+  .ctaRow {
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
+  .ctaRow > * { width: 100%; }
+}
+
+/* The hero card's own pair — same stack, 20px gap (`.hero-buttons.gap-20`). */
+.ctaHeroStack {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+}
+
+.ctaHeroStack > * { width: 100%; }
+
+/* ── Countdown ─────────────────────────────────────────────────────────────── */
+/* row NOWRAP is the point: wrapping is what split the clock over two lines. */
+.countdown {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.countdownItem {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdownNumber {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+}
+
+.countdownLabel {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 479px) {
+  .countdownLabel { font-size: 16px; }
+  .countdown { gap: 10px; }
+}
+
+/* ── Section rhythm ────────────────────────────────────────────────────────── */
+.section {
+  padding: 60px 30px;
+  background-color: var(--bx-cream);
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Trust bar carries the source's extra bottom lead-in (60px 30px 90px). */
+.sectionTrust { padding-bottom: 90px; }
+
+/* Why-us butts straight up against the trust bar above it — the source runs the
+   two as one visual block (`.tp-0` = top padding 0). Declared here rather than as
+   a Tailwind `pt-0` so a longhand/shorthand cascade race can't decide it. */
+.sectionFlush { padding-top: 0; }
+
+@media screen and (max-width: 479px) {
+  .section { padding: 60px 20px; }
+}
