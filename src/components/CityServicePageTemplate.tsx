@@ -160,9 +160,9 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
               )}
             </div>
             <div className="flex flex-col justify-center">
-              <p className="red-text mb-4 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
+              <h2 className="red-text mb-4 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                 {s.secondarySection.heading}
-              </p>
+              </h2>
               <div className="space-y-4">
                 {s.secondarySection.paragraphs.map((p, i) => (
                   <p key={i} className="font-body text-[16px] leading-[24px] text-navy-800">

@@ -126,9 +126,9 @@ export default function CoverageAreaCity({
                   existed, so clearing the field in the CMS is a safe, reversible
                   action rather than a blank heading on a live indexed page.
                   Plain text, never HTML — it is rendered inside a heading. */}
-              <p className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
+              <h2 className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                 {coveredHeading || <>WE&apos;VE GOT YOU COVERED, <span>{name}</span></>}
-              </p>
+              </h2>
               {content?.coveredBody && (
                 <div
                   className="city-prose leading-relaxed text-navy-800"
@@ -165,9 +165,9 @@ export default function CoverageAreaCity({
             </div>
             <div className="r flex flex-col justify-center">
               {content?.manplumberHeading && (
-                <p className="red-text mb-4 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
+                <h2 className="red-text mb-4 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                   {content.manplumberHeading}
-                </p>
+                </h2>
               )}
               {/* Mobile-only image (theme shows .r img under 900px). */}
               {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -40,9 +40,9 @@ export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) 
           {/* ===== 3. WHY J. BLANTON FOR {CITY} ===== */}
           <section className="f grid grid-cols-1 min-[901px]:grid-cols-2 items-stretch gap-10">
             <div className="flex flex-col justify-center">
-              <p className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
+              <h2 className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                 {city.why.heading}
-              </p>
+              </h2>
               <div className="leading-relaxed text-navy-800">
                 <p>{city.why.body}</p>
               </div>

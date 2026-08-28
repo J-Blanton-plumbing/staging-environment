@@ -520,6 +520,31 @@
    injected via dangerouslySetInnerHTML. Body inherits Nunito; subheadings use
    Industry Bold in Midnight.
    ========================================================================== */
+/* Brief 162 (Track C) — the missing `.city-prose h2`.
+   The sanitizer has always allowed `<h2>` in a city body (`CMS_ALLOWED_TAGS`),
+   but nothing styled it, so it fell through to the bare `@layer base`
+   `h1,h2,h3,h4,h5` rule — and Tailwind Preflight's `font-size: inherit` on
+   headings meant a CMS-authored H2 rendered at the wrapper's 16px, i.e. body
+   size and SMALLER than the H3 below it (measured on /columbus). That inverted
+   hierarchy is why city bodies use H3 for what are really H2-level sections.
+   19 coverage-area rows already carry H2s in `content_body` and were rendering
+   as body text; this rule is what makes them read as headings.
+
+   Family / weight / colour are the h3 rule's, unchanged. 28px is one step up
+   the brand type scale from the h3's 20px (brand-rules.md "Type Hierarchy";
+   design.md `headline-sm` 20px -> `headline-md` 28px). Margin and line-height
+   are taken verbatim from `.cms-block-content h2` below — the site's only other
+   CMS-prose heading rule — so no new number and no new hex is introduced here.
+   Do not restyle the h3 rule underneath it. */
+.city-prose h2 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #0a1b2e;
+  font-size: 28px;
+  line-height: 1.25;
+  margin: 1em 0 0.5em;
+}
+.city-prose h2:first-child { margin-top: 0; }
 .city-prose h3 {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700;
