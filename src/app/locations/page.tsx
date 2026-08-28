@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
@@ -6,6 +7,7 @@ import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { renderCmsInline } from '@/lib/cms/sanitize';
 import { getMainPagePreview } from '@/lib/cms/preview';
+import { isPageLive } from '@/lib/cms/page-status';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import { getMainPageMeta } from '@/lib/cms/page-meta';
@@ -69,6 +71,19 @@ const SERVICE_CENTERS = [
 
 export default async function LocationsPage() {
   const preview = await getMainPagePreview('locations');
+
+  /*
+   * Brief 159 (Track D / E1) — the render gate.
+   *
+   * A page is live if and only if one of its versions is Published; the live
+   * row's derived `status` column mirrors that, so this is ONE indexed column
+   * read and never a join to `page_drafts`. `notFound()` rather than a 200 with
+   * `noindex`: a 200 keeps the URL in the crawl set and contradicts the sitemap
+   * removal that accompanies it. The session-gated preview cookie wins, so an
+   * editor can still see an unpublished page; `isPageLive` fails OPEN on a
+   * database error.
+   */
+  if (!preview && !(await isPageLive('main', 'locations'))) notFound();
   const db = preview?.content ?? await getMainPageContent('locations').catch(() => null);
   const d = db ?? {};
   const settings = await getGlobalSettingsCached();

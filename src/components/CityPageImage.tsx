@@ -1,6 +1,7 @@
 'use client';
 
 import type { ImgHTMLAttributes, SyntheticEvent } from 'react';
+import { CITY_FALLBACK_IMAGE } from '@/lib/content/cities/fallback-image';
 
 /**
  * Defensive <img> for the city templates (Brief 126, Fix A1).
@@ -19,7 +20,14 @@ import type { ImgHTMLAttributes, SyntheticEvent } from 'react';
  * renders these images, so optimization behavior is unchanged.
  */
 
-const DEFAULT_FALLBACK = '/images/hero_image.webp';
+/**
+ * Brief 160 (Track C): was a second, same-origin spelling of the same photo
+ * (`/images/hero_image.webp`). It now comes from the single shared constant so
+ * the client-side `onError` swap and the server-side `resolveCityImage()`
+ * fallback can never drift apart. Callers that want a DIFFERENT backup still
+ * pass `fallbackSrc` (e.g. `CityServiceHero`'s service-specific default).
+ */
+const DEFAULT_FALLBACK = CITY_FALLBACK_IMAGE;
 
 /** The dead WordPress uploads tree — nothing under it exists anymore. */
 function isDeadWordPressSrc(src: string): boolean {

@@ -5,8 +5,15 @@ import { updateEpCmsContent } from '@/lib/cms/emergency-plumbing';
 import { updateCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { updateSubServiceCmsContent } from '@/lib/cms/sub-service-pages';
 import { updateMainPage } from '@/lib/cms/main-pages';
+import { updateArticleCmsContent } from '@/lib/cms/article-pages';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { ConflictError, NotFoundError } from '@/lib/cms/errors';
+import {
+  checkUnpublishAllowed,
+  pageTypeAliasesFor,
+  setLiveStatusInTx,
+} from '@/lib/cms/page-status';
+import { clearSitemapCache } from '@/lib/sitemap/render';
 
 export interface DraftRow {
   id: number;
@@ -37,7 +44,25 @@ export interface DraftRow {
   creator_name: string;
   created_at: string;
   published_at: string | null;
+  /**
+   * Brief 159 (Track A1) — the CURRENT publication pointer: is this the version
+   * whose content is live? Exactly one version of a page may carry it, enforced
+   * by the partial unique index `page_drafts_one_published_per_page` rather than
+   * by application code, so a writer that forgets to clear the old flag fails
+   * loudly instead of producing two "Published" versions a second time.
+   *
+   * Deliberately NOT the same column as `published_at`, which is HISTORY — the
+   * timestamp of the last time this version was published, kept even after
+   * another version supersedes it. Overloading one column for both is how the
+   * sidebar ended up unable to say which version the public actually sees.
+   */
+  is_published: boolean;
 }
+
+/** The column list every draft read shares — one place, so a new column lands everywhere. */
+const DRAFT_COLUMNS = `d.id, d.page_type, d.page_slug, d.label, d.content, d.template_type,
+              d.version, d.base_version, d.is_published,
+              d.created_by, u.name AS creator_name, d.created_at, d.published_at`;
 
 /**
  * Brief 75 — read the live content row's version + template for a draft's target,
@@ -118,10 +143,16 @@ export async function createDraft({
 
   const client = await pool.connect();
   try {
-    const res = await client.query<{ id: number; page_type: string; page_slug: string; label: string; content: unknown; template_type: string | null; version: number; base_version: number | null; created_by: number; created_at: string; published_at: string | null }>(
+    // Brief 159 (Track A1): `is_published` is NOT in this column list, and there
+    // is deliberately no parameter for it. A new version is always a Draft — no
+    // override, no exception. That is expectation 1 from the marketing report
+    // ("I saved it as Version 2 so I could work on it as a draft"), and making it
+    // impossible to express beats making it easy to get right.
+    const res = await client.query<Omit<DraftRow, 'creator_name'>>(
       `INSERT INTO page_drafts (page_type, page_slug, label, content, created_by, template_type, base_version)
        VALUES ($1, $2, $3, $4, $5, $6, $7)
-       RETURNING id, page_type, page_slug, label, content, template_type, version, base_version, created_by, created_at, published_at`,
+       RETURNING id, page_type, page_slug, label, content, template_type, version, base_version,
+                 is_published, created_by, created_at, published_at`,
       [pageType, pageSlug, label, JSON.stringify(content), createdBy, templateType ?? null, baseVersion]
     );
     return { ...res.rows[0], creator_name: '' };
@@ -140,9 +171,7 @@ export async function getDraftsForPage({
   const client = await pool.connect();
   try {
     const res = await client.query<DraftRow>(
-      `SELECT d.id, d.page_type, d.page_slug, d.label, d.content, d.template_type,
-              d.version, d.base_version,
-              d.created_by, u.name AS creator_name, d.created_at, d.published_at
+      `SELECT ${DRAFT_COLUMNS}
          FROM page_drafts d
          JOIN cms_users u ON u.id = d.created_by
         WHERE d.page_type = $1 AND d.page_slug = $2
@@ -159,9 +188,7 @@ export async function getDraft(id: number): Promise<DraftRow | null> {
   const client = await pool.connect();
   try {
     const res = await client.query<DraftRow>(
-      `SELECT d.id, d.page_type, d.page_slug, d.label, d.content, d.template_type,
-              d.version, d.base_version,
-              d.created_by, u.name AS creator_name, d.created_at, d.published_at
+      `SELECT ${DRAFT_COLUMNS}
          FROM page_drafts d
          JOIN cms_users u ON u.id = d.created_by
         WHERE d.id = $1`,
@@ -233,7 +260,7 @@ export async function rebaselineDraft(
 export async function publishDraft(
   id: number,
   publishedBy: number
-): Promise<{ liveVersion: number | null }> {
+): Promise<{ liveVersion: number | null; publishedDraftId: number }> {
   const draft = await getDraft(id);
   if (!draft) throw new Error(`Draft ${id} not found`);
 
@@ -278,6 +305,12 @@ export async function publishDraft(
     // pre-unification keys were registered — so publishing ANY main-page
     // draft threw `No writer for page_type "main"`. The 'main' key routes to
     // the same shared writer; the four legacy keys stay for any old rows.
+    // Brief 159: articles gained a writer. The editor has created 'article'
+    // versions since Brief 85, but this map had no key for them, so Publish threw
+    // `No writer for page_type "article"` — invisible only because the Status row
+    // used to write cms_articles.status through a separate PATCH.
+    article: (slug, content, by) =>
+      updateArticleCmsContent(slug, content as Parameters<typeof updateArticleCmsContent>[1], by),
     main:               mainPageWriter,
     financing:          mainPageWriter,
     'customer-stories': mainPageWriter,
@@ -330,6 +363,26 @@ export async function publishDraft(
       `UPDATE page_drafts SET published_at = NOW(), base_version = COALESCE($2, base_version) WHERE id = $1`,
       [id, liveVersion]
     );
+
+    // ── Brief 159 (Track A1) — move the publication pointer, atomically ──────
+    // Clear every sibling FIRST: the partial unique index would reject the SET
+    // below if two rows were momentarily flagged, so ordering here is what makes
+    // "no window in which both are set" true rather than merely intended. The
+    // sibling sweep spans every page_type ALIAS (city-local, financing, …) that
+    // resolves to the same page, so a legacy row can't stay flagged as live.
+    await client.query(
+      `UPDATE page_drafts
+          SET is_published = FALSE
+        WHERE page_type = ANY($1) AND page_slug = $2 AND id <> $3 AND is_published`,
+      [pageTypeAliasesFor(draft.page_type), draft.page_slug, id]
+    );
+    await client.query(`UPDATE page_drafts SET is_published = TRUE WHERE id = $1`, [id]);
+
+    // The derived render gate (Track A2), written in the SAME transaction and
+    // nowhere else. Publishing a version always makes the page live — including
+    // a page that a previous unpublish had taken dark (Track E3, the way back).
+    await setLiveStatusInTx(client, draft.page_type, draft.page_slug, 'published');
+
     await writeChangelog(client, draft.page_type, draft.page_slug, publishedBy, {
       source: 'draft-publish',
       draft_id: id,
@@ -344,7 +397,77 @@ export async function publishDraft(
     client.release();
   }
 
-  return { liveVersion };
+  // Brief 159 (Track E1): the sitemap children are memoised in-process (15 min
+  // for pages/cities/articles, SIX HOURS for the city-service shards). A publish
+  // that brings a dark page back would otherwise leave it absent from the sitemap
+  // for that whole window while the route serves 200, and the deploy's live SEO
+  // validator would read the mismatch as a defect. Dropping the memo makes the
+  // sitemap agree with the route on the next request.
+  clearSitemapCache();
+
+  return { liveVersion, publishedDraftId: id };
+}
+
+/**
+ * Brief 159 (Track E) — take the currently-live version back to Draft, which,
+ * because no other version is then Published, takes the PAGE off the site.
+ *
+ * This is the only way a page goes dark. There is no page-level status switch
+ * competing with it (E4) and no route that writes a content row's `status`
+ * directly — both transitions run through publish/unpublish on a version, so
+ * there is exactly one control in the UI and one writer in the database.
+ *
+ * Refuses, server-side and before anything is written:
+ *   • on a version that is not the live one — there is nothing to un-publish on
+ *     a Draft, and pretending otherwise is how a control that does nothing ends
+ *     up looking like a control that did something;
+ *   • on the home page and the top-level service categories (E2 item 3);
+ *   • on any page that is the destination of a live 301 (E2 item 2) — that would
+ *     turn a working redirect into a redirect to a 404.
+ */
+export async function unpublishDraft(
+  id: number,
+  unpublishedBy: number
+): Promise<{ path: string | null }> {
+  const draft = await getDraft(id);
+  if (!draft) throw new NotFoundError(`Draft ${id} not found`);
+
+  if (!draft.is_published) {
+    throw new ConflictError(
+      `"${draft.label}" is already a Draft — it is not the version currently live, so there is nothing to unpublish.`
+    );
+  }
+
+  const guard = checkUnpublishAllowed(draft.page_type, draft.page_slug);
+  if (!guard.allowed) throw new ConflictError(guard.reason ?? 'This page cannot be unpublished.');
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    await client.query(`UPDATE page_drafts SET is_published = FALSE WHERE id = $1`, [id]);
+    await setLiveStatusInTx(client, draft.page_type, draft.page_slug, 'draft');
+    await writeChangelog(client, draft.page_type, draft.page_slug, unpublishedBy, {
+      source: 'status-change',
+      action: 'unpublish',
+      draft_id: id,
+      draft_label: draft.label,
+      path: guard.path,
+    });
+    await client.query('COMMIT');
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
+
+  // Brief 159 (Track E1): "the page is removed from the sitemap" has to be true
+  // NOW, not up to six hours from now — a URL that 404s while the sitemap still
+  // advertises it is exactly the contradiction Brief 152 Fix 3 fails deploys on.
+  // Same reasoning as the publish path above.
+  clearSitemapCache();
+
+  return { path: guard.path };
 }
 
 /**
@@ -404,6 +527,15 @@ export async function updateDraftContent(
 export async function deleteDraft(id: number, requestingUserId: number): Promise<void> {
   const draft = await getDraft(id);
   if (!draft) throw new Error(`Draft ${id} not found`);
+  // Brief 159 (Track C2): deleting the live version would leave the page with no
+  // Published version — i.e. silently unpublish it through the DELETE button,
+  // bypassing every Track E guardrail. Enforced here rather than only in the UI,
+  // because the UI is not the enforcement point.
+  if (draft.is_published) {
+    throw new ConflictError(
+      'This is the version currently live. Publish another version first.'
+    );
+  }
   if (draft.created_by !== requestingUserId) {
     const err = new Error('Forbidden: you can only delete your own drafts');
     (err as NodeJS.ErrnoException).code = '403';

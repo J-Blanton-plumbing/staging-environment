@@ -26,6 +26,17 @@ const CITY_SHARED_FIELDS = [
 const LOCAL_OFFICE_ONLY_FIELDS = ['hero_heading_line2'] as const;
 
 // Fields required by coverage-area that don't exist in local-office
+//
+// Brief 160 deliberately does NOT add `covered_heading` / `covered_image` here,
+// even though both are coverage-area-only columns. This list drives the
+// "⚠ Required — not yet filled in" highlight after a switch, and blank is a
+// legitimate, intended state for both fields: a blank heading renders the
+// template literal and a blank image renders the pipes fallback, so nothing is
+// missing. They are also absent from the switch UPDATE below on purpose — the
+// values simply persist on the row, unrendered, while the page is on another
+// template, and come back intact on a switch to coverage-area. That is the
+// whole reason they are their own columns instead of a reuse of
+// `content_heading` (Brief 95 A.2 / Brief 157 Q9).
 const COVERAGE_AREA_ONLY_FIELDS: readonly string[] = [];
 
 // Brief 67 — V2-only DB columns. These carry no value from V1/coverage, so on a

@@ -168,7 +168,11 @@ function BlockRenderer({
             </div>
             {/* Right — Carmine + wrench pattern (shared .hero .hero-contents rule) */}
             <div className="hero-contents min-[901px]:w-1/2">
-              <div className="w flex h-full flex-col justify-center px-[7%] py-[60px] text-white">
+              {/* Brief 160 (Track D): `hero-clear-top` replaces the top half of
+                  the old `py-[60px]` — 60px was LESS than the 70px fixed header,
+                  so a heading/description tall enough to outgrow the 500px
+                  column clamped the H1 under the navbar. Bottom stays 60px. */}
+              <div className="w hero-clear-top flex h-full flex-col justify-center px-[7%] pb-[60px] text-white">
                 <h1 className="font-display text-[28px] font-bold uppercase leading-[1.1] md:text-[36px] lg:text-[48px]">
                   {heroHeading}
                 </h1>

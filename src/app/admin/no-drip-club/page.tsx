@@ -28,6 +28,7 @@ import {
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
@@ -120,6 +121,34 @@ function buildPayload(form: FormState) {
   return { ...content, meta_title: meta_title || null, meta_description: meta_description || null };
 }
 
+/**
+ * Brief 159 (Track C1) — the inverse of `buildPayload`: put a stored version's
+ * content back into the form when the editor switches versions.
+ *
+ * Hand-written rather than using the shared `formFromContent` helper, because
+ * three of this form's fields are not plain scalars — `benefits_card`,
+ * `membership_comparison` and `template_variant` all go through the same
+ * normalizers the initial load uses. Reusing those here is what makes a version
+ * switch and a page load produce identical form state.
+ */
+function formFromPayload(data: Record<string, unknown>): FormState {
+  const str = (v: unknown) => (typeof v === 'string' ? v : v == null ? '' : String(v));
+  return {
+    hero_heading: str(data.hero_heading),
+    hero_description: str(data.hero_description),
+    hero_cta: str(data.hero_cta),
+    how_heading: str(data.how_heading),
+    wait_heading: str(data.wait_heading),
+    wait_body: str(data.wait_body),
+    wait_cta: str(data.wait_cta),
+    benefits_card: initialBenefitsCard(data.benefits_card),
+    template_variant: normalizeNdcTemplateVariant(data.template_variant),
+    membership_comparison: initialMembershipComparison(data.membership_comparison),
+    meta_title: str(data.meta_title),
+    meta_description: str(data.meta_description),
+  };
+}
+
 export default function NoDripClubAdminPage() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [status, setStatus] = useState<'loading' | 'idle' | 'saving' | 'saved' | 'error'>('loading');
@@ -133,7 +162,16 @@ export default function NoDripClubAdminPage() {
     // this editor loaded goes stale the instant a publish succeeds. Take the fresh
     // one from the publish response instead of forcing a full browser reload.
     onLiveVersionChange: setVersion,
+    // Brief 159 (Track C1): selecting a version in the sidebar loads THAT
+    // version's stored content into this form. Without it the form kept whatever
+    // was on screen, so every version appeared to hold the edit you had just made
+    // to a different one — and the next Save wrote it there for real.
+    onLoadContent: (content) =>
+      setForm(f => ({ ...f, ...formFromPayload((content ?? {}) as Record<string, unknown>) })),
   });
+  // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
+  // typed-slug confirmation for taking the page off the site.
+  const statusCtl = useVersionStatusControl(dv, { path: '/no-drip-club' });
 
   useEffect(() => {
     fetch('/api/cms/main/no-drip-club')
@@ -381,10 +419,12 @@ export default function NoDripClubAdminPage() {
 
       </div>
 
+      {statusCtl.modal}
+
+
       <PageAttributesSidebar
         title="No Drip Club"
         updatedAt={form.updated_at}
-        status="published"
         // Brief 141 (Track B) — the variant selector. `onChange` only updates
         // local form state: the switch is stored in `content.template_variant`
         // and so is draftable — it reaches the live page on save / draft publish,
@@ -407,6 +447,7 @@ export default function NoDripClubAdminPage() {
           onDelete: dv.remove,
           onSaveAsNew: dv.saveAsNew,
           nextVersionName: dv.nextVersionName,
+        ...statusCtl.versionProps,
         }}
         slug={{ value: 'no-drip-club', editable: false, disabledNote: "This is a fixed system page — its URL can't be changed.", permalink: `${SITE.baseUrl}/no-drip-club` }}
         parent={{ label: 'None', editable: false }}

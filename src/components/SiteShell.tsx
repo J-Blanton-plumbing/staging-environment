@@ -22,13 +22,22 @@ export default function SiteShell({
   // the entire point of moving them off static public/ files (Brief 125/126)
   // onto real routes: office addresses now read live from the CMS instead of
   // being hand-copied into a static footer.
-  const isHoaLanding = pathname === '/hoa-pipe-lining' || pathname.startsWith('/hoa-pipe-lining/');
+  //
+  // Brief 156 generalised the single HOA check into this list: /bathrooms is the
+  // same shape — a paid-traffic landing page with its own header (logo + one CTA
+  // + phone, no nav links, deliberately no escape routes) that must not also get
+  // the site Navbar, and that keeps the shared Footer for the same CMS-backed
+  // office addresses. Adding another landing page is one entry here.
+  const LANDING_ROUTES = ['/hoa-pipe-lining', '/bathrooms'];
+  const isLandingRoute = LANDING_ROUTES.some(
+    (route) => pathname === route || pathname.startsWith(route + '/')
+  );
 
   if (isAdmin) return <>{children}</>;
 
   return (
     <>
-      {!isHoaLanding && <Navbar settings={settings} />}
+      {!isLandingRoute && <Navbar settings={settings} />}
       <main className="flex-1">{children}</main>
       <Footer settings={settings} />
     </>

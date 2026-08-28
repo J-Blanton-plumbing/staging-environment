@@ -8,6 +8,8 @@ import TokenTextInput from '@/components/admin/TokenTextInput';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
+import { formFromContent } from '@/lib/admin/formFromContent';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
@@ -59,7 +61,15 @@ export default function WhyJBlantonAdminPage() {
     // this editor loaded goes stale the instant a publish succeeds. Take the fresh
     // one from the publish response instead of forcing a full browser reload.
     onLiveVersionChange: setVersion,
+    // Brief 159 (Track C1): selecting a version in the sidebar loads THAT
+    // version's stored content into this form. Without it the form kept whatever
+    // was on screen, so every version appeared to hold the edit you had just made
+    // to a different one — and the next Save wrote it there for real.
+    onLoadContent: (content) => setForm(f => ({ ...f, ...formFromContent(EMPTY, content) })),
   });
+  // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
+  // typed-slug confirmation for taking the page off the site.
+  const statusCtl = useVersionStatusControl(dv, { path: '/why-j-blanton' });
 
   useEffect(() => {
     fetch('/api/cms/main/why-j-blanton')
@@ -204,10 +214,11 @@ export default function WhyJBlantonAdminPage() {
 
       </div>
 
+      {statusCtl.modal}
+
       <PageAttributesSidebar
         title="Why J. Blanton"
         updatedAt={updatedAt}
-        status="published"
         template={{ value: 'why-j-blanton', label: 'Why J. Blanton', options: [{ value: 'why-j-blanton', label: 'Why J. Blanton' }] }}
         version={{
           activeId: dv.activeId,
@@ -220,6 +231,7 @@ export default function WhyJBlantonAdminPage() {
           onDelete: dv.remove,
           onSaveAsNew: dv.saveAsNew,
           nextVersionName: dv.nextVersionName,
+        ...statusCtl.versionProps,
         }}
         slug={{ value: 'why-j-blanton', editable: false, disabledNote: "This is a fixed system page — its URL can't be changed.", permalink: `${SITE.baseUrl}/why-j-blanton` }}
         parent={{ label: 'None', editable: false }}

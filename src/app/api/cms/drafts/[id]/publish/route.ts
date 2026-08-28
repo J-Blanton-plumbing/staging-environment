@@ -18,8 +18,11 @@ export async function POST(
     // Publishing bumps it, and the editor is holding the optimistic-lock token it
     // read at page load — without this, every save after a publish 409'd with
     // "changed by someone else" until a full browser reload.
-    const { liveVersion } = await publishDraft(id, session.userId);
-    return NextResponse.json({ ok: true, liveVersion });
+    // Brief 159 (Track B): `publishedDraftId` comes back too, so the client can
+    // repaint every version row's Draft/Published badge in one pass — exactly one
+    // row is Published and the response says which — with no refetch flicker.
+    const { liveVersion, publishedDraftId } = await publishDraft(id, session.userId);
+    return NextResponse.json({ ok: true, liveVersion, publishedDraftId });
   } catch (err) {
     // Brief 75 (DP-2/DP-4): a staleness/template conflict is a 409, not a 500, so
     // the editor gets a clear "review the conflict" message instead of a generic error.

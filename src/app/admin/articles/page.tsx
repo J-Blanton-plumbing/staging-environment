@@ -121,21 +121,6 @@ export default function ArticlesAdminPage() {
     setTimeout(() => setRowErrors(prev => { const n = { ...prev }; delete n[slug]; return n; }), 4000);
   }
 
-  async function handleStatusChange(article: ArticleRow, newStatus: 'published' | 'draft') {
-    try {
-      const res = await fetch(`/api/cms/article/${article.slug}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus }),
-      });
-      if (!res.ok) throw new Error('Request failed');
-      setArticles(prev =>
-        prev.map(a => a.slug === article.slug ? { ...a, status: newStatus } : a)
-      );
-    } catch {
-      setRowError(article.slug, 'Failed to update status.');
-    }
-  }
 
   async function handleDelete(article: ArticleRow) {
     if (!confirm(`Delete "${article.title}"? This cannot be undone.`)) return;
@@ -376,33 +361,34 @@ export default function ArticlesAdminPage() {
                   {article.title}
                 </Link>
 
-                {/* Status dropdown */}
-                <select
-                  value={article.status}
-                  onChange={e => handleStatusChange(article, e.target.value as 'published' | 'draft')}
+                {/*
+                  Brief 159 (Track C3 / E4): the per-row status DROPDOWN is gone.
+                  It PATCHed cms_articles.status directly — a page-level status
+                  switch competing with the editor's Status row, and a route to
+                  unpublishing a ranked URL in one click with no confirmation and
+                  none of Track E's guardrails. Status is now DERIVED from which
+                  version is published, so this cell is a read-only badge and the
+                  change is made in the article's own editor.
+                */}
+                <span
+                  title={article.status === 'published'
+                    ? 'Live. Change this in the article editor’s Status row.'
+                    : 'Not live. Publish a version in the article editor’s Status row.'}
                   style={{
                     fontFamily: 'var(--font-nunito), system-ui, sans-serif',
                     fontSize: '12px',
                     fontWeight: 700,
-                    padding: '3px 6px',
+                    padding: '3px 10px',
                     borderRadius: '9999px',
-                    border: article.status === 'published' ? `1px solid ${ADMIN_COLORS.outlineVariant}1A` : `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
-                    cursor: 'pointer',
-                    background: article.status === 'published' ? ADMIN_COLORS.surfaceContainerHighest : 'transparent',
-                    color: article.status === 'published' ? `${ADMIN_COLORS.onSurfaceVariant}CC` : ADMIN_COLORS.onSurfaceVariant,
-                    appearance: 'none',
-                    WebkitAppearance: 'none',
-                    width: '100%',
-                    maxWidth: '110px',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4c6cd'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'right 7px center',
-                    paddingRight: '22px',
+                    justifySelf: 'start',
+                    whiteSpace: 'nowrap',
+                    border: `1px solid ${article.status === 'published' ? `${ADMIN_COLORS.cerulean}55` : `${ADMIN_COLORS.outlineVariant}55`}`,
+                    background: article.status === 'published' ? `${ADMIN_COLORS.cerulean}1F` : 'transparent',
+                    color: article.status === 'published' ? ADMIN_COLORS.cerulean : `${ADMIN_COLORS.onSurfaceVariant}99`,
                   }}
                 >
-                  <option value="published" style={{ background: ADMIN_COLORS.surfaceContainer, color: ADMIN_COLORS.onSurface }}>Published</option>
-                  <option value="draft" style={{ background: ADMIN_COLORS.surfaceContainer, color: ADMIN_COLORS.onSurface }}>Draft</option>
-                </select>
+                  {article.status === 'published' ? 'Published' : 'Draft'}
+                </span>
 
                 {/* Categories */}
                 <span style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>

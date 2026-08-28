@@ -3,8 +3,39 @@
 @tailwind utilities;
 
 @layer base {
+  /* ── Brief 160 (Track D): the fixed header's real height, as a token ────────
+     `Navbar.tsx` renders `<header class="fixed …">` with a `h-[70px]` bar, and
+     that 70px was previously re-typed by hand into every hero's top padding —
+     `.city-page-hero .hero-contents .w { padding: 90px 0 40px }`, the ≤1050px
+     `90px`/`80px` splits, the theme-hero `padding-top: 70px` block, the
+     `.hero … .w { padding-top: 90px }` mobile fix. Nothing tied those numbers
+     to the header, so the clearance they left was incidental: MEASURED at 20px
+     on a coverage-area city once the hero content grows enough to clamp the H1
+     against the padding edge, and 10px on the Local Office V2 hero (which pads
+     60px — i.e. LESS than the header is tall).
+
+     One token, one place to change if the header is ever resized. The header
+     itself sets its height in Tailwind and does not read this — keep the two in
+     sync (Navbar.tsx carries a comment pointing here).
+
+     `--hero-top-clear` is the token heroes actually use: the header plus a
+     deliberate breathing gap, so an H1 pinned to the padding edge still clears
+     the navbar by a readable margin instead of by a hairline. */
+  :root {
+    --site-header-h: 70px;
+    --hero-top-gap: 40px;
+    --hero-top-clear: calc(var(--site-header-h) + var(--hero-top-gap));
+  }
+
   html {
     scroll-behavior: smooth;
+  }
+
+  /* An in-page anchor must not land the target under the fixed header either
+     (Brief 160, Track D.5 — measured `scroll-margin-top: 0px` on every H1). */
+  :target,
+  h1, h2, h3 {
+    scroll-margin-top: var(--hero-top-clear);
   }
 
   body {
@@ -304,6 +335,25 @@
   }
 }
 
+/* ---- Brief 160 (Track D): header clearance as an opt-in utility ------------
+   Applied by the Local Office V2 city hero (`LocalOfficeCityV2.tsx`), whose
+   `.w` padded 60px — TEN PIXELS LESS than the fixed header is tall. That box is
+   `justify-content: center` inside a 500px column, so as soon as its heading +
+   description outgrow the column the H1 clamps to the padding edge and lands
+   UNDER the navbar. MEASURED on /algonquin at 1440px: H1 top 84px, i.e. 14px of
+   clearance with the current (short) copy and negative as soon as the copy grows.
+
+   A utility rather than a wider `.hero … .w` floor on purpose: `ServiceHero` and
+   `CategoryHero` share that selector and pad `lg:py-0`, so a blanket floor would
+   move ~50 service/category heroes by ~55px — an unrequested visual change. They
+   have the same latent defect and are written up as follow-up, not fixed here.
+
+   Specificity is (0,1,0), so the `.hero .hero-contents .w` mobile rules above
+   (0,3,0) still win below 900px and the stacked look is unchanged. */
+.hero-clear-top {
+  padding-top: var(--hero-top-clear);
+}
+
 /* Service menu — mobile font sizes (base grid is already 1fr) */
 @media only screen and (max-width: 480px) {
   .city-services-row .service-category > summary {
@@ -358,7 +408,18 @@
   position: relative;
   z-index: 2;
   text-transform: uppercase;
-  padding: 90px 0 40px;
+  /* Brief 160 (Track D). Was a hand-typed `90px` that happened to sit 20px below
+     the 70px fixed header. `.w` is `height: 100%` + `justify-content: center`
+     inside a `min-height: 620px` column, so the H1 is centred while the content
+     fits and CLAMPS AGAINST THIS PADDING EDGE the moment it does not — which it
+     does on wide viewports (MEASURED: /palos-heights at 1920px and 2560px puts
+     the H1 top at exactly 90px, i.e. 20px of clearance, because the vw-based
+     type grows while this box does not). Deriving it from the header token
+     raises that floor to a readable 40px and means a header resize is a
+     one-line change, not a hunt through five hard-coded numbers.
+     Bottom padding is deliberately unchanged, and the width splits and the
+     `object-fit: cover` image (Brief 126, Fix B) are untouched. */
+  padding: var(--hero-top-clear) 0 40px;
 }
 .city-page-hero .hero-contents .w h1 {
   font-family: var(--font-industry), Arial, sans-serif;
@@ -435,7 +496,12 @@
   }
   .city-page-hero .city-page-image { width: 100%; object-fit: cover; }
   .city-page-hero .hero-contents { width: 100%; min-height: 0; padding: 90px 0 30px 0; }
-  .city-page-hero .hero-contents .w { width: 90%; }
+  /* Brief 160 (Track D): below 1050px the hero STACKS and `.hero-contents`
+     itself supplies 90px of top padding — already well clear of the header —
+     so `.w` keeps its original 90px here rather than picking up the desktop
+     token. Without this line the stacked hero would gain 20px of dead space at
+     every mobile width for no clearance benefit. */
+  .city-page-hero .hero-contents .w { width: 90%; padding-top: 90px; }
   .city-page-hero .hero-contents .w .nap p,
   .city-page-hero .hero-contents .w .nap a { font-size: 16px; }
   .city-page-hero .hero-contents .w .callout { font-size: 16px; }

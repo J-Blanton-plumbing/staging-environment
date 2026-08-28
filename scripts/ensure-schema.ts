@@ -70,6 +70,13 @@ const STATEMENTS: string[] = [
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS blocks JSONB`,
   // Brief 127 — optional per-page canonical override (blank = self-referencing)
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
+  // Brief 160 (Tracks A + C) — the coverage-area "We've got you covered" section's
+  // own heading and image. Deliberately NOT `content_heading`/`hero_image`: those
+  // mean something else on the local-office template and on the hero respectively
+  // (Brief 95 A.2 / Brief 157 Q9). Mirrored by
+  // scripts/migrate-brief-160-city-covered-fields.ts, which the deploy also runs.
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS covered_heading TEXT DEFAULT ''::text`,
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS covered_image TEXT DEFAULT ''::text`,
 
   // ── city_service_pages ──────────────────────────────────────────────────
   `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS service_intro_heading TEXT NOT NULL DEFAULT ''::text`,
@@ -197,6 +204,26 @@ const STATEMENTS: string[] = [
   `ALTER TABLE page_drafts ADD COLUMN IF NOT EXISTS template_type TEXT`,
   `ALTER TABLE page_drafts ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE page_drafts ADD COLUMN IF NOT EXISTS base_version INTEGER`,
+  // Brief 159 (Track A1): the CURRENT publication pointer — which version's
+  // content is live. Distinct from `published_at`, which is history. The
+  // "only one per page" rule is enforced by a PARTIAL UNIQUE INDEX, which this
+  // file cannot express (it is ALTER TABLE ADD COLUMN statements only) — that
+  // index is created by scripts/migrate-brief-159-version-status.ts, which the
+  // deploy runs. The column is declared here so a freshly-reconciled schema is
+  // never missing it.
+  `ALTER TABLE page_drafts ADD COLUMN IF NOT EXISTS is_published BOOLEAN NOT NULL DEFAULT FALSE`,
+
+  // ── Brief 159 (Track A2): the DERIVED render gate ────────────────────────
+  // Mirrors "does this page have a Published version". ONE writer only —
+  // setLiveStatusInTx in src/lib/cms/page-status.ts, called from the
+  // publish/unpublish transaction. Do not add an API route, an admin control or
+  // a script that sets it: that second door is the bug Brief 159 closed.
+  // DEFAULT 'published' keeps every existing row live.
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'published'`,
+  `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'published'`,
+  `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'published'`,
+  `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'published'`,
+  `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'published'`,
 
   // ── service_category_pages ──────────────────────────────────────────────
   `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS problems_items JSONB NOT NULL DEFAULT '[]'::jsonb`,

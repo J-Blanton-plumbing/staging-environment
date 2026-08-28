@@ -33,6 +33,7 @@ import {
 import PageAttributesSidebar, { SIDEBAR_WIDTH_PX } from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
@@ -228,18 +229,46 @@ export default function SubServiceAdminPage() {
     slug,
     () => ({
       title: meta.title,
-      status: meta.status,
+      // Brief 159 (Track A2): `status` is NO LONGER part of a version's content.
+      // It is derived from which version is published, has exactly one writer,
+      // and carrying it in the payload would let a draft publish re-decide
+      // whether the page is live — a second door onto the one field this brief
+      // consolidated.
       metaTitle: meta.metaTitle,
       metaDescription: meta.metaDescription,
       // Brief 90 (Track B/D): the draft carries the authoritative per-instance blocks.
       blocks: serializeBlocks(blocksRef.current),
     }),
-    // Brief 147 (Track B): publishing bumps sub_service_pages.version, so the
-    // token this editor loaded goes stale the moment a publish succeeds. Take the
-    // fresh one straight from the publish response instead of making the editor
-    // reload the whole page to get it.
-    { onLiveVersionChange: (version) => setMeta((p) => ({ ...p, version })) }
+    {
+      // Brief 147 (Track B): publishing bumps sub_service_pages.version, so the
+      // token this editor loaded goes stale the moment a publish succeeds. Take
+      // the fresh one straight from the publish response instead of making the
+      // editor reload the whole page to get it.
+      onLiveVersionChange: (version) => setMeta((p) => ({ ...p, version })),
+      // Brief 159 (Track C1): selecting a version loads THAT version's stored
+      // content — title, SEO fields and the full per-instance block array —
+      // through the same `normalizeBlocks` the initial load uses, so a switch and
+      // a page load land on identical editor state.
+      onLoadContent: (content) => {
+        const c = (content ?? {}) as Record<string, unknown>;
+        setMeta((p) => ({
+          ...p,
+          title: typeof c.title === 'string' ? c.title : '',
+          metaTitle: typeof c.metaTitle === 'string' ? c.metaTitle : '',
+          metaDescription: typeof c.metaDescription === 'string' ? c.metaDescription : '',
+        }));
+        setBlocks(normalizeBlocks(c.blocks));
+        // A block selected in the outgoing version's array has no meaning in the
+        // incoming one — its instance id may not exist there at all.
+        setSelectedBlockId(null);
+        setSidebarTab('page');
+      },
+    }
   );
+
+  // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
+  // typed-slug confirmation for taking the page off the site.
+  const statusCtl = useVersionStatusControl(dv, { path: `/${slug}` });
 
   const load = useCallback(async () => {
     try {
@@ -454,7 +483,6 @@ export default function SubServiceAdminPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title: meta.title,
-          status: meta.status,
           metaTitle: meta.metaTitle || null,
           metaDescription: meta.metaDescription || null,
           parentSlug: meta.parentSlug || null,
@@ -479,35 +507,18 @@ export default function SubServiceAdminPage() {
     }
   }
 
-  async function handleStatusChange(newStatus: string) {
-    setPublishBusy(true);
-    try {
-      const res = await fetch(`/api/cms/sub-service/${slug}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus }),
-      });
-      if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? 'Failed'); }
-      // Brief 147 (Track B): take the version the server actually landed on. This
-      // used to assume `version + 1`, which is only right when nothing else has
-      // touched the row since page load — otherwise the token desynced and the
-      // next save 409'd as a phantom concurrent edit.
-      const j = await res.json().catch(() => ({}));
-      setMeta((p) => ({
-        ...p,
-        status: newStatus,
-        version: typeof j.version === 'number' ? j.version : (p.version ?? 0) + 1,
-      }));
-      // A status flip is a live-row write like any other — move the active draft's
-      // publish baseline with it.
-      void dv.syncAfterLiveSave();
-    } catch (err: unknown) {
-      setSaveMsg(err instanceof Error ? err.message : 'Status change failed');
-      setSaveStatus('error');
-    } finally {
-      setPublishBusy(false);
-    }
-  }
+  /*
+   * Brief 159 (Track C3 / E4) — `handleStatusChange` is GONE.
+   *
+   * It PATCHed `sub_service_pages.status` directly, which made this editor the
+   * one place with a page-level status switch competing with the sidebar's
+   * Status row. Under Brief 159 the live row's `status` is DERIVED from which
+   * version is published and has exactly one writer (`setLiveStatusInTx`, called
+   * only from publish/unpublish). Two controls for one field is precisely how
+   * the reported bug class returns, so this one was removed rather than
+   * re-pointed. `/api/cms/sub-service/[slug]` PATCH now refuses for the same
+   * reason. Status is set here: the sidebar's Status row, via `statusCtl`.
+   */
 
   if (loadStatus === 'loading') return <main style={{ padding: '2rem', color: ADMIN_COLORS.onSurfaceVariant }}>Loading…</main>;
   if (loadStatus === 'not-found') return (
@@ -661,7 +672,9 @@ export default function SubServiceAdminPage() {
       <AdminPageHeader
         title={meta.title || slug}
         templateName="Sub-Service"
-        status={meta.status}
+        /* Brief 159: the header badge reads the PAGE's live state — is any version
+           published? — not a column an editor can set independently. */
+        status={dv.liveVersion ? 'published' : 'draft'}
         pageAttributesOpen={attrsOpen}
         onTogglePageAttributes={() => setAttrsOpen(!attrsOpen)}
         draftVersions={{
@@ -771,12 +784,12 @@ export default function SubServiceAdminPage() {
         </form>
       </div>
 
+      {statusCtl.modal}
+
+
       <PageAttributesSidebar
         title={meta.title}
         updatedAt={meta.updatedAt}
-        status={meta.status}
-        onStatusChange={handleStatusChange}
-        statusBusy={publishBusy}
         template={{
           value: 'sub-service',
           label: 'Sub-Service',
@@ -793,6 +806,7 @@ export default function SubServiceAdminPage() {
           onDelete: dv.remove,
           onSaveAsNew: dv.saveAsNew,
           nextVersionName: dv.nextVersionName,
+        ...statusCtl.versionProps,
         }}
         slug={{ value: slug, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/${slug}` }}
         parent={{

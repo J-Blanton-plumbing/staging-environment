@@ -166,8 +166,21 @@ export interface CoverageAreaContent {
   heroImage?: string;
   /** Optional hero callout (IThin), rendered only when present. */
   callout?: string;
+  /**
+   * Brief 160 (Track A) — the "WE'VE GOT YOU COVERED, {City}" H2, editable per
+   * city (`city_pages.covered_heading`). EMPTY IS MEANINGFUL: the template falls
+   * back to its own literal, so clearing the field in the CMS restores the
+   * templated heading rather than blanking it.
+   */
+  coveredHeading?: string;
   /** Rich HTML for the "WE'VE GOT YOU COVERED" body; the block hides when absent. */
   coveredBody?: string;
+  /**
+   * Brief 160 (Track C) — the "WE'VE GOT YOU COVERED" section's OWN image
+   * (`city_pages.covered_image`), independent of `heroImage`. Empty resolves to
+   * the pipes fallback; it never reads the hero.
+   */
+  coveredImage?: string;
   /** Optional red heading for the "manplumber" section (theme `city_page_title`). */
   manplumberHeading?: string;
   /** Rich HTML for the "manplumber" body; the paragraph hides when absent. */

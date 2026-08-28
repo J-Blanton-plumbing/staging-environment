@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import CategoryHero from '@/components/CategoryHero';
@@ -9,6 +10,7 @@ import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { EMERGENCY_PLUMBING } from '@/lib/content/emergency-plumbing';
 import { getEpCmsContent } from '@/lib/cms/emergency-plumbing';
 import { getEpPreview } from '@/lib/cms/preview';
+import { isPageLive } from '@/lib/cms/page-status';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
 import { pageTitle } from '@/lib/seo';
@@ -33,6 +35,12 @@ export default async function EmergencyPlumbingPage() {
   const settings = await getGlobalSettingsCached();
   const preview = await getEpPreview();
   const previewDraft = preview ? preview.meta : null;
+
+  // Brief 159 (Track D / E1): the render gate — one indexed column read on the
+  // live row, no join to page_drafts. The preview cookie wins so an editor can
+  // still see an unpublished page; isPageLive fails OPEN on a DB error.
+  if (!preview && !(await isPageLive('emergency-plumbing', 'emergency-plumbing'))) notFound();
+
   let db = preview ? preview.db : await getEpCmsContent().catch(() => null);
 
   // Text — DB wins over static when non-null

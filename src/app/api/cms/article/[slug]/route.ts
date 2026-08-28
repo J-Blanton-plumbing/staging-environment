@@ -59,42 +59,25 @@ export async function DELETE(_req: NextRequest, { params }: RouteContext) {
   }
 }
 
-export async function PATCH(req: NextRequest, { params }: RouteContext) {
+/**
+ * Brief 159 (Track A2 / E4) — closed, for the same reason as the sub-service
+ * PATCH: `cms_articles.status` is now the DERIVED render gate, written only by
+ * the publish/unpublish transaction. It used to be settable here (and from the
+ * articles LIST page, one row at a time), which is a page-level status switch
+ * competing with the sidebar's Status row.
+ */
+export async function PATCH(req: NextRequest) {
   const session = await getSession(req);
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const { slug } = await params;
-  let body: { status?: string };
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
-
-  const newStatus = body.status;
-  if (newStatus !== 'published' && newStatus !== 'draft') {
-    return NextResponse.json({ error: 'status must be "published" or "draft"' }, { status: 400 });
-  }
-
-  const client = await pool.connect();
-  try {
-    const res = await client.query(
-      `UPDATE cms_articles
-          SET status = $1, updated_by = $2, updated_at = NOW()
-        WHERE slug = $3
-        RETURNING status`,
-      [newStatus, session.userId, slug]
-    );
-    if ((res.rowCount ?? 0) === 0) {
-      return NextResponse.json({ error: 'Not found' }, { status: 404 });
-    }
-    return NextResponse.json({ success: true, status: res.rows[0].status });
-  } catch (err) {
-    console.error('[cms/article PATCH]', err);
-    return NextResponse.json({ error: 'Database error' }, { status: 500 });
-  } finally {
-    client.release();
-  }
+  return NextResponse.json(
+    {
+      error:
+        'An article\'s status is no longer set directly. It is derived from which version is ' +
+        'published — open the article and set the Status row in the editor sidebar.',
+    },
+    { status: 409 }
+  );
 }
 
 export async function PUT(req: NextRequest, { params }: RouteContext) {
@@ -107,7 +90,6 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     excerpt?: string;
     body?: string;
     image?: string;
-    status?: string;
     metaTitle?: string | null;
     metaDescription?: string | null;
     categories?: string[];
@@ -120,26 +102,28 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
 
   const client = await pool.connect();
   try {
+    // Brief 159 (Track A2): `status` is gone from this statement. It is the
+    // DERIVED render gate now, written ONLY by the publish/unpublish transaction
+    // in src/lib/cms/drafts.ts — a content save must not be able to decide
+    // whether the article is live.
     const res = await client.query(
       `UPDATE cms_articles SET
          title            = COALESCE($1, title),
          excerpt          = COALESCE($2, excerpt),
          body             = COALESCE($3, body),
          image            = COALESCE($4, image),
-         status           = COALESCE($5, status),
-         meta_title       = $6,
-         meta_description = $7,
-         category         = COALESCE($8, category),
-         updated_by       = $9,
+         meta_title       = $5,
+         meta_description = $6,
+         category         = COALESCE($7, category),
+         updated_by       = $8,
          updated_at       = NOW()
-       WHERE slug = $10
+       WHERE slug = $9
        RETURNING id`,
       [
         body.title ?? null,
         body.excerpt ?? null,
         body.body != null ? JSON.stringify({ html: sanitizeCmsHtml(body.body) }) : null,
         body.image ?? null,
-        body.status ?? null,
         body.metaTitle ?? null,
         body.metaDescription ?? null,
         body.categories ?? null,

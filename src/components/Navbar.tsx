@@ -75,7 +75,10 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
           </Link>
         </div>
 
-        {/* Cream navbar — full width, red text */}
+        {/* Cream navbar — full width, red text.
+            This 70px is mirrored by `--site-header-h` in globals.css (Brief 160,
+            Track D), which every hero's top clearance is derived from. Change
+            one and change the other. */}
         <div className="w-full h-[70px] bg-cream-100 text-brand-600 flex">
           {/* Desktop: right-aligned nav */}
           <div className="hidden nav:flex w-full h-full justify-end pl-[240px]">

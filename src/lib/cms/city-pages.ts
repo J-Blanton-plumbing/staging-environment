@@ -29,6 +29,18 @@ export interface CityCmsContent {
   heroDescription: string;
   contentHeading: string;
   contentBody: string;
+  /**
+   * Brief 160 (Track A) — the coverage-area "WE'VE GOT YOU COVERED, {City}" H2.
+   * Its OWN column, not `contentHeading` (which is the local-office Why heading
+   * — see Brief 95 A.2 / Brief 157 Q9 on the cross-template reuse footgun).
+   * Empty means "render the template literal", not "render nothing".
+   */
+  coveredHeading: string;
+  /**
+   * Brief 160 (Track C) — the coverage-area section-1 image, independent of
+   * `heroImage`. Empty resolves to the shared pipes fallback.
+   */
+  coveredImage: string;
   f2Heading: string;
   f2Body: string;
   faqs: Array<{ question: string; answer: string }>;
@@ -67,6 +79,10 @@ export interface CityCmsUpdatePayload {
   heroDescription?: string;
   contentHeading?: string;
   contentBody?: string;
+  /** Brief 160 (Track A) — coverage-area "We've got you covered" heading. */
+  coveredHeading?: string;
+  /** Brief 160 (Track C) — coverage-area section-1 image. */
+  coveredImage?: string;
   f2Heading?: string;
   f2Body?: string;
   faqs?: Array<{ question: string; answer: string }>;
@@ -165,6 +181,11 @@ export async function getCityCmsContent(slug: string): Promise<CityCmsContent | 
       heroDescription: r.hero_description,
       contentHeading: r.content_heading ?? '',
       contentBody: r.content_body ?? '',
+      // Brief 160 — `?? ''` also covers a database that has not run the Track A/C
+      // migration yet (the column is simply absent from the row): the render then
+      // falls back to the template literal / the pipes image, exactly as before.
+      coveredHeading: r.covered_heading ?? '',
+      coveredImage: r.covered_image ?? '',
       f2Heading: r.f2_heading ?? '',
       f2Body: r.f2_body ?? '',
       faqs,
@@ -250,6 +271,12 @@ export async function updateCityCmsContent(
         hero_description       = COALESCE($5, hero_description),
         content_heading        = COALESCE($6, content_heading),
         content_body           = COALESCE($7, content_body),
+        -- Brief 160 (Tracks A + C). COALESCE means "the caller omitted this
+        -- field", NOT "the caller cleared it": an explicit '' is a real value
+        -- and DOES clear the column, which is what makes the heading's
+        -- fall-back-to-literal behaviour reachable from the editor.
+        covered_heading        = COALESCE($30, covered_heading),
+        covered_image          = COALESCE($31, covered_image),
         f2_heading             = COALESCE($8, f2_heading),
         f2_body                = COALESCE($9, f2_body),
         faqs                   = COALESCE($10, faqs),
@@ -307,6 +334,10 @@ export async function updateCityCmsContent(
         pick('whyPoints') ? JSON.stringify(pick('whyPoints')) : null,
         expectedVersion ?? null,
         blocksJson,
+        // Brief 160 — $30/$31. Not routed through `pick()`: neither field is part
+        // of the City V2 block model, so a V2 save must never derive them.
+        data.coveredHeading ?? null,
+        data.coveredImage ?? null,
       ]
     );
     if (res.rowCount === 0) {

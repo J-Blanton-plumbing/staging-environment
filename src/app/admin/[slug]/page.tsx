@@ -10,6 +10,8 @@ import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
+import { formFromContent } from '@/lib/admin/formFromContent';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
@@ -121,7 +123,23 @@ export default function AdminServicePage() {
     // this editor loaded goes stale the instant a publish succeeds. Take the fresh
     // one from the publish response instead of forcing a full browser reload.
     onLiveVersionChange: setVersion,
+    // Brief 159 (Track C1): selecting a version in the sidebar loads THAT
+    // version's stored content into this form. Without it the form kept whatever
+    // was on screen, so every version appeared to hold the edit you had just made
+    // to a different one — and the next Save wrote it there for real.
+    //
+    // `problems_items` is re-padded because the repeater renders a fixed minimum
+    // of three rows; the payload stores only the filled ones.
+    onLoadContent: (content) =>
+      setForm(f => {
+        const next = { ...f, ...formFromContent(EMPTY, content) };
+        return { ...next, problems_items: padToMin(next.problems_items, 3) };
+      }),
   });
+  // Brief 159 (Track C3): the Status row's publish / unpublish wiring. Top-level
+  // service categories can never be unpublished (E2 item 3) — the server refuses
+  // and the modal shows the reason.
+  const statusCtl = useVersionStatusControl(dv, { path: `/services/${slug}` });
 
   useEffect(() => {
     if (!slug) return;
@@ -456,10 +474,12 @@ export default function AdminServicePage() {
 
     </div>
 
+      {statusCtl.modal}
+
+
       <PageAttributesSidebar
         title={pageLabel}
         updatedAt={form.updated_at}
-        status="published"
         template={{ value: 'service-category', label: 'Service Category', options: [{ value: 'service-category', label: 'Service Category' }] }}
         version={{
           activeId: dv.activeId,
@@ -472,6 +492,7 @@ export default function AdminServicePage() {
           onDelete: dv.remove,
           onSaveAsNew: dv.saveAsNew,
           nextVersionName: dv.nextVersionName,
+        ...statusCtl.versionProps,
         }}
         slug={{ value: slug, editable: false, disabledNote: "This page's URL is derived from its service category and can't be changed here.", permalink: `${SITE.baseUrl}/services/${slug}` }}
         parent={{ label: 'None', editable: false }}
