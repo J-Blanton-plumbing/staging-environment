@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import InvolveMePopup from '@/components/InvolveMePopup';
@@ -9,6 +10,7 @@ import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { renderCmsInline } from '@/lib/cms/sanitize';
 import { resolveTokens } from '@/lib/cms/tokens';
 import { getMainPagePreview } from '@/lib/cms/preview';
+import { isPageLive } from '@/lib/cms/page-status';
 import {
   normalizeBenefitsCardInstance,
   staticNdcBenefitsCardData,
@@ -73,6 +75,19 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function NoDripClubPage() {
   const preview = await getMainPagePreview('no-drip-club');
+
+  /*
+   * Brief 159 (Track D / E1) — the render gate.
+   *
+   * A page is live if and only if one of its versions is Published; the live
+   * row's derived `status` column mirrors that, so this is ONE indexed column
+   * read and never a join to `page_drafts`. `notFound()` rather than a 200 with
+   * `noindex`: a 200 keeps the URL in the crawl set and contradicts the sitemap
+   * removal that accompanies it. The session-gated preview cookie wins, so an
+   * editor can still see an unpublished page; `isPageLive` fails OPEN on a
+   * database error.
+   */
+  if (!preview && !(await isPageLive('main', 'no-drip-club'))) notFound();
   const db = preview?.content ?? await getMainPageContent('no-drip-club').catch(() => null);
   const d = db ?? {};
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;

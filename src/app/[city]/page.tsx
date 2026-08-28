@@ -13,6 +13,7 @@ import { DEFAULT_ARTICLE_SLUGS, WATER_TESTING_FAQS } from '@/lib/content/cities/
 import { getArticles } from '@/lib/articles';
 import { getCityCmsContent } from '@/lib/cms/city-pages';
 import { getCityPreview } from '@/lib/cms/preview';
+import { isPageLive } from '@/lib/cms/page-status';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import CoverageAreaCity from '@/components/CoverageAreaCity';
 import LocalOfficeCity from '@/components/LocalOfficeCity';
@@ -70,6 +71,23 @@ export default async function CityPage({ params }: { params: { city: string } })
 
   const preview = await getCityPreview(params.city);
   const previewDraft = preview ? preview.meta : null;
+
+  /*
+   * Brief 159 (Track D / E1) — the render gate.
+   *
+   * A page is live if and only if one of its versions is Published; the live
+   * row's `status` column mirrors that fact so this costs ONE indexed column
+   * read, not a join to `page_drafts` on every request. `notFound()` rather than
+   * a 200 with `noindex`: a 200 keeps the URL in the crawl set and contradicts
+   * the sitemap removal that goes with it.
+   *
+   * The preview cookie wins — an editor previewing an unpublished page must
+   * still see it (`getCityPreview` is session-gated, so this is not a public
+   * bypass). `isPageLive` fails OPEN on a database error: a DB blip must not
+   * take a ranked page off the index.
+   */
+  if (!preview && !(await isPageLive('city', params.city))) notFound();
+
   let db = preview ? preview.db : await getCityCmsContent(params.city).catch(() => null);
 
   // Brief 102 (Track C): fetched once up-front — every branch below needs

@@ -23,8 +23,11 @@ export interface AdminPageHeaderProps {
   previewBaseUrl?: string;
   status?: string;
   // Publish/Unpublish toggle (optional — renders a button in the header when provided)
-  onPublishToggle?: () => Promise<void>;
-  publishBusy?: boolean;
+  /**
+   * Brief 159 (Track C3) — REMOVED. Status has one control: the sidebar Status
+   * row. These props are gone rather than deprecated so nothing can re-open the
+   * second door. See the note in the header body.
+   */
   // Page Attributes sidebar toggle (Brief 85) — optional, renders an icon button when provided.
   pageAttributesOpen?: boolean;
   onTogglePageAttributes?: () => void;
@@ -74,8 +77,6 @@ export default function AdminPageHeader({
   templateName,
   previewBaseUrl,
   status,
-  onPublishToggle,
-  publishBusy,
   pageAttributesOpen,
   onTogglePageAttributes,
   compact,
@@ -159,27 +160,18 @@ export default function AdminPageHeader({
           )}
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-            {onPublishToggle && (
-              <button
-                onClick={onPublishToggle}
-                disabled={publishBusy}
-                style={{
-                  background: status === 'published' ? 'transparent' : ADMIN_COLORS.cerulean,
-                  border: status === 'published' ? `1px solid ${ADMIN_COLORS.onSurfaceVariant}66` : `1px solid ${ADMIN_COLORS.cerulean}`,
-                  borderRadius: '9999px',
-                  padding: '0.3rem 0.85rem',
-                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '0.8rem',
-                  color: status === 'published' ? ADMIN_COLORS.onSurface : '#fff',
-                  cursor: publishBusy ? 'not-allowed' : 'pointer',
-                  opacity: publishBusy ? 0.6 : 1,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {publishBusy ? '…' : status === 'published' ? 'Unpublish' : 'Publish'}
-              </button>
-            )}
+            {/*
+              Brief 159 (Track C3): the header's Publish/Unpublish button is GONE.
+
+              Status is one field with one control — the sidebar's Status row,
+              which describes the version open in the editor and publishes it.
+              This button was a second door onto the same state (and, by the time
+              this brief landed, dead code: no editor passed `onPublishToggle`).
+              Leaving it in place was an invitation to wire it back up and
+              re-create the exact class of bug Brief 159 closes. If a header
+              affordance is ever wanted again, it must call the same
+              `useVersionStatusControl` path, not a parallel one.
+            */}
 
             {hasTemplate && pageType && pageSlug && onTemplateSwitched && (
               <TemplateSwitcher

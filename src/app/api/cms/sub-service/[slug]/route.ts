@@ -225,42 +225,30 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
   }
 }
 
-export async function PATCH(req: NextRequest, { params }: RouteContext) {
+/**
+ * Brief 159 (Track A2 / E4) — this route used to be the page-level status switch:
+ * `PATCH { status }` wrote `sub_service_pages.status` directly.
+ *
+ * That column is now DERIVED from which version is published, and it has exactly
+ * one writer — `setLiveStatusInTx`, called only from the publish/unpublish
+ * transaction in `src/lib/cms/drafts.ts`. Two doors onto one field is how the
+ * reported bug class ("every version says Published, none can be made a draft")
+ * comes back, so this one is closed.
+ *
+ * It answers 409 with an explanation rather than 404, so a stale client fails
+ * loudly and legibly instead of silently appearing to work.
+ */
+export async function PATCH(req: NextRequest) {
   const session = await getSession(req);
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const { slug } = await params;
-  let body: { status?: string };
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
-
-  const newStatus = body.status;
-  if (newStatus !== 'published' && newStatus !== 'draft') {
-    return NextResponse.json({ error: 'status must be "published" or "draft"' }, { status: 400 });
-  }
-
-  const client = await pool.connect();
-  try {
-    const res = await client.query(
-      `UPDATE sub_service_pages
-          SET status = $1, updated_by = $2, version = version + 1, updated_at = NOW()
-        WHERE slug = $3
-        RETURNING status, version`,
-      [newStatus, session.userId, slug]
-    );
-    if ((res.rowCount ?? 0) === 0) return NextResponse.json({ error: 'Not found' }, { status: 404 });
-    // Brief 147 (Track B): return the new version. This PATCH bumps it, and the
-    // editor was guessing `version + 1` client-side — a guess that silently
-    // desynced the optimistic-lock token whenever anything else had moved the row,
-    // turning the next save into a false "changed by someone else" conflict.
-    return NextResponse.json({ success: true, status: res.rows[0].status, version: res.rows[0].version });
-  } catch (err) {
-    console.error('[cms/sub-service PATCH]', err);
-    return NextResponse.json({ error: 'Database error' }, { status: 500 });
-  } finally {
-    client.release();
-  }
+  return NextResponse.json(
+    {
+      error:
+        'A page\'s status is no longer set directly. It is derived from which version is ' +
+        'published — set the Status row in the editor sidebar (or POST to ' +
+        '/api/cms/drafts/{id}/publish or /unpublish) instead.',
+    },
+    { status: 409 }
+  );
 }

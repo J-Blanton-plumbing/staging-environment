@@ -5,6 +5,7 @@ import { getCityService } from '@/lib/content/city-services';
 import CityServicePageTemplate, { replaceCityTokens } from '@/components/CityServicePageTemplate';
 import { getCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { getCityServicePreview } from '@/lib/cms/preview';
+import { isPageLive } from '@/lib/cms/page-status';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import PreviewBanner from '@/components/PreviewBanner';
 import { pageTitle } from '@/lib/seo';
@@ -126,6 +127,15 @@ export default async function CityServicePage({
       </>
     );
   }
+
+  /*
+   * Brief 159 (Track D / E1) — the render gate, checked only once the preview
+   * branch above has fallen through: an editor previewing an unpublished page
+   * must still see it. One indexed column read on the live row, no join to
+   * `page_drafts`; `isPageLive` fails OPEN on a database error so a DB blip
+   * cannot 404 one of the 11,160 self-canonical pages in the sitemap.
+   */
+  if (!(await isPageLive('city-service', `${params.city}/${params.service}`))) notFound();
 
   // Load DB content and merge with static fallback
   const dbContent = await getCityServiceCmsContent(params.city, params.service).catch((err) => {

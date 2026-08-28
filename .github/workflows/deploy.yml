@@ -391,6 +391,27 @@ jobs:
             # no longer matches the leading-label pattern is never touched again, so
             # this is a safe no-op on every deploy after the first.
             npx ts-node --project tsconfig.scripts.json scripts/strip-leaked-heading-labels.ts commit
+            # -- Brief 159: the version-status model -------------------------------
+            # ORDER MATTERS and the two are a pair:
+            #   1. the MIGRATION adds `page_drafts.is_published` + its partial unique
+            #      index, and the derived `status` column on every live content table.
+            #      It asserts that ZERO rows land in 'draft' and fails if any do —
+            #      "nothing gets unpublished by this brief" is a hard rule, so it is
+            #      checked rather than assumed.
+            #   2. the SEED then answers, for every existing page, WHICH version is
+            #      live: it marks the most recently published version where there is
+            #      one, and otherwise snapshots the live row as "Version 1 — live".
+            #      Without it, every page would have a live row and no published
+            #      version — the exact drift the Track D invariant check reports.
+            # Both are idempotent and fill-gaps-only; on every deploy after the first
+            # they print ALREADY-APPLIED and touch nothing.
+            #
+            # `commit` is explicit per the Brief 147 rule: a pipeline step that omits
+            # it now EXITS NON-ZERO rather than silently dry-running.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+              scripts/migrate-brief-159-version-status.ts commit
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+              scripts/seed-brief-159-baseline-versions.ts commit
             # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
             # what the checked-in code assumes, BEFORE the swap below.
             #  - every sitemap <lastmod> source query runs against the real schema.
@@ -847,3 +868,62 @@ jobs:
             fi
             node scripts/validate-seo-routing.mjs --base=http://localhost:3000 --articles-sample=60 --city-services-sample=40
             echo '======================================================='
+
+            # -- Brief 159 (E2 item 4): CRITICAL-URL CANARY ------------------------
+            # Brief 159 gave the CMS a real unpublish: an editor can now take a page
+            # off the site from the sidebar, and the page then 404s and leaves the
+            # sitemap. That is the intended behaviour and it is also, by construction,
+            # one mis-click away from de-indexing a URL Google already ranks.
+            #
+            # This is a STATUS-CODE check, deliberately, and separate from the content
+            # markers above: Brief 157 showed that a check_marker grep over a whole
+            # document can pass while the page is wrong, and the failure mode here is
+            # the opposite one — the page is not being served at all.
+            #
+            # The list is the site's spine plus one page from each layer a mis-click
+            # could reach. Keep it SHORT and keep every entry a page that must never
+            # be dark; a long list turns this into another content check.
+            echo ''
+            echo '=============== CRITICAL URL CANARY (Brief 159) ==============='
+            LAST_CHECK="critical URL canary"
+            CANARY_FAILED=0
+            for path in "/" "/columbus" "/emergency-plumbing" "/sewer-rodding" "/evanston/water-heater-repair" "/services/plumbing"; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "http://localhost:3000${path}") || code="000"
+              if [ "$code" = "200" ]; then
+                echo "OK: ${path} -> 200"
+              else
+                echo "CANARY FAILED: ${path} -> ${code} (expected 200)"
+                echo "  If this is 404, the most likely cause is that the page was UNPUBLISHED in the CMS."
+                echo "  Re-publish a version from the editor's Status row to bring it straight back."
+                CANARY_FAILED=1
+              fi
+            done
+            if [ "$CANARY_FAILED" -eq 1 ]; then
+              echo 'Critical URL canary FAILED - a page that must never be dark is not returning 200.'
+              exit 1
+            fi
+            echo 'All critical URLs healthy.'
+            echo '==============================================================='
+
+            # -- Brief 159 (E2 item 5): UNPUBLISHED-PAGE REPORT --------------------
+            # Every page currently held in `draft`, named in the deploy summary.
+            # Silence is how a page stays accidentally dark for a month, so the count
+            # is printed on every deploy even when it is zero.
+            #
+            # The same script also asserts the Track D invariant — the derived
+            # `status` column agrees with `page_drafts.is_published` everywhere. It
+            # REPORTS drift rather than repairing it: whether a page should be live is
+            # an editorial decision, not one to make silently in a deploy log.
+            # `--warn-only` keeps drift from blocking a deploy that is otherwise fine;
+            # the lines are loud and greppable ("STATUS INVARIANT DRIFT").
+            echo ''
+            echo '=============== UNPUBLISHED PAGES / STATUS INVARIANT ==============='
+            LAST_CHECK="Brief 159 status invariant + unpublished-page report"
+            if [ ! -f scripts/check-brief-159-status-invariant.ts ]; then
+              echo "MISSING: $(pwd)/scripts/check-brief-159-status-invariant.ts does not exist."
+              echo "This step must run from the app directory (/var/www/jblanton) - check the cd above."
+              exit 1
+            fi
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+              scripts/check-brief-159-status-invariant.ts --warn-only
+            echo '==================================================================='

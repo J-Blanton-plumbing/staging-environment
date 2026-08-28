@@ -9,6 +9,8 @@ import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
+import { formFromContent } from '@/lib/admin/formFromContent';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
@@ -367,10 +369,20 @@ export default function ArticleAdminPage() {
     body: form.body,
     image: form.image,
     categories: form.categories,
-    status: form.status,
+    // Brief 159 (Track A2): `status` is NO LONGER part of a version's content — it
+    // is derived from which version is published and has exactly one writer.
     metaTitle: form.metaTitle,
     metaDescription: form.metaDescription,
-  }));
+  }), {
+    // Brief 159 (Track C1): selecting a version in the sidebar loads THAT
+    // version's stored content into this form. Without it the form kept whatever
+    // was on screen, so every version appeared to hold the edit you had just made
+    // to a different one — and the next Save wrote it there for real.
+    onLoadContent: (content) => setForm(f => ({ ...f, ...formFromContent(EMPTY, content), slug: f.slug })),
+  });
+  // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
+  // typed-slug confirmation for taking the article off the site.
+  const statusCtl = useVersionStatusControl(dv, { path: `/knowledge-hub/${slug}` });
 
   const load = useCallback(async () => {
     try {
@@ -420,7 +432,6 @@ export default function ArticleAdminPage() {
           body: form.body,
           image: form.image,
           categories: form.categories,
-          status: form.status,
           metaTitle: form.metaTitle || null,
           metaDescription: form.metaDescription || null,
         }),
@@ -570,11 +581,12 @@ export default function ArticleAdminPage() {
         </form>
       </div>
 
+      {statusCtl.modal}
+
+
       <PageAttributesSidebar
         title={form.title}
         updatedAt={form.updatedAt}
-        status={form.status}
-        onStatusChange={newStatus => set('status', newStatus)}
         template={{ value: 'article', label: 'Article', options: [{ value: 'article', label: 'Article' }] }}
         version={{
           activeId: dv.activeId,
@@ -587,6 +599,7 @@ export default function ArticleAdminPage() {
           onDelete: dv.remove,
           onSaveAsNew: dv.saveAsNew,
           nextVersionName: dv.nextVersionName,
+        ...statusCtl.versionProps,
         }}
         slug={{ value: slug, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/knowledge-hub/${slug}` }}
         parent={{ label: 'None', editable: false }}

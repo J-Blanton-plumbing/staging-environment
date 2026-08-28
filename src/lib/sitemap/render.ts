@@ -41,16 +41,24 @@ import {
 } from '@/lib/sitemap/manifest';
 
 /**
- * Legacy sub-services with a full static-content fallback
- * (`ServicePageTemplate` + `src/lib/content/services/*`). These render 200
- * regardless of DB status, so they are always listed.
+ * Sub-services with a full static-content fallback — routes that render 200
+ * regardless of DB status, and are therefore always listed.
  *
- * Brief 146 (Track B): `gas-lines` left this set — its static content file was
- * retired and `/gas-lines` now renders from `sub_service_pages` like the other
- * sub-service routes, so it 404s if that row is ever unpublished and must be
- * listed on the same "published row exists" condition as they are.
+ * THIS SET IS NOW EMPTY, and that is the correct value.
+ *
+ * Brief 146 (Track B) removed `gas-lines` when its static content file was
+ * retired. Brief 149 (Track A) then did the same to `sewer-rodding` and
+ * `hydro-jetting` — both routes are now the identical three-line
+ * `SubServicePageView` shape as the other 21, reading the published
+ * `sub_service_pages` row — but this set was not updated with them. It was
+ * harmless while nothing could unpublish a sub-service row; Brief 159 makes it a
+ * live defect, because unpublishing either page would 404 the route while the
+ * sitemap kept advertising it, which is precisely the sitemap-vs-404
+ * contradiction the deploy validator fails on (Brief 152, Fix 3).
+ *
+ * Keep it empty unless a sub-service route genuinely regains a static fallback.
  */
-const STATIC_FALLBACK_SUB_SERVICES = new Set(['sewer-rodding', 'hydro-jetting']);
+const STATIC_FALLBACK_SUB_SERVICES = new Set<string>();
 
 /**
  * The `<lastmod>` sources, as `[name, sql]`. Exported so
@@ -66,6 +74,27 @@ const STATIC_FALLBACK_SUB_SERVICES = new Set(['sewer-rodding', 'hydro-jetting'])
 export const SITEMAP_LASTMOD_SOURCES = {
   main: `SELECT slug, updated_at FROM main_pages`,
   category: `SELECT slug, updated_at FROM service_category_pages`,
+  /**
+   * Brief 159 (Track E1) — the pages that are NOT live.
+   *
+   * Every sitemap child SUBTRACTS its dark set rather than filtering to a
+   * published set, for two reasons. First, these URL lists are registry- and
+   * constant-derived (`SITEMAP_STATIC_PAGES`, `SERVICE_CATEGORY_SLUGS`,
+   * `CITY_REGISTRY`), and plenty of those URLs have no content row at all — so
+   * "absent from the published query" is not the same statement as "not live".
+   * Second, it fails OPEN: if the query errors, `safeQuery` returns [], the dark
+   * set is empty, and the sitemap lists everything exactly as it did before this
+   * brief. Filtering to a published set would fail CLOSED — one DB blip and the
+   * sitemap ships empty. Same direction as the render gate, deliberately.
+   *
+   * A page with no Published version 404s, and a sitemap that still advertised it
+   * would be telling Google to fetch a 404 — the exact contradiction Brief 152
+   * Fix 3 fails the deploy on. Normally all of these return zero rows.
+   */
+  mainUnpublished: `SELECT slug FROM main_pages WHERE status = 'draft'`,
+  categoryUnpublished: `SELECT slug FROM service_category_pages WHERE status = 'draft'`,
+  emergencyPlumbingUnpublished: `SELECT 1 AS dark FROM emergency_plumbing_page
+          WHERE status = 'draft' AND id = (SELECT id FROM emergency_plumbing_page ORDER BY id LIMIT 1)`,
   subService: `SELECT slug, COALESCE(updated_at, created_at) AS updated_at
            FROM sub_service_pages WHERE status = 'published'`,
   // `city_pages` keys on `city_slug`, not `slug` — the same column-name trap
@@ -73,7 +102,19 @@ export const SITEMAP_LASTMOD_SOURCES = {
   // `column "slug" does not exist` on every request; `safeQuery` swallowed
   // it, so the 248 city URLs shipped with NO <lastmod> at all and nothing
   // surfaced but a server-log line.
-  city: `SELECT city_slug AS slug, updated_at FROM city_pages`,
+  city: `SELECT city_slug AS slug, updated_at FROM city_pages WHERE status = 'published'`,
+  /**
+   * Brief 159 (Track E1): the cities that are NOT live. `/sitemap-cities.xml`
+   * lists every registry slug regardless of whether a `city_pages` row exists
+   * (most cities render from their static content file), so it cannot be built
+   * from the published set alone — it has to subtract the explicitly-dark ones.
+   * Normally zero rows.
+   */
+  cityUnpublished: `SELECT city_slug AS slug FROM city_pages WHERE status = 'draft'`,
+  /** Brief 159 (Track E1): the same subtraction for the /{city}/{service} shards. */
+  cityServiceUnpublished: `SELECT city_slug, service_slug
+           FROM city_service_pages
+          WHERE status = 'draft'`,
   article: `SELECT slug, COALESCE(updated_at, created_at) AS updated_at
            FROM cms_articles WHERE status = 'published'`,
   emergencyPlumbing: `SELECT updated_at FROM emergency_plumbing_page ORDER BY updated_at DESC NULLS LAST LIMIT 1`,
@@ -238,22 +279,44 @@ const toMap = (rows: SlugRow[]): Map<string, Date> => {
 /** `/sitemap-pages.xml` — static pages, `/services/*`, top-level sub-services. */
 export function renderPagesSitemap(): Promise<string> {
   return cached('pages', TTL_FRESH_MS, async () => {
-    const [mainRows, categoryRows, subServiceRows, epRows] = await Promise.all([
-      safeQuery<SlugRow>('main_pages', SITEMAP_LASTMOD_SOURCES.main),
-      safeQuery<SlugRow>('service_category_pages', SITEMAP_LASTMOD_SOURCES.category),
-      safeQuery<SlugRow>('sub_service_pages', SITEMAP_LASTMOD_SOURCES.subService),
-      safeQuery<{ updated_at: Date | null }>(
-        'emergency_plumbing_page',
-        SITEMAP_LASTMOD_SOURCES.emergencyPlumbing
-      ),
-    ]);
+    const [mainRows, categoryRows, subServiceRows, epRows, darkMain, darkCategory, darkEp] =
+      await Promise.all([
+        safeQuery<SlugRow>('main_pages', SITEMAP_LASTMOD_SOURCES.main),
+        safeQuery<SlugRow>('service_category_pages', SITEMAP_LASTMOD_SOURCES.category),
+        safeQuery<SlugRow>('sub_service_pages', SITEMAP_LASTMOD_SOURCES.subService),
+        safeQuery<{ updated_at: Date | null }>(
+          'emergency_plumbing_page',
+          SITEMAP_LASTMOD_SOURCES.emergencyPlumbing
+        ),
+        safeQuery<{ slug: string }>('main_pages unpublished', SITEMAP_LASTMOD_SOURCES.mainUnpublished),
+        safeQuery<{ slug: string }>(
+          'service_category_pages unpublished',
+          SITEMAP_LASTMOD_SOURCES.categoryUnpublished
+        ),
+        safeQuery<{ dark: number }>(
+          'emergency_plumbing_page unpublished',
+          SITEMAP_LASTMOD_SOURCES.emergencyPlumbingUnpublished
+        ),
+      ]);
     const mainLastMod = toMap(mainRows);
     const categoryLastMod = toMap(categoryRows);
     const subServiceLastMod = toMap(subServiceRows);
     const epLastMod = epRows[0]?.updated_at ? new Date(epRows[0].updated_at) : undefined;
 
+    // Brief 159 (Track E1): the dark sets. See SITEMAP_LASTMOD_SOURCES for why
+    // these are subtracted rather than filtered-in.
+    const darkMainSlugs = new Set(darkMain.map((r) => r.slug));
+    const darkCategorySlugs = new Set(darkCategory.map((r) => r.slug));
+    const epIsDark = darkEp.length > 0;
+    const darkCount = darkMainSlugs.size + darkCategorySlugs.size + (epIsDark ? 1 : 0);
+    if (darkCount > 0) {
+      console.warn(`[sitemap] ${darkCount} page(s) are unpublished and EXCLUDED from /sitemap-pages.xml.`);
+    }
+
     const entries: SitemapEntry[] = [
-      ...SITEMAP_STATIC_PAGES.map((p) => ({
+      ...SITEMAP_STATIC_PAGES.filter((p) =>
+        p.path === '/emergency-plumbing' ? !epIsDark : !(p.mainSlug && darkMainSlugs.has(p.mainSlug))
+      ).map((p) => ({
         path: p.path,
         lastModified:
           p.path === '/emergency-plumbing'
@@ -264,7 +327,7 @@ export function renderPagesSitemap(): Promise<string> {
         changeFrequency: p.changeFrequency,
         priority: p.priority,
       })),
-      ...SERVICE_CATEGORY_SLUGS.map((slug) => ({
+      ...SERVICE_CATEGORY_SLUGS.filter((slug) => !darkCategorySlugs.has(slug)).map((slug) => ({
         path: `/services/${slug}`,
         lastModified: categoryLastMod.get(slug),
         changeFrequency: 'monthly' as const,
@@ -290,9 +353,24 @@ export function renderPagesSitemap(): Promise<string> {
 /** `/sitemap-cities.xml` — the `/{city}` landing pages. */
 export function renderCitiesSitemap(): Promise<string> {
   return cached('cities', TTL_FRESH_MS, async () => {
-    const cityLastMod = toMap(await safeQuery<SlugRow>('city_pages', SITEMAP_LASTMOD_SOURCES.city));
+    const [lastModRows, darkRows] = await Promise.all([
+      safeQuery<SlugRow>('city_pages', SITEMAP_LASTMOD_SOURCES.city),
+      safeQuery<{ slug: string }>('city_pages unpublished', SITEMAP_LASTMOD_SOURCES.cityUnpublished),
+    ]);
+    const cityLastMod = toMap(lastModRows);
+    // Brief 159 (Track E1): a city taken off the site 404s, so it must leave the
+    // sitemap too. SUBTRACTED rather than filtered-in because this file lists
+    // every registry slug — most cities have no `city_pages` row at all and
+    // render from their static content file, so "not in the published query" is
+    // not the same statement as "not live". A DB failure yields an empty dark
+    // set, i.e. the pre-Brief-159 behaviour: list everything. Failing open here
+    // matches the render gate, which also fails open.
+    const dark = new Set(darkRows.map((r) => r.slug));
+    if (dark.size > 0) {
+      console.warn(`[sitemap] ${dark.size} city page(s) are unpublished and EXCLUDED from /sitemap-cities.xml.`);
+    }
     return urlsetXml(
-      CITY_REGISTRY.map((c) => ({
+      CITY_REGISTRY.filter((c) => !dark.has(c.slug)).map((c) => ({
         path: `/${c.slug}`,
         lastModified: cityLastMod.get(c.slug),
         changeFrequency: 'monthly' as const,
@@ -328,7 +406,7 @@ export function renderArticlesSitemap(): Promise<string> {
  */
 export function renderCityServiceShard(shard: CityServiceShard): Promise<string> {
   return cached(`city-services-${shard.id}`, TTL_CITY_SERVICE_MS, async () => {
-    const [lastModRows, overrideRows] = await Promise.all([
+    const [lastModRows, overrideRows, darkRows] = await Promise.all([
       safeQuery<{ city_slug: string; service_slug: string; updated_at: Date | null }>(
         `city_service_pages (shard ${shard.id})`,
         SITEMAP_LASTMOD_SOURCES.cityService,
@@ -337,6 +415,13 @@ export function renderCityServiceShard(shard: CityServiceShard): Promise<string>
       safeQuery<{ city_slug: string; service_slug: string }>(
         'city_service_pages canonical_url overrides',
         SITEMAP_LASTMOD_SOURCES.cityServiceCanonicalOverrides
+      ),
+      // Brief 159 (Track E1): city-service pages taken off the site. Subtracted
+      // for the same reason as the cities file — the URL set here is
+      // registry-derived, so "not live" cannot be inferred from a missing row.
+      safeQuery<{ city_slug: string; service_slug: string }>(
+        'city_service_pages unpublished',
+        SITEMAP_LASTMOD_SOURCES.cityServiceUnpublished
       ),
     ]);
 
@@ -354,12 +439,20 @@ export function renderCityServiceShard(shard: CityServiceShard): Promise<string>
       );
     }
 
+    const unpublished = new Set(darkRows.map((r) => `${r.city_slug}/${r.service_slug}`));
+    if (unpublished.size > 0) {
+      console.warn(
+        `[sitemap] ${unpublished.size} city-service page(s) are unpublished and EXCLUDED from the sitemap.`
+      );
+    }
+
     const services = getAllServiceSlugs().slice().sort();
     const entries: SitemapEntry[] = [];
     for (const city of citySlugsForShard(shard)) {
       for (const service of services) {
         const key = `${city}/${service}`;
         if (canonicalisesElsewhere.has(key)) continue;
+        if (unpublished.has(key)) continue;
         entries.push({
           path: `/${key}`,
           lastModified: lastMod.get(key),

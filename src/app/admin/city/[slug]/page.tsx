@@ -9,6 +9,7 @@ import TemplateSwitcher from '@/components/admin/TemplateSwitcher';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
 import BlockShell from '@/components/admin/BlockShell';
 import BlockInserter from '@/components/admin/BlockInserter';
 import BlockField from '@/components/admin/BlockField';
@@ -339,7 +340,17 @@ export default function AdminCityPage() {
     // this editor loaded goes stale the instant a publish succeeds. Take the fresh
     // one from the publish response instead of forcing a full browser reload.
     onLiveVersionChange: setVersion,
+    // Brief 159 (Track C1): selecting a version in the sidebar loads THAT version's
+    // stored content into this form — including its templateType, so a V1-authored
+    // draft opens on the V1 template rather than inheriting whatever is on screen.
+    // Without this the form kept the previous version's content and the next Save
+    // wrote it into the newly-selected version for real.
+    onLoadContent: (content) =>
+      setForm((f) => formFromApi((content ?? {}) as Record<string, unknown>, f.templateType)),
   });
+  // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
+  // typed-slug confirmation for taking the page off the site.
+  const statusCtl = useVersionStatusControl(dv, { path: `/${slug}` });
   // Brief 85 (iter. 3): the sidebar's Template popover triggers this modal (kept
   // as-is, archive/warning flow intact) instead of reimplementing template
   // switching behind a plain radio picker.
@@ -789,10 +800,12 @@ export default function AdminCityPage() {
 
     </div>
 
+      {statusCtl.modal}
+
+
       <PageAttributesSidebar
         title={cityLabel}
         updatedAt={pageMeta.updatedAt}
-        status="published"
         template={{
           value: form.templateType,
           label: TEMPLATE_DISPLAY_NAMES[form.templateType] ?? form.templateType,
@@ -810,6 +823,7 @@ export default function AdminCityPage() {
           onDelete: dv.remove,
           onSaveAsNew: dv.saveAsNew,
           nextVersionName: dv.nextVersionName,
+        ...statusCtl.versionProps,
         }}
         slug={{ value: slug, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/${slug}` }}
         parent={{ label: 'None', editable: false }}

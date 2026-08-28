@@ -8,6 +8,7 @@ import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
+import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
@@ -47,6 +48,33 @@ const EMPTY: FormState = {
   parentSlug: null,
 };
 
+/**
+ * Brief 159 (Track C1) — the inverse of `buildPayload`: put a stored version's
+ * content back into the form when the editor switches versions.
+ *
+ * Hand-written rather than using the shared `formFromContent` helper because the
+ * payload is not a straight projection of the form: the two body fields are
+ * stored as PARAGRAPH ARRAYS and edited as one blank-line-separated textarea.
+ * Joining them here with the same `\n\n` the load effect uses is what makes a
+ * version switch and a page load produce identical form state.
+ */
+function formFromPayload(data: Record<string, unknown>): FormState {
+  const str = (v: unknown) => (typeof v === 'string' ? v : v == null ? '' : String(v));
+  const paras = (v: unknown) => (Array.isArray(v) ? (v as string[]).join('\n\n') : '');
+  return {
+    serviceIntroHeading: str(data.serviceIntroHeading),
+    serviceIntroText: paras(data.serviceIntroParagraphs),
+    serviceIntroImage: str(data.serviceIntroImage),
+    secondaryHeading: str(data.secondaryHeading),
+    secondaryText: paras(data.secondaryParagraphs),
+    secondaryImage: str(data.secondaryImage),
+    faqs: Array.isArray(data.faqs) ? (data.faqs as FaqField[]) : [],
+    metaTitle: str(data.metaTitle),
+    metaDescription: str(data.metaDescription),
+    parentSlug: typeof data.parentSlug === 'string' ? data.parentSlug : null,
+  };
+}
+
 function slugToTitle(slug: string): string {
   return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
@@ -69,11 +97,19 @@ export default function AdminCityServicePage() {
     // this editor loaded goes stale the instant a publish succeeds. Take the fresh
     // one from the publish response instead of forcing a full browser reload.
     onLiveVersionChange: setVersion,
+    // Brief 159 (Track C1): selecting a version in the sidebar loads THAT
+    // version's stored content into this form. Without it the form kept whatever
+    // was on screen, so every version appeared to hold the edit you had just made
+    // to a different one — and the next Save wrote it there for real.
+    onLoadContent: (content) => setForm(formFromPayload((content ?? {}) as Record<string, unknown>)),
   });
 
   const cityTitle = city ? slugToTitle(city) : '';
   const serviceTitle = service ? slugToTitle(service) : '';
   const pageTitle = `${cityTitle} — ${serviceTitle} Admin`;
+  // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
+  // typed-slug confirmation for taking the page off the site.
+  const statusCtl = useVersionStatusControl(dv, { path: `/${city}/${service}` });
 
   useEffect(() => {
     if (!city || !service) return;
@@ -350,9 +386,11 @@ export default function AdminCityServicePage() {
 
     </div>
 
+      {statusCtl.modal}
+
+
       <PageAttributesSidebar
         title={pageTitle}
-        status="published"
         template={{ value: 'city-service', label: 'City Service', options: [{ value: 'city-service', label: 'City Service' }] }}
         version={{
           activeId: dv.activeId,
@@ -365,6 +403,7 @@ export default function AdminCityServicePage() {
           onDelete: dv.remove,
           onSaveAsNew: dv.saveAsNew,
           nextVersionName: dv.nextVersionName,
+        ...statusCtl.versionProps,
         }}
         slug={{ value: `${city}/${service}`, editable: false, disabledNote: "This page's URL is fixed at creation and can't be changed here.", permalink: `${SITE.baseUrl}/${city}/${service}` }}
         parent={{

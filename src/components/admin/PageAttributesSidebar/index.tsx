@@ -63,6 +63,22 @@ export interface PageAttributesVersions {
   onDelete: (id: number) => void;
   onSaveAsNew: (label: string) => void;
   nextVersionName: () => Promise<string>;
+  /**
+   * Brief 159 (Track C3) — is the version CURRENTLY OPEN in the editor the live
+   * one? This is what the Status row above shows. The Status row and the Version
+   * popover are two views of one field, so both read it from here rather than
+   * from separate places; switching versions in the popover therefore repaints
+   * the Status row for free.
+   */
+  activeIsPublished?: boolean;
+  /**
+   * The Status row's writer. `'published'` publishes the open version;
+   * `'draft'` on the live version unpublishes the page (Track E). Supplying this
+   * turns Status into the real popover — the 13 editors that used to render a
+   * hard-coded "Published" literal (Brief 85 §4) all pass it now.
+   */
+  onSetStatus?: (next: 'draft' | 'published') => Promise<void> | void;
+  statusBusy?: boolean;
 }
 
 export interface PageAttributesSidebarProps {
@@ -254,12 +270,30 @@ export default function PageAttributesSidebar({
           )}
 
           <div style={{ marginTop: '0.25rem' }}>
-            {/* Status — functional, mirrors AdminPageHeader's status badge. Interactive
-                (Draft/Published popover) when onStatusChange is supplied; plain text otherwise. */}
+            {/*
+              Status — Brief 159 (Track C3).
+
+              It describes the VERSION CURRENTLY OPEN in the editor, and it is the
+              control that publishes and unpublishes. When `version.onSetStatus`
+              is supplied (all 15 editors), the value is read from the open
+              version's `is_published` — never from a literal. The legacy
+              `status`/`onStatusChange` path below it is kept only for a caller
+              that supplies no version history at all; the plain-text branch is
+              the last resort, and it is the branch that used to render the word
+              "Published" on 13 editors regardless of any state (Brief 85 §4).
+            */}
             <div style={rowStyle}>
               <span style={labelStyle}>Status</span>
-              {onStatusChange ? (
-                <StatusPopover value={status ?? 'draft'} onChange={onStatusChange} busy={statusBusy} />
+              {version?.onSetStatus ? (
+                <StatusPopover
+                  value={version.activeIsPublished ? 'published' : 'draft'}
+                  onChange={version.onSetStatus}
+                  busy={version.statusBusy ?? version.busy}
+                  disabled={version.activeId === null}
+                  versionLabel={version.activeLabel}
+                />
+              ) : onStatusChange ? (
+                <StatusPopover value={status === 'published' ? 'published' : 'draft'} onChange={onStatusChange} busy={statusBusy} />
               ) : (
                 <span style={{ color: ADMIN_COLORS.cerulean, fontWeight: 600 }}>{statusLabel(status)}</span>
               )}
