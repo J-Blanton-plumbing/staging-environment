@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import ImageUploaderField from '@/components/admin/ImageUploaderField';
+import RichTextField from '@/components/admin/RichTextField';
 import TemplateSwitcher from '@/components/admin/TemplateSwitcher';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
@@ -37,12 +38,21 @@ interface FormState {
   heroHeadingLine2: string;
   heroCallout: string;
   heroDescription: string;
-  // Dual meaning by template (Brief 95, A.2): on `local-office` this is the
-  // rendered "Why J. Blanton" heading; on `coverage-area` it is a legacy/unused
-  // column — that template's heading is intentionally hard-coded, see
-  // `CoverageAreaCityFields` above.
+  // `content_heading` — the rendered "Why J. Blanton" heading on `local-office`,
+  // and an inert legacy column on `coverage-area`. Brief 160 (Track A) did NOT
+  // repurpose it: the coverage-area heading got its own `covered_heading` column
+  // below, so this one keeps exactly the one meaning it had (Brief 95, A.2 /
+  // Brief 157 Q9 — the cross-template column-reuse footgun).
   contentHeading: string;
   contentBody: string;
+  /**
+   * Brief 160 (Track A) — the coverage-area "WE'VE GOT YOU COVERED, {City}"
+   * heading, its own column (`covered_heading`). Blank = render the template
+   * literal, which is what the editor's helper note tells the user.
+   */
+  coveredHeading: string;
+  /** Brief 160 (Track C) — the coverage-area section-1 image (`covered_image`). */
+  coveredImage: string;
   f2Heading: string;
   f2Body: string;
   faqs: FaqField[];
@@ -65,6 +75,8 @@ const EMPTY: FormState = {
   heroDescription: '',
   contentHeading: '',
   contentBody: '',
+  coveredHeading: '',
+  coveredImage: '',
   f2Heading: '',
   f2Body: '',
   faqs: [],
@@ -145,10 +157,13 @@ function CoverageAreaCityFields({
   form,
   setField,
   missing,
+  cityDisplayName,
 }: {
   form: FormState;
   setField: (k: StringFieldKey, v: string) => void;
   missing: string[];
+  /** City name as the page renders it — used in the Heading field's blank-state note. */
+  cityDisplayName: string;
 }) {
   return (
     <>
@@ -163,15 +178,41 @@ function CoverageAreaCityFields({
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>We&rsquo;ve Got You Covered</h2>
-        {/* Brief 95 (A.2): no Heading field here on purpose — the "WE'VE GOT YOU
-            COVERED, {City}" heading is a templated SEO/geo pattern, not editable
-            copy. The `content_heading` column this template's Heading field used
-            to write to is the SAME column `LocalOfficeCityFields` uses for its
-            Why-J.-Blanton heading below, so wiring a Coverage-Area heading here
-            would collide with that unrelated meaning. If a per-city editable
-            heading is wanted, add a new template-specific column instead. */}
-        <FieldLabel label="Body" fieldKey="content_body" missing={missing} />
-        <textarea style={{ ...inputStyle, minHeight: '120px' }} value={form.contentBody} onChange={e => setField('contentBody', e.target.value)} />
+        {/* Brief 160 (Track A) — this heading IS editable now. It writes to
+            `covered_heading`, a NEW coverage-area-only column, which is exactly
+            the "add a new template-specific column instead" that the Brief 95
+            (A.2) comment this replaces asked for: `content_heading` still means
+            the Why-J.-Blanton heading on the Local-Office template below, and a
+            template switch can no longer repurpose one into the other.
+
+            Plain <input>, deliberately NOT RichTextField — the value renders
+            inside a heading, so markup has no business in it (Brief 160,
+            Track B rule 2). Field order matches the page: heading, then body. */}
+        <FieldLabel
+          label="Heading"
+          fieldKey="covered_heading"
+          missing={missing}
+          note={`(leave blank to use the standard "WE'VE GOT YOU COVERED, ${cityDisplayName}")`}
+        />
+        <input style={inputStyle} value={form.coveredHeading} onChange={e => setField('coveredHeading', e.target.value)} />
+        {/* Brief 160 (Track B): the body holds rich HTML (it renders through
+            dangerouslySetInnerHTML on the public page) and now uses the shared
+            editor every other HTML field in the CMS uses. */}
+        <RichTextField
+          label="Body"
+          value={form.contentBody}
+          onChange={v => setField('contentBody', v)}
+          rows={8}
+        />
+        {/* Brief 160 (Track C): section 1's OWN image. Before this brief the
+            section reused the resolved hero, so setting a hero image silently
+            changed this one too. Blank renders the standard pipes fallback —
+            never the hero. Same uploader control as the Hero Image above. */}
+        <ImageUploaderField
+          label="Section Image (blank = the standard pipes image)"
+          value={form.coveredImage}
+          onChange={v => setField('coveredImage', v)}
+        />
       </div>
 
       <div style={sectionStyle}>
@@ -181,8 +222,14 @@ function CoverageAreaCityFields({
         </p>
         <FieldLabel label="Heading" fieldKey="f2_heading" missing={missing} />
         <input style={inputStyle} value={form.f2Heading} onChange={e => setField('f2Heading', e.target.value)} />
-        <FieldLabel label="Body" fieldKey="f2_body" missing={missing} />
-        <textarea style={{ ...inputStyle, minHeight: '120px' }} value={form.f2Body} onChange={e => setField('f2Body', e.target.value)} />
+        {/* Brief 160 (Track B): rich HTML on the public page (manplumberBody →
+            dangerouslySetInnerHTML), so it gets the shared editor. */}
+        <RichTextField
+          label="Body"
+          value={form.f2Body}
+          onChange={v => setField('f2Body', v)}
+          rows={8}
+        />
       </div>
     </>
   );
@@ -214,7 +261,16 @@ function LocalOfficeCityFields({
         <h2 style={h2Style}>Why J. Blanton</h2>
         <FieldLabel label="Heading" fieldKey="content_heading" missing={missing} />
         <input style={inputStyle} value={form.contentHeading} onChange={e => setField('contentHeading', e.target.value)} />
-        <FieldLabel label="Body" fieldKey="content_body" missing={missing} />
+        {/* Brief 160 (Track B): deliberately NOT RichTextField, even though the
+            coverage-area editor's Body field (same `content_body` column) is.
+            LocalOfficeCity renders this value as `<p>{city.why.body}</p>` — a
+            TEXT node, not `dangerouslySetInnerHTML` — so any markup typed here
+            would appear on the page as literal `<strong>` characters. Giving it
+            a formatting toolbar would invite exactly that. Same for Hero
+            Description above (`CityVideoHero` renders `{hero.intro}` as text).
+            If this section is ever converted to render HTML, convert the field
+            in the same change. */}
+        <FieldLabel label="Body" fieldKey="content_body" missing={missing} note="(plain text — this section renders no HTML)" />
         <textarea style={{ ...inputStyle, minHeight: '120px' }} value={form.contentBody} onChange={e => setField('contentBody', e.target.value)} />
       </div>
     </>
@@ -757,7 +813,7 @@ export default function AdminCityPage() {
       ) : form.templateType === 'local-office' ? (
         <LocalOfficeCityFields form={form} setField={setField} missing={missingFields} />
       ) : (
-        <CoverageAreaCityFields form={form} setField={setField} missing={missingFields} />
+        <CoverageAreaCityFields form={form} setField={setField} missing={missingFields} cityDisplayName={cityLabel} />
       )}
 
       {/* FAQs — for City V2 this is its own reorderable `faqAccordion` block
@@ -857,6 +913,11 @@ function formFromApi(data: Record<string, unknown>, fallbackTemplate: string): F
     heroDescription: str(data.heroDescription),
     contentHeading: str(data.contentHeading),
     contentBody: str(data.contentBody),
+    // Brief 160 (Tracks A + C). Absent from an older draft's stored content →
+    // '' → the page renders the template literal / the pipes fallback, i.e. the
+    // pre-brief behaviour. No draft needs migrating.
+    coveredHeading: str(data.coveredHeading),
+    coveredImage: str(data.coveredImage),
     f2Heading: str(data.f2Heading),
     f2Body: str(data.f2Body),
     faqs: arr<FaqField>(data.faqs),
@@ -881,6 +942,10 @@ function buildCityPayload(form: FormState) {
     heroDescription: form.heroDescription,
     contentHeading: form.contentHeading,
     contentBody: form.contentBody,
+    // Brief 160: sent on every city save, so they ride the existing draft /
+    // version / optimistic-lock plumbing unchanged (Brief 75/147/159).
+    coveredHeading: form.coveredHeading,
+    coveredImage: form.coveredImage,
     f2Heading: form.f2Heading,
     f2Body: form.f2Body,
     faqs: form.faqs,
@@ -903,6 +968,8 @@ function camelToDbKey(key: string): string {
     heroDescription: 'hero_description',
     contentHeading: 'content_heading',
     contentBody: 'content_body',
+    coveredHeading: 'covered_heading',
+    coveredImage: 'covered_image',
     f2Heading: 'f2_heading',
     f2Body: 'f2_body',
   };

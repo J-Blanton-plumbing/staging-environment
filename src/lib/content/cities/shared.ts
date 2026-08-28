@@ -12,13 +12,23 @@
  *    the two differences from the Local Office accordion, brief §7.)
  *    Called with NO slug it emits global (non-city) service hrefs — Brief 138.
  *  - `resolveHeroImage()` — the PHP hero-image fallback logic (page-city.php 25–39).
+ *  - `resolveCityImage()` — Brief 160 (Track C): the same resolution, taken by
+ *    ANY city image slot. Section 1 calls it with `coveredImage`; the hero calls
+ *    it with `heroImage`. Neither slot reads the other's column.
  */
 import type { CityFaq, CityServiceCategory } from './types';
 import { globalServiceHref } from '../service-taxonomy';
+import { CITY_IMAGE_CDN, CITY_FALLBACK_IMAGE } from './fallback-image';
 
-const CDN = 'https://d1rplazj5a80fb.cloudfront.net';
+const CDN = CITY_IMAGE_CDN;
 
-export const HERO_IMAGE_FALLBACK = `${CDN}/images/hero_image.webp`;
+/**
+ * The pipes photo every empty city image slot falls back to. Re-exported under
+ * its historic name so existing importers are unchanged; the definition now
+ * lives in `./fallback-image` (Brief 160, Track C — "define the fallback once").
+ */
+export const HERO_IMAGE_FALLBACK = CITY_FALLBACK_IMAGE;
+export { CITY_FALLBACK_IMAGE };
 export const WRENCH_PATTERN = `${CDN}/images/wrench_pattern.webp`;
 export const MANPLUMBER_IMAGE = `${CDN}/images/manplumber.webp`;
 
@@ -28,14 +38,32 @@ export const MANPLUMBER_IMAGE = `${CDN}/images/manplumber.webp`;
  * `/images/{x}.webp`; nothing falls back to `hero_image.webp`.
  */
 export function resolveHeroImage(heroImage?: string): string {
-  if (!heroImage) return HERO_IMAGE_FALLBACK;
-  // Brief 126 (Fix A): the old WordPress uploads tree is gone — any value still
-  // pointing there (e.g. Plumbing-Rough-In-800x600.jpg, cleared from the CMS by
-  // scripts/migrate-brief-126-clear-wp-image-refs.ts) can never load. Treat it
-  // as unset so the standard fallback applies even if stale data reappears.
-  if (heroImage.includes('wp-content/uploads')) return HERO_IMAGE_FALLBACK;
-  if (heroImage.startsWith('http') || heroImage.startsWith('/')) return heroImage;
-  const file = heroImage.includes('.') ? heroImage : `${heroImage}.webp`;
+  return resolveCityImage(heroImage);
+}
+
+/**
+ * Brief 160 (Track C) — resolve ONE city image field to a URL.
+ *
+ * Identical logic to `resolveHeroImage()` (which is now a thin alias): a full
+ * `http(s)` URL or root-relative path passes through, a bare slug/filename
+ * becomes `{CDN}/images/{x}.webp`, and an empty value — or a value still
+ * pointing at the dead WordPress uploads tree (Brief 126, Fix A: e.g.
+ * `Plumbing-Rough-In-800x600.jpg`, which can never load) — resolves to the
+ * pipes fallback.
+ *
+ * The point of the separate name is the CONTRACT, not the code: this function
+ * takes the field belonging to the slot being rendered and nothing else. The
+ * "We've got you covered" section calls it with `coveredImage`; the hero calls
+ * it with `heroImage`. That is what makes the two slots independent — before
+ * this brief section 1 simply reused the hero's already-resolved URL, so setting
+ * a hero image silently changed section 1 too (Brief 160 §0.3.6, MEASURED on
+ * /geneva).
+ */
+export function resolveCityImage(value?: string): string {
+  if (!value) return CITY_FALLBACK_IMAGE;
+  if (value.includes('wp-content/uploads')) return CITY_FALLBACK_IMAGE;
+  if (value.startsWith('http') || value.startsWith('/')) return value;
+  const file = value.includes('.') ? value : `${value}.webp`;
   return `${CDN}/images/${file}`;
 }
 

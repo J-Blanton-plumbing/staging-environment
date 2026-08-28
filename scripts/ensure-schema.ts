@@ -70,6 +70,13 @@ const STATEMENTS: string[] = [
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS blocks JSONB`,
   // Brief 127 — optional per-page canonical override (blank = self-referencing)
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
+  // Brief 160 (Tracks A + C) — the coverage-area "We've got you covered" section's
+  // own heading and image. Deliberately NOT `content_heading`/`hero_image`: those
+  // mean something else on the local-office template and on the hero respectively
+  // (Brief 95 A.2 / Brief 157 Q9). Mirrored by
+  // scripts/migrate-brief-160-city-covered-fields.ts, which the deploy also runs.
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS covered_heading TEXT DEFAULT ''::text`,
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS covered_image TEXT DEFAULT ''::text`,
 
   // ── city_service_pages ──────────────────────────────────────────────────
   `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS service_intro_heading TEXT NOT NULL DEFAULT ''::text`,

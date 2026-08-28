@@ -13,7 +13,7 @@ import {
   ELFSIGHT_SOCIAL_ID,
   getElfsightHeroId,
   getElfsightContentId,
-  resolveHeroImage,
+  resolveCityImage,
 } from '@/lib/content/cities/shared';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import CityPageImage from '@/components/CityPageImage';
@@ -72,7 +72,19 @@ export default function CoverageAreaCity({
   const slug = content?.slug ?? name.toLowerCase();
   const h1 = content?.h1Override ?? `${name} Plumber`;
   const gbpLabel = content?.gbp ?? name;
-  const heroImageUrl = resolveHeroImage(content?.heroImage);
+  const heroImageUrl = resolveCityImage(content?.heroImage);
+  /*
+   * Brief 160 (Track C): section 1 resolves its OWN field. It deliberately does
+   * not read `content.heroImage`, and does not reuse `heroImageUrl` — the whole
+   * point of the track is that a populated hero has no effect here. Empty →
+   * the pipes fallback, which is what these pages already render.
+   */
+  const coveredImageUrl = resolveCityImage(content?.coveredImage);
+  /*
+   * Brief 160 (Track A): the CMS heading wins when non-empty; empty falls back
+   * to the literal below, so clearing the field is safe and reversible.
+   */
+  const coveredHeading = content?.coveredHeading?.trim() ?? '';
   const mapUrl = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(
     `${name}, ${state}`,
   )}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
@@ -103,11 +115,19 @@ export default function CoverageAreaCity({
           {/* ===== 3. WE'VE GOT YOU COVERED, {CITY} ===== */}
           <section className="f grid grid-cols-1 items-stretch gap-10 pt-[50px] lg:grid-cols-2 lg:pt-[130px]">
             <div className="flex flex-col justify-center">
-              {/* Brief 95 (A.2): intentionally hard-coded, not DB-driven — this is
-                  a templated SEO/geo pattern; wiring it risks colliding with
-                  `contentHeading`'s other meaning on the Local-Office template. */}
+              {/* Brief 160 (Track A): this heading IS editable now, backed by its
+                  own `city_pages.covered_heading` column — a NEW column, not the
+                  `content_heading` one Brief 95 (A.2) refused to reuse, which
+                  still means the Why-J.-Blanton heading on the Local-Office
+                  template. A template switch therefore cannot repurpose it.
+
+                  The literal stays as the fallback on purpose: an empty field
+                  renders exactly what this page rendered before the column
+                  existed, so clearing the field in the CMS is a safe, reversible
+                  action rather than a blank heading on a live indexed page.
+                  Plain text, never HTML — it is rendered inside a heading. */}
               <p className="red-text mb-6 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
-                WE&apos;VE GOT YOU COVERED, <span>{name}</span>
+                {coveredHeading || <>WE&apos;VE GOT YOU COVERED, <span>{name}</span></>}
               </p>
               {content?.coveredBody && (
                 <div
@@ -118,7 +138,7 @@ export default function CoverageAreaCity({
             </div>
             <div className="relative min-h-[300px] overflow-hidden rounded-[5px]">
               <CityPageImage
-                src={heroImageUrl}
+                src={coveredImageUrl}
                 alt={name}
                 className="absolute inset-0 h-full w-full object-cover"
               />

@@ -412,6 +412,25 @@ jobs:
               scripts/migrate-brief-159-version-status.ts commit
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
               scripts/seed-brief-159-baseline-versions.ts commit
+            # -- Brief 160: city "We've got you covered" heading + section image ---
+            # ORDER MATTERS and the two are a pair, same shape as Brief 159 above:
+            #   1. the MIGRATION adds `city_pages.covered_heading` and
+            #      `covered_image`. Both are additive with a '' default and are
+            #      also in ensure-schema.ts, so this is normally a no-op that
+            #      reports ALREADY-APPLIED; it stays here so the column is
+            #      guaranteed present before the seed runs against it.
+            #   2. the SEED writes, into each coverage-area row, the exact
+            #      heading that row already renders ("WE'VE GOT YOU COVERED,
+            #      {City}", rebuilt from CITY_REGISTRY — not hand-typed). It is
+            #      fill-gaps-only and guarded on the value still being empty, so
+            #      it never overwrites a heading Marketing has edited and is a
+            #      no-op on every deploy after the first.
+            # Nothing on any page changes wording: an empty field renders the
+            # template literal, and the seed writes that same literal.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+              scripts/migrate-brief-160-city-covered-fields.ts commit
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+              scripts/seed-brief-160-covered-headings.ts commit
             # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
             # what the checked-in code assumes, BEFORE the swap below.
             #  - every sitemap <lastmod> source query runs against the real schema.
