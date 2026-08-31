@@ -48,7 +48,7 @@
   font-size: 16px;
 }
 
-.customer-stories-page .hero .hero-contents .w .involveme_popup {
+.customer-stories-page .hero .hero-contents .w .schedule-popup {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@
   transition: background 0.3s;
 }
 
-.customer-stories-page .hero .hero-contents .w .involveme_popup:hover {
+.customer-stories-page .hero .hero-contents .w .schedule-popup:hover {
   background: #0e4fc7;
 }
 

@@ -7,6 +7,7 @@ import './globals.css';
 import SiteShell from '@/components/SiteShell';
 import InvolveMeScript from '@/components/InvolveMeScript';
 import InvolveMePopupBinder from '@/components/InvolveMePopupBinder';
+import ScheduleServiceModal from '@/components/schedule/ScheduleServiceModal';
 import SiteAnalytics from '@/components/analytics/SiteAnalytics';
 import WhatConvertsScript from '@/components/analytics/WhatConvertsScript';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
@@ -119,10 +120,24 @@ export default async function RootLayout({
         <Script src="https://static.elfsight.com/platform/platform.js" strategy="lazyOnload" />
         {/* TikTok embed */}
         <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />
-        {/* involve.me popup ("schedule-service-new") + UTM tracker */}
+        {/* Brief 169: the site's "Schedule a Service" popup. One mount owns every
+            `.schedule-popup` trigger on the site through a delegated click
+            listener, and embeds Mainline's own /schedule-service form. The iframe
+            is created on first open, so an unopened popup costs no requests. */}
+        <ScheduleServiceModal />
+        {/* involve.me embed + the `jb_utm_params` UTM tracker.
+            Brief 169: these now serve the "no-drip-club" project ONLY — the four
+            NDC CTAs (hero, SIGN UP, "WHAT ARE YOU WAITING FOR?", the
+            MembershipComparison price cards). The scheduling project it also used
+            to serve is retired, replaced by <ScheduleServiceModal /> above.
+            TODO: retire involve.me entirely — and with it both components below
+            and the tracker — when the follow-up NDC brief moves those four CTAs
+            onto a first-party form. */}
         <InvolveMeScript />
         {/* Brief 108 (Group B): re-binds involve.me CTAs that mount after a
-            client-side navigation, which the embed script's one-time scan misses. */}
+            client-side navigation, which the embed script's one-time scan misses.
+            Still needed for the NDC CTAs; the Brief 169 popup does not need it,
+            because event delegation cannot miss a late-mounting element. */}
         <InvolveMePopupBinder />
         {/* Brief 128: GA4 + Google Ads + Meta Pixel + Bing UET base tags,
             client-side route-change pageviews, and the element_1_click tracker.

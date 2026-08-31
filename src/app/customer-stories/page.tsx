@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
+import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { CUSTOMER_STORIES } from '@/lib/content/customer-stories';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
@@ -54,7 +55,7 @@ export default async function CustomerStoriesPage() {
   const settings = await getGlobalSettingsCached();
   const html = (v: string) => ({ __html: renderCmsInline(v, settings) });
   const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
-  const { hero: _hero, testimonials, reviewUrl, behindTheReview: _btr, involveme, cta: _cta } = CUSTOMER_STORIES;
+  const { hero: _hero, testimonials, reviewUrl, behindTheReview: _btr, cta: _cta } = CUSTOMER_STORIES;
   const hero = { ..._hero, heading: m(d.hero_heading, _hero.heading), description: m(d.hero_description, _hero.description) };
   const behindTheReview = { ..._btr, heading: m(d.behind_review_heading, _btr.heading) };
   const cta = { ..._cta, heading: m(d.cta_heading, _cta.heading), body: m(d.cta_body, _cta.body) };
@@ -82,17 +83,9 @@ export default async function CustomerStoriesPage() {
             <h1>{hero.heading}</h1>
             <p className="sub-label"></p>
             <p className="hero-desc" dangerouslySetInnerHTML={html(hero.description)} />
-            <div
-              className="involveme_popup"
-              data-params="source=,campaignname=,utm_campaign=,utm_adgroup=,keyword=,network=,device=,medium=,gclid=,msclkid="
-              data-project={involveme.project}
-              data-embed-mode={involveme.embedMode}
-              data-trigger-event={involveme.triggerEvent}
-              data-popup-size={involveme.popupSize}
-              data-organization-url={involveme.organizationUrl}
-            >
-              <p>SCHEDULE A SERVICE</p>
-            </div>
+            {/* Brief 169: first-party schedule popup. Styled by
+                `.customer-stories-page … .schedule-popup` in customer-stories.css. */}
+            <ScheduleTrigger label={<p>SCHEDULE A SERVICE</p>} />
           </div>
         </div>
       </div>

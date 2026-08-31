@@ -107,7 +107,7 @@
 }
 
 /* Schedule CTA button */
-.contact-page .involveme_popup {
+.contact-page .schedule-popup {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +124,7 @@
   margin-top: 10px;
   transition: background 0.3s;
 }
-.contact-page .involveme_popup:hover {
+.contact-page .schedule-popup:hover {
   background: #0e4fc7;
 }
 

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
+import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { KNOWLEDGE_HUB } from '@/lib/content/knowledge-hub';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
@@ -96,18 +97,9 @@ export default async function KnowledgeHubPage() {
         <div className="hero-contents">
           <div className="w">
             <h1>{hero.heading}</h1>
-            <div
-              className="involveme_popup"
-              role="button"
-              tabIndex={0}
-              data-project="schedule-service-new"
-              data-embed-mode="popup"
-              data-trigger-event="button"
-              data-popup-size="medium"
-              data-organization-url="https://jblantonplumbing.involve.me"
-            >
-              <p>SCHEDULE A SERVICE</p>
-            </div>
+            {/* Brief 169: first-party schedule popup. Styled by
+                `.kh-page … .schedule-popup` in knowledge-hub.css. */}
+            <ScheduleTrigger label={<p>SCHEDULE A SERVICE</p>} />
           </div>
         </div>
       </div>

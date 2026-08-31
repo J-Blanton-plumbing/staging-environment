@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
+import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { CONTACT } from '@/lib/content/contact';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { formatOfficeAddress } from '@/lib/cms/offices';
@@ -10,14 +11,6 @@ import './contact.css';
 export const metadata: Metadata = {
   title: pageTitle(CONTACT.meta.title),
   description: CONTACT.meta.description,
-};
-
-const INVOLVE_ME = {
-  project: 'schedule-service-new',
-  embedMode: 'popup',
-  triggerEvent: 'button',
-  popupSize: 'medium',
-  organizationUrl: 'https://jblantonplumbing.involve.me',
 };
 
 /**
@@ -79,18 +72,9 @@ export default async function ContactPage() {
               <p style={{ marginTop: '20px' }}>{getInTouch.availability}</p>
               <div style={{ marginTop: '30px' }}>
                 <p className="red-text">SCHEDULE A SERVICE</p>
-                <div
-                  className="involveme_popup"
-                  role="button"
-                  tabIndex={0}
-                  data-project={INVOLVE_ME.project}
-                  data-embed-mode={INVOLVE_ME.embedMode}
-                  data-trigger-event={INVOLVE_ME.triggerEvent}
-                  data-popup-size={INVOLVE_ME.popupSize}
-                  data-organization-url={INVOLVE_ME.organizationUrl}
-                >
-                  SCHEDULE NOW
-                </div>
+                {/* Brief 169: first-party schedule popup. Styled by
+                    `.contact-page .schedule-popup` in contact.css. */}
+                <ScheduleTrigger label="SCHEDULE NOW" />
               </div>
             </div>
 

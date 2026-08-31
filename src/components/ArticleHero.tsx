@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ScheduleTrigger from './schedule/ScheduleTrigger';
 
 interface Props {
   /** Article title — rendered as H1. */
@@ -52,18 +53,12 @@ export default function ArticleHero({ heading, image }: Props) {
             Everything you need to know, directly from the experts.
           </p>
 
-          <div
-            className="involveme_popup inline-flex items-center justify-center bg-[#1560E6] hover:bg-[#0d4ab8] text-white font-display font-bold text-base lg:text-lg uppercase px-10 py-3.5 rounded-full cursor-pointer transition-colors"
-            role="button"
-            tabIndex={0}
-            data-project="schedule-service-new"
-            data-embed-mode="popup"
-            data-trigger-event="button"
-            data-popup-size="medium"
-            data-organization-url="https://jblantonplumbing.involve.me"
-          >
-            SCHEDULE NOW
-          </div>
+          {/* Brief 169: opens the first-party schedule popup. Class string is
+              carried over byte-for-byte from the involve.me trigger. */}
+          <ScheduleTrigger
+            className="inline-flex items-center justify-center bg-[#1560E6] hover:bg-[#0d4ab8] text-white font-display font-bold text-base lg:text-lg uppercase px-10 py-3.5 rounded-full cursor-pointer transition-colors"
+            label="SCHEDULE NOW"
+          />
         </div>
       </div>
     </section>

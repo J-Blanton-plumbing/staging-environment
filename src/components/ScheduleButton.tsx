@@ -1,5 +1,3 @@
-'use client';
-
 import { cn } from '@/lib/utils';
 import { CalendarDays } from 'lucide-react';
 import type { ReactNode } from 'react';
@@ -26,11 +24,17 @@ const SIZES = {
 };
 
 /**
- * Triggers the J. Blanton involve.me popup "schedule-service-new".
- * Reads UTM params from the URL (or sessionStorage) and passes them
- * to involve.me — the embed script handles the rest on click.
+ * Opens the site's "Schedule a Service" popup (Brief 169) — Mainline's own
+ * /schedule-service form in a first-party modal.
  *
- * Make sure <InvolveMeScript /> is mounted (in app/layout.tsx).
+ * All this renders is the `schedule-popup` class. <ScheduleServiceModal />,
+ * mounted once in app/layout.tsx, catches the click with a single delegated
+ * listener on `document` and builds the iframe URL, attribution included.
+ *
+ * That is also why this is no longer a client component: with delegation there
+ * is nothing client-side left here, so the five call sites may render it from a
+ * server component. Props, classes and the VARIANTS/SIZES table are unchanged
+ * from the involve.me version — the button has to look identical.
  */
 export default function ScheduleButton({
   children = 'SCHEDULE A SERVICE',
@@ -44,17 +48,11 @@ export default function ScheduleButton({
       role="button"
       tabIndex={0}
       className={cn(
-        'involveme_popup link-button inline-flex items-center justify-center gap-2 font-display font-semibold tracking-wider rounded-full transition-colors duration-150 cursor-pointer',
+        'schedule-popup link-button inline-flex items-center justify-center gap-2 font-display font-semibold tracking-wider rounded-full transition-colors duration-150 cursor-pointer',
         VARIANTS[variant],
         SIZES[size],
         className
       )}
-      data-params="source=,campaignname=,utm_campaign=,utm_adgroup=,keyword=,network=,device=,medium=,gclid=,msclkid="
-      data-project="schedule-service-new"
-      data-embed-mode="popup"
-      data-trigger-event="button"
-      data-popup-size="medium"
-      data-organization-url="https://jblantonplumbing.involve.me"
     >
       {showIcon && <CalendarDays className="h-4 w-4" strokeWidth={2.5} />}
       <span>{children}</span>

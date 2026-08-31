@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import HeroNav from '@/components/HeroNav';
+import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import ArticleHero from '@/components/ArticleHero';
 import pool from '@/lib/db';
 import { getSession } from '@/lib/auth/session';
@@ -105,18 +106,9 @@ export default async function ArticlePage({
         <h2>NEED AN EXPERT?</h2>
         <h3>MAKE A GOOD CALL.</h3>
         <p>We&rsquo;re here to help with all your plumbing needs</p>
-        <div
-          className="involveme_popup"
-          role="button"
-          tabIndex={0}
-          data-project="schedule-service-new"
-          data-embed-mode="popup"
-          data-trigger-event="button"
-          data-popup-size="medium"
-          data-organization-url="https://jblantonplumbing.involve.me"
-        >
-          <p>SCHEDULE NOW</p>
-        </div>
+        {/* Brief 169: first-party schedule popup. Styled by
+            `.article-page .article-footer-cta .schedule-popup` in article.css. */}
+        <ScheduleTrigger label={<p>SCHEDULE NOW</p>} />
       </div>
     </div>
   );
