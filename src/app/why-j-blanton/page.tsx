@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroNav from '@/components/HeroNav';
+import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { WHY_JB } from '@/lib/content/why-j-blanton';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
@@ -34,14 +35,6 @@ export async function generateMetadata(): Promise<Metadata> {
   const meta = await getMainPageMeta('why-j-blanton', STATIC_META);
   return { title: meta.title, description: meta.description };
 }
-
-const INVOLVE_ME = {
-  project: 'schedule-service-new',
-  embedMode: 'popup',
-  triggerEvent: 'button',
-  popupSize: 'medium',
-  organizationUrl: 'https://jblantonplumbing.involve.me',
-};
 
 export default async function WhyJBlantonPage() {
   const preview = await getMainPagePreview('why-j-blanton');
@@ -98,18 +91,9 @@ export default async function WhyJBlantonPage() {
             <h1>{h.heading}</h1>
             <p className="sub-label">{h.subheading}</p>
             <p className="hero-desc" dangerouslySetInnerHTML={{ __html: renderCmsInline(h.description, settings) }} />
-            <div
-              className="involveme_popup"
-              role="button"
-              tabIndex={0}
-              data-project={INVOLVE_ME.project}
-              data-embed-mode={INVOLVE_ME.embedMode}
-              data-trigger-event={INVOLVE_ME.triggerEvent}
-              data-popup-size={INVOLVE_ME.popupSize}
-              data-organization-url={INVOLVE_ME.organizationUrl}
-            >
-              {h.cta}
-            </div>
+            {/* Brief 169: first-party schedule popup. Styled by
+                `.why-jb-page … .schedule-popup` in why-j-blanton.css. */}
+            <ScheduleTrigger label={h.cta} />
           </div>
         </div>
       </div>

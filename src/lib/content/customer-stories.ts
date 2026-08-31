@@ -22,13 +22,6 @@ export interface CustomerStoriesContent {
     videoSrc: string;
     videoTitle: string;
   };
-  involveme: {
-    project: string;
-    embedMode: string;
-    triggerEvent: string;
-    popupSize: string;
-    organizationUrl: string;
-  };
   cta: {
     heading: string;
     body: string;
@@ -92,13 +85,6 @@ export const CUSTOMER_STORIES: CustomerStoriesContent = {
     heading: 'BEHIND THE REVIEW:',
     videoSrc: 'https://www.youtube.com/embed/m8iTyK0vrr8',
     videoTitle: 'Behind the Review',
-  },
-  involveme: {
-    project: 'schedule-service-new',
-    embedMode: 'popup',
-    triggerEvent: 'button',
-    popupSize: 'medium',
-    organizationUrl: 'https://jblantonplumbing.involve.me',
   },
   cta: {
     heading: 'Need a trusted plumber in Chicago?',

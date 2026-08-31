@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
+import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { CITY_REGISTRY } from '@/lib/content/cities/index';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
@@ -122,17 +123,9 @@ export default async function LocationsPage() {
             <h1>{heroHeading}</h1>
             <p className="sub-label"></p>
             <p className="hero-desc" dangerouslySetInnerHTML={html(heroDescription)} />
-            <div
-              className="involveme_popup"
-              data-params="source=,campaignname=,utm_campaign=,utm_adgroup=,keyword=,network=,device=,medium=,gclid=,msclkid="
-              data-project="schedule-service-new"
-              data-embed-mode="popup"
-              data-trigger-event="button"
-              data-popup-size="medium"
-              data-organization-url="https://jblantonplumbing.involve.me"
-            >
-              <p>{heroCta}</p>
-            </div>
+            {/* Brief 169: first-party schedule popup. Styled by
+                `.locations-page … .schedule-popup` in locations.css. */}
+            <ScheduleTrigger label={<p>{heroCta}</p>} />
           </div>
         </div>
       </div>

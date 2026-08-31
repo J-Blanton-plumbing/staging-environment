@@ -57,7 +57,7 @@
   line-height: 1.6;
   font-size: 16px;
 }
-.why-jb-page .hero .hero-contents .w .involveme_popup {
+.why-jb-page .hero .hero-contents .w .schedule-popup {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@
   cursor: pointer;
   transition: background 0.3s;
 }
-.why-jb-page .hero .hero-contents .w .involveme_popup:hover {
+.why-jb-page .hero .hero-contents .w .schedule-popup:hover {
   background: #0e4fc7;
 }
 

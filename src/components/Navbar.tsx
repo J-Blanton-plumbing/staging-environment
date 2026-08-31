@@ -104,7 +104,7 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
               {phoneDisplay}
             </Link>
 
-            {/* SCHEDULE A SERVICE — involve.me popup trigger, BLUE */}
+            {/* SCHEDULE A SERVICE — schedule popup trigger (Brief 169), BLUE */}
             <ScheduleButton
               variant="blue"
               size="md"
@@ -133,18 +133,14 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
               >
                 <Phone className="h-4 w-4" strokeWidth={2.5} />
               </Link>
-              {/* involve.me popup trigger styled as icon */}
+              {/* Schedule-a-service popup trigger styled as an icon (Brief 169).
+                  Left as an inline element rather than <ScheduleTrigger> because of
+                  the aria-label — that component takes no extra attributes. */}
               <div
                 role="button"
                 tabIndex={0}
                 aria-label="Schedule a service"
-                className="involveme_popup flex h-10 w-10 items-center justify-center rounded-full bg-accent-500 text-white cursor-pointer"
-                data-params="source=,campaignname=,utm_campaign=,utm_adgroup=,keyword=,network=,device=,medium=,gclid=,msclkid="
-                data-project="schedule-service-new"
-                data-embed-mode="popup"
-                data-trigger-event="button"
-                data-popup-size="medium"
-                data-organization-url="https://jblantonplumbing.involve.me"
+                className="schedule-popup flex h-10 w-10 items-center justify-center rounded-full bg-accent-500 text-white cursor-pointer"
               >
                 <CalendarDays className="h-4 w-4" strokeWidth={2} />
               </div>
