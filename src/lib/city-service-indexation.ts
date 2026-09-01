@@ -49,10 +49,27 @@ import { OHIO_STATE } from '@/lib/content/cities/ohio-areas';
 /**
  * Ohio city slugs whose `/{city}/{service}` pages are cleared for indexing.
  *
- * EMPTY as of Brief 02 — no Ohio area has real per-area service copy yet. Brief
- * 03+ adds slugs here one batch at a time.
+ * Brief 03+ adds slugs here one batch at a time, as each area's rewrite lands.
+ *
+ * ─── Why `columbus` is already here ────────────────────────────────────────
+ * Marketing's call (2026-09-01), on the Brief 02 report's decision list.
+ *
+ * Columbus is the one Ohio area that existed before this brief: Brief 154
+ * registered it, Brief 158 seeded its `city_pages` row, and its 45
+ * `/columbus/{service}` URLs are live, in the sitemap and indexable TODAY.
+ * Applying "city-service pages start fully noindex" to it would not have held a
+ * new page back — it would have DE-INDEXED 45 live URLs, the only loss of
+ * existing reach anywhere in this brief. So Columbus is treated as a batch that
+ * has already been published, and the policy governs the 137 areas Brief 02
+ * created.
+ *
+ * This is not a claim that Columbus's service copy is finished — it is still the
+ * dummy Elgin clone, and the board carries a P0 card to replace it. It is a
+ * decision that removing live indexed URLs is a separate action from declining to
+ * index new ones, and needs its own reason. When the Columbus rewrite lands this
+ * entry simply stays.
  */
-export const CITY_SERVICE_INDEXED_OHIO_CITIES: readonly string[] = [];
+export const CITY_SERVICE_INDEXED_OHIO_CITIES: readonly string[] = ['columbus'];
 
 const INDEXED_OHIO = new Set(CITY_SERVICE_INDEXED_OHIO_CITIES);
 
