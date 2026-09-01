@@ -19,11 +19,20 @@ import type { NearbyArea } from '@/lib/content/cities/ohio-nearby';
  * the content checklist means.
  *
  * ─── Why it renders nothing for Illinois ───────────────────────────────────
- * Every field it reads is unset on all ~249 Illinois cities (`county` is
- * `undefined`, `nearby` is empty), and the component returns `null` when it has
- * nothing to show. So no Illinois page gains a section — a hard rule of the
- * brief. It is not gated on the state string anywhere: it is gated on having
- * data, which is the honest condition.
+ * It returns `null` unless the page has AREA-SPECIFIC data: a county, or sibling
+ * links. Both are unset/empty on all ~249 Illinois cities, so no Illinois page
+ * gains a section — a hard rule of the brief.
+ *
+ * The gate is deliberately NOT "does it have any fact at all". `office.address`
+ * resolves for every city in the registry (that is the point of the office
+ * maps), so an any-fact gate rendered a "Serving {City} → Nearest office" block
+ * on all ~249 Illinois city pages and all 11,160 Illinois city-service pages —
+ * caught by the before/after HTML diff in Track E, at ~175 changed tags per
+ * page. The office address is also already displayed in the hero NAP block on
+ * those pages, so it was duplicate content as well as an unrequested change.
+ *
+ * The condition is data, not a state string: an Illinois city that one day gets
+ * a county and siblings would render this correctly with no code change.
  *
  * ─── population / zips / driveTimeMinutes ──────────────────────────────────
  * Rendered ONLY when present, and as of Brief 02 all three are unset on every
@@ -68,6 +77,14 @@ export default function CityAreaDetails({
   zips,
   nearby,
 }: CityAreaDetailsProps) {
+  /*
+   * The gate. See the docblock: `office.address` alone is NOT area-specific data
+   * — it resolves for every registry city — so it must not be able to bring this
+   * section into existence on a page that has nothing else to say.
+   */
+  const hasAreaData = Boolean(county) || nearby.length > 0;
+  if (!hasAreaData) return null;
+
   const facts: Fact[] = [];
 
   if (county) facts.push({ label: 'County', value: `${county} County, ${state}` });
@@ -94,10 +111,6 @@ export default function CityAreaDetails({
   if (zips && zips.length > 0) {
     facts.push({ label: zips.length === 1 ? 'ZIP code' : 'ZIP codes', value: zips.join(', ') });
   }
-
-  // Nothing sourced and no siblings — render no section at all rather than an
-  // empty heading. This is the Illinois path.
-  if (facts.length === 0 && nearby.length === 0) return null;
 
   return (
     <section className="city-area-details mb-[100px]">
