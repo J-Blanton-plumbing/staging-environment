@@ -10,10 +10,36 @@ import { MapPin } from 'lucide-react';
  * from the shared registry — the same data that drives `generateStaticParams`.
  * Columns are chunked `ceil(n/4)` to mirror the theme's `array_chunk`.
  */
+/**
+ * Which region's trust line sits above the grid.
+ *
+ * Columbus Integration Brief 02 hard rule: "Do not carry the Chicago trust
+ * statement onto Columbus pages … That is wrong on an Ohio page and must not be
+ * replicated 172 times." `/columbus` shipped it because this component hardcoded
+ * one literal for every city page on the site.
+ *
+ * `'chicagoland'` is the default so all ~11,400 existing Illinois pages render
+ * the identical line they render today.
+ */
+export type CityGridRegion = 'chicagoland' | 'ohio';
+
+/**
+ * The Ohio line is deliberately minimal and factual. "30+ years" is a
+ * Chicagoland claim and does not transfer to a market J. Blanton has just
+ * entered; nothing here asserts a tenure, a project count or a local credential.
+ * Flagged in the Brief 02 report for Marketing to replace with approved copy.
+ */
+const REGION_TRUST_LINE: Record<CityGridRegion, string> = {
+  chicagoland: 'Proudly Serving the Greater Chicagoland Area for 30+ Years',
+  ohio: 'Now Serving Central Ohio',
+};
+
 export default function CityLocationsGrid({
   cities,
+  region = 'chicagoland',
 }: {
   cities: { slug: string; name: string }[];
+  region?: CityGridRegion;
 }) {
   const perColumn = Math.ceil(cities.length / 4);
   const columns: { slug: string; name: string }[][] = [];
@@ -25,7 +51,7 @@ export default function CityLocationsGrid({
     <div className="city-locations mt-[100px]">
       <div className="city-labels mb-8 text-center">
         <p className="font-display text-[22px] font-bold text-navy-800 md:text-[28px]">
-          Proudly Serving the Greater Chicagoland Area for 30+ Years
+          {REGION_TRUST_LINE[region]}
         </p>
         <p className="mt-2 text-navy-800">
           Some areas we serve, but are not limited to, include:

@@ -5,11 +5,14 @@ import {
   getCity,
   getCoverageContent,
   getGridCities,
+  getOfficeKey,
+  gridRegionFor,
   getLocalOfficeContent,
   getOffice,
   staticCityMeta,
 } from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, WATER_TESTING_FAQS } from '@/lib/content/cities/shared';
+import { nearbyOhioAreas } from '@/lib/content/cities/ohio-nearby';
 import { getArticles } from '@/lib/articles';
 import { getCityCmsContent } from '@/lib/cms/city-pages';
 import { getCityPreview } from '@/lib/cms/preview';
@@ -212,6 +215,18 @@ export default async function CityPage({ params }: { params: { city: string } })
 
   const mergedFaqs = db && db.faqs.length > 0 ? db.faqs : WATER_TESTING_FAQS;
 
+  /*
+   * Columbus Integration Brief 02, Track B.
+   *
+   * `gridRegion` scopes the §10 locations grid: an Illinois page keeps rendering
+   * the Chicagoland list and its existing trust line, and an Ohio page renders
+   * the Ohio list. Without this, registering 138 Ohio areas would have appended
+   * 137 links to the bottom of every Illinois city page.
+   */
+  const gridRegion = gridRegionFor(entry.slug);
+  const isOhio = gridRegion === 'ohio';
+  const officeName = settings.offices.find((o) => o.slug === getOfficeKey(entry.slug))?.name;
+
   return (
     <>
       {previewDraft && (
@@ -232,8 +247,24 @@ export default async function CityPage({ params }: { params: { city: string } })
         area={getArea(entry.slug)}
         articles={articles}
         faqs={mergedFaqs}
-        cities={getGridCities()}
+        cities={getGridCities(gridRegion)}
         state={entry.state}
+        /*
+         * Columbus Integration Brief 02, Track B.
+         *
+         * Every prop below is `undefined` / empty for an Illinois city, and each
+         * block it feeds renders nothing in that case — so no Illinois page's
+         * markup changes. `slug` is passed only for Ohio (see the prop's docblock:
+         * passing it for Illinois would flip ~240 pages' OUR SERVICES menus).
+         */
+        county={entry.county}
+        driveTimeMinutes={entry.driveTimeMinutes}
+        population={entry.population}
+        zips={entry.zips}
+        nearby={nearbyOhioAreas(entry.slug)}
+        slug={isOhio ? entry.slug : undefined}
+        officeName={isOhio ? officeName : undefined}
+        gridRegion={gridRegion}
       />
     </>
   );

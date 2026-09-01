@@ -12,7 +12,13 @@ import GoogleReviews from '@/components/GoogleReviews';
 import type { RegistryEntry } from '@/lib/content/cities/types';
 import type { CityServiceContent } from '@/types/city-service';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
-import { getOffice, getArea, getLocalOfficeContent, getGridCities } from '@/lib/content/cities';
+import {
+  getOffice,
+  getArea,
+  getLocalOfficeContent,
+  getGridCities,
+  gridRegionFor,
+} from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, getElfsightContentId } from '@/lib/content/cities/shared';
 import { getArticles } from '@/lib/articles';
 import CityPageImage from '@/components/CityPageImage';
@@ -55,7 +61,13 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
   const office = getOffice(city.slug, settings.offices);
   const area = getArea(city.slug);
   const articles = getArticles(DEFAULT_ARTICLE_SLUGS);
-  const gridCities = getGridCities();
+  /*
+   * Columbus Integration Brief 02, Track B: same region scoping as the city
+   * page. An Ohio city-service page lists the Ohio areas and the Ohio trust
+   * line; every Illinois page is unchanged (the default region).
+   */
+  const gridRegion = gridRegionFor(city.slug);
+  const gridCities = getGridCities(gridRegion);
   const cityNameUpper = city.name.toUpperCase();
 
   // Local Office cities render the video hero, which carries the page's <h1> —
@@ -220,7 +232,7 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
 
       {/* ── 10. CITY-LOCATIONS GRID ──────────────────────────────────────── */}
       <section className="mx-auto max-w-[1200px] px-6 pb-[80px]">
-        <CityLocationsGrid cities={gridCities} />
+        <CityLocationsGrid cities={gridCities} region={gridRegion} />
       </section>
 
       {/* ── 11. FAQ ACCORDION ────────────────────────────────────────────── */}

@@ -76,6 +76,50 @@ export interface RegistryEntry {
    * city (Columbus → `'Ohio'`).
    */
   state?: string;
+
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Columbus Integration Brief 02, Track B — "free differentiation at creation
+   * time".
+   *
+   * Every field below is OPTIONAL and UNSET on all ~249 Illinois cities, so
+   * nothing an Illinois page renders changes. The templates render each one only
+   * when it is present. They exist so that name-swapped Ohio pages are not
+   * byte-identical below the H1 while their real copy is still being written
+   * (Brief 03+) — county, nearest office and the "we also serve" graph differ on
+   * every page at zero copywriting cost.
+   * ────────────────────────────────────────────────────────────────────────── */
+
+  /**
+   * County the area sits in, e.g. `'Franklin'`. Drives Brief 03's county
+   * grouping on `/locations/columbus` and the "we also serve" sibling graph.
+   */
+  county?: string;
+
+  /**
+   * Population — CENSUS DATA ONLY.
+   *
+   * Deliberately unset for every area as of Brief 02. Brief 02's hard rules bar
+   * statistics that were not supplied or sourced from public data, and no Census
+   * pull has happened yet (Columbus board card "Source public local data for all
+   * areas", P1). The template renders it only when present, so the sourced pass
+   * is a data-only change. Do not populate this from memory or estimation.
+   */
+  population?: number;
+
+  /**
+   * ZIP codes served by this area. Same rule as `population`: USPS/Census
+   * sourced only, unset until that pass lands.
+   */
+  zips?: readonly string[];
+
+  /**
+   * Driving time in whole minutes from the dispatching office.
+   *
+   * Unset as of Brief 02 — a real drive time needs a routing lookup, and an
+   * invented "about 25 minutes" on 137 pages is precisely the kind of unsourced
+   * local detail the brief forbids. Renders only when present.
+   */
+  driveTimeMinutes?: number;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
