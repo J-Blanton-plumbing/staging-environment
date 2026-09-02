@@ -46,6 +46,7 @@ import {
   OHIO_STATE,
   getOhioArea,
 } from './ohio-areas';
+import { getOhioTemplateContent } from './ohio-template-content';
 
 /** The 12 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102).
  * Brief 154 adds `columbus` — the first OUT-OF-STATE office; every other key
@@ -386,7 +387,20 @@ export function getCity(slug: string): RegistryEntry | undefined {
   return BY_SLUG.get(slug);
 }
 export function getCoverageContent(slug: string): CoverageAreaContent | undefined {
-  return COVERAGE_CONTENT[slug];
+  /*
+   * Columbus Integration Brief 02: an Ohio area with no hand-written copy file
+   * falls back to the name-swapped TEMPLATE copy, which is this brief's declared
+   * shipping state ("the current template with the city name substituted").
+   *
+   * Without this the two prose blocks hide and the 137 new pages render heading
+   * chrome with no body — which is what the ~240 copy-less Illinois cities do,
+   * but is not what the brief asked for.
+   *
+   * Order matters: the explicit map wins, so `columbus` keeps `./columbus.ts`
+   * and no hand-written file can ever be shadowed by the template. Illinois
+   * slugs miss both and return undefined exactly as before.
+   */
+  return COVERAGE_CONTENT[slug] ?? getOhioTemplateContent(slug);
 }
 export function getLocalOfficeContent(slug: string): LocalOfficeContent | undefined {
   return LOCAL_OFFICE_CONTENT[slug];

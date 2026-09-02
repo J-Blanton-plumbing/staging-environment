@@ -20,6 +20,7 @@ import {
   gridRegionFor,
 } from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, getElfsightContentId } from '@/lib/content/cities/shared';
+import { OHIO_ARTICLE_SLUGS } from '@/lib/content/cities/ohio-template-content';
 import { getArticles } from '@/lib/articles';
 import CityPageImage from '@/components/CityPageImage';
 
@@ -60,7 +61,14 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
   const s = replaceAll(service, city.name);
   const office = getOffice(city.slug, settings.offices);
   const area = getArea(city.slug);
-  const articles = getArticles(DEFAULT_ARTICLE_SLUGS);
+  /*
+   * Columbus Integration Brief 02: same geo-neutral article set as the city page.
+   * These pages are noindex for now, but they still render to visitors, and two
+   * of the three shared defaults are Chicago-titled.
+   */
+  const articles = getArticles(
+    city.state === 'Ohio' ? [...OHIO_ARTICLE_SLUGS] : DEFAULT_ARTICLE_SLUGS
+  );
   /*
    * Columbus Integration Brief 02, Track B: same region scoping as the city
    * page. An Ohio city-service page lists the Ohio areas and the Ohio trust

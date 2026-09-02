@@ -13,6 +13,7 @@ import {
 } from '@/lib/content/cities';
 import { DEFAULT_ARTICLE_SLUGS, WATER_TESTING_FAQS } from '@/lib/content/cities/shared';
 import { nearbyOhioAreas } from '@/lib/content/cities/ohio-nearby';
+import { OHIO_ARTICLE_SLUGS } from '@/lib/content/cities/ohio-template-content';
 import { getArticles } from '@/lib/articles';
 import { getCityCmsContent } from '@/lib/cms/city-pages';
 import { getCityPreview } from '@/lib/cms/preview';
@@ -184,7 +185,16 @@ export default async function CityPage({ params }: { params: { city: string } })
 
   // Coverage Area
   const content = getCoverageContent(entry.slug);
-  const articles = getArticles(content?.articleSlugs ?? DEFAULT_ARTICLE_SLUGS);
+  /*
+   * Columbus Integration Brief 02: an Ohio page gets the geo-neutral article set.
+   * Two of the three shared defaults are Chicago-titled ("Why Chicagoland
+   * Homeowners…", "…the Chicago Cold Snap") and render as such on an Ohio page.
+   * A city's own `articleSlugs` still wins, so this is only the default.
+   */
+  const articles = getArticles(
+    content?.articleSlugs ??
+      (entry.state === 'Ohio' ? [...OHIO_ARTICLE_SLUGS] : DEFAULT_ARTICLE_SLUGS)
+  );
 
   let mergedContent = content;
   if (db) {
