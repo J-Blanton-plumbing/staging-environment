@@ -6,8 +6,16 @@
  * ($nap_map 55–232, $areas_map 235–402). Each office's city list is declared once
  * and reused for BOTH maps so a slug can't get an office without an area (or drift
  * between them). Cities outside the maps fall to the Ravenswood office + "North
- * and Northwest Side Chicago" — reproducing the known Joliet bug (live maps
- * Joliet to Ravenswood), flagged not fixed.
+ * and Northwest Side Chicago" — including the city slug `joliet`, which live
+ * likewise DISPATCHES to Ravenswood. Reproduced, flagged not fixed.
+ *
+ * ⚠️ Two separate "Joliet" problems; only one of them is still open. This
+ * routing one is: `getOfficeKey('joliet') === 'chicago-ravenswood'`, so the
+ * /joliet city page shows the Ravenswood NAP and the Joliet OFFICE dispatches
+ * nobody. The other was a DATA bug — the `joliet` record in
+ * `global_settings.offices` carried Ravenswood's street address, city, ZIP and
+ * Google link — and Brief 171 (Track A1) FIXED it with Joliet's real address.
+ * Do not read this paragraph as licence to restore the duplicate address.
  *
  * Brief 102 (Track C): the office ADDRESS DATA itself (street/city/state/zip,
  * Google Maps link, lat/lng) moved out of this file into the CMS
@@ -358,7 +366,7 @@ const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
     /*
      * Brief 02 Track B. Undefined for every Illinois city (`getOhioArea` misses),
      * so no Illinois page renders a county. Brief 03 groups
-     * `/locations/columbus` by this field.
+     * `/locations/central-ohio` by this field.
      */
     county: getOhioArea(slug)?.county,
   }));

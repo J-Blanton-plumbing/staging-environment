@@ -403,3 +403,534 @@
     font-size: 2.8vw;
   }
 }
+
+/* ============================================================================
+   Columbus Integration Brief 03 — region cards (hub) + region pages
+   ========================================================================== */
+
+/* ---- Hub: `.city-labels` now leads with an <h2> ---------------------------
+   Brief 162 semantics: the 34px section lead used to be a styled <p>. It is a
+   real heading, so it is an <h2> — and the size rule has to follow it, because
+   the Preflight `@layer base` reset renders an unstyled CMS/JSX heading at 16px
+   (Brief 162/163). Keeping the old `p:first-child` rule too: the hub is not the
+   only markup shape this file styles. */
+.locations-page .city-labels h2 {
+  font-size: 34px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 900;
+  color: #0a1b2e;
+  line-height: 1.2;
+}
+
+/* ---- Hub: the two region cards -------------------------------------------- */
+.locations-page .region-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-bottom: 70px;
+}
+
+.locations-page .region-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(10, 27, 46, 0.12);
+  border-radius: 10px;
+  padding: 32px 32px 28px 32px;
+}
+
+.locations-page .region-tenure {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bc0e0e;
+  margin-bottom: 8px;
+}
+
+.locations-page .region-card h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.15;
+  color: #0a1b2e;
+  margin-bottom: 10px;
+}
+
+.locations-page .region-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.locations-page .region-card h3 a:hover {
+  color: #bc0e0e;
+}
+
+.locations-page .region-count {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #0a1b2e;
+}
+
+.locations-page .region-counties {
+  font-family: var(--font-nunito), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(10, 27, 46, 0.75);
+  margin-top: 4px;
+}
+
+.locations-page .region-most-label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10, 27, 46, 0.6);
+  margin: 24px 0 12px 0;
+}
+
+.locations-page .region-most {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 18px;
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+
+.locations-page .region-most li {
+  display: flex;
+  align-items: center;
+}
+
+.locations-page .region-most li svg {
+  width: 18px;
+  height: 18px;
+  color: #bc0e0e;
+  flex-shrink: 0;
+}
+
+.locations-page .region-most li a {
+  margin-left: 6px;
+  font-family: var(--font-nunito), sans-serif;
+  font-size: 16px;
+  color: #0a1b2e;
+  text-decoration: none;
+}
+
+.locations-page .region-most li a:hover {
+  color: #bc0e0e;
+  text-decoration: underline;
+}
+
+.locations-page .region-all {
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: #1560e6;
+  border-radius: 50px;
+  padding: 13px 26px;
+  text-decoration: none;
+}
+
+.locations-page .region-all:hover {
+  background: #0a1b2e;
+}
+
+/* ---- Region pages --------------------------------------------------------- */
+/* No `padding-top` here. globals.css only pads page wrappers that use the
+   theme's split hero, and Brief 160 set the 70px navbar clearance on this
+   wrapper while the region pages were heroless. They now open with a full-bleed
+   photo band, so that clearance moved onto `.region-hero` — see Track B below.
+   Putting it back would paint a 70px white strip above the photo. */
+.locations-region {
+  background: #fff;
+}
+
+/* ---- Brief 170, Track B: the photo band -----------------------------------
+   Now on BOTH region pages (Marketing signed off on the Central Ohio pilot and
+   asked for the same on Chicagoland), so there is no `has-region-hero` opt-in
+   any more — the hero is unconditional in LocationsRegionView.
+
+   Marketing's report was "a huge blank space at the top, in white" — measured
+   cause was not spacing but that the whole band from the navbar down through
+   breadcrumbs, eyebrow, H1, count line, intro and CTA was unstyled `#fff` until
+   `.ls-cream` began. The band now carries the region skyline.
+
+   The fixed-navbar clearance lives on `.region-hero`, NOT on `.locations-region`
+   — on the wrapper it paints 70px of white above the photo, which is the same
+   blank strip in miniature. */
+.locations-region .region-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* Tracks the navbar height rather than re-typing 70px (Brief 160, Track D). */
+  padding-top: var(--site-header-h, 70px);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* next/image `fill` renders an absolutely-positioned <img> as a direct child. */
+.locations-region .region-hero > img {
+  z-index: 0;
+}
+
+/* Midnight scrim. Required, not decorative: it carries the copy contrast AND
+   masks the upscale (the source is 1000x500 and runs ~1.5-1.9x at desktop
+   widths). Midnight #0A1B2E per brand-rules.md — no pure black. */
+.locations-region .region-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 27, 46, 0.78) 0%,
+    rgba(10, 27, 46, 0.58) 60%,
+    rgba(10, 27, 46, 0.72) 100%
+  );
+}
+
+.locations-region .region-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Copy colours, scoped to the hero so the white-band version is untouched.
+   `.region-head-meta` is Carmine outside the hero and MUST NOT stay Carmine on
+   the Midnight scrim — brand-rules.md bans red on blue, and it fails contrast
+   besides. Cream on Midnight is an approved combination. */
+.locations-region .region-hero .region-head .red-text {
+  color: #f9f3ec;
+}
+
+.locations-region .region-hero .region-head h1 {
+  color: #fff;
+}
+
+.locations-region .region-hero .region-head-meta {
+  color: #f9f3ec;
+}
+
+.locations-region .region-hero .region-head-intro {
+  color: #f9f3ec;
+  opacity: 0.92;
+}
+
+/* Breadcrumbs over the photo.
+   ⚠️ This is a SCOPED OVERRIDE of a shared component's markup. Breadcrumbs.tsx
+   hardcodes `text-navy-800` / `text-accent-500` and is used sitewide, so it is
+   not edited — these rules out-specify those utilities inside `.region-hero`
+   only. If Breadcrumbs.tsx ever changes its element shape, re-check here. */
+.locations-region .region-hero nav[aria-label='Breadcrumb'] a {
+  color: #f9f3ec;
+}
+
+.locations-region .region-hero nav[aria-label='Breadcrumb'] a:hover {
+  color: #fff;
+}
+
+/* The current-page crumb (and any not-yet-live ancestor) is a <span>. */
+.locations-region .region-hero nav[aria-label='Breadcrumb'] li > span {
+  color: #fff;
+}
+
+/* The `›` separator — same span, but aria-hidden. Keep it quieter. */
+.locations-region .region-hero nav[aria-label='Breadcrumb'] li > span[aria-hidden='true'] {
+  color: rgba(249, 243, 236, 0.5);
+}
+
+/* Clear the navbar's logo overhang.
+   The header renders a 225x158 logo block pinned to the top-left, ABOVE the page
+   (`nav:block hidden` in Navbar.tsx, so only at the 1070px nav breakpoint). The
+   breadcrumb trail starts at x=135 / y=102 on a region page, which puts "Home ›"
+   behind it. Pre-existing on both region pages — they are the only pages whose
+   breadcrumbs sit that high, because they have no hero above them — but moving
+   the crumbs onto the photo (Track B2) is what makes it read as broken rather
+   than as invisible-on-white. Pushed down, not indented, so the trail stays
+   aligned with the H1 below it. `.region-head`'s own rhythm is untouched. */
+@media only screen and (min-width: 1070px) {
+  .locations-region .region-hero nav[aria-label='Breadcrumb'] {
+    padding-top: 92px;
+  }
+}
+
+.locations-region .region-head {
+  padding: 30px 0 50px 0;
+}
+
+.locations-region .region-head .red-text {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.locations-region .region-head h1 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.1;
+  color: #0a1b2e;
+  margin-top: 10px;
+}
+
+.locations-region .region-head-meta {
+  margin-top: 14px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #bc0e0e;
+}
+
+.locations-region .region-head-intro {
+  margin-top: 16px;
+  max-width: 820px;
+  font-family: var(--font-nunito), sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  color: #0a1b2e;
+}
+
+.locations-region .ls-cream {
+  padding: 60px 0 20px 0;
+}
+
+.locations-region .city-labels {
+  margin-top: 0;
+}
+
+.locations-region .city-labels p:last-child {
+  margin: 16px auto 50px auto;
+  max-width: 760px;
+}
+
+/* Grouped (Ohio) variant: the flat grid's bottom padding belongs to the LAST
+   group, not to every one of the 18. */
+.locations-region .region-group {
+  margin-bottom: 44px;
+}
+
+.locations-region .region-group h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #0a1b2e;
+  padding-bottom: 10px;
+  margin-bottom: 22px;
+  border-bottom: 2px solid rgba(188, 14, 14, 0.25);
+}
+
+.locations-region .region-group-count {
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(10, 27, 46, 0.55);
+}
+
+/* ---- Brief 170, Track D: group headings as toggles ------------------------
+   Opt-in — only a page passing `collapsible` renders `details.region-group`; a
+   plain `section.region-group` is unaffected by everything below.
+
+   Native <details>/<summary>, same pattern as `.city-services-row` in
+   globals.css but with its OWN rules: that block is the city-v2 services panel
+   and must not be touched. No JS, no `hidden`, no `display:none` — a collapsed
+   group's city links still ship in the HTML and stay crawlable, which is the
+   whole reason this is <details> and not an accordion component.
+
+   The <h3> lives INSIDE the <summary>, so the 18 group headings stay in the
+   document outline. The rule below therefore has to lift the h3's own border and
+   spacing onto the summary, so the rule runs the full width including the caret.
+   <summary> is natively focusable and natively announces expanded state — no
+   role, tabindex or aria-expanded is added. */
+.locations-region details.region-group {
+  margin-bottom: 18px;
+}
+
+.locations-region details.region-group[open] {
+  margin-bottom: 44px;
+}
+
+.locations-region details.region-group > summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(188, 14, 14, 0.25);
+}
+
+.locations-region details.region-group[open] > summary {
+  margin-bottom: 22px;
+}
+
+.locations-region details.region-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.locations-region details.region-group > summary h3 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.locations-region details.region-group > summary::after {
+  content: '▾';
+  margin-left: auto;
+  padding-left: 0.5em;
+  font-size: 20px;
+  line-height: 1;
+  color: #bc0e0e;
+  transition: transform 0.2s ease-out;
+}
+
+.locations-region details.region-group[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.locations-region details.region-group > summary:hover h3,
+.locations-region details.region-group > summary:hover::after {
+  color: #bc0e0e;
+}
+
+.locations-region details.region-group > summary:focus-visible {
+  outline: 2px solid #1560e6;
+  outline-offset: 4px;
+}
+
+/* ---- Brief 170, Track E: one flow grid for every group ---------------------
+   Replaces `cityColumns(cities, 5)` in the GROUPED branch. Fixing the column
+   count at 5 made rows-per-column a function of group size — 15 areas gave a
+   tidy 5x3, 13 gave four columns of three plus a stub column of one, and 5 gave
+   five columns one row tall. Marketing: "some element lists have 5 rows, others
+   4 — it looks like there is no order in the distribution."
+
+   `auto-fill` + a 220px minimum fixes the CELL width instead, so every group is
+   the same left-to-right wrapping list whatever its size, and nothing can
+   produce a stub column again. Roughly 5 columns at 1440px, 3 at ~900px, 1 at
+   375px.
+
+   NOT CSS multi-column (`columns: 220px`): that balances column heights, so a
+   5-area group would still become five one-item columns — the exact defect.
+
+   NEW CLASS, not `.l-cities`: the hub's `.l-cities > div > div` rules assume a
+   column-div/item-div nesting that flat rendering removes, and both the hub and
+   the flat Chicagoland grid depend on them. Pin/link/typography are ported here.
+   Row rhythm is the item's own `margin-bottom`, so only `column-gap` is set. */
+.locations-region .l-cities-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  column-gap: 30px;
+  padding-bottom: 0;
+}
+
+.locations-region .l-cities-flow > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.locations-region .l-cities-flow > div svg {
+  width: 20px;
+  height: 20px;
+  color: #bc0e0e;
+  flex-shrink: 0;
+}
+
+/* The hub's `0.9vw` scale, clamped. The hub can use a bare `vw` size because its
+   column COUNT is fixed and steps down by media query; this grid's count is
+   fluid, so the same bare value would render ~8px text at 900px and ~3px at
+   375px. 0.9vw at 1440px is 12.96px, so the clamp is a no-op at the width the
+   hub was tuned for. */
+.locations-region .l-cities-flow > div a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #0a1b2e;
+  font-size: clamp(13px, 0.9vw, 15px);
+  font-family: var(--font-nunito), sans-serif;
+}
+
+/* Track E's target is 3 columns at ~900px. Measured, the 81% container there is
+   717px, and three 220px tracks plus two 30px gaps need 720px — it missed by
+   three pixels and fell back to two columns. Narrowing the gap below 1000px buys
+   the third track back. Declared HERE, after the base rule, not up in the hub's
+   1000px block: same specificity, so source order decides. */
+@media only screen and (max-width: 1000px) {
+  .locations-region .l-cities-flow {
+    column-gap: 20px;
+  }
+}
+
+.locations-region .region-back {
+  padding: 10px 0 60px 0;
+}
+
+.locations-region .region-back a {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1560e6;
+  text-decoration: none;
+}
+
+.locations-region .region-back a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Responsive ----------------------------------------------------------- */
+@media only screen and (max-width: 1280px) {
+  .locations-page .city-labels h2 {
+    font-size: 25px;
+  }
+  .locations-region .region-head h1 {
+    font-size: 34px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .locations-page .region-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .locations-page .region-card {
+    padding: 26px 22px 24px 22px;
+  }
+  .locations-region .region-head h1 {
+    font-size: 28px;
+  }
+  .locations-region .region-head-intro {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  /* Brief 170, Track B9: the band is content-height below 900px — a 420px floor
+     on a phone is mostly empty scrim. */
+  .locations-region .region-hero {
+    min-height: 0;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .locations-page .region-most {
+    grid-template-columns: 1fr;
+  }
+  .locations-page .region-card h3 {
+    font-size: 24px;
+  }
+  .locations-region .region-group h3 {
+    font-size: 19px;
+  }
+  /* Brief 170, Track E: below the 220px minimum the flow grid is a single
+     column, and the count span would wrap awkwardly against the caret. */
+  .locations-region .region-group-count {
+    font-size: 14px;
+  }
+}

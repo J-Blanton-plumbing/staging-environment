@@ -21,22 +21,31 @@ const SEED_OFFICES = [
   { slug: 'chicago-lincoln-park', name: 'Chicago Lincoln Park', streetAddress: '800 W Diversey Pkwy', city: 'Chicago', state: 'IL', zip: '60614', mapUrl: 'https://maps.app.goo.gl/ninFDe3tVj7U5sYx6', lat: 41.9325, lng: -87.6437, showInFooter: true },
   { slug: 'chicago-ravenswood', name: 'Chicago Ravenswood', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: 41.9745, lng: -87.6745, showInFooter: true },
   { slug: 'elgin', name: 'Elgin', streetAddress: '964 N McLean Blvd', city: 'Elgin', state: 'IL', zip: '60123-2039', mapUrl: 'https://maps.app.goo.gl/5J1K7ZVgFeNwy8VJ8', lat: 42.0354, lng: -88.2826, showInFooter: true },
-  { slug: 'elmhurst', name: 'Elmhurst', streetAddress: '130 S York St', city: 'Elmhurst', state: 'IL', zip: '60126', mapUrl: '', lat: 41.8995, lng: -87.9403, showInFooter: true },
+  // Brief 171 (A4) — real Google Business Profile link, supplied by Marketing 2026-09-03. Was ''.
+  { slug: 'elmhurst', name: 'Elmhurst', streetAddress: '130 S York St', city: 'Elmhurst', state: 'IL', zip: '60126', mapUrl: 'https://maps.app.goo.gl/d4UQqyQkuhjk4wNv8', lat: 41.8995, lng: -87.9403, showInFooter: true },
   { slug: 'evanston', name: 'Evanston', streetAddress: '1603 Orrington Ave #600-1085', city: 'Evanston', state: 'IL', zip: '60201', mapUrl: 'https://maps.app.goo.gl/rqmTxHMcicWhz1yV7', lat: 42.0451, lng: -87.6877, showInFooter: true },
   { slug: 'hinsdale', name: 'Hinsdale', streetAddress: '15 Spinning Wheel Rd #216a', city: 'Hinsdale', state: 'IL', zip: '60521', mapUrl: 'https://maps.app.goo.gl/UfWAoTRbWkAPR6WYA', lat: 41.8009, lng: -87.9370, showInFooter: true },
   { slug: 'mchenry', name: 'McHenry', streetAddress: '3406 W Elm St', city: 'Mchenry', state: 'IL', zip: '60050', mapUrl: 'https://maps.app.goo.gl/DQ4fP5QXZr7TpBJ48', lat: 42.3334, lng: -88.2670, showInFooter: true },
   { slug: 'naperville', name: 'Naperville', streetAddress: '200 S Main Street, Suite 3', city: 'Naperville', state: 'IL', zip: '60540', mapUrl: 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8', lat: 41.7508, lng: -88.1535, showInFooter: true },
-  { slug: 'skokie', name: 'Skokie', streetAddress: '8001 Lincoln Ave, Suite 301', city: 'Skokie', state: 'IL', zip: '60077-3695', mapUrl: '', lat: 42.0334, lng: -87.7334, showInFooter: true },
-  { slug: 'joliet', name: 'Joliet', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: null, lng: null, showInFooter: true },
-  // Brief 154 — Columbus, OH: the first OUT-OF-STATE office. `mapUrl` is a Google
-  // Maps SEARCH link (placeholder) — Marketing has not supplied a Google Business
-  // Profile link yet; swap it in when they do. `lat`/`lng` left null per Brief 102
-  // Decision 6 — the LocalBusiness JSON-LD omits `geo` entirely when either is
-  // missing, and that stays valid; do not guess coordinates. This seed entry is
-  // for a FRESH database only — the live box's existing `global_settings` row
-  // needs the fill-gaps `scripts/add-columbus-office.ts` (this INSERT only ever
-  // fires `ON CONFLICT (id) DO NOTHING` against an existing row).
-  { slug: 'columbus', name: 'Columbus', streetAddress: '1387 W. Goodale Blvd', city: 'Columbus', state: 'OH', zip: '43212', mapUrl: 'https://www.google.com/maps/search/?api=1&query=1387+W.+Goodale+Blvd%2C+Columbus%2C+OH+43212', lat: null, lng: null, showInFooter: true },
+  // Brief 171 (A4) — real Google Business Profile link, supplied by Marketing 2026-09-03. Was ''.
+  { slug: 'skokie', name: 'Skokie', streetAddress: '8001 Lincoln Ave, Suite 301', city: 'Skokie', state: 'IL', zip: '60077-3695', mapUrl: 'https://maps.app.goo.gl/xWEGzo5YNDTERu797', lat: 42.0334, lng: -87.7334, showInFooter: true },
+  // Brief 171 (A1/A3/A4) — Joliet is a REAL record now. It used to duplicate the
+  // Ravenswood office's address, city, ZIP and mapUrl, reproducing a live theme bug
+  // on purpose; that duplicate NAP was also being emitted into LocalBusinessSchema on
+  // every page. Marketing supplied the address + GBP link; lat/lng are a Nominatim
+  // house-level geocode cross-checked against the US Census geocoder (they agree to
+  // 4dp). Regenerate with scripts/build-locator-maps.ts rather than editing by hand.
+  { slug: 'joliet', name: 'Joliet', streetAddress: '311 N Ottawa St Ste 2', city: 'Joliet', state: 'IL', zip: '60432', mapUrl: 'https://maps.app.goo.gl/NuV5DBoswtStbX9L6', lat: 41.5299, lng: -88.0832, showInFooter: true },
+  // Brief 154 — Columbus, OH: the first OUT-OF-STATE office. This seed entry is for a
+  // FRESH database only — the live box's existing global_settings row needs the fill-gaps
+  // scripts/add-columbus-office.ts (this INSERT only ever fires 'ON CONFLICT (id) DO NOTHING'
+  // against an existing row), and an already-seeded row needs scripts/fix-brief-171-office-data.ts.
+  //
+  // Brief 171 (A3/A4) replaced the placeholder Maps *search* URL with the real GBP short
+  // link and filled lat/lng. Those coordinates came from the US Census geocoder, NOT
+  // Nominatim: OSM carries no house number above 1280 on Goodale Boulevard, so Nominatim
+  // answers 1387 with the centroid of a different segment ~1.5km away in ZIP 43222.
+  { slug: 'columbus', name: 'Columbus', streetAddress: '1387 W. Goodale Blvd', city: 'Columbus', state: 'OH', zip: '43212', mapUrl: 'https://maps.app.goo.gl/rKAUdjbg7a6YBKPY8', lat: 39.9762, lng: -83.0416, showInFooter: true },
 ];
 
 async function run() {

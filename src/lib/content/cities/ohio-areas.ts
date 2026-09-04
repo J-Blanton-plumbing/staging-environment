@@ -5,7 +5,7 @@
  * The coverage list Marketing supplied, typed and deduped, as ONE array. Every
  * Ohio area page in the site derives from it: the registry entries, the
  * `state: 'Ohio'` map-embed override, the county grouping Brief 03's
- * `/locations/columbus` needs, the "we also serve" internal link graph, and the
+ * `/locations/central-ohio` needs, the "we also serve" internal link graph, and the
  * city-service indexation list in `src/lib/seo/city-service-indexation.ts`.
  *
  * It is deliberately a flat data table with no derived values baked in — the
@@ -63,7 +63,7 @@ export interface OhioArea {
   slug: string;
   /** Display name, as it appears in the H1, `<title>` and city grids. */
   name: string;
-  /** Ohio county. Drives Brief 03's `/locations/columbus` grouping and the "we also serve" graph. */
+  /** Ohio county. Drives Brief 03's `/locations/central-ohio` grouping and the "we also serve" graph. */
   county: string;
   kind: OhioAreaKind;
 }
@@ -295,7 +295,7 @@ export function isOhioSlug(slug: string): boolean {
 }
 
 /**
- * Every county represented, A→Z — Brief 03's `/locations/columbus` group order.
+ * Every county represented, A→Z — Brief 03's `/locations/central-ohio` group order.
  *
  * Deduped with a plain filter rather than `[...new Set()]`: the app's tsconfig
  * target does not allow spreading an iterator without `downlevelIteration`.

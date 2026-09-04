@@ -1,23 +1,55 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, Phone, CalendarDays } from 'lucide-react';
+import { Menu, X, Phone, CalendarDays, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ScheduleButton from './ScheduleButton';
 import { useWhatConvertsNumber } from '@/lib/useWhatConvertsNumber';
+import { REGIONS } from '@/lib/content/locations-regions';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
 
-const TOP_NAV = [
+interface NavLink {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+}
+
+/**
+ * Columbus Integration Brief 03, Track C — the LOCATIONS dropdown's children.
+ *
+ * Derived from `REGIONS`, so the nav, the hub's region cards and the region
+ * pages themselves cannot name the regions differently or point at a path that
+ * does not exist. Declared ONCE and referenced from both nav arrays below: the
+ * desktop and mobile menus are two separate lists in this file, and the whole
+ * reason the brief calls that out is that updating one and not the other is the
+ * default failure mode here.
+ */
+const LOCATION_CHILDREN = REGIONS.map((r) => ({ href: r.href, label: r.label.toUpperCase() }));
+
+/**
+ * The LOCATIONS entry.
+ *
+ * The parent stays a real link to `/locations`. A parent that only opens a menu
+ * would cost the hub its sitewide nav link — and `/locations` is the page that
+ * ranks, so that is not a cosmetic detail.
+ */
+const LOCATIONS_NAV: NavLink = {
+  href: '/locations',
+  label: 'LOCATIONS',
+  children: LOCATION_CHILDREN,
+};
+
+const TOP_NAV: NavLink[] = [
   { href: '/why-j-blanton', label: 'WHY J. BLANTON' },
   { href: '/services', label: 'SERVICES' },
   { href: '/no-drip-club', label: 'NO DRIP CLUB' },
   { href: '/customer-stories', label: 'CUSTOMER STORIES' },
-  { href: '/locations', label: 'LOCATIONS' },
+  LOCATIONS_NAV,
 ];
 
-const MOBILE_NAV = [
+const MOBILE_NAV: NavLink[] = [
   { href: '/services', label: 'SERVICES' },
   { href: '/why-j-blanton', label: 'WHY J. BLANTON' },
   { href: '/knowledge-hub', label: 'KNOWLEDGE HUB' },
@@ -26,8 +58,149 @@ const MOBILE_NAV = [
   { href: '/no-drip-club', label: 'NO DRIP CLUB' },
   { href: '/help-and-support', label: 'HELP & SUPPORT' },
   { href: '/financing', label: 'FINANCING' },
-  { href: '/locations', label: 'LOCATIONS' },
+  LOCATIONS_NAV,
 ];
+
+const DESKTOP_LINK_CLASS =
+  'flex items-center px-[15px] min-[1525px]:px-[30px] font-display font-medium text-brand-600 ' +
+  'hover:text-brand-700 hover:bg-brand-50 text-[1.05vw] min-[1525px]:text-[16px] ' +
+  'transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600';
+
+/**
+ * Desktop LOCATIONS dropdown (Brief 03, Track C).
+ *
+ * Opens on hover AND on keyboard focus — `onFocus`/`onBlur` bubble in React, so
+ * tabbing onto the parent link opens the panel and tabbing past the last child
+ * closes it. That is what makes the menu reachable without a mouse while the
+ * parent stays a plain link rather than a button. `Escape` closes the panel and
+ * returns focus to the parent, so a keyboard user is never stranded inside it.
+ *
+ * `hidden`/`flex` rather than opacity: an invisible-but-present panel would keep
+ * its links in the tab order (and in the accessibility tree) while closed.
+ */
+function LocationsDropdown({ link }: { link: NavLink }) {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const parentRef = useRef<HTMLAnchorElement>(null);
+
+  return (
+    <div
+      ref={wrapRef}
+      className="relative flex"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(e) => {
+        // Only close when focus actually leaves the group — moving from the
+        // parent link to a child fires blur too.
+        if (!wrapRef.current?.contains(e.relatedTarget as Node | null)) setOpen(false);
+      }}
+      onKeyDown={(e) => {
+        // No `if (open)` guard. The handler only fires while focus is already
+        // inside this group, so returning focus to the parent is always the
+        // right thing — and reading `open` here made Escape a no-op whenever a
+        // pending open had not been committed yet, which left the panel stuck
+        // open after the very keystroke meant to close it.
+        if (e.key !== 'Escape') return;
+        setOpen(false);
+        parentRef.current?.focus();
+      }}
+    >
+      <Link
+        ref={parentRef}
+        href={link.href}
+        aria-haspopup="true"
+        aria-expanded={open}
+        className={cn(DESKTOP_LINK_CLASS, 'gap-1.5')}
+      >
+        {link.label}
+        <ChevronDown
+          className={cn('h-4 w-4 transition-transform duration-150', open && 'rotate-180')}
+          strokeWidth={2.5}
+          aria-hidden="true"
+        />
+      </Link>
+
+      <div
+        className={cn(
+          'absolute left-0 top-full min-w-[220px] flex-col bg-cream-100 shadow-[0_6px_14px_rgba(10,27,46,0.25)]',
+          open ? 'flex' : 'hidden'
+        )}
+      >
+        {link.children?.map((child) => (
+          <Link
+            key={child.href}
+            href={child.href}
+            onClick={() => setOpen(false)}
+            className="px-[22px] py-[14px] font-display font-medium text-[15px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-600"
+          >
+            {child.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Mobile LOCATIONS group (Brief 03, Track C).
+ *
+ * An expandable group, not a hover dropdown — there is no hover on a phone. The
+ * parent label is still the link to `/locations`; the chevron is a SEPARATE
+ * button so tapping the label navigates and tapping the chevron expands. One
+ * control that did both would make the hub unreachable from the mobile drawer.
+ */
+function MobileLocationsGroup({
+  link,
+  onNavigate,
+}: {
+  link: NavLink;
+  onNavigate: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const panelId = 'mobile-nav-locations';
+
+  return (
+    <div className="border-b border-white/20">
+      <div className="flex items-center justify-between">
+        <Link
+          href={link.href}
+          onClick={onNavigate}
+          className="block flex-1 py-3.5 font-sans font-normal text-2xl text-white"
+        >
+          {link.label}
+        </Link>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          aria-controls={panelId}
+          aria-label={expanded ? 'Collapse Locations menu' : 'Expand Locations menu'}
+          className="flex h-11 w-11 items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        >
+          <ChevronDown
+            className={cn('h-6 w-6 transition-transform duration-150', expanded && 'rotate-180')}
+            strokeWidth={2.5}
+          />
+        </button>
+      </div>
+      {expanded && (
+        <div id={panelId} className="pb-3">
+          {link.children?.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={onNavigate}
+              className="block py-2.5 pl-5 font-sans font-normal text-lg text-white/90"
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Navbar({ settings }: { settings: GlobalSettings }) {
   const [open, setOpen] = useState(false);
@@ -82,15 +255,15 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
         <div className="w-full h-[70px] bg-cream-100 text-brand-600 flex">
           {/* Desktop: right-aligned nav */}
           <div className="hidden nav:flex w-full h-full justify-end pl-[240px]">
-            {TOP_NAV.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="flex items-center px-[15px] min-[1525px]:px-[30px] font-display font-medium text-brand-600 hover:text-brand-700 hover:bg-brand-50 text-[1.05vw] min-[1525px]:text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {TOP_NAV.map((link) =>
+              link.children ? (
+                <LocationsDropdown key={link.href} link={link} />
+              ) : (
+                <Link key={link.href} href={link.href} className={DESKTOP_LINK_CLASS}>
+                  {link.label}
+                </Link>
+              )
+            )}
 
             {/* Phone — the canonical number, same as everywhere else on the site.
                 This used to render the hardcoded `headerPhone` tracking line; now
@@ -178,16 +351,24 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
             </button>
           </div>
           <nav className="flex-1 overflow-y-auto px-5 py-4">
-            {MOBILE_NAV.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block py-3.5 font-sans font-normal text-2xl text-white border-b border-white/20"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {MOBILE_NAV.map((link) =>
+              link.children ? (
+                <MobileLocationsGroup
+                  key={link.href}
+                  link={link}
+                  onNavigate={() => setOpen(false)}
+                />
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3.5 font-sans font-normal text-2xl text-white border-b border-white/20"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             {/* Phone CTA — inverted (white on Carmine) so it reads on the red drawer.
                 Uses the canonical `phone`, not the header tracking line. */}
             <Link

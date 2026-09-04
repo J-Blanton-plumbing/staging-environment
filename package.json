@@ -15,7 +15,10 @@
     "db:setup": "ts-node scripts/setup-db.ts",
     "db:backup": "bash scripts/backup-db.sh",
     "db:restore": "bash scripts/restore-db.sh",
-    "env:check": "ts-node --project tsconfig.scripts.json scripts/check-env.ts"
+    "env:check": "ts-node --project tsconfig.scripts.json scripts/check-env.ts",
+    "build:locator-maps": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/build-locator-maps.ts",
+    "build:locator-index": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/build-locator-index.ts",
+    "check:locator-index": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/check-locator-index.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1102.0",

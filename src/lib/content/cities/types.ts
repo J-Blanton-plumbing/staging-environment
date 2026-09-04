@@ -91,7 +91,7 @@ export interface RegistryEntry {
 
   /**
    * County the area sits in, e.g. `'Franklin'`. Drives Brief 03's county
-   * grouping on `/locations/columbus` and the "we also serve" sibling graph.
+   * grouping on `/locations/central-ohio` and the "we also serve" sibling graph.
    */
   county?: string;
 

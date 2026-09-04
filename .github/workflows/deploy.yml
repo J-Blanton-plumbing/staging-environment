@@ -68,6 +68,21 @@ jobs:
             export NEXT_PUBLIC_META_PIXEL_ID=1674876326613103
             export NEXT_PUBLIC_BING_UET_ID=97007877
             export NEXT_PUBLIC_WHATCONVERTS_PROFILE_ID=102905
+            # -- Brief 171 (C2): store-locator search index drift guard ----------
+            # `src/lib/content/locator-index.generated.ts` is a GENERATED file that
+            # is committed, so it goes stale the day someone registers city 387 or
+            # moves a city between dispatch offices — silently, on the homepage.
+            # This regenerates it in memory from CITY_REGISTRY and exits non-zero if
+            # it differs from what is committed. No DB, no network.
+            #
+            # Deliberately BEFORE the build, not chained onto `prebuild` (that slot
+            # is validate-sitemap.ts, and one failure must not look like the other),
+            # and deliberately a single command with no `if`: this step runs with
+            # `script_stop: true`, so a non-zero exit aborts the deploy on its own
+            # and a multi-line shell construct here is the shape that has broken
+            # this file before (Brief 151).
+            echo 'Checking the store-locator search index for drift (Brief 171 C2)...'
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/check-locator-index.ts
             rm -rf .next-build .next-prev
             NEXT_DIST_DIR=.next-build npm run build
             # Apply idempotent DB schema migrations BEFORE restarting, so the
@@ -150,6 +165,28 @@ jobs:
             # Runs AFTER the backfill so any row an older build re-inserted in
             # the same pipeline is swept too.
             npx ts-node --project tsconfig.scripts.json scripts/fix-brief-150-delete-gitkeep-media-row.ts commit
+            # -- Brief 171: the two data fixes the code alone cannot deliver -------
+            #
+            # Both live in the DATABASE, and on this site the DB beats the static
+            # file for every field it holds. So deploying the code without these
+            # leaves the homepage rendering the OLD heading ("FIND US") over the
+            # OLD Chicagoland-only intro, and lists Joliet in the store locator
+            # with RAVENSWOOD'S street address. That is what happened on the first
+            # attempt at shipping this; the scripts had only ever been run against
+            # a developer's localhost Postgres.
+            #
+            # `commit` is what makes them deploy-safe: with it, a guard trip
+            # (a field holding copy the script does not recognise, i.e. someone
+            # edited it in /admin) prints loudly and exits 0 instead of 3. Without
+            # it the first Marketing edit to this copy would abort every future
+            # deploy of the whole site, because this step runs `script_stop: true`.
+            # Same convention and same reasoning as the Brief 145 fix scripts above.
+            #
+            # Both are idempotent read-modify-write patches, guarded per field, so
+            # re-running on every deploy is a no-op once applied and can never
+            # overwrite a value a human has since changed.
+            npx ts-node --project tsconfig.scripts.json scripts/fix-brief-171-office-data.ts commit
+            npx ts-node --project tsconfig.scripts.json scripts/fix-brief-171-home-copy.ts commit
             # Brief 109: seed the "Join Our Team" (/j-blanton-is-hiring) main_pages
             # row so its CMS editor loads/saves. Idempotent INSERT ... ON CONFLICT
             # DO NOTHING - a safe no-op once the row exists, never clobbers edits.

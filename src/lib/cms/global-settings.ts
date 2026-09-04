@@ -61,6 +61,73 @@ export type GlobalSettingsUpdate = Partial<
 >;
 
 /**
+ * The 15 offices, as static data — the `FALLBACK.offices` value, lifted to a
+ * named const by Brief 171 so the three Track A data fixes (Joliet's real
+ * address, the four Google Business Profile links, the two geocodes) have a
+ * documented home instead of sitting inline in a settings literal.
+ *
+ * ⚠️ HAND-SYNCED, THREE PLACES. This array, `SEED_OFFICES` in
+ * `scripts/migrate-global-settings.ts`, and the live `global_settings.offices`
+ * JSONB row are three separate copies of the same records. A data change has to
+ * land in all three or the environments disagree: the DB row wins on a running
+ * site, this array wins when the DB is unreachable (build time without
+ * DATABASE_URL), and the seed wins on a fresh database. Patch a live row with a
+ * read-modify-write script (see `scripts/fix-brief-171-office-data.ts`) — never
+ * by overwriting the column with a copy of this literal, which would silently
+ * discard whatever Marketing last saved in /admin/global-settings.
+ */
+const FALLBACK_OFFICES: CmsOffice[] = [
+  { slug: 'northbrook', name: 'Northbrook (Corporate)', streetAddress: '1945 Techny Road, #11', city: 'Northbrook', state: 'IL', zip: '60062', mapUrl: 'https://maps.app.goo.gl/pCmmYeescW7Mf6B2A', lat: 42.1278, lng: -87.8451, showInFooter: true },
+  { slug: 'algonquin', name: 'Algonquin', streetAddress: '2390 Esplanade Dr #200f', city: 'Algonquin', state: 'IL', zip: '60102', mapUrl: 'https://maps.app.goo.gl/egVEqHQJkzFG8Qo56', lat: 42.1656, lng: -88.2942, showInFooter: true },
+  { slug: 'geneva', name: 'Geneva', streetAddress: '115 Campbell St #201C', city: 'Geneva', state: 'IL', zip: '60134', mapUrl: 'https://maps.app.goo.gl/mfdpSC3BSGkQKdQ39', lat: 41.8875, lng: -88.3054, showInFooter: true },
+  { slug: 'arlington-heights', name: 'Arlington Heights', streetAddress: '1204 E. Central Road, Suite 3', city: 'Arlington Heights', state: 'IL', zip: '60005', mapUrl: 'https://maps.app.goo.gl/Qq4qPYJT8bCgash26', lat: 42.0884, lng: -87.9806, showInFooter: true },
+  { slug: 'chicago-lincoln-park', name: 'Chicago Lincoln Park', streetAddress: '800 W Diversey Pkwy', city: 'Chicago', state: 'IL', zip: '60614', mapUrl: 'https://maps.app.goo.gl/ninFDe3tVj7U5sYx6', lat: 41.9325, lng: -87.6437, showInFooter: true },
+  { slug: 'chicago-ravenswood', name: 'Chicago Ravenswood', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: 41.9745, lng: -87.6745, showInFooter: true },
+  { slug: 'elgin', name: 'Elgin', streetAddress: '964 N McLean Blvd', city: 'Elgin', state: 'IL', zip: '60123-2039', mapUrl: 'https://maps.app.goo.gl/5J1K7ZVgFeNwy8VJ8', lat: 42.0354, lng: -88.2826, showInFooter: true },
+  // Brief 171 (A4) — real Google Business Profile link, supplied by Marketing
+  // 2026-09-03. Was `''`, which rendered a hidden link in the NAP blocks and
+  // would have rendered a dead `href` in the store locator.
+  { slug: 'elmhurst', name: 'Elmhurst', streetAddress: '130 S York St', city: 'Elmhurst', state: 'IL', zip: '60126', mapUrl: 'https://maps.app.goo.gl/d4UQqyQkuhjk4wNv8', lat: 41.8995, lng: -87.9403, showInFooter: true },
+  { slug: 'evanston', name: 'Evanston', streetAddress: '1603 Orrington Ave #600-1085', city: 'Evanston', state: 'IL', zip: '60201', mapUrl: 'https://maps.app.goo.gl/rqmTxHMcicWhz1yV7', lat: 42.0451, lng: -87.6877, showInFooter: true },
+  { slug: 'hinsdale', name: 'Hinsdale', streetAddress: '15 Spinning Wheel Rd #216a', city: 'Hinsdale', state: 'IL', zip: '60521', mapUrl: 'https://maps.app.goo.gl/UfWAoTRbWkAPR6WYA', lat: 41.8009, lng: -87.9370, showInFooter: true },
+  { slug: 'mchenry', name: 'McHenry', streetAddress: '3406 W Elm St', city: 'Mchenry', state: 'IL', zip: '60050', mapUrl: 'https://maps.app.goo.gl/DQ4fP5QXZr7TpBJ48', lat: 42.3334, lng: -88.2670, showInFooter: true },
+  { slug: 'naperville', name: 'Naperville', streetAddress: '200 S Main Street, Suite 3', city: 'Naperville', state: 'IL', zip: '60540', mapUrl: 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8', lat: 41.7508, lng: -88.1535, showInFooter: true },
+  // Brief 171 (A4) — real GBP link, supplied by Marketing 2026-09-03. Was `''`.
+  { slug: 'skokie', name: 'Skokie', streetAddress: '8001 Lincoln Ave, Suite 301', city: 'Skokie', state: 'IL', zip: '60077-3695', mapUrl: 'https://maps.app.goo.gl/xWEGzo5YNDTERu797', lat: 42.0334, lng: -87.7334, showInFooter: true },
+  /*
+   * Joliet — a REAL record since Brief 171 (Track A1/A3/A4).
+   *
+   * It used to carry the Ravenswood office's street address, city, ZIP and
+   * mapUrl, reproducing a live WordPress-theme bug on purpose. Marketing
+   * supplied the real address and GBP link on 2026-09-03, so the duplicate is
+   * gone. Because `LocalBusinessSchema` emits one node per office on every page,
+   * fixing it here also removed a duplicate-NAP signal from the sitewide
+   * structured data.
+   *
+   * `lat`/`lng` are a Nominatim house-level geocode of the new address,
+   * cross-checked against the US Census geocoder (both agree to 4dp) — see
+   * `scripts/build-locator-maps.ts`. Do not hand-edit them; re-run that script.
+   *
+   * Joliet dispatches ZERO cities (`getOfficeKey` routes Joliet itself to
+   * Ravenswood), so it is browsable in the locator but never a search result.
+   * That is a data question for Ops, not a bug to fix by inventing assignments.
+   */
+  { slug: 'joliet', name: 'Joliet', streetAddress: '311 N Ottawa St Ste 2', city: 'Joliet', state: 'IL', zip: '60432', mapUrl: 'https://maps.app.goo.gl/NuV5DBoswtStbX9L6', lat: 41.5299, lng: -88.0832, showInFooter: true },
+  /*
+   * Brief 154 — Columbus, OH, the first out-of-state office. Kept in sync by
+   * hand with scripts/migrate-global-settings.ts's SEED_OFFICES.
+   *
+   * Brief 171 (A3/A4) replaced the placeholder Maps *search* URL with the real
+   * GBP short link and filled the coordinates. The coordinates came from the US
+   * Census geocoder, NOT Nominatim: OSM has no house number above 1280 on
+   * Goodale Boulevard, so Nominatim answers 1387 with the centroid of a
+   * different segment of the street, ~1.5 km away and in ZIP 43222. See
+   * `scripts/build-locator-maps.ts`.
+   */
+  { slug: 'columbus', name: 'Columbus', streetAddress: '1387 W. Goodale Blvd', city: 'Columbus', state: 'OH', zip: '43212', mapUrl: 'https://maps.app.goo.gl/rKAUdjbg7a6YBKPY8', lat: 39.9762, lng: -83.0416, showInFooter: true },
+];
+
+/**
  * Static fallback, sourced from site.ts. Used when the DB is unreachable (e.g. at
  * build time in an environment without DATABASE_URL) so the build never crashes and
  * the site renders the same values it did before Brief 66 wired the DB in.
@@ -87,31 +154,7 @@ const FALLBACK: GlobalSettings = {
     'water-quality': 'Water filtration, testing, and treatment solutions.',
     commercial: 'Commercial plumbing built for business reliability.',
   },
-  offices: [
-    { slug: 'northbrook', name: 'Northbrook (Corporate)', streetAddress: '1945 Techny Road, #11', city: 'Northbrook', state: 'IL', zip: '60062', mapUrl: 'https://maps.app.goo.gl/pCmmYeescW7Mf6B2A', lat: 42.1278, lng: -87.8451, showInFooter: true },
-    { slug: 'algonquin', name: 'Algonquin', streetAddress: '2390 Esplanade Dr #200f', city: 'Algonquin', state: 'IL', zip: '60102', mapUrl: 'https://maps.app.goo.gl/egVEqHQJkzFG8Qo56', lat: 42.1656, lng: -88.2942, showInFooter: true },
-    { slug: 'geneva', name: 'Geneva', streetAddress: '115 Campbell St #201C', city: 'Geneva', state: 'IL', zip: '60134', mapUrl: 'https://maps.app.goo.gl/mfdpSC3BSGkQKdQ39', lat: 41.8875, lng: -88.3054, showInFooter: true },
-    { slug: 'arlington-heights', name: 'Arlington Heights', streetAddress: '1204 E. Central Road, Suite 3', city: 'Arlington Heights', state: 'IL', zip: '60005', mapUrl: 'https://maps.app.goo.gl/Qq4qPYJT8bCgash26', lat: 42.0884, lng: -87.9806, showInFooter: true },
-    { slug: 'chicago-lincoln-park', name: 'Chicago Lincoln Park', streetAddress: '800 W Diversey Pkwy', city: 'Chicago', state: 'IL', zip: '60614', mapUrl: 'https://maps.app.goo.gl/ninFDe3tVj7U5sYx6', lat: 41.9325, lng: -87.6437, showInFooter: true },
-    { slug: 'chicago-ravenswood', name: 'Chicago Ravenswood', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: 41.9745, lng: -87.6745, showInFooter: true },
-    { slug: 'elgin', name: 'Elgin', streetAddress: '964 N McLean Blvd', city: 'Elgin', state: 'IL', zip: '60123-2039', mapUrl: 'https://maps.app.goo.gl/5J1K7ZVgFeNwy8VJ8', lat: 42.0354, lng: -88.2826, showInFooter: true },
-    { slug: 'elmhurst', name: 'Elmhurst', streetAddress: '130 S York St', city: 'Elmhurst', state: 'IL', zip: '60126', mapUrl: '', lat: 41.8995, lng: -87.9403, showInFooter: true },
-    { slug: 'evanston', name: 'Evanston', streetAddress: '1603 Orrington Ave #600-1085', city: 'Evanston', state: 'IL', zip: '60201', mapUrl: 'https://maps.app.goo.gl/rqmTxHMcicWhz1yV7', lat: 42.0451, lng: -87.6877, showInFooter: true },
-    { slug: 'hinsdale', name: 'Hinsdale', streetAddress: '15 Spinning Wheel Rd #216a', city: 'Hinsdale', state: 'IL', zip: '60521', mapUrl: 'https://maps.app.goo.gl/UfWAoTRbWkAPR6WYA', lat: 41.8009, lng: -87.9370, showInFooter: true },
-    { slug: 'mchenry', name: 'McHenry', streetAddress: '3406 W Elm St', city: 'Mchenry', state: 'IL', zip: '60050', mapUrl: 'https://maps.app.goo.gl/DQ4fP5QXZr7TpBJ48', lat: 42.3334, lng: -88.2670, showInFooter: true },
-    { slug: 'naperville', name: 'Naperville', streetAddress: '200 S Main Street, Suite 3', city: 'Naperville', state: 'IL', zip: '60540', mapUrl: 'https://maps.app.goo.gl/9ou5MAtuAMjG6XfN8', lat: 41.7508, lng: -88.1535, showInFooter: true },
-    { slug: 'skokie', name: 'Skokie', streetAddress: '8001 Lincoln Ave, Suite 301', city: 'Skokie', state: 'IL', zip: '60077-3695', mapUrl: '', lat: 42.0334, lng: -87.7334, showInFooter: true },
-    // ⚠️ Live theme bug (pre-existing, reproduced verbatim) — Joliet has no office
-    // of its own; both the footer and the /joliet NAP block show the Ravenswood
-    // office's address. Lat/lng left blank on purpose rather than pairing
-    // Joliet's real coordinates with Ravenswood's street address.
-    { slug: 'joliet', name: 'Joliet', streetAddress: '5126 N Ravenswood Ave', city: 'Chicago', state: 'IL', zip: '60640', mapUrl: 'https://maps.app.goo.gl/k2RpBwmEiq1iir1x9', lat: null, lng: null, showInFooter: true },
-    // Brief 154 — Columbus, OH, the first out-of-state office. Kept in sync by
-    // hand with scripts/migrate-global-settings.ts's SEED_OFFICES (see that
-    // file's docblock). `mapUrl` is a placeholder Maps search link pending a
-    // real Google Business Profile link from Marketing; `lat`/`lng` stay null.
-    { slug: 'columbus', name: 'Columbus', streetAddress: '1387 W. Goodale Blvd', city: 'Columbus', state: 'OH', zip: '43212', mapUrl: 'https://www.google.com/maps/search/?api=1&query=1387+W.+Goodale+Blvd%2C+Columbus%2C+OH+43212', lat: null, lng: null, showInFooter: true },
-  ],
+  offices: FALLBACK_OFFICES,
   updatedAt: null,
 };
 

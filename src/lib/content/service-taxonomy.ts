@@ -274,9 +274,22 @@ export function globalServiceHref(serviceSlug: string): string | null {
   return null;
 }
 
+/**
+ * Non-service routes that are also valid breadcrumb ancestors.
+ *
+ * Columbus Integration Brief 03: the two region pages' trail is
+ * Home › Locations › {Region}, and `/locations` is not a service hub, so the
+ * hub-slug lookup below would have rendered it as plain TEXT — the breadcrumb
+ * on both new pages would have had no working link back to the page they are
+ * children of. Listed rather than special-cased so the next non-service
+ * ancestor is a one-line add.
+ */
+const LIVE_STATIC_ROUTES = new Set<string>(['/locations']);
+
 /** True if a breadcrumb href points at a route that actually exists in the build. */
 export function isLiveBreadcrumbRoute(href: string): boolean {
   if (href === '/') return true;
+  if (LIVE_STATIC_ROUTES.has(href)) return true;
   const cat = href.match(/^\/services\/([a-z0-9-]+)$/);
   if (cat) return LIVE_CATEGORY_SLUGS.has(cat[1]);
   const hub = href.replace(/^\//, '');

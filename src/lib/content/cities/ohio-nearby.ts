@@ -14,7 +14,7 @@
  * lat/lng in this codebase and no routing lookup, so "nearest" in the literal
  * sense is not computable here; asserting it would be an unsourced claim of
  * exactly the kind Brief 02 forbids. County co-membership is a true, sourced
- * statement of proximity, and it is what Brief 03 groups `/locations/columbus`
+ * statement of proximity, and it is what Brief 03 groups `/locations/central-ohio`
  * by, so the two agree.
  *
  * Within a county the areas are ordered by slug and each one links to the NEXT

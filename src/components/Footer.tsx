@@ -18,6 +18,26 @@ const NAV_COL_2 = [
   { href: '/emergency-plumbing', label: 'Emergency Plumbing' },
   { href: '/no-drip-club',      label: 'No Drip Club' },
 ];
+/*
+ * `Locations` points at the hub and stands alone.
+ *
+ * Columbus Integration Brief 03 (Track C) added the two region pages as indented
+ * children under it — "Chicagoland" and "Central Ohio", spread in from
+ * `REGIONS`. Marketing removed them in the Brief 171 review: the footer nav is a
+ * flat list of destinations and two indented sub-items were the only nesting in
+ * it, and the region pages are already one click away from the hub this entry
+ * points at.
+ *
+ * Neither region page is orphaned by this. `/locations/chicagoland` and
+ * `/locations/central-ohio` are still linked from the hub's region cards, from
+ * `RegionChooser` on the homepage, from the navbar's Locations dropdown, and
+ * they are in the sitemap. Do not re-add them here to "fix" internal linking
+ * without checking that list first.
+ *
+ * The "Our Office Locations" block further down is a different thing and is
+ * untouched — it renders `settings.offices` from the CMS, and after Brief 171 it
+ * is the only place on the homepage that links the 15 `/{slug}` office pages.
+ */
 const NAV_COL_3 = [
   { href: '/help-and-support', label: 'Help & Support' },
   { href: '/financing',        label: 'Financing' },
@@ -109,11 +129,14 @@ export default function Footer({ settings }: { settings: GlobalSettings }) {
           <div className="bottom-navs flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left mb-[50px] gap-y-6">
             {NAV_COLUMNS.map((column, i) => (
               <div key={i} className={i === 1 ? 'lg:mx-[60px] xl:mx-[100px]' : undefined}>
+                {/* One flat weight for every entry. The `indented` variant that
+                    used to live here existed only for the two region pages under
+                    Locations, which the Brief 171 review removed — see NAV_COL_3. */}
                 {column.map((n) => (
                   <Link
                     key={n.href}
                     href={n.href}
-                    className="block mb-[15px] font-display font-semibold text-sm tracking-wide hover:opacity-80 last:mb-0"
+                    className="mb-[15px] block font-display text-sm font-semibold tracking-wide last:mb-0 hover:opacity-80"
                   >
                     {n.label}
                   </Link>

@@ -54,6 +54,19 @@ export const SITEMAP_STATIC_PAGES: readonly SitemapStaticPage[] = [
   { path: '/customer-stories',   mainSlug: 'customer-stories', changeFrequency: 'weekly',  priority: 0.7 },
   { path: '/why-j-blanton',      mainSlug: 'why-j-blanton',    changeFrequency: 'monthly', priority: 0.7 },
   { path: '/locations',          mainSlug: 'locations',        changeFrequency: 'monthly', priority: 0.7 },
+  /*
+   * Columbus Integration Brief 03, Track D — the two region pages.
+   *
+   * `/locations` STAYS listed above. It ranks, it is still a real 200 with a
+   * self-referencing canonical, and it is not redirected anywhere; these two are
+   * additions beneath it, not a replacement for it.
+   *
+   * No `mainSlug`: neither has a `main_pages` row yet, so their <lastmod> falls
+   * back to the build's default rather than a CMS timestamp (see the TODO in
+   * each page file).
+   */
+  { path: '/locations/chicagoland',                            changeFrequency: 'monthly', priority: 0.6 },
+  { path: '/locations/central-ohio',                           changeFrequency: 'monthly', priority: 0.6 },
   { path: '/knowledge-hub',      mainSlug: 'knowledge-hub',    changeFrequency: 'weekly',  priority: 0.7 },
   { path: '/financing',          mainSlug: 'financing',        changeFrequency: 'monthly', priority: 0.6 },
   { path: '/help-and-support',   mainSlug: 'help-and-support', changeFrequency: 'monthly', priority: 0.6 },
