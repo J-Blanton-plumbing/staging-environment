@@ -151,6 +151,29 @@ jobs:
             # `-r tsconfig-paths/register` is REQUIRED - it imports the content file
             # and the shared sanitizer from src/, which resolve `@/...` path aliases.
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-columbus-city-page.ts commit
+            # -- Columbus Brief 02 tail: city_pages rows for the Ohio areas -------
+            # Brief 02 registered 138 Ohio area pages and nothing in this pipeline
+            # creates a `city_pages` row for a city that never existed in WordPress,
+            # so they all shipped rowless and the coverage assertion below refused
+            # the deploy: "137 of 386 registered cities are missing a row".
+            #
+            # That gate is right and is being SATISFIED, not worked around: a
+            # registered city with no row is a page Marketing can see on the live
+            # site and cannot edit, because the city editor needs a row to load and
+            # its save path is UPDATE-only.
+            #
+            # Every column is seeded EMPTY, and the coverage-area merge in
+            # src/app/[city]/page.tsx is `db.X || base.X` per field, so every `||`
+            # still resolves to the checked-in Ohio template content and no live
+            # page moves. Verified: /dublin, /westerville, /columbus-short-north and
+            # /columbus all still render exactly one <h1>{City} Plumber</h1> after
+            # seeding. `hero_heading_line1` is '' deliberately - a non-empty value
+            # there rewrites the H1 of every one of those indexed pages at once.
+            #
+            # MUST stay ABOVE verify-sitemap-queries.ts. Fill-gaps
+            # (ON CONFLICT DO NOTHING) and one transaction, so it is a clean no-op
+            # on every deploy after the first.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-ohio-area-city-pages.ts commit
             # Brief 112: create the cms_media catalog table and backfill a row for
             # every file already in public/uploads/cms/. Idempotent - CREATE TABLE
             # IF NOT EXISTS + INSERT ... ON CONFLICT (url) DO NOTHING, so re-running
