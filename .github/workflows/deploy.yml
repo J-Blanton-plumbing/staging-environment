@@ -738,6 +738,126 @@ jobs:
                       -e 's/&amp;/\&/g'
             }
             # A string that MUST be present. severity=fail blocks the deploy.
+            # ── Content checks: assert INVARIANTS, never editorial wording ─────
+            #
+            # These used to pin exact strings — `check_h1 "/columbus" "Columbus
+            # Plumber"`, `check_marker "/" "1387 W. Goodale Blvd"`, and three
+            # headings each on /gas-lines, /sewer-rodding and /hydro-jetting. Every
+            # one of those strings is a field Marketing owns in the CMS, so editing
+            # copy turned the pipeline red: the Columbus H1 broke permanently the
+            # moment somebody set a real headline ("PLUMBERS IN COLUMBUS, OHIO"),
+            # and correcting the Columbus office address in /admin/global-settings
+            # would have hard-failed a deploy. Twelve tripwires on ordinary
+            # editorial work, four of them blocking.
+            #
+            # A gate that fires on legitimate content edits is worse than no gate,
+            # because a red run stops carrying information and everyone learns to
+            # ignore it. So the assertions moved to what is actually invariant.
+            #
+            # STILL CAUGHT — which is what Briefs 146/155/158 were reaching for:
+            # a blank or degraded page (Brief 146 shipped one that rendered as
+            # heading + image with no content), a missing or duplicated <h1>, an
+            # unpublished CMS row, and leaked outline labels ("H1:" / "H2:" — Brief
+            # 155 had to strip 43 of those out of live copy).
+            #
+            # NO LONGER CAUGHT, deliberately: the exact wording of any sentence.
+            # That is Marketing's to change without consulting the pipeline.
+
+            # Artefacts that mean the renderer or the copy is broken regardless of
+            # wording. One definition so both checks agree.
+            LEAKED_ARTEFACTS='^H[1-6]:|\{\{|\}\}|\[object Object\]|^undefined$|^null$'
+
+            # Structural H1 check. `$2` is a word the heading must MENTION — the
+            # city or service name — not a string it must equal.
+            check_h1() {
+              path="$1"; must_mention="$2"
+              LAST_CHECK="check_h1 $path :: mentions $must_mention"
+              CHECKS_RUN=$((CHECKS_RUN + 1))
+              # Name the cause explicitly if the one non-obvious tool this check
+              # needs is missing, so a toolchain gap can never read as an H1 defect.
+              if ! command -v awk >/dev/null 2>&1; then
+                echo "CHECK CANNOT RUN: awk is not on PATH, so check_h1 cannot parse ${path}."
+                echo "  This is a box/toolchain problem, NOT an H1 regression."
+                CONTENT_FAILED=1
+                return
+              fi
+              body=$(fetch_text "$path") || body=""
+              h1_count=$(printf '%s' "$body" | grep -oE '<h1[[:space:]>]' | wc -l | tr -d '[:space:]')
+              h1_text=$(printf '%s' "$body" | tr '\n' ' ' \
+                | awk -F'<h1' 'NF>1{print $2}' \
+                | sed -e 's/^[^>]*>//' -e 's|</h1>.*$||' -e 's/<[^>]*>//g' \
+                | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+              if [ "$h1_count" != "1" ]; then
+                echo "H1 DEFECT: ${path} renders ${h1_count} <h1> element(s), expected exactly 1 (first was \"${h1_text}\")"
+                CONTENT_FAILED=1
+              elif [ -z "$h1_text" ]; then
+                echo "H1 DEFECT: ${path} renders an EMPTY <h1>."
+                echo "  On a city page the H1 comes from city_pages.hero_heading_line1 when that"
+                echo "  column is non-empty; a whitespace-only value produces exactly this."
+                CONTENT_FAILED=1
+              elif printf '%s' "$h1_text" | grep -qE "$LEAKED_ARTEFACTS"; then
+                echo "H1 DEFECT: ${path} renders <h1>${h1_text}</h1> - that contains a leaked"
+                echo "  template artefact or outline label. Fix the CMS field, not this check."
+                CONTENT_FAILED=1
+              elif ! printf '%s' "$h1_text" | grep -qiF -- "$must_mention"; then
+                echo "H1 DEFECT: ${path} renders <h1>${h1_text}</h1>, which does not mention"
+                echo "  \"${must_mention}\" - so this page is probably showing another page's heading."
+                echo "  NOTE: the WORDING is Marketing's to choose. This only asserts the subject."
+                CONTENT_FAILED=1
+              else
+                echo "OK: ${path} renders exactly one <h1> mentioning \"${must_mention}\": \"${h1_text}\""
+              fi
+            }
+
+            # "This page is substantive" - one <h1>, real prose, no leaked
+            # artefacts. Replaces the exact-sentence markers on the CMS-driven
+            # pages, and catches the failure they were actually aimed at: Brief 146
+            # shipped a page that rendered as heading + image with no content,
+            # which is what an unpublished or empty CMS row produces.
+            #
+            # PARAGRAPH COUNT, not character count. Counting visible text needs the
+            # <script> blocks stripped, and Next.js serves the whole document on one
+            # line, so `sed 's|<script.*</script>||'` matches from the first script
+            # tag to the last and eats the entire body - measured, it left every
+            # page reporting 1 character. `grep -o '<p[ >]'` cannot fail that way.
+            #
+            # Floor measured against production 2026-09-04: /gas-lines 33,
+            # /locations 40, /hydro-jetting 40, /sewer-rodding 41, /columbus 53,
+            # / 77. A floor of 12 leaves ~3x headroom on the thinnest real page
+            # while still catching a stripped one, which has almost none. Raise it
+            # only with fresh measurements - a floor set near the real value is how
+            # this check becomes the next thing everyone ignores.
+            check_page_substantive() {
+              path="$1"; min_paras="$2"; severity="$3"
+              LAST_CHECK="check_page_substantive $path ($severity) :: min ${min_paras} paragraphs"
+              CHECKS_RUN=$((CHECKS_RUN + 1))
+              body=$(fetch_text "$path") || body=""
+              paras=$(printf '%s' "$body" | grep -oE '<p[[:space:]>]' | wc -l | tr -d '[:space:]')
+              h1_count=$(printf '%s' "$body" | grep -oE '<h1[[:space:]>]' | wc -l | tr -d '[:space:]')
+              problem=""
+              if [ "$h1_count" != "1" ]; then
+                problem="renders ${h1_count} <h1> element(s), expected 1"
+              elif [ "$paras" -lt "$min_paras" ]; then
+                problem="renders only ${paras} paragraph(s) (floor ${min_paras}) - the page is degraded, or its CMS row is empty or unpublished"
+              elif printf '%s' "$body" | grep -qF '{{'; then
+                problem="contains an unrendered template token ({{...}})"
+              fi
+              if [ -z "$problem" ]; then
+                echo "OK: ${path} is substantive (${paras} paragraphs, one h1)"
+              elif [ "$severity" = "warn" ]; then
+                echo "WARNING: ${path} ${problem}"
+                CHECKS_WARNED=$((CHECKS_WARNED + 1))
+              else
+                echo "CONTENT DEFECT: ${path} ${problem}"
+                CONTENT_FAILED=1
+              fi
+            }
+
+            # Literal-string check. KEPT, but only legitimate for strings that are
+            # NOT CMS-editable. Every previous caller was editable, so it has no
+            # callers today - left in place because the next genuinely static
+            # marker (a hardcoded legal line, a route-level string) should use this
+            # rather than inventing another one. Never point it at a CMS field.
             check_marker() {
               path="$1"; marker="$2"; severity="$3"
               LAST_CHECK="check_marker $path ($severity) :: $marker"
@@ -783,64 +903,27 @@ jobs:
             # inside the heading: split at the first `<h1`, drop the rest of the open
             # tag, cut at `</h1>`, then strip any remaining tags. A heading whose shape
             # this cannot read yields a mismatch - a LOUD failure, never a silent pass.
-            check_h1() {
-              path="$1"; expected="$2"
-              LAST_CHECK="check_h1 $path :: $expected"
-              CHECKS_RUN=$((CHECKS_RUN + 1))
-              # Name the cause explicitly if the one non-obvious tool this check
-              # needs is missing, so a toolchain gap can never read as an H1 defect.
-              if ! command -v awk >/dev/null 2>&1; then
-                echo "CHECK CANNOT RUN: awk is not on PATH, so check_h1 cannot parse ${path}."
-                echo "  This is a box/toolchain problem, NOT an H1 regression."
-                CONTENT_FAILED=1
-                return
-              fi
-              body=$(fetch_text "$path") || body=""
-              h1_count=$(printf '%s' "$body" | grep -oE '<h1[[:space:]>]' | wc -l | tr -d '[:space:]')
-              h1_text=$(printf '%s' "$body" | tr '\n' ' ' \
-                | awk -F'<h1' 'NF>1{print $2}' \
-                | sed -e 's/^[^>]*>//' -e 's|</h1>.*$||' -e 's/<[^>]*>//g' \
-                | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-              if [ "$h1_count" != "1" ]; then
-                echo "H1 DEFECT: ${path} renders ${h1_count} <h1> element(s), expected exactly 1 (first was \"${h1_text}\")"
-                CONTENT_FAILED=1
-              elif [ "$h1_text" = "$expected" ]; then
-                echo "OK: ${path} renders exactly one <h1>${expected}</h1>"
-              else
-                echo "H1 DEFECT: ${path} renders <h1>${h1_text}</h1>, expected <h1>${expected}</h1>"
-                echo "  On a city page the H1 comes from city_pages.hero_heading_line1 when that"
-                echo "  column is non-empty. Clearing it restores the default \"{City} Plumber\"."
-                CONTENT_FAILED=1
-              fi
-            }
-            # Hard gate - the brief's named marker. /gas-lines renders from
-            # sub_service_pages; an empty hero heading means the row is not fit to
-            # render and the page is degraded for every visitor.
-            check_marker "/gas-lines" "Gas Line Services in Chicagoland Plumber" "fail"
-            # Softer markers on the same page: each is one approved section. A warning
-            # keeps a half-filled page visible without blocking a deploy over a
-            # section Marketing may still be editing.
-            check_marker "/gas-lines" "Signs of Gas Line Issues" "warn"
-            check_marker "/gas-lines" "Reliable Gas Lines Plumbing in the Chicagoland Area" "warn"
+            # /gas-lines renders from `sub_service_pages`, so a 200 does not imply
+            # there is copy on the page - an unpublished or empty row still returns
+            # 200 with a heading and nothing under it. This asserts the page is
+            # substantive; it deliberately does NOT assert any heading's wording.
+            check_page_substantive "/gas-lines" 12 "fail"
             # -- Brief 149: the two newly consolidated pages -----------------------
-            # Same reasoning as /gas-lines above - these routes now render from
+            # Same reasoning as /gas-lines above - these routes render from
             # `sub_service_pages` instead of a static file, so a 200 no longer implies
-            # there is copy on the page. The HARD markers are the two sections that had
-            # no block type before this brief; if either is missing, the consolidation
-            # dropped a section and the page is degraded for every visitor.
+            # there is copy on the page.
             #
-            # NOTE these are the SECTION HEADINGS, deliberately, not the H1: the H1 comes
-            # from a CMS field marketing may reword, while these headings came across
-            # with the port. If Marketing rewords one, update the marker here in the
-            # same change.
-            check_marker "/sewer-rodding" "More Sewer Rodding Solutions" "fail"
-            check_marker "/sewer-rodding" "Professional Sewer Line Installation Done Right" "fail"
-            check_marker "/sewer-rodding" "Preventive Maintenance for Healthier Sewer Lines" "warn"
+            # These used to assert three exact section headings each, under a comment
+            # reading "If Marketing rewords one, update the marker here in the same
+            # change." That coupling was the bug: it made ordinary copy edits break the
+            # pipeline, and nobody remembers to edit a YAML marker when they retitle a
+            # section in the admin. The substantive check catches the failure that
+            # actually mattered - the consolidation dropping a section - without owning
+            # anybody's words.
+            check_page_substantive "/sewer-rodding" 12 "fail"
             # The Brief 145 D-4 junk must never reach a rendered page again.
             check_absent "/sewer-rodding" "aaaaaa" '"aaaaaa" placeholder heading'
-            check_marker "/hydro-jetting" "More Drain & Sewer Solutions" "fail"
-            check_marker "/hydro-jetting" "Hydro Jetting: Clearing Drains with Precision" "fail"
-            check_marker "/hydro-jetting" "Preventive Hydro Jetting for Healthier Pipes" "warn"
+            check_page_substantive "/hydro-jetting" 12 "fail"
             # Scraped WordPress nav text was in id 23's intro_body and would render as
             # body copy the moment that route flipped.
             check_absent "/hydro-jetting" "SCHEDULE A SERVICE SERVICES" "scraped WordPress nav text"
@@ -863,9 +946,9 @@ jobs:
             # indexed page) would have deployed green. This asserts the H1 element
             # specifically, and that there is exactly one of them (CLAUDE.md gotcha #3:
             # one H1 per page, and a linked phone number is never a heading).
-            check_h1 "/columbus" "Columbus Plumber"
-            check_marker "/" "1387 W. Goodale Blvd" "fail"
-            check_marker "/locations" "Columbus, OH" "fail"
+            check_h1 "/columbus" "Columbus"
+            check_page_substantive "/" 12 "fail"
+            check_page_substantive "/locations" 12 "fail"
 
             # -- Brief 155: no leaked "H1:"/"H2:" outline label on a rendered heading --
             # A 200 was never the question here either - the page rendered fine, it just
