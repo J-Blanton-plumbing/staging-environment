@@ -22,14 +22,22 @@
  *  - "100,000 residents" (manplumberBody) is Elgin's population, not
  *    Columbus's — left as-is per the same "swap the name/state tokens only,
  *    don't fact-check" rule used for the rest of this dummy copy.
- *  - No `heroImage` is set (matches Elgin, not Algonquin) — `resolveHeroImage()`
- *    falls through to the standard generic fallback rather than pointing at a
- *    city-specific asset that doesn't exist.
+ *  - No `heroImage` was set (matching Elgin, not Algonquin) — there was no
+ *    Columbus-specific asset to point at. Brief 172 generated one: `heroImage`
+ *    now carries the map hero. Columbus is in that brief's eight-area pilot and
+ *    has to be wired HERE, because `getOhioTemplateContent()` — which gates the
+ *    other seven behind `HERO_PILOT_SLUGS` — returns `undefined` for `columbus`
+ *    so this file is never shadowed.
  */
 import type { CoverageAreaContent } from './types';
 
 export const COLUMBUS: CoverageAreaContent = {
   slug: 'columbus',
+
+  // Brief 172 (pilot): the OSM map hero with the city boundary traced in
+  // Carmine. Root-relative on purpose — `resolveCityImage()` sends a bare
+  // filename to CloudFront, where this file does not exist.
+  heroImage: '/images/columbus-heroes/hero_columbus_columbus.webp',
 
   callout:
     'Highly-Rated Plumbers with Over 30 Years of Experience, 5-Star Reviews, and Same-Day Service Available. Serving Columbus for All Your Plumbing Repair Needs.',

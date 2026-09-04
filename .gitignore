@@ -40,3 +40,8 @@ human qa/live-whyjblanton-hero.png
 
 # Local QA scratch — .before backups and screenshot dumps. Never ship.
 human qa/
+
+# OSM tile cache written by scripts/columbus-heroes/build-heroes.mjs (Brief 172).
+# 5.7 MB after the eight-area pilot and far larger after all 138; the generator
+# re-fetches anything missing, so it is a speed cache, never a source.
+.scripts-out/tile-cache/

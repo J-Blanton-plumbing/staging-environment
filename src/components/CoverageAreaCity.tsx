@@ -17,6 +17,7 @@ import {
   getElfsightHeroId,
   getElfsightContentId,
   resolveCityImage,
+  COLUMBUS_HERO_PREFIX,
 } from '@/lib/content/cities/shared';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import CityPageImage from '@/components/CityPageImage';
@@ -119,6 +120,24 @@ export default function CoverageAreaCity({
   const gbpLabel = content?.gbp ?? name;
   const heroImageUrl = resolveCityImage(content?.heroImage);
   /*
+   * Brief 173 (Track C): the Ohio area heroes are boundary MAPS, not photos of
+   * the place. `CityHero` alt-texts the hero with the H1 by default, which
+   * announces the Dublin map as "Dublin Plumber" — a fair description of the
+   * heading beside it and a poor one of the image.
+   *
+   * Gated on the RESOLVED url, not on the state or the registry, so it tracks
+   * what is actually in the slot: if a CMS `hero_image` value overrides the map
+   * with a photo, the alt text reverts with it. `undefined` everywhere else
+   * leaves `CityHero`'s default untouched, so no Illinois page's markup moves.
+   *
+   * `state` rather than a literal "Ohio": it is already 'Ohio' for every area
+   * that has one of these images, so the rendered string is identical, and the
+   * geography stays in the registry where the rest of this component reads it.
+   */
+  const heroImageAlt = heroImageUrl.startsWith(COLUMBUS_HERO_PREFIX)
+    ? `Service area map of ${name}, ${state}`
+    : undefined;
+  /*
    * Brief 160 (Track C): section 1 resolves its OWN field. It deliberately does
    * not read `content.heroImage`, and does not reuse `heroImageUrl` — the whole
    * point of the track is that a populated hero has no effect here. Empty →
@@ -154,6 +173,7 @@ export default function CoverageAreaCity({
         cityName={name}
         h1={h1}
         heroImageUrl={heroImageUrl}
+        imageAlt={heroImageAlt}
         office={office}
         gbpLabel={gbpLabel}
         area={area}

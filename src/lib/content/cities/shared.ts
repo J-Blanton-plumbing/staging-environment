@@ -67,6 +67,18 @@ export function resolveCityImage(value?: string): string {
   return `${CDN}/images/${file}`;
 }
 
+/**
+ * Root-relative prefix of the Ohio area map heroes (Brief 173).
+ *
+ * Two places need it and must not drift: `ohio-template-content.ts` builds the
+ * paths, and `CoverageAreaCity` tests the RESOLVED hero URL against it to decide
+ * whether the image is a map (and so needs map alt text) or a photo. Testing the
+ * resolved URL rather than the content field is deliberate — a CMS `hero_image`
+ * value overrides the static one in `[city]/page.tsx`, and when it does, the alt
+ * text has to describe what is actually rendered.
+ */
+export const COLUMBUS_HERO_PREFIX = '/images/columbus-heroes/';
+
 /* ── Elfsight widget IDs ─────────────────────────────────────────────────────
  * Ported verbatim from jb-blanton/functions.php `jb_get_elfsight_ids()` (hero
  * reviews) and page-city.php `$elfsight_content_map` (section reviews).

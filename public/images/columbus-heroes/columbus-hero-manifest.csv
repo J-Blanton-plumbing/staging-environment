@@ -1,0 +1,139 @@
+slug,name,county,kind,file,heroImage,map_source,zoom,kb
+adelphi,"Adelphi",Ross,municipality,hero_columbus_adelphi.webp,/images/columbus-heroes/hero_columbus_adelphi.webp,"exact municipal boundary (US Census TIGER 2019)",16,61
+alexandria,"Alexandria",Licking,municipality,hero_columbus_alexandria.webp,/images/columbus-heroes/hero_columbus_alexandria.webp,"exact municipal boundary (US Census TIGER 2019)",15,41
+amanda,"Amanda",Fairfield,municipality,hero_columbus_amanda.webp,/images/columbus-heroes/hero_columbus_amanda.webp,"exact municipal boundary (US Census TIGER 2019)",15,53
+amlin,"Amlin",Franklin,municipality,hero_columbus_amlin.webp,/images/columbus-heroes/hero_columbus_amlin.webp,"map centred on the place, no boundary published",14,121
+ashley,"Ashley",Delaware,municipality,hero_columbus_ashley.webp,/images/columbus-heroes/hero_columbus_ashley.webp,"exact municipal boundary (US Census TIGER 2019)",14,35
+ashville,"Ashville",Pickaway,municipality,hero_columbus_ashville.webp,/images/columbus-heroes/hero_columbus_ashville.webp,"exact municipal boundary (US Census TIGER 2019)",14,72
+baltimore,"Baltimore",Fairfield,municipality,hero_columbus_baltimore.webp,/images/columbus-heroes/hero_columbus_baltimore.webp,"exact municipal boundary (US Census TIGER 2019)",14,73
+blacklick,"Blacklick",Franklin,municipality,hero_columbus_blacklick.webp,/images/columbus-heroes/hero_columbus_blacklick.webp,"exact municipal boundary (US Census TIGER 2019)",14,155
+bloomingburg,"Bloomingburg",Fayette,municipality,hero_columbus_bloomingburg.webp,/images/columbus-heroes/hero_columbus_bloomingburg.webp,"exact municipal boundary (US Census TIGER 2019)",15,43
+bremen,"Bremen",Fairfield,municipality,hero_columbus_bremen.webp,/images/columbus-heroes/hero_columbus_bremen.webp,"exact municipal boundary (US Census TIGER 2019)",14,76
+brice,"Brice",Franklin,municipality,hero_columbus_brice.webp,/images/columbus-heroes/hero_columbus_brice.webp,"exact municipal boundary (US Census TIGER 2019)",16,105
+buckeye-lake,"Buckeye Lake",Licking,municipality,hero_columbus_buckeye-lake.webp,/images/columbus-heroes/hero_columbus_buckeye-lake.webp,"exact municipal boundary (US Census TIGER 2019)",14,75
+cable,"Cable",Champaign,municipality,hero_columbus_cable.webp,/images/columbus-heroes/hero_columbus_cable.webp,"map centred on the place, no boundary published",14,30
+canal-winchester,"Canal Winchester",Franklin,municipality,hero_columbus_canal-winchester.webp,/images/columbus-heroes/hero_columbus_canal-winchester.webp,"exact municipal boundary (US Census TIGER 2019)",13,137
+cardington,"Cardington",Morrow,municipality,hero_columbus_cardington.webp,/images/columbus-heroes/hero_columbus_cardington.webp,"exact municipal boundary (US Census TIGER 2019)",14,58
+carroll,"Carroll",Fairfield,municipality,hero_columbus_carroll.webp,/images/columbus-heroes/hero_columbus_carroll.webp,"exact municipal boundary (US Census TIGER 2019)",15,66
+catawba,"Catawba",Clark,municipality,hero_columbus_catawba.webp,/images/columbus-heroes/hero_columbus_catawba.webp,"exact municipal boundary (US Census TIGER 2019)",16,36
+centerburg,"Centerburg",Knox,municipality,hero_columbus_centerburg.webp,/images/columbus-heroes/hero_columbus_centerburg.webp,"exact municipal boundary (US Census TIGER 2019)",14,46
+chesterville,"Chesterville",Morrow,municipality,hero_columbus_chesterville.webp,/images/columbus-heroes/hero_columbus_chesterville.webp,"exact municipal boundary (US Census TIGER 2019)",15,30
+circleville,"Circleville",Pickaway,municipality,hero_columbus_circleville.webp,/images/columbus-heroes/hero_columbus_circleville.webp,"exact municipal boundary (US Census TIGER 2019)",13,105
+clarksburg,"Clarksburg",Ross,municipality,hero_columbus_clarksburg.webp,/images/columbus-heroes/hero_columbus_clarksburg.webp,"exact municipal boundary (US Census TIGER 2019)",16,38
+columbus,"Columbus",Franklin,municipality,hero_columbus_columbus.webp,/images/columbus-heroes/hero_columbus_columbus.webp,"exact municipal boundary (US Census TIGER 2019)",10,144
+columbus-arena-district,"Columbus Arena District",Franklin,neighborhood,hero_columbus_arena-district.webp,/images/columbus-heroes/hero_columbus_arena-district.webp,"map centred on the place, no boundary published",14,233
+columbus-beechwold,"Columbus Beechwold",Franklin,neighborhood,hero_columbus_beechwold.webp,/images/columbus-heroes/hero_columbus_beechwold.webp,"map centred on the place, no boundary published",14,186
+columbus-berwick,"Columbus Berwick",Franklin,neighborhood,hero_columbus_berwick.webp,/images/columbus-heroes/hero_columbus_berwick.webp,"boundary from OpenStreetMap",15,158
+columbus-bexley,"Columbus Bexley",Franklin,neighborhood,hero_columbus_bexley.webp,/images/columbus-heroes/hero_columbus_bexley.webp,"exact municipal boundary (US Census TIGER 2019)",14,174
+columbus-brewery-district,"Columbus Brewery District",Franklin,neighborhood,hero_columbus_brewery-district.webp,/images/columbus-heroes/hero_columbus_brewery-district.webp,"exact municipal boundary (US Census TIGER 2019)",15,204
+columbus-clintonville,"Columbus Clintonville",Franklin,neighborhood,hero_columbus_clintonville.webp,/images/columbus-heroes/hero_columbus_clintonville.webp,"exact municipal boundary (US Census TIGER 2019)",13,205
+columbus-downtown,"Columbus Downtown",Franklin,neighborhood,hero_columbus_downtown.webp,/images/columbus-heroes/hero_columbus_downtown.webp,"exact municipal boundary (US Census TIGER 2019)",14,226
+columbus-eastland,"Columbus Eastland",Franklin,neighborhood,hero_columbus_eastland.webp,/images/columbus-heroes/hero_columbus_eastland.webp,"boundary from OpenStreetMap",14,154
+columbus-eastmoor,"Columbus Eastmoor",Franklin,neighborhood,hero_columbus_eastmoor.webp,/images/columbus-heroes/hero_columbus_eastmoor.webp,"boundary from OpenStreetMap",14,163
+columbus-easton,"Columbus Easton",Franklin,neighborhood,hero_columbus_easton.webp,/images/columbus-heroes/hero_columbus_easton.webp,"boundary from OpenStreetMap",14,175
+columbus-fifth-by-northwest,"Columbus Fifth by Northwest",Franklin,neighborhood,hero_columbus_fifth-by-northwest.webp,/images/columbus-heroes/hero_columbus_fifth-by-northwest.webp,"boundary from OpenStreetMap",14,215
+columbus-forest-park,"Columbus Forest Park",Franklin,neighborhood,hero_columbus_forest-park.webp,/images/columbus-heroes/hero_columbus_forest-park.webp,"exact municipal boundary (US Census TIGER 2019)",13,164
+columbus-franklinton,"Columbus Franklinton",Franklin,neighborhood,hero_columbus_franklinton.webp,/images/columbus-heroes/hero_columbus_franklinton.webp,"exact municipal boundary (US Census TIGER 2019)",14,212
+columbus-gahanna,"Columbus Gahanna",Franklin,neighborhood,hero_columbus_gahanna.webp,/images/columbus-heroes/hero_columbus_gahanna.webp,"exact municipal boundary (US Census TIGER 2019)",13,183
+columbus-german-village,"Columbus German Village",Franklin,neighborhood,hero_columbus_german-village.webp,/images/columbus-heroes/hero_columbus_german-village.webp,"boundary from OpenStreetMap",15,216
+columbus-grandview-heights,"Columbus Grandview Heights",Franklin,neighborhood,hero_columbus_grandview-heights.webp,/images/columbus-heroes/hero_columbus_grandview-heights.webp,"exact municipal boundary (US Census TIGER 2019)",14,221
+columbus-harrison-west,"Columbus Harrison West",Franklin,neighborhood,hero_columbus_harrison-west.webp,/images/columbus-heroes/hero_columbus_harrison-west.webp,"exact municipal boundary (US Census TIGER 2019)",16,202
+columbus-hilltop,"Columbus Hilltop",Franklin,neighborhood,hero_columbus_hilltop.webp,/images/columbus-heroes/hero_columbus_hilltop.webp,"exact municipal boundary (US Census TIGER 2019)",15,96
+columbus-italian-village,"Columbus Italian Village",Franklin,neighborhood,hero_columbus_italian-village.webp,/images/columbus-heroes/hero_columbus_italian-village.webp,"exact municipal boundary (US Census TIGER 2019)",15,226
+columbus-king-lincoln-bronzeville,"Columbus King-Lincoln Bronzeville",Franklin,neighborhood,hero_columbus_king-lincoln-bronzeville.webp,/images/columbus-heroes/hero_columbus_king-lincoln-bronzeville.webp,"map centred on the place, no boundary published",14,224
+columbus-linden,"Columbus Linden",Franklin,neighborhood,hero_columbus_linden.webp,/images/columbus-heroes/hero_columbus_linden.webp,"exact municipal boundary (US Census TIGER 2019)",14,196
+columbus-marion-franklin,"Columbus Marion-Franklin",Franklin,neighborhood,hero_columbus_marion-franklin.webp,/images/columbus-heroes/hero_columbus_marion-franklin.webp,"boundary from OpenStreetMap",16,82
+columbus-merion-village,"Columbus Merion Village",Franklin,neighborhood,hero_columbus_merion-village.webp,/images/columbus-heroes/hero_columbus_merion-village.webp,"boundary from OpenStreetMap",15,191
+columbus-minerva-park,"Columbus Minerva Park",Franklin,neighborhood,hero_columbus_minerva-park.webp,/images/columbus-heroes/hero_columbus_minerva-park.webp,"exact municipal boundary (US Census TIGER 2019)",15,196
+columbus-near-east-side,"Columbus Near East Side",Franklin,neighborhood,hero_columbus_near-east-side.webp,/images/columbus-heroes/hero_columbus_near-east-side.webp,"exact municipal boundary (US Census TIGER 2019)",14,201
+columbus-north-linden,"Columbus North Linden",Franklin,neighborhood,hero_columbus_north-linden.webp,/images/columbus-heroes/hero_columbus_north-linden.webp,"exact municipal boundary (US Census TIGER 2019)",14,173
+columbus-northland,"Columbus Northland",Franklin,neighborhood,hero_columbus_northland.webp,/images/columbus-heroes/hero_columbus_northland.webp,"exact municipal boundary (US Census TIGER 2019)",12,172
+columbus-olde-towne-east,"Columbus Olde Towne East",Franklin,neighborhood,hero_columbus_olde-towne-east.webp,/images/columbus-heroes/hero_columbus_olde-towne-east.webp,"map centred on the place, no boundary published",14,218
+columbus-polaris,"Columbus Polaris",Delaware,neighborhood,hero_columbus_polaris.webp,/images/columbus-heroes/hero_columbus_polaris.webp,"boundary from OpenStreetMap",16,164
+columbus-short-north,"Columbus Short North",Franklin,neighborhood,hero_columbus_short-north.webp,/images/columbus-heroes/hero_columbus_short-north.webp,"map centred on the place, no boundary published",14,234
+columbus-south-side,"Columbus South Side",Franklin,neighborhood,hero_columbus_south-side.webp,/images/columbus-heroes/hero_columbus_south-side.webp,"exact municipal boundary (US Census TIGER 2019)",13,198
+columbus-university-district,"Columbus University District",Franklin,neighborhood,hero_columbus_university-district.webp,/images/columbus-heroes/hero_columbus_university-district.webp,"exact municipal boundary (US Census TIGER 2019)",14,207
+columbus-upper-arlington,"Columbus Upper Arlington",Franklin,neighborhood,hero_columbus_upper-arlington.webp,/images/columbus-heroes/hero_columbus_upper-arlington.webp,"exact municipal boundary (US Census TIGER 2019)",13,201
+columbus-victorian-village,"Columbus Victorian Village",Franklin,neighborhood,hero_columbus_victorian-village.webp,/images/columbus-heroes/hero_columbus_victorian-village.webp,"exact municipal boundary (US Census TIGER 2019)",15,223
+columbus-weinland-park,"Columbus Weinland Park",Franklin,neighborhood,hero_columbus_weinland-park.webp,/images/columbus-heroes/hero_columbus_weinland-park.webp,"exact municipal boundary (US Census TIGER 2019)",15,225
+columbus-westland,"Columbus Westland",Franklin,neighborhood,hero_columbus_westland.webp,/images/columbus-heroes/hero_columbus_westland.webp,"exact municipal boundary (US Census TIGER 2019)",13,138
+commercial-point,"Commercial Point",Pickaway,municipality,hero_columbus_commercial-point.webp,/images/columbus-heroes/hero_columbus_commercial-point.webp,"exact municipal boundary (US Census TIGER 2019)",13,90
+croton,"Croton",Licking,municipality,hero_columbus_croton.webp,/images/columbus-heroes/hero_columbus_croton.webp,"map centred on the place, no boundary published",14,34
+delaware,"Delaware",Delaware,municipality,hero_columbus_delaware.webp,/images/columbus-heroes/hero_columbus_delaware.webp,"exact municipal boundary (US Census TIGER 2019)",12,108
+derby,"Derby",Pickaway,municipality,hero_columbus_derby.webp,/images/columbus-heroes/hero_columbus_derby.webp,"exact municipal boundary (US Census TIGER 2019)",14,55
+dublin,"Dublin",Franklin,municipality,hero_columbus_dublin.webp,/images/columbus-heroes/hero_columbus_dublin.webp,"exact municipal boundary (US Census TIGER 2019)",12,150
+east-liberty,"East Liberty",Logan,municipality,hero_columbus_east-liberty.webp,/images/columbus-heroes/hero_columbus_east-liberty.webp,"exact municipal boundary (US Census TIGER 2019)",14,53
+fulton,"Fulton",Morrow,municipality,hero_columbus_fulton.webp,/images/columbus-heroes/hero_columbus_fulton.webp,"exact municipal boundary (US Census TIGER 2019)",15,42
+galena,"Galena",Delaware,municipality,hero_columbus_galena.webp,/images/columbus-heroes/hero_columbus_galena.webp,"exact municipal boundary (US Census TIGER 2019)",14,87
+galloway,"Galloway",Franklin,municipality,hero_columbus_galloway.webp,/images/columbus-heroes/hero_columbus_galloway.webp,"map centred on the place, no boundary published",14,85
+granville,"Granville",Licking,municipality,hero_columbus_granville.webp,/images/columbus-heroes/hero_columbus_granville.webp,"exact municipal boundary (US Census TIGER 2019)",13,96
+green-camp,"Green Camp",Marion,municipality,hero_columbus_green-camp.webp,/images/columbus-heroes/hero_columbus_green-camp.webp,"exact municipal boundary (US Census TIGER 2019)",15,39
+grove-city,"Grove City",Franklin,municipality,hero_columbus_grove-city.webp,/images/columbus-heroes/hero_columbus_grove-city.webp,"exact municipal boundary (US Census TIGER 2019)",12,157
+groveport,"Groveport",Franklin,municipality,hero_columbus_groveport.webp,/images/columbus-heroes/hero_columbus_groveport.webp,"exact municipal boundary (US Census TIGER 2019)",13,149
+harrisburg,"Harrisburg",Franklin,municipality,hero_columbus_harrisburg.webp,/images/columbus-heroes/hero_columbus_harrisburg.webp,"exact municipal boundary (US Census TIGER 2019)",16,60
+heath,"Heath",Licking,municipality,hero_columbus_heath.webp,/images/columbus-heroes/hero_columbus_heath.webp,"exact municipal boundary (US Census TIGER 2019)",12,91
+hebron,"Hebron",Licking,municipality,hero_columbus_hebron.webp,/images/columbus-heroes/hero_columbus_hebron.webp,"exact municipal boundary (US Census TIGER 2019)",14,69
+hilliard,"Hilliard",Franklin,municipality,hero_columbus_hilliard.webp,/images/columbus-heroes/hero_columbus_hilliard.webp,"exact municipal boundary (US Census TIGER 2019)",12,167
+irwin,"Irwin",Union,municipality,hero_columbus_irwin.webp,/images/columbus-heroes/hero_columbus_irwin.webp,"map centred on the place, no boundary published",14,34
+jacksontown,"Jacksontown",Licking,municipality,hero_columbus_jacksontown.webp,/images/columbus-heroes/hero_columbus_jacksontown.webp,"boundary from OpenStreetMap",16,26
+jeffersonville,"Jeffersonville",Fayette,municipality,hero_columbus_jeffersonville.webp,/images/columbus-heroes/hero_columbus_jeffersonville.webp,"exact municipal boundary (US Census TIGER 2019)",14,48
+johnstown,"Johnstown",Licking,municipality,hero_columbus_johnstown.webp,/images/columbus-heroes/hero_columbus_johnstown.webp,"exact municipal boundary (US Census TIGER 2019)",13,63
+kilbourne,"Kilbourne",Delaware,municipality,hero_columbus_kilbourne.webp,/images/columbus-heroes/hero_columbus_kilbourne.webp,"exact municipal boundary (US Census TIGER 2019)",15,39
+kingston,"Kingston",Ross,municipality,hero_columbus_kingston.webp,/images/columbus-heroes/hero_columbus_kingston.webp,"exact municipal boundary (US Census TIGER 2019)",15,46
+kirkersville,"Kirkersville",Licking,municipality,hero_columbus_kirkersville.webp,/images/columbus-heroes/hero_columbus_kirkersville.webp,"exact municipal boundary (US Census TIGER 2019)",14,48
+lancaster,"Lancaster",Fairfield,municipality,hero_columbus_lancaster.webp,/images/columbus-heroes/hero_columbus_lancaster.webp,"exact municipal boundary (US Census TIGER 2019)",12,128
+lewis-center,"Lewis Center",Delaware,municipality,hero_columbus_lewis-center.webp,/images/columbus-heroes/hero_columbus_lewis-center.webp,"map centred on the place, no boundary published",14,116
+lithopolis,"Lithopolis",Fairfield,municipality,hero_columbus_lithopolis.webp,/images/columbus-heroes/hero_columbus_lithopolis.webp,"exact municipal boundary (US Census TIGER 2019)",14,101
+lockbourne,"Lockbourne",Franklin,municipality,hero_columbus_lockbourne.webp,/images/columbus-heroes/hero_columbus_lockbourne.webp,"exact municipal boundary (US Census TIGER 2019)",14,99
+london,"London",Madison,municipality,hero_columbus_london.webp,/images/columbus-heroes/hero_columbus_london.webp,"exact municipal boundary (US Census TIGER 2019)",13,69
+magnetic-springs,"Magnetic Springs",Union,municipality,hero_columbus_magnetic-springs.webp,/images/columbus-heroes/hero_columbus_magnetic-springs.webp,"exact municipal boundary (US Census TIGER 2019)",16,32
+marengo,"Marengo",Morrow,municipality,hero_columbus_marengo.webp,/images/columbus-heroes/hero_columbus_marengo.webp,"exact municipal boundary (US Census TIGER 2019)",16,53
+marysville,"Marysville",Union,municipality,hero_columbus_marysville.webp,/images/columbus-heroes/hero_columbus_marysville.webp,"exact municipal boundary (US Census TIGER 2019)",12,84
+mechanicsburg,"Mechanicsburg",Champaign,municipality,hero_columbus_mechanicsburg.webp,/images/columbus-heroes/hero_columbus_mechanicsburg.webp,"exact municipal boundary (US Census TIGER 2019)",15,47
+middleburg,"Middleburg",Logan,municipality,hero_columbus_middleburg.webp,/images/columbus-heroes/hero_columbus_middleburg.webp,"map centred on the place, no boundary published",14,56
+milford-center,"Milford Center",Union,municipality,hero_columbus_milford-center.webp,/images/columbus-heroes/hero_columbus_milford-center.webp,"exact municipal boundary (US Census TIGER 2019)",15,33
+milledgeville,"Milledgeville",Fayette,municipality,hero_columbus_milledgeville.webp,/images/columbus-heroes/hero_columbus_milledgeville.webp,"exact municipal boundary (US Census TIGER 2019)",16,19
+millersport,"Millersport",Fairfield,municipality,hero_columbus_millersport.webp,/images/columbus-heroes/hero_columbus_millersport.webp,"exact municipal boundary (US Census TIGER 2019)",14,54
+mount-sterling,"Mount Sterling",Madison,municipality,hero_columbus_mount-sterling.webp,/images/columbus-heroes/hero_columbus_mount-sterling.webp,"exact municipal boundary (US Census TIGER 2019)",14,53
+mount-vernon,"Mount Vernon",Knox,municipality,hero_columbus_mount-vernon.webp,/images/columbus-heroes/hero_columbus_mount-vernon.webp,"exact municipal boundary (US Census TIGER 2019)",13,101
+new-albany,"New Albany",Franklin,municipality,hero_columbus_new-albany.webp,/images/columbus-heroes/hero_columbus_new-albany.webp,"exact municipal boundary (US Census TIGER 2019)",12,130
+new-holland,"New Holland",Pickaway,municipality,hero_columbus_new-holland.webp,/images/columbus-heroes/hero_columbus_new-holland.webp,"exact municipal boundary (US Census TIGER 2019)",14,34
+newark,"Newark",Licking,municipality,hero_columbus_newark.webp,/images/columbus-heroes/hero_columbus_newark.webp,"exact municipal boundary (US Census TIGER 2019)",12,82
+north-lewisburg,"North Lewisburg",Champaign,municipality,hero_columbus_north-lewisburg.webp,/images/columbus-heroes/hero_columbus_north-lewisburg.webp,"exact municipal boundary (US Census TIGER 2019)",14,41
+orient,"Orient",Pickaway,municipality,hero_columbus_orient.webp,/images/columbus-heroes/hero_columbus_orient.webp,"exact municipal boundary (US Census TIGER 2019)",16,59
+ostrander,"Ostrander",Delaware,municipality,hero_columbus_ostrander.webp,/images/columbus-heroes/hero_columbus_ostrander.webp,"exact municipal boundary (US Census TIGER 2019)",15,54
+pataskala,"Pataskala",Licking,municipality,hero_columbus_pataskala.webp,/images/columbus-heroes/hero_columbus_pataskala.webp,"exact municipal boundary (US Census TIGER 2019)",12,122
+pickerington,"Pickerington",Fairfield,municipality,hero_columbus_pickerington.webp,/images/columbus-heroes/hero_columbus_pickerington.webp,"exact municipal boundary (US Census TIGER 2019)",13,152
+plain-city,"Plain City",Madison,municipality,hero_columbus_plain-city.webp,/images/columbus-heroes/hero_columbus_plain-city.webp,"exact municipal boundary (US Census TIGER 2019)",14,72
+pleasantville,"Pleasantville",Fairfield,municipality,hero_columbus_pleasantville.webp,/images/columbus-heroes/hero_columbus_pleasantville.webp,"exact municipal boundary (US Census TIGER 2019)",15,44
+powell,"Powell",Delaware,municipality,hero_columbus_powell.webp,/images/columbus-heroes/hero_columbus_powell.webp,"exact municipal boundary (US Census TIGER 2019)",13,164
+prospect,"Prospect",Marion,municipality,hero_columbus_prospect.webp,/images/columbus-heroes/hero_columbus_prospect.webp,"exact municipal boundary (US Census TIGER 2019)",15,42
+radnor,"Radnor",Delaware,municipality,hero_columbus_radnor.webp,/images/columbus-heroes/hero_columbus_radnor.webp,"exact municipal boundary (US Census TIGER 2019)",15,30
+raymond,"Raymond",Union,municipality,hero_columbus_raymond.webp,/images/columbus-heroes/hero_columbus_raymond.webp,"exact municipal boundary (US Census TIGER 2019)",14,42
+reynoldsburg,"Reynoldsburg",Franklin,municipality,hero_columbus_reynoldsburg.webp,/images/columbus-heroes/hero_columbus_reynoldsburg.webp,"exact municipal boundary (US Census TIGER 2019)",13,157
+richwood,"Richwood",Union,municipality,hero_columbus_richwood.webp,/images/columbus-heroes/hero_columbus_richwood.webp,"exact municipal boundary (US Census TIGER 2019)",14,47
+rockbridge,"Rockbridge",Hocking,municipality,hero_columbus_rockbridge.webp,/images/columbus-heroes/hero_columbus_rockbridge.webp,"exact municipal boundary (US Census TIGER 2019)",15,80
+rushville,"Rushville",Fairfield,municipality,hero_columbus_rushville.webp,/images/columbus-heroes/hero_columbus_rushville.webp,"exact municipal boundary (US Census TIGER 2019)",16,55
+saint-louisville,"Saint Louisville",Licking,municipality,hero_columbus_saint-louisville.webp,/images/columbus-heroes/hero_columbus_saint-louisville.webp,"map centred on the place, no boundary published",14,38
+sedalia,"Sedalia",Madison,municipality,hero_columbus_sedalia.webp,/images/columbus-heroes/hero_columbus_sedalia.webp,"map centred on the place, no boundary published",14,157
+south-charleston,"South Charleston",Clark,municipality,hero_columbus_south-charleston.webp,/images/columbus-heroes/hero_columbus_south-charleston.webp,"exact municipal boundary (US Census TIGER 2019)",14,42
+south-solon,"South Solon",Madison,municipality,hero_columbus_south-solon.webp,/images/columbus-heroes/hero_columbus_south-solon.webp,"exact municipal boundary (US Census TIGER 2019)",16,45
+south-vienna,"South Vienna",Clark,municipality,hero_columbus_south-vienna.webp,/images/columbus-heroes/hero_columbus_south-vienna.webp,"exact municipal boundary (US Census TIGER 2019)",15,37
+springfield,"Springfield",Clark,municipality,hero_columbus_springfield.webp,/images/columbus-heroes/hero_columbus_springfield.webp,"exact municipal boundary (US Census TIGER 2019)",12,97
+stoutsville,"Stoutsville",Fairfield,municipality,hero_columbus_stoutsville.webp,/images/columbus-heroes/hero_columbus_stoutsville.webp,"exact municipal boundary (US Census TIGER 2019)",14,55
+sugar-grove,"Sugar Grove",Fairfield,municipality,hero_columbus_sugar-grove.webp,/images/columbus-heroes/hero_columbus_sugar-grove.webp,"exact municipal boundary (US Census TIGER 2019)",15,75
+sunbury,"Sunbury",Delaware,municipality,hero_columbus_sunbury.webp,/images/columbus-heroes/hero_columbus_sunbury.webp,"exact municipal boundary (US Census TIGER 2019)",13,86
+tarlton,"Tarlton",Pickaway,municipality,hero_columbus_tarlton.webp,/images/columbus-heroes/hero_columbus_tarlton.webp,"exact municipal boundary (US Census TIGER 2019)",15,51
+thornville,"Thornville",Perry,municipality,hero_columbus_thornville.webp,/images/columbus-heroes/hero_columbus_thornville.webp,"exact municipal boundary (US Census TIGER 2019)",14,51
+thurston,"Thurston",Fairfield,municipality,hero_columbus_thurston.webp,/images/columbus-heroes/hero_columbus_thurston.webp,"exact municipal boundary (US Census TIGER 2019)",14,59
+unionville-center,"Unionville Center",Union,municipality,hero_columbus_unionville-center.webp,/images/columbus-heroes/hero_columbus_unionville-center.webp,"exact municipal boundary (US Census TIGER 2019)",16,33
+urbana,"Urbana",Champaign,municipality,hero_columbus_urbana.webp,/images/columbus-heroes/hero_columbus_urbana.webp,"exact municipal boundary (US Census TIGER 2019)",13,64
+utica,"Utica",Licking,municipality,hero_columbus_utica.webp,/images/columbus-heroes/hero_columbus_utica.webp,"exact municipal boundary (US Census TIGER 2019)",14,46
+waldo,"Waldo",Marion,municipality,hero_columbus_waldo.webp,/images/columbus-heroes/hero_columbus_waldo.webp,"exact municipal boundary (US Census TIGER 2019)",15,38
+washington-court-house,"Washington Court House",Fayette,municipality,hero_columbus_washington-court-house.webp,/images/columbus-heroes/hero_columbus_washington-court-house.webp,"exact municipal boundary (US Census TIGER 2019)",13,73
+west-jefferson,"West Jefferson",Madison,municipality,hero_columbus_west-jefferson.webp,/images/columbus-heroes/hero_columbus_west-jefferson.webp,"exact municipal boundary (US Census TIGER 2019)",12,101
+west-mansfield,"West Mansfield",Logan,municipality,hero_columbus_west-mansfield.webp,/images/columbus-heroes/hero_columbus_west-mansfield.webp,"exact municipal boundary (US Census TIGER 2019)",15,33
+westerville,"Westerville",Franklin,municipality,hero_columbus_westerville.webp,/images/columbus-heroes/hero_columbus_westerville.webp,"exact municipal boundary (US Census TIGER 2019)",13,180
+williamsport,"Williamsport",Pickaway,municipality,hero_columbus_williamsport.webp,/images/columbus-heroes/hero_columbus_williamsport.webp,"exact municipal boundary (US Census TIGER 2019)",14,35
+woodstock-oh,"Woodstock",Champaign,municipality,hero_columbus_woodstock-oh.webp,/images/columbus-heroes/hero_columbus_woodstock-oh.webp,"exact municipal boundary (US Census TIGER 2019)",15,19
+zanesfield,"Zanesfield",Logan,municipality,hero_columbus_zanesfield.webp,/images/columbus-heroes/hero_columbus_zanesfield.webp,"exact municipal boundary (US Census TIGER 2019)",16,40

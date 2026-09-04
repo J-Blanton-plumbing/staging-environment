@@ -17,6 +17,7 @@
     "db:restore": "bash scripts/restore-db.sh",
     "env:check": "ts-node --project tsconfig.scripts.json scripts/check-env.ts",
     "build:locator-maps": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/build-locator-maps.ts",
+    "build:columbus-heroes": "node scripts/columbus-heroes/build-heroes.mjs",
     "build:locator-index": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/build-locator-index.ts",
     "check:locator-index": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/check-locator-index.ts"
   },

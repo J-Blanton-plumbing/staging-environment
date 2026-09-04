@@ -23,6 +23,16 @@ export interface CityHeroProps {
   h1: string;
   /** Resolved hero image URL. */
   heroImageUrl: string;
+  /**
+   * Alt text for the hero image. Defaults to `h1`, which is what every consumer
+   * rendered before Brief 173 — so omitting it produces byte-identical HTML on
+   * the ~243 Illinois coverage-area pages, the hiring page and the privacy page.
+   *
+   * Pass it when the image is not a picture of the place: the Ohio area heroes
+   * are boundary maps, and "Dublin Plumber" describes the heading beside them,
+   * not the image. `CoverageAreaCity` supplies a map description for those.
+   */
+  imageAlt?: string;
   /** The dispatching office (NAP link + address). */
   office: Office;
   /**
@@ -49,6 +59,7 @@ export default async function CityHero({
   cityName,
   h1,
   heroImageUrl,
+  imageAlt,
   office,
   gbpLabel,
   area,
@@ -59,7 +70,12 @@ export default async function CityHero({
   const settings = await getGlobalSettingsCached();
   return (
     <div className="city-page-hero">
-      <CityPageImage className="city-page-image" src={heroImageUrl} alt={h1} loading="eager" />
+      <CityPageImage
+        className="city-page-image"
+        src={heroImageUrl}
+        alt={imageAlt ?? h1}
+        loading="eager"
+      />
 
       {/* hero-contents avoids Tailwind's `.contents { display:contents }` collision */}
       <div className="hero-contents">
