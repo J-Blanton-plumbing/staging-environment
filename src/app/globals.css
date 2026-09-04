@@ -894,3 +894,58 @@ html[data-preview] header {
 .cms-block-content b {
   font-weight: 700;
 }
+
+/* ============================================================================
+   Homepage store locator — the office list's scrollbar (Brief 171, Track D)
+
+   The locator is a single card: a finder and a scrolling office list on the
+   left, the map on the right. On desktop the list is capped at the map's height
+   and scrolls internally, so its scrollbar sits INSIDE the card, right against
+   the divider between the two panes — which means the platform default (a wide,
+   grey, OS-styled bar on Windows; an invisible overlay on macOS until you
+   scroll) reads as a seam rather than as part of the component.
+
+   This is a slim brand-coloured track instead: a Midnight thumb at low opacity
+   on a Cream track, always visible so the list reads as scrollable without
+   having to be scrolled first.
+
+   ⚠️ The two blocks below are NOT belt-and-braces, they are two eras, and the
+   standards one WINS. Chromium 121+ ignores every `::-webkit-scrollbar`
+   pseudo-element as soon as `scrollbar-width` is declared on the same element,
+   so in current Chrome and Edge (and in Firefox, which never supported the
+   pseudo-elements) what renders is `scrollbar-width: thin` tinted by
+   `scrollbar-color` — roughly 10px, with the platform's own thumb shape. The
+   `::-webkit-` rules are the fallback for older Chromium and for Safari, which
+   is why they repeat the same colours. Do not "fix" the 8px width or the rounded
+   thumb not showing up in Chrome; removing `scrollbar-width` to force them back
+   would break Firefox instead.
+
+   Lives here rather than in a page-scoped file because the homepage has NO
+   scoped CSS — it is the one page styled entirely in JSX (plus shared classes
+   from this file), and creating one for a single selector would mean a
+   stylesheet nothing imports.
+
+   Deliberately NOT `@layer components`: these are pseudo-element rules that no
+   Tailwind utility can express or override, so there is nothing for the cascade
+   to negotiate.
+   ========================================================================== */
+.locator-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 27, 46, 0.35) #f9f3ec;
+  /* Keeps the bounce/overscroll of the inner list from scrolling the page
+     behind it once the visitor reaches either end. */
+  overscroll-behavior: contain;
+}
+.locator-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.locator-scroll::-webkit-scrollbar-track {
+  background: #f9f3ec;
+}
+.locator-scroll::-webkit-scrollbar-thumb {
+  background: rgba(10, 27, 46, 0.35);
+  border-radius: 999px;
+}
+.locator-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 27, 46, 0.55);
+}

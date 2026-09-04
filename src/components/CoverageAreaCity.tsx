@@ -1,13 +1,16 @@
 import HeroNav from '@/components/HeroNav';
 import CityHero from '@/components/CityHero';
 import CityServicesMenu from '@/components/CityServicesMenu';
-import CityLocationsGrid from '@/components/CityLocationsGrid';
+import CityLocationsGrid, { type CityGridRegion } from '@/components/CityLocationsGrid';
+import CityAreaDetails from '@/components/CityAreaDetails';
+import CityAreaServedSchema from '@/components/CityAreaServedSchema';
 import FaqAccordion from '@/components/FaqAccordion';
 import ArticleGrid from '@/components/ArticleGrid';
 import GoogleReviews from '@/components/GoogleReviews';
 import TikTokFeed from '@/components/TikTokFeed';
 import type { Article } from '@/lib/articles';
 import type { CityFaq, CoverageAreaContent, Office } from '@/lib/content/cities/types';
+import type { NearbyArea } from '@/lib/content/cities/ohio-nearby';
 import {
   MANPLUMBER_IMAGE,
   ELFSIGHT_SOCIAL_ID,
@@ -57,6 +60,40 @@ export interface CoverageAreaCityProps {
    * embed URL is byte-identical to before this prop existed.
    */
   state?: string;
+  /**
+   * Columbus Integration Brief 02, Track B — per-area differentiation.
+   *
+   * All three are OPTIONAL and absent for every Illinois city, and each block
+   * they feed renders nothing without them, so an Illinois page's markup is
+   * unchanged. See `CityAreaDetails` / `CityAreaServedSchema`.
+   */
+  county?: string;
+  driveTimeMinutes?: number;
+  population?: number;
+  zips?: readonly string[];
+  /** The 3–5 sibling areas for the "WE ALSO SERVE" block. Empty ⇒ no block. */
+  nearby?: readonly NearbyArea[];
+  /**
+   * The page's real route slug.
+   *
+   * Columbus Integration Brief 02: without it this component falls back to
+   * `content?.slug ?? name.toLowerCase()`, and the name-derived form is wrong for
+   * any multi-word area — `"Columbus Short North"` → `"columbus short north"`,
+   * `"Woodstock"` → `"woodstock"` for the page served at `/woodstock-oh`. That
+   * value feeds `CityServicesMenu` and this page's JSON-LD `@id`, so an Ohio page
+   * would emit a broken service menu and a wrong canonical id.
+   *
+   * Deliberately OPTIONAL rather than required, and passed only for Ohio areas.
+   * Supplying it for the ~240 Illinois cities with no copy file would flip their
+   * OUR SERVICES menu from the global links they render today to per-city links —
+   * a real change to ~240 existing pages, which this brief must not make. That
+   * name-derived fallback is a pre-existing wart; it is flagged, not fixed here.
+   */
+  slug?: string;
+  /** Display name of the dispatching office, e.g. "Columbus". */
+  officeName?: string;
+  /** Which region's list + trust line the §10 grid shows. */
+  gridRegion?: CityGridRegion;
 }
 
 export default function CoverageAreaCity({
@@ -68,8 +105,16 @@ export default function CoverageAreaCity({
   faqs,
   cities,
   state = 'Illinois',
+  county,
+  driveTimeMinutes,
+  population,
+  zips,
+  nearby = [],
+  slug: slugProp,
+  officeName,
+  gridRegion = 'chicagoland',
 }: CoverageAreaCityProps) {
-  const slug = content?.slug ?? name.toLowerCase();
+  const slug = slugProp ?? content?.slug ?? name.toLowerCase();
   const h1 = content?.h1Override ?? `${name} Plumber`;
   const gbpLabel = content?.gbp ?? name;
   const heroImageUrl = resolveCityImage(content?.heroImage);
@@ -94,6 +139,16 @@ export default function CoverageAreaCity({
 
   return (
     <>
+      {/* ===== areaServed JSON-LD (Columbus Brief 02, Track B) — emits nothing
+             without a county, i.e. nothing on any Illinois page. ===== */}
+      <CityAreaServedSchema
+        name={name}
+        state={state}
+        county={county}
+        path={`/${slug}`}
+        office={office}
+      />
+
       {/* ============== 1. IMAGE HERO ============== */}
       <CityHero
         cityName={name}
@@ -153,6 +208,22 @@ export default function CoverageAreaCity({
             title={`Map of ${name}, ${state}`}
           />
 
+          {/* ===== 4b. PER-AREA FACTS + "WE ALSO SERVE" (Columbus Brief 02, Track B) =====
+                 Renders NOTHING when it has no county and no siblings, which is
+                 every Illinois city — their markup is unchanged. Placed straight
+                 after the map so the area facts sit with the area's location. */}
+          <CityAreaDetails
+            name={name}
+            state={state}
+            county={county}
+            office={office}
+            officeName={officeName}
+            driveTimeMinutes={driveTimeMinutes}
+            population={population}
+            zips={zips}
+            nearby={nearby}
+          />
+
           {/* ===== 5. "manplumber" .f2 ===== */}
           <section className="f2 mb-[50px] grid grid-cols-1 items-stretch gap-10 lg:mb-[130px] lg:grid-cols-[470px_1fr]">
             <div className="relative hidden min-h-[250px] overflow-hidden rounded-[5px] lg:block">
@@ -207,7 +278,7 @@ export default function CoverageAreaCity({
           )}
 
           {/* ===== 10. CITY-LOCATIONS GRID (Coverage Area only) ===== */}
-          <CityLocationsGrid cities={cities} />
+          <CityLocationsGrid cities={cities} region={gridRegion} />
 
           {/* ===== 11. FAQ accordion ===== */}
           <FaqAccordion faqs={faqs} />

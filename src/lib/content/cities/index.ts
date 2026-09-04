@@ -6,8 +6,16 @@
  * ($nap_map 55–232, $areas_map 235–402). Each office's city list is declared once
  * and reused for BOTH maps so a slug can't get an office without an area (or drift
  * between them). Cities outside the maps fall to the Ravenswood office + "North
- * and Northwest Side Chicago" — reproducing the known Joliet bug (live maps
- * Joliet to Ravenswood), flagged not fixed.
+ * and Northwest Side Chicago" — including the city slug `joliet`, which live
+ * likewise DISPATCHES to Ravenswood. Reproduced, flagged not fixed.
+ *
+ * ⚠️ Two separate "Joliet" problems; only one of them is still open. This
+ * routing one is: `getOfficeKey('joliet') === 'chicago-ravenswood'`, so the
+ * /joliet city page shows the Ravenswood NAP and the Joliet OFFICE dispatches
+ * nobody. The other was a DATA bug — the `joliet` record in
+ * `global_settings.offices` carried Ravenswood's street address, city, ZIP and
+ * Google link — and Brief 171 (Track A1) FIXED it with Joliet's real address.
+ * Do not read this paragraph as licence to restore the duplicate address.
  *
  * Brief 102 (Track C): the office ADDRESS DATA itself (street/city/state/zip,
  * Google Maps link, lat/lng) moved out of this file into the CMS
@@ -38,6 +46,15 @@ import { EVANSTON } from './evanston';
 import { ELGIN } from './elgin';
 import { ALGONQUIN } from './algonquin';
 import { COLUMBUS } from './columbus';
+import {
+  OHIO_AREAS,
+  OHIO_AREA_LABEL,
+  OHIO_OFFICE_KEY,
+  OHIO_SLUGS,
+  OHIO_STATE,
+  getOhioArea,
+} from './ohio-areas';
+import { getOhioTemplateContent } from './ohio-template-content';
 
 /** The 12 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102).
  * Brief 154 adds `columbus` — the first OUT-OF-STATE office; every other key
@@ -136,7 +153,14 @@ assignOffice('chicago-lincoln-park', ['chicago-lincoln-park']);
 assignOffice('elmhurst', ['elmhurst']);
 // Brief 154 (Track A): Columbus, OH — the first out-of-state office. Its own
 // office key, dispatching to its own address (never the Ravenswood default).
-assignOffice('columbus', ['columbus']);
+//
+// Columbus Integration Brief 02 (Track A3): the full Central Ohio coverage list
+// dispatches to that same office — it is the only Ohio office, so "nearest
+// office" is Columbus for all 138 areas. `OHIO_SLUGS` includes `columbus`
+// itself, which is already assigned above; `assignOffice` is a plain overwrite,
+// so listing it twice is idempotent and keeps this call the single place the
+// Ohio set is wired.
+assignOffice(OHIO_OFFICE_KEY as OfficeKey, [...OHIO_SLUGS]);
 /**
  * Brief 131 (Track A.1) — the 21 cities Brief 130 found as live URLs with no
  * registry entry: the 20 unmapped flat `/{city}-il-sewer-rodding` sources
@@ -195,7 +219,10 @@ assignArea('North Shore Chicagoland', ['evanston', ...EVANSTON_CITIES]);
 // Brief 154 (Track A): PLACEHOLDER — every other area label is a Chicagoland
 // region, so there is no existing convention to copy for an Ohio office.
 // Flagged in the Brief 154 report for Marketing to confirm or replace.
-assignArea('Central Ohio', ['columbus']);
+//
+// Columbus Integration Brief 02: the whole Ohio set shares that one label. Same
+// idempotency note as the office assignment above.
+assignArea(OHIO_AREA_LABEL, [...OHIO_SLUGS]);
 // NB: 'chicago-lincoln-park' is in $nap_map but NOT $areas_map → it falls to the
 // default area, exactly as live. Don't add it here.
 
@@ -216,11 +243,32 @@ export function getArea(slug: string): string {
   return cityToArea[slug] ?? DEFAULT_AREA;
 }
 
+/**
+ * The dispatching office KEY for a city slug.
+ *
+ * Columbus Integration Brief 02 (Track B) needs the office's NAME ("Columbus")
+ * to label the "nearest office" fact, and `getOffice()` returns only the
+ * URL + formatted address. Exposing the key rather than widening `Office` keeps
+ * that type — used in a dozen render paths — unchanged.
+ */
+export function getOfficeKey(slug: string): OfficeKey {
+  return cityToOffice[slug] ?? DEFAULT_OFFICE;
+}
+
 /* ── Display names (overrides + smart title-case) ───────────────────────────── */
 const NAME_OVERRIDES: Record<string, string> = {
   mchenry: 'McHenry',
   'st-charles': 'St. Charles',
   'chicago-lincoln-park': 'Lincoln Park',
+  /*
+   * Columbus Integration Brief 02: every Ohio area carries its supplied display
+   * name explicitly rather than letting `displayName()` reverse-engineer it from
+   * the slug. The mechanical title-case is wrong for several of them —
+   * `woodstock-oh` → "Woodstock Oh", `columbus-fifth-by-northwest` → "Columbus
+   * Fifth By Northwest", `columbus-king-lincoln-bronzeville` loses its hyphen —
+   * and these names are what the H1, `<title>` and city grids render.
+   */
+  ...Object.fromEntries(OHIO_AREAS.map((a) => [a.slug, a.name])),
 };
 const SMALL_WORDS = new Set(['in', 'the', 'of', 'and', 'on', 'at']);
 function displayName(slug: string): string {
@@ -289,9 +337,16 @@ const localOfficeSlugs = new Set(
  * Revisit when real Columbus content exists — it may stay `coverage-area` for
  * good, or move to `local-office`; either is a small, contained change.
  */
-const STATE_OVERRIDES: Record<string, string> = {
-  columbus: 'Ohio',
-};
+/**
+ * Columbus Integration Brief 02 (Track A3 hard rule): EVERY Ohio registry entry
+ * gets `state: 'Ohio'`; every Illinois city leaves `state` UNSET so its
+ * map-embed URL and `<title>` stay byte-identical. That is why this is an
+ * override map keyed by slug rather than a field with an `'Illinois'` default —
+ * an explicit Illinois value would change ~249 existing embeds.
+ */
+const STATE_OVERRIDES: Record<string, string> = Object.fromEntries(
+  OHIO_SLUGS.map((slug) => [slug, OHIO_STATE])
+);
 
 const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
   .filter((slug) => !localOfficeSlugs.has(slug) && !PENDING_LOCAL_OFFICE.has(slug))
@@ -299,8 +354,21 @@ const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
     slug,
     name: displayName(slug),
     type: 'coverage-area' as CityType,
+    /*
+     * Columbus Integration Brief 02 (Track A3): `hasOffice: false` on every Ohio
+     * area except Columbus itself, per Marketing. `OFFICE_HOSTS` already contains
+     * exactly `columbus` and no other Ohio slug, so this needs no Ohio special
+     * case — the 137 new areas dispatch to the Columbus office without claiming
+     * to host one.
+     */
     hasOffice: OFFICE_HOSTS.has(slug),
     state: STATE_OVERRIDES[slug],
+    /*
+     * Brief 02 Track B. Undefined for every Illinois city (`getOhioArea` misses),
+     * so no Illinois page renders a county. Brief 03 groups
+     * `/locations/central-ohio` by this field.
+     */
+    county: getOhioArea(slug)?.county,
   }));
 
 /** All city pages, sorted A→Z by display name (the order the live §10 grid uses). */
@@ -327,14 +395,60 @@ export function getCity(slug: string): RegistryEntry | undefined {
   return BY_SLUG.get(slug);
 }
 export function getCoverageContent(slug: string): CoverageAreaContent | undefined {
-  return COVERAGE_CONTENT[slug];
+  /*
+   * Columbus Integration Brief 02: an Ohio area with no hand-written copy file
+   * falls back to the name-swapped TEMPLATE copy, which is this brief's declared
+   * shipping state ("the current template with the city name substituted").
+   *
+   * Without this the two prose blocks hide and the 137 new pages render heading
+   * chrome with no body — which is what the ~240 copy-less Illinois cities do,
+   * but is not what the brief asked for.
+   *
+   * Order matters: the explicit map wins, so `columbus` keeps `./columbus.ts`
+   * and no hand-written file can ever be shadowed by the template. Illinois
+   * slugs miss both and return undefined exactly as before.
+   */
+  return COVERAGE_CONTENT[slug] ?? getOhioTemplateContent(slug);
 }
 export function getLocalOfficeContent(slug: string): LocalOfficeContent | undefined {
   return LOCAL_OFFICE_CONTENT[slug];
 }
-/** The full A→Z city list for the §10 locations grid. */
-export function getGridCities(): { slug: string; name: string }[] {
-  return CITY_REGISTRY.map((c) => ({ slug: c.slug, name: c.name }));
+/**
+ * Which region's city list the §10 locations grid should show.
+ *
+ * Columbus Integration Brief 02: before this, the grid rendered the ENTIRE
+ * registry, so registering 137 Ohio areas would have added 137 links to the
+ * bottom of every Illinois city page and every Illinois city-service page — a
+ * modification of ~11,400 existing Illinois pages, which the brief's hard rules
+ * forbid, and an Ohio page would have listed 249 Illinois towns under "some
+ * areas we serve".
+ */
+export type CityGridRegion = 'chicagoland' | 'ohio';
+
+/**
+ * The A→Z city list for the §10 locations grid, scoped to one region.
+ *
+ * `'chicagoland'` (the default, so every existing call site is unchanged) is
+ * every non-Ohio city PLUS `columbus` itself. Including Columbus is deliberate:
+ * Brief 154 put it in this grid and it has shipped there since, so excluding it
+ * would be an unrequested change to every Illinois page. Only the 137 areas
+ * added by this brief are held back.
+ *
+ * `'ohio'` is the Ohio areas only — Columbus included, as the region's hub.
+ */
+export function getGridCities(
+  region: CityGridRegion = 'chicagoland'
+): { slug: string; name: string }[] {
+  const entries =
+    region === 'ohio'
+      ? CITY_REGISTRY.filter((c) => c.state === OHIO_STATE)
+      : CITY_REGISTRY.filter((c) => c.state !== OHIO_STATE || c.slug === 'columbus');
+  return entries.map((c) => ({ slug: c.slug, name: c.name }));
+}
+
+/** The grid region a city page belongs to, from its registry entry. */
+export function gridRegionFor(slug: string): CityGridRegion {
+  return getCity(slug)?.state === OHIO_STATE ? 'ohio' : 'chicagoland';
 }
 
 /**
@@ -369,6 +483,36 @@ export function staticCityMeta(slug: string): { title: string; description: stri
   // started rendering through this exact branch. Derives the abbreviation from
   // `entry.state` (unset ⇒ 'IL', matching every pre-existing city unchanged).
   const stateAbbr = entry.state === 'Ohio' ? 'OH' : 'IL';
+
+  /*
+   * Columbus Integration Brief 02, Track B: an Ohio area's `<title>` and meta
+   * description must name the city AND the state, and must differ per area.
+   *
+   * Split on `entry.state` rather than changed in place. The Illinois branch is
+   * the exact string this function returned before — a `<title>` is the single
+   * most sensitive field on ~249 ranked pages, and Brief 149's backfill copied
+   * these literals into the CMS, so a "harmless" rewording here would silently
+   * disagree with what those rows hold.
+   *
+   * The Ohio title is `Plumber in {Area}, OH` rather than `{Area} Plumber, OH`
+   * because the area name is not always a bare city — "Columbus Short North
+   * Plumber, OH" reads as a mistake, "Plumber in Columbus Short North, OH" does
+   * not. The county in the description is a second free differentiator and is
+   * sourced from the coverage list, not invented.
+   *
+   * NOTE: the Chicagoland "30+ years" claim is deliberately absent from the Ohio
+   * description — see the trust-statement rule in Brief 02's hard rules.
+   */
+  if (entry.state === 'Ohio') {
+    const countyClause = entry.county ? ` in ${entry.county} County` : '';
+    return {
+      title: content?.meta?.title || `Plumber in ${entry.name}, ${stateAbbr}`,
+      description:
+        content?.meta?.description ??
+        `J. Blanton Plumbing serves ${entry.name}, ${stateAbbr}${countyClause} with 24/7 emergency plumbing, drain, sewer, and water heater service. Same-day available. Call (773) 724-9272.`,
+    };
+  }
+
   return {
     title: content?.meta?.title || `${entry.name} Plumber`,
     description:

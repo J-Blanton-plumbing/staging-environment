@@ -66,8 +66,10 @@ import {
   CITY_SERVICE_SHARDS,
   SHARD_URL_CEILING,
   SITEMAP_CHILDREN,
+  cityServiceEligibleSlugs,
   citySlugsForShard,
 } from '@/lib/sitemap/manifest';
+import { isCityServiceIndexable } from '@/lib/city-service-indexation';
 import { NON_PUBLIC_SUBDOMAINS } from '@/lib/non-public-hosts';
 import legacyRedirectMap from '@/lib/redirects/legacy-redirect-map.json';
 
@@ -201,6 +203,15 @@ const PROVABLE_DYNAMIC_ROUTES: Record<string, (urlPath: string) => boolean> = {
     const [city, service] = p.split('/').filter(Boolean);
     return CITY_SLUGS.has(city) && CITY_SERVICE_SLUGS.has(service);
   },
+  /*
+   * Columbus Integration Brief 02 (Track C): `[city]/[service]` also carries a
+   * CONDITIONAL noindex, which `declaresNoindex()` cannot see — it greps the
+   * route file for a literal `index: false`, and the route delegates to
+   * `cityServiceRobots()` instead (a literal there would fail all 11,160 Illinois
+   * city-service URLs at once). The equivalent check for that route is the
+   * eligible-vs-held shard split further down, plus the per-path indexability
+   * assertion inside the sitemap-path loop.
+   */
   // Article slugs live in the CMS; the live validator (scripts/validate-seo-routing.mjs)
   // is the only thing that can confirm a given one is published.
   'knowledge-hub/[slug]/page.tsx': () => true,
@@ -216,9 +227,20 @@ function resolveRewrittenStatic(urlPath: string, cfg: NextConfigDump): string | 
   return null;
 }
 
-/** Does the resolved route file declare itself noindex? */
+/**
+ * Does the resolved route file declare itself noindex?
+ *
+ * Comments are stripped FIRST. This is a source-text grep, not a parse, and
+ * without the strip it matched the phrase `index: false` written inside a block
+ * comment in `[city]/[service]/page.tsx` — which failed all 11,160 Illinois
+ * city-service sitemap URLs at once because a comment happened to name the
+ * pattern it was documenting. A route is noindex because of what it EXECUTES;
+ * prose about noindex is not a declaration.
+ */
 function declaresNoindex(file: string): boolean {
-  const src = readFileSync(file, 'utf8');
+  const src = readFileSync(file, 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '') // block comments, incl. JSDoc
+    .replace(/^[ \t]*\/\/.*$/gm, ''); // whole-line // comments
   return /index\s*:\s*false/.test(src);
 }
 
@@ -395,9 +417,34 @@ const main = () => {
       seenCityInShard.set(c, shard.id);
     }
   }
-  for (const c of CITY_SLUGS) {
+  /*
+   * Columbus Integration Brief 02 (Track C) — shard coverage is asserted over the
+   * ELIGIBLE cities, not the whole registry.
+   *
+   * A city held `noindex` by the city-service indexation policy has no
+   * `/{city}/{service}` URLs in the sitemap, by design; demanding shard
+   * membership for it would fail the build on the policy working. The two loops
+   * below assert the set split exactly:
+   *   • every eligible city IS in a shard (nothing indexable goes missing), and
+   *   • every held city is in NO shard (nothing noindex gets advertised).
+   * The second is guaranteed by `citySlugsForShard` filtering, which is precisely
+   * why it is worth proving rather than trusting — it is the invariant that keeps
+   * ~6,200 noindex Ohio URLs out of the sitemap.
+   */
+  const eligibleCities = new Set(cityServiceEligibleSlugs());
+  for (const c of eligibleCities) {
     if (!seenCityInShard.has(c)) {
       fail(`City "${c}" falls in NO city-service shard — its ${CITY_SERVICE_SLUGS.size} service URLs would be missing.`);
+    }
+  }
+  for (const c of CITY_SLUGS) {
+    if (eligibleCities.has(c)) continue;
+    if (seenCityInShard.has(c)) {
+      fail(
+        `City "${c}" is held \`noindex, follow\` by the city-service indexation policy ` +
+          `(src/lib/city-service-indexation.ts) but shard ${seenCityInShard.get(c)} lists its ` +
+          `${CITY_SERVICE_SLUGS.size} service URLs. A noindex URL must not be in the sitemap.`
+      );
     }
   }
 
@@ -487,6 +534,22 @@ const main = () => {
         `${from}: "${p}" resolves to ${path.relative(REPO, route.file)}, which declares ` +
           '`index: false`. A noindex page must not be in the sitemap.'
       );
+    }
+    /*
+     * Columbus Integration Brief 02 (Track C) — the conditional-noindex check
+     * `declaresNoindex()` structurally cannot do. It reads the route file's
+     * source, and `[city]/[service]` decides per city at runtime. So ask the same
+     * module the route asks, per URL.
+     */
+    if (route.id === '[city]/[service]/page.tsx') {
+      const city = p.split('/').filter(Boolean)[0];
+      if (!isCityServiceIndexable(city)) {
+        fail(
+          `${from}: "${p}" is listed in the sitemap but its city is held ` +
+            '`noindex, follow` by src/lib/city-service-indexation.ts. Clear the city for ' +
+            'indexing (CITY_SERVICE_INDEXED_OHIO_CITIES) or remove it from the shard.'
+        );
+      }
     }
   }
 

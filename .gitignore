@@ -37,3 +37,6 @@ public/uploads/cms/*
 human qa/clone-whyjblanton-hero.png
 human qa/clone-whyjblanton-mobile.png
 human qa/live-whyjblanton-hero.png
+
+# Local QA scratch — .before backups and screenshot dumps. Never ship.
+human qa/

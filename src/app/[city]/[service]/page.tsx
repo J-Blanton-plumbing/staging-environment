@@ -9,6 +9,7 @@ import { isPageLive } from '@/lib/cms/page-status';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import PreviewBanner from '@/components/PreviewBanner';
 import { pageTitle } from '@/lib/seo';
+import { cityServiceRobots } from '@/lib/city-service-indexation';
 import type { CityServiceContent } from '@/types/city-service';
 
 export const dynamic = 'force-dynamic';
@@ -55,6 +56,21 @@ export function generateMetadata({
     // 45 files so a new service file can't reintroduce it.
     title: pageTitle(replaceCityTokens(serviceData.seo.title, cityEntry.name)),
     description: replaceCityTokens(serviceData.seo.description, cityEntry.name),
+    /*
+     * Columbus Integration Brief 02 (Track C): `noindex, follow` while a city's
+     * service pages are still name-swapped template copy. The decision lives in
+     * ONE list — `CITY_SERVICE_INDEXED_OHIO_CITIES` in
+     * src/lib/city-service-indexation.ts — which also drives whether these URLs
+     * enter the sitemap, so the two can never disagree.
+     *
+     * `undefined` for every Illinois city, so their emitted metadata is
+     * unchanged. The policy is deliberately a function call rather than an inline
+     * literal: an unconditional noindex declaration in this file would apply to
+     * all 11,160 Illinois city-service URLs, and scripts/validate-sitemap.ts
+     * greps route files for exactly that shape. The validator instead asks this
+     * same module per URL — see its shard split and per-path check.
+     */
+    robots: cityServiceRobots(params.city),
   };
 }
 

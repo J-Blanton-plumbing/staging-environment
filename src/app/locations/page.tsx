@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import HeroNav from '@/components/HeroNav';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
-import { CITY_REGISTRY } from '@/lib/content/cities/index';
+import { MOST_REQUESTED, REGIONS } from '@/lib/content/locations-regions';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { renderCmsInline } from '@/lib/cms/sanitize';
@@ -27,7 +27,7 @@ export const dynamic = 'force-dynamic';
 const STATIC_META = {
   title: 'Locations',
   description:
-    'J. Blanton Plumbing serves Chicago and the surrounding suburbs. Find your nearest service center or browse all Chicagoland areas we cover.',
+    'J. Blanton Plumbing serves Chicagoland and Central Ohio. Find your nearest service center, or browse every city and neighborhood we cover in each region.',
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -95,12 +95,6 @@ export default async function LocationsPage() {
   const heroCta = m(d.hero_cta, 'SCHEDULE A SERVICE');
   const introLabel = m(d.intro_label, 'Your Trusted Plumbing Experts Serving Chicago and Suburbs');
   const introBody = m(d.intro_body, "At J. Blanton Plumbing, we've proudly serving Chicago and its surrounding suburbs for over 30 years. Our team of experienced and certified plumbers is committed to delivering high-quality service that our customers can rely on-day or night. From residential repairs to large-scale plumbing projects, we handle it all with professionalism, efficiency, and a dedication to customer satisfaction.");
-  const cityCount = CITY_REGISTRY.length;
-  const chunkSize = Math.ceil(cityCount / 5);
-  const cityColumns: (typeof CITY_REGISTRY)[] = [];
-  for (let i = 0; i < cityCount; i += chunkSize) {
-    cityColumns.push(CITY_REGISTRY.slice(i, i + chunkSize));
-  }
 
   return (
     <div className="locations-page">
@@ -213,21 +207,54 @@ export default async function LocationsPage() {
           </div>
         </div>
 
-        {/* ---- City directory -------------------------------------------- */}
+        {/* ---- Region cards ----------------------------------------------
+            Columbus Integration Brief 03, Track A.
+
+            This block REPLACES the full `CITY_REGISTRY` column grid that used
+            to sit here. That grid rendered the whole registry, so once Brief 02
+            registered 138 Ohio areas it was emitting 386 links — Illinois and
+            Ohio interleaved A→Z with nothing saying which state anything was
+            in. The complete lists moved to the two region pages; this page
+            routes to them.
+
+            The "Most requested" list inside each card is the internal-linking
+            mitigation: the hub used to link every city directly, and those
+            links now live one level down. Ten direct links per region keep the
+            highest-value city pages receiving equity straight from a page that
+            ranks. Both lists exclude the cities already linked from the
+            SERVICE CENTERS grid above — see `MOST_REQUESTED`.
+            ---------------------------------------------------------------- */}
         <div className="w81">
           <div className="city-labels">
-            <p>Proudly Serving the Greater Chicagoland Area for 30+ Years</p>
-            <p>Some areas we serve, but are not limited to, include:</p>
+            <h2>Proudly Serving Chicagoland and Central Ohio</h2>
+            <p>Choose your region to see every city and neighborhood we cover.</p>
           </div>
-          <div className="l-cities">
-            {cityColumns.map((col, ci) => (
-              <div key={ci}>
-                {col.map((city) => (
-                  <div key={city.slug}>
-                    <MapPin />
-                    <Link href={`/${city.slug}`}>{city.name}</Link>
-                  </div>
-                ))}
+
+          <div className="region-cards">
+            {REGIONS.map((region) => (
+              <div key={region.key} className="region-card">
+                <p className="region-tenure">{region.tenure}</p>
+                <h3>
+                  <Link href={region.href}>{region.label}</Link>
+                </h3>
+                <p className="region-count">
+                  {region.cities.length} cities &amp; neighborhoods
+                </p>
+                <p className="region-counties">{region.counties}</p>
+
+                <p className="region-most-label">Most requested</p>
+                <ul className="region-most">
+                  {MOST_REQUESTED[region.key].map((city) => (
+                    <li key={city.slug}>
+                      <MapPin />
+                      <Link href={`/${city.slug}`}>{city.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link className="region-all" href={region.href}>
+                  See all {region.cities.length} {region.label} areas →
+                </Link>
               </div>
             ))}
           </div>

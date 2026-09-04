@@ -43,6 +43,7 @@ import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
+import { isCityServiceIndexable } from '@/lib/city-service-indexation';
 
 /**
  * The sitemaps protocol caps a single file at 50,000 URLs / 50 MB uncompressed.
@@ -77,9 +78,34 @@ export const CITY_SERVICE_SHARDS: readonly CityServiceShard[] = [
   { id: 5, from: 'q', to: '' }, // q … z
 ];
 
-/** The city slugs belonging to one shard, in registry (A→Z by name) order. */
+/**
+ * Every city slug whose `/{city}/{service}` layer is eligible for the sitemap.
+ *
+ * Columbus Integration Brief 02 (Track C): the Ohio city-service pages ship
+ * `noindex, follow` until their per-area rewrite lands, and a `noindex` URL must
+ * not be in the sitemap — the build validator fails on exactly that, correctly.
+ * `isCityServiceIndexable` is the SAME function the route's `robots` metadata
+ * calls, so a city cannot be noindex-and-listed or indexed-and-missing; one list
+ * (`CITY_SERVICE_INDEXED_OHIO_CITIES`) moves both.
+ *
+ * Every Illinois city is eligible, so the shard contents are unchanged by this
+ * brief.
+ */
+export function cityServiceEligibleSlugs(): string[] {
+  return CITY_REGISTRY.map((c) => c.slug).filter(isCityServiceIndexable);
+}
+
+/**
+ * The city slugs belonging to one shard, in slug order.
+ *
+ * Scoped to the eligible set above, NOT the whole registry: a shard's job is to
+ * list the URLs the sitemap advertises, and a city held back by the indexation
+ * policy has none. The shard RANGES still cover every possible slug, so an area
+ * being cleared for indexing later needs no shard change — it simply starts
+ * appearing in the shard its slug already falls in.
+ */
 export function citySlugsForShard(shard: CityServiceShard): string[] {
-  return CITY_REGISTRY.map((c) => c.slug)
+  return cityServiceEligibleSlugs()
     .filter((slug) => (shard.from === '' || slug >= shard.from) && (shard.to === '' || slug < shard.to))
     .sort();
 }
