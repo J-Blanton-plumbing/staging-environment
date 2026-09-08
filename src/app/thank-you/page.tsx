@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import GoogleReviews from '@/components/GoogleReviews';
+import ThankYouConversion from '@/components/analytics/ThankYouConversion';
+import { getTrackingIds } from '@/lib/analytics';
 import { THANK_YOU } from '@/lib/content/thank-you';
 import { pageTitle } from '@/lib/seo';
 import './thank-you.css';
@@ -18,13 +20,27 @@ import './thank-you.css';
  * confirmation line + a services/areas-served link dump); Marketing approved the
  * shorter replacement whose copy lives in `@/lib/content/thank-you`.
  *
+ * HOW VISITORS GET HERE (updated 2026-09-07, Brief 174 — the comments below used
+ * to describe involve.me, which no longer serves the scheduling flow):
+ *  - The "Schedule a Service" popup is the Mainline app
+ *    (`https://mainline.jblantonplumbing.com/schedule-service`) in a
+ *    first-party iframe modal since Brief 169. On submit it renders its own
+ *    inline "Thanks, we got it!" panel INSIDE the frame and navigates nothing.
+ *    `ScheduleServiceModal` will bring the visitor here with
+ *    `router.push('/thank-you')` — a CLIENT-SIDE navigation — as soon as
+ *    Mainline emits the `jbp:form_submitted` postMessage it was asked for on
+ *    2026-09-07. Until then this route sees almost no scheduling traffic.
+ *  - involve.me survives only for the `no-drip-club` and `contact-us` projects,
+ *    which still navigate the top-level window here on completion.
+ *
  * Deliberately absent, do not "fix" later without Marketing:
- *  - No personalization. The involve.me scheduling popup lands here with no
- *    query parameters at all, so there is nothing to read; the copy must never
- *    depend on that being wired up.
+ *  - No personalization. Neither arrival path carries any query parameters —
+ *    Mainline's handoff message is a bare `{ type, data.form_slug }` and
+ *    involve.me lands on a bare `/thank-you` — so there is nothing to read; the
+ *    copy must never depend on that being wired up.
  *  - No `.hero` split panel. This is a confirmation page, not a marketing page.
- *  - Exactly one CTA (No Drip Club), and it is a plain internal <Link>, not an
- *    involve.me popup — the visitor has already submitted a form.
+ *  - Exactly one CTA (No Drip Club), and it is a plain internal <Link>, not a
+ *    popup trigger — the visitor has already submitted a form.
  *
  * Navbar + Footer render from the root layout via SiteShell; no action here.
  *
@@ -54,8 +70,9 @@ export const metadata: Metadata = {
    * noindex governs indexing, the canonical only governs which URL is the
    * duplicate-set representative.
    *
-   * The page is also absent from sitemap.xml, which needs no code: sitemap.ts
-   * builds from an explicit STATIC_PAGES list that this route is not in.
+   * The page is also absent from sitemap.xml, which needs no code: the sitemap
+   * builds from the explicit page list in `src/lib/sitemap-pages.ts` (fed into
+   * `src/lib/sitemap/manifest.ts` since Brief 153) and this route is not in it.
    */
   robots: { index: false, follow: true },
 };
@@ -63,8 +80,22 @@ export const metadata: Metadata = {
 export default function ThankYouPage() {
   const { confirmation, whatHappensNext, trust, secondaryCta } = THANK_YOU;
 
+  /**
+   * Brief 174 (Track B) — the Google Ads "Schedule Service Form Submit"
+   * conversion. Read here in the server component and passed down, rather than
+   * read from `process.env` inside the client component, so validation and the
+   * off switch live in one place (`src/lib/analytics.ts`) for every tag on the
+   * site. Blank/invalid → nothing rendered, no client chunk requested, no
+   * conversion code in the page at all.
+   */
+  const { googleAdsConversionThankYou } = getTrackingIds();
+
   return (
     <div className="thank-you-page">
+      {googleAdsConversionThankYou ? (
+        <ThankYouConversion sendTo={googleAdsConversionThankYou} />
+      ) : null}
+
       {/* ============== 1. CONFIRMATION HEADLINE (H1 only) ============== */}
       <section className="ty-confirm">
         <div className="ty-w">

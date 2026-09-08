@@ -64,10 +64,45 @@ jobs:
             # production analytics accounts and burns numbers out of the live
             # WhatConverts pool.
             export NEXT_PUBLIC_GA4_ID=G-SQZLV0V58J
-            export NEXT_PUBLIC_GOOGLE_ADS_ID=AW-661617195
+            # Google Ads: swapped from AW-661617195 to AW-16486409650 on
+            # 2026-09-07 (Brief 174, Track A) at the instruction of Google's Lead
+            # Generation team - Tag Assistant could not detect AW-16486409650, so
+            # its "Schedule Service Form Submit" conversion action (manager
+            # account 117-076-6031) had counted zero. A REPLACEMENT, not an
+            # addition: exactly one Ads config call site-wide. Rolling back means
+            # this line plus the fallback in src/lib/analytics.ts.
+            export NEXT_PUBLIC_GOOGLE_ADS_ID=AW-16486409650
             export NEXT_PUBLIC_META_PIXEL_ID=1674876326613103
             export NEXT_PUBLIC_BING_UET_ID=97007877
             export NEXT_PUBLIC_WHATCONVERTS_PROFILE_ID=102905
+            # ── NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_THANK_YOU is DELIBERATELY ────
+            #    ABSENT from this block. Do not "fix" it by adding it.
+            #
+            # Brief 174 Track B (the /thank-you "Schedule Service Form Submit"
+            # conversion) is built and tested, and is shipping INERT on Marketing's
+            # instruction (2026-09-08). Unlike the four IDs above, that value has NO
+            # fallback in src/lib/analytics.ts: blank means ThankYouConversion.tsx
+            # is never rendered, no conversion code reaches the page, and no request
+            # is made. That is the intended state right now, not an oversight.
+            #
+            # Track A (the account swap above) IS live - the site serves
+            # AW-16486409650 sitewide and no longer serves AW-661617195.
+            #
+            # TO ARM THE CONVERSION LATER: add one line here and redeploy.
+            #   export NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_THANK_YOU=AW-16486409650/svF0COfht-scELLLqrU9
+            # It must live HERE, not in the box's env file: this block runs before
+            # `npm run build`, and NEXT_PUBLIC_* is baked into the client bundle at
+            # build time, so a value set only on the box inlines as blank and the
+            # conversion silently never fires. The production value is recorded in
+            # .env.local.example and in the Brief 174 report.
+            # Brief 174 (Track C): pinned rather than left to the code default in
+            # src/lib/schedule/tracking.ts, because whatever value is in effect is
+            # also the ONLY origin the scheduling modal accepts a postMessage
+            # from. Left unset, a stray value in the box's untracked env file
+            # would silently kill both the form-step analytics and the pending
+            # /thank-you handoff, with no error anywhere. Same value as the
+            # default - behaviour is unchanged, it is just no longer implicit.
+            export NEXT_PUBLIC_MAINLINE_ORIGIN=https://mainline.jblantonplumbing.com
             # -- Brief 171 (C2): store-locator search index drift guard ----------
             # `src/lib/content/locator-index.generated.ts` is a GENERATED file that
             # is committed, so it goes stale the day someone registers city 387 or
@@ -971,6 +1006,60 @@ jobs:
                 echo "OK: ${path} - no leaked H1:/H2: heading label"
               fi
             }
+            # -- Brief 174: the Google Ads tag is actually IN the served page ------
+            # NOT in the brief; added because this is the one failure this whole
+            # brief exists to undo, and nothing in the pipeline was looking.
+            #
+            # The tags are NEXT_PUBLIC_*, inlined at BUILD time from the export
+            # block in the deploy step. A value that lives only in the box's
+            # untracked env file inlines as BLANK, and a blank ID is a deliberate
+            # no-op in src/lib/analytics.ts - so the tag silently does not render
+            # and every page still returns a healthy 200. That is exactly how this
+            # site ran with all five tags dark from cutover until 2026-08-08, and
+            # how AW-16486409650 came to count zero conversions.
+            #
+            # This asserts a TRACKING ID, never any wording, so it is not the kind
+            # of gate that fires on ordinary editorial work (see the note above the
+            # content checks). Reported BY NAME: the repo is public and Actions
+            # logs are world-readable, so no ID value is ever echoed.
+            #
+            # If Marketing deliberately switches Google Ads off, this step goes red
+            # on purpose - update the two names below in the same change.
+            # The expected/retired accounts, held in variables so no ID value is
+            # ever interpolated into an echoed message. These must stay in step
+            # with the export block in the deploy step above and with
+            # PRODUCTION_IDS in src/lib/analytics.ts.
+            EXPECTED_ADS_ID='AW-16486409650'
+            RETIRED_ADS_ID='AW-661617195'
+            check_google_ads_tag() {
+              path="$1"
+              LAST_CHECK="check_google_ads_tag $path"
+              CHECKS_RUN=$((CHECKS_RUN + 1))
+              body=$(curl -s --max-time 20 "http://localhost:3000${path}") || body=""
+              # Occurrence counts, not `grep -c`: Next serves the whole document on
+              # one line, so a line count is 1 no matter how many matches there are.
+              ads_cfg=$(printf '%s' "$body" | grep -oF "config', '${EXPECTED_ADS_ID}'" | wc -l | tr -d '[:space:]')
+              boots=$(printf '%s' "$body" | grep -oF "gtag('js', new Date())" | wc -l | tr -d '[:space:]')
+              problem=""
+              if [ "$ads_cfg" -eq 0 ]; then
+                problem="issues NO gtag config call for the expected Google Ads account. Most likely a BLANK NEXT_PUBLIC_GOOGLE_ADS_ID at build time (it is inlined by next build, NOT read at runtime), or NEXT_PUBLIC_TRACKING_DISABLED=1 on this box"
+              elif [ "$ads_cfg" -gt 1 ]; then
+                problem="issues ${ads_cfg} config calls for the same Google Ads account - one is correct"
+              elif printf '%s' "$body" | grep -qF -- "$RETIRED_ADS_ID"; then
+                problem="still renders the RETIRED Google Ads account that Brief 174 replaced - something reintroduced it"
+              elif [ "$boots" -ne 1 ]; then
+                problem="runs the gtag bootstrap ${boots} time(s), expected exactly 1 - a second base tag was pasted in instead of an extra config call"
+              fi
+              if [ -z "$problem" ]; then
+                echo "OK: ${path} configures the expected Google Ads account exactly once, and not the retired one"
+              else
+                echo "TRACKING DEFECT: ${path} ${problem}."
+                CONTENT_FAILED=1
+              fi
+            }
+            check_google_ads_tag "/"
+            check_google_ads_tag "/thank-you"
+
             check_no_leaked_heading_label "/tinley-park"
             check_no_leaked_heading_label "/ingalls-park"
             check_no_leaked_heading_label "/joliet/water-heater-repair"

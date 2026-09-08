@@ -11,11 +11,15 @@ import { ELFSIGHT_WIDGETS } from '@/lib/widgets';
  *
  * Two deliberate constraints baked into this shape:
  *  - NO personalization. There are no fields for job type, name, or service
- *    date, because the involve.me scheduling flow lands the browser on a bare
- *    `/thank-you` with no query parameters. The page's message must not depend
- *    on that changing later.
+ *    date, because no arrival path carries any. Scheduling is the Mainline
+ *    iframe modal since Brief 169 — it will hand off with a bare
+ *    `jbp:form_submitted` postMessage and a `router.push('/thank-you')`, no
+ *    query parameters (comment corrected 2026-09-07, Brief 174; it previously
+ *    described the retired involve.me scheduling flow). The surviving
+ *    involve.me projects (`no-drip-club`, `contact-us`) also land on a bare
+ *    `/thank-you`. The page's message must not depend on that changing later.
  *  - ONE next action. The No Drip Club link is the page's only CTA; this is a
- *    plain internal page visit, not an involve.me popup.
+ *    plain internal page visit, not a popup trigger.
  *
  * Same typed-data pattern as `lib/content/ndc.ts` — no prose lives in the JSX.
  */

@@ -43,6 +43,36 @@ Both are build-time-sensitive: `NEXT_PUBLIC_TRACKING_DISABLED` is inlined into t
 client bundle at `npm run build`, so set it **before** building; `ROBOTS_DISALLOW`
 is read per request but needs a process restart to be picked up.
 
+### Google Ads: the account is `AW-16486409650`, not `AW-661617195`
+
+Swapped on 2026-09-07 (Brief 174) at the instruction of Google's Lead Generation
+team — Tag Assistant could not detect `AW-16486409650`, so the "Schedule Service
+Form Submit" conversion action under manager account `117-076-6031` had counted
+zero. It is a **replacement**: exactly one Ads `config` call site-wide. Do not
+reintroduce `AW-661617195` (the Mainline app inside the scheduling iframe still
+loads it independently, which is Mainline's business, not this repo's).
+
+Two values, both **public client-side IDs**:
+
+```bash
+NEXT_PUBLIC_GOOGLE_ADS_ID=AW-16486409650                                  # live
+NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_THANK_YOU=AW-16486409650/svF0COfht-scELLLqrU9   # NOT set in prod
+```
+
+The first is set in the deploy workflow's build-time export block and is live.
+
+The second is the `/thank-you` conversion label and is the **one tracking var
+that still fails closed**: blank means the conversion component is never rendered
+and no event fires, with no fallback in `src/lib/analytics.ts`. A blank GA4 ID
+only mis-files a pageview; a conversion leaked from a dev or staging box feeds a
+phantom lead into Smart Bidding on a live Ads account.
+
+**It is deliberately unset in production as of 2026-09-08** — the conversion is
+built and tested but shipping inert on Marketing's instruction. To arm it, add
+the export to `.github/workflows/deploy.yml` (the comment in that file names the
+exact line) and redeploy. It must go there, not in the box's env file: it is
+inlined at `npm run build`, which never sees that file's value in time.
+
 ## Pages
 
 | Route | Description |

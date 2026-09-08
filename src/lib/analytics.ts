@@ -33,7 +33,24 @@
 /** Live account IDs, used whenever the matching env var is unset. */
 const PRODUCTION_IDS = {
   ga4: 'G-SQZLV0V58J',
-  googleAds: 'AW-661617195',
+  /**
+   * Google Ads. Swapped from `AW-661617195` to `AW-16486409650` on 2026-09-07
+   * (Brief 174, Track A) on the instruction of Google's Lead Generation team:
+   * Tag Assistant could not detect `AW-16486409650` on the site, so the
+   * "Schedule Service Form Submit" conversion action under manager account
+   * 117-076-6031 had counted zero and Ads was optimizing blind.
+   *
+   * A REPLACEMENT, not an addition — exactly one Ads `config` call is issued
+   * site-wide. The consequence is deliberate and Marketing-approved: our pages
+   * no longer feed `AW-661617195`'s "Mainline web — Lead (thank-you)"
+   * conversion. (The Mainline app inside the scheduling iframe still loads
+   * `AW-661617195` on its own; that is not ours to change.)
+   *
+   * TO ROLL BACK: this line, plus `export NEXT_PUBLIC_GOOGLE_ADS_ID=` in
+   * `.github/workflows/deploy.yml`, then redeploy — NEXT_PUBLIC_* is inlined at
+   * BUILD time, so a pm2 restart will not pick up a change.
+   */
+  googleAds: 'AW-16486409650',
   metaPixel: '1674876326613103',
   bingUet: '97007877',
 } as const;
@@ -45,12 +62,26 @@ const TRACKING_DISABLED =
 export interface TrackingIds {
   /** GA4 measurement ID, e.g. `G-SQZLV0V58J`. Blank = GA4 off. */
   ga4: string;
-  /** Google Ads conversion ID, e.g. `AW-661617195`. Blank = Ads off. */
+  /** Google Ads conversion ID, e.g. `AW-16486409650`. Blank = Ads off. */
   googleAds: string;
   /** Meta (Facebook) Pixel ID, e.g. `1674876326613103`. Blank = Pixel off. */
   metaPixel: string;
   /** Microsoft Bing UET tag ID, e.g. `97007877`. Blank = UET off. */
   bingUet: string;
+  /**
+   * Google Ads conversion `send_to` for `/thank-you` — the "Schedule Service
+   * Form Submit" action (Brief 174, Track B). Shaped `AW-<digits>/<label>`.
+   * Blank = no conversion component is rendered and no event fires.
+   *
+   * Unlike the four IDs above, this one is FAIL-CLOSED: blank means off, with
+   * no baked-in fallback. The four IDs were inverted to fail open on 2026-08-11
+   * because a blank value had silently un-tracked the live site; that argument
+   * does not transfer to a conversion label. A pageview landing in the wrong
+   * GA4 property is a reporting nuisance — a phantom *lead* reported from a dev
+   * or staging box corrupts Smart Bidding on a live Ads account. So this value
+   * is set explicitly, in the deploy workflow's build-time export block.
+   */
+  googleAdsConversionThankYou: string;
 }
 
 /**
@@ -78,19 +109,63 @@ function readId(envName: string, raw: string | undefined, fallback: string): str
   return value;
 }
 
+/**
+ * A Google Ads conversion `send_to`: the account, `/`, then the
+ * conversion-action label. Validated separately from ID_PATTERN, which rejects
+ * the `/` — and because a value that does not match this shape is not a label
+ * at all. The realistic failure mode is somebody pasting Google's whole event
+ * snippet into the env file; anything non-matching is treated as blank rather
+ * than handed to gtag, which would otherwise record hits against a destination
+ * nobody ever reports on.
+ */
+const CONVERSION_SEND_TO_PATTERN = /^AW-\d+\/[A-Za-z0-9_-]+$/;
+
+/**
+ * Fail-CLOSED reader for a conversion label — see
+ * `TrackingIds.googleAdsConversionThankYou` for why this one has no fallback.
+ */
+function readConversionSendTo(envName: string, raw: string | undefined): string {
+  if (TRACKING_DISABLED) return '';
+  const value = (raw ?? '').trim();
+  if (!value) return '';
+  if (!CONVERSION_SEND_TO_PATTERN.test(value)) {
+    console.warn(
+      `[analytics] Ignoring ${envName}="${value}" — not a Google Ads conversion ` +
+        'send_to (expected `AW-<digits>/<label>`). That conversion will not fire.',
+    );
+    return '';
+  }
+  return value;
+}
+
 // Memoized: NEXT_PUBLIC_* values are build-time constants, so reading them once
 // per process is equivalent to reading them per request — and it keeps the
 // misconfiguration warning above to one line per boot instead of one per render.
 let cached: TrackingIds | null = null;
 
-/** The four tracking IDs, env-sourced. Blank string = that platform is off. */
+/** The tracking IDs, env-sourced. Blank string = that platform/event is off. */
 export function getTrackingIds(): TrackingIds {
   if (!cached) {
+    const googleAds = readId(
+      'NEXT_PUBLIC_GOOGLE_ADS_ID',
+      process.env.NEXT_PUBLIC_GOOGLE_ADS_ID,
+      PRODUCTION_IDS.googleAds,
+    );
+    const conversionThankYou = readConversionSendTo(
+      'NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_THANK_YOU',
+      process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_THANK_YOU,
+    );
     cached = {
       ga4: readId('NEXT_PUBLIC_GA4_ID', process.env.NEXT_PUBLIC_GA4_ID, PRODUCTION_IDS.ga4),
-      googleAds: readId('NEXT_PUBLIC_GOOGLE_ADS_ID', process.env.NEXT_PUBLIC_GOOGLE_ADS_ID, PRODUCTION_IDS.googleAds),
+      googleAds,
       metaPixel: readId('NEXT_PUBLIC_META_PIXEL_ID', process.env.NEXT_PUBLIC_META_PIXEL_ID, PRODUCTION_IDS.metaPixel),
       bingUet: readId('NEXT_PUBLIC_BING_UET_ID', process.env.NEXT_PUBLIC_BING_UET_ID, PRODUCTION_IDS.bingUet),
+      // Cross-gated on the Ads ID: the event is sent with `send_to`, which only
+      // resolves for a destination that has had a `gtag('config', …)` call. With
+      // the Ads tag off (NEXT_PUBLIC_TRACKING_DISABLED=1, or an invalid ID
+      // override) no such call is issued, so firing would be a no-op at best and
+      // an unconfigured hit at worst. One switch, both halves.
+      googleAdsConversionThankYou: googleAds ? conversionThankYou : '',
     };
   }
   return cached;
