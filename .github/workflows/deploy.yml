@@ -90,11 +90,19 @@ jobs:
             #
             # TO ARM THE CONVERSION LATER: add one line here and redeploy.
             #   export NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_THANK_YOU=AW-16486409650/svF0COfht-scELLLqrU9
-            # It must live HERE, not in the box's env file: this block runs before
-            # `npm run build`, and NEXT_PUBLIC_* is baked into the client bundle at
-            # build time, so a value set only on the box inlines as blank and the
-            # conversion silently never fires. The production value is recorded in
-            # .env.local.example and in the Brief 174 report.
+            # The production value is also recorded in .env.local.example.
+            #
+            # ⚠️ AND DO NOT SET IT IN THE BOX'S ENV FILE INSTEAD - not because it
+            # would be ignored, but because it would WORK, silently. Measured
+            # 2026-09-08: Next only inlines a NEXT_PUBLIC_* that has a value at
+            # BUILD time. With this one absent (the state today) the compiled
+            # server chunk keeps a live `process.env` read, so dropping the value
+            # into the box's .env.local and restarting ARMS a live-account
+            # conversion with no rebuild, no deploy, and nothing in version
+            # control to show for it. Once the export below exists, the value is
+            # inlined instead and the box's file stops mattering - so which of the
+            # two wins flips depending on build state. Keep it in this block,
+            # where it is deterministic and reviewable.
             # Brief 174 (Track C): pinned rather than left to the code default in
             # src/lib/schedule/tracking.ts, because whatever value is in effect is
             # also the ONLY origin the scheduling modal accepts a postMessage
