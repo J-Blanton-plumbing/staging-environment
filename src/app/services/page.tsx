@@ -70,9 +70,9 @@ export default async function ServicesPage() {
       {/* ── 3. Services Card Section ────────────────────────────────────── */}
       <section className="bg-[#F9F3EC] py-20">
         <div className="w-[81%] mx-auto">
-          <p className="text-[#BC0E0E] font-display font-bold uppercase text-[32px] mb-2">
+          <h2 className="text-[#BC0E0E] font-display font-bold uppercase text-[32px] mb-2 tracking-normal">
             SERVICES
-          </p>
+          </h2>
           <p className="text-[#0A1B2E] text-[19px] font-normal max-w-2xl mb-10 leading-snug">
             Our team of tenacious plumbers is always ready to leap into action to save your day,
             no matter how light or severe the situation
@@ -108,9 +108,9 @@ export default async function ServicesPage() {
         {/* Left — text (desktop), bottom (mobile) */}
         <div className="w-full md:w-1/2 mt-6 md:mt-0">
           {/* Title: hidden on mobile (shown in image div instead), visible on desktop */}
-          <p className="hidden md:block text-[#BC0E0E] font-display font-bold uppercase text-[32px] mb-[10px]">
+          <h2 className="hidden md:block text-[#BC0E0E] font-display font-bold uppercase text-[32px] mb-[10px] tracking-normal">
             REASONS TO BELIEVE
-          </p>
+          </h2>
           <p className="text-[#0A1B2E] text-[19px] font-normal leading-relaxed w-full md:w-4/5">
             For over three decades, we have established ourselves as a trusted name in the
             plumbing industry. Our team is passionate about providing top-of-the-line technology

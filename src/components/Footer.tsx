@@ -150,9 +150,9 @@ export default function Footer({ settings }: { settings: GlobalSettings }) {
 
           {/* bottom-locations */}
           <div className="bottom-locations mb-[50px]">
-            <p className="label font-display font-bold text-[28px] md:text-[34px] mb-[30px]">
+            <h2 className="label font-display font-bold text-[28px] md:text-[34px] mb-[30px] tracking-normal text-cream-100">
               Our Office Locations
-            </p>
+            </h2>
             <div className="offices grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-[30px]">
               {settings.offices.filter((office) => office.showInFooter !== false).map((office) => (
                 <div key={office.slug} className="office">

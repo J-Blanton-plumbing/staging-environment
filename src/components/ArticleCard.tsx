@@ -21,9 +21,9 @@ export default function ArticleCard({ article }: { article: ArticleCardData }) {
       </Link>
       <div className="p-6 flex flex-col flex-1">
         <Link href={article.href}>
-          <p className="article-title font-display font-bold text-navy-800 text-[20px] mb-2 leading-tight hover:text-brand-600 transition-colors">
+          <h3 className="article-title font-display font-bold text-navy-800 text-[20px] mb-2 leading-tight hover:text-brand-600 transition-colors tracking-normal">
             {article.title}
-          </p>
+          </h3>
         </Link>
         <p className="text-sm text-navy-800 mb-5 leading-relaxed flex-1">
           {article.excerpt}

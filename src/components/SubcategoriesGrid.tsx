@@ -29,9 +29,9 @@ export default function SubcategoriesGrid({
 
   return (
     <section className="ep-subcategories mb-[100px] lg:mb-[140px]">
-      <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-10 text-center">
+      <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-10 text-center">
         {heading}
-      </p>
+      </h2>
       <div className="services grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {items.map((sub) => (
           <Link
@@ -49,9 +49,9 @@ export default function SubcategoriesGrid({
               />
             </div>
             <div className="p-5 flex flex-col flex-1">
-              <p className="label font-display font-bold italic uppercase text-navy-800 text-[18px] mb-2 leading-tight">
+              <h3 className="label font-display font-bold italic uppercase text-navy-800 text-[18px] mb-2 leading-tight tracking-normal">
                 {sub.label}
-              </p>
+              </h3>
               {sub.desc && (
                 <p className="desc text-sm text-navy-800 leading-relaxed mb-4 flex-1">
                   {sub.desc}

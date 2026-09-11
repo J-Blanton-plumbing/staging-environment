@@ -133,9 +133,9 @@ export default async function ServiceCategoryPage({
           {/* Intro + image */}
           <section className="f grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-[100px] lg:mb-[140px]">
             <div>
-              <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
+              <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
                 {content.intro.heading}
-              </p>
+              </h2>
               <div className="custom-paragraphs space-y-4 text-navy-800 leading-relaxed">
                 <p dangerouslySetInnerHTML={html(content.intro.body)} />
               </div>
@@ -158,9 +158,9 @@ export default async function ServiceCategoryPage({
             >
               <div className="a flex-1 w-full px-8 md:px-12 lg:px-8 lg:pr-16 py-10 lg:py-16 text-white">
                 <div className="r">
-                  <p className="label font-display font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-tight mb-6 uppercase tracking-tight">
+                  <h2 className="label font-display font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-tight mb-6 uppercase tracking-tight text-white">
                     {content.problems.heading}
-                  </p>
+                  </h2>
                   <ul className="space-y-3 mb-8">
                     {content.problems.items.map(item => (
                       <li key={item} className="service flex items-start gap-3 text-[16px] md:text-[18px]">
@@ -186,9 +186,9 @@ export default async function ServiceCategoryPage({
           {/* Subcategories */}
           {content.subcategories.items.length > 0 && (
             <section className="ep-subcategories mb-[100px] lg:mb-[140px]">
-              <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-10 text-center">
+              <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-10 text-center">
                 {content.subcategories.heading}
-              </p>
+              </h2>
               <div className="services grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {content.subcategories.items.map(sub => (
                   <Link
@@ -197,9 +197,9 @@ export default async function ServiceCategoryPage({
                     className="card group flex flex-col bg-white rounded-lg overflow-hidden hover:shadow-card hover:-translate-y-1 transition-[box-shadow,transform] duration-200 cursor-pointer"
                   >
                     <div className="p-5 flex flex-col flex-1">
-                      <p className="label font-display font-bold italic uppercase text-navy-800 text-[18px] mb-2 leading-tight">
+                      <h3 className="label font-display font-bold italic uppercase text-navy-800 text-[18px] mb-2 leading-tight tracking-normal">
                         {sub.label}
-                      </p>
+                      </h3>
                       <p className="desc text-sm text-navy-800 leading-relaxed mb-4 flex-1">
                         {sub.desc}
                       </p>
@@ -251,9 +251,9 @@ export default async function ServiceCategoryPage({
                 />
               </div>
               <div className="order-1 md:order-2">
-                <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
+                <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                   {content.preventative.heading}
-                </p>
+                </h2>
                 <p className="text-navy-800 leading-relaxed mb-6 whitespace-pre-line" dangerouslySetInnerHTML={html(content.preventative.body)} />
                 <Link
                   href="/no-drip-club"
@@ -290,9 +290,9 @@ export default async function ServiceCategoryPage({
                 />
               </div>
               <div>
-                <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
+                <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                   {content.finalPitch.tagline}
-                </p>
+                </h2>
                 <p className="text-navy-800 leading-relaxed mb-6" dangerouslySetInnerHTML={html(content.finalPitch.body)} />
                 <Link
                   href={settings.phoneHref}

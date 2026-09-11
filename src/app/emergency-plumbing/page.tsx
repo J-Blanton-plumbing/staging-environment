@@ -107,7 +107,7 @@ export default async function EmergencyPlumbingPage() {
             {/* ---- .f — PLUMBERS AT THE READY ---- */}
             <div className="f">
               <div>
-                <p className="red-text">{ready.heading}</p>
+                <h2 className="red-text tracking-normal">{ready.heading}</h2>
                 <Image src={fImageSrc} alt="Emergency Plumbing" width={470} height={320} />
                 <p>{ready.body}</p>
               </div>
@@ -122,7 +122,7 @@ export default async function EmergencyPlumbingPage() {
                 <div className="a">
                   <div className="l" />
                   <div className="r">
-                    <p className="label">{card.heading}</p>
+                    <h2 className="label tracking-normal text-white">{card.heading}</h2>
                     <Image src="/images/preventative.webp" alt="Plumbing" width={470} height={320} />
                     {card.items.map((item) => (
                       <div className="service" key={item}>
@@ -162,7 +162,7 @@ export default async function EmergencyPlumbingPage() {
             {/* ---- .f2 — WE HATE EMERGENCIES TOO (NDC CTA) ---- */}
             <div className="f2">
               <div>
-                <p className="red-text">{ndcCta.heading}</p>
+                <h2 className="red-text tracking-normal">{ndcCta.heading}</h2>
                 <Image src={f2ImageSrc} alt="No Drip Club" width={470} height={320} />
                 <p>{ndcCta.body}</p>
                 <Link className="link-button" href="/no-drip-club">JOIN NOW</Link>
@@ -174,7 +174,7 @@ export default async function EmergencyPlumbingPage() {
             <div className="f3">
               <Image src={f3ImageSrc} alt="J. Blanton Plumbing" width={470} height={320} />
               <div>
-                <p className="red-text">{finalPitch.heading}</p>
+                <h2 className="red-text tracking-normal">{finalPitch.heading}</h2>
                 <Image src={f3ImageSrc} alt="J. Blanton Plumbing" width={470} height={320} />
                 <p>{finalPitch.body}</p>
                 <Link className="link-button button1" href={settings.phoneHref}>{settings.ctaPrimaryLabel}</Link>

@@ -169,9 +169,9 @@ export default async function JoinOurTeamPage() {
             </div>
 
             <div>
-              <p className="mb-2 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
+              <h2 className="mb-2 font-display text-[28px] font-bold uppercase leading-tight tracking-tight text-brand-600 md:text-[32px]">
                 {body.heading}
-              </p>
+              </h2>
               <p className="mb-6 font-display text-[18px] font-bold text-navy-800">{body.intro}</p>
 
               {/* Mobile-only image (theme shows the .f2 image above the copy under 1024px). */}
@@ -186,18 +186,18 @@ export default async function JoinOurTeamPage() {
 
               {/* Two lists render STACKED (one above the other), matching the live
                   page's actual layout — verified against jblantonplumbing.com. */}
-              <p className="mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
+              <h3 className="mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
                 {body.benefitsLabel}
-              </p>
+              </h3>
               <ul className="mb-10 list-disc space-y-1 pl-6 leading-relaxed text-navy-800">
                 {body.benefits.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
 
-              <p className="mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
+              <h3 className="mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
                 {body.candidatesLabel}
-              </p>
+              </h3>
               <ul className="list-disc space-y-1 pl-6 leading-relaxed text-navy-800">
                 {body.candidates.map((item) => (
                   <li key={item}>{item}</li>
@@ -209,9 +209,9 @@ export default async function JoinOurTeamPage() {
               </p>
               <p className="mt-4 leading-relaxed text-navy-800">{body.readyParagraph}</p>
 
-              <p className="mt-8 mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
+              <h3 className="mt-8 mb-3 font-display text-[20px] font-bold uppercase tracking-tight text-brand-600">
                 {body.positionsLabel}
-              </p>
+              </h3>
               <ul className="list-disc space-y-1 pl-6 leading-relaxed text-navy-800">
                 {body.positions.map((item) => (
                   <li key={item}>{item}</li>
