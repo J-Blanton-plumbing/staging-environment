@@ -94,9 +94,9 @@ export default async function SewerPage() {
 
           <section className="f grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-[100px] lg:mb-[140px]">
             <div>
-              <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
+              <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6">
                 {content.intro.heading}
-              </p>
+              </h2>
               <div
                 className="custom-paragraphs cms-block-content space-y-4 text-navy-800 leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: renderCmsBlock(content.intro.body, settings) }}
@@ -118,9 +118,9 @@ export default async function SewerPage() {
           >
             <div className="a flex-1 w-full px-8 md:px-12 lg:px-8 lg:pr-16 py-10 lg:py-16 text-white">
               <div className="r">
-                <p className="label font-display font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-tight mb-6 uppercase tracking-tight">
+                <h2 className="label font-display font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-tight mb-6 uppercase tracking-tight text-white">
                   {content.problems.heading}
-                </p>
+                </h2>
                 <ul className="space-y-3 mb-8">
                   {content.problems.items.map((p) => (
                     <li key={p} className="service flex items-start gap-3 text-[16px] md:text-[18px]">
@@ -175,9 +175,9 @@ export default async function SewerPage() {
               />
             </div>
             <div className="order-1 md:order-2">
-              <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
+              <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                 {content.preventative.heading}
-              </p>
+              </h2>
               <div
                 className="cms-block-content text-navy-800 leading-relaxed mb-6"
                 dangerouslySetInnerHTML={{ __html: renderCmsBlock(content.preventative.body, settings) }}
@@ -211,9 +211,9 @@ export default async function SewerPage() {
               />
             </div>
             <div>
-              <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
+              <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-tight mb-6 uppercase">
                 {content.finalPitch.tagline}
-              </p>
+              </h2>
               <div
                 className="cms-block-content text-navy-800 leading-relaxed mb-6"
                 dangerouslySetInnerHTML={{ __html: renderCmsBlock(content.finalPitch.body, settings) }}

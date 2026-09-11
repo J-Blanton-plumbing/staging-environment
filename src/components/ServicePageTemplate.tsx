@@ -117,9 +117,9 @@ function mapNode(key: string): ReactNode {
     <section key={key} className="bg-cream-100 py-[70px] md:py-[100px]">
       <div className="w-[90%] lg:w-[81%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[60px] items-center">
         <div className="order-2 lg:order-1">
-          <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-4">
+          <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] leading-tight tracking-tight mb-4">
             WE&apos;RE ALMOST EVERYWHERE
-          </p>
+          </h2>
           <p className="font-sans text-navy-800 text-[16px] leading-[24px]">
             With more plumbers and more trucks at our disposal, we can cover more
             ground and reach your home quickly.

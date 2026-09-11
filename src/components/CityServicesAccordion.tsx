@@ -22,9 +22,9 @@ export default function CityServicesAccordion({
 }) {
   return (
     <section className="services-menu mb-[130px]">
-      <p className="red-text2 block w-full text-center font-display text-[2.5rem] font-bold leading-[1.2] text-brand-600 my-8">
+      <h2 className="red-text2 block w-full text-center font-display text-[2.5rem] font-bold leading-[1.2] text-brand-600 my-8 tracking-normal">
         {heading}
-      </p>
+      </h2>
       <div className="city-sub-categories relative bg-cream-100 py-[18px]">
         <div className="city-services-row">
           {categories.map((cat) => (

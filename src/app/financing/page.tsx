@@ -145,7 +145,7 @@ export default async function FinancingPage() {
           <div className="w81">
             {/* Desktop: label + body */}
             <div>
-              <p className="red-text">{financingSolutionsReady.label}</p>
+              <h2 className="red-text tracking-normal">{financingSolutionsReady.label}</h2>
               <p dangerouslySetInnerHTML={html(financingSolutionsReady.body)} />
             </div>
             {/* Mobile heading (hidden on desktop) */}
@@ -191,7 +191,7 @@ export default async function FinancingPage() {
               <div className="a">
                 <div className="l" />
                 <div className="r">
-                  <p className="label">{financingMadeSimple.label}</p>
+                  <h2 className="label tracking-normal text-white">{financingMadeSimple.label}</h2>
                   {/* Mobile image — shown via CSS at ≤1000px */}
                   <Image
                     src={financingMadeSimple.leftImage}
@@ -227,7 +227,7 @@ export default async function FinancingPage() {
                   title="J. Blanton Plumbing service area"
                 />
               </div>
-              <p className="red-text">{coverage.heading}</p>
+              <h2 className="red-text tracking-normal">{coverage.heading}</h2>
               <p dangerouslySetInnerHTML={html(coverage.body)} />
             </div>
             {/* map1: shown on desktop only */}
@@ -261,7 +261,7 @@ export default async function FinancingPage() {
               ------------------------------------------------------------ */}
           <div className="f2">
             <div>
-              <p className="red-text">{surpriseBills.label}</p>
+              <h2 className="red-text tracking-normal">{surpriseBills.label}</h2>
               {/* Mobile image (hidden on desktop) */}
               <Image
                 src={surpriseBills.leftImage}
@@ -306,7 +306,7 @@ export default async function FinancingPage() {
               height={320}
             />
             <div>
-              <p className="red-text">{bottomCta.label}</p>
+              <h2 className="red-text tracking-normal">{bottomCta.label}</h2>
               {/* Mobile image (hidden on desktop) */}
               <Image
                 src={bottomCta.innerImage}

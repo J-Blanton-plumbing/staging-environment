@@ -124,7 +124,7 @@ export default async function HelpSupportPage() {
           <div className="w81">
             {/* Desktop: label + body */}
             <div>
-              <p className="red-text">{customerService.label}</p>
+              <h2 className="red-text tracking-normal">{customerService.label}</h2>
               <p dangerouslySetInnerHTML={html(customerService.body)} />
             </div>
             {/* Mobile heading */}
@@ -159,7 +159,7 @@ export default async function HelpSupportPage() {
             />
             {/* Desktop: label + body */}
             <div>
-              <p className="red-text">{billingQuestions.label}</p>
+              <h2 className="red-text tracking-normal">{billingQuestions.label}</h2>
               <p dangerouslySetInnerHTML={html(billingQuestions.body)} />
             </div>
           </div>
@@ -172,7 +172,7 @@ export default async function HelpSupportPage() {
           <div className="w81">
             {/* Desktop: label + body */}
             <div>
-              <p className="red-text">{plumbingIssue.label}</p>
+              <h2 className="red-text tracking-normal">{plumbingIssue.label}</h2>
               <p dangerouslySetInnerHTML={html(plumbingIssue.body)} />
             </div>
             {/* Mobile heading */}

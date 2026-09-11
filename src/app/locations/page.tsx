@@ -138,7 +138,7 @@ export default async function LocationsPage() {
         <div className="ls-pv">
           <div className="w81">
             <div className="ls-pv-text">
-              <p className="red-text">{introLabel}</p>
+              <h2 className="red-text tracking-normal">{introLabel}</h2>
               <p dangerouslySetInnerHTML={html(introBody)} />
               <p>
                 Whether you&apos;re in the heart of the city or in suburbs like Northbrook,
@@ -168,7 +168,7 @@ export default async function LocationsPage() {
         {/* ---- Section 3: Service Centers grid --------------------------- */}
         <div className="map">
           <div className="map-cities">
-            <p className="red-text">OUR SERVICE CENTERS</p>
+            <h2 className="red-text tracking-normal">OUR SERVICE CENTERS</h2>
             <div className="r">
               {SERVICE_CENTERS.map((col, ci) => (
                 <div key={ci}>
@@ -195,7 +195,7 @@ export default async function LocationsPage() {
               unoptimized
             />
             <div className="ls-man-text">
-              <p className="red-text">Serving Chicagoland with Trusted Plumbing Solutions</p>
+              <h2 className="red-text tracking-normal">Serving Chicagoland with Trusted Plumbing Solutions</h2>
               <p>
                 For over 30 years, J. Blanton Plumbing has proudly served Chicago and its
                 surrounding suburbs, including Northbrook, Arlington Heights, Naperville, Elgin, and

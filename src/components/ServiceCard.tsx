@@ -81,9 +81,9 @@ export default function ServiceCard({
 
       {/* Content */}
       <div className="image-card-content w-[90%] mx-auto py-[15px] flex flex-col flex-1 text-navy-800">
-        <p className="service-label font-display font-bold text-[20px] mb-2 leading-tight tracking-[0.5px]">
+        <h3 className="service-label font-display font-bold text-[20px] mb-2 leading-tight tracking-[0.5px]">
           {service.name}
-        </p>
+        </h3>
         <p className="desc text-navy-800 text-sm leading-relaxed mb-4 flex-1 tracking-[0.5px]">
           {service.shortDesc}
         </p>

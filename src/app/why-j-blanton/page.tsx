@@ -113,7 +113,7 @@ export default async function WhyJBlantonPage() {
           <div className="w81">
             {/* Desktop: heading + body in a div */}
             <div>
-              <p className="red-text">{au.heading}</p>
+              <h2 className="red-text tracking-normal">{au.heading}</h2>
               <p dangerouslySetInnerHTML={{ __html: renderCmsInline(au.body, settings) }} />
             </div>
             {/* Mobile heading (shown via CSS at ≤900px, hidden on desktop) */}
@@ -146,7 +146,7 @@ export default async function WhyJBlantonPage() {
             />
             {/* Desktop: heading + body in a div */}
             <div>
-              <p className="red-text">{wte.heading}</p>
+              <h2 className="red-text tracking-normal">{wte.heading}</h2>
               <p dangerouslySetInnerHTML={{ __html: renderCmsInline(wte.body, settings) }} />
             </div>
           </div>
@@ -157,7 +157,7 @@ export default async function WhyJBlantonPage() {
           <div className="w81">
             <div className="l">
               <div>
-                <p className="red-text">{mot.heading}</p>
+                <h2 className="red-text tracking-normal">{mot.heading}</h2>
                 <p dangerouslySetInnerHTML={{ __html: renderCmsInline(mot.body, settings) }} />
               </div>
             </div>
@@ -189,7 +189,7 @@ export default async function WhyJBlantonPage() {
               sizes="(max-width: 900px) 90vw, 470px"
             />
             <div>
-              <p className="red-text">{ol.heading}</p>
+              <h2 className="red-text tracking-normal">{ol.heading}</h2>
               <p dangerouslySetInnerHTML={{ __html: renderCmsInline(ol.body, settings) }} />
               <Link href={ol.cta.href} className="link-button">
                 {resolveTokens(ol.cta.label, settings)}
@@ -203,7 +203,7 @@ export default async function WhyJBlantonPage() {
           <div className="w81">
             <div className="l">
               <div>
-                <p className="red-text">{jot.heading}</p>
+                <h2 className="red-text tracking-normal">{jot.heading}</h2>
                 <p dangerouslySetInnerHTML={{ __html: renderCmsInline(jot.body, settings) }} />
               </div>
               <Link href={jot.cta.href} className="link-button">

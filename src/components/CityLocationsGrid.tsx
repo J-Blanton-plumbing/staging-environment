@@ -50,9 +50,9 @@ export default function CityLocationsGrid({
   return (
     <div className="city-locations mt-[100px]">
       <div className="city-labels mb-8 text-center">
-        <p className="font-display text-[22px] font-bold text-navy-800 md:text-[28px]">
+        <h2 className="font-display text-[22px] font-bold text-navy-800 md:text-[28px] tracking-normal">
           {REGION_TRUST_LINE[region]}
-        </p>
+        </h2>
         <p className="mt-2 text-navy-800">
           Some areas we serve, but are not limited to, include:
         </p>

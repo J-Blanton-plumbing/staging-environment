@@ -112,7 +112,7 @@ export default async function KnowledgeHubPage() {
         <div className="kh">
           {/* Intro row: label / body / VIEW SERVICES */}
           <div className="align1">
-            <p className="red-text">{intro.label}</p>
+            <h2 className="red-text tracking-normal">{intro.label}</h2>
             <div>
               <p dangerouslySetInnerHTML={html(intro.body)} />
               <Link className="link-button" href={intro.ctaHref}>

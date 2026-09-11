@@ -19,7 +19,7 @@ export default function FaqSection({ label, body, items }: FaqSectionProps) {
   return (
     <div className="faqs">
       <div className="l">
-        <p className="red-text">{label}</p>
+        <h2 className="red-text tracking-normal">{label}</h2>
         <p>{body}</p>
       </div>
       <div className="r">

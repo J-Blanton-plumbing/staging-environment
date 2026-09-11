@@ -304,9 +304,9 @@ export default async function HomePage() {
       <section className="home-services-bg bg-cream-100 pt-[90px] pb-16 md:pb-24 relative z-0">
         <div className="home-services w-[90%] lg:w-[81%] mx-auto relative z-[2]">
           <div className="align1 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 md:mb-[60px]">
-            <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
+            <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
               {home.services.heading}
-            </p>
+            </h2>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-2xl">
               <p className="text-navy-800 font-sans text-[19px] leading-[30px] max-[1280px]:text-[16px] max-[770px]:leading-[26px] flex-1">
                 {home.services.intro}
@@ -394,9 +394,9 @@ export default async function HomePage() {
 
             {/* why-content */}
             <div className="why-content w-full lg:w-1/2 lg:ml-[30px] text-navy-800">
-              <p className="red-text hidden lg:block font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none mb-[10px]">
+              <h2 className="red-text hidden lg:block font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none mb-[10px]">
                 {home.why.heading}
-              </p>
+              </h2>
               {whyBody.map((p, i) => (
                 <p key={i} className={i === 0 ? 'leading-relaxed text-base' : 'my-5 leading-relaxed text-base'}>
                   {p}
@@ -420,9 +420,9 @@ export default async function HomePage() {
           {/* KNOWLEDGE HUB — 120px top margin, 3-column articles grid */}
           <section className="knowledge-hub mt-[120px] max-[768px]:mt-[30px] pb-[30px] max-[768px]:pb-0">
             <div className="align1 knowledge-hub flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
-              <p className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
+              <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
                 {home.knowledgeHub.heading}
-              </p>
+              </h2>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-xl">
                 <p className="text-navy-800 font-sans text-[19px] leading-[30px] max-[1280px]:text-[16px] max-[770px]:leading-[26px] flex-1">
                   {home.knowledgeHub.intro}

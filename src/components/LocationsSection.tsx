@@ -44,14 +44,14 @@ export default function LocationsSection({
     <section className={className}>
       <div className={cn('grid grid-cols-1 lg:grid-cols-2 gap-10 items-center', contentsClassName)}>
         <div className={contentClassName}>
-          <p
+          <h2
             className={cn(
               'red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight mb-4',
               headingClassName
             )}
           >
             {heading}
-          </p>
+          </h2>
           {body.map((para, i) => (
             <p key={i} className={cn(bodyClassName, i === body.length - 1 ? 'mb-6' : 'mb-3')}>
               {para}
