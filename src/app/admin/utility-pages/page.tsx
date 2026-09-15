@@ -22,6 +22,8 @@ const UTILITY_PAGE_CARDS: { slug: string; title: string; href: string }[] = [
   { slug: 'j-blanton-is-hiring', title: 'Join Our Team',    href: '/admin/j-blanton-is-hiring' },
   // Brief 110: the /privacy-policy "Terms of Use & Privacy Policy" legal page.
   { slug: 'privacy-policy',    title: 'Privacy Policy',     href: '/admin/privacy-policy' },
+  // Brief 176: the /consumer-rights "Home Repair: Know Your Consumer Rights" page.
+  { slug: 'consumer-rights',   title: 'Consumer Rights',    href: '/admin/consumer-rights' },
 ];
 
 function formatDate(iso?: string | null): string {

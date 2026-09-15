@@ -1,6 +1,7 @@
 import { Pool } from 'pg';
 import { HIRING_CMS_FIELDS } from '../src/lib/content/is-hiring';
 import { PRIVACY_POLICY_CMS_FIELDS } from '../src/lib/content/privacy-policy';
+import { CONSUMER_RIGHTS_CMS_FIELDS } from '../src/lib/content/consumer-rights';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://postgres:jbp@localhost:5432/jbp_cms',
@@ -129,6 +130,14 @@ const pages: Array<{ slug: string; content: Record<string, unknown> }> = [
     // editor and the live page never drift.
     slug: 'privacy-policy',
     content: PRIVACY_POLICY_CMS_FIELDS,
+  },
+  {
+    // Brief 176: 'Home Repair: Know Your Consumer Rights'. Copy lives
+    // canonically in src/lib/content/consumer-rights.ts so the seed, the CMS
+    // editor and the live page never drift. Only the editable PROSE is stored
+    // here — the verbatim statutory blocks, tables and cards are code.
+    slug: 'consumer-rights',
+    content: CONSUMER_RIGHTS_CMS_FIELDS,
   },
 ];
 
