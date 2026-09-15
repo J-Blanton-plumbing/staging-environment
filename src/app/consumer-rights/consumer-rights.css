@@ -1,0 +1,958 @@
+/*
+ * /consumer-rights — the utility page template (Brief 176, + Marketing revisions
+ * 2026-09-14 and 2026-09-15).
+ *
+ * Standalone template, not the city shell. Everything between the shared navbar
+ * and the shared footer is defined here.
+ *
+ * ══ THE TWO RULES THAT KEEP THIS PAGE COHERENT ════════════════════════════
+ *
+ * 1. ONE WIDTH. Every block — h2, h3, prose, all three tables, both statutory
+ *    callouts, the scope note, the card grid, the closing panel and the footnote
+ *    — is 100% of `.cr-container` and nothing else. No element sets its own
+ *    max-width.
+ *
+ *    This replaced an earlier two-measure layout (prose held to 820px while
+ *    tables and cards ran to 1080px). It was deliberate and it was wrong: the
+ *    review called out that the deadlines table and the quoted-provision callout
+ *    beneath it had visibly different widths, that "What Illinois Law Requires"
+ *    ran full-bleed while "Liens, Sworn Statements" did not, and that the
+ *    footnote's rule stopped short of the panel above it. Every one of those was
+ *    the same defect. **Do not reintroduce a per-element max-width.** If a block
+ *    needs to be narrower, narrow the container for that whole band.
+ *
+ * 2. ONE SPACING SCALE. Vertical rhythm comes from ONE owl selector on the
+ *    container (`> * + *`), not from margins on individual blocks. Blocks
+ *    therefore carry no vertical margins of their own — if you add one, two
+ *    rules fight and the rhythm drifts again. Headings get a larger gap above
+ *    via a single override.
+ *
+ * ══ THE SYSTEM ════════════════════════════════════════════════════════════
+ *   Bands     alternating white / cream full-bleed sections, the rhythm the
+ *             newest site template (LocalOfficeCityV2) uses, at the site's
+ *             standard 70px / 100px section padding.
+ *   Carmine   the hero (with the standard wrench pattern) and the closing
+ *             CharacterPanel; headings and warning signals on the document
+ *   Midnight  quoted / official material (the statutory callouts, table header
+ *             rows), body copy, and the CTA hover
+ *   Cerulean  the CTA fill
+ *   warm tints  block surfaces inside the bands
+ *
+ * ⚠️ BRAND-BAN NOTE: the CTA is Cerulean on Carmine surfaces (hero + closing
+ * panel) by Marketing's explicit instruction, 2026-09-15. design.md LOCKED says
+ * "Never red on blue … and not the reverse either", which this knowingly
+ * departs from. Flagged in the implementation report; do not "fix" it silently.
+ *
+ * ══ TWO THINGS THAT WILL BITE IF CHANGED ══════════════════════════════════
+ * 1. There is NO global top offset for the fixed 70px navbar (globals.css leaves
+ *    that to each page). The hero pads for it itself via `--hero-top-clear`.
+ * 2. This file is UNLAYERED, and globals.css puts
+ *    `h1..h5 { font-display font-bold tracking-tight text-navy-800 }` inside
+ *    `@layer base`. Unlayered always beats a layer, which is how H3 gets
+ *    Industry MEDIUM and the Carmine surfaces get Cream headings without
+ *    `!important`. Do not move these rules into a layer.
+ *
+ * ══ COLORS — brand tokens only (brand-rules.md / design.md LOCKED) ════════
+ *   Carmine #BC0E0E · Midnight #0A1B2E · Cream #F9F3EC · Cerulean #1560E6
+ * Permitted derived values only:
+ *   #FDFAF6 · #F1E8DC · #E8DCCC · #E3D8C8 · #3A4A5C · #FFFFFF
+ * No #000000. No cool neutral greys. No invented hexes.
+ *
+ * ══ TYPE — Industry for structure, Nunito for sentences. No third face. ═══
+ *   H1 40px Industry Bold · H2 32px Industry Bold · H3 28px Industry Medium
+ *   H4 20px Industry Bold · Body Nunito 16/24 → 20/30 · Caption Nunito 11/17
+ */
+
+.consumer-rights {
+  /* The one spacing scale. Every gap on the page is one of these. */
+  --cr-gap: 28px; /* between blocks inside a band */
+  --cr-gap-heading: 52px; /* above an h3 — a new sub-topic needs more air */
+  --cr-band-pad: 70px; /* band top/bottom — the site's section rhythm */
+
+  font-family: var(--font-nunito), Arial, sans-serif;
+  color: #0a1b2e; /* Midnight */
+  background: #f9f3ec; /* Cream */
+}
+
+@media (min-width: 1024px) {
+  .consumer-rights {
+    --cr-gap: 36px;
+    --cr-gap-heading: 68px;
+    --cr-band-pad: 100px;
+  }
+}
+
+/* ══ THE ONE CONTAINER ══════════════════════════════════════════════════════
+   Site-standard gutters (90% / 81%), capped so a long legal document keeps a
+   readable measure on a wide monitor. Everything inside is 100% of it. */
+
+.consumer-rights .cr-container {
+  width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .consumer-rights .cr-container {
+    width: 81%;
+  }
+}
+
+/* ══ BANDS ═════════════════════════════════════════════════════════════════ */
+
+.consumer-rights .cr-band {
+  padding: var(--cr-band-pad) 0;
+}
+
+/* `--cr-surface` is the band's own background, exposed so the table's
+   scroll-edge fade can match whichever band it lands in. */
+.consumer-rights .cr-band--white {
+  --cr-surface: #ffffff;
+  background: var(--cr-surface);
+}
+
+.consumer-rights .cr-band--cream {
+  --cr-surface: #f9f3ec; /* Cream */
+  background: var(--cr-surface);
+}
+
+/* ── The straddling scope note ─────────────────────────────────────────────
+   The scope note is a note ABOUT the page, not a section of it, so it sits on
+   the seam between the hero and the first band rather than in a band of its
+   own. The hero and this band meet edge to edge — the red/white boundary runs
+   straight and unbroken — and the callout is pulled up into the red by a FIXED
+   overlap, then paints over it (later in document order + `position: relative`).
+
+   Fixed overlap, not 50%, on purpose: CSS percentage margins resolve against
+   the container's WIDTH, so a true half-height offset is not expressible here,
+   and the callout's height changes with the viewport and with whatever
+   Marketing types into the CMS field. With a fixed overlap the top edge stays
+   put and the box simply grows downward onto the white — it can never climb
+   into the CTA above it. Keep the overlap smaller than the hero's
+   padding-bottom for that reason. */
+
+.consumer-rights .cr-band--overlap {
+  padding-top: 0;
+  /*
+   * `flow-root` is load-bearing. Without it the callout's negative top margin
+   * COLLAPSES THROUGH this band's top edge and drags the whole white background
+   * up with it — measured 64px — so the red/white seam simply moves and nothing
+   * straddles anything. A block formatting context stops the collapse; the band
+   * stays put and only the callout moves. Overflow stays visible, so the callout
+   * still paints up over the hero.
+   */
+  display: flow-root;
+}
+
+.consumer-rights .cr-band--overlap .cr-scope-note {
+  position: relative;
+  /* Above the hero's media column, which carries `z-index: 1` (the theme's
+     value). Without this the photo paints OVER the straddling callout and
+     clips its left half — the callout only overlaps the hero because of the
+     negative margin, so it has no stacking advantage of its own. */
+  z-index: 3;
+  margin-top: -40px;
+  /* An alpha of Midnight — the `shadow-card` token. Lifts the box off the seam
+     so it reads as floating over both surfaces rather than cut by them. */
+  box-shadow: 0 6px 24px rgba(10, 27, 46, 0.12);
+}
+
+/* Restore the full band rhythm below the floating callout. */
+.consumer-rights .cr-band--overlap .cr-container > .cr-scope-note + * {
+  margin-top: var(--cr-band-pad);
+}
+
+@media (min-width: 1024px) {
+  .consumer-rights .cr-band--overlap .cr-scope-note {
+    margin-top: -64px;
+  }
+}
+
+/* ══ THE ONE SPACING RULE ═══════════════════════════════════════════════════
+   Vertical rhythm for every band, in one place. Blocks below carry NO vertical
+   margins so nothing competes with this. */
+
+.consumer-rights .cr-section .cr-container > * + * {
+  margin-top: var(--cr-gap);
+}
+
+/* An h3 opens a new sub-topic, so it gets the bigger gap. This is also the fix
+   for "the list is too close to the intro text" — every block-to-block gap on
+   the page is now at least --cr-gap. */
+.consumer-rights .cr-section .cr-container > h3 + * {
+  margin-top: 16px;
+}
+
+.consumer-rights .cr-section .cr-container > * + h3 {
+  margin-top: var(--cr-gap-heading);
+}
+
+/* ══ HERO — Carmine + wrench pattern ════════════════════════════════════════
+   The site's standard hero surface: the same Carmine and the same tiled
+   `Wrench Filled Red BG.png` that globals.css gives `.hero .hero-contents`.
+   Cream on Carmine measures 5.94:1.
+   Pads for the fixed 70px navbar itself; see note 1 in the header. */
+
+/*
+ * Side-by-side: photo left, Carmine content column right. Mirrors
+ * `.city-page-hero` in globals.css — the same 45/55 split, the same
+ * 50/50 @1550 → 55/45 @1280 → stacked @1050 breakpoints, the same Carmine +
+ * tiled wrench pattern — but under `cr-` class names so the shared city rules
+ * are untouched, and WITHOUT the theme's `text-transform: uppercase` (the
+ * approved H1 is sentence case).
+ *
+ * Note the theme's breakpoints are max-width and the rest of this file is
+ * min-width; they are kept in the theme's direction here so the numbers line up
+ * with globals.css and can be compared line for line.
+ */
+.consumer-rights .cr-hero {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  color: #f9f3ec; /* Cream */
+}
+
+.consumer-rights .cr-hero-media {
+  position: relative;
+  z-index: 1;
+  width: 45%;
+}
+
+/*
+ * Absolutely positioned, unlike the theme's `.city-page-image`, and that matters.
+ * The theme lets the <img> be a flex item because every city hero photo is
+ * landscape — at 45% width its natural height lands under the content column's
+ * 620px, so the column drives the row height. This page's photo is SQUARE:
+ * as a flex item it measured 713px tall at 1440px and dragged the whole hero
+ * with it. Taking the image out of flow means the content column's min-height
+ * is always what sets the hero's height, at any aspect ratio a future upload
+ * happens to have; `object-fit: cover` then crops rather than letterboxes.
+ */
+.consumer-rights .cr-hero-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /*
+   * Crop from the BOTTOM, never through the faces.
+   *
+   * The photo is square and the media column is fixed at the content column's
+   * height, so the wider the viewport the more vertical overflow there is — and
+   * at the default `50% 50%` that excess was taken half from the top, which put
+   * the cut through the technician's eyes at desktop widths.
+   *
+   * With `object-fit: cover`, `object-position: 50% P` takes P of the excess off
+   * the top and the rest off the bottom. As the viewport grows the excess tends
+   * toward the whole image, so **P is the asymptotic worst-case top crop**: at
+   * 8% the top of the frame can never descend past 8% of the photo, at any
+   * width, forever. The technician's head begins at ~11.5% — everything above
+   * that is cabinets and range hood, which is what gets sacrificed instead.
+   *
+   * Measured top crop: ~1% at 1440px, ~5% at 2560px, ~7% at 5120px. The bottom
+   * (legs and floor) absorbs the rest, which is the intent.
+   *
+   * If the photo is ever replaced, check where the highest face sits in the new
+   * one and keep this value comfortably above it.
+   */
+  object-position: 50% 8%;
+}
+
+.consumer-rights .cr-hero-contents {
+  width: 55%;
+  position: relative;
+  background-color: #bc0e0e; /* Carmine */
+  background-image: url('/images/patterns/Wrench Filled Red BG.png');
+  background-repeat: repeat;
+  min-height: 620px;
+}
+
+.consumer-rights .cr-hero-w {
+  height: 100%;
+  width: 650px;
+  max-width: 82%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  /* Top padding derives from the header token, as the theme's `.w` does.
+     Bottom padding must stay LARGER than the scope note's overlap
+     (-40px / -64px) so the straddling callout can never ride up into the CTA. */
+  padding: var(--hero-top-clear) 0 104px;
+}
+
+@media only screen and (max-width: 1550px) {
+  .consumer-rights .cr-hero-media { width: 50%; }
+  .consumer-rights .cr-hero-contents { width: 50%; }
+}
+
+@media only screen and (max-width: 1350px) {
+  .consumer-rights .cr-hero-w { width: 600px; }
+}
+
+@media only screen and (max-width: 1280px) {
+  .consumer-rights .cr-hero-media { width: 55%; }
+  .consumer-rights .cr-hero-contents { width: 45%; }
+  .consumer-rights .cr-hero-w { width: 500px; }
+}
+
+@media only screen and (max-width: 1150px) {
+  .consumer-rights .cr-hero-w { width: 450px; }
+}
+
+/* Stacks below 1050px: PHOTO ON TOP, text beneath (Marketing 2026-09-15).
+   The theme uses `column-reverse` here to put its content first; this page wants
+   the opposite order, and since the image is already first in the DOM a plain
+   `column` gives it — no DOM reshuffle, so the reading order still matches the
+   visual order. */
+@media only screen and (max-width: 1050px) {
+  .consumer-rights .cr-hero {
+    height: auto;
+    flex-direction: column;
+    /*
+     * The PHOTO is the first thing in the hero now, so the hero itself has to
+     * clear the fixed navbar — on the desktop layout that job belonged to
+     * `.cr-hero-w`'s top padding, which no longer sits at the top of anything.
+     * Carmine behind the offset so the strip is part of the hero; the navbar is
+     * opaque and exactly this tall, so it covers the strip completely and the
+     * image begins flush against the navbar's lower edge.
+     */
+    padding-top: var(--site-header-h, 70px);
+    background-color: #bc0e0e;
+  }
+  /* Stacked, the media column has no flex row to stretch against, so the
+     out-of-flow image would collapse it to zero — give it an explicit height. */
+  .consumer-rights .cr-hero-media { width: 100%; height: 340px; }
+  .consumer-rights .cr-hero-contents { width: 100%; min-height: 0; }
+  .consumer-rights .cr-hero-w {
+    width: 90%;
+    max-width: 90%;
+    /*
+     * `height: auto` + `flex-start`, NOT the desktop `height: 100%` + `center`.
+     * A centred flex column that overflows its container pushes the overflow out
+     * of BOTH ends, and the top end is UNREACHABLE — with `.cr-hero` clipping at
+     * `overflow: hidden`, the first thing to vanish is the H1. On the stacked
+     * hero the copy length is the least predictable thing on the page (a CMS
+     * edit, a narrow device, a large accessibility font size all change it), so
+     * the safe layout is one that only ever grows downward and can never clip
+     * its own first child.
+     */
+    height: auto;
+    justify-content: flex-start;
+    /* No header offset needed any more — the photo above it clears the navbar. */
+    padding: 44px 0 72px;
+  }
+}
+
+.consumer-rights .cr-hero h1 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700; /* Industry Bold */
+  /* Brand H1 is 40px; clamped down so it still fits at 375px. */
+  font-size: clamp(30px, 5.6vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #f9f3ec;
+  margin: 0 0 24px;
+}
+
+.consumer-rights .cr-hero .cr-prose {
+  color: #f9f3ec;
+}
+
+/* ══ HEADINGS ══════════════════════════════════════════════════════════════ */
+
+.consumer-rights h2 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700; /* Industry Bold */
+  font-size: clamp(26px, 4vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #bc0e0e; /* Carmine — 5.9:1 on Cream */
+  margin: 0;
+}
+
+.consumer-rights h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500; /* Industry Medium */
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: #0a1b2e; /* Midnight */
+  margin: 0;
+}
+
+.consumer-rights h4 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700; /* Industry Bold */
+  font-size: 20px;
+  line-height: 1.25;
+  color: #0a1b2e;
+  margin: 0 0 8px;
+}
+
+/* ══ PROSE (CMS rich text + the two JSX paragraphs) ═════════════════════════ */
+
+.cr-prose {
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0a1b2e;
+  overflow-wrap: break-word;
+}
+
+.cr-prose p {
+  margin: 0 0 16px;
+}
+
+.cr-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.cr-prose strong,
+.cr-prose b {
+  font-weight: 700;
+}
+
+.cr-prose a {
+  color: #1560e6; /* Cerulean — 5.0:1 on Cream */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cr-prose a:hover {
+  color: #bc0e0e; /* Carmine */
+}
+
+/* Cream links on the Carmine surfaces — Cerulean text on red is unreadable. */
+.consumer-rights .cr-hero .cr-prose a,
+.consumer-rights .cr-final-content .cr-prose a {
+  color: #f9f3ec;
+}
+
+/* The hero lead reads a step larger than body copy. */
+.cr-prose--lead p {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/* The ten precautions. Industry numerals in Carmine — numbers are structural. */
+.cr-precautions ol {
+  list-style: decimal;
+  padding-left: 28px;
+  margin: 0;
+}
+
+.cr-precautions li {
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.cr-precautions li:last-child {
+  margin-bottom: 0;
+}
+
+.cr-precautions li::marker {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #bc0e0e; /* Carmine */
+}
+
+/* ══ THE SINGLE CTA — hero and closing panel, identical both times ══════════
+   Cerulean fill, 10px radius, hover → Midnight. Per Marketing 2026-09-15; see
+   the brand-ban note in this file's header. */
+
+.cr-cta-block {
+  margin-top: 32px;
+}
+
+.cr-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px; /* tap target ≥ 44px */
+  padding: 12px 32px;
+  border-radius: 10px; /* design.md: "Pill or 10px radius" — the squarer option */
+  background: #1560e6; /* Cerulean */
+  /*
+   * The 2px Cream edge is load-bearing, not decoration. Cerulean against the
+   * Carmine band measures 1.20:1 — WCAG wants ≥3:1 for a control's boundary, so
+   * without this the button's shape dissolves into the red for anyone who does
+   * not perceive the hue difference strongly (the exact failure mode the
+   * "never red on blue" ban exists to prevent). Cream on Carmine is 5.94:1, so
+   * the edge reads. It also carries the Midnight hover state, which is 1.97:1
+   * against Carmine on its own. Remove this line and both states lose their
+   * outline.
+   */
+  border: 2px solid #f9f3ec;
+  color: #ffffff; /* 5.5:1 on Cerulean */
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500; /* Industry Medium */
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.cr-cta:hover {
+  background: #0a1b2e; /* Midnight — white on it is 15.8:1 */
+}
+
+.cr-cta:focus-visible {
+  outline: 2px solid #f9f3ec;
+  outline-offset: 3px;
+}
+
+/* Full Cream, not an alpha: on Carmine a softened Cream drops to 4.8:1 and
+   reads pink. */
+.cr-cta-meta {
+  margin: 12px 0 0;
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #f9f3ec;
+}
+
+/* ══ SCOPE NOTE ════════════════════════════════════════════════════════════ */
+
+.cr-scope-note {
+  border: 1px solid #e8dccc;
+  border-top: 4px solid #bc0e0e; /* Carmine signal — there is no amber in this palette */
+  border-radius: 10px;
+  background: #fdfaf6;
+  padding: 20px 24px;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .cr-scope-note {
+    padding: 28px 32px;
+  }
+}
+
+/* ══ TABLES ════════════════════════════════════════════════════════════════
+   Each table scrolls inside its OWN container so it can exceed the viewport on
+   mobile without the page scrolling. `tabindex` on the region makes the overflow
+   keyboard-scrollable. */
+
+/*
+ * The scroller works, but "it works" is not the same as "you can tell".
+ * Marketing reported the tables as simply cut off at the right on mobile —
+ * measured, the container scrolls correctly (288px visible of a 640px table at
+ * 320px, no clipping ancestor), but with overlay scrollbars there is nothing on
+ * screen saying so, and a table sliced flush at the container edge reads as a
+ * rendering bug rather than as content. Two affordances below: a persistent
+ * styled scrollbar, and a fade at the right edge on the widths where the tables
+ * actually overflow.
+ */
+.cr-table-scroll {
+  position: relative;
+}
+
+.cr-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  /* Firefox: a thin, always-present bar in brand ink rather than an overlay. */
+  scrollbar-width: thin;
+  scrollbar-color: #c9bca9 transparent;
+}
+
+/* WebKit/Blink: force a real, non-overlay scrollbar so the track is visible
+   before the user touches anything. */
+.cr-table-wrap::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cr-table-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cr-table-wrap::-webkit-scrollbar-thumb {
+  background: #c9bca9; /* permitted warm neutral */
+  border-radius: 999px;
+}
+
+.cr-table-wrap:focus-visible {
+  outline: 2px solid #1560e6; /* Cerulean */
+  outline-offset: 2px;
+}
+
+/*
+ * The right-edge fade. Gated to the widths where the tables genuinely overflow
+ * (the container is 90% of the viewport and the widest table has a 640px
+ * min-width, so it overflows below ~711px) — above that the tables fit and a
+ * fade would be a lie. It sits above the table's own opaque background and
+ * ignores pointer events, and it stops short of the scrollbar so the thumb
+ * stays visible.
+ */
+@media only screen and (max-width: 720px) {
+  .cr-table-scroll::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 12px;
+    width: 40px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(249, 243, 236, 0), var(--cr-surface, #f9f3ec));
+  }
+}
+
+.cr-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  background: #fdfaf6;
+  border: 1px solid #e3d8c8;
+  border-radius: 10px;
+}
+
+.cr-table--deadlines {
+  min-width: 640px;
+}
+
+.cr-table--hotlines {
+  min-width: 420px;
+}
+
+.cr-table caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #0a1b2e;
+  padding-bottom: 12px;
+}
+
+/* Industry for table headers (design.md: Industry for anything structural). */
+.cr-table th {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cr-table thead th {
+  background: #0a1b2e; /* Midnight */
+  color: #f9f3ec; /* Cream on Midnight — 15.8:1 */
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 14px 18px;
+}
+
+.cr-table tbody th {
+  color: #0a1b2e;
+  padding: 16px 18px;
+  width: 34%;
+}
+
+.cr-table td {
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0a1b2e;
+  vertical-align: top;
+  padding: 16px 18px;
+}
+
+.cr-table tbody tr + tr th,
+.cr-table tbody tr + tr td {
+  border-top: 1px solid #e3d8c8;
+}
+
+/* Zebra stripe on the warm tint — both values are permitted derived creams. */
+.cr-table tbody tr:nth-child(even) th,
+.cr-table tbody tr:nth-child(even) td {
+  background: #f1e8dc;
+}
+
+/*
+ * The deadline column: the most-scanned values on the page, so Carmine +
+ * Industry. The numbers themselves are exact (3 / 15 / 5 / 30 / 10) — the
+ * styling emphasises them, it never rounds or rewords them.
+ */
+.cr-table .cr-deadline {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #bc0e0e; /* Carmine */
+  white-space: nowrap;
+}
+
+/* "(roofing work only)" — the copy document italicizes it. */
+.cr-table .cr-note {
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #3a4a5c;
+}
+
+.cr-table--hotlines tbody td {
+  padding: 8px 12px;
+}
+
+.cr-tel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px; /* tap target */
+  padding: 8px 12px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #1560e6; /* Cerulean */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.cr-tel:hover {
+  color: #bc0e0e;
+}
+
+.cr-tel:focus-visible {
+  outline: 2px solid #1560e6;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ══ VERBATIM STATUTORY CALLOUTS ═══════════════════════════════════════════
+   Quoted source material, mirroring the pamphlet's own treatment: a solid
+   Midnight header bar with the block title, body beneath. NOT Cerulean: these
+   sit next to Carmine headings. */
+
+.cr-verbatim {
+  margin: 0;
+  border: 1px solid #0a1b2e;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fdfaf6;
+}
+
+/*
+ * Scoped with the root class ON PURPOSE: `.consumer-rights h4` is (0,1,1) and
+ * would otherwise outrank a bare `.cr-verbatim-title` (0,1,0), repainting this
+ * Cream-on-Midnight band as Midnight-on-Midnight — i.e. invisible. Same reason
+ * for the card title below.
+ */
+.consumer-rights .cr-verbatim-title {
+  margin: 0;
+  background: #0a1b2e; /* Midnight band */
+  color: #f9f3ec; /* Cream */
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  padding: 14px 22px;
+}
+
+.cr-verbatim-body {
+  margin: 0;
+  padding: 22px;
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  color: #0a1b2e;
+}
+
+.cr-verbatim-body p {
+  margin: 0 0 16px;
+}
+
+.cr-verbatim-body p:last-child {
+  margin-bottom: 0;
+}
+
+.cr-verbatim-body em {
+  font-style: italic;
+}
+
+/* The asterisk disclaimer the source document REQUIRES. Do not hide it. */
+.cr-verbatim-disclaimer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e3d8c8;
+  font-size: 13px;
+  line-height: 20px;
+  color: #3a4a5c;
+}
+
+.cr-verbatim-attr {
+  padding: 0 22px 18px;
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-size: 11px; /* Caption token */
+  line-height: 17px;
+  color: #3a4a5c;
+}
+
+/* ══ WARNING-SIGN CARD GRID ════════════════════════════════════════════════ */
+
+.cr-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr; /* 1-up on mobile */
+  gap: 20px;
+}
+
+.cr-card {
+  border: 1px solid #e8dccc;
+  border-top: 4px solid #bc0e0e; /* Carmine warning rule */
+  border-radius: 10px;
+  background: #fdfaf6;
+  padding: 20px 22px 22px;
+}
+
+.cr-card-num {
+  display: block;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1;
+  color: #bc0e0e; /* Carmine */
+  margin-bottom: 10px;
+}
+
+.consumer-rights .cr-card-title {
+  margin: 0 0 8px;
+}
+
+.cr-card-body {
+  margin: 0;
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0a1b2e;
+}
+
+/* ══ CLOSING — the shared CharacterPanel ═══════════════════════════════════
+   The same component behind "Problems We Solve" and the homepage No Drip Club
+   block: Carmine + the no-drip texture + the J illustration flush bottom-left,
+   content on the right, rounded and contained. */
+
+.consumer-rights .cr-final-content {
+  flex: 1 1 0%;
+  width: 100%;
+  padding: 40px 32px 44px;
+  color: #f9f3ec; /* Cream on Carmine */
+}
+
+@media (min-width: 1024px) {
+  .consumer-rights .cr-final-content {
+    padding: 64px 64px 64px 32px;
+  }
+}
+
+.consumer-rights .cr-final-content h2 {
+  color: #f9f3ec; /* Carmine on Carmine would be invisible */
+  margin-bottom: 16px;
+}
+
+.consumer-rights .cr-final-content .cr-prose {
+  color: #f9f3ec;
+}
+
+/* ── Page footnote — same band, same width as the panel above it ──────────── */
+
+.cr-footnote {
+  margin-top: var(--cr-gap);
+  padding-top: 20px;
+  border-top: 1px solid #e3d8c8;
+  font-size: 11px; /* Caption / footnote token */
+  line-height: 17px;
+  color: #3a4a5c;
+}
+
+.cr-footnote p {
+  margin: 0 0 8px;
+}
+
+.cr-footnote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Three bullets since 2026-09-15. Disc markers in the same muted ink as the
+   text — a Carmine marker would shout louder than 11px legal small print. */
+.cr-footnote ul {
+  list-style: disc;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cr-footnote li {
+  margin-bottom: 6px;
+}
+
+.cr-footnote li:last-child {
+  margin-bottom: 0;
+}
+
+/* ══ BREAKPOINTS ═══════════════════════════════════════════════════════════ */
+
+/* 2-up cards from ~640px (still 2-up at the ~900px tablet check). */
+@media (min-width: 640px) {
+  .cr-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: 3×2 cards, and the larger valid body size (20px / 30px). */
+@media (min-width: 1024px) {
+  .cr-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cr-prose,
+  .cr-prose p,
+  .cr-verbatim-body,
+  .cr-card-body,
+  .cr-table td {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .cr-prose--lead p {
+    font-size: 22px;
+    line-height: 34px;
+  }
+
+  .cr-table th {
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .cr-table .cr-deadline {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .cr-verbatim-disclaimer {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .cr-footnote,
+  .cr-footnote p {
+    font-size: 11px;
+    line-height: 17px;
+  }
+}
+
+/* Motion respects the user's preference (design.md accessibility floor). */
+@media (prefers-reduced-motion: reduce) {
+  .cr-cta {
+    transition: none;
+  }
+}

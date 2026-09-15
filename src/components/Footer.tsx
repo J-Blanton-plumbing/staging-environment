@@ -180,6 +180,14 @@ export default function Footer({ settings }: { settings: GlobalSettings }) {
           <Link href="/privacy-policy" className="hover:opacity-80">
             Privacy Policy
           </Link>
+          {' - '}
+          {/* Brief 176: sits immediately next to Privacy Policy, by request. The
+              footer link list is hardcoded here, not CMS-driven — adding an entry
+              is a code change (the only CMS-driven part of this footer is the
+              "Our Office Locations" grid, which reads settings.offices). */}
+          <Link href="/consumer-rights" className="hover:opacity-80">
+            Consumer Rights
+          </Link>
         </p>
         <div className="flex gap-3">
           {/* brief-06 §6: branded icon assets pending in /public/images/social/ — markup is

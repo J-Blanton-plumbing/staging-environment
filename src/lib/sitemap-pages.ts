@@ -75,4 +75,11 @@ export const SITEMAP_STATIC_PAGES: readonly SitemapStaticPage[] = [
   { path: '/hoa-pipe-lining/reserve-studies',                  changeFrequency: 'yearly',  priority: 0.4 },
   { path: '/j-blanton-is-hiring',                              changeFrequency: 'monthly', priority: 0.4 },
   { path: '/privacy-policy',                                   changeFrequency: 'yearly',  priority: 0.3 },
+  /*
+   * Brief 176 — the Illinois consumer-rights page. Unlike /privacy-policy this
+   * one is genuine informational content and ships `index, follow` on purpose
+   * (it declares `robots: { index: true, follow: true }`, so `declaresNoindex()`
+   * finds nothing), with the root layout's self-referencing canonical.
+   */
+  { path: '/consumer-rights',    mainSlug: 'consumer-rights',  changeFrequency: 'yearly',  priority: 0.4 },
 ];

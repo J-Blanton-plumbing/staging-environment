@@ -262,6 +262,12 @@ jobs:
             # ON CONFLICT DO NOTHING - a safe no-op once the row exists, never
             # clobbers edits.
             npx ts-node --project tsconfig.scripts.json scripts/seed-privacy-policy-page.ts
+            # Brief 176: seed the "Home Repair: Know Your Consumer Rights"
+            # (/consumer-rights) main_pages row so its CMS editor loads/saves.
+            # Idempotent INSERT ... ON CONFLICT DO NOTHING - a safe no-op once the
+            # row exists, never clobbers edits. Only the editable prose is seeded;
+            # the verbatim statutory blocks and tables live in code.
+            npx ts-node --project tsconfig.scripts.json scripts/seed-consumer-rights-page.ts
             # Brief 119: invite-based user creation - adds cms_users.status +
             # audit columns, makes password_hash nullable, and creates the
             # cms_user_invites token table. Idempotent (ADD COLUMN / CREATE

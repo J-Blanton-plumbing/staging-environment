@@ -41,6 +41,37 @@ export const MAIN_PAGE_RICH_TEXT_FIELDS: Record<string, string[]> = {
   // Brief 110: the Terms of Use & Privacy Policy long-form legal body. Rendered
   // as block HTML on the public page via `renderCmsBlock`.
   'privacy-policy': ['body_html'],
+  /*
+   * Brief 176: the /consumer-rights body prose. Every field is rendered as block
+   * HTML via `renderCmsBlock`.
+   *
+   * This page is a HYBRID by design: the shared Brief 73 allow-list admits no
+   * table tags, so the three tables and the six warning-sign cards are React
+   * components fed by structured data, and the two verbatim statutory blocks are
+   * static constants — none of them is a CMS field, so none of them appears
+   * here. The list mirrors CONSUMER_RIGHTS_RICH_TEXT_FIELDS in
+   * src/lib/content/consumer-rights.ts; keep the two in sync. (It is re-typed
+   * rather than imported because this module is deliberately import-free data,
+   * safe to reference from both server write paths and client editors.)
+   */
+  'consumer-rights': [
+    'intro_body',
+    'scope_note',
+    'before_sign_intro',
+    'precautions_html',
+    'cancellation_intro',
+    'cancellation_after_table',
+    'cancellation_after_callout',
+    'contract_after_table',
+    'sworn_statement_body',
+    'liens_body',
+    'fraud_intro',
+    'complaint_intro',
+    'file_complaint_body',
+    'roofing_body',
+    'download_body',
+    'footnote_html',
+  ],
 };
 
 /** True if `field` on the given main-page slug is a rich-text (HTML) field. */
