@@ -65,16 +65,23 @@ export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) 
             </div>
           </section>
 
-          {/* ===== 4. FLOATING-SKYLINE IMAGE ===== */}
-          <div className="image-container my-[60px] w-full">
-            {/* Decorative — empty alt. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={city.skylineImage}
-              alt=""
-              className="block h-auto w-full object-contain lg:mx-auto lg:max-w-[1200px]"
-            />
-          </div>
+          {/* ===== 4. FLOATING-SKYLINE IMAGE (gated on data — Brief 179 A.3) =====
+              Evanston's skyline is `downtown-floating.png`, a CHICAGO skyline.
+              Rendering it on a Columbus page — or on any city nobody has made one
+              for — is worse than rendering nothing, so an empty `skylineImage`
+              hides the band. Evanston still supplies a value, so its output is
+              unchanged. Same gate shape as the partners carousel below. */}
+          {city.skylineImage && (
+            <div className="image-container my-[60px] w-full">
+              {/* Decorative — empty alt. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={city.skylineImage}
+                alt=""
+                className="block h-auto w-full object-contain lg:mx-auto lg:max-w-[1200px]"
+              />
+            </div>
+          )}
 
           {/* ===== 5. OUR SERVICES (accordion menu) ===== */}
           <CityServicesAccordion heading={city.services.heading} categories={city.services.categories} />

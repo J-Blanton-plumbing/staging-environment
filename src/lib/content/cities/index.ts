@@ -632,6 +632,14 @@ export function getLocalOfficeContent(slug: string): LocalOfficeContent | undefi
   return LOCAL_OFFICE_CONTENT[slug];
 }
 /**
+ * Brief 179 (Track A.1): the shared fallback that makes this map's one-entry-ness
+ * harmless. `getLocalOfficeContent(slug) ?? buildLocalOfficeFallback(entry,
+ * settings)` is always defined, so the `[city]` builder's `local-office` branch
+ * can always return instead of falling through to Coverage Area. Re-exported here
+ * so callers import both halves of the rule from the same module.
+ */
+export { buildLocalOfficeFallback } from './local-office-defaults';
+/**
  * Which region's city list the §10 locations grid should show.
  *
  * Columbus Integration Brief 02: before this, the grid rendered the ENTIRE

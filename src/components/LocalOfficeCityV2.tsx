@@ -84,7 +84,21 @@ function ReviewerIcon() {
   );
 }
 
-/** Phone CTA button — Cerulean, hover Carmine. */
+/**
+ * Phone CTA button — Cerulean, hover Carmine (the brand's signature flip).
+ *
+ * Brief 179 (Track C.3): the hand-rolled `rounded-[6px] px-7 py-3` treatment is
+ * replaced by the SAME classes every other hero CTA on the site already renders
+ * (`CityHero.tsx` and `CityVideoHero.tsx`), so the V2 CTA is the same object as
+ * the CTA on every other city page: 10px radius (the `design.md` `rounded.button`
+ * token), 30/10px padding and the shared soft shadow.
+ *
+ * Deliberately NOT switched to the `.btn-cta` pill. There is an unresolved
+ * conflict — `brand-rules.md` calls the primary CTA a "Rounded pill", `design.md`
+ * gives `rounded.button: 10px`, and the shipped site uses 10px on hero CTAs and
+ * `rounded-full` on `.btn-cta`. Matching the live hero CTAs is the conservative
+ * call; the conflict is recorded as a Marketing follow-up in the Brief 179 report.
+ */
 function PhoneCta({
   href,
   label,
@@ -97,7 +111,7 @@ function PhoneCta({
   return (
     <a
       href={href}
-      className={`inline-block rounded-[6px] bg-accent-500 px-7 py-3 font-display text-[16px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-brand-600 ${className}`}
+      className={`inline-flex w-max items-center rounded-[10px] bg-accent-500 px-[30px] py-[10px] font-display text-[16px] font-bold uppercase tracking-wide text-white shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors hover:bg-brand-600 ${className}`}
     >
       {label}
     </a>
@@ -173,7 +187,17 @@ function BlockRenderer({
                   so a heading/description tall enough to outgrow the 500px
                   column clamped the H1 under the navbar. Bottom stays 60px. */}
               <div className="w hero-clear-top flex h-full flex-col justify-center px-[7%] pb-[60px] text-white">
-                <h1 className="font-display text-[28px] font-bold uppercase leading-[1.1] md:text-[36px] lg:text-[48px]">
+                {/* Brief 179 (Track B): `text-white` must sit on the H1 ITSELF.
+                    `globals.css` `@layer base` sets `h1,h2,… { …text-navy-800 }`
+                    on the element, and an INHERITED colour from the parent box
+                    always loses to a rule that matches the element directly — so
+                    without this class the H1 rendered Midnight on the Carmine
+                    panel. (The sibling <p> only looked right because it carries
+                    `text-white/90` explicitly.) Same shape as the Coverage Area
+                    hero, whose `.city-page-hero .hero-contents .w h1 {color:#fff}`
+                    also targets the h1. The parent's `text-white` stays — it still
+                    governs everything else in the box. */}
+                <h1 className="font-display text-[28px] font-bold uppercase leading-[1.1] text-white md:text-[36px] lg:text-[48px]">
                   {heroHeading}
                 </h1>
                 {heroDescription && (
@@ -201,7 +225,7 @@ function BlockRenderer({
       const hasTrustStats = !!(d.trustBarStars && d.trustBarReviewCount);
       return (
         <section className="bg-cream-100">
-          <div className={`${CONTAINER} flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-4 text-center text-[14px] font-semibold text-navy-800 md:text-[15px]`}>
+          <div className={`${CONTAINER} flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-[16px] min-[901px]:py-[24px] text-center text-[14px] font-semibold text-navy-800 md:text-[15px]`}>
             {city.officeAddress && <span>{city.officeAddress}</span>}
             {city.officeAddress && <span aria-hidden className="opacity-40">|</span>}
             {hasTrustStats && (
@@ -223,7 +247,7 @@ function BlockRenderer({
     // ============== 4. SERVICES GRID ==============
     case 'servicesGrid': {
       return (
-        <section className="bg-white py-[70px]">
+        <section className="bg-white py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
             <h2 className="font-display text-[28px] font-bold uppercase leading-tight text-brand-600 md:text-[32px]">
               Plumbing Services in {name}, IL
@@ -254,15 +278,15 @@ function BlockRenderer({
       const mostRequested = asArr<{ title: string; body: string }>(d.items);
       if (mostRequested.length === 0) return null;
       return (
-        <section className="bg-cream-100 py-[70px]">
+        <section className="bg-cream-100 py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
             <h2 className="font-display text-[28px] font-bold uppercase leading-tight text-brand-600 md:text-[32px]">
               Most Requested Services in {name}
             </h2>
             <div className="mt-8 grid grid-cols-1 gap-8 min-[901px]:grid-cols-2">
               {/* Left — tall card with image placeholder */}
-              <div className="flex h-full flex-col rounded-[8px] bg-white p-6 shadow-soft">
-                <div className="flex aspect-video w-full items-center justify-center rounded-[6px] bg-cream-100 text-[12px] font-bold uppercase tracking-[0.15em] text-navy-800/50">
+              <div className="flex h-full flex-col rounded-[10px] bg-white p-6 shadow-soft">
+                <div className="flex aspect-video w-full items-center justify-center rounded-[10px] bg-cream-100 text-[12px] font-bold uppercase tracking-[0.15em] text-navy-800/50">
                   Image Placeholder
                 </div>
                 <h3 className="mt-5 font-display text-[20px] font-bold text-brand-600">
@@ -275,7 +299,7 @@ function BlockRenderer({
               {mostRequested.length > 1 && (
                 <div className="flex flex-col gap-8">
                   {mostRequested.slice(1).map((item, i) => (
-                    <div key={i} className="rounded-[8px] bg-white p-6 shadow-soft">
+                    <div key={i} className="rounded-[10px] bg-white p-6 shadow-soft">
                       <h3 className="font-display text-[20px] font-bold text-brand-600">{item.title}</h3>
                       <p className="mt-3 leading-relaxed text-navy-800">{item.body}</p>
                     </div>
@@ -292,7 +316,7 @@ function BlockRenderer({
     case 'midCta': {
       if (!d.midCtaText) return null;
       return (
-        <section className="bg-navy-800 py-10">
+        <section className="bg-navy-800 py-[40px] min-[901px]:py-[100px]">
           <div className={`${CONTAINER} flex flex-col items-center gap-5 text-center md:flex-row md:justify-between md:text-left`}>
             <p className="max-w-[720px] text-[18px] font-semibold text-cream-100">{asStr(d.midCtaText)}</p>
             <PhoneCta href={settings.phoneHref} label={phoneLabel} className="flex-shrink-0" />
@@ -306,7 +330,7 @@ function BlockRenderer({
       const whyPoints = asArr<{ heading: string; body: string }>(d.items);
       if (whyPoints.length === 0 && !city.whyFallback) return null;
       return (
-        <section className="bg-white py-[70px]">
+        <section className="bg-white py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
             <h2 className="font-display text-[28px] font-bold uppercase leading-tight text-brand-600 md:text-[32px]">
               Why {name} Homeowners Call Us First
@@ -315,7 +339,10 @@ function BlockRenderer({
               <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
                 {whyPoints.map((pt, i) => (
                   <div key={i}>
-                    <h3 className="font-display text-[19px] font-bold text-brand-600">{pt.heading}</h3>
+                    {/* Brief 179 (Track C.2): 19px matched no token and was one
+                        pixel off its sibling card labels. 20px is the documented
+                        "Section eyebrow / card label" size. */}
+                    <h3 className="font-display text-[20px] font-bold text-brand-600">{pt.heading}</h3>
                     <p className="mt-3 leading-relaxed text-navy-800">{pt.body}</p>
                   </div>
                 ))}
@@ -341,15 +368,18 @@ function BlockRenderer({
     case 'videoPlaceholder': {
       if (!d.videoHeading) return null;
       return (
-        <section className="bg-cream-100 py-[70px]">
+        <section className="bg-cream-100 py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
-            <h2 className="font-display text-[26px] font-bold uppercase leading-tight text-brand-600 md:text-[30px]">
+            {/* Brief 179 (Track C.2): 26/30px matched no token and was the one
+                off-scale H2 on the page. `design.md`: "Same level = same font,
+                size, and style, everywhere on the site." */}
+            <h2 className="font-display text-[28px] font-bold uppercase leading-tight text-brand-600 md:text-[32px]">
               {asStr(d.videoHeading)}
             </h2>
             {asStr(d.videoIntro) && (
               <p className="mt-4 max-w-[820px] leading-relaxed text-navy-800">{asStr(d.videoIntro)}</p>
             )}
-            <div className="mt-6 flex aspect-video w-full max-w-[820px] flex-col items-center justify-center gap-4 rounded-[8px] bg-cream-50">
+            <div className="mt-6 flex aspect-video w-full max-w-[820px] flex-col items-center justify-center gap-4 rounded-[10px] bg-cream-50">
               <svg
                 viewBox="0 0 64 64"
                 className="h-16 w-16 text-brand-600"
@@ -374,7 +404,7 @@ function BlockRenderer({
     case 'reviews': {
       const reviews = asArr<{ name: string; text: string; gbp_url: string }>(d.items);
       return (
-        <section className="bg-white py-[70px]">
+        <section className="bg-white py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
             <h2 className="font-display text-[28px] font-bold uppercase leading-tight text-brand-600 md:text-[32px]">
               Real {name} Reviews
@@ -382,7 +412,7 @@ function BlockRenderer({
             {reviews.length > 0 ? (
               <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {reviews.map((rev, i) => (
-                  <div key={i} className="flex flex-col rounded-[8px] border border-cream-200 bg-cream-50 p-6 shadow-soft">
+                  <div key={i} className="flex flex-col rounded-[10px] border border-cream-200 bg-cream-50 p-6 shadow-soft">
                     <Stars />
                     <p className="mt-3 flex-1 text-[15px] leading-relaxed text-navy-800">{rev.text}</p>
                     <div className="mt-4 flex items-center gap-2">
@@ -419,7 +449,7 @@ function BlockRenderer({
       const faqs = asArr<{ question: string; answer: string }>(d.faqs);
       if (faqs.length === 0) return null;
       return (
-        <section className="bg-cream-100 py-[40px]">
+        <section className="bg-cream-100 py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
             <h2 className="font-display text-[28px] font-bold uppercase leading-tight text-brand-600 md:text-[32px]">
               Frequently Asked Questions
@@ -441,7 +471,7 @@ function BlockRenderer({
       // path (`sanitizeCityV2BlockInstances` in `city-pages.ts`) guarantees
       // `d.ndcBody` is already sanitized before it reaches this render.
       return (
-        <section className="bg-white py-[40px]">
+        <section className="bg-white py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
             <NoDripClubSection bodyHtml={renderCmsBlock(asStr(d.ndcBody) || NDC_DEFAULT_BODY, settings)} />
           </div>
@@ -462,7 +492,7 @@ function BlockRenderer({
       // different markup — a page carrying both shows two different sections,
       // not the same menu twice.
       return (
-        <section className="bg-cream-100">
+        <section className="bg-cream-100 py-[40px] min-[901px]:py-[100px]">
           <div className={CONTAINER}>
             <CityServicesMenu citySlug={city.slug} />
           </div>
@@ -474,9 +504,14 @@ function BlockRenderer({
     case 'finalCta': {
       if (!d.ctaHeading) return null;
       return (
-        <section className="bg-brand-600 py-[70px] text-cream-100">
+        <section className="bg-brand-600 py-[40px] min-[901px]:py-[100px] text-cream-100">
           <div className={`${CONTAINER} text-center`}>
-            <h2 className="font-display text-[28px] font-bold uppercase leading-tight md:text-[34px]">
+            {/* Brief 179 (Track B): same defect as the hero H1 — this <h2> sat on
+                a Carmine band and INHERITED `text-cream-100` from the section, so
+                `globals.css`'s element-level `h1,h2,… { text-navy-800 }` won and
+                it rendered Midnight on Carmine. Declared on the element now.
+                Track C: `md:text-[34px]` → `md:text-[32px]`, the documented H2. */}
+            <h2 className="font-display text-[28px] font-bold uppercase leading-tight text-cream-100 md:text-[32px]">
               {asStr(d.ctaHeading)}
             </h2>
             {asStr(d.ctaBody) && (

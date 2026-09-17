@@ -23,6 +23,19 @@ export interface CityCmsContent {
   cityType: string;
   templateType: string;
   heroImage: string;
+  /**
+   * Brief 179 (Track A.2) — the Local Office hero's background video, as a full
+   * MP4 URL. LOCAL-OFFICE ONLY: the Coverage Area and V2 heroes are image heroes
+   * and never read it.
+   *
+   * Empty is the normal state and is MEANINGFUL: `CityVideoHero` then renders
+   * the `<video>` with its poster and no source, so the hero shows the hero image
+   * as a still at unchanged geometry. Its own column rather than `hero_image`,
+   * which is the POSTER here and the hero photo on the other two templates — a
+   * template switch must not be able to turn a video URL into a broken `<img>`
+   * (Brief 157 Q9 / Brief 160).
+   */
+  heroVideoUrl: string;
   heroHeadingLine1: string;
   heroHeadingLine2: string | null;
   heroCallout: string;
@@ -73,6 +86,8 @@ export interface CityCmsContent {
 
 export interface CityCmsUpdatePayload {
   heroImage?: string;
+  /** Brief 179 (Track A.2) — Local Office hero background video URL. */
+  heroVideoUrl?: string;
   heroHeadingLine1?: string;
   heroHeadingLine2?: string | null;
   heroCallout?: string;
@@ -175,6 +190,10 @@ export async function getCityCmsContent(slug: string): Promise<CityCmsContent | 
       cityType: r.city_type,
       templateType,
       heroImage: r.hero_image ?? '',
+      // Brief 179 — `?? ''` also covers a database that has not run the Track A.2
+      // migration yet (the column is simply absent from the row): the hero then
+      // renders the poster still, exactly as a blank value does.
+      heroVideoUrl: r.hero_video_url ?? '',
       heroHeadingLine1: r.hero_heading_line1,
       heroHeadingLine2: r.hero_heading_line2,
       heroCallout: r.hero_callout ?? '',
@@ -265,6 +284,13 @@ export async function updateCityCmsContent(
     const res = await client.query(
       `UPDATE city_pages SET
         hero_image             = COALESCE($1, hero_image),
+        -- Brief 179 (Track A.2). Not routed through pick(): the hero video is
+        -- not part of the City V2 block model, so a V2 save must never derive it.
+        -- COALESCE means "the caller omitted this field", NOT "the caller cleared
+        -- it" — an explicit '' is a real value and DOES clear the column, which is
+        -- what makes "leave blank to show the hero image as a still" reachable
+        -- from the editor.
+        hero_video_url         = COALESCE($32, hero_video_url),
         hero_heading_line1     = COALESCE($2, hero_heading_line1),
         hero_heading_line2     = CASE WHEN $3::text IS NOT NULL THEN $3::text ELSE hero_heading_line2 END,
         hero_callout           = COALESCE($4, hero_callout),
@@ -338,6 +364,8 @@ export async function updateCityCmsContent(
         // of the City V2 block model, so a V2 save must never derive them.
         data.coveredHeading ?? null,
         data.coveredImage ?? null,
+        // Brief 179 — $32.
+        data.heroVideoUrl ?? null,
       ]
     );
     if (res.rowCount === 0) {

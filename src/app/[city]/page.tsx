@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
+  buildLocalOfficeFallback,
   getArea,
   getCity,
   getCoverageContent,
@@ -137,50 +138,57 @@ export default async function CityPage({ params }: { params: { city: string } })
   }
 
   if (templateType === 'local-office') {
-    const content = getLocalOfficeContent(entry.slug);
-    // Brief 70: cities on template_type 'local-office' with no dedicated
-    // LocalOfficeContent file (Algonquin/Elgin only have a CoverageAreaContent
-    // file — see COVERAGE_CONTENT) fall through to Coverage Area rendering
-    // below instead of 404ing. Mirrors the same fallback generateMetadata()
-    // already uses above for these two cities.
-    if (content) {
-      const merged = db ? {
-        ...content,
-        hero: {
-          ...content.hero,
-          // poster image: use DB URL when non-empty
-          video: db.heroImage
-            ? { ...content.hero.video, poster: db.heroImage }
-            : content.hero.video,
-          headingLine1: db.heroHeadingLine1 || content.hero.headingLine1,
-          headingLine2: db.heroHeadingLine2 ?? content.hero.headingLine2,
-          intro:        db.heroDescription  || content.hero.intro,
+    /*
+     * Brief 179 (Track A.4) — this branch ALWAYS returns.
+     *
+     * `buildLocalOfficeFallback` synthesises a complete, valid
+     * `LocalOfficeContent` for any registry city, so there is nothing left to
+     * fall through to: choosing "Local Office City" in the CMS now renders the
+     * Local Office template, for every city, not just the one with a
+     * hand-written copy file. (The Brief 70 fallthrough that used to sit here
+     * silently served Coverage Area instead — the template picker lied.)
+     */
+    const content = getLocalOfficeContent(entry.slug) ?? buildLocalOfficeFallback(entry, settings);
+    const merged = db ? {
+      ...content,
+      hero: {
+        ...content.hero,
+        // Brief 179 (Track A.2): the DB supplies both halves of the hero video —
+        // `hero_video_url` is the MP4 (blank → no `src`, so CityVideoHero paints
+        // the poster as a still) and `hero_image` is the poster. Neither falls
+        // back to the other: they are separate slots with separate columns.
+        video: {
+          src:    db.heroVideoUrl || content.hero.video.src,
+          poster: db.heroImage    || content.hero.video.poster,
         },
-        why: {
-          ...content.why,
-          heading: db.contentHeading || content.why.heading,
-          body:    db.contentBody    || content.why.body,
-        },
-        faqs: (db.faqs?.length ?? 0) > 0 ? db.faqs : content.faqs,
-      } : content;
+        headingLine1: db.heroHeadingLine1 || content.hero.headingLine1,
+        headingLine2: db.heroHeadingLine2 ?? content.hero.headingLine2,
+        intro:        db.heroDescription  || content.hero.intro,
+      },
+      why: {
+        ...content.why,
+        heading: db.contentHeading || content.why.heading,
+        body:    db.contentBody    || content.why.body,
+      },
+      faqs: (db.faqs?.length ?? 0) > 0 ? db.faqs : content.faqs,
+    } : content;
 
-      return (
-        <>
-          {previewDraft && (
-            <PreviewBanner
-              label={previewDraft.label}
-              creatorName={previewDraft.creator_name}
-              editorUrl={`/admin/city/${params.city}`}
-              liveUrl={`/${params.city}`}
-              draftId={previewDraft.id}
-              pageType="city"
-              pageSlug={params.city}
-            />
-          )}
-          <LocalOfficeCity city={merged} />
-        </>
-      );
-    }
+    return (
+      <>
+        {previewDraft && (
+          <PreviewBanner
+            label={previewDraft.label}
+            creatorName={previewDraft.creator_name}
+            editorUrl={`/admin/city/${params.city}`}
+            liveUrl={`/${params.city}`}
+            draftId={previewDraft.id}
+            pageType="city"
+            pageSlug={params.city}
+          />
+        )}
+        <LocalOfficeCity city={merged} />
+      </>
+    );
   }
 
   // Coverage Area

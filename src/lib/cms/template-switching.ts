@@ -10,8 +10,19 @@ import {
 } from '@/lib/cms/city-v2-blocks';
 
 // DB column names shared by both city templates — values carry over on switch
+//
+// Brief 179: `hero_video_url` is here for the same reason `hero_callout` is —
+// a column only ONE template renders still has to survive a switch away and
+// back. The LIVE switch preserves it for free (the UPDATE below names its
+// columns explicitly and never touches it, so `mapped['hero_video_url']` is
+// computed and unused there); the DRAFT re-template does not — `retemplateDraft`
+// rebuilds the draft's content from `mapped` alone, so a field missing from this
+// list is dropped from the draft, comes back to the editor as '', and CLEARS the
+// column on the next save. Listing it is what makes local-office → coverage-area
+// → local-office lossless for a draft.
 const CITY_SHARED_FIELDS = [
   'hero_image',
+  'hero_video_url',
   'hero_heading_line1',
   'hero_callout',
   'hero_description',
@@ -23,6 +34,14 @@ const CITY_SHARED_FIELDS = [
 ] as const;
 
 // Fields required by local-office that don't exist in coverage-area
+//
+// Brief 179 deliberately does NOT add `hero_video_url` here, for the same reason
+// Brief 160 left `covered_heading`/`covered_image` out below: this list drives the
+// "⚠ Required — not yet filled in" highlight after a switch, and blank is the
+// normal, intended state for the hero video — the hero then renders the hero
+// image as a still. It is also absent from the switch UPDATE on purpose, so the
+// value simply persists on the row, unrendered, while the page is on another
+// template, and comes back intact on a switch to local-office.
 const LOCAL_OFFICE_ONLY_FIELDS = ['hero_heading_line2'] as const;
 
 // Fields required by coverage-area that don't exist in local-office
@@ -82,6 +101,7 @@ export const VALID_CITY_TEMPLATES: CityTemplate[] = ['coverage-area', 'local-off
 
 const DB_TO_CAMEL: Record<string, string> = {
   hero_image: 'heroImage',
+  hero_video_url: 'heroVideoUrl',
   hero_heading_line1: 'heroHeadingLine1',
   hero_heading_line2: 'heroHeadingLine2',
   hero_callout: 'heroCallout',
