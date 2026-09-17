@@ -540,6 +540,16 @@ jobs:
               scripts/migrate-brief-160-city-covered-fields.ts commit
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
               scripts/seed-brief-160-covered-headings.ts commit
+            # -- Brief 179: city_pages.hero_video_url ----------------------------
+            # Additive, '' default, also in ensure-schema.ts, so this normally
+            # reports ALREADY-APPLIED. It ships AHEAD of the code that reads the
+            # column (Brief 179 hard rule 7 / the Brief 171 precedent): a failed
+            # deploy then leaves the DATABASE ahead of the app, not the app
+            # querying a column that does not exist. No seed — blank is the
+            # correct value on every row and means "render the hero image as a
+            # still", so no page changes on the strength of this migration.
+            npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+              scripts/migrate-brief-179-city-hero-video.ts commit
             # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
             # what the checked-in code assumes, BEFORE the swap below.
             #  - every sitemap <lastmod> source query runs against the real schema.

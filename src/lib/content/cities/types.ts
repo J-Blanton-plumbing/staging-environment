@@ -133,8 +133,18 @@ export interface LocalOfficeContent {
   name: string;
 
   hero: {
-    /** Autoplay background video. */
-    video: { src: string; poster: string };
+    /**
+     * Autoplay background video.
+     *
+     * Brief 179 (Track A.2): `src` is OPTIONAL. A city with no video renders the
+     * `<video>` with its `poster` and no source — the poster image fills the
+     * element at the same dimensions, so the hero geometry, the 24/7 badge
+     * overlay, the H1 and the two-column content row are all unchanged and only
+     * the motion is gone (see `CityVideoHero`). That is what lets ANY registry
+     * city use this template before a per-city video exists. `poster` stays
+     * required: it is what is actually shown in that case.
+     */
+    video: { src?: string; poster: string };
     /** 24/7 badge overlapping the H1 top-left. */
     badge: { src: string; alt: string };
     /** H1 line 1, e.g. "EVANSTON PLUMBING EXPERTS" (uppercased upstream). */

@@ -26,16 +26,42 @@ import type { CityContent } from '@/lib/content/cities/evanston';
  *   Elmhurst supply one to render the Cerulean `.test2-hero-contact`.
  */
 export default function CityVideoHero({ hero }: { hero: CityContent['hero'] }) {
+  /*
+   * Brief 179 (Track A.2) — poster-image fallback.
+   *
+   * A city with no video (every Local Office city but Evanston, until Marketing
+   * fills `hero_video_url`) renders the SAME `<video>` element with no `src`, no
+   * `autoPlay`, no `loop` and `preload="none"`. A `<video>` carrying a `poster`
+   * and no source paints the poster at the element's dimensions in every current
+   * browser, so the hero box, the `object-cover` crop, the badge overlay and the
+   * two-column row are byte-for-byte the same and only the motion is gone.
+   *
+   * Deliberately NOT an `<img>` swap: that changes the layout box and the
+   * object-fit behaviour, which is exactly the fidelity regression this avoids.
+   */
+  const videoSrc = hero.video.src?.trim() || '';
+  const hasVideo = videoSrc.length > 0;
   return (
     <section className="test2-hero relative w-full h-auto min-[781px]:h-screen overflow-hidden bg-navy-900">
+      {/* Prop SHAPE below is load-bearing for the Brief 179 byte-diff check on
+          /evanston. React serializes attributes in prop order AND puts every
+          declared key into the RSC flight payload (an explicit `undefined`
+          serializes as `"$undefined"`), so:
+            - `src`/`loop`/`autoPlay` are conditionals written in place, which with
+              a video present resolve to exactly the values they had before this
+              brief — `undefined` and `false` are both omitted from the HTML;
+            - `preload` is spread in only when there is NO video, so a video page's
+              props object does not gain a key at all.
+          Result: with a video, Evanston's markup and flight payload are unchanged. */}
       <video
         className="absolute inset-0 z-[1] h-full w-full object-cover"
-        src={hero.video.src}
+        src={hasVideo ? videoSrc : undefined}
         poster={hero.video.poster}
-        loop
-        autoPlay
+        loop={hasVideo}
+        autoPlay={hasVideo}
         muted
         playsInline
+        {...(hasVideo ? {} : { preload: 'none' as const })}
       />
 
       <div className="test2-hero-body relative z-[2] flex h-full items-center pt-[110px] min-[781px]:items-end min-[781px]:pt-0">

@@ -77,6 +77,13 @@ const STATEMENTS: string[] = [
   // scripts/migrate-brief-160-city-covered-fields.ts, which the deploy also runs.
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS covered_heading TEXT DEFAULT ''::text`,
   `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS covered_image TEXT DEFAULT ''::text`,
+  // Brief 179 (Track A.2) — the Local Office hero's background video URL. Its own
+  // column and NOT `hero_image`: that one is the POSTER here and the hero photo on
+  // two other templates, so a video URL in it would render as a broken <img> after
+  // a template switch (Brief 157 Q9 / Brief 160). Blank is the normal state and
+  // means "show the hero image as a still". Mirrored by
+  // scripts/migrate-brief-179-city-hero-video.ts, which the deploy also runs.
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS hero_video_url TEXT DEFAULT ''::text`,
 
   // ── city_service_pages ──────────────────────────────────────────────────
   `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS service_intro_heading TEXT NOT NULL DEFAULT ''::text`,

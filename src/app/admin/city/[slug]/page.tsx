@@ -34,6 +34,13 @@ interface FaqField {
 interface FormState {
   templateType: string;
   heroImage: string;
+  /**
+   * Brief 179 (Track A.2) — the Local Office hero's background video URL
+   * (`hero_video_url`). LOCAL-OFFICE ONLY: the Coverage Area and V2 field sets
+   * deliberately do not expose it, because neither of those heroes is a video.
+   * Blank means "render the hero image as a still".
+   */
+  heroVideoUrl: string;
   heroHeadingLine1: string;
   heroHeadingLine2: string;
   heroCallout: string;
@@ -69,6 +76,7 @@ interface FormState {
 const EMPTY: FormState = {
   templateType: 'coverage-area',
   heroImage: '',
+  heroVideoUrl: '',
   heroHeadingLine1: '',
   heroHeadingLine2: '',
   heroCallout: '',
@@ -249,6 +257,19 @@ function LocalOfficeCityFields({
       <div style={sectionStyle}>
         <h2 style={h2Style}>Hero</h2>
         <ImageUploaderField label="Hero Image" value={form.heroImage} onChange={v => setField('heroImage', v)} />
+        {/* Brief 179 (Track A.2). A plain <input>, deliberately NOT
+            ImageUploaderField: the uploader targets the image bucket and this is
+            a video URL. Blank is the normal state — the hero then renders the
+            Hero Image above as a still at exactly the same size, so a city can
+            use this template before anyone has shot a video for it. This field
+            exists ONLY here: the Coverage Area and V2 heroes are image heroes. */}
+        <FieldLabel
+          label="Hero Video URL"
+          fieldKey="hero_video_url"
+          missing={missing}
+          note="(optional — full MP4 URL. Leave blank to show the hero image as a still.)"
+        />
+        <input style={inputStyle} value={form.heroVideoUrl} onChange={e => setField('heroVideoUrl', e.target.value)} />
         <FieldLabel label="Hero Heading — Line 1" fieldKey="hero_heading_line1" missing={missing} />
         <input style={inputStyle} value={form.heroHeadingLine1} onChange={e => setField('heroHeadingLine1', e.target.value)} />
         <FieldLabel label="Hero Heading — Line 2" fieldKey="hero_heading_line2" missing={missing} />
@@ -907,6 +928,9 @@ function formFromApi(data: Record<string, unknown>, fallbackTemplate: string): F
   return {
     templateType: str(data.templateType) || fallbackTemplate,
     heroImage: str(data.heroImage),
+    // Brief 179: absent from an older draft's stored content → '' → the hero
+    // renders the poster still, i.e. the pre-brief behaviour. Nothing to migrate.
+    heroVideoUrl: str(data.heroVideoUrl),
     heroHeadingLine1: str(data.heroHeadingLine1),
     heroHeadingLine2: str(data.heroHeadingLine2),
     heroCallout: str(data.heroCallout),
@@ -936,6 +960,11 @@ function buildCityPayload(form: FormState) {
   return {
     templateType: form.templateType,
     heroImage: form.heroImage,
+    // Brief 179: sent on every city save, so it rides the existing draft /
+    // version / optimistic-lock plumbing unchanged (Brief 75/147/159). Only the
+    // Local Office field set can set it; on the other templates it round-trips
+    // whatever is already stored.
+    heroVideoUrl: form.heroVideoUrl,
     heroHeadingLine1: form.heroHeadingLine1,
     heroHeadingLine2: form.heroHeadingLine2 || null,
     heroCallout: form.heroCallout,
@@ -962,6 +991,7 @@ function buildCityPayload(form: FormState) {
 function camelToDbKey(key: string): string {
   const MAP: Record<string, string> = {
     heroImage: 'hero_image',
+    heroVideoUrl: 'hero_video_url',
     heroHeadingLine1: 'hero_heading_line1',
     heroHeadingLine2: 'hero_heading_line2',
     heroCallout: 'hero_callout',
