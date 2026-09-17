@@ -59,6 +59,13 @@ interface Props {
 
 export default function CityServicePageTemplate({ city, service, settings }: Props) {
   const s = replaceAll(service, city.name);
+  /*
+   * Brief 178 (Track A2): `getOffice` now resolves through `resolveOfficeSlug`,
+   * so a city whose own office exists in /admin/global-settings gets THAT
+   * office's NAP here — across all ~11,000 `/{city}/{service}` pages — instead
+   * of whatever the hardcoded `cityToOffice` map said. No call-site change was
+   * needed; this comment exists because the behaviour changed underneath it.
+   */
   const office = getOffice(city.slug, settings.offices);
   const area = getArea(city.slug);
   /*

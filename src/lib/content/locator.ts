@@ -40,6 +40,22 @@ export const LOCATOR_COPY = {
   searchLoading: 'Loading city list…',
 
   /**
+   * The header above the office list (Brief 178, Track C2).
+   *
+   * `{count}` is `offices.length` — NEVER typed. An idle "18 locations" was
+   * previously argued down as restating the obvious (see `resultsCountTemplate`
+   * below), and that argument was wrong for one specific reason: the desktop
+   * list is a ~469px window onto ~1,500px of rows, so six of eighteen offices
+   * are visible and nothing else on screen says how many there are. It is the
+   * written half of the same affordance as the scroll fade.
+   *
+   * It is the TOTAL, not the match count, and it does not change while
+   * searching — the `aria-live` status line under the search box is what reports
+   * matches.
+   */
+  officeCountTemplate: '{count} locations',
+
+  /**
    * The line that turns a widget into content: it answers the question the
    * visitor typed. Singular and plural are separate templates rather than one
    * string with a spliced verb, because "Palatine are served" is the kind of
@@ -261,7 +277,7 @@ export const LOCATOR_ALL_OFFICES: LocatorAllOfficesView = {
 
 /**
  * The offices pinned to the top of the locator list, in this order. Everything
- * else follows in CMS order.
+ * else follows ALPHABETICALLY (Brief 178, Track C1).
  *
  * ─── Why this is a typed list, when the rest of this file derives everything ─
  * Editorial priority is the one thing that CANNOT be derived: there is no field
@@ -284,7 +300,20 @@ export const LOCATOR_ALL_OFFICES: LocatorAllOfficesView = {
 const LOCATOR_PRIORITY: readonly string[] = ['northbrook', 'columbus', 'evanston'];
 
 /**
- * Pinned offices first, then the rest in CMS order.
+ * Pinned offices first, then everything else A–Z by display name.
+ *
+ * ─── Why the tail is sorted rather than left in CMS order (Brief 178, C1) ───
+ * It used to be CMS order, on the reasoning that Marketing kept control of the
+ * tail by dragging rows in /admin/global-settings. THAT CLAIM IS NO LONGER TRUE
+ * AND WAS NOT WORTH KEEPING. The list went from 15 offices to 18 and the three
+ * new ones landed at the bottom, below the fold of a ~469px scroll box holding
+ * ~1,500px of rows — Marketing reported the newest office as "missing from the
+ * site" when it was simply row eighteen. Alphabetical means a new office lands
+ * where a human would look for it, and the homepage stops depending on the order
+ * of a JSONB array that `Footer.tsx` and `LocalBusinessSchema` also iterate.
+ *
+ * `localeCompare` rather than `<`, so "McHenry" sorts next to "Mokena" instead
+ * of by code point.
  *
  * ⚠️ Deliberately does NOT throw on a missing slug, which is the opposite of the
  * `MOST_REQUESTED` resolver in `locations-regions.ts`. That one reads
@@ -292,7 +321,7 @@ const LOCATOR_PRIORITY: readonly string[] = ['northbrook', 'columbus', 'evanston
  * should be. This one reads the LIVE CMS array at request time: if Marketing
  * deletes or un-checks the Columbus office, throwing here would 500 the
  * homepage over an ordering preference. A missing pin is skipped instead — the
- * list still renders all fifteen offices, only the order degrades to CMS order.
+ * list still renders every office, only the pinned top degrades.
  * `npm run build` cannot catch a typo in `LOCATOR_PRIORITY`, so check the
  * rendered order after editing it.
  */
@@ -302,7 +331,14 @@ export function orderLocatorOffices(offices: CmsOffice[]): CmsOffice[] {
   const pinned = LOCATOR_PRIORITY.map((slug) => bySlug.get(slug)).filter(
     (o): o is CmsOffice => o !== undefined
   );
-  return [...pinned, ...offices.filter((o) => !pinnedSlugs.has(o.slug))];
+  const rest = offices
+    /* `filter` already returns a new array, so the `sort` below cannot reach
+       `offices` itself — which matters, because that is the live settings array
+       `Footer.tsx` and `LocalBusinessSchema` iterate and Hard rule 3 forbids
+       reordering. Do not "simplify" this into a sort on `offices`. */
+    .filter((o) => !pinnedSlugs.has(o.slug))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  return [...pinned, ...rest];
 }
 
 /*
