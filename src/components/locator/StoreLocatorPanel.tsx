@@ -37,21 +37,38 @@ import type { LocatorAllOfficesView, LocatorRegionView } from '@/lib/content/loc
  * the list flows at its natural height, which is what a phone wants.
  *
  * ─── Why every office still renders server-side ────────────────────────────
- * This holds four pieces of state — the query, the selected office slug, whether
- * the live embed has been activated, and the lazily-loaded city index — so it
- * has to be a client component. It is NOT a client-rendered widget: its SSR
- * output already contains all 15 office names and addresses as text. Two things
- * make that true and must stay true: the query starts EMPTY and an empty query
- * filters nothing, and the list is one flat run rather than anything tabbed or
- * paged.
+ * This holds its state — the query, the selected office slug, whether the live
+ * embed has been activated, the lazily-loaded city index and whether the list is
+ * scrolled to the bottom — so it has to be a client component. It is NOT a
+ * client-rendered widget: its SSR output already contains every office name and
+ * address as text. Two things make that true and must stay true: the query
+ * starts EMPTY and an empty query filters nothing, and the list is one flat run
+ * rather than anything tabbed or paged.
+ *
+ * ─── Brief 178: what search matches, and what the list says about itself ───
+ * Two changes, both driven by the jump from 15 offices to 18.
+ *
+ * SEARCH NOW MATCHES THE OFFICES THEMSELVES — their `name`, `city` and `zip` —
+ * ahead of the generated city index. That is the layer that does not depend on
+ * the registry at all, so an office saved in /admin/global-settings is findable
+ * by its own name the moment it exists, with no rebuild and no registry entry.
+ * It is also what finally makes Skokie and Joliet findable: under the static map
+ * they dispatch only their own town, and before this they could not be searched
+ * for by name at all.
+ *
+ * THE LIST SAYS HOW LONG IT IS. Eighteen rows sit in a ~469px scroll box
+ * (~1,500px of content), so six are visible and the eighteenth is at offsetTop
+ * 1419 — Marketing reported a newly added office as missing from the site when
+ * it was simply below the fold of a box with no visible bottom edge. Hence the
+ * count header and the bottom fade.
  *
  * ⚠️ There are NO LINKS in a row any more. Review removed the "Get Directions"
  * and "View this location" pair, then removed the address's link out to Google
  * Maps as well — every part of a row now selects the office and centres the map
  * instead. So the NAP text is crawlable here but no link is: the homepage's
- * links to the 15 `/{slug}` office pages come from `Footer.tsx`'s office
- * directory, which renders on every page of the site. Do not remove that
- * directory without putting a link back in this section.
+ * links to the `/{slug}` office pages come from `Footer.tsx`'s office directory,
+ * which renders on every page of the site. Do not remove that directory without
+ * putting a link back in this section.
  *
  * Verify with `grep` on the built HTML for `naperville` and `columbus`.
  *
@@ -90,8 +107,29 @@ import type { LocatorAllOfficesView, LocatorRegionView } from '@/lib/content/loc
  */
 const MAP_PRELOAD_PX = 600;
 
+/**
+ * How many pixels of unseen content below the fold still counts as "scrolled to
+ * the bottom" (Brief 178, Track C2). Sub-pixel layout and the elastic overscroll
+ * on trackpads both leave a pixel or two behind, and a fade that never quite
+ * disappears looks like a rendering bug.
+ */
+const SCROLL_CUE_EPSILON_PX = 4;
+
 /** The generated tuple: `[slug, name, officeSlug]`. See locator-index.generated.ts. */
 type IndexRow = readonly [slug: string, name: string, office: string];
+
+/**
+ * One row of the list: an office, and the cities that matched onto it.
+ *
+ * `cities: null` means the OFFICE ITSELF matched — by its name, its town or its
+ * ZIP — so the row renders no "…is served from our…" line. It is the answer; a
+ * row reading "Tinley Park is served from our Tinley Park service center" is the
+ * kind of thing that gets screenshotted.
+ */
+interface OfficeMatch {
+  office: CmsOffice;
+  cities: string[] | null;
+}
 
 /**
  * The copy bag, typed off the constant it comes from so a renamed key is a
@@ -101,10 +139,25 @@ type IndexRow = readonly [slug: string, name: string, office: string];
 type LocatorCopy = typeof import('@/lib/content/locator').LOCATOR_COPY;
 
 interface Props {
-  /** All 15 offices, flat and in CMS order. The list renders this run verbatim. */
+  /**
+   * Every office, flat and already ordered by `orderLocatorOffices` (pinned
+   * three, then A–Z). The list renders this run verbatim.
+   */
   offices: CmsOffice[];
   /** Regions — they choose the static map, they do NOT section the list. */
   regions: LocatorRegionView[];
+  /**
+   * Brief 178 (Track B2) — `{ citySlug: officeSlug }` for the handful of cities
+   * where the LIVE CMS answer differs from the generated index, computed by the
+   * server component in `StoreLocator.tsx` (see its note).
+   *
+   * The index is generated in Node from the static `cityToOffice` map, so it
+   * cannot know that an office added in /admin/global-settings now claims its
+   * own town. This is applied to an index row's office slug right after the row
+   * is read, and nowhere else — the index stays the fallback and this is the
+   * correction on top of it.
+   */
+  officeOverrides: Record<string, string>;
   /** The embed's default view: every office, both regions. See `LOCATOR_ALL_OFFICES`. */
   allOffices: LocatorAllOfficesView;
   copy: LocatorCopy;
@@ -163,6 +216,7 @@ function cityList(cities: string[], andMoreTemplate: string): string {
 export default function StoreLocatorPanel({
   offices,
   regions,
+  officeOverrides,
   allOffices,
   copy,
   phone,
@@ -177,6 +231,14 @@ export default function StoreLocatorPanel({
    */
   const [mapVisible, setMapVisible] = useState(false);
   const mapBoxRef = useRef<HTMLDivElement | null>(null);
+  /**
+   * Brief 178 (Track C2). Whether there is still list below the fold — drives the
+   * bottom fade. Starts FALSE so the server-rendered HTML carries no cue and
+   * nothing flashes on a page that does not need one; the effect below turns it
+   * on after mount if the list actually overflows.
+   */
+  const listScrollRef = useRef<HTMLDivElement | null>(null);
+  const [showScrollCue, setShowScrollCue] = useState(false);
   const [index, setIndex] = useState<readonly IndexRow[] | null>(null);
   const [indexLoading, setIndexLoading] = useState(false);
   /** Memoized so focus + N keystrokes still produce exactly one dynamic import. */
@@ -277,53 +339,137 @@ export default function StoreLocatorPanel({
   const searching = normalizedQuery.length >= 2;
 
   /**
-   * Matching: prefix-first, then substring. Cities are grouped onto their
-   * dispatching office, so several matched towns collapse into ONE office row
-   * that names why it matched.
+   * Matching, in four strict ranks (Brief 178, Track B1):
+   *
+   *   1. An office whose NAME or TOWN starts with the query
+   *   2. An office whose name or town contains it
+   *   3. An office whose ZIP starts with it
+   *   4. City-index matches — prefix first, then substring, as before
+   *
+   * Ranks 1–3 read the live `offices` prop, so they need no index, no registry
+   * entry and no rebuild: a brand-new office is findable by its own name the
+   * moment Marketing saves it. Rank 4 is the old behaviour, with Track B2's
+   * overrides applied to each row's office slug.
+   *
+   * Deduplicated by office slug, highest rank wins — an office already listed by
+   * its own name is not listed again with a "served from" line under it. Cities
+   * are still grouped onto their dispatching office, so several matched towns
+   * collapse into ONE row that names why it matched.
    */
-  const results = useMemo(() => {
-    if (!searching || !index) return null;
+  const results = useMemo<OfficeMatch[] | null>(() => {
+    if (!searching) return null;
 
-    const prefix: IndexRow[] = [];
-    const contains: IndexRow[] = [];
-    for (const row of index) {
-      const name = normalize(row[1]);
-      if (name.startsWith(normalizedQuery)) prefix.push(row);
-      else if (name.includes(normalizedQuery)) contains.push(row);
+    /* ── Ranks 1–3: the CMS offices themselves ─────────────────────────────
+       The else-if chain is what enforces "highest rank wins" WITHIN the office
+       pass: an office matched by name is never also collected by ZIP. */
+    const nameStarts: CmsOffice[] = [];
+    const nameContains: CmsOffice[] = [];
+    const zipStarts: CmsOffice[] = [];
+    for (const office of offices) {
+      const name = normalize(office.name);
+      const city = normalize(office.city);
+      if (name.startsWith(normalizedQuery) || city.startsWith(normalizedQuery)) {
+        nameStarts.push(office);
+      } else if (name.includes(normalizedQuery) || city.includes(normalizedQuery)) {
+        nameContains.push(office);
+      } else if (normalize(office.zip).startsWith(normalizedQuery)) {
+        zipStarts.push(office);
+      }
     }
 
-    const byOffice = new Map<string, string[]>();
-    for (const row of [...prefix, ...contains]) {
-      const cities = byOffice.get(row[2]);
-      if (cities) cities.push(row[1]);
-      else byOffice.set(row[2], [row[1]]);
+    const out: OfficeMatch[] = [...nameStarts, ...nameContains, ...zipStarts].map((office) => ({
+      office,
+      cities: null,
+    }));
+    const alreadyListed = new Set(out.map((m) => m.office.slug));
+
+    /* ── Rank 4: the generated city index ─────────────────────────────────── */
+    if (index) {
+      const prefix: IndexRow[] = [];
+      const contains: IndexRow[] = [];
+      for (const row of index) {
+        const name = normalize(row[1]);
+        if (name.startsWith(normalizedQuery)) prefix.push(row);
+        else if (name.includes(normalizedQuery)) contains.push(row);
+      }
+
+      const byOffice = new Map<string, string[]>();
+      for (const row of [...prefix, ...contains]) {
+        /* Track B2: the index row carries the STATIC answer; the override is
+           the live one. Applied here, at the point of reading, so everything
+           downstream — grouping, the match line, the map — sees one answer. */
+        const officeSlug = officeOverrides[row[0]] ?? row[2];
+        const cities = byOffice.get(officeSlug);
+        if (cities) cities.push(row[1]);
+        else byOffice.set(officeSlug, [row[1]]);
+      }
+
+      /* Array.from rather than [...map.entries()] — tsconfig's target predates
+         downlevelIteration, so spreading a Map iterator is a compile error here.
+         Insertion order is preserved either way, which is what keeps the
+         prefix-first ranking intact. */
+      for (const [officeSlug, cities] of Array.from(byOffice.entries())) {
+        if (alreadyListed.has(officeSlug)) continue;
+        const office = offices.find((o) => o.slug === officeSlug);
+        if (office) out.push({ office, cities });
+      }
     }
 
-    /* Array.from rather than [...map.entries()] — tsconfig's target predates
-       downlevelIteration, so spreading a Map iterator is a compile error here.
-       Insertion order is preserved either way, which is what keeps the
-       prefix-first ranking intact. */
-    return Array.from(byOffice.entries()).flatMap(([officeSlug, cities]) => {
-      const office = offices.find((o) => o.slug === officeSlug);
-      return office ? [{ office, cities }] : [];
-    });
-  }, [searching, index, normalizedQuery, offices]);
+    return out;
+  }, [searching, index, normalizedQuery, offices, officeOverrides]);
 
-  const noMatches = results !== null && results.length === 0;
+  /**
+   * A genuine no-match, as opposed to "the city index has not arrived yet".
+   * Ranks 1–3 can answer without the index, so an empty result set before it
+   * loads is not yet an answer — showing the phone CTA there would be telling a
+   * visitor we do not serve their town while we are still looking it up.
+   */
+  const noMatches = results !== null && results.length === 0 && index !== null;
   /** What the list is showing: the filtered rows, or every office. */
-  const visible = results && results.length > 0 ? results : offices.map((office) => ({ office, cities: null as string[] | null }));
+  const visible: OfficeMatch[] =
+    results && results.length > 0 ? results : offices.map((office) => ({ office, cities: null }));
 
   /** The status line under the finder. Always present, so nothing shifts. */
   const statusMessage = (() => {
     if (!searching) return '';
+    const count = results ? results.length : 0;
+    if (count > 0) {
+      return fillTokens(
+        count === 1 ? copy.resultsCountTemplateSingular : copy.resultsCountTemplate,
+        { count, query: query.trim() }
+      );
+    }
     if (!index) return indexLoading ? copy.searchLoading : '';
-    if (noMatches) return fillTokens(copy.noResultsTemplate, { query: query.trim() });
-    const count = results!.length;
-    return fillTokens(
-      count === 1 ? copy.resultsCountTemplateSingular : copy.resultsCountTemplate,
-      { count, query: query.trim() }
-    );
+    return fillTokens(copy.noResultsTemplate, { query: query.trim() });
   })();
+
+  /**
+   * Brief 178 (Track C2) — the bottom fade, on only while there is more list.
+   *
+   * It is a plain read of the scroller's own metrics: no library, no
+   * `ResizeObserver`, and nothing that touches `scrollTop`, so it cannot fight
+   * the visitor for control of the scroll. Below 900px the list is static and
+   * `scrollHeight === clientHeight`, so this settles on `false` there — and the
+   * element is `hidden` at that width anyway, belt and braces.
+   *
+   * Re-runs when the rendered row count changes, because filtering a list of 18
+   * down to one row removes the overflow that the cue is advertising.
+   */
+  useEffect(() => {
+    const el = listScrollRef.current;
+    if (!el) return;
+
+    const sync = () => {
+      setShowScrollCue(el.scrollHeight - el.scrollTop - el.clientHeight > SCROLL_CUE_EPSILON_PX);
+    };
+    sync();
+    el.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    return () => {
+      el.removeEventListener('scroll', sync);
+      window.removeEventListener('resize', sync);
+    };
+  }, [visible.length, noMatches]);
 
   const regionOf = useCallback(
     (slug: string) => regions.find((r) => r.officeSlugs.includes(slug)),
@@ -524,7 +670,22 @@ export default function StoreLocatorPanel({
       {/* Absolute on desktop ONLY — that is what caps the list at the map's
           height and hands it its own scrollbar (see the file header). Static
           below 900px, where it flows at full height instead. */}
-      <div className="locator-scroll min-[900px]:absolute min-[900px]:inset-0 min-[900px]:overflow-y-auto">
+      <div
+        ref={listScrollRef}
+        className="locator-scroll min-[900px]:absolute min-[900px]:inset-0 min-[900px]:overflow-y-auto"
+      >
+        {/* Brief 178 (C2): how many locations there are, from `offices.length`
+            and never typed. `sticky` rather than a header outside the scroller
+            because on desktop the scroller is `absolute inset-0` — a sibling
+            above it would need a second height kept in sync with this one, and
+            the whole point of the absolute positioning (see the file header) is
+            that there is only ever one.
+
+            It reports the TOTAL and does not change while searching; the
+            `aria-live` line under the search box is what reports matches. */}
+        <p className="sticky top-0 z-[1] border-b border-navy-100 bg-white px-5 py-[10px] font-display text-[13px] font-bold uppercase tracking-[0.08em] text-navy-500">
+          {fillTokens(copy.officeCountTemplate, { count: offices.length })}
+        </p>
         {noMatches && (
           /* Never an empty panel. The full list stays below this, and this is
              the section's single phone CTA. */
@@ -562,6 +723,28 @@ export default function StoreLocatorPanel({
           )}
         </ul>
       </div>
+
+      {/* Brief 178 (C2) — the scroll affordance.
+          A soft fade over the last 48px of the scroller, faded out once the
+          bottom is reached or when the list is short enough not to scroll.
+
+          `pointer-events-none` is load-bearing: the fade sits over the last row,
+          and a row is the section's click target. `right-2` clears the 8px
+          scrollbar (`.locator-scroll` in globals.css) so the thumb is not
+          tinted. `hidden min-[900px]:block` — below 900px the list is static and
+          flows at full height, so there is nothing to cue.
+
+          It fades to WHITE, not cream, because the card it sits on is
+          `bg-white`; a cream fade would read as a band rather than a fade.
+          `to-white/0` rather than `to-transparent`, so the gradient interpolates
+          through white instead of through transparent black. */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          'pointer-events-none absolute bottom-0 left-0 right-2 hidden h-12 bg-gradient-to-t from-white via-white/80 to-white/0 transition-opacity duration-200 min-[900px]:block',
+          showScrollCue ? 'opacity-100' : 'opacity-0'
+        )}
+      />
     </div>
   );
 

@@ -6,10 +6,11 @@ import {
   orderLocatorOffices,
   type LocatorRegionView,
 } from '@/lib/content/locator';
+import { resolveOfficeOverrides } from '@/lib/content/cities';
 import type { CmsOffice } from '@/lib/cms/offices';
 
 interface Props {
-  /** The CMS offices, `getGlobalSettingsCached().offices`. All 15 render. */
+  /** The CMS offices, `getGlobalSettingsCached().offices`. Every one renders. */
   offices: CmsOffice[];
   /** `find_us_heading` from the CMS, or `HOME.findUs.heading`. Rendered as the `<h2>`. */
   heading: string;
@@ -30,7 +31,7 @@ interface Props {
  * ─── What it replaced, and why ─────────────────────────────────────────────
  * This section used to be `<LocationsSection>` wrapping `<LocationsMap>`: a raw
  * Google Maps iframe whose query was a keyword search for
- * "J. Blanton Plumbing, Illinois". It rendered NONE of the 15 offices, it was
+ * "J. Blanton Plumbing, Illinois". It rendered NONE of the offices, it was
  * the single heaviest third-party request on the page, and — since Columbus
  * Integration Brief 04 put a two-region chooser directly above it — its
  * Chicagoland-only copy contradicted the section above it on the site's
@@ -45,7 +46,7 @@ interface Props {
  *
  * 1. NO NEW JSON-LD. `LocalBusinessSchema.tsx` already emits one
  *    `PlumbingBusiness` node per CMS office, mounted once in `Footer.tsx`, which
- *    renders on every page — so all 15 offices are ALREADY marked up on the
+ *    renders on every page — so every office is ALREADY marked up on the
  *    homepage. A second graph for the same businesses would be duplicate
  *    structured data. The visible UI is the whole deliverable.
  *
@@ -56,10 +57,10 @@ interface Props {
  *    the offices, and serving different content by inferred location edges
  *    toward cloaking.
  *
- * 3. ALL 15 OFFICES ARE IN THE SERVER-RENDERED HTML on first paint — every name
+ * 3. EVERY OFFICE IS IN THE SERVER-RENDERED HTML on first paint — every name
  *    and every address, as text. The panel is a client component because it
  *    holds search state, but nothing about the list waits for JavaScript. That
- *    is why it is ONE FLAT RUN of all fifteen and not a tabbed or paged control:
+ *    is why it is ONE FLAT RUN of all of them and not a tabbed or paged control:
  *    anything that renders conditionally would drop offices out of the HTML
  *    entirely.
  *
@@ -70,7 +71,7 @@ interface Props {
  *    the NAP text here is crawlable but no link is, and in particular the
  *    per-row `/{slug}` link to each office's own city page is gone.
  *
- *    The homepage still links all 15 office pages through `Footer.tsx`'s office
+ *    The homepage still links every office page through `Footer.tsx`'s office
  *    directory, which renders on every page of the site, so the internal-linking
  *    path to `/{slug}` survives — but it survives THERE, not here. Do not delete
  *    the footer directory without restoring a link in this section.
@@ -114,9 +115,27 @@ export default function StoreLocator({
   contentClassName,
 }: Props) {
   /* Regions are built from the CMS array as-is (order is irrelevant — they only
-     collect slugs); the LIST gets the pinned order. */
+     collect slugs); the LIST gets the pinned-then-alphabetical order. */
   const regions: LocatorRegionView[] = buildLocatorRegions(offices);
   const ordered = orderLocatorOffices(offices);
+
+  /*
+   * Brief 178 (Track B2) — the city→office corrections the client panel cannot
+   * work out for itself.
+   *
+   * The panel searches `locator-index.generated.ts`, which is built in Node from
+   * the STATIC `getOfficeKey()` map because the generator has no database. This
+   * component is a server component and HAS the live office array, so it
+   * computes the difference — the handful of cities a CMS office now claims —
+   * and hands it down as a plain object. The panel applies it after reading an
+   * index row, so searching "Tinley Park" answers with the Tinley Park office
+   * rather than Ravenswood even via the city path.
+   *
+   * Deliberately an overrides-only diff, not a regenerated 386-row index: the
+   * payload stays at a few entries, and the override is visible in the props
+   * where a reviewer will find it instead of buried in a generated file.
+   */
+  const officeOverrides = resolveOfficeOverrides(offices);
 
   return (
     <section aria-labelledby="home-where-to-find-us" className={className}>
@@ -139,15 +158,17 @@ export default function StoreLocator({
           </p>
         ))}
 
-        {/* `offices` is passed flat — the list is one run of all fifteen, with
+        {/* `offices` is passed flat — the list is one run of every office, with
             Northbrook, Columbus and Evanston pinned to the top by
-            `orderLocatorOffices` and everything after them in CMS order, so
-            Marketing still controls the tail by dragging rows in
-            /admin/global-settings. `regions` carries only slugs, so each office
-            record crosses the boundary exactly once. */}
+            `orderLocatorOffices` and everything after them A–Z (Brief 178, C1),
+            so a new office lands where a human would look for it and the
+            homepage no longer depends on the CMS array's order. `regions`
+            carries only slugs, so each office record crosses the boundary
+            exactly once. */}
         <StoreLocatorPanel
           offices={ordered}
           regions={regions}
+          officeOverrides={officeOverrides}
           allOffices={LOCATOR_ALL_OFFICES}
           copy={LOCATOR_COPY}
           phone={phone}

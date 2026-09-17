@@ -5,7 +5,7 @@ import {
   getCity,
   getCoverageContent,
   getGridCities,
-  getOfficeKey,
+  getOfficeKeyFor,
   gridRegionFor,
   getLocalOfficeContent,
   getOffice,
@@ -235,7 +235,15 @@ export default async function CityPage({ params }: { params: { city: string } })
    */
   const gridRegion = gridRegionFor(entry.slug);
   const isOhio = gridRegion === 'ohio';
-  const officeName = settings.offices.find((o) => o.slug === getOfficeKey(entry.slug))?.name;
+  /*
+   * Brief 178 (Track A2): resolved through the CMS-aware `getOfficeKeyFor`, not
+   * the static `getOfficeKey`. `getOffice()` below already resolves the ADDRESS
+   * through the CMS, so leaving this on the static map would print one office's
+   * NAME over another office's ADDRESS — worse than either error on its own.
+   */
+  const officeName = settings.offices.find(
+    (o) => o.slug === getOfficeKeyFor(entry.slug, settings.offices)
+  )?.name;
 
   return (
     <>

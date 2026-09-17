@@ -19,7 +19,8 @@
     "build:locator-maps": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/build-locator-maps.ts",
     "build:columbus-heroes": "node scripts/columbus-heroes/build-heroes.mjs",
     "build:locator-index": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/build-locator-index.ts",
-    "check:locator-index": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/check-locator-index.ts"
+    "check:locator-index": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/check-locator-index.ts",
+    "check:brief-178": "ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/check-brief-178-office-city-match.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1102.0",
