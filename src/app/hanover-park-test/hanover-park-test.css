@@ -1,0 +1,1016 @@
+/*
+ * /hanover-park-test — scoped styles (Brief 180 + Marketing revision round 1,
+ * 2026-09-17).
+ *
+ * ⚠ TEMPORARY REVIEW BUILD. Everything here is prefixed `hp-` and lives under
+ * the `.hanover-park-test` root, so it can neither reach nor be reached by the
+ * shared city / service / globals rules. No shared component is edited.
+ *
+ * ══ THE THREE THINGS THAT WILL BITE IF CHANGED ════════════════════════════
+ * 1. THIS FILE IS UNLAYERED, on purpose. `globals.css` puts
+ *    `h1..h5 { font-display font-bold tracking-tight text-navy-800 }` inside
+ *    `@layer base`, matching the ELEMENT. Unlayered always beats a layer, which
+ *    is how the headings on the Carmine / Midnight bands get Cream without
+ *    `!important`, and how H3 gets Industry MEDIUM. Do not move these rules into
+ *    a layer, and do not set a heading colour only on a parent — an inherited
+ *    colour loses to `@layer base` every time (Brief 179, Defect 2).
+ * 2. There is NO global top offset for the fixed 70px navbar; globals.css leaves
+ *    that to each page. The hero clears it itself via `--hero-top-clear` on
+ *    desktop and a Carmine `padding-top` strip once it stacks.
+ * 3. The SHARED-COMPONENT OVERRIDE near the bottom reaches into `FaqAccordion`
+ *    from outside. It is cosmetic only (two hardcoded margins), it is scoped
+ *    under `.hanover-park-test` so it cannot leak to the pages that component
+ *    actually belongs to, and it exists because this page must keep ONE spacing
+ *    scale. If that component's markup changes, check it.
+ *
+ * ══ THE SPACING SCALE — one scale, one rule ═══════════════════════════════
+ * Vertical rhythm comes from ONE owl selector on the container (`.hp-w > * + *`),
+ * not from margins on individual blocks. **Blocks carry no vertical margins of
+ * their own.** If you add one, two rules fight and the rhythm drifts. A handful
+ * of named overrides promote a gap to `--hp-gap-lg` before a major block (a
+ * split, a grid, the services menu, the FAQ accordion, a button).
+ *
+ *   --hp-band-pad   40 → 100   section padding (design.md)
+ *   --hp-gap        20 → 24    block → block
+ *   --hp-gap-lg     32 → 48    heading group → major block
+ *   --hp-gap-sm     12         a heading → its own body
+ *   --hp-gutter     24 → 30    grid gutter (design.md gutter = 30)
+ *   --hp-measure    820px      the ONE reading measure for full-width bands
+ *
+ * ══ BACKGROUND PACING ═════════════════════════════════════════════════════
+ * The copy is otherwise unbroken text, so the band sequence is what paces it.
+ * Never two identical surfaces adjacent:
+ *
+ *      Hero         split: image half + Carmine #BC0E0E   (+ the HeroNav strip)
+ *   1  Services     Cream       #F9F3EC   7 white cards, H3 titles + icons
+ *   2  Sump Pump    White       #FFFFFF   photo right
+ *   3  Why Us       Warm        #F1E8DC   Google map right
+ *   4  Mid CTA      Carmine     #BC0E0E   photo right, dissolving into the red
+ *   5  Reviews      Warm        #F1E8DC
+ *   6  FAQ          White       #FFFFFF   holds the Carmine accordion
+ *   7  No Drip Club Midnight    #0A1B2E   J character right
+ *   8  Final CTA    Deep cream  #E8DCCC   centred; the seam against the
+ *                                         Carmine footer
+ *
+ * ⚠ The VIDEO section (Cream, between Mid CTA and Reviews) was REMOVED on
+ * 2026-09-17 — Marketing: "take it out completely for now". Its approved copy
+ * is still in the content module. Restoring it puts a Cream band between two
+ * bands that are currently Carmine → Warm, which stays legal; check this table
+ * before re-inserting anything else there.
+ *
+ * The only Cream/White seam is 2 → 3. White bands carry a 1px #E3D8C8 top border
+ * so that seam reads as two surfaces — the brief's prescribed remedy, rather
+ * than inventing a new tint.
+ *
+ * ══ COLOURS — design.md LOCKED only ═══════════════════════════════════════
+ *   Carmine #BC0E0E · Midnight #0A1B2E · Cream #F9F3EC · Cerulean #1560E6
+ * Permitted derived values only:
+ *   #F1E8DC · #E8DCCC · #E3D8C8 · #C9BCA9 · #3A4A5C · #FFFFFF · #E4E4E4
+ * No #000000. No cool neutral greys. No invented hexes.
+ *
+ * ⚠ BRAND-BAN NOTE — Cerulean buttons on Carmine. design.md LOCKED says
+ * "Never red on blue … and not the reverse either", which `.hp-btn--on-red`
+ * knowingly departs from, on Marketing's explicit instruction of 2026-09-17
+ * ("make the hero CTA button cerulean with a light white border to keep contrast
+ * ratio"). Measured, Cerulean on Carmine is 1.20:1, so the button carries a 2px
+ * WHITE border, which brings its edge back to ~6.4:1. This is the same departure
+ * /consumer-rights already ships (Marketing, 2026-09-15) and it is recorded in
+ * the Brief 180 report. Do not silently "fix" it back to the on-red token.
+ *
+ * ══ TYPE — Industry for structure, Nunito for sentences. No third face. ═══
+ *   H1 40px Industry Bold · H2 32px Industry Bold · H3 28px Industry Medium
+ *   Eyebrow / card label 20px Industry Bold · Body Nunito 16/24 → 20/30
+ *   Buttons Industry Medium 16px uppercase, 1px tracking · Caption 11/17
+ * H1/H2/H3 clamp down at narrow widths so they still fit at 375px; the upper
+ * bound is always the documented size. Headings are NOT uppercased — the
+ * approved copy is sentence/title case (same call as /consumer-rights).
+ */
+
+.hanover-park-test {
+  --hp-band-pad: 40px;
+  --hp-gap: 20px;
+  --hp-gap-lg: 32px;
+  --hp-gap-sm: 12px;
+  --hp-gutter: 24px;
+  --hp-measure: 820px;
+
+  font-family: var(--font-nunito), Arial, sans-serif;
+  color: #0a1b2e; /* Midnight */
+  background: #f9f3ec; /* Cream — the page behind the bands */
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test {
+    --hp-band-pad: 100px;
+    --hp-gap: 24px;
+    --hp-gap-lg: 48px;
+    --hp-gutter: 30px;
+  }
+}
+
+/* ══ THE ONE VERTICAL RHYTHM RULE ══════════════════════════════════════════ */
+
+.hanover-park-test .hp-w > * + * {
+  margin-top: var(--hp-gap);
+}
+
+/* A major block gets more air above it than a paragraph does. */
+.hanover-park-test .hp-w > * + .hp-split,
+.hanover-park-test .hp-w > * + .hp-reviews,
+.hanover-park-test .hp-w > * + .hp-cards,
+.hanover-park-test .hp-w > * + .hp-benefits,
+.hanover-park-test .hp-w > * + .faqs,
+.hanover-park-test .hp-w > * + .hp-btn {
+  margin-top: var(--hp-gap-lg);
+}
+
+/* ══ BANDS ═════════════════════════════════════════════════════════════════ */
+
+.hanover-park-test .hp-band {
+  padding-top: var(--hp-band-pad);
+  padding-bottom: var(--hp-band-pad);
+}
+
+.hanover-park-test .hp-band--cream { background-color: #f9f3ec; }
+.hanover-park-test .hp-band--warm { background-color: #f1e8dc; }
+/*
+ * Final CTA — the brand's beige wrench pattern (Marketing, 2026-09-17), the
+ * light counterpart to the Carmine `Wrench Filled Red BG` the hero uses.
+ *
+ * The asset is an OPAQUE 1920 × 1080 tile whose base is Cream #F9F3EC with
+ * near-white wrench motifs, so it covers the `#E8DCCC` beneath it and the band
+ * reads as Cream once it loads. `background-color` is kept as the load/failure
+ * fallback — the deep cream the band was before the pattern arrived.
+ *
+ * `cover`, not `repeat`: at 1920 × 1080 this is a full-bleed artwork rather than
+ * a small seamless tile, and repeating it on a ~420px-tall band would put a
+ * visible join wherever the edges met. `cover` scales one copy over the band, so
+ * there is never a seam at any viewport width.
+ *
+ * Adjacency still holds: No Drip Club (Midnight) above, the Carmine footer
+ * below. The Services band is also Cream but is six sections away.
+ */
+.hanover-park-test .hp-band--deep-cream {
+  background-color: #e8dccc;
+  background-image: url('/images/patterns/Wrench Pattern Beige BG.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.hanover-park-test .hp-band--midnight { background-color: #0a1b2e; }
+.hanover-park-test .hp-band--carmine { background-color: #bc0e0e; }
+
+/* White bands: the 1px warm rule keeps the Cream → White seam legible. */
+.hanover-park-test .hp-band--white {
+  background-color: #ffffff;
+  border-top: 1px solid #e3d8c8;
+}
+
+/*
+ * MID CTA — PHOTO ON THE RIGHT, DISSOLVING LEFTWARD INTO SOLID CARMINE.
+ * Revision round 3 item 5, reworked in round 4.
+ *
+ * ── Why it is not a full-bleed background ──────────────────────────────────
+ * It was, and it read as pixelated. The source is 1376 × 768. Stretched across
+ * the whole band with `cover`, a 1440px viewport UPSCALES it and then crops to
+ * roughly the middle third of its height — a heavy zoom on an already-soft AI
+ * render, and worse the wider the screen. Compression was NOT the cause: the
+ * 60 KB re-encode is indistinguishable from the 259 KB source at 1:1.
+ *
+ * Confining it to the right ~45% at full band height means the image is
+ * DOWNSCALED at every breakpoint instead, which is what makes it sharp.
+ *
+ * ── The two layers ─────────────────────────────────────────────────────────
+ * 1. `background-blend-mode: multiply` over Carmine, exactly as before. This is
+ *    load-bearing for ACCESSIBILITY, not taste: multiply takes each channel of
+ *    the photo times the same channel of Carmine, so **no pixel of the result
+ *    can ever be lighter than Carmine**. Cream on Carmine measures 5.94:1, so
+ *    that is the mathematical FLOOR for any copy that overlaps the photo, at any
+ *    image, any crop, any breakpoint. An alpha wash gives no such guarantee.
+ *    Swap the photo freely; do not swap the blend mode for an `rgba()` overlay
+ *    without re-measuring against the new image.
+ * 2. `::after` — a horizontal gradient from solid Carmine at the media's left
+ *    edge to transparent at its right, so the photo dissolves into the band
+ *    rather than butting against it with a hard seam. The copy sits entirely on
+ *    the solid part.
+ *
+ * The section keeps its own `background-color: #BC0E0E`, so a failed or blocked
+ * image degrades to the plain red band this section had before, not to a hole.
+ */
+.hanover-park-test .hp-midcta-band {
+  position: relative;
+  overflow: hidden;
+}
+
+.hanover-park-test .hp-midcta-media {
+  display: none;
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-midcta-media {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 45%;
+    /*
+     * Anchored RIGHT, not centred (Marketing, 2026-09-17). `cover` on this
+     * column crops ~105px of the photo's width, and taking that off the RIGHT
+     * lost the woman's back and the chair — the part that makes the scene read
+     * as a room rather than three floating people. Anchoring right keeps the
+     * full right edge AND shifts the group leftward inside the frame, which
+     * closes the gap between the subject and the copy.
+     */
+    background-position: right center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #bc0e0e; /* Carmine — the multiply partner */
+    background-blend-mode: multiply;
+  }
+
+  /* Solid Carmine at the media's left edge, clear by its right. */
+  .hanover-park-test .hp-midcta-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      #bc0e0e 0%,
+      rgba(188, 14, 14, 0.88) 14%,
+      rgba(188, 14, 14, 0.3) 38%,
+      rgba(188, 14, 14, 0) 62%
+    );
+  }
+
+  /*
+   * The copy stays clear of the media column, so it never sits on the photo.
+   * Capping the CHILDREN, not the container: the container keeps its normal
+   * centred `mx-auto` offset (so the copy still starts on the page's left
+   * gutter like every other section), and only the measure narrows.
+   */
+  .hanover-park-test .hp-midcta-band .hp-w {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hanover-park-test .hp-midcta-band .hp-w > * {
+    max-width: 560px;
+  }
+}
+
+/*
+ * Below 901px the media is hidden and the band is plain Carmine — the same call
+ * as the No Drip Club character. A 45% column is meaningless at phone width, and
+ * the alternative (full-bleed again) is the exact upscaling this rework removed.
+ */
+
+/* The one centred block on the page — the closing call to action. */
+.hanover-park-test .hp-center {
+  text-align: center;
+}
+
+.hanover-park-test .hp-center > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hanover-park-test .hp-center .hp-body {
+  max-width: var(--hp-measure);
+}
+
+/* ══ TYPE ══════════════════════════════════════════════════════════════════ */
+
+.hanover-park-test .hp-h1 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700; /* Industry Bold */
+  font-size: clamp(30px, 5.6vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #f9f3ec; /* Cream on Carmine — 5.94:1. Declared ON THE ELEMENT. */
+}
+
+.hanover-park-test .hp-h2 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700; /* Industry Bold */
+  font-size: clamp(26px, 4.2vw, 32px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #bc0e0e; /* Carmine on the light bands */
+}
+
+/* Carmine / Midnight bands. On the element, never on the wrapper. */
+.hanover-park-test .hp-h2--on-dark {
+  color: #f9f3ec; /* Cream */
+}
+
+.hanover-park-test .hp-h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500; /* Industry Medium */
+  font-size: clamp(22px, 3.4vw, 28px);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: #bc0e0e; /* Carmine */
+}
+
+.hanover-park-test .hp-body,
+.hanover-park-test .hp-lead {
+  font-size: 16px;
+  line-height: 24px;
+  color: #0a1b2e; /* Midnight */
+  max-width: var(--hp-measure);
+}
+
+@media only screen and (min-width: 901px) {
+  /* 20/30 is the live desktop content size and is equally valid (design.md). */
+  .hanover-park-test .hp-body,
+  .hanover-park-test .hp-lead {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
+/* Inside a split column the column width IS the measure. */
+.hanover-park-test .hp-split-text .hp-body {
+  max-width: none;
+}
+
+.hanover-park-test .hp-body--on-dark {
+  color: #f9f3ec; /* Cream on Midnight / Carmine — 13.6:1 and 5.94:1 */
+}
+
+.hanover-park-test .hp-eyebrow {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700; /* Industry Bold */
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f9f3ec; /* Cream on Midnight */
+}
+
+/* Sections 3 and 6 put an eyebrow on a light band (revision round 2, items 2/3). */
+.hanover-park-test .hp-eyebrow--on-light {
+  color: #bc0e0e; /* Carmine */
+}
+
+/* The eyebrow is a label FOR the heading under it, so it sits tight to it —
+   in a `.hp-w` container (NDC) and in a split column (sections 3 and 6). */
+.hanover-park-test .hp-w > .hp-eyebrow + .hp-h2,
+.hanover-park-test .hp-split-text > .hp-eyebrow + .hp-h2 {
+  margin-top: var(--hp-gap-sm);
+}
+
+.hanover-park-test .hp-disclaimer {
+  font-size: 11px;
+  line-height: 17px;
+  color: #f9f3ec; /* Cream on Carmine */
+}
+
+/* Inline text links inside body copy. Cerulean on light is 5.0:1 — do not tint
+   it lighter. On the dark bands the link inherits the Cream body colour and is
+   distinguished by its underline, because Cerulean on Carmine would be a
+   red/blue pairing design.md bans. */
+.hanover-park-test .hp-link {
+  color: #1560e6; /* Cerulean */
+  text-decoration: none;
+}
+
+.hanover-park-test .hp-link:hover,
+.hanover-park-test .hp-link:focus-visible {
+  text-decoration: underline;
+}
+
+.hanover-park-test .hp-band--carmine .hp-link,
+.hanover-park-test .hp-band--midnight .hp-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ══ BUTTONS ═══════════════════════════════════════════════════════════════
+   THREE treatments, one per surface family, so a reader always knows what a
+   button is:
+     .hp-btn--primary   light bands  — Cerulean fill, hover Carmine (the brand's
+                                       signature flip)
+     .hp-btn--on-red    Carmine band — Cerulean fill + 2px WHITE border (see the
+                                       brand-ban note in the header), hover Midnight
+     .hp-btn--on-navy   Midnight band— Cerulean fill + 2px WHITE border, hover
+                                       Carmine (the signature flip; the border is
+                                       what keeps the edge on a dark navy band)
+   Industry Medium 16px uppercase, 1px tracking, 10px radius (design.md
+   rounded.button). `min-height: 48px` keeps the tap target over the 44px floor. */
+
+.hanover-park-test .hp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 10px 30px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500; /* Industry Medium */
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  background-color: #1560e6; /* Cerulean */
+  color: #ffffff; /* 5.5:1 on Cerulean */
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.hanover-park-test .hp-btn--primary:hover {
+  background-color: #bc0e0e; /* Carmine — the signature flip */
+}
+
+.hanover-park-test .hp-btn--on-red,
+.hanover-park-test .hp-btn--on-navy {
+  border-color: #ffffff;
+}
+
+.hanover-park-test .hp-btn--on-red:hover {
+  background-color: #0a1b2e; /* Midnight — Carmine would dissolve into the band */
+}
+
+.hanover-park-test .hp-btn--on-navy:hover {
+  background-color: #bc0e0e; /* Carmine — the signature flip, legible on navy */
+}
+
+/* Visible focus states everywhere — never `outline: none`. */
+.hanover-park-test a:focus-visible {
+  outline: 2px solid #1560e6; /* Cerulean */
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.hanover-park-test .hp-band--carmine a:focus-visible,
+.hanover-park-test .hp-band--midnight a:focus-visible,
+.hanover-park-test .hp-hero a:focus-visible {
+  outline-color: #ffffff; /* Cerulean would vanish on red / navy */
+}
+
+/* ══ 1. HERO — image left / Carmine right ══════════════════════════════════
+   The `localOfficeV2Hero` shape, rebuilt locally. */
+
+.hanover-park-test .hp-hero {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  /* The photo is the first thing in the hero once stacked, so the hero itself
+     clears the fixed navbar. Carmine behind the offset so the strip belongs to
+     the hero; the navbar is opaque and exactly this tall, so it covers it. */
+  padding-top: var(--site-header-h, 70px);
+  background-color: #bc0e0e; /* Carmine */
+}
+
+.hanover-park-test .hp-hero-media {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  background-color: #f9f3ec; /* Cream, behind the image while it loads */
+}
+
+/*
+ * Absolutely positioned so the photo can never drive the hero's height: the
+ * Carmine copy column always sets it, at whatever aspect ratio a replacement
+ * image happens to have. `object-fit: cover` then crops rather than letterboxes.
+ * The explicit width/height on the <img> still reserves the space before load.
+ */
+.hanover-park-test .hp-hero-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Crop from the bottom — the technician's head is high in the frame. */
+  object-position: 50% 30%;
+}
+
+.hanover-park-test .hp-hero-contents {
+  width: 100%;
+  position: relative;
+  background-color: #bc0e0e; /* Carmine */
+  background-image: url('/images/patterns/Wrench Filled Red BG.png');
+  background-repeat: repeat;
+}
+
+.hanover-park-test .hp-hero-w {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--hp-gap);
+  padding: 44px 7% 48px;
+}
+
+.hanover-park-test .hp-hero-sub {
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #f9f3ec; /* Cream */
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-hero {
+    flex-direction: row;
+    /* Two halves; the copy column pads for the navbar itself, as the theme's
+       `.w` does, so the photo runs full-bleed to the top of the page. */
+    padding-top: 0;
+  }
+  .hanover-park-test .hp-hero-media {
+    width: 50%;
+    min-height: 500px;
+  }
+  .hanover-park-test .hp-hero-contents {
+    width: 50%;
+    display: flex;
+    min-height: 500px;
+  }
+  .hanover-park-test .hp-hero-w {
+    /* `height: auto` + `justify-content: center` inside a stretched flex item:
+       the column centres when the copy is short and grows downward when it is
+       long, so it can never push its first child up under `overflow: hidden`. */
+    justify-content: center;
+    width: 100%;
+    gap: var(--hp-gap-lg);
+    padding: var(--hero-top-clear, 110px) 7% 60px;
+  }
+  .hanover-park-test .hp-hero-sub {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+/* ══ PLACEHOLDERS — every asset slot but the hero ══════════════════════════
+   A visibly labelled empty box: fill #E8DCCC, 1px dashed #C9BCA9, 10px radius,
+   centred Industry Medium uppercase label in #3A4A5C naming the slot and its
+   ratio. Real reserved space at every breakpoint — that is the point. */
+
+.hanover-park-test .hp-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+  background-color: #e8dccc;
+  border: 1px dashed #c9bca9;
+  border-radius: 10px;
+}
+
+/* On the deep-cream band the default fill would be invisible — not used today,
+   but the guard keeps a future move of a placeholder honest. */
+.hanover-park-test .hp-band--deep-cream .hp-placeholder {
+  background-color: #e3d8c8;
+}
+
+.hanover-park-test .hp-placeholder-label {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 500; /* Industry Medium */
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #3a4a5c;
+}
+
+.hanover-park-test .hp-placeholder-caption {
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a4a5c;
+}
+
+/* ══ 2. SERVICE CARDS ══════════════════════════════════════════════════════
+   Revision round 2, item 1. Each card title is a REAL `<h3>` — that is the
+   whole reason these came back in place of the red OUR SERVICES menu, so do not
+   demote them to a styled `<p>`. Icons are the homepage set at 64px (the
+   homepage uses 100px), left-aligned to match the card's own text alignment. */
+
+.hanover-park-test .hp-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--hp-gutter);
+}
+
+@media only screen and (min-width: 640px) {
+  .hanover-park-test .hp-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+.hanover-park-test .hp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--hp-gap-sm);
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e3d8c8;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/*
+ * Revision round 3, item 1 — CENTRE A LONE LAST CARD.
+ *
+ * Seven cards in a 3-column grid leaves one card alone on the last row, hard
+ * against the left edge. `:nth-child(3n+1):last-child` matches ONLY a last card
+ * that starts a row on its own, so this centres the orphan and does nothing at
+ * all if the card count ever changes to one that fills its rows.
+ */
+@media only screen and (min-width: 640px) and (max-width: 900px) {
+  .hanover-park-test .hp-card:nth-child(2n + 1):last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - var(--hp-gutter) / 2);
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-card:nth-child(3n + 1):last-child {
+    grid-column: 2;
+  }
+}
+
+/*
+ * Revision round 3, item 2 — THE WHOLE CARD IS THE LINK.
+ *
+ * Only the FOUR cards that have a destination get this (Sewer, Drain, Water
+ * Heater, Water Quality). Emergency, Plumbing and Commercial have none, so they
+ * render as plain `<div>`s with NO hover and NO pointer — a card that lifts under
+ * the cursor and then does nothing is worse than one that never moved.
+ */
+.hanover-park-test .hp-card--link {
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease,
+    transform 150ms ease, box-shadow 150ms ease;
+}
+
+.hanover-park-test .hp-card--link:hover {
+  background-color: #f1e8dc; /* the warm tint — darker than the white card */
+  border-color: #c9bca9;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(10, 27, 46, 0.12);
+}
+
+.hanover-park-test .hp-card--link:focus-visible {
+  outline: 2px solid #1560e6; /* Cerulean */
+  outline-offset: 3px;
+}
+
+.hanover-park-test .hp-card-icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+/* The inline building SVG tints through `currentColor`, like the homepage's. */
+.hanover-park-test .hp-card-icon--inline {
+  color: #bc0e0e; /* Carmine */
+}
+
+.hanover-park-test .hp-card-title {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700; /* Industry Bold — the 20px card-label token */
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.5px;
+  color: #bc0e0e; /* Carmine */
+}
+
+.hanover-park-test .hp-card-body {
+  font-size: 16px;
+  line-height: 24px;
+  color: #0a1b2e; /* Midnight */
+}
+
+/* ══ 3, 4, 6. SPLIT SECTIONS — text left, media right ══════════════════════
+   ONE split shape, used by Sump Pump, Why Us and Video. Same columns, same
+   gutter, same stacking breakpoint — that is what makes the page read as one
+   system rather than three one-off layouts. */
+
+.hanover-park-test .hp-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--hp-gutter);
+  align-items: start;
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-split {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: var(--hp-gutter);
+  }
+}
+
+/* Same two-tier rhythm inside a split column as in a full-width band: normal
+   blocks get `--hp-gap`, a major block (a why-point, a button) gets the larger
+   one. Sections 3 and 6 now put their eyebrow + H2 + body in here, so this must
+   not be a blanket large gap. */
+.hanover-park-test .hp-split-text > * + * {
+  margin-top: var(--hp-gap);
+}
+
+.hanover-park-test .hp-split-text > * + .hp-why-point,
+.hanover-park-test .hp-split-text > * + .hp-btn {
+  margin-top: var(--hp-gap-lg);
+}
+
+.hanover-park-test .hp-why-point > * + * {
+  margin-top: var(--hp-gap-sm);
+}
+
+/* Revision round 3, item 3 — the real photo in a split column. Same 4:3 box the
+   labelled placeholder occupied, so the section's rhythm is unchanged; the photo
+   is 3:2, and `object-fit: cover` crops rather than letterboxes. */
+.hanover-park-test .hp-split-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 10px;
+}
+
+/* Revision round 3, item 4 — the embedded Google map, in the same 4:3 box. */
+.hanover-park-test .hp-map {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* ══ 7. REVIEWS ════════════════════════════════════════════════════════════ */
+
+.hanover-park-test .hp-reviews {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--hp-gutter);
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-reviews { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Card treatment per the reference Marketing supplied, 2026-09-17 (revision
+   round 2, item 5): white card, soft shadow, Carmine stars, italic quoted body,
+   then a Midnight avatar disc beside the reviewer's name and a second, smaller
+   source line. */
+.hanover-park-test .hp-review {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #e3d8c8;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(10, 27, 46, 0.06);
+}
+
+.hanover-park-test .hp-review-stars {
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 2px;
+  color: #bc0e0e; /* Carmine — all three reviews are 5-star (page brief §6) */
+}
+
+.hanover-park-test .hp-review-text {
+  flex: 1;
+  margin-top: var(--hp-gap);
+  font-size: 16px;
+  line-height: 26px;
+  font-style: italic;
+  color: #0a1b2e; /* Midnight */
+}
+
+.hanover-park-test .hp-review-meta {
+  position: relative; /* containing block for the name link's hit area, below */
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: var(--hp-gap-lg);
+}
+
+/* The rounded avatar (revision 1, item 4; recoloured in round 2 to match the
+   reference) — a Midnight disc holding the same head-and-shoulders silhouette
+   the site's own review cards use. */
+.hanover-park-test .hp-review-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #0a1b2e; /* Midnight */
+  color: #ffffff;
+}
+
+.hanover-park-test .hp-review-avatar svg {
+  width: 24px;
+  height: 24px;
+}
+
+.hanover-park-test .hp-review-id {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+}
+
+/* The NAME is the Google link (revision 1, item 4) — the "View on Google"
+   button is gone. Uppercase Industry, per the reference.
+   The visible text is a 22px line, which is HALF the 44px tap-target floor, and
+   it cannot simply be padded taller without pushing the source line away from
+   it. So the link stretches an invisible hit area over the whole footer row
+   (avatar + name + source, 44px tall) — the standard "card link" pattern. The
+   row contains no other interactive element, so nothing is swallowed. */
+.hanover-park-test .hp-review-name::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.hanover-park-test .hp-review-name {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0a1b2e; /* Midnight, as in the reference */
+  text-decoration: none;
+}
+
+.hanover-park-test .hp-review-name:hover,
+.hanover-park-test .hp-review-name:focus-visible {
+  color: #bc0e0e; /* Carmine — it is still a link, so it still reacts */
+  text-decoration: underline;
+}
+
+.hanover-park-test .hp-review-source {
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a4a5c; /* the muted body tone — 7.0:1 on white */
+}
+
+/* ══ 9. NO DRIP CLUB ═══════════════════════════════════════════════════════
+   Revision 1, item 6: benefits STACKED in one column, not two.
+   Revision 2, item 4: copy LEFT, the J character RIGHT and facing it, and the
+   square markers replaced by the reference's Carmine check discs.
+
+   The character column is `order: 2` at desktop and the text `order: 1`; below
+   901px the figure is hidden outright rather than stacked. It is decorative, it
+   is 1180×1604, and a full-width illustration above or below the copy on a
+   phone would be the loudest thing in a section whose job is the benefit list. */
+
+.hanover-park-test .hp-ndc {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--hp-gutter);
+  align-items: center;
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-ndc {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.66fr);
+  }
+}
+
+.hanover-park-test .hp-ndc-text > * + * {
+  margin-top: var(--hp-gap);
+}
+
+.hanover-park-test .hp-ndc-text > .hp-eyebrow + .hp-h2 {
+  margin-top: var(--hp-gap-sm);
+}
+
+.hanover-park-test .hp-ndc-text > * + .hp-benefits,
+.hanover-park-test .hp-ndc-text > * + .hp-btn {
+  margin-top: var(--hp-gap-lg);
+}
+
+.hanover-park-test .hp-ndc-figure {
+  display: none;
+}
+
+/*
+ * ⚠ THE FIGURE'S BOTTOM EDGE MUST LAND ON THE BAND'S BOTTOM EDGE.
+ *
+ * `jbcharacter.webp` is a HALF-BODY crop — the asset itself ends mid-thigh, with
+ * a hard horizontal cut. Where that cut lands is the whole difference between
+ * the two readings:
+ *
+ *   cut INSIDE the band  → a floating, visibly amputated figure (what this
+ *                          looked like before: the band's 100px bottom padding
+ *                          left a strip of navy under him)
+ *   cut ON the band edge → the band is what crops him, so he reads as standing
+ *                          and continuing below the fold — which is exactly how
+ *                          the reference panel Marketing supplied reads, using
+ *                          this same asset.
+ *
+ * So the figure is pulled DOWN through the band's bottom padding by exactly that
+ * padding. Keep the two in sync: the negative margin is `--hp-band-pad`, not a
+ * hardcoded 100px, so changing the section rhythm cannot silently reintroduce
+ * the strip. `overflow: hidden` on the band is the safety net if the figure ever
+ * ends up taller than the row.
+ */
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-band--midnight {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hanover-park-test .hp-ndc-figure {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    align-self: end;
+    margin-bottom: calc(var(--hp-band-pad) * -1);
+  }
+}
+
+.hanover-park-test .hp-ndc-character {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+.hanover-park-test .hp-benefits {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hp-gap-sm);
+  max-width: var(--hp-measure);
+}
+
+.hanover-park-test .hp-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f9f3ec; /* Cream on Midnight — 15.8:1 */
+}
+
+@media only screen and (min-width: 901px) {
+  .hanover-park-test .hp-benefits li {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+/* The reference's tick: a Carmine disc with a white check. Decorative — the
+   `<ul>`/`<li>` semantics already carry "this is a list of benefits". */
+.hanover-park-test .hp-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 0.15em;
+  border-radius: 50%;
+  background-color: #bc0e0e; /* Carmine */
+  color: #ffffff;
+}
+
+.hanover-park-test .hp-check svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* ══ SHARED-COMPONENT OVERRIDES ════════════════════════════════════════════
+   Cosmetic only, scoped so they cannot leak to the pages these components
+   actually belong to. Neither component's source is edited. See note 3 in the
+   file header. */
+
+/* `FaqAccordion` ships `mt-[50px] pb-[100px]`. The band already owns its bottom
+   padding, and the gap above comes from the page's rhythm rule. */
+.hanover-park-test .faqs {
+  margin-top: var(--hp-gap-lg);
+  padding-bottom: 0;
+}
+
+/* Motion respects the user's preference. */
+@media (prefers-reduced-motion: reduce) {
+  .hanover-park-test .hp-btn,
+  .hanover-park-test .hp-card--link {
+    transition: none;
+  }
+  /* The colour change still signals the hover; only the movement is dropped. */
+  .hanover-park-test .hp-card--link:hover {
+    transform: none;
+  }
+}
