@@ -2,20 +2,55 @@ import FaqAccordion from '@/components/FaqAccordion';
 import HeroNav from '@/components/HeroNav';
 import { SERVICES } from '@/lib/services';
 import { formatOfficeAddress, type CmsOffice } from '@/lib/cms/offices';
-import {
-  HANOVER_PARK_TEST,
-  withPhone,
-  type CopySegment,
-  type PlaceholderSlot,
-} from '@/lib/content/hanover-park-test';
+import { CANONICAL_BASE } from '@/lib/seo';
+import { withPhone } from '@/lib/content/cities/v3';
+import type { CityV3Content, CopySegment } from '@/types/city-v3';
+/*
+ * ⚠ THIS IMPORT LOADS ON EVERY `/{city}` PAGE, NOT JUST V3 ONES — measured, not
+ * assumed (Brief 181, Track G3).
+ *
+ * The App Router hoists a component's CSS import into its ROUTE's stylesheet
+ * bundle at build time. `[city]/page.tsx` imports this component statically, so
+ * the `[city]` route carries this file whether the request resolves to V3,
+ * Coverage Area, V1 or V2. The other 248 city pages therefore gain one
+ * `<link rel="stylesheet">` they do not use.
+ *
+ * That cost is accepted, for want of a better option. Every rule in the file is
+ * scoped under `.local-office-v3`, so nothing MATCHES on a non-V3 page and no
+ * page's rendering changes — only its head. The alternatives were worse: folding
+ * the rules into `globals.css` would ship them on every page of the site rather
+ * than every city page, and inlining them in a `<style>` tag would make the
+ * stylesheet uncacheable and contradict Brief 181 B1, which names this file.
+ * Conditional CSS imports do not exist in the App Router.
+ *
+ * Brief 182 should revisit this: once V3 is a CMS template rather than one page,
+ * the honest fix is a route segment that only V3 cities resolve into.
+ */
+import './local-office-city-v3.css';
 
 /**
- * /hanover-park-test — ALL the page markup (Brief 180, Track D + Marketing
- * revision round 1, 2026-09-17).
+ * Local Office City V3 — ALL the page markup.
  *
- * ⚠ TEMPORARY REVIEW BUILD. Noindex on purpose, zero inbound links, reachable
- * only by typing the URL. Copy source of truth:
+ * Brief 180 built this as `/hanover-park-test`, a noindex review URL, through
+ * five Marketing revision rounds on 2026-09-17. Brief 181 promoted it to a real
+ * city template: same markup, rendered by the shared `[city]` builder for any
+ * city whose `city_pages.template_type` is `local-office-v3`.
+ *
+ * Copy source of truth:
  * `New Pages/Hanover Park city page/Hanover Park_CityPage_Copy_Rewrite.md`.
+ *
+ * ── WHAT BRIEF 181 CHANGED HERE ────────────────────────────────────────────
+ * Hard rule 1 was "the approved copy, section order and layout ship unchanged",
+ * so the JSX below is the review page's, with four edits and no others:
+ *   • PROPS. Was `{ phoneDisplay, phoneHref, offices }` off a bespoke route; now
+ *     `{ city, content, settings }` off the `[city]` builder.
+ *   • The root class is `.local-office-v3` (was `.hanover-park-test`).
+ *   • The 7 service cards read `card.href` instead of deriving a destination
+ *     from whichever body segment happened to carry one (D4).
+ *   • A `BreadcrumbList` JSON-LD block, and `questionHeadingLevel="h3"` on the
+ *     FAQ accordion (D2/D6). Both are invisible — see their own notes below.
+ * The office address lookup was generalised from a hardcoded "hanover park" to
+ * `content.officeCity`, which is the same lookup with the city as data.
  *
  * ── Marketing revisions, rounds 1 and 2, 2026-09-17 ────────────────────────
  * Brief 180 hard rule 6 said "do not import a shared component" and Track B
@@ -34,51 +69,71 @@ import {
  *     below the hero on every page (round 1, item 9). Chrome, not content: it
  *     carries no page copy, so it is not in the content module.
  *
- * Both are imported and rendered as-is. NEITHER IS EDITED. One cosmetic override
- * lives in `hanover-park-test.css`, scoped under `.hanover-park-test` so it
- * cannot leak: the accordion's hardcoded margins are zeroed so the page keeps
- * ONE spacing scale.
+ * Both are imported and rendered as-is. `FaqAccordion` gained ONE optional prop
+ * in Brief 181 (`questionHeadingLevel`), whose default reproduces today's markup
+ * exactly, so no other page that renders it moved. One cosmetic override lives
+ * in `local-office-city-v3.css`, scoped under `.local-office-v3` so it cannot
+ * leak: the accordion's hardcoded margins are zeroed so the page keeps ONE
+ * spacing scale.
  *
  * ⚠ `CityServicesMenu` (the red OUR SERVICES dropdown) was consumed here in
  * round 1 and REMOVED AGAIN in round 2. Marketing's reason is SEO: the menu is a
  * link list and cannot carry an `<h3>` per service category, and those headings
  * are the signal that the page covers those services. The 7 copy cards are back,
  * each titled with a real `<h3>`. Do not swap them for the menu again without
- * that trade-off being re-decided. Cost of the revert: the menu's 41 internal
- * links to `/hanover-park/{service}` are gone with it.
+ * that trade-off being re-decided.
+ *
+ * ⚠ THE "COST OF THE REVERT" NOTE THAT USED TO SIT HERE WAS WRONG, and Brief 181
+ * measured it: it claimed the menu carried "41 internal links to
+ * `/hanover-park/{service}`". The live Coverage Area `/hanover-park` carried
+ * ZERO — `[city]/page.tsx` passes `slug` to `CityServicesMenu` only for Ohio
+ * cities, so every Illinois page's menu points at the NATIONAL `/services/*`
+ * pages. The 6 city-scoped card links below are the first this page has ever
+ * had; D4 introduced them, it did not restore them.
  *
  * `@/lib/services` IS imported, but it is a lib DATA module, not a component —
  * it is where the homepage's card icons live, so the two share one source.
  *
  * ── What this file still deliberately does NOT do ──────────────────────────
- * The point of the experiment is TEXT FIRST, LAYOUT SECOND, CMS THIRD. Do not
- * "helpfully" wire any of this up early — the absence is the thing being tested:
+ * TEXT FIRST, LAYOUT SECOND, CMS THIRD. The CMS step is Brief 182 — do not
+ * "helpfully" wire any of it up early:
  *
- *   • NO CMS of any kind — no `main_pages`/`city_pages` row, no seed, no
- *     `/admin` editor, no `getMainPageContent` / `getCityCmsContent` /
- *     `renderCmsBlock` / `isPageLive` / preview banner, no `rich-text-fields`
- *     entry. The only live read on the page is `getGlobalSettingsCached()`, for
- *     the phone number, and that getter already falls back to `site.ts` so the
- *     page renders with the database down.
- *   • NO shared component is MODIFIED, and none beyond the three named above is
- *     imported — not `SiteShell`, `CityHero`, `CityLocationsGrid`,
+ *   • NO CMS content of any kind — no `getCityCmsContent`, no `renderCmsBlock`,
+ *     no `rich-text-fields` entry. Every string comes from the content module.
+ *     The ONLY live values are the phone number and the office address, both off
+ *     the SAME `getGlobalSettingsCached()` object the builder already fetched,
+ *     and that getter falls back to `site.ts` and never throws — so THIS PAGE
+ *     RENDERS WITH THE DATABASE DOWN. Keep it that way.
+ *   • NO shared component beyond `FaqAccordion` and `HeroNav` is imported — not
+ *     `SiteShell`, `CityHero`, `CityServicesMenu`, `CityLocationsGrid`,
  *     `ArticleGrid`, `NoDripClubSection`, `ServiceCard`, `GoogleReviews`,
- *     `CityPageImage`. The hero, the mid CTA, the reviews and the No Drip Club
- *     block are LOCAL static markup. The navbar and footer come from the root
- *     layout / SiteShell and are consumed, not touched.
+ *     `CityPageImage`, `Breadcrumbs`. The hero, the mid CTA, the reviews and the
+ *     No Drip Club block are LOCAL static markup. The navbar and footer come
+ *     from the root layout / SiteShell and are consumed, not touched.
  *   • NO other site furniture: no locations grid, no article grid, no Elfsight
- *     reviews pill. (A Google map DID arrive in revision round 3 — one embedded
- *     iframe pinned on the Hanover Park office, in the Why Us section.)
- *   • NO JSON-LD. Structured data on a noindex test page is pointless and would
- *     risk a duplicate-schema collision when this copy is merged to the real URL.
+ *     reviews pill, and NO page-scoped NAP block. The V3 page states the office
+ *     in prose ("our office on Greenbrook Blvd.") and pins it on the map; the
+ *     full street address reaches crawlers through the footer's sitewide
+ *     `PlumbingBusiness` `@graph` and the store locator. Marketing weighed that
+ *     and chose approved copy over adding a NAP line (Brief 181, decision 5).
+ *   • NO `FAQPage`, `AggregateRating`, `Review` or `SearchAction` schema — Brief
+ *     164 forbids the first (FAQ rich results stopped rendering 2026-05-07) and
+ *     Brief 167 owns sitewide structured data. `BreadcrumbList` ONLY.
+ *   • NO `LocalBusiness` / `Plumber` node of the page's own. The footer's
+ *     `LocalBusinessSchema` already emits one per office; a second here would
+ *     fork the graph ahead of Brief 167.
  *
  * ── Heading semantics ──────────────────────────────────────────────────────
  * Exactly ONE `<h1>` (the hero). EIGHT H2s in published order — it was ten
- * until the Video section was pulled on 2026-09-17. H3s in TWO places:
- * the 7 service-card titles (section 2) and the 3 why-points (section 4). Brief
- * 180 hard rule 10 restricted H3s to section 4; revision round 2 overrode that
- * for the service cards specifically, because the H3 is the SEO signal for each
- * service category. No level is skipped anywhere.
+ * until the Video section was pulled on 2026-09-17. H3s in THREE places now:
+ * the 7 service-card titles (section 2), the 3 why-points (section 4), and —
+ * since Brief 181 (D2) — the 6 FAQ questions, which used to be `<p>` inside a
+ * `<button>` and so appeared in no outline at all. No level is skipped.
+ *
+ * ⚠ The FAQ level is H3 HERE and H2 EVERYWHERE ELSE (Brief 164), and that is not
+ * an inconsistency. On every other page nothing labels the accordion, so H2 is
+ * the level that skips nothing; here the accordion sits under a real
+ * `Frequently Asked Questions` H2, so H3 is. The level follows the context.
  *
  * The reviews stay `<blockquote>` + `<figcaption>` rather than headings — a
  * reviewer's name is an attribution, not a section of the document.
@@ -87,21 +142,22 @@ import {
  * `globals.css` sets `h1..h5 { … text-navy-800 }` inside `@layer base`, ON THE
  * ELEMENT. An inherited colour from a parent box always loses to that. So every
  * heading on a Carmine / Midnight band here carries its own `hp-h2--on-dark`
- * class, and `hanover-park-test.css` is UNLAYERED so those rules win. Never set
- * a heading colour only on the section wrapper.
+ * class, and `local-office-city-v3.css` is UNLAYERED so those rules win. Never
+ * set a heading colour only on the section wrapper.
  */
 
 /**
- * The brief's content container. `hp-w` is the hook for the page's ONE vertical
- * rhythm rule (`hanover-park-test.css`, "THE SPACING SCALE") — blocks carry no
+ * The page's content container. `hp-w` is the hook for its ONE vertical rhythm
+ * rule (`local-office-city-v3.css`, "THE SPACING SCALE") — blocks carry no
  * margins of their own, so there is only ever one rule to change.
  */
 const CONTAINER = 'mx-auto w-[90%] lg:w-[81%] max-w-[1200px] hp-w';
 
 /**
- * A run of copy with inline links. The `href`s are the copy document's own,
- * trailing slashes included — every one resolves through a single 301 today
- * (see the Brief 180 report). Not silently rewritten.
+ * A run of copy with inline links.
+ *
+ * Brief 181 (D3) replaced each href with the destination it used to 301 to, so
+ * every one of these now resolves as a direct 200. The words are untouched.
  */
 function Copy({ segments }: { segments: CopySegment[] }) {
   return (
@@ -116,39 +172,6 @@ function Copy({ segments }: { segments: CopySegment[] }) {
         ),
       )}
     </>
-  );
-}
-
-/**
- * A visibly labelled empty slot — NOT a stock image, not a gradient, not an AI
- * render. It reserves its real space at every breakpoint so spacing and rhythm
- * are reviewable now, before any asset exists.
- *
- * `role="img"` + `aria-label` names the pending asset. The visible label is
- * inside an element that `role="img"` makes presentational, so it is announced
- * once, not twice. There is no `alt` text because none exists yet — the copy
- * document leaves Image and Alt text blank on purpose for the creative workflow.
- */
-function Placeholder({
-  slot,
-  className = '',
-  caption,
-}: {
-  slot: PlaceholderSlot;
-  className?: string;
-  /** Extra approved copy shown under the label (the video thumbnail title). */
-  caption?: string;
-}) {
-  return (
-    <div
-      role="img"
-      aria-label={slot.ariaLabel}
-      className={`hp-placeholder ${className}`}
-      style={{ aspectRatio: String(slot.ratio) }}
-    >
-      <span className="hp-placeholder-label">{slot.label}</span>
-      {caption && <span className="hp-placeholder-caption">{caption}</span>}
-    </div>
   );
 }
 
@@ -173,30 +196,6 @@ function Placeholder({
  * card's own text alignment.
  */
 const SERVICE_ICON_BY_NAME = new Map(SERVICES.map((s) => [s.name, s.iconUrl]));
-
-/**
- * The service-category HUB for a card title (revision round 4).
- *
- * Used only for the three cards the copy rewrite leaves unlinked. Its editorial
- * notes say Emergency has "no Emergency Plumbing category page in current site
- * structure" and Plumbing is "too generic for a single accurate destination" —
- * **both are stale against this build.** Marketing corrected it on 2026-09-17:
- * they are the main service category hubs, and all three routes exist and serve
- * 200 directly (`src/app/emergency-plumbing`, `src/app/services/plumbing`,
- * `src/app/services/commercial`; none is a redirect source).
- *
- * The rule is `ServiceCard`'s own, so these three cards land exactly where the
- * homepage's cards land — `/services/{slug}`, with `emergency-plumbing` the one
- * special case that lives at the root. Derived from `SERVICES` rather than typed
- * out, so it cannot drift from the homepage.
- */
-const SERVICE_SLUG_BY_NAME = new Map(SERVICES.map((s) => [s.name, s.slug]));
-
-function categoryHubHref(name: string): string | undefined {
-  const slug = SERVICE_SLUG_BY_NAME.get(name);
-  if (!slug) return undefined;
-  return slug === 'emergency-plumbing' ? '/emergency-plumbing' : `/services/${slug}`;
-}
 
 function ServiceIcon({ name }: { name: string }) {
   if (name === 'Commercial') {
@@ -293,37 +292,81 @@ function ReviewerAvatar() {
 }
 
 /**
- * The Hanover Park office address, for the map query (revision round 3, item 4).
+ * The city's office address, for the map query (revision round 3, item 4).
  *
  * Read from the SAME global-settings object the phone number comes from, so the
  * page cannot disagree with the NAP the rest of the site renders. The record is
- * matched on city name rather than slug on purpose: the live row stores its slug
- * as `/hanover-park`, with a leading slash, which is a data quirk this page
- * should not depend on.
+ * matched on city NAME rather than slug on purpose: the live rows store their
+ * slug with a leading slash (`/hanover-park`), a data quirk no template should
+ * depend on.
  *
- * The static fallback is the address on the live page today, so the map still
- * pins correctly when the DB is unreachable — the same fail-open posture
- * `getGlobalSettingsCached()` itself takes.
+ * Brief 181 turned the hardcoded `'hanover park'` into `content.officeCity`, and
+ * the hardcoded fallback into `content.officeAddressFallback` — same lookup,
+ * city as data. The fallback keeps the map pinning correctly when the DB is
+ * unreachable, matching the fail-open posture `getGlobalSettingsCached()` takes.
  */
-const OFFICE_FALLBACK = '1300 Greenbrook Blvd, Suite B5, Hanover Park, IL 60133';
-
-function hanoverParkAddress(offices: CmsOffice[]): string {
-  const o = offices.find((x) => x.city?.toLowerCase() === 'hanover park');
-  return o ? formatOfficeAddress(o) : OFFICE_FALLBACK;
+function officeAddress(offices: CmsOffice[], content: CityV3Content): string {
+  const wanted = content.officeCity.toLowerCase();
+  const o = offices.find((x) => x.city?.toLowerCase() === wanted);
+  return o ? formatOfficeAddress(o) : content.officeAddressFallback;
 }
 
-export default function HanoverParkTestTemplate({
-  phoneDisplay,
-  phoneHref,
-  offices,
+/**
+ * The page's BreadcrumbList (Brief 181, D6).
+ *
+ * ⚠ JSON-LD ONLY — no visible trail. `Breadcrumbs.tsx` (the sub-service /
+ * locations implementation) renders BOTH a visible `<nav>` and this schema, and
+ * dropping it in would have added a visible element the approved layout does not
+ * have. Hard rule 1 said the layout ships unchanged, hard rule 3 forbade
+ * splitting the shared component in two, and Marketing chose the invisible
+ * option on 2026-09-18. So the OBJECT below is `Breadcrumbs.tsx`'s, field for
+ * field — same `@context`, same `ListItem` shape, same absolute `item` URLs —
+ * emitted without the markup that would have changed the page.
+ *
+ * Two crumbs, Home → the city. Exactly one `BreadcrumbList` in the document: the
+ * footer's `LocalBusinessSchema` emits a `PlumbingBusiness` `@graph` and nothing
+ * else, and this template imports no other schema component.
+ */
+function breadcrumbJsonLd(city: { name: string; slug: string }) {
+  const items = [
+    { label: 'Home', href: '/' },
+    { label: city.name, href: `/${city.slug}` },
+  ];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.label,
+      // `CANONICAL_BASE` is the production origin with no trailing slash, so the
+      // Home crumb is `https://jblantonplumbing.com/` and the city crumb has no
+      // double slash. Never derived from the request host (Brief 127).
+      item: it.href === '/' ? `${CANONICAL_BASE}/` : `${CANONICAL_BASE}${it.href}`,
+    })),
+  };
+}
+
+export default function LocalOfficeCityV3({
+  city,
+  content,
+  settings,
 }: {
-  /** From `getGlobalSettingsCached()`. Never hardcoded on this page. */
-  phoneDisplay: string;
-  phoneHref: string;
-  /** From the same settings object — used only for the map query. */
-  offices: CmsOffice[];
+  /** Registry identity — the breadcrumb label and its URL. */
+  city: { name: string; slug: string };
+  /** Every user-visible string on the page. */
+  content: CityV3Content;
+  /**
+   * `getGlobalSettingsCached()`, fetched once by the `[city]` builder. The ONLY
+   * live data this template reads: the phone number (never hardcoded —
+   * design.md, "Copy and claims") and the office address for the map. That
+   * getter falls back to `site.ts` and never throws, so the page renders with
+   * the database down.
+   */
+  settings: { phoneDisplay: string; phoneHref: string; offices: CmsOffice[] };
 }) {
-  const C = HANOVER_PARK_TEST;
+  const C = content;
+  const { phoneDisplay, phoneHref, offices } = settings;
 
   /*
    * Keyless classic embed, built exactly as `StoreLocatorPanel` builds it for a
@@ -341,11 +384,22 @@ export default function HanoverParkTestTemplate({
    */
   const mapSrc =
     `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(
-      hanoverParkAddress(offices),
+      officeAddress(offices, C),
     )}&t=&z=${C.whyUs.map.zoom}&ie=UTF8&iwloc=B&output=embed`;
 
   return (
-    <div className="hanover-park-test">
+    <div className="local-office-v3">
+      {/*
+        BreadcrumbList (Brief 181, D6). Invisible by design — see
+        `breadcrumbJsonLd` above for why this is schema without a visible trail.
+        Rendered first so it is in the document head-ward of the content it
+        describes; position in the body is irrelevant to Google.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(city)) }}
+      />
+
       {/* ══ 1. HERO — image half / Carmine half ════════════════════════════
           Same shape as the `localOfficeV2Hero` case in LocalOfficeCityV2.tsx,
           rebuilt locally under `hp-` class names so nothing shared is imported
@@ -359,11 +413,11 @@ export default function HanoverParkTestTemplate({
             deliberately not `CityPageImage`, whose fallback logic belongs to the
             city templates this page imports nothing from.
           */}
-          {/* <!-- Provisional alt text. Final alt pending Marketing. --> */}
+          {/* <!-- Brief 181 D5: final alt, pending Marketing's sign-off. --> */}
           <img
             className="hp-hero-image"
             src={C.hero.image.src}
-            alt={C.hero.image.provisionalAlt}
+            alt={C.hero.image.alt}
             width={C.hero.image.width}
             height={C.hero.image.height}
             loading="eager"
@@ -404,67 +458,45 @@ export default function HanoverParkTestTemplate({
           this section and section 4 both contain H3s.
 
           Icons are the homepage set, looked up from `@/lib/services` (see
-          `ServiceIcon`). Emergency and Plumbing stay UNLINKED plain text — no
-          destination exists for either (content gap flagged in the rewrite). */}
+          `ServiceIcon`). */}
       <section className="hp-band hp-band--cream">
         <div className={CONTAINER}>
           <p className="hp-eyebrow hp-eyebrow--on-light">{C.services.eyebrow}</p>
           <h2 className="hp-h2">{C.services.h2}</h2>
           <p className="hp-lead">{C.services.intro}</p>
           <div className="hp-cards">
-            {C.services.cards.map((card) => {
+            {C.services.cards.map((card) => (
               /*
                 Revision round 3, item 2: the WHOLE CARD is the link, not a run of
-                words inside the sentence. The href is the one the copy document
-                already put on that card, taken verbatim — nothing is invented and
-                nothing is retargeted.
+                words inside the sentence. All seven are clickable.
 
-                ALL SEVEN are clickable since revision round 4. Four take the href
-                the copy document already put in their sentence, verbatim. The
-                three the rewrite left unlinked — Emergency, Plumbing, Commercial —
-                take their service-category HUB instead (see `categoryHubHref`):
-                the rewrite's "no destination exists" notes are stale against this
-                build, and Marketing confirmed these are the category hubs.
+                Brief 181 (D4) made the destination EXPLICIT DATA (`card.href`).
+                It used to be derived — the first body segment that happened to
+                carry an href, falling back to a service-category hub keyed off
+                the card title — which produced a grid where two cards could point
+                at different levels of the site, and made the destination a side
+                effect of how a sentence had been marked up. Six now point at the
+                city-scoped `/{city}/{service}` page; Commercial keeps the
+                national hub because no city-scoped commercial page exists.
 
-                ⚠ So the grid runs on a MIXED href system: 4 rewrite links (two of
-                which are sub-pages, one a 301 to a category) + 3 category hubs.
-                That is deliberate — the rewrite's own hrefs are approved copy and
-                are not overridden — but it means two cards in the same grid can
-                point at different levels of the site. Flagged for Marketing in the
-                Brief 180 report; pointing all seven at the hubs is a one-line
-                change if that is preferred.
-
-                A linked card renders its body as PLAIN TEXT: an `<a>` inside an
-                `<a>` is invalid HTML, and the whole card is now the link, so the
-                inline link styling has nothing left to do. The words are unchanged.
+                The body renders as PLAIN TEXT: an `<a>` inside an `<a>` is
+                invalid HTML, and the whole card is the link. The words are the
+                rewrite's, unchanged — only the markup around them is gone.
               */
-              const href = card.body.find((seg) => seg.href)?.href ?? categoryHubHref(card.title);
-              const text = card.body.map((seg) => seg.text).join('');
-              const inner = (
-                <>
-                  <ServiceIcon name={card.title} />
-                  {/* The Commercial card carries the copy document's own flag:
-                      <!-- Marketing flag: fixed template copy, off-persona for a
-                      homeowners-only page. Swap decision pending. --> */}
-                  <h3 className="hp-card-title">{card.title}</h3>
-                  <p className="hp-card-body">{href ? text : <Copy segments={card.body} />}</p>
-                </>
-              );
-              return href ? (
-                <a className="hp-card hp-card--link" href={href} key={card.title}>
-                  {inner}
-                </a>
-              ) : (
-                <div className="hp-card" key={card.title}>
-                  {inner}
-                </div>
-              );
-            })}
+              <a className="hp-card hp-card--link" href={card.href} key={card.title}>
+                <ServiceIcon name={card.title} />
+                {/* The Commercial card carries the copy document's own flag:
+                    <!-- Marketing flag: fixed template copy, off-persona for a
+                    homeowners-only page. Swap decision pending. --> */}
+                <h3 className="hp-card-title">{card.title}</h3>
+                <p className="hp-card-body">{card.body.map((seg) => seg.text).join('')}</p>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ══ 3. SUMP PUMP & BASEMENT FLOODING — White #FFFFFF ═══════════════
+      {/* ══ 3. FEATURED SERVICE — White #FFFFFF ════════════════════════════
           Revision round 2, items 2/3: the eyebrow + H2 + body all live in the
           LEFT column, so the heading's top edge lines up with the top of the
           image on the right. Only this section and the Video section use this
@@ -477,24 +509,24 @@ export default function HanoverParkTestTemplate({
               {/* <!-- Marketing: "Most Common Service" is PROVISIONAL, not
                    approved copy. The rewrite contains no eyebrow for this
                    section — please supply the final wording. --> */}
-              <p className="hp-eyebrow hp-eyebrow--on-light">{C.sumpPump.eyebrow}</p>
-              <h2 className="hp-h2">{C.sumpPump.h2}</h2>
+              <p className="hp-eyebrow hp-eyebrow--on-light">{C.featuredService.eyebrow}</p>
+              <h2 className="hp-h2">{C.featuredService.h2}</h2>
               {/* Two paragraphs (Marketing, 2026-09-17) — a readability break
                   only; no word of the approved copy changes. */}
-              {C.sumpPump.body.map((para, i) => (
+              {C.featuredService.body.map((para, i) => (
                 <p className="hp-body" key={i}>
                   <Copy segments={para} />
                 </p>
               ))}
             </div>
             <div className="hp-split-media">
-              {/* <!-- Provisional alt text. Final alt pending Marketing. --> */}
+              {/* <!-- Brief 181 D5: final alt, pending Marketing's sign-off. --> */}
               <img
                 className="hp-split-photo"
-                src={C.sumpPump.image.src}
-                alt={C.sumpPump.image.provisionalAlt}
-                width={C.sumpPump.image.width}
-                height={C.sumpPump.image.height}
+                src={C.featuredService.image.src}
+                alt={C.featuredService.image.alt}
+                width={C.featuredService.image.width}
+                height={C.featuredService.image.height}
                 loading="lazy"
               />
             </div>
@@ -649,7 +681,20 @@ export default function HanoverParkTestTemplate({
         <div className={CONTAINER}>
           <p className="hp-eyebrow hp-eyebrow--on-light">{C.faq.eyebrow}</p>
           <h2 className="hp-h2">{C.faq.h2}</h2>
-          <FaqAccordion faqs={C.faq.items} />
+          {/*
+            Brief 181 (D2) — the questions become real headings.
+
+            By default `FaqAccordion` renders each question as a `<p>` inside its
+            `<button>`, so the six questions on this page appeared in NO heading
+            outline at all. `questionHeadingLevel` is an OPTIONAL prop whose
+            default reproduces that markup byte for byte; only this template
+            passes it, so no other page that renders the accordion moved.
+
+            H3, not H2, because the `Frequently Asked Questions` H2 directly above
+            labels the set — see the heading-semantics note in this file's header
+            for why that differs from Brief 164's sitewide H2 rule.
+          */}
+          <FaqAccordion faqs={C.faq.items} questionHeadingLevel="h3" />
         </div>
       </section>
 

@@ -84,15 +84,36 @@ const LOCAL_OFFICE_V2_ONLY_FIELDS = [
 // columns above because it is not an editor-fillable "missing field".
 const V2_BLOCKS_FIELD = 'blocks';
 
-export type CityTemplate = 'coverage-area' | 'local-office' | 'local-office-v2';
+/*
+ * Brief 181 — V3 has NO DB-backed columns of its own.
+ *
+ * Every string a V3 page renders comes from `src/lib/content/cities/v3/`; the
+ * only live values are the phone number and the office address, both off global
+ * settings. So there is nothing V3-only to report as "missing" on a switch TO
+ * it, and nothing to wipe on a switch AWAY from it. That is what makes the flip
+ * back to Coverage Area lossless: the shared columns are remapped as usual and
+ * `COVERAGE_AREA_ONLY_FIELDS` is empty, so the row comes back as it went in.
+ *
+ * Brief 182 gives V3 its own columns. When it does, this list stops being empty
+ * and the Brief 116 archive/restore path starts mattering for V3 too.
+ */
+const LOCAL_OFFICE_V3_ONLY_FIELDS: readonly string[] = [];
+
+export type CityTemplate = 'coverage-area' | 'local-office' | 'local-office-v2' | 'local-office-v3';
 
 const TEMPLATE_ONLY_FIELDS: Record<CityTemplate, readonly string[]> = {
   'local-office': LOCAL_OFFICE_ONLY_FIELDS,
   'coverage-area': COVERAGE_AREA_ONLY_FIELDS,
   'local-office-v2': LOCAL_OFFICE_V2_ONLY_FIELDS,
+  'local-office-v3': LOCAL_OFFICE_V3_ONLY_FIELDS,
 };
 
-export const VALID_CITY_TEMPLATES: CityTemplate[] = ['coverage-area', 'local-office', 'local-office-v2'];
+export const VALID_CITY_TEMPLATES: CityTemplate[] = [
+  'coverage-area',
+  'local-office',
+  'local-office-v2',
+  'local-office-v3',
+];
 
 // ── Field-name translation (Brief 116) ──────────────────────────────────────
 // The live `city_pages` row uses snake_case columns; draft content (the editor's

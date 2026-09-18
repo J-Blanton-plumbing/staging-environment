@@ -691,9 +691,47 @@ export function gridRegionFor(slug: string): CityGridRegion {
  * Returns the RAW title, with no brand suffix handling; `pageTitle()` normalizes
  * at the render boundary so the layout's template appends the suffix once.
  */
+/**
+ * Static metadata overrides for cities whose approved copy lives outside the
+ * coverage/local-office content files (Brief 181, Track B3).
+ *
+ * ── WHY THIS IS NOT THE WHOLE STORY ────────────────────────────────────────
+ * `getCityPageMeta` prefers a NON-EMPTY `city_pages.meta_title` /
+ * `meta_description` over whatever this function returns. So for a city with a
+ * CMS row — which `hanover-park` has — editing this map alone changes nothing
+ * that ships. The CMS fields have to be updated too, in
+ * `/admin/city/{slug}`. That step is in the Brief 181 report's handoff, called
+ * out as REQUIRED rather than optional, because the failure mode is silent: the
+ * page renders approved copy under the old WordPress title.
+ *
+ * What this map IS for: the page is then correct with no CMS row and with the
+ * database down, which is the posture every other fallback here takes.
+ *
+ * ⚠ NO BRAND SUFFIX. The root layout composes `%s | J. Blanton Plumbing` via
+ * `TITLE_TEMPLATE`, and `pageTitle()` strips a trailing brand before that. The
+ * approved copy rewrite's title tag ends in "-- J. Blanton Plumbing"; Marketing
+ * confirmed on 2026-09-18 that the sitewide vertical separator wins over the
+ * rewrite's em dash, so the brand is left off here and composed on once.
+ */
+const CITY_META_OVERRIDES: Readonly<Record<string, { title: string; description: string }>> = {
+  // Brief 181 — the approved Hanover Park copy rewrite's META DATA block,
+  // promoted from `/hanover-park-test`. Source of truth:
+  // `New Pages/Hanover Park city page/Hanover Park_CityPage_Copy_Rewrite.md`.
+  'hanover-park': {
+    title: 'Hanover Park Plumbers, Available 24/7',
+    description:
+      'Our Hanover Park office serves the northwest suburbs, including Streamwood, Bartlett, and Schaumburg. Call 24/7 for a flat-rate quote before we start.',
+  },
+};
+
 export function staticCityMeta(slug: string): { title: string; description: string } | null {
   const entry = getCity(slug);
   if (!entry) return null;
+
+  // An explicit override wins over every derivation below — it exists precisely
+  // because the derivations cannot know about approved copy written elsewhere.
+  const override = CITY_META_OVERRIDES[entry.slug];
+  if (override) return override;
 
   // V1 local-office cities (Evanston) have a dedicated content file.
   if (entry.type === 'local-office') {

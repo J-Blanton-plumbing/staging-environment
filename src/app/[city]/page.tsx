@@ -20,9 +20,11 @@ import { getCityCmsContent } from '@/lib/cms/city-pages';
 import { getCityPreview } from '@/lib/cms/preview';
 import { isPageLive } from '@/lib/cms/page-status';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { getCityV3Content } from '@/lib/content/cities/v3';
 import CoverageAreaCity from '@/components/CoverageAreaCity';
 import LocalOfficeCity from '@/components/LocalOfficeCity';
 import LocalOfficeCityV2 from '@/components/LocalOfficeCityV2';
+import LocalOfficeCityV3 from '@/components/LocalOfficeCityV3';
 import PreviewBanner from '@/components/PreviewBanner';
 import { getCityPageMeta } from '@/lib/cms/page-meta';
 
@@ -101,6 +103,60 @@ export default async function CityPage({ params }: { params: { city: string } })
 
   // Brief 35: use template_type from DB when available; fall back to registry type
   const templateType: string = db?.templateType ?? entry.type;
+
+  /*
+   * Brief 181 (Track B2) — Local Office City V3.
+   *
+   * ABOVE the V2 branch deliberately: V3 is the newest template and the one a
+   * template switch lands on, so it gets first refusal on the value. The order
+   * is otherwise irrelevant — the strings are distinct.
+   *
+   * The page reads live data for the phone number and the office address ONLY,
+   * both off `settings` (already fetched above). `getGlobalSettingsCached()`
+   * falls back to `site.ts` and never throws, so this branch RENDERS WITH THE
+   * DATABASE DOWN — `db` is not consulted at all. Keep it that way until Brief
+   * 182, which is where CMS content arrives.
+   *
+   * ── THE FALLTHROUGH, AND WHY IT IS NOT A SECOND BUG ───────────────────────
+   * No V3 content for the slug ⇒ fall through to the templates below rather than
+   * 404. That is the ONLY reason a `local-office-v3` selection would not render
+   * V3, and it cannot happen for a city the admin can actually select: Brief 179
+   * fixed the opposite defect — a picker that silently served Coverage Area when
+   * it said "Local Office City" — so `TemplateSwitcher` now offers V3 only for
+   * slugs in `CITY_V3_SLUGS`. This branch exists so a `template_type` set by
+   * hand, or left behind by a future registry change, degrades to a working page
+   * instead of taking a ranked city page dark. It logs, so it is never silent.
+   */
+  if (templateType === 'local-office-v3') {
+    const v3 = getCityV3Content(entry.slug);
+    if (v3) {
+      return (
+        <>
+          {previewDraft && (
+            <PreviewBanner
+              label={previewDraft.label}
+              creatorName={previewDraft.creator_name}
+              editorUrl={`/admin/city/${params.city}`}
+              liveUrl={`/${params.city}`}
+              draftId={previewDraft.id}
+              pageType="city"
+              pageSlug={params.city}
+            />
+          )}
+          <LocalOfficeCityV3
+            city={{ name: entry.name, slug: entry.slug }}
+            content={v3}
+            settings={settings}
+          />
+        </>
+      );
+    }
+    console.warn(
+      `[city] "${entry.slug}" has template_type "local-office-v3" but no entry in ` +
+        `CITY_V3_CONTENT — falling through to its registry template. Add the city to ` +
+        `src/lib/content/cities/v3/index.ts, or switch it back in /admin/city/${entry.slug}.`
+    );
+  }
 
   // Brief 67: Local Office City V2 — DB-driven 12-section template.
   if (templateType === 'local-office-v2') {
