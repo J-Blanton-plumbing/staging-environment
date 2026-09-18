@@ -2,12 +2,49 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { CITY_V3_SLUGS } from '@/lib/content/cities/v3';
 
 const TEMPLATE_LABELS: Record<string, string> = {
   'coverage-area': 'Coverage Area City',
   'local-office': 'Local Office City',
   'local-office-v2': 'Local Office V2',
+  'local-office-v3': 'Local Office V3',
 };
+
+/**
+ * Templates that only work for some cities, and the test for which (Brief 181,
+ * Track B2).
+ *
+ * Brief 179 fixed a picker that LIED: choosing "Local Office City" rendered
+ * Coverage Area for every city without a hand-written copy file, silently. The
+ * rule that came out of it is that the picker must not offer what it cannot
+ * deliver — so "Local Office V3" is listed only for cities
+ * `src/lib/content/cities/v3/` can actually supply content for.
+ *
+ * `CITY_V3_SLUGS` is imported rather than re-typed, so adding a V3 city is one
+ * edit and this gate cannot drift from the dispatcher in `[city]/page.tsx`.
+ * Brief 182 removes the gate: once the CMS can supply V3 content for any city,
+ * the registry stops being the constraint.
+ *
+ * A template absent from this map is unrestricted, which is every other one.
+ */
+const TEMPLATE_SLUG_GATE: Record<string, readonly string[]> = {
+  'local-office-v3': CITY_V3_SLUGS,
+};
+
+/**
+ * Whether the admin may offer `template` for `pageSlug`.
+ *
+ * Exported because the picker has TWO surfaces — this modal's `<select>` and the
+ * Template popover in `PageAttributesSidebar` (driven from
+ * `admin/city/[slug]/page.tsx`). Gating only one of them would let the popover
+ * offer V3 for a city the modal then refuses to list, which is a worse lie than
+ * the one Brief 179 removed.
+ */
+export function templateAvailableFor(template: string, pageSlug: string): boolean {
+  const allowed = TEMPLATE_SLUG_GATE[template];
+  return !allowed || allowed.includes(pageSlug);
+}
 
 interface Props {
   pageType: string;
@@ -54,7 +91,9 @@ export default function TemplateSwitcher({
   const [archiveChecked, setArchiveChecked] = useState(false);
   const [archiveName, setArchiveName] = useState('');
 
-  const otherTemplates = availableTemplates.filter((t) => t !== currentTemplate);
+  const otherTemplates = availableTemplates.filter(
+    (t) => t !== currentTemplate && templateAvailableFor(t, pageSlug)
+  );
 
   function todayStr() {
     return new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });

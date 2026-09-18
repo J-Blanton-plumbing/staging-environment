@@ -1,10 +1,19 @@
 /*
- * /hanover-park-test — scoped styles (Brief 180 + Marketing revision round 1,
- * 2026-09-17).
+ * Local Office City V3 — scoped styles (Brief 180 + Marketing revision round 1,
+ * 2026-09-17; promoted to a real city template by Brief 181).
  *
- * ⚠ TEMPORARY REVIEW BUILD. Everything here is prefixed `hp-` and lives under
- * the `.hanover-park-test` root, so it can neither reach nor be reached by the
- * shared city / service / globals rules. No shared component is edited.
+ * Everything here is prefixed `hp-` and lives under the `.local-office-v3`
+ * root, so it can neither reach nor be reached by the shared city / service /
+ * globals rules. No shared component is edited.
+ *
+ * ⚠ THE `hp-` PREFIX IS HISTORICAL, NOT A CITY SCOPE. This file began life as
+ * `src/app/hanover-park-test/hanover-park-test.css`, where `hp-` stood for
+ * "hanover park". Brief 181 renamed the ROOT class (`.hanover-park-test` →
+ * `.local-office-v3`) and deliberately left the 127 `hp-` rules alone: renaming
+ * them too would have been a 1,000-line diff across a stylesheet and a template
+ * that Marketing had just approved pixel-for-pixel, with nothing to show for it
+ * but churn. Nothing here is Hanover-Park-specific — this is the V3 template's
+ * stylesheet and it applies to every city that renders on V3.
  *
  * ══ THE THREE THINGS THAT WILL BITE IF CHANGED ════════════════════════════
  * 1. THIS FILE IS UNLAYERED, on purpose. `globals.css` puts
@@ -19,7 +28,7 @@
  *    desktop and a Carmine `padding-top` strip once it stacks.
  * 3. The SHARED-COMPONENT OVERRIDE near the bottom reaches into `FaqAccordion`
  *    from outside. It is cosmetic only (two hardcoded margins), it is scoped
- *    under `.hanover-park-test` so it cannot leak to the pages that component
+ *    under `.local-office-v3` so it cannot leak to the pages that component
  *    actually belongs to, and it exists because this page must keep ONE spacing
  *    scale. If that component's markup changes, check it.
  *
@@ -86,7 +95,7 @@
  * approved copy is sentence/title case (same call as /consumer-rights).
  */
 
-.hanover-park-test {
+.local-office-v3 {
   --hp-band-pad: 40px;
   --hp-gap: 20px;
   --hp-gap-lg: 32px;
@@ -100,7 +109,7 @@
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test {
+  .local-office-v3 {
     --hp-band-pad: 100px;
     --hp-gap: 24px;
     --hp-gap-lg: 48px;
@@ -110,29 +119,29 @@
 
 /* ══ THE ONE VERTICAL RHYTHM RULE ══════════════════════════════════════════ */
 
-.hanover-park-test .hp-w > * + * {
+.local-office-v3 .hp-w > * + * {
   margin-top: var(--hp-gap);
 }
 
 /* A major block gets more air above it than a paragraph does. */
-.hanover-park-test .hp-w > * + .hp-split,
-.hanover-park-test .hp-w > * + .hp-reviews,
-.hanover-park-test .hp-w > * + .hp-cards,
-.hanover-park-test .hp-w > * + .hp-benefits,
-.hanover-park-test .hp-w > * + .faqs,
-.hanover-park-test .hp-w > * + .hp-btn {
+.local-office-v3 .hp-w > * + .hp-split,
+.local-office-v3 .hp-w > * + .hp-reviews,
+.local-office-v3 .hp-w > * + .hp-cards,
+.local-office-v3 .hp-w > * + .hp-benefits,
+.local-office-v3 .hp-w > * + .faqs,
+.local-office-v3 .hp-w > * + .hp-btn {
   margin-top: var(--hp-gap-lg);
 }
 
 /* ══ BANDS ═════════════════════════════════════════════════════════════════ */
 
-.hanover-park-test .hp-band {
+.local-office-v3 .hp-band {
   padding-top: var(--hp-band-pad);
   padding-bottom: var(--hp-band-pad);
 }
 
-.hanover-park-test .hp-band--cream { background-color: #f9f3ec; }
-.hanover-park-test .hp-band--warm { background-color: #f1e8dc; }
+.local-office-v3 .hp-band--cream { background-color: #f9f3ec; }
+.local-office-v3 .hp-band--warm { background-color: #f1e8dc; }
 /*
  * Final CTA — the brand's beige wrench pattern (Marketing, 2026-09-17), the
  * light counterpart to the Carmine `Wrench Filled Red BG` the hero uses.
@@ -150,18 +159,18 @@
  * Adjacency still holds: No Drip Club (Midnight) above, the Carmine footer
  * below. The Services band is also Cream but is six sections away.
  */
-.hanover-park-test .hp-band--deep-cream {
+.local-office-v3 .hp-band--deep-cream {
   background-color: #e8dccc;
   background-image: url('/images/patterns/Wrench Pattern Beige BG.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.hanover-park-test .hp-band--midnight { background-color: #0a1b2e; }
-.hanover-park-test .hp-band--carmine { background-color: #bc0e0e; }
+.local-office-v3 .hp-band--midnight { background-color: #0a1b2e; }
+.local-office-v3 .hp-band--carmine { background-color: #bc0e0e; }
 
 /* White bands: the 1px warm rule keeps the Cream → White seam legible. */
-.hanover-park-test .hp-band--white {
+.local-office-v3 .hp-band--white {
   background-color: #ffffff;
   border-top: 1px solid #e3d8c8;
 }
@@ -197,17 +206,17 @@
  * The section keeps its own `background-color: #BC0E0E`, so a failed or blocked
  * image degrades to the plain red band this section had before, not to a hole.
  */
-.hanover-park-test .hp-midcta-band {
+.local-office-v3 .hp-midcta-band {
   position: relative;
   overflow: hidden;
 }
 
-.hanover-park-test .hp-midcta-media {
+.local-office-v3 .hp-midcta-media {
   display: none;
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-midcta-media {
+  .local-office-v3 .hp-midcta-media {
     display: block;
     position: absolute;
     top: 0;
@@ -230,7 +239,7 @@
   }
 
   /* Solid Carmine at the media's left edge, clear by its right. */
-  .hanover-park-test .hp-midcta-media::after {
+  .local-office-v3 .hp-midcta-media::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -249,12 +258,12 @@
    * centred `mx-auto` offset (so the copy still starts on the page's left
    * gutter like every other section), and only the measure narrows.
    */
-  .hanover-park-test .hp-midcta-band .hp-w {
+  .local-office-v3 .hp-midcta-band .hp-w {
     position: relative;
     z-index: 1;
   }
 
-  .hanover-park-test .hp-midcta-band .hp-w > * {
+  .local-office-v3 .hp-midcta-band .hp-w > * {
     max-width: 560px;
   }
 }
@@ -266,22 +275,22 @@
  */
 
 /* The one centred block on the page — the closing call to action. */
-.hanover-park-test .hp-center {
+.local-office-v3 .hp-center {
   text-align: center;
 }
 
-.hanover-park-test .hp-center > * {
+.local-office-v3 .hp-center > * {
   margin-left: auto;
   margin-right: auto;
 }
 
-.hanover-park-test .hp-center .hp-body {
+.local-office-v3 .hp-center .hp-body {
   max-width: var(--hp-measure);
 }
 
 /* ══ TYPE ══════════════════════════════════════════════════════════════════ */
 
-.hanover-park-test .hp-h1 {
+.local-office-v3 .hp-h1 {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700; /* Industry Bold */
   font-size: clamp(30px, 5.6vw, 40px);
@@ -290,7 +299,7 @@
   color: #f9f3ec; /* Cream on Carmine — 5.94:1. Declared ON THE ELEMENT. */
 }
 
-.hanover-park-test .hp-h2 {
+.local-office-v3 .hp-h2 {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700; /* Industry Bold */
   font-size: clamp(26px, 4.2vw, 32px);
@@ -300,11 +309,11 @@
 }
 
 /* Carmine / Midnight bands. On the element, never on the wrapper. */
-.hanover-park-test .hp-h2--on-dark {
+.local-office-v3 .hp-h2--on-dark {
   color: #f9f3ec; /* Cream */
 }
 
-.hanover-park-test .hp-h3 {
+.local-office-v3 .hp-h3 {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 500; /* Industry Medium */
   font-size: clamp(22px, 3.4vw, 28px);
@@ -313,8 +322,8 @@
   color: #bc0e0e; /* Carmine */
 }
 
-.hanover-park-test .hp-body,
-.hanover-park-test .hp-lead {
+.local-office-v3 .hp-body,
+.local-office-v3 .hp-lead {
   font-size: 16px;
   line-height: 24px;
   color: #0a1b2e; /* Midnight */
@@ -323,23 +332,23 @@
 
 @media only screen and (min-width: 901px) {
   /* 20/30 is the live desktop content size and is equally valid (design.md). */
-  .hanover-park-test .hp-body,
-  .hanover-park-test .hp-lead {
+  .local-office-v3 .hp-body,
+  .local-office-v3 .hp-lead {
     font-size: 20px;
     line-height: 30px;
   }
 }
 
 /* Inside a split column the column width IS the measure. */
-.hanover-park-test .hp-split-text .hp-body {
+.local-office-v3 .hp-split-text .hp-body {
   max-width: none;
 }
 
-.hanover-park-test .hp-body--on-dark {
+.local-office-v3 .hp-body--on-dark {
   color: #f9f3ec; /* Cream on Midnight / Carmine — 13.6:1 and 5.94:1 */
 }
 
-.hanover-park-test .hp-eyebrow {
+.local-office-v3 .hp-eyebrow {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700; /* Industry Bold */
   font-size: 16px;
@@ -350,18 +359,18 @@
 }
 
 /* Sections 3 and 6 put an eyebrow on a light band (revision round 2, items 2/3). */
-.hanover-park-test .hp-eyebrow--on-light {
+.local-office-v3 .hp-eyebrow--on-light {
   color: #bc0e0e; /* Carmine */
 }
 
 /* The eyebrow is a label FOR the heading under it, so it sits tight to it —
    in a `.hp-w` container (NDC) and in a split column (sections 3 and 6). */
-.hanover-park-test .hp-w > .hp-eyebrow + .hp-h2,
-.hanover-park-test .hp-split-text > .hp-eyebrow + .hp-h2 {
+.local-office-v3 .hp-w > .hp-eyebrow + .hp-h2,
+.local-office-v3 .hp-split-text > .hp-eyebrow + .hp-h2 {
   margin-top: var(--hp-gap-sm);
 }
 
-.hanover-park-test .hp-disclaimer {
+.local-office-v3 .hp-disclaimer {
   font-size: 11px;
   line-height: 17px;
   color: #f9f3ec; /* Cream on Carmine */
@@ -371,18 +380,18 @@
    it lighter. On the dark bands the link inherits the Cream body colour and is
    distinguished by its underline, because Cerulean on Carmine would be a
    red/blue pairing design.md bans. */
-.hanover-park-test .hp-link {
+.local-office-v3 .hp-link {
   color: #1560e6; /* Cerulean */
   text-decoration: none;
 }
 
-.hanover-park-test .hp-link:hover,
-.hanover-park-test .hp-link:focus-visible {
+.local-office-v3 .hp-link:hover,
+.local-office-v3 .hp-link:focus-visible {
   text-decoration: underline;
 }
 
-.hanover-park-test .hp-band--carmine .hp-link,
-.hanover-park-test .hp-band--midnight .hp-link {
+.local-office-v3 .hp-band--carmine .hp-link,
+.local-office-v3 .hp-band--midnight .hp-link {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -401,7 +410,7 @@
    Industry Medium 16px uppercase, 1px tracking, 10px radius (design.md
    rounded.button). `min-height: 48px` keeps the tap target over the 44px floor. */
 
-.hanover-park-test .hp-btn {
+.local-office-v3 .hp-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -422,40 +431,40 @@
   transition: background-color 150ms ease, border-color 150ms ease;
 }
 
-.hanover-park-test .hp-btn--primary:hover {
+.local-office-v3 .hp-btn--primary:hover {
   background-color: #bc0e0e; /* Carmine — the signature flip */
 }
 
-.hanover-park-test .hp-btn--on-red,
-.hanover-park-test .hp-btn--on-navy {
+.local-office-v3 .hp-btn--on-red,
+.local-office-v3 .hp-btn--on-navy {
   border-color: #ffffff;
 }
 
-.hanover-park-test .hp-btn--on-red:hover {
+.local-office-v3 .hp-btn--on-red:hover {
   background-color: #0a1b2e; /* Midnight — Carmine would dissolve into the band */
 }
 
-.hanover-park-test .hp-btn--on-navy:hover {
+.local-office-v3 .hp-btn--on-navy:hover {
   background-color: #bc0e0e; /* Carmine — the signature flip, legible on navy */
 }
 
 /* Visible focus states everywhere — never `outline: none`. */
-.hanover-park-test a:focus-visible {
+.local-office-v3 a:focus-visible {
   outline: 2px solid #1560e6; /* Cerulean */
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-.hanover-park-test .hp-band--carmine a:focus-visible,
-.hanover-park-test .hp-band--midnight a:focus-visible,
-.hanover-park-test .hp-hero a:focus-visible {
+.local-office-v3 .hp-band--carmine a:focus-visible,
+.local-office-v3 .hp-band--midnight a:focus-visible,
+.local-office-v3 .hp-hero a:focus-visible {
   outline-color: #ffffff; /* Cerulean would vanish on red / navy */
 }
 
 /* ══ 1. HERO — image left / Carmine right ══════════════════════════════════
    The `localOfficeV2Hero` shape, rebuilt locally. */
 
-.hanover-park-test .hp-hero {
+.local-office-v3 .hp-hero {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -467,7 +476,7 @@
   background-color: #bc0e0e; /* Carmine */
 }
 
-.hanover-park-test .hp-hero-media {
+.local-office-v3 .hp-hero-media {
   position: relative;
   width: 100%;
   min-height: 300px;
@@ -480,7 +489,7 @@
  * image happens to have. `object-fit: cover` then crops rather than letterboxes.
  * The explicit width/height on the <img> still reserves the space before load.
  */
-.hanover-park-test .hp-hero-image {
+.local-office-v3 .hp-hero-image {
   position: absolute;
   inset: 0;
   display: block;
@@ -491,7 +500,7 @@
   object-position: 50% 30%;
 }
 
-.hanover-park-test .hp-hero-contents {
+.local-office-v3 .hp-hero-contents {
   width: 100%;
   position: relative;
   background-color: #bc0e0e; /* Carmine */
@@ -499,7 +508,7 @@
   background-repeat: repeat;
 }
 
-.hanover-park-test .hp-hero-w {
+.local-office-v3 .hp-hero-w {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -507,7 +516,7 @@
   padding: 44px 7% 48px;
 }
 
-.hanover-park-test .hp-hero-sub {
+.local-office-v3 .hp-hero-sub {
   max-width: 560px;
   font-size: 16px;
   line-height: 26px;
@@ -515,22 +524,22 @@
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-hero {
+  .local-office-v3 .hp-hero {
     flex-direction: row;
     /* Two halves; the copy column pads for the navbar itself, as the theme's
        `.w` does, so the photo runs full-bleed to the top of the page. */
     padding-top: 0;
   }
-  .hanover-park-test .hp-hero-media {
+  .local-office-v3 .hp-hero-media {
     width: 50%;
     min-height: 500px;
   }
-  .hanover-park-test .hp-hero-contents {
+  .local-office-v3 .hp-hero-contents {
     width: 50%;
     display: flex;
     min-height: 500px;
   }
-  .hanover-park-test .hp-hero-w {
+  .local-office-v3 .hp-hero-w {
     /* `height: auto` + `justify-content: center` inside a stretched flex item:
        the column centres when the copy is short and grows downward when it is
        long, so it can never push its first child up under `overflow: hidden`. */
@@ -539,7 +548,7 @@
     gap: var(--hp-gap-lg);
     padding: var(--hero-top-clear, 110px) 7% 60px;
   }
-  .hanover-park-test .hp-hero-sub {
+  .local-office-v3 .hp-hero-sub {
     font-size: 18px;
     line-height: 28px;
   }
@@ -550,7 +559,7 @@
    centred Industry Medium uppercase label in #3A4A5C naming the slot and its
    ratio. Real reserved space at every breakpoint — that is the point. */
 
-.hanover-park-test .hp-placeholder {
+.local-office-v3 .hp-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -566,11 +575,11 @@
 
 /* On the deep-cream band the default fill would be invisible — not used today,
    but the guard keeps a future move of a placeholder honest. */
-.hanover-park-test .hp-band--deep-cream .hp-placeholder {
+.local-office-v3 .hp-band--deep-cream .hp-placeholder {
   background-color: #e3d8c8;
 }
 
-.hanover-park-test .hp-placeholder-label {
+.local-office-v3 .hp-placeholder-label {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 500; /* Industry Medium */
   font-size: 16px;
@@ -580,7 +589,7 @@
   color: #3a4a5c;
 }
 
-.hanover-park-test .hp-placeholder-caption {
+.local-office-v3 .hp-placeholder-caption {
   font-size: 16px;
   line-height: 24px;
   color: #3a4a5c;
@@ -592,21 +601,21 @@
    demote them to a styled `<p>`. Icons are the homepage set at 64px (the
    homepage uses 100px), left-aligned to match the card's own text alignment. */
 
-.hanover-park-test .hp-cards {
+.local-office-v3 .hp-cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--hp-gutter);
 }
 
 @media only screen and (min-width: 640px) {
-  .hanover-park-test .hp-cards { grid-template-columns: repeat(2, 1fr); }
+  .local-office-v3 .hp-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-cards { grid-template-columns: repeat(3, 1fr); }
+  .local-office-v3 .hp-cards { grid-template-columns: repeat(3, 1fr); }
 }
 
-.hanover-park-test .hp-card {
+.local-office-v3 .hp-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -627,7 +636,7 @@
  * all if the card count ever changes to one that fills its rows.
  */
 @media only screen and (min-width: 640px) and (max-width: 900px) {
-  .hanover-park-test .hp-card:nth-child(2n + 1):last-child {
+  .local-office-v3 .hp-card:nth-child(2n + 1):last-child {
     grid-column: 1 / -1;
     justify-self: center;
     width: calc(50% - var(--hp-gutter) / 2);
@@ -635,7 +644,7 @@
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-card:nth-child(3n + 1):last-child {
+  .local-office-v3 .hp-card:nth-child(3n + 1):last-child {
     grid-column: 2;
   }
 }
@@ -648,25 +657,25 @@
  * render as plain `<div>`s with NO hover and NO pointer — a card that lifts under
  * the cursor and then does nothing is worse than one that never moved.
  */
-.hanover-park-test .hp-card--link {
+.local-office-v3 .hp-card--link {
   cursor: pointer;
   transition: background-color 150ms ease, border-color 150ms ease,
     transform 150ms ease, box-shadow 150ms ease;
 }
 
-.hanover-park-test .hp-card--link:hover {
+.local-office-v3 .hp-card--link:hover {
   background-color: #f1e8dc; /* the warm tint — darker than the white card */
   border-color: #c9bca9;
   transform: translateY(-4px);
   box-shadow: 0 8px 18px rgba(10, 27, 46, 0.12);
 }
 
-.hanover-park-test .hp-card--link:focus-visible {
+.local-office-v3 .hp-card--link:focus-visible {
   outline: 2px solid #1560e6; /* Cerulean */
   outline-offset: 3px;
 }
 
-.hanover-park-test .hp-card-icon {
+.local-office-v3 .hp-card-icon {
   display: block;
   width: 64px;
   height: 64px;
@@ -674,11 +683,11 @@
 }
 
 /* The inline building SVG tints through `currentColor`, like the homepage's. */
-.hanover-park-test .hp-card-icon--inline {
+.local-office-v3 .hp-card-icon--inline {
   color: #bc0e0e; /* Carmine */
 }
 
-.hanover-park-test .hp-card-title {
+.local-office-v3 .hp-card-title {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700; /* Industry Bold — the 20px card-label token */
   font-size: 20px;
@@ -687,7 +696,7 @@
   color: #bc0e0e; /* Carmine */
 }
 
-.hanover-park-test .hp-card-body {
+.local-office-v3 .hp-card-body {
   font-size: 16px;
   line-height: 24px;
   color: #0a1b2e; /* Midnight */
@@ -698,7 +707,7 @@
    gutter, same stacking breakpoint — that is what makes the page read as one
    system rather than three one-off layouts. */
 
-.hanover-park-test .hp-split {
+.local-office-v3 .hp-split {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--hp-gutter);
@@ -706,7 +715,7 @@
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-split {
+  .local-office-v3 .hp-split {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
     gap: var(--hp-gutter);
   }
@@ -716,23 +725,23 @@
    blocks get `--hp-gap`, a major block (a why-point, a button) gets the larger
    one. Sections 3 and 6 now put their eyebrow + H2 + body in here, so this must
    not be a blanket large gap. */
-.hanover-park-test .hp-split-text > * + * {
+.local-office-v3 .hp-split-text > * + * {
   margin-top: var(--hp-gap);
 }
 
-.hanover-park-test .hp-split-text > * + .hp-why-point,
-.hanover-park-test .hp-split-text > * + .hp-btn {
+.local-office-v3 .hp-split-text > * + .hp-why-point,
+.local-office-v3 .hp-split-text > * + .hp-btn {
   margin-top: var(--hp-gap-lg);
 }
 
-.hanover-park-test .hp-why-point > * + * {
+.local-office-v3 .hp-why-point > * + * {
   margin-top: var(--hp-gap-sm);
 }
 
 /* Revision round 3, item 3 — the real photo in a split column. Same 4:3 box the
    labelled placeholder occupied, so the section's rhythm is unchanged; the photo
    is 3:2, and `object-fit: cover` crops rather than letterboxes. */
-.hanover-park-test .hp-split-photo {
+.local-office-v3 .hp-split-photo {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -742,7 +751,7 @@
 }
 
 /* Revision round 3, item 4 — the embedded Google map, in the same 4:3 box. */
-.hanover-park-test .hp-map {
+.local-office-v3 .hp-map {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -752,21 +761,21 @@
 
 /* ══ 7. REVIEWS ════════════════════════════════════════════════════════════ */
 
-.hanover-park-test .hp-reviews {
+.local-office-v3 .hp-reviews {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--hp-gutter);
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-reviews { grid-template-columns: repeat(3, 1fr); }
+  .local-office-v3 .hp-reviews { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* Card treatment per the reference Marketing supplied, 2026-09-17 (revision
    round 2, item 5): white card, soft shadow, Carmine stars, italic quoted body,
    then a Midnight avatar disc beside the reviewer's name and a second, smaller
    source line. */
-.hanover-park-test .hp-review {
+.local-office-v3 .hp-review {
   display: flex;
   flex-direction: column;
   padding: 28px;
@@ -776,14 +785,14 @@
   box-shadow: 0 2px 10px rgba(10, 27, 46, 0.06);
 }
 
-.hanover-park-test .hp-review-stars {
+.local-office-v3 .hp-review-stars {
   font-size: 18px;
   line-height: 1;
   letter-spacing: 2px;
   color: #bc0e0e; /* Carmine — all three reviews are 5-star (page brief §6) */
 }
 
-.hanover-park-test .hp-review-text {
+.local-office-v3 .hp-review-text {
   flex: 1;
   margin-top: var(--hp-gap);
   font-size: 16px;
@@ -792,7 +801,7 @@
   color: #0a1b2e; /* Midnight */
 }
 
-.hanover-park-test .hp-review-meta {
+.local-office-v3 .hp-review-meta {
   position: relative; /* containing block for the name link's hit area, below */
   display: flex;
   align-items: center;
@@ -803,7 +812,7 @@
 /* The rounded avatar (revision 1, item 4; recoloured in round 2 to match the
    reference) — a Midnight disc holding the same head-and-shoulders silhouette
    the site's own review cards use. */
-.hanover-park-test .hp-review-avatar {
+.local-office-v3 .hp-review-avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -815,12 +824,12 @@
   color: #ffffff;
 }
 
-.hanover-park-test .hp-review-avatar svg {
+.local-office-v3 .hp-review-avatar svg {
   width: 24px;
   height: 24px;
 }
 
-.hanover-park-test .hp-review-id {
+.local-office-v3 .hp-review-id {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -834,13 +843,13 @@
    it. So the link stretches an invisible hit area over the whole footer row
    (avatar + name + source, 44px tall) — the standard "card link" pattern. The
    row contains no other interactive element, so nothing is swallowed. */
-.hanover-park-test .hp-review-name::after {
+.local-office-v3 .hp-review-name::after {
   content: '';
   position: absolute;
   inset: 0;
 }
 
-.hanover-park-test .hp-review-name {
+.local-office-v3 .hp-review-name {
   font-family: var(--font-industry), Arial, sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -851,13 +860,13 @@
   text-decoration: none;
 }
 
-.hanover-park-test .hp-review-name:hover,
-.hanover-park-test .hp-review-name:focus-visible {
+.local-office-v3 .hp-review-name:hover,
+.local-office-v3 .hp-review-name:focus-visible {
   color: #bc0e0e; /* Carmine — it is still a link, so it still reacts */
   text-decoration: underline;
 }
 
-.hanover-park-test .hp-review-source {
+.local-office-v3 .hp-review-source {
   font-size: 14px;
   line-height: 20px;
   color: #3a4a5c; /* the muted body tone — 7.0:1 on white */
@@ -873,7 +882,7 @@
    is 1180×1604, and a full-width illustration above or below the copy on a
    phone would be the loudest thing in a section whose job is the benefit list. */
 
-.hanover-park-test .hp-ndc {
+.local-office-v3 .hp-ndc {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--hp-gutter);
@@ -881,25 +890,25 @@
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-ndc {
+  .local-office-v3 .hp-ndc {
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.66fr);
   }
 }
 
-.hanover-park-test .hp-ndc-text > * + * {
+.local-office-v3 .hp-ndc-text > * + * {
   margin-top: var(--hp-gap);
 }
 
-.hanover-park-test .hp-ndc-text > .hp-eyebrow + .hp-h2 {
+.local-office-v3 .hp-ndc-text > .hp-eyebrow + .hp-h2 {
   margin-top: var(--hp-gap-sm);
 }
 
-.hanover-park-test .hp-ndc-text > * + .hp-benefits,
-.hanover-park-test .hp-ndc-text > * + .hp-btn {
+.local-office-v3 .hp-ndc-text > * + .hp-benefits,
+.local-office-v3 .hp-ndc-text > * + .hp-btn {
   margin-top: var(--hp-gap-lg);
 }
 
-.hanover-park-test .hp-ndc-figure {
+.local-office-v3 .hp-ndc-figure {
   display: none;
 }
 
@@ -925,12 +934,12 @@
  * ends up taller than the row.
  */
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-band--midnight {
+  .local-office-v3 .hp-band--midnight {
     position: relative;
     overflow: hidden;
   }
 
-  .hanover-park-test .hp-ndc-figure {
+  .local-office-v3 .hp-ndc-figure {
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -939,14 +948,14 @@
   }
 }
 
-.hanover-park-test .hp-ndc-character {
+.local-office-v3 .hp-ndc-character {
   display: block;
   width: 100%;
   max-width: 480px;
   height: auto;
 }
 
-.hanover-park-test .hp-benefits {
+.local-office-v3 .hp-benefits {
   list-style: none;
   padding: 0;
   display: flex;
@@ -955,7 +964,7 @@
   max-width: var(--hp-measure);
 }
 
-.hanover-park-test .hp-benefits li {
+.local-office-v3 .hp-benefits li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -965,7 +974,7 @@
 }
 
 @media only screen and (min-width: 901px) {
-  .hanover-park-test .hp-benefits li {
+  .local-office-v3 .hp-benefits li {
     font-size: 18px;
     line-height: 28px;
   }
@@ -973,7 +982,7 @@
 
 /* The reference's tick: a Carmine disc with a white check. Decorative — the
    `<ul>`/`<li>` semantics already carry "this is a list of benefits". */
-.hanover-park-test .hp-check {
+.local-office-v3 .hp-check {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -986,7 +995,7 @@
   color: #ffffff;
 }
 
-.hanover-park-test .hp-check svg {
+.local-office-v3 .hp-check svg {
   width: 13px;
   height: 13px;
 }
@@ -998,19 +1007,19 @@
 
 /* `FaqAccordion` ships `mt-[50px] pb-[100px]`. The band already owns its bottom
    padding, and the gap above comes from the page's rhythm rule. */
-.hanover-park-test .faqs {
+.local-office-v3 .faqs {
   margin-top: var(--hp-gap-lg);
   padding-bottom: 0;
 }
 
 /* Motion respects the user's preference. */
 @media (prefers-reduced-motion: reduce) {
-  .hanover-park-test .hp-btn,
-  .hanover-park-test .hp-card--link {
+  .local-office-v3 .hp-btn,
+  .local-office-v3 .hp-card--link {
     transition: none;
   }
   /* The colour change still signals the hover; only the movement is dropped. */
-  .hanover-park-test .hp-card--link:hover {
+  .local-office-v3 .hp-card--link:hover {
     transform: none;
   }
 }

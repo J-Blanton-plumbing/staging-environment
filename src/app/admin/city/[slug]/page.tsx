@@ -6,7 +6,7 @@ import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import RichTextField from '@/components/admin/RichTextField';
-import TemplateSwitcher from '@/components/admin/TemplateSwitcher';
+import TemplateSwitcher, { templateAvailableFor } from '@/components/admin/TemplateSwitcher';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -24,7 +24,10 @@ import {
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 
-const CITY_TEMPLATES = ['coverage-area', 'local-office', 'local-office-v2'];
+// Brief 181 added 'local-office-v3'. It is NOT offered for every city — see
+// `templateAvailableFor`, which gates it on the slugs `src/lib/content/cities/v3`
+// can actually supply content for. Both picker surfaces below apply that gate.
+const CITY_TEMPLATES = ['coverage-area', 'local-office', 'local-office-v2', 'local-office-v3'];
 
 interface FaqField {
   question: string;
@@ -886,7 +889,10 @@ export default function AdminCityPage() {
         template={{
           value: form.templateType,
           label: TEMPLATE_DISPLAY_NAMES[form.templateType] ?? form.templateType,
-          options: CITY_TEMPLATES.map(t => ({ value: t, label: TEMPLATE_DISPLAY_NAMES[t] ?? t })),
+          // Brief 181: the SAME gate the switcher modal applies, so the popover
+          // and the modal can never disagree about what this city may become.
+          options: CITY_TEMPLATES.filter(t => templateAvailableFor(t, slug))
+            .map(t => ({ value: t, label: TEMPLATE_DISPLAY_NAMES[t] ?? t })),
           onChange: (newTemplate) => { setPendingTemplate(newTemplate); setTemplateSwitcherOpen(true); },
         }}
         version={{
@@ -919,6 +925,7 @@ const TEMPLATE_DISPLAY_NAMES: Record<string, string> = {
   'coverage-area': 'Coverage Area City',
   'local-office': 'Local Office City',
   'local-office-v2': 'Local Office V2',
+  'local-office-v3': 'Local Office V3',
 };
 
 // Map an API/DB response into the editor FormState (Brief 67 V2 fields included).

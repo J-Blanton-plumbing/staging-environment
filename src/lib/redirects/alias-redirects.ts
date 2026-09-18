@@ -86,6 +86,25 @@ export const MANUAL_ALIAS_REDIRECTS: Readonly<Record<string, string>> = {
   // WordPress feed URL for an article that migrated to the Knowledge Hub.
   '/how-to-install-plumbing-for-kitchen-sink/feed':
     '/knowledge-hub/how-to-install-plumbing-for-kitchen-sink',
+
+  /* ── Brief 181, Track F2 — the retired review URL ──────────────────────────
+   * `/hanover-park-test` was Brief 180's noindex review build: a real, deployed,
+   * publicly reachable URL carrying the approved Hanover Park copy while
+   * Marketing read it. Brief 181 promoted that copy to `/hanover-park` and
+   * deleted the route.
+   *
+   * A 301 rather than a 404 because the URL WAS reachable for a day and may have
+   * been bookmarked, shared or crawled — `noindex` stops indexing, it does not
+   * stop a link existing. The target is the page the copy now lives on, which is
+   * the closest thing to "what you were looking for" that exists.
+   *
+   * ⚠ One hop, including from the slashed form. `normalizeTrailingSlash()` in
+   * `src/middleware.ts` strips the slash AND resolves this map in the same pass,
+   * so `/hanover-park-test/` → 301 → `/hanover-park` directly. That only holds
+   * while `skipTrailingSlashRedirect: true` stays in `next.config.mjs` (Brief
+   * 152); remove it and this becomes a two-hop chain like every other alias.
+   */
+  '/hanover-park-test': '/hanover-park',
 };
 
 /**
