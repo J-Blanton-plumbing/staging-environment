@@ -126,7 +126,34 @@ jobs:
             # this file before (Brief 151).
             echo 'Checking the store-locator search index for drift (Brief 171 C2)...'
             npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/check-locator-index.ts
-            rm -rf .next-build .next-prev
+            # ⚠️ `.next/types` IS LOAD-BEARING IN THIS LINE — DO NOT TIDY IT AWAY.
+            #
+            # `.next` is the LIVE build serving traffic and this deploy never
+            # deletes it (that is the whole zero-downtime design above). But
+            # `tsconfig.json` type-checks `.next/types/**/*.ts`, and `next build`
+            # regenerates one type file per route into the dist dir. So the LIVE
+            # `.next/types` still holds a file for every route the PREVIOUS deploy
+            # built — including any route the repo has since DELETED. That orphan
+            # does `import * as entry from '../../../../src/app/<route>/page.js'`,
+            # the module is gone, and the next `next build` dies in "Linting and
+            # checking validity of types" with TS2307. The build is fine; the
+            # leftover is not.
+            #
+            # That is exactly what killed deploy run #101 (2026-09-18): Brief 181
+            # deleted `src/app/hanover-park-test/`, and run #100's
+            # `.next/types/app/hanover-park-test/page.ts` was still on the box. It
+            # failed 166s in, against a commit that builds clean anywhere else, and
+            # `set -e` left the old build serving — so the site never noticed.
+            #
+            # Deleting `.next/types` is safe: it is a build-time artifact for tsc
+            # and the editor. `next start` serves from `.next/server`,
+            # `.next/static` and `.next/BUILD_ID` and never reads it — verified by
+            # deleting it under a running server, which kept answering 200.
+            #
+            # The alternative — excluding `.next` in tsconfig.json — was rejected:
+            # it would drop Next's route type-checking across every route to dodge
+            # one stale file.
+            rm -rf .next-build .next-prev .next/types
             NEXT_DIST_DIR=.next-build npm run build
             # Apply idempotent DB schema migrations BEFORE restarting, so the
             # running app never references a column that doesn't exist yet.
