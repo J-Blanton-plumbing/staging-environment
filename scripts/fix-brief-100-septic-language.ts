@@ -69,8 +69,12 @@
  * to force it through — that is the one flag that would let A.2 double up.
  *
  * ── SCOPE ───────────────────────────────────────────────────────────────────
- * Content only. Exactly six `cms_articles` rows: 67, 111, 116, 124, 131, 168.
- * Eleven other articles mention septic as neutral background and were reviewed
+ * Content only. Exactly SEVEN `cms_articles` rows: 67, 111, 116, 124, 131, 168
+ * (Brief 100's six) plus 113, added on the marketing lead's instruction on
+ * 2026-09-21 after the six shipped — see A.7 for why the brief's own audit
+ * missed it. The row count this file enforces is `TARGETS.length`, so it tracks
+ * the list below rather than a literal, and every assertion moved with it.
+ * Ten other articles mention septic as neutral background and were reviewed
  * and cleared by Marketing — they are named in OUT_OF_SCOPE below so a reader of
  * this file can see they were considered, and the script can never reach them:
  * every statement names one id from TARGETS.
@@ -132,12 +136,13 @@
  *    there), `skipped-mismatch` (0 or 2+ matches — an editor changed it),
  *    `skipped-missing-row`, `skipped-wrong-slug` (ids are not portable between
  *    databases; the slug is asserted, not trusted), `skipped-bad-body-shape`.
- *  - IDEMPOTENT. A second `commit` run reports 6 x already-applied and writes
- *    nothing, so this is safe to leave in the deploy pipeline permanently.
- *  - ALL OR NOTHING. The brief's hard rule: exactly 6 ids, or abort the
- *    transaction. `applied + already-applied` must equal 6 or everything rolls
- *    back. `--allow-partial` is the deliberate escape hatch for the case where
- *    Marketing has reviewed a mismatch and wants the other rows shipped anyway.
+ *  - IDEMPOTENT. A second `commit` run reports every target already-applied and
+ *    writes nothing, so this is safe to leave in the deploy pipeline permanently.
+ *  - ALL OR NOTHING. The brief's hard rule, generalised to TARGETS: every
+ *    authorised id or none. `applied + already-applied` must equal
+ *    `TARGETS.length` AND the verified id set must equal the authorised one, or
+ *    everything rolls back. `--allow-partial` is the deliberate escape hatch for
+ *    the case where Marketing has reviewed a mismatch and wants the rest shipped.
  *  - GUARDED WRITES. Every UPDATE names one id AND re-asserts the old value
  *    (`AND body->>'html' = $old`), so an editor save landing between the read and
  *    the write is skipped, never clobbered.
@@ -334,6 +339,48 @@ const TARGETS: Target[] = [
       replace:
         'When you notice your toilet and fixtures clogging and backing up altogether, ' +
         'you may have a blocked sewer or main line.',
+    },
+  },
+  {
+    // A.7 — NOT IN BRIEF 100. Added on the marketing lead's instruction,
+    // 2026-09-21, after the first six shipped.
+    //
+    // The brief's own audit accounts for 17 articles (6 in scope + 11 cleared);
+    // the database holds 18. Article 113 is in neither list, and its single
+    // mention is a bullet in a list headed "All of the following are indications
+    // of a broken pipe under the ground" — i.e. septic as A SYMPTOM WE DIAGNOSE,
+    // exactly what the standing copy rule prohibits, on a page carrying the same
+    // booking CTA as the other six.
+    //
+    // The bullet is DELETED rather than reworded. The obvious rewrite — "Sewage
+    // backup in your yard" — would duplicate the list's third bullet, which is
+    // already "Blockages or backups of sewage", so deleting loses no diagnostic
+    // signal and adds no copy. This is the A.5 shape (remove, do not rephrase),
+    // and like A.6 it needs no scope sentence: 113 has exactly one septic
+    // mention, so nothing septic-related remains on the page afterwards.
+    //
+    // The find/replace deliberately spans the PRECEDING bullet rather than
+    // matching the septic <li> alone. Deleting to an empty string would make
+    // both the idempotency check and the post-write "new string present"
+    // assertion vacuous (every string contains ''), and would strip the <li>
+    // while orphaning its trailing `<br />` separator. Anchoring on the
+    // neighbour keeps the separator sequence intact and keeps both guards real.
+    //
+    // It stops short of the closing `</ul>` on purpose: the allow-list gate
+    // sanitizes each new fragment in isolation, and an unbalanced `</ul>` with
+    // no opening tag is dropped by sanitize-html, which failed the gate. Both
+    // strings below are balanced fragments, so what the gate validates is what
+    // gets stored. (The gate catching that is the gate working.)
+    ref: 'A.7',
+    id: 113,
+    slug: 'how-to-fix-a-broken-drain-pipe-underground',
+    summary: 'septic bullet removed from the broken-pipe symptom list',
+    edit: {
+      kind: 'replace',
+      find:
+        '<li>Extremely lush areas of grass</li><br />  ' +
+        '<li>Septic tank backup in your yard</li><br />',
+      replace: '<li>Extremely lush areas of grass</li><br />',
     },
   },
 ];
@@ -875,7 +922,7 @@ async function main() {
     const bad = plans.filter((p) => p.status !== 'applied' && p.status !== 'already-applied');
     const accounted = applied.length + already.length;
 
-    // ── the brief's hard rule: exactly 6, or abort the transaction ──────────
+    // ── the brief's hard rule: every authorised id, or abort the transaction ──
     if (accounted !== TARGETS.length && !ALLOW_PARTIAL) {
       await client.query('ROLLBACK');
       guardTripped = true;
@@ -883,7 +930,7 @@ async function main() {
       console.log('!'.repeat(72));
       console.log(`${SCRIPT}: ABORTED — ${accounted}/${TARGETS.length} target rows accounted for.`);
       console.log('');
-      console.log("Brief 100's hard rule is exactly 6 rows or none: this transaction has been");
+      console.log(`Brief 100's hard rule is all ${TARGETS.length} rows or none: this transaction has been`);
       console.log('ROLLED BACK and NOTHING was written. The rows that did not match:');
       for (const p of bad) {
         console.log(`   ${p.target.ref} id ${p.target.id} ${p.target.slug}: ${p.status} — ${p.note}`);
@@ -936,7 +983,7 @@ async function main() {
       const seenIds = [...ids].sort((a, b) => a - b).join(',');
       if (seenIds !== expectedIds) {
         throw new Error(
-          `verified id set ${seenIds} != the 6 ids this brief authorises (${expectedIds}). Rolling back.`
+          `verified id set ${seenIds} != the ${TARGETS.length} authorised ids (${expectedIds}). Rolling back.`
         );
       }
       if (counts.rows > TARGETS.length) {
@@ -951,7 +998,9 @@ async function main() {
         `\nCOMMITTED. cms_articles rows written: ${counts.rows} (${already.length} already applied). ` +
           `page_drafts published-version rows synced: ${counts.drafts}.`
       );
-      console.log(`Verified: the 6 authorised ids are ${expectedIds} and no other row was written.`);
+      console.log(
+        `Verified: the ${TARGETS.length} authorised ids are ${expectedIds} and no other row was written.`
+      );
       verdict(
         SCRIPT,
         counts.rows === 0 ? 'ALREADY-APPLIED' : 'APPLIED',
