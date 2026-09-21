@@ -556,6 +556,48 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/migrate-brief-159-version-status.ts commit
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-159-baseline-versions.ts commit
+# -- Brief 100: septic language cleanup (Knowledge Hub) ---------------
+# A prospect called sales to say the site "states that we pump out septic
+# systems". We do not. Six published articles (ids 67, 111, 116, 124, 131,
+# 168) carried copy that read as a septic OFFER rather than background -
+# one hyperlinked "pumping" into our own ejector-pump guide, another said
+# "a plumber can still retrieve it" about an item in a septic tank - on
+# pages carrying booking CTAs.
+#
+# Content only: it rewrites `cms_articles.body.html` on exactly those six
+# ids and nothing else. Every write is gated on the EXACT expected old
+# string appearing exactly once and on the id AND slug both matching (ids
+# are not portable between databases), backs the old value up to
+# `brief100_septic_backup` first, and re-runs as a no-op reporting
+# ALREADY-APPLIED - safe on every deploy.
+#
+# ORDER MATTERS: it runs AFTER the Brief 159 pair above. Under Brief 159
+# an article's content lives in `cms_articles` AND in the `page_drafts`
+# row with is_published = true; fixing only the first leaves the septic
+# wording one "publish Version 1" click away from coming back. Running
+# here means the version rows exist, so the script syncs both halves in
+# one transaction.
+#
+# THE COPY CARRIES NO LICENSING OR REFERRAL CLAIM, deliberately (brief
+# revision 2026-09-21). "Requires a licensed septic contractor, not a
+# plumber" is false as an exclusivity claim - Illinois licenses septic
+# pumping separately (225 ILCS 225) but a plumbing company may hold that
+# licence too. The copy states only what we service.
+#
+# HARD RULE, and the reason a red step here is a CONTENT question and not
+# a code one: the brief allows exactly 6 rows or none. If any row does not
+# match (dev, staging and production legitimately hold different content),
+# the whole transaction ROLLS BACK and the script prints a loud banner and
+# exits 0 ON PURPOSE - a non-zero exit would trip `set -e` and abort the
+# build swap and the pm2 reload below, turning a content question into an
+# outage (the Brief 145 rule). Read the step output; the PIPELINE VERDICT
+# line says APPLIED, ALREADY-APPLIED or NOT-APPLIED (guard tripped). Do
+# not assume silence means applied.
+#
+# `-r tsconfig-paths/register` is REQUIRED: the script imports the shared
+# sanitizer and changelog helper from src/. Do not drop it.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/fix-brief-100-septic-language.ts commit
 # -- Brief 160: city "We've got you covered" heading + section image ---
 # ORDER MATTERS and the two are a pair, same shape as Brief 159 above:
 #   1. the MIGRATION adds `city_pages.covered_heading` and
