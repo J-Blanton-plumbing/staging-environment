@@ -87,24 +87,22 @@ export const MANUAL_ALIAS_REDIRECTS: Readonly<Record<string, string>> = {
   '/how-to-install-plumbing-for-kitchen-sink/feed':
     '/knowledge-hub/how-to-install-plumbing-for-kitchen-sink',
 
-  /* ── Brief 181, Track F2 — the retired review URL ──────────────────────────
-   * `/hanover-park-test` was Brief 180's noindex review build: a real, deployed,
-   * publicly reachable URL carrying the approved Hanover Park copy while
-   * Marketing read it. Brief 181 promoted that copy to `/hanover-park` and
-   * deleted the route.
+  /* ── Brief 181, Track F2 — DELIBERATELY NOT REDIRECTED ─────────────────────
+   * `/hanover-park-test` is NOT in this map, and must not be added.
    *
-   * A 301 rather than a 404 because the URL WAS reachable for a day and may have
-   * been bookmarked, shared or crawled — `noindex` stops indexing, it does not
-   * stop a link existing. The target is the page the copy now lives on, which is
-   * the closest thing to "what you were looking for" that exists.
+   * Brief 181 originally shipped it as a 301 to `/hanover-park`, on the
+   * reasoning that the URL had been publicly reachable and might have been
+   * bookmarked or crawled. Marketing reversed that on 2026-09-21: the URL was
+   * SCAFFOLDING. It was `noindex, nofollow`, it was in no sitemap, nothing on
+   * the site ever linked to it, and it existed for about a day. There is nothing
+   * to consolidate, and a 301 asserts that the two URLs are the same resource —
+   * which is a claim about a review artefact that was never a page in its own
+   * right.
    *
-   * ⚠ One hop, including from the slashed form. `normalizeTrailingSlash()` in
-   * `src/middleware.ts` strips the slash AND resolves this map in the same pass,
-   * so `/hanover-park-test/` → 301 → `/hanover-park` directly. That only holds
-   * while `skipTrailingSlashRedirect: true` stays in `next.config.mjs` (Brief
-   * 152); remove it and this becomes a two-hop chain like every other alias.
+   * The route is deleted, so the URL 404s on its own. That is the correct
+   * answer and it needs no handling: no map entry, no 410, no custom response.
+   * See `DELIBERATE_404S` below for the same reasoning applied elsewhere.
    */
-  '/hanover-park-test': '/hanover-park',
 };
 
 /**
@@ -128,11 +126,23 @@ export const MANUAL_ALIAS_REDIRECTS: Readonly<Record<string, string>> = {
  *   /v/media/storage/*.mp4         theme AND the full WordPress export: ZERO
  *                                  references in any of them. They are not page
  *                                  URLs and must never 301 to a page.
+ *
+ * Brief 181, Track F2 (reversed 2026-09-21):
+ *
+ *   /hanover-park-test             Brief 180 scaffolding. noindex + nofollow,
+ *                                  in no sitemap, zero inbound links anywhere,
+ *                                  live for about a day. It briefly shipped as
+ *                                  a 301 to /hanover-park; Marketing reversed
+ *                                  that because there is nothing to consolidate
+ *                                  and a 301 would assert the two URLs are the
+ *                                  same resource. The route is deleted, so it
+ *                                  404s on its own — no handling required.
  */
 export const DELIBERATE_404S: readonly string[] = [
   '/default.aspx',
   '/index',
   '/lander',
+  '/hanover-park-test',
 ];
 
 /**

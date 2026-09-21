@@ -4,9 +4,14 @@
  *
  * Flattens every user-visible string out of the V3 content module and asserts
  * each one is present in a served HTML document. The point is to prove the
- * promotion moved the approved copy WITHOUT editing it: run it against the
- * approved page (`/hanover-park-test` on production) and the promoted page
- * (`/hanover-park`) and both must come back clean.
+ * promotion moved the approved copy WITHOUT editing it.
+ *
+ * ⚠ `/hanover-park-test` NO LONGER SERVES — the route was deleted and, since
+ * Marketing's 2026-09-21 reversal of Track F2, it 404s rather than redirecting.
+ * The comparison that mattered was run before it was retired, against an
+ * archived capture of that page; both it and the live `/hanover-park` came back
+ * 72/72 text fields and 3/3 attribute fields. Point this at `/hanover-park`
+ * (and at a saved snapshot if you want the historical side).
  *
  *   ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
  *     scripts/brief-181/copy-diff.ts <html-file> [<html-file2> ...]
