@@ -1,11 +1,20 @@
-# Brief 181 follow-up (2026-09-21).
+# Shell scripts must reach the Linux box with LF endings.
 #
-# `scripts/deploy.sh` is executed by bash ON THE LINUX BOX. If it is ever
-# checked out with CRLF endings, every line ends in a stray \r and the deploy
-# dies on the first one with an unreadable error. This repo is developed on
-# Windows and its two other .sh files are ALREADY stored with CRLF, so this is
-# not hypothetical — it is the state the next new shell script would inherit.
+# `scripts/deploy.sh` is executed by bash ON THE BOX. A CRLF checkout puts a
+# stray \r at the end of every line and the deploy dies on the first one with an
+# unreadable error. `backup-db.sh` and `restore-db.sh` run there too, through
+# `npm run db:backup` / `npm run db:restore`.
 #
-# Scoped to this one path on purpose: renormalising the pre-existing scripts is
-# a separate change and does not belong in a deploy-pipeline fix.
-/scripts/deploy.sh text eol=lf
+# ── WHAT THIS DOES AND DOES NOT FIX (measured 2026-09-21) ───────────────────
+# All three files are ALREADY stored LF-only in git — verified byte-wise, not by
+# eye. This repo is developed on Windows with `core.autocrlf=true`, which
+# normalises CRLF to LF on commit, so the blobs have always been clean.
+#
+# These rules make that guarantee EXPLICIT rather than a side effect of one
+# machine's local config. `core.autocrlf` is per-clone and unset by default: a
+# contributor without it commits whatever their editor produced, and for a file
+# that only ever executes on a remote box, nothing local would catch it. That is
+# the gap being closed here — not an existing breakage.
+/scripts/deploy.sh     text eol=lf
+/scripts/backup-db.sh  text eol=lf
+/scripts/restore-db.sh text eol=lf
