@@ -17,6 +17,57 @@
  * tank"). It must never appear as a symptom we diagnose, a system we maintain,
  * or a service we perform.
  *
+ * ── BRIEF REVISION 2026-09-21 12:32 — READ BEFORE TOUCHING THE COPY ─────────
+ * The brief was revised after this script's first dev run, and the approved
+ * wording for A.1–A.4 CHANGED. Two new hard rules drove it, and both are easy
+ * to violate by "improving" a sentence:
+ *
+ *  1. NO LEGAL OR LICENSING CLAIMS. The first draft said septic pumping
+ *     "requires a licensed septic contractor, not a plumber". Illinois does
+ *     license septic pumping separately (IDPH, Private Sewage Disposal
+ *     Licensing Act, 225 ILCS 225) — but A PLUMBING COMPANY MAY ALSO HOLD THAT
+ *     LICENSE, so as an exclusivity claim it is simply false. The copy states
+ *     what WE do and nothing about the customer's legal obligations.
+ *  2. NO REFERRAL CLAUSE. No "you'll need a licensed septic contractor", no
+ *     "that is specialized work", no pointing the reader at another provider.
+ *
+ * There are deliberately TWO approved forms; do not normalise them to one:
+ *   - canonical, used verbatim in A.2:
+ *       "J. Blanton Plumbing services municipal sewer and drain lines. We do
+ *        not service, maintain, or pump septic systems."
+ *   - em-dash variant, used in A.1/A.3/A.4 (note: no "maintain"):
+ *       "J. Blanton Plumbing services municipal sewer and drain lines — we do
+ *        not service or pump septic systems."
+ *
+ * ── THE COPY IS BLOCKED ON OPS SIGN-OFF ─────────────────────────────────────
+ * The revised brief forbids running this against ANY environment, dev included,
+ * until the service/ops manager has approved the scope statement in writing,
+ * because the claim itself is still unverified (the only evidence is a customer
+ * phone call relayed through sales). The pre-flight also has to settle three
+ * edge cases — do we rod/jet/camera a lateral RUNNING TO a septic tank, service
+ * an ejector pump in a septic home, or diagnose and refer out? If any answer is
+ * yes, the flat denial is too broad and THE BRIEF gets revised, not this file:
+ * do not improvise a narrower sentence here.
+ *
+ * NOTE FOR WHOEVER RUNS THIS NEXT: the dev database was written once, on
+ * 2026-09-21 at 10:49, with the SUPERSEDED pre-revision wording. Dev therefore
+ * matches neither the original live text nor the approved text, so a plain
+ * re-run there is not enough — see "RE-RUNNING OVER A SUPERSEDED RUN" below.
+ * Staging and production were never touched and take the approved copy in one
+ * clean pass.
+ *
+ * ── RE-RUNNING OVER A SUPERSEDED RUN ────────────────────────────────────────
+ * `--rollback` FIRST, then `commit`. The guards are exact-match against the
+ * ORIGINAL live strings, which a superseded environment no longer has, so:
+ *   - A.1/A.3/A.4 report `skipped-mismatch` (neither old nor new string present)
+ *   - A.5/A.6 report `already-applied` (their copy did not change in the revision)
+ *   - A.2 is the dangerous one: its guard looks for the NEW paragraph, does not
+ *     find it, matches the anchor `<h2>`, and would insert the approved
+ *     paragraph ALONGSIDE the superseded one.
+ * The all-or-nothing gate catches this (3/6 accounted -> full rollback, nothing
+ * written), which is exactly what it is for. Do NOT reach for `--allow-partial`
+ * to force it through — that is the one flag that would let A.2 double up.
+ *
  * ── SCOPE ───────────────────────────────────────────────────────────────────
  * Content only. Exactly six `cms_articles` rows: 67, 111, 116, 124, 131, 168.
  * Eleven other articles mention septic as neutral background and were reviewed
@@ -191,7 +242,7 @@ const TARGETS: Target[] = [
         `<p style="${P_STYLE}">Homes with septic systems can experience slow or stopped drainage ` +
         `if the tank is overdue for pumping. Even a clear sink pipe can't drain properly when the ` +
         `septic system is full. J. Blanton Plumbing services municipal sewer and drain lines ${EM} ` +
-        `septic tank pumping requires a licensed septic contractor.</p>`,
+        `we do not service or pump septic systems.</p>`,
     },
   },
   {
@@ -210,8 +261,7 @@ const TARGETS: Target[] = [
         'margin-top:25px;margin-bottom:18px;">Why Understanding Your Sewer System Matters</h2>',
       insert:
         `<p style="${P_STYLE}"><strong>Note:</strong> J. Blanton Plumbing services municipal sewer ` +
-        `and drain lines. We do not service, maintain, or pump septic systems ${EM} if your home is ` +
-        `on septic, you'll need a licensed septic contractor.</p>`,
+        `and drain lines. We do not service, maintain, or pump septic systems.</p>`,
     },
   },
   {
@@ -223,16 +273,15 @@ const TARGETS: Target[] = [
     ref: 'A.3',
     id: 67,
     slug: '7-signs-of-main-sewer-line-problems',
-    summary: 'septic maintenance sentence rewritten to name a licensed septic contractor',
+    summary: 'septic maintenance sentence rewritten to scope it to what we service',
     edit: {
       kind: 'replace',
       find:
         '<p>Just like regular systems, septic systems need maintenance. ' +
         "If you don't take care of it properly, the septic system will fail.</p>",
       replace:
-        `<p>Just like municipal systems, septic systems need maintenance ${EM} but that work is ` +
-        `handled by a licensed septic contractor. J. Blanton Plumbing services municipal sewer and ` +
-        `drain lines, not septic systems.</p>`,
+        `<p>Just like municipal systems, septic systems need maintenance. J. Blanton Plumbing ` +
+        `services municipal sewer and drain lines ${EM} we do not service or pump septic systems.</p>`,
     },
   },
   {
@@ -250,9 +299,9 @@ const TARGETS: Target[] = [
         'If your item found its way into the septic tank, a plumber can still retrieve it. ' +
         'However, it is a major undertaking that could cost you time and money.',
       replace:
-        `If your item found its way into the septic tank, retrieving it is a major undertaking ${EM} ` +
-        `and one that requires a licensed septic contractor, not a plumber. J. Blanton Plumbing ` +
-        `does not service septic tanks.`,
+        `If your item found its way into the septic tank, retrieving it is a major undertaking. ` +
+        `J. Blanton Plumbing services municipal sewer and drain lines ${EM} we do not service or ` +
+        `pump septic systems.`,
     },
   },
   {
