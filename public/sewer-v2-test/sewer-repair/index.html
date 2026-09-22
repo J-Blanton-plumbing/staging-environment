@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--
+  SEWER ECOSYSTEM V2 SANDBOX (not approved outside this project). Prototype, noindex.
+  Layouts: Dispatch (sub-service template) and Editorial + Rails hero (hub), from the Emil Kowalski prototype.
+  Colors, typefaces, copy and claims are unchanged from the approved v1 pages unless noted below.
+  Spec: references/design_sewer_ecosystem_v2.md. Styles: css/style.css. Behavior: js/script.js.
+  Converted from this folder's index.html (v1). Copy is unchanged; only layout and components differ.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F9F3EC">
+<title>Sewer Line Repair | J. Blanton Plumbing</title>
+<meta name="description" content="See what's actually wrong with your sewer line before you agree to any repair. Camera inspection first, upfront pricing, no guesswork. Call today.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="jbp-header">
+  <div class="jbp-logo"><img class="jbp-logo-bg" src="../assets/rectangle.webp" alt="" aria-hidden="true"><a class="jbp-logo-link" href="/" aria-label="J. Blanton Plumbing"><img src="../assets/logo-text.webp" alt="J. Blanton Plumbing"></a></div>
+  <div class="jbp-bar">
+    <a class="jbp-logo-sm" href="/" aria-label="J. Blanton Plumbing"><img src="../assets/logo-text.webp" alt="J. Blanton Plumbing"></a>
+    <nav class="jbp-nav" aria-label="Primary">
+      <a href="/why-j-blanton">Why J. Blanton</a>
+      <a href="../index.html">Services</a>
+      <a href="/no-drip-club">No Drip Club</a>
+      <a href="/customer-stories">Customer Stories</a>
+      <a href="/locations">Locations</a>
+    </nav>
+    <a class="jbp-phone" href="tel:7737249272"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>773-724-9272</a>
+    <a class="jbp-cta" href="#book">Schedule a Service</a>
+    <div class="jbp-mobile-actions">
+      <a class="jbp-icon-btn jbp-icon-phone" href="tel:7737249272" aria-label="Call 773-724-9272"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></a>
+      <a class="jbp-icon-btn jbp-icon-cal" href="#book" aria-label="Schedule a service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></a>
+      <button class="jbp-burger" type="button" aria-label="Open menu" aria-controls="jbp-drawer" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="jbp-drawer-overlay" id="jbp-drawer"><div class="jbp-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="jbp-drawer-head"><img src="../assets/logo-white.webp" alt="J. Blanton Plumbing"><button class="jbp-drawer-close" type="button" aria-label="Close menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <nav class="jbp-drawer-nav" aria-label="Mobile">
+    <a href="/why-j-blanton">Why J. Blanton</a>
+    <a href="../index.html">Services</a>
+    <a href="/no-drip-club">No Drip Club</a>
+    <a href="/customer-stories">Customer Stories</a>
+    <a href="/locations">Locations</a>
+  </nav>
+  <a class="jbp-drawer-phone" href="tel:7737249272"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>773-724-9272</a>
+  <a class="jbp-drawer-cta" href="#book">Schedule a Service</a>
+</div></div>
+<main id="stage"></main>
+
+<main id="main">
+<section class="ss-hero"><div class="hero-pattern"></div><div class="ss-hero-in">
+  <div class="ss-hero-copy">
+    <nav class="ss-crumb pv-in" style="--i:0" aria-label="Breadcrumb"><a href="../index.html">Sewer Services</a><span aria-hidden="true">/</span><span>Sewer Line Repair</span></nav>
+    <span class="t-eyebrow hero-eyebrow pv-in" style="--i:1">Serving Homeowners for 30+ years</span>
+    <h1 class="t-h1 pv-in" style="--i:2;color:var(--c-cream);margin:0">Sewer Line Repair</h1>
+    <p class="t-body pv-in" style="--i:3;color:var(--c-cream);margin:0;max-width:56ch">Sewer line problems don't stay small, and a bottle of drain cleaner won't fix what's actually wrong. A bubbling toilet, gurgling pipes, or drains that run slow all point to something happening underground. Here's what that could mean, and how we can help.</p>
+    <div class="hero-cta pv-in" style="--i:4"><a class="btn btn-hero-cta t-btn" href="tel:7737249272" style="white-space:nowrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" style="flex-shrink:0" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>773-724-9272</a><span class="badge24" role="img" aria-label="24 hours, 7 days a week emergency service"><svg viewBox="0 0 100 100" width="64" height="64" aria-hidden="true" focusable="false"><path d="M30.28 12.92 A42 42 0 1 1 67.75 88.06" fill="none" stroke="currentColor" stroke-width="7"/><path d="M26.06 4.97 L15.18 26.51 L34.51 20.86 Z" fill="currentColor"/><path d="M58.73 91.08 A42 42 0 0 1 52.93 91.90" fill="none" stroke="currentColor" stroke-width="7"/><path d="M47.80 91.94 A42 42 0 0 1 41.99 91.23" fill="none" stroke="currentColor" stroke-width="7"/><path d="M37.02 89.94 A42 42 0 0 1 31.59 87.75" fill="none" stroke="currentColor" stroke-width="7"/><path d="M27.13 85.22 A42 42 0 0 1 22.45 81.70" fill="none" stroke="currentColor" stroke-width="7"/><path d="M18.79 78.10 A42 42 0 0 1 15.18 73.49" fill="none" stroke="currentColor" stroke-width="7"/><path d="M12.58 69.07 A42 42 0 0 1 10.29 63.67" fill="none" stroke="currentColor" stroke-width="7"/><path d="M8.92 58.73 A42 42 0 0 1 8.10 52.93" fill="none" stroke="currentColor" stroke-width="7"/><text x="50" y="56" text-anchor="middle" font-family="Industry,Arial,sans-serif" font-weight="700" font-size="38" fill="currentColor">24</text><text x="50" y="71" text-anchor="middle" font-family="Industry,Arial,sans-serif" font-weight="700" font-size="13" letter-spacing=".5" fill="currentColor">HOURS</text></svg></span></div>
+  </div>
+  <img class="ss-hero-img pv-in" style="--i:3" src="assets/hero-repair-clamp.jpeg" alt="Close-up of red J. Blanton Plumbing branded gloves tightening a repair clamp on a large diameter sewer pipe inside a deep residential trench, with garden bed soil and plant roots visible along the trench walls">
+</div></section>
+<nav class="jbp-subnav" aria-label="Quick links"><a href="/emergency-plumbing">Emergency Plumbing</a><a href="/knowledge-hub">Knowledge Hub</a><a href="/financing">Financing</a><a href="/help-and-support">Help &amp; Support</a></nav>
+<div class="ss-shell">
+  <div class="ss-main"><section class="ss-panel" id="does-your-sewer-line-need-repair" style="--o:10">
+<span class="t-eyebrow" style="color:var(--c-carmine)">Know the Signs</span>
+<h2 class="t-h2" style="margin:12px 0 16px;max-width:66ch">Does Your Sewer Line Need Repair?</h2>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0 0 28px;max-width:66ch">A sewer line problem doesn't always mean a full replacement. Most issues start smaller than that, and catching them early is what keeps them that way. Here's how to know where you stand:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:24px">
+<div class="bento-tile">
+<h3 class="t-label" style="color:var(--c-carmine);margin:0 0 12px">Slow Drains or Gurgling That Keep Coming Back After Rodding</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">If rodding clears it but the same slow drain or gurgling returns within a few months, the clog isn't the real problem. Something further down the line is catching debris again.</p>
+</div>
+<div class="bento-tile">
+<h3 class="t-label" style="color:var(--c-carmine);margin:0 0 12px">Recurring Backups or Pooling Water in the Yard</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">A backup that keeps happening, or a soggy patch in the yard, points to something wrong with the pipe itself, not a one-time clog. Rodding alone probably won't hold this time.</p>
+</div>
+<div class="bento-tile">
+<h3 class="t-label" style="color:var(--c-carmine);margin:0 0 12px">Confirmed Crack, Joint Separation, or Root Intrusion on Camera</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">Once a camera inspection confirms damage to the pipe, this isn't a rodding job anymore. We'll walk you through what repair looks like for your line.</p>
+</div>
+</div>
+</section><section class="ss-panel ss-tint" id="why-sewer-lines-fail" style="--o:20">
+<span class="t-eyebrow" style="color:var(--c-carmine)">What's Really Going On</span>
+<h2 class="t-h2" style="margin:12px 0 16px;max-width:66ch">Why Sewer Lines Fail</h2>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0 0 28px;max-width:66ch">A sewer line doesn't fail all at once. It's usually one of a handful of causes wearing on the pipe over years. Here's what we find most often:</p>
+<div class="grid-auto" style="grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))">
+<div class="card">
+<img alt="In-pipe camera view of a corroded sewer pipe wall with a visible crack, water flowing through the damaged section" src="../assets/pipe-conditions/cracks.webp" style="width:calc(100% + 44px);height:150px;object-fit:cover;border-radius:14px 10px 0 0;margin:-22px -22px 16px -22px;display:block"/>
+<h3 class="t-h4" style="margin:0 0 8px">Aging Pipe Materials</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">Homes built before the 1970s often have clay or cast iron sewer lines. Clay typically lasts 50 to 60 years and is especially vulnerable to cracking at the joints. Cast iron holds up longer, usually 50 to 75 years, but corrodes from the inside as it ages.</p>
+</div>
+<div class="card">
+<img alt="In-pipe camera view of tree roots growing through a pipe joint and hanging into the sewer line" src="../assets/pipe-conditions/root_intrusion.webp" style="width:calc(100% + 44px);height:150px;object-fit:cover;border-radius:14px 10px 0 0;margin:-22px -22px 16px -22px;display:block"/>
+<h3 class="t-h4" style="margin:0 0 8px">Tree Root Intrusion</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">Roots grow toward any source of moisture, and a sewer line is exactly that. Once a root finds a crack or a loose joint, it grows into the pipe and keeps growing until it blocks the flow or cracks the pipe further.</p>
+</div>
+<div class="card">
+<img alt="In-pipe camera view down a sewer line showing standing water pooled in a low spot, or belly, in the pipe" src="../assets/pipe-conditions/standing_water.webp" style="width:calc(100% + 44px);height:150px;object-fit:cover;border-radius:14px 10px 0 0;margin:-22px -22px 16px -22px;display:block"/>
+<h3 class="t-h4" style="margin:0 0 8px">Ground Shift and Freeze-Thaw</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">Ground that freezes and thaws through the winter expands and contracts, and pipe joints take the strain. Over years of that cycle, joints can separate or the pipe can settle into a low spot, called a belly, where waste collects instead of flowing through.</p>
+</div>
+<div class="card">
+<img alt="In-pipe camera view of a sewer pipe joint that has separated, showing a visible offset between two pipe sections" src="../assets/pipe-conditions/pipe_separation.webp" style="width:calc(100% + 44px);height:150px;object-fit:cover;border-radius:14px 10px 0 0;margin:-22px -22px 16px -22px;display:block"/>
+<h3 class="t-h4" style="margin:0 0 8px">Improper Original Installation</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">Not every sewer line was installed the same way. A pipe laid without the right slope, or backfilled poorly, fails faster than one installed correctly, even if the material itself is sound.</p>
+</div>
+</div>
+</section><section class="ss-panel" id="what-happens-when-you-call-j-blanton" style="--o:30"><div class="ss-split rev">
+<div>
+<span class="t-eyebrow" style="color:var(--c-carmine)">The J. Blanton Difference</span>
+<h2 class="t-h2" style="margin:12px 0 16px;max-width:66ch">What Happens When You Call J. Blanton</h2>
+<div style="display:flex;flex-direction:column;gap:20px;margin-bottom:28px">
+<div>
+<h3 class="t-h4" style="margin:0 0 6px">1. Camera Inspection</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">We run a camera down the line first, always. You see the same footage we do, so nothing about what's wrong is a guess, ours or yours.</p>
+</div>
+<div>
+<h3 class="t-h4" style="margin:0 0 6px">2. Honest Diagnosis</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">We'll tell you straight whether it's a repair or a replacement, and why. If a smaller fix holds, that's what we recommend, not the bigger job.</p>
+</div>
+<div>
+<h3 class="t-h4" style="margin:0 0 6px">3. Upfront Pricing</h3>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0">Once we know what we're dealing with, you get a flat rate before any work starts. No surprise numbers once the job is underway.</p>
+</div>
+</div>
+<a class="btn btn-primary t-btn" href="tel:7737249272"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" style="flex-shrink:0" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"></path></svg>773-724-9272</a>
+</div>
+<div>
+<img alt="J. Blanton Plumbing technician crouching in a residential backyard beside a sewer camera monitor, pointing at live pipe footage on screen while an older male homeowner leans in to observe the inspection results" src="assets/camera-inspection-backyard.jpeg" style="width:100%;height:auto;display:block;border-radius:14px"/>
+</div>
+</div></section><section class="ss-panel ss-tint" id="how-we-repair-a-sewer-line" style="--o:40">
+<span class="t-eyebrow" style="color:var(--c-carmine)">Repair Methods</span>
+<h2 class="t-h2" style="margin:12px 0 16px;max-width:66ch">How We Repair a Sewer Line</h2>
+<p class="t-body-sm" style="color:var(--c-slate);margin:0 0 28px;max-width:66ch">Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.</p>
+<div style="background:#FFFFFF;border-radius:14px;padding:32px;box-shadow:0 4px 20px rgba(10,27,46,0.08)">
+<div class="ss-compare-wrap">
+<table class="ss-compare">
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">What It Involves</th>
+<th scope="col">Typical Disruption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><a href="../trenchless-sewer-repair/index.html">Trenchless Pipe Lining</a></th>
+<td data-label="What It Involves">A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.</td>
+<td data-label="Typical Disruption">Minimal digging, usually just small access points</td>
+</tr>
+<tr>
+<th scope="row"><a href="../trenchless-sewer-repair/index.html">Trenchless Pipe Bursting</a></th>
+<td data-label="What It Involves">A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.</td>
+<td data-label="Typical Disruption">Minimal digging, works even when the old pipe is badly damaged</td>
+</tr>
+<tr>
+<th scope="row">Traditional Excavation (Spot Repair)</th>
+<td data-label="What It Involves">The damaged section is dug up and replaced directly.</td>
+<td data-label="Typical Disruption">More digging, but sometimes the only option depending on damage location and access</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p class="t-body-sm" style="color:var(--c-slate);margin:20px 0 0">Your technician will walk you through which method fits your situation after the camera inspection, along with what to expect from start to finish.</p>
+</section><section class="ss-panel" id="what-happens-when-we-repair-your-sewer-line" style="--o:50"><div class="ss-split">
+<div>
+<div class="imgslot" style="height:320px;position:relative">
+<span>Video placeholder: “What Actually Happens During a Sewer Line Repair” explainer, not yet produced</span>
+</div>
+</div>
+<div>
+<span class="t-eyebrow" style="color:var(--c-carmine)">See What We Find</span>
+<h2 class="t-h2" style="margin:12px 0 16px;max-width:66ch">What Happens When We Repair Your Sewer Line</h2>
+<p class="t-body" style="color:var(--c-slate);margin:0;max-width:66ch">Curious what actually happens once we're on site? Watch how we diagnose and repair a sewer line, camera first, every time.</p>
+</div>
+</div></section><section class="ss-panel ss-tint" id="reviews" style="--o:60"><div class="ss-head"><span class="t-eyebrow" style="color:var(--c-carmine)">Customer Stories</span><h2 class="t-h2" style="margin:10px 0 0">Sewer Line Repair Reviews</h2></div><div class="ss-revs"><div class="ss-rev"><div class="pv-stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="t-body-sm" style="margin:0 0 14px">"I had an exceptional experience with Andreas from J. Blanton Plumbing. He came out to perform a camera inspection of my sewer line and was incredibly professional, thorough, and knowledgeable. He took the time to walk me through everything on the screen, explained each detail clearly, and answered all my questions with patience and honesty."</p><div class="review-author">
+<span class="review-avatar"><svg aria-hidden="true" fill="none" height="20" stroke="#F9F3EC" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+<div>
+<a href="https://maps.app.goo.gl/YHikKuGGrdZmN4838" rel="noreferrer" target="_blank"><strong class="t-label" style="font-size:14px">Jason Newman</strong></a>
+<div class="t-caption" style="color:var(--c-slate)">Verified Customer</div>
+</div>
+</div></div><div class="ss-rev"><div class="pv-stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="t-body-sm" style="margin:0 0 14px">"I had J. Blanton Plumbing come service a potential sewer line back-up and I was super impressed with the entire experience. My technician was Stephen Walen and he was fantastic. He scoped our entire line so we could see where our main line hooks up to off-shoots of our other pipes. He walked through all different short &amp; long-term scenarios so we could make informed decisions."</p><div class="review-author">
+<span class="review-avatar"><svg aria-hidden="true" fill="none" height="20" stroke="#F9F3EC" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+<div>
+<a href="https://maps.app.goo.gl/fNFyTEGqmipVtH2dA" rel="noreferrer" target="_blank"><strong class="t-label" style="font-size:14px">J. Ham</strong></a>
+<div class="t-caption" style="color:var(--c-slate)">Verified Customer</div>
+</div>
+</div></div><div class="ss-rev"><div class="pv-stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="t-body-sm" style="margin:0 0 14px">"I had another company come out first to fix my sewer line that got blocked in this cold weather, but the issue was not fully resolved. I made an appointment with J Blanton because of their promotion. They all were professional, knowledgeable, offered solutions, and answered all my questions. They all went above and beyond to make sure my issue is fixed efficiently and as soon as possible."</p><div class="review-author">
+<span class="review-avatar"><svg aria-hidden="true" fill="none" height="20" stroke="#F9F3EC" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+<div>
+<a href="https://maps.app.goo.gl/hcHjEjPhBvoYqNnh8" rel="noreferrer" target="_blank"><strong class="t-label" style="font-size:14px">Sara Corcoran</strong></a>
+<div class="t-caption" style="color:var(--c-slate)">Verified Customer</div>
+</div>
+</div></div></div></section><section class="ss-panel ss-midnight ndc ndc--panel" id="no-drip-club" style="--o:70"><div class="ndc-grid"><div class="ndc-text"><p class="t-eyebrow ndc-eyebrow">Annual Protection Plan</p><h2 class="t-h2 ndc-h2"><a href="/no-drip-club">Join the No Drip Club</a> for Year-Round Sewer Protection</h2><p class="ndc-body">Prevent catastrophes before they disrupt your life. The No Drip Club ensures your waste and sewer lines are monitored and serviced regularly by J. Blanton&rsquo;s absolute best.</p><ul class="ndc-list"><li><span class="ndc-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>Two Free Professional Maintenance Visits per Year</span></li><li><span class="ndc-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>10% Discount on All General Plumbing &amp; Sewer Services</span></li><li><span class="ndc-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>5-Year Parts and Labor Warranty on Approved Projects</span></li><li><span class="ndc-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><span>VIP Priority Scheduling Status (Skip the Queue)</span></li></ul><a class="btn btn-primary t-btn ndc-btn" href="/no-drip-club"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="flex-shrink:0" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>Learn More About the No Drip Club</a></div><div class="ndc-figure"><img src="../assets/j-ndc.webp" alt="" width="1180" height="1604" loading="lazy"></div></div></section><section class="ss-panel" id="services" style="--o:80"><div class="ss-head"><span class="t-eyebrow" style="color:var(--c-carmine)">What We Handle</span><h2 class="t-h2" style="margin:10px 0 0">Sewer Line Services We Provide</h2></div><div class="ss-rows"><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-trenchless-repair.webp" alt="Cutaway view of a corroded sewer pipe with a new trenchless pipe liner installed inside" loading="lazy"><div><h3 class="svc-title">Trenchless Sewer Line Repair</h3><p class="svc-desc">Don't tear up your yard or driveway for a sewer repair.</p></div><a class="svc-cta" href="../trenchless-sewer-repair/index.html" aria-label="Learn More about Trenchless Sewer Line Repair">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-sewer-rodding.webp" alt="J. Blanton Plumbing technician using a sewer rodding machine to clear a basement floor drain backup" loading="lazy"><div><h3 class="svc-title">Sewer Rodding</h3><p class="svc-desc">Clears most blockages fast.</p></div><a class="svc-cta" href="../sewer-rodding/index.html" aria-label="Learn More about Sewer Rodding">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-sewer-replacement.webp" alt="J. Blanton Plumbing technician guiding a hose into a sewer line access point during a replacement job" loading="lazy"><div><h3 class="svc-title">Sewer Line Replacement</h3><p class="svc-desc">For lines too far gone for a targeted repair.</p></div><a class="svc-cta" href="../sewer-line-replacement/index.html" aria-label="Learn More about Sewer Line Replacement">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-hydro-jetting.webp" alt="J. Blanton Plumbing technician hydro jetting a sewer line through a Chicago street manhole" loading="lazy"><div><h3 class="svc-title">Hydro Jetting</h3><p class="svc-desc">Flush out older buildup with high-pressure water.</p></div><a class="svc-cta" href="../hydro-jetting/index.html" aria-label="Learn More about Hydro Jetting">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-sewer-camera-inspection.webp" alt="J. Blanton Plumbing technician showing a homeowner the live sewer camera inspection feed" loading="lazy"><div><h3 class="svc-title">Sewer Camera Inspection</h3><p class="svc-desc">See exactly what's causing the problem before any work begins.</p></div><a class="svc-cta" href="../sewer-camera-inspection/index.html" aria-label="Learn More about Sewer Camera Inspection">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-overhead-sewer.webp" alt="J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling" loading="lazy"><div><h3 class="svc-title">Overhead Sewer Systems</h3><p class="svc-desc">Keeps sewage moving up and out, even during heavy rain.</p></div><a class="svc-cta" href="../overhead-sewer-systems/index.html" aria-label="Learn More about Overhead Sewer Systems">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-sewer-maintenance.webp" alt="J. Blanton Plumbing technician kneeling by an open sewer access point, checking notes on a clipboard during a maintenance visit" loading="lazy"><div><h3 class="svc-title">Sewer Maintenance</h3><p class="svc-desc">Routine service that catches small issues before they become a backup.</p></div><a class="svc-cta" href="../sewer-maintenance/index.html" aria-label="Learn More about Sewer Maintenance">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row"><img class="pv-img ss-thumb" src="../assets/svc-sewer-install.webp" alt="J. Blanton Plumbing technician lowering a new sewer pipe into an excavated trench" loading="lazy"><div><h3 class="svc-title">Sewer Line Installation</h3><p class="svc-desc">New lines for new builds, conversions, and system upgrades.</p></div><a class="svc-cta" href="../sewer-line-installation/index.html" aria-label="Learn More about Sewer Line Installation">Learn More <span aria-hidden="true">&rarr;</span></a></article><article class="ss-row ss-row--emergency"><img class="pv-img ss-thumb" src="../assets/emergency-call-under-sink.jpeg" alt="Woman kneeling by her kitchen sink, phone in hand, calling J. Blanton Plumbing for emergency service" loading="lazy"><div><h3 class="svc-title">Emergency Service</h3><p class="svc-desc">Dispatched nights, weekends, and holidays.</p></div><a class="svc-cta-onred" href="tel:7737249272">Call Now</a></article></div></section><section class="ss-panel" id="faq" style="--o:90"><div class="ss-head"><span class="t-eyebrow" style="color:var(--c-carmine)">Got Questions?</span><h2 class="t-h2" style="margin:10px 0 0">Frequently Asked Questions</h2></div><div style="display:flex;flex-direction:column;gap:12px"><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">What are the warning signs my sewer line needs repair?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">Slow drains, gurgling, a sewage smell, and backups that return after rodding are the main warning signs.</p><p class="faq-full">The most common warning signs are slow drains across multiple fixtures, gurgling sounds from toilets or pipes, a sewage smell inside or outside the home, and backups that keep coming back after rodding. When you're seeing more than one of these at the same time, the problem is usually in the main line, not a single drain.</p></div></div><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">How is a sewer line problem diagnosed?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">We start with a camera inspection, so you see exactly what's happening inside the pipe before any repair is discussed.</p><p class="faq-full">We start with a camera inspection. A technician runs a camera down the line and shows you exactly what's happening inside the pipe, so you're looking at the same picture we are before any repair gets discussed.</p></div></div><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">How long does sewer line repair take?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">It depends on the method. Trenchless repairs can sometimes finish in a single day; excavation takes longer.</p><p class="faq-full">It depends on the method and how deep the pipe sits. Trenchless repairs from the inside can sometimes be finished in a single day. Traditional excavation takes longer, since it means digging down to the pipe. Your technician will give you a timeline once the camera inspection shows what we're dealing with.</p></div></div><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">How much does sewer line repair cost?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">Cost depends on the repair method, pipe material, and how far the damage extends. We'll walk you through it after we see what's going on.</p><p class="faq-full">The cost depends on the repair method, the pipe material, and how far the damage extends. Give us a call and we'll walk you through it after we see what's going on.</p></div></div><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">When is full replacement necessary instead of repair?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">Replacement usually comes up when a pipe has collapsed, is badly offset, or has failed in more than one spot.</p><p class="faq-full">Replacement usually comes up when a pipe has collapsed, is badly offset, or has failed in more than one spot. If that's what the camera shows, we'll tell you honestly instead of trying to patch something that won't hold. Our <a href="../sewer-line-replacement/index.html">Sewer Replacement</a> page has more on what that process looks like.</p></div></div><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">What should I expect during the repair process?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">After the camera inspection, we pull permits, walk you through your options, and give you a flat rate before work begins.</p><p class="faq-full">After the camera inspection, we pull any required permits, walk you through your options, and give you a flat rate before work begins. You'll know what's happening and why at every step.</p></div></div><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">Do sewer line repairs require a permit?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">In most cases, yes. We handle the permitting as part of the job, so you don't have to sort it out yourself.</p><p class="faq-full">In most cases, yes. Permit requirements depend on the scope of the work and your local building department. We handle the permitting as part of the job, so it's not something you have to sort out yourself.</p></div></div><div class="faq-item2"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-q-text">How can I prevent future sewer line problems?</span><span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-panel"><p class="faq-preview">Regular camera inspections catch small issues before they turn into a backup. It's part of what No Drip Club visits are built around.</p><p class="faq-full">Regular camera inspections catch small issues, like a root starting to grow into a joint, before they turn into a backup. That's part of what the <a href="/no-drip-club">No Drip Club</a>'s scheduled visits are built around.</p></div></div></div></section><section id="book" class="ss-panel ss-final" style="--o:100"><div style="max-width:620px;margin:0 auto;text-align:center"><span class="t-eyebrow" style="color:var(--c-carmine)">Get Started Today</span><h2 class="t-h2" style="margin:12px 0 14px">Ready to Stop Worrying About Your Sewer Line?</h2><p class="t-body-sm pv-mute" style="margin:0 0 22px">We’ve been fixing sewer lines for over 30 years, and we’ll tell you exactly what’s wrong before we touch anything. One call gets it handled.</p><div class="final-cta-row" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center"><a class="btn btn-hero-cta t-btn" href="tel:7737249272">Call Now: 773-724-9272</a><button class="btn btn-outline t-btn" type="button">Schedule a Service</button></div></div></section></div>
+  <aside class="ss-rail" aria-label="Contact and trust">
+    <div class="ss-call"><h2 class="t-label" style="font-size:20px;margin:0">24/7 Emergency Service</h2><p class="t-body-sm" style="margin:0;color:var(--c-cream)">Dispatched nights, weekends, and holidays.</p><a class="btn btn-hero-cta t-btn" href="tel:7737249272" style="margin-top:4px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" style="flex-shrink:0" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>Call Now</a></div>
+    <div class="ss-trust"><div class="ss-trust-item"><img src="../assets/trust-no-subcontractors.webp" alt="" aria-hidden="true" width="40" height="40"><span class="t-label">2,000+ Installs a year</span></div><div class="ss-trust-item"><img src="../assets/trust-driver-tested.webp" alt="" aria-hidden="true" width="40" height="40"><span class="t-label">No Subcontractors</span></div><div class="ss-trust-item"><img src="../assets/trust-background-checked.webp" alt="" aria-hidden="true" width="40" height="40"><span class="t-label">4.8 Stars in Google Reviews</span></div><div class="ss-trust-item"><img src="../assets/trust-price-match.webp" alt="" aria-hidden="true" width="40" height="40"><span class="t-label">Price Match Guarantee</span></div></div>
+    <div class="ss-fin" style="--o:45"><img src="../assets/financing-family.webp" alt="J. Blanton Plumbing technician reviewing financing options with a homeowner couple at their kitchen table" style="width:calc(100% + 40px);height:140px;object-fit:cover;border-radius:14px 14px 0 0;margin:-20px -20px 16px -20px;display:block"/><h2 class="t-h4">Fix It With Financing As Low As 0%</h2><p class="t-body-sm">We've partnered with trusted lenders, so you can get the service you need now and pay on your terms.</p><p class="t-caption fin-note">Subject to credit approval. Rates and terms vary.</p><a class="btn btn-hero-cta t-btn" href="tel:7737249272">Ask about your options</a></div>
+  </aside>
+</div>
+</main>
+<footer class="jbp-footer"><div class="jbp-footer__inner">
+  <div class="jbp-footer__left">
+    <div class="jbp-footer__logo"><img src="../assets/logo-white.webp" alt="J. Blanton Plumbing"></div>
+    <div class="jbp-badge-row"><img src="../assets/google-badge.webp" alt="Google Reviews" style="width:84px;height:84px"><a class="jbp-review-btn" href="https://g.page/r/CW0h_mbUZBu5EAE/review" target="_blank" rel="noreferrer">Leave a Review</a></div>
+    <div class="jbp-badge-row"><img src="../assets/yelp-badge.webp" alt="Yelp" style="width:118px;height:auto"><a class="jbp-review-btn" href="https://www.yelp.com/writeareview/biz/h-3jgJfNryJ43CN5970iFw" target="_blank" rel="noreferrer">Leave a Review</a></div>
+    <a href="https://www.bbb.org/us/il/morton-grove/profile/plumber/j-blanton-plumbing-0654-88664305/#sealclick" target="_blank" rel="noreferrer" style="display:inline-block"><img src="../assets/bbb-badge.webp" alt="BBB Accredited Business" style="width:260px;height:auto"></a>
+  </div>
+  <div class="jbp-footer__right">
+    <div class="jbp-footer__navs">
+      <div><a href="../index.html">Services</a><a href="/why-j-blanton">Why J. Blanton</a><a href="/knowledge-hub">Knowledge Hub</a></div>
+      <div><a href="/customer-stories">Customer Stories</a><a href="/emergency-plumbing">Emergency Plumbing</a><a href="/no-drip-club">No Drip Club</a></div>
+      <div><a href="/help-support">Help &amp; Support</a><a href="/financing">Financing</a><a href="/locations">Locations</a></div>
+    </div>
+    <div class="jbp-footer__divider"></div>
+    <p class="jbp-loc-title">Our Office Locations</p>
+    <div class="jbp-loc-grid">
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Northbrook (Corporate)</span></div><p class="jbp-loc__addr">1945 Techny Road, #11, Northbrook, IL 60062</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Algonquin</span></div><p class="jbp-loc__addr">2390 Esplanade Dr #200f, Algonquin, IL 60102</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Geneva</span></div><p class="jbp-loc__addr">115 Campbell St #201C, Geneva, IL 60134</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Arlington Heights</span></div><p class="jbp-loc__addr">1204 E. Central Road, Suite 3, Arlington Heights, IL 60005</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Chicago Lincoln Park</span></div><p class="jbp-loc__addr">800 W Diversey Pkwy, Chicago, IL 60614</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Chicago Ravenswood</span></div><p class="jbp-loc__addr">5126 N Ravenswood Ave, Chicago, IL 60640</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Elgin</span></div><p class="jbp-loc__addr">964 N McLean Blvd, Elgin, IL 60123-2039</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Elmhurst</span></div><p class="jbp-loc__addr">130 S York St, Elmhurst, IL 60126</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Evanston</span></div><p class="jbp-loc__addr">1603 Orrington Ave #600-1085, Evanston, IL 60201</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Hinsdale</span></div><p class="jbp-loc__addr">15 Spinning Wheel Rd #216a, Hinsdale, IL 60521</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>McHenry</span></div><p class="jbp-loc__addr">3406 W Elm St, McHenry, IL 60050</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Naperville</span></div><p class="jbp-loc__addr">200 S Main Street, Suite 3, Naperville, IL 60540</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Skokie</span></div><p class="jbp-loc__addr">8001 Lincoln Ave, Suite 301, Skokie, IL 60077-3695</p></div>
+      <div class="office"><div class="jbp-loc__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Joliet</span></div><p class="jbp-loc__addr">311 N Ottawa St Ste 2, Joliet, IL 60432</p></div>
+    </div>
+  </div></div>
+  <div class="jbp-footer__bottom"><p>Copyright &copy; 2026 J. Blanton Plumbing - All Rights Reserved - <a class="priv" href="https://jblantonplumbing.com/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a></p><div class="jbp-socials"><a href="https://www.linkedin.com/company/j-blanton-plumbing/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><img src="../assets/social/linkedin.webp" alt="LinkedIn"></a><a href="https://www.instagram.com/j.blantonplumbing/" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="../assets/social/ig.webp" alt="Instagram"></a><a href="https://www.facebook.com/J.BlantonPlumbing" target="_blank" rel="noreferrer" aria-label="Facebook"><img src="../assets/social/fb.webp" alt="Facebook"></a><a href="https://x.com/JBPchicago" target="_blank" rel="noreferrer" aria-label="X"><img src="../assets/social/x.webp" alt="X"></a></div></div>
+</footer>
+<div class="ss-sticky-cta"><div class="ss-sticky-cta-text"><strong>24/7 Emergency Service</strong><span>Nights, weekends and holidays.</span></div><a class="btn btn-hero-cta t-btn" href="tel:7737249272" aria-label="Call J. Blanton Plumbing now, 773-724-9272"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="flex-shrink:0" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>Call Now</a></div>
+
+<script src="../js/script.js" defer></script>
+</body>
+</html>

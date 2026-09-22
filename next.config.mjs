@@ -147,6 +147,11 @@ const nextConfig = {
       { source: '/admin/:path*', headers: noindex },
       { source: '/api', headers: noindex },
       { source: '/api/:path*', headers: noindex },
+      // Brief 183 — Sewer Ecosystem v2 manager-review test. Static files in
+      // public/sewer-v2-test/. Header noindex (NOT robots Disallow — Brief 152 Fix 4).
+      // Remove both lines together with the folder when the test ends.
+      { source: '/sewer-v2-test', headers: noindex },
+      { source: '/sewer-v2-test/:path*', headers: noindex },
       ...hostNoindex,
     ];
   },
