@@ -1,0 +1,324 @@
+/*
+ * /columbus-article-test — the Columbus launch article (Brief 185).
+ *
+ * Ported from the approved prototype's <style> block:
+ *   New Pages/Columbus Launch Article v3/jbp-columbus-launch-v3/02_dev-source/jbp-columbus-v3.dev.html
+ * Values, order and comments are the prototype's. What changed, and why:
+ *
+ * ══ 1. EVERY SELECTOR IS SCOPED TO .cat-root ══════════════════════════════
+ * A CSS file imported by an App Router route STAYS LOADED after a client-side
+ * navigation, so one unscoped rule here would restyle the whole site the moment
+ * a visitor leaves this page. The prototype's globals were converted like this:
+ *   :root custom properties  → .cat-root
+ *   body font/colour/bg      → .cat-root
+ *   *, html                  → dropped (Tailwind Preflight + `antialiased` on
+ *                              <body> already set box-sizing, text-size-adjust
+ *                              and font smoothing identically)
+ *   a, a:hover, :focus-visible, h1, blockquote → `.cat-root …`
+ *   main, main > section, main h2/h3/p/ul/li   → `.cat-root :where(.cat-article) …`
+ * SiteShell already renders the page's one <main>, so the article column is an
+ * <article class="cat-article">. `:where()` keeps that wrapper at ZERO
+ * specificity: `main p` was (0,0,2) and lost to a bare class such as
+ * `.takeaways-label`; a plain `.cat-root .cat-article p` would be (0,2,1) and
+ * WIN against `.cat-root .takeaways-label` (0,2,0), silently flipping every
+ * such tie. With `:where()` each pair keeps the precedence it had.
+ *
+ * THE ONE DELIBERATE EXCEPTION: `body:has(.cat-root)` (mobile call-bar clearance,
+ * bottom of file). It is still self-scoping — it matches only while this page's
+ * DOM is mounted, and stops matching the moment a client-side navigation
+ * unmounts it.
+ *
+ * ══ 2. DELETED ════════════════════════════════════════════════════════════
+ * Every .jbp-header / .jbp-nav / .jbp-drawer / .jbp-burger / .jbp-footer /
+ * .jbp-loc / html.jbp-lock rule (the live Navbar + Footer replace them), the
+ * `.foot` rule (unused), and all five @font-face rules: Industry and Nunito
+ * come from the root layout's next/font variables (--font-industry,
+ * --font-nunito). Weight 800 (the H1) resolves to the site's Industry Black
+ * file, exactly as the prototype's "Black 800–900" face did.
+ *
+ * ══ 3. ADDED, to cancel site-wide rules the prototype never had ═══════════
+ *   • Preflight sets `a { text-decoration: inherit }`, which would strip the
+ *     browser-default underline the prototype's body links rely on → restored
+ *     on `.cat-root a`.
+ *   • globals.css `@layer base` gives h1–h5 `tracking-tight` + navy colour →
+ *     reset on `.cat-root :where(h1,h2,h3)`. This file is UNLAYERED on purpose:
+ *     unlayered always beats a layer (same as Brief 180). Do not move it into one.
+ *   • The fixed live header is 70px (`--site-header-h`) and, unlike the
+ *     prototype's sticky header, takes no space in the flow → `.cat-root` pads
+ *     the top by exactly that, so the masthead starts where it did.
+ *   • The masthead's hanging-logo clearance switches at the LIVE navbar
+ *     breakpoint (`nav: 1070px`, min-width) instead of the prototype's 1071px.
+ *   • The mobile call bar is z-index 45, not 55, so it sits UNDER the live
+ *     mobile drawer (z-50) — see the note on `.callbar`.
+ *
+ * Sticky offsets (TOC, rail, h2 scroll-margin) stay at the prototype's 92px:
+ * the live header is 70px at every breakpoint, the same height the prototype's
+ * header had, so 92px = header + the same 22px gap.
+ *
+ * COLOURS — exactly the approved file's: #BC0E0E #F9F3EC #0A1B2E #540606
+ * #1560E6 #F1E8DC #FDFAF6 #E8DCCC #3A4A5C #fff, plus the off-palette status
+ * greens #137A3B / #1FB85A (flagged for Marketing, kept by instruction).
+ */
+
+/* ---------- better-colors: ramps named by hue, semantics named by role, one meaning per color ---------- */
+.cat-root{
+  --ease-out:cubic-bezier(0.23,1,0.32,1);--ease-drawer:cubic-bezier(0.32,0.72,0,1);--ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  /* LOCKED brand palette only (design.md). Derived values limited to the approved warm tints,
+     muted body tone #3A4A5C, white, and alpha values of brand colors. */
+  --red-600:#BC0E0E; --red-100:rgba(188,14,14,.08); --red-050:rgba(188,14,14,.04);
+  --blue-600:#1560E6;
+  --navy-900:#0A1B2E; --slate-600:#3A4A5C;
+  --sand-050:#FDFAF6; --sand-100:#F9F3EC; --sand-200:#F1E8DC; --sand-300:#E8DCCC;
+  /* Contrast measured on the surface each renders on:
+     body #0A1B2E on #F9F3EC 15.8:1 | muted #3A4A5C on #F9F3EC 8.2:1, on #F1E8DC 7.5:1
+     white on Cerulean #1560E6 5.5:1 | Cerulean links on #F9F3EC 5.0:1, on #FDFAF6 5.3:1
+     Carmine #BC0E0E on #F9F3EC 5.9:1 (eyebrows, marks). Semantic success green #137A3B on #FDFAF6 5.3:1 (status only, outside brand palette by design). */
+  --bg:var(--sand-100); --surface:var(--sand-050); --surface-sunk:var(--sand-200);
+  --border:var(--sand-300); --text:var(--navy-900); --text-muted:var(--slate-600);
+  --action:var(--blue-600); --action-hover:var(--red-600); --link:var(--blue-600);
+  --brand:var(--red-600); --brand-tint:var(--red-100);
+  --focus:#1560E6;
+
+  /* better-typography: semantic scale, heading sizes descend with level.
+     Families map to the site's self-hosted fonts (root layout, next/font). */
+  --display:var(--font-industry),'Arial',sans-serif; --body:var(--font-nunito),system-ui,sans-serif;
+  --t-display:clamp(2rem,1.4rem + 2vw,2.875rem); /* H1 46px desktop, fluid to 32px */
+  --t-h2:clamp(1.625rem,1.3rem + 1.4vw,2rem); /* H2 32px desktop, 26px on phones so it stays below the 32px mobile H1 */
+  --t-h3:1.25rem; /* card label 20px */ --t-lead:1.25rem; --t-body:1.25rem; /* body 20/30 */ --t-small:1rem; /* body 16/24 */ --t-label:.875rem; /* eyebrow 14px */ --t-faq:1.125rem; /* FAQ 18px */
+
+  /* better-layout: one spacing scale, grouping by space */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+
+  /* better-ui: concentric radii. outer = inner + padding */
+  --r-inner:10px; --pad-card:8px; --r-outer:calc(var(--r-inner) + var(--pad-card)); --r-card:18px;
+  --shadow-1:0 1px 2px rgba(10,27,46,.06),0 2px 8px rgba(10,27,46,.05);
+  --shadow-2:0 1px 2px rgba(10,27,46,.06),0 8px 24px rgba(10,27,46,.10);
+
+  /* was `body{…}` in the prototype */
+  background:var(--bg);color:var(--text);font:400 var(--t-body)/1.5 var(--body);
+  /* the live header is FIXED (out of flow); the prototype's was sticky (in flow) */
+  padding-top:var(--site-header-h,70px);
+}
+/* cancel globals.css `@layer base` h1–h5 tracking-tight + navy (zero specificity, unlayered) */
+.cat-root :where(h1,h2,h3){letter-spacing:normal;color:inherit}
+/* better-typography: underline from the font, offset for legibility */
+.cat-root a{color:var(--link);text-decoration:underline;text-decoration-thickness:from-font;text-underline-offset:.18em}
+.cat-root a:hover{text-decoration-thickness:2px}
+/* better-accessibility: visible focus everywhere */
+.cat-root :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.cat-root .skip{position:absolute;left:var(--s4);top:-60px;z-index:100;background:var(--text);color:#fff;padding:var(--s3) var(--s4);border-radius:8px;font-weight:700;text-decoration:none}
+.cat-root .skip:focus{top:var(--s3)}
+.cat-root .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+
+/* ---------- Article header: single H1, byline, dek. Structure first. ---------- */
+/* hero band: brand red + official wrench pattern (Sewer Ecosystem .hero-pattern), ends under the dek.
+   Full-bleed grid so the band can span the viewport while content keeps the 1320px frame. */
+.cat-root .masthead{display:grid;grid-template-columns:minmax(var(--s5),1fr) minmax(0,660px) var(--s7) minmax(0,564px) minmax(var(--s5),1fr);grid-template-rows:auto auto;margin-bottom:var(--s6)}
+.cat-root .masthead-band{grid-column:1/-1;grid-row:1;position:relative;isolation:isolate;background:var(--brand);overflow:hidden}
+/* pattern: rebuilt from the official wrench art as a true repeat. One wrench shape was lifted from
+   wrench-pattern.png and re-stamped on an exact lattice, so the tile has no seams. The art runs on a -9.65deg
+   diagonal, so the tile repeats on a rotated, oversized layer. Drawn at 45% of the original scale.
+   Contrast (measured): white on #BC0E0E 6.55:1, white on darkest pattern stroke 7.6:1, dek (white) 6.55:1, breadcrumbs/eyebrow (#F9F3EC) 5.94:1. All pass AA. */
+.cat-root .masthead-band::before{content:"";position:absolute;z-index:-2;top:-50%;left:-25%;width:150%;height:200%;background:url(/images/columbus-article-test/wrench-pattern-tile.webp) 0 0/297px 315px repeat;transform:rotate(-9.65deg);opacity:.2;pointer-events:none}
+/* calm zone: solid brand red fades in behind the text column so the pattern never sits under the headline at full strength */
+.cat-root .masthead-band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(188,14,14,.7) 0%,rgba(188,14,14,.55) 40%,rgba(188,14,14,0) 70%);pointer-events:none}
+.cat-root .masthead-text{grid-column:2;grid-row:1;position:relative;z-index:1;padding:var(--s7) 0 var(--s7);color:#fff}
+.cat-root .masthead-meta{grid-column:2;grid-row:2;padding-top:var(--s5);min-height:160px}
+.cat-root .masthead .frame{grid-column:4;grid-row:1/3;align-self:end;position:relative;z-index:1;margin:var(--s7) 0 0}
+.cat-root .masthead-text .crumbs ol{color:#F9F3EC}
+.cat-root .masthead-text .crumbs a{color:#F9F3EC}
+.cat-root .masthead-text .crumbs li+li::before{color:rgba(249,243,236,.5)}
+.cat-root .masthead-text .eyebrow{color:#F9F3EC}
+.cat-root .masthead-text h1{color:#fff}
+.cat-root .masthead-text .dek{color:#fff;margin-bottom:0}
+/* clear the hanging logo tab (158px) on desktop — keyed to the LIVE navbar's `nav` breakpoint (min-width:1070px) */
+@media (min-width:1070px){.cat-root .masthead-text{padding-top:120px}.cat-root .masthead .frame{margin-top:120px}}
+.cat-root .crumbs ol{display:flex;flex-wrap:wrap;gap:var(--s2);list-style:none;margin:0 0 var(--s5);padding:0;font-size:var(--t-small);color:var(--text-muted)}
+.cat-root .crumbs li+li::before{content:"/";margin-right:var(--s2);color:var(--border)}
+.cat-root .crumbs a{color:var(--text-muted)}
+.cat-root .eyebrow{font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.cat-root h1{margin:var(--s3) 0 var(--s4);font:800 var(--t-display)/1.05 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.cat-root .dek{margin:0 0 var(--s5);font-size:var(--t-lead);line-height:1.55;color:var(--text-muted);max-width:34em;text-wrap:pretty}
+.cat-root .byline{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s4);font-size:var(--t-small);color:var(--text-muted)}
+.cat-root .byline .avatar{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font:700 var(--t-label) var(--display)}
+.cat-root .byline strong{color:var(--text)}
+/* concentric media frame: outer radius 18 = inner 10 + padding 8 */
+.cat-root .frame{background:var(--surface);padding:var(--pad-card);border-radius:var(--r-outer);box-shadow:var(--shadow-2)}
+.cat-root .frame img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-inner);outline:1px solid rgba(10,27,46,.08);outline-offset:-1px;background:var(--surface-sunk)}
+.cat-root .frame figcaption{padding:var(--s3) var(--s2) var(--s1);font-size:var(--t-small);color:var(--text-muted)}
+
+
+/* ---------- Body: article + rail. 700px column at 20px Nunito = about 66 characters per line. ---------- */
+.cat-root .body{max-width:1320px;margin:0 auto;padding:var(--s4) var(--s5) var(--s9);display:grid;grid-template-columns:200px minmax(0,700px) 300px;gap:var(--s7);justify-content:center}
+.cat-root :where(.cat-article){min-width:0}
+.cat-root .takeaways{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--s5) var(--s5) var(--s4);margin:0 0 var(--s7)}
+.cat-root .takeaways-label{margin:0 0 var(--s3);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.cat-root .takeaways ul{margin:0;padding:0;list-style:none}
+.cat-root .takeaways li{position:relative;padding-left:var(--s5);margin-bottom:var(--s2)}
+.cat-root .takeaways li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--brand)}
+.cat-root :where(.cat-article) > section{margin-bottom:var(--s8)}
+.cat-root :where(.cat-article) h2{margin:0 0 var(--s4);font:700 var(--t-h2)/1.15 var(--display);letter-spacing:-.01em;text-wrap:balance;scroll-margin-top:92px}
+.cat-root :where(.cat-article) h3{margin:0 0 var(--s2);font:700 var(--t-h3)/1.3 var(--display)}
+.cat-root :where(.cat-article) p{margin:0 0 var(--s4)}
+.cat-root :where(.cat-article) ul{margin:0 0 var(--s5);padding-left:1.25em}
+.cat-root :where(.cat-article) li{margin-bottom:var(--s2)}
+.cat-root blockquote{margin:var(--s6) 0;padding:0 0 0 var(--s5);border-left:3px solid var(--brand);font:600 1.25rem/1.5 var(--body);hanging-punctuation:first}
+.cat-root blockquote p{margin:0 0 var(--s3)}
+.cat-root blockquote footer{display:flex;align-items:center;gap:var(--s3);margin-top:var(--s4);font-size:var(--t-small);font-weight:600;color:var(--text-muted);line-height:1.35}
+.cat-root blockquote footer b{display:block;color:var(--text);font:700 1rem/1.3 var(--display)}
+/* avatar: image outline keeps the edge crisp on light and dark photos */
+.cat-root .avatar-img{flex:none;width:48px;height:48px;border-radius:50%;object-fit:cover;outline:1px solid rgba(10,27,46,.1);outline-offset:-1px;box-shadow:0 0 0 3px var(--surface)}
+
+/* promise list: grouped by space, no dividers */
+.cat-root .promises{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5) var(--s6);list-style:none;padding:0;margin:var(--s5) 0}
+.cat-root .promises li{margin:0}
+.cat-root .promises b{display:block;font:700 var(--t-h3)/1.3 var(--display);margin-bottom:var(--s1)}
+.cat-root .promises span{font-size:1rem;color:var(--text-muted);line-height:1.6}
+
+/* services: a single-column list. Each row = service name | description (+ link). Even rhythm, no orphan cell. */
+.cat-root .svc{list-style:none;padding:0;margin:var(--s5) 0;border-top:1px solid var(--border)}
+.cat-root .svc li{display:grid;grid-template-columns:220px minmax(0,1fr);column-gap:var(--s6);align-items:start;margin:0;padding:var(--s5) 0;border-bottom:1px solid var(--border)}
+.cat-root .svc b{grid-row:span 2;font:700 var(--t-h3)/1.3 var(--display)} /* name spans both rows so the link sits right under its description */
+.cat-root .svc span{display:block;font-size:var(--t-small);color:var(--text-muted);line-height:1.5}
+.cat-root .svc .more{grid-column:2;min-height:44px;margin:0 0 calc(-1 * var(--s3))} /* 44px hit area; negative bottom margin keeps row padding visually even */
+/* brand secondary link: Nunito 16px with an arrow, no underline until hover. 44px tall hit area. */
+.cat-root .more{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:700 var(--t-small)/1.2 var(--body);color:var(--link);text-decoration:none}
+.cat-root .more::after{content:"\2192";transition:transform 160ms var(--ease-out)}
+.cat-root .more:hover{text-decoration:underline}
+@media (hover:hover){.cat-root .more:hover::after{transform:translateX(3px)}}
+
+.cat-root .same{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s5)}
+.cat-root .same > div{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--s5)}
+.cat-root .same p{font-size:1rem;line-height:1.6;color:var(--text-muted)}
+.cat-root .benefits{list-style:none;padding:0;margin:0 0 var(--s4);font-size:1rem}
+.cat-root .benefits li{display:flex;gap:var(--s2);align-items:baseline}
+.cat-root .benefits svg{flex:none;transform:translateY(2px)}
+
+/* in-article photos: plain image, brand 10px radius, no frame or caption (the hero keeps the framed treatment) */
+.cat-root .art-fig{margin:var(--s6) 0}
+.cat-root .art-fig img{display:block;width:100%;height:auto;border-radius:var(--r-inner);background:var(--surface-sunk)}
+/* map: concentric frame, outer 18 = inner 10 + padding 8 */
+.cat-root .map{margin:var(--s5) 0 var(--s4);background:var(--surface);padding:var(--pad-card);border-radius:var(--r-outer);box-shadow:var(--shadow-1);border:1px solid var(--border)}
+.cat-root .map iframe{display:block;width:100%;aspect-ratio:16/10;border:0;border-radius:var(--r-inner);background:var(--surface-sunk)}
+.cat-root .map figcaption{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);align-items:center;justify-content:flex-end;padding:var(--s3) var(--s2) var(--s1);font-size:var(--t-small);color:var(--text-muted)}
+
+/* FAQ: native details/summary. Platform before custom. */
+.cat-root .faq details{border-top:1px solid var(--border)}
+.cat-root .faq details:last-of-type{border-bottom:1px solid var(--border)}
+.cat-root .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:var(--s4);min-height:56px;padding:var(--s3) 0;font:700 var(--t-faq)/1.35 var(--display)}
+.cat-root .faq summary::-webkit-details-marker{display:none}
+.cat-root .faq summary .plus{margin-left:auto;flex:none;width:28px;height:28px;border-radius:50%;background:var(--surface-sunk);display:grid;place-items:center}
+.cat-root .faq summary .plus path.v{transition:opacity 150ms ease}
+.cat-root .faq details[open] summary .plus path.v{opacity:0}
+.cat-root .faq details p{margin:0 0 var(--s5);color:var(--text-muted);padding-right:var(--s7)}
+
+/* mobile table of contents (shown when the left index is hidden) */
+.cat-root .toc-m{display:none;margin:0 0 var(--s7);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card)}
+.cat-root .toc-m summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 var(--s5);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.cat-root .toc-m summary::-webkit-details-marker{display:none}
+.cat-root .toc-m summary::after{content:"+";font:400 1.5rem/1 var(--body);color:var(--brand)}
+.cat-root .toc-m[open] summary::after{content:"\2212"}
+.cat-root .toc-m ol{margin:0;padding:0 var(--s5) var(--s3);list-style:none;border-top:1px solid var(--border)}
+.cat-root .toc-m li{margin:0}
+.cat-root .toc-m a{display:flex;align-items:center;min-height:44px;font-size:var(--t-small);color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+.cat-root .toc-m li:last-child a{border-bottom:0}
+
+/* ---------- Rail: content bleeds, controls float ---------- */
+.cat-root .rail{align-self:stretch}
+/* office card + No Drip Club stick as one unit */
+.cat-root .rail-stick{position:sticky;top:92px;display:flex;flex-direction:column;gap:var(--s4)}
+/* short laptop screens: trim the NDC list so the whole unit fits (92px offset + cards < viewport) */
+@media (max-height:860px){.cat-root .rail .ndc ul{display:none}.cat-root .rail .help p{display:none}}
+.cat-root .toc{position:sticky;top:92px;align-self:start;font-size:var(--t-small)}
+.cat-root .rail-label{margin:0 0 var(--s3);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.cat-root .toc ol{position:relative;list-style:none;margin:0;padding:0 0 0 var(--s3);border-left:1.5px solid var(--border)}
+/* one indicator that moves to the active link: on-screen movement -> ease-in-out, 250ms */
+.cat-root .toc ol::before{content:"";position:absolute;left:-1.5px;top:0;width:3px;height:var(--h,24px);border-radius:3px;background:var(--brand);transform:translateY(var(--y,0));transition:transform 250ms cubic-bezier(.77,0,.175,1),height 250ms cubic-bezier(.77,0,.175,1)}
+.cat-root .toc a{display:block;padding:var(--s2) 0;color:var(--text-muted);text-decoration:none;line-height:1.35;transition:color 150ms ease}
+.cat-root .toc a:hover{color:var(--text)}
+.cat-root .toc a[aria-current="true"]{color:var(--text);font-weight:700}
+/* status dot: same pulse as the Emil build, green-ink label passes 4.5:1 on the card */
+.cat-root .status{display:inline-flex;align-items:center;gap:var(--s2);margin-bottom:var(--s2);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:#137A3B}
+.cat-root .pulse{flex:none;width:8px;height:8px;border-radius:50%;background:#1FB85A;box-shadow:0 0 0 0 rgba(31,184,90,.55);animation:cat-pulse 2.4s cubic-bezier(.23,1,.32,1) infinite}
+/* renamed from the prototype's `pulse` — @keyframes names are global */
+@keyframes cat-pulse{70%{box-shadow:0 0 0 9px rgba(31,184,90,0)}100%{box-shadow:0 0 0 0 rgba(31,184,90,0)}}
+.cat-root .help .loc{display:block;font-size:var(--t-small);color:var(--text-muted);margin-bottom:var(--s1)}
+/* No Drip Club rail card */
+.cat-root .ndc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-outer);padding:var(--s5)}
+.cat-root .ndc .ndc-title{margin:0 0 var(--s2);font:700 var(--t-h3)/1.3 var(--display);color:var(--brand)}
+.cat-root .ndc p{margin:0 0 var(--s3);font-size:var(--t-small);color:var(--text-muted);line-height:1.55}
+.cat-root .ndc ul{list-style:none;margin:0 0 var(--s4);padding:0;font-size:var(--t-small)}
+.cat-root .ndc li{display:flex;gap:var(--s2);align-items:baseline;margin-bottom:var(--s1)}
+.cat-root .ndc li svg{flex:none;transform:translateY(2px)}
+.cat-root .help{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-outer);padding:var(--s5);box-shadow:var(--shadow-1)}
+.cat-root .help .eyebrow{display:block;margin-bottom:var(--s2)}
+.cat-root .help .num{display:flex;align-items:center;min-height:44px;font:700 1.75rem/1.1 var(--display);font-variant-numeric:tabular-nums;color:var(--text);text-decoration:none;margin-bottom:var(--s1)}
+.cat-root .help p{margin:0 0 var(--s4);font-size:var(--t-small);color:var(--text-muted);line-height:1.55}
+.cat-root .help address{font-style:normal;font-size:var(--t-small);line-height:1.55;color:var(--text-muted);padding:var(--s3);border-radius:var(--r-inner);background:var(--surface-sunk);margin-bottom:var(--s4)}
+/* exactly one filled action per view */
+.cat-root .btn{display:flex;align-items:center;justify-content:center;gap:var(--s2);min-height:48px;padding:0 var(--s5);border-radius:var(--r-inner);font:500 1rem var(--display);letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background-color 150ms ease,transform 120ms ease}
+.cat-root .btn:active{transform:scale(.97)}
+.cat-root .btn-fill{background:var(--action);color:#fff}
+.cat-root .btn-fill:hover{background:var(--action-hover)}
+.cat-root .btn-line{color:var(--text);box-shadow:inset 0 0 0 1.5px var(--border)}
+.cat-root .btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--navy-900)}
+.cat-root .btn + .btn{margin-top:var(--s2)}
+
+/* related articles: whole card is the link. Border = Midnight at 50% (3.2:1 on cream) so the clickable edge is visible. */
+.cat-root .related{max-width:1320px;margin:0 auto;padding:0 var(--s5) var(--s9)}
+.cat-root .related h2{font:700 var(--t-h2)/1.15 var(--display);margin:0 0 var(--s5)}
+.cat-root .related ul{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);list-style:none;margin:0 0 var(--s3);padding:0}
+.cat-root .related li a{display:flex;flex-direction:column;gap:var(--s3);height:100%;padding:var(--pad-card) var(--pad-card) var(--s5);background:var(--surface);border:1px solid rgba(10,27,46,.5);border-radius:var(--r-outer);color:var(--text);text-decoration:none;transition:box-shadow 150ms ease}
+.cat-root .related li a:hover{box-shadow:var(--shadow-2)}
+.cat-root .related img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-inner);background:var(--surface-sunk)}
+.cat-root .related b{padding:0 var(--s3);font:700 var(--t-h3)/1.3 var(--display)}
+.cat-root .related i{padding:0 var(--s3);margin-top:auto;font:700 var(--t-small)/1.2 var(--body);font-style:normal;color:var(--link)}
+.cat-root .related i::after{content:" \2192"}
+
+/* mobile call bar: Columbus number always one tap away. Slides in from the bottom edge once the hero is gone.
+   z-index 45, not the prototype's 55 (Brief 185, Track A6): the prototype's own drawer sat at z-70, but the
+   LIVE mobile drawer is z-50, so at 55 the bar covered the open menu's phone + "Schedule a Service" buttons.
+   45 = above page content and the live header (z-40, never overlaps it), below the live drawer (z-50) and
+   the schedule popup (above z-100). */
+.cat-root .callbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:45;gap:var(--s2);padding:var(--s3) var(--s4) calc(var(--s3) + env(safe-area-inset-bottom));background:var(--bg);box-shadow:0 -4px 16px rgba(10,27,46,.14);transform:translateY(110%);transition:transform 300ms var(--ease-drawer)}
+.cat-root .callbar[data-show="true"]{transform:none}
+.cat-root .callbar .btn{flex:1;margin:0;padding:0 var(--s3);white-space:nowrap}
+.cat-root .callbar .btn-fill{flex:2}
+/* The prototype padded <body> so the bar never covers the page's last 76px (here: the live
+   footer's bottom row). `body:has(.cat-root)` is the file's one unprefixed selector — it
+   matches only while this page is mounted. Body bg is Cream sitewide, same as the prototype. */
+@media (max-width:980px){.cat-root .callbar{display:flex}body:has(.cat-root){padding-bottom:76px}}
+
+@media (prefers-reduced-motion:reduce){.cat-root *{transition:none!important}.cat-root .pulse{animation:none}}
+
+/* Hold structure until it breaks */
+@media (max-width:1180px){
+  .cat-root .body{grid-template-columns:minmax(0,700px) 300px}
+  .cat-root .toc{display:none}
+  .cat-root .toc-m{display:block}
+}
+@media (max-width:980px){
+  .cat-root .body{grid-template-columns:minmax(0,1fr)}
+  .cat-root .rail{display:block}
+  .cat-root .rail-stick{position:static}
+  .cat-root .rail .ndc{display:none} /* the in-article No Drip Club card covers mobile */
+}
+@media (max-width:860px){
+  .cat-root .masthead{grid-template-columns:var(--s5) minmax(0,1fr) var(--s5);grid-template-rows:auto auto auto}
+  .cat-root .masthead-text{grid-column:2;padding-bottom:calc(var(--s7) + 64px)}
+  .cat-root .masthead .frame{grid-column:2;grid-row:2;align-self:start;margin:-64px 0 0}
+  .cat-root .masthead-meta{grid-column:2;grid-row:3;min-height:0}
+  .cat-root .masthead-band::after{background:rgba(188,14,14,.5)}
+  .cat-root .related ul{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .cat-root{font-size:var(--t-small);line-height:1.5} /* brand body 16/24 on phones keeps 40+ characters per line */
+  .cat-root .promises,.cat-root .same{grid-template-columns:1fr}
+  .cat-root .svc li{grid-template-columns:1fr;row-gap:var(--s1)}
+  .cat-root .svc .more{grid-column:1}
+  .cat-root .svc b{grid-row:auto}
+  .cat-root .rail{grid-template-columns:1fr}
+  .cat-root .map iframe{aspect-ratio:4/3}
+  .cat-root .faq details p{padding-right:0}
+}
