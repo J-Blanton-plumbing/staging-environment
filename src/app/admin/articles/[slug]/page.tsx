@@ -6,6 +6,8 @@ import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
 import ImageUploaderField from '@/components/admin/ImageUploaderField';
+import ArticleTermsField from '@/components/admin/ArticleTermsField';
+import { EMPTY_TERM_SELECTION, normalizeTermSelection, type ArticleTermSelection } from '@/lib/cms/kh-taxonomy-types';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -20,7 +22,8 @@ interface ArticleData {
   excerpt: string;
   body: string;
   image: string;
-  categories: string[];
+  /** Brief 187: Topic + Location tags, as slugs. Replaces the legacy `categories`. */
+  terms: ArticleTermSelection;
   status: string;
   metaTitle: string;
   metaDescription: string;
@@ -30,58 +33,13 @@ interface ArticleData {
   createdAt?: string;
 }
 
-// ── Service category taxonomy ─────────────────────────────────────────────────
-
-interface ServiceCategory {
-  name: string;
-  sub: string[];
-}
-
-const SERVICE_CATEGORIES: ServiceCategory[] = [
-  {
-    name: 'Plumbing',
-    sub: ['Bathroom Plumbing', 'Kitchen Plumbing', 'Laundry Room Plumbing', 'Gas Lines'],
-  },
-  {
-    name: 'Sewer',
-    sub: ['Sewer Rodding', 'Sewer Repair', 'Sewer Maintenance', 'Home Repipe'],
-  },
-  {
-    name: 'Drain',
-    sub: ['Clogged Drains', 'Basement Flooding', 'Kitchen Sink Drain'],
-  },
-  {
-    name: 'Water Heater',
-    sub: ['Residential Water Heater', 'Tankless Water Heater', 'Commercial Water Heater'],
-  },
-  {
-    name: 'Water Quality',
-    sub: ['Water Filtration Systems'],
-  },
-  {
-    name: 'Emergency Plumbing',
-    sub: [],
-  },
-  {
-    name: 'Commercial',
-    sub: [
-      'Commercial Jetting',
-      'Commercial Drain Service',
-      'Commercial Water Heater',
-      'Restaurant Plumbing Service',
-      'Restaurant Drain Clearing',
-      'Restaurant Water Heater',
-    ],
-  },
-];
-
 const EMPTY: ArticleData = {
   slug: '',
   title: '',
   excerpt: '',
   body: '',
   image: '',
-  categories: [],
+  terms: EMPTY_TERM_SELECTION,
   status: 'draft',
   metaTitle: '',
   metaDescription: '',
@@ -124,236 +82,6 @@ const SECTION_HEADING: React.CSSProperties = {
 };
 
 
-// ── Fix 3: Hierarchical Category Selector ────────────────────────────────────
-
-const MAX_SUB = 3;
-
-function CategoriesField({
-  value,
-  onChange,
-}: {
-  value: string[];
-  onChange: (cats: string[]) => void;
-}) {
-  const [subSearch, setSubSearch] = useState('');
-
-  // Derive selected primary (first element whose name matches a top-level category)
-  const selectedPrimary = SERVICE_CATEGORIES.find(sc => value.includes(sc.name)) ?? null;
-  const selectedSubs = value.filter(v => v !== selectedPrimary?.name);
-
-  function selectPrimary(name: string) {
-    if (selectedPrimary?.name === name) {
-      // Deselect primary clears everything
-      onChange([]);
-      setSubSearch('');
-    } else {
-      // Switch primary, drop any subs that don't belong to the new one
-      const newCat = SERVICE_CATEGORIES.find(sc => sc.name === name)!;
-      const keptSubs = selectedSubs.filter(s => newCat.sub.includes(s));
-      onChange([name, ...keptSubs]);
-      setSubSearch('');
-    }
-  }
-
-  function toggleSub(sub: string) {
-    if (selectedSubs.includes(sub)) {
-      onChange([selectedPrimary!.name, ...selectedSubs.filter(s => s !== sub)]);
-    } else if (selectedSubs.length < MAX_SUB) {
-      onChange([selectedPrimary!.name, ...selectedSubs, sub]);
-    }
-  }
-
-  function removePill(cat: string) {
-    if (cat === selectedPrimary?.name) {
-      onChange([]);
-    } else {
-      onChange(value.filter(v => v !== cat));
-    }
-  }
-
-  const availableSubs = selectedPrimary
-    ? selectedPrimary.sub.filter(s =>
-        s.toLowerCase().includes(subSearch.toLowerCase())
-      )
-    : [];
-
-  const atSubLimit = selectedSubs.length >= MAX_SUB;
-
-  return (
-    <div style={{ marginBottom: '1.25rem' }}>
-      <label style={LABEL}>Categories</label>
-
-      {/* Selected pills */}
-      {value.length > 0 && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', margin: '0.4rem 0 0.75rem' }}>
-          {value.map(cat => (
-            <span
-              key={cat}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.3rem',
-                padding: '0.25rem 0.6rem',
-                borderRadius: '9999px',
-                background: ADMIN_COLORS.cerulean,
-                color: '#fff',
-                fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-                fontSize: '12px',
-                fontWeight: 700,
-              }}
-            >
-              {cat}
-              <button
-                type="button"
-                onClick={() => removePill(cat)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'rgba(255,255,255,0.8)',
-                  cursor: 'pointer',
-                  padding: '0',
-                  fontSize: '13px',
-                  lineHeight: 1,
-                  fontWeight: 400,
-                }}
-                aria-label={`Remove ${cat}`}
-              >
-                ×
-              </button>
-            </span>
-          ))}
-        </div>
-      )}
-
-      {/* Step 1: primary category */}
-      <div style={{
-        border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-        marginBottom: selectedPrimary && selectedPrimary.sub.length > 0 ? '0.6rem' : 0,
-      }}>
-        <div style={{
-          padding: '0.4rem 0.75rem',
-          background: ADMIN_COLORS.surfaceContainer,
-          fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-          fontSize: '11px',
-          fontWeight: 700,
-          color: ADMIN_COLORS.onSurfaceVariant,
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-        }}>
-          Service Category (choose one)
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', padding: '0.6rem 0.75rem' }}>
-          {SERVICE_CATEGORIES.map(sc => {
-            const active = selectedPrimary?.name === sc.name;
-            return (
-              <button
-                key={sc.name}
-                type="button"
-                onClick={() => selectPrimary(sc.name)}
-                style={{
-                  padding: '0.3rem 0.75rem',
-                  borderRadius: '9999px',
-                  border: active ? `1.5px solid ${ADMIN_COLORS.cerulean}` : `1.5px solid ${ADMIN_COLORS.outlineVariant}66`,
-                  background: active ? ADMIN_COLORS.cerulean : 'transparent',
-                  color: active ? '#fff' : ADMIN_COLORS.onSurfaceVariant,
-                  fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                }}
-              >
-                {sc.name}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Step 2: sub-services (only shown when primary has subs) */}
-      {selectedPrimary && selectedPrimary.sub.length > 0 && (
-        <div style={{
-          border: `1px solid ${ADMIN_COLORS.outlineVariant}66`,
-          borderRadius: '0.75rem',
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            padding: '0.4rem 0.75rem',
-            background: ADMIN_COLORS.surfaceContainer,
-            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-            fontSize: '11px',
-            fontWeight: 700,
-            color: ADMIN_COLORS.onSurfaceVariant,
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-            <span>Sub-service (up to {MAX_SUB})</span>
-            <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>
-              {selectedSubs.length}/{MAX_SUB} selected
-            </span>
-          </div>
-
-          {/* Search bar */}
-          <div style={{ padding: '0.5rem 0.75rem', borderBottom: `1px solid ${ADMIN_COLORS.outlineVariant}40` }}>
-            <input
-              className="field"
-              type="search"
-              placeholder="Search sub-services…"
-              value={subSearch}
-              onChange={e => setSubSearch(e.target.value)}
-              style={{
-                ...INPUT,
-                fontSize: '13px',
-                padding: '0.35rem 0.6rem',
-              }}
-            />
-          </div>
-
-          {/* Sub-service list */}
-          <div style={{ padding: '0.5rem 0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-            {availableSubs.length === 0 ? (
-              <span style={{ fontSize: '12px', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontStyle: 'italic' }}>
-                No matches
-              </span>
-            ) : (
-              availableSubs.map(sub => {
-                const selected = selectedSubs.includes(sub);
-                const disabled = !selected && atSubLimit;
-                return (
-                  <button
-                    key={sub}
-                    type="button"
-                    onClick={() => toggleSub(sub)}
-                    disabled={disabled}
-                    style={{
-                      padding: '0.3rem 0.75rem',
-                      borderRadius: '9999px',
-                      border: selected ? `1.5px solid ${ADMIN_COLORS.cerulean}` : `1.5px solid ${ADMIN_COLORS.outlineVariant}66`,
-                      background: selected ? ADMIN_COLORS.cerulean : 'transparent',
-                      color: selected ? '#fff' : disabled ? ADMIN_COLORS.outlineVariant : ADMIN_COLORS.onSurfaceVariant,
-                      fontFamily: 'var(--font-nunito), system-ui, sans-serif',
-                      fontSize: '12px',
-                      fontWeight: 600,
-                      cursor: disabled ? 'not-allowed' : 'pointer',
-                      opacity: disabled ? 0.5 : 1,
-                    }}
-                  >
-                    {sub}
-                  </button>
-                );
-              })
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function ArticleAdminPage() {
@@ -368,7 +96,11 @@ export default function ArticleAdminPage() {
     excerpt: form.excerpt,
     body: form.body,
     image: form.image,
-    categories: form.categories,
+    // Brief 187: tags live in the VERSION's content, exactly like the body. They
+    // reach `cms_article_terms` only when this version is published
+    // (updateArticleCmsContent), so a tag change can never bypass draft →
+    // publish. The legacy `categories` key is no longer written.
+    terms: form.terms,
     // Brief 159 (Track A2): `status` is NO LONGER part of a version's content — it
     // is derived from which version is published and has exactly one writer.
     metaTitle: form.metaTitle,
@@ -378,7 +110,17 @@ export default function ArticleAdminPage() {
     // version's stored content into this form. Without it the form kept whatever
     // was on screen, so every version appeared to hold the edit you had just made
     // to a different one — and the next Save wrote it there for real.
-    onLoadContent: (content) => setForm(f => ({ ...f, ...formFromContent(EMPTY, content), slug: f.slug })),
+    //
+    // Brief 187: a version saved BEFORE tags existed has no `terms` key. Loading
+    // it keeps the tags already in the form (the live ones) instead of blanking
+    // them, so saving or publishing an old version never silently strips an
+    // article's tags.
+    onLoadContent: (content) => setForm(f => ({
+      ...f,
+      ...formFromContent(EMPTY, content),
+      slug: f.slug,
+      terms: normalizeTermSelection((content as Record<string, unknown> | null)?.terms) ?? f.terms,
+    })),
   });
   // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
   // typed-slug confirmation for taking the article off the site.
@@ -396,7 +138,7 @@ export default function ArticleAdminPage() {
         excerpt: data.excerpt ?? '',
         body: typeof data.body === 'string' ? data.body : '',
         image: data.image ?? '',
-        categories: Array.isArray(data.categories) ? data.categories : [],
+        terms: normalizeTermSelection(data.terms) ?? EMPTY_TERM_SELECTION,
         status: data.status ?? 'draft',
         metaTitle: data.meta_title ?? '',
         metaDescription: data.meta_description ?? '',
@@ -431,7 +173,6 @@ export default function ArticleAdminPage() {
           excerpt: form.excerpt,
           body: form.body,
           image: form.image,
-          categories: form.categories,
           metaTitle: form.metaTitle || null,
           metaDescription: form.metaDescription || null,
         }),
@@ -518,8 +259,8 @@ export default function ArticleAdminPage() {
             {/* Fix 1: Hero Image Uploader */}
             <ImageUploaderField label="Hero Image" value={form.image} onChange={url => set('image', url)} />
 
-            {/* Fix 3: Categories */}
-            <CategoriesField value={form.categories} onChange={cats => set('categories', cats)} />
+            {/* Brief 187 (B1): Topic + Location pickers (replaced CategoriesField) */}
+            <ArticleTermsField value={form.terms} onChange={terms => set('terms', terms)} />
 
             {/* Fix 4: Excerpt as resizable textarea */}
             <div style={{ marginBottom: 0 }}>

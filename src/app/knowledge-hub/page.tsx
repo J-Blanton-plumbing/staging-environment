@@ -13,7 +13,10 @@ import PreviewBanner from '@/components/PreviewBanner';
 import GoogleReviews from '@/components/GoogleReviews';
 import type { Metadata } from 'next';
 import { getMainPageMeta } from '@/lib/cms/page-meta';
+import { canonicalUrlFor } from '@/lib/seo';
+import { getTopicFilterRow, listHubArticles, parsePageParam, type KhArticlePage } from '@/lib/cms/kh-taxonomy';
 import ArticlesSection from './ArticlesSection';
+import TopicFilterRow from './TopicFilterRow';
 import FaqSection from './FaqSection';
 import './knowledge-hub.css';
 
@@ -33,12 +36,32 @@ const STATIC_META = {
     "Plumbing tips, FAQs, and helpful articles from J. Blanton Plumbing's team of Chicagoland experts.",
 };
 
-export async function generateMetadata(): Promise<Metadata> {
+type PageProps = { searchParams: { page?: string | string[] } };
+
+/**
+ * Brief 187 (C3): `?page=n` pages are real, crawlable URLs. Each is
+ * self-canonical INCLUDING its `?page=n` (Google's pagination guidance — never
+ * canonicalise page 2+ to page 1). Page 1 sets no `alternates`, so it keeps the
+ * root layout's canonical (the bare `/knowledge-hub`, or a CMS override)
+ * exactly as before.
+ */
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const meta = await getMainPageMeta('knowledge-hub', STATIC_META);
+  const page = parsePageParam(searchParams.page);
+  if (page && page > 1) {
+    return {
+      title: `${meta.title} – Page ${page}`,
+      description: meta.description,
+      alternates: { canonical: `${canonicalUrlFor('/knowledge-hub')}?page=${page}` },
+    };
+  }
   return { title: meta.title, description: meta.description };
 }
 
-export default async function KnowledgeHubPage() {
+export default async function KnowledgeHubPage({ searchParams }: PageProps) {
+  // A malformed page (`?page=0`, `?page=abc`) is a 404, not page 1: one URL per page.
+  const pageNum = parsePageParam(searchParams.page);
+  if (pageNum === null) notFound();
   const preview = await getMainPagePreview('knowledge-hub');
 
   /*
@@ -77,6 +100,18 @@ export default async function KnowledgeHubPage() {
     body: m(d.faqs_body, _faqs.body),
     items: faqItems.length > 0 ? faqItems : _faqs.items,
   };
+
+  // Brief 187 (C3): the grid is rendered HERE, server-side, from `?page=n`. A
+  // query failure renders the grid's retryable notice (not a 500, not a 404);
+  // a well-formed page past the last one is a 404.
+  let articles: KhArticlePage | null = null;
+  try {
+    articles = await listHubArticles(pageNum);
+  } catch (err) {
+    console.error('[knowledge-hub] articles unavailable:', err);
+  }
+  if (articles && pageNum > articles.pageCount) notFound();
+  const topics = await getTopicFilterRow();
 
   return (
     <div className="kh-page">
@@ -121,8 +156,11 @@ export default async function KnowledgeHubPage() {
             </div>
           </div>
 
-          {/* Paginated articles grid */}
-          <ArticlesSection />
+          {/* Brief 187: topic filter row (only once a topic has articles) */}
+          <TopicFilterRow topics={topics} activeSlug={null} />
+
+          {/* Paginated articles grid — server-rendered, anchor pagination */}
+          <ArticlesSection data={articles} basePath="/knowledge-hub" />
 
           {/* FAQ accordion */}
           <FaqSection label={faqs.label} body={faqs.body} items={faqs.items} />

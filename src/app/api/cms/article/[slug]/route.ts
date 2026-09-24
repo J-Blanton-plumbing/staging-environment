@@ -3,6 +3,8 @@ import { getSession } from '@/lib/auth/session';
 import { requireCmsSession } from '@/lib/auth/api-guard';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import pool from '@/lib/db';
+import { getArticleTermSelection } from '@/lib/cms/kh-taxonomy';
+import { EMPTY_TERM_SELECTION } from '@/lib/cms/kh-taxonomy-types';
 
 type RouteContext = { params: Promise<{ slug: string }> };
 
@@ -14,9 +16,10 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
   const client = await pool.connect();
   try {
     const res = await client.query(
-      `SELECT a.slug, a.title, a.excerpt, a.body->>'html' AS body, a.image, a.status,
+      // Brief 187: `cms_articles.category` is no longer read (or written) — the
+      // editor's tags are the Topic/Location terms returned as `terms` below.
+      `SELECT a.id, a.slug, a.title, a.excerpt, a.body->>'html' AS body, a.image, a.status,
               a.meta_title, a.meta_description, a.created_at, a.updated_at,
-              COALESCE(a.category, '{}') AS categories,
               cu.name AS created_by_name, uu.name AS updated_by_name
          FROM cms_articles a
          LEFT JOIN cms_users cu ON cu.id = a.created_by
@@ -27,7 +30,17 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
     if (!res.rows[0]) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
-    return NextResponse.json(res.rows[0]);
+    const { id, ...row } = res.rows[0];
+    // The LIVE tags (what the public site shows). A database the Brief 187
+    // migration has not reached yet has no taxonomy tables — the editor then
+    // opens with no tags instead of failing to load the article.
+    let terms = EMPTY_TERM_SELECTION;
+    try {
+      terms = await getArticleTermSelection(id);
+    } catch (err) {
+      console.error('[cms/article GET] terms unavailable:', (err as Error).message);
+    }
+    return NextResponse.json({ ...row, terms });
   } catch (err) {
     console.error('[cms/article GET]', err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
@@ -92,7 +105,6 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     image?: string;
     metaTitle?: string | null;
     metaDescription?: string | null;
-    categories?: string[];
   };
   try {
     body = await req.json();
@@ -106,6 +118,12 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     // DERIVED render gate now, written ONLY by the publish/unpublish transaction
     // in src/lib/cms/drafts.ts — a content save must not be able to decide
     // whether the article is live.
+    //
+    // Brief 187: this statement also no longer writes `category` (the legacy
+    // text[] stays in the schema, untouched), and it deliberately does NOT write
+    // Topic/Location tags even if a client sends them. Tags travel ONLY in a
+    // version's content and reach `cms_article_terms` through the publish writer
+    // (updateArticleCmsContent), so no path can change them without Publish.
     const res = await client.query(
       `UPDATE cms_articles SET
          title            = COALESCE($1, title),
@@ -114,10 +132,9 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
          image            = COALESCE($4, image),
          meta_title       = $5,
          meta_description = $6,
-         category         = COALESCE($7, category),
-         updated_by       = $8,
+         updated_by       = $7,
          updated_at       = NOW()
-       WHERE slug = $9
+       WHERE slug = $8
        RETURNING id`,
       [
         body.title ?? null,
@@ -126,7 +143,6 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
         body.image ?? null,
         body.metaTitle ?? null,
         body.metaDescription ?? null,
-        body.categories ?? null,
         session.userId,
         slug,
       ]

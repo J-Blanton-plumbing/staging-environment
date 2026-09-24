@@ -7,6 +7,8 @@ import ArticleGrid from '@/components/ArticleGrid';
 import GoogleReviews from '@/components/GoogleReviews';
 import TikTokFeed from '@/components/TikTokFeed';
 import { getArticles } from '@/lib/articles';
+import type { CityTaggedArticles } from '@/lib/cms/kh-taxonomy';
+import CityMoreArticles from '@/components/kh/CityMoreArticles';
 import type { LocalOfficeContent } from '@/lib/content/cities/types';
 
 /**
@@ -23,8 +25,19 @@ import type { LocalOfficeContent } from '@/lib/content/cities/types';
  * Coverage-Area-only sections (NAP block, Google map, "manplumber", city-locations
  * grid) are intentionally absent (brief-09 "do NOT add").
  */
-export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) {
-  const articles = getArticles(city.articles.featuredSlugs);
+export default function LocalOfficeCity({
+  city,
+  tagged,
+}: {
+  city: LocalOfficeContent;
+  /**
+   * Brief 187 (C6): the city's (or its region's) tagged articles, when there are
+   * enough of them. Absent / null → the hand-picked `featuredSlugs`, exactly as
+   * before.
+   */
+  tagged?: CityTaggedArticles | null;
+}) {
+  const articles = tagged?.articles ?? getArticles(city.articles.featuredSlugs);
 
   return (
     <>
@@ -100,7 +113,15 @@ export default function LocalOfficeCity({ city }: { city: LocalOfficeContent }) 
           {/* ===== 8. RELATED ARTICLES (shared component) ===== */}
           {articles.length > 0 && (
             <section className="city-articles mt-[130px] w-full">
-              <ArticleGrid articles={articles} />
+              {/* Brief 187 (C6): one slot, so an untagged city is unchanged. */}
+              {tagged ? (
+                <>
+                  <ArticleGrid articles={articles} />
+                  <CityMoreArticles more={tagged.more} />
+                </>
+              ) : (
+                <ArticleGrid articles={articles} />
+              )}
             </section>
           )}
 

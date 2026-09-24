@@ -16,6 +16,7 @@ import { DEFAULT_ARTICLE_SLUGS, WATER_TESTING_FAQS } from '@/lib/content/cities/
 import { nearbyOhioAreas } from '@/lib/content/cities/ohio-nearby';
 import { OHIO_ARTICLE_SLUGS } from '@/lib/content/cities/ohio-template-content';
 import { getArticles } from '@/lib/articles';
+import { getCityTaggedArticles } from '@/lib/cms/kh-taxonomy';
 import { getCityCmsContent } from '@/lib/cms/city-pages';
 import { getCityPreview } from '@/lib/cms/preview';
 import { isPageLive } from '@/lib/cms/page-status';
@@ -242,7 +243,8 @@ export default async function CityPage({ params }: { params: { city: string } })
             pageSlug={params.city}
           />
         )}
-        <LocalOfficeCity city={merged} />
+        {/* Brief 187 (C6): tagged articles replace the picks only at ≥3. */}
+        <LocalOfficeCity city={merged} tagged={await getCityTaggedArticles(entry.slug)} />
       </>
     );
   }
@@ -255,10 +257,19 @@ export default async function CityPage({ params }: { params: { city: string } })
    * Homeowners…", "…the Chicago Cold Snap") and render as such on an Ohio page.
    * A city's own `articleSlugs` still wins, so this is only the default.
    */
-  const articles = getArticles(
+  const defaultArticles = getArticles(
     content?.articleSlugs ??
       (entry.state === 'Ohio' ? [...OHIO_ARTICLE_SLUGS] : DEFAULT_ARTICLE_SLUGS)
   );
+  /*
+   * Brief 187 (C6): once the city — or, failing that, its region — has ≥3
+   * published TAGGED articles, the newest 3 of those replace the hand-picked
+   * set, with a "More {City} articles" link to the area page. Below the
+   * threshold (every city today) `tagged` is null and the page is unchanged.
+   * Never throws; a DB failure also means null.
+   */
+  const tagged = await getCityTaggedArticles(entry.slug);
+  const articles = tagged?.articles ?? defaultArticles;
 
   let mergedContent = content;
   if (db) {
@@ -328,6 +339,7 @@ export default async function CityPage({ params }: { params: { city: string } })
         office={getOffice(entry.slug, settings.offices)}
         area={getArea(entry.slug)}
         articles={articles}
+        moreArticles={tagged?.more}
         faqs={mergedFaqs}
         cities={getGridCities(gridRegion)}
         state={entry.state}

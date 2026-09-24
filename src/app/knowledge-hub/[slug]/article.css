@@ -5,6 +5,15 @@
   overflow-x: hidden;
 }
 
+/* ── Tags (Brief 187 C2) — only rendered when the article has any ──
+   Same column as the body below. The body keeps its own 50px top padding, so
+   the chips sit 40px under the hero nav and the body copy follows as before. */
+.article-page .article-terms {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
 /* ── Article body ── */
 
 .article-page .article-page-content {
@@ -153,12 +162,20 @@
     width: 92%;
     padding: 36px 0;
   }
+  .article-page .article-terms {
+    width: 92%;
+    margin-top: 28px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
   .article-page .article-page-content {
     width: 94%;
     padding: 28px 0;
+  }
+  .article-page .article-terms {
+    width: 94%;
+    margin-top: 24px;
   }
 
   .article-page .article-footer-cta h2,

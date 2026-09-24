@@ -153,6 +153,38 @@ async function main() {
   console.log(`\nall ${entries.length} sitemap lastmod queries are valid against this database.`);
 
   await checkCityPageCoverage();
+  await reportKhTaxonomyPages();
+}
+
+/**
+ * Brief 187 (C7) — INFORMATION ONLY. How many Knowledge Hub topic / area pages
+ * the sitemap will list, and how many are held back.
+ *
+ * An empty topic, an untagged city, a "Show in Google" switch left off — all of
+ * that is editor-controlled content state (Brief 186) and is NEVER a failure.
+ * The SQL itself is already validated by the lastmod-source loop above
+ * (`khTerms`), which is the only part of this that could be a code defect.
+ */
+async function reportKhTaxonomyPages(): Promise<void> {
+  console.log('\nKnowledge Hub topic / area pages (information only — never fails the deploy)…');
+  try {
+    const listed = await pool.query<{ type: string; n: string }>(
+      `SELECT type, count(*) AS n FROM (${SITEMAP_LASTMOD_SOURCES.khTerms}) q GROUP BY type`
+    );
+    const totals = await pool.query<{ type: string; n: string; on: string }>(
+      `SELECT type, count(*) AS n, count(*) FILTER (WHERE indexable) AS on FROM kh_terms GROUP BY type`
+    );
+    for (const t of totals.rows) {
+      const inMap = Number(listed.rows.find((r) => r.type === t.type)?.n ?? 0);
+      console.log(
+        `  ${t.type.padEnd(8)} ${t.n} terms, ${t.on} with "Show in Google" on, ${inMap} listed in the sitemap ` +
+          `(${Number(t.n) - inMap} held back: switch off or no published articles — not a failure)`
+      );
+    }
+  } catch (err) {
+    const e = err as { code?: string; message?: string };
+    console.log(`  skipped — ${e.code ?? ''} ${e.message ?? String(err)} (not a failure)`);
+  }
 }
 
 /**

@@ -174,6 +174,61 @@
   color: #fff;
 }
 
+/* Brief 187 (C3): Back/Next are now <a href> (or a <span> when disabled) instead
+   of <button>s. Preflight already resets anchor colour/decoration; this pins
+   the one UA difference that could leak through, so the look is unchanged. */
+.kh-page .kh .articles-nav a.button {
+  text-decoration: none;
+}
+
+/* ---- Brief 187: topic filter row, term intro, city link ---------------------
+   Chip look comes from the shared .kh-filter token in globals.css. */
+.kh-page .kh .kh-filter-row {
+  margin: 0 0 24px 0;
+}
+.kh-page .kh .kh-term-intro {
+  font-family: var(--font-nunito), sans-serif;
+  font-size: 19px;
+  line-height: 30px;
+  color: #0a1b2e;
+  max-width: 900px;
+  margin: 0 0 30px 0;
+}
+.kh-page .kh .kh-term-intro p { margin: 0 0 16px 0; }
+.kh-page .kh .kh-term-intro a { color: #1560e6; text-decoration: underline; }
+.kh-page .kh .kh-term-intro h2,
+.kh-page .kh .kh-term-intro h3 {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  color: #bc0e0e;
+  margin: 24px 0 12px 0;
+}
+.kh-page .kh .kh-term-intro h2 { font-size: 32px; line-height: 40px; }
+.kh-page .kh .kh-term-intro h3 { font-size: 28px; line-height: 36px; }
+.kh-page .kh .kh-term-intro ul,
+.kh-page .kh .kh-term-intro ol { margin: 0 0 16px 0; padding-left: 24px; }
+.kh-page .kh .kh-term-intro ul { list-style: disc; }
+.kh-page .kh .kh-term-intro ol { list-style: decimal; }
+/* Area pages exist to support the city pages: one prominent link to it. */
+.kh-page .kh .kh-term-services {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 0 0 30px 0;
+}
+.kh-page .kh .kh-term-services p {
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: #0a1b2e;
+  margin: 0;
+}
+
 /* ---- Articles grid --------------------------------------------------------- */
 .kh-page .kh #kh-articles {
   display: grid;
@@ -188,6 +243,7 @@
   font-size: 18px;
   color: #0a1b2e;
 }
+.kh-page .kh #kh-articles .articles-error a,
 .kh-page .kh #kh-articles .articles-error button {
   color: #bc0e0e;
   font-weight: 700;

@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import pool from '@/lib/db';
+import { getTerm, listHubArticles, listTermArticles, type KhArticlePage } from '@/lib/cms/kh-taxonomy';
+import { KH_PAGE_SIZE } from '@/lib/cms/kh-taxonomy-types';
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = KH_PAGE_SIZE;
 
 // Brief 108 (Group D1): this handler reads query params and hits the DB per
 // request — force it dynamic so it is never statically evaluated/cached at build
@@ -9,62 +10,59 @@ const PAGE_SIZE = 9;
 // stale/empty payload and leave the Knowledge Hub grid blank.
 export const dynamic = 'force-dynamic';
 
+/**
+ * GET /api/articles?page=0[&topic={slug}|&location={slug}]
+ *
+ * `page` is 0-based here, as it always was (the public pages use 1-based
+ * `?page=n` URLs — Brief 187 C3). Brief 187 moved the query itself into
+ * `src/lib/cms/kh-taxonomy.ts` so this endpoint and the server-rendered hub,
+ * topic and area pages share ONE definition of "published" and ONE order
+ * (Brief 122: created_at DESC, wp_post_id DESC NULLS LAST, id DESC).
+ *
+ * `category` is now the article's real primary topic — `{ name, slug }`, or
+ * `null` when the article has none — instead of the hardcoded `''`.
+ *
+ * `topic` / `location` filter to one term (a region includes its cities'
+ * articles). An unknown slug is a 404 with the usual well-formed empty payload.
+ */
 export async function GET(request: NextRequest) {
-  const pageParam = request.nextUrl.searchParams.get('page');
-  const page = Math.max(0, parseInt(pageParam ?? '0', 10) || 0);
-  const offset = page * PAGE_SIZE;
+  const params = request.nextUrl.searchParams;
+  const page = Math.max(0, parseInt(params.get('page') ?? '0', 10) || 0);
+  const topic = params.get('topic');
+  const location = params.get('location');
+  const empty = (status: number, error: string) =>
+    NextResponse.json({ articles: [], total: 0, page, pageSize: PAGE_SIZE, error }, { status });
 
-  let client;
   try {
-    client = await pool.connect();
-    const [rows, countRow] = await Promise.all([
-      client.query(
-        // Brief 122: created_at alone can't reproduce the live site's order —
-        // the WP import left all 812 articles' post_dates inside a ~33-second
-        // window, so nearly every row ties and Postgres returned them in
-        // arbitrary (even request-to-request unstable) order. The live site
-        // breaks those ties by WP post ID, so we do too (wp_post_id, backfilled
-        // by scripts/backfill-article-wp-ids.ts; NULL for CMS-created articles,
-        // whose genuinely-newer created_at already places them first). id DESC
-        // is the final tiebreaker so pagination is always deterministic.
-        `SELECT slug, title, excerpt, image, created_at
-         FROM cms_articles
-         WHERE status = 'published' AND (body->>'html') IS NOT NULL AND (body->>'html') != ''
-         ORDER BY created_at DESC, wp_post_id DESC NULLS LAST, id DESC
-         LIMIT $1 OFFSET $2`,
-        [PAGE_SIZE, offset]
-      ),
-      client.query(
-        `SELECT COUNT(*) FROM cms_articles
-         WHERE status = 'published' AND (body->>'html') IS NOT NULL AND (body->>'html') != ''`
-      ),
-    ]);
+    let result: KhArticlePage;
+    if (topic || location) {
+      const term = await getTerm(topic ? 'topic' : 'location', (topic ?? location)!);
+      if (!term) return empty(404, 'unknown_term');
+      result = await listTermArticles(term, page + 1);
+    } else {
+      result = await listHubArticles(page + 1);
+    }
 
-    const total = parseInt(countRow.rows[0].count, 10);
-    const articles = rows.rows.map((r) => ({
-      slug: r.slug,
-      title: r.title,
-      excerpt: r.excerpt || '',
-      image: r.image || '',
-      heroImage: r.image || '',
-      href: `/knowledge-hub/${r.slug}`,
-      category: '',
-      date: r.created_at ? new Date(r.created_at).toISOString().slice(0, 10) : '',
+    const articles = result.articles.map((a) => ({
+      slug: a.slug,
+      title: a.title,
+      excerpt: a.excerpt,
+      image: a.image,
+      heroImage: a.image,
+      href: a.href,
+      category: a.topic,
+      // Brief 187 hard rule: no article dates. All 812 imported articles share a
+      // publish timestamp inside a 33-second window (Brief 122), so any date here
+      // would be wrong on every card. Kept as '' for payload-shape compatibility.
+      date: '',
       body: '',
     }));
 
-    return NextResponse.json({ articles, total, page, pageSize: PAGE_SIZE });
+    return NextResponse.json({ articles, total: result.total, page, pageSize: PAGE_SIZE });
   } catch (err) {
-    // Never surface a non-JSON 500 to the client: the fetch in ArticlesSection
-    // parses the body as JSON, and a raw error page would reject the promise and
-    // hang the "Loading…" state (OC-08). Return a well-formed empty payload with
-    // a 500 status so the client can show its retryable error state cleanly.
+    // Never surface a non-JSON 500 to a client that parses the body as JSON
+    // (OC-08): return a well-formed empty payload with a 500 status instead.
     console.error('GET /api/articles failed:', err);
-    return NextResponse.json(
-      { articles: [], total: 0, page, pageSize: PAGE_SIZE, error: 'articles_unavailable' },
-      { status: 500 }
-    );
-  } finally {
-    client?.release();
+    return empty(500, 'articles_unavailable');
   }
 }

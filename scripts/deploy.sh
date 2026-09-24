@@ -639,6 +639,40 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # still", so no page changes on the strength of this migration.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/migrate-brief-179-city-hero-video.ts commit
+# -- Brief 187: Knowledge Hub topics + locations ----------------------
+# Creates `kh_terms` + `cms_article_terms` and seeds the 9 topics, the 2
+# regions and every CITY_REGISTRY city (fill-gaps, keyed on type+slug:
+# an existing row's name / intro / "Show in Google" switch is NEVER
+# overwritten). ADDITIVE ONLY — two new tables, no rename/drop, and
+# `cms_articles.category` is untouched — because this commits while the
+# OLD build is still serving. Writes NO article tags (Stop 2 does that,
+# separately, once Marketing approves). Reports ALREADY-APPLIED on every
+# deploy after the first. Exits non-zero only on a schema fault (a table
+# or index missing afterwards, or an SQL error), never on content state.
+# MUST stay ABOVE verify-sitemap-queries.ts: that step probes the new
+# `khTerms` sitemap query, which needs these tables to exist.
+# `-r tsconfig-paths/register` is REQUIRED: the city list comes from src/.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/migrate-brief-187-kh-taxonomy.ts commit
+# -- Brief 187 Stop 2: apply Marketing's APPROVED article tags ---------
+# Reads scripts/data/brief-187-article-tags-approved.csv (805 approved
+# rows, Marketing decision 2026-09-24: every row with a topic, with
+# body-only and ambiguous locations removed). Matches articles by SLUG
+# (ids are not portable between databases) and sets each approved
+# article's tags to exactly the CSV's ONCE: every applied row is recorded
+# in brief187_article_tags_applied and never written again, so a retag an
+# editor makes later in /admin survives every future deploy. Every deploy
+# after the first reports ALREADY-APPLIED and writes nothing. (A row whose
+# tags are corrected in the CSV gets a new key and applies once more.)
+# Backs the affected rows up to brief187_article_terms_backup first and
+# syncs `content.terms` on each article's PUBLISHED version row in the
+# same transaction (article content lives in two places). An unknown
+# name or a missing article rejects that ROW, is listed, and exits 0 -
+# content state never fails a deploy (Brief 186). The script is its own
+# guard: no CSV -> NOT-APPLIED, exit 0. Do NOT add `|| true`.
+# MUST stay AFTER the migration above (it needs the tables and terms).
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/apply-brief-187-article-tags.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

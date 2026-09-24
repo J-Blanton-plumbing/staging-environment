@@ -117,6 +117,31 @@ export const SITEMAP_LASTMOD_SOURCES = {
           WHERE status = 'draft'`,
   article: `SELECT slug, COALESCE(updated_at, created_at) AS updated_at
            FROM cms_articles WHERE status = 'published'`,
+  /**
+   * Brief 187 (C7): the Knowledge Hub topic and area pages that may be listed —
+   * "Show in Google" ON **and** at least one published article (a region counts
+   * its cities' articles, the same query-time rule the pages use). Page 1 only.
+   * A non-indexable or empty term is simply absent: never a failure. <lastmod>
+   * is the later of the term's own edit and its newest article's.
+   * "Published" matches src/lib/cms/kh-taxonomy.ts's PUBLISHED exactly.
+   */
+  khTerms: `WITH pub AS (
+             SELECT a.id, COALESCE(a.updated_at, a.created_at) AS ts FROM cms_articles a
+              WHERE a.status = 'published' AND (a.body->>'html') IS NOT NULL AND (a.body->>'html') <> ''
+           ),
+           links AS (
+             SELECT at.term_id, pub.ts FROM cms_article_terms at JOIN pub ON pub.id = at.article_id
+             UNION ALL
+             SELECT t.parent_id, pub.ts
+               FROM cms_article_terms at
+               JOIN pub ON pub.id = at.article_id
+               JOIN kh_terms t ON t.id = at.term_id
+              WHERE t.parent_id IS NOT NULL
+           )
+           SELECT t.type, t.slug, GREATEST(t.updated_at, MAX(l.ts)) AS updated_at
+             FROM kh_terms t JOIN links l ON l.term_id = t.id
+            WHERE t.indexable
+            GROUP BY t.id, t.type, t.slug, t.updated_at`,
   emergencyPlumbing: `SELECT updated_at FROM emergency_plumbing_page ORDER BY updated_at DESC NULLS LAST LIMIT 1`,
   /**
    * Brief 153: `<lastmod>` for the /{city}/{service} shards, and the ONLY query
@@ -380,18 +405,39 @@ export function renderCitiesSitemap(): Promise<string> {
   });
 }
 
-/** `/sitemap-articles.xml` — published Knowledge Hub articles. */
+/**
+ * `/sitemap-articles.xml` — published Knowledge Hub articles, plus (Brief 187)
+ * the indexable topic and area pages. They share this child because they are
+ * the same section and the same freshness class; adding a new child would mean
+ * a new route and manifest entry for what is, today, a handful of URLs.
+ * A term query failure fails OPEN in the safe direction for a new page type:
+ * the articles are still listed and the term pages are simply left out.
+ */
 export function renderArticlesSitemap(): Promise<string> {
   return cached('articles', TTL_FRESH_MS, async () => {
-    const rows = await safeQuery<SlugRow>('cms_articles', SITEMAP_LASTMOD_SOURCES.article);
-    return urlsetXml(
-      rows.map((a) => ({
+    const [rows, termRows] = await Promise.all([
+      safeQuery<SlugRow>('cms_articles', SITEMAP_LASTMOD_SOURCES.article),
+      safeQuery<{ type: 'topic' | 'location'; slug: string; updated_at: Date | null }>(
+        'kh_terms (topic / area pages)',
+        SITEMAP_LASTMOD_SOURCES.khTerms
+      ),
+    ]);
+    return urlsetXml([
+      ...termRows
+        .sort((a, b) => a.type.localeCompare(b.type) || a.slug.localeCompare(b.slug))
+        .map((t) => ({
+          path: `/knowledge-hub/${t.type === 'topic' ? 'topic' : 'area'}/${t.slug}`,
+          lastModified: t.updated_at ? new Date(t.updated_at) : undefined,
+          changeFrequency: 'weekly' as const,
+          priority: 0.6,
+        })),
+      ...rows.map((a) => ({
         path: `/knowledge-hub/${a.slug}`,
         lastModified: a.updated_at ? new Date(a.updated_at) : undefined,
         changeFrequency: 'monthly' as const,
         priority: 0.5,
-      }))
-    );
+      })),
+    ]);
   });
 }
 

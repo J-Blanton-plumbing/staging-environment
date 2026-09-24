@@ -22,6 +22,8 @@ import {
 import { DEFAULT_ARTICLE_SLUGS, getElfsightContentId } from '@/lib/content/cities/shared';
 import { OHIO_ARTICLE_SLUGS } from '@/lib/content/cities/ohio-template-content';
 import { getArticles } from '@/lib/articles';
+import { getCityTaggedArticles } from '@/lib/cms/kh-taxonomy';
+import CityMoreArticles from '@/components/kh/CityMoreArticles';
 import CityPageImage from '@/components/CityPageImage';
 
 /**
@@ -57,7 +59,7 @@ interface Props {
   settings: GlobalSettings;
 }
 
-export default function CityServicePageTemplate({ city, service, settings }: Props) {
+export default async function CityServicePageTemplate({ city, service, settings }: Props) {
   const s = replaceAll(service, city.name);
   /*
    * Brief 178 (Track A2): `getOffice` now resolves through `resolveOfficeSlug`,
@@ -73,7 +75,14 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
    * These pages are noindex for now, but they still render to visitors, and two
    * of the three shared defaults are Chicago-titled.
    */
-  const articles = getArticles(
+  /*
+   * Brief 187 (C6): the same tagged-article rule as the city page (≥3 tagged to
+   * the city, or failing that its region). `getCityTaggedArticles` reads one
+   * site-wide index memoised for a minute, so these ~11,000 pages do not each
+   * query Postgres; null (every city today) keeps the defaults exactly.
+   */
+  const tagged = await getCityTaggedArticles(city.slug);
+  const articles = tagged?.articles ?? getArticles(
     city.state === 'Ohio' ? [...OHIO_ARTICLE_SLUGS] : DEFAULT_ARTICLE_SLUGS
   );
   /*
@@ -242,7 +251,15 @@ export default function CityServicePageTemplate({ city, service, settings }: Pro
 
       {/* ── 9. RELATED ARTICLES ──────────────────────────────────────────── */}
       <section className="city-articles mx-auto max-w-[1200px] px-6 pb-[80px]">
-        <ArticleGrid articles={articles} />
+        {/* Brief 187 (C6): one slot, so an untagged city is unchanged. */}
+        {tagged ? (
+          <>
+            <ArticleGrid articles={articles} />
+            <CityMoreArticles more={tagged.more} />
+          </>
+        ) : (
+          <ArticleGrid articles={articles} />
+        )}
       </section>
 
       {/* ── 10. CITY-LOCATIONS GRID ──────────────────────────────────────── */}

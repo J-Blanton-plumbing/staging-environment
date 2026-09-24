@@ -215,6 +215,10 @@ const PROVABLE_DYNAMIC_ROUTES: Record<string, (urlPath: string) => boolean> = {
   // Article slugs live in the CMS; the live validator (scripts/validate-seo-routing.mjs)
   // is the only thing that can confirm a given one is published.
   'knowledge-hub/[slug]/page.tsx': () => true,
+  // Brief 187: topic and area pages are DB-driven too (kh_terms), and only the
+  // indexable, non-empty ones are listed — the live validator checks each one.
+  'knowledge-hub/topic/[slug]/page.tsx': () => true,
+  'knowledge-hub/area/[slug]/page.tsx': () => true,
 };
 
 /** Resolve a path to a public/ file via a `beforeFiles` rewrite, if any. */
@@ -464,6 +468,9 @@ const main = () => {
     ),
     // Articles are DB-driven; only the route shape can be checked statically.
     { path: '/knowledge-hub/__article__', from: 'cms_articles (route shape only)' },
+    // Brief 187: indexable topic / area pages ride in /sitemap-articles.xml.
+    { path: '/knowledge-hub/topic/__term__', from: 'kh_terms topics (route shape only)' },
+    { path: '/knowledge-hub/area/__term__', from: 'kh_terms locations (route shape only)' },
   ];
 
   const seen = new Map<string, string>();
@@ -491,6 +498,15 @@ const main = () => {
     if (p.includes('__article__')) {
       if (!resolveAppRoute('/knowledge-hub/some-slug')) {
         fail('cms_articles: no route under src/app serves /knowledge-hub/{slug}.');
+      }
+      continue;
+    }
+    if (p.includes('__term__')) {
+      // Must resolve to the dedicated route, NOT fall into the article route.
+      const kind = p.includes('/topic/') ? 'topic' : 'area';
+      const hit = resolveAppRoute(`/knowledge-hub/${kind}/some-slug`);
+      if (!hit || !hit.id.startsWith(`knowledge-hub/${kind}/`)) {
+        fail(`kh_terms: no route under src/app serves /knowledge-hub/${kind}/{slug} (got ${hit?.id ?? 'nothing'}).`);
       }
       continue;
     }
