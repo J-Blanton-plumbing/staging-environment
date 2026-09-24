@@ -1,9 +1,8 @@
 /**
  * Brief 187 (Track E) — backfill STOP 2: apply Marketing's APPROVED tags.
  *
- * ⚠ WRITTEN IN BRIEF 187, NOT RUN AND NOT WIRED INTO scripts/deploy.sh. It runs
- * only after Marketing returns the reviewed proposal spreadsheet, in a separate
- * session that commits that file as:
+ * Wired into scripts/deploy.sh (Stop 2, 2026-09-24) after Marketing approved the
+ * proposals. The approved file is committed as:
  *
  *     scripts/data/brief-187-article-tags-approved.csv
  *
@@ -20,8 +19,11 @@
  *   • Names match `kh_terms` case-insensitively; a slug or "Name (Region)" also
  *     works (Woodstock exists in both regions). An unknown name REJECTS THAT ROW
  *     (listed in the summary); every other row still applies.
- *   • IDEMPOTENT: an approved article's tags are REPLACED with exactly the CSV's
- *     tags, so a re-run is a no-op (reported ALREADY-APPLIED).
+ *   • APPLY ONCE: an approved article's tags are REPLACED with exactly the CSV's
+ *     tags, and the (slug, tags) pair is recorded in brief187_article_tags_applied.
+ *     A recorded row is never written again, so once this runs from deploy.sh a
+ *     retag an editor makes in /admin survives every later deploy. A re-run is
+ *     a no-op (ALREADY-APPLIED); a row corrected in the CSV applies once more.
  *   • BACKUP FIRST (the Brief 143 pattern): the affected articles' current
  *     `cms_article_terms` rows go to `brief187_article_terms_backup` (one run id
  *     per run) and to scripts/backups/ as JSON, before anything is written.
@@ -185,11 +187,28 @@ async function main() {
     else if (r.type === 'topic') s.secondary.push(r.slug);
     else s.locations.push(r.slug);
   }
-  const changes = plan.filter((p) => !sameTermSelection(p.selection, currentSel.get(p.articleId)!));
-  const unchanged = plan.length - changes.length;
+  // ── APPLY ONCE PER ROW ──────────────────────────────────────────────────────
+  // This step runs on every deploy. A plain "replace with the CSV" would put the
+  // CSV's tags back over any retag an editor makes in /admin afterwards. So each
+  // (slug, exact approved tags) is recorded in brief187_article_tags_applied when
+  // applied, and a recorded row is never written again. Editing a row's tags in
+  // the CSV gives it a new key, so a corrected row DOES apply on the next deploy.
+  const rowKey = (s: ArticleTermSelection) =>
+    JSON.stringify([s.primary, [...s.secondary].sort(), [...s.locations].sort()]);
+  const logExists = (await pool.query(`SELECT to_regclass('brief187_article_tags_applied') AS t`)).rows[0].t !== null;
+  const logged = new Set<string>();
+  if (logExists) {
+    const l = await pool.query<{ slug: string; row_key: string }>(`SELECT slug, row_key FROM brief187_article_tags_applied`);
+    for (const r of l.rows) logged.add(`${r.slug}\u0000${r.row_key}`);
+  }
+  const isLogged = (p: (typeof plan)[number]) => logged.has(`${p.slug}\u0000${rowKey(p.selection)}`);
+  const pendingPlan = plan.filter((p) => !isLogged(p));
+  const alreadyOnce = plan.length - pendingPlan.length;
+  const changes = pendingPlan.filter((p) => !sameTermSelection(p.selection, currentSel.get(p.articleId)!));
+  const unchanged = pendingPlan.length - changes.length;
 
   console.log(`\n── Brief 187 Stop 2 — ${CSV_PATH}`);
-  console.log(`  approved rows valid ........ ${plan.length} (${changes.length} change, ${unchanged} already as approved)`);
+  console.log(`  approved rows valid ........ ${plan.length} (${changes.length} change, ${unchanged} already as approved, ${alreadyOnce} applied on an earlier run — left alone)`);
   console.log(`  skipped (not "approve") .... ${skipped.length}`);
   console.log(`  rejected ................... ${rejected.length}`);
   for (const r of rejected) console.log(`    ✗ ${r.slug}: ${r.why}`);
@@ -200,8 +219,8 @@ async function main() {
     verdict(SCRIPT, 'NOT-APPLIED (dry run)', `${changes.length} article(s) would change, ${rejected.length} rejected`);
     return;
   }
-  if (changes.length === 0) {
-    verdict(SCRIPT, 'ALREADY-APPLIED', `${plan.length} approved, all already as approved; ${rejected.length} rejected`);
+  if (pendingPlan.length === 0) {
+    verdict(SCRIPT, 'ALREADY-APPLIED', `${plan.length} approved, all applied on an earlier run; ${rejected.length} rejected`);
     return;
   }
 
@@ -237,6 +256,17 @@ async function main() {
         [JSON.stringify(p.selection), p.slug]
       );
       versionsSynced += v.rowCount ?? 0;
+    }
+    // Record every pending row (changed AND already-matching) as applied, so no
+    // later deploy writes it again.
+    await client.query(`CREATE TABLE IF NOT EXISTS brief187_article_tags_applied (
+      slug TEXT NOT NULL, row_key TEXT NOT NULL, applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      PRIMARY KEY (slug, row_key))`);
+    for (const p of pendingPlan) {
+      await client.query(
+        `INSERT INTO brief187_article_tags_applied (slug, row_key) VALUES ($1, $2) ON CONFLICT DO NOTHING`,
+        [p.slug, rowKey(p.selection)]
+      );
     }
     await client.query('COMMIT');
     console.log(`\n  ✓ applied ${changes.length} article(s); ${versionsSynced} published version row(s) synced`);
