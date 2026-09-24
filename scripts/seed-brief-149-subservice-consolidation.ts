@@ -573,6 +573,13 @@ async function main() {
     }
 
     // ── Verify ─────────────────────────────────────────────────────────────
+    // Brief 186: a MISSING BLOCK is reported, not thrown. This script inserts
+    // relatedServices/textSection but never re-creates hero/intro/listSection, so
+    // one of those being absent means an editor deleted it in the block editor —
+    // content state, which must never fail a deploy (and the write above has
+    // already committed, so a throw here only turned the deploy red). The two
+    // checks that stay fatal can only be reached by a code fault or a race.
+    const missingBlocks: string[] = [];
     for (const slug of SLUGS) {
       const check = (
         await client.query<{ hero_heading: string | null; blocks: SubServiceBlockInstance[] | null }>(
@@ -585,10 +592,17 @@ async function main() {
       const types = (check.blocks ?? []).map((b) => b.type);
       for (const need of ['hero', 'intro', 'listSection', 'relatedServices', 'textSection']) {
         if (!types.includes(need as SubServiceBlockInstance['type'])) {
-          throw new Error(`${slug}: block "${need}" is missing after the write (order: ${types.join(', ')}).`);
+          missingBlocks.push(`${slug}: block "${need}" (order: ${types.join(', ')})`);
         }
       }
-      console.log(`verify ${slug}: ok — ${types.length} blocks (${types.join(' · ')})`);
+      console.log(`verify ${slug}: ${types.length} blocks (${types.join(' · ')})`);
+    }
+    if (missingBlocks.length) {
+      console.log('\n' + '!'.repeat(72));
+      console.log('BRIEF 149 — WRITTEN, BUT SOME BLOCKS ARE ABSENT (editor state, not a fault)');
+      for (const m of missingBlocks) console.log(`  ${m}`);
+      console.log('This script does not re-create those blocks. The deploy continues.');
+      console.log('!'.repeat(72) + '\n');
     }
 
     const dir = join(process.cwd(), 'scripts', 'backups');
@@ -597,7 +611,12 @@ async function main() {
     const file = join(dir, `brief-149-consolidation-${mode}-${stamp}.json`);
     writeFileSync(file, JSON.stringify({ mode, generated: stamp, changes }, null, 2));
     console.log(`log: ${file}`);
-    verdict(SCRIPT, 'APPLIED', `${writeCount} field change(s) across ${writes.length} row(s)`);
+    verdict(
+      SCRIPT,
+      'APPLIED',
+      `${writeCount} field change(s) across ${writes.length} row(s)` +
+        (missingBlocks.length ? ` — ${missingBlocks.length} block(s) absent (editor state, reported above)` : '')
+    );
   } finally {
     client.release();
     await pool.end();

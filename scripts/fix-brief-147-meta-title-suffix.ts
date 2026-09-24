@@ -112,6 +112,9 @@ interface Change {
   table: string;
   column: string;
   key: string;
+  /** The row's key columns and their values (as text), for a row-scoped UPDATE. */
+  keyCols: string[];
+  keyVals: string[];
   before: string;
   after: string;
   readOnly: boolean;
@@ -150,8 +153,9 @@ async function main() {
       continue;
     }
     const keyList = src.keys.join(", '/', ");
-    const rows = await pool.query<{ row_key: string; value: string }>(
-      `SELECT concat(${keyList}) AS row_key, ${src.column} AS value
+    const keySelect = src.keys.map((k, i) => `${k}::text AS k${i}`).join(', ');
+    const rows = await pool.query<{ row_key: string; value: string } & Record<string, string>>(
+      `SELECT concat(${keyList}) AS row_key, ${keySelect}, ${src.column} AS value
          FROM ${src.table}
         WHERE ${src.column} IS NOT NULL AND ${src.column} <> ''
         ORDER BY ${src.keys.join(', ')}`
@@ -168,6 +172,8 @@ async function main() {
         table: src.table,
         column: src.column,
         key: r.row_key,
+        keyCols: src.keys,
+        keyVals: src.keys.map((_, i) => r[`k${i}`]),
         before: r.value,
         after,
         readOnly: !!src.readOnly,
@@ -208,34 +214,47 @@ async function main() {
     console.log('!'.repeat(72));
   }
 
+  if (writable.length === 0) {
+    // Only report-only rows (article headlines) matched: nothing to write and
+    // nothing to verify. Brief 186 — never run a write/verify stage over editor
+    // copy this script does not own.
+    verdict(SCRIPT, 'ALREADY-APPLIED', `no writable suffixes; ${reportOnly.length} report-only row(s) listed above`);
+    return;
+  }
+
   if (mode !== 'commit') {
     console.log(`\nNo changes were written. Re-run with \`commit\` to apply.`);
     verdict(SCRIPT, 'NOT-APPLIED (dry run)', `${writable.length} row(s) would change`);
     return;
   }
 
+  // Rows an editor changed between the scan and the write. Brief 186: that is
+  // editor activity, not a fault — skip the row, report it, never fail the deploy.
+  const raced: Change[] = [];
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
     for (const c of writable) {
+      // Scope the UPDATE to THIS row (its key columns) AND gate it on the exact old
+      // value, so a concurrent editor save is skipped rather than clobbered.
+      // Brief 186: it used to match on the value alone, so two rows sharing one
+      // suffixed title were BOTH rewritten by the first UPDATE, the second matched
+      // 0 rows, and the throw that followed failed every deploy. `version` and
+      // `updated_at` are deliberately left alone (see the header).
+      const keyWhere = c.keyCols.map((k, i) => `${k}::text = $${i + 3}`).join(' AND ');
+      const res = await client.query(
+        `UPDATE ${c.table} SET ${c.column} = $1 WHERE ${c.column} = $2 AND ${keyWhere}`,
+        [c.after, c.before, ...c.keyVals]
+      );
+      if ((res.rowCount ?? 0) === 0) {
+        raced.push(c);
+        continue;
+      }
       await client.query(
         `INSERT INTO brief147_meta_title_backup (source_table, source_column, row_key, old_value, new_value)
          VALUES ($1,$2,$3,$4,$5)`,
         [c.table, c.column, c.key, c.before, c.after]
       );
-      // Gate the UPDATE on the exact old value: a concurrent editor save between the
-      // scan and the write is then skipped rather than clobbered. `version` and
-      // `updated_at` are deliberately left alone (see the header).
-      const res = await client.query(
-        `UPDATE ${c.table} SET ${c.column} = $1 WHERE ${c.column} = $2`,
-        [c.after, c.before]
-      );
-      if ((res.rowCount ?? 0) === 0) {
-        throw new Error(
-          `${c.table}.${c.column} [${c.key}] did not update — the value changed under us. ` +
-            'Nothing has been committed; re-run the script.'
-        );
-      }
     }
     await client.query('COMMIT');
   } catch (e) {
@@ -253,10 +272,26 @@ async function main() {
     const rows = await pool.query<{ value: string }>(
       `SELECT ${src.column} AS value FROM ${src.table} WHERE ${src.column} IS NOT NULL AND ${src.column} <> ''`
     );
-    remaining += rows.rows.filter((r) => pageTitle(r.value) !== r.value).length;
+    // Same predicate as the scan: a whitespace-only difference is not a suffix.
+    // Brief 186: the verify used to count it, so ONE meta title with a trailing
+    // space — which an editor can save — failed every deploy that reached here.
+    remaining += rows.rows.filter((r) => {
+      const t = pageTitle(r.value);
+      return t !== r.value && t !== r.value.trim();
+    }).length;
   }
-  if (remaining > 0) throw new Error(`verify failed: ${remaining} value(s) still end in the suffix.`);
-  console.log(`\nverify: ${writable.length} row(s) stripped; 0 writable values still end in the suffix.`);
+  const stripped = writable.length - raced.length;
+  if (raced.length || remaining > 0) {
+    // Editor-owned rows moved while the script ran. Report, never fail (Brief 186).
+    console.log('');
+    console.log('!'.repeat(72));
+    console.log('Some rows changed while this script ran (an editor saved during the deploy).');
+    for (const c of raced) console.log(`  skipped, changed under us: ${c.table}.${c.column} [${c.key}]`);
+    if (remaining > 0) console.log(`  ${remaining} writable value(s) still end in the suffix; the next deploy retries.`);
+    console.log('Content state, not a fault — the deploy continues.');
+    console.log('!'.repeat(72));
+  }
+  console.log(`\nverify: ${stripped} row(s) stripped; ${remaining} writable value(s) still end in the suffix.`);
 
   const dir = join(process.cwd(), 'scripts', 'backups');
   mkdirSync(dir, { recursive: true });
@@ -264,7 +299,12 @@ async function main() {
   const file = join(dir, `brief-147-meta-title-suffix-${mode}-${stamp}.json`);
   writeFileSync(file, JSON.stringify({ mode, generated: stamp, changed: writable, reportOnly }, null, 2));
   console.log(`log: ${file}`);
-  verdict(SCRIPT, 'APPLIED', `${writable.length} meta_title value(s) stripped`);
+  verdict(
+    SCRIPT,
+    'APPLIED',
+    `${stripped} meta_title value(s) stripped` +
+      (raced.length || remaining ? ` — ${raced.length} skipped (edited mid-run), ${remaining} remaining` : '')
+  );
 }
 
 main()
