@@ -9,16 +9,11 @@ interface ArticleRow {
   title: string;
   excerpt: string;
   status: 'published' | 'draft';
-  category: string[];
+  /** Brief 187: the primary topic (kh_terms). The legacy `category` text[] is no longer shown. */
+  primaryTopic: { slug: string; name: string } | null;
   updatedAt: string | null;
   updatedByName: string | null;
   href?: string;
-}
-
-type TaxonomyMap = Record<string, string>;
-
-function humanize(slug: string): string {
-  return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
 function formatDate(iso?: string | null): string {
@@ -43,7 +38,6 @@ const SELECT_CHEVRON = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 
 export default function ArticlesAdminPage() {
   const [articles, setArticles] = useState<ArticleRow[]>([]);
-  const [taxonomy, setTaxonomy] = useState<TaxonomyMap>({});
   const [query, setQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
   const [filterUser, setFilterUser] = useState('');
@@ -54,19 +48,10 @@ export default function ArticlesAdminPage() {
   const [rowErrors, setRowErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    Promise.all([
-      fetch('/api/cms/articles').then(r => r.json()),
-      fetch('/api/cms/service-categories').then(r => r.json()).catch(() => []),
-    ])
-      .then(([arts, cats]) => {
+    fetch('/api/cms/articles')
+      .then(r => r.json())
+      .then((arts) => {
         setArticles(Array.isArray(arts) ? arts : []);
-        const map: TaxonomyMap = {};
-        if (Array.isArray(cats)) {
-          for (const c of cats) {
-            map[c.slug] = c.name ?? c.title ?? humanize(c.slug);
-          }
-        }
-        setTaxonomy(map);
         setLoadStatus('done');
       })
       .catch(() => setLoadStatus('error'));
@@ -77,8 +62,9 @@ export default function ArticlesAdminPage() {
     new Set(articles.map(a => a.updatedByName).filter(Boolean) as string[])
   ).sort();
 
+  // Brief 187: filter by primary topic. '__none__' = articles with no topic yet.
   const allCategories = Array.from(
-    new Set(articles.flatMap(a => a.category ?? []))
+    new Set(articles.map(a => a.primaryTopic?.name).filter(Boolean) as string[])
   ).sort();
 
   const hasActiveFilter = query || filterStatus || filterUser || filterCategory || filterDateFrom || filterDateTo;
@@ -88,11 +74,11 @@ export default function ArticlesAdminPage() {
     if (q && !(
       a.title.toLowerCase().includes(q) ||
       a.slug.toLowerCase().includes(q) ||
-      (a.category ?? []).some(c => c.toLowerCase().includes(q))
+      (a.primaryTopic?.name ?? '').toLowerCase().includes(q)
     )) return false;
     if (filterStatus && a.status !== filterStatus) return false;
     if (filterUser && a.updatedByName !== filterUser) return false;
-    if (filterCategory && !(a.category ?? []).includes(filterCategory)) return false;
+    if (filterCategory === '__none__' ? !!a.primaryTopic : filterCategory && a.primaryTopic?.name !== filterCategory) return false;
     if (filterDateFrom || filterDateTo) {
       const ts = a.updatedAt ? new Date(a.updatedAt).getTime() : null;
       if (!ts) return false;
@@ -142,9 +128,27 @@ export default function ArticlesAdminPage() {
         .admin-articles-row:hover { background: ${ADMIN_COLORS.surfaceContainerHigh}66; }
       `}</style>
 
-      <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
-        Articles
-      </h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+        <h1 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontWeight: 700, fontSize: '1.875rem', letterSpacing: '-0.025em', color: ADMIN_COLORS.onSurface, marginBottom: '0.25rem' }}>
+          Articles
+        </h1>
+        {/* Brief 187 (B2): the Topics & Locations screen */}
+        <Link
+          href="/admin/articles/taxonomy"
+          style={{
+            padding: '0.45rem 1rem',
+            border: `1px solid ${ADMIN_COLORS.cerulean}66`,
+            borderRadius: '9999px',
+            fontSize: '13px',
+            fontWeight: 700,
+            fontFamily: 'var(--font-nunito), system-ui, sans-serif',
+            color: ADMIN_COLORS.cerulean,
+            textDecoration: 'none',
+          }}
+        >
+          Topics &amp; Locations →
+        </Link>
+      </div>
       <p style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif', color: `${ADMIN_COLORS.onSurfaceVariant}99`, fontSize: '0.875rem', marginBottom: '0.5rem' }}>
         {loadStatus === 'done' ? `${articles.length} articles` : ' '}
       </p>
@@ -154,7 +158,7 @@ export default function ArticlesAdminPage() {
         {/* Search */}
         <input
           type="search"
-          placeholder="Search title, slug, category…"
+          placeholder="Search title, slug, topic…"
           value={query}
           onChange={e => setQuery(e.target.value)}
           style={{
@@ -236,7 +240,8 @@ export default function ArticlesAdminPage() {
             backgroundPosition: 'right 8px center',
           }}
         >
-          <option value="">All categories</option>
+          <option value="">All topics</option>
+          <option value="__none__">No topic</option>
           {allCategories.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
 
@@ -328,7 +333,7 @@ export default function ArticlesAdminPage() {
           }}>
             <span>Title</span>
             <span>Status</span>
-            <span>Categories</span>
+            <span>Topic</span>
             <span>Author</span>
             <span>Last Modified</span>
             <span>Actions</span>
@@ -390,21 +395,19 @@ export default function ArticlesAdminPage() {
                   {article.status === 'published' ? 'Published' : 'Draft'}
                 </span>
 
-                {/* Categories */}
+                {/* Topic (Brief 187) */}
                 <span style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                  {(article.category ?? []).length === 0 ? (
+                  {!article.primaryTopic ? (
                     <span style={{ color: ADMIN_COLORS.onSurfaceVariant, fontSize: '13px' }}>—</span>
                   ) : (
-                    (article.category ?? []).map(slug => (
-                      <span key={slug} style={{
-                        ...PILL_BASE,
-                        border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
-                        color: ADMIN_COLORS.onSurfaceVariant,
-                        background: ADMIN_COLORS.surfaceContainerHighest,
-                      }}>
-                        {taxonomy[slug] ?? humanize(slug)}
-                      </span>
-                    ))
+                    <span style={{
+                      ...PILL_BASE,
+                      border: `1px solid ${ADMIN_COLORS.outlineVariant}4D`,
+                      color: ADMIN_COLORS.onSurfaceVariant,
+                      background: ADMIN_COLORS.surfaceContainerHighest,
+                    }}>
+                      {article.primaryTopic.name}
+                    </span>
                   )}
                 </span>
 

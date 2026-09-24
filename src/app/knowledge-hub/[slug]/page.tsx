@@ -7,6 +7,8 @@ import pool from '@/lib/db';
 import { getSession } from '@/lib/auth/session';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import { pageTitle } from '@/lib/seo';
+import { getArticleTermsDisplay } from '@/lib/cms/kh-taxonomy';
+import ArticleTermChips, { hasArticleTerms } from '@/components/kh/ArticleTermChips';
 import './article.css';
 
 export const dynamic = 'force-dynamic';
@@ -15,13 +17,14 @@ async function getArticleFromDb(slug: string, allowDraft: boolean) {
   const client = await pool.connect();
   try {
     const res = await client.query(
-      `SELECT slug, title, excerpt, image, body, meta_title, meta_description, status
+      `SELECT id, slug, title, excerpt, image, body, meta_title, meta_description, status
        FROM cms_articles WHERE slug = $1 ${allowDraft ? '' : "AND status = 'published'"} LIMIT 1`,
       [slug]
     );
     if (!res.rows.length) return null;
     const row = res.rows[0];
     return {
+      id: row.id as number,
       slug: row.slug as string,
       title: row.title as string,
       excerpt: (row.excerpt ?? '') as string,
@@ -66,6 +69,9 @@ export default async function ArticlePage({
   // Draft articles are only accessible to logged-in CMS users
   if (article.status === 'draft' && !session) notFound();
   const isDraftPreview = article.status === 'draft';
+  // Brief 187 (C2): the article's live Topic/Location tags. Never throws — a
+  // failure (or a database without the taxonomy tables) renders no chips.
+  const terms = await getArticleTermsDisplay(article.id);
 
   return (
     <div className="article-page">
@@ -89,7 +95,17 @@ export default async function ArticlePage({
       />
 
       {/* ── HERO NAV ── */}
-      <HeroNav />
+      {/* ── TAGS (Brief 187 C2) — directly under the hero nav. Shares the
+          HeroNav slot (a ternary, not a sibling `{…}`) so an UNTAGGED article
+          renders exactly what it did before, down to the RSC payload. ── */}
+      {hasArticleTerms(terms) ? (
+        <>
+          <HeroNav />
+          <ArticleTermChips terms={terms} />
+        </>
+      ) : (
+        <HeroNav />
+      )}
 
       {/* ── ARTICLE BODY ── */}
       <div className="article-page-content">

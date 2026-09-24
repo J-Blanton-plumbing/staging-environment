@@ -30,6 +30,26 @@ export async function GET(req: NextRequest) {
       // cms_articles table may not exist yet (migration not run) — fall through to static
     }
 
+    // Brief 187: each article's primary topic, for the list's Topic column. A
+    // separate, guarded query so a database without the taxonomy tables still
+    // lists its articles (with no topics) rather than falling back to static.
+    // `category` below is still returned for the Related Articles block's
+    // "category" mode (Brief 92), its only remaining reader — see the Brief 187
+    // report; that mode is slated to move onto topics.
+    const primaryTopic = new Map<string, { slug: string; name: string }>();
+    try {
+      const t = await client.query<{ article_slug: string; slug: string; name: string }>(
+        `SELECT a.slug AS article_slug, t.slug, t.name
+           FROM cms_article_terms at
+           JOIN kh_terms t ON t.id = at.term_id AND t.type = 'topic'
+           JOIN cms_articles a ON a.id = at.article_id
+          WHERE at.is_primary`
+      );
+      for (const r of t.rows) primaryTopic.set(r.article_slug, { slug: r.slug, name: r.name });
+    } catch {
+      // Brief 187 migration not applied on this database yet — no topics to show.
+    }
+
     const dbSlugs = new Set(dbArticles.map(a => a.slug));
     const staticArticles = ARTICLES
       .filter(a => !dbSlugs.has(a.slug))
@@ -43,6 +63,7 @@ export async function GET(req: NextRequest) {
         href: a.href,
         status: 'published',
         category: [] as string[],
+        primaryTopic: null,
         updatedAt: null,
         updatedByName: null,
       }));
@@ -57,6 +78,7 @@ export async function GET(req: NextRequest) {
       href: `/knowledge-hub/${a.slug}`,
       status: a.status,
       category: a.category ?? [],
+      primaryTopic: primaryTopic.get(a.slug) ?? null,
       updatedAt: a.updated_at ?? null,
       updatedByName: a.updated_by_name ?? null,
     }));
@@ -83,6 +105,12 @@ export async function POST(req: NextRequest) {
   const { slug, title } = body;
   if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
     return NextResponse.json({ error: 'Invalid slug.' }, { status: 400 });
+  }
+  // Brief 187: these are route segments now — `/admin/articles/taxonomy` is the
+  // Topics & Locations screen, and `/knowledge-hub/topic|area/…` are listing
+  // pages — so an article with one of these slugs could never be edited or read.
+  if (['taxonomy', 'topic', 'area'].includes(slug)) {
+    return NextResponse.json({ error: `"${slug}" is reserved for Knowledge Hub pages. Pick another slug.` }, { status: 400 });
   }
   if (!title?.trim()) {
     return NextResponse.json({ error: 'Title is required.' }, { status: 400 });

@@ -1,6 +1,8 @@
 import pool from '@/lib/db';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import { NotFoundError } from '@/lib/cms/errors';
+import { clearKhTaxonomyCache, writeArticleTerms } from '@/lib/cms/kh-taxonomy';
+import { normalizeTermSelection } from '@/lib/cms/kh-taxonomy-types';
 
 /**
  * Brief 159 — the publish writer for Knowledge Hub articles.
@@ -29,7 +31,20 @@ export interface ArticleCmsPayload {
   excerpt?: string;
   body?: string;
   image?: string;
+  /**
+   * Legacy (pre-Brief 187) versions still carry this key. It is IGNORED:
+   * Brief 187 stopped reading and writing `cms_articles.category`, which is left
+   * in the schema untouched until Marketing decides its removal.
+   */
   categories?: string[];
+  /**
+   * Brief 187 — the article's Topic + Location tags, as slugs. Stored in the
+   * version's content like every other field, so tags follow draft → publish:
+   * nothing reaches `cms_article_terms` until THIS writer runs on Publish.
+   * ABSENT (a version saved before Brief 187) leaves the live tags alone; an
+   * explicit empty selection clears them.
+   */
+  terms?: unknown;
   metaTitle?: string | null;
   metaDescription?: string | null;
 }
@@ -39,32 +54,51 @@ export async function updateArticleCmsContent(
   payload: ArticleCmsPayload,
   updatedBy: number
 ): Promise<void> {
-  const res = await pool.query(
-    `UPDATE cms_articles SET
-       title            = COALESCE($1, title),
-       excerpt          = COALESCE($2, excerpt),
-       body             = COALESCE($3, body),
-       image            = COALESCE($4, image),
-       category         = COALESCE($5, category),
-       meta_title       = $6,
-       meta_description = $7,
-       updated_by       = $8,
-       updated_at       = NOW()
-     WHERE slug = $9`,
-    [
-      payload.title ?? null,
-      payload.excerpt ?? null,
-      // Body is stored as `{ html }` JSON and sanitized on every write path — a
-      // draft's stored body has not been through the sanitizer, so it goes
-      // through it here rather than being trusted because it came from the CMS.
-      payload.body != null ? JSON.stringify({ html: sanitizeCmsHtml(payload.body) }) : null,
-      payload.image ?? null,
-      Array.isArray(payload.categories) ? payload.categories : null,
-      payload.metaTitle ?? null,
-      payload.metaDescription ?? null,
-      updatedBy,
-      slug,
-    ]
-  );
-  if ((res.rowCount ?? 0) === 0) throw new NotFoundError(`Article "${slug}" not found`);
+  const terms = normalizeTermSelection(payload.terms);
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const res = await client.query<{ id: number }>(
+      `UPDATE cms_articles SET
+         title            = COALESCE($1, title),
+         excerpt          = COALESCE($2, excerpt),
+         body             = COALESCE($3, body),
+         image            = COALESCE($4, image),
+         meta_title       = $5,
+         meta_description = $6,
+         updated_by       = $7,
+         updated_at       = NOW()
+       WHERE slug = $8
+       RETURNING id`,
+      [
+        payload.title ?? null,
+        payload.excerpt ?? null,
+        // Body is stored as `{ html }` JSON and sanitized on every write path — a
+        // draft's stored body has not been through the sanitizer, so it goes
+        // through it here rather than being trusted because it came from the CMS.
+        payload.body != null ? JSON.stringify({ html: sanitizeCmsHtml(payload.body) }) : null,
+        payload.image ?? null,
+        payload.metaTitle ?? null,
+        payload.metaDescription ?? null,
+        updatedBy,
+        slug,
+      ]
+    );
+    if ((res.rowCount ?? 0) === 0) throw new NotFoundError(`Article "${slug}" not found`);
+    if (terms) {
+      // Same transaction as the content: a publish can never land the body
+      // without its tags, or the tags without the body. Unknown slugs (a term
+      // renamed or a location de-registered since the version was saved) are
+      // dropped and logged — content state must not fail a publish.
+      const { unknown } = await writeArticleTerms(client, res.rows[0].id, terms);
+      if (unknown.length) console.warn(`[article publish] ${slug}: ignored unknown term(s) ${unknown.join(', ')}`);
+    }
+    await client.query('COMMIT');
+  } catch (err) {
+    await client.query('ROLLBACK').catch(() => {});
+    throw err;
+  } finally {
+    client.release();
+  }
+  clearKhTaxonomyCache();
 }

@@ -68,6 +68,12 @@ export interface ArticleCardData {
   excerpt: string;
   image: string;
   href: string;
+  /**
+   * Brief 187 (C1): the primary topic chip. Optional so every existing source of
+   * cards (the static ARTICLES list, the Related Articles resolver) is unchanged
+   * and renders no chip.
+   */
+  topic?: { slug: string; name: string } | null;
 }
 
 /** A pool entry: card data plus the metadata the resolver filters on. */

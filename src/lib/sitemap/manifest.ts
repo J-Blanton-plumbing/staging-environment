@@ -26,7 +26,8 @@
  *                                   advertises, and the only one to submit to GSC
  *   /sitemap-pages.xml              static pages + /services/* + top-level sub-services
  *   /sitemap-cities.xml             the /{city} landing pages
- *   /sitemap-articles.xml           /knowledge-hub/{slug}
+ *   /sitemap-articles.xml           /knowledge-hub/{slug}, plus (Brief 187) the
+ *                                   indexable /knowledge-hub/topic|area/{slug} pages
  *   /sitemap-city-services-N.xml    /{city}/{service}, sharded by city-slug RANGE
  *
  * ─── Adding a shard ────────────────────────────────────────────────────────

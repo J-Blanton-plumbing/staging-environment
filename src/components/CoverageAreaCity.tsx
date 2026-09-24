@@ -8,7 +8,8 @@ import FaqAccordion from '@/components/FaqAccordion';
 import ArticleGrid from '@/components/ArticleGrid';
 import GoogleReviews from '@/components/GoogleReviews';
 import TikTokFeed from '@/components/TikTokFeed';
-import type { Article } from '@/lib/articles';
+import type { ArticleCardData } from '@/lib/cms/related-articles';
+import CityMoreArticles from '@/components/kh/CityMoreArticles';
 import type { CityFaq, CoverageAreaContent, Office } from '@/lib/content/cities/types';
 import type { NearbyArea } from '@/lib/content/cities/ohio-nearby';
 import {
@@ -50,7 +51,13 @@ export interface CoverageAreaCityProps {
   /** Areas-served region label. */
   area: string;
   /** Resolved related-article cards (≤3). */
-  articles: Article[];
+  articles: ArticleCardData[];
+  /**
+   * Brief 187 (C6): set only when `articles` are this city's (or its region's)
+   * TAGGED articles rather than the hand-picked defaults — adds the
+   * "More {City} articles" link. Absent → the section renders exactly as before.
+   */
+  moreArticles?: { label: string; href: string };
   /** Shared FAQ set. */
   faqs: CityFaq[];
   /** Full A→Z city list for the locations grid. */
@@ -103,6 +110,7 @@ export default function CoverageAreaCity({
   office,
   area,
   articles,
+  moreArticles,
   faqs,
   cities,
   state = 'Illinois',
@@ -293,7 +301,16 @@ export default function CoverageAreaCity({
           {/* ===== 9. RELATED ARTICLES ===== */}
           {articles.length > 0 && (
             <section className="city-articles mt-[130px] w-full">
-              <ArticleGrid articles={articles} />
+              {/* Brief 187 (C6): a ternary in ONE slot, so a city with no tagged
+                  articles renders exactly the element it always did. */}
+              {moreArticles ? (
+                <>
+                  <ArticleGrid articles={articles} />
+                  <CityMoreArticles more={moreArticles} />
+                </>
+              ) : (
+                <ArticleGrid articles={articles} />
+              )}
             </section>
           )}
 

@@ -639,6 +639,21 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # still", so no page changes on the strength of this migration.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/migrate-brief-179-city-hero-video.ts commit
+# -- Brief 187: Knowledge Hub topics + locations ----------------------
+# Creates `kh_terms` + `cms_article_terms` and seeds the 9 topics, the 2
+# regions and every CITY_REGISTRY city (fill-gaps, keyed on type+slug:
+# an existing row's name / intro / "Show in Google" switch is NEVER
+# overwritten). ADDITIVE ONLY — two new tables, no rename/drop, and
+# `cms_articles.category` is untouched — because this commits while the
+# OLD build is still serving. Writes NO article tags (Stop 2 does that,
+# separately, once Marketing approves). Reports ALREADY-APPLIED on every
+# deploy after the first. Exits non-zero only on a schema fault (a table
+# or index missing afterwards, or an SQL error), never on content state.
+# MUST stay ABOVE verify-sitemap-queries.ts: that step probes the new
+# `khTerms` sitemap query, which needs these tables to exist.
+# `-r tsconfig-paths/register` is REQUIRED: the city list comes from src/.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/migrate-brief-187-kh-taxonomy.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.
