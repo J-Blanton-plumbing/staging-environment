@@ -28,6 +28,13 @@ export interface KhTerm {
   indexable: boolean;
   sortOrder: number;
   /**
+   * Brief 188 (Track E): the topic's "Need help with this?" link — a live
+   * service/category/hub route chosen from a list, never free-typed. Shown only
+   * when BOTH href and text are set. Always null on locations.
+   */
+  serviceHref: string | null;
+  serviceCtaText: string | null;
+  /**
    * Published articles filed under this term. A region counts its own tags AND
    * every child city's (a city tag implies its region at query time).
    */
@@ -53,9 +60,32 @@ export interface ArticleTermSelection {
 
 /** An article's tags, resolved for display. */
 export interface ArticleTermsDisplay {
-  primary: KhTermRef | null;
+  /** Brief 188: the primary topic also carries its service link (Track E), when it has one. */
+  primary: (KhTermRef & { serviceHref?: string | null; serviceCtaText?: string | null }) | null;
   secondary: KhTermRef[];
   locations: KhTermRef[];
+}
+
+/** Brief 188 (Track B2): hand-picked related articles, at most this many. */
+export const KH_MAX_RELATED = 3;
+
+/**
+ * Hand-picked related articles as stored in a DRAFT VERSION
+ * (`page_drafts.content.related`) — article SLUGS in display order. Same
+ * contract as `terms`: ABSENT (null) = leave the live picks alone on publish;
+ * an explicit [] clears them.
+ */
+export function normalizeRelatedSelection(raw: unknown, selfSlug?: string): string[] | null {
+  if (!Array.isArray(raw)) return null;
+  const out: string[] = [];
+  for (const v of raw) {
+    if (typeof v !== 'string') continue;
+    const s = v.trim();
+    if (!s || s === selfSlug || out.includes(s)) continue;
+    out.push(s);
+    if (out.length >= KH_MAX_RELATED) break;
+  }
+  return out;
 }
 
 export const EMPTY_TERM_SELECTION: ArticleTermSelection = { primary: null, secondary: [], locations: [] };

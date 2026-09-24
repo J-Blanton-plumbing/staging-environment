@@ -3,23 +3,43 @@ import type { Metadata } from 'next';
 import HeroNav from '@/components/HeroNav';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import ArticleHero from '@/components/ArticleHero';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import ArticleSchema from '@/components/ArticleSchema';
 import pool from '@/lib/db';
 import { getSession } from '@/lib/auth/session';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
-import { pageTitle } from '@/lib/seo';
-import { getArticleTermsDisplay } from '@/lib/cms/kh-taxonomy';
+import { canonicalUrlFor, normalizePath, pageTitle } from '@/lib/seo';
+import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
+import { getArticleTermsDisplay, getRelatedArticles } from '@/lib/cms/kh-taxonomy';
+import { articleCrumbs } from '@/lib/cms/kh-crumbs';
 import ArticleTermChips, { hasArticleTerms } from '@/components/kh/ArticleTermChips';
+import RelatedArticles from '@/components/kh/RelatedArticles';
+import TopicServiceLink from '@/components/kh/TopicServiceLink';
 import './article.css';
 
 export const dynamic = 'force-dynamic';
+
+/**
+ * Brief 159's baseline versions ("Version 1 — live") are stamped with the SEED
+ * time, not with when anyone published anything, so they are excluded when the
+ * schema derives a CMS-created article's publish dates (Brief 188 Track F2).
+ */
+const BASELINE_VERSION_LABEL = 'Version 1 — live';
 
 async function getArticleFromDb(slug: string, allowDraft: boolean) {
   const client = await pool.connect();
   try {
     const res = await client.query(
-      `SELECT id, slug, title, excerpt, image, body, meta_title, meta_description, status
-       FROM cms_articles WHERE slug = $1 ${allowDraft ? '' : "AND status = 'published'"} LIMIT 1`,
-      [slug]
+      `SELECT a.id, a.slug, a.title, a.excerpt, a.image, a.body, a.meta_title, a.meta_description, a.status,
+              a.wp_post_id, a.created_at,
+              (SELECT min(d.published_at) FROM page_drafts d
+                WHERE d.page_type = 'article' AND d.page_slug = a.slug
+                  AND d.published_at IS NOT NULL AND d.label <> $2) AS first_published_at,
+              (SELECT max(d.published_at) FROM page_drafts d
+                WHERE d.page_type = 'article' AND d.page_slug = a.slug
+                  AND d.published_at IS NOT NULL AND d.label <> $2) AS last_published_at
+       FROM cms_articles a WHERE a.slug = $1 ${allowDraft ? '' : "AND a.status = 'published'"} LIMIT 1`,
+      [slug, BASELINE_VERSION_LABEL]
     );
     if (!res.rows.length) return null;
     const row = res.rows[0];
@@ -33,6 +53,10 @@ async function getArticleFromDb(slug: string, allowDraft: boolean) {
       metaTitle: (row.meta_title ?? '') as string,
       metaDescription: (row.meta_description ?? '') as string,
       status: row.status as string,
+      wpPostId: (row.wp_post_id ?? null) as number | null,
+      createdAt: row.created_at ? new Date(row.created_at) : null,
+      firstPublishedAt: row.first_published_at ? new Date(row.first_published_at) : null,
+      lastPublishedAt: row.last_published_at ? new Date(row.last_published_at) : null,
     };
   } finally {
     client.release();
@@ -71,7 +95,21 @@ export default async function ArticlePage({
   const isDraftPreview = article.status === 'draft';
   // Brief 187 (C2): the article's live Topic/Location tags. Never throws — a
   // failure (or a database without the taxonomy tables) renders no chips.
-  const terms = await getArticleTermsDisplay(article.id);
+  // Brief 188 (B1): the related cards, one query; also never throws, and it
+  // renders for a logged-in draft preview too, so editors see it.
+  const [terms, related] = await Promise.all([
+    getArticleTermsDisplay(article.id),
+    getRelatedArticles(article.id),
+  ]);
+
+  // Brief 188 (Track D): Home › Knowledge Hub › {Primary Topic} › {Article}.
+  const path = `/knowledge-hub/${article.slug}`;
+  const crumbs = articleCrumbs(article, terms.primary);
+
+  // Brief 188 (Track F1): the schema's url is the page's own canonical — the
+  // same override-or-self rule the root layout uses for <link rel="canonical">.
+  const overrides = await getCanonicalOverridesCached();
+  const canonical = overrides.get(normalizePath(path)) ?? canonicalUrlFor(path);
 
   return (
     <div className="article-page">
@@ -88,6 +126,19 @@ export default async function ArticlePage({
           </a>
         </div>
       )}
+      {/* ── SCHEMA (Brief 188 F1) — one BlogPosting per article ── */}
+      <ArticleSchema
+        title={article.title}
+        metaDescription={article.metaDescription}
+        excerpt={article.excerpt}
+        image={article.image}
+        canonical={canonical}
+        wpPostId={article.wpPostId}
+        createdAt={article.createdAt}
+        firstPublishedAt={article.firstPublishedAt}
+        lastPublishedAt={article.lastPublishedAt}
+      />
+
       {/* ── HERO ── */}
       <ArticleHero
         heading={article.title}
@@ -95,17 +146,15 @@ export default async function ArticlePage({
       />
 
       {/* ── HERO NAV ── */}
-      {/* ── TAGS (Brief 187 C2) — directly under the hero nav. Shares the
-          HeroNav slot (a ternary, not a sibling `{…}`) so an UNTAGGED article
-          renders exactly what it did before, down to the RSC payload. ── */}
-      {hasArticleTerms(terms) ? (
-        <>
-          <HeroNav />
-          <ArticleTermChips terms={terms} />
-        </>
-      ) : (
-        <HeroNav />
-      )}
+      <HeroNav />
+
+      {/* ── BREADCRUMBS (Brief 188 D) — visible trail + the page's one BreadcrumbList ── */}
+      <div className="article-crumbs">
+        <Breadcrumbs items={crumbs} />
+      </div>
+
+      {/* ── TAGS (Brief 187 C2) — renders nothing when the article has none ── */}
+      {hasArticleTerms(terms) && <ArticleTermChips terms={terms} />}
 
       {/* ── ARTICLE BODY ── */}
       <div className="article-page-content">
@@ -116,6 +165,12 @@ export default async function ArticlePage({
           />
         ) : null}
       </div>
+
+      {/* ── RELATED ARTICLES (Brief 188 B1) ── */}
+      <RelatedArticles articles={related} />
+
+      {/* ── SERVICE LINK for the primary topic (Brief 188 E) ── */}
+      <TopicServiceLink href={terms.primary?.serviceHref} text={terms.primary?.serviceCtaText} />
 
       {/* ── CLOSING CTA ── */}
       <div className="article-footer-cta">

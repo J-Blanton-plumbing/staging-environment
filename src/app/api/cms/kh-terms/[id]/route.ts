@@ -3,6 +3,7 @@ import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { clearSitemapCache } from '@/lib/sitemap/render';
+import { SERVICE_LINK_HREFS } from '@/lib/content/service-taxonomy';
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -10,7 +11,9 @@ type RouteContext = { params: Promise<{ id: string }> };
  * Brief 187 — PUT /api/cms/kh-terms/{id}: edit one term's display fields.
  *
  * Editable: name, intro_html, meta_title, meta_description, indexable ("Show in
- * Google"). NOT editable here, on purpose:
+ * Google"), and — topics only, Brief 188 Track E — service_href (chosen from
+ * serviceLinkOptions() and validated against it here, so it can never point at
+ * a route the build lacks) + service_cta_text. NOT editable here, on purpose:
  *   • slug       — a slug change needs redirects; deferred to Phase 2.
  *   • type / parent / registry link — locations mirror CITY_REGISTRY.
  *   • there is no DELETE — topics can't be deleted in Phase 1 and locations are
@@ -34,6 +37,8 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     metaTitle?: unknown;
     metaDescription?: unknown;
     indexable?: unknown;
+    serviceHref?: unknown;
+    serviceCtaText?: unknown;
   };
   try {
     body = await req.json();
@@ -48,6 +53,14 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
   const opt = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : null);
   const metaTitle = opt(body.metaTitle);
   const metaDescription = opt(body.metaDescription);
+  const serviceHref = opt(body.serviceHref);
+  const serviceCtaText = opt(body.serviceCtaText);
+  if (serviceHref && !SERVICE_LINK_HREFS.has(serviceHref)) {
+    return NextResponse.json({ error: 'Pick the service link from the list.' }, { status: 400 });
+  }
+  if (serviceCtaText && serviceCtaText.length > 120) {
+    return NextResponse.json({ error: 'Service link text must be 120 characters or fewer.' }, { status: 400 });
+  }
   if (typeof body.indexable !== 'boolean') {
     return NextResponse.json({ error: '"Show in Google" must be on or off.' }, { status: 400 });
   }
@@ -58,10 +71,14 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     const res = await client.query<{ type: string; slug: string }>(
       `UPDATE kh_terms
           SET name = $1, intro_html = $2, meta_title = $3, meta_description = $4,
-              indexable = $5, updated_at = NOW()
+              indexable = $5,
+              -- Brief 188: service links exist on topics only; a location keeps NULL.
+              service_href = CASE WHEN type = 'topic' THEN $7::text ELSE NULL END,
+              service_cta_text = CASE WHEN type = 'topic' THEN $8::text ELSE NULL END,
+              updated_at = NOW()
         WHERE id = $6
         RETURNING type, slug`,
-      [name, introHtml, metaTitle, metaDescription, body.indexable, id]
+      [name, introHtml, metaTitle, metaDescription, body.indexable, id, serviceHref, serviceCtaText]
     );
     if (!res.rows[0]) {
       await client.query('ROLLBACK');
@@ -75,6 +92,8 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
       metaTitle,
       metaDescription,
       indexable: body.indexable,
+      serviceHref,
+      serviceCtaText,
     });
     await client.query('COMMIT');
     // The switch decides sitemap membership; don't make Google wait 15 minutes.

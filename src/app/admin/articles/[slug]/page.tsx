@@ -7,7 +7,8 @@ import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
 import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import ArticleTermsField from '@/components/admin/ArticleTermsField';
-import { EMPTY_TERM_SELECTION, normalizeTermSelection, type ArticleTermSelection } from '@/lib/cms/kh-taxonomy-types';
+import ArticleRelatedField from '@/components/admin/ArticleRelatedField';
+import { EMPTY_TERM_SELECTION, normalizeRelatedSelection, normalizeTermSelection, type ArticleTermSelection } from '@/lib/cms/kh-taxonomy-types';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -24,6 +25,8 @@ interface ArticleData {
   image: string;
   /** Brief 187: Topic + Location tags, as slugs. Replaces the legacy `categories`. */
   terms: ArticleTermSelection;
+  /** Brief 188 (Track B2): hand-picked related articles, slugs in order (≤3). */
+  related: string[];
   status: string;
   metaTitle: string;
   metaDescription: string;
@@ -40,6 +43,7 @@ const EMPTY: ArticleData = {
   body: '',
   image: '',
   terms: EMPTY_TERM_SELECTION,
+  related: [],
   status: 'draft',
   metaTitle: '',
   metaDescription: '',
@@ -101,6 +105,8 @@ export default function ArticleAdminPage() {
     // (updateArticleCmsContent), so a tag change can never bypass draft →
     // publish. The legacy `categories` key is no longer written.
     terms: form.terms,
+    // Brief 188: hand-picks follow the same draft → publish path as the tags.
+    related: form.related,
     // Brief 159 (Track A2): `status` is NO LONGER part of a version's content — it
     // is derived from which version is published and has exactly one writer.
     metaTitle: form.metaTitle,
@@ -120,6 +126,8 @@ export default function ArticleAdminPage() {
       ...formFromContent(EMPTY, content),
       slug: f.slug,
       terms: normalizeTermSelection((content as Record<string, unknown> | null)?.terms) ?? f.terms,
+      // Brief 188: same rule for hand-picks — a pre-188 version keeps the live picks.
+      related: normalizeRelatedSelection((content as Record<string, unknown> | null)?.related, f.slug) ?? f.related,
     })),
   });
   // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
@@ -139,6 +147,7 @@ export default function ArticleAdminPage() {
         body: typeof data.body === 'string' ? data.body : '',
         image: data.image ?? '',
         terms: normalizeTermSelection(data.terms) ?? EMPTY_TERM_SELECTION,
+        related: normalizeRelatedSelection(data.related, data.slug ?? slug) ?? [],
         status: data.status ?? 'draft',
         metaTitle: data.meta_title ?? '',
         metaDescription: data.meta_description ?? '',
@@ -261,6 +270,9 @@ export default function ArticleAdminPage() {
 
             {/* Brief 187 (B1): Topic + Location pickers (replaced CategoriesField) */}
             <ArticleTermsField value={form.terms} onChange={terms => set('terms', terms)} />
+
+            {/* Brief 188 (B2): hand-picked related articles */}
+            <ArticleRelatedField selfSlug={slug} value={form.related} onChange={related => set('related', related)} />
 
             {/* Fix 4: Excerpt as resizable textarea */}
             <div style={{ marginBottom: 0 }}>

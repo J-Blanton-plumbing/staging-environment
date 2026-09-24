@@ -68,7 +68,10 @@ export const MANUAL_ALIAS_REDIRECTS: Readonly<Record<string, string>> = {
   '/water-testing-2': '/water-filtration-systems', // direct — /water-testing is a 301
 
   // Legacy one-offs with a clear current equivalent.
-  '/blog/category/plumbing': '/knowledge-hub', // WP category archive; the hub is the only index
+  // Brief 188 (Track G2): retargeted from the hub to the matching topic page —
+  // the WP "plumbing" category archive now has a real equivalent. Still one hop:
+  // /knowledge-hub/topic/plumbing-tips is a 200, not itself a redirect source.
+  '/blog/category/plumbing': '/knowledge-hub/topic/plumbing-tips',
   '/baths': '/bathroom-plumbing-chicago',
   '/meet-our-team': '/why-j-blanton', // the about/team page on the new site
   '/schedule-service': '/contact', // matches the existing /booking → /contact rule

@@ -284,12 +284,24 @@ export function globalServiceHref(serviceSlug: string): string | null {
  * children of. Listed rather than special-cased so the next non-service
  * ancestor is a one-line add.
  */
-const LIVE_STATIC_ROUTES = new Set<string>(['/locations']);
+const LIVE_STATIC_ROUTES = new Set<string>(['/locations', '/knowledge-hub']);
+
+/**
+ * Brief 188 (Track D) — Knowledge Hub topic and area pages as breadcrumb
+ * ancestors. This is a SHAPE check, because this function is synchronous and
+ * database-free: the trails that use it only ever pass slugs read from
+ * `kh_terms` (an article's primary topic, an area's parent region), and every
+ * known term slug renders 200 — an empty topic is a 200 "No articles here yet"
+ * page, not a 404. No pre-188 crumb starts with /knowledge-hub, so every
+ * existing sub-service / city-service / locations trail is unaffected.
+ */
+const KH_TERM_ROUTE = /^\/knowledge-hub\/(topic|area)\/[a-z0-9-]+$/;
 
 /** True if a breadcrumb href points at a route that actually exists in the build. */
 export function isLiveBreadcrumbRoute(href: string): boolean {
   if (href === '/') return true;
   if (LIVE_STATIC_ROUTES.has(href)) return true;
+  if (KH_TERM_ROUTE.test(href)) return true;
   const cat = href.match(/^\/services\/([a-z0-9-]+)$/);
   if (cat) return LIVE_CATEGORY_SLUGS.has(cat[1]);
   const hub = href.replace(/^\//, '');
@@ -358,3 +370,26 @@ export function subServiceCrumbs(slug: string): Crumb[] {
   crumbs.push({ label: serviceDisplayName(slug), href: `/${slug}` });
   return crumbs;
 }
+
+/**
+ * Brief 188 (Track E) — every route a Knowledge Hub topic's "Need help with
+ * this?" link may point at: the 6 category hubs, Emergency Plumbing, and every
+ * top-level sub-service route. Built from the same registries the routes are,
+ * so the CMS offers a LIST (never a free-typed URL) and a chosen link cannot
+ * point at a route the build doesn't have. The kh-terms PUT validates against
+ * this same list.
+ */
+export interface ServiceLinkOption {
+  href: string;
+  label: string;
+}
+export function serviceLinkOptions(): ServiceLinkOption[] {
+  return [
+    ...CATEGORY_DEFS.map((c) => ({ href: `/services/${c.key}`, label: `${c.label} (category)` })),
+    { href: '/emergency-plumbing', label: 'Emergency Plumbing' },
+    ...[...SUB_SERVICE_ROUTES]
+      .map((s) => ({ href: `/${s}`, label: serviceDisplayName(s) }))
+      .sort((a, b) => a.label.localeCompare(b.label)),
+  ];
+}
+export const SERVICE_LINK_HREFS: ReadonlySet<string> = new Set(serviceLinkOptions().map((o) => o.href));

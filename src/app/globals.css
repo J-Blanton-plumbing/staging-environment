@@ -1019,3 +1019,16 @@ html[data-preview] header {
   text-decoration: none;
 }
 .kh-more-link:hover { text-decoration: underline; }
+/* Brief 188 (Track E): the topic → service text link. Cerulean on Cream, the
+   brand's secondary text-link pattern — not a button, and never Carmine (that is
+   the closing CTA's colour). Placement/width comes from the page's scoped CSS. */
+.kh-service-link { text-align: center; padding: 28px 0; }
+.kh-service-link a {
+  font-family: var(--font-nunito), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #1560e6;
+  text-decoration: none;
+}
+.kh-service-link a:hover { text-decoration: underline; }

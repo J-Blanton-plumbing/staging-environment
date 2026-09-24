@@ -132,7 +132,7 @@ export default function BlockSelectionPanel({
         {config.mode === 'newest'
           ? 'The newest published articles are shown automatically.'
           : config.mode === 'category'
-            ? 'Pick categories (and optional backfill) in the block below. Changes save with the page.'
+            ? 'Pick topics (and optional backfill) in the block below. Changes save with the page.'
             : 'Pick the articles in the block below. Changes save with the page.'}
       </p>
     </div>

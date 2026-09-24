@@ -330,12 +330,97 @@ async function checkRedirects() {
   }
 }
 
+/**
+ * Brief 188 (Track F5) — JSON-LD on real rendered Knowledge Hub pages.
+ *
+ * Mirrors src/lib/schema/jsonld-assert.ts (this file is plain ESM and cannot
+ * import TS; the prebuild `scripts/validate-jsonld.ts` runs the TS module on
+ * fixtures). For each page: every block parses; has a schema.org @context and a
+ * @type (or an @graph of typed nodes); no two top-level nodes share a @type and
+ * an entity; no forbidden type anywhere; and — F4 — the page's BreadcrumbList
+ * ends at the page's own canonical.
+ *
+ * Pages: one article (from /sitemap-articles.xml), one topic page, the
+ * Chicagoland area page and one city area page. Picking the article from the
+ * sitemap means content state cannot fail this check — every run finds a URL.
+ */
+const JSONLD_FORBIDDEN = ['AggregateRating', 'Review', 'FAQPage', 'Question', 'Answer', 'SearchAction'];
+function jsonLdCheck(html) {
+  const errors = [];
+  const tally = {};
+  const all = new Set();
+  const seen = new Set();
+  const typesOf = (n) => (Array.isArray(n['@type']) ? n['@type'] : typeof n['@type'] === 'string' ? [n['@type']] : []);
+  const collect = (v) => {
+    if (Array.isArray(v)) return v.forEach(collect);
+    if (v && typeof v === 'object') {
+      typesOf(v).forEach((t) => all.add(t));
+      Object.values(v).forEach(collect);
+    }
+  };
+  const blocks = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]);
+  const docs = [];
+  blocks.forEach((raw, i) => {
+    let doc;
+    try { doc = JSON.parse(raw); } catch (e) { errors.push(`block ${i + 1} does not parse (${e.message})`); return; }
+    if (!doc || typeof doc !== 'object' || Array.isArray(doc)) { errors.push(`block ${i + 1} is not an object`); return; }
+    if (typeof doc['@context'] !== 'string' || !/schema\.org/.test(doc['@context'])) errors.push(`block ${i + 1} has no schema.org @context`);
+    const nodes = Array.isArray(doc['@graph']) ? doc['@graph'] : [doc];
+    if (!Array.isArray(doc['@graph']) && typesOf(doc).length === 0) errors.push(`block ${i + 1} has no @type`);
+    for (const n of nodes) {
+      const types = n && typeof n === 'object' ? typesOf(n) : [];
+      if (types.length === 0) { errors.push(`block ${i + 1} has an untyped node`); continue; }
+      const entity = String(n['@id'] ?? n.url ?? n.name ?? '(page)');
+      for (const t of types) {
+        tally[t] = (tally[t] ?? 0) + 1;
+        if (seen.has(`${t}|${entity}`)) errors.push(`duplicate ${t} (${entity})`);
+        seen.add(`${t}|${entity}`);
+      }
+      docs.push(n);
+    }
+    collect(doc);
+  });
+  for (const t of JSONLD_FORBIDDEN) if (all.has(t)) errors.push(`forbidden type ${t}`);
+  return { errors, tally, docs };
+}
+
+async function checkKnowledgeHubJsonLd() {
+  const got = await fetchLocs(`${BASE}/sitemap-articles.xml`, '/sitemap-articles.xml (JSON-LD phase)');
+  const locs = got?.locs ?? [];
+  const toPath = (u) => new URL(u).pathname;
+  const article = locs.map(toPath).find((p) => /^\/knowledge-hub\/[^/]+$/.test(p));
+  const topic = locs.map(toPath).find((p) => p.startsWith('/knowledge-hub/topic/')) ?? '/knowledge-hub/topic/plumbing-tips';
+  const pages = [
+    ...(article ? [{ path: article, expect: ['BlogPosting', 'BreadcrumbList'] }] : []),
+    { path: topic, expect: ['BreadcrumbList'] },
+    { path: '/knowledge-hub/area/chicagoland', expect: ['BreadcrumbList'] },
+    { path: '/knowledge-hub/area/evanston', expect: ['BreadcrumbList'] },
+  ];
+  if (!article) warnings.push('JSON-LD: /sitemap-articles.xml listed no article — BlogPosting not checked this run.');
+  for (const p of pages) {
+    const res = await fetch(`${BASE}${p.path}`, { redirect: 'manual' });
+    if (res.status !== 200) { fail(`JSON-LD: ${p.path} returned ${res.status}`); continue; }
+    const html = await res.text();
+    const { errors, tally, docs } = jsonLdCheck(html);
+    for (const e of errors) fail(`JSON-LD: ${p.path}: ${e}`);
+    for (const t of p.expect) if ((tally[t] ?? 0) !== 1) fail(`JSON-LD: ${p.path} must carry exactly one ${t} (found ${tally[t] ?? 0})`);
+    // F4: the trail's last item is the page itself, on the canonical origin.
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+    const crumbs = docs.find((d) => typesOf(d).includes('BreadcrumbList'));
+    const last = crumbs?.itemListElement?.[crumbs.itemListElement.length - 1]?.item;
+    if (canonical && last && last !== canonical) fail(`JSON-LD: ${p.path} BreadcrumbList ends at ${last} but the canonical is ${canonical}`);
+    console.log(`[seo-validate]   JSON-LD ${p.path}: ${Object.entries(tally).map(([t, n]) => `${t}×${n}`).join(', ') || '(none)'}`);
+  }
+  function typesOf(n) { return Array.isArray(n['@type']) ? n['@type'] : typeof n['@type'] === 'string' ? [n['@type']] : []; }
+}
+
 const main = async () => {
   console.log(`[seo-validate] base = ${BASE}`);
   await checkSitemap();
   await checkRobots();
   await checkNoindexHeaders();
   await checkRedirects();
+  await checkKnowledgeHubJsonLd();
 
   for (const w of warnings) console.log(`[seo-validate] NOTE: ${w}`);
   if (failures.length > 0) {

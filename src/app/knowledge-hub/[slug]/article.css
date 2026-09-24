@@ -5,6 +5,42 @@
   overflow-x: hidden;
 }
 
+/* ── Breadcrumbs (Brief 188 D) ──
+   <Breadcrumbs> is reused as-is; its own `w-[90%] lg:w-[81%]` would sit wider
+   than the article column, so this scoped rule (higher specificity than the
+   Tailwind utilities) aligns it with .article-page-content below. */
+.article-page .article-crumbs nav {
+  width: 90%;
+  max-width: 900px;
+  padding-top: 32px;
+}
+/* When chips follow the trail they tuck in closer than their standalone 40px. */
+.article-page .article-crumbs + .article-terms {
+  margin-top: 20px;
+}
+
+/* ── Related articles + service link (Brief 188 B1 / E) ──
+   Same card grid as the city pages; the column is the site's 1200px container. */
+.article-page .article-related {
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto 70px;
+}
+.article-page .article-related h2 {
+  font-family: var(--font-industry);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  color: #bc0e0e;
+  margin: 0 0 30px 0;
+}
+.article-page .kh-service-link {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
 /* ── Tags (Brief 187 C2) — only rendered when the article has any ──
    Same column as the body below. The body keeps its own 50px top padding, so
    the chips sit 40px under the hero nav and the body copy follows as before. */
@@ -166,6 +202,14 @@
     width: 92%;
     margin-top: 28px;
   }
+  .article-page .article-crumbs nav,
+  .article-page .article-related,
+  .article-page .kh-service-link {
+    width: 92%;
+  }
+  .article-page .article-crumbs nav {
+    padding-top: 24px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -176,6 +220,15 @@
   .article-page .article-terms {
     width: 94%;
     margin-top: 24px;
+  }
+  .article-page .article-crumbs nav,
+  .article-page .article-related,
+  .article-page .kh-service-link {
+    width: 94%;
+  }
+  .article-page .article-related h2 {
+    font-size: 28px;
+    line-height: 36px;
   }
 
   .article-page .article-footer-cta h2,

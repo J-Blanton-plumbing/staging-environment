@@ -2,6 +2,9 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import HeroNav from '@/components/HeroNav';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { termCrumbs } from '@/lib/cms/kh-crumbs';
+import TopicServiceLink from '@/components/kh/TopicServiceLink';
 import { KNOWLEDGE_HUB } from '@/lib/content/knowledge-hub';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import { canonicalUrlFor, pageTitle } from '@/lib/seo';
@@ -84,8 +87,13 @@ export default function TermListingPage({
 
       <HeroNav />
 
-      <div className="cream">
+      <div className="cream kh-cream-crumbs">
         <div className="kh">
+          {/* Brief 188 (Track D): the visible trail + this page's one BreadcrumbList */}
+          <div className="kh-crumbs">
+            <Breadcrumbs items={termCrumbs(term)} />
+          </div>
+
           {intro && <div className="kh-term-intro" dangerouslySetInnerHTML={{ __html: intro }} />}
 
           {servicesLink && (
@@ -100,6 +108,9 @@ export default function TermListingPage({
           {filterTopics && <TopicFilterRow topics={filterTopics} activeSlug={term.type === 'topic' ? term.slug : null} />}
 
           <ArticlesSection data={data} basePath={basePath} emptyMessage="No articles here yet." />
+
+          {/* Brief 188 (Track E): topic pages only — locations carry no service link */}
+          {term.type === 'topic' && <TopicServiceLink href={term.serviceHref} text={term.serviceCtaText} />}
         </div>
       </div>
 
