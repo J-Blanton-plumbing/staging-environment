@@ -301,6 +301,19 @@ async function main() {
     // ── Cases 2 & 3: a row exists ─────────────────────────────────────────────
     console.log(`pre-state: city_pages row EXISTS for "${CITY_SLUG}" — id=${existing.id}, version=${existing.version}, city_type=${existing.city_type}, template_type=${existing.template_type}.`);
 
+    // Brief 186: an editor can switch this page's template in /admin (the
+    // template switch writes '' into the coverage-area-only fields). This seed's
+    // copy is coverage-area copy, so filling those "gaps" would write it into a
+    // different template's row — and the verify below then threw AFTER the
+    // commit, failing every deploy. A template choice is content state: stop
+    // before any write, report, exit 0.
+    if (existing.template_type !== 'coverage-area') {
+      stop(
+        `the columbus city_pages row is template_type "${existing.template_type}", not "coverage-area" — an editor switched its template. ` +
+          'This seed only fills coverage-area copy, so it writes nothing to this row.'
+      );
+    }
+
     // The H1 column gets its own rule: never touched, but loudly reported when it
     // holds anything other than the expected empty string.
     if (!isEmpty(existing.hero_heading_line1)) {
@@ -323,8 +336,14 @@ async function main() {
       console.log(`  hero_heading_line1 is empty — correct; the H1 stays "Columbus Plumber".`);
     }
 
-    const gaps = TARGET_COLUMNS.filter((col) => isEmpty(existing[col]));
-    const kept = TARGET_COLUMNS.filter((col) => !isEmpty(existing[col]));
+    // A gap is a column that is NULL or exactly '' — the same test the fill
+    // UPDATE's WHERE clause applies. Brief 186: this used `isEmpty` (which trims),
+    // so a whitespace-only value an editor saved counted as a gap here but matched
+    // nothing in the UPDATE, and the rowCount check threw on every deploy. A
+    // whitespace-only value is editor content; it is kept and reported.
+    const isGap = (v: string | null | undefined) => (v ?? '') === '';
+    const gaps = TARGET_COLUMNS.filter((col) => isGap(existing[col]));
+    const kept = TARGET_COLUMNS.filter((col) => !isGap(existing[col]));
     for (const col of kept) {
       console.log(`  = ${col.padEnd(19)} already non-empty (${(existing[col] ?? '').length} chars) — LEFT UNTOUCHED`);
     }

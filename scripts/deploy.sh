@@ -539,14 +539,26 @@ npx ts-node --project tsconfig.scripts.json scripts/strip-leaked-heading-labels.
 # ORDER MATTERS and the two are a pair:
 #   1. the MIGRATION adds `page_drafts.is_published` + its partial unique
 #      index, and the derived `status` column on every live content table.
-#      It asserts that ZERO rows land in 'draft' and fails if any do —
-#      "nothing gets unpublished by this brief" is a hard rule, so it is
-#      checked rather than assumed.
-#   2. the SEED then answers, for every existing page, WHICH version is
+#      It FAILS if a `status` column is missing afterwards (schema). It
+#      asserts "no row is draft" ONLY for tables it added the column to in
+#      that same run — the one case where it could have unpublished a page.
+#      Drafts that already exist are printed (ids + slugs) as information
+#      and never fail the deploy. (Brief 186: the old every-deploy "ZERO
+#      drafts" assertion blocked runs #110/#111 over one draft article.)
+#   2. the SEED then answers, for every PUBLISHED page, WHICH version is
 #      live: it marks the most recently published version where there is
 #      one, and otherwise snapshots the live row as "Version 1 — live".
-#      Without it, every page would have a live row and no published
-#      version — the exact drift the Track D invariant check reports.
+#      Pages an editor has left unpublished are skipped (Brief 186) — the
+#      seed must not invent a Published version for a page that 404s.
+#
+# THE RULE FOR EVERY STEP IN THIS FILE (Marketing, 2026-09-23 — Brief 186):
+#   "A CMS has to work regardless of the state of its content. An article,
+#    page or city being a draft, published, unpublished or newly approved is
+#    a normal day in the CMS. It must never break a deploy."
+# A step may exit non-zero ONLY for a code/schema fault (missing column,
+# SQL error, crash, bad config). Anything an editor can cause from /admin —
+# status, drafts, counts, which version is live, edited or emptied copy —
+# is REPORTED (banner + PIPELINE VERDICT) and the step exits 0.
 # Both are idempotent and fill-gaps-only; on every deploy after the first
 # they print ALREADY-APPLIED and touch nothing.
 #

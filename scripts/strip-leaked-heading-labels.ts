@@ -572,10 +572,19 @@ async function main() {
   ).length;
   remaining += remainingDrafts;
 
-  if (remaining > 0 && remaining > skippedGuard) {
-    throw new Error(
-      `verify failed: ${remaining} value(s) in the write scope still match the label pattern (expected at most ${skippedGuard} from guard skips).`
+  // Brief 186: report, never throw. What is left here is editor-owned text — a
+  // value typed with TWO labels ("H1: H2: Title" keeps matching after the single
+  // strip above), or a labelled value saved while this script ran. Both are
+  // content state and must never fail a deploy; the next deploy strips again.
+  const leftover = remaining - skippedGuard;
+  if (remaining > 0 && leftover > 0) {
+    console.log('\n' + '!'.repeat(72));
+    console.log(
+      `BRIEF 155 — ${remaining} value(s) in the write scope still match the label pattern ` +
+        `(${skippedGuard} from guard skips, ${leftover} other: double labels or edits made during the deploy).`
     );
+    console.log('Content state, not a fault — the deploy continues; the next run strips again.');
+    console.log('!'.repeat(72));
   }
 
   const dir = join(process.cwd(), 'scripts', 'backups');

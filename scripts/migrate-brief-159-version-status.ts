@@ -10,9 +10,22 @@
  *
  *   2. `status TEXT NOT NULL DEFAULT 'published'` on every live content table
  *      that lacks one — the DERIVED render gate (Track A2). Default 'published'
- *      is deliberate: every existing row stays live. This migration asserts that,
- *      and FAILS if any row lands in 'draft'. "Nothing gets unpublished by this
- *      brief" is a hard rule, so it is checked, not assumed.
+ *      is deliberate: every existing row stays live.
+ *
+ * WHAT IT CHECKS (rewritten by Brief 186 — read before changing):
+ *   • SCHEMA — `status` must exist on every live table after the run. Missing →
+ *     the deploy FAILS. That is a code/schema fault and must stay fatal.
+ *   • "Nothing gets unpublished by this brief" — asserted ONLY for tables this
+ *     run actually added the column to, because that is the only way this script
+ *     can create a draft. It used to be asserted on EVERY deploy, against every
+ *     table, and so measured whether editors had any drafts: one draft article
+ *     blocked every deploy from run #110 on.
+ *   • Everything else (drafts that already exist) is printed as INFORMATION with
+ *     ids and slugs, and the script exits 0. Marketing's rule (2026-09-23):
+ *     "A CMS has to work regardless of the state of its content. An article,
+ *      page or city being a draft, published, unpublished or newly approved is a
+ *      normal day in the CMS. It must never break a deploy."
+ *     Do not re-add a content-state assertion to this file.
  *
  * `sub_service_pages` and `cms_articles` already carried `status` (Brief 75
  * Track D / the articles editor). Those are REUSED, never duplicated — the
@@ -70,6 +83,39 @@ async function hasColumn(table: string, column: string): Promise<boolean> {
 async function hasIndex(name: string): Promise<boolean> {
   const r = await pool.query(`SELECT 1 FROM pg_indexes WHERE indexname = $1`, [name]);
   return (r.rowCount ?? 0) > 0;
+}
+
+async function tableExists(table: string): Promise<boolean> {
+  const r = await pool.query(`SELECT 1 FROM information_schema.tables WHERE table_name = $1`, [table]);
+  return (r.rowCount ?? 0) > 0;
+}
+
+async function countNotPublished(table: string): Promise<number> {
+  const r = await pool.query<{ c: string }>(
+    `SELECT count(*)::text AS c FROM ${table} WHERE status IS DISTINCT FROM 'published'`
+  );
+  return parseInt(r.rows[0].c, 10);
+}
+
+/**
+ * `id · slug · status` for up to `limit` non-published rows. The identifying
+ * columns differ per table (city_pages keys on city_slug, city_service_pages on
+ * city_slug + service_slug, emergency_plumbing_page has only id), so they are
+ * picked from what the table actually has.
+ */
+async function listNotPublished(table: string, limit: number): Promise<string[]> {
+  const candidates = ['slug', 'city_slug', 'service_slug', 'title', 'updated_at'];
+  const present: string[] = [];
+  for (const c of candidates) if (await hasColumn(table, c)) present.push(c);
+  const cols = ['id', ...present, 'status'].join(', ');
+  const r = await pool.query<Record<string, unknown>>(
+    `SELECT ${cols} FROM ${table} WHERE status IS DISTINCT FROM 'published' ORDER BY id LIMIT ${limit}`
+  );
+  return r.rows.map((row) =>
+    Object.entries(row)
+      .map(([k, v]) => `${k}=${v instanceof Date ? v.toISOString() : JSON.stringify(v)}`)
+      .join(' · ')
+  );
 }
 
 async function main() {
@@ -168,27 +214,79 @@ async function main() {
     }
   }
 
-  // ── The hard rule: nothing gets unpublished by this brief ─────────────────
-  console.log('\n── Assertion: zero rows in any content table are `draft` ───────');
-  let dark = 0;
+  // ── Schema assertion: the column exists on every table (CODE — may fail) ──
+  // A missing column after this migration means the schema is broken, and the
+  // render gate that reads it would 500. That is a code/schema failure and it
+  // still stops the deploy (Brief 186, hard rule 2).
+  console.log('\n── Schema check: `status` present on every live content table ──');
+  const missing: string[] = [];
   for (const table of STATUS_TABLES) {
-    if (!(await hasColumn(table, 'status'))) {
-      if (mode === 'dry') { console.log(`  ~ ${table}: status column not yet added (dry run)`); continue; }
-      console.log(`  ✗ ${table}: status column missing after migration`);
-      dark++;
+    if (!(await tableExists(table))) continue; // reported as skipped above
+    if (await hasColumn(table, 'status')) {
+      console.log(`  ✓ ${table}.status`);
       continue;
     }
-    const r = await pool.query<{ c: string }>(
-      `SELECT count(*)::text AS c FROM ${table} WHERE status <> 'published'`
-    );
-    const n = parseInt(r.rows[0].c, 10);
-    console.log(`  ${n === 0 ? '✓' : '✗'} ${table}: ${n} row(s) not 'published'`);
-    dark += n;
+    if (mode === 'dry') { console.log(`  ~ ${table}: status column not yet added (dry run)`); continue; }
+    console.log(`  ✗ ${table}: status column missing after migration`);
+    missing.push(table);
   }
-  if (dark > 0) {
-    throw new Error(
-      `${dark} row(s) are not 'published' after the migration. "Nothing gets unpublished by this brief" ` +
-      'is a hard rule — investigate before proceeding.'
+  if (missing.length) {
+    throw new Error(`status column missing after migration on: ${missing.join(', ')}`);
+  }
+
+  // ── Content check: SCOPED to what this run changed (Brief 186) ────────────
+  // "Nothing gets unpublished by this brief" was a claim about the day this
+  // migration ADDED a status column: a brand-new column defaults to
+  // 'published', so a non-published row in a table THIS RUN just altered would
+  // mean the migration itself darkened a page. That is the only situation in
+  // which this script can create a draft, so it is the only one checked.
+  //
+  // On every later deploy the column already exists, and a draft row is an
+  // EDITOR'S choice in /admin — not something this script did. Asserting on it
+  // turned every draft article into a site-wide deploy outage (runs #110/#111,
+  // 2026-09-23). Marketing's rule, recorded so no future brief restores it:
+  //
+  //   "A CMS has to work regardless of the state of its content. An article,
+  //    page or city being a draft, published, unpublished or newly approved is
+  //    a normal day in the CMS. It must never break a deploy."
+  //
+  // So on an ALREADY-APPLIED run the counts are printed as INFORMATION only.
+  const addedStatusTables = STATUS_TABLES.filter((t) => changes.includes(`${t}.status`));
+  if (mode === 'commit' && addedStatusTables.length) {
+    console.log('\n── Assertion: tables that gained `status` THIS RUN hold no draft ──');
+    let dark = 0;
+    for (const table of addedStatusTables) {
+      const n = await countNotPublished(table);
+      console.log(`  ${n === 0 ? '✓' : '✗'} ${table}: ${n} row(s) not 'published'`);
+      dark += n;
+    }
+    if (dark > 0) {
+      throw new Error(
+        `${dark} row(s) are not 'published' in table(s) this run just added a status column to ` +
+        `(${addedStatusTables.join(', ')}). The column defaults to 'published', so this migration ` +
+        'itself unpublished them — investigate before proceeding.'
+      );
+    }
+  }
+
+  console.log('\n── Editor state (information only — never fails a deploy) ──────');
+  let editorDrafts = 0;
+  for (const table of STATUS_TABLES) {
+    if (addedStatusTables.includes(table)) continue; // checked above
+    if (!(await tableExists(table)) || !(await hasColumn(table, 'status'))) continue;
+    const n = await countNotPublished(table);
+    editorDrafts += n;
+    if (n === 0) {
+      console.log(`  i ${table}: 0 not published`);
+      continue;
+    }
+    console.log(`  i ${table}: ${n} not published (editor state; not checked)`);
+    for (const row of await listNotPublished(table, 20)) console.log(`      - ${row}`);
+    if (n > 20) console.log(`      … and ${n - 20} more`);
+  }
+  if (editorDrafts > 0) {
+    console.log(
+      `  i ${editorDrafts} non-published row(s) in total — normal CMS activity, reported for visibility only.`
     );
   }
 
@@ -198,7 +296,11 @@ async function main() {
   if (mode === 'dry') {
     verdict(SCRIPT, 'NOT-APPLIED (dry run)', `${changes.length} change(s) pending`);
   } else if (changes.length === 0) {
-    verdict(SCRIPT, 'ALREADY-APPLIED', 'schema already in place — idempotent re-run');
+    verdict(
+      SCRIPT,
+      'ALREADY-APPLIED',
+      `schema already in place — idempotent re-run; ${editorDrafts} non-published row(s) (editor state, not checked)`
+    );
   } else {
     verdict(SCRIPT, 'APPLIED', `${changes.length} schema change(s)`);
   }

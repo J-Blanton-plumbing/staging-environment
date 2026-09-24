@@ -168,6 +168,7 @@ async function main() {
   }
 
   let written = 0;
+  const seededSlugs: string[] = [];
   for (const s of toSeed) {
     // Guarded on the empty value: a concurrent editor save between the SELECT
     // and here wins, and is skipped rather than clobbered (the Brief 155 rule).
@@ -178,15 +179,32 @@ async function main() {
       [s.slug, s.value]
     );
     written += res.rowCount ?? 0;
+    if (res.rowCount) seededSlugs.push(s.slug);
   }
   console.log(`\nSeeded ${written} row(s).`);
 
   // Brief 155 guard, verified against what is actually stored, not what we meant
-  // to store.
+  // to store — SCOPED to the rows this run wrote (Brief 186). A leaked label in a
+  // value THIS SCRIPT seeded is a code fault (the seed value comes from the
+  // registry) and still fails. It used to count every row, so a heading an
+  // editor typed as "H2: …" elsewhere failed the deploy; that is content state
+  // and is now reported only.
   const leaked = await pool.query(
-    `SELECT count(*)::int AS n FROM city_pages WHERE covered_heading ~* '^\\s*H[1-6]\\s*:'`
+    `SELECT count(*)::int AS n FROM city_pages
+      WHERE city_slug = ANY($1) AND covered_heading ~* '^\\s*H[1-6]\\s*:'`,
+    [seededSlugs]
   );
-  console.log(`covered_heading rows matching '^\\s*H[1-6]\\s*:' → ${leaked.rows[0].n} (expected 0)`);
+  const editorLeaked = await pool.query(
+    `SELECT count(*)::int AS n FROM city_pages
+      WHERE NOT (city_slug = ANY($1)) AND covered_heading ~* '^\\s*H[1-6]\\s*:'`,
+    [seededSlugs]
+  );
+  console.log(`seeded covered_heading rows matching '^\\s*H[1-6]\\s*:' → ${leaked.rows[0].n} (expected 0)`);
+  if (editorLeaked.rows[0].n > 0) {
+    console.log(
+      `  i ${editorLeaked.rows[0].n} other covered_heading value(s) start with an outline label — editor content, not checked.`
+    );
+  }
   if (leaked.rows[0].n > 0) {
     verdict(SCRIPT, 'FAILED', `${leaked.rows[0].n} seeded heading(s) carry a leaked outline label`);
     process.exitCode = 1;

@@ -22,9 +22,12 @@
  *   • Never touches an image column (the created version is a verbatim snapshot
  *     of the live row, images included — it is not a transform).
  *   • Never sets a content row's `status`. That column has exactly one writer
- *     (`setLiveStatusInTx`), and every row is already 'published' after the
- *     migration — a seed that touched it would be the second door this brief
- *     exists to prevent.
+ *     (`setLiveStatusInTx`) — a seed that touched it would be the second door
+ *     this brief exists to prevent.
+ *   • Brief 186: skips every page whose live row is NOT 'published' (an editor's
+ *     draft or unpublished page). That was true of no row on the day this first
+ *     ran, and is normal CMS state on every day since — see NOT_PUBLISHED_SQL.
+ *     Content state never fails this script and never gets a version invented.
  *   • Idempotent, fill-gaps-only: a second run reports zero changes.
  *
  *   npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
@@ -328,11 +331,45 @@ const ALIASES: Readonly<Record<string, string[]>> = {
 };
 const aliasesFor = (pt: string) => ALIASES[pt] ?? [pt];
 
-interface Tally { marked: number; created: number; skipped: number }
+interface Tally { marked: number; created: number; skipped: number; dark: number }
+
+/**
+ * Brief 186 — the slugs (in each spec's slug shape) whose live row is NOT
+ * 'published', i.e. pages an editor has deliberately taken dark or never
+ * published (a new article is born 'draft').
+ *
+ * This seed must leave those alone. Giving a draft page a "Version 1 — live"
+ * row, or re-marking an unpublished page's old version `is_published = TRUE`
+ * (unpublishing clears `is_published` but keeps `published_at`), would record a
+ * Published version for a page that 404s — exactly the drift the Track D
+ * invariant check reports, created by a deploy rather than an editor. Once the
+ * editor publishes, `publishDraft` records the live version itself.
+ *
+ * A missing `status` column is a schema fault (the migration step before this
+ * one guarantees it), so a failure of this query is allowed to fail the deploy.
+ */
+const NOT_PUBLISHED_SQL: Record<string, string> = {
+  city: `SELECT city_slug AS slug FROM city_pages WHERE status IS DISTINCT FROM 'published'`,
+  service: `SELECT slug FROM service_category_pages WHERE status IS DISTINCT FROM 'published'`,
+  'sub-service': `SELECT slug FROM sub_service_pages WHERE status IS DISTINCT FROM 'published'`,
+  'city-service': `SELECT city_slug || '/' || service_slug AS slug FROM city_service_pages
+                    WHERE status IS DISTINCT FROM 'published'`,
+  'emergency-plumbing': `SELECT 'emergency-plumbing'::text AS slug FROM emergency_plumbing_page
+                          WHERE status IS DISTINCT FROM 'published'
+                            AND id = (SELECT id FROM emergency_plumbing_page ORDER BY id LIMIT 1)`,
+  main: `SELECT slug FROM main_pages WHERE status IS DISTINCT FROM 'published'`,
+  article: `SELECT slug FROM cms_articles WHERE status IS DISTINCT FROM 'published'`,
+};
 
 async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: number): Promise<Tally> {
-  const tally: Tally = { marked: 0, created: 0, skipped: 0 };
+  const tally: Tally = { marked: 0, created: 0, skipped: 0, dark: 0 };
   const rows = (await client.query<{ slug: string; version: number | null; content: unknown }>(spec.sql)).rows;
+
+  const darkSql = NOT_PUBLISHED_SQL[spec.pageType];
+  if (!darkSql) throw new Error(`no NOT_PUBLISHED_SQL entry for page type "${spec.pageType}"`);
+  const darkSlugs = new Set(
+    (await client.query<{ slug: string }>(darkSql)).rows.map((r) => r.slug)
+  );
 
   // One query per page type rather than per page — the city-service table has
   // 9,738 rows and a per-row round trip would take minutes.
@@ -352,6 +389,9 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
 
   for (const row of rows) {
     const existing = bySlug.get(row.slug) ?? [];
+
+    // Editor state: the page is not published. Leave its versions alone (above).
+    if (darkSlugs.has(row.slug)) { tally.dark++; continue; }
 
     // Already answered — a previous run, or a publish since the migration.
     if (existing.some((d) => d.is_published)) { tally.skipped++; continue; }
@@ -407,20 +447,23 @@ async function main() {
     client.release();
   }
 
-  console.log('\nPer page type — marked / created / skipped');
-  let marked = 0, created = 0, skipped = 0;
+  console.log('\nPer page type — marked / created / skipped / not-published (left alone)');
+  let marked = 0, created = 0, skipped = 0, dark = 0;
   for (const [pt, t] of Object.entries(totals)) {
-    console.log(`  ${pt.padEnd(20)} marked=${String(t.marked).padStart(5)}  created=${String(t.created).padStart(5)}  skipped=${String(t.skipped).padStart(5)}`);
-    marked += t.marked; created += t.created; skipped += t.skipped;
+    console.log(`  ${pt.padEnd(20)} marked=${String(t.marked).padStart(5)}  created=${String(t.created).padStart(5)}  skipped=${String(t.skipped).padStart(5)}  not-published=${String(t.dark).padStart(4)}`);
+    marked += t.marked; created += t.created; skipped += t.skipped; dark += t.dark;
   }
-  console.log(`  ${'TOTAL'.padEnd(20)} marked=${String(marked).padStart(5)}  created=${String(created).padStart(5)}  skipped=${String(skipped).padStart(5)}`);
+  console.log(`  ${'TOTAL'.padEnd(20)} marked=${String(marked).padStart(5)}  created=${String(created).padStart(5)}  skipped=${String(skipped).padStart(5)}  not-published=${String(dark).padStart(4)}`);
+  if (dark > 0) {
+    console.log(`  i ${dark} page(s) are not published (editor state) — left without a live version; not checked.`);
+  }
 
   if (mode === 'dry') {
     verdict(SCRIPT, 'NOT-APPLIED (dry run)', `${marked + created} page(s) would gain a live version`);
   } else if (marked + created === 0) {
-    verdict(SCRIPT, 'ALREADY-APPLIED', `every page already has a live version (${skipped} skipped)`);
+    verdict(SCRIPT, 'ALREADY-APPLIED', `every published page already has a live version (${skipped} skipped, ${dark} not published)`);
   } else {
-    verdict(SCRIPT, 'APPLIED', `${marked} marked, ${created} created`);
+    verdict(SCRIPT, 'APPLIED', `${marked} marked, ${created} created, ${dark} not published (left alone)`);
   }
 }
 
