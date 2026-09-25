@@ -385,7 +385,7 @@ export default function GlobalSettingsPage() {
             <label style={labelStyle}>Central Ohio Phone Link (e.g. tel:614-547-6516)</label>
             <input style={s} value={form.centralOhioPhoneHref} onChange={e => set('centralOhioPhoneHref', e.target.value)} placeholder="tel:614-547-6516" />
           </div>
-          <p className="admin-span-2" style={{ ...sectionDescStyle, margin: '-0.25rem 0 0.25rem' }}>
+          <p className="admin-span-2" style={{ ...sectionDescStyle, margin: '-0.25rem 0 0.75rem' }}>
             Used for Central Ohio content (e.g. Article V2 pages with a Central Ohio office). Leave blank to use the main phone.
           </p>
           <div>

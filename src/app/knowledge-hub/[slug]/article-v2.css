@@ -224,7 +224,11 @@
 
 /* brand secondary link: Nunito 16px with an arrow, no underline until hover. 44px tall hit area. */
 .article-v2 .more{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:700 var(--t-small)/1.2 var(--body);color:var(--link);text-decoration:none}
-.article-v2 .more::after{content:"\2192";transition:transform 160ms var(--ease-out)}
+.article-v2 .more::after{content:"\2192";transition:transform 160ms var(--ease-out);font-family:system-ui,sans-serif}
+/* Brief 192 fidelity fix: Nunito has no "→" glyph. In the approved file the arrow falls back to
+   system-ui (its stack is `Nunito, system-ui`); on the site next/font's size-adjusted Arial
+   fallback caught it first, drawing it 2.4px wider (measured — the link text was identical).
+   Naming system-ui on the arrow alone restores the approved fallback. */
 .article-v2 .more:hover{text-decoration:underline}
 @media (hover:hover){.article-v2 .more:hover::after{transform:translateX(3px)}}
 
@@ -324,7 +328,7 @@
 .article-v2 .related img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-inner);background:var(--surface-sunk)}
 .article-v2 .related b{padding:0 var(--s3);font:700 var(--t-h3)/1.3 var(--display)}
 .article-v2 .related i{padding:0 var(--s3);margin-top:auto;font:700 var(--t-small)/1.2 var(--body);font-style:normal;color:var(--link)}
-.article-v2 .related i::after{content:" \2192"}
+.article-v2 .related i::after{content:" \2192";font-family:system-ui,sans-serif} /* same arrow fallback fix as .more */
 
 /* mobile call bar: the article's number always one tap away. Slides in from the bottom edge once the hero is gone.
    z-index 45, not the prototype's 55 (Brief 185, Track A6): the LIVE mobile drawer is z-50, so at 55 the bar
