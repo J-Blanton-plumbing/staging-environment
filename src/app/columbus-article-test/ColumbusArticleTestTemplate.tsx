@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { OHIO_GROUPS } from '@/lib/content/locations-regions';
 import ColumbusArticleTestClient from './ColumbusArticleTestClient';
 
 /**
@@ -356,10 +357,31 @@ export default function ColumbusArticleTestTemplate() {
               If you live in or around Columbus, there&apos;s a good chance we&apos;re already close
               by.
             </p>
-            <p>
-              See every community on our{' '}
-              <Link href="/locations/central-ohio">Central Ohio service area page</Link>.
-            </p>
+            {/* Brief 189: every Central Ohio community, read from `OHIO_GROUPS` (same
+                groups, order and `defaultOpen` as /locations/central-ohio). Native
+                <details> so collapsed names still ship in the HTML. Plain text, no
+                links; group labels live in <summary>, never as headings. */}
+            <details className="communities">
+              <summary>See all 138 communities we serve in Central Ohio</summary>
+              <div className="communities-body">
+                {OHIO_GROUPS.map((group) => (
+                  <details
+                    key={group.label}
+                    className="communities-group"
+                    open={group.defaultOpen}
+                  >
+                    <summary>
+                      {group.label} <span>({group.cities.length})</span>
+                    </summary>
+                    <ul>
+                      {group.cities.map((city) => (
+                        <li key={city.slug}>{city.name}</li>
+                      ))}
+                    </ul>
+                  </details>
+                ))}
+              </div>
+            </details>
           </section>
 
           <section aria-labelledby="services">
