@@ -1,10 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+// Brief 190 (hard rule 6): the V2 stylesheet, code-split. Imported dynamically
+// from THIS client component so the CSS lands in an async chunk that is linked
+// only when a V2 article renders — never in the shared route's entry CSS, which
+// every V1 article loads. Rendered on the server too (ssr default), so the
+// <link> is in the first HTML and there is no flash of unstyled content.
+const ArticleV2Styles = dynamic(() => import('./ArticleV2Styles'));
 
 /**
  * Brief 190 — Article V2's two behaviours, ported from the Columbus test page's
- * client component (Brief 185, `ColumbusArticleTestClient.tsx`). Renders nothing.
+ * client component (Brief 185, `ColumbusArticleTestClient.tsx`), plus the one
+ * job that makes hard rule 6 hold: it renders ArticleV2Styles (above), the
+ * code-split V2 stylesheet. Renders no markup of its own.
  *
  *  1. TOC active section. The active entry is the LAST heading that has passed
  *     30% of the viewport (works for jumps, not only slow scrolls); the moving
@@ -87,5 +97,5 @@ export default function ArticleV2Client() {
     return () => cleanups.forEach((fn) => fn());
   }, []);
 
-  return null;
+  return <ArticleV2Styles />;
 }

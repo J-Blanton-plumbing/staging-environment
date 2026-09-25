@@ -19,7 +19,6 @@ import { DEFAULT_BYLINE_NAME, bylineInitials, readMinutes, type ArticleV2Content
 import type { ArticleTermsDisplay } from '@/lib/cms/kh-taxonomy-types';
 import type { KhArticleCard } from '@/lib/cms/kh-taxonomy';
 import type { KhCrumb } from '@/lib/cms/kh-crumbs';
-import '@/app/knowledge-hub/[slug]/article-v2.css';
 
 /**
  * Brief 190 — "Article V2": the approved Columbus article design (Briefs 185 +
@@ -32,8 +31,9 @@ import '@/app/knowledge-hub/[slug]/article-v2.css';
  * EVERYTHING VISIBLE comes from the article row, its Brief 187/188 tags and
  * related picks, Global Settings (phone, offices) or shared data (the region
  * groups, the NDC rail card) — except the fixed UI labels in `UI` below
- * (hard rule 3). The CSS is imported HERE, not by the route, so it loads only
- * on V2 articles (hard rule 6), and every rule is scoped under `.article-v2`.
+ * (hard rule 3). The CSS (article-v2.css, every rule scoped under
+ * `.article-v2`) is loaded by ArticleV2Client through a dynamic import, so it
+ * is linked on V2 articles only — never on V1 (hard rule 6; see ArticleV2Styles).
  *
  * PHONE: every tel: link in the article — rail, CTAs, call bar and a body
  * `{{phone}}` — is the chosen office's phone when that office has one, else the
