@@ -5,6 +5,7 @@ import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import pool from '@/lib/db';
 import { getArticleTermSelection, getRelatedSelection } from '@/lib/cms/kh-taxonomy';
 import { EMPTY_TERM_SELECTION } from '@/lib/cms/kh-taxonomy-types';
+import { normalizeArticleTemplate, normalizeArticleV2 } from '@/lib/cms/article-v2';
 
 type RouteContext = { params: Promise<{ slug: string }> };
 
@@ -20,6 +21,9 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
       // editor's tags are the Topic/Location terms returned as `terms` below.
       `SELECT a.id, a.slug, a.title, a.excerpt, a.body->>'html' AS body, a.image, a.status,
               a.meta_title, a.meta_description, a.created_at, a.updated_at,
+              -- Brief 190: read through to_jsonb so a database the migration has
+              -- not reached yet opens the editor on V1 instead of failing.
+              to_jsonb(a) -> 'template' AS template, to_jsonb(a) -> 'v2' AS v2,
               cu.name AS created_by_name, uu.name AS updated_by_name
          FROM cms_articles a
          LEFT JOIN cms_users cu ON cu.id = a.created_by
@@ -30,7 +34,7 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
     if (!res.rows[0]) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
-    const { id, ...row } = res.rows[0];
+    const { id, template, v2, ...row } = res.rows[0];
     // The LIVE tags (what the public site shows). A database the Brief 187
     // migration has not reached yet has no taxonomy tables — the editor then
     // opens with no tags instead of failing to load the article.
@@ -47,7 +51,14 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
     } catch (err) {
       console.error('[cms/article GET] related unavailable:', (err as Error).message);
     }
-    return NextResponse.json({ ...row, terms, related });
+    // Brief 190: the LIVE template + V2 fields, normalized (unknown → V1).
+    return NextResponse.json({
+      ...row,
+      terms,
+      related,
+      template: normalizeArticleTemplate(template),
+      v2: normalizeArticleV2(v2),
+    });
   } catch (err) {
     console.error('[cms/article GET]', err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
@@ -131,6 +142,11 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
     // Topic/Location tags even if a client sends them. Tags travel ONLY in a
     // version's content and reach `cms_article_terms` through the publish writer
     // (updateArticleCmsContent), so no path can change them without Publish.
+    //
+    // Brief 190 (hard rule 5): the same rule for the template and every Article
+    // V2 field. `template` / `v2` are ignored here even if a client sends them —
+    // they travel only in a version's content and reach the live row on Publish,
+    // so this button can never flip an article's template live.
     const res = await client.query(
       `UPDATE cms_articles SET
          title            = COALESCE($1, title),

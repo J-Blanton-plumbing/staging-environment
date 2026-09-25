@@ -3,6 +3,8 @@ import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import { NotFoundError } from '@/lib/cms/errors';
 import { clearKhTaxonomyCache, writeArticleRelated, writeArticleTerms } from '@/lib/cms/kh-taxonomy';
 import { normalizeRelatedSelection, normalizeTermSelection } from '@/lib/cms/kh-taxonomy-types';
+import { isArticleV2Object, parseArticleTemplate } from '@/lib/cms/article-v2';
+import { sanitizeArticleV2Content } from '@/lib/cms/article-v2-sanitize';
 
 /**
  * Brief 159 — the publish writer for Knowledge Hub articles.
@@ -52,6 +54,20 @@ export interface ArticleCmsPayload {
    * before Brief 188) leaves the live picks alone; an explicit [] clears them.
    */
   related?: unknown;
+  /**
+   * Brief 190 — which template renders ('article' = V1, 'article-v2' = V2). Same
+   * contract as `terms`: travels in the VERSION content and reaches
+   * `cms_articles.template` only here, on Publish. ABSENT (every version saved
+   * before Brief 190) or unrecognised leaves the live template alone.
+   */
+  template?: unknown;
+  /**
+   * Brief 190 — the Article V2 fields (subtitle, byline, hero alt/caption, key
+   * takeaways, office, service-area list, FAQ). Sanitized here by declared type
+   * (article-v2-sanitize.ts) — a stored version is never trusted. ABSENT leaves
+   * the live `cms_articles.v2` alone.
+   */
+  v2?: unknown;
   metaTitle?: string | null;
   metaDescription?: string | null;
 }
@@ -63,6 +79,12 @@ export async function updateArticleCmsContent(
 ): Promise<void> {
   const terms = normalizeTermSelection(payload.terms);
   const related = normalizeRelatedSelection(payload.related, slug);
+  const template = parseArticleTemplate(payload.template);
+  const v2 = isArticleV2Object(payload.v2) ? sanitizeArticleV2Content(payload.v2) : null;
+  if (payload.template !== undefined && !template) {
+    // Content state never fails a publish (Brief 186): report and leave it.
+    console.warn(`[article publish] ${slug}: ignored unknown template ${JSON.stringify(payload.template)}`);
+  }
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -93,6 +115,14 @@ export async function updateArticleCmsContent(
       ]
     );
     if ((res.rowCount ?? 0) === 0) throw new NotFoundError(`Article "${slug}" not found`);
+    if (template || v2) {
+      // Same transaction as the body, so a publish can never land a V2 template
+      // without its fields (or the other way round). COALESCE = "absent → keep".
+      await client.query(
+        `UPDATE cms_articles SET template = COALESCE($1, template), v2 = COALESCE($2::jsonb, v2) WHERE id = $3`,
+        [template, v2 ? JSON.stringify(v2) : null, res.rows[0].id]
+      );
+    }
     if (terms) {
       // Same transaction as the content: a publish can never land the body
       // without its tags, or the tags without the body. Unknown slugs (a term

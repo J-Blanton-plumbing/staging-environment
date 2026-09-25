@@ -8,6 +8,20 @@ import RichTextField from '@/components/admin/RichTextField';
 import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import ArticleTermsField from '@/components/admin/ArticleTermsField';
 import ArticleRelatedField from '@/components/admin/ArticleRelatedField';
+import ArticleV2Fields from '@/components/admin/ArticleV2Fields';
+import {
+  ARTICLE_TEMPLATE_LABELS,
+  ARTICLE_TEMPLATE_OPTIONS,
+  DEFAULT_ARTICLE_TEMPLATE,
+  EMPTY_ARTICLE_V2,
+  OFFICE_MAP_MARKER,
+  isArticleV2Object,
+  normalizeArticleTemplate,
+  normalizeArticleV2,
+  parseArticleTemplate,
+  type ArticleTemplate,
+  type ArticleV2Content,
+} from '@/lib/cms/article-v2';
 import { EMPTY_TERM_SELECTION, normalizeRelatedSelection, normalizeTermSelection, type ArticleTermSelection } from '@/lib/cms/kh-taxonomy-types';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
@@ -27,6 +41,10 @@ interface ArticleData {
   terms: ArticleTermSelection;
   /** Brief 188 (Track B2): hand-picked related articles, slugs in order (≤3). */
   related: string[];
+  /** Brief 190: which template renders. Draftable — travels in the version content. */
+  template: ArticleTemplate;
+  /** Brief 190: the Article V2 fields. Kept while V1 is selected (hidden, never cleared). */
+  v2: ArticleV2Content;
   status: string;
   metaTitle: string;
   metaDescription: string;
@@ -44,6 +62,8 @@ const EMPTY: ArticleData = {
   image: '',
   terms: EMPTY_TERM_SELECTION,
   related: [],
+  template: DEFAULT_ARTICLE_TEMPLATE,
+  v2: EMPTY_ARTICLE_V2,
   status: 'draft',
   metaTitle: '',
   metaDescription: '',
@@ -86,6 +106,25 @@ const SECTION_HEADING: React.CSSProperties = {
 };
 
 
+/**
+ * Brief 190 (hard rule 5) — what the bottom button does, stated where it is
+ * pressed. It writes the live row directly and, like it always has for tags,
+ * skips everything that travels only through a version: tags, related
+ * articles, the template and every Article V2 field.
+ */
+const SAVE_ARTICLE_HELP =
+  'Save Article writes the title, hero image, excerpt, body and SEO fields straight to the live article. ' +
+  'It does not save tags, related articles, the template or the Article V2 fields — for those, save a version ' +
+  '(Save, top right) and publish it.';
+
+/** Brief 190 (Track B): the body help shown while Article V2 is selected. */
+const V2_BODY_HELP =
+  `Article V2: each Heading 2 becomes a table-of-contents entry. Put a paragraph containing only ${OFFICE_MAP_MARKER} ` +
+  'where the office map, directions and service-area list should appear — without it they appear after the body. ' +
+  "{{phone}} becomes the article's phone (the chosen office's, else the main number). Quotes: in the HTML tab use " +
+  '<blockquote><p>“Quote”</p><p><img src="…" alt=""> <strong>Name</strong> Title</p></blockquote> — ' +
+  'a last paragraph that starts with a photo is styled as the attribution.';
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function ArticleAdminPage() {
@@ -107,6 +146,11 @@ export default function ArticleAdminPage() {
     terms: form.terms,
     // Brief 188: hand-picks follow the same draft → publish path as the tags.
     related: form.related,
+    // Brief 190: the template and the V2 fields ride the same draft → publish
+    // path (hard rule 5). Both are always sent, so a version saved while V1 is
+    // selected still carries the V2 values — switching back loses nothing.
+    template: form.template,
+    v2: form.v2,
     // Brief 159 (Track A2): `status` is NO LONGER part of a version's content — it
     // is derived from which version is published and has exactly one writer.
     metaTitle: form.metaTitle,
@@ -128,6 +172,12 @@ export default function ArticleAdminPage() {
       terms: normalizeTermSelection((content as Record<string, unknown> | null)?.terms) ?? f.terms,
       // Brief 188: same rule for hand-picks — a pre-188 version keeps the live picks.
       related: normalizeRelatedSelection((content as Record<string, unknown> | null)?.related, f.slug) ?? f.related,
+      // Brief 190: same rule — a version saved before Brief 190 has no template
+      // or v2 key, and loading it keeps the live values instead of blanking them.
+      template: parseArticleTemplate((content as Record<string, unknown> | null)?.template) ?? f.template,
+      v2: isArticleV2Object((content as Record<string, unknown> | null)?.v2)
+        ? normalizeArticleV2((content as Record<string, unknown>).v2)
+        : f.v2,
     })),
   });
   // Brief 159 (Track C3): the Status row's publish / unpublish wiring, incl. the
@@ -148,6 +198,8 @@ export default function ArticleAdminPage() {
         image: data.image ?? '',
         terms: normalizeTermSelection(data.terms) ?? EMPTY_TERM_SELECTION,
         related: normalizeRelatedSelection(data.related, data.slug ?? slug) ?? [],
+        template: normalizeArticleTemplate(data.template),
+        v2: normalizeArticleV2(data.v2),
         status: data.status ?? 'draft',
         metaTitle: data.meta_title ?? '',
         metaDescription: data.meta_description ?? '',
@@ -163,6 +215,8 @@ export default function ArticleAdminPage() {
   }, [slug]);
 
   useEffect(() => { load(); }, [load]);
+
+  const isV2 = form.template === 'article-v2';
 
   function set<K extends keyof ArticleData>(field: K, value: ArticleData[K]) {
     setForm(prev => ({ ...prev, [field]: value }));
@@ -291,8 +345,23 @@ export default function ArticleAdminPage() {
           {/* Body with HTML / Preview toggle (shared RichTextField — Brief 77) */}
           <div style={SECTION}>
             <h3 style={SECTION_HEADING}>Body</h3>
-            <RichTextField label="Body" value={form.body} onChange={v => set('body', v)} rows={16} />
+            <RichTextField
+              label="Body"
+              value={form.body}
+              onChange={v => set('body', v)}
+              rows={16}
+              help={isV2 ? V2_BODY_HELP : undefined}
+            />
           </div>
+
+          {/* Brief 190 (Track D): the Article V2 fields, in page order. Hidden — not
+              cleared — while "Article" (V1) is the template. */}
+          {isV2 && (
+            <div style={SECTION}>
+              <h3 style={SECTION_HEADING}>Article V2</h3>
+              <ArticleV2Fields value={form.v2} onChange={v2 => set('v2', v2)} />
+            </div>
+          )}
 
           {/* SEO — Status now lives exclusively in the Page Attributes sidebar (Brief 85 iter. 3) */}
           <div style={SECTION}>
@@ -321,6 +390,12 @@ export default function ArticleAdminPage() {
             >
               {saveStatus === 'saving' ? 'Saving…' : 'Save Article'}
             </button>
+            <span style={{
+              fontFamily: 'var(--font-nunito), system-ui, sans-serif', fontSize: '12px', lineHeight: 1.45,
+              color: ADMIN_COLORS.onSurfaceVariant, maxWidth: '44rem',
+            }}>
+              {SAVE_ARTICLE_HELP}
+            </span>
             {saveMsg && (
               <span style={{
                 fontFamily: 'var(--font-nunito), system-ui, sans-serif',
@@ -340,7 +415,16 @@ export default function ArticleAdminPage() {
       <PageAttributesSidebar
         title={form.title}
         updatedAt={form.updatedAt}
-        template={{ value: 'article', label: 'Article', options: [{ value: 'article', label: 'Article' }] }}
+        // Brief 190 (Track D): "Article" / "Article V2". Local form state — the
+        // switch is stored in the version content, so it is draftable and takes
+        // effect when a version is published (the No Drip Club pattern, Brief 141).
+        template={{
+          value: form.template,
+          label: ARTICLE_TEMPLATE_LABELS[form.template],
+          options: ARTICLE_TEMPLATE_OPTIONS,
+          onChange: (next) => set('template', normalizeArticleTemplate(next)),
+          note: 'Switching keeps every field — fields the chosen template does not use are hidden, not deleted. Takes effect when you save a version and publish it.',
+        }}
         version={{
           activeId: dv.activeId,
           activeLabel: dv.activeLabel,

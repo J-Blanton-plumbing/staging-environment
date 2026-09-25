@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import pool from '@/lib/db';
+import { DEFAULT_ARTICLE_TEMPLATE, parseArticleTemplate } from '@/lib/cms/article-v2';
 import { SERVICE_CATEGORY_SLUGS, isServiceCategorySlug } from '@/lib/services';
 
 const SLUG_RE = /^[a-z0-9-]+$/;
@@ -172,11 +173,15 @@ export async function POST(req: NextRequest) {
       if (await slugExists(slug)) {
         return NextResponse.json({ error: `Slug "${slug}" is already taken.` }, { status: 409 });
       }
+      // Brief 190 (Track D): the editor picks the template up front. Anything
+      // but 'article-v2' creates a V1 article — the column's own default. The row
+      // is born a draft (status default), so this is not a live template write.
+      const articleTemplate = parseArticleTemplate(body.articleTemplate) ?? DEFAULT_ARTICLE_TEMPLATE;
       await client.query(
-        `INSERT INTO cms_articles (slug, title, created_by)
-         VALUES ($1, $2, $3)
+        `INSERT INTO cms_articles (slug, title, created_by, template)
+         VALUES ($1, $2, $3, $4)
          ON CONFLICT (slug) DO NOTHING`,
-        [slug, title.trim(), session.userId]
+        [slug, title.trim(), session.userId, articleTemplate]
       );
       return NextResponse.json({ success: true, redirectUrl: `/admin/articles/${slug}` });
     }

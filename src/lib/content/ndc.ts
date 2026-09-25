@@ -242,3 +242,23 @@ export const NDC: NdcContent = {
     organizationUrl: 'https://jblantonplumbing.involve.me',
   },
 };
+
+/**
+ * Brief 190 — the No Drip Club card in the Article V2 rail (the same card on
+ * every V2 article). Copy is the approved Columbus design's (Brief 185), with
+ * the region clause dropped from the line ("…, now available in Central Ohio")
+ * so it reads true on every article. The four points are summaries of the
+ * benefits in `NDC.card` above; they carry no price and no footnote on purpose.
+ */
+export const NDC_RAIL_CARD = {
+  title: 'No Drip Club',
+  body: 'Our home plumbing membership.',
+  benefits: [
+    'Priority scheduling',
+    '10% off service and equipment',
+    'No emergency or trip charges',
+    'Two maintenance visits a year',
+  ],
+  cta: 'See benefits',
+  href: '/no-drip-club',
+} as const;

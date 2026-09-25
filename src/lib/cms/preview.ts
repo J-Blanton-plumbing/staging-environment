@@ -241,3 +241,27 @@ export async function getEpPreview(): Promise<{
     meta: { id, label: draft.label, creator_name: draft.creator_name },
   };
 }
+
+/**
+ * Brief 190 — an article version's content for the logged-in editor who pressed
+ * Preview (same DP-7 session gate as every getter above). Before this, Preview
+ * on an article opened the LIVE article: /knowledge-hub/[slug] never read the
+ * preview cookie. Article V2 needs it — a template switch, or any V2 field, only
+ * exists in the version until it is published. Public visitors (no session) are
+ * unaffected: this returns null for them and the page renders the live row.
+ */
+export async function getArticlePreview(slug: string): Promise<{
+  content: Record<string, unknown>;
+  meta: PreviewMeta;
+} | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== 'article' || draft.page_slug !== slug) return null;
+  const content = draft.content && typeof draft.content === 'object' && !Array.isArray(draft.content)
+    ? (draft.content as Record<string, unknown>)
+    : {};
+
+  return { content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}

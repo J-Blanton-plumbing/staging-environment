@@ -950,9 +950,12 @@ html[data-preview] header {
   background: rgba(10, 27, 46, 0.55);
 }
 
-/* ── Brief 187: Knowledge Hub tag chips — a PROPOSED token (flagged in the report)
-   design.md has no chip/tag token, so this one is built only from tokens that
-   already exist, and every chip on the site uses it:
+/* ── Brief 187: Knowledge Hub tag chips — APPROVED DESIGN TOKEN, Brief 190
+   (Marketing, 2026-09-25): the one tag style sitewide. Documented in design.md
+   ("Tags / chips"). Proposed in Brief 187 because design.md had no chip/tag
+   token, so it is built only from tokens that already exist, and every chip on
+   the site uses it. Variants for other backgrounds are scoped MODIFIERS that
+   never change these base rules (e.g. `.kh-chip-list--on-red`, article-v2.css):
      radius   rounded.pill (50px)
      padding  spacing.base (8px) × 0.5 / × 1.5  →  4px 12px
      gap      spacing.base (8px)

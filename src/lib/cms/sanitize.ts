@@ -69,6 +69,30 @@ export function sanitizeCmsHtml(dirty: string | null | undefined): string {
   return sanitizeHtml(dirty, CMS_SANITIZE_OPTIONS);
 }
 
+/**
+ * Brief 190 — the PLAIN-TEXT rule: a string declared as plain text (a subtitle,
+ * a list item, an alt text) keeps no markup at all. Every tag is dropped —
+ * `<script>`/`<style>`/`<iframe>` WITH their contents, via the same
+ * `nonTextTags` as the rich-text rule — and the few entities sanitize-html
+ * encodes are decoded back, so "Pipes & drains" is stored as typed rather than
+ * as "Pipes &amp; drains". The result is text: React escapes it on render and
+ * it is never injected as HTML.
+ */
+export function sanitizeCmsPlainText(dirty: string | null | undefined): string {
+  if (dirty == null) return '';
+  return sanitizeHtml(dirty, {
+    allowedTags: [],
+    allowedAttributes: {},
+    nonTextTags: CMS_SANITIZE_OPTIONS.nonTextTags,
+  })
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&#x27;/g, "'")
+    .replace(/&amp;/g, '&');
+}
+
 // ── Brief 77 ─────────────────────────────────────────────────────────────────
 // Rich-text render + write helpers for the large-field editors (Feature A) and
 // the variable-token system (Feature B). All sanitization here routes through

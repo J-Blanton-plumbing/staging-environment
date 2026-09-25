@@ -165,7 +165,10 @@ function TocList() {
 
 export default function ColumbusArticleTestTemplate() {
   return (
-    <div className="cat-root">
+    // Brief 190 (Track F): `data-wc-ignore` keeps this page's 614 anchors out of
+    // the WhatConverts DOM fallback, so the header no longer adopts the Columbus
+    // number (Brief 185 §4.1). Stays until Brief 191 retires this route.
+    <div className="cat-root" data-wc-ignore="">
       <a className="skip" href="#content">
         Skip to article
       </a>

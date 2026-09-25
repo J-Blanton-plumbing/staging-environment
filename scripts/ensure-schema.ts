@@ -123,6 +123,11 @@ const STATEMENTS: string[] = [
   // live site's ordering). Backfilled by backfill-article-wp-ids.ts on deploy.
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS wp_post_id INTEGER`,
   `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
+  // Brief 190: the per-article template ('article' = V1, 'article-v2' = V2) and
+  // the V2-only fields. Additive with defaults, so every existing row stays V1
+  // and renders unchanged. Also added by migrate-brief-190-article-v2.ts.
+  `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS template TEXT NOT NULL DEFAULT 'article'::text`,
+  `ALTER TABLE cms_articles ADD COLUMN IF NOT EXISTS v2 JSONB NOT NULL DEFAULT '{}'::jsonb`,
 
   // ── cms_users (Brief 119 — invite-based user creation) ─────────────────
   // Table creation + the password_hash DROP NOT NULL live in

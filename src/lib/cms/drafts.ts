@@ -6,6 +6,8 @@ import { updateCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { updateSubServiceCmsContent } from '@/lib/cms/sub-service-pages';
 import { updateMainPage } from '@/lib/cms/main-pages';
 import { updateArticleCmsContent } from '@/lib/cms/article-pages';
+import { sanitizeArticleV2Content } from '@/lib/cms/article-v2-sanitize';
+import { isArticleV2Object } from '@/lib/cms/article-v2';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { ConflictError, NotFoundError } from '@/lib/cms/errors';
 import {
@@ -121,6 +123,20 @@ async function getLivePageState(
   return { version: res.rows[0].version ?? 0, templateType: res.rows[0].template_type ?? null };
 }
 
+/**
+ * Brief 190 (hard rule 4) — an article version's `v2` fields are sanitized on the
+ * way INTO page_drafts, not only at publish, so no stored copy of them — draft or
+ * live — ever holds markup the V2 rules forbid. Only the `v2` key of 'article'
+ * content is touched; every other page type's content is stored exactly as sent,
+ * as before (the body keeps its existing publish-time + render-time sanitizing).
+ */
+function sanitizeVersionContent(pageType: string, content: unknown): unknown {
+  if (pageType !== 'article' || !content || typeof content !== 'object' || Array.isArray(content)) return content;
+  const c = content as Record<string, unknown>;
+  if (!('v2' in c) || !isArticleV2Object(c.v2)) return content;
+  return { ...c, v2: sanitizeArticleV2Content(c.v2) };
+}
+
 export async function createDraft({
   pageType,
   pageSlug,
@@ -153,7 +169,7 @@ export async function createDraft({
        VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING id, page_type, page_slug, label, content, template_type, version, base_version,
                  is_published, created_by, created_at, published_at`,
-      [pageType, pageSlug, label, JSON.stringify(content), createdBy, templateType ?? null, baseVersion]
+      [pageType, pageSlug, label, JSON.stringify(sanitizeVersionContent(pageType, content)), createdBy, templateType ?? null, baseVersion]
     );
     return { ...res.rows[0], creator_name: '' };
   } finally {
@@ -494,6 +510,12 @@ export async function updateDraftContent(
 
   const client = await pool.connect();
   try {
+    // Brief 190: the `v2` sanitizer needs the draft's page type, which this
+    // signature does not carry — looked up only when the payload has a `v2` key.
+    if (content && typeof content === 'object' && 'v2' in (content as Record<string, unknown>)) {
+      const t = await client.query<{ page_type: string }>('SELECT page_type FROM page_drafts WHERE id = $1', [id]);
+      if (t.rows[0]) content = sanitizeVersionContent(t.rows[0].page_type, content);
+    }
     const res = await client.query<{ version: number }>(
       `UPDATE page_drafts
           SET content = $1, version = version + 1
