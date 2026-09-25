@@ -15,17 +15,25 @@ import type { ResolvableArticle } from '@/lib/cms/related-articles';
  * article editor); static rows carry a single display-name category. `slugifyCategory`
  * in the resolver bridges names ↔ taxonomy slugs, so category filtering works with
  * no migration.
+ *
+ * Brief 188 (Track C): each DB article now carries its Knowledge Hub TOPIC slugs
+ * (primary + secondary) in `topics`, and "category" mode filters on those. The
+ * legacy `category` column is no longer read (it was empty on every article).
+ * Static `ARTICLES` rows get no topics — every one of them is also a DB article,
+ * so they never enter the pool (the dbSlugs filter), and no block depends on
+ * their legacy category string (Brief 188 Track 0). The pool ORDER is unchanged
+ * on purpose: every unconfigured block renders "newest 3" from it.
  */
 export async function getRelatedArticlesPool(): Promise<ResolvableArticle[]> {
   const client = await pool.connect();
   try {
     let dbRows: Array<{
       slug: string; title: string; excerpt: string | null; image: string | null;
-      status: string; category: string[] | null;
+      id: number; status: string;
     }> = [];
     try {
       const res = await client.query(
-        `SELECT slug, title, excerpt, image, status, COALESCE(category, '{}') AS category
+        `SELECT id, slug, title, excerpt, image, status
            FROM cms_articles
           ORDER BY created_at DESC`
       );
@@ -34,13 +42,27 @@ export async function getRelatedArticlesPool(): Promise<ResolvableArticle[]> {
       // cms_articles may not exist yet — fall through to the static list only.
     }
 
+    // Topic slugs per article — a separate, guarded query so a database without
+    // the taxonomy tables still resolves every block (with no topic matches).
+    const topicsById = new Map<number, string[]>();
+    try {
+      const t = await client.query<{ article_id: number; slug: string }>(
+        `SELECT at.article_id, t.slug FROM cms_article_terms at
+           JOIN kh_terms t ON t.id = at.term_id AND t.type = 'topic'
+          ORDER BY at.article_id, at.is_primary DESC, t.sort_order`
+      );
+      for (const r of t.rows) topicsById.set(r.article_id, [...(topicsById.get(r.article_id) ?? []), r.slug]);
+    } catch {
+      // taxonomy tables absent — no topics
+    }
+
     const dbArticles: ResolvableArticle[] = dbRows.map((a) => ({
       slug: a.slug,
       title: a.title,
       excerpt: a.excerpt ?? '',
       image: a.image ?? '',
       href: `/knowledge-hub/${a.slug}`,
-      category: Array.isArray(a.category) ? a.category : [],
+      topics: topicsById.get(a.id) ?? [],
       status: a.status,
     }));
 
@@ -51,7 +73,7 @@ export async function getRelatedArticlesPool(): Promise<ResolvableArticle[]> {
       excerpt: a.excerpt,
       image: a.image,
       href: a.href,
-      category: a.category ? [a.category] : [],
+      topics: [],
       status: 'published',
     }));
 

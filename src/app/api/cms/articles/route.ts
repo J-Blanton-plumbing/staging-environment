@@ -13,12 +13,11 @@ export async function GET(req: NextRequest) {
     // Return DB articles first, then append any static articles not yet migrated
     let dbArticles: Array<{
       slug: string; title: string; excerpt: string; image: string | null; status: string;
-      category: string[]; updated_at: string | null; updated_by_name: string | null;
+      updated_at: string | null; updated_by_name: string | null;
     }> = [];
     try {
       const res = await client.query(
         `SELECT a.slug, a.title, a.excerpt, a.image, a.status,
-                COALESCE(a.category, '{}') AS category,
                 a.updated_at,
                 u.name AS updated_by_name
            FROM cms_articles a
@@ -33,19 +32,23 @@ export async function GET(req: NextRequest) {
     // Brief 187: each article's primary topic, for the list's Topic column. A
     // separate, guarded query so a database without the taxonomy tables still
     // lists its articles (with no topics) rather than falling back to static.
-    // `category` below is still returned for the Related Articles block's
-    // "category" mode (Brief 92), its only remaining reader — see the Brief 187
-    // report; that mode is slated to move onto topics.
+    // Brief 188 (Track C): `topics` (every topic slug, primary first) replaces
+    // the legacy `category` text[] for the Related Articles block's "Filter by
+    // topic" mode — the column is no longer read anywhere.
     const primaryTopic = new Map<string, { slug: string; name: string }>();
+    const topics = new Map<string, string[]>();
     try {
       const t = await client.query<{ article_slug: string; slug: string; name: string }>(
-        `SELECT a.slug AS article_slug, t.slug, t.name
+        `SELECT a.slug AS article_slug, t.slug, t.name, at.is_primary
            FROM cms_article_terms at
            JOIN kh_terms t ON t.id = at.term_id AND t.type = 'topic'
            JOIN cms_articles a ON a.id = at.article_id
-          WHERE at.is_primary`
+          ORDER BY a.slug, at.is_primary DESC, t.sort_order`
       );
-      for (const r of t.rows) primaryTopic.set(r.article_slug, { slug: r.slug, name: r.name });
+      for (const r of t.rows as Array<{ article_slug: string; slug: string; name: string; is_primary: boolean }>) {
+        if (r.is_primary) primaryTopic.set(r.article_slug, { slug: r.slug, name: r.name });
+        topics.set(r.article_slug, [...(topics.get(r.article_slug) ?? []), r.slug]);
+      }
     } catch {
       // Brief 187 migration not applied on this database yet — no topics to show.
     }
@@ -62,7 +65,7 @@ export async function GET(req: NextRequest) {
         image: a.image,
         href: a.href,
         status: 'published',
-        category: [] as string[],
+        topics: [] as string[],
         primaryTopic: null,
         updatedAt: null,
         updatedByName: null,
@@ -77,7 +80,7 @@ export async function GET(req: NextRequest) {
       image: a.image ?? '',
       href: `/knowledge-hub/${a.slug}`,
       status: a.status,
-      category: a.category ?? [],
+      topics: topics.get(a.slug) ?? [],
       primaryTopic: primaryTopic.get(a.slug) ?? null,
       updatedAt: a.updated_at ?? null,
       updatedByName: a.updated_by_name ?? null,

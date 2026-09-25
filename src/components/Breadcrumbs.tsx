@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SITE } from '@/lib/site';
 import { isLiveBreadcrumbRoute } from '@/lib/content/service-taxonomy';
+import { breadcrumbListJsonLd } from '@/lib/schema/breadcrumb-list';
 
 /**
  * Reusable SEO breadcrumb (Brief 64, Track C).
@@ -27,16 +28,9 @@ export interface BreadcrumbItem {
 export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   if (!items || items.length === 0) return null;
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map((it, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: it.label,
-      item: `${SITE.baseUrl}${it.href}`,
-    })),
-  };
+  // Brief 188: built by the shared pure helper (same object, same key order)
+  // so the prebuild JSON-LD check validates exactly what this renders.
+  const jsonLd = breadcrumbListJsonLd(items, SITE.baseUrl);
 
   return (
     <nav aria-label="Breadcrumb" className="w-[90%] lg:w-[81%] mx-auto pt-5 lg:pt-8">

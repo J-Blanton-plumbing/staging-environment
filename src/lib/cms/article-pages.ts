@@ -1,8 +1,8 @@
 import pool from '@/lib/db';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import { NotFoundError } from '@/lib/cms/errors';
-import { clearKhTaxonomyCache, writeArticleTerms } from '@/lib/cms/kh-taxonomy';
-import { normalizeTermSelection } from '@/lib/cms/kh-taxonomy-types';
+import { clearKhTaxonomyCache, writeArticleRelated, writeArticleTerms } from '@/lib/cms/kh-taxonomy';
+import { normalizeRelatedSelection, normalizeTermSelection } from '@/lib/cms/kh-taxonomy-types';
 
 /**
  * Brief 159 — the publish writer for Knowledge Hub articles.
@@ -45,6 +45,13 @@ export interface ArticleCmsPayload {
    * explicit empty selection clears them.
    */
   terms?: unknown;
+  /**
+   * Brief 188 (Track B2) — hand-picked related articles, as slugs in order (≤3).
+   * Same contract as `terms`: travels in the VERSION content and is written to
+   * `cms_article_related` only here, on Publish. ABSENT (every version saved
+   * before Brief 188) leaves the live picks alone; an explicit [] clears them.
+   */
+  related?: unknown;
   metaTitle?: string | null;
   metaDescription?: string | null;
 }
@@ -55,6 +62,7 @@ export async function updateArticleCmsContent(
   updatedBy: number
 ): Promise<void> {
   const terms = normalizeTermSelection(payload.terms);
+  const related = normalizeRelatedSelection(payload.related, slug);
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -92,6 +100,12 @@ export async function updateArticleCmsContent(
       // dropped and logged — content state must not fail a publish.
       const { unknown } = await writeArticleTerms(client, res.rows[0].id, terms);
       if (unknown.length) console.warn(`[article publish] ${slug}: ignored unknown term(s) ${unknown.join(', ')}`);
+    }
+    if (related) {
+      // Same transaction again. A pick that no longer exists is dropped and
+      // logged — content state must not fail a publish.
+      const { unknown } = await writeArticleRelated(client, res.rows[0].id, related);
+      if (unknown.length) console.warn(`[article publish] ${slug}: ignored related article(s) ${unknown.join(', ')}`);
     }
     await client.query('COMMIT');
   } catch (err) {

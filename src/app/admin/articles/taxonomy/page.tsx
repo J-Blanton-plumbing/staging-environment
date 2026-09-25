@@ -5,6 +5,9 @@ import Link from 'next/link';
 import RichTextField from '@/components/admin/RichTextField';
 import { ADMIN_COLORS, ADMIN_FONTS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { khAreaHref, khTopicHref, type KhTerm } from '@/lib/cms/kh-taxonomy-types';
+import { serviceLinkOptions } from '@/lib/content/service-taxonomy';
+
+const SERVICE_LINK_OPTIONS = serviceLinkOptions();
 
 /**
  * Brief 187 (B2) — "Topics & Locations": /admin/articles/taxonomy.
@@ -27,6 +30,9 @@ interface Draft {
   metaTitle: string;
   metaDescription: string;
   indexable: boolean;
+  /** Brief 188 (Track E) — topics only. */
+  serviceHref: string;
+  serviceCtaText: string;
 }
 
 const toDraft = (t: KhTerm): Draft => ({
@@ -35,6 +41,8 @@ const toDraft = (t: KhTerm): Draft => ({
   metaTitle: t.metaTitle ?? '',
   metaDescription: t.metaDescription ?? '',
   indexable: t.indexable,
+  serviceHref: t.serviceHref ?? '',
+  serviceCtaText: t.serviceCtaText ?? '',
 });
 
 const FONT = ADMIN_FONTS.body;
@@ -175,6 +183,45 @@ function TermEditor({ term, onSaved }: { term: KhTerm; onSaved: () => void }) {
           <p style={HELP}>Blank uses the start of the intro.</p>
         </div>
       </div>
+
+      {term.type === 'topic' && (
+        <div style={{ marginBottom: '1rem' }}>
+          <div className="kh-term-2col" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: '1rem' }}>
+            <div>
+              <label style={LABEL} htmlFor={`svc-href-${term.id}`}>Service link</label>
+              <select
+                id={`svc-href-${term.id}`}
+                className="field"
+                style={{ ...INPUT, cursor: 'pointer' }}
+                value={draft.serviceHref}
+                onChange={(e) => set('serviceHref', e.target.value)}
+              >
+                <option value="">— None —</option>
+                {SERVICE_LINK_OPTIONS.map((o) => (
+                  <option key={o.href} value={o.href}>{o.label} — {o.href}</option>
+                ))}
+                {draft.serviceHref && !SERVICE_LINK_OPTIONS.some((o) => o.href === draft.serviceHref) && (
+                  <option value={draft.serviceHref}>{draft.serviceHref} (no longer a live route)</option>
+                )}
+              </select>
+            </div>
+            <div>
+              <label style={LABEL} htmlFor={`svc-text-${term.id}`}>Service link text</label>
+              <input
+                id={`svc-text-${term.id}`}
+                className="field"
+                style={INPUT}
+                value={draft.serviceCtaText}
+                maxLength={120}
+                onChange={(e) => set('serviceCtaText', e.target.value)}
+              />
+            </div>
+          </div>
+          <p style={HELP}>
+            Shown on this topic&rsquo;s page and on articles whose primary topic is this one. Leave empty to hide.
+          </p>
+        </div>
+      )}
 
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '1.25rem' }}>
         <button

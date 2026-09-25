@@ -673,6 +673,25 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # MUST stay AFTER the migration above (it needs the tables and terms).
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/apply-brief-187-article-tags.ts commit
+# -- Brief 188: Knowledge Hub Phase 2 ------------------------------------
+# 1. MIGRATION (additive only, commits while the OLD build serves):
+#    `cms_article_related` (hand-picked related articles), nullable
+#    `kh_terms.service_href` / `service_cta_text` + their topic seed, and
+#    a ONE-TIME remap of the Related Articles block's "category" values
+#    onto topic slugs. Both data writes are recorded in `brief188_applied`
+#    and never repeated, so a link Marketing later clears stays cleared.
+#    Unmappable block values are reported and left as they are (exit 0).
+#    MUST run before the new build serves: the new code reads the columns.
+# 2. DATA: the 7 "No signal" articles -> primary topic Plumbing Tips, only
+#    where the article still has no primary topic. Apply-once via the same
+#    ledger; syncs each article's published version row. Exit 0 on content
+#    state (missing article / already tagged are reported, not fatal).
+# Both MUST stay after the Brief 187 steps above and above
+# verify-sitemap-queries.ts. `-r tsconfig-paths/register` is REQUIRED.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/migrate-brief-188-kh-phase-2.ts commit
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/apply-brief-188-untagged-articles.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

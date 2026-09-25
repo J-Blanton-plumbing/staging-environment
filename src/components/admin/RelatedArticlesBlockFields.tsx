@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ADMIN_COLORS } from '@/lib/admin/theme';
 import ArticlePicker from '@/components/admin/ArticlePicker';
 import {
@@ -37,12 +37,12 @@ const SUBLABEL: React.CSSProperties = {
  */
 export default function RelatedArticlesBlockFields({
   data,
-  serviceCategories,
   articles,
   onChange,
 }: {
   data: Record<string, unknown>;
-  serviceCategories: ServiceCategory[];
+  /** Unused since Brief 188 (the picker lists topics); kept so callers need no change. */
+  serviceCategories?: ServiceCategory[];
   articles: ResolvableArticle[];
   onChange: (key: string, value: unknown) => void;
 }) {
@@ -93,14 +93,12 @@ export default function RelatedArticlesBlockFields({
 
   return (
     <div>
-      <CategoryMultiSelect
-        options={serviceCategories}
-        selected={categories}
-        onChange={(next) => onChange('categories', next)}
-      />
+      {/* Brief 188 (Track C): the options are the 9 Knowledge Hub TOPICS, not
+          the service categories — the stored key stays `categories`. */}
+      <TopicMultiSelect selected={categories} onChange={(next) => onChange('categories', next)} />
       <p style={HINT}>
         {categories.length === 0
-          ? 'Select one or more categories to filter the articles shown.'
+          ? 'Select one or more topics to filter the articles shown.'
           : `${Math.min(matchedCount, count)} of ${count} slots filled by matching articles${
               matchedCount > count ? ' (newest kept)' : ''
             }.`}
@@ -124,6 +122,25 @@ export default function RelatedArticlesBlockFields({
       )}
     </div>
   );
+}
+
+// ── Topic options (Brief 188) ─────────────────────────────────────────────────────
+
+/** The Knowledge Hub topics from kh_terms, as picker options. */
+function TopicMultiSelect({ selected, onChange }: { selected: string[]; onChange: (next: string[]) => void }) {
+  const [options, setOptions] = useState<ServiceCategory[] | null>(null);
+  useEffect(() => {
+    let active = true;
+    fetch('/api/cms/kh-terms')
+      .then((r) => (r.ok ? r.json() : []))
+      .then((rows: Array<{ type: string; slug: string; name: string }>) => {
+        if (active) setOptions((Array.isArray(rows) ? rows : []).filter((t) => t.type === 'topic').map((t) => ({ slug: t.slug, title: t.name })));
+      })
+      .catch(() => { if (active) setOptions([]); });
+    return () => { active = false; };
+  }, []);
+  if (!options) return <p style={HINT}>Loading topics…</p>;
+  return <CategoryMultiSelect options={options} selected={selected} onChange={onChange} />;
 }
 
 // ── Category multi-select (searchable; pills for the selection) ──────────────────
@@ -152,7 +169,7 @@ function CategoryMultiSelect({
 
   return (
     <div>
-      <span style={SUBLABEL}>Categories</span>
+      <span style={SUBLABEL}>Topics</span>
 
       {selected.length > 0 && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', margin: '0 0 0.6rem' }}>
@@ -184,7 +201,7 @@ function CategoryMultiSelect({
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search categories…"
+        placeholder="Search topics…"
         style={{
           display: 'block', width: '100%', padding: '0.5rem 0.6rem',
           border: `1px solid ${ADMIN_COLORS.outlineVariant}66`, borderRadius: '0.5rem',
@@ -200,7 +217,7 @@ function CategoryMultiSelect({
       >
         {filtered.length === 0 ? (
           <p style={{ fontFamily: fontBody, fontSize: '12px', color: ADMIN_COLORS.onSurfaceVariant, margin: 0, padding: '0.4rem' }}>
-            No categories match “{search}”.
+            No topics match “{search}”.
           </p>
         ) : (
           filtered.map((o) => {

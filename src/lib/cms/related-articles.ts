@@ -29,7 +29,9 @@ export type RelatedArticlesCount = (typeof RELATED_ARTICLES_COUNTS)[number];
 
 /** Human labels for the three selection modes (used by the sidebar + helper copy). */
 export const RELATED_ARTICLES_MODE_LABELS: Record<RelatedArticlesMode, string> = {
-  category: 'Filter by category',
+  // Brief 188 (Track C): the key stays 'category' (saved configs keep their
+  // shape); only the meaning moved onto Knowledge Hub topics.
+  category: 'Filter by topic',
   newest: 'Newest',
   handpick: 'Hand-pick',
 };
@@ -41,7 +43,7 @@ export const DEFAULT_RELATED_COUNT: RelatedArticlesCount = 3;
 export interface RelatedArticlesConfig {
   mode: RelatedArticlesMode;
   count: RelatedArticlesCount;
-  /** category mode — selected category slugs. */
+  /** category mode — selected TOPIC slugs (Brief 188; was legacy category/service slugs). */
   categories: string[];
   /** handpick mode — article slugs, in display order (empties allowed in raw data). */
   handpicked: string[];
@@ -78,8 +80,12 @@ export interface ArticleCardData {
 
 /** A pool entry: card data plus the metadata the resolver filters on. */
 export interface ResolvableArticle extends ArticleCardData {
-  /** Stored category values — display names (e.g. "Sewer Rodding") and/or slugs. */
-  category: string[];
+  /**
+   * Brief 188 (Track C): the article's Knowledge Hub TOPIC slugs (primary +
+   * secondary, from cms_article_terms). Replaces the legacy `category` text[],
+   * which was empty on every article, so "category" mode matched nothing.
+   */
+  topics: string[];
   /** 'published' | 'draft' — only published articles render publicly. */
   status: string;
 }
@@ -129,15 +135,16 @@ export function slugifyCategory(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-/** Does an article belong to ANY of the selected category slugs? */
+/**
+ * Does an article carry ANY of the selected topic slugs (primary or secondary)?
+ * Brief 188 (Track C): matches TOPICS. Saved configs were remapped once from
+ * the old category/service slugs by scripts/migrate-brief-188-kh-phase-2.ts;
+ * slugifying both sides keeps a stray display-name value comparable.
+ */
 export function articleMatchesCategory(article: ResolvableArticle, selectedSlugs: string[]): boolean {
   if (selectedSlugs.length === 0) return false;
-  const have = new Set<string>();
-  for (const c of article.category) {
-    have.add(c);
-    have.add(slugifyCategory(c));
-  }
-  return selectedSlugs.some((s) => have.has(s) || have.has(slugifyCategory(s)));
+  const have = new Set(article.topics.map(slugifyCategory));
+  return selectedSlugs.some((s) => have.has(slugifyCategory(s)));
 }
 
 // ── Resolver ────────────────────────────────────────────────────────────────────

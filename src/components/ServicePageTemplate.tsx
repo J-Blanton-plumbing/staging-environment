@@ -204,7 +204,7 @@ function staticArticlePool(): ResolvableArticle[] {
     excerpt: a.excerpt,
     image: a.image,
     href: a.href,
-    category: a.category ? [a.category] : [],
+    topics: [], // Brief 188: static articles carry no Knowledge Hub topics
     status: 'published',
   }));
 }

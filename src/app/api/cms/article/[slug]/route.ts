@@ -3,7 +3,7 @@ import { getSession } from '@/lib/auth/session';
 import { requireCmsSession } from '@/lib/auth/api-guard';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import pool from '@/lib/db';
-import { getArticleTermSelection } from '@/lib/cms/kh-taxonomy';
+import { getArticleTermSelection, getRelatedSelection } from '@/lib/cms/kh-taxonomy';
 import { EMPTY_TERM_SELECTION } from '@/lib/cms/kh-taxonomy-types';
 
 type RouteContext = { params: Promise<{ slug: string }> };
@@ -40,7 +40,14 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
     } catch (err) {
       console.error('[cms/article GET] terms unavailable:', (err as Error).message);
     }
-    return NextResponse.json({ ...row, terms });
+    // Brief 188 (Track B2): the LIVE hand-picked related articles, same guard.
+    let related: string[] = [];
+    try {
+      related = await getRelatedSelection(id);
+    } catch (err) {
+      console.error('[cms/article GET] related unavailable:', (err as Error).message);
+    }
+    return NextResponse.json({ ...row, terms, related });
   } catch (err) {
     console.error('[cms/article GET]', err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });

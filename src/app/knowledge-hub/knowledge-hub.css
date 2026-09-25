@@ -542,3 +542,20 @@
     height: 70px;
   }
 }
+
+/* ---- Brief 188 (Track D / E): topic + area page breadcrumbs, service link ----
+   <Breadcrumbs> is reused as-is; inside .kh it takes the container's own width
+   (81% / 90%) instead of its utility width, and the cream band's 100px top
+   padding is reduced on these two page types only, so the trail sits directly
+   under the hero nav. The hub itself has no breadcrumb and is unaffected. */
+.kh-page .cream.kh-cream-crumbs {
+  padding-top: 32px;
+}
+.kh-page .kh .kh-crumbs nav {
+  width: 100%;
+  padding-top: 0;
+  margin: 0 0 32px 0;
+}
+.kh-page .kh .kh-service-link {
+  padding: 40px 0 0;
+}

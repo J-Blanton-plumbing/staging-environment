@@ -12,9 +12,10 @@
  *    with what a topic page lists.
  * 2. Order is the hub's order (`created_at DESC, wp_post_id DESC NULLS LAST,
  *    id DESC` — Brief 122). Topic pages put primary-topic articles first.
- * 3. A city tag implies its region AT QUERY TIME. A region's page, count and
- *    city-page fallback include every child city's articles. The region is never
- *    written onto the article.
+ * 3. A city tag implies its region AT QUERY TIME: a region's area page and its
+ *    count include every child city's articles. The region is never written
+ *    onto the article. City PAGES do not use this rule (Brief 188, Track A):
+ *    they switch only on the city's OWN tags.
  * 4. Content state never errors a page: a missing table (a database the
  *    migration has not reached yet) or any query failure on a PUBLIC surface
  *    degrades to "no tags", which is exactly today's rendering. The public
@@ -58,6 +59,7 @@ type TermRow = {
   parent_slug: string | null; parent_name: string | null; registry_slug: string | null;
   intro_html: string | null; meta_title: string | null; meta_description: string | null;
   indexable: boolean; sort_order: number; published_count: string | number;
+  service_href: string | null; service_cta_text: string | null;
 };
 
 const TERM_SELECT = `
@@ -75,6 +77,7 @@ const TERM_SELECT = `
   counts AS (SELECT term_id, count(DISTINCT article_id) AS n FROM links GROUP BY term_id)
   SELECT t.id, t.type, t.slug, t.name, t.parent_id, p.slug AS parent_slug, p.name AS parent_name,
          t.registry_slug, t.intro_html, t.meta_title, t.meta_description, t.indexable, t.sort_order,
+         t.service_href, t.service_cta_text,
          COALESCE(c.n, 0) AS published_count
     FROM kh_terms t
     LEFT JOIN kh_terms p ON p.id = t.parent_id
@@ -96,6 +99,8 @@ function toTerm(r: TermRow): KhTerm {
     indexable: r.indexable,
     sortOrder: r.sort_order,
     publishedCount: Number(r.published_count) || 0,
+    serviceHref: r.service_href ?? null,
+    serviceCtaText: r.service_cta_text ?? null,
   };
 }
 
@@ -241,11 +246,14 @@ export async function listTermArticles(term: KhTerm, page: number): Promise<KhAr
 
 /* ── One article's terms ───────────────────────────────────────────────────── */
 
-type ArticleTermRow = { type: KhTermType; slug: string; name: string; is_primary: boolean; sort_order: number; parent_id: number | null };
+type ArticleTermRow = {
+  type: KhTermType; slug: string; name: string; is_primary: boolean; sort_order: number; parent_id: number | null;
+  service_href: string | null; service_cta_text: string | null;
+};
 
-async function articleTermRows(articleId: number): Promise<ArticleTermRow[]> {
-  const res = await pool.query<ArticleTermRow>(
-    `SELECT t.type, t.slug, t.name, at.is_primary, t.sort_order, t.parent_id
+async function articleTermRows(articleId: number, db: Pick<PoolClient, 'query'> = pool): Promise<ArticleTermRow[]> {
+  const res = await db.query<ArticleTermRow>(
+    `SELECT t.type, t.slug, t.name, at.is_primary, t.sort_order, t.parent_id, t.service_href, t.service_cta_text
        FROM cms_article_terms at JOIN kh_terms t ON t.id = at.term_id
       WHERE at.article_id = $1`,
     [articleId]
@@ -274,12 +282,27 @@ export async function getArticleTermSelection(articleId: number): Promise<Articl
   };
 }
 
+/** Same as getArticleTermSelection, inside the caller's transaction (Brief 188 data scripts). Throws. */
+export async function getArticleTermSelectionTx(client: PoolClient, articleId: number): Promise<ArticleTermSelection> {
+  const { primary, secondary, locations } = splitRows(await articleTermRows(articleId, client));
+  return {
+    primary: primary?.slug ?? null,
+    secondary: secondary.map((r) => r.slug),
+    locations: locations.map((r) => r.slug),
+  };
+}
+
 /** For the public article page. Never throws — a failure renders no chips (today's page). */
 export async function getArticleTermsDisplay(articleId: number): Promise<ArticleTermsDisplay> {
   try {
     const { primary, secondary, locations } = splitRows(await articleTermRows(articleId));
     const ref = (r: ArticleTermRow): KhTermRef => ({ slug: r.slug, name: r.name });
-    return { primary: primary ? ref(primary) : null, secondary: secondary.map(ref), locations: locations.map(ref) };
+    return {
+      // Brief 188 (Track E): the primary topic carries its service link.
+      primary: primary ? { ...ref(primary), serviceHref: primary.service_href, serviceCtaText: primary.service_cta_text } : null,
+      secondary: secondary.map(ref),
+      locations: locations.map(ref),
+    };
   } catch (err) {
     console.error('[kh-taxonomy] article terms unavailable — rendering no chips:', (err as Error).message);
     return { primary: null, secondary: [], locations: [] };
@@ -343,7 +366,7 @@ export async function writeArticleTerms(
 
 export interface CityTaggedArticles {
   articles: KhArticleCard[];
-  /** "More {name} articles" → the area page of the city, or of its region on the fallback. */
+  /** "More {City} articles" → the city's area page. */
   more: { label: string; href: string };
 }
 
@@ -358,8 +381,8 @@ export function clearKhTaxonomyCache(): void {
 }
 
 /**
- * Build `registry_slug → the newest 3 tagged articles` for every city whose own
- * tags, or failing that its region's, reach the threshold. ONE query for the
+ * Build `registry_slug → the newest 3 tagged articles` for every city whose OWN
+ * tags reach the threshold (Brief 188: no region fallback). ONE query for the
  * whole site, memoised for a minute, so ~11,000 city and city-service pages do
  * not each hit Postgres. With zero tags the map is empty and every page keeps
  * today's hand-picked articles.
@@ -378,23 +401,15 @@ async function buildCityIndex(): Promise<LocationIndex> {
         ORDER BY ${HUB_ORDER}`
     ),
   ]);
-  const byId = new Map(terms.rows.map((t) => [t.id, t]));
   // Buckets in hub order (the rows are already sorted), deduped per bucket.
+  // Brief 188 (Track A): ONLY the term an article is tagged with — a city's
+  // tag no longer counts toward its region here. (Region AREA pages still
+  // include their cities' articles; that is listTermArticles, not this.)
   const buckets = new Map<number, CardRow[]>();
-  const seen = new Map<number, Set<number>>();
-  const push = (termId: number, row: CardRow) => {
-    const s = seen.get(termId) ?? new Set<number>();
-    if (s.has(row.id)) return;
-    s.add(row.id);
-    seen.set(termId, s);
-    const b = buckets.get(termId) ?? [];
-    b.push(row);
-    buckets.set(termId, b);
-  };
   for (const row of links.rows) {
-    push(row.term_id, row);
-    const parent = byId.get(row.term_id)?.parent_id;
-    if (parent) push(parent, row);
+    const b = buckets.get(row.term_id) ?? [];
+    if (!b.some((r) => r.id === row.id)) b.push(row);
+    buckets.set(row.term_id, b);
   }
 
   const index: LocationIndex = new Map();
@@ -403,23 +418,14 @@ async function buildCityIndex(): Promise<LocationIndex> {
   for (const t of terms.rows) {
     if (t.parent_id === null || !t.registry_slug) continue; // cities only
     const own = buckets.get(t.id) ?? [];
-    let chosen: CardRow[] | null = null;
-    let more: { label: string; href: string } | null = null;
-    if (own.length >= KH_CITY_ARTICLE_THRESHOLD) {
-      chosen = own.slice(0, KH_CITY_ARTICLE_THRESHOLD);
-      more = { label: `More ${t.name} articles`, href: khAreaHref(t.slug) };
-    } else {
-      const region = byId.get(t.parent_id);
-      const regional = region ? buckets.get(region.id) ?? [] : [];
-      if (region && regional.length >= KH_CITY_ARTICLE_THRESHOLD) {
-        chosen = regional.slice(0, KH_CITY_ARTICLE_THRESHOLD);
-        more = { label: `More ${region.name} articles`, href: khAreaHref(region.slug) };
-      }
-    }
-    if (chosen && more) {
-      chosen.forEach((r) => needTopics.add(r.id));
-      picks.push([t.registry_slug, chosen, more]);
-    }
+    // Brief 188 (Track A, Marketing 2026-09-24): NO region fallback. A city
+    // below the threshold keeps its hand-picked articles exactly as before
+    // Brief 187 — Brief 187's "or failing that its region" switched ~239
+    // Chicagoland city pages to the newest Chicagoland articles at once.
+    if (own.length < KH_CITY_ARTICLE_THRESHOLD) continue;
+    const chosen = own.slice(0, KH_CITY_ARTICLE_THRESHOLD);
+    chosen.forEach((r) => needTopics.add(r.id));
+    picks.push([t.registry_slug, chosen, { label: `More ${t.name} articles`, href: khAreaHref(t.slug) }]);
   }
   const topics = await primaryTopicsFor(Array.from(needTopics));
   for (const [slug, rows, more] of picks) {
@@ -460,4 +466,114 @@ export async function getCityTaggedArticles(citySlug: string): Promise<CityTagge
     console.error('[kh-taxonomy] city articles unavailable — keeping the default picks:', (err as Error).message);
     return null;
   }
+}
+
+/* ── Related articles (Brief 188, Track B) ─────────────────────────────────── */
+
+/**
+ * The 3 "Related Articles" cards for one article — ONE query per render.
+ *
+ * Tiers, filled in order (each tier in the hub order):
+ *   1. hand-picks (`cms_article_related`), in their saved position
+ *   2. same PRIMARY topic AND sharing ≥1 location tag — a city matches that
+ *      city only (no region implication, consistent with Brief 188 Track A)
+ *   3. same primary topic
+ *   4. articles whose SECONDARY topics include this article's primary topic
+ *   5. the newest published articles (covers articles with no topic)
+ * Published only, never the article itself, no duplicates (each candidate row
+ * appears once and takes its best tier). A hand-pick that has since been
+ * unpublished or deleted simply fails the PUBLISHED filter / FK, and its slot
+ * fills from the next tier. Never throws: a failure renders no block.
+ */
+export async function getRelatedArticles(articleId: number): Promise<KhArticleCard[]> {
+  try {
+    const res = await pool.query<CardRow & { topic_slug: string | null; topic_name: string | null }>(
+      `WITH prim AS (SELECT term_id FROM cms_article_terms WHERE article_id = $1 AND is_primary),
+       locs AS (
+         SELECT at.term_id FROM cms_article_terms at
+           JOIN kh_terms t ON t.id = at.term_id AND t.type = 'location'
+          WHERE at.article_id = $1
+       ),
+       hp AS (SELECT related_article_id AS id, position FROM cms_article_related WHERE article_id = $1),
+       ranked AS (
+         SELECT a.id, a.slug, a.title, a.excerpt, a.image, a.created_at, a.wp_post_id, hp.position,
+                CASE
+                  WHEN hp.position IS NOT NULL THEN 1
+                  WHEN EXISTS (SELECT 1 FROM cms_article_terms x WHERE x.article_id = a.id AND x.is_primary
+                                  AND x.term_id IN (SELECT term_id FROM prim))
+                   AND EXISTS (SELECT 1 FROM cms_article_terms x WHERE x.article_id = a.id
+                                  AND x.term_id IN (SELECT term_id FROM locs)) THEN 2
+                  WHEN EXISTS (SELECT 1 FROM cms_article_terms x WHERE x.article_id = a.id AND x.is_primary
+                                  AND x.term_id IN (SELECT term_id FROM prim)) THEN 3
+                  WHEN EXISTS (SELECT 1 FROM cms_article_terms x WHERE x.article_id = a.id AND NOT x.is_primary
+                                  AND x.term_id IN (SELECT term_id FROM prim)) THEN 4
+                  ELSE 5
+                END AS tier
+           FROM cms_articles a
+           LEFT JOIN hp ON hp.id = a.id
+          WHERE ${PUBLISHED} AND a.id <> $1
+          ORDER BY tier, hp.position NULLS LAST, ${HUB_ORDER}
+          LIMIT 3
+       )
+       SELECT r.id, r.slug, r.title, r.excerpt, r.image, pt.slug AS topic_slug, pt.name AS topic_name
+         FROM ranked r
+         LEFT JOIN LATERAL (
+           SELECT t.slug, t.name FROM cms_article_terms x JOIN kh_terms t ON t.id = x.term_id AND t.type = 'topic'
+            WHERE x.article_id = r.id AND x.is_primary LIMIT 1
+         ) pt ON true
+        ORDER BY r.tier, r.position NULLS LAST, r.created_at DESC, r.wp_post_id DESC NULLS LAST, r.id DESC`,
+      [articleId]
+    );
+    return res.rows.map((r) =>
+      toCard(r, r.topic_slug && r.topic_name ? { slug: r.topic_slug, name: r.topic_name } : null)
+    );
+  } catch (err) {
+    console.error('[kh-taxonomy] related articles unavailable — rendering none:', (err as Error).message);
+    return [];
+  }
+}
+
+/** For the editor: the article's LIVE hand-picks, as slugs in position order. Throws. */
+export async function getRelatedSelection(articleId: number): Promise<string[]> {
+  const res = await pool.query<{ slug: string }>(
+    `SELECT a.slug FROM cms_article_related r JOIN cms_articles a ON a.id = r.related_article_id
+      WHERE r.article_id = $1 ORDER BY r.position`,
+    [articleId]
+  );
+  return res.rows.map((r) => r.slug);
+}
+
+/**
+ * Replace an article's hand-picks with exactly `slugs` (≤3, in order), inside
+ * the caller's transaction — the article PUBLISH writer's half of Track B2.
+ * Unknown slugs and the article itself are dropped and returned, never thrown.
+ * Status is not checked here: a pick that is a draft today may publish later,
+ * and the public query filters to published at render time.
+ */
+export async function writeArticleRelated(
+  client: PoolClient,
+  articleId: number,
+  slugs: string[]
+): Promise<{ written: number; unknown: string[] }> {
+  const res = await client.query<{ id: number; slug: string }>(
+    `SELECT id, slug FROM cms_articles WHERE slug = ANY($1::text[])`,
+    [slugs]
+  );
+  const idBySlug = new Map(res.rows.map((r) => [r.slug, r.id]));
+  const unknown: string[] = [];
+  const ids: number[] = [];
+  for (const s of slugs) {
+    const id = idBySlug.get(s);
+    if (id === undefined || id === articleId) { unknown.push(s); continue; }
+    if (!ids.includes(id) && ids.length < 3) ids.push(id);
+  }
+  await client.query(`DELETE FROM cms_article_related WHERE article_id = $1`, [articleId]);
+  for (let i = 0; i < ids.length; i++) {
+    const id = ids[i];
+    await client.query(
+      `INSERT INTO cms_article_related (article_id, related_article_id, position) VALUES ($1, $2, $3)`,
+      [articleId, id, i + 1]
+    );
+  }
+  return { written: ids.length, unknown };
 }

@@ -294,7 +294,7 @@ export default function SubServiceAdminPage() {
               excerpt: asStr(a.excerpt),
               image: asStr(a.image),
               href: asStr(a.href),
-              category: Array.isArray(a.category) ? (a.category as string[]) : [],
+              topics: Array.isArray(a.topics) ? (a.topics as string[]) : [], // Brief 188
               status: asStr(a.status) || 'published',
             }))
           : []

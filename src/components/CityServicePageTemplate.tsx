@@ -76,10 +76,10 @@ export default async function CityServicePageTemplate({ city, service, settings 
    * of the three shared defaults are Chicago-titled.
    */
   /*
-   * Brief 187 (C6): the same tagged-article rule as the city page (≥3 tagged to
-   * the city, or failing that its region). `getCityTaggedArticles` reads one
-   * site-wide index memoised for a minute, so these ~11,000 pages do not each
-   * query Postgres; null (every city today) keeps the defaults exactly.
+   * Brief 187 (C6): the same tagged-article rule as the city page — ≥3 articles
+   * tagged to THIS city (Brief 188 removed the region fallback). `getCityTaggedArticles`
+   * reads one site-wide index memoised for a minute, so these ~11,000 pages do
+   * not each query Postgres; null keeps the hand-picked defaults exactly.
    */
   const tagged = await getCityTaggedArticles(city.slug);
   const articles = tagged?.articles ?? getArticles(
