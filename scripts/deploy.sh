@@ -692,6 +692,18 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/migrate-brief-188-kh-phase-2.ts commit
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/apply-brief-188-untagged-articles.ts commit
+# -- Brief 190: Article V2 template ---------------------------------------
+# Adds `cms_articles.template` (TEXT, default 'article') and `cms_articles.v2`
+# (JSONB, default '{}'). ADDITIVE ONLY, and ships AHEAD of the code that reads
+# them: it commits while the OLD build is serving, which never selects either
+# column. Every existing article gets 'article' through the column DEFAULT and
+# renders exactly as before. Writes NO content (no body, status, tag or
+# template of any row). Also in ensure-schema.ts, so this normally reports
+# ALREADY-APPLIED. Draft articles / unpublished versions / V2 articles are
+# printed as information; exits non-zero ONLY if a column is missing or
+# mistyped afterwards, or the SQL errors (Brief 186). Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/migrate-brief-190-article-v2.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
+import { ARTICLE_TEMPLATE_OPTIONS, DEFAULT_ARTICLE_TEMPLATE } from '@/lib/cms/article-v2';
 
 interface Props {
   onClose: () => void;
@@ -71,6 +72,8 @@ export default function CreatePageModal({ onClose }: Props) {
   const [pageType, setPageType] = useState('service-category');
   const [slug, setSlug] = useState('');
   const [title, setTitle] = useState('');
+  // Brief 190 (Track D): articles pick their template at creation; V1 by default.
+  const [articleTemplate, setArticleTemplate] = useState<string>(DEFAULT_ARTICLE_TEMPLATE);
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState('');
 
@@ -164,6 +167,8 @@ export default function CreatePageModal({ onClose }: Props) {
         payload = { template: pageType, citySlug: selectedCity };
       } else {
         payload = { template: pageType, slug, title };
+        // Brief 190 (Track D): the article template is chosen up front (V1 default).
+        if (pageType === 'article') payload.articleTemplate = articleTemplate;
       }
 
       const res = await fetch('/api/cms/pages', {
@@ -325,6 +330,24 @@ export default function CreatePageModal({ onClose }: Props) {
                 className="admin-cpm-field"
                 style={INPUT_STYLES}
               />
+            </div>
+          )}
+
+          {/* Brief 190 (Track D): article template, chosen up front. Switchable later
+              in the editor's Page Attributes → Template without losing content. */}
+          {pageType === 'article' && (
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={LABEL_STYLES}>Template</label>
+              <select
+                value={articleTemplate}
+                onChange={e => setArticleTemplate(e.target.value)}
+                className="admin-cpm-field"
+                style={INPUT_STYLES}
+              >
+                {ARTICLE_TEMPLATE_OPTIONS.map(t => (
+                  <option key={t.value} value={t.value}>{t.label}</option>
+                ))}
+              </select>
             </div>
           )}
 

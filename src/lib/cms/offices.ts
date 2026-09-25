@@ -38,6 +38,13 @@ export interface CmsOffice {
    * Does NOT affect `LocalBusinessSchema` — see that component's docblock.
    */
   showInFooter?: boolean;
+  /**
+   * Brief 190 — the office's own phone line, e.g. "614-547-6516". Optional and
+   * blank on every office until Marketing enters one in /admin/global-settings.
+   * Read ONLY by Article V2 (its office card, CTAs and mobile call bar); every
+   * other surface keeps the global phone, and a blank value falls back to it.
+   */
+  phone?: string;
 }
 
 /** `${streetAddress}, ${city}, ${state} ${zip}` — the single-line NAP/footer format used everywhere. */

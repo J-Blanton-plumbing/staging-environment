@@ -3,6 +3,7 @@ import { getSession } from '@/lib/auth/session';
 import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { ARTICLES } from '@/lib/articles';
+import { DEFAULT_ARTICLE_TEMPLATE, parseArticleTemplate } from '@/lib/cms/article-v2';
 
 export async function GET(req: NextRequest) {
   const auth = await requireCmsSession(req);
@@ -98,7 +99,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  let body: { slug?: string; title?: string };
+  let body: { slug?: string; title?: string; articleTemplate?: string };
   try {
     body = await req.json();
   } catch {
@@ -129,9 +130,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: `Slug "${slug}" is already taken.` }, { status: 409 });
     }
 
+    // Brief 190: optional template at creation (same rule as /api/cms/pages).
     await client.query(
-      `INSERT INTO cms_articles (slug, title, created_by) VALUES ($1, $2, $3)`,
-      [slug, title.trim(), session.userId]
+      `INSERT INTO cms_articles (slug, title, created_by, template) VALUES ($1, $2, $3, $4)`,
+      [slug, title.trim(), session.userId, parseArticleTemplate(body.articleTemplate) ?? DEFAULT_ARTICLE_TEMPLATE]
     );
     return NextResponse.json({ success: true, redirectUrl: `/admin/articles/${slug}` });
   } catch (err) {

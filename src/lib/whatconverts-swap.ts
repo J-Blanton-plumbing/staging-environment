@@ -31,6 +31,12 @@
  * internals: whatever the vendor achieved anywhere on this page becomes the number
  * every phone link uses. That makes the outcome consistent even when no storage is
  * readable at all.
+ *
+ * EXCEPT inside `[data-wc-ignore]` (Brief 190, Track F): a page section that
+ * shows another real number on purpose — a local office line — opts its anchors
+ * out of sources 3 and 4, so that number can never be mistaken for the swap.
+ * The opt-out only narrows what counts as evidence; it does not stop the vendor
+ * or the repair pass from swapping the default number inside that section.
  */
 
 export interface SwapPair {
@@ -96,6 +102,13 @@ function fromDom(defaultDigits: string, useText: boolean): SwapPair | null {
   if (typeof document === 'undefined' || defaultDigits.length !== 10) return null;
   const counts = new Map<string, number>();
   Array.from(document.querySelectorAll('a[href^="tel:"]')).forEach((anchor) => {
+    // Brief 190 (Track F): a container marked `data-wc-ignore` holds a SECOND
+    // real number on purpose (an Article V2 office phone, the Columbus test
+    // article's 614 line). Its anchors are not evidence of a swap — without this,
+    // a visitor with no pool number had the header adopt the office number as
+    // "the tracking number" and keep it on every page they clicked to next.
+    // Pages without the attribute behave exactly as before.
+    if (anchor.closest('[data-wc-ignore]')) return;
     const raw = useText ? (anchor.textContent ?? '') : (anchor.getAttribute('href') ?? '');
     const digits = digitsOf(raw);
     // A US number may carry a leading 1; take the last 10 digits.

@@ -23,6 +23,8 @@ interface OfficeFormState {
   state: string;
   zip: string;
   mapUrl: string;
+  /** Brief 190 — optional office line; used only by Article V2 articles. */
+  phone: string;
   lat: string;
   lng: string;
   /** Brief 107 (Track B) — whether this office appears in the public footer directory. */
@@ -55,7 +57,7 @@ const EMPTY_SERVICE_DESC: ServiceDescState = {
 };
 
 const EMPTY_OFFICE: OfficeFormState = {
-  slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', lat: '', lng: '',
+  slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', phone: '', lat: '', lng: '',
   showInFooter: true,
 };
 
@@ -132,6 +134,9 @@ const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng' | 's
   { key: 'state', label: 'State', placeholder: 'IL' },
   { key: 'zip', label: 'ZIP', placeholder: '60062' },
   { key: 'mapUrl', label: 'Google Maps Link', placeholder: 'https://maps.app.goo.gl/…' },
+  // Brief 190: shown only on Article V2 articles that pick this office. Blank →
+  // those articles use the main phone above.
+  { key: 'phone', label: 'Office Phone (Article V2 only — blank = main phone)', placeholder: '614-547-6516' },
 ];
 
 function toNum(v: string): number | null {
@@ -214,6 +219,9 @@ function toCmsOffice(o: OfficeFormState) {
     state: o.state,
     zip: o.zip,
     mapUrl: o.mapUrl,
+    // Omitted when blank, so an office nobody gave a line to saves exactly the
+    // record it had before Brief 190.
+    ...(o.phone.trim() ? { phone: o.phone.trim() } : {}),
     lat: toNum(o.lat),
     lng: toNum(o.lng),
     showInFooter: o.showInFooter,
@@ -238,6 +246,7 @@ export default function GlobalSettingsPage() {
               state: typeof o.state === 'string' ? o.state : '',
               zip: typeof o.zip === 'string' ? o.zip : '',
               mapUrl: typeof o.mapUrl === 'string' ? o.mapUrl : '',
+              phone: typeof o.phone === 'string' ? o.phone : '',
               lat: o.lat == null ? '' : String(o.lat),
               lng: o.lng == null ? '' : String(o.lng),
               showInFooter: o.showInFooter !== false,

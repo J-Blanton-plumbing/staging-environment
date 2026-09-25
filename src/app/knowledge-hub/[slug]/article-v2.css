@@ -1,0 +1,340 @@
+/*
+ * Article V2 — the second Knowledge Hub article template (Brief 190).
+ *
+ * The approved Columbus design (Briefs 185 + 189), ported from
+ * src/app/columbus-article-test/columbus-article-test.css with its values,
+ * order and comments. Read that file's header for the original port notes
+ * (Preflight / `@layer base` cancellations, the 70px fixed-header offset, the
+ * 1070px logo-clearance breakpoint, the z-45 call bar). What changed here:
+ *
+ * ══ 1. EVERY SELECTOR IS SCOPED TO .article-v2 ════════════════════════════
+ * `.cat-root` → `.article-v2`, `:where(.cat-article)` → `:where(.v2-article)`.
+ * This file is imported by ArticleV2Template.tsx and stays loaded after a
+ * client-side navigation (App Router keeps route CSS), so one unscoped rule
+ * would restyle the whole site (the Brief 185 lesson). The one self-scoping
+ * exception is still `body:has(.article-v2)` (call-bar clearance, bottom).
+ * UNLAYERED on purpose — unlayered beats globals.css `@layer base`.
+ *
+ * ══ 2. DELETED (the body is CMS rich text now) ════════════════════════════
+ * `.promises`, `.svc`, `.same`, `.benefits`, `.eyebrow`, `.art-fig`,
+ * `.avatar-img`, `blockquote footer`: they styled class names the test page
+ * hand-wrote into its body. The CMS sanitizer strips `class` (and `id`,
+ * `<footer>`, `<cite>`), so no V2 body can carry them. Replaced by element
+ * rules for what the body CAN carry (§3).
+ *
+ * ══ 3. ADDED ═══════════════════════════════════════════════════════════════
+ *   • `.kh-chip-list--on-red` — the Brief 187 chips on the Carmine masthead.
+ *     A scoped MODIFIER; the base chips in globals.css are untouched.
+ *   • body images / figures — the test page's `.art-fig` treatment on plain
+ *     `<img>` / `<figure>`.
+ *   • the blockquote ATTRIBUTION convention: a blockquote's last paragraph that
+ *     starts with an image renders as the test page's avatar + name + role row.
+ *   • empty-state modifiers — `.masthead--no-frame` (no hero image) and
+ *     `.body--no-toc` (no H2s), so a minimal article has no empty boxes.
+ *   • the wrench tile moved to /images/article-v2/ (Brief 191 deletes the
+ *     test page's image folder).
+ *
+ * COLOURS — exactly the approved file's: #BC0E0E #F9F3EC #0A1B2E #540606
+ * #1560E6 #F1E8DC #FDFAF6 #E8DCCC #3A4A5C #fff, plus the off-palette status
+ * greens #137A3B / #1FB85A (flagged for Marketing, kept by instruction).
+ */
+
+/* ---------- better-colors: ramps named by hue, semantics named by role, one meaning per color ---------- */
+.article-v2{
+  --ease-out:cubic-bezier(0.23,1,0.32,1);--ease-drawer:cubic-bezier(0.32,0.72,0,1);--ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  /* LOCKED brand palette only (design.md). Derived values limited to the approved warm tints,
+     muted body tone #3A4A5C, white, and alpha values of brand colors. */
+  --red-600:#BC0E0E; --red-100:rgba(188,14,14,.08); --red-050:rgba(188,14,14,.04);
+  --blue-600:#1560E6;
+  --navy-900:#0A1B2E; --slate-600:#3A4A5C;
+  --sand-050:#FDFAF6; --sand-100:#F9F3EC; --sand-200:#F1E8DC; --sand-300:#E8DCCC;
+  /* Contrast measured on the surface each renders on:
+     body #0A1B2E on #F9F3EC 15.8:1 | muted #3A4A5C on #F9F3EC 8.2:1, on #F1E8DC 7.5:1
+     white on Cerulean #1560E6 5.5:1 | Cerulean links on #F9F3EC 5.0:1, on #FDFAF6 5.3:1
+     Carmine #BC0E0E on #F9F3EC 5.9:1 (eyebrows, marks). Semantic success green #137A3B on #FDFAF6 5.3:1 (status only, outside brand palette by design). */
+  --bg:var(--sand-100); --surface:var(--sand-050); --surface-sunk:var(--sand-200);
+  --border:var(--sand-300); --text:var(--navy-900); --text-muted:var(--slate-600);
+  --action:var(--blue-600); --action-hover:var(--red-600); --link:var(--blue-600);
+  --brand:var(--red-600); --brand-tint:var(--red-100);
+  --focus:#1560E6;
+
+  /* better-typography: semantic scale, heading sizes descend with level.
+     Families map to the site's self-hosted fonts (root layout, next/font). */
+  --display:var(--font-industry),'Arial',sans-serif; --body:var(--font-nunito),system-ui,sans-serif;
+  --t-display:clamp(2rem,1.4rem + 2vw,2.875rem); /* H1 46px desktop, fluid to 32px */
+  --t-h2:clamp(1.625rem,1.3rem + 1.4vw,2rem); /* H2 32px desktop, 26px on phones so it stays below the 32px mobile H1 */
+  --t-h3:1.25rem; /* card label 20px */ --t-lead:1.25rem; --t-body:1.25rem; /* body 20/30 */ --t-small:1rem; /* body 16/24 */ --t-label:.875rem; /* eyebrow 14px */ --t-faq:1.125rem; /* FAQ 18px */
+
+  /* better-layout: one spacing scale, grouping by space */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+
+  /* better-ui: concentric radii. outer = inner + padding */
+  --r-inner:10px; --pad-card:8px; --r-outer:calc(var(--r-inner) + var(--pad-card)); --r-card:18px;
+  --shadow-1:0 1px 2px rgba(10,27,46,.06),0 2px 8px rgba(10,27,46,.05);
+  --shadow-2:0 1px 2px rgba(10,27,46,.06),0 8px 24px rgba(10,27,46,.10);
+
+  /* was `body{…}` in the prototype */
+  background:var(--bg);color:var(--text);font:400 var(--t-body)/1.5 var(--body);
+  /* the live header is FIXED (out of flow); the prototype's was sticky (in flow) */
+  padding-top:var(--site-header-h,70px);
+}
+/* cancel globals.css `@layer base` h1–h5 tracking-tight + navy (zero specificity, unlayered) */
+.article-v2 :where(h1,h2,h3){letter-spacing:normal;color:inherit}
+/* better-typography: underline from the font, offset for legibility */
+.article-v2 a{color:var(--link);text-decoration:underline;text-decoration-thickness:from-font;text-underline-offset:.18em}
+.article-v2 a:hover{text-decoration-thickness:2px}
+/* better-accessibility: visible focus everywhere */
+.article-v2 :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.article-v2 .skip{position:absolute;left:var(--s4);top:-60px;z-index:100;background:var(--text);color:#fff;padding:var(--s3) var(--s4);border-radius:8px;font-weight:700;text-decoration:none}
+.article-v2 .skip:focus{top:var(--s3)}
+.article-v2 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+
+/* ---------- Article header: single H1, byline, dek. Structure first. ---------- */
+/* hero band: brand red + official wrench pattern (Sewer Ecosystem .hero-pattern), ends under the dek.
+   Full-bleed grid so the band can span the viewport while content keeps the 1320px frame. */
+.article-v2 .masthead{display:grid;grid-template-columns:minmax(var(--s5),1fr) minmax(0,660px) var(--s7) minmax(0,564px) minmax(var(--s5),1fr);grid-template-rows:auto auto;margin-bottom:var(--s6)}
+.article-v2 .masthead-band{grid-column:1/-1;grid-row:1;position:relative;isolation:isolate;background:var(--brand);overflow:hidden}
+/* pattern: rebuilt from the official wrench art as a true repeat. One wrench shape was lifted from
+   wrench-pattern.png and re-stamped on an exact lattice, so the tile has no seams. The art runs on a -9.65deg
+   diagonal, so the tile repeats on a rotated, oversized layer. Drawn at 45% of the original scale.
+   Contrast (measured): white on #BC0E0E 6.55:1, white on darkest pattern stroke 7.6:1, dek (white) 6.55:1, breadcrumbs/eyebrow (#F9F3EC) 5.94:1. All pass AA. */
+.article-v2 .masthead-band::before{content:"";position:absolute;z-index:-2;top:-50%;left:-25%;width:150%;height:200%;background:url(/images/article-v2/wrench-pattern-tile.webp) 0 0/297px 315px repeat;transform:rotate(-9.65deg);opacity:.2;pointer-events:none}
+/* calm zone: solid brand red fades in behind the text column so the pattern never sits under the headline at full strength */
+.article-v2 .masthead-band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(188,14,14,.7) 0%,rgba(188,14,14,.55) 40%,rgba(188,14,14,0) 70%);pointer-events:none}
+.article-v2 .masthead-text{grid-column:2;grid-row:1;position:relative;z-index:1;padding:var(--s7) 0 var(--s7);color:#fff}
+.article-v2 .masthead-meta{grid-column:2;grid-row:2;padding-top:var(--s5);min-height:160px}
+.article-v2 .masthead .frame{grid-column:4;grid-row:1/3;align-self:end;position:relative;z-index:1;margin:var(--s7) 0 0}
+.article-v2 .masthead-text .crumbs ol{color:#F9F3EC}
+.article-v2 .masthead-text .crumbs a{color:#F9F3EC}
+.article-v2 .masthead-text .crumbs li+li::before{color:rgba(249,243,236,.5)}
+.article-v2 .masthead-text h1{color:#fff}
+.article-v2 .masthead-text .dek{color:#fff;margin-bottom:0}
+/* clear the hanging logo tab (158px) on desktop — keyed to the LIVE navbar's `nav` breakpoint (min-width:1070px) */
+@media (min-width:1070px){.article-v2 .masthead-text{padding-top:120px}.article-v2 .masthead .frame{margin-top:120px}}
+.article-v2 .crumbs ol{display:flex;flex-wrap:wrap;gap:var(--s2);list-style:none;margin:0 0 var(--s5);padding:0;font-size:var(--t-small);color:var(--text-muted)}
+.article-v2 .crumbs li+li::before{content:"/";margin-right:var(--s2);color:var(--border)}
+.article-v2 .crumbs a{color:var(--text-muted)}
+.article-v2 h1{margin:var(--s3) 0 var(--s4);font:800 var(--t-display)/1.05 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.article-v2 .dek{margin:0 0 var(--s5);font-size:var(--t-lead);line-height:1.55;color:var(--text-muted);max-width:34em;text-wrap:pretty}
+.article-v2 .byline{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s4);font-size:var(--t-small);color:var(--text-muted)}
+.article-v2 .byline .avatar{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font:700 var(--t-label) var(--display)}
+.article-v2 .byline strong{color:var(--text)}
+/* concentric media frame: outer radius 18 = inner 10 + padding 8 */
+.article-v2 .frame{background:var(--surface);padding:var(--pad-card);border-radius:var(--r-outer);box-shadow:var(--shadow-2)}
+.article-v2 .frame img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-inner);outline:1px solid rgba(10,27,46,.08);outline-offset:-1px;background:var(--surface-sunk)}
+.article-v2 .frame figcaption{padding:var(--s3) var(--s2) var(--s1);font-size:var(--t-small);color:var(--text-muted)}
+/* Brief 190: no hero image → no frame, so the meta row needs no room for its overlap */
+.article-v2 .masthead--no-frame .masthead-meta{min-height:0}
+
+/* Brief 190 (Track E): the Brief 187 tag chips on the Carmine masthead, where the base
+   primary chip (Carmine fill) would vanish. Brand colours only; hover still inverts.
+   A MODIFIER — the base chips in globals.css are unchanged. */
+.article-v2 .masthead-text .article-terms{margin:0 0 var(--s3)}
+.article-v2 .kh-chip-list--on-red .kh-chip--primary{background:#F9F3EC;border-color:#F9F3EC;color:#BC0E0E}
+.article-v2 .kh-chip-list--on-red .kh-chip--primary:hover{background:#0A1B2E;border-color:#0A1B2E;color:#F9F3EC}
+.article-v2 .kh-chip-list--on-red .kh-chip--secondary,
+.article-v2 .kh-chip-list--on-red .kh-chip--location{background:transparent;border-color:#F9F3EC;color:#F9F3EC}
+.article-v2 .kh-chip-list--on-red .kh-chip--secondary:hover,
+.article-v2 .kh-chip-list--on-red .kh-chip--location:hover{background:#F9F3EC;border-color:#F9F3EC;color:#BC0E0E}
+/* the chips are links: keep the chip look, not the article's underlined links */
+.article-v2 .kh-chip-list--on-red .kh-chip{text-decoration:none}
+
+
+/* ---------- Body: article + rail. 700px column at 20px Nunito = about 66 characters per line. ---------- */
+.article-v2 .body{max-width:1320px;margin:0 auto;padding:var(--s4) var(--s5) var(--s9);display:grid;grid-template-columns:200px minmax(0,700px) 300px;gap:var(--s7);justify-content:center}
+/* Brief 190: a body with no H2 has no table of contents — article + rail only */
+.article-v2 .body--no-toc{grid-template-columns:minmax(0,700px) 300px}
+.article-v2 :where(.v2-article){min-width:0}
+.article-v2 .takeaways{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--s5) var(--s5) var(--s4);margin:0 0 var(--s7)}
+.article-v2 .takeaways-label{margin:0 0 var(--s3);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.article-v2 .takeaways ul{margin:0;padding:0;list-style:none}
+.article-v2 .takeaways li{position:relative;padding-left:var(--s5);margin-bottom:var(--s2)}
+.article-v2 .takeaways li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--brand)}
+.article-v2 :where(.v2-article) > section{margin-bottom:var(--s8)}
+.article-v2 :where(.v2-article) h2{margin:0 0 var(--s4);font:700 var(--t-h2)/1.15 var(--display);letter-spacing:-.01em;text-wrap:balance;scroll-margin-top:92px}
+.article-v2 :where(.v2-article) h3{margin:0 0 var(--s2);font:700 var(--t-h3)/1.3 var(--display)}
+.article-v2 :where(.v2-article) p{margin:0 0 var(--s4)}
+.article-v2 :where(.v2-article) ul,
+.article-v2 :where(.v2-article) ol{margin:0 0 var(--s5);padding-left:1.25em}
+.article-v2 :where(.v2-article) ul{list-style:disc}
+.article-v2 :where(.v2-article) ol{list-style:decimal}
+.article-v2 :where(.v2-article) li{margin-bottom:var(--s2)}
+.article-v2 :where(.v2-article) h4{margin:0 0 var(--s2);font:700 var(--t-small)/1.3 var(--display)}
+.article-v2 :where(.v2-article) hr{margin:var(--s6) 0;border:0;border-top:1px solid var(--border)}
+.article-v2 blockquote{margin:var(--s6) 0;padding:0 0 0 var(--s5);border-left:3px solid var(--brand);font:600 1.25rem/1.5 var(--body);hanging-punctuation:first}
+.article-v2 blockquote p{margin:0 0 var(--s3)}
+/* Brief 190: the attribution convention. The sanitizer strips <footer>/<cite>, so a quote's
+   LAST paragraph that STARTS with an image is its attribution:
+     <p><img src="avatar" alt=""> <strong>Name</strong> Role</p>
+   → the test page's 48px avatar | name (Industry 16) over role (muted 16). */
+.article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child){display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:var(--s3);align-items:center;margin:var(--s4) 0 0;font-size:var(--t-small);font-weight:600;color:var(--text-muted);line-height:1.35}
+.article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child) > img{grid-row:1/span 2;width:48px;height:48px;border-radius:50%;object-fit:cover;outline:1px solid rgba(10,27,46,.1);outline-offset:-1px;box-shadow:0 0 0 3px var(--surface)}
+.article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child) > :is(strong,b){display:block;align-self:end;color:var(--text);font:700 1rem/1.3 var(--display)}
+.article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child) > br{display:none}
+
+/* in-article photos: plain image, brand 10px radius, no frame (the hero keeps the framed treatment).
+   Was `.art-fig` on the test page; here it is any image the body carries. */
+.article-v2 :where(.v2-article) img{display:block;max-width:100%;height:auto;border-radius:var(--r-inner);background:var(--surface-sunk)}
+.article-v2 :where(.v2-article) p > img:only-child,
+.article-v2 :where(.v2-article) figure img{width:100%}
+.article-v2 :where(.v2-article) p:has(> img:only-child),
+.article-v2 :where(.v2-article) figure{margin:var(--s6) 0}
+.article-v2 :where(.v2-article) figure figcaption{padding:var(--s3) var(--s2) 0;font-size:var(--t-small);color:var(--text-muted)}
+/* map: concentric frame, outer 18 = inner 10 + padding 8 */
+.article-v2 .map{margin:var(--s5) 0 var(--s4);background:var(--surface);padding:var(--pad-card);border-radius:var(--r-outer);box-shadow:var(--shadow-1);border:1px solid var(--border)}
+.article-v2 .map iframe{display:block;width:100%;aspect-ratio:16/10;border:0;border-radius:var(--r-inner);background:var(--surface-sunk)}
+.article-v2 .map figcaption{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);align-items:center;justify-content:flex-end;padding:var(--s3) var(--s2) var(--s1);font-size:var(--t-small);color:var(--text-muted)}
+/* Brief 190: the office-map block sits in the body flow; it spaces like a paragraph */
+.article-v2 .office-map-block{margin:0 0 var(--s5)}
+
+/* brand secondary link: Nunito 16px with an arrow, no underline until hover. 44px tall hit area. */
+.article-v2 .more{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:700 var(--t-small)/1.2 var(--body);color:var(--link);text-decoration:none}
+.article-v2 .more::after{content:"\2192";transition:transform 160ms var(--ease-out)}
+.article-v2 .more:hover{text-decoration:underline}
+@media (hover:hover){.article-v2 .more:hover::after{transform:translateX(3px)}}
+
+/* Service-area communities (Brief 189): two levels of native details/summary, no JS.
+   Outer = the rail cards' treatment (surface, border, 18px radius). Inner = text + small chevron,
+   thin dividers. Names are an auto-fill grid, NOT `columns:` (Brief 170: multi-column squeezes small
+   groups into one-item columns). Chevrons are CSS borders in currentColor, so no new colours. */
+.article-v2 .communities{margin:var(--s5) 0 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-outer);box-shadow:var(--shadow-1)}
+.article-v2 .communities summary{list-style:none;cursor:pointer}
+.article-v2 .communities summary::-webkit-details-marker{display:none}
+.article-v2 .communities summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:var(--r-inner)}
+.article-v2 .communities summary::after{content:"";flex:none;margin-left:auto;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform 200ms var(--ease-out)}
+.article-v2 .communities details[open] > summary::after,.article-v2 .communities[open] > summary::after{transform:translateY(2px) rotate(-135deg)}
+.article-v2 .communities > summary{display:flex;align-items:center;gap:var(--s4);min-height:56px;padding:var(--s3) var(--s5);font:700 var(--t-faq)/1.35 var(--display);color:var(--text)}
+.article-v2 .communities > summary::after{width:10px;height:10px;color:var(--brand)}
+.article-v2 .communities-body{padding:0 var(--s5) var(--s3);border-top:1px solid var(--border)}
+.article-v2 .communities-group + .communities-group{border-top:1px solid var(--border)}
+.article-v2 .communities-group > summary{display:flex;align-items:center;gap:var(--s3);min-height:44px;padding:var(--s2) 0;font:700 var(--t-small)/1.3 var(--display);color:var(--text)}
+.article-v2 .communities-group > summary span{font-weight:500;color:var(--text-muted)}
+.article-v2 .communities-group > summary::after{color:var(--text-muted)}
+.article-v2 .communities-group ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:var(--s1) var(--s4);margin:0;padding:0 0 var(--s4);list-style:none;font:400 var(--t-small)/1.5 var(--body);color:var(--text-muted)}
+.article-v2 .communities-group li{margin:0}
+
+/* FAQ: native details/summary. Platform before custom. */
+.article-v2 .faq details{border-top:1px solid var(--border)}
+.article-v2 .faq details:last-of-type{border-bottom:1px solid var(--border)}
+.article-v2 .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:var(--s4);min-height:56px;padding:var(--s3) 0;font:700 var(--t-faq)/1.35 var(--display)}
+.article-v2 .faq summary::-webkit-details-marker{display:none}
+.article-v2 .faq summary .plus{margin-left:auto;flex:none;width:28px;height:28px;border-radius:50%;background:var(--surface-sunk);display:grid;place-items:center}
+.article-v2 .faq summary .plus path.v{transition:opacity 150ms ease}
+.article-v2 .faq details[open] summary .plus path.v{opacity:0}
+.article-v2 .faq details p{margin:0 0 var(--s5);color:var(--text-muted);padding-right:var(--s7)}
+
+/* Brief 188 (Track E) service link, at the end of the article column. Its colours and type
+   are the global `.kh-service-link`; only the placement is set here. */
+.article-v2 .kh-service-link{text-align:left;padding:0;margin:0 0 var(--s8)}
+.article-v2 .kh-service-link a{text-decoration:none}
+.article-v2 .kh-service-link a:hover{text-decoration:underline}
+
+/* mobile table of contents (shown when the left index is hidden) */
+.article-v2 .toc-m{display:none;margin:0 0 var(--s7);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card)}
+.article-v2 .toc-m summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 var(--s5);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.article-v2 .toc-m summary::-webkit-details-marker{display:none}
+.article-v2 .toc-m summary::after{content:"+";font:400 1.5rem/1 var(--body);color:var(--brand)}
+.article-v2 .toc-m[open] summary::after{content:"\2212"}
+.article-v2 .toc-m ol{margin:0;padding:0 var(--s5) var(--s3);list-style:none;border-top:1px solid var(--border)}
+.article-v2 .toc-m li{margin:0}
+.article-v2 .toc-m a{display:flex;align-items:center;min-height:44px;font-size:var(--t-small);color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+.article-v2 .toc-m li:last-child a{border-bottom:0}
+
+/* ---------- Rail: content bleeds, controls float ---------- */
+.article-v2 .rail{align-self:stretch}
+/* office card + No Drip Club stick as one unit */
+.article-v2 .rail-stick{position:sticky;top:92px;display:flex;flex-direction:column;gap:var(--s4)}
+/* short laptop screens: trim the NDC list so the whole unit fits (92px offset + cards < viewport) */
+@media (max-height:860px){.article-v2 .rail .ndc ul{display:none}.article-v2 .rail .help p{display:none}}
+.article-v2 .toc{position:sticky;top:92px;align-self:start;font-size:var(--t-small)}
+.article-v2 .rail-label{margin:0 0 var(--s3);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.article-v2 .toc ol{position:relative;list-style:none;margin:0;padding:0 0 0 var(--s3);border-left:1.5px solid var(--border)}
+/* one indicator that moves to the active link: on-screen movement -> ease-in-out, 250ms */
+.article-v2 .toc ol::before{content:"";position:absolute;left:-1.5px;top:0;width:3px;height:var(--h,24px);border-radius:3px;background:var(--brand);transform:translateY(var(--y,0));transition:transform 250ms cubic-bezier(.77,0,.175,1),height 250ms cubic-bezier(.77,0,.175,1)}
+.article-v2 .toc a{display:block;padding:var(--s2) 0;color:var(--text-muted);text-decoration:none;line-height:1.35;transition:color 150ms ease}
+.article-v2 .toc a:hover{color:var(--text)}
+.article-v2 .toc a[aria-current="true"]{color:var(--text);font-weight:700}
+/* status dot: same pulse as the Emil build, green-ink label passes 4.5:1 on the card */
+.article-v2 .status{display:inline-flex;align-items:center;gap:var(--s2);margin-bottom:var(--s2);font:700 var(--t-label)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:#137A3B}
+.article-v2 .pulse{flex:none;width:8px;height:8px;border-radius:50%;background:#1FB85A;box-shadow:0 0 0 0 rgba(31,184,90,.55);animation:v2-pulse 2.4s cubic-bezier(.23,1,.32,1) infinite}
+/* renamed from the prototype's `pulse` (and the test page's `cat-pulse`) — @keyframes names are global */
+@keyframes v2-pulse{70%{box-shadow:0 0 0 9px rgba(31,184,90,0)}100%{box-shadow:0 0 0 0 rgba(31,184,90,0)}}
+.article-v2 .help .loc{display:block;font-size:var(--t-small);color:var(--text-muted);margin-bottom:var(--s1)}
+/* No Drip Club rail card */
+.article-v2 .ndc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-outer);padding:var(--s5)}
+.article-v2 .ndc .ndc-title{margin:0 0 var(--s2);font:700 var(--t-h3)/1.3 var(--display);color:var(--brand)}
+.article-v2 .ndc p{margin:0 0 var(--s3);font-size:var(--t-small);color:var(--text-muted);line-height:1.55}
+.article-v2 .ndc ul{list-style:none;margin:0 0 var(--s4);padding:0;font-size:var(--t-small)}
+.article-v2 .ndc li{display:flex;gap:var(--s2);align-items:baseline;margin-bottom:var(--s1)}
+.article-v2 .ndc li svg{flex:none;transform:translateY(2px)}
+.article-v2 .help{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-outer);padding:var(--s5);box-shadow:var(--shadow-1)}
+.article-v2 .help .num{display:flex;align-items:center;min-height:44px;font:700 1.75rem/1.1 var(--display);font-variant-numeric:tabular-nums;color:var(--text);text-decoration:none;margin-bottom:var(--s1)}
+.article-v2 .help p{margin:0 0 var(--s4);font-size:var(--t-small);color:var(--text-muted);line-height:1.55}
+.article-v2 .help address{font-style:normal;font-size:var(--t-small);line-height:1.55;color:var(--text-muted);padding:var(--s3);border-radius:var(--r-inner);background:var(--surface-sunk);margin-bottom:var(--s4)}
+/* exactly one filled action per view */
+.article-v2 .btn{display:flex;align-items:center;justify-content:center;gap:var(--s2);min-height:48px;padding:0 var(--s5);border-radius:var(--r-inner);font:500 1rem var(--display);letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background-color 150ms ease,transform 120ms ease}
+.article-v2 .btn:active{transform:scale(.97)}
+.article-v2 .btn-fill{background:var(--action);color:#fff}
+.article-v2 .btn-fill:hover{background:var(--action-hover)}
+.article-v2 .btn-line{color:var(--text);box-shadow:inset 0 0 0 1.5px var(--border)}
+.article-v2 .btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--navy-900)}
+.article-v2 .btn + .btn{margin-top:var(--s2)}
+
+/* related articles: whole card is the link. Border = Midnight at 50% (3.2:1 on cream) so the clickable edge is visible. */
+.article-v2 .related{max-width:1320px;margin:0 auto;padding:0 var(--s5) var(--s9)}
+.article-v2 .related h2{font:700 var(--t-h2)/1.15 var(--display);margin:0 0 var(--s5)}
+.article-v2 .related ul{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);list-style:none;margin:0 0 var(--s3);padding:0}
+.article-v2 .related li a{display:flex;flex-direction:column;gap:var(--s3);height:100%;padding:var(--pad-card) var(--pad-card) var(--s5);background:var(--surface);border:1px solid rgba(10,27,46,.5);border-radius:var(--r-outer);color:var(--text);text-decoration:none;transition:box-shadow 150ms ease}
+.article-v2 .related li a:hover{box-shadow:var(--shadow-2)}
+.article-v2 .related img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-inner);background:var(--surface-sunk)}
+.article-v2 .related b{padding:0 var(--s3);font:700 var(--t-h3)/1.3 var(--display)}
+.article-v2 .related i{padding:0 var(--s3);margin-top:auto;font:700 var(--t-small)/1.2 var(--body);font-style:normal;color:var(--link)}
+.article-v2 .related i::after{content:" \2192"}
+
+/* mobile call bar: the article's number always one tap away. Slides in from the bottom edge once the hero is gone.
+   z-index 45, not the prototype's 55 (Brief 185, Track A6): the LIVE mobile drawer is z-50, so at 55 the bar
+   covered the open menu's phone + "Schedule a Service" buttons. 45 = above page content and the live header
+   (z-40, never overlaps it), below the live drawer (z-50) and the schedule popup (above z-100). */
+.article-v2 .callbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:45;gap:var(--s2);padding:var(--s3) var(--s4) calc(var(--s3) + env(safe-area-inset-bottom));background:var(--bg);box-shadow:0 -4px 16px rgba(10,27,46,.14);transform:translateY(110%);transition:transform 300ms var(--ease-drawer)}
+.article-v2 .callbar[data-show="true"]{transform:none}
+.article-v2 .callbar .btn{flex:1;margin:0;padding:0 var(--s3);white-space:nowrap}
+.article-v2 .callbar .btn-fill{flex:2}
+/* The prototype padded <body> so the bar never covers the page's last 76px (here: the live
+   footer's bottom row). `body:has(.article-v2)` is the file's one unprefixed selector — it
+   matches only while a V2 article is mounted. Body bg is Cream sitewide, same as the prototype. */
+@media (max-width:980px){.article-v2 .callbar{display:flex}body:has(.article-v2){padding-bottom:76px}}
+
+@media (prefers-reduced-motion:reduce){.article-v2 *{transition:none!important}.article-v2 .pulse{animation:none}}
+
+/* Hold structure until it breaks */
+@media (max-width:1180px){
+  .article-v2 .body{grid-template-columns:minmax(0,700px) 300px}
+  .article-v2 .toc{display:none}
+  .article-v2 .toc-m{display:block}
+}
+@media (max-width:980px){
+  .article-v2 .body,.article-v2 .body--no-toc{grid-template-columns:minmax(0,1fr)}
+  .article-v2 .rail{display:block}
+  .article-v2 .rail-stick{position:static}
+  .article-v2 .rail .ndc{display:none} /* as approved: mobile has the call bar; the rail keeps the office card */
+}
+@media (max-width:860px){
+  .article-v2 .masthead{grid-template-columns:var(--s5) minmax(0,1fr) var(--s5);grid-template-rows:auto auto auto}
+  .article-v2 .masthead-text{grid-column:2;padding-bottom:calc(var(--s7) + 64px)}
+  .article-v2 .masthead .frame{grid-column:2;grid-row:2;align-self:start;margin:-64px 0 0}
+  .article-v2 .masthead-meta{grid-column:2;grid-row:3;min-height:0}
+  .article-v2 .masthead--no-frame .masthead-text{padding-bottom:var(--s7)}
+  .article-v2 .masthead--no-frame .masthead-meta{grid-row:2}
+  .article-v2 .masthead-band::after{background:rgba(188,14,14,.5)}
+  .article-v2 .related ul{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .article-v2{font-size:var(--t-small);line-height:1.5} /* brand body 16/24 on phones keeps 40+ characters per line */
+  .article-v2 .rail{grid-template-columns:1fr}
+  .article-v2 .map iframe{aspect-ratio:4/3}
+  .article-v2 .faq details p{padding-right:0}
+  .article-v2 .communities > summary{padding:var(--s3) var(--s4)}
+  .article-v2 .communities-body{padding:0 var(--s4) var(--s2)}
+  .article-v2 .communities-group ul{grid-template-columns:repeat(auto-fill,minmax(min(100%,130px),1fr))}
+}
