@@ -81,7 +81,7 @@ export interface ArticleV2Faq {
  * The V2-only fields, in the order they appear on the page. Every string is
  * sanitized on every write path by `sanitizeArticleV2Content`
  * (article-v2-sanitize.ts) — plain-text fields lose all markup, the FAQ answer
- * keeps only the shared Brief 73 allow-list.
+ * keeps only the inline part of the shared Brief 73 allow-list.
  */
 export interface ArticleV2Content {
   /** Subtitle under the H1. Plain text, optional. */
@@ -158,7 +158,7 @@ export function bylineInitials(name: string): string {
   const n = name.trim();
   if (!n || n === DEFAULT_BYLINE_NAME) return DEFAULT_BYLINE_INITIALS;
   // Letters (incl. Latin accents) and digits only — "J." → "J", "O'Brien" → "OBrien".
-  const words = n.split(/\s+/).map((w) => w.replace(/[^A-Za-z0-9À-ɏ]/g, '')).filter(Boolean);
+  const words = n.split(/\s+/).map((w) => w.replace(/[^A-Za-z0-9\u00C0-\u024F]/g, '')).filter(Boolean);
   if (!words.length) return DEFAULT_BYLINE_INITIALS;
   const first = words[0][0];
   const last = words.length > 1 ? words[words.length - 1][0] : '';

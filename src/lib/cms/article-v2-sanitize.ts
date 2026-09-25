@@ -1,4 +1,4 @@
-import { sanitizeCmsHtml, sanitizeCmsPlainText } from '@/lib/cms/sanitize';
+import { sanitizeCmsInlineHtml, sanitizeCmsPlainText } from '@/lib/cms/sanitize';
 import { normalizeArticleV2, type ArticleV2Content } from '@/lib/cms/article-v2';
 
 /**
@@ -11,7 +11,8 @@ import { normalizeArticleV2, type ArticleV2Content } from '@/lib/cms/article-v2'
  * By declared type:
  *   plain text  dek, byline_name, image_alt, image_caption, takeaways[],
  *               service_area_label, faqs[].q     → sanitizeCmsPlainText
- *   rich text   faqs[].a                         → sanitizeCmsHtml (Brief 73 list)
+ *   limited     faqs[].a                         → sanitizeCmsInlineHtml (the inline
+ *                                                   subset of the Brief 73 list)
  *   enum / slug office, service_area             → normalizeArticleV2 (allow-list)
  *
  * Blank takeaways and blank FAQ rows (no question AND no answer) are dropped,
@@ -30,7 +31,7 @@ export function sanitizeArticleV2Content(raw: unknown): ArticleV2Content {
     service_area: v.service_area,
     service_area_label: sanitizeCmsPlainText(v.service_area_label).trim(),
     faqs: v.faqs
-      .map((f) => ({ q: sanitizeCmsPlainText(f.q).trim(), a: sanitizeCmsHtml(f.a).trim() }))
+      .map((f) => ({ q: sanitizeCmsPlainText(f.q).trim(), a: sanitizeCmsInlineHtml(f.a).trim() }))
       .filter((f) => f.q !== '' || f.a !== ''),
   };
 }

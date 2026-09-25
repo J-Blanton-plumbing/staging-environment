@@ -5,7 +5,7 @@ import TopicServiceLink from '@/components/kh/TopicServiceLink';
 import ArticleV2Client from '@/components/kh/ArticleV2Client';
 import { SITE } from '@/lib/site';
 import { BRAND_SUFFIX } from '@/lib/seo';
-import { renderCmsInline } from '@/lib/cms/sanitize';
+import { renderCmsInline, sanitizeCmsInlineHtml } from '@/lib/cms/sanitize';
 import { resolveTokens } from '@/lib/cms/tokens';
 import { formatOfficeAddress, type CmsOffice } from '@/lib/cms/offices';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
@@ -139,7 +139,8 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
 
   // ── Body: sanitized, {{phone}} = the article's phone, H2 ids, sections ──
   const body = buildV2Body(article.body, (html) => resolveTokens(html, tokenSettings, { escape: true }));
-  const faqs = v2.faqs.map((f) => ({ q: f.q, a: renderCmsInline(f.a, tokenSettings) }));
+  // FAQ answers: the inline allow-list (again, at render), then flattened into the one <p>.
+  const faqs = v2.faqs.map((f) => ({ q: f.q, a: renderCmsInline(sanitizeCmsInlineHtml(f.a), tokenSettings) }));
   const toc: V2TocItem[] = [...body.toc, ...(faqs.length ? [{ id: 'faq', label: UI.faqToc }] : [])];
 
   const words =
