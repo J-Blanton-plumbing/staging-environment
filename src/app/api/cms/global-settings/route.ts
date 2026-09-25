@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { getGlobalSettings, updateGlobalSettings } from '@/lib/cms/global-settings';
+import { getGlobalSettings, updateGlobalSettings, getRegionalPhones } from '@/lib/cms/global-settings';
 import { getSession } from '@/lib/auth/session';
 import { requireCmsSession } from '@/lib/auth/api-guard';
 
@@ -24,7 +24,8 @@ export async function GET(req: NextRequest) {
     if (!settings) {
       return NextResponse.json({ error: 'Global settings not found. Run the migration script.' }, { status: 404 });
     }
-    return NextResponse.json(settings);
+    // Brief 192: the regional phones travel with the settings for the editor only.
+    return NextResponse.json({ ...settings, ...(await getRegionalPhones()) });
   } catch (err) {
     console.error('GET /api/cms/global-settings error:', err);
     return NextResponse.json({ error: 'Failed to fetch global settings' }, { status: 500 });
@@ -50,6 +51,9 @@ export async function PUT(req: NextRequest) {
       ndcPrice2yr: body.ndcPrice2yr ?? undefined,
       serviceDesc: body.serviceDesc ?? undefined,
       offices: body.offices ?? undefined,
+      // Brief 192 (Track A)
+      centralOhioPhoneDisplay: typeof body.centralOhioPhoneDisplay === 'string' ? body.centralOhioPhoneDisplay.trim() : undefined,
+      centralOhioPhoneHref: typeof body.centralOhioPhoneHref === 'string' ? body.centralOhioPhoneHref.trim() : undefined,
     });
     // Brief 107 — settings are read by the shared root layout (Navbar, Footer,
     // LocalBusinessSchema) on every force-dynamic page, so revalidating the

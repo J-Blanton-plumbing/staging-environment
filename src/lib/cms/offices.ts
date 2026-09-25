@@ -38,13 +38,17 @@ export interface CmsOffice {
    * Does NOT affect `LocalBusinessSchema` — see that component's docblock.
    */
   showInFooter?: boolean;
-  /**
-   * Brief 190 — the office's own phone line, e.g. "614-547-6516". Optional and
-   * blank on every office until Marketing enters one in /admin/global-settings.
-   * Read ONLY by Article V2 (its office card, CTAs and mobile call bar); every
-   * other surface keeps the global phone, and a blank value falls back to it.
-   */
-  phone?: string;
+}
+
+/**
+ * Brief 192 — the region an office belongs to. Offices carry no region field;
+ * the site has always derived it from the postal state (the store locator's
+ * rule, Brief 171): OH → Central Ohio, anything else → Chicagoland. Lifted here,
+ * DB-free, so the locator, Article V2 and the admin share ONE definition.
+ */
+export type OfficeRegion = 'central-ohio' | 'chicagoland';
+export function officeRegion(o: Pick<CmsOffice, 'state'>): OfficeRegion {
+  return (o.state ?? '').trim().toUpperCase() === 'OH' ? 'central-ohio' : 'chicagoland';
 }
 
 /** `${streetAddress}, ${city}, ${state} ${zip}` — the single-line NAP/footer format used everywhere. */

@@ -121,7 +121,9 @@ const SAVE_ARTICLE_HELP =
 const V2_BODY_HELP =
   `Article V2: each Heading 2 becomes a table-of-contents entry. Put a paragraph containing only ${OFFICE_MAP_MARKER} ` +
   'where the office map, directions and service-area list should appear — without it they appear after the body. ' +
-  "{{phone}} becomes the article's phone (the chosen office's, else the main number). Quotes: in the HTML tab use " +
+  'Content components (below) appear where their marker, e.g. [[component:promises]], sits on a line of its own. ' +
+  "{{phone}} becomes the article's phone (the Central Ohio phone for a Central Ohio office, else the main number). " +
+  'A link to #schedule opens the booking popup. Quotes: in the HTML tab use ' +
   '<blockquote><p>“Quote”</p><p><img src="…" alt=""> <strong>Name</strong> Title</p></blockquote> — ' +
   'a last paragraph that starts with a photo is styled as the attribution.';
 
@@ -359,7 +361,7 @@ export default function ArticleAdminPage() {
           {isV2 && (
             <div style={SECTION}>
               <h3 style={SECTION_HEADING}>Article V2</h3>
-              <ArticleV2Fields value={form.v2} onChange={v2 => set('v2', v2)} />
+              <ArticleV2Fields value={form.v2} onChange={v2 => set('v2', v2)} body={form.body} />
             </div>
           )}
 

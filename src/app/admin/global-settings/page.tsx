@@ -23,8 +23,6 @@ interface OfficeFormState {
   state: string;
   zip: string;
   mapUrl: string;
-  /** Brief 190 — optional office line; used only by Article V2 articles. */
-  phone: string;
   lat: string;
   lng: string;
   /** Brief 107 (Track B) — whether this office appears in the public footer directory. */
@@ -34,6 +32,9 @@ interface OfficeFormState {
 interface FormState {
   phoneDisplay: string;
   phoneHref: string;
+  /** Brief 192 (Track A): the Central Ohio phone. Blank = use the main phone. */
+  centralOhioPhoneDisplay: string;
+  centralOhioPhoneHref: string;
   headerPhone: string;
   ctaPrimaryLabel: string;
   taglineTurning: string;
@@ -57,13 +58,15 @@ const EMPTY_SERVICE_DESC: ServiceDescState = {
 };
 
 const EMPTY_OFFICE: OfficeFormState = {
-  slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', phone: '', lat: '', lng: '',
+  slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', lat: '', lng: '',
   showInFooter: true,
 };
 
 const EMPTY: FormState = {
   phoneDisplay: '',
   phoneHref: '',
+  centralOhioPhoneDisplay: '',
+  centralOhioPhoneHref: '',
   headerPhone: '',
   ctaPrimaryLabel: '',
   taglineTurning: '',
@@ -134,9 +137,6 @@ const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng' | 's
   { key: 'state', label: 'State', placeholder: 'IL' },
   { key: 'zip', label: 'ZIP', placeholder: '60062' },
   { key: 'mapUrl', label: 'Google Maps Link', placeholder: 'https://maps.app.goo.gl/…' },
-  // Brief 190: shown only on Article V2 articles that pick this office. Blank →
-  // those articles use the main phone above.
-  { key: 'phone', label: 'Office Phone (Article V2 only — blank = main phone)', placeholder: '614-547-6516' },
 ];
 
 function toNum(v: string): number | null {
@@ -219,9 +219,6 @@ function toCmsOffice(o: OfficeFormState) {
     state: o.state,
     zip: o.zip,
     mapUrl: o.mapUrl,
-    // Omitted when blank, so an office nobody gave a line to saves exactly the
-    // record it had before Brief 190.
-    ...(o.phone.trim() ? { phone: o.phone.trim() } : {}),
     lat: toNum(o.lat),
     lng: toNum(o.lng),
     showInFooter: o.showInFooter,
@@ -246,7 +243,6 @@ export default function GlobalSettingsPage() {
               state: typeof o.state === 'string' ? o.state : '',
               zip: typeof o.zip === 'string' ? o.zip : '',
               mapUrl: typeof o.mapUrl === 'string' ? o.mapUrl : '',
-              phone: typeof o.phone === 'string' ? o.phone : '',
               lat: o.lat == null ? '' : String(o.lat),
               lng: o.lng == null ? '' : String(o.lng),
               showInFooter: o.showInFooter !== false,
@@ -255,6 +251,8 @@ export default function GlobalSettingsPage() {
         setForm({
           phoneDisplay: data.phoneDisplay ?? '',
           phoneHref: data.phoneHref ?? '',
+          centralOhioPhoneDisplay: data.centralOhioPhoneDisplay ?? '',
+          centralOhioPhoneHref: data.centralOhioPhoneHref ?? '',
           headerPhone: data.headerPhone ?? '',
           ctaPrimaryLabel: data.ctaPrimaryLabel ?? '',
           taglineTurning: data.taglineTurning ?? '',
@@ -378,6 +376,18 @@ export default function GlobalSettingsPage() {
             <label style={labelStyle}>Phone Link (e.g. tel:773-724-9272)</label>
             <input style={s} value={form.phoneHref} onChange={e => set('phoneHref', e.target.value)} placeholder="tel:773-724-9272" />
           </div>
+          {/* Brief 192 (Track A): right below the main phone, same shape. */}
+          <div>
+            <label style={labelStyle}>Central Ohio Phone Number</label>
+            <input style={s} value={form.centralOhioPhoneDisplay} onChange={e => set('centralOhioPhoneDisplay', e.target.value)} placeholder="614-547-6516" />
+          </div>
+          <div>
+            <label style={labelStyle}>Central Ohio Phone Link (e.g. tel:614-547-6516)</label>
+            <input style={s} value={form.centralOhioPhoneHref} onChange={e => set('centralOhioPhoneHref', e.target.value)} placeholder="tel:614-547-6516" />
+          </div>
+          <p className="admin-span-2" style={{ ...sectionDescStyle, margin: '-0.25rem 0 0.25rem' }}>
+            Used for Central Ohio content (e.g. Article V2 pages with a Central Ohio office). Leave blank to use the main phone.
+          </p>
           <div>
             <label style={labelStyle}>Header Phone — NOT USED (WhatConverts swaps the number above)</label>
             <input style={s} value={form.headerPhone} onChange={e => set('headerPhone', e.target.value)} placeholder="773-900-8690" />

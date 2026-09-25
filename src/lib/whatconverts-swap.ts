@@ -32,7 +32,13 @@
  * every phone link uses. That makes the outcome consistent even when no storage is
  * readable at all.
  *
- * EXCEPT inside `[data-wc-ignore]` (Brief 190, Track F): a page section that
+ * Brief 192 (Track D): sources 3 and 4 count ONLY anchors that held the default
+ * number earlier on the same page (`recordDefaultAnchors`) — i.e. anchors the
+ * vendor demonstrably rewrote. Before this, any non-default tel: link in the
+ * page content (e.g. a state agency's number on /consumer-rights) was taken as
+ * "the swap" and pushed into the header for the rest of the visit.
+ *
+ * And never inside `[data-wc-ignore]` (Brief 190, Track F): a page section that
  * shows another real number on purpose — a local office line — opts its anchors
  * out of sources 3 and 4, so that number can never be mistaken for the swap.
  * The opt-out only narrows what counts as evidence; it does not stop the vendor
@@ -94,6 +100,45 @@ function fromLocalStorage(): SwapPair[] {
 }
 
 /**
+ * Brief 192 (Track D) — PROOF that the vendor rewrote an anchor.
+ *
+ * The vendor's swap (`replace_number` in the deployed 102905.js, read
+ * 2026-09-25) replaces occurrences of the ORIGINAL number in text nodes and in
+ * `href`/`title` attributes. It marks nothing, but its effect has one shape: an
+ * anchor that showed the default number now shows another one. So the DOM
+ * fallback accepts a number ONLY from an anchor this module saw holding the
+ * default number earlier on the same page. A number that is merely in the page
+ * content (a state agency's line, a division's line, an office line) was never
+ * the default on its anchor, so it can never become "the swap" — on any page,
+ * today or in future CMS content.
+ *
+ * Why "earlier" is always before the vendor runs: the vendor script is injected
+ * from an effect (WhatConvertsRouteSwap) and is async, so it executes after
+ * every effect of that commit — including the first resolveSwap() of the header
+ * hook, the page's PhoneLinks and RouteSwap's own repair pass, each of which
+ * records the anchors holding the default here first.
+ *
+ * Reset per path: after a client navigation React may REUSE an anchor node for a
+ * different number (e.g. one article's rail link becoming another's), so a node
+ * seen with the default on the previous page is no evidence on this one.
+ */
+let seenDefault = new WeakSet<Element>();
+let seenPath: string | null = null;
+
+function recordDefaultAnchors(defaultDigits: string, anchors: Element[]): void {
+  const path = typeof window === 'undefined' ? '' : window.location.pathname;
+  if (path !== seenPath) {
+    seenDefault = new WeakSet<Element>();
+    seenPath = path;
+  }
+  for (const anchor of anchors) {
+    const href = digitsOf(anchor.getAttribute('href') ?? '').slice(-10);
+    const text = digitsOf(anchor.textContent ?? '').slice(-10);
+    if (href === defaultDigits || text === defaultDigits) seenDefault.add(anchor);
+  }
+}
+
+/**
  * Reads back what the vendor actually applied to the page. `useText` looks at the
  * rendered number instead of the attribute, which is what catches a page whose
  * text was swapped while its href was not.
@@ -101,7 +146,13 @@ function fromLocalStorage(): SwapPair[] {
 function fromDom(defaultDigits: string, useText: boolean): SwapPair | null {
   if (typeof document === 'undefined' || defaultDigits.length !== 10) return null;
   const counts = new Map<string, number>();
-  Array.from(document.querySelectorAll('a[href^="tel:"]')).forEach((anchor) => {
+  const anchors = Array.from(document.querySelectorAll('a[href^="tel:"]'));
+  recordDefaultAnchors(defaultDigits, anchors);
+  anchors.forEach((anchor) => {
+    // Brief 192 (Track D): only an anchor that held the default number on this
+    // page can carry the swap (see recordDefaultAnchors). Everything else on the
+    // page is content, never evidence.
+    if (!seenDefault.has(anchor)) return;
     // Brief 190 (Track F): a container marked `data-wc-ignore` holds a SECOND
     // real number on purpose (an Article V2 office phone, the Columbus test
     // article's 614 line). Its anchors are not evidence of a swap — without this,

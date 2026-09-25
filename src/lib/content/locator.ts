@@ -19,6 +19,7 @@
  * the region keys this file expects ever stop existing.
  */
 import type { CmsOffice } from '@/lib/cms/offices';
+import { officeRegion } from '@/lib/cms/offices';
 import { CHICAGOLAND, COLUMBUS_REGION } from '@/lib/content/locations-regions';
 
 /* ── Copy (Track E3) ───────────────────────────────────────────────────────── */
@@ -159,10 +160,10 @@ export interface LocatorRegionView {
  * change, and an office in a third state fails the exhaustiveness check below
  * instead of being silently filed under Chicagoland.
  */
-const OHIO_POSTAL = 'OH';
-
+// Brief 192: the OH → Central Ohio rule now lives in offices.ts (officeRegion),
+// shared with Article V2's phone rule. Same result as before.
 function regionKeyForOffice(o: CmsOffice): LocatorRegionKey {
-  return o.state.trim().toUpperCase() === OHIO_POSTAL ? 'columbus' : 'chicagoland';
+  return officeRegion(o) === 'central-ohio' ? 'columbus' : 'chicagoland';
 }
 
 /**

@@ -16,11 +16,12 @@
  * UNLAYERED on purpose — unlayered beats globals.css `@layer base`.
  *
  * ══ 2. DELETED (the body is CMS rich text now) ════════════════════════════
- * `.promises`, `.svc`, `.same`, `.benefits`, `.eyebrow`, `.art-fig`,
- * `.avatar-img`, `blockquote footer`: they styled class names the test page
- * hand-wrote into its body. The CMS sanitizer strips `class` (and `id`,
- * `<footer>`, `<cite>`), so no V2 body can carry them. Replaced by element
- * rules for what the body CAN carry (§3).
+ * `.eyebrow`, `.art-fig`, `.avatar-img`, `blockquote footer`: they styled class
+ * names the test page hand-wrote into its body. The CMS sanitizer strips
+ * `class` (and `id`, `<footer>`, `<cite>`), so no V2 body can carry them.
+ * Replaced by element rules for what the body CAN carry (§3).
+ * Brief 192 RESTORED `.promises`, `.svc`, `.same`, `.benefits` verbatim: they are
+ * now rendered by React from structured fields (V2Blocks.tsx), not body HTML.
  *
  * ══ 3. ADDED ═══════════════════════════════════════════════════════════════
  *   • `.kh-chip-list--on-red` — the Brief 187 chips on the Carmine masthead.
@@ -172,6 +173,39 @@
 .article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child) > img{grid-row:1/span 2;width:48px;height:48px;border-radius:50%;object-fit:cover;outline:1px solid rgba(10,27,46,.1);outline-offset:-1px;box-shadow:0 0 0 3px var(--surface)}
 .article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child) > :is(strong,b){display:block;align-self:end;color:var(--text);font:700 1rem/1.3 var(--display)}
 .article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child) > br{display:none}
+
+/* ---------- Brief 192 (Track B): the three content components ----------
+   Ported VERBATIM from the prototype (02_dev-source/jbp-columbus-v3.dev.html, as ported to
+   columbus-article-test.css), with only the scope renamed. V2Blocks.tsx renders the prototype's
+   exact markup: ul.promises > li > b + span · ul.svc > li > b + span + a.more ·
+   div.same > div > h3 + p + ul.benefits + a.more. */
+/* promise list: grouped by space, no dividers */
+.article-v2 .promises{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5) var(--s6);list-style:none;padding:0;margin:var(--s5) 0}
+.article-v2 .promises li{margin:0}
+.article-v2 .promises b{display:block;font:700 var(--t-h3)/1.3 var(--display);margin-bottom:var(--s1)}
+.article-v2 .promises span{font-size:1rem;color:var(--text-muted);line-height:1.6}
+
+/* services: a single-column list. Each row = service name | description (+ link). Even rhythm, no orphan cell. */
+.article-v2 .svc{list-style:none;padding:0;margin:var(--s5) 0;border-top:1px solid var(--border)}
+.article-v2 .svc li{display:grid;grid-template-columns:220px minmax(0,1fr);column-gap:var(--s6);align-items:start;margin:0;padding:var(--s5) 0;border-bottom:1px solid var(--border)}
+.article-v2 .svc b{grid-row:span 2;font:700 var(--t-h3)/1.3 var(--display)} /* name spans both rows so the link sits right under its description */
+.article-v2 .svc span{display:block;font-size:var(--t-small);color:var(--text-muted);line-height:1.5}
+.article-v2 .svc .more{grid-column:2;min-height:44px;margin:0 0 calc(-1 * var(--s3))} /* 44px hit area; negative bottom margin keeps row padding visually even */
+
+/* feature cards ("What stays the same") */
+.article-v2 .same{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s5)}
+.article-v2 .same > div{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--s5)}
+.article-v2 .same p{font-size:1rem;line-height:1.6;color:var(--text-muted)}
+.article-v2 .benefits{list-style:none;padding:0;margin:0 0 var(--s4);font-size:1rem}
+.article-v2 .benefits li{display:flex;gap:var(--s2);align-items:baseline}
+.article-v2 .benefits svg{flex:none;transform:translateY(2px)}
+
+/* Brief 192 (Track C): the Schedule CTAs are <button class="schedule-popup btn …"> (they open the
+   booking popup, as on V1) where the prototype had links. Same look: cancel the button's own
+   chrome and keep the link's full-width block. Background is cleared on .btn-line only, so the
+   filled button keeps its fill. */
+.article-v2 button.btn{-webkit-appearance:none;appearance:none;border:0;cursor:pointer;width:100%}
+.article-v2 button.btn-line{background:transparent}
 
 /* in-article photos: plain image, brand 10px radius, no frame (the hero keeps the framed treatment).
    Was `.art-fig` on the test page; here it is any image the body carries. */
@@ -331,6 +365,10 @@
 }
 @media (max-width:620px){
   .article-v2{font-size:var(--t-small);line-height:1.5} /* brand body 16/24 on phones keeps 40+ characters per line */
+  .article-v2 .promises,.article-v2 .same{grid-template-columns:1fr}
+  .article-v2 .svc li{grid-template-columns:1fr;row-gap:var(--s1)}
+  .article-v2 .svc .more{grid-column:1}
+  .article-v2 .svc b{grid-row:auto}
   .article-v2 .rail{grid-template-columns:1fr}
   .article-v2 .map iframe{aspect-ratio:4/3}
   .article-v2 .faq details p{padding-right:0}

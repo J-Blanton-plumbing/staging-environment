@@ -189,6 +189,10 @@ const STATEMENTS: string[] = [
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS service_desc_water_quality TEXT DEFAULT 'Water filtration, testing, and treatment solutions.'::text`,
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS service_desc_commercial TEXT DEFAULT 'Commercial plumbing built for business reliability.'::text`,
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS offices JSONB`,
+  // Brief 192 (Track A): the Central Ohio phone. Nullable, blank = use the main
+  // phone. Seeded once (fill-gaps) by migrate-brief-192-central-ohio-phone.ts.
+  `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS central_ohio_phone_display TEXT`,
+  `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS central_ohio_phone_href TEXT`,
 
   // ── main_pages ──────────────────────────────────────────────────────────
   `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS content JSONB NOT NULL DEFAULT '{}'::jsonb`,

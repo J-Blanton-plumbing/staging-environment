@@ -58,7 +58,45 @@ export interface GlobalSettings {
 // Only these columns are user-editable via /admin/global-settings.
 export type GlobalSettingsUpdate = Partial<
   Pick<GlobalSettings, 'phoneDisplay' | 'phoneHref' | 'headerPhone' | 'ctaPrimaryLabel' | 'taglineTurning' | 'hoursLabel' | 'ndcPrice' | 'ndcPrice1yr' | 'ndcPrice2yr' | 'serviceDesc' | 'offices'>
->;
+> & Partial<RegionalPhones>;
+
+/**
+ * Brief 192 (Track A) — phone numbers by REGION (Marketing, 2026-09-25): the
+ * main phone above, plus a Central Ohio phone for Central Ohio content (Article
+ * V2 with a Central Ohio office). Blank = use the main phone.
+ *
+ * DELIBERATELY NOT a field of `GlobalSettings`. The root layout hands that whole
+ * object to the client SiteShell, so a new key there would ride in the RSC
+ * payload of every page on the site. This reader is used only where the number
+ * is rendered. The header never reads it: it always shows the programmatic
+ * (WhatConverts / main) number.
+ */
+export interface RegionalPhones {
+  centralOhioPhoneDisplay: string;
+  centralOhioPhoneHref: string;
+}
+
+export const NO_REGIONAL_PHONES: RegionalPhones = { centralOhioPhoneDisplay: '', centralOhioPhoneHref: '' };
+
+export async function getRegionalPhones(): Promise<RegionalPhones> {
+  // to_jsonb: a database the Brief 192 migration has not reached yet reads as blank.
+  const res = await pool.query<{ d: string | null; h: string | null }>(
+    `SELECT to_jsonb(g) ->> 'central_ohio_phone_display' AS d, to_jsonb(g) ->> 'central_ohio_phone_href' AS h
+       FROM global_settings g WHERE id = 1`
+  );
+  const r = res.rows[0];
+  return { centralOhioPhoneDisplay: r?.d ?? '', centralOhioPhoneHref: r?.h ?? '' };
+}
+
+/** Never throws: an unreachable DB means "no regional phone" (the main number shows). */
+export const getRegionalPhonesCached = cache(async (): Promise<RegionalPhones> => {
+  try {
+    return await getRegionalPhones();
+  } catch (err) {
+    console.error('getRegionalPhonesCached: using the main phone:', err);
+    return NO_REGIONAL_PHONES;
+  }
+});
 
 /**
  * The 15 offices, as static data — the `FALLBACK.offices` value, lifted to a
@@ -265,6 +303,18 @@ export async function updateGlobalSettings(data: GlobalSettingsUpdate): Promise<
         data.ndcPrice2yr ?? null,
       ]
     );
+    // Brief 192: the regional phones, in their own statement so the upsert above
+    // is byte-for-byte what it was. '' is a real value ("use the main phone");
+    // an absent key (null) keeps the stored one.
+    if (data.centralOhioPhoneDisplay !== undefined || data.centralOhioPhoneHref !== undefined) {
+      await client.query(
+        `UPDATE global_settings SET
+           central_ohio_phone_display = COALESCE($1, central_ohio_phone_display),
+           central_ohio_phone_href    = COALESCE($2, central_ohio_phone_href)
+         WHERE id = 1`,
+        [data.centralOhioPhoneDisplay ?? null, data.centralOhioPhoneHref ?? null]
+      );
+    }
   } finally {
     client.release();
   }
