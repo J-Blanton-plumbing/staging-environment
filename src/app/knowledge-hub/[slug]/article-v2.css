@@ -224,11 +224,17 @@
 
 /* brand secondary link: Nunito 16px with an arrow, no underline until hover. 44px tall hit area. */
 .article-v2 .more{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:700 var(--t-small)/1.2 var(--body);color:var(--link);text-decoration:none}
-.article-v2 .more::after{content:"\2192";transition:transform 160ms var(--ease-out);font-family:system-ui,sans-serif}
-/* Brief 192 fidelity fix: Nunito has no "→" glyph. In the approved file the arrow falls back to
-   system-ui (its stack is `Nunito, system-ui`); on the site next/font's size-adjusted Arial
-   fallback caught it first, drawing it 2.4px wider (measured — the link text was identical).
-   Naming system-ui on the arrow alone restores the approved fallback. */
+.article-v2 .more::after{content:"\2192";transition:transform 160ms var(--ease-out);font-family:"JBP V2 Arrow",system-ui,sans-serif}
+/* Brief 192 fidelity fix. Nunito has no "→" glyph. In the approved file (stack `Nunito, system-ui`)
+   the arrow is drawn by the system UI font — Segoe UI Bold on Windows — while the line box keeps
+   NUNITO's metrics. On the site, next/font's size-adjusted Arial fallback caught the glyph first,
+   drawing it 2.4px wider (measured; the link text itself was pixel-identical). Naming system-ui
+   alone fixed the width but moved the arrow 1px down (Segoe's metrics, not Nunito's). This face is
+   the approved rendering exactly: the local Segoe UI Bold glyph (no download) on Nunito's vertical
+   metrics (typo ascent 1011 / descent 353 / gap 0 per 1000, USE_TYPO_METRICS set — read from
+   public/fonts/Nunito). Where Segoe UI is not installed, system-ui takes over, as in the approved
+   file. A @font-face name is global but inert: nothing outside this file names it. */
+@font-face{font-family:"JBP V2 Arrow";src:local("Segoe UI Bold"),local("SegoeUI-Bold");font-weight:700;ascent-override:101.1%;descent-override:35.3%;line-gap-override:0%}
 .article-v2 .more:hover{text-decoration:underline}
 @media (hover:hover){.article-v2 .more:hover::after{transform:translateX(3px)}}
 
@@ -328,7 +334,7 @@
 .article-v2 .related img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-inner);background:var(--surface-sunk)}
 .article-v2 .related b{padding:0 var(--s3);font:700 var(--t-h3)/1.3 var(--display)}
 .article-v2 .related i{padding:0 var(--s3);margin-top:auto;font:700 var(--t-small)/1.2 var(--body);font-style:normal;color:var(--link)}
-.article-v2 .related i::after{content:" \2192";font-family:system-ui,sans-serif} /* same arrow fallback fix as .more */
+.article-v2 .related i::after{content:" \2192";font-family:"JBP V2 Arrow",system-ui,sans-serif} /* same arrow fix as .more */
 
 /* mobile call bar: the article's number always one tap away. Slides in from the bottom edge once the hero is gone.
    z-index 45, not the prototype's 55 (Brief 185, Track A6): the LIVE mobile drawer is z-50, so at 55 the bar
