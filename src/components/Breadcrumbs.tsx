@@ -17,6 +17,14 @@ import { breadcrumbListJsonLd } from '@/lib/schema/breadcrumb-list';
  *     its absolute canonical `item` URL (built from SITE.baseUrl), so the schema
  *     is complete even before an ancestor page exists.
  *
+ * `hideCurrent` (Brief 193 follow-up, Marketing 2026-09-28 — the V1 article, to
+ * match the Brief 191 V2 rule): the VISIBLE trail drops the last crumb (the
+ * page's own title, which the H1 repeats directly below), so every visible
+ * crumb is an ancestor and none is aria-current. The JSON-LD keeps the FULL
+ * trail — the post-deploy validator requires a BreadcrumbList to end at the
+ * page's own canonical (Brief 188 F4). Off by default, so every other page
+ * renders exactly as before.
+ *
  * Brand only: Cerulean links (`text-accent-500`), Midnight text (`text-navy-800`),
  * Nunito (`font-sans`). No `#000000`.
  */
@@ -25,8 +33,9 @@ export interface BreadcrumbItem {
   href: string;
 }
 
-export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+export default function Breadcrumbs({ items, hideCurrent = false }: { items: BreadcrumbItem[]; hideCurrent?: boolean }) {
   if (!items || items.length === 0) return null;
+  const visible = hideCurrent ? items.slice(0, -1) : items;
 
   // Brief 188: built by the shared pure helper (same object, same key order)
   // so the prebuild JSON-LD check validates exactly what this renders.
@@ -35,15 +44,16 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   return (
     <nav aria-label="Breadcrumb" className="w-[90%] lg:w-[81%] mx-auto pt-5 lg:pt-8">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 font-sans text-[13px] leading-tight md:text-[14px]">
-        {items.map((it, i) => {
-          const isLast = i === items.length - 1;
+        {visible.map((it, i) => {
+          const isLast = i === visible.length - 1;
+          const isCurrent = isLast && !hideCurrent;
           const live = isLiveBreadcrumbRoute(it.href);
           return (
             <li key={`${it.href}-${i}`} className="flex items-center gap-x-2">
-              {isLast || !live ? (
+              {isCurrent || !live ? (
                 <span
                   className="text-navy-800 font-semibold"
-                  aria-current={isLast ? 'page' : undefined}
+                  aria-current={isCurrent ? 'page' : undefined}
                 >
                   {it.label}
                 </span>

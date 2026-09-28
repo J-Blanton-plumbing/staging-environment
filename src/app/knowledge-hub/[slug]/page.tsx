@@ -226,7 +226,7 @@ export default async function ArticlePage({
 
       {/* ── BREADCRUMBS (Brief 188 D) — visible trail + the page's one BreadcrumbList ── */}
       <div className="article-crumbs">
-        <Breadcrumbs items={crumbs} />
+        <Breadcrumbs items={crumbs} hideCurrent />
       </div>
 
       {/* ── TAGS (Brief 187 C2) — renders nothing when the article has none ── */}
