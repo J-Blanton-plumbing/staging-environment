@@ -6,7 +6,7 @@ import { isExternalUrl, isSafeComponentUrl } from '@/lib/cms/article-v2';
  * Brief 192 (Track B) — Article V2's three reusable content components.
  *
  * Each renders the approved prototype's EXACT markup and classes
- * (02_dev-source/jbp-columbus-v3.dev.html; the live /columbus-article-test):
+ * (02_dev-source/jbp-columbus-v3.dev.html; the Brief 185 test page, retired by Brief 191):
  *   Promise list   ul.promises > li > b + span
  *   Service rows   ul.svc      > li > b + span (+ a.more)
  *   Feature cards  div.same    > div > h3 + p (+ ul.benefits > li > svg + text) (+ a.more)

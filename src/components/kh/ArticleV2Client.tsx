@@ -12,7 +12,8 @@ const ArticleV2Styles = dynamic(() => import('./ArticleV2Styles'));
 
 /**
  * Brief 190 — Article V2's two behaviours, ported from the Columbus test page's
- * client component (Brief 185, `ColumbusArticleTestClient.tsx`), plus the one
+ * client component (Brief 185, `ColumbusArticleTestClient.tsx`, deleted by
+ * Brief 191 — see git history), plus the one
  * job that makes hard rule 6 hold: it renders ArticleV2Styles (above), the
  * code-split V2 stylesheet. Renders no markup of its own.
  *

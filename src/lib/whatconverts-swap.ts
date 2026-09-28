@@ -154,7 +154,7 @@ function fromDom(defaultDigits: string, useText: boolean): SwapPair | null {
     // page is content, never evidence.
     if (!seenDefault.has(anchor)) return;
     // Brief 190 (Track F): a container marked `data-wc-ignore` holds a SECOND
-    // real number on purpose (an Article V2 office phone, the Columbus test
+    // real number on purpose (an Article V2 regional phone, e.g. the Columbus
     // article's 614 line). Its anchors are not evidence of a swap — without this,
     // a visitor with no pool number had the header adopt the office number as
     // "the tracking number" and keep it on every page they clicked to next.
