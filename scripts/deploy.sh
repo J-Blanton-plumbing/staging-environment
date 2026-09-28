@@ -713,6 +713,19 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/migrate-brief-192-central-ohio-phone.ts commit
+# -- Brief 191: the Columbus launch article (Article V2) -----------------
+# CREATE-ONCE: creates /knowledge-hub/now-serving-columbus-central-ohio
+# (live row + tags + related + a published "Version 1 — live" version) only
+# if no article has that slug. Every deploy after the first reports
+# ALREADY-EXISTS and writes nothing — editors own the article from then on.
+# Guarded on content state (report + exit 0, nothing written): the Central
+# Ohio phone must be exactly 614-547-6516 (the script never writes it), and
+# the columbus office, company-news topic and central-ohio location must exist.
+# MUST stay AFTER the Brief 192 migration above (it reads the Central Ohio
+# phone) and the Brief 187/188 steps (tags, related). Do NOT add `|| true`.
+# `-r tsconfig-paths/register` is REQUIRED: it uses the app's sanitizers.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-brief-191-columbus-article.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

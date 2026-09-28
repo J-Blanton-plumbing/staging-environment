@@ -1,9 +1,10 @@
 /*
  * Article V2 — the second Knowledge Hub article template (Brief 190).
  *
- * The approved Columbus design (Briefs 185 + 189), ported from
- * src/app/columbus-article-test/columbus-article-test.css with its values,
- * order and comments. Read that file's header for the original port notes
+ * The approved Columbus design (Briefs 185 + 189), ported from the Brief 185
+ * test page's stylesheet (src/app/columbus-article-test/columbus-article-test.css,
+ * deleted by Brief 191 — read it in git history) with its values, order and
+ * comments. That file's header held the original port notes
  * (Preflight / `@layer base` cancellations, the 70px fixed-header offset, the
  * 1070px logo-clearance breakpoint, the z-45 call bar). What changed here:
  *
@@ -175,8 +176,8 @@
 .article-v2 blockquote > p:last-child:not(:first-child):has(> img:first-child) > br{display:none}
 
 /* ---------- Brief 192 (Track B): the three content components ----------
-   Ported VERBATIM from the prototype (02_dev-source/jbp-columbus-v3.dev.html, as ported to
-   columbus-article-test.css), with only the scope renamed. V2Blocks.tsx renders the prototype's
+   Ported VERBATIM from the prototype (02_dev-source/jbp-columbus-v3.dev.html, as ported to the
+   Brief 185 test page's CSS, now in git history), with only the scope renamed. V2Blocks.tsx renders the prototype's
    exact markup: ul.promises > li > b + span · ul.svc > li > b + span + a.more ·
    div.same > div > h3 + p + ul.benefits + a.more. */
 /* promise list: grouped by space, no dividers */
