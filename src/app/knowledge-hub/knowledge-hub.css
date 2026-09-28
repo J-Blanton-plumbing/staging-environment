@@ -559,3 +559,204 @@
 .kh-page .kh .kh-service-link {
   padding: 40px 0 0;
 }
+
+/* ---- Brief 193: Featured Article card (hub page 1 only) --------------------
+   Rendered between the "HELPFUL ARTICLES" intro row and the topic filter row.
+   Every rule is scoped under `.kh-page .kh-featured`, because this file is also
+   linked on the topic and area pages. Motion is CSS only (no framer-motion):
+   a one-time entry fade, a hover lift on pointer devices (the card is never
+   scaled — only the image, inside its overflow-hidden frame), and none of it
+   under prefers-reduced-motion. Colours: the four brand colours only. */
+.kh-page .kh-featured {
+  margin: 0 0 40px;
+  animation: kh-featured-in 400ms ease-out both;
+}
+@keyframes kh-featured-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+/* The eyebrow: the `.align1 h2.red-text` label (Carmine, Industry Bold, normal
+   tracking) one step smaller — 32px → 24px (28px → 22px on mobile). A <p>. */
+.kh-page .kh-featured .kh-featured-eyebrow {
+  margin: 0 0 16px;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #bc0e0e;
+}
+.kh-page .kh-featured .kh-featured-card {
+  display: flex;
+  border-radius: 10px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.kh-page .kh-featured .kh-featured-media {
+  position: relative;
+  display: block;
+  flex: 0 0 45%;
+  min-height: 380px;
+  overflow: hidden;
+}
+.kh-page .kh-featured .kh-featured-media img {
+  transition: transform 300ms ease;
+}
+.kh-page .kh-featured .kh-featured-body {
+  flex: 1 1 55%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+.kh-page .kh-featured .kh-featured-chip {
+  align-self: flex-start;
+  margin-bottom: 14px;
+}
+.kh-page .kh-featured .kh-featured-title {
+  margin: 0 0 12px;
+  font-size: 26px;
+  line-height: 1.2;
+}
+.kh-page .kh-featured .kh-featured-title a {
+  text-decoration: none;
+}
+.kh-page .kh-featured .kh-featured-dek {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+/* Key takeaways — the V2 `.takeaways-label` treatment (Industry 14px, 0.12em,
+   uppercase, muted), with the V2 Carmine check per item. */
+.kh-page .kh-featured .kh-featured-takeaways {
+  margin: 0 0 24px;
+}
+.kh-page .kh-featured .kh-featured-takeaways-label {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  color: #1c3654;
+}
+.kh-page .kh-featured .kh-featured-takeaways ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kh-page .kh-featured .kh-featured-takeaways li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 8px;
+  font-family: var(--font-nunito), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0a1b2e;
+}
+.kh-page .kh-featured .kh-featured-takeaways li svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+.kh-page .kh-featured .kh-featured-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.kh-page .kh-featured .kh-featured-byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  font-size: 15px;
+  color: #1c3654;
+}
+.kh-page .kh-featured .kh-featured-read {
+  white-space: nowrap;
+}
+.kh-page .kh-featured .kh-featured-byline strong {
+  color: #0a1b2e;
+}
+/* The V2 masthead byline badge: 32px Carmine circle, Industry Bold initials. */
+.kh-page .kh-featured .kh-featured-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #bc0e0e;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 1;
+}
+.kh-page .kh-featured .kh-featured-cta {
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+/* Visible focus rings on every link in the card (title, chip, button). */
+.kh-page .kh-featured a:focus-visible {
+  outline: 3px solid #1560e6;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.kh-page .kh-featured .kh-featured-cta:focus-visible {
+  border-radius: 9999px;
+}
+@media (hover: hover) {
+  .kh-page .kh-featured .kh-featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 32px rgba(10, 27, 46, 0.16);
+  }
+  .kh-page .kh-featured .kh-featured-card:hover .kh-featured-media img {
+    transform: scale(1.03);
+  }
+}
+/* Tablet (~900px): same two columns, image ~40%, tighter padding. */
+@media only screen and (max-width: 1023px) {
+  .kh-page .kh-featured .kh-featured-media {
+    flex-basis: 40%;
+    min-height: 320px;
+  }
+  .kh-page .kh-featured .kh-featured-body {
+    padding: 24px;
+  }
+}
+/* Mobile (<768px): stacked — image on top at 16:10, full-width button. */
+@media only screen and (max-width: 767px) {
+  .kh-page .kh-featured {
+    margin-bottom: 32px;
+  }
+  .kh-page .kh-featured .kh-featured-eyebrow {
+    font-size: 22px;
+  }
+  .kh-page .kh-featured .kh-featured-card {
+    flex-direction: column;
+  }
+  .kh-page .kh-featured .kh-featured-media {
+    flex: 0 0 auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+  .kh-page .kh-featured .kh-featured-body {
+    padding: 20px;
+  }
+  .kh-page .kh-featured .kh-featured-title {
+    font-size: 22px;
+  }
+  .kh-page .kh-featured .kh-featured-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .kh-page .kh-featured .kh-featured-cta {
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kh-page .kh-featured,
+  .kh-page .kh-featured .kh-featured-card,
+  .kh-page .kh-featured .kh-featured-media img {
+    animation: none;
+    transition: none;
+    transform: none !important;
+  }
+}
