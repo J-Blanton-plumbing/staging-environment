@@ -210,7 +210,15 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
     ) : null;
 
   // ── Breadcrumb: the Brief 188 trail V1 renders, and its one BreadcrumbList ──
+  // The SCHEMA keeps the full trail, ending at this article: the post-deploy
+  // validator requires a BreadcrumbList to end at the page's own canonical
+  // (Brief 188 F4, scripts/validate-seo-routing.mjs). The VISIBLE trail drops
+  // that last crumb — the article title — because the H1 repeats it directly
+  // below (Marketing, 2026-09-28; the approved design ended at the topic).
+  // Every visible crumb is then an ancestor, so each is a link, none is
+  // aria-current.
   const crumbJsonLd = breadcrumbListJsonLd(crumbs, SITE.baseUrl);
+  const visibleCrumbs = crumbs.slice(0, -1);
 
   return (
     <div className="article-v2" data-wc-ignore="">
@@ -223,14 +231,11 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
         <div className="masthead-text">
           <nav className="crumbs" aria-label={UI.breadcrumb}>
             <ol>
-              {crumbs.map((c, i) => {
-                const last = i === crumbs.length - 1;
-                return (
-                  <li key={`${c.href}-${i}`} aria-current={last ? 'page' : undefined}>
-                    {last || !isLiveBreadcrumbRoute(c.href) ? c.label : <Link href={c.href}>{c.label}</Link>}
-                  </li>
-                );
-              })}
+              {visibleCrumbs.map((c, i) => (
+                <li key={`${c.href}-${i}`}>
+                  {isLiveBreadcrumbRoute(c.href) ? <Link href={c.href}>{c.label}</Link> : c.label}
+                </li>
+              ))}
             </ol>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbJsonLd) }} />
           </nav>
