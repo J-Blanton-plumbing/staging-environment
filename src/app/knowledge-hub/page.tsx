@@ -17,6 +17,8 @@ import { canonicalUrlFor } from '@/lib/seo';
 import { getTopicFilterRow, listHubArticles, parsePageParam, type KhArticlePage } from '@/lib/cms/kh-taxonomy';
 import ArticlesSection from './ArticlesSection';
 import TopicFilterRow from './TopicFilterRow';
+import FeaturedArticleCard from '@/components/kh/FeaturedArticleCard';
+import { getFeaturedArticle } from '@/lib/cms/kh-featured';
 import FaqSection from './FaqSection';
 import './knowledge-hub.css';
 
@@ -112,6 +114,11 @@ export default async function KnowledgeHubPage({ searchParams }: PageProps) {
   }
   if (articles && pageNum > articles.pageCount) notFound();
   const topics = await getTopicFilterRow();
+  // Brief 193: the Featured Article card — hub page 1 only, the CMS slug over
+  // the static default. Never throws; null (blank / unknown / unpublished slug,
+  // or a DB error) renders no section at all.
+  const featured =
+    pageNum === 1 ? await getFeaturedArticle(m(d.featured_article_slug, KNOWLEDGE_HUB.featuredArticleSlug)) : null;
 
   return (
     <div className="kh-page">
@@ -155,6 +162,11 @@ export default async function KnowledgeHubPage({ searchParams }: PageProps) {
               </Link>
             </div>
           </div>
+
+          {/* Brief 193: Featured Article — after the intro row, before the filter
+              row (which stays attached to the grid it filters). A ternary, not
+              `&&`, so page 2+ adds no `$undefined` to the RSC payload. */}
+          {featured ? <FeaturedArticleCard article={featured} /> : null}
 
           {/* Brief 187: topic filter row (only once a topic has articles) */}
           <TopicFilterRow topics={topics} activeSlug={null} />

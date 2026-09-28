@@ -14,6 +14,12 @@ export interface KnowledgeHubContent {
     cta: string;
     ctaHref: string;
   };
+  /**
+   * Brief 193: the article shown as the Featured Article card on hub page 1,
+   * when the CMS field (main_pages.content.featured_article_slug) is blank.
+   * Fails closed — an unknown or unpublished slug renders no card.
+   */
+  featuredArticleSlug: string;
   faqs: {
     label: string;
     body: string;
@@ -34,6 +40,7 @@ export const KNOWLEDGE_HUB: KnowledgeHubContent = {
     cta: 'VIEW SERVICES',
     ctaHref: '/services',
   },
+  featuredArticleSlug: 'now-serving-columbus-central-ohio',
   faqs: {
     label: 'FAQ',
     body: "Got questions? Whether you're curious about our services, need tips for maintaining your plumbing, or want to know what sets J. Blanton Plumbing apart, you'll find the answers right here.",

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import RichTextField from '@/components/admin/RichTextField';
+import FeaturedArticleField from '@/components/admin/FeaturedArticleField';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -22,6 +23,8 @@ interface FormState {
   intro_label: string;
   intro_body: string;
   intro_cta: string;
+  /** Brief 193: the Featured Article card's slug. '' = the static default. */
+  featured_article_slug: string;
   faqs_label: string;
   faqs_body: string;
   faqs: FaqField[];
@@ -31,7 +34,7 @@ interface FormState {
 }
 
 const EMPTY: FormState = {
-  hero_heading: '', intro_label: '', intro_body: '', intro_cta: '',
+  hero_heading: '', intro_label: '', intro_body: '', intro_cta: '', featured_article_slug: '',
   faqs_label: '', faqs_body: '', faqs: [],
   meta_title: '', meta_description: '',
 };
@@ -74,6 +77,7 @@ export default function KnowledgeHubAdminPage() {
           intro_label: data.intro_label ?? '',
           intro_body: data.intro_body ?? '',
           intro_cta: data.intro_cta ?? '',
+          featured_article_slug: data.featured_article_slug ?? '',
           faqs_label: data.faqs_label ?? '',
           faqs_body: data.faqs_body ?? '',
           faqs: Array.isArray(data.faqs) ? data.faqs : [],
@@ -173,6 +177,7 @@ export default function KnowledgeHubAdminPage() {
           <RichTextField label="Body" value={form.intro_body} onChange={v => set('intro_body', v)} rows={4} />
           <label style={lbl}>CTA Label</label>
           <input className="admin-field" style={s} value={form.intro_cta} onChange={e => set('intro_cta', e.target.value)} />
+          <FeaturedArticleField value={form.featured_article_slug} onChange={v => set('featured_article_slug', v)} />
         </div>
 
         <div style={sec}>
