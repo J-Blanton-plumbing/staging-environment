@@ -704,6 +704,15 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # mistyped afterwards, or the SQL errors (Brief 186). Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/migrate-brief-190-article-v2.ts commit
+# -- Brief 192: Central Ohio phone in Global Settings ---------------------
+# Adds global_settings.central_ohio_phone_display / _href (nullable TEXT,
+# also in ensure-schema.ts) and seeds 614-547-6516 ONCE, only if both are
+# still empty (ledger brief192_applied): a value Marketing edits or clears
+# later is never touched again. A missing settings row or an existing value
+# is reported and exits 0; only a schema/SQL fault exits non-zero (Brief 186).
+# Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/migrate-brief-192-central-ohio-phone.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

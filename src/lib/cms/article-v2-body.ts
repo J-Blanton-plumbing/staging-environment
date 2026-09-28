@@ -24,7 +24,11 @@ export interface V2TocItem {
   label: string;
 }
 
-export type V2BodyPart = { kind: 'html'; html: string } | { kind: 'office-map' };
+export type V2BodyPart =
+  | { kind: 'html'; html: string }
+  | { kind: 'office-map' }
+  /** Brief 192: a [[component:<name>]] slot. The template renders it, or nothing. */
+  | { kind: 'component'; name: string };
 
 export interface V2BodySection {
   /** The section's H2 id, or null for the introduction before the first H2. */
@@ -73,10 +77,20 @@ function slugify(text: string): string {
     .replace(/-+$/g, '');
 }
 
+/**
+ * A marker paragraph: [[office-map]] or (Brief 192) [[component:<name>]], alone
+ * on its line. Group 1 is "office-map" or "component:<name>".
+ */
 const MARKER_RE = new RegExp(
-  `<p>(?:\\s|&nbsp;)*${OFFICE_MAP_MARKER.replace(/[[\]]/g, '\\$&')}(?:\\s|&nbsp;)*</p>`,
+  `<p>(?:\\s|&nbsp;)*\\[\\[(${OFFICE_MAP_MARKER.slice(2, -2)}|component:[^\\]\\s<]*)\\]\\](?:\\s|&nbsp;)*</p>`,
   'gi'
 );
+
+/**
+ * Brief 192: any marker text left over (mixed into a sentence, or a malformed
+ * one) is removed, so the page never shows raw [[...]] text. The admin warns.
+ */
+const STRAY_MARKER_RE = /\[\[(?:office-map|component:[^\]<]*)\]\]/gi;
 
 /**
  * @param rawBody the stored body HTML (unsanitized is fine — step 1 sanitizes)
@@ -100,12 +114,19 @@ export function buildV2Body(rawBody: string, resolveTokens: (html: string) => st
     return `<h2 id="${id}">${inner}</h2>`;
   });
 
-  const wordCount = countWords(htmlToText(html.replace(MARKER_RE, ' ')));
+  const wordCount = countWords(htmlToText(html.replace(MARKER_RE, ' ').replace(STRAY_MARKER_RE, ' ')));
 
   // Cut at every H2: chunk 0 is the introduction, each later chunk starts with its H2.
   const chunks = html.split(/(?=<h2 id=")/);
   let hasMarker = false;
+  const placed = new Set<string>();
   const sections: V2BodySection[] = [];
+  const htmlPart = (h: string) => {
+    const clean = h.replace(STRAY_MARKER_RE, '');
+    // a paragraph that held only a stray marker would leave an empty <p>
+    const tidy = clean.replace(/<p>(?:\s|&nbsp;)*<\/p>/gi, '');
+    return tidy.trim() ? ({ kind: 'html', html: resolveTokens(tidy) } as const) : null;
+  };
   for (const chunk of chunks) {
     if (!chunk.trim()) continue;
     const idMatch = /^<h2 id="([^"]+)">/.exec(chunk);
@@ -113,16 +134,23 @@ export function buildV2Body(rawBody: string, resolveTokens: (html: string) => st
     let last = 0;
     MARKER_RE.lastIndex = 0;
     for (let m = MARKER_RE.exec(chunk); m; m = MARKER_RE.exec(chunk)) {
-      const before = chunk.slice(last, m.index);
-      if (before.trim()) parts.push({ kind: 'html', html: resolveTokens(before) });
-      if (!hasMarker) {
-        parts.push({ kind: 'office-map' });
-        hasMarker = true;
+      const before = htmlPart(chunk.slice(last, m.index));
+      if (before) parts.push(before);
+      const key = m[1].toLowerCase();
+      if (key === 'office-map') {
+        if (!hasMarker) {
+          parts.push({ kind: 'office-map' });
+          hasMarker = true;
+        }
+      } else if (!placed.has(key)) {
+        // Each component renders once, at its FIRST marker; repeats show nothing.
+        placed.add(key);
+        parts.push({ kind: 'component', name: key.slice('component:'.length) });
       }
       last = m.index + m[0].length;
     }
-    const rest = chunk.slice(last);
-    if (rest.trim()) parts.push({ kind: 'html', html: resolveTokens(rest) });
+    const rest = htmlPart(chunk.slice(last));
+    if (rest) parts.push(rest);
     if (parts.length) sections.push({ headingId: idMatch ? idMatch[1] : null, parts });
   }
 

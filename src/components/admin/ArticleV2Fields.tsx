@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import RichTextField from '@/components/admin/RichTextField';
+import ArticleV2ComponentsField from '@/components/admin/ArticleV2ComponentsField';
+import { officeRegion } from '@/lib/cms/offices';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import {
   DEFAULT_BYLINE_NAME,
@@ -15,7 +17,8 @@ import {
  * Brief 190 (Track D) — the Article V2 field group in /admin/articles/[slug].
  *
  * Fields are in the order they appear on the page: Subtitle, Byline, Hero
- * alt/caption, Key takeaways, Local office, Service-area list (+ label), FAQ.
+ * alt/caption, Key takeaways, Local office, Service-area list (+ label),
+ * Content components (Brief 192, placed in the body by marker), FAQ.
  * The hero IMAGE itself stays in "Article Details" — both templates use it.
  *
  * Rendered only while "Article V2" is the selected template, but the parent
@@ -137,7 +140,6 @@ interface OfficeOption {
   name: string;
   city: string;
   state: string;
-  phone: string;
 }
 
 const SERVICE_AREA_OPTIONS: { value: V2ServiceArea | ''; label: string }[] = [
@@ -149,11 +151,16 @@ const SERVICE_AREA_OPTIONS: { value: V2ServiceArea | ''; label: string }[] = [
 export default function ArticleV2Fields({
   value,
   onChange,
+  body,
 }: {
   value: ArticleV2Content;
   onChange: (next: ArticleV2Content) => void;
+  /** The article body — read only, for the component-marker warnings. */
+  body: string;
 }) {
   const [offices, setOffices] = useState<OfficeOption[] | null>(null);
+  // Brief 192 (Track A): the Central Ohio phone from Global Settings ('' = blank).
+  const [centralOhioPhone, setCentralOhioPhone] = useState('');
 
   // The office list is the Global Settings offices — the same records the
   // footer, the locator and the city NAP blocks read.
@@ -171,10 +178,10 @@ export default function ArticleV2Fields({
                 name: typeof o.name === 'string' ? o.name : String(o.slug),
                 city: typeof o.city === 'string' ? o.city : '',
                 state: typeof o.state === 'string' ? o.state : '',
-                phone: typeof o.phone === 'string' ? o.phone.trim() : '',
               }))
           : [];
         setOffices(list);
+        setCentralOhioPhone(typeof data?.centralOhioPhoneDisplay === 'string' ? data.centralOhioPhoneDisplay.trim() : '');
       })
       .catch(() => { if (!cancelled) setOffices([]); });
     return () => { cancelled = true; };
@@ -312,9 +319,11 @@ export default function ArticleV2Fields({
           {offices === null
             ? 'Loading offices…'
             : chosenOffice
-              ? chosenOffice.phone
-                ? `The office card, map, directions, call buttons and mobile call bar use this office. Phone: ${chosenOffice.phone}.`
-                : 'This office has no phone of its own in Global Settings, so the article shows the main phone number.'
+              ? officeRegion(chosenOffice) === 'central-ohio'
+                ? centralOhioPhone
+                  ? `Central Ohio office: the office card, map, call buttons and mobile call bar use this office, and every phone link uses the Central Ohio phone (Global Settings): ${centralOhioPhone}.`
+                  : 'Central Ohio office, but the Central Ohio phone in Global Settings is blank — so every phone link uses the main phone.'
+                : 'The office card, map, call buttons and mobile call bar use this office. Every phone link uses the main phone.'
               : officeMissing
                 ? 'This office was removed from Global Settings — the article shows no office card or map until you pick another.'
                 : 'None: no office card or map; every phone link uses the main number. The rail shows the No Drip Club card only.'}
@@ -345,6 +354,9 @@ export default function ArticleV2Fields({
           <p style={HELP}>Blank uses &ldquo;See all N communities we serve in …&rdquo; with the live count.</p>
         </div>
       </div>
+
+      {/* ── Content components (Brief 192 Track B) ── */}
+      <ArticleV2ComponentsField value={value.components} onChange={components => set('components', components)} body={body} />
 
       {/* ── FAQ ── */}
       <div style={{ marginBottom: 0 }}>

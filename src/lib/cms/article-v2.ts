@@ -70,6 +70,105 @@ export const OFFICE_MAP_MARKER = '[[office-map]]';
 export const V2_SERVICE_AREAS = ['columbus', 'chicagoland'] as const;
 export type V2ServiceArea = (typeof V2_SERVICE_AREAS)[number];
 
+// ── Brief 192 (Track B): reusable content components ─────────────────────────
+//
+// Structured fields rendered by React in the approved prototype's exact markup
+// (ul.promises / ul.svc / div.same) — NOT HTML in the body, so the sanitizer
+// allow-list is untouched. Each is placed by a marker paragraph in the body:
+// [[component:<name>]]. One item shape serves all three; the type decides which
+// fields are used (see V2_COMPONENT_FIELDS).
+
+export const V2_COMPONENT_TYPES = ['promises', 'services', 'cards'] as const;
+export type V2ComponentType = (typeof V2_COMPONENT_TYPES)[number];
+
+export const V2_COMPONENT_LABELS: Record<V2ComponentType, string> = {
+  promises: 'Promise list',
+  services: 'Service rows',
+  cards: 'Feature cards',
+};
+
+/** Which item fields each type uses (the rest are ignored and not rendered). */
+export const V2_COMPONENT_FIELDS: Record<V2ComponentType, { checklist: boolean; link: boolean; inlineText: boolean }> = {
+  promises: { checklist: false, link: false, inlineText: false },
+  services: { checklist: false, link: true, inlineText: false },
+  cards: { checklist: true, link: true, inlineText: true },
+};
+
+export interface V2ComponentItem {
+  /** Plain text. Promise/service: bold lead-in. Card: the <h3>. */
+  title: string;
+  /** Plain text (promises, services) or inline rich text (cards: bold/italic/link). */
+  text: string;
+  /** Cards only: plain-text check-list items. */
+  checklist: string[];
+  /** Services + cards: optional link. Both label and a valid URL, or nothing renders. */
+  link_label: string;
+  link_url: string;
+}
+
+export interface ArticleV2Component {
+  /** Short name, unique in the article: its marker is [[component:<name>]]. */
+  name: string;
+  type: V2ComponentType;
+  items: V2ComponentItem[];
+}
+
+export const V2_MAX_COMPONENTS = 20;
+export const V2_MAX_COMPONENT_ITEMS = 40;
+export const V2_MAX_CHECKLIST = 20;
+
+export const EMPTY_V2_COMPONENT_ITEM: V2ComponentItem = { title: '', text: '', checklist: [], link_label: '', link_url: '' };
+
+/** Lower-case letters, digits and single hyphens, ≤ 40 chars. */
+export const COMPONENT_NAME_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+export function componentMarker(name: string): string {
+  return `[[component:${name}]]`;
+}
+
+/** Coerce typed text into a valid component name ('' if nothing usable). */
+export function slugifyComponentName(raw: string): string {
+  return raw.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40).replace(/-+$/g, '');
+}
+
+const COMPONENT_NAME_BASE: Record<V2ComponentType, string> = { promises: 'promises', services: 'services', cards: 'cards' };
+
+/** A free name for a new component of this type: promises, promises-2, … */
+export function suggestComponentName(type: V2ComponentType, taken: string[]): string {
+  const base = COMPONENT_NAME_BASE[type];
+  if (!taken.includes(base)) return base;
+  let n = 2;
+  while (taken.includes(`${base}-${n}`)) n++;
+  return `${base}-${n}`;
+}
+
+/** A component link is http(s) or a site path ("/services/drain"); anything else is dropped. */
+export function isSafeComponentUrl(url: string): boolean {
+  const u = url.trim();
+  return /^https?:\/\/[^\s<>"']+$/i.test(u) || /^\/(?!\/)[^\s<>"']*$/.test(u);
+}
+
+export function isExternalUrl(url: string): boolean {
+  return /^https?:\/\//i.test(url.trim());
+}
+
+/**
+ * Where the body mentions markers — for the admin warnings. `standalone` counts
+ * markers on a paragraph of their own (the only place they render); `inline`
+ * counts markers mixed into other text (those render nothing).
+ */
+export function scanComponentMarkers(body: string): { standalone: Map<string, number>; inline: Map<string, number> } {
+  const standalone = new Map<string, number>();
+  const inline = new Map<string, number>();
+  const bump = (m: Map<string, number>, k: string) => m.set(k, (m.get(k) ?? 0) + 1);
+  const para = /<p[^>]*>(?:\s|&nbsp;)*\[\[component:([^\]\s]*)\]\](?:\s|&nbsp;)*<\/p>/gi;
+  for (let m = para.exec(body); m; m = para.exec(body)) bump(standalone, m[1]);
+  const rest = body.replace(para, '');
+  const any = /\[\[component:([^\]\s]*)\]\]/gi;
+  for (let m = any.exec(rest); m; m = any.exec(rest)) bump(inline, m[1]);
+  return { standalone, inline };
+}
+
 export interface ArticleV2Faq {
   /** Plain text. */
   q: string;
@@ -101,6 +200,8 @@ export interface ArticleV2Content {
   /** The toggle's label. Blank = the derived default ("See all N communities…"). */
   service_area_label: string;
   faqs: ArticleV2Faq[];
+  /** Brief 192: reusable content components, placed by [[component:<name>]] markers. */
+  components: ArticleV2Component[];
 }
 
 export const EMPTY_ARTICLE_V2: ArticleV2Content = {
@@ -113,6 +214,7 @@ export const EMPTY_ARTICLE_V2: ArticleV2Content = {
   service_area: '',
   service_area_label: '',
   faqs: [],
+  components: [],
 };
 
 const str = (v: unknown): string => (typeof v === 'string' ? v : '');
@@ -140,6 +242,26 @@ export function normalizeArticleV2(raw: unknown): ArticleV2Content {
       ? r.faqs
           .filter((f): f is Record<string, unknown> => !!f && typeof f === 'object')
           .map((f) => ({ q: str(f.q), a: str(f.a) }))
+      : [],
+    components: Array.isArray(r.components)
+      ? r.components
+          .filter((c): c is Record<string, unknown> => !!c && typeof c === 'object')
+          .filter((c) => (V2_COMPONENT_TYPES as readonly unknown[]).includes(c.type))
+          .map((c) => ({
+            name: str(c.name),
+            type: c.type as V2ComponentType,
+            items: Array.isArray(c.items)
+              ? c.items
+                  .filter((i): i is Record<string, unknown> => !!i && typeof i === 'object')
+                  .map((i) => ({
+                    title: str(i.title),
+                    text: str(i.text),
+                    checklist: Array.isArray(i.checklist) ? i.checklist.filter((x): x is string => typeof x === 'string') : [],
+                    link_label: str(i.link_label),
+                    link_url: str(i.link_url),
+                  }))
+              : [],
+          }))
       : [],
   };
 }
@@ -170,7 +292,8 @@ export const READ_WPM = 200;
 
 /**
  * "N min read" = ceil(words / 200), at least 1, where words = the article's
- * visible text: body + key takeaways + FAQ questions and answers.
+ * visible text: body + key takeaways + FAQ questions and answers + the content
+ * components placed in the body (Brief 192).
  */
 export function readMinutes(wordCount: number): number {
   return Math.max(1, Math.ceil(wordCount / READ_WPM));

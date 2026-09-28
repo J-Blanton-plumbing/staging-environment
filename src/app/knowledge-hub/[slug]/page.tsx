@@ -18,7 +18,7 @@ import TopicServiceLink from '@/components/kh/TopicServiceLink';
 import ArticleV2Template from '@/components/kh/ArticleV2Template';
 import PreviewBanner from '@/components/PreviewBanner';
 import { getArticlePreview } from '@/lib/cms/preview';
-import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { getGlobalSettingsCached, getRegionalPhonesCached } from '@/lib/cms/global-settings';
 import { normalizeArticleTemplate } from '@/lib/cms/article-v2';
 import { sanitizeArticleV2Content } from '@/lib/cms/article-v2-sanitize';
 import './article.css';
@@ -154,7 +154,8 @@ export default async function ArticlePage({
   // Brief 190 (Track B): the template dispatch. Only 'article-v2' renders V2 —
   // an absent, blank or unknown value renders V1 below, never a 500.
   if (normalizeArticleTemplate(article.template) === 'article-v2') {
-    const settings = await getGlobalSettingsCached();
+    // Brief 192: the regional phones are read only here, for V2 — never by V1.
+    const [settings, regionalPhones] = await Promise.all([getGlobalSettingsCached(), getRegionalPhonesCached()]);
     return (
       <>
         {previewBanner ?? (isDraftPreview && <DraftBanner slug={slug} />)}
@@ -177,6 +178,7 @@ export default async function ArticlePage({
           related={related}
           crumbs={crumbs}
           settings={settings}
+          regionalPhones={regionalPhones}
         />
       </>
     );

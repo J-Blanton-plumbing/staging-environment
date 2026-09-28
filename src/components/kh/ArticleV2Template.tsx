@@ -3,12 +3,14 @@ import { Fragment } from 'react';
 import ArticleTermChips, { hasArticleTerms } from '@/components/kh/ArticleTermChips';
 import TopicServiceLink from '@/components/kh/TopicServiceLink';
 import ArticleV2Client from '@/components/kh/ArticleV2Client';
+import V2Block, { Check } from '@/components/kh/v2-blocks/V2Blocks';
+import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { SITE } from '@/lib/site';
 import { BRAND_SUFFIX } from '@/lib/seo';
 import { renderCmsInline, sanitizeCmsInlineHtml } from '@/lib/cms/sanitize';
 import { resolveTokens } from '@/lib/cms/tokens';
-import { formatOfficeAddress, type CmsOffice } from '@/lib/cms/offices';
-import type { GlobalSettings } from '@/lib/cms/global-settings';
+import { formatOfficeAddress, officeRegion, type CmsOffice } from '@/lib/cms/offices';
+import type { GlobalSettings, RegionalPhones } from '@/lib/cms/global-settings';
 import { FALLBACK_ARTICLE_IMAGE } from '@/lib/cms/related-articles';
 import { breadcrumbListJsonLd } from '@/lib/schema/breadcrumb-list';
 import { isLiveBreadcrumbRoute } from '@/lib/content/service-taxonomy';
@@ -35,10 +37,19 @@ import type { KhCrumb } from '@/lib/cms/kh-crumbs';
  * `.article-v2`) is loaded by ArticleV2Client through a dynamic import, so it
  * is linked on V2 articles only — never on V1 (hard rule 6; see ArticleV2Styles).
  *
- * PHONE: every tel: link in the article — rail, CTAs, call bar and a body
- * `{{phone}}` — is the chosen office's phone when that office has one, else the
- * global number. Nothing is hardcoded. The root carries `data-wc-ignore` so an
- * office number is never read as the WhatConverts swap (Track F).
+ * PHONE (Brief 192, by region): every tel: link in the article — rail, CTAs,
+ * call bar and a body `{{phone}}` — is the Central Ohio phone (Global Settings)
+ * when the chosen office is in Central Ohio (offices.ts `officeRegion`), else
+ * the main phone; a blank Central Ohio phone also means the main phone. Nothing
+ * is hardcoded. The root carries `data-wc-ignore` so a regional number is never
+ * read as the WhatConverts swap (Brief 190 Track F). The header never changes.
+ *
+ * SCHEDULE (Brief 192 Track C): the rail and call-bar "Schedule" buttons, and a
+ * body link to `#schedule`, open the booking popup V1 uses (ScheduleTrigger's
+ * `.schedule-popup` class, delegated by ScheduleServiceModal).
+ *
+ * COMPONENTS (Brief 192 Track B): Promise list / Service rows / Feature cards,
+ * rendered at their [[component:<name>]] marker by V2Blocks.tsx.
  *
  * The header and footer come from SiteShell (as on the test page), and the page's
  * one <main> is SiteShell's — the article column is an <article>.
@@ -61,7 +72,6 @@ const UI = {
   callNow: 'Call now',
   scheduleOnline: 'Schedule online',
   schedule: 'Schedule',
-  scheduleHref: '/contact',
   call: 'Call',
   callbarLabel: 'Call us',
   callbarOfficeLabel: (office: string) => `Contact the ${office} office`,
@@ -88,14 +98,8 @@ export interface ArticleV2TemplateProps {
   related: KhArticleCard[];
   crumbs: KhCrumb[];
   settings: GlobalSettings;
-}
-
-function Check({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#BC0E0E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12.5l4.5 4.5L19 7.5" />
-    </svg>
-  );
+  /** Brief 192: the regional phones (getRegionalPhonesCached). */
+  regionalPhones: RegionalPhones;
 }
 
 function Plus() {
@@ -121,24 +125,23 @@ function TocList({ items }: { items: V2TocItem[] }) {
   );
 }
 
-/** `tel:` target for a displayed number: E.164 for a 10-digit US number. */
-function telHref(display: string): string {
-  const digits = display.replace(/\D/g, '');
-  if (digits.length === 10) return `tel:+1${digits}`;
-  if (digits.length === 11 && digits.startsWith('1')) return `tel:+${digits}`;
-  return `tel:${display}`;
-}
-
-export default function ArticleV2Template({ article, v2, terms, related, crumbs, settings }: ArticleV2TemplateProps) {
-  // ── Phone + office (Global Settings) ──
+export default function ArticleV2Template({ article, v2, terms, related, crumbs, settings, regionalPhones }: ArticleV2TemplateProps) {
+  // ── Phone by region (Brief 192 Track A) ──
   const office: CmsOffice | null = v2.office ? settings.offices.find((o) => o.slug === v2.office) ?? null : null;
-  const officePhone = office?.phone?.trim() ?? '';
-  const phoneDisplay = officePhone || settings.phoneDisplay;
-  const phoneHref = officePhone ? telHref(officePhone) : settings.phoneHref;
+  const regional =
+    office && officeRegion(office) === 'central-ohio' ? regionalPhones.centralOhioPhoneDisplay.trim() : '';
+  const phoneDisplay = regional || settings.phoneDisplay;
+  const phoneHref = regional ? regionalPhones.centralOhioPhoneHref.trim() || `tel:${regional}` : settings.phoneHref;
   const tokenSettings: GlobalSettings = { ...settings, phoneDisplay };
 
   // ── Body: sanitized, {{phone}} = the article's phone, H2 ids, sections ──
-  const body = buildV2Body(article.body, (html) => resolveTokens(html, tokenSettings, { escape: true }));
+  // Brief 192 (Track C): a body link to "#schedule" opens the booking popup. The
+  // class is added AFTER sanitizing (which strips every class), like the H2 ids.
+  const body = buildV2Body(article.body, (html) =>
+    resolveTokens(html, tokenSettings, { escape: true }).replace(/<a href="#schedule"/g, '<a class="schedule-popup" href="#schedule"')
+  );
+  const renderInline = (html: string) => renderCmsInline(sanitizeCmsInlineHtml(html), tokenSettings);
+  const components = new Map(v2.components.map((c) => [c.name, c]));
   // FAQ answers: the inline allow-list (again, at render), then flattened into the one <p>.
   const faqs = v2.faqs.map((f) => ({ q: f.q, a: renderCmsInline(sanitizeCmsInlineHtml(f.a), tokenSettings) }));
   const toc: V2TocItem[] = [...body.toc, ...(faqs.length ? [{ id: 'faq', label: UI.faqToc }] : [])];
@@ -146,7 +149,15 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
   const words =
     body.wordCount +
     v2.takeaways.reduce((n, t) => n + countWords(t), 0) +
-    faqs.reduce((n, f) => n + countWords(f.q) + countWords(htmlToText(f.a)), 0);
+    faqs.reduce((n, f) => n + countWords(f.q) + countWords(htmlToText(f.a)), 0) +
+    body.sections
+      .flatMap((sec) => sec.parts)
+      .reduce((n, part) => {
+        if (part.kind !== 'component') return n;
+        const c = components.get(part.name);
+        if (!c) return n;
+        return n + c.items.reduce((m, it) => m + countWords(it.title) + countWords(htmlToText(it.text)) + it.checklist.reduce((k, x) => k + countWords(x), 0) + countWords(it.link_label), 0);
+      }, 0);
   const minutes = readMinutes(words);
 
   const bylineName = v2.byline_name || DEFAULT_BYLINE_NAME;
@@ -293,6 +304,8 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
               {s.parts.map((p, j) =>
                 p.kind === 'office-map' ? (
                   <Fragment key={j}>{officeMapBlock}</Fragment>
+                ) : p.kind === 'component' ? (
+                  <V2Block key={j} component={components.get(p.name)} renderInline={renderInline} />
                 ) : (
                   <div key={j} dangerouslySetInnerHTML={{ __html: p.html }} />
                 )
@@ -344,9 +357,7 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
                 <a className="btn btn-fill" href={phoneHref}>
                   {UI.callNow}
                 </a>
-                <Link className="btn btn-line" href={UI.scheduleHref}>
-                  {UI.scheduleOnline}
-                </Link>
+                <ScheduleTrigger as="button" className="btn btn-line" label={UI.scheduleOnline} />
               </div>
             )}
             <div className="ndc">
@@ -398,9 +409,7 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
         <a className="btn btn-fill" href={phoneHref}>
           {UI.call} {phoneDisplay}
         </a>
-        <Link className="btn btn-line" href={UI.scheduleHref}>
-          {UI.schedule}
-        </Link>
+        <ScheduleTrigger as="button" className="btn btn-line" label={UI.schedule} />
       </div>
 
       <ArticleV2Client />
