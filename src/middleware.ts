@@ -135,6 +135,45 @@ export async function middleware(req: NextRequest) {
   requestHeaders.set('x-pathname', pathname)
   const passThrough = () => NextResponse.next({ request: { headers: requestHeaders } })
 
+  // ── Brief 194 — Highland Park review gate ──────────────────────────────
+  // Static manager-review copy in public/highland-park-test/. Simple Basic Auth,
+  // NOT real security: the credentials sit in this public repo on purpose.
+  // Unlike the PREVIEW_* gate below, this one does NOT skip localhost, so
+  // Marketing can test the prompt locally. Remove this block, the two
+  // next.config.mjs header lines and the folder together when the test ends.
+  const HP_TEST = '/highland-park-test'
+  if (pathname === HP_TEST || pathname.startsWith(HP_TEST + '/')) {
+    let ok = false
+    const [scheme, encoded] = (req.headers.get('authorization') ?? '').split(' ')
+    if (scheme === 'Basic' && encoded) {
+      try {
+        const decoded = atob(encoded)
+        const i = decoded.indexOf(':')
+        ok = i > -1 && decoded.slice(0, i) === 'jbp' && decoded.slice(i + 1) === 'highland'
+      } catch {
+        ok = false
+      }
+    }
+    if (!ok) {
+      return new NextResponse('Password required', {
+        status: 401,
+        headers: {
+          'WWW-Authenticate': 'Basic realm="JBP Highland Park review", charset="UTF-8"',
+          'Cache-Control': 'no-store',
+        },
+      })
+    }
+    // public/ has no directory index: send the bare path to the hub file.
+    // 302 on purpose (temporary). It lives here, not in next.config.mjs,
+    // because the prebuild validator rejects non-301 redirects there (Brief 183).
+    if (pathname === HP_TEST) {
+      const url = new URL(HP_TEST + '/index.html', req.url)
+      url.search = req.nextUrl.search
+      return NextResponse.redirect(url, 302)
+    }
+    return passThrough()
+  }
+
   // ── CMS admin session gate ─────────────────────────────────────────────
   if (pathname.startsWith('/admin')) {
     // Login page and auth API are always allowed through.

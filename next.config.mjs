@@ -152,6 +152,11 @@ const nextConfig = {
       // Remove both lines together with the folder when the test ends.
       { source: '/sewer-v2-test', headers: noindex },
       { source: '/sewer-v2-test/:path*', headers: noindex },
+      // Brief 194 — Highland Park manager-review test (public/highland-park-test/).
+      // noindex header (NOT robots Disallow — Brief 152 Fix 4) + no-store so no cache
+      // layer can keep a copy of a password-protected page. Remove with the folder.
+      { source: '/highland-park-test', headers: [...noindex, { key: 'Cache-Control', value: 'private, no-store' }] },
+      { source: '/highland-park-test/:path*', headers: [...noindex, { key: 'Cache-Control', value: 'private, no-store' }] },
       ...hostNoindex,
     ];
   },
