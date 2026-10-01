@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { headers } from 'next/headers';
 import { getTrackingIds } from '@/lib/analytics';
+import { isReviewPath } from '@/lib/review-route';
 import AnalyticsScripts from './AnalyticsScripts';
 import Analytics from './Analytics';
 
@@ -17,11 +18,14 @@ import Analytics from './Analytics';
  * same exclusion list — the root layout is already dynamic because
  * generateMetadata reads that header, so this adds no rendering cost.
  *
+ * Brief 195: `/review` is skipped for the same reason — managers reading an
+ * unpublished article are not site traffic.
+ *
  * Analytics needs a Suspense boundary because it calls useSearchParams().
  */
 export default function SiteAnalytics() {
   const pathname = headers().get('x-pathname') ?? '';
-  if (pathname.startsWith('/admin') || pathname.startsWith('/api')) return null;
+  if (pathname.startsWith('/admin') || pathname.startsWith('/api') || isReviewPath(pathname)) return null;
 
   const ids = getTrackingIds();
 

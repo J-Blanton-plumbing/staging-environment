@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { ReactNode } from 'react';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
+import { isReviewPath } from '@/lib/review-route';
 
 export default function SiteShell({
   children,
@@ -39,7 +40,8 @@ export default function SiteShell({
     <>
       {!isLandingRoute && <Navbar settings={settings} />}
       <main className="flex-1">{children}</main>
-      <Footer settings={settings} />
+      {/* Brief 195: no JSON-LD on the password-protected /review copies. */}
+      <Footer settings={settings} schema={!isReviewPath(pathname)} />
     </>
   );
 }

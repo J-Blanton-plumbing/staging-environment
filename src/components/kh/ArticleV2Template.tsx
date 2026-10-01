@@ -100,6 +100,11 @@ export interface ArticleV2TemplateProps {
   settings: GlobalSettings;
   /** Brief 192: the regional phones (getRegionalPhonesCached). */
   regionalPhones: RegionalPhones;
+  /**
+   * Brief 195: false on the password-protected /review copy, which must carry no
+   * JSON-LD. Default true — every public article renders exactly as before.
+   */
+  schema?: boolean;
 }
 
 function Plus() {
@@ -125,7 +130,7 @@ function TocList({ items }: { items: V2TocItem[] }) {
   );
 }
 
-export default function ArticleV2Template({ article, v2, terms, related, crumbs, settings, regionalPhones }: ArticleV2TemplateProps) {
+export default function ArticleV2Template({ article, v2, terms, related, crumbs, settings, regionalPhones, schema = true }: ArticleV2TemplateProps) {
   // ── Phone by region (Brief 192 Track A) ──
   const office: CmsOffice | null = v2.office ? settings.offices.find((o) => o.slug === v2.office) ?? null : null;
   const regional =
@@ -237,7 +242,7 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
                 </li>
               ))}
             </ol>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbJsonLd) }} />
+            {schema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbJsonLd) }} />}
           </nav>
           {hasArticleTerms(terms) && <ArticleTermChips terms={terms} onRed />}
           <h1>{article.title}</h1>

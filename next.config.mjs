@@ -157,6 +157,12 @@ const nextConfig = {
       // layer can keep a copy of a password-protected page. Remove with the folder.
       { source: '/highland-park-test', headers: [...noindex, { key: 'Cache-Control', value: 'private, no-store' }] },
       { source: '/highland-park-test/:path*', headers: [...noindex, { key: 'Cache-Control', value: 'private, no-store' }] },
+      // Brief 195 — manager review of unpublished articles (src/app/review/).
+      // noindex header (NOT robots Disallow — Brief 152 Fix 4: a crawler must be
+      // able to fetch the page to read it) + no-store so no cache layer keeps a
+      // copy of a password-protected, unpublished page.
+      { source: '/review', headers: [...noindex, { key: 'Cache-Control', value: 'private, no-store' }] },
+      { source: '/review/:path*', headers: [...noindex, { key: 'Cache-Control', value: 'private, no-store' }] },
       ...hostNoindex,
     ];
   },
