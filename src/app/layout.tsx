@@ -12,6 +12,7 @@ import SiteAnalytics from '@/components/analytics/SiteAnalytics';
 import WhatConvertsScript from '@/components/analytics/WhatConvertsScript';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
+import { isReviewPath } from '@/lib/review-route';
 import { BRAND_SUFFIX, CANONICAL_BASE, TITLE_TEMPLATE, canonicalUrlFor, normalizePath } from '@/lib/seo';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
@@ -74,8 +75,9 @@ const BASE_METADATA: Metadata = {
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = headers().get('x-pathname');
   // No header (e.g. static prerender of error shells) or non-indexable
-  // sections: emit no canonical rather than a wrong one.
-  if (!pathname || pathname.startsWith('/admin') || pathname.startsWith('/api')) {
+  // sections: emit no canonical rather than a wrong one. Brief 195: the
+  // password-protected review copies (/review/...) never carry one either.
+  if (!pathname || pathname.startsWith('/admin') || pathname.startsWith('/api') || isReviewPath(pathname)) {
     return BASE_METADATA;
   }
   const overrides = await getCanonicalOverridesCached();

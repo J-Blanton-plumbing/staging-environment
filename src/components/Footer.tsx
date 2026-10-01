@@ -52,7 +52,11 @@ const NAV_COLUMNS = [NAV_COL_1, NAV_COL_2, NAV_COL_3];
  * imported by the 'use client' SiteShell, so it can't fetch the DB directly
  * (mirrors how Navbar already receives `settings` for the same reason).
  */
-export default function Footer({ settings }: { settings: GlobalSettings }) {
+/**
+ * `schema` (Brief 195): false only on the password-protected /review copies,
+ * which must carry no JSON-LD. Default true — every other page is unchanged.
+ */
+export default function Footer({ settings, schema = true }: { settings: GlobalSettings; schema?: boolean }) {
   return (
     <footer className="bottom relative bg-brand-600 text-cream-100 py-[80px] font-sans">
       <div className="w-[90%] lg:w-[81%] mx-auto flex flex-col lg:flex-row justify-between gap-12">
@@ -210,12 +214,14 @@ export default function Footer({ settings }: { settings: GlobalSettings }) {
 
       {/* Brief 102 (Track D) — LocalBusiness JSON-LD, one graph node per office.
           Mounted here (present on every page) so it never duplicates. */}
-      <LocalBusinessSchema
-        offices={settings.offices}
-        phoneDisplay={settings.phoneDisplay}
-        phoneHref={settings.phoneHref}
-        hoursLabel={settings.hoursLabel}
-      />
+      {schema && (
+        <LocalBusinessSchema
+          offices={settings.offices}
+          phoneDisplay={settings.phoneDisplay}
+          phoneHref={settings.phoneHref}
+          hoursLabel={settings.hoursLabel}
+        />
+      )}
     </footer>
   );
 }

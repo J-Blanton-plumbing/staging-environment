@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { jwtVerify } from 'jose'
 import { lookupRedirect } from '@/lib/redirects/lookup'
 import { normalizePath } from '@/lib/seo'
+import { isReviewPath } from '@/lib/review-route'
 
 const COOKIE_NAME = 'cms_session'
 
@@ -170,6 +171,38 @@ export async function middleware(req: NextRequest) {
       const url = new URL(HP_TEST + '/index.html', req.url)
       url.search = req.nextUrl.search
       return NextResponse.redirect(url, 302)
+    }
+    return passThrough()
+  }
+
+  // ── Brief 195 — manager review gate (/review/...) ──────────────────────
+  // Unpublished articles rendered for managers without CMS logins
+  // (src/app/review/knowledge-hub/[slug]). Simple Basic Auth jbp / highland,
+  // NOT real security: the credentials sit in this public repo on purpose, as
+  // in Brief 194. Like Brief 194 it does NOT skip localhost. The page itself
+  // decides draft (render) / published (308 to the public URL) / missing (404).
+  // Images are under /images/, which the matcher below never runs on, so the
+  // article's photos load for a signed-in reviewer with no second prompt.
+  if (isReviewPath(pathname)) {
+    let ok = false
+    const [scheme, encoded] = (req.headers.get('authorization') ?? '').split(' ')
+    if (scheme === 'Basic' && encoded) {
+      try {
+        const decoded = atob(encoded)
+        const i = decoded.indexOf(':')
+        ok = i > -1 && decoded.slice(0, i) === 'jbp' && decoded.slice(i + 1) === 'highland'
+      } catch {
+        ok = false
+      }
+    }
+    if (!ok) {
+      return new NextResponse('Password required', {
+        status: 401,
+        headers: {
+          'WWW-Authenticate': 'Basic realm="JBP review", charset="UTF-8"',
+          'Cache-Control': 'no-store',
+        },
+      })
     }
     return passThrough()
   }

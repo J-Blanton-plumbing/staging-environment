@@ -4,7 +4,9 @@ import {
   whatConvertsScriptUrl,
 } from '@/lib/whatconverts';
 import WhatConvertsRouteSwap from './WhatConvertsRouteSwap';
+import { headers } from 'next/headers';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { isReviewPath } from '@/lib/review-route';
 
 /**
  * WhatConverts call tracking — the snippet the live WordPress theme carried in
@@ -45,6 +47,9 @@ import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 export default async function WhatConvertsScript() {
   const config = getWhatConvertsConfig();
   if (!config.profileId) return null;
+  // Brief 195: managers reading a /review copy must not take a number from the
+  // live pool or count as a visit. Same x-pathname header SiteAnalytics reads.
+  if (isReviewPath(headers().get('x-pathname') ?? '')) return null;
 
   // `cache()`-deduped, so this shares the root layout's existing query rather
   // than adding one. Needed so the DOM-derived fallback knows which number counts

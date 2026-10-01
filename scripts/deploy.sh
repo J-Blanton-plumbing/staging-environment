@@ -726,6 +726,20 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # `-r tsconfig-paths/register` is REQUIRED: it uses the app's sanitizers.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-191-columbus-article.ts commit
+# -- Brief 195: the Highland Park launch article, UNPUBLISHED (Article V2) --
+# CREATE-ONCE: creates /knowledge-hub/j-blanton-plumbing-opens-highland-park-office
+# as a DRAFT (live row status 'draft' + tags + related + ONE unpublished
+# "Version 1 — for review" version) only if no article has that slug. The
+# public URL keeps 404ing until Marketing clicks Publish in /admin; managers
+# read it at /review/knowledge-hub/<slug> (Basic Auth, src/middleware.ts).
+# Every deploy after the first reports ALREADY-EXISTS and writes nothing.
+# Missing company-news / chicagoland term or no CMS user → NOT-APPLIED, exit
+# 0, nothing written; missing Brief 190 columns → exit 1 (schema). It never
+# touches global_settings (the Highland Park office is deliberately NOT
+# added there before approval). Same `-r tsconfig-paths/register` need as
+# Brief 191. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-brief-195-highland-park-article.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.
