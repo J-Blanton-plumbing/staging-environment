@@ -398,6 +398,12 @@ html.jbp-lock{overflow:hidden;}
 .hub-svc-sec{padding-top:72px;}
 @media(max-width:1000px){.hub-trust{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){.hub-trust{grid-template-columns:1fr;}.hub-svc-sec{padding-top:40px;}}
+/* Trust stripe (ported from Highland Park city-hub.css, Round 2 2026-10-05) */
+.trust-stripe{background:var(--c-carmine);color:#F9F3EC;padding:22px clamp(22px,4vw,48px);}
+.trust-stripe-list{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px clamp(28px,4vw,56px);}
+.trust-stripe-list li{display:flex;align-items:center;gap:10px;font-family:'Industry','Arial',sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3;}
+.trust-stripe-list svg{width:20px;height:20px;flex:none;}
+@media(max-width:700px){.trust-stripe-list{flex-direction:column;align-items:flex-start;gap:12px;}.trust-stripe-list li{font-size:14px;}}
 
 /* --- Services: one featured service, then a card grid --- */
 .hub-feat{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,72px);align-items:center;margin-top:48px;}
