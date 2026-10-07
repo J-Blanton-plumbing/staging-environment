@@ -29,6 +29,8 @@
  * table's lead-in line is gone; the clay-pipe photo follows the "What Kind of Pipes…" intro; the
  * office map sits at the end of "Neighborhood by Neighborhood". On a box where the article already
  * exists, `update-brief-199-older-homes-review-1.ts` applies the same R1 edits to the draft.
+ * Round 2 (R2): key takeaways 3 and 4 merged into one bullet, and the intro's third paragraph
+ * ("If you own, or are thinking of buying…") removed (`update-brief-199-older-homes-review-2.ts`).
  * Images: `public/images/knowledge-hub/columbus-older-homes/` (real photos).
  *
  * ── CREATE-ONCE (Brief 186) ─────────────────────────────────────────────────
@@ -101,7 +103,8 @@ const BODY = [
   // (1) draft-notes comment not imported. (2) The TL;DR is the subtitle + key takeaways; the body starts here.
   `<p>Brick streets. Big front porches. Bungalows built back when streetcars still ran up High Street. The charm of Central Ohio's older neighborhoods is real, and so is the age of what's hidden below it.</p>`,
   `<p>Many homes in Grandview Heights, Clintonville and German Village still have their original pipes. And after more than 30 years serving homeowners in neighborhoods with the same clay sewer lines and cast iron drains, we've learned that's where most plumbing problems start.</p>`,
-  `<p>If you own, or are thinking of buying, a house in these areas, here's what you'll likely find underneath, the warning signs to watch for and when a sewer camera inspection can save you from a surprise repair bill.</p>`,
+  // R2: the .md's third intro paragraph ("If you own, or are thinking of buying, a house in these
+  // areas, …") was removed in Marketing's review.
 
   `<h2>How Old Are the Homes in Central Ohio's Older Neighborhoods?</h2>`,
   `<p>Many homes in Grandview Heights, Clintonville and German Village were built between the mid-1800s and the 1940s, which makes them roughly 80 to more than 150 years old. A lot of them still rely on plumbing from that era.</p>`,
@@ -209,8 +212,8 @@ const V2 = {
   takeaways: [
     'Age often means clay sewer lines, cast iron drains, galvanized or lead water lines, and roots from mature trees.',
     "In Columbus, the sewer line from your house to the city's pipe is yours to maintain.",
-    'A sewer camera inspection shows roots, cracks and sagging pipe early.',
-    'Get one before you buy, remodel or after a backup.',
+    // R2: the brief's takeaways 3 and 4 are one bullet.
+    'A sewer camera inspection shows roots, cracks and sagging pipe early. Get one before you buy, remodel or after a backup.',
   ],
   // The Columbus office → {{phone}} = the Central Ohio phone (Brief 192) and the pinned office map at the
   // body's [[office-map]] marker (R1). No service-area list: a how-to article, not an office launch.
