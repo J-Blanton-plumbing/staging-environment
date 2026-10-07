@@ -766,6 +766,14 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # after the Brief 198 seed. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-201-hose-bib-images.ts commit
+# -- Brief 201 review round 1: no caption under the frost-free diagram ------
+# Clears components[frost-free].media.image_caption on the live row + every
+# version carrying it, only while each still holds the original caption;
+# edited → NOT-APPLIED (edited in admin), exit 0, nothing written. Later
+# deploys: ALREADY-APPLIED. Exit 1 only on a schema/code fault. MUST stay
+# after the Brief 201 update. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-201-review-1.ts commit
 # -- Brief 199: Columbus "older homes" article, UNPUBLISHED (Article V2) ----
 # CREATE-ONCE: creates
 # /knowledge-hub/older-homes-plumbing-problems-grandview-clintonville-german-village

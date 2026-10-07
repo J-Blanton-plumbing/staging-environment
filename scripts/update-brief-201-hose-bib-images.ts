@@ -151,7 +151,9 @@ export const COMPONENTS: ArticleV2Component[] = [
       image_width: 800,
       image_height: 800,
       image_alt: 'Diagram of a frost-free hose bib: supply pipe sloping downward, shut-off valve inside the pipe, anti-siphon valve, handle and spout',
-      image_caption: 'The valve sits back inside the warm wall, so the faucet body has to drain through the spout.',
+      // Review round 1 (Marketing, 2026-10-07): no caption — the paragraph beside the diagram says
+      // the same. scripts/update-brief-201-review-1.ts removes it where this already ran.
+      image_caption: '',
       image_side: 'left',
       text_style: 'paragraphs',
     },
