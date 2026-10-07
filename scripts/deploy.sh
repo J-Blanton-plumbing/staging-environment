@@ -786,6 +786,12 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # MUST stay after round 1. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-199-older-homes-review-2.ts commit
+# -- Brief 199 review round 3: the "On older homes, we pay close attention --
+# to the joints…" paragraph removed. Same contract: one time, live row +
+# every version, only while the paragraph is there exactly once in each;
+# otherwise NOT-APPLIED, exit 0. Keep after round 2. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-199-older-homes-review-3.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

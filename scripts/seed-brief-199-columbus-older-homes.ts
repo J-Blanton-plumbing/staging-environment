@@ -31,6 +31,8 @@
  * exists, `update-brief-199-older-homes-review-1.ts` applies the same R1 edits to the draft.
  * Round 2 (R2): key takeaways 3 and 4 merged into one bullet, and the intro's third paragraph
  * ("If you own, or are thinking of buying…") removed (`update-brief-199-older-homes-review-2.ts`).
+ * Round 3 (R3): the "On older homes, we pay close attention to the joints…" paragraph removed
+ * (`update-brief-199-older-homes-review-3.ts`).
  * Images: `public/images/knowledge-hub/columbus-older-homes/` (real photos).
  *
  * ── CREATE-ONCE (Brief 186) ─────────────────────────────────────────────────
@@ -165,7 +167,7 @@ const BODY = [
     `<li><strong>If you've never had one</strong>, especially with big trees and an original lateral.</li>` +
     `</ul>`,
   `<p>Most inspections start at a <strong>cleanout</strong>, a capped pipe that gives access to the sewer line. If you're not sure where yours is, here's <a href="/knowledge-hub/what-is-a-clean-out-plug-and-how-does-it-work">what a cleanout plug is and how it works</a>.</p>`,
-  `<p>On older homes, we pay close attention to the joints between pipe sections. That's where roots and small cracks usually show up first.</p>`,
+  // R3: the .md's "On older homes, we pay close attention to the joints…" paragraph was removed in Marketing's review.
   `<p>When we run a <a href="/columbus/video-camera-sewer-inspections">sewer camera inspection</a>, we show you the footage and explain what we found in plain English. Then we walk you through your options and give you a flat rate before any work begins.</p>`,
 
   `<h2>Warning Signs Your Older Home's Plumbing Needs Attention</h2>`,
