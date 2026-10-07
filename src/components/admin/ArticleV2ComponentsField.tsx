@@ -2,29 +2,40 @@
 
 import { useMemo, useRef, useState } from 'react';
 import RichTextField from '@/components/admin/RichTextField';
+import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import {
   EMPTY_V2_COMPONENT_ITEM,
+  EMPTY_V2_MEDIA_TEXT,
   V2_COMPONENT_FIELDS,
   V2_COMPONENT_LABELS,
   V2_COMPONENT_TYPES,
+  V2_MEDIA_SIDES,
+  V2_MEDIA_SIDE_LABELS,
+  V2_MEDIA_TEXT_STYLES,
+  V2_MEDIA_TEXT_STYLE_LABELS,
   componentMarker,
   isSafeComponentUrl,
+  mediaDimension,
   scanComponentMarkers,
   slugifyComponentName,
   suggestComponentName,
   type ArticleV2Component,
   type V2ComponentItem,
   type V2ComponentType,
+  type V2MediaText,
 } from '@/lib/cms/article-v2';
 
 /**
  * Brief 192 (Track B) — "Content components" in the Article V2 editor: Promise
- * list, Service rows and Feature cards. Each has a short name; its marker
+ * list, Service rows and Feature cards, plus (Brief 201) Image + text — an image
+ * beside a block of text, with its own image / size / alt / caption / side /
+ * text-style fields. Each has a short name; its marker
  * [[component:<name>]], pasted on its own line in the body, is where it renders.
  *
  * The warnings (component not placed, marker without a component, marker used
- * twice, marker inside other text, duplicate name, ignored link) are shown HERE
+ * twice, marker inside other text, duplicate name, ignored link, and Brief 201's
+ * Image + text missing image URL / alt text) are shown HERE
  * only — the public page silently renders nothing for any of them.
  *
  * Components ride in the version content with the other V2 fields (Save →
@@ -83,8 +94,23 @@ function typeName(raw: string): string {
   return raw.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/-{2,}/g, '-').replace(/^-+/, '').slice(0, 40);
 }
 
-const ITEM_NOUN: Record<V2ComponentType, string> = { promises: 'promise', services: 'service', cards: 'card' };
-const ITEM_TITLE: Record<V2ComponentType, string> = { promises: 'Promise (bold)', services: 'Service name', cards: 'Card title (heading)' };
+const ITEM_NOUN: Record<V2ComponentType, string> = { promises: 'promise', services: 'service', cards: 'card', 'media-text': 'item' };
+const ITEM_TITLE: Record<V2ComponentType, string> = {
+  promises: 'Promise (bold)',
+  services: 'Service name',
+  cards: 'Card title (heading)',
+  'media-text': 'Bold lead-in (optional)',
+};
+
+/** Brief 201: an image URL's natural size, or null if it does not load. */
+function loadImageSize(url: string): Promise<{ width: number; height: number } | null> {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(img.naturalWidth && img.naturalHeight ? { width: img.naturalWidth, height: img.naturalHeight } : null);
+    img.onerror = () => resolve(null);
+    img.src = url;
+  });
+}
 
 export default function ArticleV2ComponentsField({
   value,
@@ -116,6 +142,25 @@ export default function ArticleV2ComponentsField({
     emitted.current = next;
     onChange(next);
   }
+  // Brief 201: the size lookup resolves after later renders, so it patches the LATEST list.
+  const latest = useRef(value);
+  latest.current = value;
+  const setMedia = (i: number, patch: Partial<V2MediaText>, list: ArticleV2Component[] = value) =>
+    emit(
+      list.map((c, n) => (n === i ? { ...c, media: { ...EMPTY_V2_MEDIA_TEXT, ...c.media, ...patch } } : c)),
+      compKeys.current,
+      itemKeys.current
+    );
+  async function setImageUrl(i: number, url: string) {
+    setMedia(i, { image_url: url, image_width: 0, image_height: 0 });
+    if (!url.trim()) return;
+    const size = await loadImageSize(url.trim());
+    // Only while this component still shows the same image (no reorder or new pick meanwhile).
+    if (size && latest.current[i]?.media?.image_url === url) {
+      setMedia(i, { image_width: size.width, image_height: size.height }, latest.current);
+    }
+  }
+
   const setComp = (i: number, patch: Partial<ArticleV2Component>) =>
     emit(value.map((c, n) => (n === i ? { ...c, ...patch } : c)), compKeys.current, itemKeys.current);
   const setItems = (i: number, items: V2ComponentItem[], keys: number[]) =>
@@ -128,7 +173,12 @@ export default function ArticleV2ComponentsField({
   function addComponent() {
     const name = suggestComponentName(addType, value.map((c) => c.name));
     emit(
-      [...value, { name, type: addType, items: [{ ...EMPTY_V2_COMPONENT_ITEM }] }],
+      [
+        ...value,
+        addType === 'media-text'
+          ? { name, type: addType, items: [{ ...EMPTY_V2_COMPONENT_ITEM }], media: { ...EMPTY_V2_MEDIA_TEXT } }
+          : { name, type: addType, items: [{ ...EMPTY_V2_COMPONENT_ITEM }] },
+      ],
       [...compKeys.current, ++seq.current],
       [...itemKeys.current, [++seq.current]]
     );
@@ -160,7 +210,7 @@ export default function ArticleV2ComponentsField({
     <div style={{ marginBottom: '1.25rem' }}>
       <label style={LABEL}>Content components</label>
       <p style={{ ...HELP, margin: '0 0 0.6rem' }}>
-        Promise list, Service rows and Feature cards, in the approved design. Each shows where its marker (e.g.{' '}
+        Promise list, Service rows, Feature cards and Image + text (an image beside text). Each shows where its marker (e.g.{' '}
         <code>{componentMarker('promises')}</code>) is pasted on its own line in the Body. A component without a marker is not shown.
       </p>
 
@@ -227,6 +277,14 @@ export default function ArticleV2ComponentsField({
               <p style={WARN}>⚠ The marker is inside other text in the Body. Put <code>{marker}</code> on a line of its own, or it shows nothing.</p>
             )}
             {placed > 1 && <p style={WARN}>⚠ The marker is used {placed} times in the Body — only the first one shows.</p>}
+            {c.type === 'media-text' && (
+              <MediaTextFields
+                i={i}
+                media={c.media ?? EMPTY_V2_MEDIA_TEXT}
+                onImage={(url) => setImageUrl(i, url)}
+                onChange={(patch) => setMedia(i, patch)}
+              />
+            )}
 
             <div style={{ marginTop: '0.9rem' }}>
               {c.items.map((it, j) => {
@@ -322,6 +380,64 @@ export default function ArticleV2ComponentsField({
         </select>
         <button type="button" onClick={addComponent} style={SMALL_BTN}>+ Add component</button>
       </div>
+    </div>
+  );
+}
+
+/** Brief 201 (Track A) — the Image + text component's own fields, and its two warnings. */
+function MediaTextFields({
+  i,
+  media,
+  onImage,
+  onChange,
+}: {
+  i: number;
+  media: V2MediaText;
+  onImage: (url: string) => void;
+  onChange: (patch: Partial<V2MediaText>) => void;
+}) {
+  const id = (k: string) => `v2c-${i}-m-${k}`;
+  return (
+    <div style={{ marginTop: '0.9rem' }}>
+      {!media.image_url.trim() && (
+        <p style={{ ...WARN, margin: '0 0 0.5rem' }}>⚠ Image + text: image URL is missing — the component shows nothing on the page until it has one.</p>
+      )}
+      {!media.image_alt.trim() && <p style={{ ...WARN, margin: '0 0 0.5rem' }}>⚠ Image + text: alt text is missing.</p>}
+      <ImageUploaderField label="Image" value={media.image_url} onChange={onImage} />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem', marginBottom: '0.4rem' }}>
+        <div>
+          <label style={LABEL} htmlFor={id('w')}>Image width (px)</label>
+          <input id={id('w')} className="field" type="number" min={0} step={1} value={media.image_width || ''} onChange={(e) => onChange({ image_width: mediaDimension(e.target.value) })} style={INPUT} />
+        </div>
+        <div>
+          <label style={LABEL} htmlFor={id('h')}>Image height (px)</label>
+          <input id={id('h')} className="field" type="number" min={0} step={1} value={media.image_height || ''} onChange={(e) => onChange({ image_height: mediaDimension(e.target.value) })} style={INPUT} />
+        </div>
+        <div>
+          <label style={LABEL} htmlFor={id('side')}>Image side</label>
+          <select id={id('side')} className="field" value={media.image_side} onChange={(e) => onChange({ image_side: e.target.value as V2MediaText['image_side'] })} style={INPUT}>
+            {V2_MEDIA_SIDES.map((v) => (
+              <option key={v} value={v}>{V2_MEDIA_SIDE_LABELS[v]}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label style={LABEL} htmlFor={id('style')}>Text style</label>
+          <select id={id('style')} className="field" value={media.text_style} onChange={(e) => onChange({ text_style: e.target.value as V2MediaText['text_style'] })} style={INPUT}>
+            {V2_MEDIA_TEXT_STYLES.map((v) => (
+              <option key={v} value={v}>{V2_MEDIA_TEXT_STYLE_LABELS[v]}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <p style={{ ...HELP, margin: '0 0 0.75rem' }}>
+        Width and height fill in by themselves when you pick an image; they reserve its space so the page doesn’t jump while it loads. On phones the image sits above the text.
+      </p>
+      <label style={LABEL} htmlFor={id('alt')}>Alt text (required)</label>
+      <input id={id('alt')} className="field" type="text" value={media.image_alt} onChange={(e) => onChange({ image_alt: e.target.value })} placeholder="Describe the image for screen readers" style={{ ...INPUT, marginBottom: '0.6rem' }} />
+      <label style={LABEL} htmlFor={id('cap')}>Caption (optional)</label>
+      <input id={id('cap')} className="field" type="text" value={media.image_caption} onChange={(e) => onChange({ image_caption: e.target.value })} style={INPUT} />
+      <p style={HELP}>Plain text. Each item below is one paragraph or list item: its bold lead-in, then its text.</p>
     </div>
   );
 }

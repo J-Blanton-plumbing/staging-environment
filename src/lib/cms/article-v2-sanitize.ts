@@ -9,7 +9,29 @@ import {
   slugifyComponentName,
   type ArticleV2Component,
   type ArticleV2Content,
+  type V2MediaText,
 } from '@/lib/cms/article-v2';
+
+/**
+ * Brief 201 (Track A) — the Image + text fields, by declared type:
+ *   image_url                  → plain text, then http(s) or a site path, else ''
+ *   image_width / image_height → whole numbers (normalizeMediaText), else 0
+ *   image_alt, image_caption   → plain text
+ *   image_side, text_style     → allow-list (normalizeMediaText)
+ * The items go through the shared item path above (title plain, text inline).
+ */
+function sanitizeMediaText(m: V2MediaText): V2MediaText {
+  const url = sanitizeCmsPlainText(m.image_url).trim();
+  return {
+    image_url: isSafeComponentUrl(url) ? url : '',
+    image_width: m.image_width,
+    image_height: m.image_height,
+    image_alt: sanitizeCmsPlainText(m.image_alt).trim(),
+    image_caption: sanitizeCmsPlainText(m.image_caption).trim(),
+    image_side: m.image_side,
+    text_style: m.text_style,
+  };
+}
 
 /**
  * Brief 192 (Track B) — the content components, every string leaf by declared
@@ -17,8 +39,9 @@ import {
  * per-key sanitizer silently misses a field):
  *   name                → slug ([a-z0-9-], ≤40), made unique (-2, -3…)
  *   title, checklist[], link_label, text (promises/services) → plain text
- *   text (cards)        → the inline subset (bold / italic / link)
+ *   text (cards, Image + text) → the inline subset (bold / italic / link)
  *   link_url            → http(s) or a site path, else the link is dropped
+ *   media (Image + text, Brief 201) → sanitizeMediaText (above)
  * Fields a type does not use are cleared, so nothing hidden is ever stored.
  * Items with nothing in them are dropped; an empty component is KEPT (the editor
  * may still be filling it) and renders nothing.
@@ -51,7 +74,9 @@ function sanitizeComponents(list: ArticleV2Component[]): ArticleV2Component[] {
         };
       })
       .filter((i) => i.title || i.text || i.checklist.length || i.link_label);
-    return { name, type: c.type, items };
+    return c.media && c.type === 'media-text'
+      ? { name, type: c.type, items, media: sanitizeMediaText(c.media) }
+      : { name, type: c.type, items };
   });
 }
 

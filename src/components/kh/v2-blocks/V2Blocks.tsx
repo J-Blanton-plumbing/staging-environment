@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { ArticleV2Component, V2ComponentItem } from '@/lib/cms/article-v2';
 import { isExternalUrl, isSafeComponentUrl } from '@/lib/cms/article-v2';
+import { escapeHtml } from '@/lib/cms/tokens';
 
 /**
  * Brief 192 (Track B) — Article V2's three reusable content components.
@@ -10,6 +11,7 @@ import { isExternalUrl, isSafeComponentUrl } from '@/lib/cms/article-v2';
  *   Promise list   ul.promises > li > b + span
  *   Service rows   ul.svc      > li > b + span (+ a.more)
  *   Feature cards  div.same    > div > h3 + p (+ ul.benefits > li > svg + text) (+ a.more)
+ *   Image + text   div.v2-media-text > div + figure (Brief 201; no prototype, see MediaText)
  * so the rules ported into article-v2.css apply unchanged. Content arrives
  * already sanitized (sanitizeArticleV2Content): plain strings are rendered as
  * React text; the one inline field (card text) is injected as HTML after it has
@@ -101,6 +103,47 @@ function FeatureCards({ items, renderInline }: { items: V2ComponentItem[]; rende
   );
 }
 
+/**
+ * Brief 201 (Track A) — Image + text: div.v2-media-text > div.v2-media-text-body + figure.
+ * The TEXT comes first in source order (reading order); article-v2.css puts the
+ * figure left or right, and above the text on phones. The figure is the body's
+ * own in-article photo shape (figure > img + figcaption), so it picks up the
+ * existing V2 image and caption styles. Each item is `<strong>title</strong> text`
+ * inside a <p> / <li>, the same markup as a body list item.
+ */
+function MediaText({ component, renderInline }: { component: ArticleV2Component; renderInline: (html: string) => string }) {
+  const m = component.media;
+  if (!m || !isSafeComponentUrl(m.image_url)) return null;
+  const itemHtml = (i: V2ComponentItem) =>
+    (i.title ? `<strong>${escapeHtml(i.title)}</strong>${i.text ? ' ' : ''}` : '') + (i.text ? renderInline(i.text) : '');
+  const List = m.text_style === 'numbered' ? 'ol' : 'ul';
+  return (
+    <div className={m.image_side === 'left' ? 'v2-media-text v2-media-text--left' : 'v2-media-text'}>
+      <div className="v2-media-text-body">
+        {m.text_style === 'paragraphs' ? (
+          component.items.map((i, n) => <p key={n} dangerouslySetInnerHTML={{ __html: itemHtml(i) }} />)
+        ) : (
+          <List>
+            {component.items.map((i, n) => (
+              <li key={n} dangerouslySetInnerHTML={{ __html: itemHtml(i) }} />
+            ))}
+          </List>
+        )}
+      </div>
+      <figure>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={m.image_url}
+          alt={m.image_alt}
+          {...(m.image_width && m.image_height ? { width: m.image_width, height: m.image_height } : {})}
+          loading="lazy"
+        />
+        {m.image_caption && <figcaption>{m.image_caption}</figcaption>}
+      </figure>
+    </div>
+  );
+}
+
 export default function V2Block({
   component,
   renderInline,
@@ -117,6 +160,8 @@ export default function V2Block({
       return <ServiceRows items={component.items} />;
     case 'cards':
       return <FeatureCards items={component.items} renderInline={renderInline} />;
+    case 'media-text':
+      return <MediaText component={component} renderInline={renderInline} />;
     default:
       return null;
   }

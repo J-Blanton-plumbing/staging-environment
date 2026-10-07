@@ -234,6 +234,27 @@
 .article-v2 :where(.v2-article) tbody th{font-weight:700}
 .article-v2 :where(.v2-article) tbody tr{border-bottom:1px solid var(--border)}
 .article-v2 :where(.v2-article) tbody tr:nth-child(even){background:var(--sand-100)}
+/* Brief 201 (Track A): the "Image + text" content component (V2Blocks.tsx MediaText):
+     div.v2-media-text > div.v2-media-text-body (text, FIRST in source order) + figure (img + figcaption)
+   Text and figure keep the body's own element rules above (p / ol / ul / li, in-article photo radius,
+   figcaption), so the text looks exactly like the body, only narrower. Only layout is set here:
+   image column 2fr = 40% (of the width after the gap), text 3fr, top-aligned, --s6 apart; the
+   component spaces like a body <figure> (--s6 above and below). The image is never stretched past its
+   natural width and NEVER cropped (no aspect-ratio / object-fit: the Brief 201 diagram's labels are
+   part of the image). At <=620px (the existing V2 phone breakpoint; above it the text column stays
+   >= ~325px) it stacks: image on top, centred, max 420px wide, text under it. */
+.article-v2 .v2-media-text{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);grid-template-areas:"text media";column-gap:var(--s6);align-items:start;margin:var(--s6) 0}
+.article-v2 .v2-media-text--left{grid-template-columns:minmax(0,2fr) minmax(0,3fr);grid-template-areas:"media text"}
+.article-v2 .v2-media-text-body{grid-area:text;min-width:0}
+.article-v2 .v2-media-text-body > :last-child{margin-bottom:0}
+.article-v2 .v2-media-text figure{grid-area:media;min-width:0;margin:0}
+.article-v2 .v2-media-text img{width:auto;max-width:100%;height:auto}
+@media (max-width:620px){
+  .article-v2 .v2-media-text,
+  .article-v2 .v2-media-text--left{grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "text";row-gap:var(--s5)}
+  .article-v2 .v2-media-text figure{justify-self:center;width:100%;max-width:420px}
+  .article-v2 .v2-media-text img{margin:0 auto}
+}
 /* map: concentric frame, outer 18 = inner 10 + padding 8 */
 .article-v2 .map{margin:var(--s5) 0 var(--s4);background:var(--surface);padding:var(--pad-card);border-radius:var(--r-outer);box-shadow:var(--shadow-1);border:1px solid var(--border)}
 .article-v2 .map iframe{display:block;width:100%;aspect-ratio:16/10;border:0;border-radius:var(--r-inner);background:var(--surface-sunk)}

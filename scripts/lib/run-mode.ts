@@ -130,6 +130,10 @@ export type Verdict =
   | 'ALREADY-APPLIED'
   | 'NOT-APPLIED (guard tripped)'
   | 'NOT-APPLIED (dry run)'
+  // Brief 201: the guard verdicts its brief names (still "NOT-APPLIED", so deploy.sh's grep sees them).
+  | 'NOT-APPLIED (no article)'
+  | 'NOT-APPLIED (not a draft)'
+  | 'NOT-APPLIED (edited in admin)'
   | 'FAILED';
 
 let verdictReported = false;
