@@ -770,6 +770,15 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # Brief 191. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-199-columbus-older-homes.ts commit
+# -- Brief 199 review round 1: four edits to that UNPUBLISHED draft ---------
+# Takeaway 1 wording, the table lead-in removed, the clay-pipe photo moved up,
+# [[office-map]] at the end of "Neighborhood by Neighborhood". Surgical and
+# one-time: applied to the live row + every version only while each anchor is
+# still unique and takeaway 1 is as seeded; otherwise NOT-APPLIED (editors own
+# the article), exit 0, nothing written. Later deploys: ALREADY-APPLIED.
+# Exit 1 only on a code fault. MUST stay after the seed. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-199-older-homes-review-1.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.
