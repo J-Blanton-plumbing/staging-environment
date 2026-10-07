@@ -779,6 +779,13 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # Exit 1 only on a code fault. MUST stay after the seed. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-199-older-homes-review-1.ts commit
+# -- Brief 199 review round 2: takeaways 3 + 4 → one bullet; the intro's ---
+# "If you own…" paragraph removed. Same contract as round 1: one time, live
+# row + every version, only while the takeaways are still round 1's four and
+# the paragraph is there exactly once; otherwise NOT-APPLIED, exit 0.
+# MUST stay after round 1. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-199-older-homes-review-2.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.
