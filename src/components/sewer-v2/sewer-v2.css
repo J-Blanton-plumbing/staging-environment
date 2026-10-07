@@ -1,0 +1,587 @@
+/* =====================================================================
+   Sewer Ecosystem v2 — scoped stylesheet (Brief 200)
+
+   Ported mechanically from the approved package's css/style.css (public/sewer-v2-test/,
+   as deployed at bb59af8 — folder sha256 886b1517…fcae) by the Brief 200 port script. Every selector is prefixed with
+   #sewer-v2, the root element SewerV2Root renders, so nothing here can reach the Navbar, the
+   Footer or any other route. Only the 10 sewer routes import this file.
+
+   Dropped from the package: @font-face (the site's Industry/Nunito next/font faces are used
+   instead — the package's woff2 files are the "trial" build), the rules for its own header,
+   drawer and footer (the live shell replaces them), and the prototype V1/V2 toggle.
+   Changed: keyframes renamed sv2-* (names are global); asset URLs → /images/services/sewer/;
+   .ss-sticky-cta z-index 65 → 45 (the live mobile drawer is z-50).
+   ===================================================================== */
+
+/* ---------- Isolation from the site's global CSS ----------
+   The approved pages were built on browser defaults. The live site layers Tailwind Preflight and
+   globals.css on top (h1–h5 tracking-tight + Midnight, .btn-primary, zeroed margins, img
+   display:block, html line-height 1.5 …), any of which would change the approved rendering.
+   `all: revert` rolls every property of every descendant back to the browser default, and the
+   package rules below (higher specificity, later in the file) then apply exactly as on the test.
+   Excluded: SVG (revert would discard its presentation attributes — fill, stroke…) and img /
+   iframe / video (revert would discard the width/height attribute hints); their few Preflight
+   differences are reset explicitly. */
+#sewer-v2 :where(:not(svg, svg *, img, iframe, video)) { all: revert; }
+#sewer-v2 :where(*)::before, #sewer-v2 :where(*)::after { all: revert; }
+#sewer-v2 :where(img, iframe, video) { display: revert; vertical-align: revert; max-width: revert; border: revert; }
+#sewer-v2 :where(svg) { display: revert; vertical-align: revert; }
+
+/* The package's <body>: page background, text colour, faces, and the browser's normal line-height
+   (the live <html> carries Tailwind's 1.5). The fixed live header is 70px tall; the package's
+   header was in flow, so its content started 70px down — the padding reproduces that. clip (not
+   hidden) keeps position:sticky working for the rail and the hub's sticky headings. */
+#sewer-v2 {
+  display: block;
+  padding-top: var(--site-header-h, 70px);
+  line-height: normal;
+  letter-spacing: normal;
+  font-size: 16px;
+  font-weight: 400;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Inline styles the approved markup put on tel: links. Those links now render through the shared
+   PhoneLink component, which takes no style prop, so the two declarations live here instead. */
+#sewer-v2 .hero-cta > .btn-hero-cta { white-space: nowrap; }
+#sewer-v2 .ss-call > .btn-hero-cta { margin-top: 4px; }
+
+/* The 24-hour badge's SVG text named the package's own 'Industry' face; point it at the site's. */
+#sewer-v2 .badge24 text { font-family: var(--font-industry), Arial, sans-serif; }
+
+/* =====================================================================
+   style.css
+   Sewer Ecosystem V2 SANDBOX. Not approved outside the Sewer Ecosystem.
+   Built from css/style.css (v1) + the Emil Kowalski `prototype` variants:
+   Dispatch (sub-service template), Editorial (hub base), Rails (hub hero).
+   Brand colors and typefaces are unchanged from design.md (LOCKED section).
+   Type scale, spacing and component notes: references/design_sewer_ecosystem_v2.md
+   ===================================================================== */
+
+/* ---------- FONTS (official brand faces) ---------- */
+
+#sewer-v2{--ease-out:cubic-bezier(0.23,1,0.32,1);--ease-drawer:cubic-bezier(0.32,0.72,0,1);--ease-in-out:cubic-bezier(0.77,0,0.175,1);} 
+#sewer-v2 *{box-sizing:border-box;}
+#sewer-v2{margin:0;background:#F9F3EC;color:#0A1B2E;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip;}
+#sewer-v2 a{color:#1560E6;text-decoration:none;}
+#sewer-v2 .t-body a,#sewer-v2 .t-body-sm a{text-decoration:underline;text-underline-offset:2px;}
+#sewer-v2 ::selection{background:#BC0E0E;color:#F9F3EC;}
+#sewer-v2 *:focus-visible{outline:2px solid #1560E6;outline-offset:2px;}
+#sewer-v2 button{font-family:inherit;cursor:pointer;border:none;}
+
+
+/* ---------- TYPE SCALE (shared by both tiers; tier overrides live in the V2 block below) ---------- */
+#sewer-v2 .t-h1{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:clamp(32px,4.4vw,46px);line-height:1.1;letter-spacing:-0.01em;margin:0;}
+#sewer-v2 .t-h2{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,32px);line-height:1.25;margin:0;}
+#sewer-v2 .t-h3{font-family:var(--font-industry),'Arial',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,28px);line-height:1.28;margin:0;}
+#sewer-v2 .t-h4{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:20px;line-height:1.4;margin:0;}
+#sewer-v2 .t-eyebrow{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;display:block;}
+#sewer-v2 .t-body{font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:400;font-size:20px;line-height:30px;}
+#sewer-v2 .t-body-sm{font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:400;font-size:16px;line-height:24px;}
+#sewer-v2 .t-caption{font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:400;font-size:11px;line-height:17px;}
+#sewer-v2 .t-btn{font-family:var(--font-industry),'Arial',sans-serif;font-weight:500;font-size:16px;letter-spacing:1px;text-transform:uppercase;}
+#sewer-v2 .t-label{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:16px;letter-spacing:.04em;text-transform:uppercase;}
+
+
+/* ---------- LAYOUT ---------- */
+#sewer-v2 .wrap{max-width:1440px;margin:0 auto;}
+#sewer-v2 .sec{padding:100px clamp(22px,4vw,48px);}
+#sewer-v2 .final-cta{position:relative;background-color:#F1E8DC;background-image:linear-gradient(rgba(241,232,220,.88),rgba(241,232,220,.88)),url(/images/services/sewer/final-cta-street.webp);background-size:cover;background-position:center;background-repeat:no-repeat;}
+#sewer-v2 .sec-tight{padding:60px clamp(22px,4vw,48px);}
+
+/* ---------- BUTTONS ---------- */
+#sewer-v2 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 28px;border-radius:10px;transition:background .15s,color .15s;}
+#sewer-v2 .btn-primary{background:#1560E6;color:#FFFFFF;}
+#sewer-v2 .btn-onred{background:#FFFFFF;color:#BC0E0E;border-radius:50px;}
+#sewer-v2 .btn-outline{background:transparent;color:#0A1B2E;border:1px solid #0A1B2E;}
+
+
+/* ---------- HEADER (official shared shell) ---------- */
+
+/* ---------- FOOTER (official shared shell) ---------- */
+
+
+/* ---------- NO DRIP CLUB (flat navy, character left) ---------- */
+/* character breaks out of the section's own bottom padding (60px, matches .sec-tight)
+   so its feet land flush with the section's true bottom edge, like the reference. */
+#sewer-v2 .ndc-list{margin:0 0 26px;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;}
+#sewer-v2 .ndc-list li{display:flex;gap:12px;align-items:flex-start;color:#F9F3EC;}
+#sewer-v2 .ndc-list li .ndc-check{background:#BC0E0E;flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+
+
+/* ---------- SUB-NAV (live site .hero-nav, brand-corrected) ---------- */
+#sewer-v2 .jbp-subnav{background:#FFFFFF;width:100%;height:80px;box-shadow:0 0 10px rgba(10,27,46,0.23);display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:5;}
+#sewer-v2 .jbp-subnav a{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 12px;font-family:var(--font-industry),'Arial',sans-serif;font-weight:500;font-size:16px;letter-spacing:1px;text-transform:uppercase;color:#0A1B2E;text-decoration:none;transition:background .15s var(--ease-out),color .15s var(--ease-out);}
+#sewer-v2 .jbp-subnav a:not(:last-child){border-right:1px solid rgba(10,27,46,0.25);}
+
+
+/* ---------- SERVICE CARD ATOMS ---------- */
+#sewer-v2 .svc-title{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:22px;line-height:1.25;color:#0A1B2E;margin:0;max-width:66ch;}
+#sewer-v2 .svc-desc{font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:16px;line-height:24px;color:#3A4A5C;margin:0;max-width:66ch;}
+#sewer-v2 .svc-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap;padding:14px 26px;border:1px solid #1560E6;border-radius:10px;background:transparent;color:#1560E6;font-family:var(--font-industry),'Arial',sans-serif;font-weight:500;font-size:15px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .15s,border-color .15s,color .15s;}
+#sewer-v2 .svc-cta span{font-size:17px;line-height:1;display:inline-block;transition:transform 130ms var(--ease-out);}
+#sewer-v2 .card .svc-cta,#sewer-v2 .card .svc-cta-onred{margin-top:auto;}
+#sewer-v2 .svc-cta-onred{display:inline-flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap;padding:14px 26px;border:1px solid #FFFFFF;border-radius:10px;background:#FFFFFF;color:#BC0E0E;font-family:var(--font-industry),'Arial',sans-serif;font-weight:500;font-size:15px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .15s,border-color .15s,color .15s;}
+
+
+/* ---------- PAGE COMPONENTS ---------- */
+#sewer-v2 .imgslot{display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;border:2px dashed #C9BCA9;border-radius:10px;background:#F1E8DC;color:#3A4A5C;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:14px;line-height:1.4;}
+#sewer-v2 .widget-box{border:2px dashed #C9BCA9;border-radius:10px;background:#FDFAF6;color:#3A4A5C;padding:14px 18px;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:13px;}
+#sewer-v2 .card{background:#FFFFFF;border:1px solid #E3D8C8;border-radius:10px;padding:22px;display:flex;flex-direction:column;}
+#sewer-v2 .review-author{margin-top:auto;padding-top:16px;display:flex;align-items:center;gap:12px;}
+#sewer-v2 .review-avatar{width:40px;height:40px;border-radius:50%;background:#0A1B2E;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#sewer-v2 a.card{display:block;color:#0A1B2E;transition:border-color .15s,transform .15s;}
+#sewer-v2 .grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px;}
+#sewer-v2 .rail-block{position:relative;}
+#sewer-v2 .rail-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:0 0 18px;}
+#sewer-v2 .rail-nav{display:flex;gap:8px;flex-shrink:0;}
+#sewer-v2 .rail-btn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1.5px solid #0A1B2E;background:#FFFFFF;color:#0A1B2E;flex-shrink:0;padding:0;}
+#sewer-v2 .rail-btn:disabled{opacity:.35;cursor:default;}
+@media(hover:hover) and (pointer:fine){#sewer-v2 .rail-btn:hover:not(:disabled){background:#0A1B2E;color:#FFFFFF;}}
+#sewer-v2 .rail{display:flex;gap:20px;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px;}
+#sewer-v2 .rail:focus-visible{outline:2px solid #1560E6;outline-offset:4px;border-radius:8px;}
+#sewer-v2 .rail .card{flex:0 0 240px;scroll-snap-align:start;}
+#sewer-v2 .rail::-webkit-scrollbar{height:8px;}
+#sewer-v2 .rail::-webkit-scrollbar-track{background:transparent;}
+#sewer-v2 .rail::-webkit-scrollbar-thumb{background:#E3D8C8;border-radius:4px;}
+#sewer-v2 .field-label{display:block;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:13px;color:#3A4A5C;margin-bottom:6px;}
+#sewer-v2 .field{width:100%;padding:12px 14px;border:1px solid #C9BCA9;border-radius:10px;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:16px;background:#FFFFFF;color:#0A1B2E;}
+#sewer-v2 .faq-item{border:1px solid #E3D8C8;border-radius:10px;background:#FFFFFF;overflow:hidden;}
+#sewer-v2 .faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;cursor:pointer;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:18px;color:#0A1B2E;min-height:44px;}
+#sewer-v2 .faq-item summary::-webkit-details-marker{display:none;}
+#sewer-v2 .faq-item summary::after{content:'+';font-family:var(--font-industry),'Arial',sans-serif;font-size:24px;color:#BC0E0E;flex-shrink:0;line-height:1;}
+#sewer-v2 .faq-item[open] summary::after{content:'\2212';}
+#sewer-v2 .faq-item p{margin:0;padding:0 20px 20px;font-size:16px;line-height:26px;color:#3A4A5C;}
+#sewer-v2 .faq-item2{border:1px solid #E3D8C8;border-radius:10px;background:#FFFFFF;padding:7px 20px;}
+#sewer-v2 .faq-q{all:unset;box-sizing:border-box;display:flex;width:100%;min-height:44px;padding:11px 0;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:18px;color:#0A1B2E;}
+#sewer-v2 .faq-plus{font-family:var(--font-industry),'Arial',sans-serif;font-size:24px;color:#BC0E0E;flex-shrink:0;line-height:1;}
+#sewer-v2 .faq-preview,#sewer-v2 .faq-full{margin:10px 0 0;font-size:16px;line-height:26px;color:#3A4A5C;}
+#sewer-v2 .faq-full{display:none;}
+#sewer-v2 .faq-item2.open .faq-preview{display:none;}
+#sewer-v2 .faq-item2.open .faq-full{display:block;}
+#sewer-v2 .chk{display:flex;flex-shrink:0;}
+
+
+/* ============ SECTION 1 BENTO LAYOUT (v12) ============ */
+#sewer-v2 .bento-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+#sewer-v2 .bento-tile{background:#F1E8DC;border:1px solid #E3D8C8;border-radius:10px;padding:24px 26px;}
+@media(max-width:760px){ #sewer-v2 .bento-grid{grid-template-columns:1fr;} }
+
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  #sewer-v2 .sec{padding:56px 22px;}
+  #sewer-v2 .sec-tight{padding:40px 22px;}
+  #sewer-v2 .t-body{font-size:17px;line-height:27px;}
+  /* live site hides .hero-nav below 900px; we keep it as a 2x2 grid instead */
+  #sewer-v2 .jbp-subnav{grid-template-columns:repeat(2,1fr);height:auto;}
+  #sewer-v2 .jbp-subnav a{min-height:56px;font-size:14px;letter-spacing:.5px;border-bottom:1px solid rgba(10,27,46,0.25);}
+  #sewer-v2 .jbp-subnav a:nth-child(2n){border-right:0;}
+  #sewer-v2 .jbp-subnav a:nth-last-child(-n+2){border-bottom:0;}
+}
+@media(max-width:640px){
+  #sewer-v2 .sec{padding:40px 22px;}
+  #sewer-v2 .hero-cta{flex-direction:column;align-items:center;align-self:stretch;gap:8px;}
+  #sewer-v2 .hero-cta .btn{width:100%;}
+  #sewer-v2 .final-cta-row{flex-direction:column;align-items:stretch;}
+  #sewer-v2 .final-cta-row .btn,#sewer-v2 .final-cta-row button{width:100%;}
+}
+
+
+/* =====================================================================
+   V2 ADDITIONS (UX/UI review, 2026-09-21). Everything below is new.
+   ===================================================================== */
+
+/* Touch baseline (mobile-native) */
+#sewer-v2{-webkit-tap-highlight-color:transparent;}
+#sewer-v2 a,#sewer-v2 button,#sewer-v2 [role="button"]{touch-action:manipulation;}
+#sewer-v2 button{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+#sewer-v2 #book{scroll-margin-top:90px;}
+
+/* Hover: only on devices that really hover. Rules moved here from above.
+   V2 note: .svc-row lift (translateY -2px) was removed; shadow only. */
+@media (hover:hover) and (pointer:fine){
+  #sewer-v2 a:hover{color:#BC0E0E;}
+  #sewer-v2 .btn-primary:hover{background:#BC0E0E;color:#FFFFFF;}
+  #sewer-v2 .btn-onred:hover{background:#E4E4E4;color:#BC0E0E;}
+  #sewer-v2 .btn-outline:hover{background:#0A1B2E;color:#F9F3EC;}
+  #sewer-v2 .btn-hero-cta:hover{background:#0A1B2E;color:#FFFFFF;}
+  #sewer-v2 .jbp-subnav a:hover{background:#F1E8DC;color:#BC0E0E;}
+  #sewer-v2 .svc-row:hover{box-shadow:0 8px 22px rgba(10,27,46,0.12);}
+  #sewer-v2 .svc-cta:hover{background:#BC0E0E;border-color:#BC0E0E;color:#FFFFFF;}
+  #sewer-v2 .svc-cta-onred:hover{background:#E4E4E4;border-color:#E4E4E4;color:#BC0E0E;}
+  #sewer-v2 .svc-cta:hover span,#sewer-v2 .svc-cta-onred:hover span{transform:translateX(3px);}
+  #sewer-v2 a.card:hover{border-color:#BC0E0E;transform:translateY(-2px);color:#0A1B2E;}
+}
+
+/* Press feedback on every input type (100-160ms, ease-out) */
+#sewer-v2 .btn{transition:background .15s,color .15s,transform 160ms var(--ease-out);}
+#sewer-v2 .svc-cta,#sewer-v2 .svc-cta-onred{transition:background .15s,border-color .15s,color .15s,transform 160ms var(--ease-out);}
+#sewer-v2 .btn:active,#sewer-v2 .svc-cta:active,#sewer-v2 .svc-cta-onred:active{transform:scale(.97);}
+
+/* FAQ: keyboard focus ring (all:unset on .faq-q removed the global one) */
+#sewer-v2 .faq-q:focus-visible{outline:2px solid #1560E6;outline-offset:6px;border-radius:4px;}
+
+/* FAQ: animated open/close. Height is animated by JS (WAAPI) on .faq-panel. */
+#sewer-v2 .faq-panel{overflow:hidden;}
+#sewer-v2 .faq-plus{display:inline-block;transition:transform 200ms var(--ease-out);}
+#sewer-v2 .faq-item2.open .faq-plus{transform:rotate(45deg);}
+
+/* Reduced motion: drop movement, keep opacity and color changes */
+@media(prefers-reduced-motion:reduce){
+  #sewer-v2 *,#sewer-v2 *::before,#sewer-v2 *::after{animation:none !important;scroll-behavior:auto !important;}
+  #sewer-v2 .btn:active,#sewer-v2 .svc-cta:active,#sewer-v2 .svc-cta-onred:active{transform:none;}
+  #sewer-v2 .faq-plus{transition:none;}
+  #sewer-v2 .svc-cta span,#sewer-v2 .svc-cta-onred span{transition:none;}
+  #sewer-v2 .pv-reveal{opacity:1 !important;}
+  #sewer-v2 .badge24 svg{animation:none !important;}
+}
+
+
+
+/* =====================================================================
+   SEWER ECOSYSTEM V2 (SANDBOX). Everything below is new in this file.
+   Scope: Sewer Ecosystem only. Not approved for the wider site.
+   Two layout tiers share one token set:
+     HUB  (.hub-*)  Category Hub. Base: Emil "Editorial". Hero: Emil "Rails".
+     SS   (.ss-*)   Sub-service template. Base: Emil "Dispatch".
+   ===================================================================== */
+
+/* ---------- TOKENS (values are the locked palette plus the documented tints) ---------- */
+#sewer-v2{
+  --c-carmine:#BC0E0E; --c-rosewood:#540606; --c-cream:#F9F3EC; --c-midnight:#0A1B2E;
+  --c-cerulean:#1560E6; --c-glaucous:#8CB0EC; --c-slate:#3A4A5C;
+  --c-sand-50:#FDFAF6; --c-sand-200:#F1E8DC; --c-sand-300:#E8DCCC; --c-sand-400:#E3D8C8; --c-sand-500:#C9BCA9;
+
+  /* Type: HUB tier (Editorial scale) */
+  --fs-hub-h1:clamp(38px,5.2vw,64px);  --lh-hub-h1:1.05;
+  --fs-hub-h2:clamp(30px,4vw,48px);    --lh-hub-h2:1.12;
+  --fs-hub-feature:clamp(28px,3.2vw,36px); --lh-hub-feature:1.15;
+  --fs-hub-stat:clamp(80px,10vw,128px);
+  /* Type: SS tier (Dispatch scale, denser) */
+  --fs-ss-h1:clamp(32px,4.4vw,46px);   --lh-ss-h1:1.1;
+  --fs-ss-h2:clamp(24px,2.6vw,30px);   --lh-ss-h2:1.25;
+  --fs-ss-lead:18px;                   --lh-ss-lead:28px;
+  --fs-ss-stat:44px;
+
+  /* Type: No Drip Club (both tiers; sized from the live Hanover Park band) */
+  --fs-ndc-h2:clamp(26px,2.6vw,32px); --fs-ndc-body:clamp(17px,1.5vw,20px); --fs-ndc-list:16px;
+
+  /* Radius */
+  --r-card:10px; --r-panel:14px; --r-hero:16px; --r-pill:999px;
+  /* Space */
+  --sp-section:100px; --sp-section-m:56px; --sp-panel:clamp(22px,3vw,36px); --sp-gap:32px; --sp-rail:340px;
+  /* Motion */
+  --dur-fast:150ms; --dur-base:220ms; --dur-chart:900ms;
+}
+
+#sewer-v2 .hub-h1{font-size:var(--fs-hub-h1);line-height:var(--lh-hub-h1);}
+#sewer-v2 .hub-h2{font-size:var(--fs-hub-h2);line-height:var(--lh-hub-h2);}
+#sewer-v2 .hub-h3{font-size:var(--fs-hub-feature);line-height:var(--lh-hub-feature);}
+#sewer-v2 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+#sewer-v2 .pv-mute{color:var(--c-slate);}
+#sewer-v2 .pv-img{background:var(--c-sand-300);}
+#sewer-v2.js .pv-img{opacity:0;transition:opacity var(--dur-base) var(--ease-out);}
+#sewer-v2.js .pv-img.is-loaded{opacity:1;}
+#sewer-v2.js .pv-reveal{opacity:0;}
+#sewer-v2 .pv-stars{color:var(--c-carmine);font-size:15px;letter-spacing:2px;margin-bottom:12px;}
+#sewer-v2 .pv-cap{color:var(--c-slate);}
+#sewer-v2 .pv-in{animation:sv2-pvIn 280ms var(--ease-out) both;animation-delay:calc(var(--i,0) * 45ms);}
+@keyframes sv2-pvIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+@keyframes sv2-ctaSlideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+
+/* Shared hero atoms (phone CTA + dispatch label) */
+#sewer-v2 .btn-hero-cta{background:#1560E6;color:#FFFFFF;}
+#sewer-v2 .hero-eyebrow{color:rgba(249,243,236,0.85);}
+#sewer-v2 .hero-pattern{position:absolute;inset:0;z-index:-1;background-image:url(/images/services/sewer/wrench-pattern.png);background-repeat:no-repeat;background-size:cover;background-position:center;opacity:.14;pointer-events:none;}
+#sewer-v2 .hero-cta{display:flex;flex-direction:row;align-items:center;align-self:flex-start;gap:16px;margin-top:6px;}
+#sewer-v2 .badge24{display:inline-flex;flex:none;color:#fff;line-height:0;}
+#sewer-v2 .badge24 svg{display:block;width:76px;height:76px;animation:sv2-badgePulse 2400ms var(--ease-in-out) infinite;}
+@keyframes sv2-badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+#sewer-v2 .hero-dispatch{display:flex;flex-direction:column;color:#F9F3EC;line-height:1.35;}
+@media(hover:hover) and (pointer:fine){#sewer-v2 .btn-hero-cta:hover{background:#0A1B2E;color:#FFFFFF;}}
+@media(max-width:640px){#sewer-v2 .hero-cta{align-self:stretch;}#sewer-v2 .hero-cta .btn{flex:1;min-width:0;}#sewer-v2 .badge24 svg{width:64px;height:64px;}}
+
+/* Prototype chrome: V1/V2 switch. Remove before anything ships. */
+
+/* =====================================================================
+   HUB (Category Hub). Editorial base + Rails hero.
+   ===================================================================== */
+
+/* --- Hero (Rails): full-width image, sub-nav pills inside the hero --- */
+#sewer-v2 .hub-hero{position:relative;isolation:isolate;min-height:clamp(560px,60vw,700px);display:flex;align-items:flex-end;background:#0A1B2E;}
+#sewer-v2 .hub-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;display:block;}
+#sewer-v2 .hub-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,27,46,.88) 0%,rgba(10,27,46,.6) 55%,rgba(10,27,46,.25) 100%);}
+#sewer-v2 .hub-hero-in{width:100%;max-width:1440px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(22px,4vw,48px) clamp(32px,4vw,48px);}
+#sewer-v2 .hub-hero-in>*{max-width:700px;}
+#sewer-v2 .hub-hero-in .hero-cta{gap:18px;}
+#sewer-v2 .hub-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;max-width:none!important;}
+#sewer-v2 .hub-pills a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:var(--r-pill);border:1px solid rgba(249,243,236,.45);color:#F9F3EC;font-family:var(--font-industry),'Arial',sans-serif;font-weight:500;font-size:14px;letter-spacing:1px;text-transform:uppercase;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),transform 160ms var(--ease-out);}
+#sewer-v2 .hub-pills a:active{transform:scale(.97);}
+@media(hover:hover) and (pointer:fine){#sewer-v2 .hub-pills a:hover{background:#F9F3EC;color:#0A1B2E;}}
+@media(max-width:640px){#sewer-v2 .hub-hero-in .hero-cta{width:100%;}}
+
+/* --- Trust bar: shares the Services section background, no divider, no own shade --- */
+#sewer-v2 .hub-trust-sec{padding-bottom:0;}
+#sewer-v2 .hub-trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;}
+#sewer-v2 .hub-trust-item{display:flex;align-items:center;gap:16px;}
+#sewer-v2 .hub-trust-item .t-label{color:#0A1B2E;}
+#sewer-v2 .hub-svc-sec{padding-top:72px;}
+@media(max-width:1000px){#sewer-v2 .hub-trust{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){#sewer-v2 .hub-trust{grid-template-columns:1fr;}#sewer-v2 .hub-svc-sec{padding-top:40px;}}
+/* Trust stripe (ported from Highland Park city-hub.css, Round 2 2026-10-05) */
+#sewer-v2 .trust-stripe{background:var(--c-carmine);color:#F9F3EC;padding:22px clamp(22px,4vw,48px);}
+#sewer-v2 .trust-stripe-list{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px clamp(28px,4vw,56px);}
+#sewer-v2 .trust-stripe-list li{display:flex;align-items:center;gap:10px;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3;}
+#sewer-v2 .trust-stripe-list svg{width:20px;height:20px;flex:none;}
+@media(max-width:700px){#sewer-v2 .trust-stripe-list{flex-direction:column;align-items:flex-start;gap:12px;}#sewer-v2 .trust-stripe-list li{font-size:14px;}}
+
+/* --- Services: one featured service, then a card grid --- */
+#sewer-v2 .hub-feat{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,72px);align-items:center;margin-top:48px;}
+#sewer-v2 .hub-feat-img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-hero);display:block;background:var(--c-sand-300);}
+#sewer-v2 .hub-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px;margin-top:64px;padding-top:56px;border-top:1px solid var(--c-sand-500);}
+#sewer-v2 .hub-card{display:flex;flex-direction:column;}
+#sewer-v2 .hub-card-img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--r-panel);display:block;background:var(--c-sand-300);}
+#sewer-v2 .hub-card .svc-cta{margin-top:auto;align-self:flex-start;}
+@media(max-width:1200px){#sewer-v2 .hub-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:1000px){#sewer-v2 .hub-feat{grid-template-columns:1fr;margin-top:40px;}}
+@media(max-width:640px){#sewer-v2 .hub-grid{grid-template-columns:1fr;margin-top:48px;padding-top:40px;}}
+
+/* --- Split section with sticky heading (Understanding, FAQ) --- */
+#sewer-v2 .hub-split{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,96px);align-items:start;}
+#sewer-v2 .hub-sticky{position:sticky;top:110px;}
+#sewer-v2 .hub-tiles{display:flex;flex-direction:column;gap:32px;}
+#sewer-v2 .hub-tile{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:center;}
+#sewer-v2 .hub-tile+.hub-tile{padding-top:32px;border-top:1px solid var(--c-sand-500);}
+#sewer-v2 .hub-tile-img{width:200px;height:200px;object-fit:cover;border-radius:var(--r-panel);display:block;background:var(--c-sand-300);}
+@media(max-width:1000px){#sewer-v2 .hub-split{grid-template-columns:1fr;}#sewer-v2 .hub-sticky{position:static;}}
+@media(max-width:640px){#sewer-v2 .hub-tile{grid-template-columns:1fr;}#sewer-v2 .hub-tile-img{width:100%;height:auto;aspect-ratio:16/10;}}
+
+/* --- Why us: animated survival chart (HTML, replaces the old image) --- */
+#sewer-v2 .hub-why>*{min-width:0;}
+#sewer-v2 .hub-why{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,5vw,72px);align-items:center;}
+#sewer-v2 .hub-chart{margin:0;background:#fff;border-radius:var(--r-hero);padding:clamp(20px,3vw,36px);box-shadow:0 1px 3px rgba(10,27,46,.08);}
+#sewer-v2 .hub-chart-title{margin:0 0 clamp(20px,3vw,32px);font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.1;text-transform:uppercase;letter-spacing:.01em;}
+#sewer-v2 .hub-chart-title span{display:block;}
+#sewer-v2 .hub-chart-title .c-t1{color:var(--c-carmine);}
+#sewer-v2 .hub-chart-title .c-t2{color:var(--c-rosewood);}
+#sewer-v2 .hc{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;--plot-h:clamp(220px,30vw,320px);}
+#sewer-v2 .hc-ylabel{grid-row:1;writing-mode:vertical-rl;transform:rotate(180deg);align-self:center;justify-self:center;height:var(--plot-h);display:flex;align-items:center;justify-content:center;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--c-midnight);}
+#sewer-v2 .hc-plot{position:relative;grid-row:1;grid-column:2;height:var(--plot-h);margin-left:34px;border-left:2px solid var(--c-sand-500);border-bottom:2px solid var(--c-sand-500);}
+#sewer-v2 .hc-tick{position:absolute;left:0;right:0;bottom:calc(var(--y) * 1%);height:0;border-top:1px dashed var(--c-sand-400);}
+#sewer-v2 .hc-tick b{position:absolute;right:calc(100% + 10px);top:-.7em;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:500;font-size:13px;line-height:1.2;color:var(--c-slate);}
+#sewer-v2 .hc-tick.z{border-top:0;}
+#sewer-v2 .hc-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,2vw,20px);padding:0 clamp(6px,2vw,20px);}
+#sewer-v2 .hc-col{position:relative;height:100%;}
+#sewer-v2 .hc-bar{position:absolute;left:12%;right:12%;bottom:0;height:calc(var(--v) * 1%);background:var(--c);border-radius:3px 3px 0 0;transform-origin:50% 100%;}
+#sewer-v2 .hc-val{position:absolute;left:0;right:0;bottom:calc(var(--v) * 1% + 8px);text-align:center;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:800;font-size:clamp(14px,1.8vw,20px);line-height:1;color:var(--c-midnight);}
+#sewer-v2 .hc-xs{grid-row:2;grid-column:2;margin-left:34px;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,2vw,20px);padding:12px clamp(6px,2vw,20px) 0;}
+#sewer-v2 .hc-xs span{text-align:center;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:clamp(11px,1.3vw,14px);letter-spacing:.04em;text-transform:uppercase;color:var(--c-midnight);}
+#sewer-v2 .hc-col.hi .hc-bar{box-shadow:0 0 0 3px rgba(188,14,14,.18);}
+/* Motion: only when JS is present and motion is allowed */
+#sewer-v2.js .hub-chart:not(.reduce) .hc-bar{transform:scaleY(0);transition:transform var(--dur-chart) var(--ease-out);transition-delay:calc(var(--i) * 110ms);}
+#sewer-v2.js .hub-chart:not(.reduce) .hc-val{opacity:0;transform:translateY(6px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:calc(var(--i) * 110ms + 350ms);}
+#sewer-v2.js .hub-chart.is-in:not(.reduce) .hc-bar{transform:scaleY(1);}
+#sewer-v2.js .hub-chart.is-in:not(.reduce) .hc-val{opacity:1;transform:none;}
+#sewer-v2 .hub-stat{margin:0;font-family:var(--font-nunito),'Nunito',sans-serif;font-weight:800;font-size:var(--fs-hub-stat);line-height:.95;color:var(--c-carmine);font-variant-numeric:tabular-nums;}
+#sewer-v2 .hub-since{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--c-sand-500);}
+@media(max-width:1000px){#sewer-v2 .hub-why{grid-template-columns:1fr;}}
+@media(max-width:480px){#sewer-v2 .hc-ylabel{display:none;}#sewer-v2 .hc-plot,#sewer-v2 .hc-xs{margin-left:30px;}}
+
+/* --- Map: real Google Maps embed --- */
+#sewer-v2 .hub-map{display:grid;grid-template-columns:1fr 1fr;}
+#sewer-v2 .hub-map-frame{position:relative;min-height:460px;background:var(--c-sand-300);}
+#sewer-v2 .hub-map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+#sewer-v2 .hub-map-copy{padding:clamp(40px,6vw,96px) clamp(22px,5vw,80px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
+#sewer-v2 .hub-map-links{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;}
+#sewer-v2 .hub-text-link{font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:700;font-size:16px;color:var(--c-cerulean);text-decoration:underline;text-underline-offset:3px;}
+@media(max-width:1000px){#sewer-v2 .hub-map{grid-template-columns:1fr;}#sewer-v2 .hub-map-frame{min-height:340px;}}
+#sewer-v2 .map-h2-br{display:none;}
+/* Below ~1260px, "Sewer Service Across" itself doesn't fit on one line, so forcing the break here would add a
+   4th line instead of fixing anything; only turn it on once the column is wide enough for it to help. */
+@media(min-width:1260px){#sewer-v2 .map-h2-br{display:block;}}
+
+/* --- Reviews: one large quote plus two supporting --- */
+#sewer-v2 .hub-reviews{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,4vw,56px);align-items:start;}
+#sewer-v2 .hub-quote{margin:0;background:#fff;border-radius:var(--r-hero);padding:clamp(28px,4vw,48px);box-shadow:0 1px 3px rgba(10,27,46,.08);}
+#sewer-v2 .hub-quote blockquote{margin:0 0 24px;font-family:var(--font-nunito),'Nunito',sans-serif;font-weight:600;font-size:clamp(19px,2vw,24px);line-height:1.5;color:var(--c-midnight);}
+#sewer-v2 .hub-quote figcaption{margin:0;}
+#sewer-v2 .hub-side{display:flex;flex-direction:column;gap:20px;}
+#sewer-v2 .hub-rev{background:#fff;border-radius:var(--r-panel);padding:24px;box-shadow:0 1px 3px rgba(10,27,46,.08);}
+@media(max-width:1000px){#sewer-v2 .hub-reviews{grid-template-columns:1fr;}}
+
+/* --- Final CTA --- */
+#sewer-v2 .hub-final{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(28px,5vw,80px);align-items:center;}
+#sewer-v2 .hub-final-btns{display:flex;flex-direction:column;align-items:stretch;gap:14px;}
+#sewer-v2 .hub-final-btns .btn{width:100%;}
+@media(max-width:1000px){#sewer-v2 .hub-final{grid-template-columns:1fr;}}
+
+/* =====================================================================
+   SS (Sub-service template). Dispatch base: dense panels + sticky rail.
+   ===================================================================== */
+#sewer-v2 .ss-crumb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 14px;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:14px;line-height:1.3;color:rgba(249,243,236,.85);}
+#sewer-v2 .ss-crumb a{color:#F9F3EC;text-decoration:underline;text-underline-offset:3px;}
+#sewer-v2 .ss-crumb span[aria-hidden]{opacity:.6;}
+#sewer-v2 .ss-hero{position:relative;isolation:isolate;background:#BC0E0E;overflow:hidden;}
+#sewer-v2 .ss-hero-in{max-width:1440px;margin:0 auto;padding:clamp(32px,4vw,56px) clamp(22px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;}
+#sewer-v2 .ss-hero-copy{display:flex;flex-direction:column;gap:16px;}
+#sewer-v2 .ss-hero-copy .hero-cta{margin-top:10px;}
+#sewer-v2 .ss-hero-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-panel);display:block;box-shadow:0 0 0 1px rgba(249,243,236,.25);}
+#sewer-v2 .ss-shell{max-width:1440px;margin:0 auto;padding:40px clamp(22px,4vw,48px) 88px;display:grid;grid-template-columns:minmax(0,1fr) var(--sp-rail);gap:40px;align-items:start;}
+#sewer-v2 .ss-main{display:flex;flex-direction:column;gap:32px;min-width:0;}
+#sewer-v2 .ss-rail{position:sticky;top:92px;display:flex;flex-direction:column;gap:16px;}
+#sewer-v2 .ss-call{background:#BC0E0E;color:#F9F3EC;border-radius:var(--r-panel);padding:20px;display:flex;flex-direction:column;gap:10px;}
+#sewer-v2 .ss-call .btn{width:100%;white-space:nowrap;}
+#sewer-v2 .ss-sticky-cta{display:none;}
+#sewer-v2 .ss-trust{background:#fff;border:1px solid var(--c-sand-400);border-radius:var(--r-panel);padding:4px 20px;}
+#sewer-v2 .ss-trust-item{display:flex;align-items:center;gap:14px;padding:9px 0;}
+#sewer-v2 .ss-trust-item+.ss-trust-item{border-top:1px solid var(--c-sand-400);}
+#sewer-v2 .ss-trust-item img{flex-shrink:0;}
+#sewer-v2 .ss-trust-item .t-label{font-size:15px;color:#0A1B2E;}
+#sewer-v2 .ss-fin{background:#0A1B2E;color:#F9F3EC;border-radius:var(--r-panel);padding:20px;}
+#sewer-v2 .ss-fin h2{color:#F9F3EC;margin:0 0 8px;font-size:20px;}
+#sewer-v2 .ss-fin p{color:#F9F3EC;margin:0 0 6px;}
+#sewer-v2 .ss-fin .fin-note{opacity:.75;margin:0 0 14px;font-size:13px;line-height:1.5;}
+#sewer-v2 .ss-fin .btn{width:100%;text-align:center;}
+#sewer-v2 .ss-compare-wrap{overflow-x:auto;}
+#sewer-v2 .ss-compare{width:100%;min-width:640px;border-collapse:separate;border-spacing:0;}
+#sewer-v2 .ss-compare th,#sewer-v2 .ss-compare td{text-align:left;vertical-align:top;}
+#sewer-v2 .ss-compare thead th{padding:0 16px 16px 0;color:#0A1B2E;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;text-transform:uppercase;}
+#sewer-v2 .ss-compare thead th:nth-child(2){padding-left:16px;}
+#sewer-v2 .ss-compare thead th:last-child{padding-right:0;padding-left:16px;}
+#sewer-v2 .ss-compare tbody th,#sewer-v2 .ss-compare tbody td{padding:18px 16px 18px 0;border-top:1px solid #E3D8C8;color:#3A4A5C;}
+#sewer-v2 .ss-compare thead th.ss-compare-hi{color:#F9F3EC;background:#BC0E0E;border-radius:10px 10px 0 0;}
+#sewer-v2 .ss-compare tbody tr td.ss-compare-hi{background:#BC0E0E;color:#F9F3EC;}
+#sewer-v2 .ss-compare tbody tr:last-child td.ss-compare-hi{border-radius:0 0 10px 10px;}
+#sewer-v2 .ss-compare tbody th{color:#0A1B2E;font-weight:700;white-space:nowrap;}
+#sewer-v2 .ss-compare tbody td:nth-child(2){padding-left:16px;}
+#sewer-v2 .ss-compare tbody td:last-child{padding-right:0;padding-left:16px;}
+
+#sewer-v2 .ss-panel{background:#fff;border:1px solid var(--c-sand-400);border-radius:var(--r-panel);padding:var(--sp-panel);scroll-margin-top:96px;}
+#sewer-v2 .ss-tint{background:var(--c-sand-200);}
+#sewer-v2 .ss-midnight{background:#0A1B2E;border-color:#0A1B2E;}
+#sewer-v2 .ss-head{margin-bottom:24px;}
+#sewer-v2 .ss-panel .t-h2{font-size:var(--fs-ss-h2);line-height:var(--lh-ss-h2);}
+#sewer-v2 .ss-panel .t-body{font-size:var(--fs-ss-lead);line-height:var(--lh-ss-lead);}
+#sewer-v2 .ss-panel img{max-width:100%;}
+#sewer-v2 .ss-panel .card img{max-width:none;}
+#sewer-v2 .ss-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,3.5vw,44px);align-items:center;}
+#sewer-v2 .ss-split.rev>:first-child{order:2;}
+#sewer-v2 .ss-tint .bento-tile{background:#fff;}
+#sewer-v2 .ss-tint .card{border-color:var(--c-sand-400);}
+#sewer-v2 .ss-panel table{max-width:100%;}
+#sewer-v2 .ss-rows{display:flex;flex-direction:column;}
+#sewer-v2 .ss-row{display:grid;grid-template-columns:112px minmax(0,1fr) auto;gap:20px;align-items:center;padding:16px 0;border-top:1px solid var(--c-sand-400);}
+#sewer-v2 .ss-row:first-child{border-top:0;padding-top:0;}
+#sewer-v2 .ss-thumb{width:112px;height:112px;object-fit:cover;border-radius:var(--r-card);display:block;background:var(--c-sand-300);}
+#sewer-v2 .ss-row .svc-title{font-size:20px;margin:0 0 6px;}
+#sewer-v2 .ss-row .svc-desc{margin:0;}
+#sewer-v2 .ss-row--emergency{background:#BC0E0E;border-radius:12px;border-top:0;padding:14px;margin-top:16px;}
+#sewer-v2 .ss-row--emergency+.ss-row{border-top:0;}
+#sewer-v2 .ss-row--emergency .svc-title{color:#fff;}
+#sewer-v2 .ss-row--emergency .svc-desc{color:#F9F3EC;}
+#sewer-v2 .ss-revs{display:grid;grid-template-columns:1fr;gap:12px;}
+#sewer-v2 .ss-rev{background:#fff;border:1px solid var(--c-sand-400);border-radius:var(--r-card);padding:20px 22px;display:flex;flex-direction:column;}
+#sewer-v2 .ss-ndc{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:24px;align-items:end;}
+#sewer-v2 .ss-ndc-img{width:200px;height:300px;object-fit:contain;object-position:bottom;display:block;margin-bottom:-36px;}
+#sewer-v2 .ss-final{background:var(--c-sand-200);}
+#sewer-v2 .ss-fin-inline{display:none;}
+
+@media(hover:hover) and (pointer:fine){#sewer-v2 .ss-crumb a:hover{color:#fff;}}
+@media(max-width:1000px){
+  #sewer-v2 .ss-hero-in{grid-template-columns:1fr;}
+  #sewer-v2 .ss-hero-img{aspect-ratio:16/9;}
+  #sewer-v2 .ss-shell{display:flex;flex-direction:column;align-items:stretch;gap:20px;padding-top:24px;}
+  #sewer-v2 .ss-main,#sewer-v2 .ss-rail{display:contents;}
+  #sewer-v2 .ss-call{display:none;}
+  #sewer-v2 .ss-sticky-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:14px clamp(14px,3.5vw,22px) calc(14px + env(safe-area-inset-bottom));background:#BC0E0E;box-shadow:0 -6px 20px rgba(10,27,46,.25);}
+  #sewer-v2.js .ss-sticky-cta{animation:sv2-ctaSlideUp 320ms var(--ease-drawer) 120ms both;}
+  #sewer-v2 .ss-sticky-cta-text{display:flex;flex-direction:column;line-height:1.3;min-width:0;color:#F9F3EC;}
+  #sewer-v2 .ss-sticky-cta-text strong{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:15px;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  #sewer-v2 .ss-sticky-cta-text span{font-size:12.5px;color:rgba(249,243,236,.85);}
+  #sewer-v2 .ss-sticky-cta .btn{flex-shrink:0;padding:13px 16px;white-space:nowrap;gap:6px;}
+  body:has(#sewer-v2 .ss-sticky-cta){padding-bottom:calc(80px + env(safe-area-inset-bottom));}
+  #sewer-v2 .ss-trust{order:-2;display:grid;grid-template-columns:1fr 1fr;column-gap:20px;}
+  #sewer-v2 .ss-trust-item+.ss-trust-item{border-top:0;}
+  #sewer-v2 .ss-trust-item:nth-child(n+3){border-top:1px solid var(--c-sand-400);}
+  #sewer-v2 .ss-panel{order:var(--o,0);}
+  #sewer-v2 .ss-fin{order:var(--o,0);}
+  #sewer-v2 .ss-split,#sewer-v2 .ss-split.rev{grid-template-columns:1fr;}
+  #sewer-v2 .ss-split.rev>:first-child{order:0;}
+}
+#sewer-v2 .cmp-photos{display:flex;flex-direction:column;gap:20px;}
+@media(max-width:700px){
+  #sewer-v2 .ss-compare-wrap{overflow-x:visible;}
+  #sewer-v2 .ss-compare{min-width:0;width:100%;}
+  #sewer-v2 .ss-compare thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;padding:0;margin:-1px;}
+  #sewer-v2 .ss-compare tbody,#sewer-v2 .ss-compare tr,#sewer-v2 .ss-compare tbody th,#sewer-v2 .ss-compare tbody td{display:block;width:100%;}
+  #sewer-v2 .ss-compare tbody tr{border-top:1px solid #E3D8C8;padding:18px 0;}
+  #sewer-v2 .ss-compare tbody tr:first-child{border-top:0;padding-top:0;}
+  #sewer-v2 .ss-compare tbody th,#sewer-v2 .ss-compare tbody td{border-top:0;padding:0 0 8px;white-space:normal;}
+  #sewer-v2 .ss-compare tbody td:nth-child(2),#sewer-v2 .ss-compare tbody td:last-child{padding-left:0;}
+  #sewer-v2 .ss-compare tbody th{font-size:17px;padding-bottom:10px;}
+  #sewer-v2 .ss-compare tbody td:last-child{padding-bottom:0;}
+  #sewer-v2 .ss-compare tbody td::before{content:attr(data-label);display:block;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3px;text-transform:uppercase;color:#0A1B2E;margin-bottom:4px;}
+  #sewer-v2 .ss-compare tbody tr td.ss-compare-hi{box-sizing:border-box;background:var(--c-sand-200);color:#3A4A5C;border-left:3px solid #BC0E0E;border-radius:0 6px 6px 0;padding:10px 12px 10px 9px;margin:2px 0 10px -12px;width:calc(100% + 12px);}
+  #sewer-v2 .ss-compare tbody tr td.ss-compare-hi::before{color:#BC0E0E;}
+  #sewer-v2 .ss-row{grid-template-columns:88px minmax(0,1fr);gap:14px;}
+  #sewer-v2 .ss-thumb{width:88px;height:88px;}
+  #sewer-v2 .ss-row .svc-cta,#sewer-v2 .ss-row .svc-cta-onred{grid-column:1/-1;width:100%;}
+  #sewer-v2 .ss-ndc{grid-template-columns:1fr;}
+  #sewer-v2 .ss-ndc-img{display:none;}
+  #sewer-v2 .ss-trust{grid-template-columns:1fr;}
+  #sewer-v2 .ss-trust-item:nth-child(n+2){border-top:1px solid var(--c-sand-400);}
+}
+@media(prefers-reduced-motion:reduce){
+  #sewer-v2.js .hc .hc-bar,#sewer-v2.js .hc .hc-val{transition:none !important;transform:none !important;opacity:1 !important;}
+}
+
+/* --- Review proof (hub): Google rating + BBB seal, integrated in the reviews header --- */
+#sewer-v2 .hub-rev-head{display:flex;justify-content:space-between;align-items:flex-start;gap:clamp(24px,4vw,64px);}
+#sewer-v2 .hub-rev-head>div:first-child{flex:1 1 auto;min-width:0;}
+#sewer-v2 .hub-proof{flex:none;width:300px;background:#fff;border-radius:var(--r-panel);padding:18px 20px;box-shadow:0 1px 3px rgba(10,27,46,.08);display:flex;flex-direction:column;}
+#sewer-v2 .hub-proof-row{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;}
+#sewer-v2 .hub-proof-row+.hub-proof-row{margin-top:14px;padding-top:14px;border-top:1px solid var(--c-sand-400);}
+#sewer-v2 .hub-proof-score{display:flex;align-items:center;gap:10px;}
+#sewer-v2 .hub-proof-score strong{font-family:var(--font-nunito),'Nunito',sans-serif;font-weight:800;font-size:30px;line-height:1;color:var(--c-midnight);font-variant-numeric:tabular-nums;}
+#sewer-v2 .hub-proof .pv-stars{margin:0;font-size:14px;line-height:1;}
+#sewer-v2 .hub-proof-sub{display:block;font-family:var(--font-nunito),'Nunito',sans-serif;font-weight:600;font-size:13px;line-height:1.35;color:var(--c-slate);}
+#sewer-v2 .hub-proof-bbb img{width:92px;height:auto;flex:none;}
+@media(hover:hover) and (pointer:fine){#sewer-v2 .hub-proof-bbb:hover .hub-proof-sub{color:var(--c-cerulean);text-decoration:underline;text-underline-offset:3px;}}
+@media(max-width:1000px){#sewer-v2 .hub-rev-head{flex-direction:column;}#sewer-v2 .hub-proof{width:100%;max-width:420px;order:2;}#sewer-v2 .hub-rev-head>div:first-child p{margin-bottom:24px !important;}}
+
+/* --- No Drip Club: one component, two contexts (band on the hub, panel on sub-services) --- */
+#sewer-v2 .ndc{color:#F9F3EC;}
+#sewer-v2 .ndc--band{background:var(--c-midnight);position:relative;overflow:hidden;--ndc-pad:clamp(56px,7vw,100px);padding:var(--ndc-pad) clamp(22px,4vw,48px);}
+#sewer-v2 .ndc--panel{position:relative;overflow:hidden;--ndc-pad:var(--sp-panel);}
+#sewer-v2 .ndc-grid{display:grid;grid-template-columns:1fr;gap:30px;align-items:center;}
+#sewer-v2 .ndc-figure{display:none;}
+#sewer-v2 .ndc-figure img{display:block;width:auto;max-width:100%;max-height:640px;height:auto;}
+#sewer-v2 .ndc-eyebrow{margin:0;color:#F9F3EC;}
+#sewer-v2 .ndc .ndc-h2{margin:12px 0 0;color:#F9F3EC;font-size:var(--fs-ndc-h2);line-height:1.25;}
+#sewer-v2 .ndc .ndc-h2 a{color:inherit;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;}
+#sewer-v2 .ndc-body{margin:24px 0 0;max-width:820px;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:var(--fs-ndc-body);line-height:1.5;color:#F9F3EC;}
+#sewer-v2 .ndc-list{margin:32px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;max-width:820px;}
+#sewer-v2 .ndc-list li{display:flex;align-items:flex-start;gap:12px;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:var(--fs-ndc-list);line-height:1.5;color:#F9F3EC;}
+#sewer-v2 .ndc-list .ndc-check{background:var(--c-carmine);flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+#sewer-v2 .ndc-btn{margin-top:32px;}
+@media(hover:hover) and (pointer:fine){#sewer-v2 .ndc .ndc-h2 a:hover{color:var(--c-glaucous);}}
+@media(min-width:901px){
+  #sewer-v2 .ndc-list li{font-size:18px;line-height:28px;}
+  #sewer-v2 .ndc-btn{margin-top:40px;}
+  #sewer-v2 .ndc--band .ndc-grid{grid-template-columns:minmax(0,1fr) minmax(0,.66fr);}
+  #sewer-v2 .ndc--panel .ndc-grid{grid-template-columns:minmax(0,1fr) minmax(0,.5fr);}
+  #sewer-v2 .ndc-figure{display:flex;align-items:flex-end;justify-content:center;align-self:end;margin-bottom:calc(var(--ndc-pad) * -1);}
+  #sewer-v2 .ndc--panel .ndc-figure img{max-height:420px;}
+}
+@media(max-width:700px){#sewer-v2 .ndc-btn{width:100%;justify-content:center;}}
+@media(max-width:700px){#sewer-v2 .cmp-photos{flex-direction:row;}}
+
+/* --- Financing band: solid Carmine, text and button only. A photo treatment was tried here and dropped
+   (the photo's aspect ratio didn't fit this slot cleanly at any width tested), so this stays simple. --- */
+#sewer-v2 .hub-fin{position:relative;background:var(--c-carmine);}
+#sewer-v2 .hub-fin-in{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:60px clamp(22px,4vw,48px);}
+#sewer-v2 .hub-fin-copy{flex:1 1 320px;min-width:220px;}
+#sewer-v2 .hub-fin-cta{flex:none;}
+@media(max-width:600px){#sewer-v2 .hub-fin-in{padding:40px 22px;}}

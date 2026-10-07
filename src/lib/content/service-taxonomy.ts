@@ -169,6 +169,14 @@ export function hubSlugFor(serviceSlug: string): string {
  * this is the one list. Brief 138 moved it out of `sitemap.ts` (which now
  * imports it) so the sitemap, the breadcrumb live-route check and the global
  * services-menu resolver can never drift apart.
+ *
+ * Brief 200: the nine sewer routes (`SEWER_V2_SERVICE_SLUGS` in
+ * src/lib/content/sewer-v2/routes.ts) render from code, not from
+ * `sub_service_pages` — they 200 with or without a row. Five of them are new
+ * here (overhead-sewer-systems, sewer-camera-inspection, sewer-line-installation,
+ * sewer-line-replacement, trenchless-sewer-repair), which by design turns the
+ * services menu's Overhead / Trenchless items into links to their own pages and
+ * the matching `/{city}/{service}` breadcrumb hub crumb into a link.
  */
 export const SUB_SERVICE_ROUTES = [
   'basement-flooding',
@@ -184,14 +192,19 @@ export const SUB_SERVICE_ROUTES = [
   'kitchen-plumbing',
   'kitchen-sink-drain',
   'laundry-room-plumbing',
+  'overhead-sewer-systems',
   'residential-water-heater',
   'restaurant-drain-clearing',
   'restaurant-plumbing-services',
   'restaurant-water-heater',
+  'sewer-camera-inspection',
+  'sewer-line-installation',
+  'sewer-line-replacement',
   'sewer-maintenance',
   'sewer-rodding',
   'sewer-repair',
   'tankless-water-heater',
+  'trenchless-sewer-repair',
   'water-filtration-systems',
 ] as const;
 

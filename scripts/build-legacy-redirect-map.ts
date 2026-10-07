@@ -209,6 +209,10 @@ const MISC_TARGETS: Record<string, string | null> = {
   'restaurant-plumbing-services': null,
   'restaurant-water-heater': null,
   services: null,
+  // Brief 200: these two are now served by the Sewer Ecosystem v2 pages
+  // (each was a 301 to /services/sewer before).
+  'overhead-sewer-systems': null,
+  'sewer-camera-inspection': null,
   'sewer-maintenance': null,
   'sewer-repair': null,
   'sewer-rodding': null,
@@ -277,11 +281,9 @@ const MISC_TARGETS: Record<string, string | null> = {
   'rooter-plumbing': '/sewer-rodding',
   'sewer-cleaning-emergency': '/emergency-plumbing',
   'sewer-cleaning-services': '/services/sewer',
-  'sewer-camera-inspection': '/services/sewer',
   'sewers-drains': '/services/sewer',
   'sewers-drains-service': '/services/sewer',
   'ejector-pump': '/services/sewer',
-  'overhead-sewer-systems': '/services/sewer',
   'sump-pumps': '/services/sewer',
   // Live title is "Flood Control Maintenance Services in Chicagoland".
   'maintenance-services': '/services/sewer',
