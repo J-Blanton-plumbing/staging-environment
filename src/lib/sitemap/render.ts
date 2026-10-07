@@ -32,6 +32,7 @@ import { CANONICAL_BASE } from '@/lib/seo';
 import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
 import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
+import { SEWER_V2_CATEGORY_SLUG, SEWER_V2_SERVICE_SLUGS } from '@/lib/content/sewer-v2/routes';
 import { CITY_REGISTRY } from '@/lib/content/cities';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import {
@@ -57,8 +58,18 @@ import {
  * contradiction the deploy validator fails on (Brief 152, Fix 3).
  *
  * Keep it empty unless a sub-service route genuinely regains a static fallback.
+ *
+ * Brief 200: the nine Sewer Ecosystem v2 routes genuinely have one — they render
+ * from code (src/lib/content/sewer-v2) and never read `sub_service_pages`, and
+ * three of them have no row at all. Filtering them by published row would drop
+ * live, indexable pages (and dropping a row would remove a page from the sitemap
+ * that still serves 200), so they are listed unconditionally, with no <lastmod>:
+ * a row's `updated_at` says nothing about a page that does not read it. The same
+ * goes for the `/services/sewer` hub below. When the CMS follow-up brief puts
+ * these pages back on the database, take the slugs it moves out of
+ * SEWER_V2_SERVICE_SLUGS and the published-row rule applies to them again.
  */
-const STATIC_FALLBACK_SUB_SERVICES = new Set<string>();
+const STATIC_FALLBACK_SUB_SERVICES = new Set<string>(SEWER_V2_SERVICE_SLUGS);
 
 /**
  * The `<lastmod>` sources, as `[name, sql]`. Exported so
@@ -352,9 +363,11 @@ export function renderPagesSitemap(): Promise<string> {
         changeFrequency: p.changeFrequency,
         priority: p.priority,
       })),
-      ...SERVICE_CATEGORY_SLUGS.filter((slug) => !darkCategorySlugs.has(slug)).map((slug) => ({
+      // Brief 200: the sewer hub renders from code — its category row's draft flag
+      // and timestamp no longer describe the page (see STATIC_FALLBACK_SUB_SERVICES).
+      ...SERVICE_CATEGORY_SLUGS.filter((slug) => slug === SEWER_V2_CATEGORY_SLUG || !darkCategorySlugs.has(slug)).map((slug) => ({
         path: `/services/${slug}`,
-        lastModified: categoryLastMod.get(slug),
+        lastModified: slug === SEWER_V2_CATEGORY_SLUG ? undefined : categoryLastMod.get(slug),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       })),
@@ -366,7 +379,7 @@ export function renderPagesSitemap(): Promise<string> {
           subServiceRows.some((r) => r.slug === slug) || STATIC_FALLBACK_SUB_SERVICES.has(slug)
       ).map((slug) => ({
         path: `/${slug}`,
-        lastModified: subServiceLastMod.get(slug),
+        lastModified: STATIC_FALLBACK_SUB_SERVICES.has(slug) ? undefined : subServiceLastMod.get(slug),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
       })),

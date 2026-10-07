@@ -6990,12 +6990,6 @@
     "bucket": "misc"
   },
   {
-    "from": "/overhead-sewer-systems",
-    "to": "/services/sewer",
-    "status": 301,
-    "bucket": "misc"
-  },
-  {
     "from": "/pipe-replacement",
     "to": "/home-repipe",
     "status": 301,
@@ -7124,12 +7118,6 @@
   {
     "from": "/service-area-winnetka",
     "to": "/winnetka",
-    "status": 301,
-    "bucket": "misc"
-  },
-  {
-    "from": "/sewer-camera-inspection",
-    "to": "/services/sewer",
     "status": 301,
     "bucket": "misc"
   },

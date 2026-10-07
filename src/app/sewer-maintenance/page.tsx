@@ -1,17 +1,21 @@
 import type { Metadata } from 'next';
-import SubServicePageView from '@/components/SubServicePageView';
-import { getSubServiceMeta } from '@/lib/cms/sub-service-pages';
+import { SewerServiceRoute, sewerServiceMetadata } from '@/components/sewer-v2/SewerRoutes';
 
-// Force SSR so DB edits and drafts are reflected immediately.
+/**
+ * Brief 200 — `/sewer-maintenance`: a Sewer Ecosystem v2 service page, rendered from code
+ * (`src/lib/content/sewer-v2/sewer-maintenance.ts` → `SewerServiceView`). Until Brief 200 this route rendered the
+ * `sub_service_pages` row through `SubServicePageView` (Brief 149's three-line shape); that row is
+ * left untouched in the database and still feeds the admin and `/{city}/sewer-maintenance` is unaffected
+ * (city-service pages have their own content), but its edits no longer reach this page until the
+ * CMS follow-up brief.
+ */
+
+// The root layout reads request headers, so this renders per request anyway; explicit for parity
+// with the other service routes.
 export const dynamic = 'force-dynamic';
 
-const SLUG = 'sewer-maintenance';
-
-export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getSubServiceMeta(SLUG);
-  return meta ? { title: meta.title, description: meta.description } : {};
-}
+export const metadata: Metadata = sewerServiceMetadata('sewer-maintenance');
 
 export default function Page() {
-  return <SubServicePageView slug={SLUG} />;
+  return <SewerServiceRoute slug="sewer-maintenance" />;
 }

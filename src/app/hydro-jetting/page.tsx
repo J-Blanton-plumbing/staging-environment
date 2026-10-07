@@ -1,28 +1,21 @@
 import type { Metadata } from 'next';
-import SubServicePageView from '@/components/SubServicePageView';
-import { getSubServiceMeta } from '@/lib/cms/sub-service-pages';
+import { SewerServiceRoute, sewerServiceMetadata } from '@/components/sewer-v2/SewerRoutes';
 
 /**
- * Brief 149 (Track B) — the twin of `/sewer-rodding`, same defect and same fix
- * (Brief 145, finding D-2): the page rendered a static content file with four
- * fields overlaid from `service_category_pages` id 24, while `sub_service_pages`
- * id 23 was editable in the admin and never read.
- *
- * Now the identical three-line shape as the other 21 sub-service routes. Both
- * former sources were retired with this change. See `src/app/sewer-rodding/page.tsx`
- * for the full note.
+ * Brief 200 — `/hydro-jetting`: a Sewer Ecosystem v2 service page, rendered from code
+ * (`src/lib/content/sewer-v2/hydro-jetting.ts` → `SewerServiceView`). Until Brief 200 this route rendered the
+ * `sub_service_pages` row through `SubServicePageView` (Brief 149's three-line shape); that row is
+ * left untouched in the database and still feeds the admin and `/{city}/hydro-jetting` is unaffected
+ * (city-service pages have their own content), but its edits no longer reach this page until the
+ * CMS follow-up brief.
  */
 
-// Force SSR so DB edits and drafts are reflected immediately.
+// The root layout reads request headers, so this renders per request anyway; explicit for parity
+// with the other service routes.
 export const dynamic = 'force-dynamic';
 
-const SLUG = 'hydro-jetting';
-
-export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getSubServiceMeta(SLUG);
-  return meta ? { title: meta.title, description: meta.description } : {};
-}
+export const metadata: Metadata = sewerServiceMetadata('hydro-jetting');
 
 export default function Page() {
-  return <SubServicePageView slug={SLUG} />;
+  return <SewerServiceRoute slug="hydro-jetting" />;
 }
