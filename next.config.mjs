@@ -35,34 +35,6 @@ if (uploadsCdn && !imageRemotePatterns.some(p => p.hostname === uploadsCdn.hostn
 }
 
 /** @type {import('next').NextConfig} */
-/**
- * Brief 200 — 301s retiring the Sewer Ecosystem v2 review copy (`/sewer-v2-test/…`, Brief 183).
- * The hub and the nine service pages, each in the two shapes a reviewer was sent
- * (`…/index.html`) or might type (no `index.html`). Kept in step with
- * SEWER_V2_SERVICE_SLUGS in src/lib/content/sewer-v2/routes.ts (this ESM file cannot import it).
- */
-function sewerV2TestRedirects() {
-  const slugs = [
-    'hydro-jetting',
-    'sewer-rodding',
-    'sewer-repair',
-    'sewer-camera-inspection',
-    'sewer-line-replacement',
-    'sewer-maintenance',
-    'overhead-sewer-systems',
-    'trenchless-sewer-repair',
-    'sewer-line-installation',
-  ];
-  return [
-    { source: '/sewer-v2-test', destination: '/services/sewer', statusCode: 301 },
-    { source: '/sewer-v2-test/index.html', destination: '/services/sewer', statusCode: 301 },
-    ...slugs.flatMap((slug) => [
-      { source: `/sewer-v2-test/${slug}`, destination: `/${slug}`, statusCode: 301 },
-      { source: `/sewer-v2-test/${slug}/index.html`, destination: `/${slug}`, statusCode: 301 },
-    ]),
-  ];
-}
-
 const nextConfig = {
   // Zero-downtime deploys: deploy.yml builds into a side directory
   // (`NEXT_DIST_DIR=.next-build npm run build`) while the running `next start`
@@ -239,14 +211,6 @@ const nextConfig = {
 
       // Stub pages
       { source: '/booking',             destination: '/contact',               statusCode: 301 },
-
-      // Brief 200 — the Sewer Ecosystem v2 review copy (Brief 183, public/sewer-v2-test/)
-      // is retired now that the approved pages are live at their real URLs. Every
-      // test URL a reviewer could hold sends them to the live page in one hop. Here
-      // and not in the middleware alias map because the middleware skips any path
-      // with a file extension (`/…/index.html`). Explicit per slug, not
-      // `/sewer-v2-test/:slug`, so an unknown slug 404s instead of 301-ing to one.
-      ...sewerV2TestRedirects(),
 
       // Brief 83 — "Service Category" + "Service" sidebar sections merged into
       // one "Service Pages" landing; the old standalone sub-service list route
