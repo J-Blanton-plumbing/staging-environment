@@ -70,6 +70,53 @@ export function sanitizeCmsHtml(dirty: string | null | undefined): string {
 }
 
 /**
+ * Brief 199 — simple data tables, allowed in ARTICLE BODIES ONLY.
+ *
+ * `CMS_ALLOWED_TAGS` above is deliberately NOT widened: every other rich-text
+ * field (city, service, main pages, FAQ answers, …) still strips `<table>`, and
+ * so does the V1 article render (`/knowledge-hub/[slug]` → `sanitizeCmsHtml`).
+ * That matters: three WordPress-imported V1 articles (the "2025 best … of
+ * Evanston / Northbrook" lists) already STORE `<table>` markup that has always
+ * been stripped on render — they must keep rendering exactly as before.
+ *
+ * Callers — the article body and nothing else:
+ *   • `buildV2Body` (article-v2-body.ts)   — the Article V2 render (public + /review);
+ *   • the Save Article PUT (api/cms/article/[slug]) and the publish writer
+ *     (`updateArticleCmsContent`, article-pages.ts) — so a V2 table survives Save
+ *     and Publish. A V1 article that stores a table still renders without it.
+ *
+ * Same options as `CMS_SANITIZE_OPTIONS` (links keep the normal `<a>` rules and
+ * the `rel` transform), plus the table tags and ONE attribute: `scope` on `<th>`,
+ * values `col`/`row` only. No `style`, `class`, `width`, `border`, `colspan` or
+ * `rowspan` — merged cells and inline styling are out of scope.
+ */
+export const ARTICLE_BODY_TABLE_TAGS: string[] = ['table', 'caption', 'thead', 'tbody', 'tr', 'th', 'td'];
+
+export const ARTICLE_BODY_ALLOWED_TAGS: string[] = [...CMS_ALLOWED_TAGS, ...ARTICLE_BODY_TABLE_TAGS];
+
+export const ARTICLE_BODY_SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
+  ...CMS_SANITIZE_OPTIONS,
+  allowedTags: ARTICLE_BODY_ALLOWED_TAGS,
+  allowedAttributes: { ...CMS_ALLOWED_ATTRIBUTES, th: ['scope'] },
+  transformTags: {
+    ...CMS_SANITIZE_OPTIONS.transformTags,
+    // sanitize-html's `values` option leaves a bare `scope` behind on a bad value;
+    // drop the attribute entirely unless it is exactly col / row.
+    th: (tagName, attribs) => {
+      const kept: sanitizeHtml.Attributes = {};
+      if (attribs.scope === 'col' || attribs.scope === 'row') kept.scope = attribs.scope;
+      return { tagName, attribs: kept };
+    },
+  },
+};
+
+/** `sanitizeCmsHtml` for an article BODY: the shared allow-list + simple tables (Brief 199). */
+export function sanitizeArticleBodyHtml(dirty: string | null | undefined): string {
+  if (dirty == null) return '';
+  return sanitizeHtml(dirty, ARTICLE_BODY_SANITIZE_OPTIONS);
+}
+
+/**
  * Brief 190 — the PLAIN-TEXT rule: a string declared as plain text (a subtitle,
  * a list item, an alt text) keeps no markup at all. Every tag is dropped —
  * `<script>`/`<style>`/`<iframe>` WITH their contents, via the same

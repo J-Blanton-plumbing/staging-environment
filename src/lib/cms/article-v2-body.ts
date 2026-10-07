@@ -1,4 +1,4 @@
-import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import { sanitizeArticleBodyHtml } from '@/lib/cms/sanitize';
 import { OFFICE_MAP_MARKER } from '@/lib/cms/article-v2';
 
 /**
@@ -7,9 +7,10 @@ import { OFFICE_MAP_MARKER } from '@/lib/cms/article-v2';
  * Pure (no DB, no React) so it can be exercised on fixtures.
  *
  * Order matters and is the safe one:
- *   1. `sanitizeCmsHtml` — the shared Brief 73 allow-list, exactly as V1 renders.
- *      It strips every attribute but href/src/alt/…, so each heading reaches
- *      step 3 as a bare `<h2>`.
+ *   1. `sanitizeArticleBodyHtml` — the shared Brief 73 allow-list plus simple
+ *      tables (Brief 199; V1 renders without the tables). It strips every
+ *      attribute but href/src/alt/…, so each heading reaches step 3 as a bare
+ *      `<h2>`.
  *   2. `{{tokens}}` are resolved by the caller AFTER this, with escaping.
  *   3. Every `<h1>` in the body is demoted to `<h2>` (one H1 per page: the
  *      masthead's), then each `<h2>` gets an `id` built from its own text — the
@@ -97,7 +98,7 @@ const STRAY_MARKER_RE = /\[\[(?:office-map|component:[^\]<]*)\]\]/gi;
  * @param resolveTokens applied to each HTML chunk after sanitizing (step 2)
  */
 export function buildV2Body(rawBody: string, resolveTokens: (html: string) => string = (h) => h): V2Body {
-  let html = sanitizeCmsHtml(rawBody);
+  let html = sanitizeArticleBodyHtml(rawBody);
   html = html.replace(/<h1>/gi, '<h2>').replace(/<\/h1>/gi, '</h2>');
 
   const toc: V2TocItem[] = [];

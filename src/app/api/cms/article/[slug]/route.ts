@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import { requireCmsSession } from '@/lib/auth/api-guard';
-import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import { sanitizeArticleBodyHtml } from '@/lib/cms/sanitize';
 import pool from '@/lib/db';
 import { getArticleTermSelection, getRelatedSelection } from '@/lib/cms/kh-taxonomy';
 import { EMPTY_TERM_SELECTION } from '@/lib/cms/kh-taxonomy-types';
@@ -162,7 +162,7 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
       [
         body.title ?? null,
         body.excerpt ?? null,
-        body.body != null ? JSON.stringify({ html: sanitizeCmsHtml(body.body) }) : null,
+        body.body != null ? JSON.stringify({ html: sanitizeArticleBodyHtml(body.body) }) : null,
         body.image ?? null,
         body.metaTitle ?? null,
         body.metaDescription ?? null,
