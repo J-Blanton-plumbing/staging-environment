@@ -1,5 +1,5 @@
 import pool from '@/lib/db';
-import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
+import { sanitizeArticleBodyHtml } from '@/lib/cms/sanitize';
 import { NotFoundError } from '@/lib/cms/errors';
 import { clearKhTaxonomyCache, writeArticleRelated, writeArticleTerms } from '@/lib/cms/kh-taxonomy';
 import { normalizeRelatedSelection, normalizeTermSelection } from '@/lib/cms/kh-taxonomy-types';
@@ -106,7 +106,7 @@ export async function updateArticleCmsContent(
         // Body is stored as `{ html }` JSON and sanitized on every write path — a
         // draft's stored body has not been through the sanitizer, so it goes
         // through it here rather than being trusted because it came from the CMS.
-        payload.body != null ? JSON.stringify({ html: sanitizeCmsHtml(payload.body) }) : null,
+        payload.body != null ? JSON.stringify({ html: sanitizeArticleBodyHtml(payload.body) }) : null,
         payload.image ?? null,
         payload.metaTitle ?? null,
         payload.metaDescription ?? null,

@@ -216,6 +216,18 @@
 .article-v2 :where(.v2-article) p:has(> img:only-child),
 .article-v2 :where(.v2-article) figure{margin:var(--s6) 0}
 .article-v2 :where(.v2-article) figure figcaption{padding:var(--s3) var(--s2) 0;font-size:var(--t-small);color:var(--text-muted)}
+/* Brief 199: simple data tables in the body. The article-body sanitizer (sanitizeArticleBodyHtml) allows
+   table/caption/thead/tbody/tr/th/td + th[scope] and strips every class, so these are element rules.
+   Header row Midnight on Cream text; body cells brand body 16/24; dividers = the existing --border;
+   even rows Cream on the --surface table. Links in cells keep `.article-v2 a`. */
+.article-v2 :where(.v2-article) table{width:100%;border-collapse:collapse;margin:var(--s6) 0;background:var(--surface);font:400 var(--t-small)/1.5 var(--body);color:var(--text)}
+.article-v2 :where(.v2-article) caption{caption-side:top;padding:0 0 var(--s3);text-align:left;font-size:var(--t-small);color:var(--text-muted)}
+.article-v2 :where(.v2-article) th,
+.article-v2 :where(.v2-article) td{padding:var(--s3) var(--s4);text-align:left;vertical-align:top}
+.article-v2 :where(.v2-article) thead th{background:var(--navy-900);color:var(--sand-100);font-weight:700}
+.article-v2 :where(.v2-article) tbody th{font-weight:700}
+.article-v2 :where(.v2-article) tbody tr{border-bottom:1px solid var(--border)}
+.article-v2 :where(.v2-article) tbody tr:nth-child(even){background:var(--sand-100)}
 /* map: concentric frame, outer 18 = inner 10 + padding 8 */
 .article-v2 .map{margin:var(--s5) 0 var(--s4);background:var(--surface);padding:var(--pad-card);border-radius:var(--r-outer);box-shadow:var(--shadow-1);border:1px solid var(--border)}
 .article-v2 .map iframe{display:block;width:100%;aspect-ratio:16/10;border:0;border-radius:var(--r-inner);background:var(--surface-sunk)}
@@ -382,6 +394,11 @@
   .article-v2 .svc b{grid-row:auto}
   .article-v2 .rail{grid-template-columns:1fr}
   .article-v2 .map iframe{aspect-ratio:4/3}
+  /* Brief 199: a wide table scrolls inside itself, never the page */
+  .article-v2 :where(.v2-article) table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .article-v2 :where(.v2-article) th,
+  .article-v2 :where(.v2-article) td{padding:var(--s3)}
+  .article-v2 :where(.v2-article) td{min-width:10rem} /* readable columns; the table scrolls sideways instead */
   .article-v2 .faq details p{padding-right:0}
   .article-v2 .communities > summary{padding:var(--s3) var(--s4)}
   .article-v2 .communities-body{padding:0 var(--s4) var(--s2)}

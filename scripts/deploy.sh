@@ -754,6 +754,22 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-198-hose-bib-fall-checklist.ts commit
+# -- Brief 199: Columbus "older homes" article, UNPUBLISHED (Article V2) ----
+# CREATE-ONCE: creates
+# /knowledge-hub/older-homes-plumbing-problems-grandview-clintonville-german-village
+# as a DRAFT (live row status 'draft' + tags + related + ONE unpublished
+# "Version 1 — for review" version) only if no article has that slug. The
+# public URL keeps 404ing until Marketing clicks Publish; managers read it at
+# /review/knowledge-hub/<slug> (the Brief 195 route). Every deploy after the
+# first reports ALREADY-EXISTS and writes nothing. Missing sewers /
+# central-ohio term, no/non-OH columbus office, a Central Ohio phone that is
+# not 614-547-6516, or no CMS user → NOT-APPLIED, exit 0, nothing written.
+# Exit 1 (code/schema): missing Brief 190 columns, or the sanitized body holds
+# no <table> (article-body table support, Brief 199 Track B, not active).
+# Never touches global_settings. Same `-r tsconfig-paths/register` need as
+# Brief 191. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-brief-199-columbus-older-homes.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.
