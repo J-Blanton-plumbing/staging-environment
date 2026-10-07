@@ -1,4 +1,5 @@
 import type { SewerServicePage } from './types';
+import { MEET_J_BLANTON_VIDEO_SCHEMA, meetJBlantonPanel } from './shared';
 
 /**
  * Brief 200 — /sewer-rodding, ported verbatim from the approved Sewer Ecosystem v2 package
@@ -262,38 +263,7 @@ export const SEWER_RODDING: SewerServicePage = {
         },
       ],
     },
-    {
-      kind: "panel",
-      id: "considering-diy-sewer-rodding",
-      tint: false,
-      order: 30,
-      body: [
-        {
-          tag: "div",
-          style: "max-width:66ch;margin:0 0 24px",
-          kids: [
-            { tag: "span", cls: "t-eyebrow", style: "color:var(--c-carmine)", kids: ["Thinking About DIY?"] },
-            { tag: "h2", cls: "t-h2", style: "margin:12px 0 16px", kids: ["Considering DIY Sewer Rodding?"] },
-            {
-              tag: "p",
-              cls: "t-body",
-              style: "color:var(--c-slate);margin:0",
-              kids: [
-                "Hardware stores sell sewer rodding equipment. For small fixes, it's sometimes all you need. But here are 3 things you should know before reaching for one of these tools.",
-              ],
-            },
-          ],
-        },
-        {
-          video: {
-            kind: "mp4",
-            src: "https://d1ze053a37fps5.cloudfront.net/uploads/cms/sewer-v2-test/video-3-things-before-diy.mp4",
-            poster: "/images/services/sewer/sewer-rodding/video-poster.jpg",
-            fallback: "Your browser does not support embedded video. Call {phone} to talk to a technician instead.",
-          },
-        },
-      ],
-    },
+    meetJBlantonPanel(30),
     {
       kind: "reviews",
       order: 40,
@@ -366,4 +336,6 @@ export const SEWER_RODDING: SewerServicePage = {
     },
   ],
   rail: { financingOrder: 25 },
+  // Marketing 2026-10-07: the Meet J. Blanton video replaced this page's MP4 section.
+  videoSchema: MEET_J_BLANTON_VIDEO_SCHEMA,
 };
