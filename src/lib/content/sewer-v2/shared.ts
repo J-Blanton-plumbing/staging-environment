@@ -1,3 +1,5 @@
+import type { SewerSection } from './types';
+
 /**
  * Brief 200 — copy shared by the Sewer Ecosystem v2 pages. Verbatim from the approved package;
  * the port script asserted each of these is identical on all 9 service pages before it was
@@ -94,3 +96,51 @@ export const SEWER_REVIEW = {
 
 /** Text of the "Learn More" service links; the aria-label is "Learn More about {title}". */
 export const SEWER_LEARN_MORE = 'Learn More';
+
+/**
+ * "Meet J. Blanton" — the YouTube section six service pages carry, verbatim (eyebrow, heading, text,
+ * video), and its VideoObject. Marketing, 2026-10-07: Hydro Jetting and Sewer Rodding use it too, in
+ * place of their two self-hosted MP4 sections, whose videos were never uploaded to S3.
+ */
+export const MEET_J_BLANTON_VIDEO_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Meet J. Blanton Plumbing',
+  description: 'J. Blanton Plumbing delivers fast, reliable, same-day plumbing service across Chicago and the surrounding suburbs.',
+  thumbnailUrl: 'https://i.ytimg.com/vi/ZDFzUtjBUCk/maxresdefault.jpg',
+  uploadDate: '2025-05-21T07:47:39-07:00',
+  duration: 'PT47S',
+  contentUrl: 'https://www.youtube.com/watch?v=ZDFzUtjBUCk',
+  embedUrl: 'https://www.youtube.com/embed/ZDFzUtjBUCk',
+};
+
+export function meetJBlantonPanel(order: number): SewerSection {
+  return {
+    kind: 'panel',
+    id: 'video',
+    tint: false,
+    order,
+    body: [
+      {
+        tag: 'div',
+        cls: 'ss-split',
+        kids: [
+          { tag: 'div', kids: [{ video: { kind: 'youtube', id: 'ZDFzUtjBUCk', title: 'Meet J. Blanton Plumbing' } }] },
+          {
+            tag: 'div',
+            kids: [
+              { tag: 'span', cls: 't-eyebrow', style: 'color:var(--c-carmine)', kids: ['Meet J. Blanton'] },
+              { tag: 'h2', cls: 't-h2', style: 'margin:12px 0 16px;max-width:66ch', kids: ['Big Enough to Get the Job Done, Small Enough to Care'] },
+              {
+                tag: 'p',
+                cls: 't-body',
+                style: 'color:var(--c-slate);margin:0;max-width:66ch',
+                kids: ['We’ve grown a lot since 1993, but the way we work hasn’t changed. Here’s a closer look at who we are.'],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+}

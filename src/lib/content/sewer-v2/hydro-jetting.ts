@@ -1,4 +1,5 @@
 import type { SewerServicePage } from './types';
+import { MEET_J_BLANTON_VIDEO_SCHEMA, meetJBlantonPanel } from './shared';
 
 /**
  * Brief 200 — /hydro-jetting, ported verbatim from the approved Sewer Ecosystem v2 package
@@ -265,43 +266,7 @@ export const HYDRO_JETTING: SewerServicePage = {
         },
       ],
     },
-    {
-      kind: "panel",
-      id: "why-is-hydro-jetting-in-chicago-a-thing",
-      tint: false,
-      order: 30,
-      body: [
-        {
-          tag: "div",
-          style: "max-width:66ch;margin:0 0 24px",
-          kids: [
-            { tag: "span", cls: "t-eyebrow", style: "color:var(--c-carmine)", kids: ["The Chicago Angle"] },
-            {
-              tag: "h2",
-              cls: "t-h2",
-              style: "margin:12px 0 16px;max-width:66ch",
-              kids: ["Why Is Hydro Jetting in Chicago “A Thing”?"],
-            },
-            {
-              tag: "p",
-              cls: "t-body",
-              style: "color:var(--c-slate);margin:0;max-width:66ch",
-              kids: [
-                "Chicago's older homes come with older pipes, and older pipes come with problems a snake can't always solve. Watch the 60-second explainer to find out why hydro jetting is the go-to fix for recurring drain issues in the city.",
-              ],
-            },
-          ],
-        },
-        {
-          video: {
-            kind: "mp4",
-            src: "https://d1ze053a37fps5.cloudfront.net/uploads/cms/sewer-v2-test/video-why-hydro-jetting-chicago.mp4",
-            poster: "/images/services/sewer/hydro-jetting/video-poster.jpg",
-            fallback: "Your browser does not support embedded video. Call {phone} to talk to a technician instead.",
-          },
-        },
-      ],
-    },
+    meetJBlantonPanel(30),
     {
       kind: "reviews",
       order: 40,
@@ -374,4 +339,6 @@ export const HYDRO_JETTING: SewerServicePage = {
     },
   ],
   rail: { financingOrder: 25 },
+  // Marketing 2026-10-07: the Meet J. Blanton video replaced this page's MP4 section.
+  videoSchema: MEET_J_BLANTON_VIDEO_SCHEMA,
 };
