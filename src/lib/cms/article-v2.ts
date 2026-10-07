@@ -78,13 +78,14 @@ export type V2ServiceArea = (typeof V2_SERVICE_AREAS)[number];
 // [[component:<name>]]. One item shape serves all three; the type decides which
 // fields are used (see V2_COMPONENT_FIELDS).
 
-export const V2_COMPONENT_TYPES = ['promises', 'services', 'cards'] as const;
+export const V2_COMPONENT_TYPES = ['promises', 'services', 'cards', 'media-text'] as const;
 export type V2ComponentType = (typeof V2_COMPONENT_TYPES)[number];
 
 export const V2_COMPONENT_LABELS: Record<V2ComponentType, string> = {
   promises: 'Promise list',
   services: 'Service rows',
   cards: 'Feature cards',
+  'media-text': 'Image + text',
 };
 
 /** Which item fields each type uses (the rest are ignored and not rendered). */
@@ -92,7 +93,75 @@ export const V2_COMPONENT_FIELDS: Record<V2ComponentType, { checklist: boolean; 
   promises: { checklist: false, link: false, inlineText: false },
   services: { checklist: false, link: true, inlineText: false },
   cards: { checklist: true, link: true, inlineText: true },
+  'media-text': { checklist: false, link: false, inlineText: true },
 };
+
+// ── Brief 201 (Track A): "Image + text" — an image beside a block of text ─────
+//
+// The one type with component-level fields: the image and how the items render.
+// They live in `media`, present ONLY on 'media-text' components, so the stored
+// shape of the three Brief 192 types is unchanged. Items are the shared shape
+// (title = optional bold lead-in, text = inline rich text).
+
+export const V2_MEDIA_SIDES = ['right', 'left'] as const;
+export type V2MediaSide = (typeof V2_MEDIA_SIDES)[number];
+
+export const V2_MEDIA_TEXT_STYLES = ['paragraphs', 'numbered', 'bulleted'] as const;
+export type V2MediaTextStyle = (typeof V2_MEDIA_TEXT_STYLES)[number];
+
+export const V2_MEDIA_SIDE_LABELS: Record<V2MediaSide, string> = { right: 'Right', left: 'Left' };
+export const V2_MEDIA_TEXT_STYLE_LABELS: Record<V2MediaTextStyle, string> = {
+  paragraphs: 'Paragraphs',
+  numbered: 'Numbered list',
+  bulleted: 'Bulleted list',
+};
+
+/** Largest width/height kept for the <img> attributes; anything else is 0 (= omitted). */
+export const V2_MEDIA_MAX_DIMENSION = 10000;
+
+export interface V2MediaText {
+  /** http(s) URL or a site path ("/images/…"). Empty → the component renders nothing. */
+  image_url: string;
+  /** The image's natural size, for the width/height attributes. 0 = unknown (omitted). */
+  image_width: number;
+  image_height: number;
+  /** Plain text. Required (the admin warns when empty). */
+  image_alt: string;
+  /** Plain text. Optional <figcaption>. */
+  image_caption: string;
+  image_side: V2MediaSide;
+  text_style: V2MediaTextStyle;
+}
+
+export const EMPTY_V2_MEDIA_TEXT: V2MediaText = {
+  image_url: '',
+  image_width: 0,
+  image_height: 0,
+  image_alt: '',
+  image_caption: '',
+  image_side: 'right',
+  text_style: 'paragraphs',
+};
+
+/** A width/height as stored: a whole number 1…V2_MEDIA_MAX_DIMENSION, else 0. */
+export function mediaDimension(raw: unknown): number {
+  const n = typeof raw === 'number' ? raw : typeof raw === 'string' && /^\s*\d+\s*$/.test(raw) ? Number(raw) : NaN;
+  return Number.isInteger(n) && n > 0 && n <= V2_MEDIA_MAX_DIMENSION ? n : 0;
+}
+
+/** Shape any stored value into a full V2MediaText (no sanitizing, no trimming). */
+export function normalizeMediaText(raw: unknown): V2MediaText {
+  const r = raw && typeof raw === 'object' && !Array.isArray(raw) ? (raw as Record<string, unknown>) : {};
+  return {
+    image_url: str(r.image_url),
+    image_width: mediaDimension(r.image_width),
+    image_height: mediaDimension(r.image_height),
+    image_alt: str(r.image_alt),
+    image_caption: str(r.image_caption),
+    image_side: r.image_side === 'left' ? 'left' : 'right',
+    text_style: r.text_style === 'numbered' || r.text_style === 'bulleted' ? r.text_style : 'paragraphs',
+  };
+}
 
 export interface V2ComponentItem {
   /** Plain text. Promise/service: bold lead-in. Card: the <h3>. */
@@ -111,6 +180,8 @@ export interface ArticleV2Component {
   name: string;
   type: V2ComponentType;
   items: V2ComponentItem[];
+  /** Brief 201: 'media-text' only (absent on every other type). */
+  media?: V2MediaText;
 }
 
 export const V2_MAX_COMPONENTS = 20;
@@ -131,7 +202,7 @@ export function slugifyComponentName(raw: string): string {
   return raw.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40).replace(/-+$/g, '');
 }
 
-const COMPONENT_NAME_BASE: Record<V2ComponentType, string> = { promises: 'promises', services: 'services', cards: 'cards' };
+const COMPONENT_NAME_BASE: Record<V2ComponentType, string> = { promises: 'promises', services: 'services', cards: 'cards', 'media-text': 'image-text' };
 
 /** A free name for a new component of this type: promises, promises-2, … */
 export function suggestComponentName(type: V2ComponentType, taken: string[]): string {
@@ -261,6 +332,8 @@ export function normalizeArticleV2(raw: unknown): ArticleV2Content {
                     link_url: str(i.link_url),
                   }))
               : [],
+            // Brief 201: only the Image + text type carries `media`.
+            ...(c.type === 'media-text' ? { media: normalizeMediaText(c.media) } : {}),
           }))
       : [],
   };

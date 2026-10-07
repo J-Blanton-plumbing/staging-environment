@@ -1,5 +1,5 @@
 import { sanitizeArticleBodyHtml } from '@/lib/cms/sanitize';
-import { OFFICE_MAP_MARKER } from '@/lib/cms/article-v2';
+import { OFFICE_MAP_MARKER, type ArticleV2Component } from '@/lib/cms/article-v2';
 
 /**
  * Brief 190 (Track B) — turns an article's stored body into what Article V2
@@ -64,6 +64,23 @@ export function htmlToText(html: string): string {
 export function countWords(text: string): number {
   const t = text.trim();
   return t ? t.split(/\s+/).length : 0;
+}
+
+/**
+ * The visible words of one placed content component, for "N min read" — shared
+ * by ArticleV2Template and the hub's featured card (kh-featured.ts) so the two
+ * never disagree. Brief 192 types: title + text + checklist + link label.
+ * Brief 201 Image + text adds its caption (a body <figure>'s caption counts as
+ * body text too). A component that renders nothing (no items; Image + text
+ * with no image) counts 0, matching V2Block.
+ */
+export function componentWordCount(c: ArticleV2Component): number {
+  if (c.items.length === 0 || (c.type === 'media-text' && !c.media?.image_url)) return 0;
+  const items = c.items.reduce(
+    (m, it) => m + countWords(it.title) + countWords(htmlToText(it.text)) + it.checklist.reduce((k, x) => k + countWords(x), 0) + countWords(it.link_label),
+    0
+  );
+  return items + (c.type === 'media-text' ? countWords(c.media?.image_caption ?? '') : 0);
 }
 
 function slugify(text: string): string {

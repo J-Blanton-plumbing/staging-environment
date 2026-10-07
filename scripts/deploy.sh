@@ -754,6 +754,18 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-198-hose-bib-fall-checklist.ts commit
+# -- Brief 201: that draft's REAL PHOTOS + two "Image + text" components -----
+# One time: adds "Version 2 — real photos" (unpublished) and puts the live row
+# (still status 'draft') on it, so the review link shows the new hero, the
+# checklist / frost-free components and the 3 new body photos. Guarded, and
+# editor state wins: no article → NOT-APPLIED (no article); not a draft →
+# NOT-APPLIED (not a draft); the latest version or the live row no longer
+# equals the Brief 198 seed payload → NOT-APPLIED (edited in admin), naming
+# the fields; all exit 0, nothing written. Later deploys: ALREADY-APPLIED.
+# Exit 1 only on a code/schema fault. Version 1 is never touched. MUST stay
+# after the Brief 198 seed. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-201-hose-bib-images.ts commit
 # -- Brief 199: Columbus "older homes" article, UNPUBLISHED (Article V2) ----
 # CREATE-ONCE: creates
 # /knowledge-hub/older-homes-plumbing-problems-grandview-clintonville-german-village

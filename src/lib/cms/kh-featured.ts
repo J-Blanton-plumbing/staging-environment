@@ -13,7 +13,7 @@ import { PUBLISHED } from '@/lib/cms/kh-taxonomy';
 import type { KhTermRef } from '@/lib/cms/kh-taxonomy-types';
 import { FALLBACK_ARTICLE_IMAGE } from '@/lib/cms/related-articles';
 import { DEFAULT_BYLINE_NAME, bylineInitials, normalizeArticleV2, normalizeArticleTemplate, readMinutes } from '@/lib/cms/article-v2';
-import { buildV2Body, countWords, htmlToText } from '@/lib/cms/article-v2-body';
+import { buildV2Body, componentWordCount, countWords, htmlToText } from '@/lib/cms/article-v2-body';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 
 /** At most this many Key Takeaways on the card (the article shows all of them). */
@@ -63,8 +63,7 @@ function articleWordCount(bodyHtml: string, template: string | null, v2Raw: unkn
       .reduce((n, part) => {
         if (part.kind !== 'component') return n;
         const c = components.get(part.name);
-        if (!c) return n;
-        return n + c.items.reduce((m, it) => m + countWords(it.title) + countWords(htmlToText(it.text)) + it.checklist.reduce((k, x) => k + countWords(x), 0) + countWords(it.link_label), 0);
+        return c ? n + componentWordCount(c) : n;
       }, 0)
   );
 }

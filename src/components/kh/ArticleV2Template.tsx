@@ -16,7 +16,7 @@ import { breadcrumbListJsonLd } from '@/lib/schema/breadcrumb-list';
 import { isLiveBreadcrumbRoute } from '@/lib/content/service-taxonomy';
 import { CHICAGOLAND, CHICAGOLAND_GROUPS, COLUMBUS_REGION, OHIO_GROUPS, type CityGroup } from '@/lib/content/locations-regions';
 import { NDC_RAIL_CARD } from '@/lib/content/ndc';
-import { buildV2Body, countWords, htmlToText, type V2TocItem } from '@/lib/cms/article-v2-body';
+import { buildV2Body, componentWordCount, countWords, htmlToText, type V2TocItem } from '@/lib/cms/article-v2-body';
 import { DEFAULT_BYLINE_NAME, bylineInitials, readMinutes, type ArticleV2Content } from '@/lib/cms/article-v2';
 import type { ArticleTermsDisplay } from '@/lib/cms/kh-taxonomy-types';
 import type { KhArticleCard } from '@/lib/cms/kh-taxonomy';
@@ -160,8 +160,7 @@ export default function ArticleV2Template({ article, v2, terms, related, crumbs,
       .reduce((n, part) => {
         if (part.kind !== 'component') return n;
         const c = components.get(part.name);
-        if (!c) return n;
-        return n + c.items.reduce((m, it) => m + countWords(it.title) + countWords(htmlToText(it.text)) + it.checklist.reduce((k, x) => k + countWords(x), 0) + countWords(it.link_label), 0);
+        return c ? n + componentWordCount(c) : n;
       }, 0);
   const minutes = readMinutes(words);
 
