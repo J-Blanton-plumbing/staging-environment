@@ -25,6 +25,10 @@
  *   7. every https://jblantonplumbing.com/… link is relative, and "schedule
  *      service online" (/contact) is `#schedule` (the booking popup);
  *   8. FAQ 3: "German Village many may still have" → "German Village may still have".
+ * Plus Marketing's first review round (R1, 2026-10-07): takeaway 1 starts "Age often means…"; the
+ * table's lead-in line is gone; the clay-pipe photo follows the "What Kind of Pipes…" intro; the
+ * office map sits at the end of "Neighborhood by Neighborhood". On a box where the article already
+ * exists, `update-brief-199-older-homes-review-1.ts` applies the same R1 edits to the draft.
  * Images: `public/images/knowledge-hub/columbus-older-homes/` (real photos).
  *
  * ── CREATE-ONCE (Brief 186) ─────────────────────────────────────────────────
@@ -101,8 +105,8 @@ const BODY = [
 
   `<h2>How Old Are the Homes in Central Ohio's Older Neighborhoods?</h2>`,
   `<p>Many homes in Grandview Heights, Clintonville and German Village were built between the mid-1800s and the 1940s, which makes them roughly 80 to more than 150 years old. A lot of them still rely on plumbing from that era.</p>`,
-  `<p>Here's when most homes in each neighborhood were built:</p>`,
-  // (3) A real table (Track B). Grandview Heights cell = Track C wording.
+  // (3) A real table (Track B). Grandview Heights cell = Track C wording. The .md's lead-in line
+  // "Here's when most homes in each neighborhood were built:" was removed in Marketing's review (R1).
   `<table>` +
     `<thead><tr><th scope="col">Neighborhood</th><th scope="col">Housing age</th><th scope="col">What you'll find</th></tr></thead>` +
     `<tbody>` +
@@ -115,12 +119,13 @@ const BODY = [
 
   `<h2>What Kind of Pipes Are Under an Older Columbus Home?</h2>`,
   `<p>Older Columbus homes commonly have a clay sewer lateral, cast iron drains inside the house and galvanized steel or copper water pipes. Some homes built before 1964 may still have a lead water service line. Each material has its own weak spots, from roots in clay joints to rust inside iron and steel.</p>`,
-  `<p><strong>Clay sewer laterals.</strong> The lateral is the pipe that carries everything you flush or drain from your house to the city sewer. The City of Columbus explains that <a href="${CITY_LATERAL_PDF}">in older homes, the lateral is usually clay pipe</a>, which can crack or fill with tree roots over time. Clay was laid in short sections, and every joint between them is a spot where roots can slip in. Here's more on <a href="/knowledge-hub/roots-in-sewer-line">tree roots in your sewer line</a>.</p>`,
+  // R1: the photo goes with the section intro, above the four material paragraphs (not after the first one).
   fig(
     'clay-sewer-pipe-roots.webp', 1100, 614,
     'Cracked clay sewer pipe with tree roots growing through a joint, dug up in front of an older brick home',
     'Clay pipe was laid in short sections, and every joint is a spot where roots can get in.'
   ),
+  `<p><strong>Clay sewer laterals.</strong> The lateral is the pipe that carries everything you flush or drain from your house to the city sewer. The City of Columbus explains that <a href="${CITY_LATERAL_PDF}">in older homes, the lateral is usually clay pipe</a>, which can crack or fill with tree roots over time. Clay was laid in short sections, and every joint between them is a spot where roots can slip in. Here's more on <a href="/knowledge-hub/roots-in-sewer-line">tree roots in your sewer line</a>.</p>`,
   `<p><strong>Cast iron drains.</strong> Cast iron is heavy and strong, which is why it was used for drain and waste lines for so long. In older homes, we often find cast iron that has rusted from the inside. That buildup narrows the pipe, catches debris and can eventually lead to cracks or leaks.</p>`,
   `<p><strong>Galvanized water lines.</strong> Galvanized pipe is steel coated with zinc. As the coating wears away, the steel underneath rusts. The signs we usually see are low water pressure and brown or rusty water.</p>`,
   `<p><strong>Lead service lines.</strong> This is the pipe that brings drinking water into your home. The City of Columbus says <a href="https://www.columbus.gov/leadandwater">homes built before 1964 may still have a lead service line</a>, and homes built before 1989 may have copper pipes joined with lead solder. If your home was built after 1965, the City says you don't have a lead service line.</p>`,
@@ -137,6 +142,8 @@ const BODY = [
   `<p>Homes here sit close together and close to the street, so sewer lines often run under garden walls, patios and brick walkways, which can make repairs tricky.</p>`,
   `<p>The public sewers here are old, too. In one case, <a href="https://myfox28columbus.com/news/local/sewer-collapse-in-south-pearl-alley-in-german-village-sewer-maintenance-operations-center-columbus-water-and-gas-livingston-avenue-south-3rd-street">a large combined sewer collapsed under South Pearl Alley</a>, backing up flow and flooding part of South 3rd Street.</p>`,
   `<p>A combined sewer carries both stormwater and wastewater in the same pipe. That was city pipe, not a homeowner's lateral, but it shows how much old infrastructure sits under the neighborhood. For help with your own line, talk to our <a href="/columbus-german-village">plumbers in German Village</a>.</p>`,
+  // R1: the Columbus office map closes the neighborhood section (V2's [[office-map]] marker).
+  `<p>[[office-map]]</p>`,
 
   `<h2>What Does a Sewer Camera Inspection Show?</h2>`,
   `<p>A sewer camera inspection sends a small waterproof camera through your sewer line so you can see the inside on a screen. It can reveal tree roots, cracks, separated or offset joints, sagging sections called bellies, grease buildup and collapsed pipe. It's one of the easiest ways to find a problem without digging.</p>`,
@@ -200,13 +207,13 @@ const V2 = {
   image_alt: 'Older two-and-a-half-story home with a brick chimney and a front porch, surrounded by mature trees',
   image_caption: '',
   takeaways: [
-    'That age often means clay sewer lines, cast iron drains, galvanized or lead water lines, and roots from mature trees.',
+    'Age often means clay sewer lines, cast iron drains, galvanized or lead water lines, and roots from mature trees.',
     "In Columbus, the sewer line from your house to the city's pipe is yours to maintain.",
     'A sewer camera inspection shows roots, cracks and sagging pipe early.',
     'Get one before you buy, remodel or after a backup.',
   ],
-  // The Columbus office → {{phone}} = the Central Ohio phone (Brief 192). No [[office-map]] in the
-  // body and no service-area list: a how-to article, not an office launch.
+  // The Columbus office → {{phone}} = the Central Ohio phone (Brief 192) and the pinned office map at the
+  // body's [[office-map]] marker (R1). No service-area list: a how-to article, not an office launch.
   office: OFFICE,
   service_area: '',
   service_area_label: '',
