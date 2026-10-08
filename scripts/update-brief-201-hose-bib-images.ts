@@ -65,6 +65,7 @@ import {
   V2,
   seedVersionContent,
 } from './lib/brief-198-hose-bib-content';
+import { describeBoth, findHoseBibArticle } from './lib/hose-bib-article';
 
 const SCRIPT = 'update-brief-201-hose-bib-images';
 
@@ -280,24 +281,30 @@ async function main(pool: Pool) {
     const missing = need.filter((n) => !cols.rows.some((r) => `${r.table_name}.${r.column_name}` === n));
     if (missing.length) throw new Error(`missing column(s): ${missing.join(', ')}`);
 
-    // ── The article ──
-    const live = (
-      await c.query<LiveRow>(
-        `SELECT id, status, template, title, excerpt, image, meta_title, meta_description, body->>'html' AS html, v2
-           FROM cms_articles WHERE slug = $1`,
-        [SLUG]
-      )
-    ).rows[0];
-    if (!live) {
+    // ── The article, under either slug (Brief 202 A1: it is renamed after this ran) ──
+    const found = await findHoseBibArticle(c);
+    if (found.kind === 'both') {
+      verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', describeBoth(found.rows));
+      return;
+    }
+    if (found.kind === 'none') {
       verdict(SCRIPT, 'NOT-APPLIED (no article)', `no article /knowledge-hub/${SLUG} (the Brief 198 seed has not created it here) — nothing written`);
       return;
     }
+    const slug = found.slug;
+    const live = (
+      await c.query<LiveRow>(
+        `SELECT id, status, template, title, excerpt, image, meta_title, meta_description, body->>'html' AS html, v2
+           FROM cms_articles WHERE id = $1`,
+        [found.id]
+      )
+    ).rows[0];
     const versions = (
       await c.query<{ id: number; label: string; is_published: boolean; created_by: number; content: unknown }>(
         `SELECT id, label, is_published, created_by, content FROM page_drafts
           WHERE page_type = 'article' AND page_slug = $1
           ORDER BY created_at DESC, id DESC`,
-        [SLUG]
+        [slug]
       )
     ).rows;
     const mine = versions.find((v) => v.label === VERSION_LABEL);
@@ -345,7 +352,7 @@ async function main(pool: Pool) {
       `INSERT INTO page_drafts (page_type, page_slug, label, content, created_by, is_published, published_at)
        VALUES ('article', $1, $2, $3, $4, FALSE, NULL)
        RETURNING id`,
-      [SLUG, VERSION_LABEL, JSON.stringify(content), latest.created_by]
+      [slug, VERSION_LABEL, JSON.stringify(content), latest.created_by]
     );
     const upd = await c.query(
       `UPDATE cms_articles SET body = $2::jsonb, image = $3, v2 = $4::jsonb, updated_at = NOW()
@@ -359,7 +366,7 @@ async function main(pool: Pool) {
       await c.query<{ id: number; label: string; is_published: boolean; content: unknown }>(
         `SELECT id, label, is_published, content FROM page_drafts
           WHERE page_type = 'article' AND page_slug = $1 ORDER BY created_at DESC, id DESC`,
-        [SLUG]
+        [slug]
       )
     ).rows;
     const others = after.filter((v) => v.id !== ins.rows[0].id).map((v) => `${v.id}:${canon(v.content)}:${v.is_published}`).join('|');
@@ -391,7 +398,7 @@ async function main(pool: Pool) {
     }
     await c.query('COMMIT');
     committed = true;
-    verdict(SCRIPT, 'APPLIED', `"${VERSION_LABEL}" added to /knowledge-hub/${SLUG} (id ${live.id}, still a draft) — review at /review/knowledge-hub/${SLUG}`);
+    verdict(SCRIPT, 'APPLIED', `"${VERSION_LABEL}" added to /knowledge-hub/${slug} (id ${live.id}, still a draft) — review at /review/knowledge-hub/${slug}`);
   } catch (err) {
     if (!committed) await c.query('ROLLBACK').catch(() => {});
     throw err;

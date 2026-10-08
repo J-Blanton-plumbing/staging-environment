@@ -28,10 +28,12 @@
 import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 import { resolveRunMode, verdict } from './lib/run-mode';
+import { OLD_SLUG, describeBoth, findHoseBibArticle } from './lib/hose-bib-article';
 import { sanitizeArticleBodyHtml } from '../src/lib/cms/sanitize';
 
 const SCRIPT = 'update-brief-201-review-2';
-const SLUG = 'hose-bib-irrigation-fall-checklist';
+// Brief 202 (A1): set in main() to the slug the article has NOW (it was renamed).
+let SLUG = OLD_SLUG;
 const OLD = 'it can save you from a burst pipe repair that can cost up to $3,600 in Chicago once water damage cleanup is included, ';
 const NEW = 'it can save you thousands of dollars in repairs and water damage, ';
 
@@ -62,6 +64,13 @@ async function main(pool: Pool) {
            OR (table_name = 'page_drafts' AND column_name IN ('content', 'version', 'is_published'))`
     );
     if (cols.rows[0].n !== '4') throw new Error('missing column(s): cms_articles.body / page_drafts.content, version, is_published');
+    // Brief 202 (A1): the article may be under its new slug; resolve which one it has now.
+    const found = await findHoseBibArticle(c);
+    if (found.kind === 'both') {
+      verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', describeBoth(found.rows));
+      return;
+    }
+    if (found.kind === 'one') SLUG = found.slug;
 
     const live = (await c.query<{ id: number; status: string; html: string | null }>(
       `SELECT id, status, body->>'html' AS html FROM cms_articles WHERE slug = $1`, [SLUG]

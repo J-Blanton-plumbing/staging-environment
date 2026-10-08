@@ -789,6 +789,21 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # stay after round 2. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-201-review-3.ts commit
+# -- Brief 202: keyword tweaks + RENAME to how-to-winterize-outdoor-faucets-spigots
+# One time: adds "Version 3 — keyword tweaks" (unpublished), moves the
+# article's versions/history to the new slug and puts the still-draft live row
+# on Version 3. Guards (all exit 0, nothing written): no article → NOT-APPLIED
+# (no article); not a draft → NOT-APPLIED (not a draft); latest version or
+# live row no longer = Version 2 as Brief 201 + its review rounds left it →
+# NOT-APPLIED (edited in admin), naming fields; new slug used elsewhere →
+# NOT-APPLIED (slug taken). Later deploys: ALREADY-APPLIED. Exit 1 only on a
+# schema/code fault. ⚑ Every script above in this chain (198 seed, 201,
+# 201 rounds 1–3) finds the article under EITHER slug via
+# scripts/lib/hose-bib-article.ts — without that, the 198 seed would create a
+# duplicate at the old slug on the next deploy (CLAUDE.md gotcha 27). MUST stay
+# after the Brief 201 review round 3 step. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-202-hose-bib-keywords.ts commit
 # -- Brief 199: Columbus "older homes" article, UNPUBLISHED (Article V2) ----
 # CREATE-ONCE: creates
 # /knowledge-hub/older-homes-plumbing-problems-grandview-clintonville-german-village

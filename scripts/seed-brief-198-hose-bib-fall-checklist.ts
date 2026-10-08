@@ -29,6 +29,9 @@
  * ── CREATE-ONCE (Brief 186) ─────────────────────────────────────────────────
  * If an article with this slug exists, NOTHING is written: ALREADY-EXISTS,
  * exit 0. From then on editors own the article. Never updates or deletes.
+ * Brief 202: "this slug" means EITHER the original slug or the one Brief 202
+ * renamed it to (scripts/lib/hose-bib-article.ts) — else the first deploy after
+ * the rename would create a duplicate draft (CLAUDE.md gotcha 27).
  *
  * ── GUARDS ──────────────────────────────────────────────────────────────────
  * Content state → report NOT-APPLIED (guard tripped), write nothing, exit 0:
@@ -69,6 +72,7 @@ import {
   RELATED_WANTED,
   seedVersionContent,
 } from './lib/brief-198-hose-bib-content';
+import { HOSE_BIB_SLUGS } from './lib/hose-bib-article';
 
 const SCRIPT = 'seed-brief-198-hose-bib-fall-checklist';
 const mode = resolveRunMode(SCRIPT);
@@ -99,14 +103,17 @@ async function main() {
     }
 
     // ── Create-once ──
-    const existing = await c.query<{ id: number; status: string; template: string }>(
-      `SELECT id, status, template FROM cms_articles WHERE slug = $1`,
-      [SLUG]
+    // Brief 202 (A1): the article is renamed to NEW_SLUG, so it exists under EITHER slug. Checking
+    // only SLUG (the old one) would create a duplicate draft on the first deploy after the rename.
+    const existing = await c.query<{ id: number; slug: string; status: string; template: string }>(
+      `SELECT id, slug, status, template FROM cms_articles WHERE slug = ANY($1::text[]) ORDER BY id`,
+      [HOSE_BIB_SLUGS]
     );
     if (existing.rows[0]) {
       const r = existing.rows[0];
-      console.log(`ALREADY-EXISTS: /knowledge-hub/${SLUG} (id ${r.id}, ${r.status}, template ${r.template}) — editor-owned, nothing written.`);
-      verdict(SCRIPT, 'ALREADY-APPLIED', `ALREADY-EXISTS — id ${r.id} (${r.status}), left untouched`);
+      const all = existing.rows.map((x) => `id ${x.id} /${x.slug} (${x.status})`).join('; ');
+      console.log(`ALREADY-EXISTS: ${all} — editor-owned, nothing written.`);
+      verdict(SCRIPT, 'ALREADY-APPLIED', `ALREADY-EXISTS — ${existing.rows.length === 1 ? `id ${r.id} /${r.slug} (${r.status})` : all}, left untouched`);
       return;
     }
 

@@ -97,7 +97,9 @@ export const ARTICLE_BODY_ALLOWED_TAGS: string[] = [...CMS_ALLOWED_TAGS, ...ARTI
 export const ARTICLE_BODY_SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   ...CMS_SANITIZE_OPTIONS,
   allowedTags: ARTICLE_BODY_ALLOWED_TAGS,
-  allowedAttributes: { ...CMS_ALLOWED_ATTRIBUTES, th: ['scope'] },
+  // Brief 202: `start` on <ol> (a list that continues its numbering, e.g. steps 3–7 after
+  // steps 1–2 in an Image + text component). Article bodies only, positive integers only.
+  allowedAttributes: { ...CMS_ALLOWED_ATTRIBUTES, th: ['scope'], ol: ['start'] },
   transformTags: {
     ...CMS_SANITIZE_OPTIONS.transformTags,
     // sanitize-html's `values` option leaves a bare `scope` behind on a bad value;
@@ -105,6 +107,12 @@ export const ARTICLE_BODY_SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
     th: (tagName, attribs) => {
       const kept: sanitizeHtml.Attributes = {};
       if (attribs.scope === 'col' || attribs.scope === 'row') kept.scope = attribs.scope;
+      return { tagName, attribs: kept };
+    },
+    // Brief 202: keep `start` only as a plain positive integer (1–99999); drop it otherwise.
+    ol: (tagName, attribs) => {
+      const kept: sanitizeHtml.Attributes = {};
+      if (/^[1-9][0-9]{0,4}$/.test(attribs.start ?? '')) kept.start = attribs.start;
       return { tagName, attribs: kept };
     },
   },
