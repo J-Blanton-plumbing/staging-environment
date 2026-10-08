@@ -29,10 +29,12 @@
 import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 import { resolveRunMode, verdict } from './lib/run-mode';
+import { OLD_SLUG, describeBoth, findHoseBibArticle } from './lib/hose-bib-article';
 import { sanitizeArticleBodyHtml } from '../src/lib/cms/sanitize';
 
 const SCRIPT = 'update-brief-201-review-3';
-const SLUG = 'hose-bib-irrigation-fall-checklist';
+// Brief 202 (A1): set in main() to the slug the article has NOW (it was renamed).
+let SLUG = OLD_SLUG;
 
 const ANGI = '<a href="https://www\\.angi\\.com/articles/cost-to-repair-leaking-pipe/il/chicago"[^>]*>according to Angi</a>\\.';
 /** Intro clause: round 2's wording or the seeded one (both end with the Angi link). */
@@ -57,6 +59,8 @@ const introState = (h: string): St =>
 const ndcState = (h: string): St =>
   hits(h, NDC_OLD) === 1 ? 'old' : count(h, NDC_DONE) === 1 && !/Want someone checking your whole system/.test(h) ? 'new' : 'other';
 const apply = (h: string) => h.replace(INTRO_OLD, () => INTRO_NEW).replace(NDC_OLD, () => '');
+/** Brief 202: round 3's body edit, for rebuilding today's Version 2 from Brief 201's builder. */
+export const applyRound3 = apply;
 
 async function main(pool: Pool) {
   const mode = resolveRunMode(SCRIPT);
@@ -70,6 +74,13 @@ async function main(pool: Pool) {
            OR (table_name = 'page_drafts' AND column_name IN ('content', 'version', 'is_published'))`
     );
     if (cols.rows[0].n !== '4') throw new Error('missing column(s): cms_articles.body / page_drafts.content, version, is_published');
+    // Brief 202 (A1): the article may be under its new slug; resolve which one it has now.
+    const found = await findHoseBibArticle(c);
+    if (found.kind === 'both') {
+      verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', describeBoth(found.rows));
+      return;
+    }
+    if (found.kind === 'one') SLUG = found.slug;
 
     const live = (await c.query<{ id: number; status: string; html: string | null }>(
       `SELECT id, status, body->>'html' AS html FROM cms_articles WHERE slug = $1`, [SLUG]
@@ -144,11 +155,14 @@ async function main(pool: Pool) {
   }
 }
 
-const pool = new Pool({ connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms' });
-main(pool)
-  .catch((err) => {
-    console.error(err);
-    verdict(SCRIPT, 'FAILED', err instanceof Error ? err.message : String(err));
-    process.exitCode = 1;
-  })
-  .finally(() => pool.end());
+// Run only as a script: Brief 202's update imports `applyRound3` to rebuild today's Version 2.
+if (require.main === module) {
+  const pool = new Pool({ connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms' });
+  main(pool)
+    .catch((err) => {
+      console.error(err);
+      verdict(SCRIPT, 'FAILED', err instanceof Error ? err.message : String(err));
+      process.exitCode = 1;
+    })
+    .finally(() => pool.end());
+}

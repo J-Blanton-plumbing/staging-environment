@@ -25,9 +25,11 @@
 import { existsSync, readFileSync } from 'fs';
 import { Pool, type PoolClient } from 'pg';
 import { resolveRunMode, verdict } from './lib/run-mode';
+import { OLD_SLUG, describeBoth, findHoseBibArticle } from './lib/hose-bib-article';
 
 const SCRIPT = 'update-brief-201-review-1';
-const SLUG = 'hose-bib-irrigation-fall-checklist';
+// Brief 202 (A1): set in main() to the slug the article has NOW (it was renamed).
+let SLUG = OLD_SLUG;
 const COMPONENT = 'frost-free';
 const OLD_CAPTION = 'The valve sits back inside the warm wall, so the faucet body has to drain through the spout.';
 
@@ -77,6 +79,13 @@ async function main(pool: Pool) {
            OR (table_name = 'page_drafts' AND column_name IN ('content', 'version'))`
     );
     if (cols.rows[0].n !== '3') throw new Error('missing column(s): cms_articles.v2 / page_drafts.content / page_drafts.version');
+    // Brief 202 (A1): the article may be under its new slug; resolve which one it has now.
+    const found = await findHoseBibArticle(c);
+    if (found.kind === 'both') {
+      verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', describeBoth(found.rows));
+      return;
+    }
+    if (found.kind === 'one') SLUG = found.slug;
 
     const art = (await c.query<{ id: number; status: string }>('SELECT id, status FROM cms_articles WHERE slug = $1', [SLUG])).rows[0];
     if (!art) {

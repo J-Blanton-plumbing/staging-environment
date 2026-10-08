@@ -134,6 +134,8 @@ export type Verdict =
   | 'NOT-APPLIED (no article)'
   | 'NOT-APPLIED (not a draft)'
   | 'NOT-APPLIED (edited in admin)'
+  // Brief 202
+  | 'NOT-APPLIED (slug taken)'
   | 'FAILED';
 
 let verdictReported = false;

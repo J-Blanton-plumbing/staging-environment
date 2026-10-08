@@ -7,6 +7,15 @@ import { isReviewPath } from '@/lib/review-route'
 const COOKIE_NAME = 'cms_session'
 
 /**
+ * Brief 202 (A3): review links of articles renamed while still drafts → their new review link
+ * (308, behind the review password). Exact paths only. The PUBLIC old URL is deliberately NOT
+ * redirected: it was never live, so it stays a 404.
+ */
+const REVIEW_RENAMES: Record<string, string> = {
+  '/review/knowledge-hub/hose-bib-irrigation-fall-checklist': '/review/knowledge-hub/how-to-winterize-outdoor-faucets-spigots',
+}
+
+/**
  * Paths the legacy redirect map must never be consulted for. `/_next` and `/api`
  * are framework surfaces, `/admin` is the CMS (its own gate runs below), and the
  * extension test skips `public/` assets that the matcher doesn't already exclude
@@ -203,6 +212,17 @@ export async function middleware(req: NextRequest) {
           'Cache-Control': 'no-store',
         },
       })
+    }
+    // Brief 202 (A3): the hose bib article was renamed while still a draft; managers
+    // hold the old review link. AFTER the password check on purpose: a visitor without
+    // credentials gets the 401, not the new slug. Exact path only (the trailing-slash
+    // rule above has already removed any slash); the query string is kept. After
+    // Publish the new review URL 308s to the public article, so this becomes 2 hops.
+    const renamed = REVIEW_RENAMES[pathname]
+    if (renamed) {
+      const url = new URL(renamed, req.url)
+      url.search = req.nextUrl.search
+      return NextResponse.redirect(url, 308)
     }
     return passThrough()
   }
