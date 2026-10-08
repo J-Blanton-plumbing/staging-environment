@@ -774,6 +774,13 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # after the Brief 201 update. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-201-review-1.ts commit
+# -- Brief 201 review round 2: intro says "thousands of dollars", no $3,600 --
+# Rewrites that one clause on the live row + every version, only while each
+# still holds the seeded wording exactly once; edited → NOT-APPLIED (edited in
+# admin), exit 0, nothing written. Later deploys: ALREADY-APPLIED. Exit 1
+# only on a schema/code fault. MUST stay after round 1. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-201-review-2.ts commit
 # -- Brief 199: Columbus "older homes" article, UNPUBLISHED (Article V2) ----
 # CREATE-ONCE: creates
 # /knowledge-hub/older-homes-plumbing-problems-grandview-clintonville-german-village
