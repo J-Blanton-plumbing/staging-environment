@@ -39,8 +39,16 @@ const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) =>
   process.env[k] || (env.match(new RegExp('^' + k + '=(.*)$', 'm')) || [])[1]?.trim() || '';
 
+/** Round 3 (update-brief-201-review-3.ts) superseded this wording; once it has run, round 2 is done too. */
+const SUPERSEDED = 'it can save you from a burst pipe repair that can cost up to thousands of dollars in Chicago once water damage cleanup is included.';
+
 const count = (s: string, sub: string) => s.split(sub).length - 1;
-const state = (html: string) => (count(html, OLD) === 1 && !html.includes(NEW) ? 'old' : count(html, NEW) === 1 && !html.includes(OLD) ? 'new' : 'other');
+const state = (html: string) =>
+  count(html, OLD) === 1 && !html.includes(NEW)
+    ? 'old'
+    : (count(html, NEW) === 1 || count(html, SUPERSEDED) === 1) && !html.includes(OLD)
+      ? 'new'
+      : 'other';
 
 async function main(pool: Pool) {
   const mode = resolveRunMode(SCRIPT);

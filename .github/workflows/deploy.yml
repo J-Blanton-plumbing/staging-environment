@@ -16,6 +16,11 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script_stop: true
+          # The action's default command_timeout is 10m, and it kills the step at
+          # that mark. Healthy deploys had crept from ~470s to ~500s; run #139
+          # (2026-10-08) hit 601s and was cut off mid-script. 30m is headroom,
+          # not a target — a deploy that genuinely hangs still fails.
+          command_timeout: 30m
           script: |
             set -e
             sudo chown -R ec2-user:ec2-user /var/www/jblanton
