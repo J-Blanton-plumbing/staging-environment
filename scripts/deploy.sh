@@ -855,6 +855,13 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # round 3. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-203-older-homes-worthington.ts commit
+# -- Brief 203 review round 1: the "Need a plumber in Worthington? Our -----
+# Columbus team can help." paragraph removed. One time; only rows that hold
+# it are edited (Version 1 never had it), and only while the live row and the
+# newest version hold it exactly once; otherwise NOT-APPLIED, exit 0. Either
+# slug. MUST stay after the 203 step. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-203-older-homes-review-1.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.
