@@ -136,6 +136,8 @@ export type Verdict =
   | 'NOT-APPLIED (edited in admin)'
   // Brief 202
   | 'NOT-APPLIED (slug taken)'
+  // Brief 203
+  | 'NOT-APPLIED (anchor missing)'
   | 'FAILED';
 
 let verdictReported = false;

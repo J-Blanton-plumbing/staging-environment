@@ -13,6 +13,9 @@ const COOKIE_NAME = 'cms_session'
  */
 const REVIEW_RENAMES: Record<string, string> = {
   '/review/knowledge-hub/hose-bib-irrigation-fall-checklist': '/review/knowledge-hub/how-to-winterize-outdoor-faucets-spigots',
+  // Brief 203
+  '/review/knowledge-hub/older-homes-plumbing-problems-grandview-clintonville-german-village':
+    '/review/knowledge-hub/old-house-plumbing-problems-grandview-worthington-german-village',
 }
 
 /**

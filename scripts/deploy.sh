@@ -842,6 +842,19 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # otherwise NOT-APPLIED, exit 0. Keep after round 2. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-199-older-homes-review-3.ts commit
+# -- Brief 203: the older-homes draft → "Version 2 — Worthington revision" --
+# Worthington replaces Clintonville (25 verbatim changes), the clintonville
+# tag goes, and the article is RENAMED to
+# old-house-plumbing-problems-grandview-worthington-german-village (it stays
+# a draft). One time: a "Version 2 — Worthington revision" version →
+# ALREADY-APPLIED. No article, not a draft, edited in /admin, new slug taken,
+# an anchor missing → NOT-APPLIED, exit 0, nothing written. Exit 1 only on a
+# schema/code fault. The 199 seed and rounds 1–3 above find the article under
+# EITHER slug (scripts/lib/older-homes-article.ts) — that is what stops the
+# next deploy re-seeding the old slug (CLAUDE.md gotcha 27). MUST stay after
+# round 3. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-203-older-homes-worthington.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

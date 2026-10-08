@@ -29,6 +29,7 @@ import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 import { resolveRunMode, verdict } from './lib/run-mode';
 import { sanitizeArticleBodyHtml } from '../src/lib/cms/sanitize';
+import { OLD_SLUG, describeBoth, findOlderHomesArticle } from './lib/older-homes-article';
 
 const SCRIPT = 'update-brief-199-older-homes-review-1';
 const mode = resolveRunMode(SCRIPT);
@@ -38,7 +39,7 @@ const get = (k: string) =>
   process.env[k] || (env.match(new RegExp('^' + k + '=(.*)$', 'm')) || [])[1]?.trim() || '';
 const pool = new Pool({ connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms' });
 
-const SLUG = 'older-homes-plumbing-problems-grandview-clintonville-german-village';
+// Brief 203 (A1): SLUG is resolved in main() under EITHER slug (scripts/lib/older-homes-article.ts).
 const TAKEAWAY_OLD = 'That age often means clay sewer lines, cast iron drains, galvanized or lead water lines, and roots from mature trees.';
 const TAKEAWAY_NEW = 'Age often means clay sewer lines, cast iron drains, galvanized or lead water lines, and roots from mature trees.';
 const LEAD_IN = "\n<p>Here's when most homes in each neighborhood were built:</p>";
@@ -85,6 +86,13 @@ async function main() {
   const c = await pool.connect();
   let committed = false;
   try {
+    // Brief 203 (A1): the article may have been renamed — find it under either slug; versions follow its slug.
+    const found = await findOlderHomesArticle(c);
+    if (found.kind === 'both') {
+      verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', describeBoth(found.rows));
+      return;
+    }
+    const SLUG = found.kind === 'one' ? found.slug : OLD_SLUG;
     const live = (await c.query<{ id: number; status: string; template: string; html: string | null; takeaway: unknown }>(
       `SELECT id, status, template, body->>'html' AS html, v2->'takeaways'->0 AS takeaway FROM cms_articles WHERE slug = $1`,
       [SLUG]
