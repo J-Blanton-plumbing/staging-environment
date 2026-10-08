@@ -781,6 +781,14 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # only on a schema/code fault. MUST stay after round 1. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-201-review-2.ts commit
+# -- Brief 201 review round 3: intro "up to thousands of dollars", no Angi
+# link; the No Drip Club sentences in the closing section removed. Live row +
+# every version, only while each passage is in a recognised form (round 2's
+# or the seeded wording); edited → NOT-APPLIED (edited in admin), exit 0.
+# Later deploys: ALREADY-APPLIED. Exit 1 only on a schema/code fault. MUST
+# stay after round 2. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-201-review-3.ts commit
 # -- Brief 199: Columbus "older homes" article, UNPUBLISHED (Article V2) ----
 # CREATE-ONCE: creates
 # /knowledge-hub/older-homes-plumbing-problems-grandview-clintonville-german-village
