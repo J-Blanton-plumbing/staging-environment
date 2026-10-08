@@ -28,6 +28,7 @@ import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 import { resolveRunMode, verdict } from './lib/run-mode';
 import { sanitizeArticleBodyHtml } from '../src/lib/cms/sanitize';
+import { OLD_SLUG, describeBoth, findOlderHomesArticle } from './lib/older-homes-article';
 
 const SCRIPT = 'update-brief-199-older-homes-review-2';
 const mode = resolveRunMode(SCRIPT);
@@ -37,7 +38,7 @@ const get = (k: string) =>
   process.env[k] || (env.match(new RegExp('^' + k + '=(.*)$', 'm')) || [])[1]?.trim() || '';
 const pool = new Pool({ connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms' });
 
-const SLUG = 'older-homes-plumbing-problems-grandview-clintonville-german-village';
+// Brief 203 (A1): SLUG is resolved in main() under EITHER slug (scripts/lib/older-homes-article.ts).
 const T1 = 'Age often means clay sewer lines, cast iron drains, galvanized or lead water lines, and roots from mature trees.';
 const T2 = "In Columbus, the sewer line from your house to the city's pipe is yours to maintain.";
 const T3 = 'A sewer camera inspection shows roots, cracks and sagging pipe early.';
@@ -50,13 +51,23 @@ const P3_TEXT = 'If you own, or are thinking of buying, a house in these areas';
 
 const same = (a: unknown, b: string[]) => JSON.stringify(a) === JSON.stringify(b);
 const count = (s: string, sub: string) => s.split(sub).length - 1;
-const isApplied = (r: { takeaways: unknown; html: string }) => same(r.takeaways, AFTER) && !r.html.includes(P3_TEXT);
+// Round 2's OWN edit is present: 3 takeaways, the 3rd the merged bullet, no "If you own…" paragraph.
+// (Not the whole takeaways list: Brief 203 later rewrites takeaway 2, and that must still read as applied.)
+const isApplied = (r: { takeaways: unknown; html: string }) =>
+  Array.isArray(r.takeaways) && r.takeaways.length === AFTER.length && r.takeaways[2] === AFTER[2] && !r.html.includes(P3_TEXT);
 
 async function main() {
   console.log(`MODE: ${mode === 'commit' ? 'COMMIT' : 'DRY RUN (nothing is written)'}\n`);
   const c = await pool.connect();
   let committed = false;
   try {
+    // Brief 203 (A1): the article may have been renamed — find it under either slug; versions follow its slug.
+    const found = await findOlderHomesArticle(c);
+    if (found.kind === 'both') {
+      verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', describeBoth(found.rows));
+      return;
+    }
+    const SLUG = found.kind === 'one' ? found.slug : OLD_SLUG;
     const live = (await c.query<{ id: number; status: string; takeaways: unknown; html: string | null }>(
       `SELECT id, status, v2->'takeaways' AS takeaways, body->>'html' AS html FROM cms_articles WHERE slug = $1`,
       [SLUG]

@@ -23,6 +23,7 @@ import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 import { resolveRunMode, verdict } from './lib/run-mode';
 import { sanitizeArticleBodyHtml } from '../src/lib/cms/sanitize';
+import { OLD_SLUG, describeBoth, findOlderHomesArticle } from './lib/older-homes-article';
 
 const SCRIPT = 'update-brief-199-older-homes-review-3';
 const mode = resolveRunMode(SCRIPT);
@@ -32,7 +33,7 @@ const get = (k: string) =>
   process.env[k] || (env.match(new RegExp('^' + k + '=(.*)$', 'm')) || [])[1]?.trim() || '';
 const pool = new Pool({ connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms' });
 
-const SLUG = 'older-homes-plumbing-problems-grandview-clintonville-german-village';
+// Brief 203 (A1): SLUG is resolved in main() under EITHER slug (scripts/lib/older-homes-article.ts).
 const PARA =
   "\n<p>On older homes, we pay close attention to the joints between pipe sections. That's where roots and small cracks usually show up first.</p>";
 const PARA_TEXT = 'we pay close attention to the joints between pipe sections';
@@ -44,6 +45,13 @@ async function main() {
   const c = await pool.connect();
   let committed = false;
   try {
+    // Brief 203 (A1): the article may have been renamed — find it under either slug; versions follow its slug.
+    const found = await findOlderHomesArticle(c);
+    if (found.kind === 'both') {
+      verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', describeBoth(found.rows));
+      return;
+    }
+    const SLUG = found.kind === 'one' ? found.slug : OLD_SLUG;
     const live = (await c.query<{ id: number; status: string; html: string | null }>(
       `SELECT id, status, body->>'html' AS html FROM cms_articles WHERE slug = $1`,
       [SLUG]

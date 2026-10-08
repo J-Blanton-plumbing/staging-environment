@@ -38,6 +38,9 @@
  * ── CREATE-ONCE (Brief 186) ─────────────────────────────────────────────────
  * If an article with this slug exists, NOTHING is written: ALREADY-EXISTS,
  * exit 0. From then on editors own the article. Never updates or deletes.
+ * Brief 203: "this slug" means EITHER the original slug or the one Brief 203
+ * renamed it to (scripts/lib/older-homes-article.ts) — else the first deploy
+ * after the rename would create a second draft (CLAUDE.md gotcha 27).
  *
  * ── GUARDS ──────────────────────────────────────────────────────────────────
  * Content state → report NOT-APPLIED (guard tripped), write nothing, exit 0:
@@ -71,17 +74,17 @@ import { resolveRunMode, verdict } from './lib/run-mode';
 import { sanitizeArticleBodyHtml } from '../src/lib/cms/sanitize';
 import { sanitizeArticleV2Content } from '../src/lib/cms/article-v2-sanitize';
 import { writeArticleRelated, writeArticleTerms } from '../src/lib/cms/kh-taxonomy';
+import { OLDER_HOMES_SLUGS, OLD_SLUG } from './lib/older-homes-article';
 
 const SCRIPT = 'seed-brief-199-columbus-older-homes';
-const mode = resolveRunMode(SCRIPT);
 
 const env = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const get = (k: string) =>
   process.env[k] || (env.match(new RegExp('^' + k + '=(.*)$', 'm')) || [])[1]?.trim() || '';
-const pool = new Pool({ connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms' });
 
-const SLUG = 'older-homes-plumbing-problems-grandview-clintonville-german-village';
-const VERSION_LABEL = 'Version 1 — for review';
+/** The slug this create-once seed creates on a fresh DB. Brief 203 renames it afterwards (older-homes-article.ts). */
+const SLUG = OLD_SLUG;
+export const VERSION_LABEL = 'Version 1 — for review';
 const IMG = '/images/knowledge-hub/columbus-older-homes';
 const OFFICE = 'columbus';
 const EXPECTED_CENTRAL_OHIO_PHONE = '614-547-6516'; // the guard's expected value — never written by this script
@@ -234,24 +237,44 @@ const V2 = {
 };
 
 /** Brief 187 slugs (kh_terms): Sewers + Central Ohio (region), no secondary topics. */
-const PRIMARY_TOPIC = 'sewers';
-const REGION = 'central-ohio';
+export const PRIMARY_TOPIC = 'sewers';
+export const REGION = 'central-ohio';
 /**
  * Neighbourhood location terms, added only if they already exist (never created). The brief names
  * grandview-heights / clintonville / german-village; the registry (and kh_terms) key these
  * neighbourhoods as columbus-<name>, so both spellings are tried.
  */
-const NEIGHBOURHOOD_CANDIDATES = [
+export const NEIGHBOURHOOD_CANDIDATES = [
   'grandview-heights', 'columbus-grandview-heights',
   'clintonville', 'columbus-clintonville',
   'german-village', 'columbus-german-village',
 ];
 /** Brief 188 hand-picks. A missing or unpublished one is skipped and reported (not a guard). */
-const RELATED_WANTED = [
+export const RELATED_WANTED = [
   'roots-in-sewer-line',
   'is-your-main-sewer-line-blocked',
   'now-serving-columbus-central-ohio',
 ];
+
+/**
+ * Brief 203: the ONE builder of this article's seeded payload — exactly what Version 1 holds (the editor's
+ * payload shape: sanitized body, sanitized v2). The seed writes it; Brief 203's update compares the draft
+ * against it (so no HTML is ever retyped there). `locations` = REGION + the neighbourhood terms that exist.
+ */
+export function buildSeedContent(related: string[], locations: string[]) {
+  return {
+    title: TITLE,
+    excerpt: DEK,
+    body: sanitizeArticleBodyHtml(BODY),
+    image: `${IMG}/older-home-hero.webp`,
+    terms: { primary: PRIMARY_TOPIC, secondary: [] as string[], locations },
+    related,
+    template: 'article-v2',
+    v2: sanitizeArticleV2Content(V2),
+    metaTitle: META_TITLE,
+    metaDescription: META_DESCRIPTION,
+  };
+}
 
 function banner(lines: string[]) {
   console.log('\n' + '!'.repeat(72));
@@ -259,7 +282,8 @@ function banner(lines: string[]) {
   console.log('!'.repeat(72) + '\n');
 }
 
-async function main() {
+async function main(pool: Pool) {
+  const mode = resolveRunMode(SCRIPT);
   console.log(`MODE: ${mode === 'commit' ? 'COMMIT' : 'DRY RUN (nothing is written)'}\n`);
   const c = await pool.connect();
   let committed = false;
@@ -274,14 +298,17 @@ async function main() {
     }
 
     // ── Create-once ──
-    const existing = await c.query<{ id: number; status: string; template: string }>(
-      `SELECT id, status, template FROM cms_articles WHERE slug = $1`,
-      [SLUG]
+    // Brief 203 (A1): the article is renamed to NEW_SLUG, so it exists under EITHER slug. Checking
+    // only SLUG (the old one) would create a duplicate draft on the first deploy after the rename.
+    const existing = await c.query<{ id: number; slug: string; status: string; template: string }>(
+      `SELECT id, slug, status, template FROM cms_articles WHERE slug = ANY($1::text[]) ORDER BY id`,
+      [OLDER_HOMES_SLUGS]
     );
     if (existing.rows[0]) {
       const r = existing.rows[0];
-      console.log(`ALREADY-EXISTS: /knowledge-hub/${SLUG} (id ${r.id}, ${r.status}, template ${r.template}) — editor-owned, nothing written.`);
-      verdict(SCRIPT, 'ALREADY-APPLIED', `ALREADY-EXISTS — id ${r.id} (${r.status}), left untouched`);
+      const all = existing.rows.map((x) => `id ${x.id} /${x.slug} (${x.status}, template ${x.template})`).join('; ');
+      console.log(`ALREADY-EXISTS: ${all} — editor-owned, nothing written.`);
+      verdict(SCRIPT, 'ALREADY-APPLIED', `ALREADY-EXISTS — ${existing.rows.length === 1 ? `id ${r.id} /${r.slug} (${r.status})` : all}, left untouched`);
       return;
     }
 
@@ -335,19 +362,8 @@ async function main() {
     const skipped = RELATED_WANTED.filter((s) => !RELATED.includes(s)).map((s) => `${s} (${statusOf.get(s) ?? 'missing'})`);
 
     // ── Build exactly what the editor saves / the publish writer stores ──
-    const v2 = sanitizeArticleV2Content(V2);
-    const content = {
-      title: TITLE,
-      excerpt: DEK,
-      body,
-      image: `${IMG}/older-home-hero.webp`,
-      terms: TERMS,
-      related: RELATED,
-      template: 'article-v2',
-      v2,
-      metaTitle: META_TITLE,
-      metaDescription: META_DESCRIPTION,
-    };
+    const content = buildSeedContent(RELATED, TERMS.locations);
+    const v2 = content.v2;
 
     await c.query('BEGIN');
     const ins = await c.query<{ id: number }>(
@@ -412,15 +428,19 @@ async function main() {
   }
 }
 
-main()
-  .catch((err) => {
-    console.error(err);
-    verdict(SCRIPT, 'FAILED', err instanceof Error ? err.message : String(err));
-    process.exitCode = 1;
-  })
-  .finally(async () => {
-    await pool.end();
-    // kh-taxonomy imports the app's own pool (src/lib/db); close it too so the process exits.
-    const appPool = (await import('../src/lib/db')).default as unknown as { end?: () => Promise<void> };
-    await appPool.end?.().catch(() => {});
-  });
+// Run only as a script (Brief 203's update imports buildSeedContent and the constants).
+if (require.main === module) {
+  const pool = new Pool({ connectionString: get('DATABASE_URL') || 'postgresql://postgres:jbp@localhost:5432/jbp_cms' });
+  main(pool)
+    .catch((err) => {
+      console.error(err);
+      verdict(SCRIPT, 'FAILED', err instanceof Error ? err.message : String(err));
+      process.exitCode = 1;
+    })
+    .finally(async () => {
+      await pool.end();
+      // kh-taxonomy imports the app's own pool (src/lib/db); close it too so the process exits.
+      const appPool = (await import('../src/lib/db')).default as unknown as { end?: () => Promise<void> };
+      await appPool.end?.().catch(() => {});
+    });
+}
