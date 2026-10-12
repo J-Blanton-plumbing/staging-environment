@@ -20,7 +20,7 @@ import { getCityTaggedArticles } from '@/lib/cms/kh-taxonomy';
 import { getCityCmsContent } from '@/lib/cms/city-pages';
 import { getCityPreview } from '@/lib/cms/preview';
 import { isPageLive } from '@/lib/cms/page-status';
-import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { getGlobalSettingsCached, getRegionalPhonesCached } from '@/lib/cms/global-settings';
 import { getCityV3Content } from '@/lib/content/cities/v3';
 import CoverageAreaCity from '@/components/CoverageAreaCity';
 import LocalOfficeCity from '@/components/LocalOfficeCity';
@@ -28,6 +28,8 @@ import LocalOfficeCityV2 from '@/components/LocalOfficeCityV2';
 import LocalOfficeCityV3 from '@/components/LocalOfficeCityV3';
 import PreviewBanner from '@/components/PreviewBanner';
 import { getCityPageMeta } from '@/lib/cms/page-meta';
+import { getCityHub } from '@/lib/content/city-hubs';
+import CityHubView from '@/components/city-hubs/CityHubView';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
@@ -67,6 +69,11 @@ export function generateStaticParams() {
  * than a 500 on a page whose body renders fine.
  */
 export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
+  // Brief 205 go-live: a City Hubs V2 page carries its approved title/description from code (the
+  // CMS follow-up brief moves them onto the city_pages row). The layout's template adds the brand.
+  const hub = getCityHub(params.city);
+  if (hub && getCity(params.city)) return { title: hub.seo.title, description: hub.seo.description };
+
   const fallback = staticCityMeta(params.city);
   if (!fallback) return {};
   const meta = await getCityPageMeta(params.city, fallback);
@@ -76,6 +83,35 @@ export async function generateMetadata({ params }: { params: { city: string } })
 export default async function CityPage({ params }: { params: { city: string } }) {
   const entry = getCity(params.city);
   if (!entry) notFound();
+
+  /*
+   * Brief 205 go-live — City Hubs V2 (Marketing, 2026-10-12).
+   *
+   * /joliet, /tinley-park, /columbus, /northbrook and /naperville render the approved Highland
+   * Park-template hub INSTEAD of whatever their city_pages row selects. Dispatched by code, like
+   * Brief 200's sewer pages: the hubs are not wired to the CMS yet, so admin edits (and draft
+   * previews) of these 5 rows do not reach the live page until the CMS follow-up brief. The
+   * Brief 159 render gate still applies — an unpublished row 404s exactly as before. Every other
+   * city falls through to the dispatch below, unchanged.
+   */
+  const hub = getCityHub(params.city);
+  if (hub) {
+    if (!(await isPageLive('city', params.city))) notFound();
+    const settings = await getGlobalSettingsCached();
+    let phone = { href: settings.phoneHref, display: settings.phoneDisplay };
+    if (hub.phoneRegion === 'central-ohio') {
+      // Brief 192: the Central Ohio phone from Global Settings; blank = the main phone. The
+      // header keeps the main (WhatConverts) number by design — it never reads this.
+      const regional = await getRegionalPhonesCached();
+      if (regional.centralOhioPhoneDisplay) {
+        phone = {
+          href: regional.centralOhioPhoneHref || `tel:${regional.centralOhioPhoneDisplay.replace(/[^0-9+]/g, '')}`,
+          display: regional.centralOhioPhoneDisplay,
+        };
+      }
+    }
+    return <CityHubView hub={hub} phone={phone} />;
+  }
 
   const preview = await getCityPreview(params.city);
   const previewDraft = preview ? preview.meta : null;
