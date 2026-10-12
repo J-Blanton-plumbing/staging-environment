@@ -157,3 +157,67 @@ export interface SewerServiceEntry {
   /** Card on the hub. */
   hub: { title: string; desc: string; alt: string };
 }
+
+// ── Brief 204: the CMS shapes ───────────────────────────────────────────────────
+
+/**
+ * The sections every sewer page shares, edited ONCE in `/admin/sewer` ("Shared across all 10 sewer
+ * pages") and stored on the hub row under `v2_content.shared`. The code default is
+ * `SEWER_SHARED_DEFAULT` (./shared-content.ts), built from the constants in ./shared.ts and
+ * ./services.ts. Only the 10 sewer routes read it.
+ */
+export interface SewerSharedContent {
+  badge24Label: string;
+  quickLinks: { ariaLabel: string; links: { href: string; label: string }[] };
+  rail: {
+    ariaLabel: string;
+    call: { heading: string; body: string; cta: string };
+    trust: { icon: string; label: string }[];
+    financing: { image: string; alt: string; heading: string; body: string; note: string; cta: string };
+  };
+  /** `ariaLabel` carries `{{phone}}`, replaced with the default display number. */
+  sticky: { title: string; sub: string; cta: string; ariaLabel: string };
+  ndc: {
+    eyebrow: string;
+    headingLink: string;
+    headingRest: string;
+    body: string;
+    benefits: string[];
+    cta: string;
+    href: string;
+    image: string;
+  };
+  servicesHead: { eyebrow: string; heading: string };
+  /** The ONE services list: its order is the service-page rows' order. */
+  services: SewerServiceEntry[];
+  /** Hub only (Marketing 2026-10-12: the hub keeps its own order). */
+  hubFeatured: string;
+  hubOrder: string[];
+  emergencyRow: { title: string; short: string; image: string; alt: string; cta: string };
+  final: { eyebrow: string; callPrefix: string; schedule: string };
+  crumbParent: { label: string; href: string };
+  review: { stars: string; starsLabel: string; caption: string };
+  learnMore: string;
+}
+
+/** The VideoObject fields an editor sets; `contentUrl`/`embedUrl` derive from the page's YouTube id. */
+export interface SewerVideoSchemaFields {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  duration: string;
+}
+
+/**
+ * A service page as stored in `sub_service_pages.v2_content`: `SewerServicePage` without `slug` (the
+ * row's) and `meta` (the row's `meta_title`/`meta_description`), with the VideoObject reduced to its
+ * editable fields.
+ */
+export interface SewerServiceStored {
+  schema: 1;
+  hero: SewerServicePage['hero'];
+  sections: SewerSection[];
+  rail: SewerServicePage['rail'];
+  video?: SewerVideoSchemaFields;
+}

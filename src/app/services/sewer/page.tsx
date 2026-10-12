@@ -10,11 +10,18 @@ import { SewerHubRoute, sewerHubMetadata } from '@/components/sewer-v2/SewerRout
  * as the DB-down fallback, and it honoured the admin preview cookie. That row is untouched in the
  * database, but its edits — and its draft previews — no longer reach this page until the CMS
  * follow-up brief.
+ *
+ * Brief 204: the hub's content (and the sewer-shared sections) now come from its
+ * `service_category_pages` row via SewerRoutes, with the code module as the fallback; edited in
+ * /admin/sewer.
  */
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = sewerHubMetadata;
+// Brief 204: the title/description are the hub row's SEO fields (code module until it has v2 content).
+export function generateMetadata(): Promise<Metadata> {
+  return sewerHubMetadata();
+}
 
 export default function SewerPage() {
   return <SewerHubRoute />;

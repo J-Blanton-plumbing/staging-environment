@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createDraft, getDraftsForPage } from '@/lib/cms/drafts';
 import { getSession } from '@/lib/auth/session';
+import { errorCode } from '@/lib/cms/errors';
 
 export async function GET(req: NextRequest) {
   const session = await getSession(req);
@@ -54,6 +55,11 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json(draft, { status: 201 });
   } catch (err) {
+    // Brief 204: content the editor must fix (Sewer v2 pages: a literal phone, a bad link, an
+    // emptied field, a layout change, old-shaped content) — the message names it.
+    if (errorCode(err) === '422') {
+      return NextResponse.json({ error: err instanceof Error ? err.message : 'Invalid content' }, { status: 422 });
+    }
     console.error('[drafts POST]', err);
     return NextResponse.json({ error: 'Failed to create draft' }, { status: 500 });
   }

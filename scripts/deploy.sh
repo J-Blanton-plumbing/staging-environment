@@ -862,6 +862,25 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # slug. MUST stay after the 203 step. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-203-older-homes-review-1.ts commit
+# -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
+# 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
+#    health check can prove the new build renders them byte-identically from
+#    their rows (scripts/check-sewer-v2-live.mjs --compare, deploy.yml).
+#    Best-effort: an unreachable page is logged, never fatal.
+node scripts/check-sewer-v2-live.mjs --snapshot --base=http://localhost:3000 --out=.sewer-v2-snapshot
+# 2. Seed: copy src/lib/content/sewer-v2 into v2_content (+ meta columns) for
+#    all 10 pages and the shared sections. Per page it writes ONLY when the row
+#    has no v2 content yet ("already seeded, no change" otherwise - runs every
+#    deploy, never overwrites a Marketing edit). The 5 existing rows' pre-v2
+#    content is archived first as the unpublished version "Pre-v2 archive
+#    (2026-10)"; the 5 missing rows are created WITHOUT touching status, and
+#    every v2 version is published through publishDraft. MUST stay before the
+#    build swap below: the new code 404s an unpublished row and the sitemap
+#    lists these pages by published row (Brief 171 order). Exit 1 only when a
+#    write it attempted did not land (code/schema fault); an editor-unpublished
+#    page is reported, exit 0. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-sewer-v2-content.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

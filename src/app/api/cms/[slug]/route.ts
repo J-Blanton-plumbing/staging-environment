@@ -5,6 +5,7 @@ import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { errorCode } from '@/lib/cms/errors';
+import { OLD_SHAPE_MESSAGE, SEWER_V2_HUB_SLUG } from '@/lib/sewer-v2-cms/model';
 
 export async function GET(
   req: NextRequest,
@@ -37,6 +38,13 @@ export async function PUT(
   try {
     const body = await req.json();
     if (body._ping) return NextResponse.json({ ok: true });
+
+    // Brief 204: the Sewer hub is edited only through its v2 editor's versions (/admin/sewer). This
+    // legacy direct write targets the pre-v2 columns — and the site-wide global_content — so a stale
+    // tab of the old category editor is refused.
+    if (params.slug === SEWER_V2_HUB_SLUG) {
+      return NextResponse.json({ error: OLD_SHAPE_MESSAGE }, { status: 409 });
+    }
 
     // Reject payloads missing required string fields or with wrong types for required fields
     const requiredStrings = ['hero_heading', 'hero_intro', 'intro_heading', 'intro_body',

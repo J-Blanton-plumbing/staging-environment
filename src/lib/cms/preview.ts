@@ -12,6 +12,7 @@ import type { EpCmsContent } from '@/lib/cms/emergency-plumbing';
 import type { CityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { subServiceToServiceContent, normalizeBlockOrder, normalizeBlocks, blocksToFields } from '@/lib/cms/sub-service-pages';
 import type { ServiceContent } from '@/types/service';
+import { isSewerV2DraftContent, type SewerV2DraftContent } from '@/lib/sewer-v2-cms/model';
 
 const PREVIEW_COOKIE = '__preview_draft';
 
@@ -264,4 +265,21 @@ export async function getArticlePreview(slug: string): Promise<{
     : {};
 
   return { content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}
+
+/**
+ * Brief 204 — preview for the 10 Sewer v2 pages: the draft named by the preview cookie, when it is
+ * a v2 version of THIS page. An old-shaped version (pre-v2 archive, legacy draft) is never
+ * previewed on these pages — the route renders the live page instead, without a banner.
+ */
+export async function getSewerV2Preview(
+  pageType: 'service' | 'sub-service',
+  slug: string
+): Promise<{ content: SewerV2DraftContent; meta: PreviewMeta } | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== pageType || draft.page_slug !== slug) return null;
+  if (!isSewerV2DraftContent(draft.content)) return null;
+  return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
 }

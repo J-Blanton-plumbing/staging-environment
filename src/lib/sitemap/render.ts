@@ -32,7 +32,6 @@ import { CANONICAL_BASE } from '@/lib/seo';
 import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
 import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
-import { SEWER_V2_CATEGORY_SLUG, SEWER_V2_SERVICE_SLUGS } from '@/lib/content/sewer-v2/routes';
 import { CITY_REGISTRY } from '@/lib/content/cities';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import {
@@ -68,8 +67,14 @@ import {
  * goes for the `/services/sewer` hub below. When the CMS follow-up brief puts
  * these pages back on the database, take the slugs it moves out of
  * SEWER_V2_SERVICE_SLUGS and the published-row rule applies to them again.
+ *
+ * Brief 204 did exactly that: the nine pages (and the hub) read their rows again — an unpublished
+ * row 404s — so they are back under the published-row rule with a real <lastmod>, and this set is
+ * empty again. The deploy seed creates and publishes the five rows that never existed BEFORE the
+ * build swap, so the pages never drop out of the sitemap; the post-deploy check
+ * (scripts/check-sewer-v2-live.mjs) asserts each of the 10 is listed exactly once.
  */
-const STATIC_FALLBACK_SUB_SERVICES = new Set<string>(SEWER_V2_SERVICE_SLUGS);
+const STATIC_FALLBACK_SUB_SERVICES = new Set<string>();
 
 /**
  * The `<lastmod>` sources, as `[name, sql]`. Exported so
@@ -363,11 +368,11 @@ export function renderPagesSitemap(): Promise<string> {
         changeFrequency: p.changeFrequency,
         priority: p.priority,
       })),
-      // Brief 200: the sewer hub renders from code — its category row's draft flag
-      // and timestamp no longer describe the page (see STATIC_FALLBACK_SUB_SERVICES).
-      ...SERVICE_CATEGORY_SLUGS.filter((slug) => slug === SEWER_V2_CATEGORY_SLUG || !darkCategorySlugs.has(slug)).map((slug) => ({
+      // Brief 204: the sewer hub reads its category row again, so the Brief 200 special case
+      // (ignore its draft flag, no lastmod) is gone — it follows the same rule as every category.
+      ...SERVICE_CATEGORY_SLUGS.filter((slug) => !darkCategorySlugs.has(slug)).map((slug) => ({
         path: `/services/${slug}`,
-        lastModified: slug === SEWER_V2_CATEGORY_SLUG ? undefined : categoryLastMod.get(slug),
+        lastModified: categoryLastMod.get(slug),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       })),

@@ -56,6 +56,10 @@ export async function PUT(
         { status: 409 }
       );
     }
+    // Brief 204: content the editor must fix (see prepareSewerV2VersionContent).
+    if (code === '422') {
+      return NextResponse.json({ error: err instanceof Error ? err.message : 'Invalid content' }, { status: 422 });
+    }
     console.error(`[drafts/${id} PUT]`, err);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }

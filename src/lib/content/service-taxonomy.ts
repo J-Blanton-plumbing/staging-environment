@@ -177,6 +177,10 @@ export function hubSlugFor(serviceSlug: string): string {
  * sewer-line-replacement, trenchless-sewer-repair), which by design turns the
  * services menu's Overhead / Trenchless items into links to their own pages and
  * the matching `/{city}/{service}` breadcrumb hub crumb into a link.
+ *
+ * Brief 204: they read their `sub_service_pages` rows again (code module as fallback when there is
+ * no row; an unpublished row 404s), so the sitemap lists them by the published-row rule like every
+ * other slug here. The deploy seed gives all nine a published row before the build swap.
  */
 export const SUB_SERVICE_ROUTES = [
   'basement-flooding',

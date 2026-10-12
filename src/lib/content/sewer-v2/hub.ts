@@ -176,3 +176,17 @@ export const SEWER_HUB = {
 } as const;
 
 export type SewerHub = typeof SEWER_HUB;
+
+/** `as const` literal types → their plain JSON types (string, number, mutable arrays). */
+type Widen<T> = T extends string
+  ? string
+  : T extends number
+    ? number
+    : T extends boolean
+      ? boolean
+      : T extends readonly (infer U)[]
+        ? Widen<U>[]
+        : { -readonly [K in keyof T]: Widen<T[K]> };
+
+/** Brief 204 — the hub's own content (everything but its meta, which lives in the row's SEO columns). */
+export type SewerHubContent = Widen<Omit<SewerHub, 'meta'>>;

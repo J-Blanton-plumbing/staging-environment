@@ -513,6 +513,24 @@ jobs:
             node scripts/validate-seo-routing.mjs --base=http://localhost:3000 --articles-sample=60 --city-services-sample=40
             echo '======================================================='
 
+            # -- Brief 204: SEWER V2 LIVE CHECK -------------------------------------
+            # The 10 sewer pages (hub + 9 services) now render from their CMS rows. For
+            # each: 200, content source "row" (via /api/sewer-v2/source - the HTML is the
+            # same either way), listed in the sitemap exactly once, and title/description/
+            # canonical/JSON-LD/#sewer-v2 markup byte-identical to the snapshot deploy.sh
+            # took from the previous build before the swap. A page Marketing unpublished
+            # is editor state: reported, not a failure (Brief 186).
+            echo ''
+            echo '================== SEWER V2 LIVE CHECK =================='
+            LAST_CHECK="SEWER V2 LIVE CHECK"
+            if [ ! -f scripts/check-sewer-v2-live.mjs ]; then
+              echo "MISSING: $(pwd)/scripts/check-sewer-v2-live.mjs does not exist."
+              echo "This step must run from the app directory (/var/www/jblanton) - check the cd above."
+              exit 1
+            fi
+            node scripts/check-sewer-v2-live.mjs --compare --base=http://localhost:3000 --snapshot-dir=.sewer-v2-snapshot
+            echo '======================================================='
+
             # -- Brief 159 (E2 item 4): CRITICAL-URL CANARY ------------------------
             # Brief 159 gave the CMS a real unpublish: an editor can now take a page
             # off the site from the sidebar, and the page then 404s and leaves the

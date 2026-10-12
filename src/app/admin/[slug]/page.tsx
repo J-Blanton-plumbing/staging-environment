@@ -14,6 +14,8 @@ import { useVersionStatusControl } from '@/components/admin/PageAttributesSideba
 import { formFromContent } from '@/lib/admin/formFromContent';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
+import SewerV2Editor from '@/components/admin/sewer-v2/SewerV2Editor';
+import { SEWER_V2_HUB_SLUG } from '@/lib/sewer-v2-cms/model';
 
 interface SubcategoryField {
   label: string;
@@ -84,7 +86,17 @@ const PAGE_LABELS: Record<string, string> = {
   'sewer-rodding': 'Sewer Rodding',
 };
 
-export default function AdminServicePage() {
+/**
+ * Brief 204: `/admin/sewer` is the Sewer v2 hub editor (+ the sections shared by all 10 sewer pages).
+ * Every other category keeps this file's editor, unchanged.
+ */
+export default function AdminServicePageDispatch() {
+  const params = useParams();
+  const slug = typeof params.slug === 'string' ? params.slug : '';
+  return slug === SEWER_V2_HUB_SLUG ? <SewerV2Editor kind="hub" slug={slug} /> : <AdminServicePage />;
+}
+
+function AdminServicePage() {
   const params = useParams();
   const slug = params?.slug as string;
 

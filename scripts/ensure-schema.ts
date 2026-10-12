@@ -257,6 +257,10 @@ const STATEMENTS: string[] = [
   `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS blocks JSONB`,
   `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
+  // Brief 204: the Sewer v2 hub + the sewer-shared sections (only the `sewer` row uses it).
+  // Additive and nullable; old code never reads it. Rollback (no data loss — legacy columns and the
+  // "Pre-v2 archive (2026-10)" versions are untouched): ALTER TABLE service_category_pages DROP COLUMN v2_content;
+  `ALTER TABLE service_category_pages ADD COLUMN IF NOT EXISTS v2_content JSONB`,
 
   // ── service_subcategories ───────────────────────────────────────────────
   `ALTER TABLE service_subcategories ADD COLUMN IF NOT EXISTS sort_order INTEGER NOT NULL DEFAULT 0`,
@@ -288,6 +292,9 @@ const STATEMENTS: string[] = [
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS blocks JSONB`,
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
+  // Brief 204: the 9 Sewer v2 service pages' content (NULL on every other sub-service row).
+  // Additive and nullable; old code never reads it. Rollback: ALTER TABLE sub_service_pages DROP COLUMN v2_content;
+  `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS v2_content JSONB`,
 
   // ── template_switch_archive ─────────────────────────────────────────────
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS from_template TEXT NOT NULL DEFAULT ''::text`,

@@ -36,6 +36,8 @@ import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDr
 import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
+import SewerV2Editor from '@/components/admin/sewer-v2/SewerV2Editor';
+import { isSewerV2ServiceSlug } from '@/lib/sewer-v2-cms/model';
 
 interface ServiceCategory {
   slug: string;
@@ -167,7 +169,16 @@ function BlockBoxHeader({
 
 // ── Main page ─────────────────────────────────────────────────────────────────
 
-export default function SubServiceAdminPage() {
+/**
+ * Brief 204: the 9 Sewer v2 service pages open the Sewer v2 editor. The other sub-service pages keep
+ * this file's block editor, unchanged.
+ */
+export default function SubServiceAdminDispatch() {
+  const { slug } = useParams<{ slug: string }>();
+  return isSewerV2ServiceSlug(slug) ? <SewerV2Editor kind="service" slug={slug} /> : <SubServiceAdminPage />;
+}
+
+function SubServiceAdminPage() {
   const { slug } = useParams<{ slug: string }>();
   const [meta, setMeta] = useState<MetaState>(EMPTY_META);
   const [blocks, setBlocks] = useState<EditorBlock[]>([]);
