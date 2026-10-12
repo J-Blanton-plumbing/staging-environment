@@ -13,6 +13,10 @@
  *
  * When the CMS follow-up brief moves these pages back onto the database, remove the slugs it moves
  * from here so the published-row rule applies to them again.
+ *
+ * Brief 204 (that follow-up): the sitemap no longer reads this list at all — all ten pages read
+ * their rows again and are listed by the published-row rule (src/lib/sitemap/render.ts). The list
+ * stays as what it now means: the nine Sewer v2 service pages (their CMS editor, reader and seed).
  */
 export const SEWER_V2_SERVICE_SLUGS = [
   'hydro-jetting',

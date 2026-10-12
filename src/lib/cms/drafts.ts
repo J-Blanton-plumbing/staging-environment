@@ -16,6 +16,8 @@ import {
   setLiveStatusInTx,
 } from '@/lib/cms/page-status';
 import { clearSitemapCache } from '@/lib/sitemap/render';
+import { assertSewerV2Publishable, assertSewerV2VersionWritable, prepareSewerV2VersionContent, writeSewerV2Live } from '@/lib/cms/sewer-v2-write';
+import { isSewerV2DraftContent, SEWER_V2_TEMPLATE } from '@/lib/sewer-v2-cms/model';
 
 export interface DraftRow {
   id: number;
@@ -152,6 +154,11 @@ export async function createDraft({
   createdBy: number;
   templateType?: string | null;
 }): Promise<DraftRow> {
+  // Brief 204: the 10 Sewer v2 pages accept only v2 content (sanitised + layout-locked, or a 422),
+  // and v2 content is accepted nowhere else. Every other page type passes through unchanged.
+  content = prepareSewerV2VersionContent(pageType, pageSlug, content);
+  if (isSewerV2DraftContent(content)) templateType = SEWER_V2_TEMPLATE;
+
   // Brief 75 (DP-2): snapshot the live row's current version so publishDraft can
   // later detect that the live page changed after this draft was captured.
   const live = await getLivePageState(pageType, pageSlug);
@@ -334,7 +341,13 @@ export async function publishDraft(
     locations:          mainPageWriter,
   };
 
-  const writer = writers[draft.page_type];
+  // Brief 204: an old-shaped version (pre-v2 archive, legacy draft) can never be published onto
+  // one of the 10 Sewer v2 pages, and v2 content never onto any other page — refused HERE, before
+  // any writer runs, so the admin button, the preview banner and a stale tab are all covered.
+  assertSewerV2Publishable(draft.page_type, draft.page_slug, draft.content);
+  const writer = isSewerV2DraftContent(draft.content)
+    ? (slug: string, content: unknown, by: number) => writeSewerV2Live(draft.page_type, slug, content, by)
+    : writers[draft.page_type];
   if (!writer) throw new Error(`No writer for page_type "${draft.page_type}"`);
 
   // Brief 75 — staleness guards before we overwrite the live row.
@@ -511,10 +524,20 @@ export async function updateDraftContent(
   const client = await pool.connect();
   try {
     // Brief 190: the `v2` sanitizer needs the draft's page type, which this
-    // signature does not carry — looked up only when the payload has a `v2` key.
-    if (content && typeof content === 'object' && 'v2' in (content as Record<string, unknown>)) {
-      const t = await client.query<{ page_type: string }>('SELECT page_type FROM page_drafts WHERE id = $1', [id]);
-      if (t.rows[0]) content = sanitizeVersionContent(t.rows[0].page_type, content);
+    // signature does not carry. Brief 204 needs the slug as well (the Sewer v2 guard runs on
+    // every save, so a stale legacy editor cannot write old-shaped content onto those pages).
+    const t = await client.query<{ page_type: string; page_slug: string; template_type: string | null }>(
+      'SELECT page_type, page_slug, template_type FROM page_drafts WHERE id = $1',
+      [id]
+    );
+    if (t.rows[0]) {
+      // Brief 204: an old-shaped version of a Sewer v2 page (the pre-v2 archive, a legacy draft) is
+      // read-only — v2 content is saved as a NEW version instead, never written over it.
+      assertSewerV2VersionWritable(t.rows[0].page_type, t.rows[0].page_slug, t.rows[0].template_type);
+      if (content && typeof content === 'object' && 'v2' in (content as Record<string, unknown>)) {
+        content = sanitizeVersionContent(t.rows[0].page_type, content);
+      }
+      content = prepareSewerV2VersionContent(t.rows[0].page_type, t.rows[0].page_slug, content);
     }
     const res = await client.query<{ version: number }>(
       `UPDATE page_drafts

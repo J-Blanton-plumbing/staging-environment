@@ -45,3 +45,6 @@ human qa/
 # 5.7 MB after the eight-area pilot and far larger after all 138; the generator
 # re-fetches anything missing, so it is a speed cache, never a source.
 .scripts-out/tile-cache/
+
+# Brief 204: the pre-swap snapshot of the sewer pages (deploy.sh → health check)
+.sewer-v2-snapshot/

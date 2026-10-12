@@ -2,16 +2,7 @@ import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { SITE } from '@/lib/site';
 import { breadcrumbListJsonLd } from '@/lib/schema/breadcrumb-list';
-import {
-  SEWER_BADGE24_LABEL,
-  SEWER_CRUMB_PARENT,
-  SEWER_FINAL,
-  SEWER_QUICK_LINKS,
-  SEWER_RAIL,
-  SEWER_REVIEW,
-  SEWER_STICKY,
-} from '@/lib/content/sewer-v2/shared';
-import type { SewerSection, SewerServicePage } from '@/lib/content/sewer-v2/types';
+import type { SewerSection, SewerServicePage, SewerSharedContent } from '@/lib/content/sewer-v2/types';
 import { SewerIcon } from './icons';
 import { parseStyle as s, SewerNodes, type SewerPhone } from './SewerNodes';
 import SewerV2Root from './SewerV2Root';
@@ -33,8 +24,24 @@ import './sewer-v2.css';
  * Structured data: the page's VideoObject verbatim (7 of 9 pages) + a BreadcrumbList
  * Home › Sewer Services › {page} matching the visible crumb. No FAQPage (dead since 2026-05-07), no
  * page-level LocalBusiness (the footer graph owns that, Brief 167).
+ *
+ * Brief 204: the page comes from its `sub_service_pages` row (code module as fallback) and the
+ * sewer-shared sections (crumb parent, quick links, rail, sticky bar, NDC, services list, final CTA
+ * atoms, review atoms) from the hub row's `v2_content.shared` — both passed in by SewerRoutes.
  */
-export default function SewerServiceView({ page, phone }: { page: SewerServicePage; phone: SewerPhone }) {
+export default function SewerServiceView({
+  page,
+  shared,
+  phone,
+}: {
+  page: SewerServicePage;
+  shared: SewerSharedContent;
+  phone: SewerPhone;
+}) {
+  const SEWER_CRUMB_PARENT = shared.crumbParent;
+  const SEWER_QUICK_LINKS = shared.quickLinks;
+  const SEWER_RAIL = shared.rail;
+  const SEWER_STICKY = shared.sticky;
   const crumbs = breadcrumbListJsonLd(
     [
       { label: 'Home', href: '/' },
@@ -66,7 +73,7 @@ export default function SewerServiceView({ page, phone }: { page: SewerServicePa
                 <SewerIcon name="phone20" />
                 <PhoneNumber value={phone.display} />
               </PhoneLink>
-              <span className="badge24" role="img" aria-label={SEWER_BADGE24_LABEL}>
+              <span className="badge24" role="img" aria-label={shared.badge24Label}>
                 <SewerIcon name="badge24" />
               </span>
             </div>
@@ -85,7 +92,7 @@ export default function SewerServiceView({ page, phone }: { page: SewerServicePa
       <div className="ss-shell">
         <div className="ss-main">
           {page.sections.map((sec) => (
-            <ServiceSection key={sectionKey(sec)} section={sec} page={page} phone={phone} />
+            <ServiceSection key={sectionKey(sec)} section={sec} page={page} shared={shared} phone={phone} />
           ))}
         </div>
         <aside className="ss-rail" aria-label={SEWER_RAIL.ariaLabel}>
@@ -132,7 +139,7 @@ export default function SewerServiceView({ page, phone }: { page: SewerServicePa
           href={phone.href}
           display={phone.display}
           className="btn btn-hero-cta t-btn"
-          aria-label={SEWER_STICKY.ariaLabel.replace('{phone}', phone.display)}
+          aria-label={SEWER_STICKY.ariaLabel.split('{{phone}}').join(phone.display)}
         >
           <SewerIcon name="phone18" />
           {SEWER_STICKY.cta}
@@ -146,7 +153,19 @@ function sectionKey(sec: SewerSection): string {
   return sec.kind === 'panel' ? `panel:${sec.id}` : sec.kind;
 }
 
-function ServiceSection({ section, page, phone }: { section: SewerSection; page: SewerServicePage; phone: SewerPhone }) {
+function ServiceSection({
+  section,
+  page,
+  shared,
+  phone,
+}: {
+  section: SewerSection;
+  page: SewerServicePage;
+  shared: SewerSharedContent;
+  phone: SewerPhone;
+}) {
+  const SEWER_REVIEW = shared.review;
+  const SEWER_FINAL = shared.final;
   switch (section.kind) {
     case 'panel':
       return (
@@ -204,9 +223,9 @@ function ServiceSection({ section, page, phone }: { section: SewerSection; page:
         </section>
       );
     case 'ndc':
-      return <SewerNdc context="panel" order={section.order} body={section.body} />;
+      return <SewerNdc ndc={shared.ndc} context="panel" order={section.order} body={section.body} />;
     case 'services':
-      return <SewerServiceRows currentSlug={page.slug} order={section.order} phone={phone} />;
+      return <SewerServiceRows shared={shared} currentSlug={page.slug} order={section.order} phone={phone} />;
     case 'final':
       return (
         <section id="book" className="ss-panel ss-final" style={s(`--o:${section.order}`)}>

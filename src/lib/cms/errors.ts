@@ -31,3 +31,15 @@ export function errorCode(err: unknown): string | undefined {
   }
   return undefined;
 }
+
+/**
+ * Brief 204 — content an editor must fix before it can be saved (a literal phone number, a bad
+ * link, an emptied required field, a layout change). The message is shown to the editor verbatim.
+ */
+export class ValidationError extends Error {
+  code = '422';
+  constructor(message: string) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}

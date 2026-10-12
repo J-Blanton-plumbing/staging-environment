@@ -1,7 +1,7 @@
 import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
-import { SEWER_HUB } from '@/lib/content/sewer-v2/hub';
-import { SEWER_BADGE24_LABEL, SEWER_FINAL, SEWER_REVIEW } from '@/lib/content/sewer-v2/shared';
+import type { SewerHubContent } from '@/lib/content/sewer-v2/hub';
+import type { SewerSharedContent } from '@/lib/content/sewer-v2/types';
 import { SewerIcon } from './icons';
 import { parseStyle as s, type SewerPhone } from './SewerNodes';
 import SewerV2Root from './SewerV2Root';
@@ -19,8 +19,12 @@ import './sewer-v2.css';
  * PhoneNumber with the site's number (Track D), and "Schedule a Service" is the site's schedule
  * popup trigger (Brief 169).
  */
-export default function SewerHubView({ phone }: { phone: SewerPhone }) {
-  const h = SEWER_HUB;
+export default function SewerHubView({ hub, shared, phone }: { hub: SewerHubContent; shared: SewerSharedContent; phone: SewerPhone }) {
+  // Brief 204: `hub` is the hub row's content (code module SEWER_HUB as fallback); `shared` the
+  // sewer-shared sections stored on the same row.
+  const h = hub;
+  const SEWER_REVIEW = shared.review;
+  const SEWER_FINAL = shared.final;
   return (
     <SewerV2Root className="sewer-v2 sewer-v2--hub">
       <section className="hub-hero">
@@ -36,7 +40,7 @@ export default function SewerHubView({ phone }: { phone: SewerPhone }) {
                 <SewerIcon name="phone20" />
                 <PhoneNumber value={phone.display} />
               </PhoneLink>
-              <span className="badge24" role="img" aria-label={SEWER_BADGE24_LABEL}>
+              <span className="badge24" role="img" aria-label={shared.badge24Label}>
                 <SewerIcon name="badge24" />
               </span>
             </div>
@@ -67,7 +71,7 @@ export default function SewerHubView({ phone }: { phone: SewerPhone }) {
             <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{h.services.heading}</h2>
             <p className="t-body pv-mute" style={s('margin:0 0 8px')}>{h.services.intro}</p>
           </div>
-          <SewerHubServices />
+          <SewerHubServices shared={shared} />
         </div>
       </section>
 
@@ -221,7 +225,7 @@ export default function SewerHubView({ phone }: { phone: SewerPhone }) {
               </div>
               <blockquote>{h.reviews.featured.quote}</blockquote>
               <figcaption>
-                <HubReviewAuthor name={h.reviews.featured.name} />
+                <HubReviewAuthor name={h.reviews.featured.name} caption={SEWER_REVIEW.caption} />
               </figcaption>
             </figure>
             <div className="hub-side">
@@ -231,7 +235,7 @@ export default function SewerHubView({ phone }: { phone: SewerPhone }) {
                     {SEWER_REVIEW.stars}
                   </div>
                   <p className="t-body-sm" style={s('margin:0 0 14px')}>{r.quote}</p>
-                  <HubReviewAuthor name={r.name} />
+                  <HubReviewAuthor name={r.name} caption={SEWER_REVIEW.caption} />
                 </div>
               ))}
             </div>
@@ -239,7 +243,7 @@ export default function SewerHubView({ phone }: { phone: SewerPhone }) {
         </div>
       </section>
 
-      <SewerNdc context="band" />
+      <SewerNdc ndc={shared.ndc} context="band" />
 
       <section className="sec" style={s('background:#F9F3EC')}>
         <div className="wrap hub-split">
@@ -271,7 +275,7 @@ export default function SewerHubView({ phone }: { phone: SewerPhone }) {
   );
 }
 
-function HubReviewAuthor({ name }: { name: string }) {
+function HubReviewAuthor({ name, caption }: { name: string; caption: string }) {
   return (
     <div className="review-author">
       <span className="review-avatar">
@@ -279,7 +283,7 @@ function HubReviewAuthor({ name }: { name: string }) {
       </span>
       <div>
         <strong className="t-label" style={s('font-size:14px')}>{name}</strong>
-        <div className="t-caption pv-cap">{SEWER_REVIEW.caption}</div>
+        <div className="t-caption pv-cap">{caption}</div>
       </div>
     </div>
   );

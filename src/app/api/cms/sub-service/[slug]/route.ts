@@ -4,6 +4,7 @@ import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { sanitizeCmsHtml } from '@/lib/cms/sanitize';
 import type { SubServiceBlockInstance } from '@/lib/cms/sub-service-blocks';
+import { isSewerV2ServiceSlug, OLD_SHAPE_MESSAGE } from '@/lib/sewer-v2-cms/model';
 import type { SubServiceFields } from '@/lib/cms/sub-service-fields';
 import {
   assembleBlocks,
@@ -52,6 +53,12 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { slug } = await params;
+  // Brief 204: the 9 Sewer v2 pages are edited only through their v2 editor's versions. This direct
+  // write would overwrite the legacy columns the "Pre-v2 archive (2026-10)" describes — and write
+  // `status` — so a stale tab of the old editor is refused instead.
+  if (isSewerV2ServiceSlug(slug)) {
+    return NextResponse.json({ error: OLD_SHAPE_MESSAGE }, { status: 409 });
+  }
   let body: Record<string, unknown>;
   try {
     body = await req.json();

@@ -32,6 +32,10 @@ export async function POST(
         { status: 409 }
       );
     }
+    // Brief 204: a Sewer v2 version that no longer passes validation at publish time.
+    if (errorCode(err) === '422') {
+      return NextResponse.json({ error: err instanceof Error ? err.message : 'Invalid content' }, { status: 422 });
+    }
     console.error(`[drafts/${id}/publish POST]`, err);
     const msg = err instanceof Error ? err.message : 'Failed to publish draft';
     return NextResponse.json({ error: msg }, { status: 500 });

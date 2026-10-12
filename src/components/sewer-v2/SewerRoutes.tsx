@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import PreviewBanner from '@/components/PreviewBanner';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
-import { pageTitle } from '@/lib/seo';
-import { SEWER_V2_PAGES } from '@/lib/content/sewer-v2';
-import { SEWER_HUB } from '@/lib/content/sewer-v2/hub';
-import type { SEWER_V2_SERVICE_SLUGS } from '@/lib/content/sewer-v2/routes';
+import { loadSewerHub, loadSewerServicePage, sewerHubMetaFor, sewerServiceMetaFor } from '@/lib/cms/sewer-v2';
+import type { SewerServiceSlug } from '@/lib/sewer-v2-cms/model';
 import type { SewerPhone } from './SewerNodes';
 import SewerHubView from './SewerHubView';
 import SewerServiceView from './SewerServiceView';
@@ -17,11 +17,17 @@ import SewerServiceView from './SewerServiceView';
  * and setting `alternates` at all (even `undefined`) suppresses it. No robots: these pages are
  * indexable.
  *
- * ⚠️ CMS: these pages do not read `sub_service_pages` or `service_category_pages`. Admin edits to
- * those rows no longer change them until the CMS follow-up brief (Brief 200 report §4 lists the rows).
+ * Brief 204: content comes from the CMS — the page's `sub_service_pages` row (the hub's
+ * `service_category_pages` row), with the code modules as the fallback, and the sewer-shared
+ * sections from the hub row. See src/lib/cms/sewer-v2.ts for the render gate (an unpublished row
+ * 404s; no row / DB down → code module). Titles and descriptions come from the rows' `meta_title` /
+ * `meta_description` once the row holds v2 content. Draft previews render with the PreviewBanner.
+ *
+ * The non-preview branch returns the view ALONE (a one-slot ternary, not `{preview && …}` beside
+ * it), so the RSC payload of a normal request is byte-identical to Brief 200's.
  */
 
-export type SewerServiceSlug = (typeof SEWER_V2_SERVICE_SLUGS)[number];
+export type { SewerServiceSlug };
 
 async function sitePhone(): Promise<SewerPhone> {
   // The same source every live CTA uses (Global Settings, falling back to site.ts when the DB is down).
@@ -29,20 +35,56 @@ async function sitePhone(): Promise<SewerPhone> {
   return { href: settings.phoneHref, display: settings.phoneDisplay };
 }
 
-export function sewerServiceMetadata(slug: SewerServiceSlug): Metadata {
-  const { meta } = SEWER_V2_PAGES[slug];
-  return { title: pageTitle(meta.title), description: meta.description };
+export async function sewerServiceMetadata(slug: SewerServiceSlug): Promise<Metadata> {
+  const meta = await sewerServiceMetaFor(slug);
+  return meta ? { title: meta.title, description: meta.description } : {};
 }
 
 export async function SewerServiceRoute({ slug }: { slug: SewerServiceSlug }) {
-  return <SewerServiceView page={SEWER_V2_PAGES[slug]} phone={await sitePhone()} />;
+  const load = await loadSewerServicePage(slug);
+  if (!load) notFound();
+  const phone = await sitePhone();
+  return load.preview ? (
+    <>
+      <PreviewBanner
+        label={load.preview.label}
+        creatorName={load.preview.creator_name}
+        editorUrl={`/admin/sub-service/${slug}`}
+        liveUrl={`/${slug}`}
+        draftId={load.preview.id}
+        pageType="sub-service"
+        pageSlug={slug}
+      />
+      <SewerServiceView page={load.page} shared={load.shared} phone={phone} />
+    </>
+  ) : (
+    <SewerServiceView page={load.page} shared={load.shared} phone={phone} />
+  );
 }
 
-export const sewerHubMetadata: Metadata = {
-  title: pageTitle(SEWER_HUB.meta.title),
-  description: SEWER_HUB.meta.description,
-};
+export async function sewerHubMetadata(): Promise<Metadata> {
+  const meta = await sewerHubMetaFor();
+  return meta ? { title: meta.title, description: meta.description } : {};
+}
 
 export async function SewerHubRoute() {
-  return <SewerHubView phone={await sitePhone()} />;
+  const load = await loadSewerHub();
+  if (!load) notFound();
+  const phone = await sitePhone();
+  return load.preview ? (
+    <>
+      <PreviewBanner
+        label={load.preview.label}
+        creatorName={load.preview.creator_name}
+        editorUrl="/admin/sewer"
+        liveUrl="/services/sewer"
+        draftId={load.preview.id}
+        pageType="service"
+        pageSlug="sewer"
+      />
+      <SewerHubView hub={load.hub} shared={load.shared} phone={phone} />
+    </>
+  ) : (
+    <SewerHubView hub={load.hub} shared={load.shared} phone={phone} />
+  );
 }

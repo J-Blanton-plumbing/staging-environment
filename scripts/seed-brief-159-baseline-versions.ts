@@ -381,6 +381,19 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
     [aliasesFor(spec.pageType)]
   )).rows;
 
+  // Brief 204: a Sewer v2 page whose row holds `v2_content` keeps its version history through
+  // the v2 editor and the Brief 204 seed. Its pre-v2 versions are old-shaped, so re-marking one live
+  // (or snapshotting the legacy columns as "Version 1 — live") would name a version that is not
+  // what the page shows and that the publish path refuses. Those rows are left alone here.
+  const sewerV2Rows =
+    spec.pageType === 'sub-service' || spec.pageType === 'service'
+      ? new Set(
+          (await client.query<{ slug: string }>(
+            `SELECT slug FROM ${spec.table} WHERE v2_content IS NOT NULL`
+          )).rows.map((r) => r.slug)
+        )
+      : new Set<string>();
+
   const bySlug = new Map<string, typeof drafts>();
   for (const d of drafts) {
     if (!bySlug.has(d.page_slug)) bySlug.set(d.page_slug, []);
@@ -395,6 +408,9 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
 
     // Already answered — a previous run, or a publish since the migration.
     if (existing.some((d) => d.is_published)) { tally.skipped++; continue; }
+
+    // Brief 204 (above): Sewer v2 rows are owned by the v2 version history.
+    if (sewerV2Rows.has(row.slug)) { tally.skipped++; continue; }
 
     // A version that has actually been live before is the truthful baseline; the
     // ordering above already put the most recently published one first.
