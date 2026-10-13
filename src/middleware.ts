@@ -162,7 +162,7 @@ export async function middleware(req: NextRequest) {
       try {
         const decoded = atob(encoded)
         const i = decoded.indexOf(':')
-        ok = i > -1 && decoded.slice(0, i) === 'jbp' && decoded.slice(i + 1) === 'highland'
+        ok = i > -1 && decoded.slice(0, i) === 'jbp' && decoded.slice(i + 1) === '2026'
       } catch {
         ok = false
       }
@@ -189,7 +189,7 @@ export async function middleware(req: NextRequest) {
 
   // ── Brief 195 — manager review gate (/review/...) ──────────────────────
   // Unpublished articles rendered for managers without CMS logins
-  // (src/app/review/knowledge-hub/[slug]). Simple Basic Auth jbp / highland,
+  // (src/app/review/knowledge-hub/[slug]). Simple Basic Auth jbp / 2026,
   // NOT real security: the credentials sit in this public repo on purpose, as
   // in Brief 194. Like Brief 194 it does NOT skip localhost. The page itself
   // decides draft (render) / published (308 to the public URL) / missing (404).
@@ -202,7 +202,7 @@ export async function middleware(req: NextRequest) {
       try {
         const decoded = atob(encoded)
         const i = decoded.indexOf(':')
-        ok = i > -1 && decoded.slice(0, i) === 'jbp' && decoded.slice(i + 1) === 'highland'
+        ok = i > -1 && decoded.slice(0, i) === 'jbp' && decoded.slice(i + 1) === '2026'
       } catch {
         ok = false
       }
