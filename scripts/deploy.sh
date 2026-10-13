@@ -919,6 +919,15 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # title-captions step. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-207-event-photos.ts commit
+# -- Brief 207 follow-up 4: remove the "[DRAFT QUOTE] " label (2026-10-13) --
+# One time: adds "Version N — draft-quote label removed" (unpublished) and
+# removes the label from the still-draft live row; the quote's words are
+# unchanged. Label already gone everywhere → ALREADY-APPLIED; quote paragraph
+# not as seeded → NOT-APPLIED (edited in admin); not a draft / no article →
+# NOT-APPLIED; all exit 0, nothing written. Exit 1 only on a code/schema
+# fault. Keep after the event-photos step. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-207-quote-label.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from
