@@ -894,6 +894,19 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-207-real-photos.ts commit
+# -- Brief 207 follow-up 2: new TITLE + SUBTITLE, no photo captions -----
+# Marketing 2026-10-13. One time: adds "Version N — new title, subtitle, no
+# photo captions" (unpublished) and applies the same edits to the still-draft
+# live row: title / excerpt / subtitle, and the hero + truck-photo captions
+# removed (generic campaign photos, not this donation). Guarded on its OWN
+# fields: title/subtitle changed in /admin since the seed → NOT-APPLIED
+# (edited in admin); not a draft / no article → NOT-APPLIED; all exit 0,
+# nothing written. A caption already changed in /admin is left alone and
+# named in the verdict. Later deploys: ALREADY-APPLIED. Exit 1 only on a
+# code/schema fault. MUST stay AFTER the real-photos step (its guard expects
+# the seed's title; it adds the captions removed here). Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-207-title-captions.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from
