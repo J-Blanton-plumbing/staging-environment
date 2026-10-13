@@ -881,6 +881,19 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-207-deerfield-orphans-of-the-storm.ts commit
+# -- Brief 207 follow-up: that draft's REAL IMAGES (Marketing, 2026-10-13) --
+# One time: adds "Version 2 — real photos" (unpublished) and puts the live row
+# (still status 'draft') on it: team photo as the hero, the truck of food in
+# "What Did…", the shelter sign in "Who Is…", the Unclogs for Dogs logo in
+# "What Is Unclogs for Dogs?". Guarded, and editor state wins: no article →
+# NOT-APPLIED (no article); not a draft → NOT-APPLIED (not a draft); the
+# latest version or the live row no longer equals the Brief 207 seed payload
+# → NOT-APPLIED (edited in admin), naming the fields; all exit 0, nothing
+# written. Later deploys: ALREADY-APPLIED. Exit 1 only on a code/schema
+# fault. Version 1 is never touched. MUST stay after the Brief 207 seed.
+# Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-207-real-photos.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from
