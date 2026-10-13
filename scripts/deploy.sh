@@ -862,6 +862,25 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # slug. MUST stay after the 203 step. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-203-older-homes-review-1.ts commit
+# -- Brief 207: Deerfield "Orphans of the Storm" donation, UNPUBLISHED (V2) --
+# CREATE-ONCE: creates
+# /knowledge-hub/deerfield-animal-shelter-donation-orphans-of-the-storm as a
+# DRAFT (live row status 'draft' + tags + related + ONE unpublished "Version 1
+# — for review" version) with PHOTO PLACEHOLDER images, only if no article has
+# that slug. The public URL keeps 404ing until Marketing clicks Publish;
+# managers read it at /review/knowledge-hub/<slug> (the Brief 195 route).
+# Every deploy after the first reports ALREADY-EXISTS and writes nothing.
+# Tags: company-news + chicagoland + deerfield + riverwoods; a missing city
+# term is created Brief 187-style (under chicagoland, Show in Google off) in
+# the same transaction. Missing company-news / chicagoland, a deerfield or
+# riverwoods term that is NOT a chicagoland location, or no CMS user →
+# NOT-APPLIED, exit 0, nothing written; missing Brief 190 columns → exit 1.
+# A related pick that is missing or unpublished is skipped and reported.
+# Never touches global_settings. A later RENAME must follow Brief 202
+# (CLAUDE.md gotcha 27). Same `-r tsconfig-paths/register` need as Brief 191.
+# Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-brief-207-deerfield-orphans-of-the-storm.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from
