@@ -862,6 +862,21 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # slug. MUST stay after the 203 step. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-203-older-homes-review-1.ts commit
+# -- Brief 210: the older-homes article → "Version 3 — final" + PUBLISHED --
+# One time: copies the newest version with ONE sentence changed (the City of
+# Columbus sewer-installer licence clause in the Worthington subsection goes)
+# into "Version 3 — final" via createDraft, then publishes it via publishDraft
+# — the admin's own Status → Published path — in one transaction (a failure
+# rolls both back: FAILED (publish), exit 0). The public URL goes 404 → 200.
+# Later deploys: ALREADY-APPLIED. No article / two articles, published in
+# /admin without Version 3, Version 3 unpublished afterwards, the sentence not
+# exactly once, live row ≠ newest version, licence wording elsewhere, or no CMS
+# user → NOT-APPLIED, exit 0, nothing written. Exit 1 only on missing schema.
+# The 199 seed, rounds 1–3 and the two 203 steps above must stay no-ops on
+# the published article (they are: ALREADY-*). MUST stay after the Brief 203
+# review round 1 step. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/publish-brief-210-older-homes.ts commit
 # -- Brief 207: Deerfield "Orphans of the Storm" donation, UNPUBLISHED (V2) --
 # CREATE-ONCE: creates
 # /knowledge-hub/deerfield-animal-shelter-donation-orphans-of-the-storm as a
