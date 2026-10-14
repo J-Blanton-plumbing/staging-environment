@@ -34,6 +34,7 @@ import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { CITY_REGISTRY } from '@/lib/content/cities';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
+import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 import {
   CityServiceShard,
   SITEMAP_CHILDREN,
@@ -517,6 +518,8 @@ export function renderCityServiceShard(shard: CityServiceShard): Promise<string>
         const key = `${city}/${service}`;
         if (canonicalisesElsewhere.has(key)) continue;
         if (unpublished.has(key)) continue;
+        // Brief 209 go-live: folded into a V2 page and 301'd — never advertise a redirect source.
+        if (Object.prototype.hasOwnProperty.call(CITY_SERVICE_FOLD_REDIRECTS, `/${key}`)) continue;
         entries.push({
           path: `/${key}`,
           lastModified: lastMod.get(key),

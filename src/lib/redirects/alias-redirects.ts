@@ -27,6 +27,7 @@
  *    working page away. The same validator checks this.
  */
 import { CITY_SLUG_TO_HUB_ALIAS, hasSubServiceRoute } from '@/lib/content/service-taxonomy';
+import { CITY_SERVICE_FOLD_REDIRECTS } from './city-service-folds';
 
 /**
  * One-off slug corrections and consolidations.
@@ -177,8 +178,15 @@ export const DERIVED_HUB_ALIAS_REDIRECTS: Readonly<Record<string, string>> =
 /**
  * The merged alias map. Manual entries win, so a one-off correction can always
  * override the taxonomy-derived default.
+ *
+ * Brief 209 go-live: the 55 city-service URLs folded into the 5 cities' V2 pages
+ * (`./city-service-folds.ts`). They are `/{city}/{service}` paths the
+ * `[city]/[service]` route would otherwise still render — the middleware lookup
+ * runs first, so the 301 wins, and the sitemap manifest drops them from the
+ * shards so none is advertised.
  */
 export const ALIAS_REDIRECTS: Readonly<Record<string, string>> = Object.freeze({
   ...DERIVED_HUB_ALIAS_REDIRECTS,
+  ...CITY_SERVICE_FOLD_REDIRECTS,
   ...MANUAL_ALIAS_REDIRECTS,
 });
