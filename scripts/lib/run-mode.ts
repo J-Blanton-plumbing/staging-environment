@@ -138,6 +138,13 @@ export type Verdict =
   | 'NOT-APPLIED (slug taken)'
   // Brief 203
   | 'NOT-APPLIED (anchor missing)'
+  // Brief 210
+  | 'NOT-APPLIED (two articles)'
+  | 'NOT-APPLIED (published in admin)'
+  | 'NOT-APPLIED (live and newest version differ)'
+  | 'NOT-APPLIED (license claim elsewhere)'
+  | 'NOT-APPLIED (no CMS user)'
+  | 'FAILED (publish)'
   | 'FAILED';
 
 let verdictReported = false;
