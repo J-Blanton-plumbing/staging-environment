@@ -8,7 +8,8 @@ import { getCityServicePreview } from '@/lib/cms/preview';
 import { isPageLive } from '@/lib/cms/page-status';
 import { getGlobalSettingsCached, getRegionalPhonesCached } from '@/lib/cms/global-settings';
 import PreviewBanner from '@/components/PreviewBanner';
-import { getCityServiceV2, CENTRAL_OHIO_V2_CITIES } from '@/lib/content/city-services-v2';
+import { CENTRAL_OHIO_V2_CITIES, isCityV2Service } from '@/lib/content/city-services-v2/registry';
+import { cityServiceMetaFor, loadCityServicePage } from '@/lib/cms/city-v2';
 import CityServiceV2View from '@/components/city-services-v2/CityServiceV2View';
 import { pageTitle } from '@/lib/seo';
 import { cityServiceRobots } from '@/lib/city-service-indexation';
@@ -43,24 +44,21 @@ export function generateStaticParams() {
   return [];
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { city: string; service: string };
-}): Metadata {
+}): Promise<Metadata> {
   const cityEntry = getCity(params.city);
   const serviceData = getCityService(params.service);
   if (!cityEntry || !serviceData) return {};
-  // Brief 209 go-live: a City Service Pages V2 page carries its approved title/description from
-  // code. Every title on the site closes with the layout template's "| J. Blanton Plumbing",
-  // whatever its length (Marketing, 2026-10-14). The approved titles carry their own short brand
-  // tail ("| J. Blanton", "| JBP", or the full name), so it is stripped here and the template adds
-  // the standard one exactly once. These 5 cities are all indexable; `robots` resolves exactly as
-  // for every other city.
-  const v2 = getCityServiceV2(params.city, params.service);
-  if (v2) {
-    const title = pageTitle(v2.meta.title.replace(/\s*\|\s*(?:J\.?\s*Blanton|JBP)\s*$/i, ''));
-    return { title, description: v2.meta.description, robots: cityServiceRobots(params.city) };
+  // Brief 209: a City Service Pages V2 page's title/description come from its CMS row (code module
+  // as the fallback) — src/lib/cms/city-v2.ts. Every title closes with the layout template's
+  // "| J. Blanton Plumbing" (Marketing, 2026-10-14); cityServiceMetaFor strips any other brand tail.
+  // These 5 cities are all indexable; `robots` resolves exactly as for every other city.
+  if (isCityV2Service(params.city, params.service)) {
+    const meta = await cityServiceMetaFor(params.city, params.service);
+    return meta ? { title: meta.title, description: meta.description, robots: cityServiceRobots(params.city) } : {};
   }
   return {
     // Every one of the 45 city-service content files ends its seo.title with
@@ -138,16 +136,17 @@ export default async function CityServicePage({
    * Brief 209 go-live — City Service Pages V2 (Marketing, 2026-10-14).
    *
    * The 29 service pages of Northbrook, Columbus, Tinley Park, Joliet and Naperville render the
-   * approved Highland Park-template service page INSTEAD of CityServicePageTemplate. Dispatched by
-   * code, like the Brief 205 hubs: these pages are not wired to the CMS yet, so admin edits (and
-   * draft previews) of these 145 city_service_pages rows do not reach the live page until a CMS
-   * follow-up brief. The Brief 159 render gate still applies — an unpublished row 404s exactly as
-   * before. The 55 service pages these absorb are 301'd in middleware (city-service-folds.ts) and
-   * never reach this route. Every other city-service page falls through, unchanged.
+   * approved Highland Park-template service page INSTEAD of CityServicePageTemplate, from their
+   * city_service_pages rows' `v2_content` and the city's shared parts on its city_pages row (CMS
+   * wiring, 2026-10-14 — src/lib/cms/city-v2.ts, which also handles the v2 draft preview and the
+   * Brief 159 gate: an unpublished row 404s). Edited in /admin/city-service/{city}/{service} (the
+   * City v2 editor) and /admin/city/{city} (hub + shared parts). The 55 service pages these absorb
+   * are 301'd in middleware (city-service-folds.ts) and never reach this route. Every other
+   * city-service page falls through, unchanged.
    */
-  const v2 = getCityServiceV2(params.city, params.service);
-  if (v2) {
-    if (!(await isPageLive('city-service', `${params.city}/${params.service}`))) notFound();
+  if (isCityV2Service(params.city, params.service)) {
+    const load = await loadCityServicePage(params.city, params.service);
+    if (!load) notFound();
     let phone = { href: settings.phoneHref, display: settings.phoneDisplay };
     if (CENTRAL_OHIO_V2_CITIES.has(params.city)) {
       // Brief 192: the Central Ohio phone from Global Settings; blank = the main phone. The
@@ -160,7 +159,22 @@ export default async function CityServicePage({
         };
       }
     }
-    return <CityServiceV2View page={v2} cityName={cityEntry.name} phone={phone} />;
+    const view = <CityServiceV2View city={params.city} service={params.service} stored={load.stored} shared={load.shared} phone={phone} />;
+    if (!load.preview) return view;
+    return (
+      <>
+        <PreviewBanner
+          label={load.preview.label}
+          creatorName={load.preview.creator_name}
+          editorUrl={`/admin/city-service/${params.city}/${params.service}`}
+          liveUrl={`/${params.city}/${params.service}`}
+          draftId={load.preview.id}
+          pageType="city-service"
+          pageSlug={`${params.city}/${params.service}`}
+        />
+        {view}
+      </>
+    );
   }
 
   // Check preview cookie first

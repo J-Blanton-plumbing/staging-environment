@@ -5,11 +5,14 @@
  * final CTA, the hub's sections, the sewer-shared sections). It walks the value itself, so every
  * string, number, image and list in the content gets a control — nothing can be silently left out
  * (the Brief 179 lesson). Layout values (`LOCKED`) are never shown; `conform.ts` refuses them anyway.
+ *
+ * Brief 209 (City v2 editor): `rich` names the keys edited as rich text (default: the sewer FAQ's
+ * `preview`/`full`); keys starting with `@` (schema.org's `@context`/`@type`) are never shown.
  */
 import type { SewerNode } from '@/lib/content/sewer-v2/types';
 import { ImageInput, Repeater, RichInput, TextInput } from './ui';
 
-const LOCKED = new Set(['kind', 'id', 'tint', 'order', 'variant', 'financingOrder', 'schema', 'color', 'highlight', 'ticks', 'slug']);
+const LOCKED = new Set(['kind', 'id', 'tint', 'order', 'variant', 'financingOrder', 'schema', 'color', 'highlight', 'ticks', 'slug', 'cls']);
 const IMAGE_KEYS = new Set(['image', 'src', 'icon', 'seal', 'sinceIcon']);
 const LINK_KEYS = new Set(['href', 'iframeSrc']);
 const RICH_KEYS = new Set(['preview', 'full']);
@@ -31,6 +34,18 @@ const LABELS: Record<string, string> = {
   caption: 'Caption under reviewer names', callPrefix: '"Call Now:" text before the number', schedule: 'Schedule button label', learnMore: '"Learn More" link text',
   badge24Label: '"24 hours" badge — screen-reader label', crumbParent: 'Breadcrumb parent', uploadDate: 'Upload date (ISO, e.g. 2025-05-21T07:47:39-07:00)',
   duration: 'Duration (ISO, e.g. PT47S)', thumbnailUrl: 'Thumbnail image address', description: 'Description',
+  // Brief 209 — City v2 fields
+  serviceType: 'Service type', provider: 'Provider (the office)', address: 'Address', streetAddress: 'Street address',
+  addressLocality: 'City', addressRegion: 'State', postalCode: 'ZIP code', addressCountry: 'Country', areaServed: 'Areas served',
+  url: 'Link', a: 'Full answer (shown when opened)', h1: 'Heading (H1)', h2: 'Heading', h3: 'Sub-heading', areas: 'Communities',
+  areasH3: 'Communities heading', more: '"more" link', heroPills: 'Hero quick links', heroPillsLabel: 'Hero quick links — screen-reader label',
+  trustLabel: 'Trust stripe — screen-reader label', servicesEyebrow: 'Services eyebrow', officeSchedule: 'Office "Schedule" button label',
+  depthEyebrow: 'Local Knowledge eyebrow', fin: 'Financing band', disclaimer: 'Small print', why: 'Why J. Blanton', video: 'Video section',
+  embed: 'Video embed address', videoJsonLd: 'Video details for Google (VideoObject)', reviewsProofLabel: 'Ratings box — screen-reader label',
+  verified: 'Caption under reviewer names', readOnGoogle: '"Read on Google" link text', faqEyebrow: 'FAQ eyebrow', mascot: 'Mascot image',
+  finalSchedule: 'Final "Schedule" button label', stripe: 'Service directory groups', stripeTitle: 'Service directory title', group: 'Group name',
+  general: 'Wording on general service pages', sewer: 'Wording on the sewer service pages', cards: 'Cards', depth: 'Local knowledge', office: 'Office',
+  serviceSchema: 'Service details for Google (schema.org Service)', contentUrl: 'Video address', embedUrl: 'Video embed address',
 };
 
 export function humanize(key: string): string {
@@ -45,13 +60,13 @@ function blank<T>(v: T): T {
 }
 
 export function ValueEditor({
-  value, onChange, keyName, label, readOnly,
+  value, onChange, keyName, label, readOnly, rich = RICH_KEYS,
 }: {
-  value: unknown; onChange: (next: unknown) => void; keyName: string; label?: string; readOnly?: boolean;
+  value: unknown; onChange: (next: unknown) => void; keyName: string; label?: string; readOnly?: boolean; rich?: ReadonlySet<string>;
 }) {
   const lbl = label ?? humanize(keyName);
-  if (LOCKED.has(keyName)) return null;
-  if (RICH_KEYS.has(keyName) && (typeof value === 'string' || Array.isArray(value))) {
+  if (LOCKED.has(keyName) || keyName.startsWith('@')) return null;
+  if (rich.has(keyName) && (typeof value === 'string' || Array.isArray(value))) {
     return (
       <RichInput
         label={lbl}
@@ -91,7 +106,7 @@ export function ValueEditor({
           </p>
           {value.map((item, i) => (
             <div key={i} style={{ paddingLeft: '0.75rem', borderLeft: '2px solid #1560E655', marginBottom: '0.5rem' }}>
-              <ValueEditor value={item} keyName={String(i)} label={`Bar ${i + 1}`} onChange={(n) => onChange(value.map((x, y) => (y === i ? n : x)))} readOnly={readOnly} />
+              <ValueEditor value={item} keyName={String(i)} label={`Bar ${i + 1}`} onChange={(n) => onChange(value.map((x, y) => (y === i ? n : x)))} readOnly={readOnly} rich={rich} />
             </div>
           ))}
         </div>
@@ -104,11 +119,12 @@ export function ValueEditor({
         onChange={(n) => onChange(n)}
         newItem={(items) => blank(items[items.length - 1])}
         itemLabel={(item, i) => {
-          const t = typeof item === 'string' ? item : item && typeof item === 'object' ? String((item as Record<string, unknown>).name ?? (item as Record<string, unknown>).q ?? (item as Record<string, unknown>).label ?? (item as Record<string, unknown>).heading ?? (item as Record<string, Record<string, unknown>>).row?.title ?? '') : '';
+          const o = item as Record<string, unknown>;
+          const t = typeof item === 'string' ? item : item && typeof item === 'object' ? String(o.name ?? o.q ?? o.label ?? o.heading ?? (item as Record<string, Record<string, unknown>>).row?.title ?? o.title ?? o.group ?? o.h3 ?? '') : '';
           return `${i + 1}${t ? ` — ${t.slice(0, 48)}${t.length > 48 ? '…' : ''}` : ''}`;
         }}
         renderItem={(item, update) => (
-          <ValueEditor value={item} keyName={typeof item === 'string' ? 'item' : keyName} label={typeof item === 'string' ? 'Text' : ''} onChange={update} readOnly={readOnly} />
+          <ValueEditor value={item} keyName={typeof item === 'string' ? 'item' : keyName} label={typeof item === 'string' ? 'Text' : ''} onChange={update} readOnly={readOnly} rich={rich} />
         )}
         readOnly={readOnly}
       />
@@ -116,7 +132,7 @@ export function ValueEditor({
   }
   if (value && typeof value === 'object') {
     const o = value as Record<string, unknown>;
-    const entries = Object.entries(o).filter(([k]) => !LOCKED.has(k));
+    const entries = Object.entries(o).filter(([k]) => !LOCKED.has(k) && !k.startsWith('@'));
     // An image + its alt are shown as one control.
     const hasImgAlt = typeof o.src === 'string' && typeof o.alt === 'string';
     const imageAltKey = typeof o.image === 'string' ? (typeof o.alt === 'string' ? 'alt' : null) : null;
@@ -132,7 +148,7 @@ export function ValueEditor({
             return <ImageInput key={k} label="Image" src={v as string} alt={o.alt as string} onSrc={(x) => onChange({ ...o, image: x })} onAlt={(x) => onChange({ ...o, alt: x })} />;
           }
           if (k === 'alt' && imageAltKey) return null;
-          return <ValueEditor key={k} value={v} keyName={k} onChange={(n) => onChange({ ...o, [k]: n })} readOnly={readOnly} />;
+          return <ValueEditor key={k} value={v} keyName={k} onChange={(n) => onChange({ ...o, [k]: n })} readOnly={readOnly} rich={rich} />;
         })}
       </div>
     );

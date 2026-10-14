@@ -947,6 +947,26 @@ node scripts/check-sewer-v2-live.mjs --snapshot --base=http://localhost:3000 --o
 #    page is reported, exit 0. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-sewer-v2-content.ts commit
+# -- Brief 209 CMS wiring: the City v2 pages (5 hubs + 145 service pages) ----
+# Same two steps as Brief 204 above, keyed by city:
+# 1. Snapshot what the STILL-LIVE build serves for the 150 URLs (normalised
+#    markup), so the health check can prove the new build renders them
+#    unchanged from their rows (scripts/check-city-v2-live.mjs --compare).
+#    Best-effort: an unreachable page is logged, never fatal.
+node scripts/check-city-v2-live.mjs --snapshot --base=http://localhost:3000 --out=.city-v2-snapshot
+# 2. Seed: copy src/lib/content/city-services-v2 + city-hubs into v2_content
+#    (+ meta columns): each hub row also gets the city's shared service-page
+#    parts. Per page it writes ONLY when the row has no v2 content yet
+#    ("already seeded, no change" otherwise - runs every deploy, never
+#    overwrites a Marketing edit). Existing rows' pre-v2 content is archived
+#    first as the unpublished version "Pre-v2 archive (2026-10)"; missing
+#    city_service_pages rows (Columbus, Tinley Park) are created; every v2
+#    version is published through publishDraft. MUST stay before the build swap
+#    below (the new code reads these rows). Exit 1 only when a write it
+#    attempted did not land; an editor-unpublished page is reported, exit 0.
+#    Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-city-v2-content.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

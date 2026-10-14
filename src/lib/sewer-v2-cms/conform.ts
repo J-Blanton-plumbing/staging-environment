@@ -105,7 +105,7 @@ const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 
 const isEl = (n: unknown): n is SewerElement => isObj(n) && typeof n.tag === 'string';
 const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 
-class Ctx {
+export class Ctx {
   errors: ConformIssue[] = [];
   constructor(public s: Sanitizers) {}
   err(path: string, kind: ConformIssue['kind'], message: string) {
@@ -205,7 +205,7 @@ function applyPresets(nodes: SewerNode[], presets: Presets, ctx: Ctx, path: stri
   });
 }
 
-function conformRich(v: unknown, t: readonly SewerNode[], alts: readonly (readonly SewerNode[])[], ctx: Ctx, path: string): SewerNode[] {
+export function conformRich(v: unknown, t: readonly SewerNode[], alts: readonly (readonly SewerNode[])[], ctx: Ctx, path: string): SewerNode[] {
   if (!Array.isArray(v) || !isInlineOnly(v as SewerNode[])) {
     ctx.err(path, 'structure', 'This text can only contain bold, italic, links and {{phone}}.');
     return t as SewerNode[];
@@ -218,7 +218,7 @@ function conformRich(v: unknown, t: readonly SewerNode[], alts: readonly (readon
   return out;
 }
 
-function conformNodes(v: unknown, t: readonly SewerNode[], alts: readonly (readonly SewerNode[])[], ctx: Ctx, path: string, repeater: boolean): SewerNode[] {
+export function conformNodes(v: unknown, t: readonly SewerNode[], alts: readonly (readonly SewerNode[])[], ctx: Ctx, path: string, repeater: boolean): SewerNode[] {
   if (!Array.isArray(v)) {
     ctx.err(path, 'structure', 'Layout mismatch.');
     return t as SewerNode[];

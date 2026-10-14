@@ -296,6 +296,14 @@ const STATEMENTS: string[] = [
   // Additive and nullable; old code never reads it. Rollback: ALTER TABLE sub_service_pages DROP COLUMN v2_content;
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS v2_content JSONB`,
 
+  // Brief 209 CMS wiring: the 145 City Service Pages V2 (`city_service_pages`) and the 5 City Hubs V2
+  // + the parts their 29 service pages share (`city_pages`). NULL on every other row. Additive and
+  // nullable; old code never reads it. Rollback (no data loss — legacy columns and the "Pre-v2
+  // archive (2026-10)" versions are untouched): ALTER TABLE city_service_pages DROP COLUMN v2_content;
+  // ALTER TABLE city_pages DROP COLUMN v2_content;
+  `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS v2_content JSONB`,
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS v2_content JSONB`,
+
   // ── template_switch_archive ─────────────────────────────────────────────
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS from_template TEXT NOT NULL DEFAULT ''::text`,
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS to_template TEXT NOT NULL DEFAULT ''::text`,

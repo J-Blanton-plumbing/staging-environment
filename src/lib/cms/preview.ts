@@ -13,6 +13,7 @@ import type { CityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { subServiceToServiceContent, normalizeBlockOrder, normalizeBlocks, blocksToFields } from '@/lib/cms/sub-service-pages';
 import type { ServiceContent } from '@/types/service';
 import { isSewerV2DraftContent, type SewerV2DraftContent } from '@/lib/sewer-v2-cms/model';
+import { isCityV2DraftContent, type CityV2DraftContent } from '@/lib/city-v2-cms/model';
 
 const PREVIEW_COOKIE = '__preview_draft';
 
@@ -281,5 +282,22 @@ export async function getSewerV2Preview(
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== pageType || draft.page_slug !== slug) return null;
   if (!isSewerV2DraftContent(draft.content)) return null;
+  return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}
+
+/**
+ * Brief 209 CMS wiring — preview for the 145 City Service Pages V2 and the 5 City Hubs V2: the draft
+ * named by the preview cookie, when it is a v2 version of THIS page. An old-shaped version (pre-v2
+ * archive, legacy draft) is never previewed on these pages — the route renders the live page instead.
+ */
+export async function getCityV2Preview(
+  pageType: 'city' | 'city-service',
+  slug: string
+): Promise<{ content: CityV2DraftContent; meta: PreviewMeta } | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== pageType || draft.page_slug !== slug) return null;
+  if (!isCityV2DraftContent(draft.content)) return null;
   return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
 }

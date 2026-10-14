@@ -5,6 +5,8 @@ import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { errorCode } from '@/lib/cms/errors';
+import { isCityV2City } from '@/lib/content/city-services-v2/registry';
+import { OLD_SHAPE_MESSAGE } from '@/lib/city-v2-cms/model';
 
 export async function GET(
   req: NextRequest,
@@ -37,6 +39,12 @@ export async function PUT(
   try {
     const body = await req.json();
     if (body._ping) return NextResponse.json({ ok: true });
+    // Brief 209 CMS wiring: the 5 City Hubs V2 are edited only through the City v2 editor's
+    // versions (the hub + the city's shared service-page parts). A stale tab of the old city editor
+    // is refused instead of overwriting the legacy columns the pre-v2 archive describes.
+    if (isCityV2City(params.slug)) {
+      return NextResponse.json({ error: OLD_SHAPE_MESSAGE }, { status: 409 });
+    }
 
     // SEC-2 note: contentBody/f2Body rich text is sanitized inside
     // updateCityCmsContent so both this route and the draft-publish path store

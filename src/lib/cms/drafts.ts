@@ -18,6 +18,8 @@ import {
 import { clearSitemapCache } from '@/lib/sitemap/render';
 import { assertSewerV2Publishable, assertSewerV2VersionWritable, prepareSewerV2VersionContent, writeSewerV2Live } from '@/lib/cms/sewer-v2-write';
 import { isSewerV2DraftContent, SEWER_V2_TEMPLATE } from '@/lib/sewer-v2-cms/model';
+import { assertCityV2Publishable, assertCityV2VersionWritable, prepareCityV2VersionContent, writeCityV2Live } from '@/lib/cms/city-v2-write';
+import { CITY_V2_TEMPLATE, isCityV2DraftContent } from '@/lib/city-v2-cms/model';
 
 export interface DraftRow {
   id: number;
@@ -158,6 +160,9 @@ export async function createDraft({
   // and v2 content is accepted nowhere else. Every other page type passes through unchanged.
   content = prepareSewerV2VersionContent(pageType, pageSlug, content);
   if (isSewerV2DraftContent(content)) templateType = SEWER_V2_TEMPLATE;
+  // Brief 209 CMS wiring: the same rule for the 145 City Service Pages V2 and the 5 City Hubs V2.
+  content = prepareCityV2VersionContent(pageType, pageSlug, content);
+  if (isCityV2DraftContent(content)) templateType = CITY_V2_TEMPLATE;
 
   // Brief 75 (DP-2): snapshot the live row's current version so publishDraft can
   // later detect that the live page changed after this draft was captured.
@@ -345,9 +350,14 @@ export async function publishDraft(
   // one of the 10 Sewer v2 pages, and v2 content never onto any other page — refused HERE, before
   // any writer runs, so the admin button, the preview banner and a stale tab are all covered.
   assertSewerV2Publishable(draft.page_type, draft.page_slug, draft.content);
+  // Brief 209 CMS wiring: the same guard for the City v2 pages.
+  assertCityV2Publishable(draft.page_type, draft.page_slug, draft.content);
+  const cityV2 = isCityV2DraftContent(draft.content);
   const writer = isSewerV2DraftContent(draft.content)
     ? (slug: string, content: unknown, by: number) => writeSewerV2Live(draft.page_type, slug, content, by)
-    : writers[draft.page_type];
+    : cityV2
+      ? (slug: string, content: unknown, by: number) => writeCityV2Live(draft.page_type, slug, content, by)
+      : writers[draft.page_type];
   if (!writer) throw new Error(`No writer for page_type "${draft.page_type}"`);
 
   // Brief 75 — staleness guards before we overwrite the live row.
@@ -356,7 +366,11 @@ export async function publishDraft(
   // DP-4: a draft authored for one template must not publish onto a live page that
   // has since switched — its empty template-specific fields would blank live
   // sections. Block and require reconciliation.
+  // Brief 209: a City v2 version is exempt — it writes only `v2_content` and the meta columns, never
+  // the legacy template's fields, so the row's legacy `template_type` (local-office-v3…) is not its
+  // template and nothing can be blanked.
   if (
+    !cityV2 &&
     draft.template_type &&
     live?.templateType &&
     draft.template_type !== live.templateType
@@ -534,10 +548,12 @@ export async function updateDraftContent(
       // Brief 204: an old-shaped version of a Sewer v2 page (the pre-v2 archive, a legacy draft) is
       // read-only — v2 content is saved as a NEW version instead, never written over it.
       assertSewerV2VersionWritable(t.rows[0].page_type, t.rows[0].page_slug, t.rows[0].template_type);
+      assertCityV2VersionWritable(t.rows[0].page_type, t.rows[0].page_slug, t.rows[0].template_type);
       if (content && typeof content === 'object' && 'v2' in (content as Record<string, unknown>)) {
         content = sanitizeVersionContent(t.rows[0].page_type, content);
       }
       content = prepareSewerV2VersionContent(t.rows[0].page_type, t.rows[0].page_slug, content);
+      content = prepareCityV2VersionContent(t.rows[0].page_type, t.rows[0].page_slug, content);
     }
     const res = await client.query<{ version: number }>(
       `UPDATE page_drafts

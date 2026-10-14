@@ -5,6 +5,8 @@ import { requireCmsSession } from '@/lib/auth/api-guard';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import pool from '@/lib/db';
 import { errorCode } from '@/lib/cms/errors';
+import { isCityV2Service } from '@/lib/content/city-services-v2/registry';
+import { OLD_SHAPE_MESSAGE } from '@/lib/city-v2-cms/model';
 
 export async function GET(
   req: NextRequest,
@@ -32,6 +34,12 @@ export async function PUT(
   const session = await getSession(req);
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  // Brief 209 CMS wiring: the 145 City Service Pages V2 are edited only through the City v2 editor's
+  // versions. This direct write would overwrite the legacy columns the "Pre-v2 archive (2026-10)"
+  // describes, so a stale tab of the old editor is refused instead (the Brief 204 rule).
+  if (isCityV2Service(params.city, params.service)) {
+    return NextResponse.json({ error: OLD_SHAPE_MESSAGE }, { status: 409 });
   }
 
   let body: Record<string, unknown>;

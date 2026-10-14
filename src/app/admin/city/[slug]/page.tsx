@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams } from 'next/navigation';
+import CityV2Editor from '@/components/admin/city-v2/CityV2Editor';
+import { isCityV2City } from '@/lib/content/city-services-v2/registry';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import MetaSection from '@/components/admin/MetaSection';
 import ImageUploaderField from '@/components/admin/ImageUploaderField';
@@ -401,7 +403,18 @@ function LocalOfficeCityV2Fields({
 
 // ── Main page ────────────────────────────────────────────────────────────────
 
-export default function AdminCityPage() {
+/**
+ * Brief 209 CMS wiring: the 5 City Hubs V2 (/northbrook, /columbus, /tinley-park, /joliet,
+ * /naperville) open the City v2 editor — the hub, its template sections and the parts the city's 29
+ * service pages share. Every other city keeps this file's editor, unchanged.
+ */
+export default function AdminCityDispatch() {
+  const params = useParams();
+  const slug = params.slug as string;
+  return isCityV2City(slug) ? <CityV2Editor kind="hub" city={slug} /> : <AdminCityPage />;
+}
+
+function AdminCityPage() {
   const params = useParams();
   const slug = params?.slug as string;
 

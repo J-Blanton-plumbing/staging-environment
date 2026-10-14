@@ -11,6 +11,8 @@ import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDr
 import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
+import CityV2Editor from '@/components/admin/city-v2/CityV2Editor';
+import { isCityV2Service } from '@/lib/content/city-services-v2/registry';
 
 interface FaqField {
   question: string;
@@ -79,7 +81,19 @@ function slugToTitle(slug: string): string {
   return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
-export default function AdminCityServicePage() {
+/**
+ * Brief 209 CMS wiring: the 145 City Service Pages V2 (Northbrook, Columbus, Tinley Park, Joliet,
+ * Naperville × 29 services) open the City v2 editor. Every other city-service page keeps this file's
+ * editor, unchanged.
+ */
+export default function AdminCityServiceDispatch() {
+  const params = useParams();
+  const city = params.city as string;
+  const service = params.service as string;
+  return isCityV2Service(city, service) ? <CityV2Editor kind="service" city={city} service={service} /> : <AdminCityServicePage />;
+}
+
+function AdminCityServicePage() {
   const params = useParams();
   const city = params?.city as string;
   const service = params?.service as string;

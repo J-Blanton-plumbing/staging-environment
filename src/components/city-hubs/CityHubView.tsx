@@ -1,8 +1,8 @@
-import { Fragment, type CSSProperties, type ReactNode } from 'react';
+import { Fragment, type CSSProperties } from 'react';
 import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
-import type { CityHubContent } from '@/lib/content/city-hubs/types';
-import { CITY_HUB_SHARED as SH } from '@/lib/content/city-hubs/shared';
+import type { CityHubShared, CityHubStored } from '@/lib/content/city-hubs/stored';
+import { SewerRichText } from '@/components/sewer-v2/SewerNodes';
 import CityHubRoot from './CityHubRoot';
 
 /**
@@ -20,7 +20,10 @@ import CityHubRoot from './CityHubRoot';
  *   • Structured data: the VideoObject only. No FAQPage (Brief 164) and no page-level Plumber
  *     node (the footer's per-office PlumbingBusiness graph covers it) — Marketing, 2026-10-12.
  *   • `noindex` is gone (the package was a review prototype).
- * Copy lives in src/lib/content/city-hubs — this file holds none.
+ * Copy comes from the city's `city_pages` row (`v2_content`: the hub + its shared template sections),
+ * with src/lib/content/city-hubs as the code fallback (CMS wiring, 2026-10-14 — src/lib/cms/city-v2.ts).
+ * Rich fields (office/tile/why/final bodies, FAQ answers, the No Drip Club sentence) are the Sewer v2
+ * rich-text format and render through SewerRichText. This file holds no copy.
  */
 
 export interface CityHubPhone {
@@ -40,25 +43,6 @@ function s(css: string): CSSProperties {
     out[prop.startsWith('--') ? prop : prop.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase())] = val;
   }
   return out as CSSProperties;
-}
-
-/** `[label](/href)` → <a>; everything else is text. The only markup the content files carry. */
-function Rich({ text, linkStyle }: { text: string; linkStyle?: CSSProperties }) {
-  const parts: ReactNode[] = [];
-  const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
-  let last = 0;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > last) parts.push(text.slice(last, m.index));
-    parts.push(
-      <a key={m.index} href={m[2]} style={linkStyle}>
-        {m[1]}
-      </a>
-    );
-    last = m.index + m[0].length;
-  }
-  if (last < text.length) parts.push(text.slice(last));
-  return <>{parts}</>;
 }
 
 /* ── Icons (the approved package's inline SVGs) ─────────────────────────────────────────── */
@@ -149,7 +133,7 @@ const STARS = (
   </div>
 );
 
-function ReviewCaption({ name, url }: { name: string; url: string | null }) {
+function ReviewCaption({ name, url, SH }: { name: string; url: string; SH: CityHubShared }) {
   return (
     <div>
       <strong className="t-label" style={s('font-size:14px')}>{name}</strong>
@@ -163,9 +147,9 @@ function ReviewCaption({ name, url }: { name: string; url: string | null }) {
   );
 }
 
-const NDC_LINK_STYLE = s('color:#F9F3EC;text-decoration:underline;text-underline-offset:3px');
-
-export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone: CityHubPhone }) {
+export default function CityHubView({ stored, slug, name, phone }: { stored: CityHubStored; slug: string; name: string; phone: CityHubPhone }) {
+  const hub = stored.hub;
+  const SH = stored.hubShared;
   const callNow = (
     <PhoneLink href={phone.href} display={phone.display} className="btn btn-hero-cta t-btn">
       <PhoneIcon />
@@ -173,12 +157,11 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
     </PhoneLink>
   );
   const mapSrc = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(hub.office.address)}&z=15&ie=UTF8&output=embed`;
-  const camera = `/${hub.slug}/video-camera-sewer-inspections`;
-  const total = SH.stripe.reduce((n, [, items]) => n + items.length, 0);
+  const total = SH.stripe.reduce((n, g) => n + g.items.length, 0);
   const [r1, r2, r3] = hub.reviews.items;
 
   return (
-    <CityHubRoot className={`city-hub city-hub--${hub.slug}`}>
+    <CityHubRoot className={`city-hub city-hub--${slug}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SH.videoJsonLd).replace(/</g, '\\u003c') }} />
 
       {/* 1. HERO */}
@@ -263,7 +246,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                   <a href={c.href}>{c.title}</a>
                 </h3>
                 <p className="svc-desc" style={s('margin:0 0 16px')}>{c.desc}</p>
-                <a aria-label={`Learn more about ${c.title} in ${hub.name}`} className="svc-cta" href={c.href}>
+                <a aria-label={`Learn more about ${c.title} in ${name}`} className="svc-cta" href={c.href}>
                   Learn More <span aria-hidden="true">→</span>
                 </a>
               </article>
@@ -273,13 +256,13 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
             <summary className="svc-dir-head">
               <span className="svc-dir-t">{SH.stripeTitle}</span>
               <span className="svc-dir-meta">
-                <span className="svc-dir-n">{`${total} services in ${hub.name}`}</span>
+                <span className="svc-dir-n">{`${total} services in ${name}`}</span>
                 <span aria-hidden="true" className="svc-dir-arrow">→</span>
               </span>
             </summary>
-            <nav aria-label={`All plumbing services in ${hub.name}`}>
+            <nav aria-label={`All plumbing services in ${name}`}>
               <div className="svc-dir-grid">
-                {SH.stripe.map(([group, items]) => (
+                {SH.stripe.map(({ group, items }) => (
                   <details className="svc-grp" open key={group}>
                     <summary>
                       <span className="svc-grp-t">
@@ -289,9 +272,9 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                       <span aria-hidden="true" className="svc-grp-i">+</span>
                     </summary>
                     <ul>
-                      {items.map(([label, slug]) => (
-                        <li key={slug}>
-                          <a href={`/${hub.slug}/${slug}`}>{label}</a>
+                      {items.map((it) => (
+                        <li key={it.href}>
+                          <a href={it.href}>{it.label}</a>
                         </li>
                       ))}
                     </ul>
@@ -307,16 +290,18 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
       <section className="sec" id="office" style={s('background:#F1E8DC')}>
         <div className="wrap hp-office">
           <div className="hp-office-map">
-            <iframe allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={mapSrc} title={`Google Map of our ${hub.name} office`} />
+            <iframe allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={mapSrc} title={`Google Map of our ${name} office`} />
           </div>
           <div>
             <span className="t-eyebrow" style={s('color:#BC0E0E')}>{hub.office.eyebrow}</span>
             <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{hub.office.h2}</h2>
-            <p className="t-body pv-mute" style={s('margin:0 0 24px')}>{hub.office.body}</p>
+            <p className="t-body pv-mute" style={s('margin:0 0 24px')}>
+              <SewerRichText value={hub.office.body} phone={phone} />
+            </p>
             <div className="hp-addr">
               <PinIcon />
               <div>
-                <strong>{`J. Blanton Plumbing, ${hub.name}`}</strong>
+                <strong>{`J. Blanton Plumbing, ${name}`}</strong>
                 <span className="t-body-sm pv-mute">{hub.office.address}</span>
               </div>
             </div>
@@ -355,7 +340,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                 <div>
                   <h3 className="t-label" style={s('color:#BC0E0E;margin:0 0 10px')}>{t.title}</h3>
                   <p className="t-body-sm pv-mute" style={s('margin:0')}>
-                    <Rich text={t.body} />
+                    <SewerRichText value={t.body} phone={phone} />
                   </p>
                 </div>
               </div>
@@ -384,14 +369,14 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
         <div className="wrap hp-why">
           <div>
             <span className="t-eyebrow" style={s('color:#BC0E0E')}>{SH.why.eyebrow}</span>
-            <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{`Why ${hub.name} Homeowners Choose J. Blanton`}</h2>
+            <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{`Why ${name} Homeowners Choose J. Blanton`}</h2>
             <p className="t-body pv-mute" style={s('margin:0 0 32px')}>{SH.why.intro}</p>
             <div className="hp-why-list">
               {SH.why.items.map((w) => (
                 <div className="hp-why-item" key={w.h3}>
                   <h3 className="t-h4" style={s('margin:0 0 8px')}>{w.h3}</h3>
                   <p className="t-body-sm pv-mute" style={s('margin:0')}>
-                    <Rich text={w.body.replace('{camera}', camera)} />
+                    <SewerRichText value={w.body} phone={phone} />
                   </p>
                 </div>
               ))}
@@ -461,7 +446,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                 <figcaption>
                   <div className="review-author">
                     <Avatar />
-                    <ReviewCaption name={r1.name} url={r1.url} />
+                    <ReviewCaption name={r1.name} url={r1.url} SH={SH} />
                   </div>
                 </figcaption>
               </figure>
@@ -477,7 +462,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                   <p className="t-body-sm" style={s('margin:0 0 14px')}>{`“${r.text}”`}</p>
                   <div className="review-author">
                     <Avatar />
-                    <ReviewCaption name={r.name} url={r.url} />
+                    <ReviewCaption name={r.name} url={r.url} SH={SH} />
                   </div>
                 </div>
               ))}
@@ -503,7 +488,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                 <div className="faq-panel">
                   <p className="faq-preview">{f.preview}</p>
                   <p className="faq-full">
-                    <Rich text={f.a} />
+                    <SewerRichText value={f.a} phone={phone} />
                   </p>
                 </div>
               </div>
@@ -520,7 +505,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
               <p className="t-eyebrow ndc-eyebrow">{SH.ndc.eyebrow}</p>
               <h2 className="t-h2 ndc-h2">{SH.ndc.h2}</h2>
               <p className="ndc-body">
-                <Rich text={hub.ndc} linkStyle={NDC_LINK_STYLE} />
+                <SewerRichText value={hub.ndc} phone={phone} />
               </p>
               <ul className="ndc-list">
                 {SH.ndc.benefits.map((b) => (
@@ -546,7 +531,9 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
           <div>
             <span className="t-eyebrow" style={s('color:#BC0E0E')}>{hub.final.eyebrow}</span>
             <h2 className="hub-h2 t-h2" style={s('margin:12px 0 16px')}>{hub.final.h2}</h2>
-            <p className="t-body pv-mute" style={s('margin:0')}>{hub.final.body}</p>
+            <p className="t-body pv-mute" style={s('margin:0')}>
+              <SewerRichText value={hub.final.body} phone={phone} />
+            </p>
           </div>
           <div className="hub-final-btns" style={s('display:flex;flex-wrap:wrap;gap:14px')}>
             <PhoneLink href={phone.href} display={phone.display} className="btn btn-hero-cta t-btn">

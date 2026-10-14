@@ -1,31 +1,32 @@
 /**
- * City Service Pages V2 (Brief 209, live 2026-10-14) — the 145 `/{city}/{service}` pages for
+ * City Service Pages V2 (Brief 209) — the CODE MODULES of the 145 `/{city}/{service}` pages for
  * Northbrook, Columbus, Tinley Park, Joliet and Naperville (29 services each).
  *
- * A (city, service) pair listed here renders `CityServiceV2View` INSTEAD of the shared
- * CityServicePageTemplate. The dispatch is by code, exactly like the Brief 205 city hubs: these
- * pages are not wired to the CMS, so admin edits (and draft previews) of the 145
- * `city_service_pages` rows do NOT reach the live page until a CMS follow-up brief. The Brief 159
- * publish gate still applies (an unpublished row 404s). Every other city-service page is untouched.
+ * Since the CMS wiring (Brief 209 follow-up, 2026-10-14) the pages render from their
+ * `city_service_pages` rows (`v2_content`) and the city's shared parts from `city_pages`
+ * (`v2_content.shared`) — see src/lib/cms/city-v2.ts. These modules are what Brief 204's code
+ * modules are for the sewer pages:
+ *   - the LAYOUT TEMPLATE every save is locked against (src/lib/city-v2-cms/conform.ts), and
+ *   - the FALLBACK when a page has no row, no v2 content yet, or the database is unreachable.
+ * So changing the design of these pages in code means migrating the stored `v2_content` in the
+ * same deploy, or every edited page falls back to the code copy (CLAUDE.md gotcha 30).
  *
- * `data/{city}.json` is GENERATED from the approved Brief 209 package (New Pages/City Service
- * Pages V2/_source MDs + the Highland Park template's block layout and images, with the §4
- * fact-check corrections and Marketing's 2026-10-14 go-live copy fixes applied). Edit copy there
- * only as a deliberate content change; the structure is checked by the view's types.
- *
- * Server-only: ~1.9 MB of JSON. Never import this from a client component or from middleware —
- * the fold redirects the middleware needs live in src/lib/redirects/city-service-folds.ts.
+ * `data/{city}.json` is GENERATED from the approved Brief 209 package (MDs + §4 fact-check
+ * corrections + Marketing's 2026-10-14 copy fixes). Server-only: ~3 MB of JSON — never import it
+ * from a client component or middleware (src/lib/content/city-services-v2/registry.ts holds the
+ * page list without content).
  */
-import type { CityServiceV2Page } from './types';
+import type { CityServiceCode } from './types';
+import { isCityV2Service, type CityV2City } from './registry';
 import northbrook from './data/northbrook.json';
 import columbus from './data/columbus.json';
 import tinleyPark from './data/tinley-park.json';
 import joliet from './data/joliet.json';
 import naperville from './data/naperville.json';
 
-type CityPages = Readonly<Record<string, CityServiceV2Page>>;
+type CityPages = Readonly<Record<string, CityServiceCode>>;
 
-export const CITY_SERVICES_V2: Readonly<Record<string, CityPages>> = {
+const CODE: Readonly<Record<CityV2City, CityPages>> = {
   northbrook: northbrook as unknown as CityPages,
   columbus: columbus as unknown as CityPages,
   'tinley-park': tinleyPark as unknown as CityPages,
@@ -33,15 +34,11 @@ export const CITY_SERVICES_V2: Readonly<Record<string, CityPages>> = {
   naperville: naperville as unknown as CityPages,
 };
 
-/** Cities whose V2 service phone is the Central Ohio number (Global Settings, Brief 192). */
-export const CENTRAL_OHIO_V2_CITIES: ReadonlySet<string> = new Set(['columbus']);
-
-const own = (o: object, k: string) => Object.prototype.hasOwnProperty.call(o, k);
-
-export function getCityServiceV2(city: string, service: string): CityServiceV2Page | undefined {
-  if (!own(CITY_SERVICES_V2, city)) return undefined;
-  const pages = CITY_SERVICES_V2[city];
-  return own(pages, service) ? pages[service] : undefined;
+/** A page's code module, or undefined when (city, service) is not a V2 page. */
+export function cityServiceCode(city: string, service: string): CityServiceCode | undefined {
+  return isCityV2Service(city, service) ? CODE[city as CityV2City][service] : undefined;
 }
 
-export type { CityServiceV2Page, CsBlock, CsImage, Rich } from './types';
+export * from './registry';
+export { cityServiceSharedDefault, cityV2Name } from './shared';
+export type { CityImage, CityServiceCode, CityServiceSchemaFields, CityServiceSection, CityServiceShared, CityServiceStored } from './types';

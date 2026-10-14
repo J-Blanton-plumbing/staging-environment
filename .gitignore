@@ -48,3 +48,5 @@ human qa/
 
 # Brief 204: the pre-swap snapshot of the sewer pages (deploy.sh → health check)
 .sewer-v2-snapshot/
+# Brief 209 CMS wiring: the pre-swap snapshot of the City v2 pages (deploy.sh → health check)
+.city-v2-snapshot/

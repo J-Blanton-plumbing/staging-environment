@@ -385,6 +385,7 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
   // the v2 editor and the Brief 204 seed. Its pre-v2 versions are old-shaped, so re-marking one live
   // (or snapshotting the legacy columns as "Version 1 — live") would name a version that is not
   // what the page shows and that the publish path refuses. Those rows are left alone here.
+  // Brief 209 CMS wiring: the same for the City v2 pages (city_pages hubs, city_service_pages).
   const sewerV2Rows =
     spec.pageType === 'sub-service' || spec.pageType === 'service'
       ? new Set(
@@ -392,7 +393,17 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
             `SELECT slug FROM ${spec.table} WHERE v2_content IS NOT NULL`
           )).rows.map((r) => r.slug)
         )
-      : new Set<string>();
+      : spec.pageType === 'city'
+        ? new Set(
+            (await client.query<{ slug: string }>(`SELECT city_slug AS slug FROM city_pages WHERE v2_content IS NOT NULL`)).rows.map((r) => r.slug)
+          )
+        : spec.pageType === 'city-service'
+          ? new Set(
+              (await client.query<{ slug: string }>(
+                `SELECT city_slug || '/' || service_slug AS slug FROM city_service_pages WHERE v2_content IS NOT NULL`
+              )).rows.map((r) => r.slug)
+            )
+          : new Set<string>();
 
   const bySlug = new Map<string, typeof drafts>();
   for (const d of drafts) {
@@ -409,7 +420,7 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
     // Already answered — a previous run, or a publish since the migration.
     if (existing.some((d) => d.is_published)) { tally.skipped++; continue; }
 
-    // Brief 204 (above): Sewer v2 rows are owned by the v2 version history.
+    // Brief 204 / 209 (above): Sewer v2 and City v2 rows are owned by the v2 version history.
     if (sewerV2Rows.has(row.slug)) { tally.skipped++; continue; }
 
     // A version that has actually been live before is the truthful baseline; the

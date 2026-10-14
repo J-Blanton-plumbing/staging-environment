@@ -531,6 +531,20 @@ jobs:
             node scripts/check-sewer-v2-live.mjs --compare --base=http://localhost:3000 --snapshot-dir=.sewer-v2-snapshot
             echo '======================================================='
 
+            # -- Brief 209 CMS wiring: CITY V2 LIVE CHECK ---------------------------
+            # The 5 City Hubs V2 + 145 City Service Pages V2 render from their CMS rows.
+            # Same contract as the sewer check above: 200, source "row", in the sitemap
+            # once, markup unchanged (normalised) vs the pre-swap snapshot deploy.sh took.
+            echo ''
+            echo '=================== CITY V2 LIVE CHECK ==================='
+            LAST_CHECK="CITY V2 LIVE CHECK"
+            if [ ! -f scripts/check-city-v2-live.mjs ]; then
+              echo "MISSING: $(pwd)/scripts/check-city-v2-live.mjs does not exist."
+              exit 1
+            fi
+            node scripts/check-city-v2-live.mjs --compare --base=http://localhost:3000 --snapshot-dir=.city-v2-snapshot
+            echo '======================================================='
+
             # -- Brief 159 (E2 item 4): CRITICAL-URL CANARY ------------------------
             # Brief 159 gave the CMS a real unpublish: an editor can now take a page
             # off the site from the sidebar, and the page then 404s and leaves the
