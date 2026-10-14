@@ -52,10 +52,16 @@ export function generateMetadata({
   const serviceData = getCityService(params.service);
   if (!cityEntry || !serviceData) return {};
   // Brief 209 go-live: a City Service Pages V2 page carries its approved title/description from
-  // code. pageTitle() strips the brand tail the layout's template appends again. These 5 cities are
-  // all indexable, so `robots` is left to the default exactly as for every Illinois city.
+  // code. Every title on the site closes with the layout template's "| J. Blanton Plumbing",
+  // whatever its length (Marketing, 2026-10-14). The approved titles carry their own short brand
+  // tail ("| J. Blanton", "| JBP", or the full name), so it is stripped here and the template adds
+  // the standard one exactly once. These 5 cities are all indexable; `robots` resolves exactly as
+  // for every other city.
   const v2 = getCityServiceV2(params.city, params.service);
-  if (v2) return { title: pageTitle(v2.meta.title), description: v2.meta.description, robots: cityServiceRobots(params.city) };
+  if (v2) {
+    const title = pageTitle(v2.meta.title.replace(/\s*\|\s*(?:J\.?\s*Blanton|JBP)\s*$/i, ''));
+    return { title, description: v2.meta.description, robots: cityServiceRobots(params.city) };
+  }
   return {
     // Every one of the 45 city-service content files ends its seo.title with
     // "| J. Blanton Plumbing", which the root layout's template appends again —
