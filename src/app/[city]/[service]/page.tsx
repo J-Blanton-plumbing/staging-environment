@@ -6,8 +6,10 @@ import CityServicePageTemplate, { replaceCityTokens } from '@/components/CitySer
 import { getCityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { getCityServicePreview } from '@/lib/cms/preview';
 import { isPageLive } from '@/lib/cms/page-status';
-import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
+import { getGlobalSettingsCached, getRegionalPhonesCached } from '@/lib/cms/global-settings';
 import PreviewBanner from '@/components/PreviewBanner';
+import { getCityServiceV2, CENTRAL_OHIO_V2_CITIES } from '@/lib/content/city-services-v2';
+import CityServiceV2View from '@/components/city-services-v2/CityServiceV2View';
 import { pageTitle } from '@/lib/seo';
 import { cityServiceRobots } from '@/lib/city-service-indexation';
 import type { CityServiceContent } from '@/types/city-service';
@@ -49,6 +51,11 @@ export function generateMetadata({
   const cityEntry = getCity(params.city);
   const serviceData = getCityService(params.service);
   if (!cityEntry || !serviceData) return {};
+  // Brief 209 go-live: a City Service Pages V2 page carries its approved title/description from
+  // code. pageTitle() strips the brand tail the layout's template appends again. These 5 cities are
+  // all indexable, so `robots` is left to the default exactly as for every Illinois city.
+  const v2 = getCityServiceV2(params.city, params.service);
+  if (v2) return { title: pageTitle(v2.meta.title), description: v2.meta.description, robots: cityServiceRobots(params.city) };
   return {
     // Every one of the 45 city-service content files ends its seo.title with
     // "| J. Blanton Plumbing", which the root layout's template appends again —
@@ -120,6 +127,35 @@ export default async function CityServicePage({
   if (!cityEntry || !serviceData) notFound();
 
   const settings = await getGlobalSettingsCached();
+
+  /*
+   * Brief 209 go-live — City Service Pages V2 (Marketing, 2026-10-14).
+   *
+   * The 29 service pages of Northbrook, Columbus, Tinley Park, Joliet and Naperville render the
+   * approved Highland Park-template service page INSTEAD of CityServicePageTemplate. Dispatched by
+   * code, like the Brief 205 hubs: these pages are not wired to the CMS yet, so admin edits (and
+   * draft previews) of these 145 city_service_pages rows do not reach the live page until a CMS
+   * follow-up brief. The Brief 159 render gate still applies — an unpublished row 404s exactly as
+   * before. The 55 service pages these absorb are 301'd in middleware (city-service-folds.ts) and
+   * never reach this route. Every other city-service page falls through, unchanged.
+   */
+  const v2 = getCityServiceV2(params.city, params.service);
+  if (v2) {
+    if (!(await isPageLive('city-service', `${params.city}/${params.service}`))) notFound();
+    let phone = { href: settings.phoneHref, display: settings.phoneDisplay };
+    if (CENTRAL_OHIO_V2_CITIES.has(params.city)) {
+      // Brief 192: the Central Ohio phone from Global Settings; blank = the main phone. The
+      // header keeps the main (WhatConverts) number by design — it never reads this.
+      const regional = await getRegionalPhonesCached();
+      if (regional.centralOhioPhoneDisplay) {
+        phone = {
+          href: regional.centralOhioPhoneHref || `tel:${regional.centralOhioPhoneDisplay.replace(/[^0-9+]/g, '')}`,
+          display: regional.centralOhioPhoneDisplay,
+        };
+      }
+    }
+    return <CityServiceV2View page={v2} cityName={cityEntry.name} phone={phone} />;
+  }
 
   // Check preview cookie first
   const preview = await getCityServicePreview(params.city, params.service).catch((err) => {

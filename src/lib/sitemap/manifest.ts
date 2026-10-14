@@ -45,6 +45,7 @@ import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
 import { isCityServiceIndexable } from '@/lib/city-service-indexation';
+import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 
 /**
  * The sitemaps protocol caps a single file at 50,000 URLs / 50 MB uncompressed.
@@ -119,12 +120,20 @@ export function citySlugsForShard(shard: CityServiceShard): string[] {
  * and 404s otherwise. Deriving from the same two registries — rather than from
  * the old WordPress inventory, which contains combos the new site never had —
  * is what makes "listed in the sitemap" and "returns 200" the same statement.
+ *
+ * Brief 209 go-live: minus the 55 URLs folded into the 5 cities' V2 pages. The
+ * route would still render them, but middleware 301s them first
+ * (src/lib/redirects/city-service-folds.ts), and a redirect source must never
+ * be advertised.
  */
 export function cityServicePathsForShard(shard: CityServiceShard): string[] {
   const services = getAllServiceSlugs().slice().sort();
   const out: string[] = [];
   for (const city of citySlugsForShard(shard)) {
-    for (const service of services) out.push(`/${city}/${service}`);
+    for (const service of services) {
+      const p = `/${city}/${service}`;
+      if (!Object.prototype.hasOwnProperty.call(CITY_SERVICE_FOLD_REDIRECTS, p)) out.push(p);
+    }
   }
   return out;
 }
