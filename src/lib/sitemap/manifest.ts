@@ -46,6 +46,7 @@ import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
 import { isCityServiceIndexable } from '@/lib/city-service-indexation';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
+import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
 
 /**
  * The sitemaps protocol caps a single file at 50,000 URLs / 50 MB uncompressed.
@@ -125,9 +126,12 @@ export function citySlugsForShard(shard: CityServiceShard): string[] {
  * route would still render them, but middleware 301s them first
  * (src/lib/redirects/city-service-folds.ts), and a redirect source must never
  * be advertised.
+ *
+ * Brief 211: minus every retired service slug (`plumbing-services`) for every city — those 301
+ * to the city hub (src/lib/redirects/retired-city-services.ts).
  */
 export function cityServicePathsForShard(shard: CityServiceShard): string[] {
-  const services = getAllServiceSlugs().slice().sort();
+  const services = getAllServiceSlugs().filter((s) => !isRetiredCityService(s)).sort();
   const out: string[] = [];
   for (const city of citySlugsForShard(shard)) {
     for (const service of services) {

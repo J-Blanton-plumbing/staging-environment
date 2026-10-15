@@ -84,7 +84,9 @@ export const HANOVER_PARK_V3: CityV3Content = {
       },
       {
         title: 'Plumbing',
-        href: '/hanover-park/plumbing-services',
+        // Brief 211: /hanover-park/plumbing-services now 301s to /hanover-park — this page.
+        // Marketing (2026-10-15) chose the national plumbing page over a self-link.
+        href: '/services/plumbing',
         body: [
           { text: 'Our Illinois-certified plumbers are trained and skilled for complex plumbing tasks.' },
         ],

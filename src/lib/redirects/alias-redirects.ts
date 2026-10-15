@@ -27,7 +27,9 @@
  *    working page away. The same validator checks this.
  */
 import { CITY_SLUG_TO_HUB_ALIAS, hasSubServiceRoute } from '@/lib/content/service-taxonomy';
+import { CITY_REGISTRY } from '@/lib/content/cities';
 import { CITY_SERVICE_FOLD_REDIRECTS } from './city-service-folds';
+import { RETIRED_CITY_SERVICE_SLUGS } from './retired-city-services';
 
 /**
  * One-off slug corrections and consolidations.
@@ -176,6 +178,29 @@ export const DERIVED_HUB_ALIAS_REDIRECTS: Readonly<Record<string, string>> =
   );
 
 /**
+ * Brief 211 (Track A) — `/{city}/{retired service}` → `/{city}`, DERIVED from `CITY_REGISTRY`
+ * and `RETIRED_CITY_SERVICE_SLUGS` (./retired-city-services.ts). Today that is
+ * `/{city}/plumbing-services` for every registered city; a city added later gets its redirect
+ * with no edit here.
+ *
+ * Why the registry: it is the exact allowlist the `[city]` hub route renders (an unregistered
+ * slug 404s there), so a target is never a city without a hub. The source is the exact
+ * two-segment path only — `/restaurant-plumbing-services` and article slugs that merely contain
+ * the phrase are different keys and are untouched.
+ */
+export const DERIVED_RETIRED_CITY_SERVICE_REDIRECTS: Readonly<Record<string, string>> =
+  Object.freeze(
+    Object.fromEntries(
+      CITY_REGISTRY.reduce<Array<[string, string]>>((pairs, city) => {
+        for (const service of RETIRED_CITY_SERVICE_SLUGS) {
+          pairs.push([`/${city.slug}/${service}`, `/${city.slug}`]);
+        }
+        return pairs;
+      }, [])
+    )
+  );
+
+/**
  * The merged alias map. Manual entries win, so a one-off correction can always
  * override the taxonomy-derived default.
  *
@@ -184,9 +209,12 @@ export const DERIVED_HUB_ALIAS_REDIRECTS: Readonly<Record<string, string>> =
  * `[city]/[service]` route would otherwise still render — the middleware lookup
  * runs first, so the 301 wins, and the sitemap manifest drops them from the
  * shards so none is advertised.
+ *
+ * Brief 211: the derived `/{city}/plumbing-services` → `/{city}` 301s, same mechanism.
  */
 export const ALIAS_REDIRECTS: Readonly<Record<string, string>> = Object.freeze({
   ...DERIVED_HUB_ALIAS_REDIRECTS,
   ...CITY_SERVICE_FOLD_REDIRECTS,
+  ...DERIVED_RETIRED_CITY_SERVICE_REDIRECTS,
   ...MANUAL_ALIAS_REDIRECTS,
 });

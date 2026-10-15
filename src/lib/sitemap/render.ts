@@ -35,6 +35,7 @@ import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { CITY_REGISTRY } from '@/lib/content/cities';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
+import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
 import {
   CityServiceShard,
   SITEMAP_CHILDREN,
@@ -511,7 +512,8 @@ export function renderCityServiceShard(shard: CityServiceShard): Promise<string>
       );
     }
 
-    const services = getAllServiceSlugs().slice().sort();
+    // Brief 211: retired slugs (`/{city}/plumbing-services`) 301 to the hub — never listed.
+    const services = getAllServiceSlugs().filter((s) => !isRetiredCityService(s)).sort();
     const entries: SitemapEntry[] = [];
     for (const city of citySlugsForShard(shard)) {
       for (const service of services) {
