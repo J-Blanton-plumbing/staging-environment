@@ -65,11 +65,11 @@ async function findVersion(pageTypes: string[], slug: string, label: string, tem
   return r.rows[0] ?? null;
 }
 
-async function archive(kind: 'hub' | 'service', slug: string, by: number): Promise<{ created: boolean; draftId: number }> {
+async function archive(kind: 'hub' | 'service', slug: string, by: number, createdThisRun = false): Promise<{ created: boolean; draftId: number }> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    const r = await createPreTemplateArchive(client, kind, slug, by);
+    const r = await createPreTemplateArchive(client, kind, slug, by, 212, createdThisRun);
     await client.query('COMMIT');
     return r;
   } catch (e) {
@@ -130,11 +130,28 @@ async function loadHubInner(slug: string, draft: CityHubDraftContent, o: LoadOpt
 }
 
 /** Make sure a city_service_pages row exists (created only with `createMissing`). */
+/*
+ * Marketing 2026-10-15 (Brief 212 decision on missing rows): a created row must never be visible as
+ * unpublished, so a row is created ONLY by a run that also publishes the page (`--publish` / the seeds),
+ * and the insert relies on the column default `status = 'published'` (ensure-schema) — checked right
+ * after the insert; a row that did not come out published is removed again before anything else
+ * touches it. The page renders exactly as before (code module / legacy template) until its V2 version
+ * is published moments later in the same run. Every created row is printed as CREATED.
+ */
 async function serviceRow(city: string, service: string, createMissing: boolean, apply: boolean): Promise<'exists' | 'created' | 'would-create' | 'missing'> {
   const r = await pool.query(`SELECT 1 FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2`, [city, service]);
   if (r.rowCount) return 'exists';
   if (!createMissing) return 'missing';
   if (!apply) return 'would-create';
+  const ins = await insertServiceRow(city, service);
+  if (ins !== 'published') {
+    await pool.query(`DELETE FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2 AND created_by = 'brief-212-seed' AND v2_content IS NULL`, [city, service]);
+    throw Object.assign(new Error(`a created row came out '${ins}', not 'published' — removed again; check the status column default`), { code: '409' });
+  }
+  return 'created';
+}
+
+async function insertServiceRow(city: string, service: string): Promise<string> {
   const parent =
     (
       await pool.query<{ parent_slug: string | null }>(
@@ -142,12 +159,12 @@ async function serviceRow(city: string, service: string, createMissing: boolean,
         [service]
       )
     ).rows[0]?.parent_slug ?? service;
-  await pool.query(
+  const res = await pool.query<{ status: string }>(
     `INSERT INTO city_service_pages (city_slug, service_slug, parent_slug, created_by, created_at, updated_at)
-     VALUES ($1, $2, $3, 'brief-212-seed', NOW(), NOW())`,
+     VALUES ($1, $2, $3, 'brief-212-seed', NOW(), NOW()) RETURNING status`,
     [city, service, parent]
   );
-  return 'created';
+  return res.rows[0]?.status ?? '(none)';
 }
 
 /** One City Service V2 page: (row) → archive → version → (publish). */
@@ -158,7 +175,8 @@ export async function loadService(city: string, service: string, draft: CityServ
 async function loadServiceInner(city: string, service: string, draft: CityServiceV2DraftContent, o: LoadOptions): Promise<PageResult> {
   const path = `/${city}/${service}`;
   const slug = `${city}/${service}`;
-  const rowState = await serviceRow(city, service, !!o.createMissing, o.apply);
+  // A row is only ever created by a run that publishes (never left as an empty, unpublished page).
+  const rowState = await serviceRow(city, service, !!o.createMissing && o.publish, o.apply);
   if (rowState === 'missing') return { path, outcome: 'missing', detail: 'no city_service_pages row — reported, not created (pass --create-missing to create it)' };
   if (rowState === 'would-create') {
     return { path, outcome: 'would-load', detail: `would CREATE the missing row; create "${o.label}"; ${o.publish ? 'publish' : 'leave unpublished'}` };
@@ -179,7 +197,7 @@ async function loadServiceInner(city: string, service: string, draft: CityServic
     .filter(Boolean)
     .join('; ');
   if (!o.apply) return { path, outcome: 'would-load', detail: `would ${steps}` };
-  await archive('service', slug, o.by);
+  await archive('service', slug, o.by, rowState === 'created');
   const id = existing?.id ?? (await createDraft({ pageType: 'city-service', pageSlug: slug, label: o.label, content: draft, createdBy: o.by, templateType: CITY_SERVICE_V2_TEMPLATE })).id;
   if (!o.publish) return { path, outcome: 'staged', detail: `${steps} → version #${id} (Draft)`, versionId: id };
   await publishDraft(id, o.by);

@@ -975,15 +975,17 @@ node scripts/check-city-pages-live.mjs --snapshot --base=http://localhost:3000 -
 #    verbatim ("Pre-hub archive (2026-10)" / "Pre-V2 archive (2026-10)"); the
 #    5 Batch 1 hubs are switched to the City Hub template (pre_hub_template =
 #    their own current template); every version is published through
-#    publishDraft. A MISSING city_service_pages row is reported and skipped
-#    (the page keeps rendering from its code module) unless --create-missing
-#    is added below - Marketing's call (Brief 212 STOP). MUST stay before the
+#    publishDraft. A MISSING city_service_pages row (production has none for
+#    Columbus or Tinley Park, a few for Joliet) is CREATED with --create-missing
+#    (Marketing, 2026-10-15): created and published in the same run, status
+#    from the column default 'published' (verified on insert), every one
+#    printed as CREATED. MUST stay before the
 #    build swap (Brief 171). Exit 1 only when a write it attempted did not
 #    land. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-city-hubs-content.ts commit
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
-  scripts/seed-city-services-v2-content.ts commit
+  scripts/seed-city-services-v2-content.ts commit --create-missing
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

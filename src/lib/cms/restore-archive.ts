@@ -60,7 +60,13 @@ export interface ArchiveResult {
  * a transaction. Throws NotFoundError when the row does not exist (a missing row is reported, never
  * created here).
  */
-export async function createPreTemplateArchive(client: PoolClient, kind: ArchiveKind, slug: string, by: number, brief = 212): Promise<ArchiveResult> {
+/**
+ * `createdThisRun`: the row did not exist before Brief 212 (Marketing 2026-10-15). Its archive holds the
+ * just-created, blank row, so a restore clears `v2_content` and the page returns to today's render
+ * (the code module, or the legacy template's built-in copy); the pre-brief production HTML of those
+ * URLs is the baseline for that claim.
+ */
+export async function createPreTemplateArchive(client: PoolClient, kind: ArchiveKind, slug: string, by: number, brief = 212, createdThisRun = false): Promise<ArchiveResult> {
   const k = KIND[kind];
   const w = where(kind, slug);
   const existing = await client.query<{ id: number }>(
@@ -80,7 +86,7 @@ export async function createPreTemplateArchive(client: PoolClient, kind: Archive
   const templateType = kind === 'hub' ? ((row.template_type as string | null) ?? 'coverage-area') : null;
   const content = {
     ...base,
-    _archive: { table: k.table, rowId: row.id, rowVersion: row.version, capturedAt: new Date().toISOString(), brief, templateType, columns: row },
+    _archive: { table: k.table, rowId: row.id, rowVersion: row.version, capturedAt: new Date().toISOString(), brief, templateType, ...(createdThisRun ? { createdThisRun: true } : {}), columns: row },
   };
   const ins = await client.query<{ id: number }>(
     `INSERT INTO page_drafts (page_type, page_slug, label, content, created_by, template_type, base_version)
