@@ -9,6 +9,8 @@ const TEMPLATE_LABELS: Record<string, string> = {
   'local-office': 'Local Office City',
   'local-office-v2': 'Local Office V2',
   'local-office-v3': 'Local Office V3',
+  // Brief 212 (= Brief 206 decision 4): offered for any city, ungated.
+  'city-hub': 'City Hub',
 };
 
 /**
@@ -315,9 +317,24 @@ export default function TemplateSwitcher({
                 color: ADMIN_COLORS.onSurface, fontSize: '0.875rem', marginBottom: '1.5rem',
               }}
             >
-              <strong>⚠ Warning:</strong> This will archive your current content and map matching
-              fields to the new template. Fields that don&rsquo;t carry over will need to be filled
-              in manually.
+              {selectedTemplate === 'city-hub' ? (
+                <>
+                  <strong>City Hub:</strong> The page keeps its current design until you publish the City Hub version.
+                  Its current content is kept, untouched, as the template it goes back to if you switch away again.
+                </>
+              ) : currentTemplate === 'city-hub' ? (
+                <>
+                  <strong>⚠ Leaving City Hub:</strong> the live page goes back to its pre-hub content right away
+                  (the content it had before it became a City Hub). Its City Hub content is kept, not deleted:
+                  switch back to City Hub to show it again.
+                </>
+              ) : (
+                <>
+                  <strong>⚠ Warning:</strong> This will archive your current content and map matching
+                  fields to the new template. Fields that don&rsquo;t carry over will need to be filled
+                  in manually.
+                </>
+              )}
             </div>
 
             {/* Brief 116 (Track C): drafts do NOT come along on a live switch —

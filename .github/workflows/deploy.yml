@@ -531,6 +531,24 @@ jobs:
             node scripts/check-sewer-v2-live.mjs --compare --base=http://localhost:3000 --snapshot-dir=.sewer-v2-snapshot
             echo '======================================================='
 
+            # -- Brief 212: CITY PAGES LIVE CHECK ----------------------------------
+            # The 10 city hubs + 290 service pages (src/lib/city-batches.ts): 200, a
+            # row holding hub/V2 content is what serves (source APIs), listed in the
+            # sitemap once, one H1, no FAQPage, one brand tail, self canonical, and
+            # markup byte-identical to the snapshot deploy.sh took before the swap.
+            # A deploy that INTENDS to change a city passes it in --expect-changed.
+            # An unpublished page is editor state: reported, not a failure (Brief 186).
+            echo ''
+            echo '================== CITY PAGES LIVE CHECK =================='
+            LAST_CHECK="CITY PAGES LIVE CHECK"
+            if [ ! -f scripts/check-city-pages-live.mjs ]; then
+              echo "MISSING: $(pwd)/scripts/check-city-pages-live.mjs does not exist."
+              echo "This step must run from the app directory (/var/www/jblanton) - check the cd above."
+              exit 1
+            fi
+            node scripts/check-city-pages-live.mjs --compare --base=http://localhost:3000 --snapshot-dir=.city-pages-snapshot
+            echo '======================================================='
+
             # -- Brief 159 (E2 item 4): CRITICAL-URL CANARY ------------------------
             # Brief 159 gave the CMS a real unpublish: an editor can now take a page
             # off the site from the sidebar, and the page then 404s and leaves the

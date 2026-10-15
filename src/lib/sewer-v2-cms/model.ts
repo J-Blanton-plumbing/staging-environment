@@ -158,27 +158,6 @@ export function storedToPage(
 }
 
 // ── row over code, key by key (the Brief 157 / City V2 merge shape) ──────────────
-
-/**
- * The row wins wherever it has content; the code module fills anything missing. Strings: a
- * non-blank row value wins. Numbers/booleans: a row value of the same type wins. Arrays: a non-empty
- * row array wins WHOLESALE (list items are a unit — item-level merging would splice code items into
- * a list an editor shortened). Objects: key by key over the CODE object's keys, so a key the code
- * does not know is dropped. Optional keys the code lacks but the row carries (a section's NDC
- * sentence override, a page's video fields) arrive with their array/object parent.
- */
-export function mergeOver<T>(row: unknown, code: T): T {
-  if (typeof code === 'string') return (typeof row === 'string' && row.trim() !== '' ? row : code) as T;
-  if (typeof code === 'number') return (typeof row === 'number' && Number.isFinite(row) ? row : code) as T;
-  if (typeof code === 'boolean') return (typeof row === 'boolean' ? row : code) as T;
-  if (Array.isArray(code)) return (Array.isArray(row) && row.length > 0 ? row : code) as T;
-  if (code && typeof code === 'object') {
-    const r = row && typeof row === 'object' && !Array.isArray(row) ? (row as Record<string, unknown>) : {};
-    const out: Record<string, unknown> = {};
-    for (const [k, v] of Object.entries(code as Record<string, unknown>)) out[k] = mergeOver(r[k], v);
-    // Optional keys the code object omits (e.g. `video` on a page whose code module has none).
-    for (const [k, v] of Object.entries(r)) if (!(k in out) && v !== undefined && v !== null) out[k] = v;
-    return out as T;
-  }
-  return code;
-}
+// Brief 212: `mergeOver` moved, unchanged, to the shared V2 module (City Hub and City Service V2 use
+// it too). Re-exported so every sewer import keeps working exactly as before.
+export { mergeOver } from '@/lib/cms-v2/shared';

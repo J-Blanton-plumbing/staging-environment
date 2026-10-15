@@ -8,7 +8,7 @@ import { getCityServicePreview } from '@/lib/cms/preview';
 import { isPageLive } from '@/lib/cms/page-status';
 import { getGlobalSettingsCached, getRegionalPhonesCached } from '@/lib/cms/global-settings';
 import PreviewBanner from '@/components/PreviewBanner';
-import { getCityServiceV2, CENTRAL_OHIO_V2_CITIES } from '@/lib/content/city-services-v2';
+import { resolveCityServiceV2, serviceUsesCentralOhioPhone } from '@/lib/cms/city-services-v2';
 import CityServiceV2View from '@/components/city-services-v2/CityServiceV2View';
 import { pageTitle } from '@/lib/seo';
 import { cityServiceRobots } from '@/lib/city-service-indexation';
@@ -43,11 +43,11 @@ export function generateStaticParams() {
   return [];
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { city: string; service: string };
-}): Metadata {
+}): Promise<Metadata> {
   const cityEntry = getCity(params.city);
   const serviceData = getCityService(params.service);
   if (!cityEntry || !serviceData) return {};
@@ -57,10 +57,12 @@ export function generateMetadata({
   // tail ("| J. Blanton", "| JBP", or the full name), so it is stripped here and the template adds
   // the standard one exactly once. These 5 cities are all indexable; `robots` resolves exactly as
   // for every other city.
-  const v2 = getCityServiceV2(params.city, params.service);
-  if (v2) {
-    const title = pageTitle(v2.meta.title.replace(/\s*\|\s*(?:J\.?\s*Blanton|JBP)\s*$/i, ''));
-    return { title, description: v2.meta.description, robots: cityServiceRobots(params.city) };
+  // Brief 212 (Track B): the page's row (meta columns, stored suffix-free) when it renders V2 from the
+  // CMS; the code module's otherwise — same title rule either way.
+  const v2 = await resolveCityServiceV2(params.city, params.service);
+  if (v2.kind === 'v2') {
+    const title = pageTitle(v2.page.meta.title.replace(/\s*\|\s*(?:J\.?\s*Blanton|JBP)\s*$/i, ''));
+    return { title, description: v2.page.meta.description, robots: cityServiceRobots(params.city) };
   }
   return {
     // Every one of the 45 city-service content files ends its seo.title with
@@ -135,21 +137,19 @@ export default async function CityServicePage({
   const settings = await getGlobalSettingsCached();
 
   /*
-   * Brief 209 go-live — City Service Pages V2 (Marketing, 2026-10-14).
+   * Brief 212 (Track B) — City Service Pages V2 read the CMS.
    *
-   * The 29 service pages of Northbrook, Columbus, Tinley Park, Joliet and Naperville render the
-   * approved Highland Park-template service page INSTEAD of CityServicePageTemplate. Dispatched by
-   * code, like the Brief 205 hubs: these pages are not wired to the CMS yet, so admin edits (and
-   * draft previews) of these 145 city_service_pages rows do not reach the live page until a CMS
-   * follow-up brief. The Brief 159 render gate still applies — an unpublished row 404s exactly as
-   * before. The 55 service pages these absorb are 301'd in middleware (city-service-folds.ts) and
-   * never reach this route. Every other city-service page falls through, unchanged.
+   * `resolveCityServiceV2` (src/lib/cms/city-services-v2.ts): a V2 preview draft → that draft; an
+   * unpublished row → 404 (Brief 159); a published row with conforming `v2_content` → the row; the 5
+   * Batch 1 cities without usable row content (or with the DB down) → their code modules; anything
+   * else falls through to CityServicePageTemplate, unchanged. The folded service URLs are 301'd in
+   * middleware (city-service-folds.ts) and never reach this route.
    */
-  const v2 = getCityServiceV2(params.city, params.service);
-  if (v2) {
-    if (!(await isPageLive('city-service', `${params.city}/${params.service}`))) notFound();
+  const v2d = await resolveCityServiceV2(params.city, params.service);
+  if (v2d.kind === 'not-found') notFound();
+  if (v2d.kind === 'v2') {
     let phone = { href: settings.phoneHref, display: settings.phoneDisplay };
-    if (CENTRAL_OHIO_V2_CITIES.has(params.city)) {
+    if (serviceUsesCentralOhioPhone(params.city)) {
       // Brief 192: the Central Ohio phone from Global Settings; blank = the main phone. The
       // header keeps the main (WhatConverts) number by design — it never reads this.
       const regional = await getRegionalPhonesCached();
@@ -160,7 +160,23 @@ export default async function CityServicePage({
         };
       }
     }
-    return <CityServiceV2View page={v2} cityName={cityEntry.name} phone={phone} />;
+    const pv = v2d.preview;
+    return (
+      <>
+        {pv && (
+          <PreviewBanner
+            label={pv.label}
+            creatorName={pv.creator_name}
+            editorUrl={`/admin/city-service/${params.city}/${params.service}`}
+            liveUrl={`/${params.city}/${params.service}`}
+            draftId={pv.id}
+            pageType="city-service"
+            pageSlug={`${params.city}/${params.service}`}
+          />
+        )}
+        <CityServiceV2View page={v2d.page} cityName={cityEntry.name} phone={phone} />
+      </>
+    );
   }
 
   // Check preview cookie first

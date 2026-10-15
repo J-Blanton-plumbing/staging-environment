@@ -1,8 +1,8 @@
 import { Fragment, type CSSProperties, type ReactNode } from 'react';
 import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
-import type { CityHubContent } from '@/lib/content/city-hubs/types';
-import { CITY_HUB_SHARED as SH } from '@/lib/content/city-hubs/shared';
+import type { CityHubRender, CityHubShared, HubPhoto } from '@/lib/city-hub-cms/model';
+import { fillPattern } from '@/lib/city-hub-cms/model';
 import CityHubRoot from './CityHubRoot';
 
 /**
@@ -20,7 +20,11 @@ import CityHubRoot from './CityHubRoot';
  *   • Structured data: the VideoObject only. No FAQPage (Brief 164) and no page-level Plumber
  *     node (the footer's per-office PlumbingBusiness graph covers it) — Marketing, 2026-10-12.
  *   • `noindex` is gone (the package was a review prototype).
- * Copy lives in src/lib/content/city-hubs — this file holds none.
+ * Copy lives in the CMS (Brief 212 = Brief 206 Tracks B–E): the page's own content comes from its
+ * `city_pages.hub_content` row and the sections every hub shares from the `city-hubs` shared record,
+ * each falling back to the code modules in src/lib/content/city-hubs. This file holds none — the
+ * labels and patterns it used to hard-code (Brief 206 §2.3) are shared-record fields now, with the
+ * exact same text, so the markup is byte-identical.
  */
 
 export interface CityHubPhone {
@@ -143,13 +147,15 @@ function NdcCheck() {
   );
 }
 
-const STARS = (
-  <div aria-label="5 out of 5 stars" className="pv-stars" role="img">
-    ★★★★★
-  </div>
-);
+function Stars({ label }: { label: string }) {
+  return (
+    <div aria-label={label} className="pv-stars" role="img">
+      ★★★★★
+    </div>
+  );
+}
 
-function ReviewCaption({ name, url }: { name: string; url: string | null }) {
+function ReviewCaption({ name, url, SH }: { name: string; url: string | null; SH: CityHubShared }) {
   return (
     <div>
       <strong className="t-label" style={s('font-size:14px')}>{name}</strong>
@@ -163,57 +169,65 @@ function ReviewCaption({ name, url }: { name: string; url: string | null }) {
   );
 }
 
+/** The hero `<picture>`: this page's own photo, or the shared standard van photo. */
+function HeroPicture({ photo }: { photo: HubPhoto }) {
+  return (
+    <picture>
+      <source media="(max-width:900px)" srcSet={photo.mobile} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        alt={photo.alt}
+        className="hero-photo"
+        fetchPriority="high"
+        height={photo.height}
+        sizes="(max-width:900px) 100vw, 62vw"
+        src={photo.src}
+        srcSet={photo.src1100 ? `${photo.src1100} 1100w, ${photo.src} ${photo.width}w` : undefined}
+        width={photo.width}
+      />
+    </picture>
+  );
+}
+
+const YT_WATCH = 'https://www.youtube.com/watch?v=';
+const YT_EMBED = 'https://www.youtube.com/embed/';
+
 const NDC_LINK_STYLE = s('color:#F9F3EC;text-decoration:underline;text-underline-offset:3px');
 
-export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone: CityHubPhone }) {
+export default function CityHubView({ hub, shared: SH, phone }: { hub: CityHubRender; shared: CityHubShared; phone: CityHubPhone }) {
+  const L = SH.labels;
   const callNow = (
     <PhoneLink href={phone.href} display={phone.display} className="btn btn-hero-cta t-btn">
       <PhoneIcon />
-      Call Now
+      {L.callNow}
     </PhoneLink>
   );
   const mapSrc = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(hub.office.address)}&z=15&ie=UTF8&output=embed`;
   const camera = `/${hub.slug}/video-camera-sewer-inspections`;
-  const total = SH.stripe.reduce((n, [, items]) => n + items.length, 0);
+  const total = SH.stripe.reduce((n, g) => n + g.items.length, 0);
   const [r1, r2, r3] = hub.reviews.items;
+  const STARS = <Stars label={L.reviewStars} />;
+  const city = hub.name;
+  // Key order is the order production has always emitted (JSON.stringify keeps it).
+  const videoJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: SH.videoSchema.name,
+    description: SH.videoSchema.description,
+    thumbnailUrl: SH.videoSchema.thumbnailUrl,
+    uploadDate: SH.videoSchema.uploadDate,
+    duration: SH.videoSchema.duration,
+    contentUrl: `${YT_WATCH}${SH.video.youtubeId}`,
+    embedUrl: `${YT_EMBED}${SH.video.youtubeId}`,
+  };
 
   return (
     <CityHubRoot className={`city-hub city-hub--${hub.slug}`}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SH.videoJsonLd).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, '\\u003c') }} />
 
       {/* 1. HERO */}
-      <section className={`hub-hero hub-hero--photo${hub.hero.variant === 'columbus' ? ' hub-hero--columbus' : ''}`}>
-        {hub.hero.variant === 'columbus' ? (
-          <picture>
-            <source media="(max-width:900px)" srcSet="/images/city-hubs/jbp-columbus-skyline-team-mobile.webp" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Two J. Blanton Plumbing team members in red company polos in front of the downtown Columbus skyline"
-              className="hero-photo"
-              fetchPriority="high"
-              height={1334}
-              sizes="(max-width:900px) 100vw, 62vw"
-              src="/images/city-hubs/jbp-columbus-skyline-team-2000.webp"
-              srcSet="/images/city-hubs/jbp-columbus-skyline-team-1100.webp 1100w, /images/city-hubs/jbp-columbus-skyline-team-2000.webp 2000w"
-              width={2000}
-            />
-          </picture>
-        ) : (
-          <picture>
-            <source media="(max-width:900px)" srcSet="/images/city-hubs/jbp-van-residential-street-mobile.webp" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="J. Blanton Plumbing van parked on a residential street in front of a two-story home"
-              className="hero-photo"
-              fetchPriority="high"
-              height={1189}
-              sizes="(max-width:900px) 100vw, 62vw"
-              src="/images/city-hubs/jbp-van-residential-street-2000.webp"
-              srcSet="/images/city-hubs/jbp-van-residential-street-1100.webp 1100w, /images/city-hubs/jbp-van-residential-street-2000.webp 2000w"
-              width={2000}
-            />
-          </picture>
-        )}
+      <section className={`hub-hero hub-hero--photo${hub.hero.crop === 'columbus' ? ' hub-hero--columbus' : ''}`}>
+        <HeroPicture photo={hub.hero.photo === 'standard' ? SH.vanPhoto : hub.hero.photo} />
         <div className="hub-hero-in">
           <span className="t-eyebrow pv-in" style={s('--i:0;color:#F9F3EC')}>{hub.hero.eyebrow}</span>
           <h1 className="t-h1 hub-h1 pv-in" style={s('--i:1;color:#F9F3EC;margin:14px 0 16px')}>{hub.hero.h1}</h1>
@@ -263,8 +277,8 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                   <a href={c.href}>{c.title}</a>
                 </h3>
                 <p className="svc-desc" style={s('margin:0 0 16px')}>{c.desc}</p>
-                <a aria-label={`Learn more about ${c.title} in ${hub.name}`} className="svc-cta" href={c.href}>
-                  Learn More <span aria-hidden="true">→</span>
+                <a aria-label={fillPattern(SH.patterns.cardAria, { card: c.title, city })} className="svc-cta" href={c.href}>
+                  {`${L.learnMore} `}<span aria-hidden="true">→</span>
                 </a>
               </article>
             ))}
@@ -273,13 +287,13 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
             <summary className="svc-dir-head">
               <span className="svc-dir-t">{SH.stripeTitle}</span>
               <span className="svc-dir-meta">
-                <span className="svc-dir-n">{`${total} services in ${hub.name}`}</span>
+                <span className="svc-dir-n">{fillPattern(SH.patterns.stripeCount, { n: total, city })}</span>
                 <span aria-hidden="true" className="svc-dir-arrow">→</span>
               </span>
             </summary>
-            <nav aria-label={`All plumbing services in ${hub.name}`}>
+            <nav aria-label={fillPattern(SH.patterns.directoryAria, { city })}>
               <div className="svc-dir-grid">
-                {SH.stripe.map(([group, items]) => (
+                {SH.stripe.map(({ group, items }) => (
                   <details className="svc-grp" open key={group}>
                     <summary>
                       <span className="svc-grp-t">
@@ -289,7 +303,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                       <span aria-hidden="true" className="svc-grp-i">+</span>
                     </summary>
                     <ul>
-                      {items.map(([label, slug]) => (
+                      {items.map(({ label, slug }) => (
                         <li key={slug}>
                           <a href={`/${hub.slug}/${slug}`}>{label}</a>
                         </li>
@@ -307,7 +321,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
       <section className="sec" id="office" style={s('background:#F1E8DC')}>
         <div className="wrap hp-office">
           <div className="hp-office-map">
-            <iframe allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={mapSrc} title={`Google Map of our ${hub.name} office`} />
+            <iframe allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={mapSrc} title={fillPattern(SH.patterns.mapTitle, { city })} />
           </div>
           <div>
             <span className="t-eyebrow" style={s('color:#BC0E0E')}>{hub.office.eyebrow}</span>
@@ -316,7 +330,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
             <div className="hp-addr">
               <PinIcon />
               <div>
-                <strong>{`J. Blanton Plumbing, ${hub.name}`}</strong>
+                <strong>{fillPattern(SH.patterns.addressName, { city })}</strong>
                 <span className="t-body-sm pv-mute">{hub.office.address}</span>
               </div>
             </div>
@@ -330,10 +344,10 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                 {hub.office.areas.map((a, i) => (
                   <Fragment key={a.href}>
                     <a href={a.href}>{a.label}</a>
-                    {i < hub.office.areas.length - 1 ? ', ' : ' and '}
+                    {i < hub.office.areas.length - 1 ? ', ' : L.and}
                   </Fragment>
                 ))}
-                <a href={hub.office.more}>more</a>.
+                <a href={hub.office.more}>{L.more}</a>.
               </p>
             </div>
           </div>
@@ -384,7 +398,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
         <div className="wrap hp-why">
           <div>
             <span className="t-eyebrow" style={s('color:#BC0E0E')}>{SH.why.eyebrow}</span>
-            <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{`Why ${hub.name} Homeowners Choose J. Blanton`}</h2>
+            <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{hub.whyH2}</h2>
             <p className="t-body pv-mute" style={s('margin:0 0 32px')}>{SH.why.intro}</p>
             <div className="hp-why-list">
               {SH.why.items.map((w) => (
@@ -418,7 +432,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
-                src={SH.video.embed}
+                src={`https://www.youtube-nocookie.com/embed/${SH.video.youtubeId}?rel=0`}
                 title={SH.video.title}
               />
             </div>
@@ -461,7 +475,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                 <figcaption>
                   <div className="review-author">
                     <Avatar />
-                    <ReviewCaption name={r1.name} url={r1.url} />
+                    <ReviewCaption name={r1.name} url={r1.url} SH={SH} />
                   </div>
                 </figcaption>
               </figure>
@@ -477,7 +491,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
                   <p className="t-body-sm" style={s('margin:0 0 14px')}>{`“${r.text}”`}</p>
                   <div className="review-author">
                     <Avatar />
-                    <ReviewCaption name={r.name} url={r.url} />
+                    <ReviewCaption name={r.name} url={r.url} SH={SH} />
                   </div>
                 </div>
               ))}
@@ -550,7 +564,7 @@ export default function CityHubView({ hub, phone }: { hub: CityHubContent; phone
           </div>
           <div className="hub-final-btns" style={s('display:flex;flex-wrap:wrap;gap:14px')}>
             <PhoneLink href={phone.href} display={phone.display} className="btn btn-hero-cta t-btn">
-              Call Now: <PhoneNumber value={phone.display} />
+              {L.callNowPrefix}<PhoneNumber value={phone.display} />
             </PhoneLink>
             <ScheduleTrigger as="button" className="btn btn-outline t-btn" label={SH.finalSchedule} />
           </div>

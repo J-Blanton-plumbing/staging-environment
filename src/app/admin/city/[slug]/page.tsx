@@ -7,6 +7,7 @@ import MetaSection from '@/components/admin/MetaSection';
 import ImageUploaderField from '@/components/admin/ImageUploaderField';
 import RichTextField from '@/components/admin/RichTextField';
 import TemplateSwitcher, { templateAvailableFor } from '@/components/admin/TemplateSwitcher';
+import CityHubEditor from '@/components/admin/city-hub/CityHubEditor';
 import PageAttributesSidebar from '@/components/admin/PageAttributesSidebar';
 import { usePageAttributesOpen } from '@/components/admin/PageAttributesSidebar/usePageAttributesOpen';
 import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDraftVersions';
@@ -27,7 +28,8 @@ import { SITE } from '@/lib/site';
 // Brief 181 added 'local-office-v3'. It is NOT offered for every city — see
 // `templateAvailableFor`, which gates it on the slugs `src/lib/content/cities/v3`
 // can actually supply content for. Both picker surfaces below apply that gate.
-const CITY_TEMPLATES = ['coverage-area', 'local-office', 'local-office-v2', 'local-office-v3'];
+// Brief 212 (= Brief 206 decision 4) adds 'city-hub', offered for every city (ungated).
+const CITY_TEMPLATES = ['coverage-area', 'local-office', 'local-office-v2', 'local-office-v3', 'city-hub'];
 
 interface FaqField {
   question: string;
@@ -401,7 +403,27 @@ function LocalOfficeCityV2Fields({
 
 // ── Main page ────────────────────────────────────────────────────────────────
 
+/**
+ * Brief 212 (= Brief 206 C1) — `/admin/city/<slug>` opens the City Hub editor when the city is on the
+ * City Hub template (or already has a City Hub version); every other template opens the editor
+ * below, unchanged.
+ */
 export default function AdminCityPage() {
+  const params = useParams();
+  const slug = params?.slug as string;
+  const [mode, setMode] = useState<'loading' | 'hub' | 'legacy'>('loading');
+  useEffect(() => {
+    if (!slug) return;
+    fetch(`/api/cms/city-hub/${slug}`)
+      .then(async (r) => (r.ok ? r.json() : null))
+      .then((d) => setMode(d && (d.templateType === 'city-hub' || d.hasHubVersion) ? 'hub' : 'legacy'))
+      .catch(() => setMode('legacy'));
+  }, [slug]);
+  if (mode === 'loading') return <main style={{ padding: '2rem', color: ADMIN_COLORS.onSurfaceVariant }}>Loading…</main>;
+  return mode === 'hub' ? <CityHubEditor slug={slug} /> : <LegacyCityEditor />;
+}
+
+function LegacyCityEditor() {
   const params = useParams();
   const slug = params?.slug as string;
 
@@ -557,6 +579,8 @@ export default function AdminCityPage() {
   }
 
   function handleSwitched(newTemplate: string, missing: string[]) {
+    // Brief 212: the City Hub template has its own editor — reopen the page to get it.
+    if (newTemplate === 'city-hub') { window.location.reload(); return; }
     // Reload the form from the DB to get the post-switch values
     setStatus('loading');
     setMissingFields(missing);
@@ -926,6 +950,7 @@ const TEMPLATE_DISPLAY_NAMES: Record<string, string> = {
   'local-office': 'Local Office City',
   'local-office-v2': 'Local Office V2',
   'local-office-v3': 'Local Office V3',
+  'city-hub': 'City Hub',
 };
 
 // Map an API/DB response into the editor FormState (Brief 67 V2 fields included).

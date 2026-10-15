@@ -962,6 +962,30 @@ node scripts/check-sewer-v2-live.mjs --snapshot --base=http://localhost:3000 --o
 #    page is reported, exit 0. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-sewer-v2-content.ts commit
+# -- Brief 212 (Tracks A/B): City Hubs + City Service Pages V2 move onto the CMS --
+# 1. Snapshot what the STILL-LIVE build serves for the 10 city hubs + their
+#    290 service pages (src/lib/city-batches.ts), BEFORE the seeds below write,
+#    so the health check can prove the new build renders them byte-identically
+#    from their rows (scripts/check-city-pages-live.mjs --compare, deploy.yml).
+#    Best-effort: an unreachable page is logged, never fatal.
+node scripts/check-city-pages-live.mjs --snapshot --base=http://localhost:3000 --out=.city-pages-snapshot
+# 2. Seeds (write-once per page: a row that already holds hub / V2 content is
+#    "already loaded, no change" - runs every deploy, never overwrites a
+#    Marketing edit). Each existing row is archived first, every column
+#    verbatim ("Pre-hub archive (2026-10)" / "Pre-V2 archive (2026-10)"); the
+#    5 Batch 1 hubs are switched to the City Hub template (pre_hub_template =
+#    their own current template); every version is published through
+#    publishDraft. A MISSING city_service_pages row (production has none for
+#    Columbus or Tinley Park, a few for Joliet) is CREATED with --create-missing
+#    (Marketing, 2026-10-15): created and published in the same run, status
+#    from the column default 'published' (verified on insert), every one
+#    printed as CREATED. MUST stay before the
+#    build swap (Brief 171). Exit 1 only when a write it attempted did not
+#    land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-city-hubs-content.ts commit
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-city-services-v2-content.ts commit --create-missing
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

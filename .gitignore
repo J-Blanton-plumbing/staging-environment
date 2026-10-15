@@ -48,3 +48,6 @@ human qa/
 
 # Brief 204: the pre-swap snapshot of the sewer pages (deploy.sh → health check)
 .sewer-v2-snapshot/
+# Brief 212: deploy.sh pre-swap snapshot of the City Hub / City Service V2 pages
+.city-pages-snapshot/
+.next-b212/

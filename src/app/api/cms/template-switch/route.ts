@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
-import { switchTemplate, VALID_CITY_TEMPLATES } from '@/lib/cms/template-switching';
+import { switchTemplate, VALID_CITY_SWITCH_TARGETS } from '@/lib/cms/template-switching';
 
 const VALID_TEMPLATES_BY_PAGE_TYPE: Record<string, string[]> = {
-  city: VALID_CITY_TEMPLATES,
+  // Brief 212: 'city-hub' is a valid live switch target (Brief 206 decision 4).
+  city: [...VALID_CITY_SWITCH_TARGETS],
 };
 
 export async function POST(req: NextRequest) {

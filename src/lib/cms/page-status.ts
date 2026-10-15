@@ -61,6 +61,9 @@ const PAGE_TYPE_ALIASES: Readonly<Record<string, CanonicalPageType>> = {
   'customer-stories': 'main',
   'help-and-support': 'main',
   locations: 'main',
+  // Brief 212: the shared City Hub record (main_pages row 'city-hubs'): versioned and published like
+  // a main page, kept apart by its own page_type, and never given a URL (publicPathFor below).
+  'city-hub-shared': 'main',
   article: 'article',
 };
 
@@ -121,6 +124,8 @@ export const STATUS_CONTENT_TABLES: readonly string[] = Object.values(LIVE_TABLE
  * page type with no single public URL.
  */
 export function publicPathFor(pageType: string, pageSlug: string): string | null {
+  // Brief 212: the shared City Hub record has no page of its own (so it can never be unpublished).
+  if (pageType === 'city-hub-shared') return null;
   switch (canonicalPageType(pageType)) {
     case 'city':
       return `/${pageSlug}`;

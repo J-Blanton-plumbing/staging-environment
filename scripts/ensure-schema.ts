@@ -295,6 +295,16 @@ const STATEMENTS: string[] = [
   // Brief 204: the 9 Sewer v2 service pages' content (NULL on every other sub-service row).
   // Additive and nullable; old code never reads it. Rollback: ALTER TABLE sub_service_pages DROP COLUMN v2_content;
   `ALTER TABLE sub_service_pages ADD COLUMN IF NOT EXISTS v2_content JSONB`,
+  // Brief 212 (Track A = Brief 206 B1): a City Hub's own content, and the template the city was on
+  // before it was switched to City Hub (rendered until the first hub publish). Both NULL on every
+  // other city. Additive and nullable; old code never reads them. Rollback:
+  //   ALTER TABLE city_pages DROP COLUMN hub_content; ALTER TABLE city_pages DROP COLUMN pre_hub_template;
+  // (the "Pre-hub archive (2026-10)" versions keep every pre-hub column verbatim either way).
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS hub_content JSONB`,
+  `ALTER TABLE city_pages ADD COLUMN IF NOT EXISTS pre_hub_template TEXT`,
+  // Brief 212 (Track B): a City Service V2 page's content (NULL on every legacy city-service row).
+  // Additive and nullable. Rollback: ALTER TABLE city_service_pages DROP COLUMN v2_content;
+  `ALTER TABLE city_service_pages ADD COLUMN IF NOT EXISTS v2_content JSONB`,
 
   // ── template_switch_archive ─────────────────────────────────────────────
   `ALTER TABLE template_switch_archive ADD COLUMN IF NOT EXISTS from_template TEXT NOT NULL DEFAULT ''::text`,

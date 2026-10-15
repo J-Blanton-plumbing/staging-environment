@@ -9,7 +9,7 @@ import { updateArticleCmsContent } from '@/lib/cms/article-pages';
 import { sanitizeArticleV2Content } from '@/lib/cms/article-v2-sanitize';
 import { isArticleV2Object } from '@/lib/cms/article-v2';
 import { writeChangelog } from '@/lib/cms/changelog';
-import { ConflictError, NotFoundError } from '@/lib/cms/errors';
+import { ConflictError, NotFoundError, ValidationError } from '@/lib/cms/errors';
 import {
   checkUnpublishAllowed,
   pageTypeAliasesFor,
@@ -18,6 +18,22 @@ import {
 import { clearSitemapCache } from '@/lib/sitemap/render';
 import { assertSewerV2Publishable, assertSewerV2VersionWritable, prepareSewerV2VersionContent, writeSewerV2Live } from '@/lib/cms/sewer-v2-write';
 import { isSewerV2DraftContent, SEWER_V2_TEMPLATE } from '@/lib/sewer-v2-cms/model';
+import {
+  assertCityHubPublishable,
+  assertCityHubVersionWritable,
+  cityHubTemplateFor,
+  prepareCityHubVersionContent,
+  writeCityHubLive,
+  writeCityHubSharedLive,
+} from '@/lib/cms/city-hubs-write';
+import { CITY_HUB_SHARED_PAGE_TYPE, isCityHubDraftContent, isCityHubSharedDraftContent } from '@/lib/city-hub-cms/model';
+import {
+  assertCityServiceV2Publishable,
+  assertCityServiceV2VersionWritable,
+  prepareCityServiceV2VersionContent,
+  writeCityServiceV2Live,
+} from '@/lib/cms/city-services-v2-write';
+import { CITY_SERVICE_V2_TEMPLATE, isCityServiceV2DraftContent } from '@/lib/city-service-v2-cms/model';
 
 export interface DraftRow {
   id: number;
@@ -112,6 +128,7 @@ async function getLivePageState(
     // for old draft rows). Without this case, main-page drafts were created
     // with base_version NULL — silently skipping the DP-2 staleness guard.
     case 'main':
+    case CITY_HUB_SHARED_PAGE_TYPE:
     case 'financing':
     case 'customer-stories':
     case 'help-and-support':
@@ -158,6 +175,11 @@ export async function createDraft({
   // and v2 content is accepted nowhere else. Every other page type passes through unchanged.
   content = prepareSewerV2VersionContent(pageType, pageSlug, content);
   if (isSewerV2DraftContent(content)) templateType = SEWER_V2_TEMPLATE;
+  // Brief 212: City Hub / shared-record / City Service V2 versions are sanitised + layout-locked the
+  // same way (422 on anything an editor must fix), and stamped with their template.
+  content = await prepareCityHubVersionContent(pageType, pageSlug, content);
+  content = await prepareCityServiceV2VersionContent(pageType, pageSlug, content);
+  templateType = cityHubTemplateFor(content) ?? (isCityServiceV2DraftContent(content) ? CITY_SERVICE_V2_TEMPLATE : templateType);
 
   // Brief 75 (DP-2): snapshot the live row's current version so publishDraft can
   // later detect that the live page changed after this draft was captured.
@@ -345,9 +367,20 @@ export async function publishDraft(
   // one of the 10 Sewer v2 pages, and v2 content never onto any other page — refused HERE, before
   // any writer runs, so the admin button, the preview banner and a stale tab are all covered.
   assertSewerV2Publishable(draft.page_type, draft.page_slug, draft.content);
+  // Brief 212: the same guard for City Hub rows, the shared City Hub record and City Service V2 rows,
+  // plus the publish-only checks (no placeholder, no empty required field — 422).
+  await assertCityHubPublishable(draft.page_type, draft.page_slug, draft.content);
+  await assertCityServiceV2Publishable(draft.page_type, draft.page_slug, draft.content);
+  const hubVersion = isCityHubDraftContent(draft.content);
   const writer = isSewerV2DraftContent(draft.content)
     ? (slug: string, content: unknown, by: number) => writeSewerV2Live(draft.page_type, slug, content, by)
-    : writers[draft.page_type];
+    : hubVersion
+      ? (slug: string, content: unknown, by: number) => writeCityHubLive(slug, content, by)
+      : isCityHubSharedDraftContent(draft.content)
+        ? (_slug: string, content: unknown, by: number) => writeCityHubSharedLive(content, by)
+        : isCityServiceV2DraftContent(draft.content)
+          ? (slug: string, content: unknown) => writeCityServiceV2Live(slug, content)
+          : writers[draft.page_type];
   if (!writer) throw new Error(`No writer for page_type "${draft.page_type}"`);
 
   // Brief 75 — staleness guards before we overwrite the live row.
@@ -356,7 +389,10 @@ export async function publishDraft(
   // DP-4: a draft authored for one template must not publish onto a live page that
   // has since switched — its empty template-specific fields would blank live
   // sections. Block and require reconciliation.
+  // Brief 212: a City Hub version is the exception — its writer switches the row to City Hub in the
+  // same UPDATE (remembering the previous template), so "re-apply after a restore" is one publish.
   if (
+    !hubVersion &&
     draft.template_type &&
     live?.templateType &&
     draft.template_type !== live.templateType
@@ -538,6 +574,19 @@ export async function updateDraftContent(
         content = sanitizeVersionContent(t.rows[0].page_type, content);
       }
       content = prepareSewerV2VersionContent(t.rows[0].page_type, t.rows[0].page_slug, content);
+      // Brief 212: City Hub / shared-record / City Service V2 content is only ever written into a
+      // version stamped with that template (anything else is saved as a NEW version), and an
+      // old-shaped version of a City Hub or V2 row is read-only.
+      const { page_type: pt, page_slug: ps, template_type: tt } = t.rows[0];
+      await assertCityHubVersionWritable(pt, ps, tt);
+      await assertCityServiceV2VersionWritable(pt, ps, tt);
+      const incoming = cityHubTemplateFor(content) ?? (isCityServiceV2DraftContent(content) ? CITY_SERVICE_V2_TEMPLATE : null);
+      const v2Stamps = ['city-hub', 'city-hub-shared', CITY_SERVICE_V2_TEMPLATE];
+      if ((incoming || (tt && v2Stamps.includes(tt))) && incoming !== tt) {
+        throw new ValidationError('This content can’t be saved into this version — save it as a new version instead.');
+      }
+      content = await prepareCityHubVersionContent(pt, ps, content);
+      content = await prepareCityServiceV2VersionContent(pt, ps, content);
     }
     const res = await client.query<{ version: number }>(
       `UPDATE page_drafts
