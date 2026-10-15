@@ -393,6 +393,16 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
           )).rows.map((r) => r.slug)
         )
       : new Set<string>();
+  // Brief 212: the same rule for City Hub rows (`hub_content`), City Service V2 rows (`v2_content`)
+  // and the shared City Hub record (`main_pages` row `city-hubs`, which has no editor-shaped content
+  // and no URL): their version history belongs to the City Hub / City Service V2 seeds and editors.
+  if (spec.pageType === 'city') {
+    for (const r of (await client.query<{ slug: string }>(`SELECT city_slug AS slug FROM city_pages WHERE hub_content IS NOT NULL`)).rows) sewerV2Rows.add(r.slug);
+  } else if (spec.pageType === 'city-service') {
+    for (const r of (await client.query<{ slug: string }>(`SELECT city_slug || '/' || service_slug AS slug FROM city_service_pages WHERE v2_content IS NOT NULL`)).rows) sewerV2Rows.add(r.slug);
+  } else if (spec.pageType === 'main') {
+    sewerV2Rows.add('city-hubs');
+  }
 
   const bySlug = new Map<string, typeof drafts>();
   for (const d of drafts) {

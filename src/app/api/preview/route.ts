@@ -16,6 +16,8 @@ const SERVICE_CATEGORY_SLUGS = new Set(
 
 function pageUrl(pageType: string, pageSlug: string): string {
   if (pageType === 'city' || pageType === 'city-coverage' || pageType === 'city-local') return `/${pageSlug}`;
+  // Brief 212: the shared City Hub sections have no page of their own — preview them on a City Hub.
+  if (pageType === 'city-hub-shared') return '/northbrook';
   if (pageType === 'emergency-plumbing') return '/emergency-plumbing';
   if (pageType === 'service') {
     return SERVICE_CATEGORY_SLUGS.has(pageSlug) ? `/services/${pageSlug}` : `/${pageSlug}`;

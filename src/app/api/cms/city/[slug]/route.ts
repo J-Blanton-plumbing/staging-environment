@@ -5,6 +5,7 @@ import { requireCmsSession } from '@/lib/auth/api-guard';
 import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { errorCode } from '@/lib/cms/errors';
+import { OLD_HUB_SHAPE_MESSAGE } from '@/lib/city-hub-cms/model';
 
 export async function GET(
   req: NextRequest,
@@ -33,6 +34,14 @@ export async function PUT(
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+  // Brief 212 (= Brief 206): a City Hub row is edited ONLY through versions in the City Hub editor.
+  // A direct save from a stale tab of the old editor would overwrite the legacy columns the
+  // "Pre-hub archive (2026-10)" describes, so it is refused.
+  const tpl = await pool
+    .query<{ template_type: string | null }>('SELECT template_type FROM city_pages WHERE city_slug = $1', [params.slug])
+    .then((r) => r.rows[0]?.template_type ?? null)
+    .catch(() => null);
+  if (tpl === 'city-hub') return NextResponse.json({ error: OLD_HUB_SHAPE_MESSAGE }, { status: 409 });
 
   try {
     const body = await req.json();

@@ -115,6 +115,14 @@ export const VALID_CITY_TEMPLATES: CityTemplate[] = [
   'local-office-v3',
 ];
 
+/**
+ * Brief 212 (= Brief 206 decision 4): "City Hub" is a template the picker offers for ANY city. It is
+ * a live-row switch only — not a draft re-template target (a hub version is separate content) — so it
+ * is listed here, not in VALID_CITY_TEMPLATES.
+ */
+export const CITY_HUB_TEMPLATE_ID = 'city-hub';
+export const VALID_CITY_SWITCH_TARGETS: readonly string[] = [...VALID_CITY_TEMPLATES, CITY_HUB_TEMPLATE_ID];
+
 // ── Field-name translation (Brief 116) ──────────────────────────────────────
 // The live `city_pages` row uses snake_case columns; draft content (the editor's
 // `buildCityPayload`) uses camelCase keys. One table maps between them so the
@@ -377,10 +385,9 @@ export async function switchTemplate({
 }: SwitchTemplateParams): Promise<SwitchTemplateResult> {
   if (pageType !== 'city') throw new Error(`Unsupported page type: ${pageType}`);
 
-  if (!VALID_CITY_TEMPLATES.includes(toTemplate as CityTemplate)) {
-    throw new Error(`Invalid template "${toTemplate}". Valid values: ${VALID_CITY_TEMPLATES.join(', ')}`);
+  if (!(VALID_CITY_SWITCH_TARGETS as readonly string[]).includes(toTemplate)) {
+    throw new Error(`Invalid template "${toTemplate}". Valid values: ${VALID_CITY_SWITCH_TARGETS.join(', ')}`);
   }
-  const target = toTemplate as CityTemplate;
 
   const client = await pool.connect();
   try {
@@ -390,6 +397,51 @@ export async function switchTemplate({
     const res = await client.query(`SELECT * FROM city_pages WHERE city_slug = $1`, [pageSlug]);
     if (!res.rows[0]) throw new Error(`No city_pages row for slug "${pageSlug}"`);
     const row = res.rows[0];
+
+    /*
+     * Brief 212 (= Brief 206 §A6 / decision 6) — the City Hub template.
+     *
+     * TO City Hub: the row is archived like any switch, `template_type` becomes 'city-hub' and the
+     * template it was on is remembered in `pre_hub_template`. Nothing else is touched — the legacy
+     * columns keep the pre-hub content, and the page keeps RENDERING that previous template until a
+     * City Hub version is published (src/lib/cms/city-hubs.ts, dispatch row 5).
+     *
+     * AWAY from City Hub (the rollback): `hub_content` is KEPT, and the row continues from the
+     * template it was on before the hub (`pre_hub_template`) — so switching back to that template
+     * shows the old pre-hub content again, and switching to a third template maps from it as usual.
+     */
+    if (toTemplate === CITY_HUB_TEMPLATE_ID) {
+      if (row.template_type === CITY_HUB_TEMPLATE_ID) throw new Error(`Page "${pageSlug}" is already using template "${toTemplate}"`);
+      const from = row.template_type ?? 'coverage-area';
+      await client.query(
+        `INSERT INTO template_switch_archive
+           (page_type, page_slug, from_template, to_template, archived_content, switched_by)
+         VALUES ($1, $2, $3, $4, $5::jsonb, $6)`,
+        [pageType, pageSlug, from, toTemplate, JSON.stringify(row), switchedBy]
+      );
+      await client.query(
+        `UPDATE city_pages SET template_type = $1, pre_hub_template = $2, updated_at = NOW() WHERE city_slug = $3`,
+        [CITY_HUB_TEMPLATE_ID, from, pageSlug]
+      );
+      await client.query('COMMIT');
+      return { mapped: {}, missing: [], restored: [] };
+    }
+    if (row.template_type === CITY_HUB_TEMPLATE_ID) {
+      const previous = (row.pre_hub_template ?? 'coverage-area') as string;
+      await client.query(
+        `INSERT INTO template_switch_archive
+           (page_type, page_slug, from_template, to_template, archived_content, switched_by)
+         VALUES ($1, $2, $3, $4, $5::jsonb, $6)`,
+        [pageType, pageSlug, CITY_HUB_TEMPLATE_ID, toTemplate, JSON.stringify(row), switchedBy]
+      );
+      await client.query(`UPDATE city_pages SET template_type = $1, updated_at = NOW() WHERE city_slug = $2`, [previous, pageSlug]);
+      row.template_type = previous;
+      if (toTemplate === previous) {
+        await client.query('COMMIT');
+        return { mapped: {}, missing: [], restored: [] };
+      }
+    }
+    const target = toTemplate as CityTemplate;
     const currentTemplate: CityTemplate = (row.template_type ?? 'coverage-area') as CityTemplate;
 
     // 2. No-op guard

@@ -13,6 +13,16 @@ import type { CityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { subServiceToServiceContent, normalizeBlockOrder, normalizeBlocks, blocksToFields } from '@/lib/cms/sub-service-pages';
 import type { ServiceContent } from '@/types/service';
 import { isSewerV2DraftContent, type SewerV2DraftContent } from '@/lib/sewer-v2-cms/model';
+import {
+  CITY_HUB_SHARED_PAGE_TYPE,
+  CITY_HUB_SHARED_SLUG,
+  isCityHubDraftContent,
+  isCityHubSharedDraftContent,
+  isCityPageType,
+  type CityHubDraftContent,
+  type CityHubSharedDraftContent,
+} from '@/lib/city-hub-cms/model';
+import { isCityServiceV2DraftContent, type CityServiceV2DraftContent } from '@/lib/city-service-v2-cms/model';
 
 const PREVIEW_COOKIE = '__preview_draft';
 
@@ -176,6 +186,8 @@ export async function getCityPreview(slug: string): Promise<{
 
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== 'city' || draft.page_slug !== slug) return null;
+  // Brief 212: a City Hub version is previewed by getCityHubPreview, never as legacy city content.
+  if (isCityHubDraftContent(draft.content)) return null;
 
   // Brief 67 (Track A): the draft's own template_type wins so a V2 draft previewed
   // on a still-V1 live page renders V2 (and vice versa). Fall back to any
@@ -204,6 +216,8 @@ export async function getCityServicePreview(citySlug: string, serviceSlug: strin
     draft.page_type !== 'city-service' ||
     draft.page_slug !== `${citySlug}/${serviceSlug}`
   ) return null;
+  // Brief 212: a City Service V2 version is previewed by getCityServiceV2Preview, never as legacy content.
+  if (isCityServiceV2DraftContent(draft.content)) return null;
 
   return {
     db: draft.content as CityServiceCmsContent,
@@ -281,5 +295,41 @@ export async function getSewerV2Preview(
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== pageType || draft.page_slug !== slug) return null;
   if (!isSewerV2DraftContent(draft.content)) return null;
+  return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}
+
+/**
+ * Brief 212 (Track A) — a City Hub version of THIS city under the editor's preview cookie (same DP-7
+ * session gate). An old-shaped city version is not a hub preview; the legacy getter handles it.
+ */
+export async function getCityHubPreview(slug: string): Promise<{ content: CityHubDraftContent; meta: PreviewMeta } | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || !isCityPageType(draft.page_type) || draft.page_slug !== slug) return null;
+  if (!isCityHubDraftContent(draft.content)) return null;
+  return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}
+
+/** Brief 212 (Track A) — a version of the shared City Hub record, previewed on any City Hub page. */
+export async function getCityHubSharedPreview(): Promise<{ content: CityHubSharedDraftContent; meta: PreviewMeta } | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== CITY_HUB_SHARED_PAGE_TYPE || draft.page_slug !== CITY_HUB_SHARED_SLUG) return null;
+  if (!isCityHubSharedDraftContent(draft.content)) return null;
+  return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}
+
+/** Brief 212 (Track B) — a City Service V2 version of THIS page under the editor's preview cookie. */
+export async function getCityServiceV2Preview(
+  citySlug: string,
+  serviceSlug: string
+): Promise<{ content: CityServiceV2DraftContent; meta: PreviewMeta } | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== 'city-service' || draft.page_slug !== `${citySlug}/${serviceSlug}`) return null;
+  if (!isCityServiceV2DraftContent(draft.content)) return null;
   return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
 }

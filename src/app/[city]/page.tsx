@@ -28,8 +28,10 @@ import LocalOfficeCityV2 from '@/components/LocalOfficeCityV2';
 import LocalOfficeCityV3 from '@/components/LocalOfficeCityV3';
 import PreviewBanner from '@/components/PreviewBanner';
 import { getCityPageMeta } from '@/lib/cms/page-meta';
-import { getCityHub } from '@/lib/content/city-hubs';
 import CityHubView from '@/components/city-hubs/CityHubView';
+import { hubPhoneRegion, resolveCityHub } from '@/lib/cms/city-hubs';
+import { CITY_HUB_SHARED_PAGE_TYPE, CITY_HUB_SHARED_SLUG } from '@/lib/city-hub-cms/model';
+import { pageTitle } from '@/lib/seo';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
@@ -69,10 +71,12 @@ export function generateStaticParams() {
  * than a 500 on a page whose body renders fine.
  */
 export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
-  // Brief 205 go-live: a City Hubs V2 page carries its approved title/description from code (the
-  // CMS follow-up brief moves them onto the city_pages row). The layout's template adds the brand.
-  const hub = getCityHub(params.city);
-  if (hub && getCity(params.city)) return { title: hub.seo.title, description: hub.seo.description };
+  // Brief 212: a City Hub's title/description — its row's meta columns (suffix-free; the layout's
+  // template adds the brand once) when it renders from the row, its code module's otherwise.
+  if (getCity(params.city)) {
+    const hub = await resolveCityHub(params.city);
+    if (hub.kind === 'hub') return { title: pageTitle(hub.meta.title), description: hub.meta.description };
+  }
 
   const fallback = staticCityMeta(params.city);
   if (!fallback) return {};
@@ -85,23 +89,24 @@ export default async function CityPage({ params }: { params: { city: string } })
   if (!entry) notFound();
 
   /*
-   * Brief 205 go-live — City Hubs V2 (Marketing, 2026-10-12).
+   * Brief 212 (= Brief 206 Tracks B–E) — City Hubs read the CMS.
    *
-   * /joliet, /tinley-park, /columbus, /northbrook and /naperville render the approved Highland
-   * Park-template hub INSTEAD of whatever their city_pages row selects. Dispatched by code, like
-   * Brief 200's sewer pages: the hubs are not wired to the CMS yet, so admin edits (and draft
-   * previews) of these 5 rows do not reach the live page until the CMS follow-up brief. The
-   * Brief 159 render gate still applies — an unpublished row 404s exactly as before. Every other
-   * city falls through to the dispatch below, unchanged.
+   * `resolveCityHub` applies the Brief 206 §A6 dispatch (src/lib/cms/city-hubs.ts): a City Hub row
+   * renders from `hub_content`; the 5 Batch 1 hubs fall back to their code modules while a row has no
+   * hub content (or the DB is down); a city switched to City Hub before its first publish keeps
+   * rendering its previous template (`templateOverride`); every other city falls through, unchanged.
+   * The Brief 159 gate still applies — an unpublished hub row 404s. The `CITY_HUBS` hard dispatch is
+   * gone; the code modules are the fallback and the layout template.
    */
-  const hub = getCityHub(params.city);
-  if (hub) {
-    if (!(await isPageLive('city', params.city))) notFound();
+  const hubDispatch = await resolveCityHub(params.city);
+  if (hubDispatch.kind === 'not-found') notFound();
+  if (hubDispatch.kind === 'hub') {
     const settings = await getGlobalSettingsCached();
     let phone = { href: settings.phoneHref, display: settings.phoneDisplay };
-    if (hub.phoneRegion === 'central-ohio') {
+    if (hubPhoneRegion(params.city) === 'central-ohio') {
       // Brief 192: the Central Ohio phone from Global Settings; blank = the main phone. The
-      // header keeps the main (WhatConverts) number by design — it never reads this.
+      // header keeps the main (WhatConverts) number by design — it never reads this. The region is
+      // derived from the city's state (Brief 206 §2.2), so a future Ohio hub gets it automatically.
       const regional = await getRegionalPhonesCached();
       if (regional.centralOhioPhoneDisplay) {
         phone = {
@@ -110,8 +115,25 @@ export default async function CityPage({ params }: { params: { city: string } })
         };
       }
     }
-    return <CityHubView hub={hub} phone={phone} />;
+    const pv = hubDispatch.preview;
+    return (
+      <>
+        {pv && (
+          <PreviewBanner
+            label={pv.scope === 'shared' ? `${pv.label} (shared City Hub sections)` : pv.label}
+            creatorName={pv.creator_name}
+            editorUrl={pv.scope === 'shared' ? '/admin/city-hubs' : `/admin/city/${params.city}`}
+            liveUrl={`/${params.city}`}
+            draftId={pv.id}
+            pageType={pv.scope === 'shared' ? CITY_HUB_SHARED_PAGE_TYPE : 'city'}
+            pageSlug={pv.scope === 'shared' ? CITY_HUB_SHARED_SLUG : params.city}
+          />
+        )}
+        <CityHubView hub={hubDispatch.hub} shared={hubDispatch.shared} phone={phone} />
+      </>
+    );
   }
+  const templateOverride = hubDispatch.templateOverride;
 
   const preview = await getCityPreview(params.city);
   const previewDraft = preview ? preview.meta : null;
@@ -139,7 +161,8 @@ export default async function CityPage({ params }: { params: { city: string } })
   const settings = await getGlobalSettingsCached();
 
   // Brief 35: use template_type from DB when available; fall back to registry type
-  const templateType: string = db?.templateType ?? entry.type;
+  // Brief 212: a city on the City Hub template with nothing published yet renders its previous one.
+  const templateType: string = templateOverride ?? db?.templateType ?? entry.type;
 
   /*
    * Brief 181 (Track B2) — Local Office City V3.

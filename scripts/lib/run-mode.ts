@@ -144,6 +144,9 @@ export type Verdict =
   | 'NOT-APPLIED (live and newest version differ)'
   | 'NOT-APPLIED (license claim elsewhere)'
   | 'NOT-APPLIED (no CMS user)'
+  // Brief 212
+  | 'NOT-APPLIED (rows missing)'
+  | 'NOT-APPLIED (validation failed)'
   | 'FAILED (publish)'
   | 'FAILED';
 

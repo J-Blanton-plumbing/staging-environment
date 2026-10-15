@@ -29,12 +29,12 @@ import type {
 } from '@/lib/content/sewer-v2/types';
 import type { SewerHubStored } from './model';
 import { isInlineOnly, nodesText, PHONE_TOKEN } from './rich';
+import { hasLiteralPhone, imageProblem, linkProblem, PHONE_MESSAGE, type ConformIssue } from '@/lib/cms-v2/shared';
 
-export interface ConformIssue {
-  path: string;
-  kind: 'structure' | 'phone' | 'empty' | 'link' | 'image' | 'value';
-  message: string;
-}
+// Brief 212: the field rules below moved, unchanged, to the shared V2 module (City Hub and City
+// Service V2 use them too). Re-exported so every sewer import keeps working exactly as before.
+export { describeIssues, hasLiteralPhone, imageProblem, linkProblem, PHONE_MESSAGE } from '@/lib/cms-v2/shared';
+export type { ConformIssue } from '@/lib/cms-v2/shared';
 
 export interface Sanitizers {
   /** Plain-text rule: no markup survives; entities decoded. */
@@ -52,39 +52,6 @@ export interface ConformResult<T> {
 }
 
 // ── field rules ───────────────────────────────────────────────────────────────────
-
-/**
- * A phone number typed as digits. Every phone on these pages must be the `{{phone}}` token so it
- * renders the Global Settings number and WhatConverts can swap it (Brief 200 Track D, Brief 185 §4.1).
- */
-const PHONE_RE = /(?:\+?1[\s.-]?)?\(?\b\d{3}\)?[\s.-]?\d{3}[\s.-]\d{4}\b/;
-export const PHONE_MESSAGE =
-  'Type {{phone}} instead of a phone number. It shows the current number and lets call tracking swap it.';
-
-export function hasLiteralPhone(s: string): boolean {
-  return PHONE_RE.test(s);
-}
-
-/** Link targets an editor may use. `tel:` is refused (use {{phone}}); so is anything script-like. */
-export function linkProblem(href: string): string | null {
-  const h = href.trim();
-  if (!h) return 'A link needs a destination.';
-  if (/^tel:/i.test(h)) return PHONE_MESSAGE;
-  if (h.startsWith('/') && !h.startsWith('//')) return null;
-  if (h.startsWith('#')) return null;
-  if (/^https?:\/\/[^\s"<>]+$/i.test(h)) return null;
-  if (/^mailto:[^\s"<>]+$/i.test(h)) return null;
-  return `"${h}" is not a link this page can use. Use a site path (/financing) or a full https:// address.`;
-}
-
-/** Image sources: the site's own images, CMS uploads, or an https CDN URL. */
-export function imageProblem(src: string): string | null {
-  const s = src.trim();
-  if (!s) return 'Choose an image.';
-  if (/^\/(images|uploads)\/[^\s"<>]+$/.test(s)) return null;
-  if (/^https:\/\/[^\s"<>]+$/i.test(s)) return null;
-  return `"${s}" is not an image address this page can use.`;
-}
 
 const YOUTUBE_ID_RE = /^[A-Za-z0-9_-]{11}$/;
 
@@ -485,11 +452,4 @@ export function conformMeta(input: { metaTitle?: unknown; metaDescription?: unkn
   const metaTitle = ctx.text(input.metaTitle, code.title, 'metaTitle');
   const metaDescription = ctx.text(input.metaDescription, code.description, 'metaDescription');
   return { value: { metaTitle, metaDescription }, errors: ctx.errors };
-}
-
-/** Errors as one human sentence list (the 422 body). */
-export function describeIssues(errors: readonly ConformIssue[], max = 6): string {
-  const lines = errors.slice(0, max).map((e) => `${e.message}${e.path ? ` (${e.path})` : ''}`);
-  if (errors.length > max) lines.push(`…and ${errors.length - max} more.`);
-  return lines.join(' ');
 }

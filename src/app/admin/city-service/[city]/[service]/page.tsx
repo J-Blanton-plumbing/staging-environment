@@ -11,6 +11,7 @@ import { useDraftVersions } from '@/components/admin/PageAttributesSidebar/useDr
 import { useVersionStatusControl } from '@/components/admin/PageAttributesSidebar/useVersionStatusControl';
 import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
+import CityServiceV2Editor, { useCityServiceV2Load } from '@/components/admin/city-service-v2/CityServiceV2Editor';
 
 interface FaqField {
   question: string;
@@ -79,7 +80,22 @@ function slugToTitle(slug: string): string {
   return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
+/**
+ * Brief 212 (Track B) — a City Service V2 page (its row holds V2 content, it has a V2 version, or it
+ * is one of the Batch 1 code-module pages) opens the V2 editor; every other page opens the editor
+ * below, unchanged.
+ */
 export default function AdminCityServicePage() {
+  const params = useParams();
+  const city = params?.city as string;
+  const service = params?.service as string;
+  const v2 = useCityServiceV2Load(city, service);
+  if (v2.state === 'loading') return <main style={{ padding: '2rem', color: ADMIN_COLORS.onSurfaceVariant }}>Loading…</main>;
+  if (v2.state === 'v2' && v2.load) return <CityServiceV2Editor city={city} service={service} load={v2.load} />;
+  return <LegacyCityServiceEditor />;
+}
+
+function LegacyCityServiceEditor() {
   const params = useParams();
   const city = params?.city as string;
   const service = params?.service as string;

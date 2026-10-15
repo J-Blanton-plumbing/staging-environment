@@ -5,6 +5,7 @@ import { requireCmsSession } from '@/lib/auth/api-guard';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import pool from '@/lib/db';
 import { errorCode } from '@/lib/cms/errors';
+import { OLD_SERVICE_SHAPE_MESSAGE } from '@/lib/city-service-v2-cms/model';
 
 export async function GET(
   req: NextRequest,
@@ -33,6 +34,13 @@ export async function PUT(
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+  // Brief 212 (Track B): a City Service V2 row is edited ONLY through versions in the V2 editor; a
+  // direct legacy save would overwrite the columns the "Pre-V2 archive (2026-10)" describes.
+  const hasV2 = await pool
+    .query<{ v: boolean }>('SELECT (v2_content IS NOT NULL) AS v FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2', [params.city, params.service])
+    .then((r) => !!r.rows[0]?.v)
+    .catch(() => false);
+  if (hasV2) return NextResponse.json({ error: OLD_SERVICE_SHAPE_MESSAGE }, { status: 409 });
 
   let body: Record<string, unknown>;
   try {

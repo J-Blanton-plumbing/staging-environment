@@ -45,6 +45,11 @@ export async function PATCH(
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+  // Brief 212: the shared City Hub record lives in main_pages but is edited only through its own
+  // versions (/admin/city-hubs); a direct main-page write would replace it with the wrong shape.
+  if (params.slug === 'city-hubs') {
+    return NextResponse.json({ error: 'The shared City Hub sections are edited at /admin/city-hubs.' }, { status: 409 });
+  }
 
   const client = await pool.connect();
   try {
