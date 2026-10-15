@@ -1,0 +1,46 @@
+# Brief 211 — Track C live-box ops (2026-10-15): www/http → https apex in ONE hop, in nginx.
+#
+# Same vehicle as Brief 150 (ops/brief-150): the live box is reachable only over the deploy
+# SSH secrets, a workflow_dispatch-only workflow off the default branch never registers, and
+# merging to main would fire deploy.yml. So: push to THIS branch, phase chosen by a
+# commit-message marker — [phase:inspect] (read-only) or [phase:apply] (backup → edit →
+# nginx -t → reload, auto-rollback on any failure). A push with neither marker runs nothing.
+#
+# ⚠️ This repo is PUBLIC, so these logs are public. nginx config holds no secret VALUES
+# (certificate/key lines are file PATHS), but any line mentioning password/secret/token is
+# redacted anyway. Staging blocks (staging., staging2., default _) are never edited.
+name: Brief 211 — Live-box ops (nginx host canonicalization)
+
+on:
+  push:
+    branches: [ops/brief-211]
+
+jobs:
+  ops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect (read-only)
+        if: ${{ contains(github.event.head_commit.message, '[phase:inspect]') }}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: false
+          script: |
+            set +e
+            exec 2>&1
+            echo '=== nginx -v / layout ==='
+            sudo nginx -v
+            ls -la /etc/nginx/sites-enabled /etc/nginx/sites-available /etc/nginx/conf.d 2>&1
+            echo '=== nginx -T (redacted) ==='
+            sudo nginx -T 2>&1 | grep -viE 'password|secret|token' 
+            echo '=== certificate SANs ==='
+            for c in $(sudo nginx -T 2>/dev/null | grep -E '^\s*ssl_certificate\s' | awk '{print $2}' | tr -d ';' | sort -u); do
+              echo "--- $c"; sudo openssl x509 -in "$c" -noout -subject -enddate -ext subjectAltName 2>&1
+            done
+            echo '=== certbot ==='
+            sudo certbot certificates 2>&1 | grep -E 'Certificate Name|Domains|Expiry|Path'
+            echo '=== existing backups ==='
+            ls -la /etc/nginx/*.bak* /etc/nginx/sites-available/*.bak* /var/backups/nginx* 2>&1
+            echo 'INSPECT DONE'
