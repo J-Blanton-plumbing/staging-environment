@@ -1,0 +1,285 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Geneva, IL",
+   "sub": "A restaurant on Third Street, a boutique on State Street or a salon down the block. When the water heater fails, the day's business suffers. We repair, replace and maintain commercial water heaters for Geneva businesses from our office on Campbell Street, a short walk from downtown.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Commercial Water Heater Service for Geneva Businesses",
+    "intro": "We work with:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Restaurants, Cafes and Bakeries",
+      "body": "Dish machines and prep sinks need hot water from open to close."
+     },
+     {
+      "h3": "Salons and Spas",
+      "body": "Every chair and treatment room draws on the heater."
+     },
+     {
+      "h3": "Offices and Clinics",
+      "body": "Restrooms and exam rooms need it all day."
+     },
+     {
+      "h3": "Shops in Historic Buildings",
+      "body": "Older buildings with updated restrooms and break rooms."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Repair, Replacement and Maintenance",
+    "intro": "Service for the life of the equipment:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Commercial tanks and tankless units, diagnosed and priced first."
+     },
+     {
+      "h3": "Replacement",
+      "body": "Sized to your peak hour and scheduled around your hours where we can."
+     },
+     {
+      "h3": "Maintenance",
+      "body": "Flushing, descaling and safety checks on a schedule."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "geneva-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Downtown Geneva and Beyond",
+    "intro": "Our office at 115 Campbell St is close to downtown Geneva.",
+    "items": [
+     {
+      "h3": "Historic Commercial Buildings",
+      "body": "Many downtown buildings are more than a century old, with plumbing changed many times over the years. We trace the gas, water and vent connections before sizing anything."
+     },
+     {
+      "h3": "Emergency Calls",
+      "body": "If the heater fails mid-service, our line is open 24/7, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "h3": "A Number Before the Work",
+      "body": "Flat-rate pricing so you can plan."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Rich Walker",
+      "url": null,
+      "text": "Alex & Mike were great! They answered all my questions professionally and respectfully. Their work appears to be top notch and explained everything they were doing throughout the project. Very pleased with my whole J. Blanton experience today."
+     },
+     {
+      "name": "Jessica Bartucci",
+      "url": null,
+      "text": "Ty was knowledgeable and efficient. He was friendly with staff and clients when we opened and even cleaned up after himself when the job was done. He patiently explained what we could expect and delivered from start to finish."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Geneva Businesses",
+    "items": [
+     {
+      "q": "Can you replace our heater outside business hours?",
+      "preview": "For planned work, we try to.",
+      "answer": "For a planned replacement or service visit, we'll try to work before you open or after you close. For a failure, call any time."
+     },
+     {
+      "q": "Do you handle emergency commercial calls?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. Our line is open 24/7 for commercial customers too."
+     },
+     {
+      "q": "How do you size a commercial heater?",
+      "preview": "By your busiest hour.",
+      "answer": "We look at your peak hour of hot water use and the temperatures you need, then size capacity and recovery."
+     },
+     {
+      "q": "Can you work in an older downtown building?",
+      "preview": "Yes. We plan around tight spaces and old piping.",
+      "answer": "Yes. Older buildings can have tight mechanical spaces and decades of changes. We assess the space and connections before quoting."
+     },
+     {
+      "q": "Does Geneva's softer water help commercial heaters?",
+      "preview": "It helps, but heavy use still calls for regular service.",
+      "answer": "Geneva's city water has been softened by reverse osmosis since 2008, which means less scale than very hard water. Commercial heaters still run long hours, so regular flushing and safety checks are worth it."
+     },
+     {
+      "q": "How much does commercial water heater replacement cost in Geneva?",
+      "preview": "It depends on capacity, fuel and venting. You'll approve a flat price first.",
+      "answer": "It depends on capacity, fuel type, venting and any code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 70,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Geneva, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/geneva/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Geneva, IL businesses. 24/7 phone line and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Geneva, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Geneva, IL businesses. 24/7 phone line and a flat price before work."
+}

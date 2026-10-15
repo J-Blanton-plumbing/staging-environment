@@ -1,0 +1,221 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Algonquin, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on Esplanade Drive. Our line is open 24/7 for homeowners in Algonquin and across the Fox River Valley. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Algonquin",
+   "intro": "Our licensed plumbers handle everything from a slow drain to a sewer line full of roots. Pick a service to see how we handle it in Algonquin.",
+   "cards": [
+    {
+     "title": "Sewer Repair",
+     "href": "/algonquin/sewer-repair",
+     "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/algonquin/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/algonquin/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/algonquin/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/algonquin/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Water Testing & Filtration",
+     "href": "/algonquin/water-filtration-systems",
+     "desc": "Water testing and filtration systems for homes on Algonquin’s village well water.",
+     "image": {
+      "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+      "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+     }
+    },
+    {
+     "title": "Toilets & Showers",
+     "href": "/algonquin/toilet-installation-repair",
+     "desc": "Running toilets, leaky shower valves and new fixture installs.",
+     "image": {
+      "src": "/images/city-hubs/toilet-fill-valve-repair.webp",
+      "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Esplanade Drive",
+   "h2": "Our Algonquin Office",
+   "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, Algonquin, IL 60102. It keeps our plumbers close to homes on both sides of the Fox River and across the neighboring villages. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "2390 Esplanade Dr, Suite 200F, Algonquin, IL 60102",
+   "areasH3": "Fox River Valley Communities We Serve",
+   "areas": [
+    {
+     "label": "Lake in the Hills",
+     "href": "/lake-in-the-hills"
+    },
+    {
+     "label": "Crystal Lake",
+     "href": "/crystal-lake"
+    },
+    {
+     "label": "Cary",
+     "href": "/cary"
+    },
+    {
+     "label": "Huntley",
+     "href": "/huntley"
+    },
+    {
+     "label": "Barrington Hills",
+     "href": "/barrington-hills"
+    },
+    {
+     "label": "Prairie Grove",
+     "href": "/prairie-grove"
+    }
+   ],
+   "more": "/locations/chicagoland"
+  },
+  "depth": {
+   "h2": "What Algonquin Homes Need From a Plumber",
+   "intro": "The median home in Algonquin was built in 1994, and more than half went up between 1990 and 2009. Most homes here aren’t old, but they’re old enough that original equipment is wearing out. Add well water and the Fox River, and the same few problems keep showing up.",
+   "tiles": [
+    {
+     "title": "1990s and 2000s Homes, Original Equipment",
+     "body": "More than half of Algonquin homes went up between 1990 and 2009. Equipment that came with the house, like the first water heater and the first sump pump, isn’t built to last 20 or 30 years. If yours is original, or you don’t know how old it is, have it checked before it fails. A [water heater that leaks or runs out too fast](/algonquin/water-heater-repair) is usually the first to go."
+    },
+    {
+     "title": "Living Near the Fox River",
+     "body": "The Fox River runs right through Algonquin. In April 2013 it reached a record crest here, and in July 2017 volunteers filled more than 25,000 sandbags as the river rose again and some residents got water in their basements. A [sump pump with a battery backup](/algonquin/sump-pumps) keeps running when the power goes out, and a [backflow valve](/algonquin/flood-control-maintenance) stops sewage from coming up through floor drains."
+    },
+    {
+     "title": "Well Water, Testing and Filtration",
+     "body": "Algonquin’s water comes from village wells on both sides of the Fox River, not from Lake Michigan. Groundwater carries minerals that can leave scale on faucets and sediment in your water heater over time. A [water test](/algonquin/water-filtration-systems) shows what’s in your water, and a filtration system can cut down on buildup."
+    },
+    {
+     "title": "Roots, Drains and Sewer Lines",
+     "body": "Many of the trees planted when Algonquin’s subdivisions went in are now 17 to 36 years old, and their roots go looking for water in sewer lines. Slow drains, gurgling toilets and backups in the basement floor drain are the early signs. A [camera inspection](/algonquin/video-camera-sewer-inspections) shows what’s in the line, and [hydro jetting](/algonquin/hydro-jetting) clears it out."
+    }
+   ]
+  },
+  "whyH2": "Why Algonquin Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real J. Blanton Reviews",
+   "intro": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+   "rating": "4.7",
+   "ratingSub": "5,669+ Google reviews across all J. Blanton locations",
+   "items": [
+    {
+     "name": "Sara Corcoran",
+     "url": "https://maps.app.goo.gl/hcHjEjPhBvoYqNnh8",
+     "text": "I had another company come out first to fix my sewer line that got blocked in this cold weather, but the issue was not fully resolved. [...] They all were professional, knowledgeable, offered solutions, and answered all my questions. They all went above and beyond to make sure my issue is fixed efficiently and as soon as possible."
+    },
+    {
+     "name": "Richard Hannenberg",
+     "url": null,
+     "text": "Kept in excellent contact. Got here very timely. Work complete of water heater installed and the old one removed. All left in good shape and working. Kept in good contact and a great job."
+    },
+    {
+     "name": "Amanda Margaret",
+     "url": null,
+     "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Algonquin Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Algonquin?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Esplanade Drive office keeps our plumbers close to Algonquin, and we [treat emergencies as a priority](/algonquin/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "Does Algonquin have hard water?",
+     "preview": "Algonquin’s water comes from village wells, and groundwater naturally carries minerals.",
+     "a": "Algonquin’s water comes from village wells, and groundwater naturally carries minerals. Over time those minerals can leave scale on faucets and showerheads and sediment in your water heater. A [water test](/algonquin/water-filtration-systems) tells you exactly what’s in your water, so you know whether filtration or a softener makes sense for your home."
+    },
+    {
+     "q": "My home was built in the 1990s or 2000s. What should I check first?",
+     "preview": "Start with the equipment that has a shelf life: the water heater and the sump pump.",
+     "a": "Start with the equipment that has a shelf life: the water heater and the sump pump. If either is original to the house, it’s living on borrowed time. A camera look at your sewer line is worth it too, since roots from maturing trees are a common cause of backups. A [whole-home checkup](/algonquin/plumbing-maintenance) covers all of it in one visit."
+    },
+    {
+     "q": "How do I keep my basement dry when the Fox River rises?",
+     "preview": "Make sure your sump pump works before the rain starts: pour a bucket of water into the pit and watch it turn on.",
+     "a": "Make sure your sump pump works before the rain starts: pour a bucket of water into the pit and watch it turn on. Add a battery backup so it keeps running if the power goes out, and keep the discharge line clear and pointed away from the house. If water comes up through a floor drain instead, a backflow valve stops sewage from backing up into the basement. We can check your setup and tell you what it needs."
+    },
+    {
+     "q": "When should I replace my water heater?",
+     "preview": "Tank water heaters usually last somewhere around 8 to 12 years.",
+     "a": "Tank water heaters usually last somewhere around 8 to 12 years. Rusty water, rumbling noises, a leak at the base or hot water that runs out faster than it used to all mean it’s time to have it checked. [Replacing it](/algonquin/water-heater-installation) on your schedule is easier than dealing with a flooded basement."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Algonquin?",
+     "preview": "Along with Algonquin, our office serves Lake in the Hills, Crystal Lake, Cary, Huntley, Barrington Hills, Prairie Grove and more.",
+     "a": "Along with Algonquin, our office serves Lake in the Hills, Crystal Lake, Cary, Huntley, Barrington Hills, Prairie Grove and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Algonquin start small, like a sump pump that’s getting tired or a water heater that came with the house. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Algonquin Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Algonquin, IL",
+ "metaDescription": "Local plumbers on Esplanade Drive in Algonquin, IL. Serving Chicagoland since 1993. Call 24/7 for an upfront price before any work starts."
+}

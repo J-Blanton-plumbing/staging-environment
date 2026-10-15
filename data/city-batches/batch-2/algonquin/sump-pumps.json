@@ -1,0 +1,293 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in Algonquin, IL",
+   "sub": "When the Fox River runs high, sump pumps across town get a workout. We install and repair sump pumps and battery backups across Algonquin, with a flat price before we start. From our office on Esplanade Drive, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Sump Pump Ready for the Next Storm?",
+    "intro": "Warning signs:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It's the Original Pump",
+      "body": "A builder-grade pump from the 1990s or 2000s is past its expected life."
+     },
+     {
+      "h3": "It Won't Start When You Test It",
+      "body": "Pour water in the pit. Nothing? Float or motor."
+     },
+     {
+      "h3": "It Cycles Every Few Seconds",
+      "body": "A bad check valve or a float set too tight."
+     },
+     {
+      "h3": "There's No Backup",
+      "body": "One pump and no battery is a gamble during storms."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Algonquin Basements",
+    "intro": "The Fox River runs right through Algonquin. It hit a record 12.70 feet here in April 2013, and in July 2017 volunteers filled more than 25,000 sandbags.",
+    "items": [
+     {
+      "h3": "High Groundwater Near the River",
+      "body": "When the river is up, groundwater rises with it and sump pumps run for days."
+     },
+     {
+      "h3": "Storms Take the Power Out",
+      "body": "A battery backup keeps pumping when the main pump loses power."
+     },
+     {
+      "h3": "Finished Basements Need Protection",
+      "body": "More than half of Algonquin homes went up between 1990 and 2009, many with finished lower levels."
+     },
+     {
+      "h3": "Discharge Lines and Landscaping",
+      "body": "Discharge lines buried under beds or lawn can freeze or clog. We route them so water leaves the yard."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We prove it works.",
+    "steps": [
+     {
+      "h3": "1. Check the Whole System",
+      "body": "Pump, float, check valve, discharge and backup."
+     },
+     {
+      "h3": "2. Repair, Replace or Add a Backup",
+      "body": "With clear options."
+     },
+     {
+      "h3": "3. Flat Price and a Fill Test",
+      "body": "We fill the pit and watch it run."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "How do I keep my basement dry when the Fox River rises?",
+      "preview": "Test the pump, add a battery backup and keep the discharge clear.",
+      "answer": "Test your pump before the rain: pour a bucket of water into the pit and watch it turn on. Add a battery backup, keep the discharge line clear and pointed away from the house, and protect floor drains with a backflow valve."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "Usually 7 to 10 years.",
+      "answer": "Most last somewhere around 7 to 10 years, less if they run often near the river."
+     },
+     {
+      "q": "Do I really need a battery backup?",
+      "preview": "If your basement is finished, yes.",
+      "answer": "If your basement is finished or holds anything you care about, yes. Storms and power outages often come together."
+     },
+     {
+      "q": "Can you upgrade to a stronger pump?",
+      "preview": "Yes, matched to your pit and discharge.",
+      "answer": "Yes. If your pump can't keep up, we'll install a higher-capacity pump and make sure the pit and discharge match it."
+     },
+     {
+      "q": "Where should my sump pump discharge go in a landscaped yard?",
+      "preview": "Away from the house, without soaking beds or freezing.",
+      "answer": "Far enough from the foundation that water doesn't come back, routed so it doesn't flood planting beds or freeze in winter. We'll suggest a route that works with your landscaping."
+     },
+     {
+      "q": "What does sump pump replacement cost in Algonquin?",
+      "preview": "It depends on the pump and backup. The price comes first.",
+      "answer": "It depends on the pump, any pit or check valve work and whether you add a backup. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Basement That Stays Dry?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in Algonquin, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/algonquin/sump-pumps",
+   "description": "Sump pump installation, repair and battery backups for Algonquin, IL basements near the Fox River. Tested before we leave, flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in Algonquin, IL",
+ "metaDescription": "Sump pump installation, repair and battery backups for Algonquin, IL basements near the Fox River. Tested before we leave, flat price first."
+}

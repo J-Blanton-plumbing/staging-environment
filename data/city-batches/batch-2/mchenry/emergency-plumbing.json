@@ -1,0 +1,298 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24/7 Emergency Plumbing in McHenry, IL",
+   "sub": "A sump pump that quits while the river is rising, a water heater that floods the basement or a pipe that splits on a January night. Our phone line is open 24/7, and our office on West Elm Street keeps our plumbers close to McHenry and the lake communities.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call a Plumber Right Away",
+    "intro": "Don't wait if:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "The Sump Pump Has Stopped",
+      "body": "Water is rising in the pit, and the rain or snowmelt hasn't stopped."
+     },
+     {
+      "h3": "Water Is Coming Up a Drain",
+      "body": "Floor drain, basement toilet or shower. Stop using water."
+     },
+     {
+      "h3": "A Pipe Has Burst",
+      "body": "Shut the main valve, then call."
+     },
+     {
+      "h3": "The Water Heater Is Leaking",
+      "body": "Close the cold water valve on top of the tank."
+     },
+     {
+      "h3": "You Smell Gas",
+      "body": "Leave. Call Nicor Gas or 911 from outside."
+     },
+     {
+      "h3": "No Water at All in Winter",
+      "body": "A frozen service line or main pipe. Don't use heat guns or torches."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in McHenry",
+    "intro": "McHenry's emergencies follow the water and the weather.",
+    "items": [
+     {
+      "h3": "High Water and Failed Sump Pumps",
+      "body": "When the Fox River and the lakes rise, sump pumps run nonstop. In July 2017, after heavy rain and river flooding, the state declared McHenry County a disaster area. See [sump pumps](/mchenry/sump-pumps)."
+     },
+     {
+      "h3": "Water Heaters Worn Down by Hard Water",
+      "body": "Hard groundwater shortens water heater life. When a tank fails, it can flood the basement fast. See [water heater repair](/mchenry/water-heater-repair)."
+     },
+     {
+      "h3": "Frozen Pipes",
+      "body": "McHenry County winters bring long stretches below freezing. Pipes in exterior walls, crawl spaces and garages freeze first. See [burst pipe repair](/mchenry/burst-pipe-repair)."
+     },
+     {
+      "h3": "Seasonal Homes",
+      "body": "Lake homes that sit empty in winter can freeze if the heat fails. A leak can run for days before anyone notices."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "A plumber, not a salesperson.",
+    "steps": [
+     {
+      "h3": "1. We Pick Up",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. Stop the Damage, Price the Repair",
+      "body": "Water stopped first, then a flat-rate price for the fix."
+     },
+     {
+      "h3": "3. Honest Advice",
+      "body": "If it can safely wait until morning, we'll tell you."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Betty Knows",
+      "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+      "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+     },
+     {
+      "name": "Seth Maybury",
+      "url": null,
+      "text": "Super helpfull. They called back on a Sunday late afternoon and came out that evening. 3 plumbers came to the house on Monday to finish the job. Joe, George and Anthony. Highly recommend them. No one wants to have Sewage backing up, they treated it like an emergency and kept at it."
+     },
+     {
+      "name": "Trenton Gligorovic",
+      "url": null,
+      "text": "Josh Reid came by on Saturday night around 8pm to help us with an emergency plumbing issue. He was beyond friendly and very honest with us. He was able to help us route our line to stop the back flow that was occurring in the house. I could tell he really cared about our situation and didn't seem annoyed at all considering it was Saturday night."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "How quickly can you get to my home in McHenry?",
+      "preview": "Call any time. We'll give you a realistic window.",
+      "answer": "Call us any time. Our West Elm Street office keeps us close to McHenry and the lake communities. Arrival times depend on the day and call volume, but we'll give you a realistic window and get a plumber to you as soon as we can."
+     },
+     {
+      "q": "My lake house has no water and it's below zero. What now?",
+      "preview": "Turn off the main and the well pump, then call.",
+      "answer": "Close the main valve and, if you're on a well, turn off the pump at the breaker. Open a faucet and don't use heat guns or torches on frozen pipes. Call us and we'll thaw and check the lines."
+     },
+     {
+      "q": "The river is up and my sump pump just quit. What do I do?",
+      "preview": "Check the breaker, start the backup and move valuables.",
+      "answer": "Check the breaker and the plug, make sure the backup is running and move anything valuable off the floor. Then call us."
+     },
+     {
+      "q": "Do you serve Johnsburg, Wonder Lake and Fox Lake?",
+      "preview": "Yes.",
+      "answer": "Yes. Our McHenry office serves the lake communities around the Chain O'Lakes."
+     },
+     {
+      "q": "What does an emergency plumber cost in McHenry?",
+      "preview": "It depends on the problem. The price comes first.",
+      "answer": "Every emergency is priced on what's wrong and what it takes to fix. You'll have a flat-rate number before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? We're Answering Now.",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24/7 Emergency Plumbing in McHenry, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/mchenry/emergency-plumbing",
+   "description": "24/7 emergency plumber in McHenry, IL and McHenry County. Burst pipes, sewer backups, failed sump pumps and water heaters. Upfront pricing.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in McHenry, IL 24/7",
+ "metaDescription": "24/7 emergency plumber in McHenry, IL and McHenry County. Burst pipes, sewer backups, failed sump pumps and water heaters. Upfront pricing."
+}

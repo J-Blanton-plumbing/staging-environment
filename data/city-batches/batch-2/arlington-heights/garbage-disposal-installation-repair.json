@@ -1,0 +1,294 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Repair and Installation in Arlington Heights, IL",
+   "sub": "A disposal that hums but won't spin, leaks under the sink or just stopped. We repair it when we can and replace it when we can't, with a flat price before we start. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Common Garbage Disposal Problems",
+    "intro": "Most disposal calls are one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Hums but Won't Turn",
+      "body": "Something is jammed in the grinding chamber. Turn it off at the switch and keep your hands out."
+     },
+     {
+      "h3": "Nothing Happens",
+      "body": "Try the reset button on the bottom. If it still won't run, the motor or wiring has failed."
+     },
+     {
+      "h3": "It Leaks",
+      "body": "A leak at the flange or a hose is a repair. A leak from the unit's body means replacement."
+     },
+     {
+      "h3": "The Sink Drains Slowly",
+      "body": "Food buildup in the disposal or the drain below it. See [drain cleaning](/arlington-heights/drain-cleaning) if it backs up."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Arlington Heights Kitchens",
+    "intro": "Kitchens here range from original postwar layouts to recent remodels, and disposal work varies with them.",
+    "items": [
+     {
+      "h3": "Adding a Disposal to an Older Kitchen",
+      "body": "Some kitchens from the 1950s and 1960s never had one. We check the drain size, the dishwasher hookup and whether there's power under the sink before quoting."
+     },
+     {
+      "h3": "Older Drain Lines Under the Sink",
+      "body": "A new disposal can expose a weak, corroded drain arm in an older home. We check it while we're there so the sink drains properly."
+     },
+     {
+      "h3": "Replacing a Worn-Out Unit",
+      "body": "In homes from the 1970s and 1980s, a disposal swap is usually straightforward. We match the mount when we can to keep the job quick."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A disposal job should be quick and clean.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, leak, tripped reset or a dead motor. We find out which and show you."
+     },
+     {
+      "h3": "2. Flat Price",
+      "body": "Repair or replace, you get one number before we start."
+     },
+     {
+      "h3": "3. Test Everything",
+      "body": "We run the disposal and the dishwasher and check every connection for drips."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     },
+     {
+      "name": "Doug Herrera",
+      "url": null,
+      "text": "Ty did great work and took the time to answer all our questions. Bonus: Very pet friendly! Was great with Darcy!"
+     },
+     {
+      "name": "Andy Malnor",
+      "url": null,
+      "text": "Andrew was able to come same-day and diagnosed the issue, provided some options, and got us all figured out. Easy process overall and will call them again for future plumbing problems."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Should I repair or replace my garbage disposal?",
+      "preview": "A jam or loose connection is a repair. A leaking body or dead motor means replace.",
+      "answer": "A jam, a tripped reset or a loose connection can be fixed. A disposal leaking from its body or with a burned-out motor needs replacing. We'll tell you which."
+     },
+     {
+      "q": "What shouldn't go down a disposal?",
+      "preview": "Grease, bones, fibrous scraps, coffee grounds, eggshells, rice and pasta.",
+      "answer": "Grease and oil, bones, fibrous scraps like celery and corn husks, coffee grounds, eggshells, rice and pasta. They jam the unit or build up in the drain line."
+     },
+     {
+      "q": "How long do garbage disposals last?",
+      "preview": "Often 8 to 15 years, depending on the model and use.",
+      "answer": "Many last around 8 to 15 years. Frequent jams, leaks and louder grinding mean it's near the end."
+     },
+     {
+      "q": "Why does my disposal smell?",
+      "preview": "Food trapped under the splash guard and in the drain.",
+      "answer": "Food gets trapped under the rubber splash guard and in the drain below. Run cold water for 15 to 20 seconds after each use and grind a few ice cubes now and then. A smell that keeps returning usually means the drain line needs cleaning."
+     },
+     {
+      "q": "How much does garbage disposal replacement cost in Arlington Heights?",
+      "preview": "It depends on the unit and any plumbing or electrical work. You get a flat price first.",
+      "answer": "It depends on the unit and whether plumbing or electrical changes are needed. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Disposal Working?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Repair and Installation in Arlington Heights, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/arlington-heights/garbage-disposal-installation-repair",
+   "description": "Garbage disposal repair and installation in Arlington Heights, IL. Jams, leaks and dead motors fixed, or a new unit installed. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Repair in Arlington Heights, IL",
+ "metaDescription": "Garbage disposal repair and installation in Arlington Heights, IL. Jams, leaks and dead motors fixed, or a new unit installed. Flat price first."
+}

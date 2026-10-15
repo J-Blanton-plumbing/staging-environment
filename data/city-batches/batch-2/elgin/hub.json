@@ -1,0 +1,221 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Elgin, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on North McLean Boulevard. Our line is open 24/7 for homeowners in Elgin and across the Fox Valley. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Elgin",
+   "intro": "Our licensed plumbers work on every kind of Elgin home, from 1800s houses near downtown to newer homes on the west side. Pick a service to see how we handle it in Elgin.",
+   "cards": [
+    {
+     "title": "Drain Cleaning",
+     "href": "/elgin/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/elgin/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/elgin/sewer-repair",
+     "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/elgin/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Garbage Disposals",
+     "href": "/elgin/garbage-disposal-installation-repair",
+     "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+     "image": {
+      "src": "/images/city-hubs/garbage-disposal-installation.webp",
+      "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/elgin/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Leak Repair",
+     "href": "/elgin/leak-repairs",
+     "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On North McLean Boulevard",
+   "h2": "Our Elgin Office",
+   "body": "Our Elgin office is at 964 N McLean Blvd, Elgin, IL 60123. It keeps our plumbers close to homes on both sides of the Fox River, from the historic streets near downtown to the newer subdivisions on the west side. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "964 N McLean Blvd, Elgin, IL 60123",
+   "areasH3": "Fox Valley Communities We Serve",
+   "areas": [
+    {
+     "label": "South Elgin",
+     "href": "/south-elgin"
+    },
+    {
+     "label": "Bartlett",
+     "href": "/bartlett"
+    },
+    {
+     "label": "Gilberts",
+     "href": "/gilberts"
+    },
+    {
+     "label": "Hoffman Estates",
+     "href": "/hoffman-estates"
+    },
+    {
+     "label": "Pingree Grove",
+     "href": "/pingree-grove"
+    },
+    {
+     "label": "Hampshire",
+     "href": "/hampshire"
+    }
+   ],
+   "more": "/locations/chicagoland"
+  },
+  "depth": {
+   "h2": "What Elgin Homes Need From a Plumber",
+   "intro": "Elgin’s homes span more than 150 years. About 1 in 5 were built before 1940, and nearly 3 in 10 went up between 1990 and 2009. Add the Fox River and heavy summer storms, and each part of town has its own plumbing problems.",
+   "tiles": [
+    {
+     "title": "Historic Homes Near Downtown",
+     "body": "The Elgin Historic District, the oldest part of the city, has nearly 700 buildings, many from the 1800s. Homes from that era often still run on cast iron drains, galvanized water lines and clay sewer pipe. Galvanized pipe rusts from the inside and slowly cuts water pressure, and clay pipe cracks and lets roots in. A [camera inspection](/elgin/video-camera-sewer-inspections) shows the condition of your line before you decide on a [sewer repair](/elgin/sewer-repair)."
+    },
+    {
+     "title": "Summer Storms and Flooded Basements",
+     "body": "In July 2017, more than 7 inches of rain fell just south of Elgin in two days, and basements flooded across the area. A [sump pump with a battery backup](/elgin/sump-pumps) keeps running when the power goes out. A [backflow valve](/elgin/flood-control-maintenance) stops sewage from coming up through floor drains. If you’ve already had [water in the basement](/elgin/basement-flooding), we can help you find where it came from."
+    },
+    {
+     "title": "Newer West Side Homes, Original Equipment",
+     "body": "Nearly 3 in 10 Elgin homes went up between 1990 and 2009. Equipment that came with the house, like the first water heater and the first sump pump, isn’t built to last 20 or 30 years. A [water heater that leaks or runs out too fast](/elgin/water-heater-repair) is usually the first to go. A [whole-home checkup](/elgin/plumbing-maintenance) tells you what’s close to the end before it fails."
+    },
+    {
+     "title": "Winter Freezes and Hidden Leaks",
+     "body": "Fox Valley winters bring long stretches below freezing. Pipes in exterior walls, crawl spaces and outdoor spigot lines freeze first, and a split pipe often starts leaking inside a wall once it thaws. Water stains on a ceiling or a meter that moves when nothing is running are the signs to watch for. We can [find and fix the leak](/elgin/leak-repairs), and we’re on call 24/7 if a [pipe bursts](/elgin/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Elgin Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real J. Blanton Reviews",
+   "intro": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+   "rating": "4.7",
+   "ratingSub": "5,669+ Google reviews across all J. Blanton locations",
+   "items": [
+    {
+     "name": "Tanya Hill",
+     "url": null,
+     "text": "Ray was awesome! My kitchen sink was backed up and he took care of things courteously, neatly and thoroughly. Ray explained the mechanics of why my issue may have happened and how to prevent it from happening again. I recommend Ray and JVS to anyone looking for a plumber!"
+    },
+    {
+     "name": "Jeff",
+     "url": null,
+     "text": "Lou was very professional and his experience shows. He took a quick look at our broken hot water heater, saw a dirty component and knew right away that replacing the part would solve the problem. Thanks Lou!"
+    },
+    {
+     "name": "Mike Robb",
+     "url": "https://maps.app.goo.gl/1GJLvNz5PeBxvKku8",
+     "text": "We had an emergency situation on a weekend when our sewer main broke in the basement, and this company was an absolute lifesaver! They responded quickly, offered very reasonable rates, and immediately sent someone out to diagnose the problem. Within no time, they had a crew on-site to tackle the issue."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Elgin Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Elgin?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. A historic home near downtown with original cast iron and clay pipe can take more work than a newer one. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our McLean Boulevard office keeps our plumbers close to Elgin, and we [treat emergencies as a priority](/elgin/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "My home near downtown Elgin is over 100 years old. What should I check?",
+     "preview": "Start with the sewer line and the water lines.",
+     "a": "Start with the sewer line and the water lines. Homes from that era often have clay sewer pipe, cast iron drains and galvanized water pipe, and all of them wear out with age. A camera inspection shows the condition of your sewer line, and low water pressure is often a sign that galvanized pipe is closing up inside. Age alone doesn’t mean something is wrong, but an inspection lets you plan repairs instead of reacting to a leak."
+    },
+    {
+     "q": "Why does my kitchen drain keep clogging?",
+     "preview": "Grease is the usual cause.",
+     "a": "Grease is the usual cause. It goes down the drain as a liquid, cools and sticks to the pipe walls, and food scraps get caught in it. Over time the opening narrows until water barely moves. A plunger or a store-bought cleaner might help for a while, but [professional drain cleaning](/elgin/drain-cleaning) clears the buildup from the pipe walls so the clog doesn’t come right back."
+    },
+    {
+     "q": "When should I replace my water heater?",
+     "preview": "Tank water heaters usually last somewhere around 8 to 12 years.",
+     "a": "Tank water heaters usually last somewhere around 8 to 12 years. Rusty water, rumbling noises, a leak at the base or hot water that runs out faster than it used to all mean it’s time to have it checked. [Replacing it](/elgin/water-heater-installation) on your schedule is easier than dealing with a flooded basement."
+    },
+    {
+     "q": "How do I protect my basement from sewer backups?",
+     "preview": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris.",
+     "a": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris. For homes with repeat backups, an [overhead sewer system](/elgin/overhead-sewer-systems) lifts basement wastewater above the level where backups happen. We can look at your setup and tell you which option makes sense for your home."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Elgin?",
+     "preview": "Along with Elgin, our office serves South Elgin, Bartlett, Gilberts, Hoffman Estates, Pingree Grove, Hampshire and more.",
+     "a": "Along with Elgin, our office serves South Elgin, Bartlett, Gilberts, Hoffman Estates, Pingree Grove, Hampshire and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Elgin start small, like roots in an old clay sewer line or a water heater past its prime. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Elgin Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Elgin, IL",
+ "metaDescription": "Local plumbers on North McLean Boulevard in Elgin, IL. Serving Chicagoland since 1993. Call 24/7 for an upfront price before any work starts."
+}

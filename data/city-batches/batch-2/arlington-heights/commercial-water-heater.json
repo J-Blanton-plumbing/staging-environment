@@ -1,0 +1,282 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Arlington Heights, IL",
+   "sub": "A dish machine that can't reach temperature before the lunch rush, or a dental office with cold water at every sink. We keep commercial water heaters running for Arlington Heights businesses, from our office on East Central Road, with a 24/7 phone line and a flat price before any work.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Commercial Water Heater Service for Arlington Heights Businesses",
+    "intro": "Downtown storefronts, strip centers and office buildings all depend on hot water. We work with:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Restaurants, Cafes and Bakeries",
+      "body": "Sanitizing temperatures at the dish machine are not optional. When the heater falls behind, the kitchen slows down."
+     },
+     {
+      "h3": "Medical, Dental and Veterinary Offices",
+      "body": "Exam room sinks and cleanup areas need hot water from the first appointment to the last."
+     },
+     {
+      "h3": "Salons, Barbers and Spas",
+      "body": "Shampoo bowls and treatment rooms draw small amounts constantly, which keeps a heater working all day."
+     },
+     {
+      "h3": "Fitness Studios and Gyms",
+      "body": "Back-to-back showers after every class are one of the hardest loads a commercial heater can carry."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Repair, Replacement and Maintenance",
+    "intro": "From a no-heat call to a planned upgrade:",
+    "steps": [
+     {
+      "h3": "Troubleshooting and Repair",
+      "body": "Gas valves, igniters, burners, elements, controls and relief valves on commercial tank and tankless equipment."
+     },
+     {
+      "h3": "Planned Replacement",
+      "body": "We measure your peak demand, recommend capacity and recovery, and book the swap around your business hours when possible."
+     },
+     {
+      "h3": "Scheduled Service",
+      "body": "Tank flushing, tankless descaling and safety checks, set to how hard your system runs."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Working With Arlington Heights Businesses",
+    "intro": "Our office at 1204 E. Central Road is a short drive from downtown Arlington Heights and the shopping centers along the main roads.",
+    "items": [
+     {
+      "h3": "Renovated Buildings, Mixed Plumbing",
+      "body": "Many storefronts have been remodeled several times over the years. Before we size a new heater, we trace the gas supply, venting and water connections that are actually there."
+     },
+     {
+      "h3": "One Call Any Hour",
+      "body": "If the heater quits on a Saturday night, our phone line is open, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "h3": "Numbers You Can Budget",
+      "body": "You get a flat-rate price before work begins, so a replacement doesn't turn into an open-ended bill."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Rich Walker",
+      "url": null,
+      "text": "Alex & Mike were great! They answered all my questions professionally and respectfully. Their work appears to be top notch and explained everything they were doing throughout the project. Very pleased with my whole J. Blanton experience today."
+     },
+     {
+      "name": "Jessica Bartucci",
+      "url": null,
+      "text": "Ty was knowledgeable and efficient. He was friendly with staff and clients when we opened and even cleaned up after himself when the job was done. He patiently explained what we could expect and delivered from start to finish."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Arlington Heights Businesses",
+    "items": [
+     {
+      "q": "Our heater can't keep up at peak times. Do we need a bigger one?",
+      "preview": "Maybe. It could also be sediment, a failing burner or a mixing valve problem.",
+      "answer": "Maybe. A heater that used to keep up and no longer does often has sediment, a weak burner or a failing mixing valve. If your business has grown, the heater may simply be undersized. We check both before recommending a replacement."
+     },
+     {
+      "q": "Will you work before we open or after we close?",
+      "preview": "For planned work, we try to.",
+      "answer": "For a planned replacement or service visit, we try to schedule around your hours. For a failure in the middle of the day, call us right away."
+     },
+     {
+      "q": "Do you service commercial tankless racks?",
+      "preview": "Yes, single units and multi-unit systems.",
+      "answer": "Yes. We repair, descale and replace commercial tankless units, including systems where several units work together."
+     },
+     {
+      "q": "How often should a busy restaurant's heater be flushed?",
+      "preview": "More often than a home heater. We set a schedule based on use.",
+      "answer": "A restaurant heater runs far more than a home unit, so sediment and scale build faster. We look at your usage and the equipment and set a flushing or descaling interval to match."
+     },
+     {
+      "q": "How much does commercial water heater replacement cost in Arlington Heights?",
+      "preview": "It depends on capacity, fuel, venting and code work. You get a flat price first.",
+      "answer": "It depends on the capacity and recovery you need, the fuel type, the venting and any code updates. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 70,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Arlington Heights, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/arlington-heights/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Arlington Heights, IL businesses. 24/7 phone line and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Arlington Heights, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Arlington Heights, IL businesses. 24/7 phone line and a flat price before work."
+}

@@ -1,0 +1,314 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Leak Repairs",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Leak Detection and Repair in Geneva, IL",
+   "sub": "A stain spreading across a plaster ceiling, a water bill that keeps rising or the sound of running water at night. We pinpoint hidden leaks before opening anything, fix them and give you a flat price you approve first. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+    "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs of a Hidden Leak",
+    "intro": "Watch for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Stains on Plaster or Drywall",
+      "body": "Often under a bathroom or along an exterior wall."
+     },
+     {
+      "h3": "A Rising Water Bill",
+      "body": "Same habits, higher bill."
+     },
+     {
+      "h3": "A Meter That Moves With Everything Off",
+      "body": "Water is going somewhere."
+     },
+     {
+      "h3": "Rusty Water or Low Pressure",
+      "body": "Old galvanized pipe corroding inside."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "what-we-fix",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Fix",
+    "h2": "Leaks We Find and Repair",
+    "intro": "From pinholes to whole systems:",
+    "steps": [
+     {
+      "h3": "Old Galvanized Pipe",
+      "body": "Leaking joints and rusty water in historic homes."
+     },
+     {
+      "h3": "Pipes in Walls, Floors and Ceilings",
+      "body": "Copper pinholes and failed fittings."
+     },
+     {
+      "h3": "Underground Service Lines",
+      "body": "Leaks between the meter and the house."
+     },
+     {
+      "h3": "Repiping",
+      "body": "Replacing old pipe that's failing in several places."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-leaks",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Leaks in Geneva Homes",
+    "intro": "In Geneva, the age of your home shapes where leaks start.",
+    "items": [
+     {
+      "h3": "Galvanized Pipe Near Downtown",
+      "body": "Many older homes still have galvanized supply lines. They rust from the inside, and leaks start at threaded joints, often in several places."
+     },
+     {
+      "h3": "Plaster Walls and Ceilings",
+      "body": "In historic homes, finding a leak precisely matters. We locate it first so only a small area of plaster is opened."
+     },
+     {
+      "h3": "Supply Lines in Newer Homes",
+      "body": "In homes built after 1990, original braided lines and washer hoses are now aging."
+     },
+     {
+      "h3": "Freeze Damage",
+      "body": "A pipe that split in January often leaks only after it thaws. See [burst pipe repair](/geneva/burst-pipe-repair)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find it first, open as little as possible.",
+    "steps": [
+     {
+      "h3": "1. Pinpoint It",
+      "body": "Meter tests, moisture readings and listening equipment."
+     },
+     {
+      "h3": "2. Fix It Right",
+      "body": "A repair, or a repipe plan if the pipe is failing everywhere."
+     },
+     {
+      "h3": "3. A Price You Approve",
+      "body": "Before any work."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Leak Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Keith Spengel",
+      "url": null,
+      "text": "Ty was awesome. Not only did he find the problem more accurately than previous people who came out, he fixed it same day and explained everything in detail with a great personality and an accommodating demeanor. I couldn’t be happier with the work that he did and how he did it."
+     },
+     {
+      "name": "Amee Kauffman",
+      "url": null,
+      "text": "We had a difficult leaky pipe situation and things could have gone bad quickly, but Alex took care to find a solution that was the least intrusive to our home and lives. He was very kind, knowledgable and thoughtful throughout the process and we appreciate the effort he put into fixing our home!"
+     },
+     {
+      "name": "Steven Geiermann",
+      "url": null,
+      "text": "Edgar Herrera was a stellar representative for J Blanton’s. He addressed the broken water pipe in an efficient, timely manner. He offered approximate next steps. Definitely 5 stars!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Leak Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Should I replace the galvanized pipe in my older home?",
+      "preview": "If it's leaking or the pressure is low, it's usually time.",
+      "answer": "If you're seeing leaks at joints, rusty water or low pressure, the pipe is near the end. Repiping ends the cycle of patching one leak after another."
+     },
+     {
+      "q": "Can you find a leak without damaging plaster?",
+      "preview": "We pinpoint it first so the opening is small.",
+      "answer": "We use moisture meters and listening equipment to find the spot first, so only a small area needs to be opened."
+     },
+     {
+      "q": "How do I check for a hidden leak?",
+      "preview": "Turn off all water and watch the meter.",
+      "answer": "Turn off every fixture and appliance and watch the meter. If it moves, there's a leak."
+     },
+     {
+      "q": "Is a small leak worth fixing?",
+      "preview": "Yes. It leads to mold and rot.",
+      "answer": "Yes. Slow leaks cause mold, rot and plaster damage over time."
+     },
+     {
+      "q": "How much does leak repair cost in Geneva?",
+      "preview": "It depends on the leak and access. You'll approve a flat price first.",
+      "answer": "It depends on where the leak is, the pipe and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Find That Leak?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Leak Detection and Repair in Geneva, IL",
+   "serviceType": "Leak Repairs",
+   "url": "https://jblantonplumbing.com/geneva/leak-repairs",
+   "description": "Leak detection and repair in Geneva, IL. Hidden leaks in walls, floors and underground found and fixed, plus repiping for old galvanized pipe.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Leak Detection & Repair in Geneva, IL",
+ "metaDescription": "Leak detection and repair in Geneva, IL. Hidden leaks in walls, floors and underground found and fixed, plus repiping for old galvanized pipe."
+}

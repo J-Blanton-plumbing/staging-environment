@@ -1,0 +1,311 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Rodding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Rodding in Arlington Heights, IL",
+   "sub": "When the basement floor drain fills up or every drain in the house slows down at once, the main line is blocked. We rod it clear, show you what caused it on camera and give you one flat price before we start. Our office on East Central Road answers 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-rodding-front-yard.webp",
+    "alt": "J. Blanton plumber feeding the cable from a drum rodding machine into an outdoor sewer cleanout in a front yard"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-sewer-rodding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Sewer Rodding?",
+    "body": "Sewer rodding clears a blocked main line with a long, flexible steel cable fed through a cleanout access point. A cutting head on the end breaks through roots, grease, and debris and pushes the blockage toward the street connection, restoring flow through the pipe. It's the standard first fix for a clogged or backed-up sewer line. For most homes, it's the only fix needed.",
+    "img": {
+     "src": "/images/city-services-v2/sewer-rodding-diagram.webp",
+     "alt": "Diagram showing a rodding cable fed through a cleanout access point into the main sewer line, with a cutting head clearing the blockage toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Arlington Heights Home Needs Sewer Rodding",
+    "intro": "These point to a blocked main line, not a single fixture:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Around the Floor Drain",
+      "body": "The floor drain is the lowest opening in most Arlington Heights basements, so a main line clog shows up there first."
+     },
+     {
+      "h3": "The Washer Drains Into the Floor",
+      "body": "If water comes up through the floor drain when the washing machine empties, the line can't carry the volume."
+     },
+     {
+      "h3": "Several Fixtures Slow Down Together",
+      "body": "One slow sink is a local clog. A slow tub, toilet and sink at the same time point to the main."
+     },
+     {
+      "h3": "You Had It Rodded Last Spring",
+      "body": "Roots grow back. If you're on a once-a-year cycle, it's time again."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Clogs Main Lines in Arlington Heights",
+    "intro": "With about 3 in 4 homes built between 1940 and 1989, most of the main lines we rod here are decades old.",
+    "items": [
+     {
+      "h3": "Roots at Clay Joints",
+      "body": "In postwar neighborhoods, roots from mature parkway and backyard trees find the joints in clay laterals and form a mat. Rodding cuts them back so water flows again."
+     },
+     {
+      "h3": "Scale in Old Cast Iron",
+      "body": "Cast iron drains inside the house build up rust scale over the years. The pipe gets narrower, and paper and grease catch on the rough walls."
+     },
+     {
+      "h3": "Spring Root Growth",
+      "body": "Roots grow fastest in spring and early summer, which is also when heavy storms test the line. A line that's half blocked by roots is the first to back up."
+     },
+     {
+      "h3": "When Rodding Isn't Enough",
+      "body": "If roots come back in a few months, [hydro jetting](/arlington-heights/hydro-jetting) clears more of the pipe wall. If the camera shows a crack or a sag, that's a [sewer repair](/arlington-heights/sewer-repair)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Handle Sewer Rodding",
+    "intro": "A clogged main line shouldn't come with a surprise bill.",
+    "steps": [
+     {
+      "h3": "1. Find the Cleanout",
+      "body": "Many older homes have a cleanout inside the basement. We find it, protect the floor and set up there."
+     },
+     {
+      "h3": "2. Clear It and Show You",
+      "body": "We rod the line to the city main, then run a camera so you see what caused the clog and how much is left."
+     },
+     {
+      "h3": "3. Flat Price Before We Start",
+      "body": "If the camera shows damage, you get options and a price for each. You decide what happens next."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Rodding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Maria Bailly",
+      "url": null,
+      "text": "On 11/25/2025 technician Mr. Edgar Herrera did amazing job fixing problem what we have. He spent long hours making sure that everything worked. He was very professional and also understanding our needs. Thank you so much Mr. Herrera."
+     },
+     {
+      "name": "John Marko",
+      "url": null,
+      "text": "Jovany was super helpful and got the job done, explaining everything to me in detail, dealt nicely with the fact that we had to reschedule the service due to weather issues. Great service."
+     },
+     {
+      "name": "Sara Corcoran",
+      "url": "https://maps.app.goo.gl/hcHjEjPhBvoYqNnh8",
+      "text": "I had another company come out first to fix my sewer line that got blocked in this cold weather, but the issue was not fully resolved. [...] They all were professional, knowledgeable, offered solutions, and answered all my questions. They all went above and beyond to make sure my issue is fixed efficiently and as soon as possible."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Rodding Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "How often should my sewer line be rodded?",
+      "preview": "Once a year for most homes with root problems. Less often for clean lines.",
+      "answer": "If roots have clogged your line before, once a year is a good rule, ideally in early spring. If the camera shows a clean line with no roots, you may not need regular rodding at all."
+     },
+     {
+      "q": "Is rodding the same as snaking a drain?",
+      "preview": "Same idea, bigger machine. Rodding clears the main sewer line.",
+      "answer": "Same idea, different scale. A small snake clears a sink or tub drain. Sewer rodding uses a heavy cable machine with cutting heads to clear the main line from the house to the street."
+     },
+     {
+      "q": "Can rodding damage an old clay pipe?",
+      "preview": "Done right, no. If the pipe is already broken, the camera will show it.",
+      "answer": "Done properly, no. We size the cutting head to the pipe. If the line is already cracked or collapsed, the camera will show it, and we'll tell you before going further."
+     },
+     {
+      "q": "Why does my floor drain back up only in heavy rain?",
+      "preview": "A partly blocked line or an overloaded sewer. The camera shows which.",
+      "answer": "Either your line is partly blocked and can't keep up when the sewer is full, or the public sewer itself is overloaded and pushing water back. Clearing and inspecting the line tells us which. For repeat storm backups, see [overhead sewer systems](/arlington-heights/overhead-sewer-systems)."
+     },
+     {
+      "q": "How much does sewer rodding cost in Arlington Heights?",
+      "preview": "It depends on access and how blocked the line is. You get a flat price first.",
+      "answer": "It depends on access to the cleanout, the length of the line and what's blocking it. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Main Line Flowing?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Rodding in Arlington Heights, IL",
+   "serviceType": "Sewer Rodding",
+   "url": "https://jblantonplumbing.com/arlington-heights/sewer-rodding",
+   "description": "Sewer rodding for Arlington Heights, IL homes. We clear the main line, show you the cause on camera and give one flat price first. Call us 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Rodding in Arlington Heights, IL",
+ "metaDescription": "Sewer rodding for Arlington Heights, IL homes. We clear the main line, show you the cause on camera and give one flat price first. Call us 24/7."
+}

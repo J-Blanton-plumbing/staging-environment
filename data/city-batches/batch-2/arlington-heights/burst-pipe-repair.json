@@ -1,0 +1,349 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Arlington Heights, IL",
+   "sub": "A pipe that split in the cold can put hundreds of gallons into your home before you find it. Our phone line is open 24/7. We stop the damage, repair the pipe and show you how to keep it from happening again. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do if a Pipe Bursts",
+    "intro": "Before we get there:",
+    "steps": [
+     {
+      "h3": "1. Shut Off the Main",
+      "body": "Find the main water valve, usually in the basement near the meter, and turn it clockwise."
+     },
+     {
+      "h3": "2. Turn Off Power Near the Water",
+      "body": "If water is near outlets or appliances, shut off the breaker for that area if you can do it safely."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "This drains pressure from the lines and helps remaining water get out."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Our line is open 24/7."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "It's not always a dramatic spray:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Pressure Drops Suddenly",
+      "bullets": [
+       "Water is escaping before it reaches the faucet."
+      ]
+     },
+     {
+      "h3": "Sound of Running Water",
+      "bullets": [
+       "With nothing on, you hear water moving in a wall or ceiling."
+      ]
+     },
+     {
+      "h3": "A Wet Spot or Stain That Grows",
+      "bullets": [
+       "On a ceiling, wall or floor, often near an outside wall."
+      ]
+     },
+     {
+      "h3": "The Meter Keeps Spinning",
+      "bullets": [
+       "Everything is off and the meter is still moving."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "Catch it before it splits:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "No Water at One Faucet",
+      "body": "When it's below zero outside and one tap gives nothing, that line is likely frozen."
+     },
+     {
+      "h3": "Frost on an Exposed Pipe",
+      "body": "Visible frost on a pipe in a crawl space, garage or basement rim joist."
+     },
+     {
+      "h3": "Strange Smells From a Drain",
+      "body": "A blocked line can push odors back up."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Arlington Heights Homes",
+    "intro": "Cook County winters bring stretches of below-zero nights. Homes here have a few common weak spots.",
+    "items": [
+     {
+      "h3": "Pipes in Exterior Walls",
+      "body": "Kitchen sinks on outside walls are a classic freeze point, especially in older homes with little insulation in the wall."
+     },
+     {
+      "h3": "Rim Joists and Crawl Spaces",
+      "body": "Pipes running along the top of the basement wall or through a crawl space sit right next to cold air."
+     },
+     {
+      "h3": "Rooms Over Garages",
+      "body": "Many 1970s and 1980s homes have living space over an attached garage, with pipes running through the cold floor."
+     },
+     {
+      "h3": "Outdoor Spigots",
+      "body": "A hose left connected traps water in the spigot. Older spigots aren't freeze-resistant, and they split inside the wall."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, fix the pipe, prevent the next one.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "We make sure the water is off and the area is safe."
+     },
+     {
+      "h3": "2. Repair the Pipe",
+      "body": "We fix the split, thaw any other frozen sections and check for more damage."
+     },
+     {
+      "h3": "3. Prevent It Next Time",
+      "body": "Insulation, rerouting or freeze-resistant spigots, with a flat price first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sam Shucher",
+      "url": null,
+      "text": "Im back here again, writing another review ! arrived at 8 , and out by 10, fixed our burst pipe for our outdoor spigot. Thank you Anthony C ! promp, polite , professional, and fast !"
+     },
+     {
+      "name": "Steven Geiermann",
+      "url": null,
+      "text": "Edgar Herrera was a stellar representative for J Blanton’s. He addressed the broken water pipe in an efficient, timely manner. He offered approximate next steps. Definitely 5 stars!"
+     },
+     {
+      "name": "Rich Kings",
+      "url": null,
+      "text": "Outstanding Work on a Tough Basement Job! I can’t say enough good things about this plumbing team. They tackled a very challenging pipe replacement job in our basement, and from start to finish, they were professional, skilled, and incredibly thorough. The space was tight, the old piping was a mess, and there were unexpected complications along the way but they handled everything with confidence and expertise. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "How do I thaw a frozen pipe safely?",
+      "preview": "Open the faucet and warm the pipe slowly with a hair dryer or space heater. Never use an open flame.",
+      "answer": "Open the faucet so water can flow once it thaws. Warm the pipe slowly with a hair dryer, a heating pad or a space heater, starting near the faucet. Never use a torch or open flame. If you can't reach it, call us."
+     },
+     {
+      "q": "How can I keep my pipes from freezing?",
+      "preview": "Keep heat on, open cabinet doors on outside walls and drip faucets in a deep freeze.",
+      "answer": "Keep the heat at 55 degrees or higher, even when you're away. Open the cabinet doors under sinks on outside walls, let faucets drip during very cold nights and disconnect garden hoses in the fall."
+     },
+     {
+      "q": "Why did my pipe leak days after the cold snap?",
+      "preview": "It split while frozen and only leaked once it thawed.",
+      "answer": "Ice expands and splits the pipe while it's frozen. The water only escapes once it thaws, which is why leaks often show up a day or two after the cold breaks."
+     },
+     {
+      "q": "Can you replace my outdoor spigot with a freeze-resistant one?",
+      "preview": "Yes. It's one of the best ways to prevent a burst pipe.",
+      "answer": "Yes. A freeze-resistant spigot shuts the water off inside the warm part of the wall. It's a small job that prevents a common burst pipe."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Arlington Heights?",
+      "preview": "It depends on where the pipe is and how it's reached. You get a flat price first.",
+      "answer": "It depends on where the break is, the type of pipe and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Burst Pipe? Call Us Now.",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Arlington Heights, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/arlington-heights/burst-pipe-repair",
+   "description": "Burst or frozen pipe in Arlington Heights, IL? We stop the water, repair the pipe and help prevent the next freeze. Call us 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst & Frozen Pipe Repair in Arlington Heights, IL",
+ "metaDescription": "Burst or frozen pipe in Arlington Heights, IL? We stop the water, repair the pipe and help prevent the next freeze. Call us 24/7."
+}

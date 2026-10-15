@@ -1,0 +1,340 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewer Systems in Arlington Heights, IL",
+   "sub": "If your basement floor drain backs up every time a big storm comes through, an overhead sewer system lifts basement wastewater above the level where backups happen. We install them in Arlington Heights homes from our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Does Your Arlington Heights Home Need an Overhead Sewer?",
+    "intro": "It's worth a look if:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Your Home Was Built Before About 1980",
+      "body": "Newer homes in Arlington Heights have been built with overhead sewers since the late 1970s or early 1980s. Older ones usually weren't."
+     },
+     {
+      "h3": "The Floor Drain Rises in Heavy Rain",
+      "body": "Water comes up during a storm and goes back down after. That's the sewer pushing back."
+     },
+     {
+      "h3": "Your Line Is Clear and It Still Happens",
+      "body": "No roots, no crack, and it still backs up. The problem is the sewer, not your pipe."
+     },
+     {
+      "h3": "You Want to Finish the Basement",
+      "body": "Protecting it before the new floors go in costs less than replacing them later."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "split",
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "Your upstairs fixtures drain out above the point where the sewer could back up into them. An overhead system gives the basement the same protection. Basement fixtures and the floor drain are rerouted to a sealed pit. An [ejector pump](/arlington-heights/ejector-pump) lifts that water to a pipe near the basement ceiling, and a check valve stops it from falling back. From there, gravity takes it to the sewer. The old floor drain connection is plugged, so the sewer has no low opening to push through.",
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Overhead Sewers Make Sense in Arlington Heights",
+    "intro": "The village has required overhead sewers in new construction since the late 1970s or early 1980s. That leaves many older homes with gravity drains in the basement.",
+    "items": [
+     {
+      "h3": "July 2011 Showed the Risk",
+      "body": "Almost 7 inches of rain fell in just over three hours. Afterward, village officials pointed to overhead sewers as the main way to stop sewage backups."
+     },
+     {
+      "h3": "Combined Sewers in Older Areas",
+      "body": "Parts of older Arlington Heights, mainly near the center of town, have combined sewers. In heavy rain they fill with storm water, and a gravity floor drain is the first place it shows up."
+     },
+     {
+      "h3": "Fix the Line First If That's the Problem",
+      "body": "We camera your line before recommending a conversion. If roots or a break are the real cause, a [sewer repair](/arlington-heights/sewer-repair) may be all you need."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Backflow Valve vs. Sump Pump",
+    "intro": "Each one solves a different problem:",
+    "head": [
+     "",
+     "Sump Pump",
+     "Backflow Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "Problem it solves",
+      "Groundwater at the walls and floor",
+      "Sewage flowing back into the house",
+      "Storm backups through basement drains"
+     ],
+     [
+      "How it works",
+      "Pumps water out of a pit",
+      "A flap closes when flow reverses",
+      "Lifts basement wastewater above flood level"
+     ],
+     [
+      "Best for",
+      "Damp walls and floors after rain",
+      "Homes where a passive valve is enough",
+      "Repeat backups and finished basements"
+     ]
+    ],
+    "note": "Many Arlington Heights basements need more than one. We'll tell you which after we look."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Every overhead sewer project starts with your line and your basement.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "So you don't pay for a conversion when a repair would solve it."
+     },
+     {
+      "h3": "2. A Layout Around Your Basement",
+      "body": "Pit, pump and piping placed to protect finished space and keep the job tidy."
+     },
+     {
+      "h3": "3. Flat Price, Tested System",
+      "body": "One price up front, and we test the system with water before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Stone",
+      "url": null,
+      "text": "Thank you to Scott and Payton for coming by and helping us out. They identified a sewer pipe problem that was worse than what we were expecting, they provided a solution to the problem that will help in the long run and we have confidence that the solution will solve the problem and that we will not have to worry about it in the future"
+     },
+     {
+      "name": "Markie Waymire",
+      "url": null,
+      "text": "Scott was so helpful and easy to work with! He was so patient and thorough in explaining our options! And Walter loved him!"
+     },
+     {
+      "name": "Brian T",
+      "url": null,
+      "text": "Mike P was super helpful and great at explaining the options we have for our sewer line."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "How do I know if my home already has an overhead sewer?",
+      "preview": "Look for a sealed pit with a pump and a pipe running up near the ceiling.",
+      "answer": "Look for a sealed basin in the basement floor with a pump and a pipe running up the wall toward the ceiling. If your floor drain connects straight down into the floor, you likely have gravity drains. We can confirm in one visit."
+     },
+     {
+      "q": "Will an overhead sewer stop all basement water?",
+      "preview": "It stops sewer backups. Groundwater needs a sump pump.",
+      "answer": "It stops sewer water from coming up through basement drains. Groundwater seeping through walls or the floor is a [sump pump](/arlington-heights/sump-pumps) job. Many homes need both."
+     },
+     {
+      "q": "I have a basement bathroom. Can it stay?",
+      "preview": "Yes. It drains to the ejector pit like the rest of the basement.",
+      "answer": "Yes. A basement bathroom, laundry and bar sink all drain to the new pit, and the pump sends everything up and out. We'll size the pump for what you have."
+     },
+     {
+      "q": "How long does an overhead sewer installation take?",
+      "preview": "Usually a few days, depending on the basement.",
+      "answer": "Usually a few days, depending on how many fixtures there are and how finished the basement is. You'll get a schedule before we start."
+     },
+     {
+      "q": "How much does an overhead sewer system cost in Arlington Heights?",
+      "preview": "It depends on your basement and the line. You get a flat price first.",
+      "answer": "It depends on the depth of the sewer, the basement layout, how many fixtures are being rerouted and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stop Watching the Floor Drain Every Storm?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewer Systems in Arlington Heights, IL",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/arlington-heights/overhead-sewer-systems",
+   "description": "Overhead sewer installation for Arlington Heights, IL homes with storm backups. Camera first, a plan for your basement and a flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewer Systems in Arlington Heights, IL",
+ "metaDescription": "Overhead sewer installation for Arlington Heights, IL homes with storm backups. Camera first, a plan for your basement and a flat price. Call 24/7."
+}

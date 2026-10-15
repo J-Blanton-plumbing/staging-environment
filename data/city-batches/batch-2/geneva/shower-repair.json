@@ -1,0 +1,301 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Geneva, IL",
+   "sub": "A shower that drips all day, swings hot and cold or barely sprays. We repair showers across Geneva, from clawfoot setups in historic homes to modern valves, usually without disturbing your tile. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix",
+    "intro": "Most start in the valve:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Drip",
+      "body": "A worn cartridge or washer inside the valve. On older two-handle valves, it may be the seats as well."
+     },
+     {
+      "h3": "Hot and Cold Swings",
+      "body": "Older valves don't balance pressure at all, and newer ones can wear out."
+     },
+     {
+      "h3": "Weak Spray",
+      "body": "A clogged head, a worn cartridge or, in older homes, galvanized pipe narrowed by rust."
+     },
+     {
+      "h3": "Leaks Below the Bathroom",
+      "body": "A valve or drain leak often shows as a stain on the ceiling or plaster below."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Geneva Homes",
+    "intro": "Geneva's bathrooms span almost two centuries.",
+    "items": [
+     {
+      "h3": "Clawfoot Tubs and Exposed Risers",
+      "body": "Historic homes may have clawfoot tubs with exposed shower plumbing. We repair and replace those fittings."
+     },
+     {
+      "h3": "Old Two- and Three-Handle Valves",
+      "body": "Older valves can be rebuilt, but parts can be scarce. A pressure-balancing valve may be the better fix."
+     },
+     {
+      "h3": "Newer Valves Needing Cartridges",
+      "body": "In homes built after 1990, a cartridge swap usually brings the shower back."
+     },
+     {
+      "h3": "Leaks Through Old Plaster Ceilings",
+      "body": "In older homes, a shower leak often shows up as a stain or bulge in the plaster below. We find the source before any plaster is opened."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the shower, not remodel the bathroom.",
+    "steps": [
+     {
+      "h3": "1. Find the Cause",
+      "body": "Head, cartridge, valve or pipe."
+     },
+     {
+      "h3": "2. A Price You Approve",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Tile Left Alone When Possible",
+      "body": "Most repairs go through the trim."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jan Berkson",
+      "url": null,
+      "text": "John Hogan arrived on time and provided great service. He gave me an estimate before starting, was very thorough and tidy and even gave me good information about what might be needed in the near future to further address the situation with my bathtub drain. Very knowledgeable, courteous and friendly- instills confidence!"
+     },
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Repair Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Can you work on a clawfoot tub shower?",
+      "preview": "Yes.",
+      "answer": "Yes. We repair and replace exposed risers, diverters and tub fillers on clawfoot setups."
+     },
+     {
+      "q": "Can you fix my shower without tearing out tile?",
+      "preview": "Usually.",
+      "answer": "Usually. Cartridges come out through the trim. A full valve replacement may need a small access panel."
+     },
+     {
+      "q": "Why does my shower get hot when someone flushes?",
+      "preview": "The valve isn't balancing pressure.",
+      "answer": "Older valves don't balance pressure, and newer ones can wear out. A pressure-balancing valve or cartridge fixes it."
+     },
+     {
+      "q": "Why is my shower leaking into the room below?",
+      "preview": "A valve, drain or connection behind the wall.",
+      "answer": "Usually a leaking valve, a loose connection or a failed drain seal. We find the source and fix it."
+     },
+     {
+      "q": "Can you convert a tub to a shower in an old bathroom?",
+      "preview": "Often, with a new valve and fittings.",
+      "answer": "Often. We install the valve, riser and head and handle the plumbing side of the conversion. Tile or surround work is coordinated separately."
+     },
+     {
+      "q": "How much does shower repair cost in Geneva?",
+      "preview": "It depends on the valve and parts. You'll approve a flat price first.",
+      "answer": "It depends on the valve, the parts and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Geneva, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/geneva/shower-repair",
+   "description": "Shower repair in Geneva, IL. Drips, temperature swings, weak spray and old valves fixed, usually without touching your tile. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Geneva, IL",
+ "metaDescription": "Shower repair in Geneva, IL. Drips, temperature swings, weak spray and old valves fixed, usually without touching your tile. Flat price first."
+}

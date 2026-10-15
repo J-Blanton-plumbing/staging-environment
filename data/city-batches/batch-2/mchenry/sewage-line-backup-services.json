@@ -1,0 +1,329 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in McHenry, IL",
+   "sub": "Wastewater coming up through the floor drain or a basement shower needs help now. Our phone line is open 24/7. We clear the blockage, show you what caused it and tell you how to stop it from happening again. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "Sewage Backing Up? Do This First",
+    "intro": "While you wait for us:",
+    "steps": [
+     {
+      "h3": "1. Stop All Water Use",
+      "body": "Every flush and load of laundry makes it worse."
+     },
+     {
+      "h3": "2. Keep Out of the Water",
+      "body": "Sewage carries bacteria. Keep kids and pets upstairs."
+     },
+     {
+      "h3": "3. Stay Away From Electrical",
+      "body": "Don't touch outlets or appliances near the water."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Tell us where it's coming up and if it's raining or the river is high."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Sewage Backs Up in McHenry Homes",
+    "intro": "The most common causes:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Sag Full of Debris",
+      "body": "Settled pipe holds water and paper until it blocks."
+     },
+     {
+      "h3": "Wipes and Grease",
+      "body": "They bind together into a plug, even in newer lines."
+     },
+     {
+      "h3": "Roots",
+      "body": "Common in older lines with mature trees."
+     },
+     {
+      "h3": "High Water Everywhere",
+      "body": "When the ground is saturated and the sewer is full, water looks for the lowest drain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups and McHenry Basements",
+    "intro": "McHenry sits on the Fox River near the Chain O'Lakes. In July 2017, the river flooded and the state declared McHenry County a disaster area.",
+    "items": [
+     {
+      "h3": "Wet Seasons Raise the Risk",
+      "body": "When the ground is saturated, more water gets into sewer systems, and basement drains are the lowest point."
+     },
+     {
+      "h3": "Finished Basements With Bathrooms",
+      "body": "If your basement is finished, a backup means flooring, drywall and furniture. A backup there means flooring, drywall and furniture."
+     },
+     {
+      "h3": "Prevention Options",
+      "body": "A clear line, a backflow valve and an [overhead sewer system](/mchenry/overhead-sewer-systems) each address part of the problem."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Clear it, explain it, prevent it.",
+    "steps": [
+     {
+      "h3": "1. Clear the Line",
+      "body": "We get your drains working again."
+     },
+     {
+      "h3": "2. Find the Cause",
+      "body": "The camera tells us if it was a sag, roots, a break or high water."
+     },
+     {
+      "h3": "3. Price Before Repairs",
+      "body": "A flat-rate price for any repair."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mike Robb",
+      "url": "https://maps.app.goo.gl/1GJLvNz5PeBxvKku8",
+      "text": "We had an emergency situation on a weekend when our sewer main broke in the basement, and this company was an absolute lifesaver! They responded quickly, offered very reasonable rates, and immediately sent someone out to diagnose the problem. Within no time, they had a crew on-site to tackle the issue."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     },
+     {
+      "name": "John Costouros",
+      "url": null,
+      "text": "Zachary did a great job clearing out our sewer line after a clog. He was very professional, friendly, and knowledgeable. I would highly recommend him and J. Blanton Plumbing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "Why does my basement drain back up when the river is high?",
+      "preview": "Saturated ground and full sewers push water to the lowest point.",
+      "answer": "When the ground is saturated and sewers are carrying more water, the lowest opening in your plumbing, usually the floor drain, is where it shows up. A backflow valve or overhead sewer keeps it out."
+     },
+     {
+      "q": "How do I know if it's my line or the city's?",
+      "preview": "A camera inspection shows where the blockage is.",
+      "answer": "We clear the line and camera it. If the blockage is in your line, it's on the private side. If your line is clear and the sewer is overloaded, it's on the public side."
+     },
+     {
+      "q": "Can I clean up a sewer backup myself?",
+      "preview": "Small spills on concrete, carefully. Larger ones need professionals.",
+      "answer": "A small spill on bare concrete can be cleaned with gloves and disinfectant. Anything reaching carpet, drywall or furniture needs a professional cleanup company."
+     },
+     {
+      "q": "How do I stop it from happening again?",
+      "preview": "Fix the cause and add protection.",
+      "answer": "Fix what caused it, then protect the basement. Regular [sewer cleaning](/mchenry/sewer-maintenance) and a backflow valve or [overhead sewer](/mchenry/overhead-sewer-systems) cover most cases."
+     },
+     {
+      "q": "Can a full septic tank cause a basement backup?",
+      "preview": "Yes.",
+      "answer": "Yes. If your home is on septic and the tank is full, wastewater backs up into the lowest drains. We'll check the line and tell you if the tank needs pumping."
+     },
+     {
+      "q": "How much does sewer backup service cost in McHenry?",
+      "preview": "It depends on the cause. You get a flat price first.",
+      "answer": "It depends on what caused the backup and how we reach the line. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in McHenry, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/mchenry/sewage-line-backup-services",
+   "description": "Sewage backing up into your McHenry basement? We clear the line, find the cause and help prevent the next backup. Our line is open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Backup Service in McHenry, IL",
+ "metaDescription": "Sewage backing up into your McHenry basement? We clear the line, find the cause and help prevent the next backup. Our line is open 24/7."
+}

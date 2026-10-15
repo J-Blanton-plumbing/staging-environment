@@ -1,0 +1,318 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Installation in Arlington Heights, IL",
+   "sub": "Your old heater is leaking, it's over 12 years old or it just can't keep up anymore. We size the new one to your household, fix the venting and connections around it and give you one flat price before we start. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Replace Your Water Heater",
+    "intro": "It's usually time when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Is Leaking",
+      "body": "Once water comes from the tank body, the inside is rusting through. It can't be patched."
+     },
+     {
+      "h3": "It's Past 12 Years",
+      "body": "Check the date on the label. A heater that old is living on borrowed time, even if it still works."
+     },
+     {
+      "h3": "Repairs Keep Adding Up",
+      "body": "A second or third repair in a couple of years usually costs more than a new heater over time."
+     },
+     {
+      "h3": "Your Household Changed",
+      "body": "A finished basement bathroom or more people at home can outgrow a 40-gallon tank."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "A clean swap, done to code:",
+    "steps": [
+     {
+      "h3": "Size It Right",
+      "body": "We ask how many people, bathrooms and big tubs you have, then match the capacity and recovery rate."
+     },
+     {
+      "h3": "Fix What's Around It",
+      "body": "New shutoff valve, flexible connectors, an expansion tank where needed and a check of the gas line and vent."
+     },
+     {
+      "h3": "Remove the Old One",
+      "body": "We drain and haul the old heater away, test the new one and show you the controls."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Arlington Heights Homes",
+    "intro": "Most homes here were built between 1940 and 1989, and the basement setup around the heater often needs updating when it's replaced.",
+    "items": [
+     {
+      "h3": "Chimney Venting",
+      "body": "If your furnace was replaced with a high-efficiency model that vents out the side wall, your new water heater may not draft well alone in the old chimney. We check it and may recommend a chimney liner or a power-vent heater."
+     },
+     {
+      "h3": "Tight Utility Rooms",
+      "body": "Some older basements have the heater squeezed in a small space next to the furnace. We measure before we quote so the new unit fits with proper clearances."
+     },
+     {
+      "h3": "Upgrading for a Bigger Household",
+      "body": "If you added a bathroom or have teenagers, a larger tank, a high-recovery model or a [tankless water heater](/arlington-heights/tankless-water-heater) may serve you better."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "You know exactly what you're getting before we start.",
+    "steps": [
+     {
+      "h3": "1. Options, Not Pressure",
+      "body": "Standard, high-efficiency or tankless, with an honest take on which fits your home."
+     },
+     {
+      "h3": "2. Flat Price, All In",
+      "body": "The heater, parts, labor, haul-away and code updates in one number."
+     },
+     {
+      "h3": "3. Tested Before We Leave",
+      "body": "We check for leaks, test the draft and make sure you have hot water."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Richard Hannenberg",
+      "url": null,
+      "text": "Kept in excellent contact. Got here very timely. Work complete of water heater installed and the old one removed. All left in good shape and working. Kept in good contact and a great job."
+     },
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     },
+     {
+      "name": "Marianne Mollenauer",
+      "url": null,
+      "text": "We had an emergency hot water heater problem and Alex did a great job getting a new appliance installed the same day I called for help. Great company! I'd use them again."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "What size water heater do I need?",
+      "preview": "Most families do well with 40 to 50 gallons. We size it to your home.",
+      "answer": "Most households of three or four do well with a 40 or 50 gallon tank. Larger households, big soaking tubs or a basement bathroom may need more capacity or faster recovery. We'll ask a few questions and size it right."
+     },
+     {
+      "q": "Can you replace my water heater the same day?",
+      "preview": "Often, yes, when the unit is in stock.",
+      "answer": "Often, yes. Standard tank heaters are usually available, so a leaking heater can often be replaced in one visit. Specialty or tankless units may take longer to get."
+     },
+     {
+      "q": "Do I need an expansion tank?",
+      "preview": "If your home has a check valve or pressure reducer, usually yes.",
+      "answer": "If your water service has a check valve or pressure reducing valve, the water has nowhere to go when it heats and expands. An expansion tank absorbs that pressure and protects the heater and your fixtures. We'll check during the visit."
+     },
+     {
+      "q": "Should I switch to tankless?",
+      "preview": "It depends on your hot water use, gas line and venting.",
+      "answer": "It can make sense if you want endless hot water and lower standby losses. It may need a larger gas line and new venting. See [tankless water heaters](/arlington-heights/tankless-water-heater) for the details."
+     },
+     {
+      "q": "How much does water heater installation cost in Arlington Heights?",
+      "preview": "It depends on the type, size and any code updates. You get a flat price first.",
+      "answer": "It depends on the type and size of heater, the venting and any code updates needed. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Installation in Arlington Heights, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/arlington-heights/water-heater-installation",
+   "description": "Water heater installation and replacement in Arlington Heights, IL. Sized to your home, vented right and priced flat before work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Installation in Arlington Heights, IL",
+ "metaDescription": "Water heater installation and replacement in Arlington Heights, IL. Sized to your home, vented right and priced flat before work. Call 24/7."
+}

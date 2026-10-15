@@ -1,0 +1,357 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Geneva, IL",
+   "sub": "A split pipe can soak plaster, floors and a basement before you find it. Our line is open 24/7. We stop the water, repair the pipe and help you keep it from happening next winter. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do if a Pipe Bursts",
+    "intro": "Before we arrive:",
+    "steps": [
+     {
+      "h3": "1. Close the Main",
+      "body": "Usually in the basement near the meter."
+     },
+     {
+      "h3": "2. Cut Power Near the Water",
+      "body": "If you can reach the breaker safely."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "Relieve the pressure."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any hour."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "How to Tell a Pipe Has Burst in a Geneva Home",
+    "intro": "It isn't always obvious:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Plaster That Bulges or Cracks",
+      "bullets": [
+       "In older homes, water trapped behind plaster pushes it out or stains it brown."
+      ]
+     },
+     {
+      "h3": "Water Dripping From a Light Fixture",
+      "bullets": [
+       "Water follows wiring and framing. Shut off the water and the breaker for that circuit."
+      ]
+     },
+     {
+      "h3": "A Sudden Loss of Pressure",
+      "bullets": [
+       "Water is escaping before it gets to the faucet."
+      ]
+     },
+     {
+      "h3": "The Meter Won't Stop",
+      "bullets": [
+       "Every fixture is off, and the meter keeps turning."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs a Pipe Is Frozen, Not Yet Burst",
+    "intro": "Catch it early:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Faucet on an Outside Wall Is Dry",
+      "body": "Kitchen sinks on exterior walls are the classic first freeze."
+     },
+     {
+      "h3": "The Toilet Won't Refill",
+      "body": "The supply line to it may be frozen in the wall."
+     },
+     {
+      "h3": "Frost Where the Pipe Enters the House",
+      "body": "The water service coming through a cold foundation wall can freeze in a deep cold snap."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Where Pipes Freeze in Geneva Homes",
+    "intro": "Fox Valley winters bring stretches well below freezing, and older homes have more weak spots.",
+    "items": [
+     {
+      "h3": "Old Houses With Little Insulation",
+      "body": "Homes in the Central Geneva Historic District were built long before modern insulation. Pipes running up exterior walls are exposed to cold air all winter."
+     },
+     {
+      "h3": "Kitchens and Baths Added Later",
+      "body": "Plumbing added to an old house often runs through the coldest spaces, like an enclosed porch or a north wall."
+     },
+     {
+      "h3": "Stone Foundations",
+      "body": "Cold seeps through old stone foundations, and pipes along the top of the basement wall feel it first."
+     },
+     {
+      "h3": "Rooms Over Garages in Newer Homes",
+      "body": "West side homes built after 1990 often have a bathroom over an attached garage, with pipes in a cold floor."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop it, fix it, prevent it.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "Main off, area safe."
+     },
+     {
+      "h3": "2. Repair and Thaw",
+      "body": "Fix the split and thaw anything else frozen."
+     },
+     {
+      "h3": "3. Prevent It",
+      "body": "Insulation, rerouting or freeze-resistant spigots, approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sam Shucher",
+      "url": null,
+      "text": "Im back here again, writing another review ! arrived at 8 , and out by 10, fixed our burst pipe for our outdoor spigot. Thank you Anthony C ! promp, polite , professional, and fast !"
+     },
+     {
+      "name": "Steven Geiermann",
+      "url": null,
+      "text": "Edgar Herrera was a stellar representative for J Blanton’s. He addressed the broken water pipe in an efficient, timely manner. He offered approximate next steps. Definitely 5 stars!"
+     },
+     {
+      "name": "Rich Kings",
+      "url": null,
+      "text": "Outstanding Work on a Tough Basement Job! I can’t say enough good things about this plumbing team. They tackled a very challenging pipe replacement job in our basement, and from start to finish, they were professional, skilled, and incredibly thorough. The space was tight, the old piping was a mess, and there were unexpected complications along the way but they handled everything with confidence and expertise. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "How do I thaw a frozen pipe safely?",
+      "preview": "Open the faucet and warm the pipe slowly. No flames.",
+      "answer": "Open the faucet, then warm the pipe with a hair dryer or space heater, starting near the faucet. Never use a torch. If you can't reach it, call us."
+     },
+     {
+      "q": "How do I protect pipes in an old house?",
+      "preview": "Keep the heat up, open cabinets and drip faucets in a deep freeze.",
+      "answer": "Keep the heat at 55 degrees or higher, open cabinet doors on exterior walls, let faucets drip on the coldest nights and seal drafts near pipes. We can insulate or reroute problem lines."
+     },
+     {
+      "q": "Why did my pipe leak after the cold snap?",
+      "preview": "It split while frozen.",
+      "answer": "The pipe split while frozen and only leaked once it thawed."
+     },
+     {
+      "q": "Should I replace my outdoor spigot?",
+      "preview": "A freeze-resistant spigot prevents a common burst.",
+      "answer": "Yes, if it's an older style. A freeze-resistant spigot closes the water off inside the heated part of the wall."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Geneva?",
+      "preview": "It depends on location and pipe. You'll approve a flat price first.",
+      "answer": "It depends on where the break is, the pipe and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Burst Pipe? Call Us Now.",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Geneva, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/geneva/burst-pipe-repair",
+   "description": "Burst or frozen pipe in Geneva, IL? We stop the water, repair the pipe and help prevent the next freeze. Our phone line is open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst & Frozen Pipe Repair in Geneva, IL",
+ "metaDescription": "Burst or frozen pipe in Geneva, IL? We stop the water, repair the pipe and help prevent the next freeze. Our phone line is open 24/7."
+}

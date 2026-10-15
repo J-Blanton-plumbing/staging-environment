@@ -1,0 +1,311 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Installation in Geneva, IL",
+   "sub": "A tank that's leaking, past 12 years old or no longer keeping up. We size the new heater to your home, update the venting and connections around it and give you one flat price you approve first. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Replace Your Water Heater",
+    "intro": "Replacement usually makes sense when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Is Leaking",
+      "body": "Rust has worked through the tank. It can't be repaired."
+     },
+     {
+      "h3": "It's More Than 12 Years Old",
+      "body": "Check the date on the label and plan ahead."
+     },
+     {
+      "h3": "Repairs Keep Adding Up",
+      "body": "Two or three repairs in a few years is a sign."
+     },
+     {
+      "h3": "You Need More Hot Water",
+      "body": "A larger household or new bathroom."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "A clean, code-compliant install:",
+    "steps": [
+     {
+      "h3": "Size It Right",
+      "body": "Capacity and recovery matched to your household."
+     },
+     {
+      "h3": "Update the Surroundings",
+      "body": "New shutoff, connectors, an expansion tank where needed, gas and vent checked."
+     },
+     {
+      "h3": "Remove the Old One",
+      "body": "Drained, hauled away and the new one tested."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Geneva Homes",
+    "intro": "Installing a water heater in Geneva can be very different from one house to the next.",
+    "items": [
+     {
+      "h3": "Historic Basements",
+      "body": "In older homes, getting the old heater out and the new one in can take planning. We measure the path and the space first."
+     },
+     {
+      "h3": "Venting Updates",
+      "body": "A new gas heater venting alone into an oversized masonry chimney may need a liner or a power-vent model."
+     },
+     {
+      "h3": "Newer West Side Homes",
+      "body": "If your 1990s or 2000s home still has its first heater, replacing it before it leaks protects a finished basement. It's also a good time to consider a [tankless water heater](/geneva/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "No surprises on price or fit.",
+    "steps": [
+     {
+      "h3": "1. Options Explained",
+      "body": "Standard, high-efficiency or tankless."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Heater, parts, labor, haul-away and code updates."
+     },
+     {
+      "h3": "3. Tested Before We Go",
+      "body": "Leaks, draft and hot water checked."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Richard Hannenberg",
+      "url": null,
+      "text": "Kept in excellent contact. Got here very timely. Work complete of water heater installed and the old one removed. All left in good shape and working. Kept in good contact and a great job."
+     },
+     {
+      "name": "Marianne Mollenauer",
+      "url": null,
+      "text": "We had an emergency hot water heater problem and Alex did a great job getting a new appliance installed the same day I called for help. Great company! I'd use them again."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Can you install a water heater in a tight historic basement?",
+      "preview": "Yes. We plan the route and measure first.",
+      "answer": "Yes. We measure the stairs, doorways and space before we quote. If a standard tank won't fit, we'll suggest a model that will."
+     },
+     {
+      "q": "Can you replace it the same day?",
+      "preview": "Often, yes.",
+      "answer": "Often, yes. Standard tank heaters are usually available. Tankless and specialty units may take longer."
+     },
+     {
+      "q": "What size water heater do I need?",
+      "preview": "Most households do well with 40 to 50 gallons.",
+      "answer": "Most households of three or four do well with 40 or 50 gallons. Bigger households or soaking tubs may need more."
+     },
+     {
+      "q": "Do I need a chimney liner?",
+      "preview": "Sometimes, if the heater vents alone into an old chimney.",
+      "answer": "If your new gas heater will be the only appliance venting into an old masonry chimney, a liner or a power-vent heater may be needed for a safe draft. We'll check."
+     },
+     {
+      "q": "How much does water heater installation cost in Geneva?",
+      "preview": "It depends on type, size and code updates. You'll approve a flat price first.",
+      "answer": "It depends on the type and size of heater, the venting and any code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Installation in Geneva, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/geneva/water-heater-installation",
+   "description": "Water heater installation and replacement in Geneva, IL. Sized to your home, vented and connected to code and priced flat first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Installation in Geneva, IL",
+ "metaDescription": "Water heater installation and replacement in Geneva, IL. Sized to your home, vented and connected to code and priced flat first. Call 24/7."
+}

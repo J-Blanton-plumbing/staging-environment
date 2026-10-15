@@ -1,0 +1,320 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Algonquin, IL",
+   "sub": "Roots from a 30-year-old maple, a section that settled after the subdivision went in or a backup that came back two months after the last cleaning. We show you the problem on camera, explain your options and give you a flat price before any work. Our office is on Esplanade Drive in Algonquin.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Algonquin Sewer Line Damaged?",
+    "intro": "Clogs clear. Damage keeps coming back. Look for:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Repeat Clogs at the Same Spot",
+      "body": "If the main line keeps blocking at the same distance from the house, something there is catching debris: roots, a sag or a broken joint."
+     },
+     {
+      "h3": "The Basement Floor Drain Gurgles",
+      "body": "When the washer or a toilet upstairs drains, gurgling at the floor drain means the line is partly blocked."
+     },
+     {
+      "h3": "Slow Drains That Cleaning Doesn't Fix",
+      "body": "If professional cleaning only helps for a few weeks, the pipe itself has a problem."
+     },
+     {
+      "h3": "Damage on a Camera Inspection",
+      "body": "Cracks, offset joints, roots or a belly in the line mean it's time to talk repair."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Algonquin",
+    "intro": "The median home in Algonquin was built in 1994, and more than half went up between 1990 and 2009. The lines are younger than in older suburbs, but they're reaching the age when problems show up.",
+    "items": [
+     {
+      "h3": "Subdivision Trees Are Now Full Grown",
+      "body": "Trees planted when Algonquin's subdivisions went in are now 17 to 36 years old. Their roots reach farther every year and find any joint that lets moisture out."
+     },
+     {
+      "h3": "Settling Since Construction",
+      "body": "Sewer trenches were backfilled when each subdivision was built, and soil keeps settling for years. A section that settled unevenly becomes a sag that holds water and paper."
+     },
+     {
+      "h3": "Older Homes Near the River",
+      "body": "Homes closer to the Fox River and the older part of town may have clay or cast iron lines with the usual age-related problems."
+     },
+     {
+      "h3": "Busy Households",
+      "body": "With 88% of homes owner-occupied and lots of families, lines carry a lot of grease, wipes and paper. That speeds up any weakness in the pipe."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Algonquin",
+    "intro": "From our Esplanade Drive office, every sewer repair follows the same three steps.",
+    "steps": [
+     {
+      "h3": "1. See It on Video",
+      "body": "We camera the line from the cleanout to the main and record every problem with its distance and depth."
+     },
+     {
+      "h3": "2. Pick the Smallest Fix That Works",
+      "body": "A spot repair for one bad section, lining or replacement for a failing line. You see the footage that backs it up."
+     },
+     {
+      "h3": "3. Agree on the Price",
+      "body": "You get a flat-rate price, in writing, before we start."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/algonquin/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/algonquin/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "Algonquin yards often have patios, sprinkler systems and mature landscaping over the sewer path. The camera tells us which method keeps the most of it intact."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Patrick Schulze",
+      "url": null,
+      "text": "Was a major bit of sewer repair, but could not have been more pleased with the professionalism and congeniality of Richard and his team. They explained every step of the process as it was being done, and were more than happy to answer questions."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "My house was built in the 1990s. Why does it need sewer work already?",
+      "preview": "Roots from maturing trees and settled soil are the usual reasons.",
+      "answer": "Pipe from the 1990s isn't old, but the trees around it are now big enough to send roots into joints, and the soil has had decades to settle. Either can cause repeat clogs. The camera shows which."
+     },
+     {
+      "q": "Can you fix just the bad section?",
+      "preview": "Often, yes. A spot repair is cheaper when the rest of the line is sound.",
+      "answer": "Often, yes. If the camera shows one sag or broken joint and the rest is in good shape, we repair just that section. If problems run the length of the line, [lining or replacement](/algonquin/trenchless-sewer-repair) makes more sense."
+     },
+     {
+      "q": "Will a sewer repair ruin my lawn and sprinklers?",
+      "preview": "Trenchless methods keep most of the yard intact. We mark sprinkler lines before we dig.",
+      "answer": "Trenchless methods need only small openings. When digging is needed, we work around sprinkler lines and landscaping and restore the area we open."
+     },
+     {
+      "q": "Whose responsibility is the sewer line?",
+      "preview": "Usually yours, from the house to the main.",
+      "answer": "Usually the homeowner's, from the house to the connection at the public main. If the camera shows the problem is in the main, we'll let you know."
+     },
+     {
+      "q": "What does sewer line repair cost in Algonquin?",
+      "preview": "That depends on what the camera finds. You'll see a flat price first.",
+      "answer": "It comes down to what the camera shows: the type of damage, how deep and long the bad section is, the method and what's above it. You'll have a flat-rate number in hand before work starts."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Algonquin, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/algonquin/sewer-repair",
+   "description": "Sewer line repair in Algonquin, IL. Roots, sags and broken pipe found on camera and fixed with a flat price before any work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Algonquin, IL",
+ "metaDescription": "Sewer line repair in Algonquin, IL. Roots, sags and broken pipe found on camera and fixed with a flat price before any work. Call 24/7."
+}

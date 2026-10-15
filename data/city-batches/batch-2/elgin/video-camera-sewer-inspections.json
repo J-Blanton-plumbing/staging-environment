@@ -1,0 +1,307 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Elgin, IL",
+   "sub": "Before you approve a sewer repair, you should see the problem yourself. We send a camera through your line, record it and mark the location and depth of every root mass, crack or sag. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Reasons to Get a Sewer Camera Inspection in Elgin",
+    "intro": "Our most common inspection calls:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying an Older Home",
+      "body": "An 1800s or early 1900s house near downtown almost always has an old lateral. Look before you close."
+     },
+     {
+      "h3": "Repeat Backups",
+      "body": "If you're calling for rodding more than once a year, the camera tells you whether a repair would end it."
+     },
+     {
+      "h3": "After a Big Storm",
+      "body": "Was it your line or an overloaded sewer? The footage answers that."
+     },
+     {
+      "h3": "Before a Basement Remodel",
+      "body": "Check the line and the drains under the floor before new finishes go in."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-elgin",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Elgin Sewer Lines",
+    "intro": "Elgin's housing ranges from the 1800s to the 2000s, so the footage varies a lot from street to street.",
+    "items": [
+     {
+      "h3": "Roots and Offset Joints in Clay",
+      "body": "The most common finding east of the river. Short clay sections shift over time, and roots move in at the gaps."
+     },
+     {
+      "h3": "Old Repairs",
+      "body": "Many historic-area lines show sections replaced decades ago with a different material. The transitions are worth a close look."
+     },
+     {
+      "h3": "Sags in Newer Lines",
+      "body": "On the west side, the camera often finds a low spot where soil settled after construction."
+     },
+     {
+      "h3": "Grease and Debris",
+      "body": "Sometimes the pipe is fine and the problem is what's been going down it. That's good news."
+     },
+     {
+      "h3": "Buying on Either Side of the River",
+      "body": "East side homes tend to show old clay and patches. West side homes tend to show sags and grease. Either way, the camera shows you before you buy."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You see what we see.",
+    "steps": [
+     {
+      "h3": "1. Through the Cleanout",
+      "body": "No digging and no opening walls."
+     },
+     {
+      "h3": "2. Recorded and Located",
+      "body": "We mark the spot and depth of any problem from above."
+     },
+     {
+      "h3": "3. Plain-English Results",
+      "body": "We explain what matters, what doesn't and what to do next, and you keep the video."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "Should I inspect the sewer before buying a home in Elgin?",
+      "preview": "Yes, especially an older home.",
+      "answer": "Yes. A standard home inspection doesn't look inside the sewer. For a home built before about 1980, and especially one in the historic districts, a camera inspection can reveal a costly repair before you close."
+     },
+     {
+      "q": "What if there's no cleanout?",
+      "preview": "We can often go through a roof vent or toilet, or add a cleanout.",
+      "answer": "We may be able to go in through a roof vent or by pulling a toilet. If access is poor, adding a cleanout makes future inspections and cleanings much easier."
+     },
+     {
+      "q": "Can you tell how deep the problem is?",
+      "preview": "Yes. The locator gives depth and position.",
+      "answer": "Yes. The camera head carries a transmitter, and our locator shows where it is and how deep, so a repair can be targeted."
+     },
+     {
+      "q": "Do I get a copy of the video?",
+      "preview": "Yes.",
+      "answer": "Yes. You keep the recording for your records, a buyer or a seller."
+     },
+     {
+      "q": "How long does a sewer camera inspection take?",
+      "preview": "About an hour for most homes.",
+      "answer": "About an hour for most homes, including setup and walking you through the footage."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Elgin?",
+      "preview": "It depends on access and line length. You get a flat price first.",
+      "answer": "It depends on access and how long the line is. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Elgin, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/elgin/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Elgin, IL. See roots, cracks and sags on video, located and measured, before you pay for any repair. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Elgin, IL",
+ "metaDescription": "Sewer camera inspections in Elgin, IL. See roots, cracks and sags on video, located and measured, before you pay for any repair. Flat price first."
+}

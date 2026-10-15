@@ -1,0 +1,221 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Arlington Heights, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on East Central Road. Our line is open 24/7 for homeowners in Arlington Heights and across the northwest suburbs. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Arlington Heights",
+   "intro": "Our licensed plumbers handle everything from a sump pump that won’t turn on to a full sewer line repair. Pick a service to see how we handle it in Arlington Heights.",
+   "cards": [
+    {
+     "title": "Sump Pumps",
+     "href": "/arlington-heights/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/arlington-heights/sewer-repair",
+     "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/arlington-heights/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/arlington-heights/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/arlington-heights/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Burst & Frozen Pipes",
+     "href": "/arlington-heights/burst-pipe-repair",
+     "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+     "image": {
+      "src": "/images/city-hubs/burst-copper-pipe-basement.webp",
+      "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+     }
+    },
+    {
+     "title": "Catch Basins",
+     "href": "/arlington-heights/catch-basin",
+     "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+     "image": {
+      "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+      "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On East Central Road",
+   "h2": "Our Arlington Heights Office",
+   "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, Arlington Heights, IL 60005. It keeps our plumbers close to homes across Arlington Heights and the neighboring suburbs. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "1204 E. Central Road, Suite 3, Arlington Heights, IL 60005",
+   "areasH3": "Northwest Suburbs We Serve",
+   "areas": [
+    {
+     "label": "Mount Prospect",
+     "href": "/mount-prospect"
+    },
+    {
+     "label": "Rolling Meadows",
+     "href": "/rolling-meadows"
+    },
+    {
+     "label": "Palatine",
+     "href": "/palatine"
+    },
+    {
+     "label": "Buffalo Grove",
+     "href": "/buffalo-grove"
+    },
+    {
+     "label": "Des Plaines",
+     "href": "/des-plaines"
+    },
+    {
+     "label": "Schaumburg",
+     "href": "/schaumburg"
+    }
+   ],
+   "more": "/locations/chicagoland"
+  },
+  "depth": {
+   "h2": "What Arlington Heights Homes Need From a Plumber",
+   "intro": "The median home in Arlington Heights was built in 1974, and about 3 in 4 went up between 1940 and 1989. That postwar building boom, plus mature trees and long Cook County winters, shapes the problems we see most.",
+   "tiles": [
+    {
+     "title": "Postwar Homes, Older Pipes",
+     "body": "More than a third of Arlington Heights homes were built between 1940 and 1969. Many still have their original clay sewer line, cast iron drains or galvanized water pipe. Tree roots work their way into clay pipe at the joints, and galvanized pipe rusts from the inside until water pressure drops. A [camera inspection](/arlington-heights/video-camera-sewer-inspections) shows the condition of your sewer line before you decide on a [sewer repair](/arlington-heights/sewer-repair)."
+    },
+    {
+     "title": "Heavy Rain, Sump Pumps and Catch Basins",
+     "body": "Heavy spring rain and snowmelt put basements across the area to the test. A [sump pump with a battery backup](/arlington-heights/sump-pumps) keeps running when the power goes out. A [backflow valve](/arlington-heights/flood-control-maintenance) stops sewage from coming up through floor drains. Outside, a [catch basin](/arlington-heights/catch-basin) that’s full of leaves and silt can send water right back toward your foundation."
+    },
+    {
+     "title": "1970s and 1980s Homes Showing Their Age",
+     "body": "Another 4 in 10 homes went up in the 1970s and 1980s, and they’re now 37 to 56 years old. Original shut-off valves, supply lines and drain pipes are wearing out, and many homes are on their second or third water heater. A [small leak](/arlington-heights/leak-repairs) or a [water heater that runs out too fast](/arlington-heights/water-heater-repair) is often the first sign. A [whole-home checkup](/arlington-heights/plumbing-maintenance) shows what needs attention before it fails."
+    },
+    {
+     "title": "Winter Freezes and Burst Pipes",
+     "body": "Northwest suburban winters bring weeks of below-freezing nights. Pipes in exterior walls, unheated garages and crawl spaces freeze first, along with the line that feeds your outdoor spigot. When one splits, the leak usually shows up once it thaws. Know where your main shut-off valve is, and call us 24/7 if a [pipe bursts](/arlington-heights/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Arlington Heights Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real J. Blanton Reviews",
+   "intro": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+   "rating": "4.7",
+   "ratingSub": "5,669+ Google reviews across all J. Blanton locations",
+   "items": [
+    {
+     "name": "Debra Haslett",
+     "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+     "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+    },
+    {
+     "name": "K Franko",
+     "url": null,
+     "text": "Stephen and Brendon were great. Explained the options, transparent pricing on parts, had quick support from management on bid questions and great communication from scheduling to job completion. Efficient, cleaned up the area and worked well together even though they came at different times for different portions of the job. Definitely recommend them."
+    },
+    {
+     "name": "Christine Wynn",
+     "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+     "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Arlington Heights Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Arlington Heights?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. A 1950s home with clay sewer pipe can take more work to repair the right way than a newer one. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our East Central Road office keeps our plumbers close to Arlington Heights, and we [treat emergencies as a priority](/arlington-heights/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "My home was built in the 1950s or 1960s. Is it at higher risk?",
+     "preview": "It can be. More than a third of Arlington Heights homes were built between 1940 and 1969.",
+     "a": "It can be. More than a third of Arlington Heights homes were built between 1940 and 1969. Homes from those years often have clay sewer pipe, cast iron drains or galvanized water lines, and all of them wear out with age. Age alone doesn’t mean something is wrong. A [camera inspection](/arlington-heights/video-camera-sewer-inspections) tells you where your sewer line stands, so you can plan a repair instead of reacting to a backup."
+    },
+    {
+     "q": "How often should I replace my sump pump?",
+     "preview": "Most sump pumps last somewhere around 7 to 10 years, and less if they run often.",
+     "a": "Most sump pumps last somewhere around 7 to 10 years, and less if they run often. Test yours before the spring rains: pour a bucket of water into the pit and watch it turn on and shut off. A loud motor, a pump that runs nonstop or one that won’t kick on are all signs it’s time for a [replacement](/arlington-heights/sump-pumps). Adding a battery backup keeps it running when the power goes out."
+    },
+    {
+     "q": "What does a catch basin do, and why does mine back up?",
+     "preview": "A catch basin collects rainwater from your yard or driveway and sends it into the storm drain.",
+     "a": "A catch basin collects rainwater from your yard or driveway and sends it into the storm drain. Leaves, silt and debris build up in the bottom over time, and when it fills, water pools in the yard or flows back toward the house. Regular [cleaning or repair](/arlington-heights/catch-basin) keeps it draining the way it should."
+    },
+    {
+     "q": "How do I protect my basement from sewer backups?",
+     "preview": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris.",
+     "a": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris. For homes with repeat backups, an [overhead sewer system](/arlington-heights/overhead-sewer-systems) lifts basement wastewater above the level where backups happen. We can look at your setup and tell you which option makes sense for your home."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Arlington Heights?",
+     "preview": "Along with Arlington Heights, our office serves Mount Prospect, Rolling Meadows, Palatine, Buffalo Grove, Des Plaines, Schaumburg and more.",
+     "a": "Along with Arlington Heights, our office serves Mount Prospect, Rolling Meadows, Palatine, Buffalo Grove, Des Plaines, Schaumburg and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Arlington Heights start small, like a sump pump that’s getting tired or roots creeping into an old clay sewer line. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Arlington Heights Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Arlington Heights, IL",
+ "metaDescription": "Local plumbers on East Central Road in Arlington Heights, IL. Serving Chicagoland since 1993. Call 24/7 for an upfront price before work starts."
+}

@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Geneva, IL",
+   "sub": "Hot water that keeps going and a heater that hangs on the wall instead of filling a corner of the basement. We install, repair and service tankless water heaters across Geneva and tell you honestly if your home is a good fit. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Water Heater Works",
+    "body": "A tankless water heater fires only when you open a hot tap. Water passes through a heat exchanger, gets heated on the spot and goes straight to the fixture. With no stored tank, there's no standby heat loss and no running out. The limit is flow: a unit heats a set number of gallons per minute, so it's sized to how many fixtures you run at once.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless for Geneva Homes",
+    "intro": "Each has its place:",
+    "head": [
+     "",
+     "Tank Water Heater",
+     "Tankless Water Heater"
+    ],
+    "rows": [
+     [
+      "Hot water supply",
+      "Limited to the tank",
+      "Continuous, limited by flow"
+     ],
+     [
+      "Space",
+      "Floor space",
+      "Wall-mounted, good for tight basements"
+     ],
+     [
+      "Expected life",
+      "About 8 to 12 years",
+      "Often longer with maintenance"
+     ],
+     [
+      "Install work",
+      "Usually a direct swap",
+      "May need gas line and vent changes"
+     ],
+     [
+      "Upkeep",
+      "Yearly flush",
+      "Periodic descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Geneva Home?",
+    "intro": "A few things decide whether tankless makes sense in your house.",
+    "items": [
+     {
+      "h3": "Space in Historic Basements",
+      "body": "A wall-mounted unit frees up floor space in a tight older basement."
+     },
+     {
+      "h3": "Venting Path",
+      "body": "Tankless units vent through a wall or roof with their own pipe. In older homes with thick masonry walls, we plan the route carefully."
+     },
+     {
+      "h3": "Gas Line Size",
+      "body": "Tankless units need a lot of gas when they fire. We check your line before quoting."
+     },
+     {
+      "h3": "Softer City Water",
+      "body": "Geneva's water has been softened by reverse osmosis since 2008, which is easier on a heat exchanger. Maintenance still matters."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We'll tell you if tankless isn't right for you.",
+    "steps": [
+     {
+      "h3": "1. Fit Check",
+      "body": "Gas, venting, space and how you use hot water."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Unit, gas work, venting and removal of the old tank."
+     },
+     {
+      "h3": "3. Set Up for Service",
+      "body": "Valves for easy maintenance."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "I B (Iza)",
+      "url": null,
+      "text": "Alex came out to provide a quote for a tankless water heater I wanted installed. He explained everything in so much detail, about the electric upgrade I would need, about how the heater will actually work 'in real life' (not just on paper). Then it turned out my electric couldn't support the tankless. [...]"
+     },
+     {
+      "name": "Mike Olsa",
+      "url": null,
+      "text": "We had our water heater leak and Kyle from J Blanton came and installed a tankless system in only a few hours. It works amazing and he was very fast and thorough. Thanks for the great job Kyle."
+     },
+     {
+      "name": "Jorge De La Vega",
+      "url": null,
+      "text": "Christian was fantastic l! He’s been here a few times for no drip club visits and he’s the man! Did our tankless water heater maintenance and was friendly and efficient, highly recommend 🙌🏼"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Is a tankless heater a good fit for an older home?",
+      "preview": "Often, especially where space is tight.",
+      "answer": "Often. It saves floor space in a tight basement. The main questions are the gas line and the vent path, which we check first."
+     },
+     {
+      "q": "Does Geneva's water mean less tankless maintenance?",
+      "preview": "It helps, but it still needs periodic service.",
+      "answer": "Geneva's city water is softened by reverse osmosis to about 5 to 7 grains, which is easier on a heat exchanger than very hard water. Periodic descaling and filter cleaning are still recommended."
+     },
+     {
+      "q": "Can one tankless unit run my whole house?",
+      "preview": "Usually, if it's sized right.",
+      "answer": "Usually. A properly sized unit handles a couple of showers and an appliance at once."
+     },
+     {
+      "q": "Will I need a bigger gas line?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes. We check the existing line and include any upgrade in the price."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Geneva?",
+      "preview": "It depends on the unit, gas and venting. You'll approve a flat price first.",
+      "answer": "It depends on the unit, any gas line work and the venting. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Endless Hot Water?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Geneva, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/geneva/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Geneva, IL. Honest advice on fit, gas line and venting before you buy.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Geneva, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Geneva, IL. Honest advice on fit, gas line and venting before you buy."
+}

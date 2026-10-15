@@ -1,0 +1,312 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Geneva, IL",
+   "sub": "Cold water halfway through your shower, a drip under the tank or a pilot that keeps going out. We find what failed, tell you honestly whether it's worth fixing and give you a flat price you approve before we start. From our office on Campbell Street, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Geneva Water Heater Needs Repair",
+    "intro": "Most calls start with one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pilot Won't Stay On",
+      "body": "A worn thermocouple or flame sensor, usually a straightforward repair."
+     },
+     {
+      "h3": "Hot Water Doesn't Last",
+      "body": "A failing element or burner, a broken dip tube or a heater too small for the household."
+     },
+     {
+      "h3": "Water Around the Base",
+      "body": "A drain valve or relief valve leak is fixable. A leak from the tank isn't."
+     },
+     {
+      "h3": "A Smell Like Rotten Eggs",
+      "body": "Usually the anode rod reacting with the water. A different rod often fixes it."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Geneva Homes",
+    "intro": "Geneva's homes span almost two centuries, and the water heater setup varies with them.",
+    "items": [
+     {
+      "h3": "Tight Basements in Historic Homes",
+      "body": "Older basements can have low ceilings, narrow stairs and odd corners. Repairs and replacements take planning, and we measure before we quote."
+     },
+     {
+      "h3": "Chimney Venting in Older Houses",
+      "body": "Gas heaters in older homes often vent into a masonry chimney. If the furnace was upgraded and vents out the wall, the water heater may not draft well alone. We check it on every gas heater."
+     },
+     {
+      "h3": "Original Heaters in Newer Homes",
+      "body": "More than 4 in 10 Geneva homes were built after 1990. If one of them still has its original heater, it's likely past its expected life."
+     },
+     {
+      "h3": "Softer City Water Since 2008",
+      "body": "Geneva's reverse osmosis plant lowered the hardness of city water. Less scale is good for heaters, but any heater that's been in service since before then may still carry old sediment."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We service every type of residential water heater in Geneva: gas and electric tanks, power-vent and high-efficiency units and tankless heaters. Diagnosis first, recommendation second.",
+     "When you call, read us the label on the tank. The fuel, the size and the manufacture date tell us a lot before we arrive. If it's time to replace it, see [water heater installation](/geneva/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "A yearly flush clears whatever sediment has collected at the bottom of the tank, keeps the heater efficient and helps it last. We also test the relief valve, check the anode rod and look over the burner or elements and the vent.",
+     "Tankless units get descaled on a schedule. If your heater has never had any maintenance, this is a good place to start."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A diagnosis, not a sales pitch.",
+    "steps": [
+     {
+      "h3": "1. Find the Failure",
+      "body": "We test the parts before we talk about cost."
+     },
+     {
+      "h3": "2. Repair vs. Replace, Explained",
+      "body": "Both options side by side when the heater is near the end."
+     },
+     {
+      "h3": "3. A Price You Approve",
+      "body": "And a clean basement when we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Shaun Huang",
+      "url": null,
+      "text": "The guys did a great job. Andrew and Enrique were able to figure out the issue quickly and move me towards a reasonable solution. Kyle came out the next day and finished the work efficiently. Appreciate them a lot and will continue doing business with them in the future!"
+     },
+     {
+      "name": "Jeff",
+      "url": null,
+      "text": "Lou was very professional and his experience shows. He took a quick look at our broken hot water heater, saw a dirty component and knew right away that replacing the part would solve the problem. Thanks Lou!"
+     },
+     {
+      "name": "Jason Kelly",
+      "url": null,
+      "text": "Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Why does my hot water smell like rotten eggs?",
+      "preview": "Usually the anode rod reacting with the water.",
+      "answer": "Usually it's a reaction between the anode rod in the tank and the water. Replacing the rod with a different type often fixes it. If the smell is in the cold water too, the source is elsewhere."
+     },
+     {
+      "q": "Is my water heater worth repairing?",
+      "preview": "Under about 8 years, usually yes. Over 12, usually no.",
+      "answer": "If it's under about 8 years old and a part failed, a repair usually makes sense. Past 12 years, or if the tank leaks, replacing it is the better value."
+     },
+     {
+      "q": "How long do water heaters last in Geneva?",
+      "preview": "Usually about 8 to 12 years.",
+      "answer": "Tank heaters usually last somewhere around 8 to 12 years. Yearly flushing helps them reach the longer end."
+     },
+     {
+      "q": "Do you service water heaters in older homes near downtown?",
+      "preview": "Yes. We plan around tight basements.",
+      "answer": "Yes. Historic basements can be tight, with low ceilings and narrow stairs. We plan the work and measure before we quote."
+     },
+     {
+      "q": "How much does water heater repair cost in Geneva?",
+      "preview": "It depends on the part and the heater. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of heater. We diagnose it and you approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Geneva, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/geneva/water-heater-repair",
+   "description": "Water heater repair in Geneva, IL. No hot water, leaks, strange noises or a pilot that won't stay lit. Diagnosed first, flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Geneva, IL",
+ "metaDescription": "Water heater repair in Geneva, IL. No hot water, leaks, strange noises or a pilot that won't stay lit. Diagnosed first, flat price. Call 24/7."
+}

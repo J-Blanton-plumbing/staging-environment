@@ -1,0 +1,313 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Filtration Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Testing and Filtration in McHenry, IL",
+   "sub": "Orange stains in the tub, white crust on the faucets or a well that hasn't been tested in years. We test your water, explain the results in plain English and install the softener or filter your home actually needs. From our office on West Elm Street, serving McHenry County.",
+   "img": {
+    "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+    "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "options",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Your Options",
+    "h2": "Water Treatment Options for McHenry County Homes",
+    "intro": "We install and service:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Softeners",
+      "body": "Remove the hardness minerals that leave scale in water heaters, fixtures and pipes."
+     },
+     {
+      "h3": "Iron Filters",
+      "body": "Take out the iron that stains sinks, tubs and laundry orange."
+     },
+     {
+      "h3": "Whole-House Sediment Filters",
+      "body": "Catch sand and particles before they reach fixtures and appliances."
+     },
+     {
+      "h3": "Drinking Water Systems",
+      "body": "Under-sink reverse osmosis for cooking and drinking water."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "water-testing",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Water Testing",
+    "h2": "Water Testing in McHenry",
+    "bodies": [
+     "McHenry County gets its water from shallow and deep aquifers, so what comes out of the tap depends on which wells feed your home. Groundwater here tends to be hard, and some areas carry iron or manganese. A water test tells you exactly what's in yours.",
+     "If you're on a private well, testing matters even more. Health officials recommend testing private wells regularly, because no utility is doing it for you. We test for hardness, iron and other common issues and use the results to recommend only what your home needs."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-water",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Quality in McHenry Homes",
+    "intro": "Water is one of the biggest plumbing stories in McHenry County.",
+    "items": [
+     {
+      "h3": "Hard Water Everywhere",
+      "body": "Groundwater tends to be hard across the county. It leaves scale on fixtures, sediment in water heaters and a film on glass shower doors."
+     },
+     {
+      "h3": "Iron Stains",
+      "body": "Orange or rust-colored stains in sinks, tubs and toilets usually come from iron. Outside city limits, unincorporated Eastwood Manor, on a small private water system, lived with iron-heavy water for years until a filtration upgrade in 2025."
+     },
+     {
+      "h3": "Private Wells Around Town",
+      "body": "Many homes outside city limits in McHenry County are on private wells. Testing is the owner's job, and a filter or softener is often part of the setup."
+     },
+     {
+      "h3": "Softeners That Need Service",
+      "body": "A softener that's out of salt, set wrong or not regenerating lets hardness right through. We service and adjust them."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Test first, then recommend.",
+    "steps": [
+     {
+      "h3": "1. Test Your Water",
+      "body": "At your tap, explained plainly."
+     },
+     {
+      "h3": "2. Only What You Need",
+      "body": "Softener, iron filter or both, sized to your water and household."
+     },
+     {
+      "h3": "3. Flat Price, Clean Install",
+      "body": "One price, and we show you how to maintain it."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Filtration Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     },
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     },
+     {
+      "name": "Brian Crain",
+      "url": "https://maps.app.goo.gl/yX9GobAxAt8ryxhy7",
+      "text": "Ron was perfect. He came to do the job at hand and explained various pieces of information along the way that helped me understand the root causes of what we were dealing with and how to avoid problems in the future. [...] Didn't try and push the sale like some companies do, but was more or less educating on what the options were and what they entailed in full so we would know what to expect if we decided to go down those paths."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Filtration Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "Why are there orange stains in my sinks and tub?",
+      "preview": "Usually iron in the water.",
+      "answer": "Orange or rust-colored stains usually come from iron in the water. It isn't a health hazard, but it stains fixtures and laundry and settles in your water heater. An iron filter takes it out."
+     },
+     {
+      "q": "Do I need a water softener in McHenry?",
+      "preview": "Most homes on hard groundwater benefit. A test confirms it.",
+      "answer": "Most homes on hard groundwater see a real difference: less scale, longer water heater life and fewer spots. A test shows how hard your water is so you can decide."
+     },
+     {
+      "q": "How often should I test my private well?",
+      "preview": "Regularly. Health officials suggest at least once a year for bacteria.",
+      "answer": "Health officials generally recommend testing a private well at least once a year for bacteria, and after any flooding or changes in taste, color or smell. We can test for hardness and iron at the same time."
+     },
+     {
+      "q": "My softener has salt but the water still feels hard. Why?",
+      "preview": "It may not be regenerating, or the settings are wrong.",
+      "answer": "The softener may not be regenerating, the resin may be worn out or the hardness setting may be too low for your water. We can test and adjust it."
+     },
+     {
+      "q": "How much does a water softener or filter cost in McHenry?",
+      "preview": "It depends on the system and your water. You get a flat price first.",
+      "answer": "It depends on the type and size of the system and how it connects to your plumbing. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Better Water in Your Home?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Testing and Filtration in McHenry, IL",
+   "serviceType": "Water Filtration Systems",
+   "url": "https://jblantonplumbing.com/mchenry/water-filtration-systems",
+   "description": "Water testing, softeners and iron filtration for McHenry, IL homes on city or private well water. We test first and install only what you need.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Testing & Filtration in McHenry, IL",
+ "metaDescription": "Water testing, softeners and iron filtration for McHenry, IL homes on city or private well water. We test first and install only what you need."
+}

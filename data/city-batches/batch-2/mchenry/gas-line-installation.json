@@ -1,0 +1,298 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in McHenry, IL",
+   "sub": "A standby generator, a heater for the garage, a grill on the deck or a gas range for the kitchen. Our licensed plumbers size, run and pressure-test new gas lines across McHenry. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Gas Lines We Install in McHenry",
+    "intro": "Popular projects here:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Standby Generators",
+      "body": "Keep the sump pump and heat running when the power goes out."
+     },
+     {
+      "h3": "Garage and Shop Heaters",
+      "body": "A gas heater makes a garage or workshop usable all winter."
+     },
+     {
+      "h3": "Grills and Fire Pits",
+      "body": "A permanent line on the deck or patio."
+     },
+     {
+      "h3": "Ranges and Dryers",
+      "body": "New lines for kitchen and laundry upgrades."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install a Gas Line",
+    "intro": "Sized, run and tested:",
+    "steps": [
+     {
+      "h3": "Calculate the Load",
+      "body": "We total every appliance so the system can carry the new one."
+     },
+     {
+      "h3": "Run and Connect",
+      "body": "Routed safely, with a shutoff at the appliance."
+     },
+     {
+      "h3": "Pressure-Test",
+      "body": "Tested for leaks before it's put into service."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in McHenry",
+    "intro": "McHenry homeowners often add gas for comfort and backup power.",
+    "items": [
+     {
+      "h3": "Backup Power for Storm Season",
+      "body": "When storms knock out power, a generator keeps the sump pump running. It needs a gas line sized for the load."
+     },
+     {
+      "h3": "Heated Garages and Workshops",
+      "body": "A dedicated line to a garage heater is a common winter project."
+     },
+     {
+      "h3": "Outdoor Living by the Water",
+      "body": "Grills and fire pits on decks and patios, with a safe outdoor shutoff."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "Can you run gas to a standby generator?",
+      "preview": "Yes, sized to the generator's load.",
+      "answer": "Yes. Generators draw a lot of gas, so we size the line to the generator and your other appliances."
+     },
+     {
+      "q": "Can you run a gas line to my detached garage?",
+      "preview": "Yes, usually buried, with a shutoff at each end.",
+      "answer": "Yes. We run the line, usually underground, with shutoffs and proper connections at the heater."
+     },
+     {
+      "q": "Do I need a permit?",
+      "preview": "New gas work usually requires one.",
+      "answer": "New gas piping usually requires a permit. We'll explain what applies to your project."
+     },
+     {
+      "q": "How long does an installation take?",
+      "preview": "Most are done in a day.",
+      "answer": "Most residential gas line jobs are done in a day, including the pressure test."
+     },
+     {
+      "q": "Can you run gas to a pier or boathouse grill?",
+      "preview": "Often, depending on distance and code.",
+      "answer": "Often. It depends on the distance from the house, the route and what code allows. We'll look at the site and explain the options."
+     },
+     {
+      "q": "How much does gas line installation cost in McHenry?",
+      "preview": "It depends on the run and the appliance. You get a flat price first.",
+      "answer": "It depends on the length of the run, the pipe size and the appliance. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in McHenry, IL",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/mchenry/gas-line-installation",
+   "description": "Gas line installation in McHenry, IL for ranges, dryers, grills, generators and garage heaters. Licensed, pressure-tested, flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in McHenry, IL",
+ "metaDescription": "Gas line installation in McHenry, IL for ranges, dryers, grills, generators and garage heaters. Licensed, pressure-tested, flat price first."
+}

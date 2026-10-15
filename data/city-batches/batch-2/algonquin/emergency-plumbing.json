@@ -1,0 +1,296 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24/7 Emergency Plumbing in Algonquin, IL",
+   "sub": "A sump pump that quits with the river rising, a basement bathroom backing up or an original water heater that finally lets go. Our phone line is open 24/7, and our office on Esplanade Drive keeps our plumbers close to both sides of the Fox River.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Algonquin Plumbing Emergencies: Call Now If",
+    "intro": "Don't wait on any of these:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "The River Is Up and the Pump Is Down",
+      "body": "A dead sump pump during high water floods a basement fast. Check the breaker, start the backup and call."
+     },
+     {
+      "h3": "The Basement Bathroom Is Backing Up",
+      "body": "Often a failed ejector pump. Stop using basement fixtures."
+     },
+     {
+      "h3": "The Original Water Heater Is Leaking",
+      "body": "Close the cold water valve on top of the tank."
+     },
+     {
+      "h3": "A Pipe Over the Garage Burst",
+      "body": "Close the main and keep away from wet ceilings."
+     },
+     {
+      "h3": "You Smell Gas",
+      "body": "Leave. Call Nicor Gas or 911 from outside."
+     },
+     {
+      "h3": "A Toilet Is Overflowing Nonstop",
+      "body": "Close the shutoff behind the toilet, then call if it keeps running."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in Algonquin",
+    "intro": "Most emergency calls from Algonquin homes trace back to the river, the weather or equipment that came with the house.",
+    "items": [
+     {
+      "h3": "River and Storm Nights",
+      "body": "The Fox River hit a record 12.70 feet at Algonquin in April 2013. On nights like that, sump pump failures come in waves. See [sump pumps](/algonquin/sump-pumps)."
+     },
+     {
+      "h3": "Original Water Heaters",
+      "body": "Heaters that came with 1990s and 2000s homes are failing now. A tank that lets go can flood a finished basement. See [water heater repair](/algonquin/water-heater-repair)."
+     },
+     {
+      "h3": "Frozen Pipes",
+      "body": "Pipes over attached garages and in exterior walls freeze first in a cold snap. See [burst pipe repair](/algonquin/burst-pipe-repair)."
+     },
+     {
+      "h3": "Basement Bathroom Backups",
+      "body": "When an ejector pump fails, the basement bathroom backs up. See [ejector pumps](/algonquin/ejector-pump)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "A plumber, not a salesperson.",
+    "steps": [
+     {
+      "h3": "1. Someone Answers",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. Stop It First, Then Price It",
+      "body": "We stop the damage, then give you a flat-rate price for the repair."
+     },
+     {
+      "h3": "3. Honest About Timing",
+      "body": "If it can wait until morning, we'll tell you."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Betty Knows",
+      "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+      "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+     },
+     {
+      "name": "Seth Maybury",
+      "url": null,
+      "text": "Super helpfull. They called back on a Sunday late afternoon and came out that evening. 3 plumbers came to the house on Monday to finish the job. Joe, George and Anthony. Highly recommend them. No one wants to have Sewage backing up, they treated it like an emergency and kept at it."
+     },
+     {
+      "name": "Trenton Gligorovic",
+      "url": null,
+      "text": "Josh Reid came by on Saturday night around 8pm to help us with an emergency plumbing issue. He was beyond friendly and very honest with us. He was able to help us route our line to stop the back flow that was occurring in the house. I could tell he really cared about our situation and didn't seem annoyed at all considering it was Saturday night."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "How soon can you get to my home in Algonquin?",
+      "preview": "Call any time. We'll give you a realistic window.",
+      "answer": "Call us any time. Our Esplanade Drive office keeps us close to Algonquin and Lake in the Hills. Arrival times depend on the day and call volume, but we'll give you a realistic window and get a plumber to you as soon as we can."
+     },
+     {
+      "q": "My basement bathroom is backing up. Is it the sewer or the pump?",
+      "preview": "If upstairs drains are fine, it's likely the ejector pump.",
+      "answer": "If upstairs fixtures drain normally and only the basement is backing up, the ejector pump is the likely cause. Stop using basement fixtures and call us."
+     },
+     {
+      "q": "My sump pump stopped during a storm. What do I do?",
+      "preview": "Check power, start the backup and call.",
+      "answer": "Check that it's plugged in and the breaker hasn't tripped. If you have a backup, make sure it's running. Move valuables up off the floor and call us."
+     },
+     {
+      "q": "Will I know the price before you start?",
+      "preview": "Yes.",
+      "answer": "Yes. Whatever the hour, you get a flat-rate price before any work begins."
+     },
+     {
+      "q": "What does an emergency plumber cost in Algonquin?",
+      "preview": "It depends on the problem. The price comes first.",
+      "answer": "It depends on what's wrong and what it takes to fix it. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? We're Answering Now.",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24/7 Emergency Plumbing in Algonquin, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/algonquin/emergency-plumbing",
+   "description": "24/7 emergency plumber in Algonquin, IL. Burst pipes, sewer backups, failed sump pumps and water heaters. Upfront pricing, any hour.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Algonquin, IL 24/7",
+ "metaDescription": "24/7 emergency plumber in Algonquin, IL. Burst pipes, sewer backups, failed sump pumps and water heaters. Upfront pricing, any hour."
+}

@@ -1,0 +1,290 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in McHenry, IL",
+   "sub": "A pump that can't keep up when the river is high, one that runs all spring or no backup when the power goes out. We install and repair sump pumps and battery backups across McHenry County, with a flat price first. From our office on West Elm Street, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Check it before the wet season:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Runs for Days After Rain",
+      "body": "High groundwater can keep it busy. If it never rests, it may be undersized or failing."
+     },
+     {
+      "h3": "It Doesn't Start When You Test It",
+      "body": "Pour water in the pit. No start means a float or motor problem."
+     },
+     {
+      "h3": "Loud or Rattling",
+      "body": "Worn bearings or debris in the impeller."
+     },
+     {
+      "h3": "It's More Than 7 to 10 Years Old",
+      "body": "Pumps that run often wear out sooner."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in McHenry Basements",
+    "intro": "McHenry sits on the Fox River near the Chain O'Lakes. In July 2017, heavy rain and river flooding led the state to declare McHenry County a disaster area.",
+    "items": [
+     {
+      "h3": "High Groundwater Near the River and Lakes",
+      "body": "When the river and lakes are high, groundwater rises too. Sump pumps near the water can run for days at a time and wear out faster."
+     },
+     {
+      "h3": "Battery Backups Aren't Optional",
+      "body": "Storms that raise the water also knock out power. A battery backup keeps pumping when the main pump stops."
+     },
+     {
+      "h3": "Builder Pumps in Newer Homes",
+      "body": "About 4 in 10 McHenry homes went up between 1990 and 2009. A builder-grade pump that's never been replaced is overdue."
+     },
+     {
+      "h3": "Discharge Lines in Winter",
+      "body": "A discharge line that freezes sends water back to the foundation. We route and protect it."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Proven before we leave.",
+    "steps": [
+     {
+      "h3": "1. Check Everything",
+      "body": "Pump, float, check valve, discharge and backup."
+     },
+     {
+      "h3": "2. Repair, Replace or Upgrade",
+      "body": "Including a stronger pump or a backup if your basement needs it."
+     },
+     {
+      "h3": "3. Flat Price and a Fill Test",
+      "body": "We fill the pit to prove it works."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "My sump pump runs constantly in spring. Is that normal?",
+      "preview": "Near the river and lakes, often yes. Make sure it's sized for it.",
+      "answer": "Near the Fox River and the lakes, high groundwater can keep a pump running for days in spring. That's normal, but it means the pump wears faster and should be sized for the load. A backup is a must."
+     },
+     {
+      "q": "Do I need a battery backup sump pump?",
+      "preview": "In McHenry County, yes, especially with a finished basement.",
+      "answer": "Yes, especially if your basement is finished. High water and power outages often come together."
+     },
+     {
+      "q": "How long does a sump pump last?",
+      "preview": "Usually 7 to 10 years, less if it runs often.",
+      "answer": "Most last somewhere around 7 to 10 years. A pump that runs a lot near the water may need replacing sooner."
+     },
+     {
+      "q": "Can I install a bigger sump pump?",
+      "preview": "Yes, if your pit and discharge can handle it.",
+      "answer": "Yes. If your pump can't keep up, we can install a higher-capacity pump and make sure the pit and discharge line match it."
+     },
+     {
+      "q": "How much does sump pump installation cost in McHenry?",
+      "preview": "It depends on the pump, pit and backup. You get a flat price first.",
+      "answer": "It depends on the pump, any pit or check valve work and whether you add a backup. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Basement That Stays Dry?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in McHenry, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/mchenry/sump-pumps",
+   "description": "Sump pump installation, repair and battery backups in McHenry, IL and McHenry County. Tested before we leave, flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in McHenry, IL",
+ "metaDescription": "Sump pump installation, repair and battery backups in McHenry, IL and McHenry County. Tested before we leave, flat price first. Call 24/7."
+}

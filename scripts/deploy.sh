@@ -986,6 +986,21 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-city-hubs-content.ts commit
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-city-services-v2-content.ts commit --create-missing
+# 3. Brief 212 (Track D2): publish City Pages Batch 2 (Arlington Heights, Elgin,
+#    McHenry, Algonquin, Geneva: 5 hubs + 145 service pages) from the
+#    importer's validated output in data/city-batches/batch-2 (the MDs stay out
+#    of this public repo). Every gate runs again; any failure writes NOTHING
+#    (NOT-APPLIED, exit 0). Per page: archive (every column verbatim) -> City
+#    Hub switch (hubs) -> "Version 1 - ..." -> publish. Missing service rows
+#    (all 29 of Geneva's) are created and published in the same run
+#    (Marketing, 2026-10-15). Write-once: a page that already holds new content
+#    is "already loaded, no change", so later deploys leave edits alone. The
+#    cities it publishes are written to .city-pages-snapshot/changed.txt, so
+#    the CITY PAGES LIVE CHECK expects exactly those pages to change. Pre-swap
+#    (Brief 171). Exit 1 only when a write did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/import-city-batch.ts --from-json data/city-batches/batch-2 --publish --create-missing \
+  --changed-file .city-pages-snapshot/changed.txt
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

@@ -1,0 +1,311 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Arlington Heights, IL",
+   "sub": "Water on the basement floor after a storm usually comes from one of three places: the sewer, the ground or the surface. We figure out which one, fix the plumbing that let it in and help you keep it out next time. From our office on East Central Road, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Arlington Heights Basements Flood",
+    "intro": "The fix depends on where the water came from:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Up Through the Floor Drain",
+      "body": "Sewage or storm water pushing back from the sewer. A blocked line or an overloaded sewer is the cause."
+     },
+     {
+      "h3": "Through the Walls or Floor",
+      "body": "Groundwater rising around the foundation. That's a sump pump and drainage problem."
+     },
+     {
+      "h3": "Down the Window Wells",
+      "body": "Surface water from heavy rain, clogged gutters or a yard that slopes toward the house."
+     },
+     {
+      "h3": "From Inside the House",
+      "body": "A burst pipe, a failed water heater or a washer hose. Shut off the water and call."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Arlington Heights",
+    "intro": "On July 23, 2011, almost 7 inches of rain fell on Arlington Heights in just over three hours. The sewers were designed for about 2.5 to 3 inches over a full day, and basements in many parts of town took on water.",
+    "items": [
+     {
+      "h3": "Sewer Backups Through the Floor Drain",
+      "body": "In 2011, many homes had sewage back up through basement floor drains, and village officials pointed to overhead sewers as the main fix. That's why the floor drain matters so much here."
+     },
+     {
+      "h3": "Combined Sewers in the Older Part of Town",
+      "body": "Some older neighborhoods near the center of town have combined sewers that fill with storm water in heavy rain. Gravity basement drains in those areas are the most exposed."
+     },
+     {
+      "h3": "Neighborhoods That Flood Repeatedly",
+      "body": "Areas like Westgate and Park Manor were hit in 2011, and in 2016 residents in flood-prone parts of town described repeated basement flooding. If that's you, a long-term plan is worth it."
+     },
+     {
+      "h3": "Prevention That Works",
+      "body": "A clear sewer line, a [sump pump with a battery backup](/arlington-heights/sump-pumps) and an [overhead sewer system](/arlington-heights/overhead-sewer-systems) cover the three main ways water gets in."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Waterproofing keeps groundwater out of the basement. The plumbing side of it is what we handle: sump pits and pumps, battery backups, discharge lines and the drain tile that carries water to the pit.",
+     "If water comes through the walls or where the wall meets the floor, the drain tile may be clogged or missing, or the sump pump can't keep up. We check the system and tell you what will actually stop the water. For water coming up through the floor drain, see [sewage backup service](/arlington-heights/sewage-line-backup-services)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "The first job is finding the source.",
+    "steps": [
+     {
+      "h3": "1. Stop It",
+      "body": "We stop the active water first: clear the drain, fix the pump or shut off the burst pipe."
+     },
+     {
+      "h3": "2. Trace It",
+      "body": "Floor drain, walls, window wells or plumbing. The answer changes the fix."
+     },
+     {
+      "h3": "3. Fix It, Flat Price",
+      "body": "You get options and a flat price for each before any work begins."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "Debra Haslett",
+      "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+      "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "What should I do first when my basement floods?",
+      "preview": "Stay safe, stop the water if you can and call.",
+      "answer": "Keep away from water near outlets or appliances. If the water is coming from a pipe or appliance, shut off the main water valve. If it's coming up through the floor drain, stop using water in the house. Then call us."
+     },
+     {
+      "q": "How do I know if it's sewage or groundwater?",
+      "preview": "Sewage comes up through drains and smells. Groundwater seeps in at the walls and floor.",
+      "answer": "Sewage usually comes up through the floor drain, a basement toilet or a shower and has a smell. Groundwater seeps in where the walls meet the floor or through cracks and is usually clear."
+     },
+     {
+      "q": "Will a sump pump stop sewer backups?",
+      "preview": "No. Sump pumps handle groundwater. Backups need a backflow valve or overhead sewer.",
+      "answer": "No. A sump pump handles groundwater. Sewer backups need a clear line and protection like a backflow valve or an overhead sewer system."
+     },
+     {
+      "q": "My basement has flooded twice. What's the long-term fix?",
+      "preview": "Find the source, then match the fix: line repair, backflow protection or a better sump system.",
+      "answer": "First, confirm where the water comes in. Then match the fix: a sewer repair or overhead sewer for backups, a stronger sump system and battery backup for groundwater, and grading or gutter fixes for surface water. We'll put it in writing."
+     },
+     {
+      "q": "How much does it cost to fix basement flooding in Arlington Heights?",
+      "preview": "It depends on the source and the fix. You get a flat price first.",
+      "answer": "It depends on where the water is coming from and what it takes to stop it. We give you a flat-rate price for each option before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Arlington Heights, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/arlington-heights/basement-flooding",
+   "description": "Flooded basement in Arlington Heights, IL? We find where the water came from and fix it: sump pumps, sewer backups and waterproofing. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Arlington Heights, IL",
+ "metaDescription": "Flooded basement in Arlington Heights, IL? We find where the water came from and fix it: sump pumps, sewer backups and waterproofing. Call 24/7."
+}

@@ -605,7 +605,11 @@ const main = () => {
   );
   for (const [alias, target] of Object.entries(ALIAS_REDIRECTS)) {
     const gen = generated.get(alias);
-    if (gen && gen !== target) {
+    // Brief 212: the one legitimate disagreement is a CHAIN COLLAPSE — the generated target has since
+    // become a redirect source itself (a folded city-service URL), and the alias sends the legacy URL
+    // straight to where that target now goes. Anything else is still a contradiction.
+    const collapsesChain = !!gen && ALIAS_REDIRECTS[gen] === target;
+    if (gen && gen !== target && !collapsesChain) {
       fail(
         `Alias "${alias}" → "${target}" CONTRADICTS the generated legacy map, which sends it ` +
           `to "${gen}". One of the two is wrong; the alias map wins at runtime.`

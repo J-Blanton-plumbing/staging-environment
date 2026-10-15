@@ -1,0 +1,336 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Faucet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Faucet and Fixture Installation and Repair in Elgin, IL",
+   "sub": "A bathroom faucet that won't stop dripping, a kitchen faucet you want to replace or new fixtures for a remodel. We repair and install faucets and fixtures in homes across Elgin, with a flat price before we start. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/faucet-installation-bathroom-sink.webp",
+    "alt": "J. Blanton plumber in branded red leather gloves installing a new chrome faucet on a white bathroom sink with an adjustable wrench"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call About a Faucet",
+    "intro": "Most faucet problems are one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Dripping After It's Turned Off",
+      "body": "A worn cartridge, washer or O-ring. On a good faucet, it's a simple fix."
+     },
+     {
+      "h3": "A Leak in the Cabinet",
+      "body": "Loose supply lines, a tired shutoff valve or a drain connection that's slipped."
+     },
+     {
+      "h3": "Sputtering or Weak Flow",
+      "body": "A blocked aerator, a failing cartridge or, in older homes, the pipe behind the wall."
+     },
+     {
+      "h3": "A Spout That Wobbles",
+      "body": "The mounting has loosened, and water can get under the faucet base."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-faucet",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Kitchen Faucets",
+    "h2": "Kitchen Faucet Repair and Installation",
+    "bodies": [
+     "We fix dripping and leaking kitchen faucets and install new ones, from simple single-handle models to pull-down sprayers, touchless faucets and filtered-water taps.",
+     "In older Elgin homes, the sink and the shutoff valves under it may be original. Old valves can refuse to close or start leaking once they're turned. We replace them as part of the install when needed, so the new faucet has a solid start."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-plumbing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Plumbing",
+    "h2": "Kitchen Plumbing Services",
+    "bodies": [
+     "We handle the rest of the kitchen too: sink drains, dishwasher hookups, ice maker and refrigerator lines, disposals and gas connections for ranges. For a remodel, we reroute or add plumbing to match the new layout.",
+     "Clogged sink? See [drain cleaning](/elgin/drain-cleaning). Disposal not working? See [garbage disposal repair](/elgin/garbage-disposal-installation-repair). New gas range? See [gas line installation](/elgin/gas-line-installation)."
+    ],
+    "img": {
+     "src": "/images/city-services-v2/kitchen-sink-drain-plumbing.webp",
+     "alt": "Plumbing under a double kitchen sink: white PVC drain and P-trap, braided supply lines with chrome shutoff valves, and a garbage disposal"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "fixture-installation",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Fixture Installation",
+    "h2": "Plumbing Fixture Installation",
+    "bodies": [
+     "We install sinks, faucets, toilets, showerheads, tub fillers, laundry sinks and outdoor spigots, from a single swap to every fixture in a new bathroom. Each install includes connections, new shutoffs where needed and a leak check.",
+     "Bought your fixtures already? Send us the make and model so we can confirm the fit. For toilets, see [toilet installation](/elgin/toilet-installation-repair). For showers, see [shower repair](/elgin/shower-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-fixtures",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Local Knowledge",
+    "h2": "Faucets and Fixtures in Elgin Homes",
+    "intro": "From 1800s homes near downtown to 2000s homes on the west side, fixture work in Elgin varies a lot.",
+    "items": [
+     {
+      "h3": "Older Sinks, Odd Sizes",
+      "body": "Historic bathrooms often have pedestal or wall-mount sinks with spacing that modern faucets don't match. We'll help you find one that fits instead of forcing it."
+     },
+     {
+      "h3": "Galvanized Pipe Behind the Wall",
+      "body": "If a brand-new faucet still has weak flow, old galvanized supply pipe may be the cause. We'll tell you if we see it."
+     },
+     {
+      "h3": "Builder-Grade Fixtures Wearing Out",
+      "body": "Homes from the 1990s and 2000s often still have their original faucets. Upgrading several at once saves trips."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Fixture work should be quick and clean.",
+    "steps": [
+     {
+      "h3": "1. Repair First When It Makes Sense",
+      "body": "A cartridge can save a good faucet."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Including any valves or lines that need replacing."
+     },
+     {
+      "h3": "3. Clean Work Area",
+      "body": "Cabinets and counters protected."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Faucet and Fixture Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     },
+     {
+      "name": "M Geula",
+      "url": null,
+      "text": "Clayton Griffel came and provided great same-day service on work of replacing a pipe and faucet connection. Clayton was courteous and attentive to the job. Definitely \"a good call\" to J. Blanton this time."
+     },
+     {
+      "name": "Nicole Rose",
+      "url": null,
+      "text": "Tony Z did a great job replacing leaky pipes under my kitchen sink. He checked throughly to make sure the issue was solved. The whole experience was positive. I recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Faucet and Fixture Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "Can you install a faucet I already bought?",
+      "preview": "Yes. Send us the make and model first.",
+      "answer": "Yes. Tell us the make and model and we'll confirm it fits your sink and plumbing before the visit."
+     },
+     {
+      "q": "Why does my faucet drip even when it's off?",
+      "preview": "A worn cartridge or seal inside.",
+      "answer": "A worn cartridge, washer or seal inside the faucet lets water through. Replacing that part usually fixes it."
+     },
+     {
+      "q": "Can you replace a faucet on an old pedestal sink?",
+      "preview": "Usually. We'll find one that fits the hole spacing.",
+      "answer": "Usually. Older sinks often have unusual hole spacing. We'll help you choose a faucet that fits properly."
+     },
+     {
+      "q": "Should I fix or replace my faucet?",
+      "preview": "Fix a good faucet with a worn part. Replace a corroded one.",
+      "answer": "If it's a quality faucet with a worn part, fix it. If the body is corroded or parts are no longer made, replacing it is the better value."
+     },
+     {
+      "q": "How much does faucet installation cost in Elgin?",
+      "preview": "It depends on the faucet and what's under the sink. You get a flat price first.",
+      "answer": "It depends on the faucet, the valves and supply lines and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Drip?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Faucet and Fixture Installation and Repair in Elgin, IL",
+   "serviceType": "Faucet Installation & Repair",
+   "url": "https://jblantonplumbing.com/elgin/faucet-installation-repair",
+   "description": "Faucet and fixture repair and installation in Elgin, IL. Kitchen, bath and laundry fixtures fixed or installed with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Faucet & Fixture Repair in Elgin, IL",
+ "metaDescription": "Faucet and fixture repair and installation in Elgin, IL. Kitchen, bath and laundry fixtures fixed or installed with a flat price first."
+}

@@ -1,0 +1,305 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Drain Cleaning in Geneva, IL",
+   "sub": "A kitchen sink that holds water, a tub that drains slower every week or a floor drain that fills when the washer runs. We clear it, tell you why it clogged and give you a flat price before we start. From our office on Campbell Street, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call for Drain Cleaning",
+    "body": "Call when plunging hasn't fixed it, when the same drain clogs again within weeks or when a drain smells like sewer. Pay attention to how many fixtures are affected. One slow drain usually means a clog close to it. If the floor drain fills when the washer empties or the toilet gurgles when the tub drains, the main line is blocked, and that's [sewer rodding](/geneva/sewer-rodding).",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in Geneva",
+    "bodies": [
+     "Everyday use causes most clogs: hair and soap in bathrooms, grease and food in kitchens, lint from laundry. We clear them with a cable sized for the pipe and show you what came out.",
+     "In Geneva's historic homes, old galvanized and cast iron drains have rough insides that catch debris and clog again quickly. In newer homes, long runs with lots of turns are where clogs settle. If the same drain keeps clogging, a camera look tells us whether it needs [hydro jetting](/geneva/hydro-jetting) or a repair."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging",
+    "bodies": [
+     "Grease causes most kitchen clogs. It goes down warm and hardens in the pipe, catching food and soap.",
+     "If both bowls fill or the dishwasher drains into the sink, the clog is past the trap. We clear the line to the stack. Disposal involved? See [garbage disposal repair](/geneva/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in Geneva Homes",
+    "intro": "Geneva's homes range from the 1840s to today, and drain problems follow their age.",
+    "items": [
+     {
+      "h3": "Old Pipe in Historic Homes",
+      "body": "Galvanized and cast iron drains in older homes narrow over time, so clogs come back faster."
+     },
+     {
+      "h3": "Remodeled Kitchens, Original Drains",
+      "body": "A new kitchen often sits on top of the original drain line, which still has decades of buildup."
+     },
+     {
+      "h3": "Main Line Trouble",
+      "body": "Several slow drains at once usually mean roots or a blockage in the main. That's [sewer drain clearing](#sewer-drain-clearing)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When every drain slows down together or the basement floor drain fills, the main sewer drain is blocked. Clearing it takes a machine that can run the full line from the cleanout to the main.",
+     "We clear the line, then camera it so you see the cause. Near downtown, it's usually roots in old clay. On the west side, it's more often grease, wipes or a sag. Repeat clogs get a plan: [sewer rodding](/geneva/sewer-rodding), [hydro jetting](/geneva/hydro-jetting) or a [sewer repair](/geneva/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Choose J. Blanton for Drain Cleaning?",
+    "intro": "Our plumbers are licensed in Illinois and carry what they need to clear most drains in one visit.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Including emergencies on weekends and holidays."
+     },
+     {
+      "h3": "2. Price Before We Start",
+      "body": "A flat rate you approve."
+     },
+     {
+      "h3": "3. The Cause, Explained",
+      "body": "So it doesn't come back."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Tanya Hill",
+      "url": null,
+      "text": "Ray was awesome! My kitchen sink was backed up and he took care of things courteously, neatly and thoroughly. Ray explained the mechanics of why my issue may have happened and how to prevent it from happening again. I recommend Ray and JVS to anyone looking for a plumber!"
+     },
+     {
+      "name": "Kevin Barnicle",
+      "url": null,
+      "text": "My plumber from now on! J Blanton was so easy and pleasant to schedule. Stephen W. arrived on time, super professional and kind. He was very clean and a great communicator. He new everything. I’ll call them again if I have an issue."
+     },
+     {
+      "name": "cubsfan",
+      "url": null,
+      "text": "J Blanton came in in short notice to complete a job that needed to be done right away. The technician was thorough, answered all of my questions, and recommended some preventative steps we could take going forward. Job well done!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Do you offer emergency drain cleaning in Geneva?",
+      "preview": "Yes. Our line is open 24/7.",
+      "answer": "Yes. If a drain backs up at night or on a weekend, call us any time and we'll get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Why does my old house have so many clogs?",
+      "preview": "Old pipe is rough inside and catches debris.",
+      "answer": "Old galvanized and cast iron pipe is rough and narrowed inside, so it catches hair, grease and debris faster than new pipe. Jetting or replacing the worst sections helps."
+     },
+     {
+      "q": "Is it one drain or the main line?",
+      "preview": "One fixture is local. Several, or the floor drain, is the main.",
+      "answer": "If only one fixture is slow, the clog is nearby. If several are slow or the floor drain backs up, it's the main line."
+     },
+     {
+      "q": "Should I use a chemical drain cleaner?",
+      "preview": "We don't recommend it, especially on old pipe.",
+      "answer": "We don't recommend it. Chemicals can damage older pipes and rarely clear the whole clog."
+     },
+     {
+      "q": "How much does drain cleaning cost in Geneva?",
+      "preview": "It depends on where the clog is. You'll approve a flat price first.",
+      "answer": "It depends on where the clog is and what's causing it. You'll approve a flat price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Drains That Keep Draining?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Drain Cleaning in Geneva, IL",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/geneva/drain-cleaning",
+   "description": "Drain cleaning in Geneva, IL. Clogged sinks, tubs, floor drains and main lines cleared, with the cause explained and a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Drain Cleaning in Geneva, IL",
+ "metaDescription": "Drain cleaning in Geneva, IL. Clogged sinks, tubs, floor drains and main lines cleared, with the cause explained and a flat price first."
+}

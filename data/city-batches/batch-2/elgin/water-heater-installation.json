@@ -1,0 +1,318 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Installation in Elgin, IL",
+   "sub": "If your water heater is leaking, past 12 years old or can't keep up with your household, it's time for a new one. We size it to your home, update the connections and venting around it and give you one flat price before we start. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When It's Time for a New Water Heater",
+    "intro": "Replacement usually makes sense when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Is Coming From the Tank",
+      "body": "A leaking tank can't be repaired. It will only get worse."
+     },
+     {
+      "h3": "It's Older Than 12 Years",
+      "body": "The date is on the label. At that age, plan the replacement before it fails."
+     },
+     {
+      "h3": "You're Paying for Repairs Every Year",
+      "body": "Repeated repairs on an old heater add up fast."
+     },
+     {
+      "h3": "You Need More Hot Water",
+      "body": "A new bathroom, a bigger family or a soaking tub can outgrow your current tank."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "A clean, code-compliant install:",
+    "steps": [
+     {
+      "h3": "Choose the Right Size",
+      "body": "We ask about people, bathrooms and tubs, then match capacity and recovery."
+     },
+     {
+      "h3": "Update What Connects to It",
+      "body": "New shutoff, connectors, an expansion tank where needed, and a check of the gas line and vent."
+     },
+     {
+      "h3": "Haul Away the Old One",
+      "body": "We drain and remove the old tank, test the new one and show you the controls."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Elgin Homes",
+    "intro": "Water heater installs in Elgin often involve more than swapping one tank for another.",
+    "items": [
+     {
+      "h3": "Historic Basements",
+      "body": "Older basements can have low ceilings, narrow stairs and tight utility corners. We measure before we quote so the new heater fits with the right clearances."
+     },
+     {
+      "h3": "Chimney Draft",
+      "body": "A new gas water heater venting alone into an oversized masonry chimney may not draft well. We may recommend a liner or a power-vent model."
+     },
+     {
+      "h3": "Upgrading West Side Homes",
+      "body": "If your 1990s or 2000s home still has its first heater, replacing it before it fails protects a finished basement. It's also a good time to consider a [tankless water heater](/elgin/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "No guessing on price or fit.",
+    "steps": [
+     {
+      "h3": "1. Options You Understand",
+      "body": "Standard, high-efficiency or tankless, explained plainly."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Heater, parts, labor, haul-away and code updates in one number."
+     },
+     {
+      "h3": "3. Tested Before We Go",
+      "body": "Leaks checked, draft tested and hot water confirmed."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Richard Hannenberg",
+      "url": null,
+      "text": "Kept in excellent contact. Got here very timely. Work complete of water heater installed and the old one removed. All left in good shape and working. Kept in good contact and a great job."
+     },
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     },
+     {
+      "name": "Marianne Mollenauer",
+      "url": null,
+      "text": "We had an emergency hot water heater problem and Alex did a great job getting a new appliance installed the same day I called for help. Great company! I'd use them again."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How long does a water heater replacement take?",
+      "preview": "Most standard swaps are done in a few hours.",
+      "answer": "Most standard tank replacements take a few hours. Venting changes, a move to a new spot or a switch to tankless take longer."
+     },
+     {
+      "q": "Should I get a gas or electric water heater?",
+      "preview": "Usually match what you have. Gas heats faster if it's available.",
+      "answer": "Usually it makes sense to stay with the fuel you already have. Gas recovers faster and is common in Elgin homes. Switching fuels means new gas or electrical work, which we'll explain if you're considering it."
+     },
+     {
+      "q": "What size water heater do I need?",
+      "preview": "Most families do well with 40 to 50 gallons.",
+      "answer": "Most households of three or four do well with a 40 or 50 gallon tank. Bigger households or big tubs may need more capacity or a high-recovery model."
+     },
+     {
+      "q": "Can you take the old heater away?",
+      "preview": "Yes. Removal is included.",
+      "answer": "Yes. We drain the old heater, haul it away and leave the area clean. It's included in the price."
+     },
+     {
+      "q": "How much does water heater installation cost in Elgin?",
+      "preview": "It depends on the type and the work around it. You get a flat price first.",
+      "answer": "It depends on the type and size of heater, the venting and any code updates. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Installation in Elgin, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/elgin/water-heater-installation",
+   "description": "Water heater installation and replacement in Elgin, IL. Sized to your home, vented and connected to code, with a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Installation in Elgin, IL",
+ "metaDescription": "Water heater installation and replacement in Elgin, IL. Sized to your home, vented and connected to code, with a flat price first. Call 24/7."
+}

@@ -1,0 +1,358 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Arlington Heights, IL",
+   "sub": "Roots grow back. Grease builds up. The cheapest sewer backup is the one that never happens. We set up a maintenance schedule for your line based on what the camera shows, from our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "Why Arlington Heights Sewer Lines Need Maintenance",
+    "intro": "A schedule makes sense when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Your Line Is Clay",
+      "body": "Most homes from the 1940s through the 1960s drain through clay. Roots return to the same joints every year."
+     },
+     {
+      "h3": "You Have Big Trees",
+      "body": "A mature maple or oak near the sewer path will keep sending roots toward it."
+     },
+     {
+      "h3": "You've Had a Backup Before",
+      "body": "One backup is often the first sign of a pattern."
+     },
+     {
+      "h3": "Your Basement Is Finished",
+      "body": "Sewage on carpet and drywall costs far more than a yearly cleaning."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "How Often to Service Your Line",
+    "intro": "A starting point. The camera fine-tunes it:",
+    "head": [
+     "Your Situation",
+     "Suggested Schedule"
+    ],
+    "rows": [
+     [
+      "Clay line with known roots",
+      "Rodding or jetting once a year, before spring storms"
+     ],
+     [
+      "Cast iron with heavy scale",
+      "Jetting every 1 to 2 years, with a camera check"
+     ],
+     [
+      "Clean line, no history of trouble",
+      "A camera check every few years"
+     ],
+     [
+      "Line was lined or replaced",
+      "A camera check after a few years, then as needed"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Arlington Heights Storms",
+    "intro": "On July 23, 2011, almost 7 inches of rain fell on Arlington Heights in just over three hours, and many homes had sewage back up into their basements.",
+    "items": [
+     {
+      "h3": "A Clear Line Handles Storms Better",
+      "body": "You can't control how much rain falls. You can make sure roots and grease aren't already taking up half your line when it does."
+     },
+     {
+      "h3": "Spring Is the Right Time",
+      "body": "Roots grow fastest in spring, and that's when the big storms start. Service before then gives the line its full capacity."
+     },
+     {
+      "h3": "Pair It With a Backflow Check",
+      "body": "If your home has a backflow valve or an overhead sewer, a maintenance visit is a good time to check it too."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/arlington-heights/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/arlington-heights/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/arlington-heights/sewer-rodding) or [Hydro Jetting](/arlington-heights/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/arlington-heights/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Visits Work",
+    "intro": "A maintenance plan is only worth it if it's based on your line.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "We look at the line before setting a schedule, so you don't pay for service you don't need."
+     },
+     {
+      "h3": "2. Clean the Right Way",
+      "body": "Rodding for roots, jetting for grease and scale, depending on what we see."
+     },
+     {
+      "h3": "3. A Written Plan",
+      "body": "You get the recommended interval and what to watch for between visits, priced upfront."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Connor Schickel",
+      "url": null,
+      "text": "I’ve used J Blanton multiple times. They have helped identify a pipe with root growth through their No Drip Club. Mike Perez has done a great job walking me through all the steps to get the root out of my pipe and had to work through some very tough turns to identify the roots. [...]"
+     },
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Is sewer maintenance worth it if my line isn't clogged?",
+      "preview": "If it's clay with trees nearby, yes. It's cheaper than a backup.",
+      "answer": "If your line is clay and there are trees near it, yes. Roots grow back to the same joints every year. Clearing them on a schedule costs far less than cleaning up a finished basement."
+     },
+     {
+      "q": "What's the difference between maintenance and repair?",
+      "preview": "Maintenance prevents problems. Repair fixes a damaged pipe.",
+      "answer": "Maintenance is scheduled cleaning and inspection before anything goes wrong. Repair fixes an actual crack, break or collapse. A good maintenance visit tells you early if repair is coming."
+     },
+     {
+      "q": "Can maintenance prevent storm backups?",
+      "preview": "It helps. A clear line drains faster, but it can't stop an overloaded city sewer.",
+      "answer": "It helps, because a clear line carries water out as fast as it can. It can't stop a city sewer that's overloaded and pushing back. For that, see [overhead sewer systems](/arlington-heights/overhead-sewer-systems)."
+     },
+     {
+      "q": "Is sewer maintenance part of the No Drip Club?",
+      "preview": "The No Drip Club includes regular maintenance visits. Ask us what fits your line.",
+      "answer": "The [No Drip Club](/no-drip-club/) brings a plumber to your home for regular maintenance. Ask us how it applies to your sewer line when you call."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Arlington Heights?",
+      "preview": "It depends on the service and your line. You get a flat price first.",
+      "answer": "It depends on whether your line needs rodding, jetting or just a camera check, and on access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer Line?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Arlington Heights, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/arlington-heights/sewer-maintenance",
+   "description": "Preventive sewer maintenance for Arlington Heights, IL homes. Scheduled rodding, jetting and camera checks before roots cause a backup.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Maintenance in Arlington Heights, IL",
+ "metaDescription": "Preventive sewer maintenance for Arlington Heights, IL homes. Scheduled rodding, jetting and camera checks before roots cause a backup."
+}

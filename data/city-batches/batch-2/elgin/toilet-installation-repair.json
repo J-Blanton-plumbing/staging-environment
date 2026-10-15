@@ -1,0 +1,294 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Toilet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Toilet Repair and Installation in Elgin, IL",
+   "sub": "A toilet that runs on its own at night, leaks at the base or clogs every week. We fix toilets and install new ones across Elgin, with a flat price before we start. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+    "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Common Toilet Problems in Elgin Homes",
+    "intro": "Most are fixed in one visit:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Keeps Running",
+      "body": "A worn flapper or fill valve lets water trickle into the bowl."
+     },
+     {
+      "h3": "Water on the Floor",
+      "body": "The wax ring or flange has failed. Fix it before the subfloor is damaged."
+     },
+     {
+      "h3": "It Clogs All the Time",
+      "body": "An old low-flow design, something stuck in the trap or a line problem."
+     },
+     {
+      "h3": "Cracks in the Tank or Bowl",
+      "body": "Even a hairline crack can leak. That's a replacement."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-toilets",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Toilets in Elgin Homes",
+    "intro": "The age of the bathroom says a lot about what goes wrong.",
+    "items": [
+     {
+      "h3": "Old Flanges in Historic Homes",
+      "body": "In homes built before 1940, the flange under the toilet may be cast iron or lead and decades old. When it fails, the toilet rocks and leaks."
+     },
+     {
+      "h3": "Odd Rough-In Sizes",
+      "body": "Some older bathrooms have a toilet set farther from or closer to the wall than today's standard. We measure before you buy."
+     },
+     {
+      "h3": "Gurgling Means Check the Main",
+      "body": "If the toilet bubbles when the tub drains, the main line may be partly blocked. In older neighborhoods, roots are a common cause. See [drain cleaning](/elgin/drain-cleaning)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Simple, priced first.",
+    "steps": [
+     {
+      "h3": "1. Repair When It Makes Sense",
+      "body": "A fill valve costs far less than a toilet."
+     },
+     {
+      "h3": "2. Flat Price",
+      "body": "Before we lift the lid."
+     },
+     {
+      "h3": "3. Clean Finish",
+      "body": "Floors protected and the old toilet removed if we replace it."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Toilet Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Judith Kulb",
+      "url": null,
+      "text": "Anthony was our technician to take out our old water heater and install a new one as well as install new inside parts to two of our toilets. He was very professional, courteous, respectful of our home, and very pleasant with whom to deal. We were very happy to have had Anthony as our plumber."
+     },
+     {
+      "name": "K Franko",
+      "url": null,
+      "text": "Stephen and Brendon were great. Explained the options, transparent pricing on parts, had quick support from management on bid questions and great communication from scheduling to job completion. Efficient, cleaned up the area and worked well together even though they came at different times for different portions of the job. Definitely recommend them."
+     },
+     {
+      "name": "Al Gomez",
+      "url": null,
+      "text": "Edgar Herrera , was amazing, outstanding customer service! Definitely recommend J.Blanton Plumbing!!."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Toilet Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "Why does my toilet run by itself?",
+      "preview": "Water is leaking past the flapper or the fill valve isn't shutting off.",
+      "answer": "Usually the flapper isn't sealing or the fill valve isn't shutting off at the right level. Both are quick, inexpensive repairs."
+     },
+     {
+      "q": "Can a leaking toilet damage my floor?",
+      "preview": "Yes. A failed seal soaks the subfloor over time.",
+      "answer": "Yes. Water from a failed wax ring soaks into the subfloor and can rot it or damage the ceiling below. Fix it early."
+     },
+     {
+      "q": "How do I know what toilet fits my bathroom?",
+      "preview": "Measure the rough-in. We can do it for you.",
+      "answer": "Measure from the wall to the center of the floor bolts. Most are 12 inches, but older bathrooms sometimes differ. We can measure before you buy."
+     },
+     {
+      "q": "Should I replace my old toilet?",
+      "preview": "If it's cracked, clogs often or uses a lot of water, yes.",
+      "answer": "If it's cracked, clogs often or is an older high-water model, a new toilet is worth it. Running and minor leaks are usually repairs."
+     },
+     {
+      "q": "How much does toilet installation cost in Elgin?",
+      "preview": "It depends on the toilet and flange. You get a flat price first.",
+      "answer": "It depends on the toilet, whether the flange or shutoff needs replacing and removal of the old one. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Toilet?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Toilet Repair and Installation in Elgin, IL",
+   "serviceType": "Toilet Installation & Repair",
+   "url": "https://jblantonplumbing.com/elgin/toilet-installation-repair",
+   "description": "Toilet repair and installation in Elgin, IL. Running, leaking, clogging or rocking toilets fixed, or a new one installed. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Toilet Repair & Installation in Elgin, IL",
+ "metaDescription": "Toilet repair and installation in Elgin, IL. Running, leaking, clogging or rocking toilets fixed, or a new one installed. Flat price first."
+}

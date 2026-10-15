@@ -1,0 +1,310 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Arlington Heights, IL",
+   "sub": "Cold showers, a puddle by the tank or a pilot light that won't stay on. We find what failed, tell you honestly if it's worth fixing and give you a flat price before any work. From our office on East Central Road, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Water Heater Needs Repair",
+    "intro": "Arlington Heights homeowners usually call us about one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Hot Water at All",
+      "body": "On a gas heater, it's often the pilot, thermocouple or gas valve. On an electric one, an element or thermostat."
+     },
+     {
+      "h3": "Hot Water Runs Out Fast",
+      "body": "Sediment on the bottom of the tank takes up space, or one heating element has quit."
+     },
+     {
+      "h3": "Water on the Floor",
+      "body": "A drip from a fitting or the relief valve is a repair. Water from the tank itself means replacement."
+     },
+     {
+      "h3": "Rumbling, Popping or a Rotten Egg Smell",
+      "body": "Popping is sediment. A sulfur smell usually points to the anode rod reacting with the water."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Arlington Heights Homes",
+    "intro": "About 4 in 10 Arlington Heights homes were built in the 1970s and 1980s. Most are on their second or third water heater, and the setup around it is often as old as the house.",
+    "items": [
+     {
+      "h3": "Venting in Older Basements",
+      "body": "Many gas water heaters here still vent into an old masonry chimney. When the furnace gets upgraded and vents out the side wall, the water heater can be left venting alone into a chimney that's too big for it. We check the draft on every gas heater we touch."
+     },
+     {
+      "h3": "Basement Utility Rooms Next to Finished Space",
+      "body": "Postwar and 1970s basements often have the heater in a corner next to a finished room. A slow leak can soak carpet and drywall before anyone notices. A drain pan and a leak sensor help."
+     },
+     {
+      "h3": "Original Gas Valves and Shutoffs",
+      "body": "The gas shutoff and water valves next to an old heater may not have been turned in decades. We check them before any repair, so you can shut the heater off when you need to."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We repair every type of water heater you'll find in an Arlington Heights home: standard gas and electric tanks, power-vent units, high-efficiency condensing heaters and tankless models. Every visit starts with a diagnosis, then a recommendation.",
+     "Before you call, find the label on the side of the tank. It lists the fuel, the size in gallons and the manufacture date, usually in the serial number. That tells us a lot about whether a repair makes sense. If it's time for a new one, see [water heater installation](/arlington-heights/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "Even treated Lake Michigan water carries minerals that settle in the bottom of the tank. A yearly flush clears that sediment so the burner heats water instead of a layer of scale, and the heater runs quieter.",
+     "During a maintenance visit we flush the tank, test the temperature and pressure relief valve, check the anode rod and look at the burner or elements and the venting. Tankless units get descaled. If your heater has never been flushed, start with a maintenance visit."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "You get a diagnosis, not a sales pitch.",
+    "steps": [
+     {
+      "h3": "1. Test the Parts First",
+      "body": "We find the part that failed before we talk about price. If it's a repair, we say so."
+     },
+     {
+      "h3": "2. Repair vs. Replace, Side by Side",
+      "body": "When a heater is near the end, you see both options with prices and expected life."
+     },
+     {
+      "h3": "3. Flat Price, Clean Basement",
+      "body": "One price before we start, and the utility room left as clean as we found it."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Shaun Huang",
+      "url": null,
+      "text": "The guys did a great job. Andrew and Enrique were able to figure out the issue quickly and move me towards a reasonable solution. Kyle came out the next day and finished the work efficiently. Appreciate them a lot and will continue doing business with them in the future!"
+     },
+     {
+      "name": "Jeff",
+      "url": null,
+      "text": "Lou was very professional and his experience shows. He took a quick look at our broken hot water heater, saw a dirty component and knew right away that replacing the part would solve the problem. Thanks Lou!"
+     },
+     {
+      "name": "Jason Kelly",
+      "url": null,
+      "text": "Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Why does my pilot light keep going out?",
+      "preview": "Usually a worn thermocouple or a draft problem.",
+      "answer": "Usually a worn thermocouple or flame sensor that no longer tells the gas valve the pilot is lit. A draft problem in the vent can also blow it out. Both are fixable, and we check the venting while we're there."
+     },
+     {
+      "q": "Should I repair or replace my water heater?",
+      "preview": "A leaking tank means replace. A failed part on a younger heater is usually a repair.",
+      "answer": "If the tank itself is leaking, it needs replacing. If a part failed on a heater under about 8 years old, repair usually makes sense. If the repair is a big share of the cost of a new heater, we'll tell you."
+     },
+     {
+      "q": "How long do water heaters last in Arlington Heights?",
+      "preview": "Tank heaters usually last about 8 to 12 years.",
+      "answer": "Tank water heaters usually last somewhere around 8 to 12 years, depending on use and maintenance. Tankless units often last longer with regular descaling."
+     },
+     {
+      "q": "Is it dangerous if my water heater is leaking?",
+      "preview": "Usually not dangerous, but it gets worse. Shut off the cold supply and call.",
+      "answer": "A leak is rarely dangerous on its own, but it won't fix itself. Turn off the cold water valve above the tank, and for a gas heater set the control to pilot or off. If you smell gas, leave the house and call Nicor Gas or 911 from outside."
+     },
+     {
+      "q": "How much does water heater repair cost in Arlington Heights?",
+      "preview": "It depends on the part and the heater. You get a flat price first.",
+      "answer": "It depends on what failed, the type of heater and the parts. We diagnose it first and give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Arlington Heights, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/arlington-heights/water-heater-repair",
+   "description": "Water heater repair in Arlington Heights, IL. No hot water, leaks, odd noises or a pilot that won't stay lit. Diagnosis first, flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Arlington Heights, IL",
+ "metaDescription": "Water heater repair in Arlington Heights, IL. No hot water, leaks, odd noises or a pilot that won't stay lit. Diagnosis first, flat price. Call 24/7."
+}

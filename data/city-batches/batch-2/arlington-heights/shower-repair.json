@@ -1,0 +1,298 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Arlington Heights, IL",
+   "sub": "A shower that drips all day, goes cold when someone flushes or barely trickles. We find the cause and fix it, usually without touching your tile, with a flat price before we start. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Common Shower Problems We Fix",
+    "intro": "Most problems start inside the valve:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Constant Drip",
+      "body": "A worn cartridge or washer inside the valve. Usually fixed through the trim."
+     },
+     {
+      "h3": "Scalding or Freezing Swings",
+      "body": "An older valve without pressure balancing, or a worn balancing cartridge."
+     },
+     {
+      "h3": "Weak Spray",
+      "body": "A clogged showerhead, a failing cartridge or old galvanized pipe feeding the shower."
+     },
+     {
+      "h3": "Handles That Are Hard to Turn",
+      "body": "Wear and buildup inside the valve body."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Arlington Heights Homes",
+    "intro": "Arlington Heights bathrooms span more than 80 years, and the shower valve tells you which era you're in.",
+    "items": [
+     {
+      "h3": "Two- and Three-Handle Valves",
+      "body": "Original bathrooms from the 1950s and 1960s often have separate hot and cold handles. They can be rebuilt, but parts can be hard to find. Sometimes a new valve is the better choice."
+     },
+     {
+      "h3": "No Scald Protection",
+      "body": "Older valves don't balance pressure, so a flush elsewhere in the house can turn the shower hot or cold. A pressure-balancing valve fixes it."
+     },
+     {
+      "h3": "Galvanized Pipe and Low Pressure",
+      "body": "In homes with original galvanized supply pipe, rust narrows the lines over time. If the shower and the bathroom sink are both weak, the pipe may be the problem."
+     },
+     {
+      "h3": "Tile From Another Era",
+      "body": "Original 1950s and 1960s tile can be hard to match. That's one more reason we work through the trim opening whenever we can."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the shower, not remodel the bathroom.",
+    "steps": [
+     {
+      "h3": "1. Find the Real Cause",
+      "body": "Showerhead, cartridge, valve or pipes. We check before we replace anything."
+     },
+     {
+      "h3": "2. Flat Price First",
+      "body": "You get one flat-rate price before any work begins."
+     },
+     {
+      "h3": "3. Tile Left Alone When Possible",
+      "body": "Most cartridge and valve repairs go through the trim opening."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jan Berkson",
+      "url": null,
+      "text": "John Hogan arrived on time and provided great service. He gave me an estimate before starting, was very thorough and tidy and even gave me good information about what might be needed in the near future to further address the situation with my bathtub drain. Very knowledgeable, courteous and friendly- instills confidence!"
+     },
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Repair Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Can you fix a dripping shower without opening the wall?",
+      "preview": "Usually. Cartridges and washers come out through the trim.",
+      "answer": "Usually. Replacing a worn cartridge or washer is done through the trim opening. Replacing the whole valve sometimes needs a small access panel, often from the back side of the wall."
+     },
+     {
+      "q": "Why does my shower go hot or cold when someone flushes?",
+      "preview": "Your valve isn't balancing pressure, or the balancing part is worn.",
+      "answer": "When a toilet fills, it pulls cold water away from the shower. A pressure-balancing valve adjusts for that. Older valves don't have one, and newer ones can wear out."
+     },
+     {
+      "q": "Can you replace an old three-handle shower valve?",
+      "preview": "Yes. We can often do it with minimal tile work.",
+      "answer": "Yes. Upgrading to a single-handle pressure-balancing valve is common in older Arlington Heights bathrooms. We'll explain how much tile work is needed before we start."
+     },
+     {
+      "q": "Why is my shower pressure so low?",
+      "preview": "A clogged head, a worn cartridge or old pipe.",
+      "answer": "Start with the showerhead, which can clog with mineral buildup. If a new head doesn't help, the cartridge or the supply pipe is likely the issue."
+     },
+     {
+      "q": "How much does shower repair cost in Arlington Heights?",
+      "preview": "It depends on the valve and parts. You get a flat price first.",
+      "answer": "It depends on the valve, the parts and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works Right?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Arlington Heights, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/arlington-heights/shower-repair",
+   "description": "Shower repair in Arlington Heights, IL. Drips, low pressure, temperature swings and old valves fixed with a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Arlington Heights, IL",
+ "metaDescription": "Shower repair in Arlington Heights, IL. Drips, low pressure, temperature swings and old valves fixed with a flat price first. Call 24/7."
+}

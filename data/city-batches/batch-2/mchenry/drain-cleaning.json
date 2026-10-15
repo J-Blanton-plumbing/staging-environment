@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Drain Cleaning in McHenry, IL",
+   "sub": "A kitchen sink that won't drain, a shower that pools around your feet or a floor drain that fills when the washer runs. We clear it, explain what caused it and give you a flat price before we start. From our office on West Elm Street, serving McHenry County 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call for Drain Cleaning",
+    "body": "Call when a plunger hasn't fixed it, when the same drain keeps clogging or when a drain gives off a sewer smell. Notice how far it spreads. A single slow fixture usually has a clog close by. If the basement floor drain fills when the washer empties or the toilet bubbles when the tub drains, the main line is involved, and that's a job for [sewer rodding](/mchenry/sewer-rodding).",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in McHenry",
+    "bodies": [
+     "Most household clogs come from hair, soap, grease, food and lint. In McHenry, there's often one more ingredient: mineral scale from hard groundwater. It builds a rough crust inside drain lines that catches everything else.",
+     "We clear the clog with a cable sized for the pipe and show you what came out. If the same drain keeps clogging, scale or grease may be coating the whole line, and [hydro jetting](/mchenry/hydro-jetting) cleans it back to the pipe wall."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging",
+    "bodies": [
+     "Grease is the number one cause of kitchen sink clogs. It goes down warm, cools and sticks to the pipe, and food and soap build on top of it.",
+     "If both sides of the sink fill or the dishwasher backs up into it, the clog is past the trap. We clear the line all the way to the stack. If the disposal is involved, see [garbage disposal repair](/mchenry/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in McHenry Homes",
+    "intro": "Most McHenry homes were built between 1970 and 2009. Their drains clog for a few predictable reasons.",
+    "items": [
+     {
+      "h3": "Hard Water Scale",
+      "body": "Groundwater minerals combine with soap scum, especially in showers and tubs. The pipe narrows a little every year."
+     },
+     {
+      "h3": "Family-Sized Kitchens",
+      "body": "Homes built for families in the 1990s and 2000s have kitchen lines with decades of grease in them."
+     },
+     {
+      "h3": "Main Line Problems",
+      "body": "When several drains slow down together, it's usually a sag, roots or a blockage in the main. That's [sewer drain clearing](#sewer-drain-clearing)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When every drain slows down at once or water comes up at the basement floor drain, the main sewer drain is blocked. Clearing it takes a machine that can run the full line from the cleanout to the main or the septic tank.",
+     "We clear the line, then camera it so you can see the cause. In McHenry, that's often a sag where the line settled, wipes or grease. Repeat clogs get a plan: [sewer line cleaning](/mchenry/sewer-maintenance) on a schedule, [hydro jetting](/mchenry/hydro-jetting) or a [sewer repair](/mchenry/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Choose J. Blanton for Drain Cleaning?",
+    "intro": "Our plumbers are licensed in Illinois and carry what they need to clear most drains in one visit.",
+    "steps": [
+     {
+      "h3": "1. A Real Person, Any Hour",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. Flat Price First",
+      "body": "Before any tools come out."
+     },
+     {
+      "h3": "3. The Cause Explained",
+      "body": "So it doesn't keep happening."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Tanya Hill",
+      "url": null,
+      "text": "Ray was awesome! My kitchen sink was backed up and he took care of things courteously, neatly and thoroughly. Ray explained the mechanics of why my issue may have happened and how to prevent it from happening again. I recommend Ray and JVS to anyone looking for a plumber!"
+     },
+     {
+      "name": "Kevin Barnicle",
+      "url": null,
+      "text": "My plumber from now on! J Blanton was so easy and pleasant to schedule. Stephen W. arrived on time, super professional and kind. He was very clean and a great communicator. He new everything. I’ll call them again if I have an issue."
+     },
+     {
+      "name": "cubsfan",
+      "url": null,
+      "text": "J Blanton came in in short notice to complete a job that needed to be done right away. The technician was thorough, answered all of my questions, and recommended some preventative steps we could take going forward. Job well done!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "Can hard water clog my drains?",
+      "preview": "It contributes. Mineral scale catches hair, soap and grease.",
+      "answer": "It contributes. Hard water leaves mineral deposits inside drain pipes, and those rough surfaces catch hair, soap and grease. Over time the pipe narrows until it clogs."
+     },
+     {
+      "q": "Is it one drain or the main line?",
+      "preview": "One slow fixture is local. Several, or the floor drain, is the main.",
+      "answer": "If only one fixture is slow, the clog is probably close to it. If several are slow or water comes up at the floor drain, the main line is involved."
+     },
+     {
+      "q": "Do you clean drains for homes on septic?",
+      "preview": "Yes.",
+      "answer": "Yes. We clear household drains and the line to the septic tank. If the tank is full, we'll let you know so you can have it pumped."
+     },
+     {
+      "q": "Should I use drain cleaner chemicals?",
+      "preview": "We don't recommend them.",
+      "answer": "We don't recommend them. They can damage pipes and are hard on septic systems. A cable or jetting removes the clog safely."
+     },
+     {
+      "q": "How much does drain cleaning cost in McHenry?",
+      "preview": "It depends on the clog. You get a flat price first.",
+      "answer": "It depends on where the clog is and what's causing it. We give you a flat price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Drains That Keep Draining?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Drain Cleaning in McHenry, IL",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/mchenry/drain-cleaning",
+   "description": "Drain cleaning in McHenry, IL and McHenry County. Clogged sinks, tubs, floor drains and main lines cleared, with a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Drain Cleaning in McHenry, IL",
+ "metaDescription": "Drain cleaning in McHenry, IL and McHenry County. Clogged sinks, tubs, floor drains and main lines cleared, with a flat price first. Call 24/7."
+}

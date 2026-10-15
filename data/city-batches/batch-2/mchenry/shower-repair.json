@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in McHenry, IL",
+   "sub": "A showerhead spraying in every direction, a valve that drips all day or water that swings hot and cold. We repair showers across McHenry, usually without touching your tile. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Common Shower Problems in McHenry",
+    "intro": "Hard water is behind many of them:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Spray That Goes Sideways",
+      "body": "Scale has blocked some of the showerhead nozzles."
+     },
+     {
+      "h3": "A Constant Drip",
+      "body": "A scaled or worn cartridge can't close fully."
+     },
+     {
+      "h3": "Hot and Cold Swings",
+      "body": "A worn pressure-balancing cartridge, often stiff from scale."
+     },
+     {
+      "h3": "A Handle That's Hard to Turn",
+      "body": "Mineral buildup inside the valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in McHenry Homes",
+    "intro": "Hard groundwater is tough on showers.",
+    "items": [
+     {
+      "h3": "Scale in Heads and Cartridges",
+      "body": "Minerals build up inside showerheads and valve cartridges. Descaling or replacing the cartridge often brings a shower back."
+     },
+     {
+      "h3": "Glass Doors and Film",
+      "body": "Hard water leaves a film on glass and tile. A softener cuts it down."
+     },
+     {
+      "h3": "Shower Leaks Behind the Wall",
+      "body": "A leaking valve or connection can stain the ceiling below. We find and fix it."
+     },
+     {
+      "h3": "Water Heater Sediment",
+      "body": "If the shower runs out of hot water fast, the heater may be full of sediment. See [water heater repair](/mchenry/water-heater-repair)."
+     },
+     {
+      "h3": "Glass Doors and Hard Water",
+      "body": "Hard water leaves a film on glass shower doors that's hard to remove. A softener cuts it down and keeps new fixtures looking new."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the shower, not remodel the bathroom.",
+    "steps": [
+     {
+      "h3": "1. Find the Cause",
+      "body": "Head, cartridge, valve or water heater."
+     },
+     {
+      "h3": "2. Flat Price First",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Tile Stays Put When Possible",
+      "body": "Most repairs go through the trim."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jan Berkson",
+      "url": null,
+      "text": "John Hogan arrived on time and provided great service. He gave me an estimate before starting, was very thorough and tidy and even gave me good information about what might be needed in the near future to further address the situation with my bathtub drain. Very knowledgeable, courteous and friendly- instills confidence!"
+     },
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Repair Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "Why does my showerhead spray in every direction?",
+      "preview": "Mineral scale has blocked some nozzles.",
+      "answer": "Hard water has left scale in the nozzles. Soak the head in vinegar or replace it. If the whole shower is weak, the cartridge may be scaled too."
+     },
+     {
+      "q": "Can you fix a dripping shower without opening the wall?",
+      "preview": "Usually.",
+      "answer": "Usually. Replacing a cartridge is done through the trim opening. A full valve replacement may need a small access panel."
+     },
+     {
+      "q": "Why does my shower leak into the ceiling below?",
+      "preview": "A valve, drain or connection is leaking behind the wall.",
+      "answer": "A leaking valve, a loose connection or a failing drain seal can drip into the ceiling below. We find the source and fix it."
+     },
+     {
+      "q": "Will a water softener help my shower?",
+      "preview": "Yes. Less scale on heads, cartridges and glass.",
+      "answer": "Yes. Softened water leaves far less scale on showerheads, cartridges and glass doors. See [water filtration](/mchenry/water-filtration-systems)."
+     },
+     {
+      "q": "Can you install a handheld or rain showerhead?",
+      "preview": "Yes.",
+      "answer": "Yes. We install handheld, rain and multi-function showerheads and make sure the valve supplies enough flow. With hard water, choose a head with easy-to-clean nozzles."
+     },
+     {
+      "q": "How much does shower repair cost in McHenry?",
+      "preview": "It depends on the valve and parts. You get a flat price first.",
+      "answer": "It depends on the valve, the parts and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in McHenry, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/mchenry/shower-repair",
+   "description": "Shower repair in McHenry, IL. Scaled showerheads, dripping valves, low pressure and temperature swings fixed with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in McHenry, IL",
+ "metaDescription": "Shower repair in McHenry, IL. Scaled showerheads, dripping valves, low pressure and temperature swings fixed with a flat price first."
+}

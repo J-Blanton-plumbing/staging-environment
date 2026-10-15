@@ -1,0 +1,318 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Leak Repairs",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Leak Detection and Repair in McHenry, IL",
+   "sub": "A ceiling stain under a bathroom, a warm spot on the floor or a water bill that keeps climbing. We find hidden leaks before opening anything, fix them and give you a flat price first. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+    "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs of a Hidden Leak",
+    "intro": "Watch for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Stain Under a Bathroom",
+      "body": "Often a shower valve, drain seal or toilet leaking into the ceiling below."
+     },
+     {
+      "h3": "A Warm or Damp Floor",
+      "body": "A hot water line leaking under the floor or slab."
+     },
+     {
+      "h3": "A Higher Water Bill",
+      "body": "Or, on a well, a pump that cycles when nothing is running."
+     },
+     {
+      "h3": "A Musty Smell",
+      "body": "Hidden moisture often smells before it shows."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "what-we-fix",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Fix",
+    "h2": "Leaks We Find and Repair",
+    "intro": "From fixtures to buried lines:",
+    "steps": [
+     {
+      "h3": "Bathroom Leaks",
+      "body": "Shower valves, drain seals, toilets and supply lines."
+     },
+     {
+      "h3": "Pipes in Walls and Floors",
+      "body": "Copper pinholes, failed fittings and corroded pipe."
+     },
+     {
+      "h3": "Slab and Underground Lines",
+      "body": "Leaks under a slab or between the meter or well and the house."
+     },
+     {
+      "h3": "Repiping",
+      "body": "When pipe is failing in several places, we replace it."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-leaks",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Leaks in McHenry Homes",
+    "intro": "Where leaks start in McHenry has a lot to do with the water and the age of the house.",
+    "items": [
+     {
+      "h3": "Hard Water Wears Valves and Fittings",
+      "body": "Scale stiffens valves and wears seals, so drips start at fixtures and shutoffs sooner."
+     },
+     {
+      "h3": "Pinholes in Older Copper",
+      "body": "In homes from the 1970s and 1980s, some copper lines develop pinhole leaks, especially near fittings."
+     },
+     {
+      "h3": "Well Pumps That Never Rest",
+      "body": "On a private well, a pressure tank or pump that cycles with no water running often means a leak somewhere."
+     },
+     {
+      "h3": "Seasonal Homes",
+      "body": "Some lake-area homes sit empty part of the year. A small leak can run for weeks before anyone notices."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find it first, open as little as possible.",
+    "steps": [
+     {
+      "h3": "1. Pinpoint the Leak",
+      "body": "Meter or pressure tests, moisture readings and listening equipment."
+     },
+     {
+      "h3": "2. Fix It Right",
+      "body": "A repair for one leak, a repipe plan if the pipe is failing everywhere."
+     },
+     {
+      "h3": "3. Flat Price First",
+      "body": "Before any work."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Leak Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Keith Spengel",
+      "url": null,
+      "text": "Ty was awesome. Not only did he find the problem more accurately than previous people who came out, he fixed it same day and explained everything in detail with a great personality and an accommodating demeanor. I couldn’t be happier with the work that he did and how he did it."
+     },
+     {
+      "name": "Amee Kauffman",
+      "url": null,
+      "text": "We had a difficult leaky pipe situation and things could have gone bad quickly, but Alex took care to find a solution that was the least intrusive to our home and lives. He was very kind, knowledgable and thoughtful throughout the process and we appreciate the effort he put into fixing our home!"
+     },
+     {
+      "name": "Steven Geiermann",
+      "url": null,
+      "text": "Edgar Herrera was a stellar representative for J Blanton’s. He addressed the broken water pipe in an efficient, timely manner. He offered approximate next steps. Definitely 5 stars!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Leak Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "How do I check for a leak if I'm on a well?",
+      "preview": "Turn off all water and listen for the pump.",
+      "answer": "Turn off every fixture and appliance. If the well pump or pressure tank keeps cycling, water is leaking somewhere. Call us and we'll find it."
+     },
+     {
+      "q": "Can you find a leak under a concrete slab?",
+      "preview": "Yes, with listening and tracing equipment.",
+      "answer": "Yes. We use listening and tracing equipment to locate leaks under slabs, so we break only the concrete we need to."
+     },
+     {
+      "q": "Why is my shower leaking into the ceiling?",
+      "preview": "A valve, drain or connection behind the wall.",
+      "answer": "Usually a leaking valve, a loose connection or a failed drain seal. We find the exact source and fix it."
+     },
+     {
+      "q": "Is a small drip worth fixing?",
+      "preview": "Yes. Small leaks cause mold and rot over time.",
+      "answer": "Yes. A slow leak can cause mold and rot long before you see it. Fixing it early is cheaper."
+     },
+     {
+      "q": "How much does leak repair cost in McHenry?",
+      "preview": "It depends on the leak and access. You get a flat price first.",
+      "answer": "It depends on where the leak is, the pipe and how we reach it. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Find That Leak?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Leak Detection and Repair in McHenry, IL",
+   "serviceType": "Leak Repairs",
+   "url": "https://jblantonplumbing.com/mchenry/leak-repairs",
+   "description": "Leak detection and repair in McHenry, IL. Hidden leaks in walls, floors, slabs and underground lines found and fixed. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Leak Detection & Repair in McHenry, IL",
+ "metaDescription": "Leak detection and repair in McHenry, IL. Hidden leaks in walls, floors, slabs and underground lines found and fixed. Flat price first."
+}

@@ -1,0 +1,229 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in McHenry, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on West Elm Street. Our line is open 24/7 for homeowners in McHenry and across McHenry County. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in McHenry",
+   "intro": "Our licensed plumbers handle everything from a water heater full of sediment to a basement that took on water. Pick a service to see how we handle it in McHenry.",
+   "cards": [
+    {
+     "title": "Water Heaters",
+     "href": "/mchenry/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/mchenry/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/mchenry/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/mchenry/sewer-repair",
+     "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Toilets & Showers",
+     "href": "/mchenry/toilet-installation-repair",
+     "desc": "Running toilets, leaky shower valves and new fixture installs.",
+     "image": {
+      "src": "/images/city-hubs/toilet-fill-valve-repair.webp",
+      "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+     }
+    },
+    {
+     "title": "Leak Repair",
+     "href": "/mchenry/leak-repairs",
+     "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/mchenry/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On West Elm Street",
+   "h2": "Our McHenry Office",
+   "body": "Our McHenry office is at 3406 W Elm St, McHenry, IL 60050. It keeps our plumbers close to homes across McHenry and the lake communities to the north and east. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "3406 W Elm St, McHenry, IL 60050",
+   "areasH3": "McHenry County Communities We Serve",
+   "areas": [
+    {
+     "label": "Johnsburg",
+     "href": "/johnsburg"
+    },
+    {
+     "label": "Wonder Lake",
+     "href": "/wonder-lake"
+    },
+    {
+     "label": "Ringwood",
+     "href": "/ringwood"
+    },
+    {
+     "label": "Spring Grove",
+     "href": "/spring-grove"
+    },
+    {
+     "label": "Lakemoor",
+     "href": "/lakemoor"
+    },
+    {
+     "label": "Fox Lake",
+     "href": "/fox-lake"
+    },
+    {
+     "label": "Island Lake",
+     "href": "/island-lake"
+    },
+    {
+     "label": "Woodstock",
+     "href": "/woodstock"
+    }
+   ],
+   "more": "/locations/chicagoland"
+  },
+  "depth": {
+   "h2": "What McHenry Homes Need From a Plumber",
+   "intro": "The median home in McHenry was built in 1988, and about 3 in 4 went up between 1970 and 2009. Add hard groundwater, the Fox River and long McHenry County winters, and the same few problems keep showing up.",
+   "tiles": [
+    {
+     "title": "Groundwater and Your Water Heater",
+     "body": "McHenry County gets its water from underground aquifers, not Lake Michigan. Groundwater here tends to be hard, and in some areas it carries iron that stains fixtures orange and leaves sediment in the bottom of water heaters. That buildup makes a water heater work harder and wear out sooner. [Flushing and servicing your water heater](/mchenry/water-heater-repair) helps, and a [water filtration system](/mchenry/water-filtration-systems) can cut down on buildup."
+    },
+    {
+     "title": "The Fox River and Wet Basements",
+     "body": "In July 2017, heavy rain flooded the Fox River and the Chain O’Lakes, McHenry County was declared a state disaster area, and homes along the river and the lakes took on water. You don’t have to live on the river to get a wet basement, though. A [sump pump with a battery backup](/mchenry/sump-pumps) keeps running when the power goes out, and a [backflow valve](/mchenry/flood-control-maintenance) stops sewage from coming up through floor drains."
+    },
+    {
+     "title": "Homes From the 1990s and 2000s",
+     "body": "About 4 in 10 McHenry homes went up between 1990 and 2009. Equipment that came with the house, like the first water heater and the first sump pump, isn’t built to last as long as the house. If yours has never been replaced, a [whole-home checkup](/mchenry/plumbing-maintenance) tells you what’s close to the end before it fails."
+    },
+    {
+     "title": "Hard Freezes and Hidden Leaks",
+     "body": "McHenry County winters bring long stretches below freezing. Pipes in exterior walls, crawl spaces and outdoor spigot lines freeze first, and a split pipe often starts leaking inside a wall or under a floor once it thaws. We can [find and fix the leak](/mchenry/leak-repairs), and we’re on call 24/7 if a [pipe bursts](/mchenry/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why McHenry Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real J. Blanton Reviews",
+   "intro": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+   "rating": "4.7",
+   "ratingSub": "5,669+ Google reviews across all J. Blanton locations",
+   "items": [
+    {
+     "name": "Marianne Mollenauer",
+     "url": null,
+     "text": "We had an emergency hot water heater problem and Alex did a great job getting a new appliance installed the same day I called for help. Great company! I'd use them again."
+    },
+    {
+     "name": "Betty Knows",
+     "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+     "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+    },
+    {
+     "name": "Amee Kauffman",
+     "url": null,
+     "text": "We had a difficult leaky pipe situation and things could have gone bad quickly, but Alex took care to find a solution that was the least intrusive to our home and lives. He was very kind, knowledgable and thoughtful throughout the process and we appreciate the effort he put into fixing our home!"
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From McHenry Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in McHenry?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our West Elm Street office keeps our plumbers close to McHenry, and we [treat emergencies as a priority](/mchenry/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "Is McHenry’s hard water tough on my water heater?",
+     "preview": "It can be. Groundwater in McHenry County tends to be hard, and some areas also have iron.",
+     "a": "It can be. Groundwater in McHenry County tends to be hard, and some areas also have iron. Those minerals settle in your water heater as sediment, which makes it work harder and wear out sooner. Signs include a popping or rumbling tank, rusty hot water and hot water that runs out faster than it used to. Flushing your water heater regularly helps, and a [water filtration system](/mchenry/water-filtration-systems) can cut down on buildup."
+    },
+    {
+     "q": "When should I replace my water heater?",
+     "preview": "With hard water, sooner rather than later.",
+     "a": "With hard water, sooner rather than later. Tank water heaters usually last somewhere around 8 to 12 years. Rusty water, rumbling noises, a leak at the base or hot water that runs out faster than it used to all mean it’s time to have it checked. [Replacing it](/mchenry/water-heater-installation) on your schedule is easier than dealing with a flooded basement."
+    },
+    {
+     "q": "Why are there orange stains in my sinks and tub?",
+     "preview": "Orange or rust-colored stains usually come from iron in the water.",
+     "a": "Orange or rust-colored stains usually come from iron in the water. It isn’t a health hazard, but it stains fixtures and laundry, and the same iron settles as sediment in your water heater and pipes. A [water test](/mchenry/water-filtration-systems) shows what’s in your water, so you know whether filtration makes sense for your home."
+    },
+    {
+     "q": "How do I protect my basement from sewer backups?",
+     "preview": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris.",
+     "a": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris. For homes with repeat backups, an [overhead sewer system](/mchenry/overhead-sewer-systems) lifts basement wastewater above the level where backups happen. We can look at your setup and tell you which option makes sense for your home."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from McHenry?",
+     "preview": "Along with McHenry, our office serves Johnsburg, Wonder Lake, Ringwood, Spring Grove, Lakemoor, Fox Lake, Island Lake, Woodstock and more.",
+     "a": "Along with McHenry, our office serves Johnsburg, Wonder Lake, Ringwood, Spring Grove, Lakemoor, Fox Lake, Island Lake, Woodstock and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "In McHenry, a lot of plumbing trouble builds up slowly, like sediment in a water heater or a sump pump that’s getting tired. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so problems get caught while they’re still small.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your McHenry Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in McHenry, IL",
+ "metaDescription": "Local plumbers on West Elm Street in McHenry, IL. Serving Chicagoland since 1993. Call 24/7 for an upfront price before any work starts."
+}

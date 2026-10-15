@@ -1,0 +1,314 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Algonquin, IL",
+   "sub": "If your water heater came with the house, there's a good chance it's acting up by now. No hot water, a slow leak or a tank that knocks every time it heats. We find what failed, tell you if it's worth fixing and give you a flat price first. From our office on Esplanade Drive, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Algonquin Water Heater Failing?",
+    "intro": "Here's what we hear about most:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pilot Keeps Going Out",
+      "body": "A worn thermocouple or flame sensor, usually a quick repair."
+     },
+     {
+      "h3": "Not Enough Hot Water for the Family",
+      "body": "Sediment in the tank, a failing element or a heater that's too small for the household."
+     },
+     {
+      "h3": "Knocking or Rumbling",
+      "body": "Mineral sediment on the bottom of the tank. A flush may help if it's caught early."
+     },
+     {
+      "h3": "A Puddle Around the Base",
+      "body": "From a valve or fitting, it's a repair. From the tank itself, it's time to replace."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Algonquin Homes",
+    "intro": "More than half of Algonquin homes went up between 1990 and 2009. That means a lot of water heaters reaching the end at the same time.",
+    "items": [
+     {
+      "h3": "The Heater That Came With the House",
+      "body": "A tank heater usually lasts about 8 to 12 years. If yours is original to a home from the 1990s or 2000s, it's well past that. Plan the replacement before it leaks into a finished basement."
+     },
+     {
+      "h3": "Well Water and Sediment",
+      "body": "Algonquin's water comes from village wells on both sides of the Fox River. Groundwater carries minerals that settle in the tank over time, so yearly flushing matters."
+     },
+     {
+      "h3": "Softeners Need to Keep Up",
+      "body": "Many homes on well water have water softeners. When a softener runs out of salt or stops regenerating, scale builds in the heater fast. We check it on every water heater call."
+     },
+     {
+      "h3": "Big Households, Big Demand",
+      "body": "Family homes with three or four bathrooms can outgrow a builder-grade 40-gallon tank."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We work on every residential water heater you'll find in Algonquin: gas and electric tanks, power-vent and high-efficiency models and tankless units. We figure out what's wrong first, then recommend.",
+     "The label on the side of your tank lists the fuel, the capacity and the manufacture date, usually hidden in the serial number. Read it to us when you call. If it's time for a new one, see [water heater installation](/algonquin/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "Well water leaves sediment in every tank. A yearly flush clears it before it hardens, which keeps the heater quieter, more efficient and longer-lasting.",
+     "A maintenance visit covers the flush, the relief valve, the anode rod, the burner or elements and the venting. Tankless units get descaled. If you have a softener, we'll make sure it's set for your household."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "You'll get a diagnosis, not a pitch.",
+    "steps": [
+     {
+      "h3": "1. Test First",
+      "body": "We find the failed part before talking cost."
+     },
+     {
+      "h3": "2. Repair vs. Replace, Explained",
+      "body": "Both options, side by side, when the heater is near the end."
+     },
+     {
+      "h3": "3. Flat Price, Clean Finish",
+      "body": "One price first, and a tidy utility room after."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Shaun Huang",
+      "url": null,
+      "text": "The guys did a great job. Andrew and Enrique were able to figure out the issue quickly and move me towards a reasonable solution. Kyle came out the next day and finished the work efficiently. Appreciate them a lot and will continue doing business with them in the future!"
+     },
+     {
+      "name": "Jeff",
+      "url": null,
+      "text": "Lou was very professional and his experience shows. He took a quick look at our broken hot water heater, saw a dirty component and knew right away that replacing the part would solve the problem. Thanks Lou!"
+     },
+     {
+      "name": "Jason Kelly",
+      "url": null,
+      "text": "Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "My water heater is original to my 1990s house. Should I replace it?",
+      "preview": "Most likely. It's past the typical life of a tank.",
+      "answer": "Most likely. Tank heaters usually last about 8 to 12 years. An original heater from the 1990s or early 2000s is living on borrowed time, and replacing it on your schedule is easier than dealing with a leak."
+     },
+     {
+      "q": "Why does my water heater knock?",
+      "preview": "Sediment on the bottom of the tank.",
+      "answer": "Water trapped under sediment boils and knocks as the burner heats it. A flush may quiet it if the sediment hasn't hardened."
+     },
+     {
+      "q": "Does a water softener help my water heater?",
+      "preview": "Yes. It cuts the scale that shortens tank life.",
+      "answer": "Yes. Softened water leaves less scale in the tank and on elements. It also makes the anode rod work harder, so we check that during service."
+     },
+     {
+      "q": "Is my leaking water heater dangerous?",
+      "preview": "Usually not, but shut it off and call.",
+      "answer": "A leak isn't usually dangerous, but it won't stop. Turn off the cold water valve on top, set a gas heater to pilot or off and call us. If you smell gas, leave and call Nicor Gas or 911 from outside."
+     },
+     {
+      "q": "What does water heater repair cost in Algonquin?",
+      "preview": "It depends on the part and the heater. The price comes first.",
+      "answer": "It depends on what failed and the type of heater. We diagnose it and quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Algonquin, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/algonquin/water-heater-repair",
+   "description": "Water heater repair in Algonquin, IL. No hot water, leaks, noise or a pilot that won't stay lit. Diagnosed first, flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Algonquin, IL",
+ "metaDescription": "Water heater repair in Algonquin, IL. No hot water, leaks, noise or a pilot that won't stay lit. Diagnosed first, flat price before work."
+}

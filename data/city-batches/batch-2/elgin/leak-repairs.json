@@ -1,0 +1,316 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Leak Repairs",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Leak Detection and Repair in Elgin, IL",
+   "sub": "A water stain spreading across the ceiling, a bill that's twice what it should be or the sound of water running behind a wall. We pinpoint the leak before opening anything, fix it and give you a flat price first. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+    "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs of a Hidden Leak",
+    "intro": "Leaks rarely announce themselves:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Bill That Jumps",
+      "body": "Same habits, higher bill. Water is going somewhere."
+     },
+     {
+      "h3": "A Meter That Won't Stop",
+      "body": "With every fixture off, the meter should be still."
+     },
+     {
+      "h3": "Stains, Blisters or Warped Floors",
+      "body": "Water behind finishes eventually shows on the surface."
+     },
+     {
+      "h3": "A Damp, Musty Smell",
+      "body": "Moisture you can't see often shows up as a smell first."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "what-we-fix",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Fix",
+    "h2": "Leaks We Find and Repair",
+    "intro": "From pinholes to whole systems:",
+    "steps": [
+     {
+      "h3": "Pipes in Walls, Floors and Ceilings",
+      "body": "Corroded galvanized pipe, copper pinholes and failed fittings."
+     },
+     {
+      "h3": "Underground Water Lines",
+      "body": "Leaks between the curb shutoff and the house, found with listening and tracing gear."
+     },
+     {
+      "h3": "Fixtures and Appliances",
+      "body": "Toilets, supply lines, water heaters and washer hoses."
+     },
+     {
+      "h3": "Repiping",
+      "body": "When old pipe is failing everywhere, we replace it instead of patching leak after leak."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-leaks",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Leaks in Elgin Homes",
+    "intro": "About 1 in 5 Elgin homes was built before 1940, and that changes where leaks start.",
+    "items": [
+     {
+      "h3": "Galvanized Pipe in Historic Homes",
+      "body": "Homes in the older neighborhoods may still have galvanized steel supply lines. They rust from the inside, and leaks start at the threaded joints, often in several places."
+     },
+     {
+      "h3": "Old Repairs Behind the Walls",
+      "body": "A century of remodels can leave a patchwork of pipe types inside the walls. The transitions between them are common leak points."
+     },
+     {
+      "h3": "Slow Leaks in Finished Basements",
+      "body": "In newer west side homes, a slow leak from a supply line or water heater can soak a finished basement before anyone notices."
+     },
+     {
+      "h3": "Freeze Damage",
+      "body": "A pipe that split in January often leaks only after it thaws. See [burst pipe repair](/elgin/burst-pipe-repair)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find it first, then open as little as possible.",
+    "steps": [
+     {
+      "h3": "1. Pinpoint It",
+      "body": "Meter tests, moisture readings and listening equipment narrow it down."
+     },
+     {
+      "h3": "2. Fix It Properly",
+      "body": "A single repair for a single leak, or a repipe plan if the pipe is failing everywhere."
+     },
+     {
+      "h3": "3. Flat Price First",
+      "body": "Before any work begins."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Leak Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Keith Spengel",
+      "url": null,
+      "text": "Ty was awesome. Not only did he find the problem more accurately than previous people who came out, he fixed it same day and explained everything in detail with a great personality and an accommodating demeanor. I couldn’t be happier with the work that he did and how he did it."
+     },
+     {
+      "name": "Amee Kauffman",
+      "url": null,
+      "text": "We had a difficult leaky pipe situation and things could have gone bad quickly, but Alex took care to find a solution that was the least intrusive to our home and lives. He was very kind, knowledgable and thoughtful throughout the process and we appreciate the effort he put into fixing our home!"
+     },
+     {
+      "name": "Steven Geiermann",
+      "url": null,
+      "text": "Edgar Herrera was a stellar representative for J Blanton’s. He addressed the broken water pipe in an efficient, timely manner. He offered approximate next steps. Definitely 5 stars!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Leak Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How can I tell if I have a hidden leak?",
+      "preview": "Shut off all water and watch the meter.",
+      "answer": "Turn off every fixture and appliance that uses water and watch the meter. If it moves, there's a leak."
+     },
+     {
+      "q": "Can you find a leak without tearing out walls?",
+      "preview": "Usually we pinpoint it first, so only a small opening is needed.",
+      "answer": "Usually. We use moisture meters and listening equipment to find the spot, then open only that area."
+     },
+     {
+      "q": "When should galvanized pipe be replaced?",
+      "preview": "When it leaks, rusts or loses pressure.",
+      "answer": "When you see rusty water, low pressure or leaks at the joints. At that point, patching becomes a cycle, and repiping ends it."
+     },
+     {
+      "q": "Is the leak in my yard my responsibility?",
+      "preview": "Between the curb shutoff and the house, usually yes.",
+      "answer": "The water line from the curb shutoff to your home is usually the homeowner's. Leaks on the city side of that shutoff are usually the city's. We'll help you figure out which side it's on."
+     },
+     {
+      "q": "How much does leak repair cost in Elgin?",
+      "preview": "It depends on the leak's location and the pipe. You get a flat price first.",
+      "answer": "It depends on where the leak is, the pipe material and how we reach it. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Find That Leak?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Leak Detection and Repair in Elgin, IL",
+   "serviceType": "Leak Repairs",
+   "url": "https://jblantonplumbing.com/elgin/leak-repairs",
+   "description": "Leak detection and repair in Elgin, IL. Hidden leaks behind walls, under floors and underground found and fixed. Flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Leak Detection & Repair in Elgin, IL",
+ "metaDescription": "Leak detection and repair in Elgin, IL. Hidden leaks behind walls, under floors and underground found and fixed. Flat price first. Call 24/7."
+}

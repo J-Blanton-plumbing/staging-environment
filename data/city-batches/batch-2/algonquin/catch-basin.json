@@ -1,0 +1,316 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Catch Basin",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Catch Basin Cleaning and Repair in Algonquin, IL",
+   "sub": "A soggy backyard, a pond at the end of the driveway or a grate full of mulch and leaves. We clean catch basins, repair broken ones and clear the pipes they drain into. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+    "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-a-catch-basin",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Does a Catch Basin Do?",
+    "body": "A catch basin is a buried box with a grate. It collects runoff from your yard, driveway or downspouts and sends it into a storm line. The bottom sits lower than the outlet, so silt and leaves settle there instead of clogging the pipe. Once the bottom fills, debris moves into the outlet, the pipe clogs and water backs up into the yard.",
+    "img": {
+     "src": "/images/city-services-v2/catch-basin-diagram.webp",
+     "alt": "Diagram of a catch basin showing the inlet grate, water line, sediment settling in the sump and the outlet pipe carrying water away"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Catch Basin Needs Help",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Pools Around the Grate",
+      "body": "Long after the rain stops."
+     },
+     {
+      "h3": "Mulch and Leaves Cover the Grate",
+      "body": "Water can't get in."
+     },
+     {
+      "h3": "Ground Sinks Near the Basin",
+      "body": "Soil is washing into a crack."
+     },
+     {
+      "h3": "Water Flows Toward the Foundation",
+      "body": "The basin can't take it."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-catch-basins",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Catch Basins in Algonquin Yards",
+    "intro": "Many Algonquin subdivisions use yard basins to move water off flat lots and long driveways.",
+    "items": [
+     {
+      "h3": "Mulch and Landscaping",
+      "body": "Well-kept beds near basins send mulch into the grate with every heavy rain."
+     },
+     {
+      "h3": "Sprinkler Runoff",
+      "body": "Irrigation adds water to the basin even in dry weeks, so a partly clogged basin stays wet."
+     },
+     {
+      "h3": "Wet Seasons Near the River",
+      "body": "High groundwater slows drainage, and a blocked basin leaves standing water for days."
+     },
+     {
+      "h3": "Dry Basement Plan",
+      "body": "A working basin keeps water away from the foundation and eases the load on your [sump pump](/algonquin/sump-pumps)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the basin and the pipe behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean It Out",
+      "body": "Silt and debris removed."
+     },
+     {
+      "h3": "2. Check the Outlet",
+      "body": "Camera the pipe if water still won't drain."
+     },
+     {
+      "h3": "3. Flat-Price Repairs",
+      "body": "Grates, walls or pipes priced first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Catch Basin Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "cubsfan",
+      "url": null,
+      "text": "J Blanton came in in short notice to complete a job that needed to be done right away. The technician was thorough, answered all of my questions, and recommended some preventative steps we could take going forward. Job well done!"
+     },
+     {
+      "name": "Justin Jackson",
+      "url": null,
+      "text": "Unbelievable service and knowledge! Took the time to break down the issue and explain in a way where I felt comfortable moving forward. The work was done with no issues and they even filled me in on some work that would be needed in the future. All of this, and I only called to schedule two days before!"
+     },
+     {
+      "name": "Brynn Dumalski",
+      "url": null,
+      "text": "George came and solved our problems right away. They are a full service plumbing company. It was a relief to know that our problem would be solved. He’s also great with dogs."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Catch Basin Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "How often should I clean my catch basin?",
+      "preview": "Once a year, ideally in late fall.",
+      "answer": "Once a year in late fall works for most yards. Heavily landscaped yards may need a spring cleaning too."
+     },
+     {
+      "q": "Why is my yard still soggy with a catch basin?",
+      "preview": "The basin or outlet is clogged, or it's undersized.",
+      "answer": "Either the basin or outlet is clogged, or the basin can't handle the area draining to it. We'll check both."
+     },
+     {
+      "q": "Can you add a catch basin?",
+      "preview": "Yes, where there's a place to drain it.",
+      "answer": "Yes, if there's a storm line or outlet nearby to connect to. We'll look at your yard and tell you what's possible."
+     },
+     {
+      "q": "Is the basin in my yard mine to maintain?",
+      "preview": "Usually, if it drains your property.",
+      "answer": "Usually. If it's on your lot and handles your yard or driveway, it's the homeowner's."
+     },
+     {
+      "q": "Can my downspouts connect to a catch basin?",
+      "preview": "Often, if the basin and outlet can handle the flow.",
+      "answer": "Often. Tying downspouts into a catch basin keeps roof water away from the foundation, as long as the basin and its outlet can carry the extra flow."
+     },
+     {
+      "q": "What does catch basin repair cost in Algonquin?",
+      "preview": "It depends on the work. The price comes first.",
+      "answer": "It depends on whether it needs cleaning, a new grate, wall repair or outlet work. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Yard That Drains?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Catch Basin Cleaning and Repair in Algonquin, IL",
+   "serviceType": "Catch Basin",
+   "url": "https://jblantonplumbing.com/algonquin/catch-basin",
+   "description": "Catch basin cleaning and repair in Algonquin, IL. We clear silt and debris, fix damaged basins and get yard and driveway water draining again.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Catch Basin Cleaning & Repair in Algonquin, IL",
+ "metaDescription": "Catch basin cleaning and repair in Algonquin, IL. We clear silt and debris, fix damaged basins and get yard and driveway water draining again."
+}

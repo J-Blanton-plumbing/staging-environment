@@ -1,0 +1,306 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance and Inspections in Elgin, IL",
+   "sub": "A sump pump that's getting loud, a water heater past its prime or a drain that's been slow for months. A maintenance visit finds the small problems before they turn into a weekend emergency. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What a Plumbing Inspection Covers",
+    "intro": "One visit, every major part of your plumbing:",
+    "steps": [
+     {
+      "h3": "Hot Water",
+      "body": "We note the heater's age from the label, test the relief valve, look for rust and drips, check the vent draft and flush out sediment if it's time."
+     },
+     {
+      "h3": "Basement Pumps",
+      "body": "We run the sump and any ejector pump through a full cycle and check the float, check valve, discharge line and battery backup."
+     },
+     {
+      "h3": "Drains and the Main Line",
+      "body": "We run water at every fixture, listen for gurgling and recommend a [camera look](/elgin/video-camera-sewer-inspections) only if something points to the sewer."
+     },
+     {
+      "h3": "Water Lines and Shutoffs",
+      "body": "We look at exposed piping for corrosion and leaks and test that the main and fixture shutoffs actually close."
+     },
+     {
+      "h3": "Toilets and Faucets",
+      "body": "Silent running toilets, drips and cracked supply hoses, all quick fixes once they're found."
+     },
+     {
+      "h3": "Your Written Summary",
+      "body": "Everything we checked, sorted into fine, plan ahead and fix soon."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Pays Off in Elgin",
+    "intro": "Elgin's housing ranges from the 1800s to the 2000s, and both ends benefit from regular checkups.",
+    "items": [
+     {
+      "h3": "Historic Homes, Aging Systems",
+      "body": "Homes built before 1940 often have clay sewer lines, cast iron drains and galvanized water pipe. Knowing which parts are wearing out lets you plan instead of react."
+     },
+     {
+      "h3": "Newer Homes, Original Equipment",
+      "body": "Nearly 3 in 10 homes went up between 1990 and 2009. Their first water heaters and sump pumps are past their expected life."
+     },
+     {
+      "h3": "Before Storm Season",
+      "body": "A spring visit tests the sump pump, backup and floor drain before heavy rain like the July 2017 storms."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A maintenance visit stays a maintenance visit.",
+    "steps": [
+     {
+      "h3": "1. A Thorough Look",
+      "body": "The whole system."
+     },
+     {
+      "h3": "2. Clear Priorities",
+      "body": "Fine, plan for it or fix it now."
+     },
+     {
+      "h3": "3. Your Call",
+      "body": "Anything extra is priced first. No pressure."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "When is the best time of year for a plumbing checkup in Elgin?",
+      "preview": "Spring, before storm season.",
+      "answer": "Spring works best for most Elgin homes. We can test the sump pump and backup before heavy summer storms and catch any freeze damage from the winter."
+     },
+     {
+      "q": "My house is over 100 years old. What will you look at most closely?",
+      "preview": "The water pipe, the drains and the sewer line.",
+      "answer": "Galvanized supply pipe, cast iron drains and the clay sewer lateral. Those are the parts of an old system most likely to be near the end, and the summary will tell you where each one stands."
+     },
+     {
+      "q": "My house is from the 2000s. Is a checkup really needed?",
+      "preview": "Yes. Original water heaters and sump pumps are past their expected life.",
+      "answer": "Yes. The pipes are likely fine, but the water heater, sump pump and fixture parts that came with the house are often close to 20 years old or more. Replacing them on your schedule beats an emergency."
+     },
+     {
+      "q": "Is there a yearly plan?",
+      "preview": "Yes. The No Drip Club.",
+      "answer": "Yes. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance visits."
+     },
+     {
+      "q": "Can a checkup help me plan for an old house?",
+      "preview": "Yes. You'll know which parts are near the end.",
+      "answer": "Yes. The summary tells you which parts of an older system are close to the end, so you can budget for them instead of reacting to a failure."
+     },
+     {
+      "q": "How much does a plumbing inspection cost in Elgin?",
+      "preview": "It depends on the home and what's included. You get a flat price first.",
+      "answer": "It depends on the size of the home and add-ons like a sewer camera inspection or a water heater flush. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance and Inspections in Elgin, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/elgin/plumbing-maintenance",
+   "description": "Whole-home plumbing maintenance and inspections for Elgin, IL homes. Catch worn equipment and small leaks before they become emergencies.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in Elgin, IL",
+ "metaDescription": "Whole-home plumbing maintenance and inspections for Elgin, IL homes. Catch worn equipment and small leaks before they become emergencies."
+}

@@ -1,0 +1,294 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24/7 Emergency Plumbing in Geneva, IL",
+   "sub": "A pipe that splits overnight in an old house, sewage in the basement during a storm or a water heater that lets go on a holiday. Our phone line is open 24/7, and our office on Campbell Street keeps our plumbers close to downtown and the rest of Geneva.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Plumbing Problems That Can't Wait in Geneva",
+    "intro": "Call us right away for any of these:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Water Coming Through Plaster",
+      "body": "A ceiling or wall that's bulging, stained or dripping. Shut off the water and stay out from under it."
+     },
+     {
+      "h3": "A Sewer Backup",
+      "body": "Dirty water rising at the floor drain or basement toilet. Stop running water upstairs."
+     },
+     {
+      "h3": "A Flooded Sump Pit",
+      "body": "The pump has quit and the rain hasn't."
+     },
+     {
+      "h3": "A Tank Leak",
+      "body": "Close the cold water valve on top of the water heater."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave the house. Call Nicor Gas or 911 from outside."
+     },
+     {
+      "h3": "A Main Valve That Won't Close",
+      "body": "Old valves can seize. Don't force it. Call us and we'll help get the water off."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Emergencies Look Like in Geneva",
+    "intro": "Geneva's emergency calls tend to follow its housing: century-old homes near the river and newer homes to the west.",
+    "items": [
+     {
+      "h3": "Burst Pipes in Historic Walls",
+      "body": "Older homes with little wall insulation see the most frozen and burst pipes when temperatures drop below zero. See [burst pipe repair](/geneva/burst-pipe-repair)."
+     },
+     {
+      "h3": "Storm Backups",
+      "body": "In September 2008, about 9 inches of rain fell on Geneva in two days. Heavy storms still bring backup calls from homes with gravity floor drains. See [sewage backup service](/geneva/sewage-line-backup-services)."
+     },
+     {
+      "h3": "Water Heater Failures",
+      "body": "A tank that splits can put dozens of gallons on the basement floor in minutes. See [water heater repair](/geneva/water-heater-repair)."
+     },
+     {
+      "h3": "Original Equipment Giving Out",
+      "body": "In homes built after 1990, original sump pumps and water heaters tend to fail at the worst possible time."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "A plumber, not a salesperson.",
+    "steps": [
+     {
+      "h3": "1. We Answer 24/7",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. Stop It, Then Price It",
+      "body": "Damage stopped first, then a flat-rate price for the fix."
+     },
+     {
+      "h3": "3. Honest About Timing",
+      "body": "If the full repair can wait for morning, we'll tell you."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Betty Knows",
+      "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+      "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+     },
+     {
+      "name": "Seth Maybury",
+      "url": null,
+      "text": "Super helpfull. They called back on a Sunday late afternoon and came out that evening. 3 plumbers came to the house on Monday to finish the job. Joe, George and Anthony. Highly recommend them. No one wants to have Sewage backing up, they treated it like an emergency and kept at it."
+     },
+     {
+      "name": "Trenton Gligorovic",
+      "url": null,
+      "text": "Josh Reid came by on Saturday night around 8pm to help us with an emergency plumbing issue. He was beyond friendly and very honest with us. He was able to help us route our line to stop the back flow that was occurring in the house. I could tell he really cared about our situation and didn't seem annoyed at all considering it was Saturday night."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "How soon can a plumber get to my home in Geneva?",
+      "preview": "Call any time. We'll give you an honest window.",
+      "answer": "Call us any time. Our Campbell Street office is close to downtown Geneva. Arrival depends on the day and call volume, but we'll give you an honest window and get a plumber to you as soon as we can."
+     },
+     {
+      "q": "What if my main shutoff won't turn?",
+      "preview": "Don't force it. Call us.",
+      "answer": "Don't force it, because an old valve can break. Call us. We can shut off the water and replace the valve so the next emergency is easier to stop."
+     },
+     {
+      "q": "Water is coming through my plaster ceiling. What do I do?",
+      "preview": "Shut off the water, cut power to that area and stay clear.",
+      "answer": "Close the main water valve, turn off the breaker for lights in that ceiling and keep people out from under it. Put down buckets and call us."
+     },
+     {
+      "q": "Do I find out the price before work starts?",
+      "preview": "Yes, every time.",
+      "answer": "Yes. Day or night, you approve a flat-rate price before any work begins."
+     },
+     {
+      "q": "What does an emergency plumber cost in Geneva?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and what it takes to fix it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? We're Answering Now.",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24/7 Emergency Plumbing in Geneva, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/geneva/emergency-plumbing",
+   "description": "24/7 emergency plumber in Geneva, IL. Burst pipes, sewer backups, flooded basements and failed water heaters. Upfront pricing, any hour.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Geneva, IL 24/7",
+ "metaDescription": "24/7 emergency plumber in Geneva, IL. Burst pipes, sewer backups, flooded basements and failed water heaters. Upfront pricing, any hour."
+}

@@ -1,0 +1,337 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Repair in McHenry, IL",
+   "sub": "A gas smell near the water heater, a line the utility red-tagged or an old connector behind the dryer. Our licensed plumbers find leaks, repair gas lines and pressure-test them before we leave. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Safety First",
+    "h2": "Gas Smell? Safety Comes First",
+    "intro": "Before anything else:",
+    "steps": [
+     {
+      "h3": "1. Get Out Now",
+      "body": "Everyone and every pet, out of the house."
+     },
+     {
+      "h3": "2. No Sparks",
+      "body": "Don't flip switches, use phones inside or start a car in an attached garage."
+     },
+     {
+      "h3": "3. Call From a Safe Distance",
+      "body": "Nicor Gas or 911, from outside."
+     },
+     {
+      "h3": "4. Then Call Us",
+      "body": "Once you're cleared to go back in, we'll find and fix the leak."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Gas Piping Needs a Plumber",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You Notice a Faint Odor",
+      "body": "Near the furnace, water heater, range or dryer."
+     },
+     {
+      "h3": "The Utility Tagged an Appliance",
+      "body": "Service won't come back until the house piping is repaired and tested."
+     },
+     {
+      "h3": "You're Adding a Big Appliance",
+      "body": "A generator or tankless heater may be too much for the existing line."
+     },
+     {
+      "h3": "Connectors Are Old",
+      "body": "Uncoated brass connectors should be replaced."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "If you suspect a leak or the utility shut off service, we find the exact source using electronic detectors and soap tests on the fittings, then pressure-test the system to confirm it's sealed.",
+     "Most leaks are at unions, valves and appliance connectors. Once repaired, we test the whole system so service can be restored."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Lines in McHenry Homes",
+    "intro": "Most McHenry homes were built since 1970, and many have had appliances added along the way.",
+    "items": [
+     {
+      "h3": "Additions Over the Years",
+      "body": "Grills, garage heaters and dryers added later aren't always connected or sized right. We check how they were done."
+     },
+     {
+      "h3": "Lines to Outbuildings",
+      "body": "Detached garages and workshops sometimes get gas through a buried line. Those can leak out of sight."
+     },
+     {
+      "h3": "Generators and Big Loads",
+      "body": "Standby generators have become common in areas that lose power in storms. They draw a lot of gas, so the line has to be sized for it."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Gas work done right, then tested.",
+    "steps": [
+     {
+      "h3": "1. Licensed Plumbers",
+      "body": "Gas line work should be done by a licensed pro. Ours are licensed and trained for it."
+     },
+     {
+      "h3": "2. Price Before Work",
+      "body": "A flat price once we find the problem."
+     },
+     {
+      "h3": "3. Pressure-Tested",
+      "body": "Before the gas comes back on."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "What do I do if I smell gas?",
+      "preview": "Leave and call Nicor Gas or 911 from outside.",
+      "answer": "Leave the house right away and don't touch switches. Call Nicor Gas or 911 from outside. Then call us for the repair."
+     },
+     {
+      "q": "Can you find a leak on a buried gas line?",
+      "preview": "Yes.",
+      "answer": "Yes. Lines to garages, grills and outbuildings are often buried. We can test and locate leaks on them."
+     },
+     {
+      "q": "Can my gas line handle a standby generator?",
+      "preview": "Maybe. We calculate the load first.",
+      "answer": "Maybe. Generators draw a lot of gas. We add up your total load and upsize the line if needed."
+     },
+     {
+      "q": "Who is responsible for the gas line to my house?",
+      "preview": "The utility up to the meter. You after it.",
+      "answer": "Nicor Gas is responsible up to and including the meter. Piping from the meter to your appliances is yours."
+     },
+     {
+      "q": "How much does gas line repair cost in McHenry?",
+      "preview": "It depends on the leak and the line. You get a flat price first.",
+      "answer": "It depends on where the leak is, how much pipe needs work and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Need Your Gas Line Checked?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Repair in McHenry, IL",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/mchenry/gas-line-repair",
+   "description": "Gas line repair and leak detection in McHenry, IL. Licensed plumbers, pressure-tested repairs and a flat price before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Repair in McHenry, IL",
+ "metaDescription": "Gas line repair and leak detection in McHenry, IL. Licensed plumbers, pressure-tested repairs and a flat price before any work."
+}

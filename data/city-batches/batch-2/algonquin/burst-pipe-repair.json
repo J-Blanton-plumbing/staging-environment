@@ -1,0 +1,359 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Algonquin, IL",
+   "sub": "On the coldest mornings, pipes over garages and in outside walls freeze first. When one splits, it can soak a finished basement fast. Our line is open 24/7. We stop the water, repair the pipe and help you prevent the next one. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do if a Pipe Bursts",
+    "intro": "Before we get there:",
+    "steps": [
+     {
+      "h3": "1. Close the Main Valve",
+      "body": "Usually in the basement near the meter."
+     },
+     {
+      "h3": "2. Kill Power Near the Water",
+      "body": "Only if it's safe to reach the breaker."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "Drain the pressure from the lines."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any hour."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "Not always a spray:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Drop in Pressure",
+      "bullets": [
+       "Water escaping before the tap."
+      ]
+     },
+     {
+      "h3": "Dripping From a Ceiling",
+      "bullets": [
+       "Often under a room over the garage."
+      ]
+     },
+     {
+      "h3": "Running Water Sounds",
+      "bullets": [
+       "With everything off."
+      ]
+     },
+     {
+      "h3": "A Spinning Meter",
+      "bullets": [
+       "Nothing on, meter moving."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "Catch it early:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "No Water at One Fixture",
+      "body": "On a below-zero morning."
+     },
+     {
+      "h3": "Frost on Exposed Pipe",
+      "body": "In the garage, crawl space or rim joist."
+     },
+     {
+      "h3": "A Faucet That Sputters",
+      "body": "Ice partly blocking the line."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Algonquin Homes",
+    "intro": "Algonquin's newer homes have their own freeze points.",
+    "items": [
+     {
+      "h3": "Rooms Over Attached Garages",
+      "body": "A bathroom or bedroom over a garage has pipes in a floor that sits over unheated space."
+     },
+     {
+      "h3": "Exterior Walls in Two-Story Homes",
+      "body": "Kitchen and laundry lines on outside walls freeze in a deep cold snap."
+     },
+     {
+      "h3": "Outdoor Spigots and Sprinkler Lines",
+      "body": "A hose left on or a sprinkler backflow not drained can split."
+     },
+     {
+      "h3": "Homes Left Empty Over the Holidays",
+      "body": "Turning the heat down too far while you're away is a common cause."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop it, fix it, prevent it.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "Main off, area safe."
+     },
+     {
+      "h3": "2. Repair and Thaw",
+      "body": "Fix the split and thaw anything else frozen."
+     },
+     {
+      "h3": "3. Prevent the Next One",
+      "body": "Insulation, rerouting or freeze-resistant spigots, priced first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sam Shucher",
+      "url": null,
+      "text": "Im back here again, writing another review ! arrived at 8 , and out by 10, fixed our burst pipe for our outdoor spigot. Thank you Anthony C ! promp, polite , professional, and fast !"
+     },
+     {
+      "name": "Steven Geiermann",
+      "url": null,
+      "text": "Edgar Herrera was a stellar representative for J Blanton’s. He addressed the broken water pipe in an efficient, timely manner. He offered approximate next steps. Definitely 5 stars!"
+     },
+     {
+      "name": "Rich Kings",
+      "url": null,
+      "text": "Outstanding Work on a Tough Basement Job! I can’t say enough good things about this plumbing team. They tackled a very challenging pipe replacement job in our basement, and from start to finish, they were professional, skilled, and incredibly thorough. The space was tight, the old piping was a mess, and there were unexpected complications along the way but they handled everything with confidence and expertise. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "How do I thaw a frozen pipe safely?",
+      "preview": "Open the faucet and warm the pipe slowly. No flames.",
+      "answer": "Open the faucet, then warm the pipe slowly with a hair dryer or space heater, starting near the faucet. Never use a torch. If you can't reach it, call us."
+     },
+     {
+      "q": "How do I protect pipes over my garage?",
+      "preview": "Keep the garage door closed and the house warm, and insulate the floor.",
+      "answer": "Keep the garage door closed in cold weather, keep the house heat up and make sure the floor over the garage is insulated. We can insulate or reroute problem lines."
+     },
+     {
+      "q": "Should I drain my sprinkler system?",
+      "preview": "Yes, before the first hard freeze.",
+      "answer": "Yes. Have the system blown out before the first hard freeze so the backflow device and lines don't split."
+     },
+     {
+      "q": "Why did my pipe leak after it warmed up?",
+      "preview": "It split while frozen.",
+      "answer": "The pipe split while it was frozen. Water only escapes once it thaws."
+     },
+     {
+      "q": "What does burst pipe repair cost in Algonquin?",
+      "preview": "It depends on location and access. The price comes first.",
+      "answer": "It depends on where the break is, the pipe and access. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Burst Pipe? Call Us Now.",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Algonquin, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/algonquin/burst-pipe-repair",
+   "description": "Frozen or burst pipe in Algonquin, IL? We stop the water, repair the pipe and help prevent the next freeze. Our phone line is open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst & Frozen Pipe Repair in Algonquin, IL",
+ "metaDescription": "Frozen or burst pipe in Algonquin, IL? We stop the water, repair the pipe and help prevent the next freeze. Our phone line is open 24/7."
+}

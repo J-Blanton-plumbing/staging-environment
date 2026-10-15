@@ -1,0 +1,304 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance and Inspections in Geneva, IL",
+   "sub": "Old galvanized pipe, a sump pump past its prime or a water heater that's been quietly losing efficiency. A maintenance visit finds the small things before they turn into a weekend emergency. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What a Geneva Plumbing Inspection Covers",
+    "intro": "The whole system:",
+    "steps": [
+     {
+      "h3": "Water Heater",
+      "body": "Age, leaks, relief valve, venting and a flush if it's due."
+     },
+     {
+      "h3": "Sump and Ejector Pumps",
+      "body": "A test cycle, float, check valve and backup."
+     },
+     {
+      "h3": "Water Treatment",
+      "body": "Whether your softener is still needed or set right for today's city water."
+     },
+     {
+      "h3": "Drains and Sewer",
+      "body": "Slow drains, gurgling and a [camera inspection](/geneva/video-camera-sewer-inspections) if needed."
+     },
+     {
+      "h3": "Supply Pipes and Valves",
+      "body": "Galvanized condition, leaks and shutoffs that won't close."
+     },
+     {
+      "h3": "A Plain-English Report",
+      "body": "What's fine, what to plan for and what needs attention."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Matters in Geneva",
+    "intro": "Geneva's homes span almost two centuries, and both ends benefit from regular checkups.",
+    "items": [
+     {
+      "h3": "Historic Plumbing",
+      "body": "Homes from the 1800s and early 1900s often have galvanized supply pipe, cast iron drains and clay sewer lines. A checkup tells you which parts are wearing out."
+     },
+     {
+      "h3": "Equipment in Newer Homes",
+      "body": "More than 4 in 10 homes were built after 1990. Many still have original water heaters and sump pumps that are due."
+     },
+     {
+      "h3": "Softeners Set for the Old Water",
+      "body": "If your softener dates from before 2008, it may be set far higher than today's water needs."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A maintenance visit stays a maintenance visit.",
+    "steps": [
+     {
+      "h3": "1. A Thorough Look",
+      "body": "The whole system."
+     },
+     {
+      "h3": "2. Clear Priorities",
+      "body": "Fine, plan for it or fix it now."
+     },
+     {
+      "h3": "3. Your Decision",
+      "body": "Anything extra is priced for your approval first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "How often should my plumbing be inspected?",
+      "preview": "Once a year, ideally in spring.",
+      "answer": "Once a year works for most Geneva homes. Spring lets us test the sump pump before heavy rain."
+     },
+     {
+      "q": "What do you look at in a historic home?",
+      "preview": "Pipe materials, drains and the sewer line.",
+      "answer": "We look closely at galvanized supply pipe, cast iron drains and the sewer lateral, plus any updates made over the years."
+     },
+     {
+      "q": "Will you check my water softener?",
+      "preview": "Yes, including whether you still need it.",
+      "answer": "Yes. With Geneva's softened city water, we'll tell you whether yours is still needed and set correctly."
+     },
+     {
+      "q": "Is there a maintenance plan?",
+      "preview": "Yes. The No Drip Club.",
+      "answer": "Yes. The [No Drip Club](/no-drip-club) is our yearly plan that brings a plumber to your home for regular maintenance."
+     },
+     {
+      "q": "Can you check whether I still need my water softener?",
+      "preview": "Yes. We test the water during the visit.",
+      "answer": "Yes. We test your water and look at the softener's settings. With Geneva's reverse osmosis treated water, you may be able to turn it down or remove it."
+     },
+     {
+      "q": "How much does a plumbing inspection cost in Geneva?",
+      "preview": "It depends on the home and what's included. You'll approve a flat price first.",
+      "answer": "It depends on the size of the home and add-ons like a sewer camera inspection or water heater flush. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance and Inspections in Geneva, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/geneva/plumbing-maintenance",
+   "description": "Whole-home plumbing maintenance and inspections for Geneva, IL homes, historic and new. Catch small problems before they become emergencies.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in Geneva, IL",
+ "metaDescription": "Whole-home plumbing maintenance and inspections for Geneva, IL homes, historic and new. Catch small problems before they become emergencies."
+}

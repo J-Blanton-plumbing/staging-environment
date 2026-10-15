@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Geneva, IL",
+   "sub": "A camera inspection shows you exactly what's happening inside your sewer line before you spend money on it. We record the line, mark the location and depth of every problem and walk you through the video. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Reasons to Get a Sewer Camera Inspection in Geneva",
+    "intro": "The usual reasons:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying a Historic Home",
+      "body": "A house from the 1800s almost certainly has an old lateral. Know its condition before you close."
+     },
+     {
+      "h3": "Repeat Clogs",
+      "body": "Find out whether it's roots, a sag or a break."
+     },
+     {
+      "h3": "Before a Remodel",
+      "body": "Check the line and under-floor drains first."
+     },
+     {
+      "h3": "After a Big Storm",
+      "body": "Was it your line or an overloaded sewer?"
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-geneva",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Geneva Sewer Lines",
+    "intro": "Geneva's footage varies a lot by neighborhood.",
+    "items": [
+     {
+      "h3": "Clay With Roots Near Downtown",
+      "body": "The most common finding in the historic district."
+     },
+     {
+      "h3": "Old Patches and Transitions",
+      "body": "Lines repaired over a century show different materials joined together."
+     },
+     {
+      "h3": "Sags on the West Side",
+      "body": "Low spots where newer lines settled."
+     },
+     {
+      "h3": "Grease and Debris",
+      "body": "Sometimes the pipe is fine and just needs cleaning."
+     },
+     {
+      "h3": "Plaster, Hardwood and Historic Finishes",
+      "body": "In older homes, knowing exactly where a problem is matters. A located, measured problem means less disruption to floors and walls you want to keep."
+     },
+     {
+      "h3": "Before You Line It",
+      "body": "If you're considering a liner, the camera tells us whether the old pipe is round enough to line and where any collapsed sections are."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You see what we see.",
+    "steps": [
+     {
+      "h3": "1. Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Recorded and Located",
+      "body": "Depth and position of every problem."
+     },
+     {
+      "h3": "3. Clear Explanation",
+      "body": "What matters, and a copy of the video."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Should I inspect the sewer before buying in Geneva?",
+      "preview": "Yes, especially an older home.",
+      "answer": "Yes. A standard home inspection doesn't include the sewer line. For an older home, a camera look can reveal a repair worth negotiating."
+     },
+     {
+      "q": "My older home has no cleanout. Can you still inspect it?",
+      "preview": "Usually, through a toilet or vent, or we can add a cleanout.",
+      "answer": "Usually. We can go in through a toilet flange or roof vent. Adding a cleanout makes future work much easier."
+     },
+     {
+      "q": "Can you tell where and how deep a problem is?",
+      "preview": "Yes.",
+      "answer": "Yes. The camera head carries a transmitter, and our locator marks the spot and depth from above."
+     },
+     {
+      "q": "Do I get the video?",
+      "preview": "Yes.",
+      "answer": "Yes. You keep the recording."
+     },
+     {
+      "q": "How long does an inspection take?",
+      "preview": "About an hour for most homes.",
+      "answer": "About an hour for most homes, including the walkthrough of the video."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Geneva?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Geneva, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/geneva/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Geneva, IL. See roots, cracks and sags on video, located and measured, before you pay for any repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Geneva, IL",
+ "metaDescription": "Sewer camera inspections in Geneva, IL. See roots, cracks and sags on video, located and measured, before you pay for any repair."
+}

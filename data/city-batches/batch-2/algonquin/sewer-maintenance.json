@@ -1,0 +1,358 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Algonquin, IL",
+   "sub": "Trees in Algonquin's subdivisions are finally big enough to cause sewer trouble. A maintenance plan based on what your line actually looks like keeps roots and grease from turning into a backup. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "Is It Time for Sewer Maintenance in Algonquin?",
+    "intro": "A schedule pays off when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Your Trees Are 17 to 36 Years Old",
+      "body": "Trees planted with the subdivision now reach the sewer line."
+     },
+     {
+      "h3": "The Line Settled",
+      "body": "A known sag needs regular cleaning until it's repaired."
+     },
+     {
+      "h3": "The Kitchen Line Clogs Yearly",
+      "body": "Family cooking builds grease fast."
+     },
+     {
+      "h3": "No One Has Ever Looked",
+      "body": "A first camera check sets the baseline."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "A Maintenance Schedule for Algonquin Lines",
+    "intro": "We set the interval from the camera, but most lines fall into one of these:",
+    "head": [
+     "What We Found",
+     "How Often We'd Service It"
+    ],
+    "rows": [
+     [
+      "First roots showing at a few joints",
+      "Every 12 to 18 months, with a camera check"
+     ],
+     [
+      "A settled section that holds water",
+      "Every year or two until it's repaired"
+     ],
+     [
+      "Grease coating the kitchen branch",
+      "Jetting every few years"
+     ],
+     [
+      "A clean, straight line",
+      "No schedule, just a look every few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance for Algonquin's Newer Neighborhoods",
+    "intro": "The Fox River runs right through Algonquin. In April 2013, it reached a record crest of 12.70 feet here, and in July 2017 volunteers filled more than 25,000 sandbags.",
+    "items": [
+     {
+      "h3": "Roots Are Arriving Now",
+      "body": "In subdivisions built in the 1990s and 2000s, trees are only now big enough to find sewer joints. Catching it early keeps a small root problem from becoming a backup."
+     },
+     {
+      "h3": "River Years Load the System",
+      "body": "When the Fox River is high, groundwater adds load. A clean line handles it better."
+     },
+     {
+      "h3": "Check Your Protection Too",
+      "body": "If you have a backflow valve or [overhead sewer system](/algonquin/overhead-sewer-systems), we test it on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/algonquin/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/algonquin/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/algonquin/sewer-rodding) or [Hydro Jetting](/algonquin/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/algonquin/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Visits Work",
+    "intro": "Based on your line, not a sales calendar.",
+    "steps": [
+     {
+      "h3": "1. Baseline Video",
+      "body": "The first visit records the line so later visits can compare."
+     },
+     {
+      "h3": "2. Clean What Needs It",
+      "body": "Root cutting or jetting, matched to what's in the pipe."
+     },
+     {
+      "h3": "3. A Plan on Paper",
+      "body": "The interval, the price and what to watch for between visits."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Connor Schickel",
+      "url": null,
+      "text": "I’ve used J Blanton multiple times. They have helped identify a pipe with root growth through their No Drip Club. Mike Perez has done a great job walking me through all the steps to get the root out of my pipe and had to work through some very tough turns to identify the roots. [...]"
+     },
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "My line has never had a problem. Should I bother?",
+      "preview": "A one-time camera check is a smart baseline.",
+      "answer": "A single camera check is a smart baseline for a line that's 20 years or older. If it's clean, you may not need a schedule at all."
+     },
+     {
+      "q": "Rodding or jetting for maintenance?",
+      "preview": "Rodding for roots, jetting for grease and scale.",
+      "answer": "Rodding handles yearly root control. Jetting is better for grease and scale or when roots return quickly."
+     },
+     {
+      "q": "Can maintenance prevent storm backups?",
+      "preview": "It helps, but an overloaded sewer needs other protection.",
+      "answer": "A clean line drains faster. If the public sewer is overloaded, you need a backflow valve or [overhead sewer](/algonquin/overhead-sewer-systems)."
+     },
+     {
+      "q": "Is this part of the No Drip Club?",
+      "preview": "The No Drip Club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club/) brings a plumber to your home for regular maintenance. Ask how it applies to your sewer line."
+     },
+     {
+      "q": "What does sewer maintenance cost in Algonquin?",
+      "preview": "It depends on the service. The price comes first.",
+      "answer": "It depends on whether your line needs rodding, jetting or a camera check. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Algonquin, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/algonquin/sewer-maintenance",
+   "description": "Preventive sewer maintenance for Algonquin, IL homes. Scheduled cleaning and camera checks keep roots and grease from causing a backup.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Algonquin, IL",
+ "metaDescription": "Preventive sewer maintenance for Algonquin, IL homes. Scheduled cleaning and camera checks keep roots and grease from causing a backup."
+}

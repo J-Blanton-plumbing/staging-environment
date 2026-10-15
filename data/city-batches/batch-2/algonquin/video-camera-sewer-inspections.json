@@ -1,0 +1,307 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Algonquin, IL",
+   "sub": "A camera inspection shows you exactly what's in your sewer line before you spend money on it. We record the line, mark the location and depth of every problem and walk you through the video. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Why Algonquin Homeowners Get a Sewer Camera Inspection",
+    "intro": "The usual reasons:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying a 1990s or 2000s Home",
+      "body": "Roots and sags often show up at this age. Know before you close."
+     },
+     {
+      "h3": "Clogs Keep Returning",
+      "body": "Find out whether it's roots, a sag or a break."
+     },
+     {
+      "h3": "Before Finishing the Basement",
+      "body": "Make sure the line and floor drains are sound first."
+     },
+     {
+      "h3": "After the River Runs High",
+      "body": "Check whether a cracked line is letting groundwater in."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-algonquin",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Algonquin Sewer Lines",
+    "intro": "More than half of the lines here went in between 1990 and 2009. The camera tends to show the same few things.",
+    "items": [
+     {
+      "h3": "Fine Roots at Joints",
+      "body": "Early root intrusion from maturing trees, easy to manage if it's caught early."
+     },
+     {
+      "h3": "Sags",
+      "body": "Standing water where the line settled after construction."
+     },
+     {
+      "h3": "Grease and Debris",
+      "body": "Often the pipe is fine and just needs cleaning."
+     },
+     {
+      "h3": "Older Pipe Near the River",
+      "body": "Homes in the older part of town may show clay or cast iron with age-related damage."
+     },
+     {
+      "h3": "Settling Shows Up on Video",
+      "body": "In 1990s and 2000s subdivisions, the camera often finds one or two low spots where the line settled. Knowing where they are lets you plan a targeted repair."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You watch it with us.",
+    "steps": [
+     {
+      "h3": "1. Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Recorded and Located",
+      "body": "Depth and position of every problem."
+     },
+     {
+      "h3": "3. Explained Clearly",
+      "body": "What matters, what doesn't, and a copy of the video."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "Is a sewer inspection worth it for a newer home?",
+      "preview": "Yes, if you're buying or having repeat clogs.",
+      "answer": "Yes. Lines from the 1990s and 2000s are now old enough for roots and sags. If you're buying or dealing with repeat clogs, a camera look is the cheapest way to know."
+     },
+     {
+      "q": "Can the camera tell how deep the pipe is?",
+      "preview": "Yes.",
+      "answer": "Yes. The camera head carries a transmitter, and our locator shows where it is and how deep."
+     },
+     {
+      "q": "Do I get the video?",
+      "preview": "Yes.",
+      "answer": "Yes. You keep the recording."
+     },
+     {
+      "q": "What if my cleanout is buried?",
+      "preview": "We'll find it or suggest another access point.",
+      "answer": "We can usually locate it. If not, we may go through a toilet or roof vent, or add a new cleanout."
+     },
+     {
+      "q": "How long does an inspection take?",
+      "preview": "About an hour for most homes.",
+      "answer": "About an hour for most homes, from finding the cleanout to walking you through the video."
+     },
+     {
+      "q": "What does a sewer camera inspection cost in Algonquin?",
+      "preview": "It depends on access and line length. The price comes first.",
+      "answer": "It depends on access and how long the line is. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Algonquin, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/algonquin/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Algonquin, IL. See roots, sags and cracks on video, located and measured, before you pay for a repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Algonquin, IL",
+ "metaDescription": "Sewer camera inspections in Algonquin, IL. See roots, sags and cracks on video, located and measured, before you pay for a repair."
+}

@@ -1,0 +1,335 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Repair in Algonquin, IL",
+   "sub": "A gas smell near the furnace, a red tag from the utility or an old connector behind the range. Our licensed plumbers find gas leaks, repair the piping and pressure-test it before we leave. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Safety First",
+    "h2": "Do You Smell Gas? Act Now",
+    "intro": "In this order:",
+    "steps": [
+     {
+      "h3": "1. Get Everyone Outside",
+      "body": "Don't stop to open windows or grab things."
+     },
+     {
+      "h3": "2. Don't Touch Anything Electrical",
+      "body": "Switches, phones and garage door openers can spark."
+     },
+     {
+      "h3": "3. Call From Outside",
+      "body": "Nicor Gas or 911, from the street."
+     },
+     {
+      "h3": "4. Call Us When It's Safe",
+      "body": "We'll find and repair the leak."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Gas Line Needs Attention",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Faint Smell Near Appliances",
+      "body": "Water heater, furnace, range or dryer."
+     },
+     {
+      "h3": "A Red Tag From the Utility",
+      "body": "Service stays off until the piping is repaired and tested."
+     },
+     {
+      "h3": "You're Adding Gas Appliances",
+      "body": "Outdoor kitchens and fire pits strain older layouts."
+     },
+     {
+      "h3": "The Grill Line Is Buried",
+      "body": "Underground lines can leak out of sight."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "If you suspect a small leak or the utility shut off service, we find the source with electronic detectors and soap tests, then pressure-test the system to confirm it's sealed.",
+     "In newer homes, most leaks are at appliance connectors, flexible lines and fittings added after construction. Once repaired, we test the whole system so service can be restored."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Lines in Algonquin Homes",
+    "intro": "More than half of Algonquin homes were built between 1990 and 2009, and many gas systems have been added to.",
+    "items": [
+     {
+      "h3": "Outdoor Kitchens and Fire Pits",
+      "body": "Patio gas lines are popular here. A buried line that wasn't installed right can leak."
+     },
+     {
+      "h3": "Flexible Gas Tubing",
+      "body": "Many 1990s and 2000s homes use flexible gas tubing in places. It needs proper bonding and protection."
+     },
+     {
+      "h3": "Connectors Behind Appliances",
+      "body": "Old connectors from the original range or dryer should be replaced when the appliance is."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Gas work done right, then tested.",
+    "steps": [
+     {
+      "h3": "1. Licensed Plumbers",
+      "body": "Gas line work should be done by a licensed pro. Ours are licensed and trained for it."
+     },
+     {
+      "h3": "2. Price Before Work",
+      "body": "We find it, then quote it."
+     },
+     {
+      "h3": "3. Pressure-Tested",
+      "body": "Before the gas comes back on."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "What should I do if I smell gas?",
+      "preview": "Leave and call Nicor Gas or 911 from outside.",
+      "answer": "Leave right away without touching switches. Call Nicor Gas or 911 from outside. Then call us for the repair."
+     },
+     {
+      "q": "Can you test my outdoor gas line?",
+      "preview": "Yes.",
+      "answer": "Yes. We pressure-test buried lines to grills, fire pits and pool heaters and find leaks if there are any."
+     },
+     {
+      "q": "What is flexible gas tubing, and is it safe?",
+      "preview": "It's safe when installed and bonded correctly.",
+      "answer": "Corrugated stainless steel tubing is common in newer homes. It's safe when it's installed, protected and bonded correctly. We can check yours."
+     },
+     {
+      "q": "Who fixes the gas line, the utility or a plumber?",
+      "preview": "The utility up to the meter, a licensed plumber after it.",
+      "answer": "Nicor Gas handles the line up to and including the meter. Everything after it is the homeowner's and should be repaired by a licensed plumber."
+     },
+     {
+      "q": "What does gas line repair cost in Algonquin?",
+      "preview": "It depends on the leak and the line. The price comes first.",
+      "answer": "It depends on where the leak is and how much pipe needs work. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Need Your Gas Line Checked?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Repair in Algonquin, IL",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/algonquin/gas-line-repair",
+   "description": "Gas line repair and leak detection in Algonquin, IL. Licensed plumbers, pressure-tested repairs and a flat price before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Repair in Algonquin, IL",
+ "metaDescription": "Gas line repair and leak detection in Algonquin, IL. Licensed plumbers, pressure-tested repairs and a flat price before any work."
+}

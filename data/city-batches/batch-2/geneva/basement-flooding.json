@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Geneva, IL",
+   "sub": "Water in the basement comes from the sewer, the ground, the surface or your own plumbing. We find out which, stop it and help you keep it out next time. From our office on Campbell Street, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Where Is the Water Coming From?",
+    "intro": "The source decides the fix:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Floor Drain",
+      "body": "If water rises through the floor drain, the sewer is pushing back. That's a backup, not a leak."
+     },
+     {
+      "h3": "Mortar Joints in an Old Foundation",
+      "body": "In historic homes, groundwater seeps through stone and brick joints during long wet spells."
+     },
+     {
+      "h3": "The Corner by the Downspout",
+      "body": "A downspout that empties next to the house sends roof water straight to the foundation."
+     },
+     {
+      "h3": "A Pipe or Appliance",
+      "body": "Water from a supply line, washer hose or water heater. Shut off the water first."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Geneva",
+    "intro": "In September 2008, about 9 inches of rain fell on Geneva over two days, and basement flooding was reported around town. Older and newer homes flood for different reasons.",
+    "items": [
+     {
+      "h3": "Fieldstone and Brick Foundations",
+      "body": "Homes near the river built in the 1800s have foundations that were never meant to be waterproof. Interior drain tile and a sump pit are often the most practical fix."
+     },
+     {
+      "h3": "No Sump Pit at All",
+      "body": "Some historic basements still have no sump pit. Adding one gives groundwater somewhere to go besides across the floor."
+     },
+     {
+      "h3": "Floor Drains Tied to the Sewer",
+      "body": "Older floor drains connect straight to the sewer. In a big storm, that's where water comes up. A backflow valve or [overhead sewer](/geneva/overhead-sewer-systems) stops it."
+     },
+     {
+      "h3": "Finished Lower Levels in Newer Homes",
+      "body": "Newer homes often have finished basements, so a failed [sump pump](/geneva/sump-pumps) or a missing battery backup does more damage."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Waterproofing keeps groundwater out of the basement. Our part is the plumbing behind it: sump pits and pumps, battery backups, discharge lines and the drain tile that carries water to the pit.",
+     "In older Geneva homes, adding a sump pit and interior drain tile is often the most effective fix for walls that seep. We check the system and tell you what will actually stop the water. For water coming up through drains, see [sewage backup service](/geneva/sewage-line-backup-services)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find the source first.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "Pump running, drain cleared or pipe shut off."
+     },
+     {
+      "h3": "2. Trace the Source",
+      "body": "Floor drain, walls, windows or plumbing."
+     },
+     {
+      "h3": "3. Options You Approve",
+      "body": "Each fix priced before any work."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "Debra Haslett",
+      "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+      "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "My basement floods but I don't have a sump pump. What are my options?",
+      "preview": "Adding a pit and pump, often with interior drain tile.",
+      "answer": "In many older Geneva homes, we can cut a sump pit into the floor and connect interior drain tile to it. The pump then sends groundwater outside before it reaches the floor."
+     },
+     {
+      "q": "Is it groundwater or sewage?",
+      "preview": "Clear water at the walls is groundwater. Dirty water at the drain is sewage.",
+      "answer": "Clear water seeping in at walls or along the floor edge is groundwater. Dirty, smelly water rising from the floor drain or a basement fixture is sewage backing up."
+     },
+     {
+      "q": "What should I do right now?",
+      "preview": "Stay safe, stop the source if you can and call.",
+      "answer": "Keep away from water near outlets or appliances. If a pipe or appliance is leaking, close the main. If the floor drain is backing up, stop using water. Then call us."
+     },
+     {
+      "q": "Do you install backflow valves?",
+      "preview": "Yes.",
+      "answer": "Yes. We install, repair and replace backflow valves that keep sewer water from coming up through basement drains."
+     },
+     {
+      "q": "What does basement flood repair cost in Geneva?",
+      "preview": "It depends on the source and the fix. You'll approve a flat price first.",
+      "answer": "It depends on where the water is coming from and what it takes to stop it. You'll approve a flat-rate price for each option before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Geneva, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/geneva/basement-flooding",
+   "description": "Flooded basement in Geneva, IL? We find where the water came from and fix the plumbing: sump pumps, backups, backflow and waterproofing.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Geneva, IL",
+ "metaDescription": "Flooded basement in Geneva, IL? We find where the water came from and fix the plumbing: sump pumps, backups, backflow and waterproofing."
+}

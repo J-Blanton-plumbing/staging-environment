@@ -1,0 +1,296 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24/7 Emergency Plumbing in Elgin, IL",
+   "sub": "A pipe that splits overnight, sewage in the basement during a storm or a water heater that lets go on a holiday. Our phone line is open 24/7, and our office on North McLean Boulevard keeps our plumbers close to both sides of the Fox River.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Should You Call a Plumber Right Now?",
+    "intro": "Yes, if waiting means more damage or a safety risk:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Dirty Water Rising From a Drain",
+      "body": "The floor drain, a basement toilet or the tub. Stop running water upstairs."
+     },
+     {
+      "h3": "Water Spraying or Pouring",
+      "body": "Close the main shutoff first, then call."
+     },
+     {
+      "h3": "A Sump Pit About to Overflow",
+      "body": "The pump has stopped and the rain hasn't."
+     },
+     {
+      "h3": "Water Under the Water Heater",
+      "body": "Close the cold water valve on top of the tank."
+     },
+     {
+      "h3": "The Smell of Gas",
+      "body": "Get out. Call Nicor Gas or 911 from outside. We'll fix the line once it's safe."
+     },
+     {
+      "h3": "A Ceiling That's Sagging or Dripping",
+      "body": "Water is collecting above it. Stay out from under it."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We Handle in Elgin",
+    "intro": "Elgin's mix of 1800s homes near downtown and newer subdivisions on the west side means we see every kind of emergency.",
+    "items": [
+     {
+      "h3": "Storm Nights",
+      "body": "The July 2017 storms dropped more than 7 inches just south of Elgin, and basements flooded across the area. Backups and failed sump pumps come in waves on nights like that. See [sewage backup service](/elgin/sewage-line-backup-services)."
+     },
+     {
+      "h3": "Frozen Pipes in Old Walls",
+      "body": "Older homes often have little insulation in exterior walls. In a deep freeze, kitchen and bathroom lines on those walls split first. See [burst pipe repair](/elgin/burst-pipe-repair)."
+     },
+     {
+      "h3": "Water Heaters at the End",
+      "body": "When a tank fails, it can flood the basement fast. See [water heater repair](/elgin/water-heater-repair)."
+     },
+     {
+      "h3": "Stuck Main Shutoffs",
+      "body": "In an old house, the main valve may not have been turned in decades. If it won't close, we replace it."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "A plumber who fixes the problem, not a salesperson.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. Stop It, Then Price It",
+      "body": "We stop the damage, find the cause and give you a flat-rate price for the repair."
+     },
+     {
+      "h3": "3. Straight Talk",
+      "body": "If the full repair can wait until morning, we'll say so."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Betty Knows",
+      "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+      "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+     },
+     {
+      "name": "Seth Maybury",
+      "url": null,
+      "text": "Super helpfull. They called back on a Sunday late afternoon and came out that evening. 3 plumbers came to the house on Monday to finish the job. Joe, George and Anthony. Highly recommend them. No one wants to have Sewage backing up, they treated it like an emergency and kept at it."
+     },
+     {
+      "name": "Trenton Gligorovic",
+      "url": null,
+      "text": "Josh Reid came by on Saturday night around 8pm to help us with an emergency plumbing issue. He was beyond friendly and very honest with us. He was able to help us route our line to stop the back flow that was occurring in the house. I could tell he really cared about our situation and didn't seem annoyed at all considering it was Saturday night."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How fast can a plumber get to me in Elgin?",
+      "preview": "Call any time. We'll give you a realistic window.",
+      "answer": "Call us any time. Our office on North McLean Boulevard keeps us close to Elgin. Arrival times depend on the day and call volume, but we'll give you a realistic window and get a plumber to you as soon as we can."
+     },
+     {
+      "q": "What can I do before the plumber arrives?",
+      "preview": "Shut off the water and keep people away from sewage or electrical.",
+      "answer": "Close the valve nearest the problem or the main shutoff. Keep everyone away from sewage and from water near outlets. If you smell gas, leave and call Nicor Gas or 911 from outside."
+     },
+     {
+      "q": "Where's the main water shutoff?",
+      "preview": "Usually in the basement near the meter.",
+      "answer": "In many Elgin homes, it's in the basement where the water line comes through the wall, near the meter. Turn it clockwise. Test it once in a while so it doesn't seize."
+     },
+     {
+      "q": "Is it more expensive to call at night?",
+      "preview": "You'll get the price before any work starts.",
+      "answer": "Whatever the hour, the plumber gives you a flat-rate price before any work begins, so you decide with the number in front of you."
+     },
+     {
+      "q": "How much does an emergency plumber cost in Elgin?",
+      "preview": "It depends on the problem. You get a flat price first.",
+      "answer": "It depends on what's wrong and what it takes to fix. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? We're Answering Now.",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24/7 Emergency Plumbing in Elgin, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/elgin/emergency-plumbing",
+   "description": "24/7 emergency plumber in Elgin, IL. Burst pipes, sewer backups, flooded basements and failed water heaters. Upfront pricing, any hour.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Elgin, IL 24/7",
+ "metaDescription": "24/7 emergency plumber in Elgin, IL. Burst pipes, sewer backups, flooded basements and failed water heaters. Upfront pricing, any hour."
+}

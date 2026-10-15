@@ -1,0 +1,317 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Algonquin, IL",
+   "sub": "Busy households in Algonquin are a natural fit for tankless water heaters: hot water that doesn't run out and a heater that hangs on the wall. We install, repair and descale them, and we'll tell you honestly if your home is ready for one. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Water Heater Works",
+    "body": "A tankless unit heats water as it flows. Open a tap, and water runs through a heat exchanger where a burner or element warms it instantly. There's no tank to keep hot, so no standby loss, and no running out halfway through the third shower. Each unit can heat a set number of gallons per minute, so it's sized to how many fixtures you run at once. With well water, regular descaling keeps the heat exchanger clean.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless for Algonquin Families",
+    "intro": "Both have a place:",
+    "head": [
+     "",
+     "Tank Water Heater",
+     "Tankless Water Heater"
+    ],
+    "rows": [
+     [
+      "Hot water supply",
+      "Runs out when the tank is empty",
+      "Continuous, limited by flow rate"
+     ],
+     [
+      "Space",
+      "Floor space in the basement",
+      "Wall-mounted"
+     ],
+     [
+      "Expected life",
+      "About 8 to 12 years",
+      "Often longer with descaling"
+     ],
+     [
+      "Install work",
+      "Usually a direct swap",
+      "May need gas line and vent changes"
+     ],
+     [
+      "Upkeep",
+      "Yearly flush",
+      "Regular descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Algonquin Home?",
+    "intro": "Tankless installation and repair are common requests from Algonquin homeowners. Here's what decides the fit.",
+    "items": [
+     {
+      "h3": "Family-Sized Hot Water Use",
+      "body": "Back-to-back showers in the morning are where tankless shines, as long as the unit is sized for it."
+     },
+     {
+      "h3": "Gas Line Capacity",
+      "body": "Builder gas lines from the 1990s and 2000s are often sized for a furnace and a 40-gallon tank. We check before quoting."
+     },
+     {
+      "h3": "Well Water and Descaling",
+      "body": "Minerals build in the heat exchanger. A working softener and regular descaling keep it running well."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We'll tell you if tankless isn't the right call.",
+    "steps": [
+     {
+      "h3": "1. Fit Check",
+      "body": "Gas line, venting, water use and budget."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Unit, gas work, venting and removal of the old tank."
+     },
+     {
+      "h3": "3. Set Up for Service",
+      "body": "Valves installed for easy descaling."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "I B (Iza)",
+      "url": null,
+      "text": "Alex came out to provide a quote for a tankless water heater I wanted installed. He explained everything in so much detail, about the electric upgrade I would need, about how the heater will actually work 'in real life' (not just on paper). Then it turned out my electric couldn't support the tankless. [...]"
+     },
+     {
+      "name": "Mike Olsa",
+      "url": null,
+      "text": "We had our water heater leak and Kyle from J Blanton came and installed a tankless system in only a few hours. It works amazing and he was very fast and thorough. Thanks for the great job Kyle."
+     },
+     {
+      "name": "Jorge De La Vega",
+      "url": null,
+      "text": "Christian was fantastic l! He’s been here a few times for no drip club visits and he’s the man! Did our tankless water heater maintenance and was friendly and efficient, highly recommend 🙌🏼"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "Can a tankless heater keep up with a big family?",
+      "preview": "Yes, if it's sized for your peak use.",
+      "answer": "Yes, if it's sized for the number of showers and appliances you run at the same time. Very large homes may need a bigger unit or two."
+     },
+     {
+      "q": "How often should a tankless unit be descaled?",
+      "preview": "Regularly, often about once a year with well water.",
+      "answer": "With well water, often about once a year. A softener ahead of the unit can stretch that."
+     },
+     {
+      "q": "My tankless unit shows an error code. Can you fix it?",
+      "preview": "Yes. Tell us the code when you call.",
+      "answer": "Yes. Most codes point to ignition, flame, flow or scale issues. Give us the code and we'll come prepared."
+     },
+     {
+      "q": "Will I need a bigger gas line?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes. We check the existing line and include any upgrade in the flat price."
+     },
+     {
+      "q": "What does a tankless water heater cost in Algonquin?",
+      "preview": "It depends on the unit, gas and venting. The price comes first.",
+      "answer": "It depends on the unit size, any gas line work and the venting. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Hot Water That Doesn't Run Out?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Algonquin, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/algonquin/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Algonquin, IL. Honest advice on fit, gas line and venting. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Algonquin, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Algonquin, IL. Honest advice on fit, gas line and venting. Call 24/7."
+}

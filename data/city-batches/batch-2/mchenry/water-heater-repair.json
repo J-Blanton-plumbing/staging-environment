@@ -1,0 +1,316 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in McHenry, IL",
+   "sub": "A tank that pops and rumbles, hot water that runs out halfway through a shower or orange water from the hot tap. In McHenry County, hard groundwater is behind a lot of water heater trouble. We find the cause, tell you honestly if a repair makes sense and give you a flat price first. From our office on West Elm Street, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your McHenry Water Heater Needs Repair",
+    "intro": "The calls we take most in McHenry County:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Popping, Rumbling or Crackling",
+      "body": "Mineral sediment on the bottom of the tank traps water that boils underneath it. It's the classic hard-water sound."
+     },
+     {
+      "h3": "Hot Water Runs Out Early",
+      "body": "A thick layer of sediment takes up room in the tank, or an electric element has burned out under it."
+     },
+     {
+      "h3": "Orange or Rusty Hot Water",
+      "body": "Iron from the water supply, a spent anode rod or a tank that's starting to rust."
+     },
+     {
+      "h3": "A Leak at the Drain Valve or Base",
+      "body": "Sediment can keep the drain valve from sealing. A leak from the tank itself means replacement."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Water Heaters Struggle in McHenry",
+    "intro": "McHenry County gets its water from underground aquifers, not Lake Michigan. That water is great to have, but it's hard on water heaters.",
+    "items": [
+     {
+      "h3": "Hard Water Builds Sediment Fast",
+      "body": "Groundwater here tends to be hard. As the heater warms the water, minerals drop out and settle on the bottom of the tank. The burner then has to heat through a layer of scale, which wastes energy and stresses the tank."
+     },
+     {
+      "h3": "Iron Shows Up Too",
+      "body": "Some water systems in the area carry iron. Outside city limits, residents of unincorporated Eastwood Manor, on a small private water system, reported orange water and sediment ruining water heaters until Aqua Illinois added iron filtration in 2025."
+     },
+     {
+      "h3": "Heaters Past Their Prime",
+      "body": "About 4 in 10 McHenry homes went up between 1990 and 2009. Heaters from the first or second round in those homes are often near the end."
+     },
+     {
+      "h3": "Softeners Need Attention Too",
+      "body": "Many homes here have a softener. If it's out of salt or not regenerating, scale returns quickly. We check it during water heater calls."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We repair every type of home water heater in McHenry County: gas and electric tanks, power-vent and high-efficiency models and tankless units. We diagnose first and recommend second.",
+     "Read us the label on the side of the tank when you call. The fuel, the size and the manufacture date tell us a lot about whether repair makes sense. If it's time for a new heater, see [water heater installation](/mchenry/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "In McHenry County, a yearly flush isn't an extra. Hard water leaves sediment in every tank, and flushing it out before it hardens is the single best thing you can do for your heater's life.",
+     "A maintenance visit includes the flush, a test of the relief valve, an anode rod check and a look at the burner or elements and the vent. Tankless units get descaled. If you have a softener or a [filtration system](/mchenry/water-filtration-systems), we'll make sure it's doing its job."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A diagnosis, not a sales pitch.",
+    "steps": [
+     {
+      "h3": "1. Find the Real Problem",
+      "body": "Sediment, a failed part or a tank at the end of its life."
+     },
+     {
+      "h3": "2. Honest Repair vs. Replace",
+      "body": "If a flush and a part will do, we'll say so."
+     },
+     {
+      "h3": "3. Flat Price First",
+      "body": "Before any work, and a clean basement after."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Shaun Huang",
+      "url": null,
+      "text": "The guys did a great job. Andrew and Enrique were able to figure out the issue quickly and move me towards a reasonable solution. Kyle came out the next day and finished the work efficiently. Appreciate them a lot and will continue doing business with them in the future!"
+     },
+     {
+      "name": "Jeff",
+      "url": null,
+      "text": "Lou was very professional and his experience shows. He took a quick look at our broken hot water heater, saw a dirty component and knew right away that replacing the part would solve the problem. Thanks Lou!"
+     },
+     {
+      "name": "Jason Kelly",
+      "url": null,
+      "text": "Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "Is McHenry's hard water tough on my water heater?",
+      "preview": "Yes. Minerals settle in the tank and shorten its life.",
+      "answer": "It can be. Groundwater in McHenry County tends to be hard, and some areas carry iron. Those minerals settle in the tank as sediment, so the heater works harder and wears out sooner. Yearly flushing and a working softener help."
+     },
+     {
+      "q": "Why is my water heater making popping noises?",
+      "preview": "Sediment on the bottom of the tank.",
+      "answer": "Water trapped under sediment on the tank bottom boils and pops as the burner heats it. A flush can help if the sediment hasn't hardened. If it has, the tank may be near the end."
+     },
+     {
+      "q": "Why is my hot water orange but my cold water isn't?",
+      "preview": "Usually the anode rod or tank corrosion. Sometimes iron collecting in the tank.",
+      "answer": "If only the hot side is orange, the problem is usually in the heater: a spent anode rod, rust inside the tank or iron sediment collecting in the bottom. If both sides are orange, the iron is coming from your water supply."
+     },
+     {
+      "q": "How long do water heaters last in McHenry County?",
+      "preview": "Usually about 8 to 12 years. Hard water can push that to the low end.",
+      "answer": "Tank heaters usually last somewhere around 8 to 12 years. Without regular flushing, hard water tends to push that toward the low end."
+     },
+     {
+      "q": "How much does water heater repair cost in McHenry?",
+      "preview": "It depends on the part and the heater. You get a flat price first.",
+      "answer": "It depends on what failed and the type of heater. We diagnose it and give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in McHenry, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/mchenry/water-heater-repair",
+   "description": "Water heater repair in McHenry, IL and McHenry County. Sediment, leaks, no hot water or rusty water, diagnosed first and priced flat. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in McHenry, IL",
+ "metaDescription": "Water heater repair in McHenry, IL and McHenry County. Sediment, leaks, no hot water or rusty water, diagnosed first and priced flat. Call 24/7."
+}

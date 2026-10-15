@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Trenchless Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Trenchless Sewer Repair in Arlington Heights, IL",
+   "sub": "A failing sewer line doesn't have to mean a trench across your front yard, your driveway and the parkway tree. We line or replace the pipe through small access points, after a camera shows exactly where the damage is. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/trenchless-sewer-liner-prep.webp",
+    "alt": "Two J. Blanton plumbers pouring resin into a sewer liner bag to prepare a trenchless pipe lining"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-trenchless",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Basics",
+    "h2": "What Is Trenchless Sewer Repair?",
+    "body": "Trenchless sewer repair, also called no-dig sewer repair, fixes a damaged pipe without digging a trench along its full length. Instead of opening up your yard from the house to the street, we work through one or two access points and repair the pipe from the inside or replace it in place. There are two main methods: cured-in-place pipe (CIPP) lining and pipe bursting. Both fix the line underground, so what's above it stays untouched.",
+    "img": {
+     "src": "/images/city-services-v2/trenchless-sewer-repair-setup.webp",
+     "alt": "Two J. Blanton plumbers setting up sewer camera and cable equipment beside a home's foundation before a trenchless sewer repair"
+    }
+   },
+   {
+    "type": "local",
+    "id": "why-trenchless-arlington-heights",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Trenchless Fits Arlington Heights Homes",
+    "intro": "Trenchless repair is one of the most searched sewer services in Arlington Heights, and it fits the way homes here are built and landscaped.",
+    "items": [
+     {
+      "h3": "Mature Trees Over the Line",
+      "body": "Postwar blocks have trees that are 60 years old or more. Digging a trench next to one can damage the roots and the tree. Lining goes under them."
+     },
+     {
+      "h3": "Driveways and Garages in the Path",
+      "body": "Many sewer lines run under a driveway, a walk or a detached garage. Trenchless repair works from both ends and leaves them in place."
+     },
+     {
+      "h3": "Clay Joints Failing All at Once",
+      "body": "When roots have opened most of the joints in a clay line, a liner seals every joint in one job instead of fixing them one by one."
+     },
+     {
+      "h3": "Cast Iron Inside, Clay Outside",
+      "body": "Many homes have both. We can often line the outside lateral and deal with the cast iron under the floor separately, so you only fix what's failing."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "when-trenchless-applies",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Know Your Options",
+    "h2": "When Trenchless Is the Right Call",
+    "intro": "The camera tells us which method fits your line:",
+    "head": [
+     "Line Condition",
+     "Best Approach",
+     "Why"
+    ],
+    "rows": [
+     [
+      "Cracked or root-filled clay, pipe still round",
+      "Pipe lining",
+      "Seals every joint and crack from the inside with no trench"
+     ],
+     [
+      "Pipe too damaged to line, path clear",
+      "Pipe bursting",
+      "Pulls new pipe through the old path"
+     ],
+     [
+      "One collapsed or sagging section",
+      "Spot repair, then lining if needed",
+      "Fixes the low point first so the liner has a straight run"
+     ],
+     [
+      "Line fully collapsed",
+      "Excavation",
+      "There's nothing left to line or burst through"
+     ]
+    ],
+    "note": "We show you the footage behind every recommendation."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A trenchless job is only as good as the inspection behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean and Camera",
+      "body": "We clear the line and record it so the damage and its distance from the house are on video."
+     },
+     {
+      "h3": "2. A Plan for Your Lot",
+      "body": "We map the access points around your trees, driveway and parkway before we quote."
+     },
+     {
+      "h3": "3. Flat Price, Final Camera",
+      "body": "One price before work starts and a final camera pass so you see the finished pipe."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/sewer-excavation-trench.webp",
+     "alt": "Traditional sewer excavation with a trench dug across the yard down to the damaged pipe, the kind of dig trenchless repair avoids"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Trenchless Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "Jeffrey Paddock",
+      "url": null,
+      "text": "We had a sewer liner installed yesterday by Mason Lanier & his crew from J. Blanton Plumbing. They were on time, worked efficiently & diligently to complete all the work in difficult weather conditions. We are very pleased to have this work completed & impressed with Mason & Co."
+     },
+     {
+      "name": "Christopher C.",
+      "url": null,
+      "text": "The ENG team did an amazing job installing a liner on our sewer line. It was a very technical job that required a full days work, but they managed wonderfully despite the unexpected snow and inclement weather conditions. Just as important, they were very kind through the process. Thank you!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Trenchless Sewer Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Will trenchless repair save my parkway tree?",
+      "preview": "Usually. Lining works inside the old pipe, so the roots stay undisturbed.",
+      "answer": "Usually. A liner goes inside the existing pipe, so nobody digs through the root zone. If roots have crushed the pipe completely, we'll tell you what that changes before any work starts."
+     },
+     {
+      "q": "How long does a sewer liner last?",
+      "preview": "Decades. Liners are designed for a long service life.",
+      "answer": "Liners are designed to last for decades. Once cured, the liner is a seamless pipe inside your old one, with no joints for roots to get through."
+     },
+     {
+      "q": "Does lining shrink my pipe?",
+      "preview": "Slightly, but a smooth liner usually flows as well or better.",
+      "answer": "Slightly. A liner adds a thin wall inside the pipe. Because it's smooth and has no joints or scale, it usually carries water as well as the old pipe did when it was new."
+     },
+     {
+      "q": "Can you line a sewer that has a sag?",
+      "preview": "A shallow sag, often. A deep one usually needs a spot repair first.",
+      "answer": "A liner follows the shape of the old pipe, so it won't lift a low spot. A shallow sag can often be lined. A deep one is usually fixed with a small dig first, then the rest of the line is lined."
+     },
+     {
+      "q": "How much does trenchless sewer repair cost in Arlington Heights?",
+      "preview": "It depends on length, depth and method. You get a flat price first.",
+      "answer": "It depends on how much of the line needs work, the depth, the method and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Without the Trench?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Trenchless Sewer Repair in Arlington Heights, IL",
+   "serviceType": "Trenchless Sewer Repair",
+   "url": "https://jblantonplumbing.com/arlington-heights/trenchless-sewer-repair",
+   "description": "Trenchless sewer repair in Arlington Heights, IL. Line or replace a failing sewer without tearing up your yard or driveway. Flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Trenchless Sewer Repair in Arlington Heights, IL",
+ "metaDescription": "Trenchless sewer repair in Arlington Heights, IL. Line or replace a failing sewer without tearing up your yard or driveway. Flat price first. Call 24/7."
+}

@@ -1,0 +1,305 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance and Inspections in Arlington Heights, IL",
+   "sub": "Most plumbing emergencies give a warning first: a sump pump that's getting loud, a water heater that's making noise or a slow drain that keeps coming back. A maintenance visit catches those early. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What a Plumbing Inspection Covers",
+    "intro": "We look at the whole system:",
+    "steps": [
+     {
+      "h3": "Water Heater",
+      "body": "Age, leaks, relief valve, venting and sediment, with a flush if it's due."
+     },
+     {
+      "h3": "Sump and Ejector Pumps",
+      "body": "A test cycle, the float, the check valve and the battery backup if you have one."
+     },
+     {
+      "h3": "Drains and Sewer",
+      "body": "Slow drains, gurgling and a [camera inspection](/arlington-heights/video-camera-sewer-inspections) if something looks off."
+     },
+     {
+      "h3": "Supply Pipes and Valves",
+      "body": "Galvanized or copper condition, leaks and shutoff valves that may not close."
+     },
+     {
+      "h3": "Fixtures",
+      "body": "Running toilets, dripping faucets and worn supply lines."
+     },
+     {
+      "h3": "A Plain-English Report",
+      "body": "What's fine, what to plan for and what needs attention now."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Matters in Arlington Heights Homes",
+    "intro": "About 3 in 4 homes here were built between 1940 and 1989. Most have reached the age where small issues are worth catching early.",
+    "items": [
+     {
+      "h3": "Postwar Plumbing at the End of Its Life",
+      "body": "Homes from the 1940s through the 1960s often have clay sewer lines, cast iron drains and galvanized supply pipe. A checkup tells you which parts are wearing out before one fails."
+     },
+     {
+      "h3": "1970s and 1980s Homes, Second Round of Equipment",
+      "body": "Homes from these decades are on their second or third water heater and sump pump. Knowing their age helps you replace them on your schedule."
+     },
+     {
+      "h3": "Storm Season Prep",
+      "body": "A spring visit tests the sump pump, the backup and the floor drain before heavy rain arrives. The July 2011 storm showed how fast a basement can flood."
+     },
+     {
+      "h3": "Check the Shutoffs",
+      "body": "Main and fixture shutoffs in older homes often haven't been turned in years. We test them so they work when you need them."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A maintenance visit stays a maintenance visit.",
+    "steps": [
+     {
+      "h3": "1. A Real Look",
+      "body": "The whole system, not just one fixture."
+     },
+     {
+      "h3": "2. Honest Priorities",
+      "body": "What's fine, what to plan for and what can't wait."
+     },
+     {
+      "h3": "3. You Decide",
+      "body": "Anything extra gets a flat price first. No pressure."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "How often should I have my plumbing inspected?",
+      "preview": "Once a year is a good rule, ideally in spring.",
+      "answer": "Once a year is a good rule for most Arlington Heights homes. Spring works well because it lets us test the sump pump before storm season."
+     },
+     {
+      "q": "Is an inspection worth it if nothing is wrong?",
+      "preview": "Yes. The point is to find problems before they become emergencies.",
+      "answer": "Yes. Most plumbing failures give small warning signs first. An inspection catches them while they're cheap to fix and on your schedule."
+     },
+     {
+      "q": "What does a maintenance visit include?",
+      "preview": "Water heater, pumps, drains, pipes, valves and fixtures, plus a written summary.",
+      "answer": "We check the water heater, sump and ejector pumps, drains, supply pipes, shutoff valves and fixtures, and give you a summary of what we found."
+     },
+     {
+      "q": "Is there a maintenance plan?",
+      "preview": "Yes. The No Drip Club is our yearly maintenance plan.",
+      "answer": "Yes. The [No Drip Club](/no-drip-club) is our yearly plan that brings a plumber to your home for regular maintenance."
+     },
+     {
+      "q": "How much does a plumbing inspection cost in Arlington Heights?",
+      "preview": "It depends on the home and what's included. You get a flat price first.",
+      "answer": "It depends on the size of the home and what's included, like a sewer camera inspection or a water heater flush. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance and Inspections in Arlington Heights, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/arlington-heights/plumbing-maintenance",
+   "description": "Whole-home plumbing maintenance and inspections for Arlington Heights, IL homes. Catch small problems before they turn into emergencies.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in Arlington Heights, IL",
+ "metaDescription": "Whole-home plumbing maintenance and inspections for Arlington Heights, IL homes. Catch small problems before they turn into emergencies."
+}

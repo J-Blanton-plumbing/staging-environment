@@ -1,0 +1,297 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Filtration Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Testing and Filtration in Algonquin, IL",
+   "sub": "Spots on the dishes, crust on the showerhead or a softener you're not sure is working. We test your water at the tap, explain what's in it and install only the treatment your home needs. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+    "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "options",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Your Options",
+    "h2": "Water Treatment Options for Algonquin Homes",
+    "intro": "We install and service:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Softeners",
+      "body": "Reduce the minerals that cause scale, spots and sediment in the water heater."
+     },
+     {
+      "h3": "Whole-House Filters",
+      "body": "Reduce chlorine taste and odor and catch sediment."
+     },
+     {
+      "h3": "Drinking Water Systems",
+      "body": "Under-sink reverse osmosis for cooking and drinking."
+     },
+     {
+      "h3": "Softener Service",
+      "body": "Settings, salt, resin and valve repairs on the softener you already have."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "water-testing",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Water Testing",
+    "h2": "Water Testing in Algonquin",
+    "bodies": [
+     "Algonquin's water comes from nine village wells, most of them shallow and one about 1,300 feet deep, treated at three plants on both sides of the Fox River. Groundwater carries minerals, and the village's own report lists water softener regeneration as one source of sodium in the system, as one source of sodium in the system.",
+     "A test at your tap shows hardness and other things that affect taste, scale and appliances. It also tells you whether your softener is actually doing its job. We use the results to recommend only what your home needs."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-water",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Quality in Algonquin Homes",
+    "intro": "Water testing draws steady search interest in Algonquin.",
+    "items": [
+     {
+      "h3": "Well Water Means Minerals",
+      "body": "Groundwater picks up minerals from the rock it moves through. That shows up as scale on fixtures and sediment in the water heater."
+     },
+     {
+      "h3": "Softeners Are Common, and So Are Tired Ones",
+      "body": "Many softeners were installed with the house in the 1990s and 2000s. Worn resin or wrong settings let hardness right through."
+     },
+     {
+      "h3": "Taste and Odor",
+      "body": "A carbon filter improves taste and smell at the kitchen tap or the whole house."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Test first. Recommend second.",
+    "steps": [
+     {
+      "h3": "1. Test at Your Tap",
+      "body": "Results explained plainly."
+     },
+     {
+      "h3": "2. Fix or Add Only What's Needed",
+      "body": "Sometimes that's just servicing your softener."
+     },
+     {
+      "h3": "3. Flat Price, Clean Install",
+      "body": "One price, and we show you the upkeep."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Filtration Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     },
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     },
+     {
+      "name": "Brian Crain",
+      "url": "https://maps.app.goo.gl/yX9GobAxAt8ryxhy7",
+      "text": "Ron was perfect. He came to do the job at hand and explained various pieces of information along the way that helped me understand the root causes of what we were dealing with and how to avoid problems in the future. [...] Didn't try and push the sale like some companies do, but was more or less educating on what the options were and what they entailed in full so we would know what to expect if we decided to go down those paths."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Filtration Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "Does Algonquin have hard water?",
+      "preview": "Groundwater naturally carries minerals. A test shows your exact hardness.",
+      "answer": "Algonquin's water comes from village wells, and groundwater naturally carries minerals. A test at your tap tells you exactly how hard yours is, so you can decide on a softener with real numbers."
+     },
+     {
+      "q": "How do I know if my softener is working?",
+      "preview": "Test the water. Spots and scale are clues.",
+      "answer": "Test the water after the softener. White spots, scale on fixtures and soap that won't lather are signs it isn't keeping up."
+     },
+     {
+      "q": "Can you repair my existing softener?",
+      "preview": "Often, yes.",
+      "answer": "Often, yes. Settings, valves and resin can be serviced or replaced. If it's beyond repair, we'll tell you."
+     },
+     {
+      "q": "How often should filters be changed?",
+      "preview": "Most cartridges every few months to a year.",
+      "answer": "It depends on the system and your use. Most cartridges last a few months to a year."
+     },
+     {
+      "q": "What does a water softener or filter cost in Algonquin?",
+      "preview": "It depends on the system. The price comes first.",
+      "answer": "It depends on the type and size of the system and how it connects. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Better Water at Every Tap?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Testing and Filtration in Algonquin, IL",
+   "serviceType": "Water Filtration Systems",
+   "url": "https://jblantonplumbing.com/algonquin/water-filtration-systems",
+   "description": "Water testing, softeners and filtration for Algonquin, IL homes on village well water. We test at your tap and install only what you need.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Testing & Filtration in Algonquin, IL",
+ "metaDescription": "Water testing, softeners and filtration for Algonquin, IL homes on village well water. We test at your tap and install only what you need."
+}

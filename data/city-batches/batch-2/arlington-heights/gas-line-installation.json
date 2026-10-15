@@ -1,0 +1,296 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in Arlington Heights, IL",
+   "sub": "Switching to a gas range, adding a grill line on the patio or hooking up a generator. Our licensed plumbers size, run and pressure-test new gas lines across Arlington Heights, with a flat price before we start. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Gas Lines We Install",
+    "intro": "Common projects in Arlington Heights homes:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Gas Ranges and Cooktops",
+      "body": "Many kitchens remodeled from electric to gas need a new line run from the basement."
+     },
+     {
+      "h3": "Dryers",
+      "body": "A gas dryer in a basement laundry room usually needs a short new branch."
+     },
+     {
+      "h3": "Grills and Fire Pits",
+      "body": "A permanent line on the patio means no more propane tanks."
+     },
+     {
+      "h3": "Generators and Pool Heaters",
+      "body": "Bigger appliances often need a larger line or a new meter capacity check."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install a Gas Line",
+    "intro": "Done right the first time:",
+    "steps": [
+     {
+      "h3": "Size the Line",
+      "body": "We add up the gas load of every appliance so the new line and the existing system can carry it."
+     },
+     {
+      "h3": "Run and Connect",
+      "body": "We route the pipe, add a shutoff valve at the appliance and connect it with a code-approved connector."
+     },
+     {
+      "h3": "Pressure-Test",
+      "body": "The line is tested for leaks before it's put into service."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in Arlington Heights",
+    "intro": "Most homes here were built between 1940 and 1989, so new gas work usually ties into older piping.",
+    "items": [
+     {
+      "h3": "Kitchen Remodels",
+      "body": "When a postwar kitchen goes from electric to gas, we find the best path from the basement and check that the existing line can handle it."
+     },
+     {
+      "h3": "Patio Upgrades",
+      "body": "A natural gas line for a grill or fire pit is a common project in Arlington Heights backyards. We run it safely and add a shutoff outside."
+     },
+     {
+      "h3": "Bigger Appliances, Same Old Line",
+      "body": "Adding a tankless water heater or a generator can be more than the original pipe was sized for. We check before we connect."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Can my existing gas line handle a new appliance?",
+      "preview": "Sometimes. We calculate the load before we connect anything.",
+      "answer": "Sometimes. We add up the gas demand of everything on the system. If the new appliance would starve others, we upsize the line."
+     },
+     {
+      "q": "Do I need a permit for a gas line?",
+      "preview": "New gas work usually requires one. We'll tell you what applies.",
+      "answer": "New gas piping usually requires a permit. We'll tell you what applies to your project when we quote it."
+     },
+     {
+      "q": "Can you run a gas line for an outdoor grill?",
+      "preview": "Yes, with a shutoff and a quick-connect outside.",
+      "answer": "Yes. We run the line to the patio, add a shutoff valve and a quick-connect fitting so the grill can be moved safely."
+     },
+     {
+      "q": "How long does a gas line installation take?",
+      "preview": "Most are done in a day.",
+      "answer": "Most residential gas line installations are done in a day, including the pressure test. Longer runs or larger lines may take more time."
+     },
+     {
+      "q": "Can you move my gas dryer line when I relocate the laundry?",
+      "preview": "Yes.",
+      "answer": "Yes. Moving laundry from the basement to the main floor is a common project in Arlington Heights. We run and test the new line and cap the old one."
+     },
+     {
+      "q": "How much does gas line installation cost in Arlington Heights?",
+      "preview": "It depends on the length, size and appliance. You get a flat price first.",
+      "answer": "It depends on how long the run is, the pipe size and the appliance. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in Arlington Heights, IL",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/arlington-heights/gas-line-installation",
+   "description": "Gas line installation in Arlington Heights, IL for ranges, dryers, grills, fire pits and generators. Licensed, pressure-tested, flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in Arlington Heights, IL",
+ "metaDescription": "Gas line installation in Arlington Heights, IL for ranges, dryers, grills, fire pits and generators. Licensed, pressure-tested, flat price first."
+}

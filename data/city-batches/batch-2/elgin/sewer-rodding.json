@@ -1,0 +1,311 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Rodding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Rodding in Elgin, IL",
+   "sub": "Water rising around the basement floor drain or every fixture draining slowly at once means the main line is blocked. We rod it, put a camera through it so you can see why, and give you a flat price before we start. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-rodding-front-yard.webp",
+    "alt": "J. Blanton plumber feeding the cable from a drum rodding machine into an outdoor sewer cleanout in a front yard"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-sewer-rodding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Sewer Rodding?",
+    "body": "Sewer rodding clears a blocked main line with a long, flexible steel cable fed through a cleanout access point. A cutting head on the end breaks through roots, grease, and debris and pushes the blockage toward the street connection, restoring flow through the pipe. It's the standard first fix for a clogged or backed-up sewer line. For most homes, it's the only fix needed.",
+    "img": {
+     "src": "/images/city-services-v2/sewer-rodding-diagram.webp",
+     "alt": "Diagram showing a rodding cable fed through a cleanout access point into the main sewer line, with a cutting head clearing the blockage toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Elgin Main Line Needs Rodding",
+    "intro": "A single slow sink is one thing. These point to the main:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Around the Floor Drain",
+      "body": "The floor drain is the lowest point in most Elgin basements. A main line clog shows up there first."
+     },
+     {
+      "h3": "Toilets Bubble When the Tub Drains",
+      "body": "Air being pushed back through other fixtures means the line ahead is blocked."
+     },
+     {
+      "h3": "Backups After Laundry",
+      "body": "A washer empties a lot of water fast. A partly blocked main can't keep up and overflows downstairs."
+     },
+     {
+      "h3": "It Was Rodded About a Year Ago",
+      "body": "In older clay lines, roots grow back on a yearly cycle."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Blocks Main Lines in Elgin",
+    "intro": "With homes from the 1800s through the 2000s, we clear every kind of main line clog in Elgin.",
+    "items": [
+     {
+      "h3": "Root Mats in Clay Laterals",
+      "body": "In the older neighborhoods east of the river, roots grow into clay joints and form dense mats. Rodding cuts them back so water flows again."
+     },
+     {
+      "h3": "Rust Scale in Cast Iron Stacks",
+      "body": "Older homes often have cast iron inside the house. Scale builds on the walls and narrows the pipe."
+     },
+     {
+      "h3": "Wipes and Grease in Newer Homes",
+      "body": "On the west side, most main line clogs come from what goes down the drain, not the pipe itself."
+     },
+     {
+      "h3": "When Rodding Isn't Enough",
+      "body": "Roots that return within months call for [hydro jetting](/elgin/hydro-jetting). A crack or sag on camera means a [sewer repair](/elgin/sewer-repair)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Handle Sewer Rodding",
+    "intro": "Clear the line, then show you why it clogged.",
+    "steps": [
+     {
+      "h3": "1. Find the Best Access",
+      "body": "We locate the cleanout, protect the floor and set up there, not through a toilet if we can avoid it."
+     },
+     {
+      "h3": "2. Clear and Inspect",
+      "body": "We rod to the city main and follow with a camera so you see the cause and what's left."
+     },
+     {
+      "h3": "3. Flat Price, No Surprises",
+      "body": "You get the price first. If the camera shows damage, you get options and a price for each."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Rodding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Maria Bailly",
+      "url": null,
+      "text": "On 11/25/2025 technician Mr. Edgar Herrera did amazing job fixing problem what we have. He spent long hours making sure that everything worked. He was very professional and also understanding our needs. Thank you so much Mr. Herrera."
+     },
+     {
+      "name": "John Marko",
+      "url": null,
+      "text": "Jovany was super helpful and got the job done, explaining everything to me in detail, dealt nicely with the fact that we had to reschedule the service due to weather issues. Great service."
+     },
+     {
+      "name": "Sara Corcoran",
+      "url": "https://maps.app.goo.gl/hcHjEjPhBvoYqNnh8",
+      "text": "I had another company come out first to fix my sewer line that got blocked in this cold weather, but the issue was not fully resolved. [...] They all were professional, knowledgeable, offered solutions, and answered all my questions. They all went above and beyond to make sure my issue is fixed efficiently and as soon as possible."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Rodding Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How do I know the clog is in the main line?",
+      "preview": "Several fixtures are slow, or water shows up at the floor drain.",
+      "answer": "If more than one fixture is slow, toilets gurgle when other drains run or water appears at the basement floor drain, the clog is in the main line rather than one fixture."
+     },
+     {
+      "q": "How often should an Elgin home with roots be rodded?",
+      "preview": "Usually once a year, before spring.",
+      "answer": "If roots have blocked your line before, once a year is a good starting point, ideally in late winter or early spring before roots grow and storms test the line."
+     },
+     {
+      "q": "Will rodding hurt my old clay pipe?",
+      "preview": "Not when it's done right. The camera shows if the pipe is already broken.",
+      "answer": "Not when the cutting head is sized correctly. If the line is already cracked or collapsed, the camera will show it, and we'll stop and explain before going further."
+     },
+     {
+      "q": "Can I rent a machine and do it myself?",
+      "preview": "You can, but you won't see what caused it.",
+      "answer": "You can rent a machine, but heavy cables are hard to control, and you won't know what caused the clog or whether the pipe is damaged. Our camera follow-up answers that."
+     },
+     {
+      "q": "How much does sewer rodding cost in Elgin?",
+      "preview": "It depends on access and the blockage. You get a flat price first.",
+      "answer": "It depends on where the cleanout is, how long the line is and what's in it. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Drains Moving?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Rodding in Elgin, IL",
+   "serviceType": "Sewer Rodding",
+   "url": "https://jblantonplumbing.com/elgin/sewer-rodding",
+   "description": "Sewer rodding in Elgin, IL. We clear the main line, show you the cause on camera and give you a flat price before we start. Call our office 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Rodding in Elgin, IL",
+ "metaDescription": "Sewer rodding in Elgin, IL. We clear the main line, show you the cause on camera and give you a flat price before we start. Call our office 24/7."
+}

@@ -1,0 +1,338 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Faucet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Faucet and Fixture Installation and Repair in McHenry, IL",
+   "sub": "A faucet crusted with white scale, a kitchen tap that drips all night or a new set of fixtures for a remodel. We repair and install faucets and fixtures across McHenry, with a flat price before we start. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/faucet-installation-bathroom-sink.webp",
+    "alt": "J. Blanton plumber in branded red leather gloves installing a new chrome faucet on a white bathroom sink with an adjustable wrench"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Faucet Needs Attention",
+    "intro": "In McHenry, a lot of faucet trouble starts with the water:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Scale Around the Spout and Handles",
+      "body": "Hard water leaves white crust that eats into finishes and works into the moving parts."
+     },
+     {
+      "h3": "A Drip That Won't Quit",
+      "body": "Mineral buildup on the cartridge or seals keeps them from closing fully."
+     },
+     {
+      "h3": "Sputtering or Weak Flow",
+      "body": "A scaled-up aerator or cartridge. Cleaning or replacing it usually fixes it."
+     },
+     {
+      "h3": "Water Under the Sink",
+      "body": "Loose supply lines or a corroded shutoff valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-faucet",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Kitchen Faucets",
+    "h2": "Kitchen Faucet Repair and Installation",
+    "bodies": [
+     "We repair dripping, stiff and leaking kitchen faucets and install new ones, including pull-downs, touchless models and taps for drinking water filters. In hard water, a faucet with ceramic disc cartridges and a finish that resists spotting lasts longer.",
+     "During every install, we check the shutoff valves and supply lines under the sink. Valves scaled by hard water often won't close fully. We replace them while the sink is open."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-plumbing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Plumbing",
+    "h2": "Kitchen Plumbing Services",
+    "bodies": [
+     "We handle sink drains, dishwasher connections, refrigerator and ice maker lines, disposals and gas hookups for ranges, plus new layouts for remodels.",
+     "Sink clogged? See [drain cleaning](/mchenry/drain-cleaning). Disposal not working? See [garbage disposal repair](/mchenry/garbage-disposal-installation-repair). Want filtered drinking water at the sink? See [water filtration](/mchenry/water-filtration-systems)."
+    ],
+    "img": {
+     "src": "/images/city-services-v2/kitchen-sink-drain-plumbing.webp",
+     "alt": "Plumbing under a double kitchen sink: white PVC drain and P-trap, braided supply lines with chrome shutoff valves, and a garbage disposal"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "fixture-installation",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Fixture Installation",
+    "h2": "Plumbing Fixture Installation",
+    "bodies": [
+     "We install sinks, faucets, toilets, showerheads, tub fillers, laundry tubs and outdoor spigots, from one swap to a full bathroom. Each install includes connections, new shutoffs where needed and a leak check.",
+     "Buying your own fixtures? Send us the make and model and we'll confirm the fit. For toilets, see [toilet installation](/mchenry/toilet-installation-repair). For showers, see [shower repair](/mchenry/shower-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-fixtures",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Local Knowledge",
+    "h2": "Faucets and Fixtures in McHenry Homes",
+    "intro": "Hard water and homes built mostly since 1970 shape fixture work here.",
+    "items": [
+     {
+      "h3": "Scale Shortens Fixture Life",
+      "body": "Mineral buildup wears cartridges and seals faster. A softener upstream protects every new fixture you install."
+     },
+     {
+      "h3": "Many Bathrooms, Same Age",
+      "body": "In homes from the 1990s and 2000s, all the faucets tend to wear out together. Replacing several in one visit saves a trip."
+     },
+     {
+      "h3": "Iron Stains on Finishes",
+      "body": "If your fixtures show orange stains, the water may carry iron. A [water test](/mchenry/water-filtration-systems) tells you."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Quick, clean fixture work.",
+    "steps": [
+     {
+      "h3": "1. Repair When It Makes Sense",
+      "body": "A new cartridge often saves a good faucet."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Including any valves or lines that need replacing."
+     },
+     {
+      "h3": "3. Clean Work Area",
+      "body": "Cabinets and counters protected."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Faucet and Fixture Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     },
+     {
+      "name": "M Geula",
+      "url": null,
+      "text": "Clayton Griffel came and provided great same-day service on work of replacing a pipe and faucet connection. Clayton was courteous and attentive to the job. Definitely \"a good call\" to J. Blanton this time."
+     },
+     {
+      "name": "Nicole Rose",
+      "url": null,
+      "text": "Tony Z did a great job replacing leaky pipes under my kitchen sink. He checked throughly to make sure the issue was solved. The whole experience was positive. I recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Faucet and Fixture Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "How do I get scale off my faucets?",
+      "preview": "Soak the aerator in vinegar. Heavy scale may mean replacing parts.",
+      "answer": "Unscrew the aerator and soak it in white vinegar to dissolve the scale. Wipe fixtures regularly. If scale has worked into the cartridge, replacing it is the fix. A softener prevents most of it."
+     },
+     {
+      "q": "Why does my new faucet already have weak flow?",
+      "preview": "Scale or debris in the aerator, or old supply lines.",
+      "answer": "Often debris or scale from the pipes collects in the new aerator. Rinse it. If that doesn't help, the supply line or valve may be restricted."
+     },
+     {
+      "q": "Can you install a drinking water faucet?",
+      "preview": "Yes, with an under-sink filter.",
+      "answer": "Yes. We install dedicated drinking water faucets with under-sink filters or reverse osmosis systems."
+     },
+     {
+      "q": "Should I repair or replace my faucet?",
+      "preview": "Repair a good faucet with a worn part. Replace a corroded one.",
+      "answer": "If it's a quality faucet with a worn cartridge, repair it. If the finish is failing or scale has damaged the body, replace it."
+     },
+     {
+      "q": "How much does faucet installation cost in McHenry?",
+      "preview": "It depends on the faucet and valves. You get a flat price first.",
+      "answer": "It depends on the faucet, the condition of the shutoffs and supply lines and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Drip?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Faucet and Fixture Installation and Repair in McHenry, IL",
+   "serviceType": "Faucet Installation & Repair",
+   "url": "https://jblantonplumbing.com/mchenry/faucet-installation-repair",
+   "description": "Faucet and fixture repair and installation in McHenry, IL. Drips, scale-clogged aerators and new kitchen and bath fixtures. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Faucet & Fixture Repair in McHenry, IL",
+ "metaDescription": "Faucet and fixture repair and installation in McHenry, IL. Drips, scale-clogged aerators and new kitchen and bath fixtures. Flat price first."
+}

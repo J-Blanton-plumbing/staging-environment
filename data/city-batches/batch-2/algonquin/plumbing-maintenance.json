@@ -1,0 +1,310 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance and Inspections in Algonquin, IL",
+   "sub": "If your home was built in the 1990s or 2000s, the equipment that came with it is reaching the end. A maintenance visit tells you what's close to failing so you can replace it on your schedule. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What an Algonquin Plumbing Checkup Covers",
+    "intro": "Everything that came with the house:",
+    "steps": [
+     {
+      "h3": "Water Heater",
+      "body": "Age, leaks, relief valve, venting and sediment, with a flush if it's due."
+     },
+     {
+      "h3": "Sump Pump and Backup",
+      "body": "A full test cycle before the river rises."
+     },
+     {
+      "h3": "Water Softener",
+      "body": "Salt, settings and whether it's actually softening."
+     },
+     {
+      "h3": "Sewer Line",
+      "body": "Slow drains or gurgling get a [camera inspection](/algonquin/video-camera-sewer-inspections)."
+     },
+     {
+      "h3": "Supply Lines and Shutoffs",
+      "body": "Original braided lines, washer hoses and valves."
+     },
+     {
+      "h3": "A Written Summary",
+      "body": "Fine, plan for it or fix it now."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Matters in Algonquin",
+    "intro": "With a median home built in 1994, Algonquin is in the replacement years.",
+    "items": [
+     {
+      "h3": "Original Equipment Is Aging",
+      "body": "In homes built in the 1990s and 2000s, water heaters, sump pumps, softeners and supply lines installed with the house are now 17 to 36 years old."
+     },
+     {
+      "h3": "Roots Arriving",
+      "body": "Subdivision trees are big enough to reach sewer lines. A camera look catches it early."
+     },
+     {
+      "h3": "River Season",
+      "body": "A spring visit tests the sump pump and backup before the Fox River rises."
+     },
+     {
+      "h3": "Softener and Heater Together",
+      "body": "When the softener isn't keeping up, scale builds in the water heater. We check both on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A maintenance visit stays a maintenance visit.",
+    "steps": [
+     {
+      "h3": "1. A Real Look",
+      "body": "The whole system."
+     },
+     {
+      "h3": "2. Honest Priorities",
+      "body": "What's urgent and what can wait."
+     },
+     {
+      "h3": "3. You Decide",
+      "body": "Anything extra is priced first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "Is a checkup worth it for a house that's only 25 years old?",
+      "preview": "Yes. That's when original equipment starts failing.",
+      "answer": "Yes. The pipes are likely fine, but the water heater, sump pump, softener and supply lines are at the age when they start to fail."
+     },
+     {
+      "q": "When should I schedule it?",
+      "preview": "Spring, before river season.",
+      "answer": "Spring works best, so we can test the sump pump and backup before heavy rain and high water."
+     },
+     {
+      "q": "Do you check water softeners?",
+      "preview": "Yes.",
+      "answer": "Yes. We check salt, settings and regeneration and tell you if it needs service."
+     },
+     {
+      "q": "Is there a yearly plan?",
+      "preview": "Yes. The No Drip Club.",
+      "answer": "Yes. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance."
+     },
+     {
+      "q": "Can you check my sprinkler backflow device?",
+      "preview": "We can check its condition and shutoffs.",
+      "answer": "We can check the backflow device and shutoffs for leaks and damage. Annual testing certification, where required, may be done by a certified tester."
+     },
+     {
+      "q": "What does a plumbing checkup cost in Algonquin?",
+      "preview": "It depends on what's included. The price comes first.",
+      "answer": "It depends on the size of the home and add-ons like a sewer camera inspection or water heater flush. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance and Inspections in Algonquin, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/algonquin/plumbing-maintenance",
+   "description": "Whole-home plumbing maintenance for Algonquin, IL homes. Water heater, sump pump, softener and sewer checks before things fail.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in Algonquin, IL",
+ "metaDescription": "Whole-home plumbing maintenance for Algonquin, IL homes. Water heater, sump pump, softener and sewer checks before things fail."
+}

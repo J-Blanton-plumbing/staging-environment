@@ -1,0 +1,356 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Geneva, IL",
+   "sub": "Roots grow back to the same joints, and grease builds up in the same places. A maintenance schedule based on your line keeps it flowing and your basement dry. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "Does Your Geneva Sewer Line Need Regular Service?",
+    "intro": "It pays off when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Runs Under Old Trees",
+      "body": "Many historic blocks have trees older than the sewer line. Roots return to the same joints every year."
+     },
+     {
+      "h3": "It's Original Clay",
+      "body": "Clay lines from the 1800s and early 1900s have a joint every few feet."
+     },
+     {
+      "h3": "It Has Backed Up Before",
+      "body": "Backups rarely happen just once."
+     },
+     {
+      "h3": "You've Finished the Basement",
+      "body": "One backup can cost more than many years of maintenance."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "How Often Geneva Lines Need Service",
+    "intro": "Older lines usually need more attention. Here's where most homes land:",
+    "head": [
+     "Your Line",
+     "Typical Interval"
+    ],
+    "rows": [
+     [
+      "Original clay under a historic home",
+      "Root cutting every year, before spring"
+     ],
+     [
+      "Cast iron inside an older home",
+      "Jetting every couple of years to keep scale down"
+     ],
+     [
+      "Patched line with mixed materials",
+      "A camera check every year or two at the transitions"
+     ],
+     [
+      "PVC line in a newer home",
+      "A camera look every few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Keeping Geneva Sewer Lines Clear",
+    "intro": "In September 2008, about 9 inches of rain fell on Geneva in two days, and basements flooded across much of Kane County.",
+    "items": [
+     {
+      "h3": "Root Control in the Historic District",
+      "body": "In the Central Geneva Historic District, roots are the main reason lines need regular service. A yearly cleaning keeps them from closing the pipe."
+     },
+     {
+      "h3": "Storm Readiness",
+      "body": "In September 2008, about 9 inches of rain fell in two days. A line already half full of roots has no room left in a storm like that."
+     },
+     {
+      "h3": "Test the Protection",
+      "body": "If you have a backflow valve or an [overhead sewer system](/geneva/overhead-sewer-systems), we check it on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/geneva/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/geneva/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/geneva/sewer-rodding) or [Hydro Jetting](/geneva/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/geneva/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Visits Work",
+    "intro": "Your line decides the schedule.",
+    "steps": [
+     {
+      "h3": "1. Film the Line",
+      "body": "We record it end to end and note every joint and patch."
+     },
+     {
+      "h3": "2. Treat the Real Problem",
+      "body": "Root cutting for clay joints, jetting for scale and grease."
+     },
+     {
+      "h3": "3. A Schedule You Approve",
+      "body": "Interval and price in writing before the next visit is booked."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Connor Schickel",
+      "url": null,
+      "text": "I’ve used J Blanton multiple times. They have helped identify a pipe with root growth through their No Drip Club. Mike Perez has done a great job walking me through all the steps to get the root out of my pipe and had to work through some very tough turns to identify the roots. [...]"
+     },
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Why does my historic home need sewer service every year?",
+      "preview": "Clay joints and old trees mean roots come back yearly.",
+      "answer": "Clay lines have a joint every few feet, and old trees send roots into them every growing season. Cutting them back each year keeps the line open."
+     },
+     {
+      "q": "Can a liner end the yearly cleanings?",
+      "preview": "Often, yes. It seals the joints roots use.",
+      "answer": "Often. A [trenchless liner](/geneva/trenchless-sewer-repair) seals every joint, so roots have no way in. Many homeowners line the pipe after a few years of yearly cleanings."
+     },
+     {
+      "q": "Will maintenance stop storm backups?",
+      "preview": "It helps, but a full public sewer needs other protection.",
+      "answer": "A clean line carries water out faster. When the public sewer itself is full, you need a backflow valve or an [overhead sewer system](/geneva/overhead-sewer-systems)."
+     },
+     {
+      "q": "Is sewer maintenance part of the No Drip Club?",
+      "preview": "The No Drip Club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club/) brings a plumber to your home for regular maintenance. Ask how it applies to your sewer line."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Geneva?",
+      "preview": "It depends on the service. You'll approve a flat price first.",
+      "answer": "It depends on whether your line needs root cutting, jetting or a camera check. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Geneva, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/geneva/sewer-maintenance",
+   "description": "Preventive sewer maintenance for Geneva, IL homes. Scheduled cleaning and camera checks before roots or grease cause a backup.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Geneva, IL",
+ "metaDescription": "Preventive sewer maintenance for Geneva, IL homes. Scheduled cleaning and camera checks before roots or grease cause a backup."
+}

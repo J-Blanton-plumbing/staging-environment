@@ -1,0 +1,286 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Elgin, IL",
+   "sub": "A restaurant on Chicago Street, a salon on the west side or a small manufacturer near the river. When the water heater fails, business slows down. We repair, replace and maintain commercial water heaters for Elgin businesses from our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Commercial Water Heater Service for Elgin Businesses",
+    "intro": "We keep hot water running for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Restaurants and Cafes",
+      "body": "Busy kitchens can't stop for a cold dish machine or a dead handwashing sink."
+     },
+     {
+      "h3": "Salons and Barbershops",
+      "body": "Every chair and shampoo bowl draws on the same heater."
+     },
+     {
+      "h3": "Offices and Clinics",
+      "body": "Restrooms, break rooms and exam rooms need steady hot water."
+     },
+     {
+      "h3": "Light Industrial Shops",
+      "body": "Wash stations and break areas on the production floor."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Repair, Replacement and Maintenance",
+    "intro": "Service for the life of the equipment:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Commercial gas and electric tanks and tankless units. We find the failed part and price it first."
+     },
+     {
+      "h3": "Replacement",
+      "body": "Sized to your peak demand and scheduled around your hours where we can."
+     },
+     {
+      "h3": "Maintenance",
+      "body": "Flushing, descaling and safety checks on a set schedule."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "elgin-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Elgin Businesses",
+    "intro": "Our office at 964 N McLean Blvd is on Elgin's west side, a short drive from downtown and the commercial corridors on both sides of the river.",
+    "items": [
+     {
+      "h3": "Older Commercial Buildings",
+      "body": "Many downtown buildings are a century old. Gas, venting and water connections may have been changed many times. We trace them before sizing a new heater."
+     },
+     {
+      "h3": "When It Fails Mid-Shift",
+      "body": "Our line is open 24/7, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "h3": "A Number Before the Work",
+      "body": "Flat-rate pricing so you can plan around it."
+     },
+     {
+      "h3": "Restaurants on Both Sides of the River",
+      "body": "We serve restaurants and shops downtown and along the west side corridors, with the same flat-rate pricing."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Rich Walker",
+      "url": null,
+      "text": "Alex & Mike were great! They answered all my questions professionally and respectfully. Their work appears to be top notch and explained everything they were doing throughout the project. Very pleased with my whole J. Blanton experience today."
+     },
+     {
+      "name": "Jessica Bartucci",
+      "url": null,
+      "text": "Ty was knowledgeable and efficient. He was friendly with staff and clients when we opened and even cleaned up after himself when the job was done. He patiently explained what we could expect and delivered from start to finish."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Elgin Businesses",
+    "items": [
+     {
+      "q": "Can you work around our business hours?",
+      "preview": "For planned work, yes, where we can.",
+      "answer": "For a planned replacement or service visit, we'll try to schedule before you open or after you close. For a failure, call any time."
+     },
+     {
+      "q": "How do we know what size heater we need?",
+      "preview": "We measure your busiest hour of hot water use.",
+      "answer": "We look at your peak hour: sinks, dish machines, showers or washers running at once and the temperatures they need. Then we size capacity and recovery to match."
+     },
+     {
+      "q": "Do you service tankless commercial systems?",
+      "preview": "Yes, including multiple units working together.",
+      "answer": "Yes. We repair, descale and replace commercial tankless units, including multi-unit systems."
+     },
+     {
+      "q": "How often should a commercial heater be maintained?",
+      "preview": "More often than a home unit, based on how hard it works.",
+      "answer": "Commercial heaters run longer and wear faster. We'll recommend a flushing and safety check schedule based on your use."
+     },
+     {
+      "q": "How much does commercial water heater replacement cost in Elgin?",
+      "preview": "It depends on capacity, fuel, venting and code updates. You get a flat price first.",
+      "answer": "It depends on the capacity, fuel type, venting and any code updates. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 70,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Elgin, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/elgin/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Elgin, IL businesses. 24/7 phone line and a flat price before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Elgin, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Elgin, IL businesses. 24/7 phone line and a flat price before any work."
+}

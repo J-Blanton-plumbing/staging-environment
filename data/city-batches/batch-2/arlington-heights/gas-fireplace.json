@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in Arlington Heights, IL",
+   "sub": "A gas fireplace that clicks but won't light, a pilot that goes out or glass that turns black. Our plumbers are licensed for gas work and repair, clean and service gas fireplaces across Arlington Heights. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Arlington Heights Gas Fireplace Acting Up?",
+    "intro": "These are the calls we get most when it gets cold:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Won't Light",
+      "body": "Dust and debris in the pilot after a summer off are the usual cause."
+     },
+     {
+      "h3": "The Flame Goes Out",
+      "body": "A worn thermocouple or thermopile can no longer hold the gas valve open."
+     },
+     {
+      "h3": "Black Glass or a Yellow Flame",
+      "body": "A dirty burner, logs out of place or a venting problem."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave the house. Call Nicor Gas or 911 from outside, then call us once it's safe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Repair, Cleaning and Yearly Service",
+    "intro": "Gas supply, burner and vent:",
+    "steps": [
+     {
+      "h3": "Repairs",
+      "body": "Pilot assemblies, igniters, thermocouples, thermopiles, gas valves, remotes and wall switches."
+     },
+     {
+      "h3": "Yearly Service",
+      "body": "We clean the burner, pilot and glass, reset the logs, leak-test the connections and check the vent."
+     },
+     {
+      "h3": "New Gas Lines",
+      "body": "Converting a wood fireplace to gas logs or adding an insert? See [gas line installation](/arlington-heights/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Fireplaces in Arlington Heights Homes",
+    "intro": "Fireplaces here reflect when each home was built.",
+    "items": [
+     {
+      "h3": "Masonry Fireplaces Converted to Gas",
+      "body": "Many homes from the 1950s through the 1970s have brick fireplaces that got gas logs later. The damper has to stay open and the flue has to be clear. We check the gas side and tell you if the chimney needs attention."
+     },
+     {
+      "h3": "Inserts in Older Fireplaces",
+      "body": "A gas insert vents through a liner in the old chimney. A damaged liner can push exhaust back into the room."
+     },
+     {
+      "h3": "Builder Fireplaces From the 1980s",
+      "body": "Direct-vent fireplaces from the 1980s are now 37 to 46 years old. Most parts can still be replaced without replacing the unit."
+     },
+     {
+      "h3": "Carbon Monoxide Safety",
+      "body": "Keep a working CO detector on every level and near any gas appliance."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "We test everything before we leave.",
+    "steps": [
+     {
+      "h3": "1. Licensed for Gas Work",
+      "body": "Gas work should be done by a licensed pro, and ours handle it every week."
+     },
+     {
+      "h3": "2. Flat Price First",
+      "body": "We find the failed part and give you a flat rate before any work."
+     },
+     {
+      "h3": "3. Test-Fired",
+      "body": "We leak-check every connection and run the fireplace until the flame is steady."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "How often should a gas fireplace be serviced?",
+      "preview": "Once a year, before heating season.",
+      "answer": "Once a year, ideally in September or October, so any weak part shows up before the first cold night."
+     },
+     {
+      "q": "Why won't my fireplace light after summer?",
+      "preview": "Dust and debris in the pilot.",
+      "answer": "Dust and debris build up in the pilot tube and burner over the summer. A cleaning usually fixes it. If not, the thermocouple or thermopile is the next suspect."
+     },
+     {
+      "q": "Can gas logs go in my old wood-burning fireplace?",
+      "preview": "Often, if the chimney is sound and a gas line can reach it.",
+      "answer": "Often, yes. The chimney needs to be in good shape and drawing well, and a gas line has to be run to the firebox. We handle the gas line and tell you if anything needs a chimney professional first."
+     },
+     {
+      "q": "What should I do if I smell gas near my fireplace?",
+      "preview": "Leave and call Nicor Gas or 911 from outside.",
+      "answer": "Leave the house and don't touch any switches. Call Nicor Gas or 911 from outside, then call us once it's safe."
+     },
+     {
+      "q": "How much does gas fireplace repair cost in Arlington Heights?",
+      "preview": "It depends on what failed. You get a flat price first.",
+      "answer": "It depends on the part that failed and the make of the fireplace. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Warm, Safe Fireplace?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in Arlington Heights, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/arlington-heights/gas-fireplace",
+   "description": "Gas fireplace repair, cleaning and yearly service in Arlington Heights, IL. Licensed for gas work and test-fired before we leave. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair & Service in Arlington Heights, IL",
+ "metaDescription": "Gas fireplace repair, cleaning and yearly service in Arlington Heights, IL. Licensed for gas work and test-fired before we leave. Call 24/7."
+}

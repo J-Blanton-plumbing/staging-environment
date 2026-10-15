@@ -59,6 +59,7 @@ const CORR = arg('corrections');
 const ONLY = arg('city');
 const createMissing = flag('create-missing');
 const compareCode = flag('compare-code');
+const FROM_JSON = arg('from-json');
 
 const slugOfName = new Map(CITY_REGISTRY.map((c) => [c.name.replace(/[^a-z]/gi, '').toLowerCase(), c] as const));
 const cityByFolder = (folder: string) => slugOfName.get(folder.replace(/[^a-z]/gi, '').toLowerCase());
@@ -140,6 +141,7 @@ interface PageReport {
 
 async function main() {
   console.log(`${SCRIPT} — Brief 212 City Pages batch importer${inPipeline() ? ' [pipeline]' : ''}\n`);
+  if (FROM_JSON) return fromJsonRun(FROM_JSON);
   if (!SOURCE || !fs.existsSync(SOURCE)) throw new Error(`--source "${SOURCE}" does not exist`);
   const corr = loadCorrections(CORR);
   const cities = discover(SOURCE);
@@ -242,6 +244,73 @@ async function main() {
     return;
   }
 
+  await applyRun(cities, reports);
+}
+
+/**
+ * --from-json <dir>: load a batch from the importer's own validated dry-run output
+ * (`<dir>/{city}/hub.json` + `<dir>/{city}/{service}.json`) instead of the MDs — how the deploy
+ * pipeline publishes a batch (the MDs carry research notes and Search Console data that do not
+ * belong in this PUBLIC repo; the JSON is exactly the page content that goes live). Every gate that
+ * does not need the MD runs again: the CMS's own conform + publish checks, placeholders, phones,
+ * banned wording and link resolution. (The FAQ ↔ schema and shared-record asserts ran on the MDs
+ * when the JSON was generated.)
+ */
+async function fromJsonRun(dir: string) {
+  if (!fs.existsSync(dir)) throw new Error(`--from-json "${dir}" does not exist`);
+  const cities = new Map<string, CityFiles>();
+  const reports: PageReport[] = [];
+  for (const slug of fs.readdirSync(dir).filter((d) => fs.statSync(path.join(dir, d)).isDirectory())) {
+    const entry = CITY_REGISTRY.find((c) => c.slug === slug);
+    if (!entry || (ONLY && slug !== ONLY)) continue;
+    const c: CityFiles = { slug, name: entry.name, services: new Map() };
+    cities.set(slug, c);
+    for (const f of fs.readdirSync(path.join(dir, slug)).filter((x) => x.endsWith('.json'))) {
+      const name = f.replace(/\.json$/, '');
+      const raw = JSON.parse(fs.readFileSync(path.join(dir, slug, f), 'utf8'));
+      const errors: string[] = [];
+      if (name === 'hub') {
+        c.hub = f;
+        let draft: CityHubDraftContent | null = null;
+        errors.push(...gate(() => (draft = conformCityHubContent(slug, raw))));
+        errors.push(...(await gateAsync(() => assertCityHubPublishable('city', slug, raw))));
+        errors.push(...textGates(raw.hub), ...textGates({ metaTitle: raw.metaTitle, metaDescription: raw.metaDescription }));
+        for (const l of allLinks(raw.hub)) {
+          const r = linkProblem(l.href, slug, new Set());
+          if (!r.ok) errors.push(`${l.path}: ${r.why}`);
+        }
+        reports.push({ path: `/${slug}`, kind: 'hub', blocks: 12, corrections: [], errors, notes: [], draft });
+      } else if (CITY_SERVICE_V2_SLUGS.includes(name)) {
+        c.services.set(name, f);
+        let draft: CityServiceV2DraftContent | null = null;
+        const ps = `${slug}/${name}`;
+        errors.push(...gate(() => (draft = conformCityServiceV2Content(ps, raw))));
+        errors.push(...(await gateAsync(() => assertCityServiceV2Publishable('city-service', ps, raw))));
+        errors.push(...textGates(raw.page), ...textGates({ metaTitle: raw.metaTitle, metaDescription: raw.metaDescription }));
+        const ids = new Set((serviceLayout(slug, name) ?? []).map((b) => b.id));
+        for (const l of allLinks(raw.page)) {
+          const r = linkProblem(l.href, slug, ids);
+          if (!r.ok) errors.push(`${l.path}: ${r.why}`);
+        }
+        reports.push({ path: `/${ps}`, kind: 'service', blocks: raw.page?.blocks?.length ?? 0, corrections: [], errors, notes: [], draft });
+      }
+    }
+  }
+  const failed = reports.filter((r) => r.errors.length);
+  console.log(`  ${reports.length} pages read from ${dir} (${reports.filter((r) => r.kind === 'hub').length} hubs), ${failed.length} failed validation`);
+  for (const r of failed.slice(0, 15)) console.log(`  ! ${r.path}: ${r.errors.slice(0, 3).join(' | ')}`);
+  if (failed.length) {
+    verdict(SCRIPT, 'NOT-APPLIED (validation failed)', `${failed.length} page(s) failed validation — nothing written`);
+    return;
+  }
+  if (mode === 'dry') {
+    verdict(SCRIPT, 'NOT-APPLIED (dry run)', `${reports.length} page(s) validated`);
+    return;
+  }
+  await applyRun(cities, reports);
+}
+
+async function applyRun(cities: Map<string, CityFiles>, reports: PageReport[]) {
   // ── apply / publish (Track D2 order, per city: confirm rows → hub → services) ──
   const by = await authorId();
   const results: PageResult[] = [];
@@ -261,6 +330,11 @@ async function main() {
       const res = r.kind === 'hub' ? await loadHub(c.slug, r.draft as CityHubDraftContent, o) : await loadService(c.slug, r.path.split('/')[2], r.draft as CityServiceV2DraftContent, o);
       results.push(res);
     }
+  }
+  const changedFile = arg('changed-file');
+  if (changedFile) {
+    const changed = [...new Set(results.filter((r) => r.outcome === 'loaded').map((r) => r.path.split('/')[1]))];
+    if (changed.length) fs.appendFileSync(changedFile, changed.join('\n') + '\n');
   }
   for (const r of results) if (r.outcome !== 'already') console.log(`  ${r.path.padEnd(52)} ${r.outcome.toUpperCase().padEnd(11)} ${r.detail}`);
   const n = (o: string) => results.filter((r) => r.outcome === o).length;

@@ -1,0 +1,297 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Installation and Repair in Geneva, IL",
+   "sub": "A disposal that hums and won't spin, leaks into the cabinet or a kitchen that never had one. We install and repair garbage disposals across Geneva, with a flat price you approve first. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Garbage Disposal Problems",
+    "intro": "The usual calls:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Hums but Won't Spin",
+      "body": "Something is jammed. Turn it off at the switch first."
+     },
+     {
+      "h3": "It's Silent",
+      "body": "Press the reset button. If it still won't run, the motor or wiring has failed."
+     },
+     {
+      "h3": "It Leaks",
+      "body": "From the flange or a hose, it's a repair. From the body, a replacement."
+     },
+     {
+      "h3": "It Drains Slowly",
+      "body": "Buildup in the unit or in the older drain line behind it."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Geneva Kitchens",
+    "intro": "Disposal work in Geneva varies with the age of the kitchen.",
+    "items": [
+     {
+      "h3": "First Disposal in an Older Kitchen",
+      "body": "Some kitchens in historic homes never had one. We check the drain, the dishwasher connection and the power under the sink before quoting."
+     },
+     {
+      "h3": "Old Drain Lines Under the Sink",
+      "body": "A new disposal can expose a corroded drain arm in an older home. We check it while we're there."
+     },
+     {
+      "h3": "Swaps in Newer Homes",
+      "body": "In homes built after 1990, replacing an old disposal is usually quick."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Quick and priced first.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, leak, reset or motor."
+     },
+     {
+      "h3": "2. One Price You Approve",
+      "body": "Repair or replace."
+     },
+     {
+      "h3": "3. Test Everything",
+      "body": "Disposal, dishwasher and connections."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     },
+     {
+      "name": "Doug Herrera",
+      "url": null,
+      "text": "Ty did great work and took the time to answer all our questions. Bonus: Very pet friendly! Was great with Darcy!"
+     },
+     {
+      "name": "Andy Malnor",
+      "url": null,
+      "text": "Andrew was able to come same-day and diagnosed the issue, provided some options, and got us all figured out. Easy process overall and will call them again for future plumbing problems."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Can you add a disposal to a kitchen that never had one?",
+      "preview": "Usually.",
+      "answer": "Usually. We check the drain size, the dishwasher hookup and whether there's a switched outlet. If power is needed, we'll tell you before the install."
+     },
+     {
+      "q": "Repair or replace?",
+      "preview": "Jams and connections are repairs. A leaking body or dead motor means replace.",
+      "answer": "A jam, a tripped reset or a loose connection can be fixed. A leaking housing or burned-out motor means replacement."
+     },
+     {
+      "q": "What shouldn't go down a disposal?",
+      "preview": "Grease, bones, fibrous scraps, coffee grounds, eggshells, rice and pasta.",
+      "answer": "Grease and oil, bones, fibrous scraps, coffee grounds, eggshells, rice and pasta."
+     },
+     {
+      "q": "How long do disposals last?",
+      "preview": "Often 8 to 15 years.",
+      "answer": "Many last around 8 to 15 years, depending on the model and use."
+     },
+     {
+      "q": "Why does my sink drain slowly with a new disposal?",
+      "preview": "The drain line behind it may be old and narrowed.",
+      "answer": "In older homes, the drain arm behind the sink can be narrowed by years of buildup. A new disposal sends food into it faster. Cleaning or replacing that section fixes it."
+     },
+     {
+      "q": "How much does disposal installation cost in Geneva?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and any plumbing or electrical changes. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Disposal Working?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Installation and Repair in Geneva, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/geneva/garbage-disposal-installation-repair",
+   "description": "Garbage disposal installation and repair in Geneva, IL. Jams, leaks and dead motors fixed, or a new unit installed. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Installation in Geneva, IL",
+ "metaDescription": "Garbage disposal installation and repair in Geneva, IL. Jams, leaks and dead motors fixed, or a new unit installed. Flat price first."
+}

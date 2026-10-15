@@ -1,0 +1,311 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Elgin, IL",
+   "sub": "Water on the basement floor comes from the sewer, the ground, the surface or your own plumbing. We find out which, stop it and help you keep it out next time. From our office on North McLean Boulevard, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Elgin Basements Flood",
+    "intro": "Where the water comes in decides the fix:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Through the Floor Drain",
+      "body": "Sewer water pushing back from a blocked line or an overloaded sewer."
+     },
+     {
+      "h3": "Where the Wall Meets the Floor",
+      "body": "Groundwater around the foundation. That's a drainage and sump pump issue."
+     },
+     {
+      "h3": "Through Window Wells",
+      "body": "Surface water from heavy rain, gutters or a yard that slopes toward the house."
+     },
+     {
+      "h3": "From a Pipe or Appliance",
+      "body": "A burst pipe, a water heater or a washer hose. Shut off the water and call."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Elgin",
+    "intro": "On July 11 and 12, 2017, 7.31 inches of rain fell at the gauge just south of Elgin, and basements flooded across the area.",
+    "items": [
+     {
+      "h3": "Old Foundations Near the River",
+      "body": "Stone and block foundations in Elgin's oldest neighborhoods let groundwater in through joints and cracks during long wet spells."
+     },
+     {
+      "h3": "Gravity Floor Drains",
+      "body": "Homes built before backflow protection was common have floor drains that connect straight to the sewer. In a big storm, that's where water rises."
+     },
+     {
+      "h3": "Finished Basements Raise the Stakes",
+      "body": "Nearly 3 in 10 Elgin homes went up between 1990 and 2009, many with finished basements. Water there damages flooring, drywall and furniture fast."
+     },
+     {
+      "h3": "Layered Protection",
+      "body": "A clear sewer line, a backflow valve, a [sump pump with a battery backup](/elgin/sump-pumps) and, for repeat backups, an [overhead sewer system](/elgin/overhead-sewer-systems)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Waterproofing keeps groundwater out of the basement. Our part is the plumbing behind it: sump pits and pumps, battery backups, discharge lines and the drain tile that carries water to the pit.",
+     "If water comes through the walls or where the wall meets the floor, the drain tile may be clogged or the pump may not keep up. We check the system and tell you what will stop the water. For water coming up through drains, see [sewage backup service](/elgin/sewage-line-backup-services)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find the source first.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "Clear the drain, fix the pump or shut off the pipe."
+     },
+     {
+      "h3": "2. Trace the Source",
+      "body": "Floor drain, walls, window wells or plumbing."
+     },
+     {
+      "h3": "3. Flat-Price Options",
+      "body": "Each fix priced before any work begins."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "Debra Haslett",
+      "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+      "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "What should I do first when my basement floods?",
+      "preview": "Stay safe, stop the water if you can and call.",
+      "answer": "Stay away from water near outlets or appliances. If it's from a pipe or appliance, shut off the main water valve. If it's coming up through the floor drain, stop using water in the house. Then call us."
+     },
+     {
+      "q": "Does a backflow valve stop basement flooding?",
+      "preview": "It stops sewer water from coming in. It doesn't stop groundwater.",
+      "answer": "A backflow valve stops sewer water from flowing back into your home through the drain. It doesn't stop groundwater. If you already have one and it failed, we can repair or replace it."
+     },
+     {
+      "q": "Why does my basement only flood in big storms?",
+      "preview": "The sewer or the ground is overloaded.",
+      "answer": "In a big storm, either the public sewer fills and pushes back through your floor drain, or groundwater rises faster than your sump pump can handle. We'll find out which."
+     },
+     {
+      "q": "Can old stone foundations be kept dry?",
+      "preview": "Usually, with the right drainage and pump.",
+      "answer": "Usually. Older foundations need good drain tile, a reliable sump system and surface water directed away from the house."
+     },
+     {
+      "q": "How much does it cost to fix basement flooding in Elgin?",
+      "preview": "It depends on the source and the fix. You get a flat price first.",
+      "answer": "It depends on where the water comes from and what it takes to stop it. We give you a flat-rate price for each option before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Elgin, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/elgin/basement-flooding",
+   "description": "Flooded basement in Elgin, IL? We find where the water came from and fix it: sump pumps, sewer backups, backflow and waterproofing. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Flooded Basement Help in Elgin, IL",
+ "metaDescription": "Flooded basement in Elgin, IL? We find where the water came from and fix it: sump pumps, sewer backups, backflow and waterproofing. Call 24/7."
+}

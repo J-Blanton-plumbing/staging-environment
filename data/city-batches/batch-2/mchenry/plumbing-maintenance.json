@@ -1,0 +1,308 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance and Inspections in McHenry, IL",
+   "sub": "In McHenry County, a lot of plumbing trouble builds slowly: sediment in the water heater, scale in the fixtures or a sump pump that's getting tired. A maintenance visit catches it early. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What a McHenry Plumbing Inspection Covers",
+    "intro": "Built around local water and weather:",
+    "steps": [
+     {
+      "h3": "Water Heater",
+      "body": "Age, leaks, relief valve, venting and a flush. With hard water, the flush matters most."
+     },
+     {
+      "h3": "Water Softener and Filters",
+      "body": "Salt, settings and regeneration, plus any iron or sediment filters."
+     },
+     {
+      "h3": "Sump and Ejector Pumps",
+      "body": "A test cycle, the float, the check valve and the battery backup."
+     },
+     {
+      "h3": "Drains and Sewer",
+      "body": "Slow drains, gurgling and a [camera inspection](/mchenry/video-camera-sewer-inspections) if needed."
+     },
+     {
+      "h3": "Fixtures, Valves and Pipes",
+      "body": "Scale on fixtures, stiff shutoffs and pinhole leaks."
+     },
+     {
+      "h3": "A Plain-English Report",
+      "body": "What's fine, what to plan for and what needs attention."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Matters in McHenry",
+    "intro": "Water and weather make regular checkups worth it here.",
+    "items": [
+     {
+      "h3": "Hard Water Adds Up",
+      "body": "Scale builds in water heaters, fixtures and valves every day. Yearly service keeps it from becoming a failure."
+     },
+     {
+      "h3": "High Water Seasons",
+      "body": "A spring visit tests the sump pump and backup before the Fox River and the lakes rise."
+     },
+     {
+      "h3": "Original Equipment in Newer Homes",
+      "body": "About 4 in 10 McHenry homes went up between 1990 and 2009. Their original water heaters, sump pumps and softeners are due for attention."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A maintenance visit stays a maintenance visit.",
+    "steps": [
+     {
+      "h3": "1. A Real Look",
+      "body": "The whole system."
+     },
+     {
+      "h3": "2. Honest Priorities",
+      "body": "Fine, plan for it or fix it now."
+     },
+     {
+      "h3": "3. You Decide",
+      "body": "Anything extra is priced first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "How often should I have my plumbing inspected in McHenry?",
+      "preview": "Once a year, ideally in spring.",
+      "answer": "Once a year is a good rule in McHenry County, where hard water and high water seasons both wear on plumbing. Spring lets us test the sump pump before heavy rain."
+     },
+     {
+      "q": "Does a maintenance visit include a water heater flush?",
+      "preview": "It can. With hard water, we usually recommend it.",
+      "answer": "It can, and with McHenry's hard water we usually recommend it. We'll tell you if yours is due."
+     },
+     {
+      "q": "Do you check water softeners?",
+      "preview": "Yes.",
+      "answer": "Yes. We check salt, settings and regeneration, and tell you if the resin or valve needs service."
+     },
+     {
+      "q": "Is there a maintenance plan?",
+      "preview": "Yes. The No Drip Club.",
+      "answer": "Yes. The [No Drip Club](/no-drip-club) is our yearly plan that brings a plumber to your home for regular maintenance."
+     },
+     {
+      "q": "Do you check well equipment during maintenance?",
+      "preview": "We check the pressure tank and the plumbing side.",
+      "answer": "We check the pressure tank, the pressure switch setting and the plumbing from the tank into the house. Well pump and well work beyond that may need a well contractor, and we'll tell you if so."
+     },
+     {
+      "q": "How much does a plumbing inspection cost in McHenry?",
+      "preview": "It depends on the home and what's included. You get a flat price first.",
+      "answer": "It depends on the size of the home and what's included, like a water heater flush or a sewer camera inspection. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance and Inspections in McHenry, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/mchenry/plumbing-maintenance",
+   "description": "Whole-home plumbing maintenance for McHenry, IL homes. Water heater flushes, sump pump tests and softener checks before problems start.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in McHenry, IL",
+ "metaDescription": "Whole-home plumbing maintenance for McHenry, IL homes. Water heater flushes, sump pump tests and softener checks before problems start."
+}

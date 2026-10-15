@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in McHenry, IL",
+   "sub": "A basement drain that backs up again a month after it was cleared, a soft spot in the lawn or a camera inspection that found a broken pipe. We show you the damage on video and give you a flat price for the fix before any work starts. Our office is on West Elm Street in McHenry.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When a McHenry Sewer Line Needs Repair",
+    "intro": "Cleaning fixes a clog. These signs point to the pipe itself:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Backups That Keep Coming Back",
+      "body": "If the line was cleared and the basement drain backs up again within weeks, something in the pipe is catching debris."
+     },
+     {
+      "h3": "A Sunken or Soggy Path in the Yard",
+      "body": "Soil settling or staying wet along the route from the house to the street often marks a leak or a break."
+     },
+     {
+      "h3": "Slow Drains in a Newer Home",
+      "body": "In a house from the 1990s or 2000s, slow drains that don't respond to cleaning often mean a sag where the line settled."
+     },
+     {
+      "h3": "A Camera Showed Damage",
+      "body": "Cracks, separated joints or a belly in the line are a repair conversation, not a cleaning one."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "How Sewer Lines Fail in McHenry",
+    "intro": "The median McHenry home was built in 1988, and about 3 in 4 went up between 1970 and 2009. Most lines here aren't ancient, but they have their own weak points.",
+    "items": [
+     {
+      "h3": "Settling Under Newer Subdivisions",
+      "body": "When a subdivision goes in, sewer trenches are backfilled and the soil keeps settling for years. If the pipe settles unevenly, a section can sag. Water and paper collect in the low spot and turn into repeat clogs."
+     },
+     {
+      "h3": "Roots in 1970s and 1980s Lines",
+      "body": "Homes from the 1970s and 1980s often have older pipe materials with joints roots can get through. Trees planted when those blocks were built are now big enough to find them."
+     },
+     {
+      "h3": "High Groundwater Near the River and Lakes",
+      "body": "Close to the Fox River and the Chain O'Lakes, the ground stays wet. Water can get into a cracked line and add to what the pipe has to carry during wet seasons."
+     },
+     {
+      "h3": "Older Homes Near Downtown",
+      "body": "Some of the older houses near downtown and the Riverwalk still have original clay or cast iron, where roots and corrosion are the usual story."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Handle Sewer Repair in McHenry",
+    "intro": "Every sewer repair from our West Elm Street office starts with video.",
+    "steps": [
+     {
+      "h3": "1. Camera the Full Line",
+      "body": "From the cleanout to the main, recorded, with the distance to every problem on screen."
+     },
+     {
+      "h3": "2. Repair Only What's Broken",
+      "body": "A single bad section gets a spot repair. A failing line gets lining or replacement, and we show you why."
+     },
+     {
+      "h3": "3. Price Before Any Digging",
+      "body": "You get a flat-rate price first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/mchenry/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/mchenry/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "In McHenry, the camera also tells us how deep the line is and whether high groundwater will affect a dig. That decides the method before we quote."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Patrick Schulze",
+      "url": null,
+      "text": "Was a major bit of sewer repair, but could not have been more pleased with the professionalism and congeniality of Richard and his team. They explained every step of the process as it was being done, and were more than happy to answer questions."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "Why would a sewer line sag in a newer McHenry home?",
+      "preview": "Soil settles after construction, and the pipe settles with it.",
+      "answer": "When a subdivision is built, trenches are backfilled and the soil settles for years afterward. If the bedding under the pipe settles unevenly, a section dips. The camera shows exactly where and how deep the low spot is."
+     },
+     {
+      "q": "Can a sagging sewer line be fixed without replacing the whole thing?",
+      "preview": "Usually. A spot repair at the low section is often enough.",
+      "answer": "Usually. If the rest of the line is sound, we dig only at the sag, re-bed the pipe and replace that section. A [camera inspection](/mchenry/video-camera-sewer-inspections) tells us how long the low section is."
+     },
+     {
+      "q": "Does high groundwater make sewer repair harder?",
+      "preview": "It can. We plan the dig around it.",
+      "answer": "It can. Near the river and lakes, a deep excavation may need dewatering. That's one reason we look closely at [trenchless options](/mchenry/trenchless-sewer-repair) first."
+     },
+     {
+      "q": "Is the sewer line from my house to the street my responsibility?",
+      "preview": "Usually, up to the connection at the main.",
+      "answer": "In most cases, the private line from your house to the public main is the homeowner's to maintain. If the camera shows the problem is at the main, we'll tell you."
+     },
+     {
+      "q": "How much does sewer repair cost in McHenry?",
+      "preview": "It depends on the damage, depth and method. You get a flat price first.",
+      "answer": "It depends on what the camera finds, how deep and long the bad section is, the method and what's on top of the line. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in McHenry, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/mchenry/sewer-repair",
+   "description": "Sewer line repair in McHenry, IL and across McHenry County. Camera inspection first, clear options and a flat price before work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Repair in McHenry, IL",
+ "metaDescription": "Sewer line repair in McHenry, IL and across McHenry County. Camera inspection first, clear options and a flat price before work. Call 24/7."
+}

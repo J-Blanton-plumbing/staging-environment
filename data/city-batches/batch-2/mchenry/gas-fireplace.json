@@ -1,0 +1,328 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in McHenry, IL",
+   "sub": "A fireplace that won't light when the first cold front comes through, a pilot that drops out or soot on the glass. Our plumbers are licensed for gas work and repair, clean and service gas fireplaces across McHenry. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "McHenry Gas Fireplace Giving You Trouble?",
+    "intro": "When the lake breeze turns cold, these are the calls we get:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Sat All Summer and Won't Start",
+      "body": "Spiders and dust love a pilot tube that hasn't been used since April. A cleaning usually brings it back."
+     },
+     {
+      "h3": "The Pilot Lights but the Burner Won't",
+      "body": "The thermopile may not be making enough power to open the main valve, or the wall switch has failed."
+     },
+     {
+      "h3": "Orange Flames and Black Glass",
+      "body": "The burner ports are dirty or the logs have shifted, so the gas isn't burning cleanly."
+     },
+     {
+      "h3": "The Remote Stopped Working",
+      "body": "Try new batteries in both the remote and the receiver. If that fails, the receiver may need replacing."
+     },
+     {
+      "h3": "Any Smell of Gas",
+      "body": "Get outside first. Call Nicor Gas or 911 from there, then call us when it's safe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Repair, Cleaning and Yearly Service",
+    "intro": "Everything on the gas side of your fireplace:",
+    "steps": [
+     {
+      "h3": "Troubleshooting and Parts",
+      "body": "We test the thermopile output, the valve and the ignition system, then replace only what failed."
+     },
+     {
+      "h3": "Pre-Season Tune-Up",
+      "body": "A full cleaning of the burner, pilot assembly and glass, logs set back in place, every fitting leak-tested and the vent termination checked outside."
+     },
+     {
+      "h3": "Adding or Moving a Fireplace",
+      "body": "New gas supply for a fireplace, insert or outdoor fire feature. See [gas line installation](/mchenry/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Fireplaces in McHenry Homes and Lake Houses",
+    "intro": "About 3 in 4 McHenry homes were built between 1970 and 2009, so many gas fireplaces here are sealed direct-vent units or older fireplaces converted to gas.",
+    "items": [
+     {
+      "h3": "Outside Vent Caps Take a Beating",
+      "body": "Direct-vent fireplaces exhaust through a cap on the outside wall. Snow drifts, wasp nests and landscaping can block it, which leads to sooting and shutdowns. We check the cap on every service call."
+     },
+     {
+      "h3": "Seasonal Homes That Sit Cold",
+      "body": "Fireplaces in lake houses and cabins may go months without use. Mice and insects nest in the firebox and pilot area. Have it checked before you light it for the season."
+     },
+     {
+      "h3": "Parts for 20 to 35 Year Old Units",
+      "body": "Original fireplaces in 1990s and 2000s homes can almost always be repaired. Pilots, thermopiles and valves are still widely available."
+     },
+     {
+      "h3": "CO Detectors on Every Level",
+      "body": "A fireplace that burns poorly or vents badly can produce carbon monoxide. Test your detectors when you change the clocks."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Tested before we leave.",
+    "steps": [
+     {
+      "h3": "1. Licensed for Gas Work",
+      "body": "Gas work should be done by a licensed pro, and ours are trained for it."
+     },
+     {
+      "h3": "2. Flat Price First",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Test-Fired",
+      "body": "Leak-checked and run until the flame is steady."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "My lake house fireplace hasn't run in months. Is it safe to light?",
+      "preview": "Have it checked first. Nests and debris are common after long breaks.",
+      "answer": "It's worth a check first. Insects and mice often nest in the firebox, pilot tube or vent after a long break. A quick service visit clears it and confirms the connections are tight."
+     },
+     {
+      "q": "Why does my fireplace turn off after a few minutes?",
+      "preview": "Often a weak thermopile or a blocked vent.",
+      "answer": "A thermopile that's lost output, a dirty pilot flame or a blocked outside vent can all make the safety system shut the fireplace down. We test each one."
+     },
+     {
+      "q": "Can snow block my fireplace vent?",
+      "preview": "Yes. Keep the outside cap clear.",
+      "answer": "Yes. If drifting snow covers the vent cap on a direct-vent fireplace, it can't exhaust properly and may shut down or soot up. Keep the cap clear in winter."
+     },
+     {
+      "q": "How often should a gas fireplace be serviced?",
+      "preview": "Once a year, before the heating season.",
+      "answer": "Once a year, ideally in September or October, so any weak part shows up before you really need the heat."
+     },
+     {
+      "q": "What does gas fireplace repair cost in McHenry?",
+      "preview": "It depends on the part and the model. The price comes before the work.",
+      "answer": "Every repair is priced on what failed and the make of the fireplace. Once we've found the problem, you get a flat-rate number before anything is replaced."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Warm, Safe Fireplace?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in McHenry, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/mchenry/gas-fireplace",
+   "description": "Gas fireplace repair, cleaning and yearly service in McHenry, IL. Licensed for gas work and test-fired before we leave. Call our office 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair & Service in McHenry, IL",
+ "metaDescription": "Gas fireplace repair, cleaning and yearly service in McHenry, IL. Licensed for gas work and test-fired before we leave. Call our office 24/7."
+}

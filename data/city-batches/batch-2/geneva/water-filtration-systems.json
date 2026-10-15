@@ -1,0 +1,300 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Filtration Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Testing and Filtration in Geneva, IL",
+   "sub": "Geneva's water changed in 2008, and a lot of homes still have equipment set up for the old water. We test what comes out of your tap, tell you whether your softener is still earning its keep and install only the filtration you actually want. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+    "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "options",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Your Options",
+    "h2": "Water Treatment Options for Geneva Homes",
+    "intro": "We install, service and sometimes remove:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Drinking Water Systems",
+      "body": "Under-sink reverse osmosis or carbon filters for the kitchen tap."
+     },
+     {
+      "h3": "Whole-House Carbon Filters",
+      "body": "Reduce chlorine taste and smell at every faucet."
+     },
+     {
+      "h3": "Softener Checkups and Removal",
+      "body": "Adjust an old softener for today's water, or take it out if you no longer need it."
+     },
+     {
+      "h3": "Private Well Treatment",
+      "body": "Testing and treatment for homes outside city water."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "water-testing",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Water Testing",
+    "h2": "Water Testing in Geneva",
+    "bodies": [
+     "Geneva gets its water from deep and shallow wells. Before 2008, that water went out very hard. Since the city's reverse osmosis plant on Keslinger Road opened, about 85% of the water is treated by reverse osmosis and the finished hardness is about 5 to 7 grains. The city itself says residents may be able to reduce or eliminate water softeners.",
+     "A test at your tap shows where your water stands today. If you have a softener set up for the old hard water, it may be wasting salt and water, or you may not need it at all. We'll show you the numbers and let you decide."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-water",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Quality in Geneva Homes",
+    "intro": "Geneva's water story is different from most of its neighbors.",
+    "items": [
+     {
+      "h3": "Softeners Installed Before 2008",
+      "body": "Many homes put in softeners when the water was very hard. Those settings may be far higher than today's water needs."
+     },
+     {
+      "h3": "Older Pipes in Historic Homes",
+      "body": "In homes near downtown, rust from old galvanized supply pipe can discolor water even when the city water is clean. [Leak and pipe repair](/geneva/leak-repairs) fixes the cause."
+     },
+     {
+      "h3": "Taste at the Kitchen Tap",
+      "body": "Some homeowners still like a drinking water filter at the kitchen sink. We install under-sink systems with a separate faucet."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Test first. Sometimes the answer is less equipment.",
+    "steps": [
+     {
+      "h3": "1. Test at Your Tap",
+      "body": "Hardness and other basics, explained plainly."
+     },
+     {
+      "h3": "2. Adjust, Remove or Add",
+      "body": "Only what your water and preferences call for."
+     },
+     {
+      "h3": "3. A Price You Approve",
+      "body": "Before any work."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Filtration Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     },
+     {
+      "name": "Brian Crain",
+      "url": "https://maps.app.goo.gl/yX9GobAxAt8ryxhy7",
+      "text": "Ron was perfect. He came to do the job at hand and explained various pieces of information along the way that helped me understand the root causes of what we were dealing with and how to avoid problems in the future. [...] Didn't try and push the sale like some companies do, but was more or less educating on what the options were and what they entailed in full so we would know what to expect if we decided to go down those paths."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Filtration Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Do I still need a water softener in Geneva?",
+      "preview": "Maybe not. The city's water has been softened since 2008.",
+      "answer": "Maybe not. Since 2008, Geneva's reverse osmosis plant has brought finished hardness down to about 5 to 7 grains, and the city says residents may be able to reduce or eliminate softeners. A test at your tap tells you for sure."
+     },
+     {
+      "q": "Can you remove my old softener?",
+      "preview": "Yes, and reconnect the plumbing.",
+      "answer": "Yes. We remove the softener and brine tank and reconnect the plumbing with a proper bypass or straight pipe."
+     },
+     {
+      "q": "Does Geneva use Fox River water?",
+      "preview": "No. The city uses wells and reverse osmosis treatment.",
+      "answer": "No. Geneva draws from deep and shallow wells and treats most of the water with reverse osmosis at its plant on Keslinger Road."
+     },
+     {
+      "q": "Do you install under-sink water filters?",
+      "preview": "Yes.",
+      "answer": "Yes. We install under-sink carbon and reverse osmosis systems with a dedicated faucet."
+     },
+     {
+      "q": "How much does water filtration cost in Geneva?",
+      "preview": "It depends on the system. You'll approve a flat price first.",
+      "answer": "It depends on the system, its size and how it connects to your plumbing. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Know What's in Your Water?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Testing and Filtration in Geneva, IL",
+   "serviceType": "Water Filtration Systems",
+   "url": "https://jblantonplumbing.com/geneva/water-filtration-systems",
+   "description": "Water testing and filtration for Geneva, IL homes. Find out if you still need your softener, and add drinking water filters if you want them.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Testing & Filtration in Geneva, IL",
+ "metaDescription": "Water testing and filtration for Geneva, IL homes. Find out if you still need your softener, and add drinking water filters if you want them."
+}

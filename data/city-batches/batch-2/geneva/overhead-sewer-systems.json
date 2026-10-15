@@ -1,0 +1,342 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewer Systems in Geneva, IL",
+   "sub": "If your floor drain backs up every time a big storm hits, an overhead sewer system lifts basement wastewater above the level where backups happen. We install them in Geneva homes from our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Geneva Basement Needs an Overhead Sewer",
+    "intro": "Consider it when:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Gravity Floor Drain in an Old Basement",
+      "body": "Historic homes often have a floor drain that connects straight to the sewer below the street level."
+     },
+     {
+      "h3": "Water Only Comes Up in Big Storms",
+      "body": "Dry weather is fine. Heavy rain brings water up the drain."
+     },
+     {
+      "h3": "A Camera Shows a Clear Line",
+      "body": "Your pipe is fine, so the sewer itself is pushing back."
+     },
+     {
+      "h3": "Plans for the Basement",
+      "body": "A new rec room, office or bath is worth protecting first."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "split",
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "With an overhead system, basement drains no longer connect to the sewer by gravity. The floor drain and basement fixtures empty into a sealed pit. An [ejector pump](/geneva/ejector-pump) lifts the water to a pipe near the ceiling, a check valve stops it from falling back and it leaves the house above the level the sewer can reach.",
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Overhead Sewers and Geneva's Older Basements",
+    "intro": "Geneva's older homes are the most likely to need one.",
+    "items": [
+     {
+      "h3": "Deep Basements Below the Street Sewer",
+      "body": "Many 19th-century homes near the Fox River have basements that sit well below the sewer in the street. Any surcharge finds the floor drain."
+     },
+     {
+      "h3": "Working Around Stone Walls",
+      "body": "Old fieldstone and brick foundations need careful planning for the pit and the pipe path. We assess the basement before we quote."
+     },
+     {
+      "h3": "September 2008 Is the Benchmark",
+      "body": "About 9 inches of rain fell on Geneva in two days. A storm like that overwhelms gravity drains."
+     },
+     {
+      "h3": "Confirm the Cause First",
+      "body": "We camera your line before recommending a conversion. If a root mass or break is the cause, a [sewer repair](/geneva/sewer-repair) may be all you need."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Backflow Valve vs. Sump Pump",
+    "intro": "Each solves a different problem:",
+    "head": [
+     "",
+     "Sump Pump",
+     "Backflow Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "Problem it solves",
+      "Groundwater at the walls and floor",
+      "Sewage flowing back into the house",
+      "Storm backups through basement drains"
+     ],
+     [
+      "How it works",
+      "Pumps water out of a pit",
+      "A flap closes when flow reverses",
+      "Lifts basement wastewater above flood level"
+     ],
+     [
+      "Best for",
+      "Damp old foundations",
+      "Homes where a passive valve is enough",
+      "Repeat backups and finished basements"
+     ]
+    ],
+    "note": "We'll tell you which ones your basement needs."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Every conversion starts with your line.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "No system you don't need."
+     },
+     {
+      "h3": "2. Planned for Your Foundation",
+      "body": "Pit, pump and piping placed carefully, even in old basements."
+     },
+     {
+      "h3": "3. Flat Price, Water-Tested",
+      "body": "Approved first, tested before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Stone",
+      "url": null,
+      "text": "Thank you to Scott and Payton for coming by and helping us out. They identified a sewer pipe problem that was worse than what we were expecting, they provided a solution to the problem that will help in the long run and we have confidence that the solution will solve the problem and that we will not have to worry about it in the future"
+     },
+     {
+      "name": "Markie Waymire",
+      "url": null,
+      "text": "Scott was so helpful and easy to work with! He was so patient and thorough in explaining our options! And Walter loved him!"
+     },
+     {
+      "name": "Brian T",
+      "url": null,
+      "text": "Mike P was super helpful and great at explaining the options we have for our sewer line."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Can an overhead sewer go in a historic basement?",
+      "preview": "Usually, with careful planning.",
+      "answer": "Usually. Older basements can have stone walls and tight layouts, so we plan the pit and pipe path before quoting."
+     },
+     {
+      "q": "Does an overhead sewer stop groundwater?",
+      "preview": "No. That's a sump pump's job.",
+      "answer": "No. It stops sewer backups. Groundwater needs a [sump pump](/geneva/sump-pumps)."
+     },
+     {
+      "q": "Can my basement bathroom stay?",
+      "preview": "Yes.",
+      "answer": "Yes. It drains to the new pit with the rest of the basement."
+     },
+     {
+      "q": "How long does installation take?",
+      "preview": "Usually a few days.",
+      "answer": "Usually a few days, depending on layout and finishes."
+     },
+     {
+      "q": "How much does an overhead sewer system cost in Geneva?",
+      "preview": "It depends on your basement. You'll approve a flat price first.",
+      "answer": "It depends on sewer depth, layout, fixtures and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Protect Your Basement?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewer Systems in Geneva, IL",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/geneva/overhead-sewer-systems",
+   "description": "Overhead sewer installation for Geneva, IL homes with storm backups. Camera first, a plan for your basement and a flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewer Systems in Geneva, IL",
+ "metaDescription": "Overhead sewer installation for Geneva, IL homes with storm backups. Camera first, a plan for your basement and a flat price. Call 24/7."
+}

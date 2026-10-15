@@ -1,0 +1,303 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Elgin, IL",
+   "sub": "A drip that never stops, water that swings hot and cold or a spray that barely reaches you. We repair showers across Elgin, usually through the trim without disturbing your tile. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix in Elgin",
+    "intro": "Most of these come from inside the valve:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Drips From the Head or Spout",
+      "body": "A worn cartridge or washer."
+     },
+     {
+      "h3": "Sudden Hot or Cold",
+      "body": "No pressure balancing, or a worn balancing cartridge."
+     },
+     {
+      "h3": "A Weak Spray",
+      "body": "A clogged head, a failing cartridge or old supply pipe."
+     },
+     {
+      "h3": "Water Behind the Wall",
+      "body": "A leaking valve body or a loose connection. Look for stains on the ceiling below."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Elgin Homes",
+    "intro": "Elgin bathrooms span more than a century.",
+    "items": [
+     {
+      "h3": "Clawfoot Tubs and Exposed Plumbing",
+      "body": "Some historic homes still have clawfoot tubs with exposed shower risers. We repair and replace those fittings."
+     },
+     {
+      "h3": "Old Two-Handle Valves",
+      "body": "Separate hot and cold handles are common in older bathrooms. Parts can be hard to find, and a single-handle valve may be the better fix."
+     },
+     {
+      "h3": "Original Valves in Newer Homes",
+      "body": "In 1990s and 2000s homes, the original cartridges are often worn. A cartridge swap usually brings them back."
+     },
+     {
+      "h3": "Showers Added in Old Attics and Porches",
+      "body": "Some older Elgin homes got bathrooms in converted attics or enclosed porches. Those lines can be long and exposed to cold, so we check them closely."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the shower, not remodel the bathroom.",
+    "steps": [
+     {
+      "h3": "1. Find the Cause",
+      "body": "Head, cartridge, valve or pipe."
+     },
+     {
+      "h3": "2. Flat Price First",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Tile Stays Put When Possible",
+      "body": "Most repairs go through the trim."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jan Berkson",
+      "url": null,
+      "text": "John Hogan arrived on time and provided great service. He gave me an estimate before starting, was very thorough and tidy and even gave me good information about what might be needed in the near future to further address the situation with my bathtub drain. Very knowledgeable, courteous and friendly- instills confidence!"
+     },
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Repair Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "Can you fix a shower without removing tile?",
+      "preview": "Usually. Most repairs go through the trim.",
+      "answer": "Usually. Cartridges and washers come out through the trim opening. A full valve replacement may need a small access panel."
+     },
+     {
+      "q": "Why does my shower go cold when someone uses water?",
+      "preview": "Your valve can't balance pressure.",
+      "answer": "When another fixture pulls cold water, a valve without pressure balancing lets the shower swing hot. A pressure-balancing valve fixes it."
+     },
+     {
+      "q": "Can you work on a clawfoot tub shower?",
+      "preview": "Yes. We repair and replace exposed fittings.",
+      "answer": "Yes. We repair and replace exposed risers, diverters and tub fillers on clawfoot setups."
+     },
+     {
+      "q": "Why is my shower pressure low?",
+      "preview": "Start with the showerhead. Then the cartridge or pipe.",
+      "answer": "Mineral buildup in the showerhead is the most common cause. If a new head doesn't help, the cartridge or the supply pipe is likely the issue."
+     },
+     {
+      "q": "Can you replace a tub spout or diverter?",
+      "preview": "Yes.",
+      "answer": "Yes. A spout that drips while the shower runs or a diverter that won't send water to the head is a quick fix."
+     },
+     {
+      "q": "How much does shower repair cost in Elgin?",
+      "preview": "It depends on the valve and parts. You get a flat price first.",
+      "answer": "It depends on the valve, the parts and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Elgin, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/elgin/shower-repair",
+   "description": "Shower repair in Elgin, IL. Drips, low pressure, temperature swings and old valves fixed, usually without touching your tile. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Elgin, IL",
+ "metaDescription": "Shower repair in Elgin, IL. Drips, low pressure, temperature swings and old valves fixed, usually without touching your tile. Flat price first."
+}

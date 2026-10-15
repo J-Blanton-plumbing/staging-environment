@@ -1,0 +1,213 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Geneva, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on Campbell Street. Our line is open 24/7 for homeowners in Geneva and across the Fox Valley. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Geneva",
+   "intro": "Our licensed plumbers work on every kind of Geneva home, from 1800s houses near the river to newer subdivisions on the west side. Pick a service to see how we handle it in Geneva.",
+   "cards": [
+    {
+     "title": "Water Heaters",
+     "href": "/geneva/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/geneva/sewer-repair",
+     "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/geneva/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/geneva/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/geneva/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Leak Repair",
+     "href": "/geneva/leak-repairs",
+     "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    },
+    {
+     "title": "Toilets & Fixtures",
+     "href": "/geneva/toilet-installation-repair",
+     "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+     "image": {
+      "src": "/images/city-hubs/toilet-fill-valve-repair.webp",
+      "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Campbell Street",
+   "h2": "Our Geneva Office",
+   "body": "Our Geneva office is at 115 Campbell St, Suite 201C, Geneva, IL 60134, close to downtown and the Fox River. It keeps our plumbers close to homes across Geneva and the neighboring Fox Valley towns. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "115 Campbell St, Suite 201C, Geneva, IL 60134",
+   "areasH3": "Fox Valley Communities We Serve",
+   "areas": [
+    {
+     "label": "St. Charles",
+     "href": "/st-charles"
+    },
+    {
+     "label": "Campton Hills",
+     "href": "/campton-hills"
+    },
+    {
+     "label": "Sugar Grove",
+     "href": "/sugar-grove"
+    },
+    {
+     "label": "Lily Lake",
+     "href": "/lily-lake"
+    }
+   ],
+   "more": "/locations/chicagoland"
+  },
+  "depth": {
+   "h2": "What Geneva Homes Need From a Plumber",
+   "intro": "The median home in Geneva was built in 1987, but the oldest houses in its historic district go back to the 1840s. About 1 in 10 homes were built before 1940, and more than 4 in 10 went up after 1990. Each era brings its own plumbing problems.",
+   "tiles": [
+    {
+     "title": "Historic Homes Near the Fox River",
+     "body": "The Central Geneva Historic District runs along the Fox River, and most of its houses were built between 1840 and 1900. Homes from that era often still have cast iron drains, galvanized water lines and clay sewer pipe. Galvanized pipe rusts from the inside and slowly cuts water pressure, and clay pipe cracks and lets roots in. A [camera inspection](/geneva/video-camera-sewer-inspections) shows the condition of your line before you decide on a [sewer repair](/geneva/sewer-repair)."
+    },
+    {
+     "title": "Heavy Rain and Basement Backups",
+     "body": "In September 2008, about 9 inches of rain fell on Geneva in two days, and basements flooded across much of Kane County. Heavy rain still tests every sump pump here. A [sump pump with a battery backup](/geneva/sump-pumps) keeps running when the power goes out, and a [backflow valve](/geneva/flood-control-maintenance) stops sewage from coming up through floor drains."
+    },
+    {
+     "title": "Newer Neighborhoods, Original Equipment",
+     "body": "More than 4 in 10 Geneva homes went up after 1990. Equipment that came with the house, like the first water heater and the first sump pump, isn’t built to last 20 or 30 years. A [water heater that leaks or runs out too fast](/geneva/water-heater-repair) is usually the first to go. A [whole-home checkup](/geneva/plumbing-maintenance) tells you what’s close to the end before it fails."
+    },
+    {
+     "title": "Winter Freezes and Hidden Leaks",
+     "body": "Fox Valley winters bring long stretches below freezing. Pipes in exterior walls, crawl spaces and outdoor spigot lines freeze first, and a split pipe often starts leaking inside a wall once it thaws. We can [find and fix the leak](/geneva/leak-repairs), and we’re on call 24/7 if a [pipe bursts](/geneva/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Geneva Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real J. Blanton Reviews",
+   "intro": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+   "rating": "4.7",
+   "ratingSub": "5,669+ Google reviews across all J. Blanton locations",
+   "items": [
+    {
+     "name": "Shaun Huang",
+     "url": null,
+     "text": "The guys did a great job. Andrew and Enrique were able to figure out the issue quickly and move me towards a reasonable solution. Kyle came out the next day and finished the work efficiently. Appreciate them a lot and will continue doing business with them in the future!"
+    },
+    {
+     "name": "Lee Smith",
+     "url": null,
+     "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+    },
+    {
+     "name": "Brian T",
+     "url": null,
+     "text": "Mike P was super helpful and great at explaining the options we have for our sewer line."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Geneva Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Geneva?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. A historic home near the river with original cast iron and clay pipe can take more work than a newer one. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Campbell Street office keeps our plumbers close to Geneva, and we [treat emergencies as a priority](/geneva/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "My home in Geneva’s historic district is over 100 years old. What should I check?",
+     "preview": "Start with the sewer line and the water lines.",
+     "a": "Start with the sewer line and the water lines. Homes from that era often have clay sewer pipe, cast iron drains and galvanized water pipe, and all of them wear out with age. A camera inspection shows the condition of your sewer line, and low water pressure is often a sign that galvanized pipe is closing up inside. Age alone doesn’t mean something is wrong, but an inspection lets you plan repairs instead of reacting to a leak."
+    },
+    {
+     "q": "When should I replace my water heater?",
+     "preview": "Tank water heaters usually last somewhere around 8 to 12 years.",
+     "a": "Tank water heaters usually last somewhere around 8 to 12 years. Rusty water, rumbling noises, a leak at the base or hot water that runs out faster than it used to all mean it’s time to have it checked. [Replacing it](/geneva/water-heater-installation) on your schedule is easier than dealing with a flooded basement."
+    },
+    {
+     "q": "Can tree roots damage my sewer line?",
+     "preview": "Yes. Roots grow toward moisture and slip into sewer lines through cracks and loose joints, especially in older clay pipe.",
+     "a": "Yes. Roots grow toward moisture and slip into sewer lines through cracks and loose joints, especially in older clay pipe. Early signs include slow drains, gurgling and backups in the lowest drain in the house. A camera inspection shows whether roots are the cause, and [hydro jetting](/geneva/hydro-jetting) or a [sewer repair](/geneva/sewer-repair) can clear them out."
+    },
+    {
+     "q": "How do I protect my basement from sewer backups?",
+     "preview": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris.",
+     "a": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris. For homes with repeat backups, an [overhead sewer system](/geneva/overhead-sewer-systems) lifts basement wastewater above the level where backups happen. We can look at your setup and tell you which option makes sense for your home."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Geneva?",
+     "preview": "Along with Geneva, our office serves St. Charles, Campton Hills, Sugar Grove, Lily Lake and more.",
+     "a": "Along with Geneva, our office serves St. Charles, Campton Hills, Sugar Grove, Lily Lake and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Geneva start small, like roots in an old clay sewer line or a water heater past its prime. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Geneva Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Geneva, IL",
+ "metaDescription": "Local plumbers on Campbell Street in Geneva, IL. Serving Chicagoland since 1993. Call 24/7 for an upfront price before any work starts."
+}

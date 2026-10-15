@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in Algonquin, IL",
+   "sub": "Sewage coming up through a basement drain is an emergency. Our line is open 24/7. We clear the line, show you the cause on camera and help you stop it from happening again. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "First Steps During a Sewer Backup",
+    "intro": "Until we get there:",
+    "steps": [
+     {
+      "h3": "1. Turn Off the Water",
+      "body": "No flushing, laundry or dishwasher. Ask everyone in the house to stop."
+     },
+     {
+      "h3": "2. Keep Clear",
+      "body": "Sewage carries bacteria. Keep kids and pets upstairs."
+     },
+     {
+      "h3": "3. Watch Out for Electrical",
+      "body": "Stay away from outlets and appliances near the water."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Tell us where the water is coming up."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Algonquin Basements Back Up",
+    "intro": "Most backups come from:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Roots",
+      "body": "From maturing subdivision trees."
+     },
+     {
+      "h3": "A Sag",
+      "body": "A low spot that collects paper and wipes."
+     },
+     {
+      "h3": "Wipes and Grease",
+      "body": "They form plugs even in healthy pipe."
+     },
+     {
+      "h3": "High Water",
+      "body": "Saturated ground and full sewers during wet seasons."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups in Algonquin",
+    "intro": "In July 2017, the Fox River rose high enough that volunteers filled more than 25,000 sandbags, and homes along La Fox River Drive were threatened.",
+    "items": [
+     {
+      "h3": "Finished Basements Raise the Stakes",
+      "body": "With more than half of homes built in the 1990s and 2000s, many basements are finished, with bathrooms. A backup there is costly."
+     },
+     {
+      "h3": "Wet Ground Near the River",
+      "body": "High groundwater adds water to sewer systems and to cracked private lines."
+     },
+     {
+      "h3": "Prevention",
+      "body": "A clean line, a backflow valve and an [overhead sewer system](/algonquin/overhead-sewer-systems) each handle part of the problem."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Clear it, explain it, prevent it.",
+    "steps": [
+     {
+      "h3": "1. Clear the Line",
+      "body": "Drains working again."
+     },
+     {
+      "h3": "2. Show You Why",
+      "body": "Roots, a sag or high water, on camera."
+     },
+     {
+      "h3": "3. Price Before Repairs",
+      "body": "A flat rate for any fix."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mike Robb",
+      "url": "https://maps.app.goo.gl/1GJLvNz5PeBxvKku8",
+      "text": "We had an emergency situation on a weekend when our sewer main broke in the basement, and this company was an absolute lifesaver! They responded quickly, offered very reasonable rates, and immediately sent someone out to diagnose the problem. Within no time, they had a crew on-site to tackle the issue."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     },
+     {
+      "name": "John Costouros",
+      "url": null,
+      "text": "Zachary did a great job clearing out our sewer line after a clog. He was very professional, friendly, and knowledgeable. I would highly recommend him and J. Blanton Plumbing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "Why did my basement back up when it hasn't rained?",
+      "preview": "Usually a blockage in your line: roots, a sag, wipes or grease.",
+      "answer": "Dry-weather backups usually mean a blockage in your own line. Roots, a sag, wipes or grease are the common causes. We clear it and show you which."
+     },
+     {
+      "q": "Does homeowners insurance cover sewer backups?",
+      "preview": "Often only with a specific rider.",
+      "answer": "Many policies only cover backups with a specific rider. Check with your agent before you need it."
+     },
+     {
+      "q": "Should I clean it up myself?",
+      "preview": "Small spills on concrete, carefully. Bigger ones need pros.",
+      "answer": "Small spills on bare concrete can be cleaned with gloves and disinfectant. Anything on carpet, drywall or furniture needs a professional cleanup company."
+     },
+     {
+      "q": "How do I stop it from happening again?",
+      "preview": "Fix the cause and protect the basement.",
+      "answer": "Fix what caused it and add protection. [Sewer maintenance](/algonquin/sewer-maintenance) plus a backflow valve or [overhead sewer](/algonquin/overhead-sewer-systems) covers most homes."
+     },
+     {
+      "q": "My basement backed up while the river was high. Is it related?",
+      "preview": "Possibly. High water adds load to the sewer system.",
+      "answer": "Possibly. When the Fox River and groundwater are high, more water gets into sewer systems. Your own line may still have a problem, so we clear it and camera it to be sure."
+     },
+     {
+      "q": "What does sewer backup service cost in Algonquin?",
+      "preview": "It depends on the cause. The price comes first.",
+      "answer": "It depends on what caused it and how we reach the line. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in Algonquin, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/algonquin/sewage-line-backup-services",
+   "description": "Sewage backing up into your Algonquin basement? We clear the line, find the cause and help you prevent the next one. Our line is open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Backup Service in Algonquin, IL",
+ "metaDescription": "Sewage backing up into your Algonquin basement? We clear the line, find the cause and help you prevent the next one. Our line is open 24/7."
+}

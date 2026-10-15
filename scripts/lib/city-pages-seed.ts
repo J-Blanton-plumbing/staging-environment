@@ -22,6 +22,8 @@ import pool from '../../src/lib/db';
 import { createDraft, publishDraft } from '../../src/lib/cms/drafts';
 import { switchTemplate } from '../../src/lib/cms/template-switching';
 import { createPreTemplateArchive } from '../../src/lib/cms/restore-archive';
+import { conformCityHubContent, conformCityHubSharedContent } from '../../src/lib/cms/city-hubs-write';
+import { conformCityServiceV2Content } from '../../src/lib/cms/city-services-v2-write';
 import { CITY_HUB_TEMPLATE, CITY_PAGE_TYPES, type CityHubDraftContent } from '../../src/lib/city-hub-cms/model';
 import { CITY_SERVICE_V2_TEMPLATE, type CityServiceV2DraftContent } from '../../src/lib/city-service-v2-cms/model';
 
@@ -57,12 +59,26 @@ async function guarded(path: string, run: () => Promise<PageResult>): Promise<Pa
   }
 }
 
-async function findVersion(pageTypes: string[], slug: string, label: string, template: string): Promise<{ id: number; is_published: boolean } | null> {
-  const r = await pool.query<{ id: number; is_published: boolean }>(
-    `SELECT id, is_published FROM page_drafts WHERE page_type = ANY($1) AND page_slug = $2 AND label = $3 AND template_type = $4 ORDER BY id LIMIT 1`,
-    [pageTypes, slug, label, template]
+/**
+ * A version that already holds EXACTLY this content (JSONB equality — key order does not matter) is
+ * reused, never duplicated (a re-run after a crash). A version with the wanted label but DIFFERENT
+ * content is stale (the source changed since it was staged): the new content is saved as a new
+ * version labelled "<label> (updated)" instead, so a stale version is never the one published.
+ */
+async function findVersion(
+  pageTypes: string[],
+  slug: string,
+  label: string,
+  template: string,
+  content: unknown
+): Promise<{ reuse: { id: number; is_published: boolean } | null; label: string }> {
+  const same = await pool.query<{ id: number; is_published: boolean }>(
+    `SELECT id, is_published FROM page_drafts WHERE page_type = ANY($1) AND page_slug = $2 AND template_type = $3 AND content = $4::jsonb ORDER BY id DESC LIMIT 1`,
+    [pageTypes, slug, template, JSON.stringify(content)]
   );
-  return r.rows[0] ?? null;
+  if (same.rows[0]) return { reuse: same.rows[0], label };
+  const taken = await pool.query(`SELECT 1 FROM page_drafts WHERE page_type = ANY($1) AND page_slug = $2 AND label = $3`, [pageTypes, slug, label]);
+  return { reuse: null, label: taken.rowCount ? `${label} (updated)` : label };
 }
 
 async function archive(kind: 'hub' | 'service', slug: string, by: number, createdThisRun = false): Promise<{ created: boolean; draftId: number }> {
@@ -99,11 +115,12 @@ async function loadHubInner(slug: string, draft: CityHubDraftContent, o: LoadOpt
       ? { path, outcome: 'already', detail: 'already loaded, no change' }
       : { path, outcome: 'unpublished', detail: `already loaded, no change — row is '${row.status}' (editor state, left alone)` };
   }
-  const existing = await findVersion([...CITY_PAGE_TYPES], slug, o.label, CITY_HUB_TEMPLATE);
+  const fv = await findVersion([...CITY_PAGE_TYPES], slug, o.label, CITY_HUB_TEMPLATE, conformCityHubContent(slug, draft));
+  const existing = fv.reuse;
   const steps = [
     `archive "${row.template_type ?? 'coverage-area'}" row`,
     row.template_type === CITY_HUB_TEMPLATE ? 'already on City Hub' : `switch ${row.template_type ?? 'coverage-area'} → City Hub`,
-    existing ? `reuse "${o.label}" #${existing.id}` : `create "${o.label}"`,
+    existing ? `reuse identical version #${existing.id}` : `create "${fv.label}"`,
     o.publish ? 'publish' : 'leave unpublished',
   ].join('; ');
   if (!o.apply) return { path, outcome: 'would-load', detail: `would ${steps}` };
@@ -112,7 +129,7 @@ async function loadHubInner(slug: string, draft: CityHubDraftContent, o: LoadOpt
   if (row.template_type !== CITY_HUB_TEMPLATE) {
     await switchTemplate({ pageType: 'city', pageSlug: slug, toTemplate: CITY_HUB_TEMPLATE, switchedBy: o.by });
   }
-  const id = existing?.id ?? (await createDraft({ pageType: 'city', pageSlug: slug, label: o.label, content: draft, createdBy: o.by, templateType: CITY_HUB_TEMPLATE })).id;
+  const id = existing?.id ?? (await createDraft({ pageType: 'city', pageSlug: slug, label: fv.label, content: draft, createdBy: o.by, templateType: CITY_HUB_TEMPLATE })).id;
   if (!o.publish) return { path, outcome: 'staged', detail: `${steps} → version #${id} (Draft)`, versionId: id };
   await publishDraft(id, o.by);
   const after = (
@@ -192,13 +209,14 @@ async function loadServiceInner(city: string, service: string, draft: CityServic
       ? { path, outcome: 'already', detail: 'already loaded, no change' }
       : { path, outcome: 'unpublished', detail: `already loaded, no change — row is '${row.status}' (editor state, left alone)` };
   }
-  const existing = await findVersion(['city-service'], slug, o.label, CITY_SERVICE_V2_TEMPLATE);
-  const steps = [rowState === 'created' ? 'CREATED the missing row' : null, 'archive row', existing ? `reuse "${o.label}" #${existing.id}` : `create "${o.label}"`, o.publish ? 'publish' : 'leave unpublished']
+  const fv = await findVersion(['city-service'], slug, o.label, CITY_SERVICE_V2_TEMPLATE, conformCityServiceV2Content(slug, draft));
+  const existing = fv.reuse;
+  const steps = [rowState === 'created' ? 'CREATED the missing row' : null, 'archive row', existing ? `reuse identical version #${existing.id}` : `create "${fv.label}"`, o.publish ? 'publish' : 'leave unpublished']
     .filter(Boolean)
     .join('; ');
   if (!o.apply) return { path, outcome: 'would-load', detail: `would ${steps}` };
   await archive('service', slug, o.by, rowState === 'created');
-  const id = existing?.id ?? (await createDraft({ pageType: 'city-service', pageSlug: slug, label: o.label, content: draft, createdBy: o.by, templateType: CITY_SERVICE_V2_TEMPLATE })).id;
+  const id = existing?.id ?? (await createDraft({ pageType: 'city-service', pageSlug: slug, label: fv.label, content: draft, createdBy: o.by, templateType: CITY_SERVICE_V2_TEMPLATE })).id;
   if (!o.publish) return { path, outcome: 'staged', detail: `${steps} → version #${id} (Draft)`, versionId: id };
   await publishDraft(id, o.by);
   const after = (
@@ -220,8 +238,9 @@ export async function loadHubShared(draftContent: unknown, o: LoadOptions): Prom
   const path = '(shared City Hub record)';
   const row = (await pool.query<{ content: Record<string, unknown> | null }>(`SELECT content FROM main_pages WHERE slug = 'city-hubs'`)).rows[0];
   if (row && row.content && Object.keys(row.content).length > 0) return { path, outcome: 'already', detail: 'already loaded, no change' };
-  const existing = await findVersion(['city-hub-shared'], 'city-hubs', o.label, 'city-hub-shared');
-  const steps = [row ? null : 'create the main_pages row "city-hubs"', existing ? `reuse "${o.label}" #${existing.id}` : `create "${o.label}"`, o.publish ? 'publish' : 'leave unpublished']
+  const fv = await findVersion(['city-hub-shared'], 'city-hubs', o.label, 'city-hub-shared', conformCityHubSharedContent(draftContent as Parameters<typeof conformCityHubSharedContent>[0]));
+  const existing = fv.reuse;
+  const steps = [row ? null : 'create the main_pages row "city-hubs"', existing ? `reuse identical version #${existing.id}` : `create "${fv.label}"`, o.publish ? 'publish' : 'leave unpublished']
     .filter(Boolean)
     .join('; ');
   if (!o.apply) return { path, outcome: 'would-load', detail: `would ${steps}` };
@@ -231,7 +250,7 @@ export async function loadHubShared(draftContent: unknown, o: LoadOptions): Prom
       [String(o.by)]
     );
   }
-  const id = existing?.id ?? (await createDraft({ pageType: 'city-hub-shared', pageSlug: 'city-hubs', label: o.label, content: draftContent, createdBy: o.by, templateType: 'city-hub-shared' })).id;
+  const id = existing?.id ?? (await createDraft({ pageType: 'city-hub-shared', pageSlug: 'city-hubs', label: fv.label, content: draftContent, createdBy: o.by, templateType: 'city-hub-shared' })).id;
   if (!o.publish) return { path, outcome: 'staged', detail: `${steps} → version #${id} (Draft)`, versionId: id };
   await publishDraft(id, o.by);
   return { path, outcome: 'loaded', detail: `${steps} → live version #${id}`, versionId: id };

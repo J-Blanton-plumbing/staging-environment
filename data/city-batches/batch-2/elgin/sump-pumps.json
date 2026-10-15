@@ -1,0 +1,288 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in Elgin, IL",
+   "sub": "A pump that hums but won't move water, a pit that's close to overflowing or no backup for when the power goes out. We repair and replace sump pumps and install battery backups across Elgin. From our office on North McLean Boulevard, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Is Failing",
+    "intro": "Check yours before the next storm:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Hums but the Water Stays",
+      "body": "The motor runs but the impeller is jammed or worn."
+     },
+     {
+      "h3": "It Turns On and Off Constantly",
+      "body": "A bad float switch or a check valve letting water fall back into the pit."
+     },
+     {
+      "h3": "Rust, Corrosion or a Burning Smell",
+      "body": "Signs the motor is wearing out."
+     },
+     {
+      "h3": "No Backup at All",
+      "body": "If the power fails during a storm, so does your only pump."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Elgin Basements",
+    "intro": "In July 2017, more than 7 inches of rain fell just south of Elgin over two days, and basements flooded across the area.",
+    "items": [
+     {
+      "h3": "Battery Backups Matter Here",
+      "body": "The storms that fill sump pits also knock out power. A battery backup keeps pumping when the main pump stops."
+     },
+     {
+      "h3": "Older Homes With Added Pits",
+      "body": "Many homes built before 1940 had a sump pit added decades later, often small and shallow. If the pump cycles nonstop, the pit may be part of the problem."
+     },
+     {
+      "h3": "Original Pumps in Newer Homes",
+      "body": "A west side home from the 1990s or 2000s may still have its builder-grade pump. Most last about 7 to 10 years."
+     },
+     {
+      "h3": "Discharge Away From the House",
+      "body": "A short or frozen discharge line sends water right back to the foundation. We route it where it drains."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We prove it works before we leave.",
+    "steps": [
+     {
+      "h3": "1. Find the Failure",
+      "body": "Pump, float, check valve or discharge. We check each."
+     },
+     {
+      "h3": "2. Repair, Replace or Add a Backup",
+      "body": "With a clear explanation of each option."
+     },
+     {
+      "h3": "3. Flat Price and a Fill Test",
+      "body": "One price, then we fill the pit to prove it."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How do I test my sump pump?",
+      "preview": "Pour a bucket of water into the pit and watch it run.",
+      "answer": "Pour a bucket or two of water into the pit. The pump should start, empty the pit and shut off. If it doesn't, call us before the next storm."
+     },
+     {
+      "q": "What's the best battery backup sump pump?",
+      "preview": "One sized to your pit and inflow, with a good battery and an alarm.",
+      "answer": "The best backup is one sized to how much water comes into your pit, with a quality battery and an alarm that tells you it's running. We'll recommend one for your basement."
+     },
+     {
+      "q": "How long does a sump pump last?",
+      "preview": "Usually 7 to 10 years.",
+      "answer": "Most sump pumps last somewhere around 7 to 10 years, and less if they run often."
+     },
+     {
+      "q": "Why does my sump pump run in winter?",
+      "preview": "Snowmelt and high groundwater.",
+      "answer": "Snowmelt and rain on frozen ground can keep groundwater high. A pump running in winter isn't unusual, but a frozen discharge line can make it overflow."
+     },
+     {
+      "q": "How much does sump pump replacement cost in Elgin?",
+      "preview": "It depends on the pump, pit and backup. You get a flat price first.",
+      "answer": "It depends on the pump, the pit and check valve and whether you add a backup. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Basement That Stays Dry?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in Elgin, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/elgin/sump-pumps",
+   "description": "Sump pump repair, replacement and battery backups for Elgin, IL basements. Tested before we leave and priced flat first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in Elgin, IL",
+ "metaDescription": "Sump pump repair, replacement and battery backups for Elgin, IL basements. Tested before we leave and priced flat first. Call 24/7."
+}

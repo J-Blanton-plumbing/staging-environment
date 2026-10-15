@@ -1,0 +1,320 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Elgin, IL",
+   "sub": "Roots in a clay line under a Victorian on the east side, a sag in a newer west side subdivision or a backup that returns every few months. We inspect the line on camera, show you the damage and give you one flat price before we dig, line or replace anything. Our office is on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When an Elgin Sewer Line Needs More Than a Cleaning",
+    "intro": "A clog is cleared once. A damaged line keeps sending signals:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "The Same Backup, Again",
+      "body": "If the main line was cleared and it backs up again within a few months, roots or a break are catching everything that comes down the pipe."
+     },
+     {
+      "h3": "Water at the Lowest Drain",
+      "body": "A basement floor drain or a basement shower that fills when upstairs fixtures run means the line can't carry the flow."
+     },
+     {
+      "h3": "Sinkholes or Soggy Grass",
+      "body": "A depression or a wet stripe running from the house toward the street often follows the sewer path."
+     },
+     {
+      "h3": "A Sewer Smell That Won't Go Away",
+      "body": "Cracked pipe or an open joint lets gas escape into the soil and sometimes into the basement."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Elgin",
+    "intro": "Elgin's housing covers more than 150 years. About 1 in 5 homes was built before 1940, and nearly 3 in 10 went up between 1990 and 2009. The two groups fail for different reasons.",
+    "items": [
+     {
+      "h3": "Clay Pipe in the Historic Neighborhoods",
+      "body": "The Elgin Historic District alone has nearly 700 buildings, many from the 1800s. Homes that old usually drain through clay laterals laid in short sections, and every joint is an opening for roots."
+     },
+     {
+      "h3": "Old Trees, Old Lines",
+      "body": "Streets near downtown and along the river have tall, old trees. Their roots follow moisture to the sewer and grow into any joint that isn't sealed."
+     },
+     {
+      "h3": "Patched Lines Under Older Homes",
+      "body": "Over a century, many east side lines have been repaired in pieces. A mix of clay, cast iron and newer pipe means more transitions where things catch and leak."
+     },
+     {
+      "h3": "Settling on the West Side",
+      "body": "Newer homes on the far west side usually have PVC sewer lines. Roots are less of a problem, but sections can sag where soil settled after construction."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Elgin",
+    "intro": "Every sewer repair from our North McLean Boulevard office follows the same order.",
+    "steps": [
+     {
+      "h3": "1. Look Before We Quote",
+      "body": "A camera run from the cleanout to the city main, recorded, with the distance to every problem on screen."
+     },
+     {
+      "h3": "2. Match the Fix to the Damage",
+      "body": "One bad section gets a spot repair. A failing line gets lining or replacement. You see the footage behind it."
+     },
+     {
+      "h3": "3. A Price You Agree To First",
+      "body": "You get a flat-rate price before any work starts."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/elgin/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/elgin/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "Elgin lots near downtown are often narrow, with old trees, retaining walls or a detached garage over the sewer path. The camera tells us which method fits before we talk about digging."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Patrick Schulze",
+      "url": null,
+      "text": "Was a major bit of sewer repair, but could not have been more pleased with the professionalism and congeniality of Richard and his team. They explained every step of the process as it was being done, and were more than happy to answer questions."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "My house near downtown Elgin is over 100 years old. What should I expect from the sewer line?",
+      "preview": "Likely clay, possibly patched. A camera inspection shows its real condition.",
+      "answer": "Most homes that old drain through clay pipe, often with sections that were repaired or replaced over the years. Some clay lines are still in fair shape. A [camera inspection](/elgin/video-camera-sewer-inspections) shows which kind you have before you spend anything on repairs."
+     },
+     {
+      "q": "Is it the city's problem or mine?",
+      "preview": "The line from your house to the main is usually yours.",
+      "answer": "In Elgin, the private sewer line from your home to the public main is generally the homeowner's to maintain. If the camera shows the problem is at or past the main, we'll tell you."
+     },
+     {
+      "q": "Do I have to dig up the whole yard?",
+      "preview": "Often not. Trenchless methods work through small openings.",
+      "answer": "Often not. [Trenchless sewer repair](/elgin/trenchless-sewer-repair) relines or replaces the pipe through one or two small access points. A collapsed section or deep sag may still need a spot dig."
+     },
+     {
+      "q": "Can roots be removed for good?",
+      "preview": "Clearing helps for a while. Sealing the joints stops them.",
+      "answer": "Clearing removes roots for a time, but they grow back to the same joints. Lining the pipe or replacing the damaged section seals those joints, which is what ends the cycle."
+     },
+     {
+      "q": "How much does sewer line repair cost in Elgin?",
+      "preview": "It depends on the damage and the method. You get a flat price first.",
+      "answer": "It depends on what the camera shows: the type of damage, the depth and length of the bad section, the method and what sits above the line. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Elgin, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/elgin/sewer-repair",
+   "description": "Sewer line repair in Elgin, IL, from 1800s clay pipe near downtown to newer west side lines. Camera first and a flat price before work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Elgin, IL",
+ "metaDescription": "Sewer line repair in Elgin, IL, from 1800s clay pipe near downtown to newer west side lines. Camera first and a flat price before work. Call 24/7."
+}

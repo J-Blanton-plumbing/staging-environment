@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Trenchless Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Trenchless Sewer Repair in Algonquin, IL",
+   "sub": "Algonquin yards have years of landscaping, patios and sprinkler lines on top of the sewer. Trenchless repair fixes the pipe through small openings so most of that stays put. We camera the line first and give you a flat price. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/trenchless-sewer-liner-prep.webp",
+    "alt": "Two J. Blanton plumbers pouring resin into a sewer liner bag to prepare a trenchless pipe lining"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-trenchless",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Basics",
+    "h2": "What Is Trenchless Sewer Repair?",
+    "body": "Trenchless sewer repair, also called no-dig sewer repair, fixes a damaged pipe without digging a trench along its full length. Instead of opening up your yard from the house to the street, we work through one or two access points and repair the pipe from the inside or replace it in place. There are two main methods: cured-in-place pipe (CIPP) lining and pipe bursting. Both fix the line underground, so what's above it stays untouched.",
+    "img": {
+     "src": "/images/city-services-v2/trenchless-sewer-repair-setup.webp",
+     "alt": "Two J. Blanton plumbers setting up sewer camera and cable equipment beside a home's foundation before a trenchless sewer repair"
+    }
+   },
+   {
+    "type": "local",
+    "id": "why-trenchless-algonquin",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Trenchless Repair for Algonquin Yards",
+    "intro": "In a neighborhood where yards are finished and well kept, keeping the trench small matters.",
+    "items": [
+     {
+      "h3": "Irrigation Systems",
+      "body": "Many Algonquin lawns have sprinkler lines crossing the sewer path. Small access points mean far fewer broken heads and pipes."
+     },
+     {
+      "h3": "Patios, Decks and Driveways",
+      "body": "Lines that run under hardscape can be lined in place."
+     },
+     {
+      "h3": "Early Root Intrusion",
+      "body": "Lining newer pipe when roots first show up seals every joint before the damage spreads."
+     },
+     {
+      "h3": "Sags Need a Spot Repair",
+      "body": "A liner follows the pipe. If the camera shows a real sag, we fix that section first."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "when-trenchless-applies",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Know Your Options",
+    "h2": "Lining, Bursting or Digging: How We Decide",
+    "intro": "It comes down to what the camera shows in your line:",
+    "head": [
+     "If the Video Shows",
+     "We Usually Recommend",
+     "Because"
+    ],
+    "rows": [
+     [
+      "Fine roots at a few joints in sound pipe",
+      "Cleaning now, lining if they keep returning",
+      "Small problems can be managed before they need a repair"
+     ],
+     [
+      "Roots or cracks along much of the line",
+      "A cured-in-place liner",
+      "One seamless pipe with no joints for roots"
+     ],
+     [
+      "A belly where the line settled",
+      "A spot repair at the low section",
+      "A liner can't lift a sag"
+     ],
+     [
+      "Crushed or collapsed pipe",
+      "Pipe bursting or excavation",
+      "There's no open pipe left to line"
+     ]
+    ],
+    "note": "You see the footage behind every recommendation."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Trenchless starts with a clear picture of the line.",
+    "steps": [
+     {
+      "h3": "1. Clear It and Film It",
+      "body": "We clean the line so the camera sees the pipe wall, then record the whole run."
+     },
+     {
+      "h3": "2. Map the Yard",
+      "body": "We locate sprinkler lines, beds and hardscape before choosing access points."
+     },
+     {
+      "h3": "3. Agreed Price, Finished Video",
+      "body": "You approve a flat rate first and get video of the new pipe when we're done."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/sewer-excavation-trench.webp",
+     "alt": "Traditional sewer excavation with a trench dug across the yard down to the damaged pipe, the kind of dig trenchless repair avoids"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Trenchless Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "Jeffrey Paddock",
+      "url": null,
+      "text": "We had a sewer liner installed yesterday by Mason Lanier & his crew from J. Blanton Plumbing. They were on time, worked efficiently & diligently to complete all the work in difficult weather conditions. We are very pleased to have this work completed & impressed with Mason & Co."
+     },
+     {
+      "name": "Christopher C.",
+      "url": null,
+      "text": "The ENG team did an amazing job installing a liner on our sewer line. It was a very technical job that required a full days work, but they managed wonderfully despite the unexpected snow and inclement weather conditions. Just as important, they were very kind through the process. Thank you!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Trenchless Sewer Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "Will trenchless repair save my sprinkler system?",
+      "preview": "Usually. We locate the lines before any opening.",
+      "answer": "Usually. We mark sprinkler lines before we dig the small access points and work around them."
+     },
+     {
+      "q": "How long will a liner last?",
+      "preview": "Decades.",
+      "answer": "Liners are designed to last for decades, with no joints for roots to get through."
+     },
+     {
+      "q": "Can every line be lined?",
+      "preview": "No. Collapsed lines and deep sags need other methods.",
+      "answer": "No. A fully collapsed line needs excavation, and a deep sag needs a spot repair first. The camera tells us which applies."
+     },
+     {
+      "q": "How long does it take?",
+      "preview": "Often a day or two.",
+      "answer": "Many residential jobs take a day or two, depending on length and prep."
+     },
+     {
+      "q": "What does trenchless sewer repair cost in Algonquin?",
+      "preview": "It depends on length, depth and method. The price comes first.",
+      "answer": "It depends on how much of the line needs work, the depth, the method and access. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Without the Trench?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Trenchless Sewer Repair in Algonquin, IL",
+   "serviceType": "Trenchless Sewer Repair",
+   "url": "https://jblantonplumbing.com/algonquin/trenchless-sewer-repair",
+   "description": "Trenchless sewer repair in Algonquin, IL. Line or replace a failing sewer without tearing up your lawn, patio or sprinklers. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Trenchless Sewer Repair in Algonquin, IL",
+ "metaDescription": "Trenchless sewer repair in Algonquin, IL. Line or replace a failing sewer without tearing up your lawn, patio or sprinklers. Flat price first."
+}

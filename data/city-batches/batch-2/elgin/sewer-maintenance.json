@@ -1,0 +1,358 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Elgin, IL",
+   "sub": "If roots have backed up your line once, they'll do it again. A maintenance schedule built around what your line actually looks like keeps the water moving. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "Why Elgin Sewer Lines Need a Schedule",
+    "intro": "Maintenance pays off when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You Live in an Older Neighborhood",
+      "body": "Clay lines in Elgin's historic areas let roots in at every joint."
+     },
+     {
+      "h3": "There's a Big Tree Out Front",
+      "body": "Old parkway and yard trees keep sending roots toward the line."
+     },
+     {
+      "h3": "You've Already Had One Backup",
+      "body": "One backup is usually the start of a pattern."
+     },
+     {
+      "h3": "There's Living Space Downstairs",
+      "body": "A finished basement makes every backup expensive."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "How Often to Service Your Line",
+    "intro": "A starting point the camera can adjust:",
+    "head": [
+     "Your Situation",
+     "Suggested Schedule"
+    ],
+    "rows": [
+     [
+      "Clay line with roots",
+      "Rodding or jetting once a year"
+     ],
+     [
+      "Heavy grease or scale",
+      "Jetting every 1 to 2 years"
+     ],
+     [
+      "Newer line, no history",
+      "Camera check every few years"
+     ],
+     [
+      "Recently lined or replaced",
+      "Camera check after a few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Elgin Weather",
+    "intro": "On July 11 and 12, 2017, more than 7 inches of rain fell just south of Elgin, and basements flooded across the area.",
+    "items": [
+     {
+      "h3": "Storms Find the Weak Line",
+      "body": "A line that's half full of roots has half the capacity when a storm hits. Clearing it ahead of time gives it a fighting chance."
+     },
+     {
+      "h3": "Late Winter Is the Window",
+      "body": "Service before spring, when roots start growing again and heavy rain arrives."
+     },
+     {
+      "h3": "Check the Protection Too",
+      "body": "If you have a backflow valve or an [overhead sewer system](/elgin/overhead-sewer-systems), we'll make sure it works during the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/elgin/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/elgin/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/elgin/sewer-rodding) or [Hydro Jetting](/elgin/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/elgin/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Visits Work",
+    "intro": "Your schedule is based on your line, not a calendar.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "We look before deciding how often you need service."
+     },
+     {
+      "h3": "2. The Right Tool",
+      "body": "Rodding for roots, jetting for grease and scale."
+     },
+     {
+      "h3": "3. A Written Plan",
+      "body": "The interval and what to watch for, with prices upfront."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Connor Schickel",
+      "url": null,
+      "text": "I’ve used J Blanton multiple times. They have helped identify a pipe with root growth through their No Drip Club. Mike Perez has done a great job walking me through all the steps to get the root out of my pipe and had to work through some very tough turns to identify the roots. [...]"
+     },
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How do I know if my Elgin sewer line needs a maintenance plan?",
+      "preview": "A history of backups, a clay line or big trees nearby.",
+      "answer": "If your line has backed up before, is clay, or runs near large trees, a plan makes sense. A camera inspection tells us how often your line actually needs attention."
+     },
+     {
+      "q": "Rodding or jetting for maintenance?",
+      "preview": "Rodding for roots, jetting for grease and scale.",
+      "answer": "Rodding cuts roots back quickly and is usually enough for yearly root control. Jetting cleans the whole pipe wall and is better for grease, scale or roots that return fast."
+     },
+     {
+      "q": "Will maintenance keep the basement dry in a big storm?",
+      "preview": "It helps your line drain, but it can't stop an overloaded sewer.",
+      "answer": "A clean line carries water out as fast as it can, which helps. When the public sewer is overloaded, you also need protection like a backflow valve or an [overhead sewer system](/elgin/overhead-sewer-systems)."
+     },
+     {
+      "q": "Does the No Drip Club include sewer work?",
+      "preview": "It includes regular maintenance visits. Ask how it applies to your line.",
+      "answer": "The [No Drip Club](/no-drip-club/) brings a plumber to your home for regular maintenance. Ask us how it applies to your sewer line."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Elgin?",
+      "preview": "It depends on the service. You get a flat price first.",
+      "answer": "It depends on whether your line needs rodding, jetting or a camera check, and on access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Elgin, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/elgin/sewer-maintenance",
+   "description": "Preventive sewer maintenance for Elgin, IL homes. Scheduled rodding, jetting and camera checks that keep roots and grease from causing a backup.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Elgin, IL",
+ "metaDescription": "Preventive sewer maintenance for Elgin, IL homes. Scheduled rodding, jetting and camera checks that keep roots and grease from causing a backup."
+}

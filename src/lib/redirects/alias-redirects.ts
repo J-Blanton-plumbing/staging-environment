@@ -49,6 +49,11 @@ export const MANUAL_ALIAS_REDIRECTS: Readonly<Record<string, string>> = {
   '/bathroom-plumbing': '/bathroom-plumbing-chicago',
   '/hoa-line-piping': '/hoa-pipe-lining',
 
+  // Brief 212 (D4): the generated map sends this WordPress URL to /elgin/residential-water-heater,
+  // which Batch 2 folds into /elgin/water-heater-repair. Point it at the final page so it stays ONE
+  // hop (scripts/validate-sitemap.ts allows exactly this chain-collapse disagreement).
+  '/elgin-residential-water-heater': '/elgin/water-heater-repair',
+
   /* ── Brief 153, Track D — the residual 404 batch ───────────────────────────
    * Every entry below is a URL Google is still holding from
    * `seo-audit/residual-404s.csv`. The two-segment `/{city}/…` shapes are NOT

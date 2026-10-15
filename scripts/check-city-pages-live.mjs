@@ -114,6 +114,10 @@ async function sitemapCounts() {
 async function compare() {
   const dir = String(args['snapshot-dir'] ?? '.city-pages-snapshot');
   const changed = new Set(String(args['expect-changed'] ?? '').split(',').filter(Boolean));
+  // Cities a batch import published during THIS deploy (deploy.sh → import-city-batch.ts --changed-file):
+  // their pages are meant to change, so they must serve their rows instead of matching the snapshot.
+  const marker = path.join(dir, 'changed.txt');
+  if (fs.existsSync(marker)) for (const c of fs.readFileSync(marker, 'utf8').split(/\s+/).filter(Boolean)) changed.add(c);
   const failures = [];
   const notes = [];
   let sources = {};

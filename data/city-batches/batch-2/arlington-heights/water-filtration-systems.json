@@ -1,0 +1,307 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Filtration Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Filtration Systems in Arlington Heights, IL",
+   "sub": "Chlorine taste at the kitchen tap, rusty water from an old pipe or spots on every glass. We test your water, explain what's in it and install the filtration system that fits, from our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+    "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "options",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Your Options",
+    "h2": "Water Filtration Options for Arlington Heights Homes",
+    "intro": "We install and service:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Whole-House Filters",
+      "body": "Filter every tap in the house, usually for chlorine taste and odor and sediment."
+     },
+     {
+      "h3": "Drinking Water Systems",
+      "body": "Under-sink reverse osmosis or carbon filters for cooking and drinking water."
+     },
+     {
+      "h3": "Water Softeners",
+      "body": "Reduce the minerals that leave spots, scale on fixtures and sediment in the water heater."
+     },
+     {
+      "h3": "Sediment and Rust Filters",
+      "body": "Catch rust and particles, a common need in homes with older galvanized pipe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "water-testing",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Water Testing",
+    "h2": "Water Testing in Arlington Heights",
+    "bodies": [
+     "Arlington Heights gets Lake Michigan water through the Northwest Water Commission, which buys treated water from Evanston. It meets drinking water standards when it leaves the plant. What comes out of your tap also depends on the pipes inside your home.",
+     "A water test shows hardness, chlorine, iron and other things that affect taste, scale and appliance life. In older homes, rust from galvanized pipe can show up in the results even when the city water is clean. We use the results to recommend only what your home needs."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-water",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Quality in Arlington Heights Homes",
+    "intro": "Your water starts in Lake Michigan, but it's the last few hundred feet of pipe that decide what you notice.",
+    "items": [
+     {
+      "h3": "Galvanized Pipe in Older Homes",
+      "body": "Some homes built in the 1940s through the 1960s still have galvanized supply lines. They rust inside, which can tint the water and reduce pressure. Filtration helps the symptom. [Repiping](/arlington-heights/leak-repairs) fixes the cause."
+     },
+     {
+      "h3": "Chlorine Taste and Smell",
+      "body": "Treated city water carries a disinfectant all the way to your tap. A carbon filter removes most of the taste and smell."
+     },
+     {
+      "h3": "Spots and Scale",
+      "body": "Lake Michigan water still carries some minerals. If you see white spots on glasses and crust on showerheads, a softener or scale filter may be worth it."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "No system until we know what's in your water.",
+    "steps": [
+     {
+      "h3": "1. Test First",
+      "body": "We test at your tap and walk you through the results in plain English."
+     },
+     {
+      "h3": "2. Right-Size the System",
+      "body": "Only the filters your water needs, sized for your household."
+     },
+     {
+      "h3": "3. Flat Price, Clean Install",
+      "body": "One price before work, and we show you how to change the filters."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Filtration Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     },
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     },
+     {
+      "name": "Brian Crain",
+      "url": "https://maps.app.goo.gl/yX9GobAxAt8ryxhy7",
+      "text": "Ron was perfect. He came to do the job at hand and explained various pieces of information along the way that helped me understand the root causes of what we were dealing with and how to avoid problems in the future. [...] Didn't try and push the sale like some companies do, but was more or less educating on what the options were and what they entailed in full so we would know what to expect if we decided to go down those paths."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Filtration Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Is Arlington Heights tap water safe to drink?",
+      "preview": "It meets drinking water standards. Filters improve taste and deal with what your pipes add.",
+      "answer": "The water is treated to meet drinking water standards before it reaches your home. The village publishes a yearly water quality report. A filter improves taste and smell and handles anything your own pipes add."
+     },
+     {
+      "q": "Why is my water rusty?",
+      "preview": "Often old galvanized pipe inside the house.",
+      "answer": "In older Arlington Heights homes, rusty water usually comes from galvanized steel supply pipes corroding from the inside. A sediment filter helps, but replacing the pipe solves it."
+     },
+     {
+      "q": "Do I need a water softener with Lake Michigan water?",
+      "preview": "Not always. A test tells you if the minerals are worth treating.",
+      "answer": "Not always. Lake Michigan water carries some hardness minerals. Some homeowners are happy without a softener, others want one for spotless dishes and longer-lasting fixtures. A water test helps you decide."
+     },
+     {
+      "q": "How often do filters need changing?",
+      "preview": "It depends on the system. Most cartridges every few months to a year.",
+      "answer": "It depends on the system and your water use. Most cartridges last a few months to a year. We'll set you up with a schedule when we install it."
+     },
+     {
+      "q": "How much does a water filtration system cost in Arlington Heights?",
+      "preview": "It depends on the system and installation. You get a flat price first.",
+      "answer": "It depends on the type of system, its size and how it connects to your plumbing. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Better Water at Every Tap?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Filtration Systems in Arlington Heights, IL",
+   "serviceType": "Water Filtration Systems",
+   "url": "https://jblantonplumbing.com/arlington-heights/water-filtration-systems",
+   "description": "Water testing and filtration systems for Arlington Heights, IL homes. Whole-house filters, softeners and drinking water systems. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Filtration & Testing in Arlington Heights, IL",
+ "metaDescription": "Water testing and filtration systems for Arlington Heights, IL homes. Whole-house filters, softeners and drinking water systems. Flat price first."
+}

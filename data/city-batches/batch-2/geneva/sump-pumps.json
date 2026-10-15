@@ -1,0 +1,286 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in Geneva, IL",
+   "sub": "A sump pump that won't kick on, runs nonstop or has no backup for when the power goes out. We install and repair sump pumps and battery backups across Geneva, with a flat price you approve first. From our office on Campbell Street, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Don't wait for the next storm:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Doesn't Start When Tested",
+      "body": "Pour water in the pit. No start means a float or motor problem."
+     },
+     {
+      "h3": "It Runs Without Stopping",
+      "body": "A stuck float, a failed check valve or a pump that's too small."
+     },
+     {
+      "h3": "Loud Grinding",
+      "body": "Worn bearings or debris in the impeller."
+     },
+     {
+      "h3": "There's No Backup",
+      "body": "A storm that knocks out power leaves you unprotected."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Geneva Basements",
+    "intro": "In September 2008, about 9 inches of rain fell on Geneva in two days, and basements flooded across much of Kane County.",
+    "items": [
+     {
+      "h3": "Old Foundations, Added Pits",
+      "body": "Many historic homes had sump pits added long after they were built. Some are small or shallow and struggle in a big storm."
+     },
+     {
+      "h3": "Newer Homes, Original Pumps",
+      "body": "More than 4 in 10 homes were built after 1990. Many still have their original builder-grade pumps, and those are past their prime."
+     },
+     {
+      "h3": "Battery Backups",
+      "body": "Storms knock out power. A backup keeps pumping when the main pump can't."
+     },
+     {
+      "h3": "Discharge Away From the House",
+      "body": "A short or frozen discharge line sends water right back to the foundation."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Proven before we leave.",
+    "steps": [
+     {
+      "h3": "1. Check the System",
+      "body": "Pump, float, check valve, discharge and backup."
+     },
+     {
+      "h3": "2. Repair, Replace or Add a Backup",
+      "body": "With clear options."
+     },
+     {
+      "h3": "3. Price You Approve, Then a Fill Test",
+      "body": "We fill the pit and watch it run."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Can you install a sump pump in an old basement without one?",
+      "preview": "Often, yes.",
+      "answer": "Often, yes. We cut a pit in the floor, connect any drain tile and run a discharge line outside. We'll assess the foundation first."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "Usually 7 to 10 years.",
+      "answer": "Most last somewhere around 7 to 10 years, less if they run often."
+     },
+     {
+      "q": "Do I need a battery backup?",
+      "preview": "If you have a finished basement, yes.",
+      "answer": "If your basement is finished or holds anything you care about, yes."
+     },
+     {
+      "q": "Where should the discharge go?",
+      "preview": "Outside, away from the foundation.",
+      "answer": "Outside, onto the yard or into a storm line, far enough from the house that it doesn't soak back in. Never into the sanitary sewer."
+     },
+     {
+      "q": "How much does sump pump installation cost in Geneva?",
+      "preview": "It depends on the pump, pit and backup. You'll approve a flat price first.",
+      "answer": "It depends on the pump, any pit or check valve work and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Basement That Stays Dry?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in Geneva, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/geneva/sump-pumps",
+   "description": "Sump pump installation, repair and battery backups for Geneva, IL basements. Tested before we leave, flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in Geneva, IL",
+ "metaDescription": "Sump pump installation, repair and battery backups for Geneva, IL basements. Tested before we leave, flat price first. Call 24/7."
+}

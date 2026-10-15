@@ -1,0 +1,324 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in Geneva, IL",
+   "sub": "A historic fireplace converted to gas logs, a builder unit in a newer home or a fireplace that won't light on the first cold night. Our plumbers are licensed for gas work and repair, clean and service gas fireplaces across Geneva. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Geneva Fireplace Ready for the First Cold Night?",
+    "intro": "Geneva homeowners usually call us about one of these in October and November:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Gas Logs in an Old Hearth That Won't Light",
+      "body": "In a converted masonry fireplace, the pilot sits low in the firebox and collects ash, dust and debris. A careful cleaning usually solves it."
+     },
+     {
+      "h3": "A Draft You Can Feel",
+      "body": "Cold air pouring out of a fireplace with gas logs often means the damper clamp is missing or set wrong. That's a safety issue as well as a comfort one."
+     },
+     {
+      "h3": "Smoke Stains Above the Opening",
+      "body": "Dark marks on the brick or mantel mean the flue isn't drawing well or the flame is burning dirty."
+     },
+     {
+      "h3": "A Unit That Shuts Off by Itself",
+      "body": "The safety system is shutting the gas off. A weak thermopile or a vent problem is the usual cause."
+     },
+     {
+      "h3": "Any Gas Smell",
+      "body": "Get outside first, then call Nicor Gas or 911. We'll handle the repair once it's safe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "What We Do for Geneva Gas Fireplaces",
+    "intro": "We handle the gas side and tell you when the chimney needs a specialist:",
+    "steps": [
+     {
+      "h3": "Diagnose and Repair",
+      "body": "We test the pilot, the thermopile output, the valve and the controls and replace only what failed."
+     },
+     {
+      "h3": "Annual Cleaning and Safety Check",
+      "body": "Burner, pilot and glass cleaned, logs placed the way the manufacturer intended, every fitting leak-tested and the damper clamp or vent checked."
+     },
+     {
+      "h3": "Converting Wood to Gas",
+      "body": "New gas logs or an insert for a fireplace you no longer want to burn wood in, with the gas supply run and tested. See [gas line installation](/geneva/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Fireplaces in Geneva's Old and New Homes",
+    "intro": "In the Central Geneva Historic District, most houses were built between 1840 and 1900. Many of their fireplaces were built for wood or coal and have been converted since. In newer subdivisions on the west side, many homes built after 1990 came with a sealed gas unit.",
+    "items": [
+     {
+      "h3": "The Damper Clamp Matters",
+      "body": "Gas logs in a masonry fireplace need the damper held partly open at all times so exhaust can escape. If the clamp was removed during a renovation, it needs to go back on."
+     },
+     {
+      "h3": "Shallow Fireboxes, Decorative Mantels",
+      "body": "Some 19th-century fireplaces are shallow or were built for coal. Not every gas log set fits safely. We'll tell you what works in yours."
+     },
+     {
+      "h3": "Sealed Units on the West Side",
+      "body": "Direct-vent fireplaces in newer homes are sealed from the room and vent through the wall. Their parts are widely available, so repairs are usually straightforward."
+     },
+     {
+      "h3": "Carbon Monoxide Detectors",
+      "body": "Any gas fireplace can produce carbon monoxide if it burns or vents poorly. Keep a working detector on every floor."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Tested before we leave.",
+    "steps": [
+     {
+      "h3": "1. Licensed for Gas Work",
+      "body": "Gas work should be done by a licensed pro, and ours are trained for it."
+     },
+     {
+      "h3": "2. A Price You Approve",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Test-Fired",
+      "body": "Leak-checked and run until the flame is steady."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Does my gas log fireplace need the damper open?",
+      "preview": "Yes. Gas logs in a masonry fireplace need a fixed damper opening.",
+      "answer": "Yes. Vented gas logs need the damper held partly open so combustion gases can leave through the chimney. A damper clamp keeps it from being closed by accident."
+     },
+     {
+      "q": "Can a 19th-century fireplace be converted to gas?",
+      "preview": "Often, if the chimney is sound and the firebox is suitable.",
+      "answer": "Often. The chimney has to be in good condition and drawing well, and the firebox has to suit the log set. We handle the gas line and valve and point you to a chimney specialist if the flue needs work."
+     },
+     {
+      "q": "Why is my fireplace leaving smoke marks on the brick?",
+      "preview": "Poor draft or a dirty flame.",
+      "answer": "Marks above the opening usually mean the flue isn't drawing well or the gas isn't burning cleanly. Cleaning and adjusting the logs often fixes the flame. A draft problem may need a chimney inspection."
+     },
+     {
+      "q": "When should I schedule fireplace service?",
+      "preview": "Early fall, before the heating season.",
+      "answer": "September or early October, so any weak part is found on a mild day instead of the first cold night."
+     },
+     {
+      "q": "What does gas fireplace repair cost in Geneva?",
+      "preview": "It depends on the part and the fireplace. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of fireplace. Once we've found the problem, you'll approve a flat-rate price before we replace anything."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Warm, Safe Fireplace?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in Geneva, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/geneva/gas-fireplace",
+   "description": "Gas fireplace repair, cleaning and yearly service in Geneva, IL. Licensed for gas work and test-fired before we leave. Call our office 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair & Service in Geneva, IL",
+ "metaDescription": "Gas fireplace repair, cleaning and yearly service in Geneva, IL. Licensed for gas work and test-fired before we leave. Call our office 24/7."
+}

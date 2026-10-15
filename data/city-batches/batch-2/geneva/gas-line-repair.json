@@ -1,0 +1,333 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Repair in Geneva, IL",
+   "sub": "A faint gas smell in an old basement, a red tag from the utility or an old line feeding an appliance that's long gone. Our licensed plumbers find gas leaks, repair the piping and pressure-test it before we leave. From our office on Campbell Street.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Safety First",
+    "h2": "Smell Gas? Here's What to Do",
+    "intro": "Safety before repairs:",
+    "steps": [
+     {
+      "h3": "1. Leave the House",
+      "body": "Everyone out, right away."
+     },
+     {
+      "h3": "2. Avoid Sparks",
+      "body": "No switches, phones or appliances inside."
+     },
+     {
+      "h3": "3. Call From Outside",
+      "body": "Nicor Gas or 911."
+     },
+     {
+      "h3": "4. Call Us After",
+      "body": "Once it's safe, we'll find and repair the leak."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Gas Piping Needs a Plumber",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You Notice an Odor Near an Appliance",
+      "body": "Furnace, water heater, range or dryer."
+     },
+     {
+      "h3": "The Utility Shut Off Service",
+      "body": "Repairs and a pressure test come before service is restored."
+     },
+     {
+      "h3": "There Are Old, Unused Lines",
+      "body": "Abandoned pipe from old appliances should be capped and tested."
+     },
+     {
+      "h3": "Connectors Are Old",
+      "body": "Uncoated brass connectors should be replaced."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "When there's a suspected leak or the utility has shut off service, we find the source using electronic detectors and soap tests on the fittings, then pressure-test the system to confirm it's sealed.",
+     "In older Geneva homes, we often find leaks at old unions and valves, or on abandoned branches that were never capped properly. After the repair, the whole system is tested so service can be restored."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Lines in Geneva Homes",
+    "intro": "Gas piping in Geneva ranges from very old to brand new.",
+    "items": [
+     {
+      "h3": "Century-Old Black Iron",
+      "body": "The pipe lasts, but unions, valves and joints wear after many decades."
+     },
+     {
+      "h3": "Abandoned Branches",
+      "body": "Lines that once fed old stoves, lights or heaters should be properly capped and tested."
+     },
+     {
+      "h3": "Newer Additions",
+      "body": "Grills, fire pits and generators added later need lines sized and installed correctly."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Gas work done right, then tested.",
+    "steps": [
+     {
+      "h3": "1. Licensed Plumbers",
+      "body": "Gas line work should be done by a licensed pro. Ours are licensed and trained for it."
+     },
+     {
+      "h3": "2. A Price You Approve",
+      "body": "Once we find the problem."
+     },
+     {
+      "h3": "3. Pressure-Tested",
+      "body": "Before the gas comes back on."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "What should I do if I smell gas?",
+      "preview": "Leave and call Nicor Gas or 911 from outside.",
+      "answer": "Leave right away and don't touch switches. Call Nicor Gas or 911 from outside, then call us for the repair."
+     },
+     {
+      "q": "Can you cap old gas lines in my historic home?",
+      "preview": "Yes, and test them.",
+      "answer": "Yes. We cap abandoned branches properly and pressure-test the system."
+     },
+     {
+      "q": "Who is responsible for gas piping?",
+      "preview": "The utility up to the meter. You after it.",
+      "answer": "Nicor Gas handles the line up to and including the meter. Piping after the meter is the homeowner's and should be repaired by a licensed plumber."
+     },
+     {
+      "q": "Do old gas connectors need replacing?",
+      "preview": "Uncoated brass ones should be.",
+      "answer": "Yes, if they're uncoated brass. Coated stainless connectors are much safer."
+     },
+     {
+      "q": "How much does gas line repair cost in Geneva?",
+      "preview": "It depends on the leak and the line. You'll approve a flat price first.",
+      "answer": "It depends on where the leak is and how much pipe needs work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Need Your Gas Line Checked?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Repair in Geneva, IL",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/geneva/gas-line-repair",
+   "description": "Gas line repair and leak detection in Geneva, IL. Licensed plumbers, pressure-tested repairs and a flat price before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Repair in Geneva, IL",
+ "metaDescription": "Gas line repair and leak detection in Geneva, IL. Licensed plumbers, pressure-tested repairs and a flat price before any work."
+}

@@ -1,0 +1,307 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Arlington Heights, IL",
+   "sub": "Before you pay for a sewer repair, you should see what's wrong. We run a camera through your line, record it and show you the roots, cracks or sags, with the distance to each one. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Reasons to Get a Sewer Camera Inspection",
+    "intro": "Arlington Heights homeowners usually call us for one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You're Buying a Postwar Home",
+      "body": "A home from the 1950s or 1960s likely has a clay lateral. A camera look before closing tells you what you're buying."
+     },
+     {
+      "h3": "Your Basement Backed Up in a Storm",
+      "body": "The camera shows whether your own line is blocked or damaged, or whether the sewer was simply overloaded."
+     },
+     {
+      "h3": "You Rod the Line Every Year",
+      "body": "If you're paying for rodding on a schedule, it's worth knowing whether a repair would end the cycle."
+     },
+     {
+      "h3": "You're Finishing the Basement",
+      "body": "Check the line and the cast iron under the floor before new flooring and drywall go in."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-arlington-heights",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Arlington Heights Sewer Lines",
+    "intro": "Most homes here were built between 1940 and 1989. That shapes what the camera shows.",
+    "items": [
+     {
+      "h3": "Roots at Clay Joints",
+      "body": "The most common finding in postwar homes. Fine roots at a few joints can be managed with rodding. A mat of roots at every joint points to lining."
+     },
+     {
+      "h3": "Scale and Cracks in Cast Iron",
+      "body": "Inside the house, old cast iron often shows heavy scale and, in some homes, a crack along the bottom of the pipe."
+     },
+     {
+      "h3": "Offset Joints",
+      "body": "Shifting soil and roots can push clay sections out of line. Paper catches on the lip and causes repeat clogs."
+     },
+     {
+      "h3": "Sags in Longer Runs",
+      "body": "Standing water in the pipe means a low spot. We measure where it is so it can be fixed without guesswork."
+     },
+     {
+      "h3": "Before Adding a Basement Bathroom",
+      "body": "If you're adding a bathroom to a postwar basement, a camera look at the main line first tells you whether the old clay can take the extra flow."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You see what we see.",
+    "steps": [
+     {
+      "h3": "1. In Through the Cleanout",
+      "body": "No digging, no opening walls. If there's no cleanout, we'll tell you the options."
+     },
+     {
+      "h3": "2. Recorded and Located",
+      "body": "We record the footage and use a locator to mark where problems sit, down to the depth."
+     },
+     {
+      "h3": "3. Plain-English Results",
+      "body": "We walk you through the video, explain what matters and what doesn't, and give you a copy."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Should I get a sewer inspection before buying a home in Arlington Heights?",
+      "preview": "Yes, especially for homes built before 1980.",
+      "answer": "Yes. A standard home inspection doesn't look inside the sewer line. For a home built before 1980, a camera inspection is a small step that can reveal a repair worth negotiating before you close."
+     },
+     {
+      "q": "Will the camera inspection damage anything?",
+      "preview": "No. It goes in through an existing cleanout.",
+      "answer": "No. The camera enters through a cleanout, so there's no digging and no cutting. If the cleanout is buried or missing, we'll explain the options before going further."
+     },
+     {
+      "q": "Can the camera find exactly where the problem is?",
+      "preview": "Yes. A locator marks the spot and the depth from the surface.",
+      "answer": "Yes. The camera head carries a transmitter. We trace it from above and mark the location and depth, so any repair targets the right spot."
+     },
+     {
+      "q": "Do I get a copy of the video?",
+      "preview": "Yes. You keep the footage for your records or your buyer.",
+      "answer": "Yes. You get the recording so you can show it to a buyer, a seller or anyone else involved."
+     },
+     {
+      "q": "How long does a sewer camera inspection take?",
+      "preview": "Usually about an hour for a typical home.",
+      "answer": "Usually about an hour, including finding the cleanout, running the camera to the main and walking you through the footage."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Arlington Heights?",
+      "preview": "It depends on access and line length. You get a flat price first.",
+      "answer": "It depends on how we get into the line and how long it is. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See What's in Your Sewer Line?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Arlington Heights, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/arlington-heights/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections for Arlington Heights, IL homes. See roots, cracks and sags on video before you pay for any repair. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Arlington Heights, IL",
+ "metaDescription": "Sewer camera inspections for Arlington Heights, IL homes. See roots, cracks and sags on video before you pay for any repair. Flat price first."
+}

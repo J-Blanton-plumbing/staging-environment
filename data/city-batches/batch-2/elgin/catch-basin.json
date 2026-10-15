@@ -1,0 +1,316 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Catch Basin",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Catch Basin Cleaning and Repair in Elgin, IL",
+   "sub": "Puddles that sit in the yard for days, a driveway that floods by the garage or a grate packed with leaves. We clean out catch basins, repair damaged ones and clear the line they drain into. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+    "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-a-catch-basin",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Does a Catch Basin Do?",
+    "body": "A catch basin is a box set into the ground with a grate on top. It collects rain from your yard, driveway or downspouts and sends it to a storm sewer or drain line. The bottom of the box sits below the outlet pipe, so leaves and dirt settle there instead of washing into the pipe. When that bottom fills, debris goes into the outlet, the pipe clogs and water backs up onto the surface.",
+    "img": {
+     "src": "/images/city-services-v2/catch-basin-diagram.webp",
+     "alt": "Diagram of a catch basin showing the inlet grate, water line, sediment settling in the sump and the outlet pipe carrying water away"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Catch Basin Needs Service",
+    "intro": "Call when you see:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Pooling Around the Grate",
+      "body": "If it's still there hours after the rain stops, the basin or outlet is blocked."
+     },
+     {
+      "h3": "A Grate Buried in Leaves",
+      "body": "Water can't get in. This happens fast in the fall on tree-lined Elgin streets."
+     },
+     {
+      "h3": "Sinking Ground Next to the Basin",
+      "body": "Soil is washing into cracks in the basin walls."
+     },
+     {
+      "h3": "Water Running Toward the House",
+      "body": "When the basin can't take it, water follows the slope, sometimes to your foundation."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-catch-basins",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Catch Basins in Elgin Yards",
+    "intro": "Elgin's older neighborhoods and its newer subdivisions both rely on catch basins, but for different reasons.",
+    "items": [
+     {
+      "h3": "Mature Trees in Older Areas",
+      "body": "Streets near downtown and along the river have big trees that bury grates every fall."
+     },
+     {
+      "h3": "Driveway and Garage Drains",
+      "body": "Many homes have a basin at the bottom of the driveway or by a detached garage. Sand and grit from winter wash into it every spring."
+     },
+     {
+      "h3": "Old Brick Basins",
+      "body": "Older basins built of brick or block crack and shift over decades, letting soil in."
+     },
+     {
+      "h3": "Heavy Summer Storms",
+      "body": "The July 2017 storms dropped more than 7 inches just south of Elgin. A blocked basin turns that much rain into standing water against the house."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the basin and the pipe behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean It Out",
+      "body": "We remove silt, leaves and debris and clear the outlet."
+     },
+     {
+      "h3": "2. Check the Line",
+      "body": "If it still won't drain, we camera the outlet pipe."
+     },
+     {
+      "h3": "3. Flat-Price Repairs",
+      "body": "Cracked walls, broken grates or a collapsed pipe get a price before any work."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Catch Basin Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "cubsfan",
+      "url": null,
+      "text": "J Blanton came in in short notice to complete a job that needed to be done right away. The technician was thorough, answered all of my questions, and recommended some preventative steps we could take going forward. Job well done!"
+     },
+     {
+      "name": "Justin Jackson",
+      "url": null,
+      "text": "Unbelievable service and knowledge! Took the time to break down the issue and explain in a way where I felt comfortable moving forward. The work was done with no issues and they even filled me in on some work that would be needed in the future. All of this, and I only called to schedule two days before!"
+     },
+     {
+      "name": "Brynn Dumalski",
+      "url": null,
+      "text": "George came and solved our problems right away. They are a full service plumbing company. It was a relief to know that our problem would be solved. He’s also great with dogs."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Catch Basin Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How often should I have my catch basin cleaned?",
+      "preview": "At least once a year, ideally after the leaves fall.",
+      "answer": "At least once a year, ideally in late fall. If you have big trees nearby, a spring cleaning too keeps it ready for storm season."
+     },
+     {
+      "q": "Why does my catch basin overflow even when the grate is clear?",
+      "preview": "The sump is full or the outlet pipe is blocked.",
+      "answer": "The bottom of the basin is probably full of silt, or the outlet pipe is clogged or broken. A cleaning and a camera look at the outlet will find it."
+     },
+     {
+      "q": "Is the catch basin in my yard the city's responsibility?",
+      "preview": "Usually not, if it's on your property and drains your yard.",
+      "answer": "If it's on your property and handles your yard or driveway, it's usually yours to maintain. Basins in city streets are usually the city's."
+     },
+     {
+      "q": "Can a broken catch basin cause basement water?",
+      "preview": "Yes, by sending surface water toward the foundation.",
+      "answer": "Yes. When a basin can't drain, water pools and soaks into the soil next to the house. That adds load to your [sump pump](/elgin/sump-pumps) and can find its way through the walls."
+     },
+     {
+      "q": "Can a catch basin connect to my sump pump discharge?",
+      "preview": "Sometimes. It depends on where the basin drains.",
+      "answer": "Sometimes. If the basin drains to a storm line with enough capacity, the sump discharge can connect to it. We'll check before tying them together."
+     },
+     {
+      "q": "How much does catch basin repair cost in Elgin?",
+      "preview": "It depends on what's needed. You get a flat price first.",
+      "answer": "It depends on whether it needs cleaning, a new grate, wall repair or work on the outlet pipe. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Yard That Drains?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Catch Basin Cleaning and Repair in Elgin, IL",
+   "serviceType": "Catch Basin",
+   "url": "https://jblantonplumbing.com/elgin/catch-basin",
+   "description": "Catch basin cleaning and repair in Elgin, IL. We clear silt and leaves, fix broken basins and outlet pipes and get yard water draining again.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Catch Basin Cleaning & Repair in Elgin, IL",
+ "metaDescription": "Catch basin cleaning and repair in Elgin, IL. We clear silt and leaves, fix broken basins and outlet pipes and get yard water draining again."
+}

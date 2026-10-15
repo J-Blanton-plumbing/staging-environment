@@ -1,0 +1,318 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Geneva, IL",
+   "sub": "A clay lateral under a Victorian near the Fox River, a sag under a newer west side home or a backup that keeps coming back. We camera the line, show you the problem and give you a flat price for the repair before anything starts. Our office is on Campbell Street, close to downtown Geneva.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Geneva Sewer Line Needs Repair",
+    "intro": "These are signs of a damaged pipe, not just a clog:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "The Basement Drain Backs Up Again and Again",
+      "body": "If a cleared line backs up within months, something in the pipe is catching debris."
+     },
+     {
+      "h3": "Gurgling From the Lowest Fixtures",
+      "body": "A basement shower or floor drain that bubbles when upstairs fixtures run."
+     },
+     {
+      "h3": "A Depression Over the Line",
+      "body": "Soil settling into a broken section leaves a dip in the lawn or walk."
+     },
+     {
+      "h3": "Damage Seen on Camera",
+      "body": "Cracks, roots, offset joints or a sag."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Geneva",
+    "intro": "Geneva's homes range from the 1840s to today. About 1 in 10 was built before 1940, and more than 4 in 10 after 1990.",
+    "items": [
+     {
+      "h3": "19th-Century Homes by the River",
+      "body": "Most houses in the Central Geneva Historic District were built between 1840 and 1900. Lines that old are usually clay, often repaired in pieces over the decades, and every joint is a way in for roots."
+     },
+     {
+      "h3": "Old Trees on Historic Streets",
+      "body": "The tree-lined blocks near downtown are beautiful, and the roots under them go straight for sewer joints."
+     },
+     {
+      "h3": "Mid-Century and 1970s Lines",
+      "body": "Homes between the historic core and the newer subdivisions often have older materials that are now close to 50 years old or more."
+     },
+     {
+      "h3": "Settling Under Newer Homes",
+      "body": "West side homes from the 1990s and 2000s have PVC lines, but sections can sag where the soil settled after construction."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Geneva",
+    "intro": "From our Campbell Street office, sewer work always starts with the camera.",
+    "steps": [
+     {
+      "h3": "1. Record the Line",
+      "body": "We camera it from the cleanout to the main and mark every problem's distance and depth."
+     },
+     {
+      "h3": "2. Size the Fix to the Damage",
+      "body": "A spot repair for one section, lining or replacement for a failing line, with the footage to back it up."
+     },
+     {
+      "h3": "3. A Flat Price You Approve",
+      "body": "Before any digging or lining."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/geneva/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/geneva/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "Historic Geneva lots often have mature trees, brick walks and garden walls over the sewer path. The camera tells us which method protects them."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Patrick Schulze",
+      "url": null,
+      "text": "Was a major bit of sewer repair, but could not have been more pleased with the professionalism and congeniality of Richard and his team. They explained every step of the process as it was being done, and were more than happy to answer questions."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "My home is in Geneva's historic district. How old is my sewer line?",
+      "preview": "Possibly as old as the house, with patches over the years.",
+      "answer": "It could be original clay pipe or a mix of sections replaced over the decades. A [camera inspection](/geneva/video-camera-sewer-inspections) shows exactly what's down there before you spend anything."
+     },
+     {
+      "q": "Can you repair a sewer line without disturbing my landscaping?",
+      "preview": "Often, with trenchless methods.",
+      "answer": "Often. [Trenchless repair](/geneva/trenchless-sewer-repair) works through small openings, so mature trees, brick walks and garden beds can usually stay in place."
+     },
+     {
+      "q": "Should I fix the sewer line before remodeling my basement?",
+      "preview": "Yes. Check it on camera before the new floor goes in.",
+      "answer": "Yes. If you're finishing or remodeling a basement in an older Geneva home, camera the line and the drains under the floor first. Fixing a broken pipe before the new floor goes in costs far less than tearing it up later."
+     },
+     {
+      "q": "Who is responsible for my sewer line?",
+      "preview": "Usually the owner, from the building to the main.",
+      "answer": "Usually the property owner, from the building to the public main. If the problem is in the main, we'll tell you."
+     },
+     {
+      "q": "How much does sewer line repair cost in Geneva?",
+      "preview": "That depends on the damage and the method. You'll approve a flat price first.",
+      "answer": "It depends on what the camera finds, how deep and long the damaged section is, the method and what's on top of it. You'll see and approve a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Geneva, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/geneva/sewer-repair",
+   "description": "Sewer line repair in Geneva, IL, from 1800s clay pipe by the river to newer west side lines. Camera first and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Geneva, IL",
+ "metaDescription": "Sewer line repair in Geneva, IL, from 1800s clay pipe by the river to newer west side lines. Camera first and a flat price before work."
+}

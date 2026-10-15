@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Trenchless Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Trenchless Sewer Repair in Elgin, IL",
+   "sub": "Replacing a sewer line used to mean a trench from the house to the street. Today most Elgin lines can be lined or replaced through small openings. We camera the line first, then give you a flat price for the method that fits. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/trenchless-sewer-liner-prep.webp",
+    "alt": "Two J. Blanton plumbers pouring resin into a sewer liner bag to prepare a trenchless pipe lining"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-trenchless",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Basics",
+    "h2": "What Is Trenchless Sewer Repair?",
+    "body": "Trenchless sewer repair, also called no-dig sewer repair, fixes a damaged pipe without digging a trench along its full length. Instead of opening up your yard from the house to the street, we work through one or two access points and repair the pipe from the inside or replace it in place. There are two main methods: cured-in-place pipe (CIPP) lining and pipe bursting. Both fix the line underground, so what's above it stays untouched.",
+    "img": {
+     "src": "/images/city-services-v2/trenchless-sewer-repair-setup.webp",
+     "alt": "Two J. Blanton plumbers setting up sewer camera and cable equipment beside a home's foundation before a trenchless sewer repair"
+    }
+   },
+   {
+    "type": "local",
+    "id": "why-trenchless-elgin",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Trenchless Works Well in Elgin",
+    "intro": "Elgin's older neighborhoods are where trenchless repair saves the most.",
+    "items": [
+     {
+      "h3": "Historic Lots and Old Trees",
+      "body": "Narrow lots near downtown have big trees, old walks and garages over the sewer path. Lining keeps them in place."
+     },
+     {
+      "h3": "Whole Lines With Open Joints",
+      "body": "When roots have opened most of the joints in a clay line, a liner seals all of them in one job."
+     },
+     {
+      "h3": "Mixed Pipe From Old Repairs",
+      "body": "Lines patched with different materials over the years can often be lined end to end, which gives you one continuous pipe."
+     },
+     {
+      "h3": "Less Disruption on Busy Streets",
+      "body": "Fewer and smaller openings mean less impact on the parkway, the sidewalk and your neighbors."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "when-trenchless-applies",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Know Your Options",
+    "h2": "When Trenchless Is the Right Call",
+    "intro": "The camera decides:",
+    "head": [
+     "Line Condition",
+     "Best Approach",
+     "Why"
+    ],
+    "rows": [
+     [
+      "Clay with roots and cracks, still round",
+      "Pipe lining",
+      "Seals every joint without a trench"
+     ],
+     [
+      "Too damaged to line, path open",
+      "Pipe bursting",
+      "Pulls new pipe through the old path"
+     ],
+     [
+      "One low or broken section",
+      "Spot repair, then lining if needed",
+      "Fixes the sag so the rest can be lined"
+     ],
+     [
+      "Fully collapsed",
+      "Excavation",
+      "Nothing left to line or burst through"
+     ]
+    ],
+    "note": "We show you the footage behind every recommendation."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Trenchless starts with knowing exactly where the damage is.",
+    "steps": [
+     {
+      "h3": "1. Clean and Record",
+      "body": "We clear the line and record it, with distances to every problem."
+     },
+     {
+      "h3": "2. Plan Around Your Lot",
+      "body": "We pick access points that avoid trees, walks and the driveway where we can."
+     },
+     {
+      "h3": "3. One Price, Final Camera",
+      "body": "A flat price before work, and a last camera pass to show the new pipe."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/sewer-excavation-trench.webp",
+     "alt": "Traditional sewer excavation with a trench dug across the yard down to the damaged pipe, the kind of dig trenchless repair avoids"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Trenchless Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "Jeffrey Paddock",
+      "url": null,
+      "text": "We had a sewer liner installed yesterday by Mason Lanier & his crew from J. Blanton Plumbing. They were on time, worked efficiently & diligently to complete all the work in difficult weather conditions. We are very pleased to have this work completed & impressed with Mason & Co."
+     },
+     {
+      "name": "Christopher C.",
+      "url": null,
+      "text": "The ENG team did an amazing job installing a liner on our sewer line. It was a very technical job that required a full days work, but they managed wonderfully despite the unexpected snow and inclement weather conditions. Just as important, they were very kind through the process. Thank you!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Trenchless Sewer Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "Can an old clay line under a historic home be lined?",
+      "preview": "Often, yes, if it's still holding its shape.",
+      "answer": "Often, yes. If the camera shows the pipe is still round and open, a liner can go in and seal every joint. Badly broken or collapsed sections may need a spot repair first."
+     },
+     {
+      "q": "How long does a liner last?",
+      "preview": "Decades. It's a seamless pipe inside the old one.",
+      "answer": "Liners are designed to last for decades. Once cured, it's a seamless pipe with no joints for roots to enter."
+     },
+     {
+      "q": "How long does a trenchless repair take?",
+      "preview": "Many are done in a day or two.",
+      "answer": "Many residential jobs are done in a day or two, depending on length and how much prep the line needs."
+     },
+     {
+      "q": "Will lining reduce my pipe size?",
+      "preview": "Slightly, but it usually flows as well or better.",
+      "answer": "Slightly. The liner adds a thin wall, but its smooth surface with no joints or scale usually carries water as well as the old pipe or better."
+     },
+     {
+      "q": "How much does trenchless sewer repair cost in Elgin?",
+      "preview": "It depends on the line and method. You get a flat price first.",
+      "answer": "It depends on how much of the line needs work, the depth, the method and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Without the Trench?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Trenchless Sewer Repair in Elgin, IL",
+   "serviceType": "Trenchless Sewer Repair",
+   "url": "https://jblantonplumbing.com/elgin/trenchless-sewer-repair",
+   "description": "Trenchless sewer repair in Elgin, IL. Lining and pipe bursting that save your yard, trees and driveway. Camera first and a flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Trenchless Sewer Repair in Elgin, IL",
+ "metaDescription": "Trenchless sewer repair in Elgin, IL. Lining and pipe bursting that save your yard, trees and driveway. Camera first and a flat price. Call 24/7."
+}

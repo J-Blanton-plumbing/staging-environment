@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Gas Logs in Algonquin, IL",
+   "sub": "A builder fireplace that won't light, a pilot that keeps dropping out or new gas logs for a fireplace you never use. Our plumbers are licensed for gas work and repair, service and install gas fireplaces and logs across Algonquin. From our office on Esplanade Drive.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Algonquin Fireplace Ready for Winter?",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Won't Light the First Cold Night",
+      "body": "Debris in the pilot after a summer off."
+     },
+     {
+      "h3": "The Pilot Won't Stay Lit",
+      "body": "A worn thermopile or thermocouple."
+     },
+     {
+      "h3": "The Glass Turns Black",
+      "body": "Dirty burner, logs out of place or a vent issue."
+     },
+     {
+      "h3": "You Smell Gas",
+      "body": "Leave first. Call Nicor Gas or 911 from outside."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Repair, Service and Gas Logs",
+    "intro": "From repair to upgrades:",
+    "steps": [
+     {
+      "h3": "Repairs",
+      "body": "Pilots, igniters, thermopiles, valves, remotes and wall switches."
+     },
+     {
+      "h3": "Yearly Service",
+      "body": "Cleaning, log placement, leak check and vent inspection."
+     },
+     {
+      "h3": "Gas Log Installation",
+      "body": "Gas logs for a wood fireplace, with the gas line run and tested. See [gas line installation](/algonquin/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "algonquin-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Fireplaces in Algonquin Homes",
+    "intro": "Gas fireplaces were a common feature in Algonquin homes built in the 1990s and 2000s.",
+    "items": [
+     {
+      "h3": "Builder Fireplaces at 17 to 36 Years",
+      "body": "Original pilots, valves and thermopiles wear out, but most parts are still available."
+     },
+     {
+      "h3": "Wood Fireplaces Going Gas",
+      "body": "Homeowners who never use a wood fireplace often switch to gas logs for push-button heat."
+     },
+     {
+      "h3": "Vent Caps Outside",
+      "body": "Direct-vent fireplaces vent through a cap on the outside wall. Snow and nests can block it."
+     },
+     {
+      "h3": "Carbon Monoxide Safety",
+      "body": "Keep a working CO detector on every level."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Tested before we leave.",
+    "steps": [
+     {
+      "h3": "1. Licensed for Gas Work",
+      "body": "Gas work should be done by a licensed pro, and ours are trained for it."
+     },
+     {
+      "h3": "2. Flat Price First",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Test-Fired",
+      "body": "Leak-checked and run until the flame is steady."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Algonquin Homeowners",
+    "items": [
+     {
+      "q": "Can you install gas logs in my wood-burning fireplace?",
+      "preview": "Yes, if the chimney is sound.",
+      "answer": "Yes. We run the gas line, install the logs and valve and test everything. The chimney needs to be in good shape and drawing well."
+     },
+     {
+      "q": "How often should my gas fireplace be serviced?",
+      "preview": "Once a year, in early fall.",
+      "answer": "Once a year, ideally in September or October."
+     },
+     {
+      "q": "Why won't my fireplace stay lit?",
+      "preview": "Usually a weak thermopile or thermocouple.",
+      "answer": "Usually a thermopile or thermocouple that can't hold the gas valve open anymore. It's a common, fixable repair."
+     },
+     {
+      "q": "What if I smell gas near the fireplace?",
+      "preview": "Leave and call Nicor Gas or 911 from outside.",
+      "answer": "Leave without touching switches. Call Nicor Gas or 911 from outside, then call us once it's safe."
+     },
+     {
+      "q": "What does gas fireplace repair cost in Algonquin?",
+      "preview": "It depends on what failed. The price comes first.",
+      "answer": "It depends on the part and the fireplace model. We quote a flat rate before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Algonquin",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/algonquin/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/algonquin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/algonquin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/algonquin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry when the Fox River runs high.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/algonquin/water-filtration-systems",
+      "desc": "Water testing and filtration systems for homes on Algonquin's village well water.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/algonquin/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/algonquin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Warm, Safe Fireplace?",
+    "body": "Our Algonquin office is at 2390 Esplanade Dr, Suite 200F, and our phone line is open 24/7.",
+    "communities": "We also serve [Lake in the Hills](/lake-in-the-hills), [Crystal Lake](/crystal-lake), [Cary](/cary), [Huntley](/huntley), [Barrington Hills](/barrington-hills), [Prairie Grove](/prairie-grove) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Gas Logs in Algonquin, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/algonquin/gas-fireplace",
+   "description": "Gas fireplace repair, service and gas log installation in Algonquin, IL. Licensed for gas work and test-fired before we leave. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Algonquin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/algonquin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2390 Esplanade Dr, Suite 200F",
+     "addressLocality": "Algonquin",
+     "addressRegion": "IL",
+     "postalCode": "60102",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Algonquin, IL",
+    "Lake in the Hills, IL",
+    "Crystal Lake, IL",
+    "Cary, IL",
+    "Huntley, IL",
+    "Barrington Hills, IL",
+    "Prairie Grove, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair & Gas Logs in Algonquin, IL",
+ "metaDescription": "Gas fireplace repair, service and gas log installation in Algonquin, IL. Licensed for gas work and test-fired before we leave. Call 24/7."
+}

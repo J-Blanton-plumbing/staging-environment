@@ -1,0 +1,284 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Repair and Installation in Elgin, IL",
+   "sub": "A disposal that hums and won't spin, drips into the cabinet or makes a grinding noise you've never heard before. We fix disposals when it makes sense and install new ones when it doesn't, with a flat price first. From our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Common Garbage Disposal Problems in Elgin Kitchens",
+    "intro": "Our most common disposal calls:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Hum and No Spin",
+      "body": "Something's jammed. Switch it off and keep your hands out of the chamber."
+     },
+     {
+      "h3": "Dead Silence",
+      "body": "Press the reset button underneath. No luck? The motor or wiring is the problem."
+     },
+     {
+      "h3": "A Drip in the Cabinet",
+      "body": "From the sink flange or a hose is a repair. From the housing means replacement."
+     },
+     {
+      "h3": "Metal-on-Metal Grinding",
+      "body": "A spoon or bottle cap in the chamber, or worn parts inside."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Elgin Homes",
+    "intro": "Here's what we see most in Elgin kitchens.",
+    "items": [
+     {
+      "h3": "First Disposal in an Older Kitchen",
+      "body": "Some kitchens in Elgin's older homes never had one. We check the drain size, the dishwasher connection and the power under the sink before quoting."
+     },
+     {
+      "h3": "Original Units in Newer Homes",
+      "body": "A west side home from the 1990s or 2000s may be on its first or second disposal. Most last about 8 to 15 years."
+     },
+     {
+      "h3": "Drain Lines Behind the Disposal",
+      "body": "A disposal that drains slowly often means the line behind it is coated with grease. We check it while we're there."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Quick, clean and priced first.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, leak, reset or motor."
+     },
+     {
+      "h3": "2. One Price",
+      "body": "Repair or replace, a flat number before we start."
+     },
+     {
+      "h3": "3. Test the Whole Sink",
+      "body": "Disposal, dishwasher drain and every connection checked."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     },
+     {
+      "name": "Doug Herrera",
+      "url": null,
+      "text": "Ty did great work and took the time to answer all our questions. Bonus: Very pet friendly! Was great with Darcy!"
+     },
+     {
+      "name": "Hank Strickler",
+      "url": null,
+      "text": "Andrew A and Dron did a great job. They replaced my trash disposal quickly and effectively, and were good with my dog. Thanks!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "How do I unjam my garbage disposal?",
+      "preview": "Turn off the power, then use the hex key on the bottom.",
+      "answer": "Turn off the switch and unplug it or shut off the breaker. Many units have a hex socket on the bottom: turn it back and forth with the wrench that came with it. Press the reset button and try again. If it's still stuck, call us."
+     },
+     {
+      "q": "Repair or replace my disposal?",
+      "preview": "Jams and loose connections are repairs. A leaking housing or dead motor means replace.",
+      "answer": "A jam, a tripped reset or a loose connection can be fixed. A disposal leaking from its housing or with a burned-out motor needs replacing."
+     },
+     {
+      "q": "What shouldn't go down the disposal?",
+      "preview": "Grease, bones, fibrous scraps, coffee grounds, eggshells, rice and pasta.",
+      "answer": "Grease and oil, bones, fibrous scraps like celery and corn husks, coffee grounds, eggshells, rice and pasta."
+     },
+     {
+      "q": "Can you add a disposal to a sink that never had one?",
+      "preview": "Usually. We check the drain, dishwasher hookup and power first.",
+      "answer": "Usually. We check the drain size, the dishwasher connection and whether there's a switched outlet under the sink. If power is needed, we'll tell you before the install."
+     },
+     {
+      "q": "How much does garbage disposal installation cost in Elgin?",
+      "preview": "It depends on the unit and any changes. You get a flat price first.",
+      "answer": "It depends on the unit and whether plumbing or electrical changes are needed. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Disposal Working?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Repair and Installation in Elgin, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/elgin/garbage-disposal-installation-repair",
+   "description": "Garbage disposal repair and installation in Elgin, IL. Jams, leaks, dead motors and new installs, with a flat price before we start. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Repair & Installation in Elgin, IL",
+ "metaDescription": "Garbage disposal repair and installation in Elgin, IL. Jams, leaks, dead motors and new installs, with a flat price before we start. Call 24/7."
+}

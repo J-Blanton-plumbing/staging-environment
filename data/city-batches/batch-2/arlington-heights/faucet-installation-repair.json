@@ -1,0 +1,336 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Faucet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Faucet and Fixture Installation and Repair in Arlington Heights, IL",
+   "sub": "A kitchen faucet that drips all night, a bathroom sink with barely any flow or a new set of fixtures for a remodel. We repair and install faucets and fixtures across Arlington Heights, with a flat price before we start. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/faucet-installation-bathroom-sink.webp",
+    "alt": "J. Blanton plumber in branded red leather gloves installing a new chrome faucet on a white bathroom sink with an adjustable wrench"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Faucet Needs Repair or Replacement",
+    "intro": "Here's when to call:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Steady Drip",
+      "body": "A worn cartridge, washer or seal. On a good faucet, it's a quick repair."
+     },
+     {
+      "h3": "Water Under the Sink",
+      "body": "A loose supply line, a leaking shutoff valve or a failing drain connection."
+     },
+     {
+      "h3": "Weak Flow at One Tap",
+      "body": "A clogged aerator or cartridge. If every faucet is weak, it may be the pipes."
+     },
+     {
+      "h3": "Handles That Stick or Spin",
+      "body": "Worn parts inside the valve. Old faucets may need replacing if parts aren't made anymore."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-faucet",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Kitchen Faucets",
+    "h2": "Kitchen Faucet Repair and Installation",
+    "bodies": [
+     "We fix leaking, dripping and stiff kitchen faucets and install new ones, including pull-down sprayers, touchless models and filtered-water taps. In an Arlington Heights kitchen that hasn't been updated since the 1970s or 1980s, the faucet is often the first upgrade.",
+     "When we install a new faucet, we check the shutoff valves and supply lines under the sink. Old multi-turn valves often won't close fully or start dripping once they're moved. We replace them while the sink is already open, so you're not calling us back for a leak a week later."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-plumbing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Plumbing",
+    "h2": "Kitchen Plumbing Services",
+    "bodies": [
+     "Beyond the faucet, we handle sink drains, dishwasher connections, refrigerator and ice maker lines, disposals and gas lines for ranges. For a remodel, we move or add plumbing to fit the new layout, including island sinks.",
+     "Sink backing up? See [drain cleaning](/arlington-heights/drain-cleaning). Disposal humming? See [garbage disposal repair](/arlington-heights/garbage-disposal-installation-repair). Switching to a gas range? See [gas line installation](/arlington-heights/gas-line-installation)."
+    ],
+    "img": {
+     "src": "/images/city-services-v2/kitchen-sink-drain-plumbing.webp",
+     "alt": "Plumbing under a double kitchen sink: white PVC drain and P-trap, braided supply lines with chrome shutoff valves, and a garbage disposal"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "fixture-installation",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Fixture Installation",
+    "h2": "Plumbing Fixture Installation",
+    "bodies": [
+     "We install sinks, faucets, toilets, showerheads, tub fillers, laundry tubs and outdoor spigots, from a single swap to a full bathroom. Every install includes the connections, new shutoffs where needed and a leak check before we leave.",
+     "Bought your own fixtures? Send us the make and model and we'll confirm they'll fit your plumbing. For toilets, see [toilet installation](/arlington-heights/toilet-installation-repair). For showers, see [shower repair](/arlington-heights/shower-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-fixtures",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Local Knowledge",
+    "h2": "Faucets and Fixtures in Arlington Heights Homes",
+    "intro": "With most homes built between 1940 and 1989, fixture work here often turns up older plumbing behind the faucet.",
+    "items": [
+     {
+      "h3": "Galvanized Supply Lines",
+      "body": "In postwar homes, weak flow at a new faucet is often caused by old galvanized pipe in the wall, not the faucet. We'll tell you if that's what we see."
+     },
+     {
+      "h3": "Old Shutoffs Under Every Sink",
+      "body": "Valves from the 1950s through the 1980s tend to seize or drip once they're turned. We check them on every fixture job."
+     },
+     {
+      "h3": "Bathrooms Updated in Stages",
+      "body": "Many homes have one remodeled bath and one original. We match connections between old and new plumbing so everything seals properly."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A fixture job should be quick and tidy.",
+    "steps": [
+     {
+      "h3": "1. Repair When It Makes Sense",
+      "body": "A new cartridge often saves a good faucet. We'll say so."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Before any work, including any valves or lines that need replacing."
+     },
+     {
+      "h3": "3. Clean Work Area",
+      "body": "Cabinets and counters protected and cleaned up when we're done."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Faucet and Fixture Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     },
+     {
+      "name": "M Geula",
+      "url": null,
+      "text": "Clayton Griffel came and provided great same-day service on work of replacing a pipe and faucet connection. Clayton was courteous and attentive to the job. Definitely \"a good call\" to J. Blanton this time."
+     },
+     {
+      "name": "Nicole Rose",
+      "url": null,
+      "text": "Tony Z did a great job replacing leaky pipes under my kitchen sink. He checked throughly to make sure the issue was solved. The whole experience was positive. I recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Faucet and Fixture Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Why is the water pressure low at only one faucet?",
+      "preview": "Usually a clogged aerator or cartridge.",
+      "answer": "Usually a clogged aerator or a worn cartridge. Unscrew the aerator at the tip and rinse it. If that doesn't help, the cartridge or the supply line may be the issue. If several fixtures are weak, it's likely the pipes."
+     },
+     {
+      "q": "Can I buy my own faucet and have you install it?",
+      "preview": "Yes. Tell us the make and model and we'll confirm it fits.",
+      "answer": "Yes. Tell us the make and model when you call, and we'll make sure it fits your sink and plumbing before the visit."
+     },
+     {
+      "q": "Should I repair or replace my faucet?",
+      "preview": "A worn part on a good faucet is a repair. A corroded or failing faucet is a replacement.",
+      "answer": "If it's a quality faucet with a worn cartridge or seal, repair it. If the body is corroded, the finish is failing or parts aren't available, replacing it is the better value."
+     },
+     {
+      "q": "Can you replace several faucets in one visit?",
+      "preview": "Yes, and it often saves a second trip.",
+      "answer": "Yes. If several faucets are the same age and starting to drip, replacing them together saves time. You'll get one flat price for the whole job."
+     },
+     {
+      "q": "How much does faucet installation cost in Arlington Heights?",
+      "preview": "It depends on the faucet and what's under the sink. You get a flat price first.",
+      "answer": "It depends on the faucet, the condition of the valves and supply lines and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Drip?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Faucet and Fixture Installation and Repair in Arlington Heights, IL",
+   "serviceType": "Faucet Installation & Repair",
+   "url": "https://jblantonplumbing.com/arlington-heights/faucet-installation-repair",
+   "description": "Faucet and fixture repair and installation in Arlington Heights, IL. Kitchen, bath and laundry, with a flat price before we start. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Faucet & Fixture Repair in Arlington Heights, IL",
+ "metaDescription": "Faucet and fixture repair and installation in Arlington Heights, IL. Kitchen, bath and laundry, with a flat price before we start. Call 24/7."
+}

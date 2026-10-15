@@ -1,0 +1,293 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in Arlington Heights, IL",
+   "sub": "A sump pump that won't turn on, one that runs nonstop or a pit that fills faster than the pump can keep up. We repair and replace sump pumps and add battery backups across Arlington Heights, with a flat price before we start. From our office on East Central Road, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Don't wait for the next storm to find out:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Doesn't Kick On",
+      "body": "Pour a bucket of water in the pit. If the pump doesn't start, the float or motor has failed."
+     },
+     {
+      "h3": "It Runs and Runs",
+      "body": "A stuck float, a failed check valve or a pump too small for the water coming in."
+     },
+     {
+      "h3": "Loud Grinding or Rattling",
+      "body": "Worn bearings or debris in the impeller. The motor is on its way out."
+     },
+     {
+      "h3": "It's Past 7 to 10 Years",
+      "body": "Even a quiet pump wears out. Most last about that long, less if they run often."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Arlington Heights Basements",
+    "intro": "Heavy spring rain, snowmelt and summer storms put sump pumps across the area to the test. The July 2011 storm dropped almost 7 inches in just over three hours.",
+    "items": [
+     {
+      "h3": "Storms Knock Out Power",
+      "body": "The storms that fill your pit are the same ones that take down power lines. A battery backup pump keeps running when the main pump can't."
+     },
+     {
+      "h3": "Older Pits, Newer Basements",
+      "body": "Many homes from the 1950s and 1960s got a sump pit added later. If you've finished the basement since, the pump and pit may be too small for the job."
+     },
+     {
+      "h3": "Discharge Lines That Freeze",
+      "body": "A discharge line that's buried shallow or runs flat across the yard can freeze in January. We route it so it drains and add a freeze guard where needed."
+     },
+     {
+      "h3": "Sump Water Belongs Outside",
+      "body": "A pump tied into the sanitary sewer adds storm water to the line that can back up into your basement. We make sure yours discharges outdoors."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We test before we leave.",
+    "steps": [
+     {
+      "h3": "1. Find Out Why",
+      "body": "We check the pump, float, check valve and discharge before recommending anything."
+     },
+     {
+      "h3": "2. Repair or Replace, With a Backup Option",
+      "body": "A worn pump gets replaced. If you don't have a backup, we'll explain the options."
+     },
+     {
+      "h3": "3. Flat Price and a Real Test",
+      "body": "One price up front, and we fill the pit to prove it works."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible."
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "How often should I replace my sump pump?",
+      "preview": "Every 7 to 10 years for most homes, sooner if it runs a lot.",
+      "answer": "Most sump pumps last somewhere around 7 to 10 years, and less if they run often. Test yours before spring: pour a bucket of water in the pit and watch it turn on and shut off."
+     },
+     {
+      "q": "Do I need a battery backup sump pump?",
+      "preview": "If you have a finished basement or anything valuable down there, yes.",
+      "answer": "If your basement is finished or you store anything you care about down there, yes. Power outages and heavy rain tend to happen together, and a backup keeps pumping when the main pump can't."
+     },
+     {
+      "q": "Why does my sump pump run when it hasn't rained?",
+      "preview": "High groundwater, a stuck float or water cycling back through a bad check valve.",
+      "answer": "Groundwater can stay high for days after a storm or during snowmelt. If it runs constantly in dry weather, the float may be stuck or the check valve may be letting water fall back into the pit."
+     },
+     {
+      "q": "Where should my sump pump discharge?",
+      "preview": "Outside, well away from the foundation.",
+      "answer": "Outside, onto your yard or into a storm drain line, far enough from the house that it doesn't soak back in. It should never go into the sanitary sewer."
+     },
+     {
+      "q": "Can my sump pump discharge into the floor drain?",
+      "preview": "No. It should go outside.",
+      "answer": "No. Sending sump water into the floor drain adds storm water to the sewer, which is exactly what backs up in heavy rain. We'll reroute it outside."
+     },
+     {
+      "q": "How much does sump pump replacement cost in Arlington Heights?",
+      "preview": "It depends on the pump, pit and backup. You get a flat price first.",
+      "answer": "It depends on the pump, whether the pit or check valve needs work and whether you add a backup. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Basement That Stays Dry?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in Arlington Heights, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/arlington-heights/sump-pumps",
+   "description": "Sump pump repair, replacement and battery backups for Arlington Heights, IL basements. Tested before we leave, flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in Arlington Heights, IL",
+ "metaDescription": "Sump pump repair, replacement and battery backups for Arlington Heights, IL basements. Tested before we leave, flat price first. Call 24/7."
+}

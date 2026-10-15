@@ -1,0 +1,311 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Hydro Jetting",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Hydro Jetting in Elgin, IL",
+   "sub": "When a line keeps clogging after it's been rodded, the buildup on the pipe walls is the problem. Hydro jetting scrubs it out with high-pressure water. We look at the line on camera first and quote a flat price before we start, from our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+    "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Hydro Jetting?",
+    "body": "Hydro jetting clears a sewer line with a high-pressure water stream, fed through the same cleanout access point used for rodding. A specialized nozzle sprays water in every direction as it moves through the pipe, scouring grease, scale, and roots off the entire pipe wall instead of just cutting a path through the middle. It's the fix for buildup that keeps coming back after rodding, or for roots that have worked into the pipe joints. Rodding opens the line back up. Hydro jetting cleans it.",
+    "img": {
+     "src": "/images/city-services-v2/hydro-jetting-diagram.webp",
+     "alt": "Diagram showing how hydro jetting clears a residential sewer line, with a cross-section view of the underground pipe, jet nozzle, high-pressure water spray, and debris being flushed toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "when-you-need-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "When It Makes Sense",
+    "h2": "When Elgin Homes Need Hydro Jetting",
+    "intro": "We usually recommend jetting when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Rodding Isn't Lasting",
+      "body": "The line clears, then clogs again in a few months. The pipe walls are still coated."
+     },
+     {
+      "h3": "Grease Has Built Up in the Kitchen Line",
+      "body": "Grease hardens in layers. Jetting removes them instead of punching a hole."
+     },
+     {
+      "h3": "Old Cast Iron Is Scaled",
+      "body": "Jetting strips decades of rust scale so the pipe carries its full volume again."
+     },
+     {
+      "h3": "A Liner Is Next",
+      "body": "A liner bonds to clean pipe. Jetting is the first step of every lining job."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Hydro Jetting and Elgin's Older Lines",
+    "intro": "About 1 in 5 Elgin homes was built before 1940. Lines that old carry a lot of history inside them.",
+    "items": [
+     {
+      "h3": "Fine Roots After Rodding",
+      "body": "In east side clay lines, rodding cuts the main root mass but leaves fine roots at the joints. Jetting clears them so the line stays open longer."
+     },
+     {
+      "h3": "Kitchen Lines in Updated Older Homes",
+      "body": "A kitchen remodel doesn't replace the old drain behind the wall. Years of grease in that original line are a common jetting job."
+     },
+     {
+      "h3": "Busy West Side Households",
+      "body": "Large families in newer homes send a lot of grease and soap down the drain. Jetting resets lines that have narrowed over 20 or 30 years."
+     },
+     {
+      "h3": "Camera Before and After",
+      "body": "We confirm the pipe can handle the pressure first, then show you the clean line when we're done."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "what-happens-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "No jetting without looking first.",
+    "steps": [
+     {
+      "h3": "1. Inspect",
+      "body": "We camera the line for breaks or a collapse. Jetting a broken pipe can make it worse."
+     },
+     {
+      "h3": "2. Jet to the Main",
+      "body": "We clean the full line and set the pressure for clay, cast iron or PVC."
+     },
+     {
+      "h3": "3. Prove It",
+      "body": "A second camera pass shows the result. You get the price before any of it starts."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Hydro Jetting Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Connor Schickel",
+      "url": null,
+      "text": "I’ve used J Blanton multiple times. They have helped identify a pipe with root growth through their No Drip Club. Mike Perez has done a great job walking me through all the steps to get the root out of my pipe and had to work through some very tough turns to identify the roots. [...]"
+     },
+     {
+      "name": "Martin Laffey",
+      "url": null,
+      "text": "Dominic was great. He was knowledgeable and took great pride in his work. The jetting job he did could not have been done more thoroughly. He truly went above and beyond to make sure the sewer line was 100% clear. Thank you."
+     },
+     {
+      "name": "John Costouros",
+      "url": null,
+      "text": "Zachary did a great job clearing out our sewer line after a clog. He was very professional, friendly, and knowledgeable. I would highly recommend him and J. Blanton Plumbing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Hydro Jetting Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "Is hydro jetting better than rodding?",
+      "preview": "For buildup and returning roots, yes. For a simple clog, rodding is enough.",
+      "answer": "For a simple clog, rodding is fast and effective. For grease, scale or roots that keep coming back, jetting cleans the whole pipe wall and lasts longer."
+     },
+     {
+      "q": "Can jetting damage an old pipe?",
+      "preview": "Not a sound one. We camera it first to be sure.",
+      "answer": "Not a pipe that's in good condition. We inspect it on camera and set the pressure for the material. If a section is broken, we'll recommend a [repair](/elgin/sewer-repair) first."
+     },
+     {
+      "q": "How long does a jetting job take?",
+      "preview": "Usually a few hours, including the camera passes.",
+      "answer": "Most residential jobs take a few hours, including the camera inspection before and after."
+     },
+     {
+      "q": "Will jetting stop roots from coming back?",
+      "preview": "It slows them down. Lining stops them.",
+      "answer": "Jetting clears roots more completely than rodding, so they take longer to return. To stop them for good, the joints have to be sealed with a [trenchless liner](/elgin/trenchless-sewer-repair) or replaced."
+     },
+     {
+      "q": "How much does hydro jetting cost in Elgin?",
+      "preview": "It depends on the line and buildup. You get a flat price first.",
+      "answer": "It depends on the length of the line, access and how much buildup there is. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Line That Stays Clear?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Hydro Jetting in Elgin, IL",
+   "serviceType": "Hydro Jetting",
+   "url": "https://jblantonplumbing.com/elgin/hydro-jetting",
+   "description": "Hydro jetting in Elgin, IL. High-pressure water clears roots, grease and scale from sewer and drain lines. Camera first and a flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Hydro Jetting in Elgin, IL",
+ "metaDescription": "Hydro jetting in Elgin, IL. High-pressure water clears roots, grease and scale from sewer and drain lines. Camera first and a flat price. Call 24/7."
+}

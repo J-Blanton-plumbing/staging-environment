@@ -1,0 +1,317 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Arlington Heights, IL",
+   "sub": "Endless hot water and a heater that hangs on the wall instead of taking up the corner of the basement. We install, repair and descale tankless water heaters in Arlington Heights, and we'll tell you honestly if your home is a good fit. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Water Heater Works",
+    "body": "A tankless heater only heats water when you turn on a tap. Cold water runs through a heat exchanger, a gas burner or electric element heats it on the spot, and it flows to the fixture. There's no tank to keep hot all day, so you don't pay to reheat water you're not using, and you don't run out. The tradeoff is flow: each unit can only heat so many gallons per minute, so it has to be sized to how many fixtures you run at once.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless for Arlington Heights Homes",
+    "intro": "Neither is right for every home:",
+    "head": [
+     "",
+     "Tank Water Heater",
+     "Tankless Water Heater"
+    ],
+    "rows": [
+     [
+      "Hot water supply",
+      "Limited to the tank size",
+      "Continuous, limited by flow rate"
+     ],
+     [
+      "Space",
+      "Floor space in the basement",
+      "Mounted on a wall"
+     ],
+     [
+      "Lifespan",
+      "About 8 to 12 years",
+      "Often longer with regular descaling"
+     ],
+     [
+      "Upfront work",
+      "Usually a direct swap",
+      "May need a bigger gas line and new venting"
+     ],
+     [
+      "Maintenance",
+      "Yearly flush",
+      "Regular descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Arlington Heights Home?",
+    "intro": "Tankless is one of the most searched water heater upgrades in Arlington Heights. Here's what decides whether it works in your house.",
+    "items": [
+     {
+      "h3": "Gas Line Size",
+      "body": "Tankless units need a lot of gas when they fire. Many homes built in the 1950s through the 1980s have a gas line sized for a furnace and a 40-gallon tank. We check it and tell you if it needs upsizing."
+     },
+     {
+      "h3": "Venting Out of the Old Chimney",
+      "body": "Tankless heaters vent through the wall or roof with their own pipe, not the old masonry chimney. That frees the chimney but means planning a new vent path."
+     },
+     {
+      "h3": "Winter Water Temperature",
+      "body": "Incoming water is coldest in January. We size the unit so it still delivers enough hot water on the coldest mornings."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We'll tell you if tankless isn't right for your home.",
+    "steps": [
+     {
+      "h3": "1. Honest Fit Check",
+      "body": "Gas line, venting, water use and budget, before you commit."
+     },
+     {
+      "h3": "2. One Price for the Whole Job",
+      "body": "Unit, gas line, venting and haul-away of the old tank in one flat number."
+     },
+     {
+      "h3": "3. Set Up for the Long Run",
+      "body": "We install service valves so descaling is quick, and show you how the unit works."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "I B (Iza)",
+      "url": null,
+      "text": "Alex came out to provide a quote for a tankless water heater I wanted installed. He explained everything in so much detail, about the electric upgrade I would need, about how the heater will actually work 'in real life' (not just on paper). Then it turned out my electric couldn't support the tankless. [...]"
+     },
+     {
+      "name": "Mike Olsa",
+      "url": null,
+      "text": "We had our water heater leak and Kyle from J Blanton came and installed a tankless system in only a few hours. It works amazing and he was very fast and thorough. Thanks for the great job Kyle."
+     },
+     {
+      "name": "Jorge De La Vega",
+      "url": null,
+      "text": "Christian was fantastic l! He’s been here a few times for no drip club visits and he’s the man! Did our tankless water heater maintenance and was friendly and efficient, highly recommend 🙌🏼"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "Do tankless water heaters need maintenance?",
+      "preview": "Yes. Regular descaling keeps the heat exchanger clean.",
+      "answer": "Yes. Minerals in the water build up in the heat exchanger over time. Descaling on a regular schedule keeps it efficient and protects the warranty. We install service valves to make that easy."
+     },
+     {
+      "q": "Can one tankless unit handle my whole house?",
+      "preview": "Often, if it's sized for the number of fixtures you run at once.",
+      "answer": "Often, yes. A properly sized unit handles a couple of showers and a dishwasher at once. Very large homes or big soaking tubs may need a larger unit or two."
+     },
+     {
+      "q": "Why does my tankless heater give me cold water bursts?",
+      "preview": "Often a flow or scale issue, or water use below the activation rate.",
+      "answer": "Short bursts of cold water can come from scale in the heat exchanger, a dirty inlet filter or a tap opened so little that the unit doesn't fire. A service visit usually sorts it out."
+     },
+     {
+      "q": "Is tankless worth it?",
+      "preview": "If you want endless hot water and plan to stay, it can be.",
+      "answer": "It can be, especially if you run out of hot water now, plan to stay in the home and want the basement floor space back. If your gas line and venting need major work, a high-efficiency tank may be the better value. We'll lay out both."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Arlington Heights?",
+      "preview": "It depends on the unit, gas line and venting. You get a flat price first.",
+      "answer": "It depends on the unit size, whether the gas line needs upsizing and the venting path. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/arlington-heights/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up and flood when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Hot Water That Doesn't Run Out?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Arlington Heights, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/arlington-heights/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Arlington Heights, IL. Honest advice on whether tankless fits your home. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Arlington Heights, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Arlington Heights, IL. Honest advice on whether tankless fits your home. Call 24/7."
+}

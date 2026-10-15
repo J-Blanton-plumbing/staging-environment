@@ -1,0 +1,305 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Geneva, IL",
+   "sub": "A basement bathroom that won't drain, an alarm that won't quit or a sewer smell downstairs. We repair and replace ejector pumps across Geneva, with a flat price you approve before we open the basin. From our office on Campbell Street, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Does an Ejector Pump Do?",
+    "body": "An ejector pump sits in a sealed basin in the basement floor. Basement fixtures below the sewer line, like a toilet, shower, laundry or bar sink, drain into it. When it fills, the pump lifts the wastewater up to the main sewer line. In a home with an [overhead sewer system](/geneva/overhead-sewer-systems), every basement drain depends on it.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Geneva Ejector Pump Failing?",
+    "intro": "Stop using basement fixtures and call if:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Beeping or Buzzing Alarm",
+      "body": "The high-water alarm means wastewater is rising in the basin. Stop using basement fixtures until it's checked."
+     },
+     {
+      "h3": "The Basement Shower Drains Slowly",
+      "body": "Water backing up in the lowest fixture first is a classic sign the pump isn't emptying the basin."
+     },
+     {
+      "h3": "A Thump After Every Cycle",
+      "body": "A loud bang when the pump shuts off often means a worn check valve letting water slam back down."
+     },
+     {
+      "h3": "Wet Floor Around the Lid",
+      "body": "A failed gasket or a cracked basin can let sewage seep onto the floor."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "geneva-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Geneva Basements",
+    "intro": "Two kinds of Geneva homes rely on ejector pumps the most.",
+    "items": [
+     {
+      "h3": "Bathrooms Added to Old Stone Basements",
+      "body": "Historic homes near the Fox River often got a basement bathroom decades after they were built. Breaking into an old foundation floor for a basin isn't easy, and some of those installs used pumps that were too small or vented poorly."
+     },
+     {
+      "h3": "Lower Levels Built After 1990",
+      "body": "More than 4 in 10 Geneva homes were built in 1990 or later, many with a finished lower level and a full bath. In many of those homes, the original ejector pump is now reaching the end."
+     },
+     {
+      "h3": "Homes Converted to Overhead Sewers",
+      "body": "After storms like September 2008, some homeowners converted to an [overhead sewer system](/geneva/overhead-sewer-systems). In those homes, every basement drain depends on the ejector."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "An ejector failure is a sewage problem.",
+    "steps": [
+     {
+      "h3": "1. Call Any Time",
+      "body": "Our line is open 24/7."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Float or check valve, repair. Motor, a new pump."
+     },
+     {
+      "h3": "3. A Price You Approve",
+      "body": "Before we open the basin."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Dan McCarthy",
+      "url": null,
+      "text": "Professional and on time. Did a good job replacing an ejector pump and a sump pump. Highly recommend and Derek was great to work with!"
+     },
+     {
+      "name": "Mark Czarnecki",
+      "url": null,
+      "text": "Greg did an outstanding job replacing our sump pumps. Always professional and courteous. Well done😃"
+     },
+     {
+      "name": "Debra Haslett",
+      "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+      "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Geneva Homeowners",
+    "items": [
+     {
+      "q": "Why does my ejector pump bang when it shuts off?",
+      "preview": "Usually a worn check valve.",
+      "answer": "A loud bang or thump when the pump stops usually means the check valve isn't closing smoothly. Replacing it is a common, quick repair."
+     },
+     {
+      "q": "Is it safe to use the upstairs bathrooms while the alarm is on?",
+      "preview": "Usually, yes. Upstairs fixtures typically drain by gravity.",
+      "answer": "Usually. In most homes, upstairs fixtures drain directly to the sewer by gravity. Basement fixtures drain to the basin, so stop using those. If you have an overhead sewer, ask us when you call."
+     },
+     {
+      "q": "Can a basement bathroom in an old house be upgraded?",
+      "preview": "Yes. We can install a properly sized pump and basin.",
+      "answer": "Yes. If your existing ejector is undersized or poorly vented, we replace it with a pump and basin sized for your fixtures."
+     },
+     {
+      "q": "What can go down a toilet connected to an ejector pump?",
+      "preview": "Only toilet paper.",
+      "answer": "Only toilet paper. Wipes, paper towels and grease clog the pump and shorten its life."
+     },
+     {
+      "q": "What does ejector pump replacement cost in Geneva?",
+      "preview": "It depends on the pump, basin and access. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the basin, the check valve and venting and how easy it is to reach. You'll approve a flat-rate price before we open the basin."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Geneva",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/geneva/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/geneva/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/geneva/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/geneva/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/geneva/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/geneva/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/geneva/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ejector Alarm Going Off? Call Us.",
+    "body": "Our Geneva office is at 115 Campbell St, Suite 201C, and our phone line is open 24/7.",
+    "communities": "We also serve [St. Charles](/st-charles), [Campton Hills](/campton-hills), [Sugar Grove](/sugar-grove), [Lily Lake](/lily-lake) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Geneva, IL",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/geneva/ejector-pump",
+   "description": "Ejector pump repair and replacement for Geneva, IL basement bathrooms and overhead sewers. Alarm going off? Call 24/7, flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Geneva",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/geneva",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "115 Campbell St, Suite 201C",
+     "addressLocality": "Geneva",
+     "addressRegion": "IL",
+     "postalCode": "60134",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Geneva, IL",
+    "St. Charles, IL",
+    "Campton Hills, IL",
+    "Sugar Grove, IL",
+    "Lily Lake, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair in Geneva, IL",
+ "metaDescription": "Ejector pump repair and replacement for Geneva, IL basement bathrooms and overhead sewers. Alarm going off? Call 24/7, flat price first."
+}

@@ -1,0 +1,301 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Catch Basin",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Catch Basin Cleaning and Repair in Arlington Heights, IL",
+   "sub": "When your yard or driveway turns into a pond after every rain, the catch basin is usually full or broken. We clean out the silt and leaves, repair what's damaged and make sure water drains away from your foundation. From our office on East Central Road.",
+   "img": {
+    "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+    "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-a-catch-basin",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Does a Catch Basin Do?",
+    "body": "A catch basin is a box in the ground with a grate on top. It collects rain from your yard, driveway or downspouts and sends it to a storm sewer or drainage line. The bottom of the basin is lower than the outlet pipe, so dirt and leaves settle there instead of washing into the line. Over time that sump fills up. Once it's full, debris goes into the outlet pipe, the pipe clogs and water starts pooling on the surface.",
+    "img": {
+     "src": "/images/city-services-v2/catch-basin-diagram.webp",
+     "alt": "Diagram of a catch basin showing the inlet grate, water line, sediment settling in the sump and the outlet pipe carrying water away"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Catch Basin Needs Attention",
+    "intro": "Call us when you notice:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Standing Water After Rain",
+      "body": "Water that sits around the grate for hours after a storm means the basin or pipe is clogged."
+     },
+     {
+      "h3": "A Grate Full of Leaves",
+      "body": "If the grate is covered, water can't get in at all. In fall, this happens fast under mature trees."
+     },
+     {
+      "h3": "Sinking Ground Around the Basin",
+      "body": "Soil washing into a cracked basin leaves a dip or hole next to it."
+     },
+     {
+      "h3": "Water Heading for the House",
+      "body": "When the basin can't take water, it runs where the yard slopes, which can be toward your foundation."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "arlington-heights-catch-basins",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Catch Basins in Arlington Heights Yards",
+    "intro": "Postwar lots in Arlington Heights are mostly flat, with mature trees and long driveways. That's a lot of leaves and runoff heading for one grate.",
+    "items": [
+     {
+      "h3": "Leaves From Mature Trees",
+      "body": "Neighborhoods built in the 1950s and 1960s have trees that drop a heavy load of leaves every fall. A basin that's clear in September can be packed by November."
+     },
+     {
+      "h3": "Flat Yards, Slow Drainage",
+      "body": "On a flat lot, water has nowhere to go if the basin is blocked. It sits in the yard and soaks into the ground next to the basement wall."
+     },
+     {
+      "h3": "Old Basins Wear Out",
+      "body": "Older brick and block basins crack and shift over decades. Soil washes in, and the basin fills faster each year."
+     },
+     {
+      "h3": "Part of a Dry Basement Plan",
+      "body": "A working catch basin keeps surface water away from the house, so your [sump pump](/arlington-heights/sump-pumps) doesn't have to work as hard."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the basin and the line behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean It Out",
+      "body": "We remove the silt, leaves and debris from the sump and clear the outlet pipe."
+     },
+     {
+      "h3": "2. Check the Line",
+      "body": "If water still won't drain, we camera the outlet pipe to find the clog or break."
+     },
+     {
+      "h3": "3. Repair With a Flat Price",
+      "body": "Cracked walls, a broken grate or a collapsed pipe get a flat-rate price before any work."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Catch Basin Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "cubsfan",
+      "url": null,
+      "text": "J Blanton came in in short notice to complete a job that needed to be done right away. The technician was thorough, answered all of my questions, and recommended some preventative steps we could take going forward. Job well done!"
+     },
+     {
+      "name": "Justin Jackson",
+      "url": null,
+      "text": "Unbelievable service and knowledge! Took the time to break down the issue and explain in a way where I felt comfortable moving forward. The work was done with no issues and they even filled me in on some work that would be needed in the future. All of this, and I only called to schedule two days before!"
+     },
+     {
+      "name": "Brynn Dumalski",
+      "url": null,
+      "text": "George came and solved our problems right away. They are a full service plumbing company. It was a relief to know that our problem would be solved. He’s also great with dogs."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Catch Basin Questions From Arlington Heights Homeowners",
+    "items": [
+     {
+      "q": "How often should a catch basin be cleaned?",
+      "preview": "At least once a year. Twice if you have big trees nearby.",
+      "answer": "At least once a year, ideally after the leaves fall. If your yard has mature trees, a spring and fall cleaning keeps it working through storm season."
+     },
+     {
+      "q": "Can I clean my catch basin myself?",
+      "preview": "You can clear the grate. Cleaning the sump and outlet takes the right tools.",
+      "answer": "You can and should keep the grate clear of leaves. Cleaning out the sump and clearing the outlet pipe takes a vacuum or a cable, which is where we come in."
+     },
+     {
+      "q": "Is the catch basin in my yard my responsibility?",
+      "preview": "If it's on your property and drains your yard, usually yes.",
+      "answer": "If it sits on your property and handles your yard or driveway, it's usually yours to maintain. Basins in village streets are maintained by the village. If you're not sure, we can tell you where it connects."
+     },
+     {
+      "q": "Why does my catch basin smell?",
+      "preview": "Standing water and rotting leaves in the sump.",
+      "answer": "Usually standing water and rotting leaves in the bottom of the basin. A cleaning fixes it. If it smells like sewage, the basin may be connected to a sanitary line, and that needs a closer look."
+     },
+     {
+      "q": "How much does catch basin repair cost in Arlington Heights?",
+      "preview": "It depends on the damage and the pipe. You get a flat price first.",
+      "answer": "It depends on whether it needs cleaning, a new grate, wall repair or work on the outlet pipe. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Arlington Heights",
+    "cards": [
+     {
+      "title": "Sump Pumps",
+      "href": "/arlington-heights/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/arlington-heights/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/arlington-heights/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/arlington-heights/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/arlington-heights/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/arlington-heights/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Yard That Drains?",
+    "body": "Our Arlington Heights office is at 1204 E. Central Road, Suite 3, and our phone line is open 24/7.",
+    "communities": "We also serve [Mount Prospect](/mount-prospect), [Rolling Meadows](/rolling-meadows), [Palatine](/palatine), [Buffalo Grove](/buffalo-grove), [Des Plaines](/des-plaines), [Schaumburg](/schaumburg) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Catch Basin Cleaning and Repair in Arlington Heights, IL",
+   "serviceType": "Catch Basin",
+   "url": "https://jblantonplumbing.com/arlington-heights/catch-basin",
+   "description": "Catch basin cleaning and repair in Arlington Heights, IL. We clear silt and leaves, fix damaged basins and get yard water draining again.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Arlington Heights",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/arlington-heights",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1204 E. Central Road, Suite 3",
+     "addressLocality": "Arlington Heights",
+     "addressRegion": "IL",
+     "postalCode": "60005",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Arlington Heights, IL",
+    "Mount Prospect, IL",
+    "Rolling Meadows, IL",
+    "Palatine, IL",
+    "Buffalo Grove, IL",
+    "Des Plaines, IL",
+    "Schaumburg, IL"
+   ]
+  }
+ },
+ "metaTitle": "Catch Basin Cleaning & Repair in Arlington Heights, IL",
+ "metaDescription": "Catch basin cleaning and repair in Arlington Heights, IL. We clear silt and leaves, fix damaged basins and get yard water draining again."
+}

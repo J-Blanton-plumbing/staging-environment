@@ -1,0 +1,313 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Catch Basin",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Catch Basin Cleaning and Repair in McHenry, IL",
+   "sub": "Standing water in the yard, a flooded driveway or a grate buried in leaves. We clean catch basins, repair damaged ones and clear the pipes they drain into. From our office on West Elm Street.",
+   "img": {
+    "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+    "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-a-catch-basin",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Does a Catch Basin Do?",
+    "body": "A catch basin is an underground box with a grate on top. It collects surface water from your yard, driveway or downspouts and sends it to a storm line or drainage outlet. The bottom of the box sits below the outlet pipe, so sediment and leaves settle out before the water leaves. When that sump fills, the outlet clogs and the water stays on the surface.",
+    "img": {
+     "src": "/images/city-services-v2/catch-basin-diagram.webp",
+     "alt": "Diagram of a catch basin showing the inlet grate, water line, sediment settling in the sump and the outlet pipe carrying water away"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Catch Basin Needs Service",
+    "intro": "Call when you see:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water That Won't Go Down",
+      "body": "Puddles around the grate long after the rain stops."
+     },
+     {
+      "h3": "A Covered Grate",
+      "body": "Leaves, mulch and grass clippings block water from getting in."
+     },
+     {
+      "h3": "Ground Sinking Near the Basin",
+      "body": "Soil washing into a crack in the basin wall."
+     },
+     {
+      "h3": "Water Heading for the House",
+      "body": "When the basin can't take it, water follows the slope."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mchenry-catch-basins",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Catch Basins in McHenry Yards",
+    "intro": "In McHenry, wet ground makes surface drainage more important.",
+    "items": [
+     {
+      "h3": "Saturated Ground in Wet Seasons",
+      "body": "Near the Fox River and the lakes, the soil can stay saturated for weeks. A blocked basin leaves water with nowhere to go."
+     },
+     {
+      "h3": "Low Lots in Newer Subdivisions",
+      "body": "Many subdivisions use yard and driveway basins to move water off flat or low lots."
+     },
+     {
+      "h3": "Sand and Grit From Winter",
+      "body": "Road salt, sand and grit wash into driveway basins every spring."
+     },
+     {
+      "h3": "Part of a Dry Basement Plan",
+      "body": "A working basin keeps surface water away from the foundation and takes load off your [sump pump](/mchenry/sump-pumps)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the basin and the line behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean It Out",
+      "body": "Silt, leaves and debris removed, outlet cleared."
+     },
+     {
+      "h3": "2. Check the Line",
+      "body": "If water still won't drain, we camera the outlet pipe."
+     },
+     {
+      "h3": "3. Flat-Price Repairs",
+      "body": "Cracked walls, grates or pipes priced before work."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Catch Basin Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "cubsfan",
+      "url": null,
+      "text": "J Blanton came in in short notice to complete a job that needed to be done right away. The technician was thorough, answered all of my questions, and recommended some preventative steps we could take going forward. Job well done!"
+     },
+     {
+      "name": "Justin Jackson",
+      "url": null,
+      "text": "Unbelievable service and knowledge! Took the time to break down the issue and explain in a way where I felt comfortable moving forward. The work was done with no issues and they even filled me in on some work that would be needed in the future. All of this, and I only called to schedule two days before!"
+     },
+     {
+      "name": "Brynn Dumalski",
+      "url": null,
+      "text": "George came and solved our problems right away. They are a full service plumbing company. It was a relief to know that our problem would be solved. He’s also great with dogs."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Catch Basin Questions From McHenry Homeowners",
+    "items": [
+     {
+      "q": "How often should a catch basin be cleaned?",
+      "preview": "At least once a year.",
+      "answer": "At least once a year, ideally in late fall. Yards with lots of trees or sandy runoff may need spring cleaning too."
+     },
+     {
+      "q": "Why does my catch basin stay full of water?",
+      "preview": "The outlet pipe is blocked or the ground is saturated.",
+      "answer": "Usually the outlet pipe is clogged or broken. In very wet seasons, high groundwater can also slow drainage. A cleaning and a camera look tell us which."
+     },
+     {
+      "q": "Who is responsible for a catch basin in my yard?",
+      "preview": "Usually the homeowner, if it drains your property.",
+      "answer": "If it's on your property and handles your yard or driveway, it's usually yours. Street basins belong to the city."
+     },
+     {
+      "q": "Can a blocked basin cause basement water?",
+      "preview": "Yes.",
+      "answer": "Yes. Water that pools near the house soaks into the soil and adds to what your sump pump has to handle."
+     },
+     {
+      "q": "How much does catch basin repair cost in McHenry?",
+      "preview": "It depends on the work. You get a flat price first.",
+      "answer": "It depends on whether it needs cleaning, a grate, wall repair or work on the outlet pipe. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in McHenry",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/mchenry/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mchenry/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/mchenry/sewer-repair",
+      "desc": "Tree roots, cracked pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mchenry/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mchenry/leak-repairs",
+      "desc": "Hidden leaks behind walls, under floors and around fixtures, found and fixed.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/mchenry/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mchenry/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Yard That Drains?",
+    "body": "Our McHenry office is at 3406 W Elm St, and our phone line is open 24/7.",
+    "communities": "We also serve [Johnsburg](/johnsburg), [Wonder Lake](/wonder-lake), [Ringwood](/ringwood), [Spring Grove](/spring-grove), [Lakemoor](/lakemoor), [Fox Lake](/fox-lake), [Island Lake](/island-lake), [Woodstock](/woodstock) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Catch Basin Cleaning and Repair in McHenry, IL",
+   "serviceType": "Catch Basin",
+   "url": "https://jblantonplumbing.com/mchenry/catch-basin",
+   "description": "Catch basin cleaning and repair in McHenry, IL. We clear silt and leaves, repair damaged basins and get yard and driveway water draining again.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - McHenry",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mchenry",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3406 W Elm St",
+     "addressLocality": "McHenry",
+     "addressRegion": "IL",
+     "postalCode": "60050",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "McHenry, IL",
+    "Johnsburg, IL",
+    "Wonder Lake, IL",
+    "Ringwood, IL",
+    "Spring Grove, IL",
+    "Lakemoor, IL",
+    "Fox Lake, IL",
+    "Island Lake, IL",
+    "Woodstock, IL"
+   ]
+  }
+ },
+ "metaTitle": "Catch Basin Cleaning & Repair in McHenry, IL",
+ "metaDescription": "Catch basin cleaning and repair in McHenry, IL. We clear silt and leaves, repair damaged basins and get yard and driveway water draining again."
+}

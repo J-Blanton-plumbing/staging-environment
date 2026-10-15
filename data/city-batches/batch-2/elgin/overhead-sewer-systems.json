@@ -1,0 +1,340 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewer Systems in Elgin, IL",
+   "sub": "If your floor drain fills every time a big storm moves through, an overhead sewer system lifts basement wastewater above the point where backups happen. We install them in Elgin homes from our office on North McLean Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Does Your Elgin Home Need an Overhead Sewer?",
+    "intro": "Consider it when:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Backups Follow Storms",
+      "body": "Water rises at the floor drain during heavy rain and drains away after."
+     },
+     {
+      "h3": "Your Line Checks Out Clean",
+      "body": "The camera shows no roots or breaks, and backups still happen."
+     },
+     {
+      "h3": "You've Been Through It Twice",
+      "body": "Once might be bad luck. Twice is a pattern."
+     },
+     {
+      "h3": "You're Finishing the Basement",
+      "body": "Protect it before the new floors go down."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "split",
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "In an overhead system, nothing in the basement drains directly into the sewer by gravity anymore. The floor drain and basement fixtures empty into a sealed pit. An [ejector pump](/elgin/ejector-pump) lifts the water to a pipe near the ceiling, a check valve keeps it from falling back and gravity carries it out above the level the sewer can reach. If the public sewer surcharges, there's no low opening for it to push through.",
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elgin-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Overhead Sewers in Elgin Basements",
+    "intro": "Overhead systems make the most sense in homes that rely on gravity basement drains.",
+    "items": [
+     {
+      "h3": "Historic Homes With Deep Basements",
+      "body": "Many older homes near downtown have basements well below street level. In heavy rain, the floor drain is the first place water appears."
+     },
+     {
+      "h3": "Big Storms Happen Here",
+      "body": "The July 2017 storms dropped more than 7 inches just south of Elgin over two days. Basements across the area flooded."
+     },
+     {
+      "h3": "Check the Line First",
+      "body": "We camera your line before recommending a conversion. If roots or a break are the cause, a [sewer repair](/elgin/sewer-repair) may be all you need."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Backflow Valve vs. Sump Pump",
+    "intro": "Each solves a different problem:",
+    "head": [
+     "",
+     "Sump Pump",
+     "Backflow Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "Problem it solves",
+      "Groundwater at the walls and floor",
+      "Sewage flowing back into the house",
+      "Storm backups through basement drains"
+     ],
+     [
+      "How it works",
+      "Pumps water out of a pit",
+      "A flap closes when flow reverses",
+      "Lifts basement wastewater above flood level"
+     ],
+     [
+      "Best for",
+      "Damp basements after rain",
+      "Homes where a passive valve is enough",
+      "Repeat backups and finished basements"
+     ]
+    ],
+    "note": "We'll tell you which ones your basement needs."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Every conversion starts with your line and your layout.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "So you don't pay for a system when a repair will do."
+     },
+     {
+      "h3": "2. A Layout for Your Basement",
+      "body": "Pit, pump and piping planned around finished space and old foundations."
+     },
+     {
+      "h3": "3. Flat Price, Water-Tested",
+      "body": "One price up front, and we test the system before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Stone",
+      "url": null,
+      "text": "Thank you to Scott and Payton for coming by and helping us out. They identified a sewer pipe problem that was worse than what we were expecting, they provided a solution to the problem that will help in the long run and we have confidence that the solution will solve the problem and that we will not have to worry about it in the future"
+     },
+     {
+      "name": "Markie Waymire",
+      "url": null,
+      "text": "Scott was so helpful and easy to work with! He was so patient and thorough in explaining our options! And Walter loved him!"
+     },
+     {
+      "name": "Brian T",
+      "url": null,
+      "text": "Mike P was super helpful and great at explaining the options we have for our sewer line."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Elgin Homeowners",
+    "items": [
+     {
+      "q": "Can an overhead sewer go in a 100-year-old basement?",
+      "preview": "Usually, yes. Older foundations just need more planning.",
+      "answer": "Usually, yes. Older basements can have thick stone or block walls and odd layouts, so we plan the pit location and pipe path carefully before quoting."
+     },
+     {
+      "q": "Does an overhead sewer stop groundwater?",
+      "preview": "No. That's a sump pump's job.",
+      "answer": "No. It stops sewer water from coming up through basement drains. Groundwater coming through walls or the floor needs a [sump pump](/elgin/sump-pumps)."
+     },
+     {
+      "q": "Will my basement bathroom still work?",
+      "preview": "Yes. It drains to the new pit.",
+      "answer": "Yes. Basement bathrooms, laundry and bar sinks all drain to the ejector pit, and the pump sends everything out overhead."
+     },
+     {
+      "q": "How long does the installation take?",
+      "preview": "Usually a few days.",
+      "answer": "Usually a few days, depending on the number of fixtures and how finished the basement is."
+     },
+     {
+      "q": "How much does an overhead sewer system cost in Elgin?",
+      "preview": "It depends on your basement and line. You get a flat price first.",
+      "answer": "It depends on sewer depth, basement layout, the number of fixtures and access. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elgin",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/elgin/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elgin/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/elgin/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/elgin/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elgin/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/elgin/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elgin/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stop Worrying When It Storms?",
+    "body": "Our Elgin office is at 964 N McLean Blvd, and our phone line is open 24/7.",
+    "communities": "We also serve [South Elgin](/south-elgin), [Bartlett](/bartlett), [Gilberts](/gilberts), [Hoffman Estates](/hoffman-estates), [Pingree Grove](/pingree-grove), [Hampshire](/hampshire) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewer Systems in Elgin, IL",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/elgin/overhead-sewer-systems",
+   "description": "Overhead sewer installation for Elgin, IL homes with storm backups. Camera inspection first, a plan for your basement and a flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elgin",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elgin",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "964 N McLean Blvd",
+     "addressLocality": "Elgin",
+     "addressRegion": "IL",
+     "postalCode": "60123",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elgin, IL",
+    "South Elgin, IL",
+    "Bartlett, IL",
+    "Gilberts, IL",
+    "Hoffman Estates, IL",
+    "Pingree Grove, IL",
+    "Hampshire, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewer Systems in Elgin, IL",
+ "metaDescription": "Overhead sewer installation for Elgin, IL homes with storm backups. Camera inspection first, a plan for your basement and a flat price. Call 24/7."
+}
