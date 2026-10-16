@@ -147,6 +147,11 @@ export type Verdict =
   // Brief 212
   | 'NOT-APPLIED (rows missing)'
   | 'NOT-APPLIED (validation failed)'
+  // Brief 213
+  | 'NOT-APPLIED (not published)'
+  | 'NOT-APPLIED (already V2)'
+  | 'NOT-APPLIED (pending edits)'
+  | 'NOT-APPLIED (terms/related)'
   | 'FAILED (publish)'
   | 'FAILED';
 

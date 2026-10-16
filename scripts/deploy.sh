@@ -877,6 +877,21 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # review round 1 step. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/publish-brief-210-older-homes.ts commit
+# -- Brief 213: "Plumbing Emergency" V2 rewrite, UNPUBLISHED version ---------
+# One time: adds "Version N — V2 rewrite (for review)" (template article-v2,
+# the new copy and hero, terms + related copied from the live row) to the
+# EXISTING, PUBLISHED article /knowledge-hub/5-signs-you-need-to-call-an-
+# emergency-plumber via createDraft. is_published = FALSE — the public URL
+# keeps serving today's V1 page byte-identically until Marketing clicks
+# Publish in /admin; this step NEVER publishes. The live row, its tags,
+# related picks and every earlier version are fingerprinted before/after
+# (must be identical). Later deploys (incl. after Marketing publishes):
+# ALREADY-APPLIED. No article / two articles, article not published, already
+# V2, newest version ≠ live row (pending edits), uncopyable terms/related, or
+# no CMS user → NOT-APPLIED, exit 0, nothing written. Exit 1 only on missing
+# schema. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-brief-213-plumbing-emergency-v2.ts commit
 # -- Brief 207: Deerfield "Orphans of the Storm" donation, UNPUBLISHED (V2) --
 # CREATE-ONCE: creates
 # /knowledge-hub/deerfield-animal-shelter-donation-orphans-of-the-storm as a
