@@ -974,6 +974,18 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # follow Brief 202 (CLAUDE.md gotcha 27). Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-214-paws-and-claws-evanston.ts commit
+# -- Brief 215: Paws and Claws Evanston draft gets sharper hero + 2 photos --
+# ONE TIME: adds "Version 2 — photos" (unpublished) on the Brief 214 draft: hero →
+# hero-v2.webp, a full-width pumpkin-truck figure after "What Was Rally for
+# Rescues?"'s first paragraph, and the "Who Is…" first paragraph becomes the
+# `kittens` Image + text component (its text verbatim). Built on the LATEST
+# version so /admin edits survive. Guarded: no article / not a draft →
+# NOT-APPLIED; "Version 2 — photos" or the photos present → ALREADY-APPLIED;
+# an anchor paragraph not found exactly once → NOT-APPLIED. All exit 0, nothing
+# written. Exit 1 only on a code/schema fault. Keep right after the 214 seed.
+# Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-215-paws-and-claws-photos.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from
