@@ -958,6 +958,22 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # fault. Keep after the event-photos step. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-207-quote-label.ts commit
+# -- Brief 214: Paws and Claws Evanston donation article, UNPUBLISHED (V2) --
+# CREATE-ONCE: creates /knowledge-hub/evanston-animal-rescue-donation-paws-and-claws
+# as a DRAFT (live row status 'draft' + tags + related + ONE unpublished
+# "Version 1 — for review" version) with the one supplied hero photo, only if no
+# article has that slug. The public URL keeps 404ing until Marketing clicks
+# Publish; managers read it at /review/knowledge-hub/<slug> (the Brief 195 route).
+# Every deploy after the first reports ALREADY-EXISTS and writes nothing.
+# Tags: company-news + chicagoland + evanston; a missing evanston term is
+# created Brief 187-style (under chicagoland, Show in Google off). Missing
+# company-news / chicagoland, an evanston term that is NOT a chicagoland
+# location, or no CMS user → NOT-APPLIED, exit 0, nothing written; missing
+# Brief 190 columns → exit 1. A related pick that is missing or unpublished is
+# skipped and reported. Never touches global_settings. A later RENAME must
+# follow Brief 202 (CLAUDE.md gotcha 27). Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-brief-214-paws-and-claws-evanston.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from
