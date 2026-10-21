@@ -12,10 +12,17 @@
  *         1. 200 (an unpublished row → 404 and out of the sitemap is EDITOR STATE: reported, exit 0);
  *         2. a page whose row holds hub / V2 content serves it ("row") — never the fallback;
  *         3. listed in the sitemap exactly once;
- *         4. exactly one <h1>, no FAQPage JSON-LD, a title with one brand tail, a self canonical;
+ *         4. exactly one <h1>, a title with one brand tail, a self canonical, and (Brief 216,
+ *            Marketing 2026-10-21) exactly ONE FAQPage JSON-LD whose questions and answers equal the
+ *            page's visible FAQ text — on a page served by the City Hub / City Service V2 template;
+ *            a Batch 3 page still on its legacy template is only checked for 200 + the snapshot;
  *         5. markup byte-identical to the snapshot — except for the cities in --expect-changed (a
  *            deploy that INTENDS to change them, e.g. the Batch 2 publish), which must instead serve
- *            their rows. A delta anywhere else turns the check red: read its diff.
+ *            their rows. A delta anywhere else turns the check red: read its diff. One delta is the
+ *            Brief 216 rollout itself and is allowed: a FAQPage / Plumber JSON-LD block ADDED to a
+ *            page whose snapshot had none of that type (once present, any change to it is a delta);
+ *         6. (Brief 216) the 10 sewer v2 pages carry NO FAQPage — FAQPage is allowed on the two city
+ *            templates only.
  * Exit 1 only for a page that should serve and doesn't, a fallback served over real content, a sitemap
  * count other than 1, an SEO-rule break, or an unexpected markup delta.
  */
@@ -28,7 +35,11 @@ const BASE = String(args.base ?? 'http://localhost:3000').replace(/\/$/, '');
 const SITE = 'https://jblantonplumbing.com';
 
 // Kept in step with src/lib/city-batches.ts and CITY_SERVICE_V2_SLUGS (this script cannot import TS).
-const CITIES = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville', 'arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva'];
+const CITIES = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville', 'arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva',
+  'mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park'];
+const SEWER_PAGES = ['/services/sewer', '/hydro-jetting', '/sewer-rodding', '/sewer-repair', '/sewer-camera-inspection', '/sewer-line-replacement', '/sewer-maintenance', '/overhead-sewer-systems', '/trenchless-sewer-repair', '/sewer-line-installation'];
+/** JSON-LD types Brief 216 adds to these pages (allowed once as an addition — see 5. above). */
+const NEW_LD_TYPES = ['FAQPage', 'Plumber'];
 const SERVICES = ['basement-flooding', 'burst-pipe-repair', 'catch-basin', 'commercial-water-heater', 'drain-cleaning', 'ejector-pump', 'emergency-plumbing', 'faucet-installation-repair', 'garbage-disposal-installation-repair', 'gas-fireplace', 'gas-line-installation', 'gas-line-repair', 'hydro-jetting', 'leak-repairs', 'overhead-sewer-systems', 'plumbing-maintenance', 'sewage-line-backup-services', 'sewer-maintenance', 'sewer-repair', 'sewer-rodding', 'shower-repair', 'sump-pumps', 'tankless-water-heater', 'toilet-installation-repair', 'trenchless-sewer-repair', 'video-camera-sewer-inspections', 'water-filtration-systems', 'water-heater-installation', 'water-heater-repair'];
 const PAGES = CITIES.flatMap((c) => [`/${c}`, ...SERVICES.map((s) => `/${c}/${s}`)]);
 const file = (p) => p.slice(1).replace(/\//g, '__') + '.txt';
@@ -61,12 +72,37 @@ export function fingerprint(html) {
   return [`TITLE ${title}`, `DESC ${desc}`, `CANONICAL ${canon}`, `ROBOTS ${robots}`, ...ld.map((j) => `LD ${j}`), 'REGION', region.replace(/></g, '>\n<')].join('\n');
 }
 
+const decode = (t) =>
+  t.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, '').replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16))).replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+    .replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+const ldBlocks = (html) => [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => { try { return JSON.parse(m[1]); } catch { return null; } }).filter(Boolean);
+
+/**
+ * Brief 216: the page's FAQPage JSON-LD vs its visible FAQ (.faq-q-text / .faq-full, in order).
+ * `expect` = 1 on a City Hub / City Service V2 render, 0 anywhere else.
+ */
+export function faqProblems(html, expect) {
+  const out = [];
+  const faqs = ldBlocks(html).filter((j) => j['@type'] === 'FAQPage');
+  if (faqs.length !== expect) return [`${faqs.length} FAQPage JSON-LD block(s) (expected ${expect})`];
+  if (!expect) return out;
+  const qs = [...html.matchAll(/<span class="faq-q-text">([\s\S]*?)<\/span>/g)].map((m) => decode(m[1]));
+  const as = [...html.matchAll(/<p class="faq-full">([\s\S]*?)<\/p>/g)].map((m) => decode(m[1]));
+  const ld = faqs[0].mainEntity ?? [];
+  if (ld.length !== qs.length || qs.length !== as.length) return [`FAQPage has ${ld.length} questions, the page shows ${qs.length}`];
+  ld.forEach((e, i) => {
+    if (e.name !== qs[i]) out.push(`FAQPage Q${i + 1} "${e.name}" ≠ the visible question "${qs[i]}"`);
+    if (e.acceptedAnswer?.text !== as[i]) out.push(`FAQPage Q${i + 1}: the answer ≠ the visible answer ("${String(e.acceptedAnswer?.text).slice(0, 80)}" vs "${as[i].slice(0, 80)}")`);
+  });
+  return out;
+}
+
 /** SEO rules every one of these pages must meet. */
 export function seoProblems(p, html) {
   const out = [];
   const h1 = (html.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) out.push(`${h1} <h1> elements (expected exactly 1)`);
-  if (/"@type"\s*:\s*"FAQPage"/.test(html)) out.push('FAQPage JSON-LD present (forbidden, Brief 164)');
+  out.push(...faqProblems(html, 1));
   const title = (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] ?? '';
   const tails = (title.match(/J\.(?:\s|&nbsp;)?Blanton|\bJBP\b/g) || []).length;
   if (tails !== 1) out.push(`title "${title}" carries ${tails} brand tails (expected 1)`);
@@ -90,6 +126,15 @@ async function snapshot() {
   }
   console.log(`city-pages snapshot: ${saved}/${PAGES.length} pages saved to ${out}`);
 }
+
+/** A fingerprint with the LD lines of `types` removed (the Brief 216 allowed-addition comparison). */
+function withoutLd(fp, types) {
+  return fp.split('\n').filter((l) => {
+    if (!l.startsWith('LD ')) return true;
+    try { return !types.includes(JSON.parse(l.slice(3))['@type']); } catch { return true; }
+  }).join('\n');
+}
+const ldTypesIn = (fp) => fp.split('\n').filter((l) => l.startsWith('LD ')).map((l) => { try { return JSON.parse(l.slice(3))['@type']; } catch { return '?'; } });
 
 function firstDiff(a, b) {
   const x = a.split('\n'), y = b.split('\n');
@@ -155,8 +200,19 @@ async function compare() {
         r = await get(p); // one retry: the first hit after a restart can stream differently
         after = fingerprint(r.text);
       }
-      if (before !== after) failures.push(`${p}: markup changed across the swap — ${firstDiff(before, after)}`);
+      if (before !== after) {
+        // Brief 216: a FAQPage / Plumber block ADDED where the snapshot had none is the rollout itself.
+        const had = ldTypesIn(before);
+        const added = NEW_LD_TYPES.filter((t) => !had.includes(t));
+        if (added.length && withoutLd(before, added) === withoutLd(after, added)) tally['+jsonld'] = (tally['+jsonld'] ?? 0) + 1;
+        else failures.push(`${p}: markup changed across the swap — ${firstDiff(before, after)}`);
+      }
     }
+  }
+  for (const p of SEWER_PAGES) {
+    const r = await get(p).catch(() => ({ status: 0, text: '' }));
+    if (r.status !== 200) { notes.push(`${p}: answered ${r.status} (sewer FAQPage rule not checked)`); continue; }
+    for (const prob of faqProblems(r.text, 0)) failures.push(`${p}: ${prob} — FAQPage is allowed on the City Hub / City Service V2 templates only`);
   }
   console.log(`  sources: ${JSON.stringify(tally)}${changed.size ? `; expected to change: ${[...changed].join(', ')}` : ''}`);
   for (const n of notes.slice(0, 20)) console.log(`  i ${n}`);
@@ -170,7 +226,7 @@ async function compare() {
     console.log('!'.repeat(72));
     process.exit(1);
   }
-  console.log(`city-pages live check: all ${PAGES.length} pages OK`);
+  console.log(`city-pages live check: all ${PAGES.length} pages OK (+ ${SEWER_PAGES.length} sewer pages FAQPage-free)`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {

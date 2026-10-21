@@ -43,6 +43,8 @@ export interface LoadOptions {
   publish: boolean;
   label: string;
   createMissing?: boolean;
+  /** The brief recorded in a new archive's `_archive.brief` (default 212). */
+  brief?: number;
 }
 
 /**
@@ -81,11 +83,11 @@ async function findVersion(
   return { reuse: null, label: taken.rowCount ? `${label} (updated)` : label };
 }
 
-async function archive(kind: 'hub' | 'service', slug: string, by: number, createdThisRun = false): Promise<{ created: boolean; draftId: number }> {
+async function archive(kind: 'hub' | 'service', slug: string, by: number, createdThisRun = false, brief = 212): Promise<{ created: boolean; draftId: number }> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    const r = await createPreTemplateArchive(client, kind, slug, by, 212, createdThisRun);
+    const r = await createPreTemplateArchive(client, kind, slug, by, brief, createdThisRun);
     await client.query('COMMIT');
     return r;
   } catch (e) {
@@ -125,7 +127,7 @@ async function loadHubInner(slug: string, draft: CityHubDraftContent, o: LoadOpt
   ].join('; ');
   if (!o.apply) return { path, outcome: 'would-load', detail: `would ${steps}` };
 
-  await archive('hub', slug, o.by);
+  await archive('hub', slug, o.by, false, o.brief);
   if (row.template_type !== CITY_HUB_TEMPLATE) {
     await switchTemplate({ pageType: 'city', pageSlug: slug, toTemplate: CITY_HUB_TEMPLATE, switchedBy: o.by });
   }
@@ -215,7 +217,7 @@ async function loadServiceInner(city: string, service: string, draft: CityServic
     .filter(Boolean)
     .join('; ');
   if (!o.apply) return { path, outcome: 'would-load', detail: `would ${steps}` };
-  await archive('service', slug, o.by, rowState === 'created');
+  await archive('service', slug, o.by, rowState === 'created', o.brief);
   const id = existing?.id ?? (await createDraft({ pageType: 'city-service', pageSlug: slug, label: fv.label, content: draft, createdBy: o.by, templateType: CITY_SERVICE_V2_TEMPLATE })).id;
   if (!o.publish) return { path, outcome: 'staged', detail: `${steps} → version #${id} (Draft)`, versionId: id };
   await publishDraft(id, o.by);

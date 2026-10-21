@@ -532,10 +532,13 @@ jobs:
             echo '======================================================='
 
             # -- Brief 212: CITY PAGES LIVE CHECK ----------------------------------
-            # The 10 city hubs + 290 service pages (src/lib/city-batches.ts): 200, a
+            # The 18 city hubs + 522 service pages (src/lib/city-batches.ts): 200, a
             # row holding hub/V2 content is what serves (source APIs), listed in the
-            # sitemap once, one H1, no FAQPage, one brand tail, self canonical, and
-            # markup byte-identical to the snapshot deploy.sh took before the swap.
+            # sitemap once, one H1, exactly one FAQPage equal to the visible FAQ
+            # (Brief 216; the 10 sewer pages must have none), one brand tail, self
+            # canonical, and markup byte-identical to the snapshot deploy.sh took
+            # before the swap (a FAQPage / Plumber block ADDED where the snapshot had
+            # none is allowed: the Brief 216 rollout).
             # A deploy that INTENDS to change a city passes it in --expect-changed.
             # An unpublished page is editor state: reported, not a failure (Brief 186).
             echo ''

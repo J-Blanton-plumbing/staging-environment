@@ -168,6 +168,42 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
           </>
         )}
         <TextInput label="Crop (locked)" value={hub.hero.crop === 'columbus' ? 'Columbus crop' : 'Standard'} onChange={() => {}} readOnly hint="A new custom photo may need its crop tuned in code." />
+        {/* Brief 216 (Track C3): the hero layout and the full-bleed hero's video. */}
+        <Select
+          label="Hero layout"
+          value={hub.hero.layout ?? 'split'}
+          options={[
+            { value: 'split', label: 'Split — photo on the right, Midnight text column (every hub’s standard)' },
+            { value: 'full-bleed', label: 'Full-bleed — full-width video or photo under a soft overlay' },
+          ]}
+          onChange={(v) => {
+            const { layout: _l, video: _v, ...rest } = hub.hero;
+            setHub({ hero: v === 'full-bleed' ? { ...rest, layout: 'full-bleed', video: hub.hero.video ?? { src: '', poster: '' } } : rest });
+          }}
+        />
+        {hub.hero.layout === 'full-bleed' && (
+          <>
+            <TextInput
+              label="Background video (MP4 address)"
+              value={hub.hero.video?.src ?? ''}
+              onChange={(src) => setHub({ hero: { ...hub.hero, video: { ...(hub.hero.video ?? { poster: '' }), src } } })}
+              hint="An https address on the site’s CloudFront or S3 storage. Leave empty to show the photo above instead."
+            />
+            <TextInput
+              label="Poster image (shown before the video plays, and to visitors who turn motion off)"
+              value={hub.hero.video?.poster ?? ''}
+              onChange={(poster) => setHub({ hero: { ...hub.hero, video: { ...(hub.hero.video ?? { src: '' }), poster } } })}
+            />
+            <TextInput
+              label="Phone video (optional, played below 781 px)"
+              value={hub.hero.video?.srcMobile ?? ''}
+              onChange={(srcMobile) => {
+                const { srcMobile: _m, ...v } = hub.hero.video ?? { src: '', poster: '' };
+                setHub({ hero: { ...hub.hero, video: srcMobile.trim() ? { ...v, srcMobile } : v } });
+              }}
+            />
+          </>
+        )}
       </Group>
 
       <Group title="Trust bar">
@@ -202,7 +238,7 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         <TextInput label="Text" value={hub.office.body} onChange={(body) => setHub({ office: { ...hub.office, body } })} multiline />
         <TextInput label="Address" value={hub.office.address} onChange={(address) => setHub({ office: { ...hub.office, address } })} />
         <TextInput label="Communities heading" value={hub.office.areasH3} onChange={(areasH3) => setHub({ office: { ...hub.office, areasH3 } })} />
-        <Repeater
+        <Repeater<CityHubStored['office']['areas'][number]>
           label="Communities"
           items={hub.office.areas}
           onChange={(areas) => setHub({ office: { ...hub.office, areas } })}
@@ -213,8 +249,46 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
             <>
               <Select label="City page" value={a.href.replace(/^\//, '')} options={[{ value: '', label: '— choose —' }, ...load.cityOptions]} onChange={(s) => update({ ...a, href: s ? `/${s}` : '', label: a.label || (load.cityOptions.find((o) => o.value === s)?.label ?? '') })} />
               <TextInput label="Label" value={a.label} onChange={(label) => update({ ...a, label })} />
+              <TextInput
+                label="Name in the Google schema (optional)"
+                value={a.area ?? ''}
+                onChange={(area) => {
+                  const { area: _a, ...rest } = a;
+                  update(area.trim() ? { ...rest, area } : rest);
+                }}
+                hint="Only when it isn’t “Label, ST” — e.g. “Rogers Park, Chicago, IL”."
+              />
             </>
           )}
+        />
+        {/* Brief 216 (Track A2): the page-scoped Plumber JSON-LD. */}
+        <TextInput
+          label="Google Business Profile link"
+          value={hub.office.gbpUrl ?? ''}
+          onChange={(gbpUrl) => {
+            const { gbpUrl: _g, ...rest } = hub.office;
+            setHub({ office: gbpUrl.trim() ? { ...rest, gbpUrl } : rest });
+          }}
+          link
+          hint="The office’s Google share link (https://maps.app.goo.gl/… or https://www.google.com/maps/…). When set, the page tells Google it is this listing (sameAs + hasMap)."
+        />
+        <TextInput
+          label="Office name in the Google schema (optional)"
+          value={hub.office.schemaName ?? ''}
+          onChange={(schemaName) => {
+            const { schemaName: _n, ...rest } = hub.office;
+            setHub({ office: schemaName.trim() ? { ...rest, schemaName } : rest });
+          }}
+          hint={`Shown as “J. Blanton Plumbing - …”. Empty = “${load.name}”.`}
+        />
+        <TextInput
+          label="This city in the Google schema’s service area (optional)"
+          value={hub.office.schemaArea ?? ''}
+          onChange={(schemaArea) => {
+            const { schemaArea: _s, ...rest } = hub.office;
+            setHub({ office: schemaArea.trim() ? { ...rest, schemaArea } : rest });
+          }}
+          hint="Empty = “City, ST” from the address. Chicago neighborhoods use e.g. “Lincoln Park, Chicago, IL”."
         />
         <Select
           label="“more” link"

@@ -3,6 +3,7 @@ import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { SITE } from '@/lib/site';
 import { breadcrumbListJsonLd } from '@/lib/schema/breadcrumb-list';
+import { faqPageJsonLd, schemaPhone } from '@/lib/schema/city-pages';
 import type { CityServiceV2Page, CsBlock, Rich } from '@/lib/content/city-services-v2';
 import { CsIcon } from './icons';
 import CityServiceV2Root from './CityServiceV2Root';
@@ -21,8 +22,9 @@ import CityServiceV2Root from './CityServiceV2Root';
  *   • "Schedule a Service" is the site's schedule-popup trigger (Brief 169).
  *   • Links are production paths (`/{city}/{service}#anchor`, `/{city}`), not the package's
  *     relative files.
- *   • Structured data: Service + BreadcrumbList. No FAQPage — forbidden sitewide (Brief 164;
- *     src/lib/schema/jsonld-assert.ts), Marketing 2026-10-14. The visible FAQ is unchanged.
+ *   • Structured data: Service + BreadcrumbList, then (Brief 216, Marketing 2026-10-21) ONE FAQPage
+ *     derived at render from the page's visible FAQ (src/lib/schema/city-pages.ts). FAQPage is
+ *     allowed on the City Hub + City Service V2 templates only; every other page type stays free of it.
  *   • `noindex` is gone (the package was a review prototype).
  * Copy lives in src/lib/content/city-services-v2 — this file holds none beyond the template's
  * fixed labels (rail, quick links, sticky bar, NDC), which are identical on all 145 pages.
@@ -485,12 +487,6 @@ function Block({ b, phone }: { b: CsBlock; phone: CsPhone }) {
   }
 }
 
-/** `773-724-9272` → `+1-773-724-9272` (the approved schema's telephone format). */
-function schemaPhone(display: string): string {
-  const d = display.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
-  return d.length === 10 ? `+1-${d.slice(0, 3)}-${d.slice(3, 6)}-${d.slice(6)}` : display;
-}
-
 export default function CityServiceV2View({ page, cityName, phone }: { page: CityServiceV2Page; cityName: string; phone: CsPhone }) {
   const service = { ...page.serviceSchema, provider: { ...page.serviceSchema.provider, telephone: schemaPhone(phone.display) } };
   const crumbs = breadcrumbListJsonLd(
@@ -502,11 +498,15 @@ export default function CityServiceV2View({ page, cityName, phone }: { page: Cit
     SITE.baseUrl
   );
   const ld = (o: unknown) => ({ __html: JSON.stringify(o).replace(/</g, '\\u003c') });
+  // Brief 216: one FAQPage from the visible FAQ, after the existing JSON-LD (never stored).
+  const faq = page.blocks.find((b): b is Extract<CsBlock, { type: 'faq' }> => b.type === 'faq');
+  const faqLd = faq && faq.items.length ? faqPageJsonLd(faq.items.map((f) => ({ q: f.q, a: f.answer }))) : null;
 
   return (
     <CityServiceV2Root>
       <script type="application/ld+json" dangerouslySetInnerHTML={ld(service)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={ld(crumbs)} />
+      {faqLd ? <script type="application/ld+json" dangerouslySetInnerHTML={ld(faqLd)} /> : null}
 
       <section className="ss-hero">
         <div className="hero-pattern" />

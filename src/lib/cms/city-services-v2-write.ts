@@ -25,12 +25,19 @@ import {
   type CityServiceV2DraftContent,
 } from '@/lib/city-service-v2-cms/model';
 import { conformService, conformServiceMeta } from '@/lib/city-service-v2-cms/conform';
-import { serviceLayout } from '@/lib/city-service-v2-cms/code-defaults';
+import { pageLayout } from '@/lib/city-service-v2-cms/code-defaults';
 import { SERVICE_SERVER_CHECKS, stateAbbr } from '@/lib/cms/v2-server-checks';
 
 function split(slug: string): [string, string] {
   const [city, service] = slug.split('/');
   return [city ?? '', service ?? ''];
+}
+
+/** The row's live `v2_content` (the layout a saved version is locked to — Brief 216 `pageLayout`). */
+export async function publishedV2(slug: string): Promise<unknown> {
+  const [city, service] = split(slug);
+  const r = await pool.query<{ v: unknown }>('SELECT v2_content AS v FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2', [city, service]);
+  return r.rows[0]?.v ?? undefined;
 }
 
 async function rowHasV2(city: string, service: string): Promise<boolean> {
@@ -41,11 +48,17 @@ async function rowHasV2(city: string, service: string): Promise<boolean> {
   return !!r.rows[0]?.v;
 }
 
-/** Sanitise + lock-check + derive. Throws ValidationError with the editor-facing reasons. */
-export function conformCityServiceV2Content(slug: string, content: CityServiceV2DraftContent): CityServiceV2DraftContent {
+/**
+ * Sanitise + lock-check + derive. Throws ValidationError with the editor-facing reasons. `published` =
+ * the row's live `v2_content` (`publishedV2`): once a page is live its own structure is the lock, so a
+ * section can't be added, removed or reordered (Brief 216 decision 3). Without it (the importer, a page
+ * before its first publish) the lock is the template — or, for a page with no code module, the
+ * content's own well-formed structure.
+ */
+export function conformCityServiceV2Content(slug: string, content: CityServiceV2DraftContent, published?: unknown): CityServiceV2DraftContent {
   const [city, service] = split(slug);
   const entry = getCity(city);
-  const layout = serviceLayout(city, service);
+  const layout = pageLayout(city, service, { published, draft: content?.page });
   if (!entry || !layout) throw new ValidationError(`"${slug}" has no City Service V2 layout.`);
   const body = conformService(content.page, layout, city, SERVICE_SERVER_CHECKS);
   const meta = conformServiceMeta(content, SERVICE_SERVER_CHECKS);
@@ -59,7 +72,7 @@ export function conformCityServiceV2Content(slug: string, content: CityServiceV2
 export async function prepareCityServiceV2VersionContent(pageType: string, slug: string, content: unknown): Promise<unknown> {
   if (isCityServiceV2DraftContent(content)) {
     if (pageType !== 'city-service') throw new ValidationError('City Service V2 content can only be saved on a city-service page.');
-    return conformCityServiceV2Content(slug, content);
+    return conformCityServiceV2Content(slug, content, await publishedV2(slug));
   }
   if (pageType === 'city-service') {
     const [city, service] = split(slug);
@@ -71,7 +84,7 @@ export async function prepareCityServiceV2VersionContent(pageType: string, slug:
 export async function assertCityServiceV2Publishable(pageType: string, slug: string, content: unknown): Promise<void> {
   if (isCityServiceV2DraftContent(content)) {
     if (pageType !== 'city-service') throw new ConflictError('City Service V2 content can only be published on a city-service page.');
-    const clean = conformCityServiceV2Content(slug, content);
+    const clean = conformCityServiceV2Content(slug, content, await publishedV2(slug));
     const empty = requiredEmptyServiceFields(clean.page, clean.metaTitle, clean.metaDescription);
     if (empty.length) {
       throw new ValidationError(`This page can’t go live until every field is filled in. Empty: ${empty.slice(0, 12).join(', ')}${empty.length > 12 ? ` (and ${empty.length - 12} more)` : ''}.`);
@@ -88,7 +101,7 @@ export async function assertCityServiceV2Publishable(pageType: string, slug: str
 
 export async function writeCityServiceV2Live(slug: string, content: unknown): Promise<number> {
   if (!isCityServiceV2DraftContent(content)) throw new ConflictError(OLD_SERVICE_SHAPE_MESSAGE);
-  const clean = conformCityServiceV2Content(slug, content);
+  const clean = conformCityServiceV2Content(slug, content, await publishedV2(slug));
   const [city, service] = split(slug);
   const res = await pool.query<{ version: number }>(
     `UPDATE city_service_pages

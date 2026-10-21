@@ -13,6 +13,11 @@ export interface CityPageBatch {
 export const CITY_PAGE_BATCHES: readonly CityPageBatch[] = [
   { id: 1, label: 'Batch 1 (Briefs 205/209, Oct 2026)', cities: ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville'] },
   { id: 2, label: 'Batch 2 (Brief 212, Oct 2026)', cities: ['arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva'] },
+  {
+    id: 3,
+    label: 'Batch 3 (Brief 216, Oct 2026)',
+    cities: ['mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park'],
+  },
 ];
 
 export const CITY_PAGE_BATCH_CITIES: readonly string[] = CITY_PAGE_BATCHES.flatMap((b) => b.cities);

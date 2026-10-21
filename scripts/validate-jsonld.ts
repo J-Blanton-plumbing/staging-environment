@@ -19,7 +19,9 @@
  */
 import { buildBlogPosting, HEADLINE_MAX, type BlogPostingInput } from '../src/lib/schema/blog-posting';
 import { breadcrumbListJsonLd } from '../src/lib/schema/breadcrumb-list';
-import { checkJsonLd } from '../src/lib/schema/jsonld-assert';
+import { checkJsonLd, CITY_PAGE_FORBIDDEN_TYPES } from '../src/lib/schema/jsonld-assert';
+import { faqPageJsonLd, schemaPhone } from '../src/lib/schema/city-pages';
+import { hubPlumberJsonLd } from '../src/lib/city-hub-cms/model';
 import { articleCrumbs, termCrumbs } from '../src/lib/cms/kh-crumbs';
 import { ORG_ID } from '../src/lib/schema/organization-ref';
 import { canonicalUrlFor } from '../src/lib/seo';
@@ -116,6 +118,34 @@ for (const p of pages) {
   const r = checkJsonLd(p.blocks);
   for (const e of r.errors) fail.push(`${p.name}: ${e}`);
 }
+
+// Brief 216 — the City Hub / City Service V2 blocks, from the SAME builders the views call: the hub's
+// Plumber node (fixed key order, GBP link) and one FAQPage from a visible FAQ, checked with the city
+// templates' allowance (FAQPage permitted there only). A Plumber without a GBP link is not emitted.
+const hubFixture = {
+  slug: 'evanston',
+  name: 'Evanston',
+  office: {
+    eyebrow: '', h2: '', body: '', areasH3: '', more: '/locations/chicagoland',
+    address: '1603 Orrington Ave, #600-1085, Evanston, IL 60201',
+    areas: [{ label: 'Wilmette', href: '/wilmette' }, { label: 'Rogers Park', href: '/chicago-rogers-park', area: 'Rogers Park, Chicago, IL' }],
+    gbpUrl: 'https://maps.app.goo.gl/QepapnaFhikLrpAe8',
+  },
+};
+const plumber = hubPlumberJsonLd(hubFixture, '773-724-9272', schemaPhone);
+expect(!!plumber, 'a hub with a GBP link emits a Plumber node');
+expect(
+  Object.keys(plumber ?? {}).join(',') === '@context,@type,@id,name,url,sameAs,hasMap,telephone,address,openingHoursSpecification,areaServed',
+  'the Plumber node keeps the Brief 216 key order'
+);
+expect(plumber?.telephone === '+1-773-724-9272' && plumber.hasMap === plumber.sameAs[0], 'Plumber telephone is E.164-style and hasMap = sameAs');
+expect(JSON.stringify(plumber?.areaServed) === '["Evanston, IL","Wilmette, IL","Rogers Park, Chicago, IL"]', 'areaServed = city + communities, area override honoured');
+expect(hubPlumberJsonLd({ ...hubFixture, office: { ...hubFixture.office, gbpUrl: undefined } }, '773-724-9272', schemaPhone) === null, 'no GBP link → no Plumber node');
+const faq = faqPageJsonLd([{ q: 'Who is responsible?', a: 'The owner. See [sewer repair](/evanston/sewer-repair) **now**.' }]);
+expect(faq.mainEntity[0].acceptedAnswer.text === 'The owner. See sewer repair now.', 'FAQPage answer text = the full answer, links reduced to labels, ** removed');
+const city = checkJsonLd([JSON.stringify(plumber), JSON.stringify(faq)], CITY_PAGE_FORBIDDEN_TYPES);
+for (const e of city.errors) fail.push(`city hub fixture: ${e}`);
+expect(checkJsonLd([JSON.stringify(faq)]).errors.some((e) => e.includes('forbidden type present: FAQPage')), 'FAQPage stays forbidden on every other page type');
 
 if (fail.length) {
   console.error(`\n[validate-jsonld] FAILED — ${fail.length} problem(s):\n  - ${fail.join('\n  - ')}\n`);

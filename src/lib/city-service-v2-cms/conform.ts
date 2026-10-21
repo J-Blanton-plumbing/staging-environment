@@ -2,8 +2,9 @@
  * Brief 212 (Track B) — the layout lock and per-field sanitising for City Service V2 content.
  *
  * `conformService` takes whatever arrived (an editor's save, a stored row, an importer payload) and the
- * page's LAYOUT (`serviceLayout()` — its own code module, or Northbrook's for a city without one) and
- * returns a value that:
+ * page's LAYOUT (`pageLayout()` — since Brief 216 the page's own published structure; before its first
+ * publish its code module / Northbrook's template, or, for a page with no code module, the content's
+ * own well-formed structure — see code-defaults.ts) and returns a value that:
  *   - has exactly the layout's blocks: same count and order, and per block the same `type`, `id`
  *     (incl. every fold anchor — the 301 contract), `cls`, `order`, NDC `variant`, tiles `minCol`, the
  *     tiles' bullet-or-paragraph style, the table's column count, and whether a split / fold / steps
@@ -294,7 +295,7 @@ export function canonicalServiceSchema(s: Record<string, unknown>): CityServiceS
   return ordered({ ...s, provider: p }, ['@context', '@type', 'name', 'serviceType', 'url', 'description', 'provider', 'areaServed']) as CityServiceStored['serviceSchema'];
 }
 
-/** One page's V2 content, locked to `layout` (see `serviceLayout`). */
+/** One page's V2 content, locked to `layout` (see `pageLayout`). */
 export function conformService(raw: unknown, layout: readonly CsBlock[], city: string, checks: ServiceChecks): ConformResult<CityServiceStored> {
   const ctx = new Ctx(checks);
   const r = ctx.obj(raw, '');

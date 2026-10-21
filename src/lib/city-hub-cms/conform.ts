@@ -12,7 +12,12 @@
  *   - service cards and stripe entries that resolve to a real `/{city}/{service}` page, community
  *     links that resolve to a registered city (injected resolvers — the registry is server-side);
  *   - the layout values locked: the hero crop is the page's own (Brief 206 decision 5) and reviews are
- *     exactly 3 (decision 1).
+ *     exactly 3 (decision 1);
+ *   - (Brief 216) the optional fields kept only when set, so a hub saved before them keeps its exact
+ *     stored shape: `hero.layout` ('full-bleed' only — 'split' is the absent default) + `hero.video`
+ *     (CloudFront / S3 https only, kept only with 'full-bleed'), `office.gbpUrl` (a Google share link;
+ *     the address must then split into schema parts), `office.schemaName` / `schemaArea` and
+ *     `office.areas[].area` (the Plumber JSON-LD's names, when they differ from the defaults).
  *
  * `errors` lists what an editor must fix; the write path refuses on any error (422), the read path
  * renders the conformed value and falls back to the code module only when the STRUCTURE is wrong.
@@ -29,7 +34,21 @@ import {
   PHONE_MESSAGE,
   type ConformIssue,
 } from '@/lib/cms-v2/shared';
-import type { CityHubShared, CityHubStored, HubCard, HubCrop, HubPhoto, HubReview } from './model';
+import {
+  addressParts,
+  GBP_URL_MESSAGE,
+  GBP_URL_RE,
+  HUB_MEDIA_MESSAGE,
+  HUB_MEDIA_URL_RE,
+  type CityHubShared,
+  type CityHubStored,
+  type HubCard,
+  type HubCrop,
+  type HubHeroLayout,
+  type HubHeroVideo,
+  type HubPhoto,
+  type HubReview,
+} from './model';
 
 export interface HubChecks {
   /** Plain-text rule (server: sanitizeCmsPlainText; editor pre-check: identity). */
@@ -111,6 +130,12 @@ class Ctx {
   }
 }
 
+/** An optional plain-text field: absent / null / blank → '' (the caller then omits the key). */
+function optText(ctx: Ctx, v: unknown, path: string): string {
+  if (v === undefined || v === null) return '';
+  return ctx.text(v, path).trim();
+}
+
 function photo(ctx: Ctx, v: unknown, path: string): 'standard' | HubPhoto {
   if (v === 'standard') return 'standard';
   const o = ctx.obj(v, path);
@@ -166,7 +191,9 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
     const href = ctx.href(o.href, `${p}.href`);
     const m = href.match(/^\/([a-z0-9-]+)$/);
     if (href && (!m || !checks.cityExists(m[1]))) ctx.err(`${p}.href`, 'link', 'A community link must point at a city page (e.g. /glenview).');
-    return { label: ctx.text(o.label, `${p}.label`), href };
+    // Brief 216: the optional schema name is kept only when it says something (absent = "{label}, {ST}").
+    const area = optText(ctx, o.area, `${p}.area`);
+    return { label: ctx.text(o.label, `${p}.label`), href, ...(area ? { area } : {}) };
   });
 
   const items = ctx.list(reviews.items, 'reviews.items');
@@ -184,6 +211,38 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
   const rating = ctx.text(reviews.rating, 'reviews.rating');
   if (rating && !RATING_RE.test(rating)) ctx.err('reviews.rating', 'value', 'The rating is a number from 1 to 5 with at most one decimal (e.g. 4.7).');
 
+  // Brief 216 (Track C3): the hero layout and its video. 'split' is stored as absent, and a video is
+  // kept only with 'full-bleed', so every hub saved before Brief 216 keeps exactly its stored shape.
+  let layout: HubHeroLayout | undefined;
+  if (hero.layout !== undefined && hero.layout !== null && hero.layout !== '' && hero.layout !== 'split') {
+    if (hero.layout === 'full-bleed') layout = 'full-bleed';
+    else ctx.err('hero.layout', 'value', `The hero layout is "split" or "full-bleed" (got "${String(hero.layout)}").`);
+  }
+  let video: HubHeroVideo | undefined;
+  if (layout === 'full-bleed' && hero.video !== undefined && hero.video !== null) {
+    const v = ctx.obj(hero.video, 'hero.video');
+    const media = (x: unknown, path: string, required: boolean) => {
+      const u = optText(ctx, x, path);
+      if (u && !HUB_MEDIA_URL_RE.test(u)) ctx.err(path, 'image', HUB_MEDIA_MESSAGE);
+      if (!u && required) ctx.err(path, 'empty', 'A full-bleed hero video needs this address.');
+      return u;
+    };
+    const src = media(v.src, 'hero.video.src', true);
+    const poster = media(v.poster, 'hero.video.poster', true);
+    const srcMobile = media(v.srcMobile, 'hero.video.srcMobile', false);
+    video = { src, poster, ...(srcMobile ? { srcMobile } : {}) };
+  }
+
+  // Brief 216 (Track A2): the Google Business Profile link and the two optional schema names.
+  const gbpUrl = optText(ctx, office.gbpUrl, 'office.gbpUrl');
+  if (gbpUrl && !GBP_URL_RE.test(gbpUrl)) ctx.err('office.gbpUrl', 'link', GBP_URL_MESSAGE);
+  const schemaName = optText(ctx, office.schemaName, 'office.schemaName');
+  const schemaArea = optText(ctx, office.schemaArea, 'office.schemaArea');
+  const address = ctx.text(office.address, 'office.address');
+  if (gbpUrl && address && !addressParts(address)) {
+    ctx.err('office.address', 'value', 'With a Google Business Profile link the address must read “street, city, ST 12345” (it is split into the Google schema).');
+  }
+
   const value: CityHubStored = {
     schema: 1,
     hero: {
@@ -192,6 +251,8 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       sub: ctx.text(hero.sub, 'hero.sub'),
       photo: photo(ctx, hero.photo, 'hero.photo'),
       crop,
+      ...(layout ? { layout } : {}),
+      ...(video ? { video } : {}),
     },
     trust: ctx.list(r.trust, 'trust').map((t, i) => ctx.text(t, `trust[${i}]`)),
     services: { h2: ctx.text(services.h2, 'services.h2'), intro: ctx.text(services.intro, 'services.intro'), cards },
@@ -199,10 +260,13 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       eyebrow: ctx.text(office.eyebrow, 'office.eyebrow'),
       h2: ctx.text(office.h2, 'office.h2'),
       body: ctx.text(office.body, 'office.body'),
-      address: ctx.text(office.address, 'office.address'),
+      address,
       areasH3: ctx.text(office.areasH3, 'office.areasH3'),
       areas,
       more: ctx.href(office.more, 'office.more'),
+      ...(gbpUrl ? { gbpUrl } : {}),
+      ...(schemaName ? { schemaName } : {}),
+      ...(schemaArea ? { schemaArea } : {}),
     },
     depth: {
       h2: ctx.text(depth.h2, 'depth.h2'),

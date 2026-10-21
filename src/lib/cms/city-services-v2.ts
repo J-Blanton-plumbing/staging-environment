@@ -19,7 +19,7 @@ import type { CityServiceV2Page } from '@/lib/content/city-services-v2/types';
 import { getCityServiceV2Preview, type PreviewMeta } from '@/lib/cms/preview';
 import { storedToPage, stripTitleTail, type CityServiceStored } from '@/lib/city-service-v2-cms/model';
 import { conformService, structureBroken } from '@/lib/city-service-v2-cms/conform';
-import { codeServiceMeta, codeServiceStored, isV2ServiceSlug, serviceLayout } from '@/lib/city-service-v2-cms/code-defaults';
+import { codeServiceMeta, codeServiceStored, isV2ServiceSlug, pageLayout } from '@/lib/city-service-v2-cms/code-defaults';
 
 export { SERVICE_SERVER_CHECKS };
 
@@ -58,9 +58,13 @@ function memoised<T>(key: string, build: () => T): T {
   return v;
 }
 
-/** Conformed stored content, or null when it no longer fits the page's layout. */
-export function serviceFromStored(city: string, service: string, raw: unknown, where: string): CityServiceStored | null {
-  const layout = serviceLayout(city, service);
+/**
+ * Conformed stored content, or null when it no longer fits the page's layout. `published` = the row's
+ * live `v2_content`: the layout the page is locked to (Brief 216 — `pageLayout`). For the live row
+ * itself that is its own structure; for a preview draft it is the live page's.
+ */
+export function serviceFromStored(city: string, service: string, raw: unknown, where: string, published?: unknown): CityServiceStored | null {
+  const layout = pageLayout(city, service, { published, draft: raw });
   if (!layout) return null;
   const { value, errors } = conformService(raw, layout, city, SERVICE_SERVER_CHECKS);
   if (structureBroken(errors)) {
@@ -94,7 +98,8 @@ export const resolveCityServiceV2 = cache(async (city: string, service: string, 
   if (usePreview) {
     const pv = await getCityServiceV2Preview(city, service).catch(() => null);
     if (pv) {
-      const stored = serviceFromStored(city, service, pv.content.page, `preview draft ${pv.meta.id}`);
+      const live = await readServiceRow(city, service);
+      const stored = serviceFromStored(city, service, pv.content.page, `preview draft ${pv.meta.id}`, live && live !== 'error' ? live.v2 ?? undefined : undefined);
       if (stored) {
         return {
           kind: 'v2',
@@ -113,7 +118,7 @@ export const resolveCityServiceV2 = cache(async (city: string, service: string, 
   if (row === 'error' || row === null) return fromCode();
   if (row.status !== 'published') return code || row.v2 ? { kind: 'not-found' } : { kind: 'legacy' };
   if (!row.v2) return fromCode();
-  const stored = memoised(`svc:${city}/${service}:${row.version}`, () => serviceFromStored(city, service, row.v2, `city_service_pages/${city}/${service}`));
+  const stored = memoised(`svc:${city}/${service}:${row.version}`, () => serviceFromStored(city, service, row.v2, `city_service_pages/${city}/${service}`, row.v2));
   if (!stored) return fromCode();
   return { kind: 'v2', page: storedToPage(city, service, stored, metaFrom(row.metaTitle, row.metaDescription, codeMeta)), preview: null, source: 'row' };
 });
@@ -162,15 +167,15 @@ export interface CityServiceV2EditorLoad {
 
 export async function loadCityServiceV2ForEditor(city: string, service: string): Promise<CityServiceV2EditorLoad | null> {
   const entry = getCity(city);
-  const layout = serviceLayout(city, service);
-  if (!entry || !layout) return null;
+  if (!entry || !isV2ServiceSlug(service)) return null;
   const res = await pool.query(
     `SELECT status, version, updated_at, v2_content, meta_title, meta_description
        FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2`,
     [city, service]
   );
   const r = res.rows[0];
-  let page: CityServiceStored | null = r?.v2_content ? serviceFromStored(city, service, r.v2_content, `city_service_pages/${city}/${service}`) : null;
+  const layout = pageLayout(city, service, { published: r?.v2_content ?? undefined }) ?? [];
+  let page: CityServiceStored | null = r?.v2_content ? serviceFromStored(city, service, r.v2_content, `city_service_pages/${city}/${service}`, r.v2_content) : null;
   let source: CityServiceV2EditorLoad['source'] = page ? 'row' : 'none';
   let meta = page ? metaFrom(r?.meta_title, r?.meta_description, codeServiceMeta(city, service)) : { title: '', description: '' };
   if (!page) {

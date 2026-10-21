@@ -15,6 +15,12 @@
  */
 export const FORBIDDEN_TYPES = ['AggregateRating', 'Review', 'FAQPage', 'Question', 'Answer', 'SearchAction'] as const;
 
+/**
+ * Brief 216 (Marketing 2026-10-21, decision 1): the City Hub and City Service V2 templates — and ONLY
+ * those two — emit one FAQPage derived from their visible FAQ. Everywhere else FORBIDDEN_TYPES applies.
+ */
+export const CITY_PAGE_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'FAQPage' && t !== 'Question' && t !== 'Answer');
+
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 
 /** Every JSON-LD script body in an HTML document, in order. */
