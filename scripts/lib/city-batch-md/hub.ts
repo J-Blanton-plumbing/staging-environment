@@ -10,8 +10,17 @@
  *   Office   eyebrow, H2, body, H3 → areasH3, communities from the "H3 Body" links (the trailing
  *            "more" link → `more`); the address from the MD's Plumber schema block.
  *   Depth    H2, intro, 4 tiles.     Why Us   H2 → `whyH2`.
- *   Reviews  eyebrow from the MD; everything else from the corrections file's `hubReviewOverrides`
- *            (Marketing decision 3 — never the MD while it holds placeholders).
+ *   Reviews  eyebrow from the MD. H2, intro and the 3 reviews from the MD when it carries real ones
+ *            (Batch 3: "Review N Name / GBP URL / Text", quotes verbatim, outer "…" dropped; rating +
+ *            ratingSub read off the intro "4.8 stars from 860+ Google reviews for our … office."),
+ *            otherwise from the corrections file's `hubReviewOverrides` (Brief 212 decision 3 —
+ *            never the MD while it holds placeholders).
+ *   Schema   (Brief 216 A2) the MD's Plumber block: `sameAs` → `office.gbpUrl`; its name and
+ *            `areaServed` become `office.schemaName` / `schemaArea` / `areas[].area` only where they
+ *            differ from the defaults, and the Plumber node the view derives must equal the MD's
+ *            (name, url, sameAs, hasMap, address, areaServed). The VideoObject / FAQPage blocks are
+ *            not stored (the view derives both).
+ *   Hero     (Brief 216 C3) `fullBleed` → layout 'full-bleed' with that video (Evanston).
  *   FAQ      Q/A; the short answer from `faqPreviewFromAnswer` (the editor's "Auto-fill from answer").
  *   NDC      the city sentence.        Final    eyebrow, H2, body.
  * Sections that must EQUAL the shared record (Mid CTA, Why Us items, Video, NDC box, the Services /
@@ -21,7 +30,18 @@
  * apostrophe ’ where the MDs type a straight one. Review quotes are kept exactly as supplied.
  */
 import { CITY_HUBS } from '../../../src/lib/content/city-hubs';
-import { CITY_HUB_TEMPLATE, faqPreviewFromAnswer, type CityHubDraftContent, type CityHubShared, type HubCard } from '../../../src/lib/city-hub-cms/model';
+import {
+  CITY_HUB_TEMPLATE,
+  faqPreviewFromAnswer,
+  GBP_URL_RE,
+  hubPlumberJsonLd,
+  type CityHubDraftContent,
+  type CityHubShared,
+  type HubCard,
+  type HubHeroVideo,
+} from '../../../src/lib/city-hub-cms/model';
+import { schemaPhone } from '../../../src/lib/schema/city-pages';
+import { placeholderIn } from '../../../src/lib/cms-v2/shared';
 import { heroImageFor } from '../../../src/lib/city-service-v2-cms/code-defaults';
 import type { HubReviewOverride } from './corrections';
 import { field, fields, jsonBlocks, links, plain, sections, unbold } from './md';
@@ -34,8 +54,19 @@ export interface ParsedHub {
   sharedMismatches: string[];
   /** Cards whose image came from the A-3 rule. */
   a3Cards: string[];
+  /** Where the reviews came from (Brief 216: the MD when it carries real ones). */
+  reviewSource: 'md' | 'override';
   errors: string[];
 }
+
+/** "4.8 stars from 860+ Google reviews for our Evanston office." → rating + the proof card's line. */
+export function ratingFromIntro(intro: string): { rating: string; ratingSub: string } | null {
+  const m = intro.trim().match(/^([1-5]\.\d) stars from (.+?)\.?$/);
+  return m ? { rating: m[1], ratingSub: m[2] } : null;
+}
+
+/** A quoted review cell: the outer straight "…" dropped, everything inside verbatim. */
+const unquote = (t: string) => (/^"[\s\S]*"$/.test(t.trim()) ? t.trim().slice(1, -1) : t.trim());
 
 /** ' → ’ in visible copy, never inside a link target. */
 export function curly(s: string): string {
@@ -50,7 +81,14 @@ function batch1CardImages(): Map<string, { src: string; alt: string }> {
   return out;
 }
 
-export function parseHub(md: string, slug: string, cityName: string, shared: CityHubShared, override: HubReviewOverride | undefined): ParsedHub {
+export function parseHub(
+  md: string,
+  slug: string,
+  cityName: string,
+  shared: CityHubShared,
+  override: HubReviewOverride | undefined,
+  opts: { fullBleed?: HubHeroVideo } = {}
+): ParsedHub {
   const errors: string[] = [];
   const mism: string[] = [];
   const a3Cards: string[] = [];
@@ -96,7 +134,7 @@ export function parseHub(md: string, slug: string, cityName: string, shared: Cit
   if (!more) errors.push('4. OFFICE: the communities line does not end with a "more" link');
   const schemaSec = secs.find((s) => /^SCHEMA/i.test(s.title));
   const json = jsonBlocks(schemaSec?.body ?? '');
-  const plumber = json.find((j) => j['@type'] === 'Plumber') as { address?: Record<string, string> } | undefined;
+  const plumber = json.find((j) => j['@type'] === 'Plumber') as { name?: string; url?: string; sameAs?: string[]; hasMap?: string; address?: Record<string, string>; areaServed?: string[] } | undefined;
   const a = plumber?.address;
   const address = a ? `${a.streetAddress}, ${a.addressLocality}, ${a.addressRegion} ${a.postalCode}` : '';
   if (!address) errors.push('SCHEMA: no Plumber address to take the office address from');
@@ -133,7 +171,31 @@ export function parseHub(md: string, slug: string, cityName: string, shared: Cit
 
   const rev = rows(9);
   const reviewsEyebrow = curly(need(rev, 'Eyebrow', '9. REVIEWS'));
-  if (!override) errors.push(`9. REVIEWS: no hubReviewOverrides entry for "${cityName}" — the MD's reviews are placeholders and are never published`);
+  // Brief 216: the MD's own reviews when it carries real ones (Batch 3), else the override (Batch 2).
+  const mdItems = [1, 2, 3].map((n) => ({ name: field(rev, `Review ${n} Name`), url: field(rev, `Review ${n} GBP URL`), text: field(rev, `Review ${n} Text`) }));
+  const mdH2 = field(rev, 'H2');
+  const mdIntro = field(rev, 'Intro');
+  const mdReal =
+    mdItems.every((r) => r.name && r.text) &&
+    !!mdH2 && !!mdIntro &&
+    ![mdH2, mdIntro, ...mdItems.flatMap((r) => [r.name ?? '', r.url ?? '', r.text ?? ''])].some((x) => placeholderIn(x));
+  let reviewsFromMd: CityHubDraftContent['hub']['reviews'] | null = null;
+  if (mdReal) {
+    const rr = ratingFromIntro(mdIntro as string);
+    if (!rr) errors.push(`9. REVIEWS: the intro "${mdIntro}" is not "N.N stars from … ." — the rating card is read off it`);
+    reviewsFromMd = {
+      eyebrow: reviewsEyebrow,
+      h2: curly(mdH2 as string),
+      intro: curly(mdIntro as string),
+      rating: rr?.rating ?? '',
+      ratingSub: curly(rr?.ratingSub ?? ''),
+      items: mdItems.map((r) => {
+        const u = (r.url ?? '').trim();
+        if (u && !/^\(none\)$/i.test(u) && !GBP_URL_RE.test(u)) errors.push(`9. REVIEWS: review link "${u}" is not a Google share link`);
+        return { name: (r.name as string).trim(), url: !u || /^\(none\)$/i.test(u) ? null : u, text: unquote(r.text as string) };
+      }) as CityHubDraftContent['hub']['reviews']['items'],
+    };
+  } else if (!override) errors.push(`9. REVIEWS: no hubReviewOverrides entry for "${cityName}" — the MD's reviews are placeholders and are never published`);
   else if (override.items.length !== 3) errors.push(`9. REVIEWS: the override for "${cityName}" has ${override.items.length} reviews; a City Hub shows exactly 3`);
 
   const faqRows = rows(10);
@@ -153,7 +215,9 @@ export function parseHub(md: string, slug: string, cityName: string, shared: Cit
   if (field(ndc, `Benefit ${shared.ndc.benefits.length + 1}`) !== undefined) mism.push('NDC: the MD has more benefits than the shared record');
   const ctaLink = links(need(ndc, 'CTA', '11. NO DRIP CLUB'))[0];
   assertEq('NDC button', ctaLink?.label ?? '', shared.ndc.cta);
-  if (ctaLink?.href !== shared.ndc.href) mism.push(`NDC button link: MD "${ctaLink?.href}" ≠ shared "${shared.ndc.href}"`);
+  // Brief 216: compared without a trailing slash — G1 dropped the MD's; the button itself renders from
+  // the shared record (its own '/no-drip-club/' is the deferred Batch 1–2 follow-up, not this page's).
+  if ((ctaLink?.href ?? '').replace(/\/$/, '') !== shared.ndc.href.replace(/\/$/, '')) mism.push(`NDC button link: MD "${ctaLink?.href}" ≠ shared "${shared.ndc.href}"`);
 
   const fin = rows(12);
 
@@ -166,7 +230,14 @@ export function parseHub(md: string, slug: string, cityName: string, shared: Cit
     metaDescription,
     hub: {
       schema: 1,
-      hero: { eyebrow: curly(need(hero, 'Eyebrow', '1. HERO')), h1: curly(need(hero, 'H1', '1. HERO')), sub: curly(need(hero, 'Subtext', '1. HERO')), photo: 'standard', crop: 'standard' },
+      hero: {
+        eyebrow: curly(need(hero, 'Eyebrow', '1. HERO')),
+        h1: curly(need(hero, 'H1', '1. HERO')),
+        sub: curly(need(hero, 'Subtext', '1. HERO')),
+        photo: 'standard',
+        crop: 'standard',
+        ...(opts.fullBleed ? { layout: 'full-bleed' as const, video: { ...opts.fullBleed } } : {}),
+      },
       trust,
       services: { h2: curly(need(svc, 'H2', '3. SERVICES')), intro: curly(need(svc, 'Intro', '3. SERVICES')), cards },
       office: {
@@ -180,7 +251,7 @@ export function parseHub(md: string, slug: string, cityName: string, shared: Cit
       },
       depth: { h2: curly(need(depth, 'H2', '5. LOCAL DEPTH')), intro: curly(need(depth, 'Intro', '5. LOCAL DEPTH')), tiles },
       whyH2: curly(need(why, 'H2', '7. WHY US')),
-      reviews: {
+      reviews: reviewsFromMd ?? {
         eyebrow: reviewsEyebrow,
         h2: override?.h2 ?? '',
         intro: override?.intro ?? '',
@@ -193,7 +264,30 @@ export function parseHub(md: string, slug: string, cityName: string, shared: Cit
       final: { eyebrow: curly(need(fin, 'Eyebrow', '12. FINAL CTA')), h2: curly(need(fin, 'H2', '12. FINAL CTA')), body: curly(need(fin, 'Body', '12. FINAL CTA')) },
     },
   };
+  // Brief 216 (A2): the office's GBP link and the schema names, from the MD's Plumber block — stored
+  // only where they differ from what the view derives anyway — then the derived node must equal it.
+  if (plumber && (plumber.sameAs?.length || plumber.hasMap)) {
+    const gbp = plumber.sameAs?.[0] ?? '';
+    if (!GBP_URL_RE.test(gbp)) errors.push(`SCHEMA: Plumber sameAs "${gbp}" is not a Google share link`);
+    if (plumber.hasMap !== gbp) errors.push(`SCHEMA: Plumber hasMap "${plumber.hasMap}" ≠ sameAs "${gbp}"`);
+    const o = draft.hub.office;
+    o.gbpUrl = gbp;
+    const st = a?.addressRegion ?? '';
+    const name = (plumber.name ?? '').replace(/^J\. Blanton Plumbing - /, '');
+    if (name && name !== cityName) o.schemaName = name;
+    const served = plumber.areaServed ?? [];
+    if (served.length !== o.areas.length + 1) errors.push(`SCHEMA: Plumber areaServed has ${served.length} entries; the page has the city + ${o.areas.length} communities`);
+    if (served[0] && served[0] !== `${cityName}, ${st}`) o.schemaArea = served[0];
+    o.areas = o.areas.map((x, i) => (served[i + 1] && served[i + 1] !== `${x.label.replace(/’/g, "'")}, ${st}` ? { ...x, area: served[i + 1] } : x));
+    if (a?.streetAddress && !plain(o.body).includes(a.streetAddress)) errors.push(`4. OFFICE: the office sentence does not carry the schema's street "${a.streetAddress}"`);
+    const derived = hubPlumberJsonLd({ slug, name: cityName, office: o }, '', schemaPhone);
+    const want = { name: plumber.name, url: plumber.url, sameAs: plumber.sameAs, hasMap: plumber.hasMap, address: plumber.address, areaServed: plumber.areaServed };
+    const got = derived && { name: derived.name, url: derived.url, sameAs: derived.sameAs, hasMap: derived.hasMap, address: derived.address, areaServed: derived.areaServed };
+    if (JSON.stringify(got) !== JSON.stringify(want)) errors.push(`SCHEMA: the derived Plumber node ≠ the MD's — derived ${JSON.stringify(got)} vs MD ${JSON.stringify(want)}`);
+  }
+
   return {
+    reviewSource: reviewsFromMd ? 'md' : 'override',
     draft,
     faqVisible: faqItems.map((f) => ({ q: straight(f.q), a: straight(plain(f.a)) })),
     faqSchema,

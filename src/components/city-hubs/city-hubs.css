@@ -710,6 +710,13 @@
   #city-hub-v2 .hub-hero--photo .hub-hero-in{padding-top:28px;}
 }
 
+/* Brief 216 (Track C3): the 'full-bleed' hero (Evanston). The Sewer hub hero one to one: the base
+   .hub-hero rules above already carry its min-height, bottom-aligned 700px text column and the soft
+   Midnight overlay; this modifier only puts the video (or the photo) full-width under that overlay.
+   Scoped to .hub-hero--full; the .hub-hero--photo rules are untouched. */
+#city-hub-v2 .hub-hero--full>video,
+#city-hub-v2 .hub-hero--full>picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;display:block;}
+
 /* Review proof card: side by side on wide screens, full-width stack on mobile */
 #city-hub-v2 .hub-proof{width:auto;flex-direction:row;align-items:center;padding:18px 24px;}
 #city-hub-v2 .hub-proof-row+.hub-proof-row{margin:0 0 0 24px;padding:0 0 0 24px;border-top:0;border-left:1px solid var(--c-sand-400);align-self:stretch;}

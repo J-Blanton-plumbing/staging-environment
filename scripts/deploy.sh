@@ -1032,6 +1032,18 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/import-city-batch.ts --from-json data/city-batches/batch-2 --publish --create-missing \
   --changed-file .city-pages-snapshot/changed.txt
+# 4. Brief 216 (Track A): the Batch 1-2 hub update - every hub's Google Business
+#    Profile link (its new Plumber JSON-LD), the 5 Batch 2 hubs' own office
+#    reviews and Naperville's rating line, as "Version 2 - Office reviews + GBP
+#    schema (2026-10)" (data/city-batches/batch-1-2-updates.json). It PATCHES
+#    the live hub content and refuses a hub whose replaced fields were edited
+#    in /admin since (NOT-APPLIED, exit 0); later deploys report
+#    ALREADY-APPLIED. Hubs whose visible copy changes go to changed.txt; a hub
+#    that only gains the Plumber block is the live check's allowed JSON-LD
+#    addition. Pre-swap (Brief 171). Exit 1 only when a write did not land.
+#    Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-216-hub-reviews-gbp.ts commit --changed-file .city-pages-snapshot/changed.txt
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

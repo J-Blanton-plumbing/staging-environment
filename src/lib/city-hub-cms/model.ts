@@ -28,6 +28,8 @@ export const CITY_HUB_SHARED_SLUG = 'city-hubs';
 export const CITY_HUB_SHARED_PAGE_TYPE = 'city-hub-shared';
 
 export const PRE_HUB_ARCHIVE_LABEL = 'Pre-hub archive (2026-10)';
+/** Brief 216 (Track A) — the Batch 1–2 hub update. */
+export const HUB_V2_REVIEWS_GBP_LABEL = 'Version 2 — Office reviews + GBP schema (2026-10)';
 export const HUB_V1_LABEL = 'Version 1 — City Hub';
 export const SHARED_V1_LABEL = 'Version 1 — Shared across all City Hubs';
 export const OLD_HUB_SHAPE_MESSAGE = "This version uses the old pre-hub layout and can't be edited or published here.";
@@ -64,6 +66,23 @@ export interface HubReview {
 /** Hero crop modifiers that exist in city-hubs.css. Locked per page (Brief 206 decision 5). */
 export type HubCrop = 'standard' | 'columbus';
 
+/**
+ * Brief 216 (Track C3) — the hero layout. 'split' (the default, and every hub before Brief 216): the
+ * photo in the right of the hero beside a solid Midnight text column. 'full-bleed': the Sewer hub hero
+ * treatment — a full-width background (the video, else the photo) under a soft Midnight overlay.
+ * Stored only as 'full-bleed' (absent = 'split'), so every existing hub's stored content is unchanged.
+ */
+export type HubHeroLayout = 'split' | 'full-bleed';
+export const HUB_HERO_LAYOUTS: readonly HubHeroLayout[] = ['split', 'full-bleed'];
+
+/** Brief 216 — a full-bleed hero's background video (https, on the project's CloudFront / S3 hosts). */
+export interface HubHeroVideo {
+  src: string;
+  poster: string;
+  /** Optional portrait / mobile cut, played below 781px. */
+  srcMobile?: string;
+}
+
 /** One city's hub content (`city_pages.hub_content`). */
 export interface CityHubStored {
   schema: 1;
@@ -74,6 +93,10 @@ export interface CityHubStored {
     /** 'standard' = the shared van photo (edited on the shared record); otherwise this page's own photo. */
     photo: 'standard' | HubPhoto;
     crop: HubCrop;
+    /** Brief 216: present only as 'full-bleed' (absent = 'split'). */
+    layout?: HubHeroLayout;
+    /** Brief 216: the full-bleed hero's video (kept only with layout 'full-bleed'). */
+    video?: HubHeroVideo;
   };
   trust: string[];
   services: { h2: string; intro: string; cards: HubCard[] };
@@ -83,8 +106,17 @@ export interface CityHubStored {
     body: string;
     address: string;
     areasH3: string;
-    areas: Array<{ label: string; href: string }>;
+    /** `area` (Brief 216, optional): the community's `areaServed` name in the Plumber JSON-LD when it
+     *  isn't "{label}, {ST}" (e.g. "Rogers Park, Chicago, IL"). */
+    areas: Array<{ label: string; href: string; area?: string }>;
     more: string;
+    /** Brief 216 (Track A2, optional): the office's Google Business Profile share link. When set, the
+     *  hub emits its page-scoped Plumber JSON-LD (`sameAs` + `hasMap`). */
+    gbpUrl?: string;
+    /** The office name in that schema ("J. Blanton Plumbing - {schemaName}"); default = the city name. */
+    schemaName?: string;
+    /** The hub city's own `areaServed` entry; default = "{City}, {ST}". */
+    schemaArea?: string;
   };
   depth: { h2: string; intro: string; tiles: Array<{ title: string; body: string }> };
   /** The Why Us H2 (visible heading, per page — Brief 206 decision 3). */
@@ -215,6 +247,56 @@ export function toRender(stored: CityHubStored, slug: string, name: string): Cit
   return { ...clone(stored), slug, name };
 }
 
+// ── Brief 216 (Track A2): the page-scoped Plumber JSON-LD ─────────────────────────────────────────
+
+/** A Google Business Profile share link: maps.app.goo.gl or google.com/maps only. */
+export const GBP_URL_RE = /^https:\/\/(?:maps\.app\.goo\.gl\/[A-Za-z0-9_-]+|www\.google\.com\/maps\/[^\s"<>]+)$/;
+export const GBP_URL_MESSAGE = 'Use the office’s Google share link (https://maps.app.goo.gl/… or https://www.google.com/maps/…).';
+
+/** "1603 Orrington Ave, #600-1085, Evanston, IL 60201" → its schema parts, or null when it isn't that shape. */
+export function addressParts(address: string): { streetAddress: string; addressLocality: string; addressRegion: string; postalCode: string } | null {
+  const m = address.trim().match(/^(.+),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)$/);
+  return m ? { streetAddress: m[1].trim(), addressLocality: m[2].trim(), addressRegion: m[3], postalCode: m[4] } : null;
+}
+
+const SITE = 'https://jblantonplumbing.com';
+
+/**
+ * The hub's Plumber node (Marketing 2026-10-21, decision 2), built from data in a FIXED key order — in
+ * code, never round-tripped through JSONB. Null when the hub has no GBP link (Highland Park, every
+ * hub before its Version 2) or its office address can't be split into schema parts.
+ */
+export function hubPlumberJsonLd(hub: Pick<CityHubRender, 'slug' | 'name' | 'office'>, phoneDisplay: string, schemaPhone: (d: string) => string) {
+  const gbp = hub.office.gbpUrl;
+  const a = addressParts(hub.office.address);
+  if (!gbp || !a) return null;
+  const st = a.addressRegion;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Plumber',
+    '@id': `${SITE}/${hub.slug}#office`,
+    name: `J. Blanton Plumbing - ${hub.office.schemaName || hub.name}`,
+    url: `${SITE}/${hub.slug}`,
+    sameAs: [gbp],
+    hasMap: gbp,
+    telephone: schemaPhone(phoneDisplay),
+    address: { '@type': 'PostalAddress', ...a, addressCountry: 'US' },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    areaServed: [hub.office.schemaArea || `${hub.name}, ${st}`, ...hub.office.areas.map((x) => x.area || `${x.label}, ${st}`)],
+  };
+}
+
+// ── Brief 216 (Track C3): the full-bleed hero's media ─────────────────────────────────────────────
+
+/** Hero video / poster URLs: https on the project's CloudFront or S3 hosts only. */
+export const HUB_MEDIA_URL_RE = /^https:\/\/(?:[a-z0-9-]+\.cloudfront\.net|[a-z0-9.-]+\.s3[.-][a-z0-9.-]*amazonaws\.com)\/[^\s"<>]+$/i;
+export const HUB_MEDIA_MESSAGE = 'Use an https address on the site’s CloudFront or S3 storage (e.g. https://d1rplazj5a80fb.cloudfront.net/videos/…).';
+
 /**
  * Per-city fields a City Hub can't go live without (Brief 206 decision 4): every text, image, link and
  * list item except a review's Google link (null = no "Read on Google" line). Returns their paths.
@@ -250,6 +332,10 @@ export function requiredEmptyFields(hub: CityHubStored, metaTitle: string, metaD
     need(`services.cards[${i}].image.alt`, c?.image?.alt);
   });
   for (const k of ['eyebrow', 'h2', 'body', 'address', 'areasH3', 'more'] as const) need(`office.${k}`, hub.office?.[k]);
+  if (hub.hero?.layout === 'full-bleed' && hub.hero.video) {
+    need('hero.video.src', hub.hero.video.src);
+    need('hero.video.poster', hub.hero.video.poster);
+  }
   list('office.areas', hub.office?.areas).forEach((a: { label: string; href: string }, i) => {
     need(`office.areas[${i}].label`, a?.label);
     need(`office.areas[${i}].href`, a?.href);

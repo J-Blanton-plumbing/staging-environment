@@ -2,8 +2,10 @@ import { Fragment, type CSSProperties, type ReactNode } from 'react';
 import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import type { CityHubRender, CityHubShared, HubPhoto } from '@/lib/city-hub-cms/model';
-import { fillPattern } from '@/lib/city-hub-cms/model';
+import { fillPattern, hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
+import { faqPageJsonLd, ldJson, schemaPhone } from '@/lib/schema/city-pages';
 import CityHubRoot from './CityHubRoot';
+import HubHeroVideo from './HubHeroVideo';
 
 /**
  * City Hubs V2 (Brief 205) — ALL the markup of a city hub page (/joliet, /tinley-park,
@@ -17,8 +19,10 @@ import CityHubRoot from './CityHubRoot';
  *   • Every phone position renders through PhoneLink/PhoneNumber, so WhatConverts can swap the
  *     number, with the site phone from Global Settings (Columbus: the Central Ohio phone).
  *   • "Schedule" buttons are the site's schedule-popup trigger (Brief 169), not `#book` links.
- *   • Structured data: the VideoObject only. No FAQPage (Brief 164) and no page-level Plumber
- *     node (the footer's per-office PlumbingBusiness graph covers it) — Marketing, 2026-10-12.
+ *   • Structured data: the VideoObject, then (Brief 216, Marketing 2026-10-21) a page-scoped
+ *     Plumber node when the office has a Google Business Profile link (`office.gbpUrl` — sameAs +
+ *     hasMap; built here in a fixed key order) and ONE FAQPage derived from the visible FAQ. Both
+ *     are derived at render, never stored. The footer's sitewide PlumbingBusiness graph is untouched.
  *   • `noindex` is gone (the package was a review prototype).
  * Copy lives in the CMS (Brief 212 = Brief 206 Tracks B–E): the page's own content comes from its
  * `city_pages.hub_content` row and the sections every hub shares from the `city-hubs` shared record,
@@ -170,7 +174,7 @@ function ReviewCaption({ name, url, SH }: { name: string; url: string | null; SH
 }
 
 /** The hero `<picture>`: this page's own photo, or the shared standard van photo. */
-function HeroPicture({ photo }: { photo: HubPhoto }) {
+function HeroPicture({ photo, sizes = '(max-width:900px) 100vw, 62vw' }: { photo: HubPhoto; sizes?: string }) {
   return (
     <picture>
       <source media="(max-width:900px)" srcSet={photo.mobile} />
@@ -180,7 +184,7 @@ function HeroPicture({ photo }: { photo: HubPhoto }) {
         className="hero-photo"
         fetchPriority="high"
         height={photo.height}
-        sizes="(max-width:900px) 100vw, 62vw"
+        sizes={sizes}
         src={photo.src}
         srcSet={photo.src1100 ? `${photo.src1100} 1100w, ${photo.src} ${photo.width}w` : undefined}
         width={photo.width}
@@ -188,6 +192,13 @@ function HeroPicture({ photo }: { photo: HubPhoto }) {
     </picture>
   );
 }
+
+/**
+ * Brief 216 (Track C3): stops the full-bleed hero video's autoplay before its first frame on a hard
+ * load when the visitor asked for reduced motion (HubHeroVideo's effect covers client navigations).
+ */
+const REDUCED_MOTION_GUARD =
+  "(function(){try{var v=document.currentScript&&document.currentScript.previousElementSibling;if(v&&v.tagName==='VIDEO'&&window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.autoplay=false;v.removeAttribute('autoplay');v.pause();}}catch(e){}})();";
 
 const YT_WATCH = 'https://www.youtube.com/watch?v=';
 const YT_EMBED = 'https://www.youtube.com/embed/';
@@ -220,14 +231,32 @@ export default function CityHubView({ hub, shared: SH, phone }: { hub: CityHubRe
     contentUrl: `${YT_WATCH}${SH.video.youtubeId}`,
     embedUrl: `${YT_EMBED}${SH.video.youtubeId}`,
   };
+  // Brief 216: derived at render, never stored (see the header).
+  const plumberJsonLd = hubPlumberJsonLd(hub, phone.display, schemaPhone);
+  const faqJsonLd = hub.faq.items.length ? faqPageJsonLd(hub.faq.items) : null;
+  const heroPhoto = hub.hero.photo === 'standard' ? SH.vanPhoto : hub.hero.photo;
+  const fullBleed = hub.hero.layout === 'full-bleed';
 
   return (
     <CityHubRoot className={`city-hub city-hub--${hub.slug}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, '\\u003c') }} />
+      {plumberJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(plumberJsonLd)} /> : null}
+      {faqJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(faqJsonLd)} /> : null}
 
-      {/* 1. HERO */}
-      <section className={`hub-hero hub-hero--photo${hub.hero.crop === 'columbus' ? ' hub-hero--columbus' : ''}`}>
-        <HeroPicture photo={hub.hero.photo === 'standard' ? SH.vanPhoto : hub.hero.photo} />
+      {/* 1. HERO — 'split' (every hub but those that opt in) or Brief 216's 'full-bleed' */}
+      <section
+        className={
+          fullBleed ? 'hub-hero hub-hero--full' : `hub-hero hub-hero--photo${hub.hero.crop === 'columbus' ? ' hub-hero--columbus' : ''}`
+        }
+      >
+        {fullBleed && hub.hero.video ? (
+          <>
+            <HubHeroVideo video={hub.hero.video} />
+            <script dangerouslySetInnerHTML={{ __html: REDUCED_MOTION_GUARD }} />
+          </>
+        ) : (
+          <HeroPicture photo={heroPhoto} sizes={fullBleed ? '100vw' : undefined} />
+        )}
         <div className="hub-hero-in">
           <span className="t-eyebrow pv-in" style={s('--i:0;color:#F9F3EC')}>{hub.hero.eyebrow}</span>
           <h1 className="t-h1 hub-h1 pv-in" style={s('--i:1;color:#F9F3EC;margin:14px 0 16px')}>{hub.hero.h1}</h1>
