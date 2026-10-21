@@ -1,0 +1,313 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Drain Cleaning and Kitchen Sink Unclogging in Evanston, IL",
+   "sub": "A kitchen sink full of standing water, a tub that drains in slow motion or a floor drain that fills on laundry day. We clear it, show you what caused it and price it before any work. Our Evanston office is on Orrington Avenue, downtown. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call an Evanston Drain Plumber",
+    "body": "Call when plunging hasn't worked, the same drain clogs again within weeks or you notice a sewer smell. If only one fixture is slow, the clog is in that branch. If several drains are slow, or water rises at the basement floor drain, the main line is blocked and needs [sewer cleaning](/evanston/sewer-rodding).",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging in Evanston",
+    "bodies": [
+     "Kitchen sinks are the drain Evanston homeowners call us about most. Grease, food scraps and soap build up together and harden inside the pipe, especially in older homes where the kitchen drain runs a long way to the stack.",
+     "We clear the line with a cable sized for kitchen pipe, check that the dishwasher and disposal drain properly and tell you what caused it. If grease keeps coming back, [hydro jetting](/evanston/hydro-jetting) cleans the whole pipe wall. If the disposal is the problem, see [garbage disposal repair](/evanston/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in Evanston",
+    "bodies": [
+     "Hair and soap in the bathroom and lint from the laundry cause most other clogs. We clear them and show you what came out.",
+     "Many older Evanston homes still have galvanized or cast iron drains that narrow with age. If a drain keeps clogging, we'll camera it to see whether the pipe needs cleaning or replacing."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in Evanston Homes",
+    "intro": "About 4 in 10 Evanston homes were built before 1940.",
+    "items": [
+     {
+      "h3": "Long Kitchen Runs",
+      "body": "Older layouts send kitchen water a long way, with plenty of room for grease to settle."
+     },
+     {
+      "h3": "Old Galvanized and Cast Iron",
+      "body": "Rough insides catch debris."
+     },
+     {
+      "h3": "Main Line Trouble",
+      "body": "When every drain is slow, the main is blocked. See [sewer drain clearing](#sewer-drain-clearing)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When the basement floor drain backs up or every drain slows at once, the main sewer drain is blocked. We clear it from the cleanout to the city sewer.",
+     "Then we camera it so you see the cause, usually roots in old clay. If it keeps happening, we'll go over [rodding](/evanston/sewer-rodding), [jetting](/evanston/hydro-jetting) or a [repair](/evanston/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Evanston Calls J. Blanton for Clogs",
+    "intro": "Licensed plumbers, most drains cleared in one visit.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights and weekends."
+     },
+     {
+      "h3": "2. A Price First",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. The Cause Explained",
+      "body": "So it doesn't come back."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kim Budnik",
+      "url": null,
+      "text": "Edgar rodded out both my shower drain and vanity sink. He’s was professional and knowledgeable . I think J Blanton is on the pricey side , but I’m very happy with Edgar’s work."
+     },
+     {
+      "name": "Kerry Reyes",
+      "url": null,
+      "text": "Joey helped a lot . Took care of our annual maintenance and a drain problem quickly. Great service!"
+     },
+     {
+      "name": "Karen Brown",
+      "url": null,
+      "text": "Ron came out and went through the whole house for some faucet replacements and a drain issue. He was extremely knowledgeable, honest, and put us at ease (even our dog loved him!). I would definitely recommend J. Blanton for plumbing issues."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Can you unclog my kitchen sink today?",
+      "preview": "Often, and our line is open 24/7.",
+      "answer": "Often, yes. Call any time and we'll get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Why does my kitchen sink keep clogging?",
+      "preview": "Usually grease buildup.",
+      "answer": "Usually grease that has coated the pipe. Clearing the clog opens a path, while jetting removes the buildup."
+     },
+     {
+      "q": "Why does my dishwasher drain into the sink?",
+      "preview": "The kitchen drain is partly blocked.",
+      "answer": "When the kitchen drain or disposal is partly clogged, dishwasher water backs up into the sink."
+     },
+     {
+      "q": "Should I use a chemical drain cleaner?",
+      "preview": "We don't recommend it.",
+      "answer": "We don't recommend it, especially on older pipe. It rarely clears grease and can damage the pipe."
+     },
+     {
+      "q": "How do I keep my kitchen sink from clogging?",
+      "preview": "Keep grease out.",
+      "answer": "Wipe greasy pans with a paper towel before washing, use a strainer and run hot water after the dishwasher drains."
+     },
+     {
+      "q": "How much does drain cleaning cost in Evanston?",
+      "preview": "It depends on where the clog is. You'll approve a flat price first.",
+      "answer": "It depends on where the clog is and what's causing it. You'll approve a flat price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Drains That Keep Draining?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Drain Cleaning and Kitchen Sink Unclogging in Evanston, IL",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/evanston/drain-cleaning",
+   "description": "Drain cleaning in Evanston, IL. Clogged kitchen sinks, tubs and basement drains cleared fast, with a flat price before we start. 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Drain Cleaning in Evanston, IL | Kitchen Sink Unclogging",
+ "metaDescription": "Drain cleaning in Evanston, IL. Clogged kitchen sinks, tubs and basement drains cleared fast, with a flat price before we start. 24/7."
+}

@@ -1,0 +1,315 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Mokena, IL",
+   "sub": "Lukewarm showers, a puddle under the tank or a pilot that keeps going out. We find what failed, tell you honestly whether it's worth fixing and give you a flat price before we start. From our office on Jodi Road. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Mokena Water Heater Needs Repair",
+    "intro": "Most repair calls start with one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Hot Water at All",
+      "body": "A pilot, igniter, gas valve or element that stopped working."
+     },
+     {
+      "h3": "Hot Water Runs Out Fast",
+      "body": "A failing burner or element, a broken dip tube or sediment taking up space in the tank."
+     },
+     {
+      "h3": "A Leak at the Base",
+      "body": "A drain valve or relief valve leak can be fixed. A leaking tank can't."
+     },
+     {
+      "h3": "Popping or Rumbling",
+      "body": "Sediment on the bottom of the tank."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Mokena Homes",
+    "intro": "Many Mokena homes are on their second or third water heater by now, and some still have the first one.",
+    "items": [
+     {
+      "h3": "Original Heaters Past Their Life",
+      "body": "A tank installed when the house was built in the late 1990s or 2000s is well past the usual 8 to 12 years."
+     },
+     {
+      "h3": "Power-Vent Units",
+      "body": "Many newer homes have power-vent heaters that vent through the wall. When the fan or pressure switch fails, the heater won't fire."
+     },
+     {
+      "h3": "Finished Basements Around the Heater",
+      "body": "When the utility room is boxed in, a leak can soak carpet and drywall before anyone sees it."
+     },
+     {
+      "h3": "Homes on Private Wells",
+      "body": "Some homes in and around Mokena are on private wells. Well water can carry more sediment and minerals into the tank."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We service every kind of residential water heater in Mokena: gas and electric tanks, power-vent and high-efficiency models and tankless units. We diagnose first and recommend second.",
+     "When you call, read us the label on the tank. The fuel type, the size and the manufacture date tell us a lot before we arrive. If it's time to replace it, see [water heater installation](/mokena/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "A yearly flush clears the sediment at the bottom of the tank, keeps the heater efficient and helps it last. On the same visit we test the relief valve, check the anode rod and look over the burner or elements and the venting.",
+     "Tankless heaters get descaled on a schedule. If your heater has never had any maintenance, start here."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A diagnosis, not a sales pitch.",
+    "steps": [
+     {
+      "h3": "1. Find the Failure",
+      "body": "We test the parts before we talk about cost."
+     },
+     {
+      "h3": "2. Repair vs. Replace, Explained",
+      "body": "Both options side by side when the heater is near the end."
+     },
+     {
+      "h3": "3. A Price You Approve",
+      "body": "And a clean utility room when we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alicja Ziecina",
+      "url": null,
+      "text": "Lou was super helpful in fixing our water heater and gave very informed suggestions. Thank you Lou for your quick work!"
+     },
+     {
+      "name": "Paul Wittcoff",
+      "url": null,
+      "text": "Shayne was outstanding with knowledge and installation of a new Water Heater valve and did so quickly and efficiently"
+     },
+     {
+      "name": "Chi",
+      "url": null,
+      "text": "Christian was super efficient and friendly! He did some water heater maintenance for us. Def recommend!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Is my water heater worth repairing?",
+      "preview": "Under about 8 years, usually. Over 12, usually not.",
+      "answer": "If it's under about 8 years old and a part failed, a repair usually makes sense. Past 12 years, or if the tank itself leaks, replacing it is the better value."
+     },
+     {
+      "q": "Why does my power-vent water heater keep shutting off?",
+      "preview": "Often the fan, the pressure switch or a blocked vent.",
+      "answer": "Usually a failing vent fan, a bad pressure switch or a vent pipe blocked by snow, ice or a nest. We test each one."
+     },
+     {
+      "q": "How long do water heaters last in Mokena?",
+      "preview": "Usually about 8 to 12 years.",
+      "answer": "Tank heaters usually last somewhere around 8 to 12 years. Yearly flushing helps them reach the longer end."
+     },
+     {
+      "q": "Do you offer water heater maintenance?",
+      "preview": "Yes, flushing and safety checks.",
+      "answer": "Yes. We flush the tank, test the relief valve and check the anode rod and venting. Tankless units get descaled."
+     },
+     {
+      "q": "How much does water heater repair cost in Mokena?",
+      "preview": "It depends on the part and the heater. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of heater. We diagnose it and you approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Mokena, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/mokena/water-heater-repair",
+   "description": "Water heater repair in Mokena, IL. No hot water, leaks, noise or a pilot that won't stay lit. Diagnosed first and a flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Mokena, IL",
+ "metaDescription": "Water heater repair in Mokena, IL. No hot water, leaks, noise or a pilot that won't stay lit. Diagnosed first and a flat price. Call 24/7."
+}

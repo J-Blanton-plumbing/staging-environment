@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Lincoln Park, Chicago",
+   "sub": "Water in the basement or garden unit after a storm, from a backed-up floor drain or from a failed pump. We find where it's coming from, fix it and help keep it from happening again. Our office is on Diversey Parkway. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Lincoln Park Basements Flood",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Sewer Backup in a Storm",
+      "body": "Chicago's combined sewers push water back."
+     },
+     {
+      "h3": "Seepage Through Old Foundations",
+      "body": "Water comes through walls or the floor."
+     },
+     {
+      "h3": "A Failed Pump",
+      "body": "Sump or ejector."
+     },
+     {
+      "h3": "A Burst Pipe or Water Heater",
+      "body": "Plumbing water."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Lincoln Park",
+    "intro": "Chicago's sewers carry rainwater and sewage together, and MWRD says two-thirds of an inch of rain in an hour can overwhelm them.",
+    "items": [
+     {
+      "h3": "Garden Units Are Most Exposed",
+      "body": "Living space below grade takes the first hit."
+     },
+     {
+      "h3": "Sewer Water or Groundwater?",
+      "body": "They need different fixes."
+     },
+     {
+      "h3": "Find the Source First",
+      "body": "We figure out which one you have."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Some basement water is a plumbing problem and some is a foundation problem. We handle the plumbing side: backflow valves, standpipes, [overhead sewer systems](/chicago-lincoln-park/overhead-sewer-systems), [sump pumps](/chicago-lincoln-park/sump-pumps) and battery backups.",
+     "If water is coming through cracks in old foundation walls, a waterproofing contractor is the right call, and we'll tell you so. In Chicago, the sewer side is often the bigger problem."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, then stop the next one.",
+    "steps": [
+     {
+      "h3": "1. Stop the Source",
+      "body": "Clear the line or fix the pump."
+     },
+     {
+      "h3": "2. Find the Cause",
+      "body": "Sewer, groundwater or plumbing."
+     },
+     {
+      "h3": "3. Price Protection",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "protecting-a-lincoln-park-garden-unit",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Prevent It",
+    "h2": "Protecting a Lincoln Park Garden Unit",
+    "body": "For a below-grade apartment, protection works in layers. Keep the patio, stairwell and gangway drains clear. Make sure the sump pump has a battery backup. If sewer water has ever come up the floor drain, consider an overhead sewer, which keeps the unit separate from the city sewer during storms. In a condo building, these are usually association decisions, so we provide footage and a written plan.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "monica reyna-vukotich",
+      "url": null,
+      "text": "Excellent! Got here at the tone stated, called with an estimated time of arrival."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     },
+     {
+      "name": "Nelson Hanan",
+      "url": null,
+      "text": "Both technicians, Thomas Maloney and John Hogan, were very professional, knowledgeable, and friendly. I would recommend J. Blandon Plumbing. Services Sump pump installation"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Is it sewer water or groundwater?",
+      "preview": "Where it enters tells you.",
+      "answer": "Water rising through the floor drain is usually sewer water. Water at the walls is groundwater."
+     },
+     {
+      "q": "Do you remove water from flooded basements?",
+      "preview": "We fix the cause. Restoration companies dry and clean.",
+      "answer": "We fix the plumbing cause. For water removal and drying, a restoration company is the right call."
+     },
+     {
+      "q": "What protects a garden unit best?",
+      "preview": "An overhead sewer for repeat backups.",
+      "answer": "For repeat sewer backups, an overhead sewer system. For lighter risk, a backflow valve or standpipe."
+     },
+     {
+      "q": "Will it happen again?",
+      "preview": "Possibly, until the basement is protected.",
+      "answer": "If the city sewer filled up, it can happen in the next big storm. Protection stops it."
+     },
+     {
+      "q": "Can a backflow valve be installed in a condo building?",
+      "preview": "Yes, with approval.",
+      "answer": "Yes, usually with association approval, since it affects shared plumbing."
+     },
+     {
+      "q": "How much does basement flooding repair cost in Lincoln Park?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on the cause and what needs to be fixed or added. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Water in the Basement? Call Us Now.",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Lincoln Park, Chicago",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/basement-flooding",
+   "description": "Basement and garden unit flooding help in Lincoln Park, Chicago. We find the source, fix it and help protect the space. Open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Lincoln Park, Chicago",
+ "metaDescription": "Basement and garden unit flooding help in Lincoln Park, Chicago. We find the source, fix it and help protect the space. Open 24/7."
+}

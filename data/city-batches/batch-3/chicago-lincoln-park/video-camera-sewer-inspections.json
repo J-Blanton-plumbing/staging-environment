@@ -1,0 +1,329 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Lincoln Park, Chicago",
+   "sub": "Buying a greystone, renovating a two-flat or tired of yearly backups? A camera inspection shows exactly what's inside the sewer line. We record it, locate each problem and walk you through the video. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Reasons Lincoln Park Owners Get a Sewer Scope",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying an Older Building",
+      "body": "The lateral may be as old as the building."
+     },
+     {
+      "h3": "Before a Gut Renovation",
+      "body": "Check the line and under-slab drains first."
+     },
+     {
+      "h3": "Repeat Backups",
+      "body": "Find out whether it's roots, a sag or a break."
+     },
+     {
+      "h3": "After a Storm Backup",
+      "body": "Your line or the city sewer?"
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-chicago-lincoln-park",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Lincoln Park Sewer Lines",
+    "intro": "Typical findings under Lincoln Park buildings:",
+    "items": [
+     {
+      "h3": "Roots in Clay Joints",
+      "body": "Especially near parkway trees."
+     },
+     {
+      "h3": "Cracked Cast Iron Under the Slab",
+      "body": "Where the line leaves the building."
+     },
+     {
+      "h3": "Old Repairs",
+      "body": "Sections replaced over the decades, joined to the original pipe."
+     },
+     {
+      "h3": "Lines That Just Need Cleaning",
+      "body": "Sometimes it's grease, not damage."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You watch the video with us.",
+    "steps": [
+     {
+      "h3": "1. Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Located and Measured",
+      "body": "Every problem marked."
+     },
+     {
+      "h3": "3. Explained Clearly",
+      "body": "And you keep the video."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "split",
+    "id": "should-a-condo-buyer-scope-the-sewer",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Buying a Condo",
+    "h2": "Should a Condo Buyer Scope the Sewer?",
+    "body": "In a small Lincoln Park condo building, the sewer lateral is usually a common element, so a big repair can become a special assessment for every owner. Before you buy, ask the association whether the line has been scoped recently. If not, a camera inspection can show whether it's in good shape or headed for repair. That's useful for buyers, and for boards planning reserves.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-sewer-inspection",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Sewer Inspection",
+    "body": "Access and line length matter most. A clear basement cleanout is simplest. A blocked line needs clearing first. We quote a flat price before we start.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Hannah Burque",
+      "url": null,
+      "text": "Great experience, J Blanton scoped and lined our sewer and installed a cleanout, it was quick and easy."
+     },
+     {
+      "name": "Christi Vitello",
+      "url": null,
+      "text": "Christian was amazing at checking out our plumbing for our annual inspection. I appreciated so much his edicational tid bits for me! Know I know a lot more about our plumbing!"
+     },
+     {
+      "name": "Tauber Weiss Family",
+      "url": null,
+      "text": "Christian was knowledgeable, kind, and explained everything well for our inspection. Plus he was great with our dog (even though the photo didn’t upload!) Thank you!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Should I scope the sewer before buying a Lincoln Park home?",
+      "preview": "Yes.",
+      "answer": "Yes. A standard home inspection doesn't include the sewer, and a repair under an older building can be significant."
+     },
+     {
+      "q": "Can you inspect the line under the basement slab?",
+      "preview": "Yes, from the cleanout.",
+      "answer": "Yes. The camera follows the line under the slab and out to the city sewer."
+     },
+     {
+      "q": "Can the camera show if the problem is in the city's sewer?",
+      "preview": "Yes.",
+      "answer": "Yes. We follow the line to the main and show you where the problem is."
+     },
+     {
+      "q": "Do I keep the video?",
+      "preview": "Yes.",
+      "answer": "Yes. You can share it with a seller, an agent or a condo board."
+     },
+     {
+      "q": "Can the association schedule a scope for the building?",
+      "preview": "Yes.",
+      "answer": "Yes. Many boards scope the line every few years."
+     },
+     {
+      "q": "Can you inspect a line that serves several units?",
+      "preview": "Yes.",
+      "answer": "Yes, from the basement cleanout to the city sewer."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Lincoln Park?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Lincoln Park, Chicago",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Lincoln Park, Chicago. See roots, cracks and breaks on video before you buy, renovate or repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Lincoln Park",
+ "metaDescription": "Sewer camera inspections in Lincoln Park, Chicago. See roots, cracks and breaks on video before you buy, renovate or repair."
+}

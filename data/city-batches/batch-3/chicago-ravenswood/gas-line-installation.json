@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in Ravenswood, Chicago",
+   "sub": "A gas range in a renovated kitchen, a gas dryer in a new laundry spot or a line to the backyard grill. Our licensed plumbers size, install and test gas lines in Ravenswood. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Ravenswood Gas Line Projects",
+    "intro": "Common jobs:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Kitchen Remodels",
+      "body": "A new range in a new spot."
+     },
+     {
+      "h3": "Laundry Upgrades",
+      "body": "A gas dryer in a basement or porch."
+     },
+     {
+      "h3": "Backyard Grills",
+      "body": "A hard line on a small city yard."
+     },
+     {
+      "h3": "Fireplace Logs",
+      "body": "Gas to a masonry fireplace."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How a Gas Line Is Added in an Older Building",
+    "intro": "Planned around old piping:",
+    "steps": [
+     {
+      "h3": "1. Trace the Existing System",
+      "body": "Which meter, which pipe size."
+     },
+     {
+      "h3": "2. Add the Branch to Code",
+      "body": "With a shutoff at the appliance."
+     },
+     {
+      "h3": "3. Test It Before Use",
+      "body": "Pressure-held, then connected."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in Ravenswood",
+    "intro": "Renovations in older homes often mean new gas work.",
+    "items": [
+     {
+      "h3": "Kitchen Renovations",
+      "body": "Moving the range means a new branch."
+     },
+     {
+      "h3": "Laundry Moves",
+      "body": "From the basement to an upper floor."
+     },
+     {
+      "h3": "Fireplaces",
+      "body": "See [gas fireplace service](/chicago-ravenswood/gas-fireplace)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "adding-gas-to-an-older-chicago-building",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Older Buildings",
+    "h2": "Adding Gas to an Older Chicago Building",
+    "body": "A new appliance in a century-old building is usually tied into piping that has been extended many times. Before adding a branch, we check that the existing line can carry the new load along with the furnace and water heater on the same meter. In a two-flat, we make sure we're on the right unit's system. The City of Chicago may require a permit for the work, and we'll handle it where it does.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-gas-line",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Gas Line",
+    "body": "The route through an older building and the distance from the right meter matter most. Outdoor lines and upper floors take more work. City permits may apply. We plan the route and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Ngawang Lhabrang",
+      "url": null,
+      "text": "Update: 6/6/25: Manager Damien called within the hour and rectified situation. Thank you for accomodating. The scheduling process was an absolute mess. I filled out the online form and began texting with their team on the morning of Wednesday, 6/4/25, to arrange an evening appointment. I was told Friday evening, 6/6/25, was available. Based on the text exchange, it seemed the appointment was confirmed. [...]"
+     },
+     {
+      "name": "NBA All Day",
+      "url": null,
+      "text": "Welhem completed some plumbing services to ensure my washer/dryer could be installed. He was prompt and professional and did great work."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Can I move my dryer and keep it gas?",
+      "preview": "Yes, with a new branch line.",
+      "answer": "Yes. We run a new branch to the new location and cap the old one."
+     },
+     {
+      "q": "Can my old pipe handle a new range?",
+      "preview": "We check first.",
+      "answer": "We calculate the load and check the pipe before connecting."
+     },
+     {
+      "q": "Do you handle city permits?",
+      "preview": "Where required.",
+      "answer": "Yes, where the city requires one."
+     },
+     {
+      "q": "Can you run gas to the backyard?",
+      "preview": "Yes.",
+      "answer": "Yes, with a protected line and a shutoff."
+     },
+     {
+      "q": "Can a gas line run outside the building?",
+      "preview": "Yes, when it's protected.",
+      "answer": "Yes, when it's properly supported and protected. It's common for grill lines."
+     },
+     {
+      "q": "Can you remove an old gas line?",
+      "preview": "Yes.",
+      "answer": "Yes. We cap it properly and pressure-test the system."
+     },
+     {
+      "q": "How much does gas line installation cost in Ravenswood?",
+      "preview": "It depends on the run. You'll approve a flat price first.",
+      "answer": "It depends on the length of the run, the appliance and the route. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in Ravenswood, Chicago",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/gas-line-installation",
+   "description": "Gas line installation in Ravenswood, Chicago for ranges, dryers, grills and fireplaces. Licensed, sized right and pressure-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in Ravenswood, Chicago",
+ "metaDescription": "Gas line installation in Ravenswood, Chicago for ranges, dryers, grills and fireplaces. Licensed, sized right and pressure-tested."
+}

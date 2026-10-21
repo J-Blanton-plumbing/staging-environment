@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Repair and Installation in Lincoln Park, Chicago",
+   "sub": "A pump that runs constantly, one that hums but won't pump or a garden unit that needs protection. We repair, replace and install sump pumps and add battery backups. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Never Stops",
+      "body": "A stuck float or bad check valve."
+     },
+     {
+      "h3": "It Hums, but Water Stays",
+      "body": "A jammed or failing pump."
+     },
+     {
+      "h3": "It's Older Than 7 to 10 Years",
+      "body": "Replace it before it fails."
+     },
+     {
+      "h3": "There's No Backup",
+      "body": "Storms and outages arrive together."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Lincoln Park Basements",
+    "intro": "Not every Lincoln Park building has a sump pump, but the ones that do depend on it.",
+    "items": [
+     {
+      "h3": "Garden Units",
+      "body": "A failed pump puts water right into living space."
+     },
+     {
+      "h3": "Tight Pits in Older Basements",
+      "body": "We replace pumps in small or awkward pits."
+     },
+     {
+      "h3": "Battery Backups",
+      "body": "Keep the pump running in an outage."
+     },
+     {
+      "h3": "Discharge on a City Lot",
+      "body": "We route the discharge so it drains properly."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A pump you can count on.",
+    "steps": [
+     {
+      "h3": "1. Test It",
+      "body": "Pump, float, check valve, discharge."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Add a Backup",
+      "body": "If you want one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "sump-pumps-below-lincoln-park-garden-units",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Garden Units",
+    "h2": "Sump Pumps Below Lincoln Park Garden Units",
+    "body": "In a building with a garden apartment, the sump pump protects living space, not just storage. Pumps in these pits often run hard during spring rain. We test the pump, the float and the check valve, make sure the discharge goes to the right place and add a battery backup that takes over in an outage. A high-water alarm lets the residents below know right away if something goes wrong.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-sump-pump-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Sump Pump Work",
+    "body": "The pump size and type, a battery backup and an alarm are the main pieces. A new pit or discharge changes add more. We test and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible. Services Sump pump repair, Sump pump installation"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Does a garden unit need a battery backup?",
+      "preview": "Yes.",
+      "answer": "Yes. If someone lives below grade, a backup pump is worth it."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "About 7 to 10 years.",
+      "answer": "Most last about 7 to 10 years."
+     },
+     {
+      "q": "Is a sump pump the same as an ejector pump?",
+      "preview": "No.",
+      "answer": "No. A sump pump moves groundwater out of a pit. An [ejector pump](/chicago-lincoln-park/ejector-pump) moves wastewater from basement fixtures."
+     },
+     {
+      "q": "Can you add a sump pump where there isn't one?",
+      "preview": "Often.",
+      "answer": "Often. We cut a pit where water collects and run the discharge outside."
+     },
+     {
+      "q": "Where should a sump pump discharge on a city lot?",
+      "preview": "Away from the building, where local rules allow.",
+      "answer": "Away from the foundation, following city rules. We'll route it properly."
+     },
+     {
+      "q": "Can a sump pump be added under a finished garden unit?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes, if there's a spot for the pit and a path for the discharge."
+     },
+     {
+      "q": "How much does sump pump repair cost in Lincoln Park?",
+      "preview": "It depends on the pump and backup. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the pit and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Repair and Installation in Lincoln Park, Chicago",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/sump-pumps",
+   "description": "Sump pump repair, replacement and battery backups in Lincoln Park, Chicago. Tested and priced flat before any work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Repair & Installation in Lincoln Park",
+ "metaDescription": "Sump pump repair, replacement and battery backups in Lincoln Park, Chicago. Tested and priced flat before any work. Call 24/7."
+}

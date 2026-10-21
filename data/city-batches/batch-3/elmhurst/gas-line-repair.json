@@ -1,0 +1,345 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Leak Detection and Repair in Elmhurst, IL",
+   "sub": "A faint gas smell near the furnace, a red tag on the meter or old piping to appliances long gone. Our licensed plumbers locate gas leaks, repair the piping and pressure-test it before service is restored. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Safety First",
+    "h2": "Smell Gas? Act Fast",
+    "intro": "Before anything else:",
+    "steps": [
+     {
+      "h3": "1. Leave the House",
+      "body": "Everyone out."
+     },
+     {
+      "h3": "2. No Sparks",
+      "body": "Don't touch switches or phones inside."
+     },
+     {
+      "h3": "3. Call From Outside",
+      "body": "Nicor Gas or 911."
+     },
+     {
+      "h3": "4. Call Us After",
+      "body": "We'll find and repair the leak."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call About Gas Piping",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You Smell Gas Near an Appliance",
+      "body": "Even faintly."
+     },
+     {
+      "h3": "Service Was Shut Off",
+      "body": "A repair and pressure test come first."
+     },
+     {
+      "h3": "Old Branches Lead Nowhere",
+      "body": "From removed appliances."
+     },
+     {
+      "h3": "Connectors Are Old",
+      "body": "Uncoated brass should go."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "We find gas leaks with electronic detectors and by testing fittings one by one, then pressure-test the system to confirm it's tight.",
+     "In postwar Elmhurst homes, leaks usually show up at old unions and valves, at original connectors or on branches that were never capped. After the repair, the full system is tested so service can be restored."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Lines in Elmhurst Homes",
+    "intro": "In older Elmhurst homes, gas piping is usually black iron, and much of it dates from the 1940s to the 1960s.",
+    "items": [
+     {
+      "h3": "Joints and Valves Wear",
+      "body": "The pipe lasts, the fittings loosen."
+     },
+     {
+      "h3": "Abandoned Lines",
+      "body": "Branches to old appliances should be capped and tested."
+     },
+     {
+      "h3": "New Loads on Old Pipe",
+      "body": "Bigger appliances may need a larger line."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find, fix, prove.",
+    "steps": [
+     {
+      "h3": "1. Licensed Gas Plumbers",
+      "body": "Gas work calls for a licensed pro."
+     },
+     {
+      "h3": "2. A Price You Approve",
+      "body": "Once we find the leak."
+     },
+     {
+      "h3": "3. Pressure-Tested",
+      "body": "Before the gas comes back."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "why-old-appliance-connectors-matter",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Connectors",
+    "h2": "Why Old Appliance Connectors Matter",
+    "body": "The flexible connector between the gas pipe and an appliance is a common leak point. Older uncoated brass connectors can crack over time, especially if the appliance has been moved. When we work on a gas line in an Elmhurst home, we check every connector we can reach and recommend replacing the old ones. It's a small part that removes a real risk.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "joseph llereza",
+      "url": null,
+      "text": "Andrew and Ty accessed the situation and we talked it through together to try to find option to locate the leak since it was above the air ducts. They worked on it pretty quickly and did as clean of a job cutting through the drywall. Andrew is in the photo showing me the work he did. No leaks"
+     },
+     {
+      "name": "Paul Wittcoff",
+      "url": null,
+      "text": "Shayne was outstanding with knowledge and installation of a new Water Heater valve and did so quickly and efficiently"
+     },
+     {
+      "name": "Abby Graham",
+      "url": null,
+      "text": "Alex could not have been greater! We noticed the leak last night, called J. Blandon this morning and he was here an hour later. Walked us through all of our options and explained everything. Honestly took what could have been a huge headache and made it reassuring and confident on our resolution.Kyle was awesome and even hung in there for a replacement part."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Leak Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "What should I do if I smell gas?",
+      "preview": "Leave and call Nicor Gas or 911.",
+      "answer": "Leave without touching switches. Call Nicor Gas or 911 from outside, then call us."
+     },
+     {
+      "q": "Can you check for a leak if the gas is still on?",
+      "preview": "Yes.",
+      "answer": "Yes. If the smell is faint and the utility hasn't shut you off, we can test the system and find the source."
+     },
+     {
+      "q": "Who is responsible for the gas line?",
+      "preview": "The utility to the meter, you after.",
+      "answer": "Nicor Gas handles up to and including the meter. Piping after the meter is the homeowner's."
+     },
+     {
+      "q": "Can you cap old lines?",
+      "preview": "Yes.",
+      "answer": "Yes, and we pressure-test the system after."
+     },
+     {
+      "q": "How much does gas leak repair cost in Elmhurst?",
+      "preview": "It depends on the leak. You'll approve a flat price first.",
+      "answer": "It depends on where the leak is and how much pipe needs work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Need Your Gas Line Checked?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Leak Detection and Repair in Elmhurst, IL",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/elmhurst/gas-line-repair",
+   "description": "Gas leak detection and gas line repair in Elmhurst, IL. Licensed plumbers find the leak, fix the piping and pressure-test it.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Leak Detection & Repair in Elmhurst, IL",
+ "metaDescription": "Gas leak detection and gas line repair in Elmhurst, IL. Licensed plumbers find the leak, fix the piping and pressure-test it."
+}

@@ -1,0 +1,315 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Toilet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Toilet Repair and Installation in Skokie, IL",
+   "sub": "A toilet that runs, leaks at the base, clogs every week or rocks when you sit. We repair it or replace it, whichever makes more sense, at a flat price. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+    "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Toilet Problems We Fix in Skokie",
+    "intro": "We handle:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Constant Running",
+      "body": "A flapper or fill valve."
+     },
+     {
+      "h3": "Water at the Base",
+      "body": "A failed wax ring."
+     },
+     {
+      "h3": "Rocking",
+      "body": "Loose bolts or a corroded flange."
+     },
+     {
+      "h3": "Frequent Clogs",
+      "body": "An older toilet or a line problem."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-toilets",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Toilets in Skokie Homes",
+    "intro": "In postwar Skokie homes, the toilet is often newer than the plumbing under it.",
+    "items": [
+     {
+      "h3": "Corroded Cast Iron Flanges",
+      "body": "The flange under the toilet can rust away, so the toilet won't stay tight."
+     },
+     {
+      "h3": "Basement Toilets",
+      "body": "Some drain by gravity, others to an [ejector pump](/skokie/ejector-pump)."
+     },
+     {
+      "h3": "Clogs That Aren't the Toilet",
+      "body": "If several fixtures are slow, it's the main line."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Fix it right, not twice.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Tank, bowl, seal, flange and line."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replace."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "Tight, sealed and flushing well."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-s-under-your-toilet",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Older Homes",
+    "h2": "What's Under Your Toilet",
+    "body": "In many 1950s Skokie homes, the toilet sits on a cast iron flange connected to the original drain. Over time, the flange corrodes and the bolts lose their grip, so the toilet rocks and the seal fails. We repair or replace the flange before setting the toilet. It's the difference between a toilet that stays tight and one that leaks again in a year.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-toilet-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Toilet Work",
+    "body": "Small repairs are quick. Replacing a corroded flange takes longer. A new toilet depends on the model. We check and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Toilet Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Chrysa P",
+      "url": null,
+      "text": "Awesome! Trevor was friendly and fixed our toilet blockage problem. Same day service. Also provided me w estimate in case I’d like to get a new toilet in the future. Highly recommend - found my new plumbing service! 😊"
+     },
+     {
+      "name": "Susan Richmond",
+      "url": null,
+      "text": "Ronnie was professional,detailed and kind. He found the problem and started the process of getting it fixed. Thank you, Susan Richmond St.Paul A.M.E. Church, Glencoe"
+     },
+     {
+      "name": "Mary Ellen Bowers",
+      "url": null,
+      "text": "John showed up on an emergency call and within a few minutes of arriving resolved our issues. Thank you John and J. Blanton plumbing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Toilet Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Why does my toilet rock?",
+      "preview": "Loose bolts or a damaged flange.",
+      "answer": "Usually loose bolts or a corroded flange. Rocking breaks the wax seal, so it's worth fixing early."
+     },
+     {
+      "q": "Why does my toilet clog so often?",
+      "preview": "An older toilet or a line problem.",
+      "answer": "Older low-flow toilets clog more. If other drains are slow too, the main line is the problem."
+     },
+     {
+      "q": "Should I replace or repair my toilet?",
+      "preview": "If it's cracked or keeps failing, replace it.",
+      "answer": "If the bowl or tank is cracked or it keeps needing repairs, replacing it is usually better."
+     },
+     {
+      "q": "Can you install a comfort-height toilet?",
+      "preview": "Yes.",
+      "answer": "Yes. We install comfort-height and other models with a new seal and supply line."
+     },
+     {
+      "q": "Can you install a toilet with a smaller footprint?",
+      "preview": "Yes.",
+      "answer": "Yes. Compact models work well in small bathrooms."
+     },
+     {
+      "q": "Can you replace a wax ring?",
+      "preview": "Yes.",
+      "answer": "Yes. We pull the toilet, replace the seal and reset it tight."
+     },
+     {
+      "q": "How much does toilet repair cost in Skokie?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and whether you're repairing or replacing. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Toilet?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Toilet Repair and Installation in Skokie, IL",
+   "serviceType": "Toilet Installation & Repair",
+   "url": "https://jblantonplumbing.com/skokie/toilet-installation-repair",
+   "description": "Toilet repair and installation in Skokie, IL. Running, leaking, clogging and rocking toilets fixed, and new toilets installed. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Toilet Repair & Installation in Skokie, IL",
+ "metaDescription": "Toilet repair and installation in Skokie, IL. Running, leaking, clogging and rocking toilets fixed, and new toilets installed. Flat price."
+}

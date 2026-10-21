@@ -1,0 +1,379 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Hanover Park, IL",
+   "sub": "If roots or grease have blocked your sewer line before, they'll be back. A maintenance schedule clears them before they cause a backup in the basement. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "Does Your Hanover Park Line Need a Schedule?",
+    "intro": "It makes sense if:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You've Had Root Clogs",
+      "body": "They return."
+     },
+     {
+      "h3": "There's a Low Spot",
+      "body": "Waste collects there."
+     },
+     {
+      "h3": "The Basement Is Finished",
+      "body": "A backup costs more."
+     },
+     {
+      "h3": "Big Trees Near the Line",
+      "body": "Planted when the house was new."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "Suggested Service Intervals",
+    "intro": "A starting point we adjust after the camera:",
+    "head": [
+     "Your Line",
+     "Suggested Schedule"
+    ],
+    "rows": [
+     [
+      "Roots in the past",
+      "Rod or jet yearly"
+     ],
+     [
+      "A belly that collects waste",
+      "Clean every 1 to 2 years"
+     ],
+     [
+      "No problems so far",
+      "Camera check every few years"
+     ],
+     [
+      "Recently lined",
+      "Camera check after a few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Hanover Park Storms",
+    "intro": "On Aug 23, 2007, 3.25 inches of rain fell in a short time, and many basements took on water.",
+    "items": [
+     {
+      "h3": "A Clean Line Drains Faster",
+      "body": "When sewers are under strain, every bit of capacity helps."
+     },
+     {
+      "h3": "Service in Late Winter",
+      "body": "Before roots grow and storms start."
+     },
+     {
+      "h3": "Pumps Checked Too",
+      "body": "We look at [sump pumps](/hanover-park/sump-pumps) and backups on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/hanover-park/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/hanover-park/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/hanover-park/sewer-rodding) or [Hydro Jetting](/hanover-park/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/hanover-park/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Plans Work",
+    "intro": "Based on footage.",
+    "steps": [
+     {
+      "h3": "1. Scope It",
+      "body": "See what's there."
+     },
+     {
+      "h3": "2. Rod or Jet",
+      "body": "Whatever it needs."
+     },
+     {
+      "h3": "3. Set a Schedule",
+      "body": "Interval and price up front."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "maintenance-costs-less-than-a-backup",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Why Plan",
+    "h2": "Maintenance Costs Less Than a Backup",
+    "body": "A scheduled cleaning is short, planned and done when it suits you. A backup is the opposite: it happens on a holiday weekend, it soaks carpet and drywall in a finished basement and it often comes with a cleanup bill on top of the plumbing. For Hanover Park homes with a known root problem or a low spot, a yearly visit costs far less than one bad day. If your line has never given you trouble, a camera check every few years is plenty.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     },
+     {
+      "name": "Sara Beyler",
+      "url": null,
+      "text": "Very nice no drip club maintenance visit from Christian and Julian! Appreciate the advice on possible Reno too!"
+     },
+     {
+      "name": "Brian Mulvihill",
+      "url": null,
+      "text": "Christian at J Blanton did an amazing job during his maintenance visit. He arrived promptly and ready with all of his equipment and got right to work. He was very knowledgeable and even provided some valuable education about plumbing. Thank you Christian!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "How often should I service my sewer line?",
+      "preview": "Yearly if roots are a problem.",
+      "answer": "If you've had root clogs, yearly. If not, a camera check every few years."
+     },
+     {
+      "q": "What's the best time of year?",
+      "preview": "Late winter or early spring.",
+      "answer": "Late winter or early spring, before roots grow and storms arrive."
+     },
+     {
+      "q": "Can maintenance fix a belly?",
+      "preview": "No, but it keeps it clear.",
+      "answer": "No. Cleaning keeps waste from building up there. Fixing it means resetting that section."
+     },
+     {
+      "q": "Is maintenance part of the No Drip Club?",
+      "preview": "The club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club) includes regular maintenance visits for homeowners."
+     },
+     {
+      "q": "Will you remind me when it's time?",
+      "preview": "Yes, if you'd like.",
+      "answer": "Yes. We can set a reminder for your next visit."
+     },
+     {
+      "q": "What if my line is fine?",
+      "preview": "Then we'll tell you.",
+      "answer": "Then we'll tell you, and we won't sell you a schedule you don't need."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Hanover Park?",
+      "preview": "It depends on the service. You'll approve a flat price first.",
+      "answer": "It depends on whether the line needs rodding, jetting or a camera check. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Hanover Park, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/hanover-park/sewer-maintenance",
+   "description": "Sewer line maintenance in Hanover Park, IL. Scheduled cleaning and camera checks to keep roots and buildup from causing backups.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Hanover Park, IL",
+ "metaDescription": "Sewer line maintenance in Hanover Park, IL. Scheduled cleaning and camera checks to keep roots and buildup from causing backups."
+}

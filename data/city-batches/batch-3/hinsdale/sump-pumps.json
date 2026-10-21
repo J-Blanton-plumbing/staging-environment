@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in Hinsdale, IL",
+   "sub": "A pump that runs constantly, hums but won't pump or didn't start in the last storm. We install, repair and replace sump pumps, add battery backups and make sure the discharge carries water away from the house. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Don't wait for the next storm:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Cycles Constantly",
+      "body": "A stuck float, a failed check valve or an undersized pump."
+     },
+     {
+      "h3": "It Hums Without Pumping",
+      "body": "A jammed impeller or a failing motor."
+     },
+     {
+      "h3": "It's 7 to 10 Years Old",
+      "body": "Most pumps don't last longer."
+     },
+     {
+      "h3": "There's No Backup",
+      "body": "If the power fails, the pump stops."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Hinsdale Basements",
+    "intro": "In April 2013, Hinsdale declared a state of emergency as heavy rain flooded low-lying roads and Salt Creek rose. Storms like that are when a sump pump has to work.",
+    "items": [
+     {
+      "h3": "Finished Basements Raise the Stakes",
+      "body": "A failed pump can damage flooring, walls and furniture in a few hours."
+     },
+     {
+      "h3": "Battery Backups",
+      "body": "Storms and power outages often arrive together. A backup keeps the pit from overflowing."
+     },
+     {
+      "h3": "Older Pits in Historic Homes",
+      "body": "Some older basements have small or shallow pits. We can enlarge or replace them."
+     },
+     {
+      "h3": "Discharge Lines",
+      "body": "We route the discharge away from the foundation and protect it from freezing."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A pump you can count on.",
+    "steps": [
+     {
+      "h3": "1. Test the Whole System",
+      "body": "Pump, float, check valve and discharge."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "With a flat price first."
+     },
+     {
+      "h3": "3. Add a Backup",
+      "body": "Battery or water-powered, if you'd like one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-sump-pump-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Sump Pump Work",
+    "body": "The pump's size and type matter, along with whether you add a battery backup or alarm. A new pit, liner or discharge line adds to the job. We test what you have and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Dan McCarthy",
+      "url": null,
+      "text": "Professional and on time. Did a good job replacing an ejector pump and a sump pump. Highly recommend and Derek was great to work with!"
+     },
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     },
+     {
+      "name": "monica reyna-vukotich",
+      "url": null,
+      "text": "Excellent! Got here at the tone stated, called with an estimated time of arrival."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Do we need a battery backup sump pump?",
+      "preview": "If the basement is finished, yes.",
+      "answer": "If your basement is finished or holds anything valuable, yes. Heavy storms often knock out power."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "Usually 7 to 10 years.",
+      "answer": "Most last about 7 to 10 years, less if they run often."
+     },
+     {
+      "q": "Can you install a sump pump in a basement that doesn't have one?",
+      "preview": "Often, yes.",
+      "answer": "Often. We can install a new pit and pump where water collects, along with a discharge line to the outside."
+     },
+     {
+      "q": "Where should the sump pump discharge?",
+      "preview": "Away from the house, never into the sewer.",
+      "answer": "Away from the foundation, onto the yard or into a storm line. Never into the sanitary sewer."
+     },
+     {
+      "q": "Should we have a second pump for a large basement?",
+      "preview": "Often a good idea.",
+      "answer": "Often. A second pump in the same pit or a second pit gives you protection if one fails."
+     },
+     {
+      "q": "Do I need a bigger sump pump?",
+      "preview": "If it can't keep up in storms, maybe.",
+      "answer": "If it runs constantly in heavy rain and can't keep up, a higher-capacity pump may help."
+     },
+     {
+      "q": "How much does sump pump installation cost in Hinsdale?",
+      "preview": "It depends on the pump, pit and backup. You'll approve a flat price first.",
+      "answer": "It depends on the pump, whether a new pit is needed and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in Hinsdale, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/hinsdale/sump-pumps",
+   "description": "Sump pump installation, repair and battery backups in Hinsdale, IL. Tested, sized for your pit and priced flat before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in Hinsdale, IL",
+ "metaDescription": "Sump pump installation, repair and battery backups in Hinsdale, IL. Tested, sized for your pit and priced flat before any work."
+}

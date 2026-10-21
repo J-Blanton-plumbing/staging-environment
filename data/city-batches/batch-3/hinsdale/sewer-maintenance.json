@@ -1,0 +1,359 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Hinsdale, IL",
+   "sub": "If roots have blocked your line before, they'll be back. A maintenance plan based on what your line actually needs keeps it flowing and keeps finished basements dry. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "When a Hinsdale Sewer Line Needs a Schedule",
+    "intro": "Regular service pays off when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Lateral Is Clay",
+      "body": "Roots return to the same joints every growing season."
+     },
+     {
+      "h3": "Big Trees Line the Street",
+      "body": "Mature parkway trees keep sending roots toward the pipe."
+     },
+     {
+      "h3": "The Basement Is Finished",
+      "body": "A backup into finished space is costly."
+     },
+     {
+      "h3": "You've Already Had a Backup",
+      "body": "One usually means more are coming."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "How Often to Service Your Line",
+    "intro": "A starting point for Hinsdale homes:",
+    "head": [
+     "Your Line",
+     "Suggested Schedule"
+    ],
+    "rows": [
+     [
+      "Clay with recurring roots",
+      "Rodding or jetting every year"
+     ],
+     [
+      "Cast iron with scale",
+      "Jetting every 1 to 2 years"
+     ],
+     [
+      "Newer PVC, no history",
+      "Camera check every few years"
+     ],
+     [
+      "Recently lined",
+      "Camera check after a few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Hinsdale Storms",
+    "intro": "In June 2021, a storm sent water bubbling more than 5 feet out of a sewer near County Line Road and Walnut Street, and a nearby home had about 3 feet of water in a basement that had never flooded.",
+    "items": [
+     {
+      "h3": "A Clear Line Has More Room",
+      "body": "Roots and buildup take up space you need in a heavy storm."
+     },
+     {
+      "h3": "Late Winter Is the Best Time",
+      "body": "Clear the line before spring roots and summer storms."
+     },
+     {
+      "h3": "Test the Protection on the Same Visit",
+      "body": "We check backflow valves and [overhead sewer systems](/hinsdale/overhead-sewer-systems) too."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/hinsdale/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/hinsdale/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/hinsdale/sewer-rodding) or [Hydro Jetting](/hinsdale/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/hinsdale/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Visits Work",
+    "intro": "Your line sets the schedule.",
+    "steps": [
+     {
+      "h3": "1. Look First",
+      "body": "A camera pass before we recommend anything."
+     },
+     {
+      "h3": "2. The Right Tool",
+      "body": "Rodding for roots, jetting for scale and grease."
+     },
+     {
+      "h3": "3. A Written Plan",
+      "body": "The interval and price, agreed up front."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Chi",
+      "url": null,
+      "text": "Christian was super efficient and friendly! He did some water heater maintenance for us. Def recommend!"
+     },
+     {
+      "name": "Victor Polk",
+      "url": null,
+      "text": "Brandon provided excellent service today with our maintenance visit. He was extremely personable, and thorough in his explanations. He provided suggestions and tips to help keep our home plumbing systems in tip top shape. Thanks again, Brandon, you did J. Blanton Plumbing proud! Services Service not listed"
+     },
+     {
+      "name": "Gail Volpe",
+      "url": null,
+      "text": "J Blanton always does a fantastic job. Christian, with Blanton, was my maintenance tech today and was such a delightful young man. Will absolutely be requesting him to be my maintenance tech from now on. Polite, on time, educated me as he was running his call. 10/10"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Do older Hinsdale homes need more sewer maintenance?",
+      "preview": "Usually, because of clay pipe and big trees.",
+      "answer": "Usually. Clay joints and mature trees mean roots come back every year. Yearly cleaning keeps them under control."
+     },
+     {
+      "q": "When should we schedule it?",
+      "preview": "Late winter or early spring.",
+      "answer": "Late winter or early spring, before roots start growing and before the heavy storms."
+     },
+     {
+      "q": "Can maintenance prevent a storm backup?",
+      "preview": "It helps your line, but protection does more.",
+      "answer": "A clean line drains faster. If the public sewer is overloaded, you need a backflow valve or an [overhead sewer](/hinsdale/overhead-sewer-systems)."
+     },
+     {
+      "q": "Is sewer maintenance part of the No Drip Club?",
+      "preview": "The club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance. Ask how it applies to your sewer line."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Hinsdale?",
+      "preview": "It depends on the service. You'll approve a flat price first.",
+      "answer": "It depends on whether your line needs rodding, jetting or a camera check. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Hinsdale, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/hinsdale/sewer-maintenance",
+   "description": "Preventive sewer maintenance for Hinsdale, IL homes. Scheduled root cutting, jetting and camera checks before a backup reaches your basement.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Hinsdale, IL",
+ "metaDescription": "Preventive sewer maintenance for Hinsdale, IL homes. Scheduled root cutting, jetting and camera checks before a backup reaches your basement."
+}

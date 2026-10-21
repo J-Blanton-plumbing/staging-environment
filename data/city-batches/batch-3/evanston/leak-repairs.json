@@ -1,0 +1,328 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Leak Repairs",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Leak Repair and Detection in Evanston, IL",
+   "sub": "A stain spreading across the ceiling, a water bill that jumped or the sound of running water when everything is off. We find the leak, repair the pipe and tell you honestly when old pipe should be replaced. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+    "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs of a Hidden Leak",
+    "intro": "Watch for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Higher Water Bill",
+      "body": "With no change in use."
+     },
+     {
+      "h3": "Ceiling or Wall Stains",
+      "body": "Under a bath or kitchen."
+     },
+     {
+      "h3": "Low Pressure",
+      "body": "Old pipe or a leak."
+     },
+     {
+      "h3": "Running Water Sounds",
+      "body": "With nothing on."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "what-we-fix",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Fix",
+    "h2": "Leaks and Pipes We Handle",
+    "intro": "We work on:",
+    "steps": [
+     {
+      "h3": "Supply Pipe",
+      "body": "Copper, galvanized and PEX."
+     },
+     {
+      "h3": "Drain Pipe",
+      "body": "Cast iron, galvanized and PVC."
+     },
+     {
+      "h3": "Water Service Lines",
+      "body": "The pipe from the street to your house."
+     },
+     {
+      "h3": "Pipe Replacement",
+      "body": "Old pipe replaced with new."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-leaks",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Leaks and Old Pipe in Evanston",
+    "intro": "About 4 in 10 Evanston homes were built before 1940.",
+    "items": [
+     {
+      "h3": "Galvanized Pipe",
+      "body": "It corrodes from the inside and leaks at threaded joints."
+     },
+     {
+      "h3": "Pinhole Leaks in Copper",
+      "body": "Older copper can develop small leaks over time."
+     },
+     {
+      "h3": "Repair or Replace?",
+      "body": "One leak can be repaired. A failing system is better replaced. If a pipe burst, see [burst pipe repair](/evanston/burst-pipe-repair)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find it before we open walls.",
+    "steps": [
+     {
+      "h3": "1. Locate the Leak",
+      "body": "Listening tools and pressure tests."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replacement, explained."
+     },
+     {
+      "h3": "3. Test Before Closing Up",
+      "body": "No guessing."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "use-your-meter-to-spot-a-leak",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Try This First",
+    "h2": "Use Your Meter to Spot a Leak",
+    "body": "Turn off every fixture and appliance that uses water, then check your water meter in the basement. If the dial is moving, water is going somewhere. Turn off the valves under toilets and look again. If the dial stops, a toilet is leaking into the bowl. If it keeps moving, the leak is in the piping, the water heater or the service line, and that's when you call us.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Leak Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mike Olsa",
+      "url": null,
+      "text": "We had our water heater leak and Kyle from J Blanton came and installed a tankless system in only a few hours. It works amazing and he was very fast and thorough. Thanks for the great job Kyle."
+     },
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Leak Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "How do you find a hidden leak?",
+      "preview": "Listening tools and pressure tests.",
+      "answer": "With acoustic tools, pressure tests and moisture readings, so we open as little as possible."
+     },
+     {
+      "q": "Should I replace my galvanized pipe?",
+      "preview": "If it leaks or pressure is low, it's worth discussing.",
+      "answer": "If you have leaks, rusty water or low pressure, it's worth discussing. We'll show you what we find."
+     },
+     {
+      "q": "Do you repair the water line from the street?",
+      "preview": "Yes, on your side.",
+      "answer": "Yes, from the shutoff valve in the parkway to your house. The city owns the line from the main to that valve."
+     },
+     {
+      "q": "Does insurance cover leak damage?",
+      "preview": "Sudden damage often.",
+      "answer": "Policies vary. Check with your agent."
+     },
+     {
+      "q": "Can a leak cause mold?",
+      "preview": "Yes, if it's ongoing.",
+      "answer": "Yes. A slow leak inside a wall can lead to mold. Finding it early matters."
+     },
+     {
+      "q": "How much does leak repair cost in Evanston?",
+      "preview": "It depends on the scope. You'll approve a flat price first.",
+      "answer": "It depends on the leak or how much pipe needs work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Leak?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Leak Repair and Detection in Evanston, IL",
+   "serviceType": "Leak Repairs",
+   "url": "https://jblantonplumbing.com/evanston/leak-repairs",
+   "description": "Water leak detection and pipe repair in Evanston, IL. Hidden leaks found, old pipe repaired or replaced, flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Leak Repair & Detection in Evanston, IL",
+ "metaDescription": "Water leak detection and pipe repair in Evanston, IL. Hidden leaks found, old pipe repaired or replaced, flat price first."
+}

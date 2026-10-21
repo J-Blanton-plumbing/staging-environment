@@ -1,0 +1,313 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Drain Cleaning in Skokie, IL",
+   "sub": "A kitchen sink full of water, a tub that drains in slow motion or a basement floor drain that bubbles. We clear it, tell you why it happened and price it before we start. Our office is on Lincoln Avenue. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When a Slow Drain Needs a Plumber",
+    "body": "Call us when the plunger fails, when a drain clogs again soon after you cleared it or when you notice a sewage smell. Then check how far it reaches. If one fixture is slow, the clog is nearby. If the basement floor drain gurgles or fills when the washer empties, the blockage is in the main line, and that calls for [sewer line drain cleaning](/skokie/sewer-rodding).",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in Skokie",
+    "bodies": [
+     "Hair and soap in bathroom drains, grease and food in kitchen lines, lint from the laundry. We clear clogs with a cable sized for the pipe and show you what came out.",
+     "Many Skokie homes still have original galvanized and cast iron drain pipe inside the walls. It narrows with rust and scale over the years, so clogs return faster. If a drain keeps clogging, a camera look tells us whether it's buildup we can clear or pipe that needs replacing."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging",
+    "bodies": [
+     "Kitchen clogs are mostly grease. It coats the inside of the pipe and catches food and soap until water stops moving.",
+     "If the other bowl fills or the dishwasher backs up into the sink, the clog is deeper than the trap. We clear the line back to the stack. If the disposal is involved, see [garbage disposal repair](/skokie/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in Skokie Homes",
+    "intro": "Nearly 2 in 3 Skokie homes were built between 1940 and 1969, and their drains show it.",
+    "items": [
+     {
+      "h3": "Original Galvanized and Cast Iron",
+      "body": "Rough, narrowed pipe catches debris quickly."
+     },
+     {
+      "h3": "Basement Laundry Tubs",
+      "body": "Lint and soap from the washer clog the tub and floor drain."
+     },
+     {
+      "h3": "Main Line Trouble",
+      "body": "Several slow drains at once usually mean the main line. See [sewer drain clearing](#sewer-drain-clearing)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When the floor drain backs up or every fixture slows down, the main sewer drain is blocked. Clearing it means running a machine from the cleanout all the way to the street.",
+     "We clear the line and then camera it. In Skokie, the cause is usually roots in old clay or scale in cast iron. If clogs keep coming back, we'll go over the options: [yearly rodding](/skokie/sewer-rodding), [hydro jetting](/skokie/hydro-jetting) or a [sewer repair](/skokie/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Skokie Homeowners Call J. Blanton for Clogs",
+    "intro": "Licensed plumbers with the equipment to clear most drains in one visit.",
+    "steps": [
+     {
+      "h3": "1. Day or Night",
+      "body": "Our line is answered 24/7."
+     },
+     {
+      "h3": "2. A Price Before the Cable Goes In",
+      "body": "Flat rate, approved by you."
+     },
+     {
+      "h3": "3. An Explanation",
+      "body": "So you know how to prevent the next one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Renee Hayes",
+      "url": null,
+      "text": "Stephan was a great technician. He kept me informed of his progress and explained everything he was going to do."
+     },
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Michael Gillespie",
+      "url": null,
+      "text": "Came late at night to unclog drain that kept overflowing. Got in unclogged for me. Thanks again man. I'll be able to sleep tonight."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Can you come out for an emergency drain cleaning?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. If a drain backs up at night or on a weekend, call us and we'll get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Why do the drains in my 1950s home clog so often?",
+      "preview": "Old pipe narrows and roughens inside.",
+      "answer": "Original galvanized and cast iron drains build up rust and scale, which catches hair and grease. Jetting or replacing the worst sections helps."
+     },
+     {
+      "q": "My kitchen sink and dishwasher both back up. What's wrong?",
+      "preview": "The clog is past the trap.",
+      "answer": "The clog is in the drain line past the trap, often grease. We clear it back to the main stack."
+     },
+     {
+      "q": "Should I use a drain cleaner from the store?",
+      "preview": "We'd avoid it on old pipe.",
+      "answer": "We'd avoid it, especially on older pipe. Chemicals rarely clear the whole clog and can damage old drains."
+     },
+     {
+      "q": "Why does my basement floor drain gurgle?",
+      "preview": "A partial clog in the main.",
+      "answer": "Usually a partial blockage in the main line. It's a sign to get it cleared soon."
+     },
+     {
+      "q": "How much does drain cleaning cost in Skokie?",
+      "preview": "It depends on where the clog is. You'll approve a flat price first.",
+      "answer": "It depends on where the clog is and what's causing it. You'll approve a flat price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Drains That Keep Draining?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Drain Cleaning in Skokie, IL",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/skokie/drain-cleaning",
+   "description": "Drain cleaning in Skokie, IL. Kitchen sinks, tubs, floor drains and main lines unclogged, with the cause explained. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Drain Cleaning in Skokie, IL",
+ "metaDescription": "Drain cleaning in Skokie, IL. Kitchen sinks, tubs, floor drains and main lines unclogged, with the cause explained. Call 24/7."
+}

@@ -1,6 +1,6 @@
 /**
- * City Service Pages V2 (Brief 209 go-live, Marketing 2026-10-14; Batch 2 added by Brief 212) — the 110
- * folded city-service URLs (11 per city × 10 cities).
+ * City Service Pages V2 (Brief 209 go-live, Marketing 2026-10-14; Batch 2 added by Brief 212, Batch 3 by
+ * Brief 216) — the 198 folded city-service URLs (11 per city × 18 cities).
  *
  * Each of the 5 cities' V2 pages absorbs 11 thinner service pages as an on-page section with a
  * stable #anchor (e.g. /northbrook/drain-cleaning#clogged-drains). The old URLs 301 to the page
@@ -11,7 +11,8 @@
  * alias-redirects.ts, and into the sitemap manifest, which drops every source from the
  * city-service shards (a sitemap URL must never be a redirect source — scripts/validate-sitemap.ts).
  *
- * Source: New Pages/City Service Pages V2/_source/{City}/{City}_CityService_FoldMap.md.
+ * Source: New Pages/City Service Pages V2/_source/{City}/{City}_CityService_FoldMap.md (Batch 1), the
+ * Batch 2 package, and New Pages/City Pages Batch 3/_source/batch3/city-service-pages/{City}/ (Batch 3).
  */
 export const CITY_SERVICE_FOLD_REDIRECTS: Readonly<Record<string, string>> = {
   // northbrook
@@ -136,4 +137,100 @@ export const CITY_SERVICE_FOLD_REDIRECTS: Readonly<Record<string, string>> = {
   '/geneva/gas-line-leak-detection': '/geneva/gas-line-repair',
   '/geneva/water-heater-maintenance': '/geneva/water-heater-repair',
   '/geneva/water-testing': '/geneva/water-filtration-systems',
+  // mokena
+  '/mokena/clogged-drains': '/mokena/drain-cleaning',
+  '/mokena/sewer-drain-clearing': '/mokena/drain-cleaning',
+  '/mokena/kitchen-sink-drain': '/mokena/drain-cleaning',
+  '/mokena/kitchen-faucet-repair-and-installation': '/mokena/faucet-installation-repair',
+  '/mokena/kitchen-plumbing': '/mokena/faucet-installation-repair',
+  '/mokena/plumbing-fixture-installations': '/mokena/faucet-installation-repair',
+  '/mokena/residential-water-heater': '/mokena/water-heater-repair',
+  '/mokena/basement-waterproofing': '/mokena/basement-flooding',
+  '/mokena/gas-line-leak-detection': '/mokena/gas-line-repair',
+  '/mokena/water-heater-maintenance': '/mokena/water-heater-repair',
+  '/mokena/water-testing': '/mokena/water-filtration-systems',
+  // hinsdale
+  '/hinsdale/clogged-drains': '/hinsdale/drain-cleaning',
+  '/hinsdale/sewer-drain-clearing': '/hinsdale/drain-cleaning',
+  '/hinsdale/kitchen-sink-drain': '/hinsdale/drain-cleaning',
+  '/hinsdale/kitchen-faucet-repair-and-installation': '/hinsdale/faucet-installation-repair',
+  '/hinsdale/kitchen-plumbing': '/hinsdale/faucet-installation-repair',
+  '/hinsdale/plumbing-fixture-installations': '/hinsdale/faucet-installation-repair',
+  '/hinsdale/residential-water-heater': '/hinsdale/water-heater-repair',
+  '/hinsdale/basement-waterproofing': '/hinsdale/basement-flooding',
+  '/hinsdale/gas-line-leak-detection': '/hinsdale/gas-line-repair',
+  '/hinsdale/water-heater-maintenance': '/hinsdale/water-heater-repair',
+  '/hinsdale/water-testing': '/hinsdale/water-filtration-systems',
+  // skokie
+  '/skokie/clogged-drains': '/skokie/drain-cleaning',
+  '/skokie/sewer-drain-clearing': '/skokie/drain-cleaning',
+  '/skokie/kitchen-sink-drain': '/skokie/drain-cleaning',
+  '/skokie/kitchen-faucet-repair-and-installation': '/skokie/faucet-installation-repair',
+  '/skokie/kitchen-plumbing': '/skokie/faucet-installation-repair',
+  '/skokie/plumbing-fixture-installations': '/skokie/faucet-installation-repair',
+  '/skokie/residential-water-heater': '/skokie/water-heater-repair',
+  '/skokie/basement-waterproofing': '/skokie/basement-flooding',
+  '/skokie/gas-line-leak-detection': '/skokie/gas-line-repair',
+  '/skokie/water-heater-maintenance': '/skokie/water-heater-repair',
+  '/skokie/water-testing': '/skokie/water-filtration-systems',
+  // chicago-lincoln-park
+  '/chicago-lincoln-park/clogged-drains': '/chicago-lincoln-park/drain-cleaning',
+  '/chicago-lincoln-park/sewer-drain-clearing': '/chicago-lincoln-park/drain-cleaning',
+  '/chicago-lincoln-park/kitchen-sink-drain': '/chicago-lincoln-park/drain-cleaning',
+  '/chicago-lincoln-park/kitchen-faucet-repair-and-installation': '/chicago-lincoln-park/faucet-installation-repair',
+  '/chicago-lincoln-park/kitchen-plumbing': '/chicago-lincoln-park/faucet-installation-repair',
+  '/chicago-lincoln-park/plumbing-fixture-installations': '/chicago-lincoln-park/faucet-installation-repair',
+  '/chicago-lincoln-park/residential-water-heater': '/chicago-lincoln-park/water-heater-repair',
+  '/chicago-lincoln-park/basement-waterproofing': '/chicago-lincoln-park/basement-flooding',
+  '/chicago-lincoln-park/gas-line-leak-detection': '/chicago-lincoln-park/gas-line-repair',
+  '/chicago-lincoln-park/water-heater-maintenance': '/chicago-lincoln-park/water-heater-repair',
+  '/chicago-lincoln-park/water-testing': '/chicago-lincoln-park/water-filtration-systems',
+  // elmhurst
+  '/elmhurst/clogged-drains': '/elmhurst/drain-cleaning',
+  '/elmhurst/sewer-drain-clearing': '/elmhurst/drain-cleaning',
+  '/elmhurst/kitchen-sink-drain': '/elmhurst/drain-cleaning',
+  '/elmhurst/kitchen-faucet-repair-and-installation': '/elmhurst/faucet-installation-repair',
+  '/elmhurst/kitchen-plumbing': '/elmhurst/faucet-installation-repair',
+  '/elmhurst/plumbing-fixture-installations': '/elmhurst/faucet-installation-repair',
+  '/elmhurst/residential-water-heater': '/elmhurst/water-heater-repair',
+  '/elmhurst/basement-waterproofing': '/elmhurst/basement-flooding',
+  '/elmhurst/gas-line-leak-detection': '/elmhurst/gas-line-repair',
+  '/elmhurst/water-heater-maintenance': '/elmhurst/water-heater-repair',
+  '/elmhurst/water-testing': '/elmhurst/water-filtration-systems',
+  // chicago-ravenswood
+  '/chicago-ravenswood/clogged-drains': '/chicago-ravenswood/drain-cleaning',
+  '/chicago-ravenswood/sewer-drain-clearing': '/chicago-ravenswood/drain-cleaning',
+  '/chicago-ravenswood/kitchen-sink-drain': '/chicago-ravenswood/drain-cleaning',
+  '/chicago-ravenswood/kitchen-faucet-repair-and-installation': '/chicago-ravenswood/faucet-installation-repair',
+  '/chicago-ravenswood/kitchen-plumbing': '/chicago-ravenswood/faucet-installation-repair',
+  '/chicago-ravenswood/plumbing-fixture-installations': '/chicago-ravenswood/faucet-installation-repair',
+  '/chicago-ravenswood/residential-water-heater': '/chicago-ravenswood/water-heater-repair',
+  '/chicago-ravenswood/basement-waterproofing': '/chicago-ravenswood/basement-flooding',
+  '/chicago-ravenswood/gas-line-leak-detection': '/chicago-ravenswood/gas-line-repair',
+  '/chicago-ravenswood/water-heater-maintenance': '/chicago-ravenswood/water-heater-repair',
+  '/chicago-ravenswood/water-testing': '/chicago-ravenswood/water-filtration-systems',
+  // evanston
+  '/evanston/clogged-drains': '/evanston/drain-cleaning',
+  '/evanston/sewer-drain-clearing': '/evanston/drain-cleaning',
+  '/evanston/kitchen-sink-drain': '/evanston/drain-cleaning',
+  '/evanston/kitchen-faucet-repair-and-installation': '/evanston/faucet-installation-repair',
+  '/evanston/kitchen-plumbing': '/evanston/faucet-installation-repair',
+  '/evanston/plumbing-fixture-installations': '/evanston/faucet-installation-repair',
+  '/evanston/residential-water-heater': '/evanston/water-heater-repair',
+  '/evanston/basement-waterproofing': '/evanston/basement-flooding',
+  '/evanston/gas-line-leak-detection': '/evanston/gas-line-repair',
+  '/evanston/water-heater-maintenance': '/evanston/water-heater-repair',
+  '/evanston/water-testing': '/evanston/water-filtration-systems',
+  // hanover-park
+  '/hanover-park/clogged-drains': '/hanover-park/drain-cleaning',
+  '/hanover-park/sewer-drain-clearing': '/hanover-park/drain-cleaning',
+  '/hanover-park/kitchen-sink-drain': '/hanover-park/drain-cleaning',
+  '/hanover-park/kitchen-faucet-repair-and-installation': '/hanover-park/faucet-installation-repair',
+  '/hanover-park/kitchen-plumbing': '/hanover-park/faucet-installation-repair',
+  '/hanover-park/plumbing-fixture-installations': '/hanover-park/faucet-installation-repair',
+  '/hanover-park/residential-water-heater': '/hanover-park/water-heater-repair',
+  '/hanover-park/basement-waterproofing': '/hanover-park/basement-flooding',
+  '/hanover-park/gas-line-leak-detection': '/hanover-park/gas-line-repair',
+  '/hanover-park/water-heater-maintenance': '/hanover-park/water-heater-repair',
+  '/hanover-park/water-testing': '/hanover-park/water-filtration-systems',
 };

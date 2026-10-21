@@ -1,0 +1,302 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Mokena, IL",
+   "sub": "A restaurant on LaGrange Road, a salon in a strip center or a shop near Front Street. When the water heater fails, business slows down. We repair, replace and maintain commercial water heaters for Mokena businesses. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Hot Water for Mokena Businesses",
+    "intro": "Some of the businesses we keep running:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Kitchens and Coffee Shops",
+      "body": "Three-compartment sinks and dishwashers can drain a small tank before the lunch rush is over."
+     },
+     {
+      "h3": "Salons, Barbers and Gyms",
+      "body": "Back-to-back appointments and locker room showers mean steady demand all day."
+     },
+     {
+      "h3": "Dental and Medical Offices",
+      "body": "Handwashing sinks in every room, and inspectors who check them."
+     },
+     {
+      "h3": "Daycares and Schools",
+      "body": "Plenty of hot water at safe, controlled temperatures."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Repair, Replacement and Upkeep",
+    "intro": "We stay with your equipment from the first install to the last repair:",
+    "steps": [
+     {
+      "h3": "Fast Repairs",
+      "body": "Gas and electric commercial tanks, storage tanks and tankless banks, diagnosed before we quote."
+     },
+     {
+      "h3": "Planned Replacement",
+      "body": "A new unit sized to your peak demand, swapped in at a time that doesn't shut you down."
+     },
+     {
+      "h3": "Scheduled Service",
+      "body": "Flushing, descaling, anode and relief valve checks on a calendar you choose."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "mokena-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Mokena Businesses",
+    "intro": "Our office on Jodi Road is close to Mokena's main business corridors.",
+    "items": [
+     {
+      "h3": "Shared Mechanical Rooms",
+      "body": "In strip centers along the main roads, one utility room may serve several businesses. We coordinate access with the property owner and the shops next door."
+     },
+     {
+      "h3": "Failures During Business Hours",
+      "body": "If the heater quits mid-shift, call any time. Our line is open 24/7."
+     },
+     {
+      "h3": "Budgets You Can Plan",
+      "body": "Every repair and replacement is priced before work starts."
+     },
+     {
+      "h3": "Newer Buildings, Older Heaters",
+      "body": "Many commercial spaces in Mokena were built in the 1990s and 2000s. The water heaters installed then are past their expected life."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-commercial-water-heater-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Commercial Water Heater Work",
+    "body": "Capacity, fuel and venting matter most. Newer commercial spaces are often easier to work in, but code updates and access still affect the scope. We look at your setup and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jewell Gold",
+      "url": null,
+      "text": "Ron is professionial, courteous and knowledgable. I asked for a verification that shower drain installed 8 years ago was up to code. Ron not only made pictures and gave his diagnosis, he took it a step farther and made a video. Awseome service."
+     },
+     {
+      "name": "Jackson Krecioch",
+      "url": null,
+      "text": "Thomas was great came out on the weekend to make sure I was taken care of! Really appreciate his initiative!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Mokena Businesses",
+    "items": [
+     {
+      "q": "Will you work before we open or after we close?",
+      "preview": "For planned jobs, yes, when we can.",
+      "answer": "For a planned replacement or a maintenance visit, we'll schedule around your hours whenever possible. A failure is different: call us any time."
+     },
+     {
+      "q": "What if our heater dies on a Saturday?",
+      "preview": "Call us. Our line is open 24/7.",
+      "answer": "Call us. Our phone line is open around the clock, weekends included."
+     },
+     {
+      "q": "Our tank keeps running out at peak times. Is it too small?",
+      "preview": "Possibly. We'll measure your demand.",
+      "answer": "Possibly. We look at your busiest hour, the fixtures and equipment you run and the temperature you need, then tell you whether a larger tank, a second unit or tankless makes sense."
+     },
+     {
+      "q": "Can you service several locations?",
+      "preview": "Yes.",
+      "answer": "Yes. We can keep a maintenance calendar and service records for each location."
+     },
+     {
+      "q": "Do you service businesses along LaGrange Road?",
+      "preview": "Yes.",
+      "answer": "Yes. We serve restaurants, shops and offices across Mokena."
+     },
+     {
+      "q": "What does a commercial water heater cost to replace in Mokena?",
+      "preview": "It varies with size, fuel and venting. You'll get a flat price first.",
+      "answer": "It varies with the size, the fuel, the venting and any code changes the new unit needs. You'll get a flat-rate price before any work."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Mokena, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/mokena/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Mokena, IL businesses. 24/7 phone line and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Mokena, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Mokena, IL businesses. 24/7 phone line and a flat price before work."
+}

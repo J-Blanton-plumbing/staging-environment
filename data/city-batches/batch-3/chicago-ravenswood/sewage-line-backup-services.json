@@ -1,0 +1,338 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in Ravenswood, Chicago",
+   "sub": "Sewage at the basement floor drain or coming up in a garden unit needs fast help, and our line is open 24/7. We clear the line, show you the cause and help keep it from happening again. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do During a Backup",
+    "intro": "Until we arrive:",
+    "steps": [
+     {
+      "h3": "1. Stop Using Water, Upstairs Too",
+      "body": "In a two-flat, let the other unit know."
+     },
+     {
+      "h3": "2. Keep People and Pets Out",
+      "body": "Sewage carries bacteria."
+     },
+     {
+      "h3": "3. Watch the Electrical",
+      "body": "Outlets and appliances near water."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Tell us where it's coming up."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Ravenswood Basements Back Up",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Storms Fill the City Sewer",
+      "body": "Combined sewers push water back."
+     },
+     {
+      "h3": "Roots in an Old Lateral",
+      "body": "Clay lets them in."
+     },
+     {
+      "h3": "Grease From Several Units",
+      "body": "Shared lines clog faster."
+     },
+     {
+      "h3": "A Broken Section",
+      "body": "Flow stops."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups in Ravenswood",
+    "intro": "In July 2011, record rainfall flooded basements across Ravenswood.",
+    "items": [
+     {
+      "h3": "Garden Units Take the Hit",
+      "body": "The lowest living space floods first."
+     },
+     {
+      "h3": "Storm or Clog?",
+      "body": "If it only happens in heavy rain, the city sewer is full. On dry days, your line is blocked."
+     },
+     {
+      "h3": "Protection",
+      "body": "A backflow valve or an [overhead sewer system](/chicago-ravenswood/overhead-sewer-systems) keeps sewer water out."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Clear, explain, prevent.",
+    "steps": [
+     {
+      "h3": "1. Clear the Line",
+      "body": "Drains working again."
+     },
+     {
+      "h3": "2. Show the Cause",
+      "body": "On camera."
+     },
+     {
+      "h3": "3. Price Any Repair First",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "when-a-garden-unit-floods-with-sewage",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Garden Units",
+    "h2": "When a Garden Unit Floods With Sewage",
+    "body": "If someone lives in the garden unit, a backup is more than a wet basement. Get the residents out of the affected rooms, ask the upstairs units to stop using water and call us. Once we clear the line, a restoration company should clean and dry the space before anyone moves back in. Then talk to us about protection. For a below-grade apartment, an overhead sewer or backflow valve is often worth it after one bad backup.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alison Thakur",
+      "url": null,
+      "text": "Scott B came out to do a full sewer scope and review options as we have a very old home with clay pipes. He was knowledge, professional, and extremely kind. He worked with us on pricing - very trustworthy and transparent! We've never had a bad experience with anyone from J. Blanton. Absolutely recommend!"
+     },
+     {
+      "name": "fixedweasel",
+      "url": "https://maps.app.goo.gl/p3keNRv3PKhqGfop7",
+      "text": "I had a camera inspection as well as a Hydrojet cleaning, rod, and flush of my 70' main 6\" sewer line... The camera inspection was done by George and Raul. They were prompt, professional, and detailed with the description of the process... we were able to see together where the problems were in the main and at what specific distances. I was given several options for resolution on the spot with price quotes up front."
+     },
+     {
+      "name": "Courtney Macke",
+      "url": null,
+      "text": "Danny, Jerry, Eladio, and Pedro were an amazing team! They were very organized and tidy while digging up our yard to line our sewer. I would highly recommend!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Why does the garden unit flood in heavy rain?",
+      "preview": "The combined sewer fills up.",
+      "answer": "Chicago's sewers carry rain and wastewater together. In a heavy storm, they fill and push back into the lowest drains."
+     },
+     {
+      "q": "What protects a garden unit best?",
+      "preview": "An overhead sewer for repeat backups.",
+      "answer": "For repeat backups, an overhead sewer. For lighter risk, a backflow valve or standpipe."
+     },
+     {
+      "q": "Is a sewer backup covered by insurance?",
+      "preview": "Often only with a rider.",
+      "answer": "Many policies need a sewer backup rider. Check with your agent."
+     },
+     {
+      "q": "Do you clean up after a backup?",
+      "preview": "We fix the plumbing. A restoration company cleans up.",
+      "answer": "We clear the line and repair the cause. A restoration company handles cleanup and drying."
+     },
+     {
+      "q": "Can the upstairs units keep using water?",
+      "preview": "No, not until the line is clear.",
+      "answer": "No. Their water drains through the same line and ends up downstairs."
+     },
+     {
+      "q": "How much does sewer backup service cost in Ravenswood?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on what caused it and how we reach the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in Ravenswood, Chicago",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/sewage-line-backup-services",
+   "description": "Sewage in your Ravenswood basement or garden unit? We clear the line 24/7, find the cause on camera and help protect the space.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Backup Service in Ravenswood, Chicago",
+ "metaDescription": "Sewage in your Ravenswood basement or garden unit? We clear the line 24/7, find the cause on camera and help protect the space."
+}

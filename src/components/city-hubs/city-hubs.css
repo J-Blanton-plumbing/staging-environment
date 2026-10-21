@@ -716,6 +716,10 @@
    Scoped to .hub-hero--full; the .hub-hero--photo rules are untouched. */
 #city-hub-v2 .hub-hero--full>video,
 #city-hub-v2 .hub-hero--full>picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;display:block;}
+/* At 900px and narrower the text column spans the whole width, so the Sewer overlay's light right side
+   (.25) sits under the copy: on Evanston's poster that measured 2.3:1 for body text at 375. A top-to-
+   bottom Midnight overlay keeps every hero text line at 5.4:1 or better (Brief 216 C3 contrast gate). */
+@media(max-width:900px){#city-hub-v2 .hub-hero--full::after{background:linear-gradient(180deg,rgba(10,27,46,.55) 0%,rgba(10,27,46,.82) 38%,rgba(10,27,46,.88) 100%);}}
 
 /* Review proof card: side by side on wide screens, full-width stack on mobile */
 #city-hub-v2 .hub-proof{width:auto;flex-direction:row;align-items:center;padding:18px 24px;}

@@ -1,0 +1,332 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Hinsdale, IL",
+   "sub": "Hot water that doesn't run out and a mechanical room with more space. We install, repair and descale tankless water heaters in Hinsdale homes and size them for how your household really uses water. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How Tankless Water Heaters Work",
+    "body": "A tankless heater fires only when someone opens a hot tap. Water passes through a heat exchanger and comes out hot for as long as the tap is open. Because there's no tank to keep hot, it uses less energy when the house is quiet. Its limit is flow: each unit can heat only so many gallons per minute, so a large home may need a bigger unit or two units working together.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless for Hinsdale Homes",
+    "intro": "How they compare:",
+    "head": [
+     "",
+     "Tank",
+     "Tankless"
+    ],
+    "rows": [
+     [
+      "Hot water supply",
+      "Limited by tank size",
+      "Continuous, up to its flow rate"
+     ],
+     [
+      "Large homes",
+      "May need a big tank or two",
+      "Units can be paired"
+     ],
+     [
+      "Space",
+      "A tank on the floor",
+      "A unit on the wall"
+     ],
+     [
+      "Maintenance",
+      "Yearly flush",
+      "Yearly descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Tankless Systems in Hinsdale Homes",
+    "intro": "Many newer and renovated Hinsdale homes already have tankless heaters, and many more are good candidates.",
+    "items": [
+     {
+      "h3": "Multiple Units for Big Homes",
+      "body": "Two units piped together can serve a home with several baths running at once."
+     },
+     {
+      "h3": "Gas Supply Matters",
+      "body": "Tankless units need a lot of gas at once. The meter and line may need to be upsized."
+     },
+     {
+      "h3": "Lake Michigan Water Still Leaves Scale",
+      "body": "Minerals build up in the heat exchanger over time. Yearly descaling prevents error codes and lost flow."
+     },
+     {
+      "h3": "Recirculation Options",
+      "body": "Some units have built-in recirculation for faster hot water at distant fixtures."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Sizing and gas supply first.",
+    "steps": [
+     {
+      "h3": "1. Check Gas and Venting",
+      "body": "Before recommending a unit."
+     },
+     {
+      "h3": "2. Size for Your Busiest Moment",
+      "body": "Not the average day."
+     },
+     {
+      "h3": "3. A Flat Price",
+      "body": "Approved before work begins."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-tankless-install",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Tankless Install",
+    "body": "Larger homes may need a high-output unit or two units together. The gas line and venting are the main variables. A recirculation setup adds a few steps. We check everything first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alison Rebello",
+      "url": null,
+      "text": "Couldn’t recommend J. Blanton enough. Thomas came to replace a tankless heater and was so knowledgeable and friendly. We will be using them for all plumbing services moving forward!"
+     },
+     {
+      "name": "Marianne Mollenauer",
+      "url": null,
+      "text": "We had an emergency hot water heater problem and Alex did a great job getting a new appliance installed the same day I called for help. Great company! I'd use them again."
+     },
+     {
+      "name": "Chi",
+      "url": null,
+      "text": "Christian was super efficient and friendly! He did some water heater maintenance for us. Def recommend!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Can one tankless unit handle a large home?",
+      "preview": "Sometimes. Larger homes often use two.",
+      "answer": "Sometimes. If several showers and tubs run at once, two units piped together are often the better choice."
+     },
+     {
+      "q": "Why is my tankless unit showing an error code?",
+      "preview": "Often scale, a dirty sensor or a venting issue.",
+      "answer": "Often scale in the heat exchanger, a dirty flame sensor or a venting or gas supply problem. We diagnose the code and fix the cause."
+     },
+     {
+      "q": "How often should we descale our tankless heater?",
+      "preview": "About once a year.",
+      "answer": "About once a year for most Hinsdale homes."
+     },
+     {
+      "q": "Can you replace an old tankless unit?",
+      "preview": "Yes.",
+      "answer": "Yes. We replace older units and update the venting and gas connections as needed."
+     },
+     {
+      "q": "Will a tankless unit save space in our mechanical room?",
+      "preview": "Yes.",
+      "answer": "Yes. It mounts on the wall, which frees up the floor space a tank used."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Hinsdale?",
+      "preview": "It depends on the unit and the gas and venting work. You'll approve a flat price first.",
+      "answer": "It depends on the unit size, how many units you need and the gas and venting work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Talk Tankless?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Hinsdale, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/hinsdale/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Hinsdale, IL. Sized for large homes, with a flat price before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Hinsdale, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Hinsdale, IL. Sized for large homes, with a flat price before any work."
+}

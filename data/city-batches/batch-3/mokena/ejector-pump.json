@@ -1,0 +1,316 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Mokena, IL",
+   "sub": "If your basement bathroom backs up, the alarm is going off or the basin smells, the ejector pump needs attention. We repair and replace ejector pumps in Mokena homes. From our office on Jodi Road. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Does an Ejector Pump Do?",
+    "body": "A toilet, shower or sink below the level of the sewer line can't drain by gravity. Its wastewater flows into a sealed basin in the floor, and an ejector pump lifts it up and into the main line. A float turns the pump on, and a check valve keeps the water from falling back. When any of those parts fails, the basin fills and backs up into the basement.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Ejector Pump Is Failing",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Alarm Is Sounding",
+      "body": "The water in the basin is higher than it should be."
+     },
+     {
+      "h3": "The Basement Toilet Drains Slowly",
+      "body": "The pump isn't keeping up."
+     },
+     {
+      "h3": "You Smell Sewage",
+      "body": "A worn lid seal or a vent problem."
+     },
+     {
+      "h3": "The Pump Runs Constantly",
+      "body": "A stuck float or a failed check valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Mokena Homes",
+    "intro": "Basement bathrooms are common in Mokena homes built in the 1990s and 2000s, and so are ejector pumps.",
+    "items": [
+     {
+      "h3": "Original Pumps Reaching Their Limit",
+      "body": "A pump installed when the basement was finished 20 years ago is due for replacement."
+     },
+     {
+      "h3": "Wipes Are the Top Problem",
+      "body": "Even \"flushable\" wipes wrap around the impeller and jam it."
+     },
+     {
+      "h3": "Alarms That Don't Work",
+      "body": "If the alarm is dead, the first warning is water on the floor. We test it on every visit."
+     },
+     {
+      "h3": "Part of a Flood Control Setup",
+      "body": "In some homes, the ejector pit is the heart of an [overhead sewer system](/mokena/overhead-sewer-systems)."
+     },
+     {
+      "h3": "Laundry Below the Sewer Line",
+      "body": "Some Mokena basements have a laundry tub or washer draining to the ejector basin. Lint is hard on pumps, so a lint trap on the washer hose helps."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the pump and tell you why it failed.",
+    "steps": [
+     {
+      "h3": "1. Check the Whole Basin",
+      "body": "Pump, float, check valve, seal and vent."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "With a flat price you approve."
+     },
+     {
+      "h3": "3. Test With Water",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Carol G",
+      "url": null,
+      "text": "Replacement of concrete basement sink to a more modern sink and workable faucet. Area clean after work done. Informative, friendly, and gets right to work Services Service not listed"
+     },
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "How long does an ejector pump last?",
+      "preview": "Often 7 to 10 years.",
+      "answer": "Often around 7 to 10 years, depending on use and what goes down the drains."
+     },
+     {
+      "q": "Can I use the basement bathroom if the alarm is on?",
+      "preview": "No. Stop using it until it's fixed.",
+      "answer": "No. Stop using every drain that feeds the basin until we fix the pump, or it will overflow."
+     },
+     {
+      "q": "Why does my basement bathroom smell like sewer?",
+      "preview": "Usually the basin lid seal or the vent.",
+      "answer": "Usually a worn lid seal, a loose vent connection or a dry floor drain trap nearby. We check all three."
+     },
+     {
+      "q": "Can you add an ejector pump for a new basement bathroom?",
+      "preview": "Yes.",
+      "answer": "Yes. We install the sealed basin, a pump sized for the fixtures and the venting it needs."
+     },
+     {
+      "q": "How much does ejector pump replacement cost in Mokena?",
+      "preview": "It depends on the pump and the basin. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the basin condition and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Basement Bathroom Backed Up? Call Us.",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Mokena, IL",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/mokena/ejector-pump",
+   "description": "Ejector pump repair and replacement in Mokena, IL for basement bathrooms and laundry. Alarms, floats and basins fixed, with a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair & Replacement in Mokena, IL",
+ "metaDescription": "Ejector pump repair and replacement in Mokena, IL for basement bathrooms and laundry. Alarms, floats and basins fixed, with a flat price."
+}

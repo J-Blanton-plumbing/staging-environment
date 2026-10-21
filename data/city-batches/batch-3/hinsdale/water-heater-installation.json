@@ -1,0 +1,343 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Replacement in Hinsdale, IL",
+   "sub": "A tank that's leaking, a heater that can't keep up with the house or one that's simply reached the end of its life. We size the right replacement, install it to code and haul the old one away. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When It's Time for a New Water Heater",
+    "intro": "Replacement usually makes sense when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Is Leaking From the Tank",
+      "body": "The lining has failed."
+     },
+     {
+      "h3": "It's More Than 10 or 12 Years Old",
+      "body": "Check the date on the label."
+     },
+     {
+      "h3": "It Can't Keep Up",
+      "body": "The house or the family has outgrown it."
+     },
+     {
+      "h3": "Repairs Are Stacking Up",
+      "body": "Another repair on an old unit rarely pays off."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "From sizing to haul-away:",
+    "steps": [
+     {
+      "h3": "1. Size It for Your Home",
+      "body": "Bathrooms, tubs, steam showers and how many people live there."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Connections, relief valve, venting, gas line and an expansion tank where needed."
+     },
+     {
+      "h3": "3. Test and Remove the Old Unit",
+      "body": "Leak and draft tested, and the old heater goes with us."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Hinsdale Homes",
+    "intro": "Hinsdale homes often need more than a like-for-like swap.",
+    "items": [
+     {
+      "h3": "Bigger Homes, Bigger Systems",
+      "body": "Large homes may need a high-capacity tank, two heaters or a tankless system to keep up."
+     },
+     {
+      "h3": "Venting in Older Houses",
+      "body": "Moving from chimney venting to a power-vent or condensing unit changes what the install involves."
+     },
+     {
+      "h3": "Recirculation for Long Runs",
+      "body": "In a large home, a recirculation setup brings hot water to faraway baths faster."
+     },
+     {
+      "h3": "Considering Tankless?",
+      "body": "See [tankless water heaters](/hinsdale/tankless-water-heater) for what's involved."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "The right heater, priced before we start.",
+    "steps": [
+     {
+      "h3": "1. Options Explained",
+      "body": "Tank, tankless and capacity choices side by side."
+     },
+     {
+      "h3": "2. One Flat Price",
+      "body": "Including parts, installation and haul-away."
+     },
+     {
+      "h3": "3. Usually Done in a Day",
+      "body": "Most replacements are finished the same day."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-water-heater",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Water Heater",
+    "body": "Size, fuel and venting come first. Larger homes may need a bigger tank, two heaters or a recirculation pump. Access and code updates matter too. We check everything and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "James Frederick",
+      "url": null,
+      "text": "Andrew and Ty did a great job installing a replacement water heater in our home today. Thanks for your service guys!"
+     },
+     {
+      "name": "Chi",
+      "url": null,
+      "text": "Christian was super efficient and friendly! He did some water heater maintenance for us. Def recommend!"
+     },
+     {
+      "name": "Louie Desancic",
+      "url": null,
+      "text": "Vincent and his partner (I don’t remember his name, I’m sorry) they did an awesome job, kept me informed the whole time and were very polite and friendly. Great job boys"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "What size water heater does a large home need?",
+      "preview": "It depends on your peak use.",
+      "answer": "It depends on how many showers and tubs run at once. Larger homes often need 75 gallons or more, two heaters or a tankless system. We'll size it to your household."
+     },
+     {
+      "q": "Can you add a hot water recirculation system?",
+      "preview": "Yes.",
+      "answer": "Yes. A recirculation pump brings hot water to distant fixtures faster, which helps in larger homes."
+     },
+     {
+      "q": "How long does replacement take?",
+      "preview": "Usually a few hours.",
+      "answer": "A standard replacement takes a few hours. Switching types or venting takes longer."
+     },
+     {
+      "q": "Do you remove the old water heater?",
+      "preview": "Yes.",
+      "answer": "Yes. We drain it, disconnect it and haul it away."
+     },
+     {
+      "q": "Can we move the water heater to a different spot?",
+      "preview": "Often, with some extra work.",
+      "answer": "Often. Moving it means new water, gas and venting connections. We'll tell you what's involved."
+     },
+     {
+      "q": "Can you add a recirculation pump with a new heater?",
+      "preview": "Yes.",
+      "answer": "Yes. It brings hot water to faraway fixtures faster."
+     },
+     {
+      "q": "How much does water heater replacement cost in Hinsdale?",
+      "preview": "It depends on size, type and venting. You'll approve a flat price first.",
+      "answer": "It depends on the size, fuel type, venting and any code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Replacement in Hinsdale, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/hinsdale/water-heater-installation",
+   "description": "Water heater replacement and installation in Hinsdale, IL. Sized for large homes, installed to code and priced flat before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Replacement in Hinsdale, IL",
+ "metaDescription": "Water heater replacement and installation in Hinsdale, IL. Sized for large homes, installed to code and priced flat before any work."
+}

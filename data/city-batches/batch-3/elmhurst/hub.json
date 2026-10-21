@@ -1,0 +1,222 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Elmhurst, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on York Street. Our line is open 24/7 for homeowners in Elmhurst and across DuPage County. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Elmhurst",
+   "intro": "About half of Elmhurst’s homes were built before 1970, and their sewer lines are the most common reason people call us here. Pick a service to see how we handle it in Elmhurst.",
+   "cards": [
+    {
+     "title": "Sewer Repair",
+     "href": "/elmhurst/sewer-repair",
+     "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/elmhurst/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Hydro Jetting",
+     "href": "/elmhurst/hydro-jetting",
+     "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+     "image": {
+      "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+      "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/elmhurst/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/elmhurst/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Burst & Frozen Pipes",
+     "href": "/elmhurst/burst-pipe-repair",
+     "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+     "image": {
+      "src": "/images/city-hubs/burst-copper-pipe-basement.webp",
+      "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/elmhurst/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On York Street",
+   "h2": "Our Elmhurst Office",
+   "body": "Our Elmhurst office is at 116 S York St, Suite 212, Elmhurst, IL 60126, right in downtown Elmhurst. It keeps our plumbers close to homes across Elmhurst and the nearby towns. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "116 S York St, Suite 212, Elmhurst, IL 60126",
+   "areasH3": "Nearby Communities We Serve",
+   "areas": [
+    {
+     "label": "Villa Park",
+     "href": "/villa-park"
+    },
+    {
+     "label": "Lombard",
+     "href": "/lombard"
+    },
+    {
+     "label": "Oak Brook",
+     "href": "/oak-brook"
+    },
+    {
+     "label": "Oakbrook Terrace",
+     "href": "/oakbrook-terrace"
+    },
+    {
+     "label": "Westchester",
+     "href": "/westchester"
+    },
+    {
+     "label": "Glen Ellyn",
+     "href": "/glen-ellyn"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/HuBzSnueUyTi19kj7"
+  },
+  "depth": {
+   "h2": "What Elmhurst Homes Need From a Plumber",
+   "intro": "The median home in Elmhurst was built in 1966. About 4 in 10 went up between 1940 and 1969, about 1 in 7 is older than that, and about 3 in 10 have been built since 1990. Here’s what that mix means for your plumbing.",
+   "tiles": [
+    {
+     "title": "Postwar Sewer Lines and Tree Roots",
+     "body": "Sewer lines from the 1940s, 50s and 60s were usually clay. Decades of roots from mature parkway trees get in at the joints and slowly close the pipe. [Hydro jetting](/elmhurst/hydro-jetting) scours the roots and buildup off the pipe walls, and a [camera inspection](/elmhurst/video-camera-sewer-inspections) shows whether the line needs a [repair](/elmhurst/sewer-repair)."
+    },
+    {
+     "title": "April 2013: 7 Inches of Rain in Two Days",
+     "body": "On April 17 and 18, 2013, Elmhurst got 7.26 inches of rain, and homes old and new across town had water damage. It wasn’t the first time: residents saw the same scenes in 2010, in the same neighborhoods. A [sump pump with a battery backup](/elmhurst/sump-pumps) and a [backflow valve](/elmhurst/flood-control-maintenance) are the best protection."
+    },
+    {
+     "title": "Hard Water and Water Heaters",
+     "body": "Elmhurst’s Lake Michigan water comes through the DuPage Water Commission, and the city reports its hardness at about 8 grains per gallon. That’s enough to build scale in a tank water heater over the years. A yearly flush helps, and when a heater starts to rumble, leak or run out fast, we can [repair or replace it](/elmhurst/water-heater-repair)."
+    },
+    {
+     "title": "Winter Freezes and Burst Pipes",
+     "body": "Elmhurst winters bring long stretches below freezing. Pipes in exterior walls, crawl spaces and outdoor spigot lines freeze first, and a split pipe often starts leaking inside a wall once it thaws. We’re on call 24/7 for [burst pipe repair](/elmhurst/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Elmhurst Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Elmhurst Reviews",
+   "intro": "4.8 stars from 280+ Google reviews for our Elmhurst office.",
+   "rating": "4.8",
+   "ratingSub": "280+ Google reviews for our Elmhurst office",
+   "items": [
+    {
+     "name": "Rene Adrian",
+     "url": "https://maps.app.goo.gl/Un9gJZ7KZZHjAvpn8",
+     "text": "Hubert was absolutely amazing. We had the video assisted hydrojet clean out done. We had a sewer pipe clog which a couple other companies had not been able to rod past. They were suggesting pipe replacement.  Hubert opened the blockage in 20 minutes. Before and after full length video of the pipe was extremely reassuring. We have sewer pipes that are 130 years old.  He gave a very honest assessment on where work needs and does not need to be done which seemed exceptional honest. [...]"
+    },
+    {
+     "name": "Charles Webber",
+     "url": "https://maps.app.goo.gl/diEiXBuUj4XqQNCT8",
+     "text": "Welhem Mendoza worked calmly and efficiently for 2.5 hours installing a new water heater. He removed the old water heater and left the working area clean."
+    },
+    {
+     "name": "Theresa Funk",
+     "url": "https://maps.app.goo.gl/5UG2hfTwRGwaU2p76",
+     "text": "We had an enormous clog in our kitchen sink that rendered the kitchen unusable. I was able call J Blanton plumbing and get an appointment the same day (which was a blessing because I have 4 kids and need to be able to use my kitchen!). Stephen Walan came out and he was friendly, courteous, and really helpful. He explained the options for clearing the problem and the costs upfront. He was knowledgeable and informative, quickly resolving the clog and helping me understand how to prevent similar problems in the future."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Elmhurst Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Elmhurst?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our York Street office keeps our plumbers close to Elmhurst, and we [treat emergencies as a priority](/elmhurst/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "What’s the difference between sewer rodding and hydro jetting?",
+     "preview": "Rodding uses a cutting cable to open a path through a clog.",
+     "a": "Rodding uses a cutting cable to open a path through a clog. Hydro jetting uses high-pressure water to clean the whole pipe wall, so roots, grease and scale come off instead of being punched through. For older clay lines where roots keep coming back, [hydro jetting](/elmhurst/hydro-jetting) usually lasts longer. We camera the line first to make sure it’s the right choice."
+    },
+    {
+     "q": "How often should I have my sewer line cleaned?",
+     "preview": "If roots have blocked your line before, once a year is typical.",
+     "a": "If roots have blocked your line before, once a year is typical. If you’ve never had a problem, a camera inspection every few years is a good way to catch roots early. We can set up [regular sewer maintenance](/elmhurst/sewer-maintenance) so you don’t have to remember."
+    },
+    {
+     "q": "Is Elmhurst water hard?",
+     "preview": "Yes. The city reports about 8 grains per gallon, which counts as hard water.",
+     "a": "Yes. The city reports about 8 grains per gallon, which counts as hard water. It’s enough to build scale in water heaters and on fixtures over time. Flushing your water heater once a year helps it last longer."
+    },
+    {
+     "q": "How do I protect my basement from flooding?",
+     "preview": "Start with a sump pump in good shape, a battery backup in case the power goes out and a backflow valve on your sewer line.",
+     "a": "Start with a sump pump in good shape, a battery backup in case the power goes out and a backflow valve on your sewer line. For homes with repeat backups, an [overhead sewer system](/elmhurst/overhead-sewer-systems) lifts basement wastewater above the level where backups happen."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Elmhurst?",
+     "preview": "Along with Elmhurst, our office serves Villa Park, Lombard, Oak Brook, Oakbrook Terrace, Westchester, Glen Ellyn and more.",
+     "a": "Along with Elmhurst, our office serves Villa Park, Lombard, Oak Brook, Oakbrook Terrace, Westchester, Glen Ellyn and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Elmhurst start small, like roots in an old clay sewer line or scale in a water heater. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Elmhurst Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Elmhurst, IL",
+ "metaDescription": "Local plumbers on York Street in Elmhurst, IL. Sewer cleaning, hydro jetting and water heaters. Call 24/7 for an upfront price before work starts."
+}

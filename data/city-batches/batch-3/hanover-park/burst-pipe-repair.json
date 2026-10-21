@@ -1,0 +1,370 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Hanover Park, IL",
+   "sub": "Water pouring from a ceiling, a pipe that split overnight or a faucet that won't run in a cold snap. Shut off the water and call us. Our line is open 24/7. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "If a Pipe Bursts",
+    "intro": "Do these first:",
+    "steps": [
+     {
+      "h3": "1. Shut Off the Main",
+      "body": "Usually near the water meter."
+     },
+     {
+      "h3": "2. Turn Off Power Nearby",
+      "body": "If it's safe."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "To drain the lines."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any time."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "Look for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Through a Ceiling",
+      "bullets": [
+       "Under a bath or kitchen."
+      ]
+     },
+     {
+      "h3": "Pressure Drops Suddenly",
+      "bullets": [
+       "Throughout the house."
+      ]
+     },
+     {
+      "h3": "Spreading Stains",
+      "bullets": [
+       "On walls or ceilings."
+      ]
+     },
+     {
+      "h3": "Running Water Sounds",
+      "bullets": [
+       "With nothing on."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "In a cold snap:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Faucet Won't Run",
+      "body": "While others do."
+     },
+     {
+      "h3": "Frost on an Exposed Pipe",
+      "body": "In a garage or crawl space."
+     },
+     {
+      "h3": "A Toilet Won't Refill",
+      "body": "Its line may be frozen."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Hanover Park",
+    "intro": "Common weak spots in homes from the '70s and '80s:",
+    "items": [
+     {
+      "h3": "Pipes in Garage Walls",
+      "body": "Attached garages get very cold."
+     },
+     {
+      "h3": "Outdoor Faucets",
+      "body": "If not shut off and drained before winter."
+     },
+     {
+      "h3": "Crawl Spaces",
+      "body": "Common under split-levels and additions."
+     },
+     {
+      "h3": "Split-Level Lower Levels",
+      "body": "Rooms half below grade often have pipes along cold outside walls."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, fix the pipe, prevent the next one.",
+    "steps": [
+     {
+      "h3": "1. Fast Response",
+      "body": "24/7."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Before the repair."
+     },
+     {
+      "h3": "3. Prevention Tips",
+      "body": "Before the next freeze."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "getting-your-home-ready-for-winter",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Before Winter",
+    "h2": "Getting Your Home Ready for Winter",
+    "body": "In the fall, shut off and drain outdoor faucets from the inside valve, and disconnect garden hoses. Insulate pipes in the garage, crawl space and any outside walls you can reach. Seal gaps where cold air gets in near pipes. When a deep freeze is coming, keep the heat steady, even at night, and open cabinet doors on outside walls. If you're traveling, don't turn the heat down too far, and ask someone to check on the house.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     },
+     {
+      "name": "Chuck Petty",
+      "url": null,
+      "text": "GREAT WORK AND CUSTOMER SERVICE!!"
+     },
+     {
+      "name": "J. Ham",
+      "url": "https://maps.app.goo.gl/fNFyTEGqmipVtH2dA",
+      "text": "I had J. Blanton Plumbing come service a potential sewer line back-up and I was super impressed with the entire experience. My technician was Stephen Walen and he was fantastic. He scoped our entire line so we could see where our main line hooks up to off-shoots of our other pipes. He walked through all different short & long-term scenarios so we could make informed decisions."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "How do I keep pipes from freezing?",
+      "preview": "Heat, open cabinets and a slow drip.",
+      "answer": "Keep the heat up, open cabinets on outside walls and let a faucet drip on the coldest nights."
+     },
+     {
+      "q": "Can I thaw a frozen pipe myself?",
+      "preview": "Gently, never with a flame.",
+      "answer": "Gently with a hair dryer or warm towels. Never use an open flame."
+     },
+     {
+      "q": "Does insurance cover burst pipes?",
+      "preview": "Often, for sudden damage.",
+      "answer": "Often. Check with your agent."
+     },
+     {
+      "q": "Can you repair a pipe inside a wall?",
+      "preview": "Yes.",
+      "answer": "Yes. We locate the break and open only what's needed."
+     },
+     {
+      "q": "Should I leave the heat on when I travel in winter?",
+      "preview": "Yes, and not too low.",
+      "answer": "Yes. Keep it at a steady setting, and have someone check on the house if you're gone long."
+     },
+     {
+      "q": "Can a burst pipe in the garage wall damage the house?",
+      "preview": "Yes, if water runs into the wall.",
+      "answer": "Yes. Water can run inside the shared wall into the house. Shut off the main and call us."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Hanover Park?",
+      "preview": "It depends on the break. You'll approve a flat price first.",
+      "answer": "It depends on where the pipe burst and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Burst Pipe? Call Us Now.",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Hanover Park, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/hanover-park/burst-pipe-repair",
+   "description": "Burst and frozen pipe repair in Hanover Park, IL. Our line is open 24/7. We stop the water, repair the pipe and help prevent the next one.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst Pipe Repair in Hanover Park, IL",
+ "metaDescription": "Burst and frozen pipe repair in Hanover Park, IL. Our line is open 24/7. We stop the water, repair the pipe and help prevent the next one."
+}

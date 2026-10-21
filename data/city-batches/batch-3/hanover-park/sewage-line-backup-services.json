@@ -1,0 +1,343 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in Hanover Park, IL",
+   "sub": "Sewage coming up through the floor drain needs fast help, and our line is open 24/7. We clear the line, find out why it happened and help keep it from happening again. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do During a Sewage Backup",
+    "intro": "Until we arrive:",
+    "steps": [
+     {
+      "h3": "1. Stop Using Water",
+      "body": "Every drain adds to it."
+     },
+     {
+      "h3": "2. Stay Out of It",
+      "body": "Sewage carries bacteria."
+     },
+     {
+      "h3": "3. Watch the Electrical",
+      "body": "Outlets and appliances near water."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Tell us where it's coming up."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Hanover Park Basements Back Up",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Clog in Your Line",
+      "body": "Roots, grease or wipes."
+     },
+     {
+      "h3": "A Belly or Break",
+      "body": "Waste can't flow past it."
+     },
+     {
+      "h3": "Heavy Storms",
+      "body": "Sewers under strain push water back."
+     },
+     {
+      "h3": "A Failed Ejector Pump",
+      "body": "Basement fixtures overflow."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups in Hanover Park",
+    "intro": "In the August 2007 storm, Hanover Park basements took water from sewer backups.",
+    "items": [
+     {
+      "h3": "Dry Day or Rainy Day?",
+      "body": "A backup on a dry day points to your line. One in heavy rain points to the sewer system."
+     },
+     {
+      "h3": "Finished Basements",
+      "body": "Common in Hanover Park homes, and expensive to restore."
+     },
+     {
+      "h3": "Protection",
+      "body": "A backflow valve or [overhead sewer system](/hanover-park/overhead-sewer-systems) keeps sewer water out."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Clear, explain, prevent.",
+    "steps": [
+     {
+      "h3": "1. Clear the Line",
+      "body": "Drains working again."
+     },
+     {
+      "h3": "2. Show the Cause",
+      "body": "On camera."
+     },
+     {
+      "h3": "3. Price Any Repair First",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-to-do-after-a-sewer-backup",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "After the Water",
+    "h2": "What to Do After a Sewer Backup",
+    "body": "Once the line is clear, take photos of the damage before anything is moved, then call your insurance agent to ask whether you have sewer backup coverage. Anything porous that touched sewage, like carpet, padding and cardboard, usually has to go. Hard surfaces can be cleaned and disinfected. A restoration company can dry the walls and floor properly. Keep our camera footage and invoice with your claim, because they show the cause and the repair.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Aaron Barkoff",
+      "url": null,
+      "text": "Scott was awesome--super friendly, professional, and happy to answer all our questions"
+     },
+     {
+      "name": "Patrick Schulze",
+      "url": null,
+      "text": "Was a major bit of sewer repair, but could not have been more pleased with the professionalism and congeniality of Richard and his team. They explained every step of the process as it was being done, and were more than happy to answer questions."
+     },
+     {
+      "name": "Crystal Ritchie",
+      "url": null,
+      "text": "Andrew was out in about and hour and fixed our sewer back up in less than that, fire significantly cheaper than any other place we've used! Thank you!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Why did my basement back up on a sunny day?",
+      "preview": "Your line is blocked.",
+      "answer": "Without rain, the blockage is almost always in your own line: roots, a belly or a clog."
+     },
+     {
+      "q": "Do you clean up after a backup?",
+      "preview": "We fix the plumbing. A restoration company cleans up.",
+      "answer": "We clear the line and repair the cause. A restoration company handles cleanup and drying."
+     },
+     {
+      "q": "Is a sewer backup covered by insurance?",
+      "preview": "Often only with a rider.",
+      "answer": "Many policies need a sewer backup rider. Check with your agent."
+     },
+     {
+      "q": "How do I keep it from happening again?",
+      "preview": "Fix the cause, then add protection.",
+      "answer": "Fix what caused it, then consider a backflow valve or overhead sewer."
+     },
+     {
+      "q": "Is it safe to stay in the house?",
+      "preview": "Usually, if you keep out of the basement.",
+      "answer": "Usually, as long as everyone stays out of the affected area and the water isn't near electrical."
+     },
+     {
+      "q": "Can I use the upstairs bathroom?",
+      "preview": "Not until the line is clear.",
+      "answer": "Not until the line is clear. Upstairs water drains to the same place."
+     },
+     {
+      "q": "How much does sewer backup service cost in Hanover Park?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on what caused it and how we reach the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in Hanover Park, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/hanover-park/sewage-line-backup-services",
+   "description": "Sewage in your Hanover Park basement? We clear the line 24/7, find the cause on camera and help protect the basement from the next one.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Backup Service in Hanover Park, IL",
+ "metaDescription": "Sewage in your Hanover Park basement? We clear the line 24/7, find the cause on camera and help protect the basement from the next one."
+}

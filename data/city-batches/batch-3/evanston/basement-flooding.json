@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Evanston, IL",
+   "sub": "Water in the basement after a storm, from a backed-up floor drain or from a failed pump. We find where it's coming from, fix it and help keep it from happening again. Our Evanston office is on Orrington Avenue, downtown. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Evanston Basements Flood",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Sewer Backup in a Storm",
+      "body": "Combined sewers push water back."
+     },
+     {
+      "h3": "Seepage Through the Walls",
+      "body": "Groundwater through old foundations."
+     },
+     {
+      "h3": "A Failed Pump",
+      "body": "Sump or ejector."
+     },
+     {
+      "h3": "A Burst Pipe",
+      "body": "Plumbing water."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Evanston",
+    "intro": "All of Evanston drains to combined sewers, so heavy storms can push water back into basements.",
+    "items": [
+     {
+      "h3": "Sewer Water or Groundwater?",
+      "body": "The fix depends on which it is."
+     },
+     {
+      "h3": "City Work vs. Your Lateral",
+      "body": "The city's relief sewers added capacity. Your lateral and basement protection are still up to you."
+     },
+     {
+      "h3": "Find the Source First",
+      "body": "We figure out which you have."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Some water is a plumbing problem and some comes through the foundation. We handle the plumbing side: backflow valves, standpipes, [overhead sewer systems](/evanston/overhead-sewer-systems), [sump pumps](/evanston/sump-pumps) and battery backups.",
+     "If water is seeping through cracks in the walls, a waterproofing contractor is the right call, and we'll tell you so."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop it, find it, protect it.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "Line or pump first."
+     },
+     {
+      "h3": "2. Find the Source",
+      "body": "Sewer, groundwater or plumbing."
+     },
+     {
+      "h3": "3. Price Protection",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "steps-that-lower-your-flood-risk",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Prevent It",
+    "h2": "Steps That Lower Your Flood Risk",
+    "body": "Start with the cheap ones. Keep downspouts pointed away from the house. Clean catch basins and window wells every fall. Make sure the ground slopes away from the foundation. Then look at the plumbing: a clear lateral, a working sump pump with a backup and, if you've had sewer water in the basement, a backflow valve or overhead sewer. Together, these cover the most common ways water gets into an Evanston basement.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     },
+     {
+      "name": "Debra Haslett",
+      "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+      "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+     },
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible. Services Sump pump repair, Sump pump installation"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "How do I know if it's sewer water or groundwater?",
+      "preview": "Where it enters tells you.",
+      "answer": "Through the floor drain is usually sewer water. Along the walls is usually groundwater."
+     },
+     {
+      "q": "Do you dry out basements?",
+      "preview": "We fix the cause. A restoration company dries it.",
+      "answer": "We fix the plumbing cause. A restoration company handles water removal and drying."
+     },
+     {
+      "q": "What's the best protection for an Evanston basement?",
+      "preview": "It depends on the source.",
+      "answer": "For repeat sewer backups, an overhead sewer. For groundwater, a sump pump with a battery backup."
+     },
+     {
+      "q": "Does insurance cover basement flooding?",
+      "preview": "Sewer backups often need a rider.",
+      "answer": "Sewer backup usually needs a separate rider. Groundwater is often excluded. Check with your agent."
+     },
+     {
+      "q": "Should I finish my basement if it has flooded before?",
+      "preview": "Fix the cause first.",
+      "answer": "Fix the cause first. Then finish with materials that tolerate moisture."
+     },
+     {
+      "q": "How much does basement flooding repair cost in Evanston?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on the cause and what's needed. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Water in the Basement? Call Us Now.",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Evanston, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/evanston/basement-flooding",
+   "description": "Basement flooding help in Evanston, IL. We find whether it's sewer water, groundwater or a pipe, fix it and help protect the basement.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Evanston, IL",
+ "metaDescription": "Basement flooding help in Evanston, IL. We find whether it's sewer water, groundwater or a pipe, fix it and help protect the basement."
+}

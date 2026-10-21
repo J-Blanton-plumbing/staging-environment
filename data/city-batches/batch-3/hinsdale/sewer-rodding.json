@@ -1,0 +1,312 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Rodding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Rodding in Hinsdale, IL",
+   "sub": "Water at the basement floor drain, a toilet that gurgles when the tub empties or every drain in the house slowing down together. That's a main line clog. We rod it clear and show you what caused it on camera. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-rodding-front-yard.webp",
+    "alt": "J. Blanton plumber feeding the cable from a drum rodding machine into an outdoor sewer cleanout in a front yard"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-sewer-rodding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Sewer Rodding?",
+    "body": "Sewer rodding clears a blocked main line with a long, flexible steel cable fed through a cleanout access point. A cutting head on the end breaks through roots, grease, and debris and pushes the blockage toward the street connection, restoring flow through the pipe. It's the standard first fix for a clogged or backed-up sewer line. For most homes, it's the only fix needed.",
+    "img": {
+     "src": "/images/city-services-v2/sewer-rodding-diagram.webp",
+     "alt": "Diagram showing a rodding cable fed through a cleanout access point into the main sewer line, with a cutting head clearing the blockage toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Main Line Clog Signs in Hinsdale Homes",
+    "intro": "These point past a single fixture:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Floor Drain Is the First to Back Up",
+      "body": "It's the lowest opening, so a main line clog shows there first."
+     },
+     {
+      "h3": "Every Bathroom Is Slow",
+      "body": "When all the fixtures slow down, the shared line is blocked."
+     },
+     {
+      "h3": "Gurgling After a Flush",
+      "body": "Air trapped behind the clog bubbles up through other drains."
+     },
+     {
+      "h3": "A Yearly Pattern",
+      "body": "Roots in old clay tend to block the line around the same time each year."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Blocks Main Lines in Hinsdale",
+    "intro": "Hinsdale's mix of century-old and brand-new homes means the cause varies by block.",
+    "items": [
+     {
+      "h3": "Root Mats in Clay Laterals",
+      "body": "In older neighborhoods, roots grow through clay joints and form dense mats."
+     },
+     {
+      "h3": "Scale in Cast Iron",
+      "body": "Original cast iron inside older homes builds rust scale that snags paper."
+     },
+     {
+      "h3": "Construction Debris in Rebuilt Homes",
+      "body": "Now and then we find sand or debris left in a line after a teardown and rebuild."
+     },
+     {
+      "h3": "When Rodding Isn't Enough",
+      "body": "If roots return fast, [hydro jetting](/hinsdale/hydro-jetting) or a [sewer repair](/hinsdale/sewer-repair) lasts longer."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Sewer Rodding Visits Go",
+    "intro": "We open the line, then explain what we found.",
+    "steps": [
+     {
+      "h3": "1. Protect the House",
+      "body": "Drop cloths down, and we work from the cleanout."
+     },
+     {
+      "h3": "2. Rod and Inspect",
+      "body": "The line is cleared to the main and checked on camera."
+     },
+     {
+      "h3": "3. A Price Before We Start",
+      "body": "Plus options, if the camera finds damage."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Rodding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Raymond Mustion",
+      "url": null,
+      "text": "Freddie Perez, was very professional, hard working and friendly. Completed the job in a timely manner. Thank you"
+     },
+     {
+      "name": "John C. Sweeney",
+      "url": null,
+      "text": "Dave was very professional and explained all details of the work for our home plumbing project. We appreciated his work."
+     },
+     {
+      "name": "susan lanz",
+      "url": null,
+      "text": "Andrew A and D’Ron fixed our clogged kitchen sink and other items with same day service and were amazing to work with."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Rodding Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "How do I know the clog is in the main line?",
+      "preview": "The floor drain or several fixtures are involved.",
+      "answer": "If the basement floor drain backs up, or several fixtures on different floors are slow, the blockage is in the main line."
+     },
+     {
+      "q": "How often should an older Hinsdale home be rodded?",
+      "preview": "About once a year if roots have been a problem.",
+      "answer": "About once a year, ideally in late winter or early spring, if roots have blocked the line before."
+     },
+     {
+      "q": "Can rodding damage an old clay pipe?",
+      "preview": "Not with the right equipment. We check it on camera.",
+      "answer": "Not when it's done with the right cutting head. If the pipe is already cracked or broken, the camera will show it and we'll explain the options."
+     },
+     {
+      "q": "What if my older home has no cleanout?",
+      "preview": "We can go through a toilet or vent, or add one.",
+      "answer": "We can usually reach the line through a toilet or a roof vent. Adding a cleanout makes every future visit easier and less invasive."
+     },
+     {
+      "q": "How much does sewer rodding cost in Hinsdale?",
+      "preview": "It depends on access and the clog. You'll approve a flat price first.",
+      "answer": "It depends on where the cleanout is, how long the line is and what's blocking it. You'll approve a flat-rate price before we begin."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Drains Flowing?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Rodding in Hinsdale, IL",
+   "serviceType": "Sewer Rodding",
+   "url": "https://jblantonplumbing.com/hinsdale/sewer-rodding",
+   "description": "Sewer rodding in Hinsdale, IL. Root-clogged main lines cleared, the cause shown on camera and a flat price before we start. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Rodding in Hinsdale, IL",
+ "metaDescription": "Sewer rodding in Hinsdale, IL. Root-clogged main lines cleared, the cause shown on camera and a flat price before we start. Call 24/7."
+}

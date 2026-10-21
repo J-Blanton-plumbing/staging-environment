@@ -1,0 +1,318 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Hinsdale, IL",
+   "sub": "Water in the basement after a storm, from a failed pump or from a backed-up drain. We find where it's coming from, fix the cause and help make sure it doesn't happen again. Our office is on Spinning Wheel Road. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Hinsdale Basements Flood",
+    "intro": "Basement water usually comes from one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Sump Pump That Failed",
+      "body": "Worn out, stuck or without power."
+     },
+     {
+      "h3": "A Sewer Backup",
+      "body": "Water rising through the floor drain."
+     },
+     {
+      "h3": "An Ejector Pump Overflow",
+      "body": "A basement bath basin that filled up."
+     },
+     {
+      "h3": "A Burst Pipe or Water Heater",
+      "body": "Plumbing water, not rain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Hinsdale",
+    "intro": "In June 2021, a storm flooded streets that normally stay dry, and a homeowner near County Line Road and Walnut Street had about 3 feet of water in a basement that had never flooded before.",
+    "items": [
+     {
+      "h3": "Never Flooded Doesn't Mean Never Will",
+      "body": "Heavy, fast storms can overwhelm systems that have worked for decades."
+     },
+     {
+      "h3": "Finished Basements Are Common",
+      "body": "Water damage downstairs often means flooring, drywall and furniture."
+     },
+     {
+      "h3": "Find the Source First",
+      "body": "Groundwater and sewer water need different fixes."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Some basement water is a plumbing problem and some is a foundation problem. We handle the plumbing side: [sump pumps](/hinsdale/sump-pumps), battery backups, discharge lines, backflow valves and [overhead sewer systems](/hinsdale/overhead-sewer-systems).",
+     "If water is coming through cracks in the walls, a waterproofing contractor is the right call, and we'll tell you so. Fixing the plumbing first often solves more than you'd expect."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, then stop the next one.",
+    "steps": [
+     {
+      "h3": "1. Stop the Source",
+      "body": "Pump, pipe or drain, fixed first."
+     },
+     {
+      "h3": "2. Find the Cause",
+      "body": "So you know what failed."
+     },
+     {
+      "h3": "3. Price Any Protection",
+      "body": "Flat rate, approved by you."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "when-a-basement-floods-for-the-first-time",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Local History",
+    "h2": "When a Basement Floods for the First Time",
+    "body": "In June 2021, a storm sent water bubbling out of a sewer in northeast Hinsdale, and one home had about 3 feet of water in a basement that had never flooded before. That's a reminder that a dry past doesn't promise a dry future. If your basement is finished, protection like a backflow valve, an overhead sewer or a sump pump with a backup is worth considering before the next big storm.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mark Jeffery",
+      "url": null,
+      "text": "In this week of artic chiberia I cannot say how much I appreciated the care, attention that Ronnie Levandowski did last night with his service of attending to my burst pipes in the basement. He was detailed, thorough, skilled, walked me through the options he was able to do to stop the water and fix the problem. [...]"
+     },
+     {
+      "name": "Bonnie Polniak",
+      "url": null,
+      "text": "I just want to say thank you To Dereck who was dispatched to my house on Tuesday very late to help solve the mystery of water coming from under the wall in the basement .he was extremely nice and informative .thank u."
+     },
+     {
+      "name": "Dan McCarthy",
+      "url": null,
+      "text": "Professional and on time. Did a good job replacing an ejector pump and a sump pump. Highly recommend and Derek was great to work with!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Is it groundwater or sewer water?",
+      "preview": "Where it comes in tells you.",
+      "answer": "Water at the walls or rising in the sump pit is groundwater. Water coming up through the floor drain is usually sewer water."
+     },
+     {
+      "q": "Our basement had never flooded. Why now?",
+      "preview": "Storms are heavier, and equipment ages.",
+      "answer": "A storm heavier than usual, a pump at the end of its life or a partly blocked line can all change things. We'll find out which."
+     },
+     {
+      "q": "Do you dry out flooded basements?",
+      "preview": "We fix the cause. Restoration companies dry and clean.",
+      "answer": "We fix the pump, pipe or drain. For water removal and drying, a restoration company is the right call."
+     },
+     {
+      "q": "What's the best protection for a finished basement?",
+      "preview": "A good pump, a backup and a backflow valve.",
+      "answer": "A reliable sump pump with a battery backup, plus a backflow valve. For repeat sewer backups, an overhead sewer."
+     },
+     {
+      "q": "How much does basement flooding repair cost in Hinsdale?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on the cause and what needs to be repaired or added. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Water in the Basement? Call Us Now.",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Hinsdale, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/hinsdale/basement-flooding",
+   "description": "Basement flooding help in Hinsdale, IL. We find the source, fix the pump, pipe or drain and help protect your basement. Open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Hinsdale, IL",
+ "metaDescription": "Basement flooding help in Hinsdale, IL. We find the source, fix the pump, pipe or drain and help protect your basement. Open 24/7."
+}

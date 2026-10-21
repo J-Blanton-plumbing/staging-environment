@@ -1,0 +1,302 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Hinsdale, IL",
+   "sub": "A restaurant downtown, a medical office near the hospital or a boutique on First Street. When the hot water stops, so does business. We repair, replace and maintain commercial water heaters in Hinsdale. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Who We Keep in Hot Water",
+    "intro": "Hinsdale businesses that call us most:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Downtown Restaurants and Cafes",
+      "body": "A dish machine without hot water can close a kitchen in the middle of service."
+     },
+     {
+      "h3": "Medical, Dental and Therapy Practices",
+      "body": "Exam rooms and sterilization areas can't wait for tomorrow."
+     },
+     {
+      "h3": "Salons, Spas and Fitness Studios",
+      "body": "Shampoo bowls, treatment rooms and showers all draw at once."
+     },
+     {
+      "h3": "Retail in Century-Old Buildings",
+      "body": "Small restrooms, tight basements and piping that's been changed many times."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Hot Water, Start to Finish",
+    "intro": "One team for the whole life of the heater:",
+    "steps": [
+     {
+      "h3": "Same-Day Diagnosis When Possible",
+      "body": "We find what failed and quote the fix before we start."
+     },
+     {
+      "h3": "Right-Sized Replacements",
+      "body": "Capacity and recovery matched to your busiest stretch of the day."
+     },
+     {
+      "h3": "A Service Calendar",
+      "body": "Flushes, descaling and relief valve tests, so the heater lasts."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Downtown Hinsdale and Nearby",
+    "intro": "Our Spinning Wheel Road office is close to Hinsdale's business districts.",
+    "items": [
+     {
+      "h3": "Historic Commercial Buildings",
+      "body": "Downtown buildings can have plumbing changed many times over a century. We trace the connections before sizing anything."
+     },
+     {
+      "h3": "Medical Offices",
+      "body": "We plan the work to keep exam rooms running."
+     },
+     {
+      "h3": "A Price Before the Work",
+      "body": "Flat-rate pricing so you can plan."
+     },
+     {
+      "h3": "Mixing Valves and Safe Temperatures",
+      "body": "Many businesses need hot water at the heater and safe water at the tap. We check and set mixing valves on every visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-commercial-water-heater-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Commercial Water Heater Work",
+    "body": "Capacity, fuel and venting matter most. Older downtown buildings can add steps for access or venting updates. Code requirements like new valves or expansion tanks may apply. We look at your setup and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Marianne Mollenauer",
+      "url": null,
+      "text": "We had an emergency hot water heater problem and Alex did a great job getting a new appliance installed the same day I called for help. Great company! I'd use them again."
+     },
+     {
+      "name": "Lucas Fleck",
+      "url": null,
+      "text": "These guys were fast, honest, and left my house the way it was before they started. Had to get all new drain pipes put in was quoted 3 days and they had it done in 2. Just want to say thanks to William, James, and Thomas for helping us out"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Hinsdale Businesses",
+    "items": [
+     {
+      "q": "Can you replace our water heater on a Sunday or after close?",
+      "preview": "For planned replacements, we'll work with your schedule.",
+      "answer": "For a planned replacement or maintenance, we'll do our best to work before opening or after closing. If it fails during business hours, call us right away."
+     },
+     {
+      "q": "Who do we call if the hot water fails at night?",
+      "preview": "Us. The line is open 24/7.",
+      "answer": "Call us. Our line is answered around the clock, including weekends and holidays."
+     },
+     {
+      "q": "Is a bigger tank always the answer for running out?",
+      "preview": "Not always.",
+      "answer": "Not always. Sometimes recovery rate, a failing burner or a mixing valve is the real issue. We test before recommending a larger unit."
+     },
+     {
+      "q": "Do you work in buildings shared by several businesses?",
+      "preview": "Yes.",
+      "answer": "Yes. We coordinate access with the building owner and keep shared mechanical rooms tidy."
+     },
+     {
+      "q": "Do you work with downtown Hinsdale businesses?",
+      "preview": "Yes.",
+      "answer": "Yes. We serve restaurants, shops and offices across Hinsdale."
+     },
+     {
+      "q": "What does commercial water heater work cost in Hinsdale?",
+      "preview": "That depends on capacity, fuel and venting. You'll see a flat price first.",
+      "answer": "That depends on the capacity, fuel, venting and any code work required. You'll see a flat-rate price before anything starts."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Hinsdale, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/hinsdale/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Hinsdale, IL businesses. 24/7 phone line and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Hinsdale, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Hinsdale, IL businesses. 24/7 phone line and a flat price before work."
+}

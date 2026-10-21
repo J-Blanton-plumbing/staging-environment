@@ -1,0 +1,304 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Toilet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Toilet Repair and Installation in Hinsdale, IL",
+   "sub": "A toilet that overflows, runs all night or leaks onto a finished floor. We fix it or replace it, whichever makes more sense, and give you a flat price before we start. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+    "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Toilet Problems We Fix in Hinsdale",
+    "intro": "We handle:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Overflows",
+      "body": "A clog in the bowl or further down the line."
+     },
+     {
+      "h3": "Running Toilets",
+      "body": "A worn flapper or fill valve."
+     },
+     {
+      "h3": "Leaks at the Base",
+      "body": "A failed wax ring or a loose toilet."
+     },
+     {
+      "h3": "Wall-Hung and Smart Toilets",
+      "body": "Specialty units installed and repaired."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-toilets",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Toilets in Hinsdale Homes",
+    "intro": "Hinsdale homes often have several bathrooms, and some have toilets over finished ceilings.",
+    "items": [
+     {
+      "h3": "Overflows Over Finished Rooms",
+      "body": "An upstairs overflow can reach the ceiling below fast. Shut the valve behind the toilet and call us."
+     },
+     {
+      "h3": "Old Flanges in Older Homes",
+      "body": "Cast iron flanges can corrode, letting the toilet rock and the seal fail."
+     },
+     {
+      "h3": "Specialty Toilets",
+      "body": "Wall-hung, comfort-height and bidet toilets need careful installation."
+     },
+     {
+      "h3": "Powder Rooms Used by Guests",
+      "body": "A powder room toilet that clogs during a party is a common call. Newer high-performance toilets clear far better than early low-flow models."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We'll tell you whether to repair or replace.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Tank, bowl, seal, flange and drain."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "For the repair or a new toilet."
+     },
+     {
+      "h3": "3. Installed and Tested",
+      "body": "No leaks, no rocking."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-toilet-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Toilet Work",
+    "body": "Small parts are quick. Smart toilets, wall-hung models and bidet seats with power take more time. A damaged flange adds work. We look first and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Toilet Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Michele Cotsirilos",
+      "url": null,
+      "text": "I had a great experience with J Blanton Plumbing. My toilet was leaking yesterday evening. I called J Blanton and they had someone come within an hour. Ronald came and was able to quickly diagnose the problem and help stabilize the situation. Today Matthew came out to finish fixing the overall problem. Matthew worked quickly and efficiently. He was very polite and courteous. The price was pretty competitive and reasonable. [...]"
+     },
+     {
+      "name": "Lucas Fleck",
+      "url": null,
+      "text": "These guys were fast, honest, and left my house the way it was before they started. Had to get all new drain pipes put in was quoted 3 days and they had it done in 2. Just want to say thanks to William, James, and Thomas for helping us out"
+     },
+     {
+      "name": "nil golan",
+      "url": null,
+      "text": "I really like the service very nice people highly recommended"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Toilet Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "What should I do if my toilet overflows?",
+      "preview": "Close the shutoff valve behind it.",
+      "answer": "Turn the shutoff valve behind the toilet clockwise to stop the water. Then call us. If water reached a ceiling below, turn off power to any fixtures there."
+     },
+     {
+      "q": "Do you clean up after a toilet overflow?",
+      "preview": "We fix the toilet. A restoration company handles major water damage.",
+      "answer": "We clear the clog and fix the toilet. For water damage to floors or ceilings, a restoration company is the right call."
+     },
+     {
+      "q": "Why does my toilet keep running?",
+      "preview": "Usually the flapper or fill valve.",
+      "answer": "Usually a worn flapper or a fill valve that won't shut off. Both are simple repairs."
+     },
+     {
+      "q": "Can you install a wall-hung toilet?",
+      "preview": "Yes.",
+      "answer": "Yes. Wall-hung toilets need an in-wall carrier and tank, which we install as part of a remodel."
+     },
+     {
+      "q": "Can you install a wall-hung toilet?",
+      "preview": "Yes, during a remodel.",
+      "answer": "Yes, usually during a remodel, since the carrier goes inside the wall."
+     },
+     {
+      "q": "How much does toilet repair cost in Hinsdale?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and whether you're repairing or replacing. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Toilet?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Toilet Repair and Installation in Hinsdale, IL",
+   "serviceType": "Toilet Installation & Repair",
+   "url": "https://jblantonplumbing.com/hinsdale/toilet-installation-repair",
+   "description": "Toilet repair and installation in Hinsdale, IL. Overflowing, running, leaking or clogged toilets fixed and new toilets installed. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Toilet Repair & Installation in Hinsdale, IL",
+ "metaDescription": "Toilet repair and installation in Hinsdale, IL. Overflowing, running, leaking or clogged toilets fixed and new toilets installed. Flat price."
+}

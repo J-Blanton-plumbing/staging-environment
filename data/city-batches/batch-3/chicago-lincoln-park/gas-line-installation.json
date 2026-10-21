@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in Lincoln Park, Chicago",
+   "sub": "A gas range in a renovated kitchen, a new gas fireplace or a line to the rooftop deck grill. Our licensed plumbers size, run and test gas lines in Lincoln Park homes. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Lincoln Park Gas Line Installations",
+    "intro": "Common projects:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Ranges and Cooktops",
+      "body": "Electric-to-gas switches and new layouts."
+     },
+     {
+      "h3": "Gas Fireplaces",
+      "body": "New units and conversions."
+     },
+     {
+      "h3": "Dryers",
+      "body": "New laundry locations."
+     },
+     {
+      "h3": "Grills on Decks and Patios",
+      "body": "Permanent outdoor lines."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install a Gas Line",
+    "intro": "Step by step:",
+    "steps": [
+     {
+      "h3": "1. Check the Existing System",
+      "body": "Size, condition and load."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Pipe, supports and shutoffs."
+     },
+     {
+      "h3": "3. Pressure-Test",
+      "body": "Before connecting."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in Lincoln Park",
+    "intro": "City renovations often mean new gas work in old buildings.",
+    "items": [
+     {
+      "h3": "Kitchen Renovations",
+      "body": "Moving the range means a new branch line."
+     },
+     {
+      "h3": "Fireplaces",
+      "body": "Gas fireplaces are a popular upgrade. See [gas fireplace service](/chicago-lincoln-park/gas-fireplace)."
+     },
+     {
+      "h3": "Rooftop and Patio Grills",
+      "body": "Outdoor lines need protection and a shutoff."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "gas-lines-for-rooftop-decks",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Roof Decks",
+    "h2": "Gas Lines for Rooftop Decks",
+    "body": "Rooftop decks are common on Lincoln Park homes, and a built-in grill or fire table up there needs a gas line that's run, supported and protected properly. We plan the route from the meter, often up an exterior wall or through a chase, add a shutoff at the appliance and pressure-test the line. The City of Chicago may require a permit, and we'll handle it where it does.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-gas-line",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Gas Line",
+    "body": "The route through an older building matters most, along with the distance from the meter. Rooftop decks and upper-floor kitchens take more work. City permits may apply. We plan the route and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "NBA All Day",
+      "url": null,
+      "text": "Welhem completed some plumbing services to ensure my washer/dryer could be installed. He was prompt and professional and did great work."
+     },
+     {
+      "name": "Miss Joy",
+      "url": null,
+      "text": "Jacob C. Jacob was fantastic. From scheduling to the actual visit, the entire experience with this company was smooth and professional. After dealing with plumbers who overcharge and underdeliver, this was a huge relief. Jacob was knowledgeable, patient, and took the time to clearly explain the issue and our options with pricing ranges. We never felt rushed or pressured. [...]"
+     },
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Can I switch from an electric range to gas?",
+      "preview": "Usually.",
+      "answer": "Usually. We run a new branch and install a shutoff behind the range."
+     },
+     {
+      "q": "Can you run gas to a rooftop deck?",
+      "preview": "Often, depending on the route.",
+      "answer": "Often. It depends on the route through the building and code requirements. We'll look and explain the options."
+     },
+     {
+      "q": "Do you handle city permits?",
+      "preview": "Where required, yes.",
+      "answer": "Yes, where the city requires one for the work."
+     },
+     {
+      "q": "Will my meter handle a new appliance?",
+      "preview": "We calculate the load.",
+      "answer": "We calculate the total load. If the meter or service line needs an upgrade, we'll help coordinate with Peoples Gas."
+     },
+     {
+      "q": "Can a roof deck line serve a fire table and a grill?",
+      "preview": "Yes, if sized for both.",
+      "answer": "Yes, if the line is sized for both, with a shutoff at each."
+     },
+     {
+      "q": "Can you run gas to a range on an upper floor?",
+      "preview": "Yes.",
+      "answer": "Yes, through a chase or wall, sized for the range."
+     },
+     {
+      "q": "How much does gas line installation cost in Lincoln Park?",
+      "preview": "It depends on the run. You'll approve a flat price first.",
+      "answer": "It depends on the length of the run, the appliance and the route. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in Lincoln Park, Chicago",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/gas-line-installation",
+   "description": "Gas line installation in Lincoln Park, Chicago for ranges, fireplaces, dryers and grills. Licensed, sized right and pressure-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in Lincoln Park, Chicago",
+ "metaDescription": "Gas line installation in Lincoln Park, Chicago for ranges, fireplaces, dryers and grills. Licensed, sized right and pressure-tested."
+}

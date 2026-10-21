@@ -1,0 +1,321 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in Elmhurst, IL",
+   "sub": "A gas range for the new kitchen, a line to the backyard grill or a generator to keep the sump pump running. Our licensed plumbers size, run and test gas lines in Elmhurst. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Elmhurst Gas Line Projects",
+    "intro": "Common projects:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Generators",
+      "body": "Backup power for storm season."
+     },
+     {
+      "h3": "Kitchen Ranges",
+      "body": "From electric to gas, or a bigger range."
+     },
+     {
+      "h3": "Patio Kitchens",
+      "body": "Built-in grills and fire tables."
+     },
+     {
+      "h3": "Pool and Spa Heaters",
+      "body": "High-demand appliances."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "Our Gas Line Installation Process",
+    "intro": "Done once, done right:",
+    "steps": [
+     {
+      "h3": "1. Calculate the Total Load",
+      "body": "New and existing appliances."
+     },
+     {
+      "h3": "2. Install With Shutoffs",
+      "body": "To code, properly supported."
+     },
+     {
+      "h3": "3. Hold Pressure",
+      "body": "Then connect and light."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in Elmhurst",
+    "intro": "Elmhurst homeowners ask us about these most.",
+    "items": [
+     {
+      "h3": "Generators for Storm Season",
+      "body": "A generator keeps sump and ejector pumps running in an outage."
+     },
+     {
+      "h3": "Kitchen Remodels",
+      "body": "Moving the range or adding a cooktop."
+     },
+     {
+      "h3": "Old Pipe, New Branches",
+      "body": "We check the existing pipe before tying in."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "why-elmhurst-homeowners-add-generators",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Storm Season",
+    "h2": "Why Elmhurst Homeowners Add Generators",
+    "body": "After storms like 2013, many Elmhurst homeowners want a generator that starts on its own when the power goes out, keeping the sump pump, furnace and refrigerator running. A natural gas generator needs a line sized for its load plus everything already in the house. We size and run the line and pressure-test it. A licensed electrician installs the transfer switch.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "how-we-plan-the-route-for-a-new-gas-line",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Routing",
+    "h2": "How We Plan the Route for a New Gas Line",
+    "body": "We start at the meter and follow the existing pipe to find the best place to branch off. Then we plan a route through the basement or crawl space that's easy to support and service. For outdoor lines, we decide between running along the house or underground. A shorter, simpler route usually means a lower price and a faster install.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Ngawang Lhabrang",
+      "url": null,
+      "text": "Update: 6/6/25: Manager Damien called within the hour and rectified situation. Thank you for accomodating. The scheduling process was an absolute mess. I filled out the online form and began texting with their team on the morning of Wednesday, 6/4/25, to arrange an evening appointment. I was told Friday evening, 6/6/25, was available. Based on the text exchange, it seemed the appointment was confirmed. [...]"
+     },
+     {
+      "name": "Miss Joy",
+      "url": null,
+      "text": "Jacob C. Jacob was fantastic. From scheduling to the actual visit, the entire experience with this company was smooth and professional. After dealing with plumbers who overcharge and underdeliver, this was a huge relief. Jacob was knowledgeable, patient, and took the time to clearly explain the issue and our options with pricing ranges. We never felt rushed or pressured. [...]"
+     },
+     {
+      "name": "NBA All Day",
+      "url": null,
+      "text": "Welhem completed some plumbing services to ensure my washer/dryer could be installed. He was prompt and professional and did great work."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Can you run a gas line for a generator?",
+      "preview": "Yes.",
+      "answer": "Yes, sized for the generator plus everything else on the system."
+     },
+     {
+      "q": "Can I switch my range from electric to gas?",
+      "preview": "Usually.",
+      "answer": "Usually. We run a branch line and install a shutoff behind the range."
+     },
+     {
+      "q": "Do you pull permits?",
+      "preview": "Where required.",
+      "answer": "Yes, where the city requires one."
+     },
+     {
+      "q": "Can my existing pipe handle a new appliance?",
+      "preview": "We check first.",
+      "answer": "We calculate the load and check the pipe size before connecting."
+     },
+     {
+      "q": "How long does a generator gas line take?",
+      "preview": "Often one day.",
+      "answer": "Often a day, depending on the distance from the meter."
+     },
+     {
+      "q": "Can you run gas to a detached garage?",
+      "preview": "Yes.",
+      "answer": "Yes, with an underground line sized for the heater or appliance and a shutoff at the garage."
+     },
+     {
+      "q": "How much does gas line installation cost in Elmhurst?",
+      "preview": "It depends on the run. You'll approve a flat price first.",
+      "answer": "It depends on the length of the run, the appliance and the route. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in Elmhurst, IL",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/elmhurst/gas-line-installation",
+   "description": "Gas line installation in Elmhurst, IL for ranges, dryers, grills, fire pits and generators. Licensed, sized right and pressure-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in Elmhurst, IL",
+ "metaDescription": "Gas line installation in Elmhurst, IL for ranges, dryers, grills, fire pits and generators. Licensed, sized right and pressure-tested."
+}

@@ -1,0 +1,330 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Installation and Repair in Hanover Park, IL",
+   "sub": "A disposal that hums, leaks or won't turn on. We repair, replace and install garbage disposals in Hanover Park homes. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Garbage Disposal Problems",
+    "intro": "We fix disposals that:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Hum but Don't Grind",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "Leak",
+      "body": "A worn seal or cracked body."
+     },
+     {
+      "h3": "Won't Start",
+      "body": "A tripped reset or bad switch."
+     },
+     {
+      "h3": "Drain Slowly",
+      "body": "A clog past the unit."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Hanover Park Kitchens",
+    "intro": "A few common situations here.",
+    "items": [
+     {
+      "h3": "Old Units",
+      "body": "Many disposals are past their 10-year life."
+     },
+     {
+      "h3": "Dishwasher Connections",
+      "body": "A clogged disposal backs up the dishwasher."
+     },
+     {
+      "h3": "Kitchen Remodels",
+      "body": "New sinks often mean a new disposal."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair if it's worth it.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, motor, seal or drain."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replace."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No leaks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "how-to-make-your-disposal-last",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Make It Last",
+    "h2": "How to Make Your Disposal Last",
+    "body": "Run cold water before, during and after grinding. Feed food in a little at a time instead of all at once. Keep grease, fibrous peels, pasta and rice out. They either coat the pipe or swell into a paste. Grind a few ice cubes once in a while to clean the chamber. Most disposals last about 8 to 12 years. When one starts leaking from the body, it's time for a new unit, not a repair.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-disposal-job",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Disposal Job",
+    "body": "A straight replacement is quick. Changes to the drain, a new outlet or a dishwasher connection can add time. If the kitchen drain is partly clogged, it should be cleared first. We check and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alejandro Aixala",
+      "url": null,
+      "text": "5/1/25 We've been working with J Blanton for 5+ years now and are very happy with our experience. Our most recent technician was Lawrence Wagner who did an excellent job helping us with a clogged kitchen sink. Fixing it and then recommending the best way for us to maintain it from clogging again. He was very efficient and explained everything well."
+     },
+     {
+      "name": "Sandra Plasencia",
+      "url": null,
+      "text": "Christian and Julian did a great job today on my maintenance visit! Even went above and beyond to rod my bathroom sink!! Thank you so much !!!"
+     },
+     {
+      "name": "Akhil Bhargava",
+      "url": null,
+      "text": "Andrew and Enrique were great! They identified the issues with my bathroom sinks quickly. Definitely would recommend!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "My disposal hums. What should I do?",
+      "preview": "Turn it off. It's probably jammed.",
+      "answer": "Turn it off. Try the reset button and the hex key under the unit. If it won't turn, call us."
+     },
+     {
+      "q": "Should I repair or replace it?",
+      "preview": "If it leaks from the body or is old, replace it.",
+      "answer": "If the body leaks or it's more than about 10 years old, replacing it usually makes more sense."
+     },
+     {
+      "q": "Why does my dishwasher back up into the sink?",
+      "preview": "The disposal or drain is clogged.",
+      "answer": "Usually a clogged disposal or drain line."
+     },
+     {
+      "q": "Can you install a disposal I bought?",
+      "preview": "Yes.",
+      "answer": "Yes, if it fits the sink and the electrical is in place."
+     },
+     {
+      "q": "What size disposal do I need?",
+      "preview": "Usually 1/2 or 3/4 horsepower.",
+      "answer": "For most homes, 1/2 or 3/4 horsepower. Bigger households and heavy cooks benefit from 3/4."
+     },
+     {
+      "q": "Why does my disposal smell?",
+      "preview": "Food stuck under the baffle.",
+      "answer": "Usually food trapped under the rubber splash guard. Cleaning it often solves the smell."
+     },
+     {
+      "q": "How long does a disposal installation take?",
+      "preview": "About an hour or two.",
+      "answer": "Usually about an hour or two for a straight replacement."
+     },
+     {
+      "q": "How much does garbage disposal repair cost in Hanover Park?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and connections. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Disposal?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Installation and Repair in Hanover Park, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/hanover-park/garbage-disposal-installation-repair",
+   "description": "Garbage disposal installation and repair in Hanover Park, IL. Jammed, leaking or dead disposals fixed or replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Repair in Hanover Park, IL",
+ "metaDescription": "Garbage disposal installation and repair in Hanover Park, IL. Jammed, leaking or dead disposals fixed or replaced. Flat price first."
+}

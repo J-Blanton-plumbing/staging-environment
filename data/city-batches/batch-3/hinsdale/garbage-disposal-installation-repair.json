@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Repair and Installation in Hinsdale, IL",
+   "sub": "A disposal that hums, leaks underneath or won't start. We repair it or replace it with a model sized for your kitchen. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Garbage Disposal Problems",
+    "intro": "We fix disposals that:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Hum but Won't Spin",
+      "body": "Jammed, or a motor on its way out."
+     },
+     {
+      "h3": "Leak From the Bottom",
+      "body": "A cracked housing or a worn seal."
+     },
+     {
+      "h3": "Won't Turn On",
+      "body": "A tripped reset or a bad switch."
+     },
+     {
+      "h3": "Smell No Matter What",
+      "body": "Food trapped under the splash guard or in the drain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Hinsdale Kitchens",
+    "intro": "Many Hinsdale kitchens have more than one sink, and some have more than one disposal.",
+    "items": [
+     {
+      "h3": "Prep Sinks and Islands",
+      "body": "A second disposal in a prep sink drains through its own line, which can clog separately."
+     },
+     {
+      "h3": "Quiet, High-Power Units",
+      "body": "Many homeowners upgrade to quieter, more powerful models during a remodel."
+     },
+     {
+      "h3": "Dishwasher Connections",
+      "body": "The dishwasher usually drains through the disposal, so a clog affects both."
+     },
+     {
+      "h3": "Instant Hot Water Dispensers",
+      "body": "Many Hinsdale kitchens have a hot water dispenser next to the disposal. We service both while we're under the sink."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair if it makes sense, replace if it doesn't.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, motor, seal or drain line."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "For the repair or a new unit."
+     },
+     {
+      "h3": "3. Installed and Tested",
+      "body": "No drips under the sink, and running smoothly."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-disposal-job",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Disposal Job",
+    "body": "A straight replacement is quick. Upgrading to a larger or quieter model, adding a disposal to a prep sink or changing the drain adds time. We look under the sink and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mark Paterson",
+      "url": null,
+      "text": "Ty did a nice job installing. Thanks also to Shane for coming out and quoting the job yesterday on a Sunday."
+     },
+     {
+      "name": "Kimberly Ristau",
+      "url": null,
+      "text": "Andrew and Ty save the day getting a glass out of the disposal and assessed my kitchen plumbing and setup for some potential kitchen upgrades. Great communication and logistics from J Blantons and great expertise from this team. Cat approved!"
+     },
+     {
+      "name": "Peggy Webber",
+      "url": null,
+      "text": "Edgar did an excellent job on our shower and kitchen sink. He was friendly and efficient. Kept work area clean."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Why does my disposal hum but not spin?",
+      "preview": "Usually a jam.",
+      "answer": "Usually something is stuck. Turn it off and don't keep running it. Try the reset button and the hex key under the unit. If it won't turn, call us."
+     },
+     {
+      "q": "Should I repair or replace it?",
+      "preview": "If the housing leaks or it's over 10 years old, replace it.",
+      "answer": "If it leaks from the body or is more than about 10 years old, a new unit is usually the better choice."
+     },
+     {
+      "q": "Can you install a disposal in a prep sink?",
+      "preview": "Usually, if there's power and drain space.",
+      "answer": "Usually. We need power under the sink and enough room for the unit and drain connections."
+     },
+     {
+      "q": "Why does the dishwasher back up when the disposal is clogged?",
+      "preview": "They share the same drain.",
+      "answer": "The dishwasher usually drains through the disposal. When the disposal or the drain past it clogs, the dishwasher can't empty."
+     },
+     {
+      "q": "What size disposal should we get?",
+      "preview": "It depends on how you cook.",
+      "answer": "For most households, a three-quarter or one horsepower unit handles daily use well and runs quieter. We'll recommend one for your kitchen."
+     },
+     {
+      "q": "Can you install a disposal with a batch feed?",
+      "preview": "Yes.",
+      "answer": "Yes. Batch feed models only run with the cover in place."
+     },
+     {
+      "q": "How much does garbage disposal replacement cost in Hinsdale?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and the connections. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Disposal?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Repair and Installation in Hinsdale, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/hinsdale/garbage-disposal-installation-repair",
+   "description": "Garbage disposal repair and installation in Hinsdale, IL. Jammed, leaking or humming disposals fixed or replaced, with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Repair in Hinsdale, IL",
+ "metaDescription": "Garbage disposal repair and installation in Hinsdale, IL. Jammed, leaking or humming disposals fixed or replaced, with a flat price first."
+}

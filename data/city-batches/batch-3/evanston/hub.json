@@ -1,0 +1,232 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Evanston, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on Orrington Avenue. Our line is open 24/7 for homeowners in Evanston and across the North Shore. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard",
+   "layout": "full-bleed",
+   "video": {
+    "src": "https://d1rplazj5a80fb.cloudfront.net/videos/evanston-hero-horizontal.mp4",
+    "poster": "https://d1ze053a37fps5.cloudfront.net/uploads/cms/1785182498955-hero_image.webp"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Evanston",
+   "intro": "About 4 in 10 Evanston homes were built before 1940, and the city’s sewers are just as old. Pick a service to see how we handle it in Evanston.",
+   "cards": [
+    {
+     "title": "Drain Cleaning",
+     "href": "/evanston/drain-cleaning",
+     "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/evanston/sewer-repair",
+     "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Leak & Pipe Repair",
+     "href": "/evanston/leak-repairs",
+     "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/evanston/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Catch Basins",
+     "href": "/evanston/catch-basin",
+     "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+     "image": {
+      "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+      "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+     }
+    },
+    {
+     "title": "Toilets & Showers",
+     "href": "/evanston/toilet-installation-repair",
+     "desc": "Running toilets, leaky shower valves and new fixture installs.",
+     "image": {
+      "src": "/images/city-hubs/toilet-fill-valve-repair.webp",
+      "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/evanston/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Orrington Avenue",
+   "h2": "Our Evanston Office",
+   "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, Evanston, IL 60201, in downtown Evanston. It keeps our plumbers close to homes across Evanston and the neighboring North Shore communities. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "1603 Orrington Ave, #600-1085, Evanston, IL 60201",
+   "areasH3": "North Shore Communities We Serve",
+   "areas": [
+    {
+     "label": "Wilmette",
+     "href": "/wilmette"
+    },
+    {
+     "label": "Skokie",
+     "href": "/skokie"
+    },
+    {
+     "label": "Kenilworth",
+     "href": "/kenilworth"
+    },
+    {
+     "label": "Lincolnwood",
+     "href": "/lincolnwood"
+    },
+    {
+     "label": "Rogers Park",
+     "href": "/chicago-rogers-park",
+     "area": "Rogers Park, Chicago, IL"
+    },
+    {
+     "label": "Glenview",
+     "href": "/glenview"
+    },
+    {
+     "label": "Winnetka",
+     "href": "/winnetka"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/QepapnaFhikLrpAe8"
+  },
+  "depth": {
+   "h2": "What Evanston Homes Need From a Plumber",
+   "intro": "The median home in Evanston was built in 1953, and about 4 in 10 were built before 1940. The city’s own sewers are 80 to more than 100 years old. That history shows up in almost every plumbing call we take here.",
+   "tiles": [
+    {
+     "title": "Older Homes, Older Sewer Lines",
+     "body": "The line from your house to the city sewer belongs to you, and in an older Evanston home it’s often clay or cast iron. Roots get in at the joints, and sections crack or sag. A [camera inspection](/evanston/video-camera-sewer-inspections) shows the condition of your line before you decide on a [sewer repair](/evanston/sewer-repair)."
+    },
+    {
+     "title": "A Combined Sewer City",
+     "body": "All of Evanston is served by a combined sewer system, which carries rainwater and wastewater in the same pipes. The city built relief sewers between 1991 and 2008, but a basement can still back up from an overloaded sewer or a blocked line. A [backflow valve](/evanston/flood-control-maintenance) or an [overhead sewer](/evanston/overhead-sewer-systems) keeps sewer water out."
+    },
+    {
+     "title": "Catch Basins That Back Up",
+     "body": "Many Evanston yards and driveways drain into a catch basin. When leaves and silt fill it, rainwater has nowhere to go and pools against the foundation. We [clean and repair catch basins](/evanston/catch-basin) and clear the line they drain into."
+    },
+    {
+     "title": "Hard Water and Water Heaters",
+     "body": "Evanston treats its own Lake Michigan water, and the city’s latest water report puts the average hardness at about 7.8 grains per gallon. That counts as hard water, and it builds scale in a water heater over the years. When a heater starts to rumble, leak or run out fast, we can [repair or replace it](/evanston/water-heater-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Evanston Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Evanston Reviews",
+   "intro": "4.8 stars from 860+ Google reviews for our Evanston office.",
+   "rating": "4.8",
+   "ratingSub": "860+ Google reviews for our Evanston office",
+   "items": [
+    {
+     "name": "Craig Sliva",
+     "url": "https://maps.app.goo.gl/uc9SA9DHRJPFvhyd9",
+     "text": "Andrew A. & D’ron provided excellent services by clearing clogged kitchen sink line and installation of new garbage disposal. Super knowledgeable and explained everything with detail. Thank you!!"
+    },
+    {
+     "name": "Enrique Ocon",
+     "url": "https://maps.app.goo.gl/ZU9dNds16aAGDE3P8",
+     "text": "Andrew A. and Justin helped a ton. Explained everything very well. Put us to ease with our flooding. Cleaned out or main sewage line and ran a camera through to ensure we didn’t have any further issues. Did a quick job, laid tarps to cover our furniture and cleaned up afterwards!"
+    },
+    {
+     "name": "Caitlyn Ford",
+     "url": "https://maps.app.goo.gl/xDoJdE35CAfsKD3W9",
+     "text": "[...] they were able to send out a plumber within 24 hours and sent a photo of who I’d expect to be coming over. This was super helpful and an added layer of attention/safety I appreciated. John Hogan, the plumber assigned was super friendly and educational on what the issue was and the best recommendation to fix it would be in a way that was easy to understand. He was able to fix and replace my entire toilet within 2 hours. He was transparent about the pricing so I knew the options. [...]"
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Evanston Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Evanston?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. Work in an older home with original pipe can take more time than a newer one. We give you a flat-rate price before any work begins, so you know the cost going in."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Orrington Avenue office keeps our plumbers close to every part of Evanston, and we [treat emergencies as a priority](/evanston/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "My kitchen sink drain keeps clogging. What can you do?",
+     "preview": "We clear the line, not just the trap.",
+     "a": "We clear the line, not just the trap. Grease and food build up inside kitchen drain pipes over the years, especially in older homes, and a quick plunge only moves the clog. We [clean the kitchen line](/evanston/drain-cleaning#kitchen-sink-drain) back to the stack and tell you if the pipe itself needs work."
+    },
+    {
+     "q": "Who is responsible for the sewer line in Evanston?",
+     "preview": "The property owner is responsible for the line from the house to the city sewer, including the section under the parkway.",
+     "a": "The property owner is responsible for the line from the house to the city sewer, including the section under the parkway. If a camera inspection shows the problem is in the city sewer, we’ll tell you so you can report it."
+    },
+    {
+     "q": "Why did my basement back up during a storm?",
+     "preview": "Evanston’s sewers carry rainwater and wastewater in the same pipes.",
+     "a": "Evanston’s sewers carry rainwater and wastewater in the same pipes. In a heavy storm, the system can fill up and push water back toward the lowest drain in your house. A partly blocked lateral makes it worse. We can clear and camera your line and recommend a backflow valve or overhead sewer."
+    },
+    {
+     "q": "How often should a catch basin be cleaned?",
+     "preview": "Once a year for most homes, usually after the leaves fall.",
+     "a": "Once a year for most homes, usually after the leaves fall. If you have big trees nearby or water pools near the basin after rain, it may need it more often."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Evanston?",
+     "preview": "Along with Evanston, our office serves Wilmette, Skokie, Kenilworth, Lincolnwood, Rogers Park, Glenview, Winnetka and more.",
+     "a": "Along with Evanston, our office serves Wilmette, Skokie, Kenilworth, Lincolnwood, Rogers Park, Glenview, Winnetka and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Evanston start small, like roots in an old clay sewer line or a catch basin full of leaves. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Evanston Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Evanston, IL",
+ "metaDescription": "Local plumbers on Orrington Avenue in Evanston, IL. Drain, sewer and catch basin work for older homes. Call 24/7 for an upfront price."
+}

@@ -1,0 +1,312 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer and Drain Cleaning in Elmhurst, IL",
+   "sub": "From a slow bathroom sink to a main line that's backing up into the basement, we clear it, explain why it happened and give you a flat price before any work starts. Our office is on York Street, downtown. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It a Drain Clog or a Sewer Clog?",
+    "body": "Start by counting the slow drains. If it's just one sink or tub, the clog is close to that fixture, and a cable clears it. If the basement floor drain fills when the washer empties, a toilet gurgles when the shower runs or every drain in the house is slow, the blockage is in the main sewer line. That's a job for [sewer rodding](/elmhurst/sewer-rodding) or [hydro jetting](/elmhurst/hydro-jetting). Either way, call when a plunger doesn't fix it or the same drain clogs again within weeks.",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in Elmhurst",
+    "bodies": [
+     "Hair and soap scum in bathrooms, grease and food in the kitchen and lint in the laundry cause most household clogs. We clear them with a cable sized to the pipe and show you what we pulled out.",
+     "In Elmhurst homes built from the 1940s to the 1960s, original galvanized and cast iron drains are often still in the walls. They narrow with rust and scale, so clogs come back faster. When one drain keeps clogging, a camera look tells us whether it's buildup or failing pipe."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging",
+    "bodies": [
+     "Grease is the main cause of kitchen clogs. It hardens on the pipe walls and traps food and soap.",
+     "When both bowls fill or the dishwasher drains into the sink, the clog is beyond the trap. We clear the line to the stack. If the disposal is involved, see [garbage disposal repair](/elmhurst/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in Elmhurst Homes",
+    "intro": "Elmhurst's housing mix shapes its drain problems.",
+    "items": [
+     {
+      "h3": "Original Drain Pipe in Postwar Homes",
+      "body": "Old galvanized and cast iron catch debris."
+     },
+     {
+      "h3": "Remodeled Kitchens on Old Lines",
+      "body": "New cabinets, original drain behind them."
+     },
+     {
+      "h3": "Main Line Trouble",
+      "body": "Several slow drains at once mean the main. See [sewer drain clearing](#sewer-drain-clearing)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When the basement floor drain backs up or every fixture slows down, the main sewer drain is blocked. It takes a machine that can reach from the cleanout to the city main.",
+     "We clear the line and scope it so you see the cause. In Elmhurst, it's usually roots in clay or scale in cast iron. Repeat clogs get a plan: yearly [sewer rodding](/elmhurst/sewer-rodding), [hydro jetting](/elmhurst/hydro-jetting) or a [sewer repair](/elmhurst/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Elmhurst Calls J. Blanton for Clogs",
+    "intro": "Licensed plumbers, stocked trucks, and most drains cleared in one visit.",
+    "steps": [
+     {
+      "h3": "1. Open Around the Clock",
+      "body": "Our line never closes."
+     },
+     {
+      "h3": "2. A Flat Price First",
+      "body": "Before the cable goes in."
+     },
+     {
+      "h3": "3. The Cause, Not Just the Clog",
+      "body": "So you can prevent the next one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "SuperElvis_",
+      "url": null,
+      "text": "My tech, Cameron D., was very helpful & thorough. Thank you much!"
+     },
+     {
+      "name": "Mike Willman",
+      "url": null,
+      "text": "They showed up quickly only 45 min after I called. Steve was awesome. Extremely knowledgeable and friendly and most importantly fixed our clogged drain line. Steve also clearly explained options for a more permanent fix of our drain line."
+     },
+     {
+      "name": "Bhavya P.",
+      "url": "https://maps.app.goo.gl/kdPkhHCRsqDNVFfi6",
+      "text": "Stephen Walan has done a great job helping us to remove our kitchen sink clog using hydro jetting. He listened and answered all our questions patiently. J. Blanton's overall service and communication was good."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "What's sewer drain cleaning?",
+      "preview": "Clearing the main line to the city sewer.",
+      "answer": "It's clearing the main line that carries everything from your house to the city sewer, usually with a rodding machine or a hydro jet."
+     },
+     {
+      "q": "Do you offer same-night drain cleaning?",
+      "preview": "Our line is open 24/7.",
+      "answer": "Yes. Call any time, and we'll get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Why do my drains clog more than my neighbor's?",
+      "preview": "Pipe age, layout and habits.",
+      "answer": "Pipe age, the layout of your drains and what goes down them all play a part. A camera look explains it."
+     },
+     {
+      "q": "Are chemical drain cleaners OK?",
+      "preview": "We'd avoid them on older pipe.",
+      "answer": "We'd avoid them, especially on older pipe. They rarely clear the whole clog."
+     },
+     {
+      "q": "Can you clear a basement floor drain that smells?",
+      "preview": "Yes.",
+      "answer": "Yes. Often the trap is dry or partly clogged. We clear it and refill the trap."
+     },
+     {
+      "q": "How much does drain cleaning cost in Elmhurst?",
+      "preview": "It depends on where the clog is. You'll approve a flat price first.",
+      "answer": "It depends on where the clog is and what's causing it. You'll approve a flat price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Drains That Keep Draining?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer and Drain Cleaning in Elmhurst, IL",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/elmhurst/drain-cleaning",
+   "description": "Sewer and drain cleaning in Elmhurst, IL. Clogged sinks, tubs, floor drains and main lines cleared, cause explained, flat price. 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer & Drain Cleaning in Elmhurst, IL",
+ "metaDescription": "Sewer and drain cleaning in Elmhurst, IL. Clogged sinks, tubs, floor drains and main lines cleared, cause explained, flat price. 24/7."
+}

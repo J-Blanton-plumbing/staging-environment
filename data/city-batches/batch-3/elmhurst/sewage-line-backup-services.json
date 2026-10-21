@@ -1,0 +1,337 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Backup Service in Elmhurst, IL",
+   "sub": "Sewage at the floor drain needs help right away, and our line is open 24/7. We clear the main line, show you what caused the backup and help you protect the basement from the next one. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do Until We Arrive",
+    "intro": "Quick steps:",
+    "steps": [
+     {
+      "h3": "1. Stop Running Water",
+      "body": "Every drain feeds the same line."
+     },
+     {
+      "h3": "2. Keep Everyone Out",
+      "body": "Sewage carries bacteria."
+     },
+     {
+      "h3": "3. Stay Away From Outlets",
+      "body": "And appliances in the water."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Tell us where the water is coming up."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Elmhurst Basements Back Up",
+    "intro": "Common causes:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Roots in the Clay Lateral",
+      "body": "The most frequent cause here."
+     },
+     {
+      "h3": "Big Storms",
+      "body": "The sewer fills and pushes back."
+     },
+     {
+      "h3": "A Broken or Settled Section",
+      "body": "Flow stops."
+     },
+     {
+      "h3": "Grease and Wipes",
+      "body": "Even in a sound line."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups in Elmhurst Basements",
+    "intro": "Elmhurst got 7.26 inches of rain on April 17 and 18, 2013, and homes old and new across town were damaged.",
+    "items": [
+     {
+      "h3": "It Has Happened Before",
+      "body": "Residents saw the same scenes in 2010, in the same neighborhoods."
+     },
+     {
+      "h3": "Old and New Homes Alike",
+      "body": "New construction isn't automatically protected."
+     },
+     {
+      "h3": "Protection",
+      "body": "A clean line, a backflow valve and an [overhead sewer system](/elmhurst/overhead-sewer-systems) each solve part of the problem."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Clear, show, protect.",
+    "steps": [
+     {
+      "h3": "1. Clear the Line",
+      "body": "Drains working again."
+     },
+     {
+      "h3": "2. Show You the Cause",
+      "body": "On video."
+     },
+     {
+      "h3": "3. Price Any Repair",
+      "body": "Flat rate, approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "documenting-a-backup-for-your-insurance",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Insurance",
+    "h2": "Documenting a Backup for Your Insurance",
+    "body": "Take photos and video of the water before cleaning anything, including where it came in. Keep damaged items until your adjuster has seen them or tells you otherwise. Save our invoice and camera footage, since they show the cause. Call your agent early to confirm whether you have sewer backup coverage, because many standard policies don't include it without a rider.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "R Richey",
+      "url": null,
+      "text": "J. Blanton was great. I was not the nicest this morning when I called because I was super stressed about my plumbing being totally backed up for the second time in 6 weeks, and they were so sweet. They got someone out same day and communicated constantly until he arrived. Stephen was absolutely amazing. [...]"
+     },
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "J. Ham",
+      "url": "https://maps.app.goo.gl/fNFyTEGqmipVtH2dA",
+      "text": "I had J. Blanton Plumbing come service a potential sewer line back-up and I was super impressed with the entire experience. My technician was Stephen Walen and he was fantastic. He scoped our entire line so we could see where our main line hooks up to off-shoots of our other pipes. He walked through all different short & long-term scenarios so we could make informed decisions."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Why did my basement back up in the storm?",
+      "preview": "Your line or the city sewer was overloaded.",
+      "answer": "Either your line is partly blocked or the city sewer filled up and pushed water back. We clear and scope your line to tell which."
+     },
+     {
+      "q": "Do you handle water damage cleanup?",
+      "preview": "We fix the plumbing. A restoration company handles cleanup.",
+      "answer": "We clear the line and repair the cause. For drying and cleanup, a restoration company is the right call."
+     },
+     {
+      "q": "Will insurance cover it?",
+      "preview": "Often only with a sewer backup rider.",
+      "answer": "Many policies need a sewer backup rider. Check with your agent."
+     },
+     {
+      "q": "How do I keep it from happening again?",
+      "preview": "Maintenance plus protection.",
+      "answer": "Keep the line clean with [sewer maintenance](/elmhurst/sewer-maintenance) and add a backflow valve or overhead sewer if storms are the trigger."
+     },
+     {
+      "q": "Will you talk to my insurance adjuster?",
+      "preview": "We'll provide our report and footage.",
+      "answer": "We'll provide our written findings and the footage for your claim."
+     },
+     {
+      "q": "How much does sewer backup service cost in Elmhurst?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on what caused it and how we reach the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Backup Service in Elmhurst, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/elmhurst/sewage-line-backup-services",
+   "description": "Sewer backing up into your Elmhurst basement? We clear the line 24/7, find the cause on camera and help protect the basement.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Backup Service in Elmhurst, IL",
+ "metaDescription": "Sewer backing up into your Elmhurst basement? We clear the line 24/7, find the cause on camera and help protect the basement."
+}

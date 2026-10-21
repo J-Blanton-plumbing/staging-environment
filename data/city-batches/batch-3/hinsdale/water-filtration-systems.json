@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Filtration Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Filtration and Water Testing in Hinsdale, IL",
+   "sub": "Better-tasting water at the kitchen sink, less scale on glass shower doors or protection for a tankless heater. We test your water first and recommend a system that fits it. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+    "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "options",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Your Options",
+    "h2": "Ways to Treat Your Water in Hinsdale",
+    "intro": "We install and service:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Reverse Osmosis at the Kitchen Sink",
+      "body": "Very clean drinking water from a dedicated faucet."
+     },
+     {
+      "h3": "Whole-House Carbon Filters",
+      "body": "Less chlorine taste and smell at every tap and shower."
+     },
+     {
+      "h3": "Softeners",
+      "body": "Less spotting on glass doors and less scale in heaters."
+     },
+     {
+      "h3": "Point-of-Use Filters for Appliances",
+      "body": "Refrigerators, ice makers and coffee machines."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "water-testing",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Water Testing",
+    "h2": "Water Testing in Hinsdale",
+    "bodies": [
+     "We start with a test for the things that affect your plumbing and the way your water tastes, like hardness, chlorine and sediment, and explain the results plainly.",
+     "Hinsdale's water is Lake Michigan water treated by the City of Chicago and delivered through the DuPage Water Commission. If you have health-related questions, a state-certified lab can run a full panel, and we'll point you to one."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-water",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water in Hinsdale Homes",
+    "intro": "Hinsdale's water comes from Lake Michigan, through the City of Chicago and the DuPage Water Commission.",
+    "items": [
+     {
+      "h3": "Treated Water Still Carries Minerals",
+      "body": "Lake water still carries some hardness that builds up over time in heaters and fixtures."
+     },
+     {
+      "h3": "Protecting Premium Fixtures",
+      "body": "Filtration and softening help keep high-end faucets, showers and glass looking new."
+     },
+     {
+      "h3": "Protecting a Tankless Heater",
+      "body": "Less scale means fewer error codes and less descaling."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Recommend a System",
+    "intro": "Test first, then recommend.",
+    "steps": [
+     {
+      "h3": "1. Start With a Test",
+      "body": "Hardness, chlorine and sediment."
+     },
+     {
+      "h3": "2. Match It to Your Goals",
+      "body": "Taste, appliance protection or both."
+     },
+     {
+      "h3": "3. Install Cleanly",
+      "body": "With a flat price you approved."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-water-treatment",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Water Treatment",
+    "body": "Larger homes with more bathrooms need higher-capacity softeners and filters. Under-sink systems are simpler. Space, drains and power near the main line matter too. We test and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Filtration Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Marianne Mollenauer",
+      "url": null,
+      "text": "We had an emergency hot water heater problem and Alex did a great job getting a new appliance installed the same day I called for help. Great company! I'd use them again."
+     },
+     {
+      "name": "Chi",
+      "url": null,
+      "text": "Christian was super efficient and friendly! He did some water heater maintenance for us. Def recommend!"
+     },
+     {
+      "name": "Louie Desancic",
+      "url": null,
+      "text": "Vincent and his partner (I don’t remember his name, I’m sorry) they did an awesome job, kept me informed the whole time and were very polite and friendly. Great job boys"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Filtration Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Does Hinsdale water need filtering?",
+      "preview": "It's treated. Filtering is mostly about taste and protection.",
+      "answer": "Hinsdale's water is treated and tested before it reaches you. Most people who add filtration want better taste or protection for fixtures and appliances."
+     },
+     {
+      "q": "Is reverse osmosis worth it?",
+      "preview": "For drinking water, many homeowners think so.",
+      "answer": "For drinking and cooking water, many homeowners like it. It's installed at one sink and doesn't treat the whole house."
+     },
+     {
+      "q": "Will a softener help our glass shower doors?",
+      "preview": "It usually reduces spotting.",
+      "answer": "Usually. Softer water leaves fewer mineral spots on glass, tile and fixtures."
+     },
+     {
+      "q": "Can you service a system someone else installed?",
+      "preview": "Usually, yes.",
+      "answer": "Usually. We can change filters, check valves and repair leaks on most brands."
+     },
+     {
+      "q": "Can a whole-house system include a softener and filter?",
+      "preview": "Yes.",
+      "answer": "Yes. Many homes use both, installed together on the main line."
+     },
+     {
+      "q": "What does water filtration cost in Hinsdale?",
+      "preview": "It varies with the system. You'll see a flat price first.",
+      "answer": "It varies with the system and how much plumbing is involved. You'll see a flat-rate price before we install."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Better Water?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Filtration and Water Testing in Hinsdale, IL",
+   "serviceType": "Water Filtration Systems",
+   "url": "https://jblantonplumbing.com/hinsdale/water-filtration-systems",
+   "description": "Water testing and filtration in Hinsdale, IL. Under-sink, whole-house and softener systems matched to your water, with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Filtration & Testing in Hinsdale, IL",
+ "metaDescription": "Water testing and filtration in Hinsdale, IL. Under-sink, whole-house and softener systems matched to your water, with a flat price first."
+}

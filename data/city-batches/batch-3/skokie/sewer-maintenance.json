@@ -1,0 +1,364 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Skokie, IL",
+   "sub": "In a postwar Skokie home, roots in the sewer line aren't a one-time problem. A maintenance plan built around your line keeps them under control and keeps the basement dry. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "Signs Your Skokie Line Needs a Maintenance Plan",
+    "intro": "A schedule makes sense if:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You've Called for Rodding Before",
+      "body": "Roots regrow at the same joints."
+     },
+     {
+      "h3": "A Big Tree Stands Near the Line",
+      "body": "Parkway and backyard trees keep growing toward it."
+     },
+     {
+      "h3": "The Basement Floor Drain Has Backed Up",
+      "body": "It's the first place a main line clog shows."
+     },
+     {
+      "h3": "You're Not Ready to Replace the Line",
+      "body": "Maintenance buys time while you plan."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "Suggested Service Intervals",
+    "intro": "A starting point:",
+    "head": [
+     "Line Condition",
+     "Schedule"
+    ],
+    "rows": [
+     [
+      "Clay with recurring roots",
+      "Rodding or jetting yearly"
+     ],
+     [
+      "Cast iron with heavy scale",
+      "Jetting every 1 to 2 years"
+     ],
+     [
+      "Recently repaired or lined",
+      "Camera check after a few years"
+     ],
+     [
+      "No history of problems",
+      "Camera check every few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Skokie Storms",
+    "intro": "In May 2020, Skokie got 7.35 inches of rain in five days, and the regional Deep Tunnel system filled up.",
+    "items": [
+     {
+      "h3": "Every Bit of Pipe Capacity Counts",
+      "body": "A line half full of roots has much less room when storms push water back."
+     },
+     {
+      "h3": "Service Before Spring",
+      "body": "Clearing the line in late winter gets ahead of root growth and storm season."
+     },
+     {
+      "h3": "Check Your Backflow Protection",
+      "body": "We test backflow valves and [overhead sewer systems](/skokie/overhead-sewer-systems) on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/skokie/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/skokie/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/skokie/sewer-rodding) or [Hydro Jetting](/skokie/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/skokie/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Plans Work",
+    "intro": "Based on footage, not a sales quota.",
+    "steps": [
+     {
+      "h3": "1. Camera the Line",
+      "body": "To see what's really there."
+     },
+     {
+      "h3": "2. Rod or Jet",
+      "body": "Whichever your line needs."
+     },
+     {
+      "h3": "3. Set the Interval Together",
+      "body": "With the price agreed in advance."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kimberly Bucki",
+      "url": null,
+      "text": "Edit: my name is Kimberly not Kimberley and not Kim, thanks! RON thank you for your expansive knowledge of everything today, we appreciate you so much for your help and looking forward to being a part of the no drip club! Donate for us on behalf of my two boys Gizmo and Gadget!"
+     },
+     {
+      "name": "Matthew Braslow",
+      "url": null,
+      "text": "Christian and Julian were polite, efficient, and answered all my questions. Another great maintenance visit."
+     },
+     {
+      "name": "Jason Newman",
+      "url": "https://maps.app.goo.gl/YHikKuGGrdZmN4838",
+      "text": "I had an exceptional experience with Andreas from J. Blanton Plumbing. He came out to perform a camera inspection of my sewer line and was incredibly professional, thorough, and knowledgeable. He took the time to walk me through everything on the screen, explained each detail clearly, and answered all my questions with patience and honesty."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Is yearly rodding normal for a Skokie home?",
+      "preview": "For clay lines with roots, yes.",
+      "answer": "For clay lines with known root problems, yes. It's far cheaper than an emergency backup."
+     },
+     {
+      "q": "Should I maintain the line or replace it?",
+      "preview": "It depends on its condition.",
+      "answer": "If the camera shows the line is sound apart from roots, maintenance makes sense. If it's cracked or sagging, a repair or liner can end the yearly visits."
+     },
+     {
+      "q": "Does maintenance prevent storm backups?",
+      "preview": "It helps, but protection does more.",
+      "answer": "A clean line drains better, but when the sewer system is full, only a backflow valve or [overhead sewer](/skokie/overhead-sewer-systems) keeps water out."
+     },
+     {
+      "q": "Does the No Drip Club cover sewer maintenance?",
+      "preview": "The club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club) includes regular maintenance visits. Ask how it applies to your line."
+     },
+     {
+      "q": "Should I add a cleanout outside?",
+      "preview": "If you don't have one, it helps.",
+      "answer": "If you don't have an outside cleanout, adding one makes service faster."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Skokie?",
+      "preview": "It depends on the service. You'll approve a flat price first.",
+      "answer": "It depends on whether your line needs rodding, jetting or a camera check. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Skokie, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/skokie/sewer-maintenance",
+   "description": "Sewer maintenance plans for Skokie, IL homes with old clay and cast iron lines. Scheduled rodding or jetting and camera checks.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Skokie, IL",
+ "metaDescription": "Sewer maintenance plans for Skokie, IL homes with old clay and cast iron lines. Scheduled rodding or jetting and camera checks."
+}

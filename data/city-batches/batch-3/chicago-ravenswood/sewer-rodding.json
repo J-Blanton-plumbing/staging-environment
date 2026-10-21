@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Rodding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Rodding in Ravenswood, Chicago",
+   "sub": "When the basement floor drain fills or every drain in the building slows down together, the main line is blocked. We rod it clear, show you what caused it and price it before we start. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-rodding-front-yard.webp",
+    "alt": "J. Blanton plumber feeding the cable from a drum rodding machine into an outdoor sewer cleanout in a front yard"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-sewer-rodding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Sewer Rodding?",
+    "body": "Sewer rodding clears a blocked main line with a long, flexible steel cable fed through a cleanout access point. A cutting head on the end breaks through roots, grease, and debris and pushes the blockage toward the street connection, restoring flow through the pipe. It's the standard first fix for a clogged or backed-up sewer line. For most homes, it's the only fix needed.",
+    "img": {
+     "src": "/images/city-services-v2/sewer-rodding-diagram.webp",
+     "alt": "Diagram showing a rodding cable fed through a cleanout access point into the main sewer line, with a cutting head clearing the blockage toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Ravenswood Main Line Is Blocked",
+    "intro": "Look for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water at the Basement Floor Drain",
+      "body": "The lowest opening fills first."
+     },
+     {
+      "h3": "Every Unit Is Slow",
+      "body": "In a two-flat or three-flat, the shared line is the culprit."
+     },
+     {
+      "h3": "Gurgling in the Garden Unit",
+      "body": "Air pushed back through the lowest fixtures."
+     },
+     {
+      "h3": "It's Spring Again",
+      "body": "Roots in old clay come back on schedule."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Clogs Main Lines in Ravenswood",
+    "intro": "Century-old pipe and shared buildings make clogs common.",
+    "items": [
+     {
+      "h3": "Root Mats in Clay",
+      "body": "The most common cause under older homes."
+     },
+     {
+      "h3": "Grease From Several Kitchens",
+      "body": "In multi-unit buildings, it all ends up in one line."
+     },
+     {
+      "h3": "Scale in Cast Iron",
+      "body": "Rough pipe catches paper."
+     },
+     {
+      "h3": "When Roots Return Fast",
+      "body": "[Hydro jetting](/chicago-ravenswood/hydro-jetting) or a [repair](/chicago-ravenswood/sewer-repair) lasts longer."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Rodding Visits Work",
+    "intro": "Clear it, then show you.",
+    "steps": [
+     {
+      "h3": "1. Find the Cleanout",
+      "body": "Basement, yard or under the stoop."
+     },
+     {
+      "h3": "2. Rod and Scope",
+      "body": "Cleared to the city main and recorded."
+     },
+     {
+      "h3": "3. Price First",
+      "body": "Plus options if there's damage."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "rodding-a-line-several-units-share",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Shared Lines",
+    "h2": "Rodding a Line Several Units Share",
+    "body": "In a Ravenswood two-flat or three-flat, every kitchen, bath and laundry eventually drains into one lateral. When it clogs, the garden unit floods first and everyone upstairs loses the use of their drains until it's cleared. We ask the other units to stop running water while we work, clear the line to the city main and run the camera so the owner can see whether roots, grease or a break caused it. Then the building can plan the next step together.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Rodding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "fixedweasel",
+      "url": "https://maps.app.goo.gl/p3keNRv3PKhqGfop7",
+      "text": "I had a camera inspection as well as a Hydrojet cleaning, rod, and flush of my 70' main 6\" sewer line... The camera inspection was done by George and Raul. They were prompt, professional, and detailed with the description of the process... we were able to see together where the problems were in the main and at what specific distances. I was given several options for resolution on the spot with price quotes up front."
+     },
+     {
+      "name": "Tyler Ko",
+      "url": "https://maps.app.goo.gl/he5PCDkFqheoKPiy8",
+      "text": "Had a camera inspection of a clogged sewer drain by George. He was very helpful, polite, professional and informative. We ended up moving forward with a sewer trenchless liner service and look forward to a good experience for the main service."
+     },
+     {
+      "name": "Margaux Shields",
+      "url": null,
+      "text": "Scott from J Blanton Plumbing was great! He fixed out toilet clog and explained things really well. Also, our dog loved him!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Rodding Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "How often should an old Ravenswood line be rodded?",
+      "preview": "Yearly if roots are a problem.",
+      "answer": "If roots have blocked it before, once a year is common, ideally in late winter."
+     },
+     {
+      "q": "Can you rod a line with no cleanout?",
+      "preview": "Usually, or we can add one.",
+      "answer": "Usually through a toilet or vent. Adding a cleanout makes future service much easier."
+     },
+     {
+      "q": "Is rodding safe for 100-year-old clay?",
+      "preview": "Yes, with the right cutter.",
+      "answer": "Yes, with a cutter sized for the pipe. The camera afterward shows its condition."
+     },
+     {
+      "q": "Who should call when a two-flat backs up?",
+      "preview": "The owner, or whoever manages the building.",
+      "answer": "The building owner. We'll clear the shared line and show everyone what caused it."
+     },
+     {
+      "q": "Will you need access to every unit?",
+      "preview": "Usually not.",
+      "answer": "Usually not. We work from the basement or an outside cleanout."
+     },
+     {
+      "q": "How much does sewer rodding cost in Ravenswood?",
+      "preview": "It depends on access and the clog. You'll approve a flat price first.",
+      "answer": "It depends on the cleanout location, the length of the line and the blockage. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Drains Flowing?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Rodding in Ravenswood, Chicago",
+   "serviceType": "Sewer Rodding",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/sewer-rodding",
+   "description": "Sewer rodding in Ravenswood, Chicago. Root-clogged main lines in old homes and two-flats cut clear and checked on camera. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Rodding in Ravenswood, Chicago",
+ "metaDescription": "Sewer rodding in Ravenswood, Chicago. Root-clogged main lines in old homes and two-flats cut clear and checked on camera. Flat price."
+}

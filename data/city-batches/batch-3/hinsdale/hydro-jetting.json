@@ -1,0 +1,312 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Hydro Jetting",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Hydro Jetting in Hinsdale, IL",
+   "sub": "If roots come back a few months after every rodding, the pipe walls are still lined with growth. Hydro jetting scours the line back to bare pipe. We camera it first and price it before we start. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+    "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Hydro Jetting?",
+    "body": "Hydro jetting clears a sewer line with a high-pressure water stream, fed through the same cleanout access point used for rodding. A specialized nozzle sprays water in every direction as it moves through the pipe, scouring grease, scale, and roots off the entire pipe wall instead of just cutting a path through the middle. It's the fix for buildup that keeps coming back after rodding, or for roots that have worked into the pipe joints. Rodding opens the line back up. Hydro jetting cleans it.",
+    "img": {
+     "src": "/images/city-services-v2/hydro-jetting-diagram.webp",
+     "alt": "Diagram showing how hydro jetting clears a residential sewer line, with a cross-section view of the underground pipe, jet nozzle, high-pressure water spray, and debris being flushed toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "when-you-need-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "When It Makes Sense",
+    "h2": "Signs Your Hinsdale Line Is Due for Jetting",
+    "intro": "Consider jetting when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Roots in a Clay Lateral",
+      "body": "It clears the fine roots a cable cuts past."
+     },
+     {
+      "h3": "Old Cast Iron With Heavy Scale",
+      "body": "It restores the pipe's full opening."
+     },
+     {
+      "h3": "Kitchen Lines Full of Grease",
+      "body": "Years of cooking leave layers a cable can't remove."
+     },
+     {
+      "h3": "Before a Liner Goes In",
+      "body": "A lining job needs a clean pipe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Jetting Works on Hinsdale Lines",
+    "intro": "Some of the oldest sewer lines in the western suburbs run under Hinsdale's historic blocks.",
+    "items": [
+     {
+      "h3": "Century-Old Clay Near Robbins Park",
+      "body": "We check the pipe on camera first and set the pressure for its condition."
+     },
+     {
+      "h3": "Remodeled Kitchens Over Original Drains",
+      "body": "A new kitchen often drains through the original line behind the wall."
+     },
+     {
+      "h3": "Heavy Root Growth From Big Trees",
+      "body": "Jetting removes root growth from the pipe wall, not just from the middle."
+     },
+     {
+      "h3": "Video Before and After",
+      "body": "You see the line before we jet and the clean pipe afterward."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "what-happens-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Inspection comes before pressure.",
+    "steps": [
+     {
+      "h3": "1. Look Inside",
+      "body": "A camera pass so we don't jet a broken pipe."
+     },
+     {
+      "h3": "2. Jet to Match the Pipe",
+      "body": "Pressure set for clay, cast iron or PVC."
+     },
+     {
+      "h3": "3. Prove the Result",
+      "body": "A second camera pass, at the price you approved."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Hydro Jetting Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sara Corcoran",
+      "url": "https://maps.app.goo.gl/hcHjEjPhBvoYqNnh8",
+      "text": "I had another company come out first to fix my sewer line that got blocked in this cold weather, but the issue was not fully resolved. [...] They all were professional, knowledgeable, offered solutions, and answered all my questions. They all went above and beyond to make sure my issue is fixed efficiently and as soon as possible."
+     },
+     {
+      "name": "Jackson Krecioch",
+      "url": null,
+      "text": "Thomas was great came out on the weekend to make sure I was taken care of! Really appreciate his initiative!"
+     },
+     {
+      "name": "Lucas Fleck",
+      "url": null,
+      "text": "These guys were fast, honest, and left my house the way it was before they started. Had to get all new drain pipes put in was quoted 3 days and they had it done in 2. Just want to say thanks to William, James, and Thomas for helping us out"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Hydro Jetting Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Can hydro jetting handle a clay lateral from the 1920s?",
+      "preview": "If the pipe is intact, yes. We look first.",
+      "answer": "If the camera shows the clay is intact, yes, at a pressure set for its condition. If a section is cracked or collapsed, we'll recommend a [repair](/hinsdale/sewer-repair) first."
+     },
+     {
+      "q": "Why jet instead of rodding again?",
+      "preview": "Rodding leaves root growth on the walls. Jetting removes it.",
+      "answer": "A rodding cable cuts a channel through the roots. Jetting strips the growth off the pipe wall, so the line stays open longer."
+     },
+     {
+      "q": "Does jetting help a kitchen line in an older home?",
+      "preview": "Yes, it's ideal for grease.",
+      "answer": "Yes. Decades of grease in an original kitchen line is one of the best uses for jetting."
+     },
+     {
+      "q": "Will jetting make a mess in the house?",
+      "preview": "We work from the cleanout and protect the area.",
+      "answer": "We work from the cleanout whenever we can and protect the floors around it."
+     },
+     {
+      "q": "What does hydro jetting cost in Hinsdale?",
+      "preview": "That depends on the line. You'll see a flat price first.",
+      "answer": "That depends on the line length, access and how much buildup there is. You'll see a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Line That Stays Clear?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Hydro Jetting in Hinsdale, IL",
+   "serviceType": "Hydro Jetting",
+   "url": "https://jblantonplumbing.com/hinsdale/hydro-jetting",
+   "description": "Hydro jetting in Hinsdale, IL. High-pressure water clears roots, grease and scale from old and new sewer lines. Camera first, flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Hydro Jetting in Hinsdale, IL",
+ "metaDescription": "Hydro jetting in Hinsdale, IL. High-pressure water clears roots, grease and scale from old and new sewer lines. Camera first, flat price."
+}

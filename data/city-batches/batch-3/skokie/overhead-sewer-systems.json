@@ -1,0 +1,341 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewers and Flood Control in Skokie, IL",
+   "sub": "If your basement floor drain backs up whenever a big storm hits, an overhead sewer system is the strongest way to keep sewer water out. We install them in Skokie's postwar basements. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is an Overhead Sewer Right for Your Skokie Home?",
+    "intro": "Think about one if:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Storms Bring Backups",
+      "body": "The floor drain fills when it pours, not on dry days."
+     },
+     {
+      "h3": "Your Line Is Clear on Camera",
+      "body": "And it still happens."
+     },
+     {
+      "h3": "You Use the Basement",
+      "body": "A laundry, a bathroom or a finished rec room."
+     },
+     {
+      "h3": "You've Had Damage Before",
+      "body": "One backup into finished space is enough."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "split",
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "Every drain below the street sewer's flow line, like your floor drain, a basement bathroom, or a laundry line, normally relies on gravity to reach the sewer. An overhead sewer system reroutes those drains into a sump pit instead. An [ejector pump](/skokie/ejector-pump) lifts that wastewater up to a line above flood level, where a check valve keeps it from flowing back down. From there, gravity carries it the rest of the way to the street sewer, the same as every drain upstairs.",
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Overhead Sewers in Skokie",
+    "intro": "In May 2020, Skokie got 7.35 inches of rain in five days. The Village encouraged homeowners with basement backups to consider a backflow valve or an overhead sewer.",
+    "items": [
+     {
+      "h3": "Postwar Basements With Gravity Drains",
+      "body": "The floor drain, laundry tub and basement toilet all sit below the street sewer."
+     },
+     {
+      "h3": "Planned Around the Laundry Area",
+      "body": "Most conversions here route the laundry and floor drain into the new pit."
+     },
+     {
+      "h3": "Camera the Line First",
+      "body": "A partly blocked lateral can cause backups too. A [sewer repair](/skokie/sewer-repair) may be all you need."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Backflow Valve vs. Sump Pump",
+    "intro": "Different tools for different problems:",
+    "head": [
+     "",
+     "Sump Pump",
+     "Backflow Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "What it stops",
+      "Groundwater at the foundation",
+      "Sewer water flowing back in",
+      "Storm backups through basement drains"
+     ],
+     [
+      "How it works",
+      "Pumps water out of a pit",
+      "A flap closes when flow reverses",
+      "Pumps basement wastewater above flood level"
+     ],
+     [
+      "Best for",
+      "Wet soil",
+      "Lighter backup risk",
+      "Repeat backups and used basements"
+     ]
+    ],
+    "note": "We'll tell you which ones your basement needs."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We start with your sewer line, not a sales pitch.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "To rule out a simpler fix."
+     },
+     {
+      "h3": "2. A Layout for Your Basement",
+      "body": "Pit, pump and piping placed to fit."
+     },
+     {
+      "h3": "3. Flat Price, Water-Tested",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Milana Weil",
+      "url": null,
+      "text": "Fantastic service! J. Blanton Plumbing provided same day service when our bathroom was flooding due to a faulty pipe. Anthony went above and beyond, and did not leave our home until the issue was resolved. He was professional, pleasant and communicative throughout the process and provided the best experience we have had in a long time. It's safe to say that we will continue to use the services of J. [...]"
+     },
+     {
+      "name": "Brian T",
+      "url": null,
+      "text": "Mike P was super helpful and great at explaining the options we have for our sewer line."
+     },
+     {
+      "name": "Jack Stone",
+      "url": null,
+      "text": "Thank you to Scott and Payton for coming by and helping us out. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "How does an overhead sewer keep my basement dry?",
+      "preview": "Basement drains no longer connect to the sewer by gravity.",
+      "answer": "Basement drains empty into a sealed pit, and a pump lifts the water to a pipe near the ceiling. It leaves the house above the level where the sewer can back up."
+     },
+     {
+      "q": "Can the laundry tub stay in the basement?",
+      "preview": "Yes.",
+      "answer": "Yes. It drains into the new pit along with the floor drain."
+     },
+     {
+      "q": "Does it help with groundwater?",
+      "preview": "No. That's a sump pump.",
+      "answer": "No. An overhead sewer handles sewer backups. Groundwater needs a [sump pump](/skokie/sump-pumps)."
+     },
+     {
+      "q": "How long does a conversion take?",
+      "preview": "Usually a few days.",
+      "answer": "Usually a few days, depending on the layout and the number of fixtures."
+     },
+     {
+      "q": "How much does an overhead sewer cost in Skokie?",
+      "preview": "It depends on your basement. You'll approve a flat price first.",
+      "answer": "It depends on the sewer depth, the layout, the fixtures and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Protect Your Basement?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewers and Flood Control in Skokie, IL",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/skokie/overhead-sewer-systems",
+   "description": "Overhead sewer installation for Skokie, IL homes with storm backups. Camera first, a plan for your basement and a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewers & Flood Control in Skokie, IL",
+ "metaDescription": "Overhead sewer installation for Skokie, IL homes with storm backups. Camera first, a plan for your basement and a flat price."
+}

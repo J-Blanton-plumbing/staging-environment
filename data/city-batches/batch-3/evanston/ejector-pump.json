@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Evanston, IL",
+   "sub": "An alarm going off in the basement, a basement toilet that won't flush or a sewer smell near the pit. We repair and replace ejector pumps in Evanston homes. Our Evanston office is on Orrington Avenue, downtown. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What an Ejector Pump Does",
+    "body": "Fixtures below the sewer line, like a basement bathroom or laundry, drain into a sealed basin. The ejector pump lifts that wastewater up into the main line. A float turns it on and a check valve keeps water from falling back. When any part fails, those fixtures back up.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Ejector Pump Is Failing",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Alarm Sounds",
+      "body": "The basin is too full."
+     },
+     {
+      "h3": "Slow Basement Drains",
+      "body": "The pump can't keep up."
+     },
+     {
+      "h3": "Sewer Smell",
+      "body": "A seal or vent problem."
+     },
+     {
+      "h3": "Constant Running",
+      "body": "A stuck float or bad valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Evanston Homes",
+    "intro": "Basement bathrooms and overhead sewers both rely on them.",
+    "items": [
+     {
+      "h3": "Basement Bathrooms",
+      "body": "Added in many older homes during renovations."
+     },
+     {
+      "h3": "Overhead Sewer Systems",
+      "body": "The pump handles every basement drain."
+     },
+     {
+      "h3": "Wipes and Grease",
+      "body": "The most common reason pumps fail."
+     },
+     {
+      "h3": "Alarms That Work",
+      "body": "Tested at every visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Fix it and explain why.",
+    "steps": [
+     {
+      "h3": "1. Inspect the Basin",
+      "body": "Pump, float, valve, seal and vent."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Water-Test It",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "how-to-protect-your-ejector-pump",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Make It Last",
+    "h2": "How to Protect Your Ejector Pump",
+    "body": "Only toilet paper and waste should go down a toilet that drains to an ejector pump. Wipes, paper towels and feminine products wrap around the impeller and stall it. Grease from a basement kitchen or bar sink hardens in the basin. Test the alarm once in a while by lifting the float, if you can do it safely. And have the basin checked when you notice odors, slow drains or a pump that runs more than it should.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Karyn Soerens",
+      "url": null,
+      "text": "Picture it: you get home from being out of town to relax and take a glorious shower. You’re halfway through the shampoo when your husband comes in yelling saying the water needs to be shut off because it’s all coming up in the basement. Ugh. So you start looking for who to call. The plumber your parents used is out of town for two weeks. [...]"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "My ejector pump alarm is going off. What should I do?",
+      "preview": "Stop using basement fixtures and call us.",
+      "answer": "Stop using every fixture that drains to the basin and call us."
+     },
+     {
+      "q": "What's the difference between a sump pump and an ejector pump?",
+      "preview": "Groundwater vs. wastewater.",
+      "answer": "A [sump pump](/evanston/sump-pumps) moves groundwater. An ejector pump moves wastewater from basement fixtures."
+     },
+     {
+      "q": "How long do ejector pumps last?",
+      "preview": "Often 7 to 10 years.",
+      "answer": "Often around 7 to 10 years."
+     },
+     {
+      "q": "Why does it smell like sewer near the pit?",
+      "preview": "A seal, vent or dry trap.",
+      "answer": "Usually a worn lid seal, a vent problem or a dry floor drain trap."
+     },
+     {
+      "q": "Can you replace just the pump?",
+      "preview": "Usually.",
+      "answer": "Usually. If the basin and piping are in good shape, we replace only the pump."
+     },
+     {
+      "q": "How much does ejector pump replacement cost in Evanston?",
+      "preview": "It depends on the pump and basin. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the basin and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Basement Backed Up? Call Us.",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Evanston, IL",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/evanston/ejector-pump",
+   "description": "Ejector pump repair and replacement in Evanston, IL, for basement bathrooms, laundry and overhead sewers. Flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair in Evanston, IL",
+ "metaDescription": "Ejector pump repair and replacement in Evanston, IL, for basement bathrooms, laundry and overhead sewers. Flat price before work."
+}

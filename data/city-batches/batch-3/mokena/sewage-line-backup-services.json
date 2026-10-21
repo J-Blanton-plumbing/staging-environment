@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in Mokena, IL",
+   "sub": "Sewage coming up through a floor drain or a basement shower needs help fast, and our line is open 24/7. We clear the blockage, show you what caused it and help keep it from happening again. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "Sewage in the Basement? Start Here",
+    "intro": "While we're on the way:",
+    "steps": [
+     {
+      "h3": "1. Hold Off on Water",
+      "body": "No flushing, showers, dishwasher or laundry. It all goes to the same line."
+     },
+     {
+      "h3": "2. Close Off the Area",
+      "body": "Keep children and pets away from the water."
+     },
+     {
+      "h3": "3. Mind the Electrical",
+      "body": "Don't step in water near outlets, extension cords or appliances."
+     },
+     {
+      "h3": "4. Give Us a Call",
+      "body": "Let us know which drain the water is coming from."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Mokena Basements Back Up",
+    "intro": "The usual causes here:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Clog in a Sagging Line",
+      "body": "Paper and wipes pile up in a low spot until nothing gets through."
+     },
+     {
+      "h3": "Heavy Rain",
+      "body": "Storms fill the sewers and push water to the lowest drain in the house."
+     },
+     {
+      "h3": "A Failed Ejector Pump",
+      "body": "In a basement bathroom, a dead pump means the basin overflows."
+     },
+     {
+      "h3": "Roots at a Joint",
+      "body": "A root mat can stop the line overnight."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups in Mokena Basements",
+    "intro": "In August 2025, the National Weather Service reported significant flash flooding in Mokena.",
+    "items": [
+     {
+      "h3": "Finished Basements Raise the Stakes",
+      "body": "Many Mokena homes have finished lower levels with carpet, drywall and a bathroom. A backup there is costly."
+     },
+     {
+      "h3": "Ejector Pumps Fail Quietly",
+      "body": "If the alarm doesn't work, the first sign can be water on the floor."
+     },
+     {
+      "h3": "Prevention",
+      "body": "A clean line, a backflow valve and an [overhead sewer system](/mokena/overhead-sewer-systems) each solve part of the problem."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Handle a Backup",
+    "intro": "Three steps, in this order.",
+    "steps": [
+     {
+      "h3": "1. Open the Line",
+      "body": "So your drains work again."
+     },
+     {
+      "h3": "2. Show You Why",
+      "body": "We camera the line and walk you through the video."
+     },
+     {
+      "h3": "3. Price Any Repair",
+      "body": "Flat rate, approved before we start."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jackson Krecioch",
+      "url": null,
+      "text": "Thomas was great came out on the weekend to make sure I was taken care of! Really appreciate his initiative!"
+     },
+     {
+      "name": "Susan Bledsoe",
+      "url": null,
+      "text": "My technician Andreas Pastos showed up on time. He was friendly and personable. He thought he was there to do a sewage line clearance but I really needed a toilet unplugged. I had tried to plunge the toilet myself but due to a recent hip surgery was unable to do it without increasing my pain exponentially. [...]"
+     },
+     {
+      "name": "Alkan Sezginis",
+      "url": "https://maps.app.goo.gl/pWz1WmrZSV3Eg8Gz5",
+      "text": "Christian M came out to do our annual service and was super helpful and friendly. I got to see the inside of our sewer access with a big snake camera and he walked me through everything that he was seeing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Why does sewage come up through the floor drain when it rains hard?",
+      "preview": "Either your line or the village sewer is overwhelmed.",
+      "answer": "Either your own line is partly blocked, or the public sewer filled up and pushed back into the lowest drain in your house. Our camera can tell which one it is."
+     },
+     {
+      "q": "Could my ejector pump be the reason for the backup?",
+      "preview": "In a basement bathroom, yes.",
+      "answer": "If the backup is in a basement bathroom, yes. A dead pump lets the basin overflow. We repair and replace [ejector pumps](/mokena/ejector-pump)."
+     },
+     {
+      "q": "Does homeowners insurance pay for sewer backups?",
+      "preview": "Usually only with a sewer backup rider.",
+      "answer": "Usually only if you have a sewer backup rider on your policy. It's worth asking your agent before the next storm."
+     },
+     {
+      "q": "What can I do so this doesn't happen again?",
+      "preview": "Keep the line clean and protect the basement.",
+      "answer": "Keep the line clean with scheduled [sewer maintenance](/mokena/sewer-maintenance), and if storms are the trigger, add a backflow valve or an overhead sewer."
+     },
+     {
+      "q": "What does sewer backup service cost in Mokena?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on what caused the backup and how we get to the line. You'll approve a flat-rate price before we begin."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in Mokena, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/mokena/sewage-line-backup-services",
+   "description": "Sewage backing up into your Mokena basement? We clear the line, find the cause on camera and help prevent the next one. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Backup Service in Mokena, IL",
+ "metaDescription": "Sewage backing up into your Mokena basement? We clear the line, find the cause on camera and help prevent the next one. Call 24/7."
+}

@@ -1,0 +1,321 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Mokena, IL",
+   "sub": "A basement drain that backs up every few months, a soggy spot in the lawn or a camera report from a home inspection. We find exactly where the line failed, show you the video and give you a flat price for the repair before anything starts. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Mokena Sewer Line Needs Repair",
+    "intro": "A clog clears and stays clear. These point to damage in the pipe itself:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "The Same Backup Keeps Coming Back",
+      "body": "If the line needs rodding again within a season, something inside it is catching debris."
+     },
+     {
+      "h3": "Water Pools Over the Sewer Path",
+      "body": "A wet strip or a sunken patch between the house and the street can mean a leaking joint underground."
+     },
+     {
+      "h3": "Gurgling in the Basement Bathroom",
+      "body": "Air pushed back through the lowest fixtures when upstairs drains run."
+     },
+     {
+      "h3": "The Camera Shows a Belly or Break",
+      "body": "A low spot, an offset joint or a crack recorded on video."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Mokena",
+    "intro": "More than half of Mokena's homes went up between 1990 and 2009, so most sewer lines in town are PVC, not clay. They fail differently.",
+    "items": [
+     {
+      "h3": "Bellies Where the Soil Settled",
+      "body": "A trench backfilled during construction can keep settling for years. The pipe sags with it, and water and paper sit in the low spot until the line clogs."
+     },
+     {
+      "h3": "Joints Pulled Apart",
+      "body": "Shifting soil can separate PVC joints just enough for roots and sand to get in."
+     },
+     {
+      "h3": "Trees That Grew Up With the Subdivision",
+      "body": "The parkway and yard trees planted in the 1990s are now big enough to send roots toward any loose joint."
+     },
+     {
+      "h3": "Older Lines in Pre-1970 Homes",
+      "body": "About 1 in 8 Mokena homes was built before 1970. Those lines can be clay or cast iron, with the root and crack problems that come with age."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Mokena",
+    "intro": "Every sewer repair starts with the camera, not a guess.",
+    "steps": [
+     {
+      "h3": "1. Record the Whole Line",
+      "body": "From the cleanout to the village main, with the distance and depth of every problem."
+     },
+     {
+      "h3": "2. Match the Fix to the Damage",
+      "body": "A spot repair for one sag, lining for joints along the line, replacement when the pipe can't be saved."
+     },
+     {
+      "h3": "3. A Flat Price You Approve",
+      "body": "Before we dig or line anything."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/mokena/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/mokena/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "In Mokena subdivisions, the sewer often runs under a driveway, a paver patio or a finished landscape bed. The camera tells us which method avoids tearing them out."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Brian T",
+      "url": null,
+      "text": "Mike P was super helpful and great at explaining the options we have for our sewer line."
+     },
+     {
+      "name": "Timothy Watjen",
+      "url": null,
+      "text": "We got our sewer line repaired and a new clean out point installed as well as the sewer liner installed end up, wow. I'm really grateful because one we just bought the house, and through the sewer line connection because the house is so old. They discovered that the assure connection to the house, the main sewer line was made out of terracotta. [...]"
+     },
+     {
+      "name": "Markie Waymire",
+      "url": null,
+      "text": "Scott was so helpful and easy to work with! He was so patient and thorough in explaining our options! And Walter loved him!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "My house is only 25 years old. Why does the sewer line need repair?",
+      "preview": "Usually settling, not age.",
+      "answer": "Usually because the soil under the pipe settled after construction and left a sag, or a joint pulled apart. Newer pipe doesn't crack like old clay, but it can still sag and collect debris. A [camera inspection](/mokena/video-camera-sewer-inspections) shows exactly where."
+     },
+     {
+      "q": "Can you fix a sag without replacing the whole line?",
+      "preview": "Often, with a spot repair.",
+      "answer": "Often. If the rest of the line is in good shape, we dig at the low spot, reset the pipe at the right slope and leave the rest alone."
+     },
+     {
+      "q": "Is sewer line replacement ever the better choice?",
+      "preview": "When damage runs the length of the line.",
+      "answer": "When the camera shows several breaks, a collapsed section or an old clay line in poor shape from end to end, replacing it once costs less than fixing it piece by piece."
+     },
+     {
+      "q": "Who is responsible for the sewer line in Mokena?",
+      "preview": "Usually the homeowner, from the house to the main.",
+      "answer": "In most cases the homeowner owns the line from the house to the public sewer. If the camera shows the problem is in the village main, we'll tell you so you can report it."
+     },
+     {
+      "q": "How much does sewer line repair cost in Mokena?",
+      "preview": "It depends on the damage and the method. You'll approve a flat price first.",
+      "answer": "It depends on what the camera finds, how deep the line is, the repair method and what sits on top of it. You'll see and approve a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line for Good?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Mokena, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/mokena/sewer-repair",
+   "description": "Sewer line repair and replacement in Mokena, IL. Sags, roots and broken joints found on camera first, with a flat price before any digging.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Mokena, IL",
+ "metaDescription": "Sewer line repair and replacement in Mokena, IL. Sags, roots and broken joints found on camera first, with a flat price before any digging."
+}

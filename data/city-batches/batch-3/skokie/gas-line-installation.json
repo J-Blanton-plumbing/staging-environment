@@ -1,0 +1,307 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in Skokie, IL",
+   "sub": "Switching to a gas range, adding a gas dryer or running a line to the patio grill. Our licensed plumbers size, install and test gas lines in Skokie homes. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Gas Line Work in Skokie Homes",
+    "intro": "Common jobs:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Electric to Gas Ranges",
+      "body": "A new branch to the kitchen."
+     },
+     {
+      "h3": "Basement Dryers",
+      "body": "A line to the laundry area."
+     },
+     {
+      "h3": "Backyard Grills",
+      "body": "A permanent line with a shutoff."
+     },
+     {
+      "h3": "Standby Generators",
+      "body": "Power when storms knock it out."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install a Gas Line",
+    "intro": "Each job, step by step:",
+    "steps": [
+     {
+      "h3": "1. Check the Existing System",
+      "body": "Size, condition and the total load."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Pipe, supports and a shutoff at the appliance."
+     },
+     {
+      "h3": "3. Pressure-Test",
+      "body": "Before anything is connected."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in Skokie",
+    "intro": "In postwar homes, new gas work often ties into old piping.",
+    "items": [
+     {
+      "h3": "Old Black Iron, New Appliances",
+      "body": "We check the existing pipe before tying a new branch into it."
+     },
+     {
+      "h3": "Moving the Laundry",
+      "body": "Moving a dryer upstairs or across the basement means a new branch line."
+     },
+     {
+      "h3": "Generators for Pumps",
+      "body": "A generator keeps sump and ejector pumps running in an outage."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "will-your-old-gas-line-handle-a-new-appliance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Sizing",
+    "h2": "Will Your Old Gas Line Handle a New Appliance?",
+    "body": "Skokie homes from the 1950s were piped for a furnace, a water heater, a range and maybe a dryer. Add a high-output range, a generator or a grill, and the original line may not deliver enough gas when everything runs at once. We add up the total load and check the pipe size from the meter. If needed, we upsize part of the line, so every appliance gets the gas it needs.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Miss Joy",
+      "url": null,
+      "text": "Jacob C. Jacob was fantastic. From scheduling to the actual visit, the entire experience with this company was smooth and professional. After dealing with plumbers who overcharge and underdeliver, this was a huge relief. Jacob was knowledgeable, patient, and took the time to clearly explain the issue and our options with pricing ranges. We never felt rushed or pressured. [...]"
+     },
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Ngawang Lhabrang",
+      "url": null,
+      "text": "Update: 6/6/25: Manager Damien called within the hour and rectified situation. Thank you for accomodating. The scheduling process was an absolute mess. I filled out the online form and began texting with their team on the morning of Wednesday, 6/4/25, to arrange an evening appointment. I was told Friday evening, 6/6/25, was available. Based on the text exchange, it seemed the appointment was confirmed. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Can I switch from an electric range to gas?",
+      "preview": "Usually, yes.",
+      "answer": "Usually. We run a new branch to the kitchen and install a shutoff behind the range."
+     },
+     {
+      "q": "Can my old gas pipe handle a new appliance?",
+      "preview": "We check the size and load first.",
+      "answer": "We calculate the total load and check the size and condition of your existing pipe before connecting anything."
+     },
+     {
+      "q": "Do you handle permits?",
+      "preview": "Where required, yes.",
+      "answer": "Yes, where the village requires one."
+     },
+     {
+      "q": "Can you run gas to my backyard grill?",
+      "preview": "Yes.",
+      "answer": "Yes. We run a protected line with a shutoff and a quick-connect at the grill."
+     },
+     {
+      "q": "What happens if a gas line is too small?",
+      "preview": "Appliances run weak.",
+      "answer": "Burners and heaters run weak or won't light properly when several appliances run at once."
+     },
+     {
+      "q": "How much does gas line installation cost in Skokie?",
+      "preview": "It depends on the run. You'll approve a flat price first.",
+      "answer": "It depends on the length of the run, the appliance and the route. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in Skokie, IL",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/skokie/gas-line-installation",
+   "description": "Gas line installation in Skokie, IL for ranges, dryers, grills and generators. Licensed, sized correctly and pressure-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in Skokie, IL",
+ "metaDescription": "Gas line installation in Skokie, IL for ranges, dryers, grills and generators. Licensed, sized correctly and pressure-tested."
+}

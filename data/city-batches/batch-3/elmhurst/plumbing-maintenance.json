@@ -1,0 +1,332 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance in Elmhurst, IL",
+   "sub": "Hard water, postwar pipe and storm-season pumps all need attention. A yearly checkup shows you what's wearing out, so you can fix it on your schedule. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What an Elmhurst Plumbing Inspection Covers",
+    "intro": "A full look at:",
+    "steps": [
+     {
+      "h3": "Water Heater",
+      "body": "Flushed, with the relief valve and venting checked."
+     },
+     {
+      "h3": "Sump and Ejector Pumps",
+      "body": "Tested with water."
+     },
+     {
+      "h3": "Shutoffs and Supply Lines",
+      "body": "Valves that close and lines that hold."
+     },
+     {
+      "h3": "Drains and the Main Line",
+      "body": "Signs of roots or buildup."
+     },
+     {
+      "h3": "Fixtures",
+      "body": "Drips and running toilets."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Matters in Elmhurst",
+    "intro": "Elmhurst's water and housing make regular checkups worth it.",
+    "items": [
+     {
+      "h3": "Scale From 8-Grain Water",
+      "body": "Water heaters and fixtures build up minerals every year."
+     },
+     {
+      "h3": "Pumps Before Storm Season",
+      "body": "After 2010 and 2013, many homes rely on pumps."
+     },
+     {
+      "h3": "Old Pipe in Postwar Homes",
+      "body": "Catch a weak joint before it leaks."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "An honest report.",
+    "steps": [
+     {
+      "h3": "1. A Full Checkup",
+      "body": "Every major part."
+     },
+     {
+      "h3": "2. A Written Summary",
+      "body": "Fine, close or urgent."
+     },
+     {
+      "h3": "3. Prices for Anything Needed",
+      "body": "You decide when."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "maintenance-for-older-and-newer-elmhurst-homes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Old and New",
+    "h2": "Maintenance for Older and Newer Elmhurst Homes",
+    "body": "A 1950s ranch and a 2010 new build need different attention. In the older home, we look closely at the sewer line, galvanized pipe and old shutoff valves. In the newer home, we focus on the water heater, sump and ejector pumps and fixtures that hard water wears down. Either way, a yearly visit means fewer surprises and a clear list of what's coming.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-s-in-your-checkup-report",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "What You Get",
+    "h2": "What's in Your Checkup Report",
+    "body": "After the visit, you get a short written summary. Each system is marked as fine, worth watching or needing attention, with notes on age and condition. If something needs work, you get a flat price for it. Nothing is done without your approval, and you can schedule repairs when it suits you.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "darlene germino",
+      "url": null,
+      "text": "For our no drip club maintenance Christian went above and beyond ! Would choose him and Blanton time and time again!"
+     },
+     {
+      "name": "fixedweasel",
+      "url": "https://maps.app.goo.gl/p3keNRv3PKhqGfop7",
+      "text": "I had a camera inspection as well as a Hydrojet cleaning, rod, and flush of my 70' main 6\" sewer line... The camera inspection was done by George and Raul. They were prompt, professional, and detailed with the description of the process... we were able to see together where the problems were in the main and at what specific distances. I was given several options for resolution on the spot with price quotes up front."
+     },
+     {
+      "name": "Martha L",
+      "url": null,
+      "text": "Andrew provided excellent service and thorough explanation during semi-annual inspection today. Thank you!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "How often should I flush my water heater?",
+      "preview": "Once a year in Elmhurst.",
+      "answer": "Once a year, given Elmhurst's hard water."
+     },
+     {
+      "q": "When should I test my sump pump?",
+      "preview": "Before spring storms.",
+      "answer": "In early spring, before the heavy storms. We'll test it as part of the checkup."
+     },
+     {
+      "q": "Does the No Drip Club include maintenance?",
+      "preview": "Yes.",
+      "answer": "The [No Drip Club](/no-drip-club) includes regular maintenance visits."
+     },
+     {
+      "q": "Can you inspect before I sell?",
+      "preview": "Yes.",
+      "answer": "Yes. Fixing small issues first helps the buyer's inspection go smoothly."
+     },
+     {
+      "q": "Can you check my water pressure?",
+      "preview": "Yes.",
+      "answer": "Yes. Pressure that's too high wears out fixtures and appliances."
+     },
+     {
+      "q": "Do you check the sewer line during a checkup?",
+      "preview": "We look for warning signs.",
+      "answer": "We look for warning signs like slow drains and gurgling. If we see any, a camera inspection is the next step."
+     },
+     {
+      "q": "Can a checkup lower my insurance risk?",
+      "preview": "It can catch problems early.",
+      "answer": "It can catch leaks and failing parts before they cause damage. Ask your agent about any discounts for leak sensors."
+     },
+     {
+      "q": "How much does plumbing maintenance cost in Elmhurst?",
+      "preview": "It depends on the visit. You'll approve a flat price first.",
+      "answer": "It depends on what's included. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance in Elmhurst, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/elmhurst/plumbing-maintenance",
+   "description": "Plumbing maintenance and inspections in Elmhurst, IL. Water heater flushes, pump tests and valve checks before problems start.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in Elmhurst, IL",
+ "metaDescription": "Plumbing maintenance and inspections in Elmhurst, IL. Water heater flushes, pump tests and valve checks before problems start."
+}

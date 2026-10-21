@@ -1,0 +1,313 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Skokie, IL",
+   "sub": "A restaurant on Oakton Street, a clinic on Dempster or a shop downtown. When the water heater goes out, so does business. We repair, replace and maintain commercial water heaters across Skokie. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Who We Serve in Skokie",
+    "intro": "We work with:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Restaurants, Bakeries and Delis",
+      "body": "Dish machines and sinks running from open to close."
+     },
+     {
+      "h3": "Clinics and Medical Offices",
+      "body": "Hot water at every exam room sink."
+     },
+     {
+      "h3": "Salons and Barbershops",
+      "body": "Back-to-back appointments, all day."
+     },
+     {
+      "h3": "Shops and Offices",
+      "body": "Restrooms and break rooms that can't go without."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Services",
+    "intro": "From the first call to the next replacement:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Diagnosed on site and priced before we start."
+     },
+     {
+      "h3": "Replacement",
+      "body": "Sized to your peak demand and timed around your hours."
+     },
+     {
+      "h3": "Maintenance",
+      "body": "Flushing, descaling and safety checks on a schedule."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "skokie-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Skokie's Business Districts",
+    "intro": "Our Lincoln Avenue office sits in the middle of the village.",
+    "items": [
+     {
+      "h3": "Postwar Commercial Buildings",
+      "body": "Many storefronts date from the same era as the homes, with older gas and vent connections we check before replacing anything."
+     },
+     {
+      "h3": "Failures Mid-Shift",
+      "body": "Our line is open 24/7, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "h3": "Prices Before Work",
+      "body": "Flat-rate pricing, so you can plan."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "serving-skokie-s-commercial-areas",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Local Businesses",
+    "h2": "Serving Skokie's Commercial Areas",
+    "body": "From restaurants on Dempster Street and Oakton Street to shops near Old Orchard and businesses in the Skokie industrial areas, hot water needs vary widely. A restaurant needs high recovery for dish machines. An office needs reliable restroom supply. We size equipment to the business, keep it on a maintenance schedule and answer the phone 24/7 when something fails.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-commercial-water-heater-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Commercial Water Heater Work",
+    "body": "Capacity, fuel and venting matter most. Strip center units and older buildings can add access and venting steps. Code updates may apply. We look at your setup and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Vincent Tanner",
+      "url": null,
+      "text": "Great and friendly Manager and plumber. Both were really helpful. Plumber was great and really knew what he was doing. Work performed very well. Everything looks great. Really cleaned up after finishing the work."
+     },
+     {
+      "name": "Robert Koehler",
+      "url": null,
+      "text": "Emmanuel, Gio, and Greg were a great team. Handled the job with complete professionalism and left confident the money was well spent with the right people. Fixed the sewer line using the best method and technology. Good interpersonal skills. Thank you."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Skokie Businesses",
+    "items": [
+     {
+      "q": "Can you work before we open?",
+      "preview": "For planned work, we'll try.",
+      "answer": "For planned replacements and maintenance, we'll schedule around your hours where we can."
+     },
+     {
+      "q": "Do you handle emergency commercial calls?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. Call any time if your water heater fails."
+     },
+     {
+      "q": "Are your plumbers licensed for commercial work?",
+      "preview": "Yes, licensed in Illinois.",
+      "answer": "Yes. Our plumbers are licensed in Illinois and work on commercial water heaters every day."
+     },
+     {
+      "q": "Can you maintain several heaters on a schedule?",
+      "preview": "Yes.",
+      "answer": "Yes. We set up a calendar for flushing, descaling and safety checks and keep records for each unit."
+     },
+     {
+      "q": "Do you service multiple locations?",
+      "preview": "Yes.",
+      "answer": "Yes. We can keep records and schedules for each site."
+     },
+     {
+      "q": "Can you replace a heater in a strip mall unit?",
+      "preview": "Yes.",
+      "answer": "Yes. We plan shutoffs so neighboring businesses aren't affected longer than needed."
+     },
+     {
+      "q": "How much does commercial water heater replacement cost in Skokie?",
+      "preview": "It depends on capacity, fuel and venting. You'll approve a flat price first.",
+      "answer": "It depends on capacity, fuel type, venting and any code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Skokie, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/skokie/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Skokie, IL businesses. 24/7 phone line and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Skokie, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Skokie, IL businesses. 24/7 phone line and a flat price before work."
+}

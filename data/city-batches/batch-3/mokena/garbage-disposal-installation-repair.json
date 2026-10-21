@@ -1,0 +1,324 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Repair and Installation in Mokena, IL",
+   "sub": "A disposal that hums, leaks from the bottom or won't turn on. We fix it or replace it with the right size for your kitchen. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Garbage Disposal Problems",
+    "intro": "We fix disposals that:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Hum but Don't Spin",
+      "body": "A jam or a motor that's failing."
+     },
+     {
+      "h3": "Leak Underneath",
+      "body": "A worn seal or a cracked housing."
+     },
+     {
+      "h3": "Won't Turn On",
+      "body": "A tripped reset button or a bad switch."
+     },
+     {
+      "h3": "Drain Slowly",
+      "body": "A clog in the drain line past the disposal."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Mokena Kitchens",
+    "intro": "Many Mokena kitchens still have the disposal the builder installed.",
+    "items": [
+     {
+      "h3": "Original Units Wearing Out",
+      "body": "Disposals usually last about 10 years. Many here are older than that."
+     },
+     {
+      "h3": "Island Sinks",
+      "body": "Disposals in island sinks drain through long runs, so clogs settle past the unit."
+     },
+     {
+      "h3": "Upgrades During Remodels",
+      "body": "When the kitchen gets new counters and a sink, it's a good time for a new disposal."
+     },
+     {
+      "h3": "Dishwasher Connections",
+      "body": "In most Mokena kitchens the dishwasher drains through the disposal. When the disposal clogs, the dishwasher backs up too, so we check both."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair if it makes sense, replace if it doesn't.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, motor, seal or drain line."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "For the repair or a new unit."
+     },
+     {
+      "h3": "3. Installed and Tested",
+      "body": "No leaks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-disposal-job",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Disposal Job",
+    "body": "A straight swap is quick. Upgrading horsepower, changing the drain or adding a dishwasher connection takes a bit longer. We check and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Barb Lederman",
+      "url": null,
+      "text": "Andrew was great! Very helpful in answering questions and service was quick, clean amazing work."
+     },
+     {
+      "name": "Alexis Ruda",
+      "url": null,
+      "text": "Greg and Gio installed a new garbage disposal for me, and I was very pleased with the service!"
+     },
+     {
+      "name": "nil golan",
+      "url": null,
+      "text": "I really like the service very nice people highly recommended"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Why does my disposal hum but not work?",
+      "preview": "Usually a jam.",
+      "answer": "Usually something is jammed in it. Don't keep running it. If the reset button and a turn with the hex key don't loosen it, call us."
+     },
+     {
+      "q": "Should I repair or replace my disposal?",
+      "preview": "If it's leaking from the housing or old, replace it.",
+      "answer": "If it's leaking from the body or over 10 years old, replacing it usually makes more sense."
+     },
+     {
+      "q": "What shouldn't go in a garbage disposal?",
+      "preview": "Grease, bones, fibrous food and coffee grounds.",
+      "answer": "Grease, bones, fibrous foods like celery, eggshells and coffee grounds cause most problems."
+     },
+     {
+      "q": "Can you install a disposal where there wasn't one?",
+      "preview": "Usually, if there's power under the sink.",
+      "answer": "Usually. We need an outlet or wiring under the sink and the right drain setup."
+     },
+     {
+      "q": "Why does my dishwasher back up into the sink?",
+      "preview": "Often a clogged disposal or drain line.",
+      "answer": "Usually the disposal or the drain past it is clogged, so dishwasher water has nowhere to go. Clearing the disposal or the line fixes it. If the disposal is new, the knockout plug may still be in place."
+     },
+     {
+      "q": "Can a disposal work with a septic system?",
+      "preview": "Some are made for it.",
+      "answer": "Some disposals are made for septic systems. If your home is on septic, tell us before we install."
+     },
+     {
+      "q": "Why is my disposal so loud?",
+      "preview": "Loose parts or worn bearings.",
+      "answer": "Something stuck inside, loose mounting or worn bearings. We'll find out which."
+     },
+     {
+      "q": "How much does garbage disposal replacement cost in Mokena?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and the connections. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Disposal?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Repair and Installation in Mokena, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/mokena/garbage-disposal-installation-repair",
+   "description": "Garbage disposal repair and installation in Mokena, IL. Jammed, leaking or humming disposals fixed or replaced, with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Repair in Mokena, IL",
+ "metaDescription": "Garbage disposal repair and installation in Mokena, IL. Jammed, leaking or humming disposals fixed or replaced, with a flat price first."
+}

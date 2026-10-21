@@ -1,0 +1,318 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance in Skokie, IL",
+   "sub": "When most of the plumbing in a house is 60 years old, small problems turn into big ones fast. A yearly checkup shows you what's wearing out, so you can plan repairs instead of reacting to them. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What a Skokie Plumbing Inspection Covers",
+    "intro": "A whole-home look at:",
+    "steps": [
+     {
+      "h3": "Water Heater and Venting",
+      "body": "Age, draft, relief valve and sediment."
+     },
+     {
+      "h3": "Supply Pipe and Shutoffs",
+      "body": "Galvanized pipe, pressure and valves that work."
+     },
+     {
+      "h3": "Drains and the Main Line",
+      "body": "Slow drains and signs of root problems."
+     },
+     {
+      "h3": "Pumps",
+      "body": "Sump and ejector pumps tested with water."
+     },
+     {
+      "h3": "Fixtures",
+      "body": "Drips, leaks and running toilets."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Matters in Skokie",
+    "intro": "Skokie's population grew from about 15,000 in 1950 to nearly 60,000 in 1960. Thousands of homes got their plumbing at once.",
+    "items": [
+     {
+      "h3": "Everything Is the Same Age",
+      "body": "Pipe, valves and sewer laterals installed in the same decade wear out together."
+     },
+     {
+      "h3": "Small Leaks at Old Joints",
+      "body": "Threaded galvanized joints are where leaks start."
+     },
+     {
+      "h3": "Plan the Big Projects",
+      "body": "A checkup helps you budget for a repipe or a sewer repair."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "An honest report you can plan around.",
+    "steps": [
+     {
+      "h3": "1. A Full Checkup",
+      "body": "Every major part of the system."
+     },
+     {
+      "h3": "2. A Written Summary",
+      "body": "Fine, getting close or needs attention now."
+     },
+     {
+      "h3": "3. Prices for Anything Needed",
+      "body": "You decide when."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "your-checkup-summary",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What You Get",
+    "h2": "Your Checkup Summary",
+    "body": "You get a short written summary of each system, marked fine, worth watching or needing attention, with flat prices for any recommended work. In a 1950s home, that usually includes notes on the sewer line and old valves.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kimberly Bucki",
+      "url": null,
+      "text": "Edit: my name is Kimberly not Kimberley and not Kim, thanks! RON thank you for your expansive knowledge of everything today, we appreciate you so much for your help and looking forward to being a part of the no drip club! Donate for us on behalf of my two boys Gizmo and Gadget!"
+     },
+     {
+      "name": "Judith Schader",
+      "url": "https://maps.app.goo.gl/8sp2hFNkS7FD3Yp38",
+      "text": "He rodded out the kitchen sink drain piping and fixed the leaks... In the end he offered us an excellent maintenance plan, which will definitely save us money and headaches in the future."
+     },
+     {
+      "name": "Rachael Dawson",
+      "url": null,
+      "text": "We’ve been using this company for a few months now to do work on our recently purchased house. Christian was out to do our inspection today. Good communication prior to and during the inspection. Work recommended and quoted seems reasonable. Dog approves."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Is a yearly checkup worth it for an older home?",
+      "preview": "Yes, especially in a 1950s home.",
+      "answer": "Yes. In a home where most of the plumbing is original, catching a small leak or a weak valve early saves money."
+     },
+     {
+      "q": "Can you tell me if I need to repipe?",
+      "preview": "Yes, after we look at the pipe and pressure.",
+      "answer": "Yes. We check the type and condition of your supply pipe and the water pressure, and we'll tell you honestly."
+     },
+     {
+      "q": "Does the No Drip Club include checkups?",
+      "preview": "Yes, maintenance visits are included.",
+      "answer": "The [No Drip Club](/no-drip-club) includes regular maintenance visits."
+     },
+     {
+      "q": "Can you inspect before I sell?",
+      "preview": "Yes.",
+      "answer": "Yes. Fixing small issues before listing helps the buyer's inspection go smoothly."
+     },
+     {
+      "q": "What fails first in a 1950s Skokie home?",
+      "preview": "Often the sewer line and old valves.",
+      "answer": "Often the sewer lateral, old shutoff valves and galvanized pipe."
+     },
+     {
+      "q": "Can you check my water heater's venting?",
+      "preview": "Yes.",
+      "answer": "Yes. We test the draft to make sure exhaust goes up the chimney."
+     },
+     {
+      "q": "How much does plumbing maintenance cost in Skokie?",
+      "preview": "It depends on the visit. You'll approve a flat price first.",
+      "answer": "It depends on what's included. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance in Skokie, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/skokie/plumbing-maintenance",
+   "description": "Plumbing maintenance and inspections in Skokie, IL. Find failing pipe, valves and pumps in postwar homes before they fail. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in Skokie, IL",
+ "metaDescription": "Plumbing maintenance and inspections in Skokie, IL. Find failing pipe, valves and pumps in postwar homes before they fail. Flat price."
+}

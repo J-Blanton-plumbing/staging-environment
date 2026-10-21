@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in Hinsdale, IL",
+   "sub": "Sewage coming up through a floor drain or basement shower needs a plumber fast, and our line is open 24/7. We clear the blockage, show you the cause and help you keep it from happening again. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do During a Sewer Backup",
+    "intro": "Until we arrive:",
+    "steps": [
+     {
+      "h3": "1. Stop All Water Use",
+      "body": "Every sink, shower, toilet and appliance drains to the same line."
+     },
+     {
+      "h3": "2. Keep People Away",
+      "body": "Sewage carries bacteria."
+     },
+     {
+      "h3": "3. Watch for Electrical Hazards",
+      "body": "Stay out of water near outlets and appliances."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Tell us where the water is coming up."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Hinsdale Basements Back Up",
+    "intro": "The most common causes:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Roots in an Old Lateral",
+      "body": "Especially under older homes and big trees."
+     },
+     {
+      "h3": "Storms That Overload the Sewer",
+      "body": "Water pushes back to the lowest drain in the house."
+     },
+     {
+      "h3": "A Broken or Collapsed Section",
+      "body": "Old clay can crack and settle until flow stops."
+     },
+     {
+      "h3": "Grease and Wipes",
+      "body": "Even a newer line clogs when they build up."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups in Hinsdale Basements",
+    "intro": "In June 2021, a storm sent water bubbling more than 5 feet out of a sewer in northeast Hinsdale, and one homeowner had about 3 feet of water in a basement that had never flooded before.",
+    "items": [
+     {
+      "h3": "Deep Basements in Older Homes",
+      "body": "Many historic homes have basements well below the street sewer, so the floor drain is the first place water appears."
+     },
+     {
+      "h3": "Finished Lower Levels",
+      "body": "Newer homes and renovations often have finished basements with bathrooms, media rooms and bars."
+     },
+     {
+      "h3": "Protection",
+      "body": "A clean line, a backflow valve and an [overhead sewer system](/hinsdale/overhead-sewer-systems) each solve part of the problem."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Clear it, explain it and help you prevent the next one.",
+    "steps": [
+     {
+      "h3": "1. Clear the Blockage",
+      "body": "Your drains work again."
+     },
+     {
+      "h3": "2. Find the Cause",
+      "body": "On camera, so you know what happened."
+     },
+     {
+      "h3": "3. Price Any Repair First",
+      "body": "A flat rate, approved by you."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Sara Corcoran",
+      "url": "https://maps.app.goo.gl/hcHjEjPhBvoYqNnh8",
+      "text": "I had another company come out first to fix my sewer line that got blocked in this cold weather, but the issue was not fully resolved. [...] They all were professional, knowledgeable, offered solutions, and answered all my questions. They all went above and beyond to make sure my issue is fixed efficiently and as soon as possible."
+     },
+     {
+      "name": "Christopher C.",
+      "url": null,
+      "text": "The ENG team did an amazing job installing a liner on our sewer line. It was a very technical job that required a full days work, but they managed wonderfully despite the unexpected snow and inclement weather conditions. Just as important, they were very kind through the process. Thank you!!! Services Outdoor plumbing system repair"
+     },
+     {
+      "name": "John C. Sweeney",
+      "url": null,
+      "text": "Dave was very professional and explained all details of the work for our home plumbing project. We appreciated his work."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Do you clean up after a sewage backup?",
+      "preview": "We fix the plumbing. A restoration company handles cleanup.",
+      "answer": "We clear the line, find the cause and make the repair. For removing water, drying and sanitizing finished spaces, a restoration company is the right call, and we can work alongside them."
+     },
+     {
+      "q": "Why does my floor drain back up in heavy rain?",
+      "preview": "Your line or the public sewer can't keep up.",
+      "answer": "Either your line is partly blocked, or the public sewer is overloaded and pushing back. A camera inspection tells you which."
+     },
+     {
+      "q": "Will homeowners insurance cover a sewer backup?",
+      "preview": "Often only with a specific rider.",
+      "answer": "Many policies need a sewer backup rider. Ask your agent before the next storm."
+     },
+     {
+      "q": "How do I prevent another backup?",
+      "preview": "Keep the line clear and add protection.",
+      "answer": "Keep the line clear with [sewer maintenance](/hinsdale/sewer-maintenance), and add a backflow valve or overhead sewer if storms are the trigger."
+     },
+     {
+      "q": "How much does sewer backup service cost in Hinsdale?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on what caused the backup and how we reach the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in Hinsdale, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/hinsdale/sewage-line-backup-services",
+   "description": "Sewage backing up into your Hinsdale basement? We clear the line, find the cause on camera and help protect the basement. Open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewage Backup Service in Hinsdale, IL",
+ "metaDescription": "Sewage backing up into your Hinsdale basement? We clear the line, find the cause on camera and help protect the basement. Open 24/7."
+}

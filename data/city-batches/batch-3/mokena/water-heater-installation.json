@@ -1,0 +1,333 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Replacement in Mokena, IL",
+   "sub": "If your water heater is leaking from the tank or it's been running since the house was built, it's time for a new one. We size it to your household, install it to code and haul the old one away. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Replace Your Water Heater",
+    "intro": "It's usually time when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Is Leaking",
+      "body": "Water from the tank itself means the lining has failed."
+     },
+     {
+      "h3": "It's 10 to 12 Years Old or More",
+      "body": "Check the date on the label."
+     },
+     {
+      "h3": "Repairs Keep Adding Up",
+      "body": "A second or third repair on an old tank is rarely worth it."
+     },
+     {
+      "h3": "The Family Outgrew It",
+      "body": "A tank sized for the house when it was new may not keep up today."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "A clean swap from start to finish:",
+    "steps": [
+     {
+      "h3": "1. Size It Right",
+      "body": "Based on bathrooms, people and how you use hot water."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "New connections, relief valve, venting and an expansion tank where needed."
+     },
+     {
+      "h3": "3. Test and Haul Away",
+      "body": "Checked for leaks and proper venting, and the old tank goes with us."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Mokena Homes",
+    "intro": "More than half of Mokena's homes were built between 1990 and 2009, so a lot of original heaters are being replaced right now.",
+    "items": [
+     {
+      "h3": "Power-Vent Replacements",
+      "body": "If your home has a power-vent heater, we match the venting or explain your options."
+     },
+     {
+      "h3": "Bigger Families, Bigger Tanks",
+      "body": "A 40-gallon tank from the builder may be too small for a household with teenagers. We'll size it to how you use water."
+     },
+     {
+      "h3": "Considering Tankless?",
+      "body": "Many homeowners here ask about it. See [tankless water heaters](/mokena/tankless-water-heater) for what's involved."
+     },
+     {
+      "h3": "Utility Rooms Inside Finished Basements",
+      "body": "When the heater sits in a small room, we check that there's enough air for combustion and room to service the new unit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A new heater, priced before we start.",
+    "steps": [
+     {
+      "h3": "1. Options Side by Side",
+      "body": "Tank sizes and types, explained plainly."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Including installation, parts and haul-away."
+     },
+     {
+      "h3": "3. Done in a Day",
+      "body": "Most replacements are finished the same day."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-water-heater",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Water Heater",
+    "body": "Size, fuel and venting come first. Power-vent models and expansion tanks can add to the job. We check everything and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Althea Smith",
+      "url": null,
+      "text": "Once again J Blanton got us scheduled quickly. Their technicians were efficient and left the workspace immaculate."
+     },
+     {
+      "name": "Dennis Williams",
+      "url": null,
+      "text": "Michael was very professional installer had leak and replaced water heater. He kept me updated on his progress. Very helpful"
+     },
+     {
+      "name": "Michele Vaccarello Wagner",
+      "url": null,
+      "text": "Lou was so wonderful! So pleasant, explained everything in details I could understand, went above and beyond! Thank you, Lou!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "How long does water heater replacement take?",
+      "preview": "Usually a few hours.",
+      "answer": "Most standard tank replacements take a few hours. Switching fuel type or moving the heater takes longer."
+     },
+     {
+      "q": "What size water heater do I need?",
+      "preview": "It depends on your household.",
+      "answer": "For most Mokena homes, a 40 or 50-gallon tank works. Larger families or big soaking tubs may need more. We'll size it to your household."
+     },
+     {
+      "q": "Do I need an expansion tank?",
+      "preview": "Often, yes.",
+      "answer": "Often. If your home has a pressure-reducing valve or a backflow device, an expansion tank protects the heater and plumbing from pressure spikes."
+     },
+     {
+      "q": "Do you take the old water heater?",
+      "preview": "Yes.",
+      "answer": "Yes. We drain it, disconnect it and haul it away."
+     },
+     {
+      "q": "How much does water heater replacement cost in Mokena?",
+      "preview": "It depends on size, type and venting. You'll approve a flat price first.",
+      "answer": "It depends on the size, fuel type, venting and any code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Replacement in Mokena, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/mokena/water-heater-installation",
+   "description": "Water heater replacement and installation in Mokena, IL. Sized for your household, installed to code and priced flat before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Replacement in Mokena, IL",
+ "metaDescription": "Water heater replacement and installation in Mokena, IL. Sized for your household, installed to code and priced flat before work."
+}

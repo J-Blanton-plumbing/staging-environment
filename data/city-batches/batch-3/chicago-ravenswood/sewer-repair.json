@@ -1,0 +1,326 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Ravenswood, Chicago",
+   "sub": "Nearly half the homes around Ravenswood were built before 1940, and many still drain through their original clay sewer line. We camera the line, show you exactly what's wrong and price the repair before we start. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Your Ravenswood Sewer Line May Need Repair If",
+    "intro": "These go beyond a simple clog:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "The Basement Drain Backs Up Between Storms",
+      "body": "On dry days, the problem is likely your line, not the city sewer."
+     },
+     {
+      "h3": "Roots Come Back Every Year",
+      "body": "They're entering through an open joint."
+     },
+     {
+      "h3": "A Two-Flat's Garden Unit Keeps Flooding",
+      "body": "The lowest unit shows a main line problem first."
+     },
+     {
+      "h3": "A Dip in the Front Yard",
+      "body": "Soil slipping into a broken pipe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail Around Ravenswood",
+    "intro": "In the Lincoln Square community area, which covers the west side of Ravenswood, the median home was built in 1944, and nearly half were built before 1940.",
+    "items": [
+     {
+      "h3": "Original Clay Laterals",
+      "body": "Clay pipe with a joint every few feet, many now more than 85 years old."
+     },
+     {
+      "h3": "Cast Iron Under the Basement Slab",
+      "body": "It rusts from the inside and splits along the bottom."
+     },
+     {
+      "h3": "Mature Street Trees",
+      "body": "Old parkway trees have had a century to find the sewer."
+     },
+     {
+      "h3": "One Line for Several Families",
+      "body": "In the Lincoln Square community area, about 1 in 3 homes is in a building with two to four units, and every unit drains into one lateral."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Ravenswood",
+    "intro": "Footage first, then the right fix.",
+    "steps": [
+     {
+      "h3": "1. Record It to the Main",
+      "body": "Every crack and root mat located and measured."
+     },
+     {
+      "h3": "2. Choose the Least Disruptive Fix",
+      "body": "Spot repair, lining or replacement."
+     },
+     {
+      "h3": "3. A Flat Price, Approved First",
+      "body": "Before any digging or lining."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/chicago-ravenswood/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/chicago-ravenswood/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "Ravenswood sewer lines often run under a front stoop, a garden and the sidewalk. The footage tells us which method avoids digging them up."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alison Thakur",
+      "url": null,
+      "text": "Scott B came out to do a full sewer scope and review options as we have a very old home with clay pipes. He was knowledge, professional, and extremely kind. He worked with us on pricing - very trustworthy and transparent! We've never had a bad experience with anyone from J. Blanton. Absolutely recommend!"
+     },
+     {
+      "name": "fixedweasel",
+      "url": "https://maps.app.goo.gl/p3keNRv3PKhqGfop7",
+      "text": "I had a camera inspection as well as a Hydrojet cleaning, rod, and flush of my 70' main 6\" sewer line... The camera inspection was done by George and Raul. They were prompt, professional, and detailed with the description of the process... we were able to see together where the problems were in the main and at what specific distances. I was given several options for resolution on the spot with price quotes up front."
+     },
+     {
+      "name": "THE R N",
+      "url": null,
+      "text": "Christian , was assigned to my home, came out and answered all my questions, and was very informative on the work that needed to get done. Sewer technician Alberto Garcia came over and rectified all my sewer issues big thumbs up to Alberto and the team at J Blanton, Will continue to call them for all my plumbing needs."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "My two-flat's sewer is original. Should I replace it?",
+      "preview": "Only if the camera says so.",
+      "answer": "Not automatically. Many old lines need one section fixed, not the whole run. A [camera inspection](/chicago-ravenswood/video-camera-sewer-inspections) shows which you have."
+     },
+     {
+      "q": "Can the sewer be fixed without tearing up the front yard?",
+      "preview": "Often, with lining.",
+      "answer": "Often. [Trenchless lining](/chicago-ravenswood/trenchless-sewer-repair) rebuilds the pipe from the inside through small openings."
+     },
+     {
+      "q": "Who pays for the sewer line in a two-flat?",
+      "preview": "Usually the building owner.",
+      "answer": "The owner is responsible for the building's sewer line and for keeping it clear. In a condo building, it's usually an association expense."
+     },
+     {
+      "q": "Will a repair stop storm backups?",
+      "preview": "Not by itself.",
+      "answer": "A repair fixes your line. Chicago's combined sewers can still back up in a big storm, which a backflow valve or [overhead sewer](/chicago-ravenswood/overhead-sewer-systems) prevents."
+     },
+     {
+      "q": "Does a sewer repair in Chicago need the street opened?",
+      "preview": "Only if the break is near the main.",
+      "answer": "Only if the damage is at or near the city main. Most repairs are on the private part of the line."
+     },
+     {
+      "q": "How much does sewer repair cost in Ravenswood?",
+      "preview": "It depends on the damage and method. You'll approve a flat price first.",
+      "answer": "It depends on what the camera shows, the depth, the method and what's above the line. You'll approve a flat-rate price before any work."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Ravenswood, Chicago",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/sewer-repair",
+   "description": "Sewer line repair in Ravenswood, Chicago, for century-old homes and two-flats. See the damage on camera, then approve a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Ravenswood, Chicago",
+ "metaDescription": "Sewer line repair in Ravenswood, Chicago, for century-old homes and two-flats. See the damage on camera, then approve a flat price."
+}

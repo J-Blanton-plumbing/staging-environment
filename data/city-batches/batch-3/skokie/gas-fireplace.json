@@ -1,0 +1,348 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in Skokie, IL",
+   "sub": "A pilot that won't stay lit, gas logs that burn sooty or a fireplace that shuts itself off. We repair and service gas fireplaces and gas logs and leak-test every fitting. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Trouble With Your Skokie Gas Fireplace?",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pilot Goes Out",
+      "body": "A dirty pilot or a weak thermocouple."
+     },
+     {
+      "h3": "Soot on the Logs or Brick",
+      "body": "A dirty or poorly adjusted flame."
+     },
+     {
+      "h3": "It Shuts Itself Off",
+      "body": "The safety system is cutting the gas."
+     },
+     {
+      "h3": "The Glass Is Hazy",
+      "body": "On sealed units, it needs cleaning."
+     },
+     {
+      "h3": "You Smell Gas",
+      "body": "Leave, then call Nicor Gas or 911."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Repair and Service",
+    "intro": "We handle:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Pilots, thermocouples, valves and igniters."
+     },
+     {
+      "h3": "Yearly Service",
+      "body": "Burner, pilot and logs cleaned, fittings leak-tested."
+     },
+     {
+      "h3": "Gas Lines",
+      "body": "New or relocated lines. See [gas line installation](/skokie/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Fireplaces in Skokie Homes",
+    "intro": "Many Skokie homes with original fireplaces have converted them to gas logs.",
+    "items": [
+     {
+      "h3": "Gas Logs in Masonry Fireplaces",
+      "body": "Vented logs need the damper held open with a clamp."
+     },
+     {
+      "h3": "Older Valves",
+      "body": "Original gas log valves can stick or leak with age."
+     },
+     {
+      "h3": "Carbon Monoxide Detectors",
+      "body": "Every home with a gas fireplace needs working detectors."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Licensed gas work and an honest diagnosis.",
+    "steps": [
+     {
+      "h3": "1. Test Before Replacing",
+      "body": "Only the parts that failed."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Approved first."
+     },
+     {
+      "h3": "3. Leak-Tested",
+      "body": "Every fitting."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "switching-a-skokie-fireplace-to-gas-logs",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Conversions",
+    "h2": "Switching a Skokie Fireplace to Gas Logs",
+    "body": "Many 1950s Skokie homes have a brick fireplace in the living room. Switching to gas logs means no wood to carry and no ash to clean. We run the gas line, install a shutoff valve near the fireplace and set the log set. A chimney professional should inspect the flue first. Vented logs need the damper held partly open, so we install a clamp.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-fireplace-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Fireplace Work",
+    "body": "A service visit is simple. A failed part depends on the fireplace. A gas log conversion depends on how far the line has to run. We diagnose and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Why are my gas logs leaving soot?",
+      "preview": "Logs out of position or a dirty burner.",
+      "answer": "Usually the logs aren't in the right position or the burner needs cleaning. We clean and reset them."
+     },
+     {
+      "q": "Does the damper need to stay open with gas logs?",
+      "preview": "Yes, for vented logs.",
+      "answer": "Yes. Vented gas logs need the damper held partly open so exhaust can leave."
+     },
+     {
+      "q": "Why won't my pilot stay lit?",
+      "preview": "Usually a dirty pilot or weak thermocouple.",
+      "answer": "Usually the pilot is dirty or the thermocouple is weak. Cleaning or replacing the part fixes it."
+     },
+     {
+      "q": "When should I schedule service?",
+      "preview": "Early fall.",
+      "answer": "Early fall, before the first cold night."
+     },
+     {
+      "q": "Can I add a remote to my gas logs?",
+      "preview": "Often.",
+      "answer": "Often, with a compatible valve. We'll check your model."
+     },
+     {
+      "q": "How much does gas fireplace repair cost in Skokie?",
+      "preview": "It depends on the part. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of fireplace. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Fireplace That Lights?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in Skokie, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/skokie/gas-fireplace",
+   "description": "Gas fireplace repair and yearly service in Skokie, IL. Pilots, thermocouples and valves fixed, gas logs serviced and fittings leak-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair & Service in Skokie, IL",
+ "metaDescription": "Gas fireplace repair and yearly service in Skokie, IL. Pilots, thermocouples and valves fixed, gas logs serviced and fittings leak-tested."
+}

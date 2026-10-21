@@ -1,0 +1,352 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Hanover Park, IL",
+   "sub": "Endless hot water and more room in the utility area. We install, repair and descale tankless water heaters in Hanover Park, and tell you honestly whether one fits your home. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Heater Works",
+    "body": "A tankless heater fires only when a hot tap opens. Water passes through a heat exchanger and comes out hot for as long as you need it. Each unit has a flow limit, so we size it for the most hot water your home uses at once.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless in Hanover Park",
+    "intro": "The trade-offs:",
+    "head": [
+     "",
+     "Tank",
+     "Tankless"
+    ],
+    "rows": [
+     [
+      "Space",
+      "Floor",
+      "Wall"
+     ],
+     [
+      "Hot water",
+      "Limited to the tank",
+      "Continuous, up to its flow"
+     ],
+     [
+      "Venting",
+      "Existing flue or power vent",
+      "Its own vent"
+     ],
+     [
+      "Upkeep",
+      "Yearly flush",
+      "Yearly descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Hanover Park Home?",
+    "intro": "A few things decide it.",
+    "items": [
+     {
+      "h3": "Gas Line Size",
+      "body": "Tankless units need more gas at once. Older lines may need upsizing."
+     },
+     {
+      "h3": "Venting Route",
+      "body": "Through a side wall or the roof."
+     },
+     {
+      "h3": "Busy Households",
+      "body": "Back-to-back showers are where tankless shines."
+     },
+     {
+      "h3": "Utility Rooms",
+      "body": "Wall mounting frees up floor space."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We check the house first.",
+    "steps": [
+     {
+      "h3": "1. Gas and Venting",
+      "body": "Reviewed first."
+     },
+     {
+      "h3": "2. Sized for Your Use",
+      "body": "Not an average."
+     },
+     {
+      "h3": "3. A Flat Price",
+      "body": "Approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "sizing-a-tankless-heater-for-your-home",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Size It Right",
+    "h2": "Sizing a Tankless Heater for Your Home",
+    "body": "Tankless sizing is about flow, not gallons. We add up what your home might run at the same time on a busy morning, like two showers and the dishwasher, and how much the water has to be heated in a Chicago-area winter, when incoming water is coldest. A unit that's too small will deliver lukewarm water when demand peaks. A unit sized for your real use delivers hot water for as long as you need it.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-tankless-install",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Tankless Install",
+    "body": "The unit, the gas line and the venting are the three big pieces. Many homes need a larger gas line to the heater and a new vent through a wall or roof. Isolation valves for descaling are part of a proper install. We check first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Spiro Nicolet",
+      "url": null,
+      "text": "Ronnie really cares about his customers and his profession. A credit to your company! Merry Christmas!"
+     },
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     },
+     {
+      "name": "Jason Kelly",
+      "url": null,
+      "text": "Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Will a tankless heater work in my home?",
+      "preview": "Usually, with the right gas line and venting.",
+      "answer": "Usually, if the gas line and venting can support it. We check both first."
+     },
+     {
+      "q": "How often does it need descaling?",
+      "preview": "About once a year.",
+      "answer": "About once a year for most homes."
+     },
+     {
+      "q": "Will I really get endless hot water?",
+      "preview": "Yes, within its flow limit.",
+      "answer": "Yes, as long as you don't need more hot water at once than it's sized for."
+     },
+     {
+      "q": "Do you repair tankless units?",
+      "preview": "Yes.",
+      "answer": "Yes. We descale, clean sensors and replace failed parts."
+     },
+     {
+      "q": "Does a tankless heater work during a power outage?",
+      "preview": "No.",
+      "answer": "No. It needs electricity for its controls and fan, even on gas."
+     },
+     {
+      "q": "Is there a delay before hot water arrives?",
+      "preview": "A few seconds, a bit longer than a tank.",
+      "answer": "There's a short delay as water travels from the heater, plus a few seconds while the unit fires up."
+     },
+     {
+      "q": "Can a tankless heater replace two tanks?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes, if one unit is sized for your total demand. Otherwise, two units can work together."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Hanover Park?",
+      "preview": "It depends on the unit and installation. You'll approve a flat price first.",
+      "answer": "It depends on the unit and the gas and venting work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Talk Tankless?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Hanover Park, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/hanover-park/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Hanover Park, IL. Sized for your home, flat price before we start.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Hanover Park, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Hanover Park, IL. Sized for your home, flat price before we start."
+}

@@ -1,0 +1,336 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Repair and Leak Detection in Hinsdale, IL",
+   "sub": "A faint gas smell in the basement, a red tag on the meter or an old line that once fed a stove that's long gone. Our licensed plumbers locate gas leaks, repair the piping and pressure-test it before service is restored. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Safety First",
+    "h2": "Smell Gas? Here's What to Do",
+    "intro": "Before anything else:",
+    "steps": [
+     {
+      "h3": "1. Get Out",
+      "body": "Everyone, right away."
+     },
+     {
+      "h3": "2. No Sparks",
+      "body": "Don't touch switches, phones or appliances inside."
+     },
+     {
+      "h3": "3. Call From Outside",
+      "body": "Nicor Gas or 911."
+     },
+     {
+      "h3": "4. Then Call Us",
+      "body": "When it's safe, we'll find and repair the leak."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When Gas Piping Needs a Plumber",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You Notice an Odor by an Appliance",
+      "body": "Furnace, water heater, range, dryer or fireplace."
+     },
+     {
+      "h3": "The Utility Shut Off Service",
+      "body": "A repair and pressure test come first."
+     },
+     {
+      "h3": "There Are Abandoned Lines",
+      "body": "Old branches to removed appliances should be capped and tested."
+     },
+     {
+      "h3": "Connectors Are Old or Uncoated",
+      "body": "Old brass connectors should be replaced."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "We locate gas leaks with electronic detectors and by testing fittings one at a time, then pressure-test the whole system to confirm it's sealed.",
+     "In older Hinsdale homes, leaks often turn up at old unions and valves or on branches that were abandoned when an appliance was removed. Once the repair is made, the full system is tested again so service can be restored."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Lines in Hinsdale Homes",
+    "intro": "Hinsdale gas piping ranges from early black iron to modern flexible pipe.",
+    "items": [
+     {
+      "h3": "Black Iron in Older Homes",
+      "body": "The pipe lasts, but unions and valves wear after many decades."
+     },
+     {
+      "h3": "Abandoned Branches",
+      "body": "Lines that fed old stoves, lights or space heaters should be properly capped."
+     },
+     {
+      "h3": "Outdoor Kitchens and Fire Features",
+      "body": "Lines to grills, fire pits and heaters need correct sizing and protection."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find it, fix it, prove it's tight.",
+    "steps": [
+     {
+      "h3": "1. Licensed Gas Work",
+      "body": "Gas work calls for a licensed pro."
+     },
+     {
+      "h3": "2. A Price You Approve",
+      "body": "Once we find the leak."
+     },
+     {
+      "h3": "3. Pressure-Tested",
+      "body": "Before the gas comes back on."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Michele Cotsirilos",
+      "url": null,
+      "text": "I had a great experience with J Blanton Plumbing. My toilet was leaking yesterday evening. I called J Blanton and they had someone come within an hour. Ronald came and was able to quickly diagnose the problem and help stabilize the situation. Today Matthew came out to finish fixing the overall problem. Matthew worked quickly and efficiently. He was very polite and courteous. The price was pretty competitive and reasonable. [...]"
+     },
+     {
+      "name": "Lucas Fleck",
+      "url": null,
+      "text": "These guys were fast, honest, and left my house the way it was before they started. Had to get all new drain pipes put in was quoted 3 days and they had it done in 2. Just want to say thanks to William, James, and Thomas for helping us out"
+     },
+     {
+      "name": "SuperElvis_",
+      "url": null,
+      "text": "My tech, Cameron D., was very helpful & thorough. Thank you much!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "What should I do if I smell gas?",
+      "preview": "Leave, then call Nicor Gas or 911 from outside.",
+      "answer": "Leave the house right away without touching switches. Call Nicor Gas or 911 from outside, then call us for the repair."
+     },
+     {
+      "q": "Do you offer gas leak detection without a shutoff?",
+      "preview": "Yes.",
+      "answer": "Yes. If you notice a faint odor and the utility hasn't shut off service, we can test the system and find the source."
+     },
+     {
+      "q": "Who owns the gas piping?",
+      "preview": "The utility up to the meter, you after it.",
+      "answer": "Nicor Gas is responsible up to and including the meter. Piping after the meter belongs to the homeowner."
+     },
+     {
+      "q": "Can you cap old gas lines in our home?",
+      "preview": "Yes, and test them.",
+      "answer": "Yes. We cap abandoned branches properly and pressure-test the system."
+     },
+     {
+      "q": "How much does gas leak detection and repair cost in Hinsdale?",
+      "preview": "It depends on the leak. You'll approve a flat price first.",
+      "answer": "It depends on where the leak is and how much pipe needs work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Need Your Gas Line Checked?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Repair and Leak Detection in Hinsdale, IL",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/hinsdale/gas-line-repair",
+   "description": "Gas leak detection and gas line repair in Hinsdale, IL. Licensed plumbers find the leak, repair the piping and pressure-test it first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Leak Detection in Hinsdale, IL",
+ "metaDescription": "Gas leak detection and gas line repair in Hinsdale, IL. Licensed plumbers find the leak, repair the piping and pressure-test it first."
+}

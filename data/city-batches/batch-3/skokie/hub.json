@@ -1,0 +1,226 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Skokie, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on Lincoln Avenue. Our line is open 24/7 for homeowners in Skokie and the neighboring north suburbs. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Skokie",
+   "intro": "Nearly 2 in 3 Skokie homes were built between 1940 and 1969, so a lot of the plumbing in town is the same age. Pick a service to see how we handle it in Skokie.",
+   "cards": [
+    {
+     "title": "Sewer Repair",
+     "href": "/skokie/sewer-repair",
+     "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/skokie/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/skokie/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/skokie/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Toilets & Fixtures",
+     "href": "/skokie/toilet-installation-repair",
+     "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+     "image": {
+      "src": "/images/city-hubs/toilet-fill-valve-repair.webp",
+      "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+     }
+    },
+    {
+     "title": "Leak & Pipe Repair",
+     "href": "/skokie/leak-repairs",
+     "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/skokie/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Lincoln Avenue",
+   "h2": "Our Skokie Office",
+   "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, Skokie, IL 60077, in the heart of the village. It keeps our plumbers close to homes across Skokie and the neighboring north suburbs. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "8001 Lincoln Ave, Suite 301, Skokie, IL 60077",
+   "areasH3": "North Suburbs We Serve",
+   "areas": [
+    {
+     "label": "Lincolnwood",
+     "href": "/lincolnwood"
+    },
+    {
+     "label": "Morton Grove",
+     "href": "/morton-grove"
+    },
+    {
+     "label": "Niles",
+     "href": "/niles"
+    },
+    {
+     "label": "Evanston",
+     "href": "/evanston"
+    },
+    {
+     "label": "Wilmette",
+     "href": "/wilmette"
+    },
+    {
+     "label": "Glenview",
+     "href": "/glenview"
+    },
+    {
+     "label": "Golf",
+     "href": "/golf"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/SAksfUCVB45HetzY8"
+  },
+  "depth": {
+   "h2": "What Skokie Homes Need From a Plumber",
+   "intro": "Skokie grew from about 15,000 people in 1950 to nearly 60,000 by 1960, as families moved out of Chicago after the war. The median home here was built in 1959. When most of a town is built in the same few decades, its plumbing tends to wear out on the same schedule.",
+   "tiles": [
+    {
+     "title": "Postwar Sewer Lines at 60 to 80 Years",
+     "body": "Sewer laterals from the 1940s, 50s and 60s were usually clay or cast iron. At this age, roots get in at the joints, cast iron scales up inside and sections crack. [Sewer rodding](/skokie/sewer-rodding) clears the line, and a [camera inspection](/skokie/video-camera-sewer-inspections) shows whether it needs a [repair](/skokie/sewer-repair)."
+    },
+    {
+     "title": "Low Water Pressure From Old Pipe",
+     "body": "Many postwar homes were built with galvanized steel water pipe. It rusts from the inside, so water pressure drops slowly over the years and the first water of the morning can come out tinted. When one fixture after another loses pressure, it’s time to look at the [pipes](/skokie/leak-repairs), not just the faucet."
+    },
+    {
+     "title": "Heavy Rain and Basement Backups",
+     "body": "In May 2020, Skokie got 7.35 inches of rain in five days, and the regional Deep Tunnel system filled to capacity. The village’s flood control system is designed to hold water on the street for up to four hours after a storm, which protects basements as long as your own line is ready. A [backflow valve](/skokie/flood-control-maintenance) or an [overhead sewer](/skokie/overhead-sewer-systems) keeps sewer water out of the basement."
+    },
+    {
+     "title": "Winter Freezes and Original Fixtures",
+     "body": "Skokie winters bring long stretches below freezing. Pipes in exterior walls and crawl spaces freeze first, and a split pipe often starts leaking once it thaws. We’re on call 24/7 if a [pipe bursts](/skokie/burst-pipe-repair), and we can replace worn-out [faucets and shutoff valves](/skokie/faucet-installation-repair) while we’re there."
+    }
+   ]
+  },
+  "whyH2": "Why Skokie Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Skokie Reviews",
+   "intro": "4.7 stars from 380+ Google reviews for our Skokie office.",
+   "rating": "4.7",
+   "ratingSub": "380+ Google reviews for our Skokie office",
+   "items": [
+    {
+     "name": "Irfan Karbhari",
+     "url": "https://maps.app.goo.gl/uVWLLbTiytZ5E7QT6",
+     "text": "[...] They are very professional and knowledgeable. After a few days Stephen Lemont came out to do hydro jetting. The amount of roots I had down on a sewer line were large. Stephen went above and beyond. Stephen had some recommendations for me to do after the job is complete. This has been by far the best company I hired to do any job in my house. Easy enough to do scheduling and every step along the way I had been informed by the company. [...]"
+    },
+    {
+     "name": "Tom Weyland",
+     "url": "https://maps.app.goo.gl/48KNrJTTjTcmdPg2A",
+     "text": "We had an emergency situation with our kitchen faucet. John Hogan repaired it for us on a Sunday! I highly recommend this company."
+    },
+    {
+     "name": "Joseph Frazier",
+     "url": "https://maps.app.goo.gl/SvT3Wi6v56ULfMfC6",
+     "text": "Edgar and his assistant Skylar were great. Had my repair work done quickly and offered me great details and options prior to the install. They also quickly found the source of my leaky faucet and adjusted that. They were very professional and a great help. Highly recommend them."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Skokie Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Skokie?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Lincoln Avenue office keeps our plumbers close to every part of Skokie, and we [treat emergencies as a priority](/skokie/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "My Skokie home was built in the 1950s. Is my sewer line due for replacement?",
+     "preview": "Not necessarily. Age tells you where to look, not what you’ll find.",
+     "a": "Not necessarily. Age tells you where to look, not what you’ll find. Many lines from that era still work fine, and others need a repair in one section. A [camera inspection](/skokie/video-camera-sewer-inspections) shows the actual condition, so you only fix what’s broken."
+    },
+    {
+     "q": "Why is my water pressure so low?",
+     "preview": "In older Skokie homes, the most common cause is galvanized steel water pipe that has rusted and narrowed inside.",
+     "a": "In older Skokie homes, the most common cause is galvanized steel water pipe that has rusted and narrowed inside. A clogged aerator or a failing pressure valve can do it too. We’ll check the fixtures first, then the pipes, and explain your options."
+    },
+    {
+     "q": "What is sewer line drain cleaning?",
+     "preview": "It’s cleaning the main line that carries everything from your house to the village sewer.",
+     "a": "It’s cleaning the main line that carries everything from your house to the village sewer. We clear it with a [sewer rodding](/skokie/sewer-rodding) machine or, for heavy roots and grease, [hydro jetting](/skokie/hydro-jetting). Then we can run a camera so you see what caused the clog."
+    },
+    {
+     "q": "How do I protect my basement from sewer backups?",
+     "preview": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup if you have one, and a regular check of your sewer line for roots and debris.",
+     "a": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup if you have one, and a regular check of your sewer line for roots and debris. For homes with repeat backups, an overhead sewer system lifts basement wastewater above the level where backups happen."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Skokie?",
+     "preview": "Along with Skokie, our office serves Lincolnwood, Morton Grove, Niles, Evanston, Wilmette, Glenview, Golf and more.",
+     "a": "Along with Skokie, our office serves Lincolnwood, Morton Grove, Niles, Evanston, Wilmette, Glenview, Golf and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Skokie start small, like roots in an old clay sewer line or a water heater past its prime. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Skokie Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Skokie, IL",
+ "metaDescription": "Local plumbers on Lincoln Avenue in Skokie, IL. Sewer and drain work for postwar homes. Call 24/7 for an upfront price before any work starts."
+}

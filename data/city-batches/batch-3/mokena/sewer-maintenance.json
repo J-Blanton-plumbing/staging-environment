@@ -1,0 +1,359 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Mokena, IL",
+   "sub": "Roots grow back to the same joint, and grease builds up in the same low spot. A maintenance schedule built around your line keeps it flowing and your finished basement dry. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "When a Mokena Sewer Line Needs a Schedule",
+    "intro": "It pays off when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You've Had One Backup",
+      "body": "One backup is usually the start of a pattern."
+     },
+     {
+      "h3": "There's a Sag in the Line",
+      "body": "Low spots fill with sludge between cleanings."
+     },
+     {
+      "h3": "Trees Grow Near the Sewer Path",
+      "body": "Roots return to the same joints every year."
+     },
+     {
+      "h3": "The Basement Is Finished",
+      "body": "A backup costs a lot more when there's carpet and drywall."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "How Often to Service Your Line",
+    "intro": "A starting point for most Mokena homes:",
+    "head": [
+     "Your Situation",
+     "Suggested Schedule"
+    ],
+    "rows": [
+     [
+      "Roots at a joint",
+      "Rodding or jetting once a year"
+     ],
+     [
+      "A known sag",
+      "Jetting every 1 to 2 years"
+     ],
+     [
+      "Heavy kitchen grease",
+      "Jetting every 1 to 2 years"
+     ],
+     [
+      "No problems so far",
+      "Camera check every few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Mokena Storms",
+    "intro": "In August 2025, the National Weather Service reported significant flash flooding in Mokena as storms dropped 4 to 8 inches of rain across the region.",
+    "items": [
+     {
+      "h3": "A Clear Line Drains Faster",
+      "body": "A line half full of roots or sludge has half the room when a storm hits."
+     },
+     {
+      "h3": "Schedule It in Late Winter",
+      "body": "Clear the line before spring roots and summer storms."
+     },
+     {
+      "h3": "Check the Basement Protection Too",
+      "body": "We test backflow valves, sump pumps and [ejector pumps](/mokena/ejector-pump) on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/mokena/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/mokena/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/mokena/sewer-rodding) or [Hydro Jetting](/mokena/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/mokena/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Visits Work",
+    "intro": "Your line sets the schedule, not a sales chart.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "We look before we recommend anything."
+     },
+     {
+      "h3": "2. The Right Tool",
+      "body": "Rodding for roots, jetting for grease and sludge."
+     },
+     {
+      "h3": "3. A Written Plan",
+      "body": "Interval and price agreed up front."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Mark",
+      "url": null,
+      "text": "Christian stopped by today and cleaned my hot water tank and cleaned my sewer line.He was in and out in no time.He did a great job.He was very professional, thorough and pleasant.I highly recommend his service"
+     },
+     {
+      "name": "Madeline Ehlert",
+      "url": null,
+      "text": "Christian M with JBlanton was great! His maintenance visit was very educational, thank you for clearing our sink!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Does a newer home need sewer maintenance?",
+      "preview": "Only if it's had a problem.",
+      "answer": "Not on a schedule unless the line has a sag, roots or a history of clogs. A camera check every few years is enough for a line that's working."
+     },
+     {
+      "q": "What time of year is best for sewer maintenance?",
+      "preview": "Late winter or early spring.",
+      "answer": "Late winter or early spring, before roots start growing and before the summer storms."
+     },
+     {
+      "q": "Can maintenance prevent a storm backup?",
+      "preview": "It helps your line drain, but protection does more.",
+      "answer": "A clean line drains faster. If the village sewer is overloaded in a storm, you need a backflow valve or an [overhead sewer](/mokena/overhead-sewer-systems)."
+     },
+     {
+      "q": "Is sewer maintenance part of the No Drip Club?",
+      "preview": "The club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance. Ask how it applies to your sewer line."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Mokena?",
+      "preview": "It depends on the service. You'll approve a flat price first.",
+      "answer": "It depends on whether your line needs rodding, jetting or a camera check. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Mokena, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/mokena/sewer-maintenance",
+   "description": "Preventive sewer maintenance for Mokena, IL homes. Scheduled rodding, jetting and camera checks before roots or grease cause a backup.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Mokena, IL",
+ "metaDescription": "Preventive sewer maintenance for Mokena, IL homes. Scheduled rodding, jetting and camera checks before roots or grease cause a backup."
+}

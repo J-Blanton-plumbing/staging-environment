@@ -1,0 +1,329 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in Evanston, IL",
+   "sub": "A sump pump that runs nonstop, hums without pumping or is old enough to worry about. We repair, replace and install sump pumps and add battery backups for Evanston basements. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Runs Nonstop",
+      "body": "A stuck float or bad check valve."
+     },
+     {
+      "h3": "It Hums Without Pumping",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "It's 7 to 10 Years Old",
+      "body": "Replace before it fails."
+     },
+     {
+      "h3": "No Backup",
+      "body": "Storms bring outages."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Evanston Basements",
+    "intro": "Being close to the lake doesn't decide whether a basement is wet. Soil and drainage do.",
+    "items": [
+     {
+      "h3": "Some Older Homes Have None",
+      "body": "We can add a pit where water collects."
+     },
+     {
+      "h3": "Battery Backups",
+      "body": "Storms and power outages often arrive together."
+     },
+     {
+      "h3": "Discharge Placement",
+      "body": "Pointed away from the foundation and the neighbors."
+     },
+     {
+      "h3": "Not for Sewer Water",
+      "body": "Sewer backups need a backflow valve or [overhead sewer](/evanston/overhead-sewer-systems)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A pump you can count on.",
+    "steps": [
+     {
+      "h3": "1. Test It",
+      "body": "Pump, float, valve and discharge."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Add a Backup",
+      "body": "If you'd like one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "how-to-test-your-sump-pump-before-spring",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Test It",
+    "h2": "How to Test Your Sump Pump Before Spring",
+    "body": "Lift the lid and pour a bucket of water into the pit. The float should rise, the pump should start, empty the pit and shut off on its own. Then go outside and make sure water comes out of the discharge pipe and drains away from the house. If the pump hums but doesn't move water, runs and won't stop or doesn't start at all, call us. Spring rain is a bad time to find out.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "where-your-sump-pump-water-goes",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Discharge",
+    "h2": "Where Your Sump Pump Water Goes",
+    "body": "A sump pump is only as good as its discharge line. If the line dumps water right next to the foundation, it can cycle back into the pit. If it freezes in winter, the pump can't empty the pit. We check that the line carries water well away from the house and slopes properly, and add a freeze guard fitting where it helps.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "monica reyna-vukotich",
+      "url": null,
+      "text": "Excellent! Got here at the tone stated, called with an estimated time of arrival."
+     },
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Can you install a sump pump in an older basement?",
+      "preview": "Often.",
+      "answer": "Often. We cut a pit where water collects and route the discharge outside."
+     },
+     {
+      "q": "Do I need a battery backup?",
+      "preview": "If the basement is finished, yes.",
+      "answer": "If the basement is finished or stores anything valuable, yes."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "About 7 to 10 years.",
+      "answer": "Most last about 7 to 10 years."
+     },
+     {
+      "q": "Will a sump pump stop sewer backups?",
+      "preview": "No.",
+      "answer": "No. It moves groundwater. For sewer backups, see overhead sewers or backflow valves."
+     },
+     {
+      "q": "Why does my sump pump run when it hasn't rained?",
+      "preview": "Groundwater or a valve problem.",
+      "answer": "High groundwater can keep it running. So can a failed check valve that lets water flow back into the pit."
+     },
+     {
+      "q": "Can you install a sump pump with an alarm?",
+      "preview": "Yes.",
+      "answer": "Yes. A high-water alarm warns you if the pump falls behind."
+     },
+     {
+      "q": "How much does sump pump installation cost in Evanston?",
+      "preview": "It depends on the pump and pit. You'll approve a flat price first.",
+      "answer": "It depends on the pump, whether you need a new pit and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in Evanston, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/evanston/sump-pumps",
+   "description": "Sump pump installation, repair and battery backups in Evanston, IL. Tested, sized right and priced flat before any work. 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in Evanston, IL",
+ "metaDescription": "Sump pump installation, repair and battery backups in Evanston, IL. Tested, sized right and priced flat before any work. 24/7."
+}

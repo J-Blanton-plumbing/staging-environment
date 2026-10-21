@@ -1,0 +1,331 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Installation and Repair in Hinsdale, IL",
+   "sub": "Converting a wood-burning fireplace to gas logs, adding a gas line for a new insert or fixing a pilot that won't stay lit. We handle the gas side of Hinsdale fireplaces and leak-test every fitting. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Hinsdale Gas Fireplace Trouble",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pilot Won't Stay Lit",
+      "body": "A dirty pilot or a weak thermocouple or thermopile."
+     },
+     {
+      "h3": "It Shuts Off by Itself",
+      "body": "The safety system is cutting the gas."
+     },
+     {
+      "h3": "Soot on the Logs or Glass",
+      "body": "A dirty or poorly adjusted flame."
+     },
+     {
+      "h3": "You Want Gas Instead of Wood",
+      "body": "Gas logs or an insert in an existing fireplace."
+     },
+     {
+      "h3": "Any Gas Smell",
+      "body": "Get outside first, then call Nicor Gas or 911."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Installation, Repair and Service",
+    "intro": "We handle:",
+    "steps": [
+     {
+      "h3": "Gas Line and Valve Installation",
+      "body": "For gas logs, inserts and new units. See [gas line installation](/hinsdale/gas-line-installation)."
+     },
+     {
+      "h3": "Repair",
+      "body": "Pilots, thermocouples, thermopiles, valves and igniters."
+     },
+     {
+      "h3": "Yearly Service",
+      "body": "Burner, pilot and logs cleaned and every fitting leak-tested."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Fireplaces in Hinsdale Homes",
+    "intro": "Many older Hinsdale homes were built with wood-burning fireplaces, and many owners have converted them to gas.",
+    "items": [
+     {
+      "h3": "Gas Logs in Masonry Fireplaces",
+      "body": "Vented gas logs need the damper held partly open with a clamp at all times."
+     },
+     {
+      "h3": "Inserts and Direct-Vent Units",
+      "body": "Sealed units vent through a liner or the wall and are more efficient."
+     },
+     {
+      "h3": "Chimney Condition Matters",
+      "body": "We handle the gas side. If the chimney needs work, we'll point you to a specialist."
+     },
+     {
+      "h3": "Carbon Monoxide Detectors",
+      "body": "Every home with a gas fireplace needs working detectors."
+     },
+     {
+      "h3": "Outdoor Fireplaces",
+      "body": "Gas fireplaces and fire pits on the patio need lines sized and protected for outdoor use."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Work",
+    "intro": "Licensed gas work and honest advice.",
+    "steps": [
+     {
+      "h3": "1. Check the Setup First",
+      "body": "Damper, venting and gas supply."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Approved before we start."
+     },
+     {
+      "h3": "3. Leak-Tested",
+      "body": "Every fitting, every time."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Anthony Kamykowski",
+      "url": null,
+      "text": "Needed a gas leak repair. Ty did an excellent job. He was thorough, professional, and knowledgeable. Seems like an honest company!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Can our wood-burning fireplace be converted to gas?",
+      "preview": "Often, if the chimney is sound.",
+      "answer": "Often. The chimney has to be in good shape and drawing well. We run the gas line and install the valve, and a chimney specialist handles any flue work."
+     },
+     {
+      "q": "Does a gas log fireplace need the damper open?",
+      "preview": "Yes, vented logs need it held open.",
+      "answer": "Yes. Vented gas logs need a fixed damper opening so exhaust can leave through the chimney. A damper clamp prevents it from being closed."
+     },
+     {
+      "q": "Why won't my pilot stay lit?",
+      "preview": "Usually a dirty pilot or a weak thermocouple.",
+      "answer": "Usually the pilot is dirty or the thermocouple or thermopile is weak. Cleaning or replacing the part fixes it."
+     },
+     {
+      "q": "When should we schedule service?",
+      "preview": "Early fall.",
+      "answer": "September or early October, before the first cold night."
+     },
+     {
+      "q": "How much does gas fireplace work cost in Hinsdale?",
+      "preview": "It depends on the job. You'll approve a flat price first.",
+      "answer": "It depends on whether it's a repair, a yearly service or a new gas line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Fireplace That Lights?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Installation and Repair in Hinsdale, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/hinsdale/gas-fireplace",
+   "description": "Gas fireplace installation, gas log conversions, repair and yearly service in Hinsdale, IL. Licensed gas work, leak-tested every time.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplaces in Hinsdale, IL",
+ "metaDescription": "Gas fireplace installation, gas log conversions, repair and yearly service in Hinsdale, IL. Licensed gas work, leak-tested every time."
+}

@@ -1,0 +1,332 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Hanover Park, IL",
+   "sub": "A restaurant on Barrington Road, a salon on Irving Park Road or a business in an industrial park. When the water heater fails, business stops. We repair, replace and maintain commercial water heaters across Hanover Park. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Hanover Park Businesses We Serve",
+    "intro": "Including:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Restaurants",
+      "body": "Hot water from open to close."
+     },
+     {
+      "h3": "Salons and Spas",
+      "body": "Back-to-back appointments."
+     },
+     {
+      "h3": "Warehouses and Shops",
+      "body": "Restrooms and wash stations."
+     },
+     {
+      "h3": "Offices",
+      "body": "Restrooms and break rooms."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Services",
+    "intro": "For the life of the equipment:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Diagnosed and priced first."
+     },
+     {
+      "h3": "Replacement",
+      "body": "Sized to your peak demand."
+     },
+     {
+      "h3": "Maintenance",
+      "body": "Flushing, descaling and safety checks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Hanover Park Businesses",
+    "intro": "Our office is on Greenbrook Boulevard, close to the village's main commercial roads.",
+    "items": [
+     {
+      "h3": "Shopping Centers and Industrial Parks",
+      "body": "We work in both."
+     },
+     {
+      "h3": "After-Hours Failures",
+      "body": "Our line is open 24/7."
+     },
+     {
+      "h3": "Prices Before Work",
+      "body": "Flat-rate pricing."
+     },
+     {
+      "h3": "Shared Strip Centers",
+      "body": "We plan shutoffs so the businesses next door aren't without water longer than needed."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "keeping-downtime-short",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Plan Ahead",
+    "h2": "Keeping Downtime Short",
+    "body": "For a business, the cost of a failed water heater is the hours you can't operate. The best protection is knowing your equipment before it fails. We can record the make, model, age and condition of your heater, flush it on a schedule and tell you when it's close to the end, so the replacement happens on a slow morning instead of a busy Friday. When something does fail without warning, our phone line is open 24/7.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "water-heaters-in-warehouses-and-light-industry",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Industrial Spaces",
+    "h2": "Water Heaters in Warehouses and Light Industry",
+    "body": "Hanover Park's industrial parks have warehouses, shops and small manufacturers that need hot water for restrooms, break rooms, wash stations and sometimes processes. Equipment is often tucked in a mezzanine or utility room that's hard to reach. We plan access before replacement, size equipment for your shifts and set up maintenance so it keeps running between visits.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-commercial-water-heater-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Commercial Water Heater Work",
+    "body": "Capacity, fuel and venting matter most. Access in a warehouse or strip center unit can add labor. Code updates and any changes to piping or valves are part of the scope. We look at your setup and quote one flat price before any work.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Aaron Barkoff",
+      "url": null,
+      "text": "Scott was awesome--super friendly, professional, and happy to answer all our questions"
+     },
+     {
+      "name": "Patrick Schulze",
+      "url": null,
+      "text": "Was a major bit of sewer repair, but could not have been more pleased with the professionalism and congeniality of Richard and his team. They explained every step of the process as it was being done, and were more than happy to answer questions."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Hanover Park Businesses",
+    "items": [
+     {
+      "q": "Do you take emergency commercial calls?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. Call any time."
+     },
+     {
+      "q": "Do you handle other commercial plumbing?",
+      "preview": "Yes.",
+      "answer": "Yes. We also clear commercial drains and handle restroom plumbing."
+     },
+     {
+      "q": "Can you work outside business hours?",
+      "preview": "For planned work, we'll try.",
+      "answer": "For planned replacements, we'll schedule around your hours where we can."
+     },
+     {
+      "q": "How do you size a commercial heater?",
+      "preview": "By your busiest hour.",
+      "answer": "We look at peak demand and the temperatures you need."
+     },
+     {
+      "q": "Can you coordinate access with the building owner?",
+      "preview": "Yes.",
+      "answer": "Yes. We can coordinate access and approvals with whoever controls the building."
+     },
+     {
+      "q": "Do you service tankless commercial units?",
+      "preview": "Yes.",
+      "answer": "Yes. We descale and repair commercial tankless systems."
+     },
+     {
+      "q": "Can you replace a heater during a weekend shutdown?",
+      "preview": "For planned work, we'll try.",
+      "answer": "For planned replacements, we'll schedule around your shutdowns where we can."
+     },
+     {
+      "q": "How much does commercial water heater work cost in Hanover Park?",
+      "preview": "It depends on capacity, fuel and venting. You'll approve a flat price first.",
+      "answer": "It depends on capacity, fuel type, venting and code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Hanover Park, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/hanover-park/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Hanover Park businesses. 24/7 line and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Hanover Park, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Hanover Park businesses. 24/7 line and a flat price before work."
+}

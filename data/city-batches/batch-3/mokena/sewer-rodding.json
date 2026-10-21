@@ -1,0 +1,312 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Rodding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Power Rodding and Sewer Rodding in Mokena, IL",
+   "sub": "Water coming up through the basement floor drain, or every fixture in the house draining slowly at the same time, means the main line is blocked. We power rod it clear, show you what caused it and give you a flat price before we start. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-rodding-front-yard.webp",
+    "alt": "J. Blanton plumber feeding the cable from a drum rodding machine into an outdoor sewer cleanout in a front yard"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-sewer-rodding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Sewer Rodding?",
+    "body": "Sewer rodding clears a blocked main line with a long, flexible steel cable fed through a cleanout access point. A cutting head on the end breaks through roots, grease, and debris and pushes the blockage toward the street connection, restoring flow through the pipe. It's the standard first fix for a clogged or backed-up sewer line. For most homes, it's the only fix needed.",
+    "img": {
+     "src": "/images/city-services-v2/sewer-rodding-diagram.webp",
+     "alt": "Diagram showing a rodding cable fed through a cleanout access point into the main sewer line, with a cutting head clearing the blockage toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Mokena Main Line Needs Rodding",
+    "intro": "Call before it backs up all the way:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Floor Drain Fills Up",
+      "body": "When the washer drains or someone showers, water rises at the lowest drain in the house."
+     },
+     {
+      "h3": "More Than One Fixture Is Slow",
+      "body": "A slow toilet, tub and kitchen sink together point to the main line."
+     },
+     {
+      "h3": "Toilets Bubble or Gurgle",
+      "body": "Air trapped behind a clog pushes back up through the bowls."
+     },
+     {
+      "h3": "It Happened Last Spring Too",
+      "body": "Roots grow back to the same joint, usually on about the same schedule."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Blocks Main Lines in Mokena",
+    "intro": "Most Mokena homes were built in the last 35 years, so the clogs here are a little different from older towns.",
+    "items": [
+     {
+      "h3": "Wipes and Paper in a Low Spot",
+      "body": "In a line with a slight sag, flushable wipes and paper settle and build up until the line stops."
+     },
+     {
+      "h3": "Fine Roots at a Loose Joint",
+      "body": "Roots from yard trees planted with the subdivision find any gap and grow into a mat."
+     },
+     {
+      "h3": "Grease From the Kitchen",
+      "body": "Years of cooking grease coat the line between the kitchen and the main."
+     },
+     {
+      "h3": "When Rodding Keeps Coming Back",
+      "body": "If you need rodding every few months, [hydro jetting](/mokena/hydro-jetting) or a [sewer repair](/mokena/sewer-repair) is the better fix."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Handle Power Rodding",
+    "intro": "Clear the line, then show you why it clogged.",
+    "steps": [
+     {
+      "h3": "1. Work From the Cleanout",
+      "body": "Floors covered, equipment set up at the cleanout, not through a toilet if we can avoid it."
+     },
+     {
+      "h3": "2. Rod, Then Camera",
+      "body": "Cleared to the main, then inspected so you see the cause."
+     },
+     {
+      "h3": "3. Flat Price Up Front",
+      "body": "Agreed before we start, with options priced if we find damage."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Rodding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Gordon Kabbe",
+      "url": null,
+      "text": "Dominick did a great job very professional and fast.i would use blanton anytime"
+     },
+     {
+      "name": "John Costouros",
+      "url": null,
+      "text": "Zachary did a great job clearing out our sewer line after a clog. He was very professional, friendly, and knowledgeable. I would highly recommend him and J. Blanton Plumbing."
+     },
+     {
+      "name": "Conor Kinasz",
+      "url": null,
+      "text": "Very helpful with explaining the issue we faced and providing solutions to resolve the problem for good"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Power Rodding Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "What's the difference between power rodding and sewer rodding?",
+      "preview": "Same service, different names.",
+      "answer": "They're the same thing. Power rodding just refers to the motorized machine that turns the cutting cable through your main line."
+     },
+     {
+      "q": "How often should my line be rodded?",
+      "preview": "Only as often as roots or clogs come back.",
+      "answer": "If roots have blocked the line before, once a year is common. If it was a one-time clog from wipes or grease, you may not need it again for years."
+     },
+     {
+      "q": "Can rodding damage a PVC sewer line?",
+      "preview": "Not with the right cutting head.",
+      "answer": "Not when it's done right. We match the cutting head to the pipe size and material, and the camera shows the condition of the line afterward."
+     },
+     {
+      "q": "Where is the cleanout in a Mokena home?",
+      "preview": "Usually in the basement or just outside the foundation.",
+      "answer": "In most homes built since the 1990s, there's a cleanout in the basement near where the main line leaves, and sometimes another one outside. We'll find it."
+     },
+     {
+      "q": "How much does power rodding cost in Mokena?",
+      "preview": "It depends on access and the clog. You'll approve a flat price first.",
+      "answer": "It depends on where the cleanout is, how long the line is and what's blocking it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Main Line Flowing?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Power Rodding and Sewer Rodding in Mokena, IL",
+   "serviceType": "Sewer Rodding",
+   "url": "https://jblantonplumbing.com/mokena/sewer-rodding",
+   "description": "Power rodding in Mokena, IL. Main sewer lines cleared with a cutting cable, the cause shown on camera and a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Power Rodding & Sewer Rodding in Mokena, IL",
+ "metaDescription": "Power rodding in Mokena, IL. Main sewer lines cleared with a cutting cable, the cause shown on camera and a flat price first. Call 24/7."
+}

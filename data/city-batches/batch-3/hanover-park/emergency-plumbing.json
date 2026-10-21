@@ -1,0 +1,332 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24-Hour Emergency Plumber in Hanover Park, IL",
+   "sub": "A burst pipe, a sump pump that quit in a storm or sewage in the basement. Call us any time, including nights, weekends and holidays. We'll get a plumber to you as soon as we can. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It a Plumbing Emergency?",
+    "intro": "Call right away for:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Burst Pipe",
+      "body": "Water you can't stop."
+     },
+     {
+      "h3": "A Dead Sump Pump in a Storm",
+      "body": "Water rising in the pit."
+     },
+     {
+      "h3": "Sewage in the Basement",
+      "body": "Through the floor drain."
+     },
+     {
+      "h3": "No Hot Water in Winter",
+      "body": "Or a leaking tank."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave, then call Nicor Gas or 911."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in Hanover Park",
+    "intro": "Storms and aging systems drive most calls.",
+    "items": [
+     {
+      "h3": "Storm Nights",
+      "body": "Heavy rain and power outages, like August 2007."
+     },
+     {
+      "h3": "Main Line Clogs",
+      "body": "Roots and low spots in 35- to 55-year-old lines."
+     },
+     {
+      "h3": "Water Heaters at the End",
+      "body": "Tanks that finally give out."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Right Now",
+    "h2": "What to Do Before We Arrive",
+    "intro": "These steps limit the damage:",
+    "steps": [
+     {
+      "h3": "1. Find the Main Shutoff",
+      "body": "Usually near the water meter."
+     },
+     {
+      "h3": "2. Turn Off the Water Heater",
+      "body": "If the leak is near it."
+     },
+     {
+      "h3": "3. Move Valuables",
+      "body": "Off the basement floor."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any time."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "steps",
+    "id": "what-you-get-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "Fast help and a price first.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Even in an emergency."
+     },
+     {
+      "h3": "3. Fixed Right",
+      "body": "Not just patched."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-can-wait-until-morning",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Know What Can Wait",
+    "h2": "What Can Wait Until Morning",
+    "body": "Not every plumbing problem has to be fixed at 2 a.m. A dripping faucet, a running toilet or a slow sink can usually wait for a regular appointment. If you can stop the water at a fixture shutoff and the house is otherwise usable, you have time. Call right away when water is spreading, sewage is coming up, the sump pump has failed during rain or there's no way to shut the water off. If you're unsure, call and we'll help you decide.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "M Geula",
+      "url": null,
+      "text": "Clayton Griffel came and provided great same-day service on work of replacing a pipe and faucet connection. Clayton was courteous and attentive to the job. Definitely \"a good call\" to J. Blanton this time."
+     },
+     {
+      "name": "Andrew Clavijo",
+      "url": null,
+      "text": "I had an incredible experience with Anthony M., who came out for an emergency plumbing issue. From the moment he arrived, he showed outstanding professionalism, deep technical knowledge, and a truly customer-focused approach. Anthony went above and beyond in every way. He took the time to thoroughly investigate the problem, clearly explain what was happening, and walk me through each step of the process. [...]"
+     },
+     {
+      "name": "Andy Malnor",
+      "url": null,
+      "text": "Andrew was able to come same-day and diagnosed the issue, provided some options, and got us all figured out. Easy process overall and will call them again for future plumbing problems."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Are you really available 24 hours?",
+      "preview": "Yes.",
+      "answer": "Yes. Our phone line is open around the clock."
+     },
+     {
+      "q": "My sump pump stopped during a storm. What do I do?",
+      "preview": "Check power, then call us.",
+      "answer": "Check whether it has power and the float isn't stuck. If it still won't run, call us right away."
+     },
+     {
+      "q": "Who do I call if I smell gas?",
+      "preview": "Nicor Gas or 911, from outside.",
+      "answer": "Leave the house and call Nicor Gas or 911 from outside. We'll handle the repair once it's safe."
+     },
+     {
+      "q": "Will I know the price first?",
+      "preview": "Yes.",
+      "answer": "Yes. You'll approve a flat-rate price before work begins."
+     },
+     {
+      "q": "How fast can you get here?",
+      "preview": "As soon as we can.",
+      "answer": "Our office is on Greenbrook Boulevard, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Do you charge more at night?",
+      "preview": "You'll approve the price first.",
+      "answer": "You'll know the price and approve it before we start, any time of day."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? Call Us Now.",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24-Hour Emergency Plumber in Hanover Park, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/hanover-park/emergency-plumbing",
+   "description": "24/7 emergency plumber in Hanover Park, IL. Burst pipes, sewer backups, failed sump pumps and no hot water. Call any time.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Hanover Park, IL | 24/7",
+ "metaDescription": "24/7 emergency plumber in Hanover Park, IL. Burst pipes, sewer backups, failed sump pumps and no hot water. Call any time."
+}

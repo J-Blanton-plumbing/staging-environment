@@ -1,0 +1,348 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Installation in Lincoln Park, Chicago",
+   "sub": "A leaking tank, a heater too small for your household or one that's simply worn out. We size the replacement, install it to code and haul the old one down the stairs and away. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Replace Your Water Heater",
+    "intro": "Usually when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Leaks",
+      "body": "There's no repairing it."
+     },
+     {
+      "h3": "It's 10 to 12 Years Old or More",
+      "body": "Check the label."
+     },
+     {
+      "h3": "It Can't Keep Up",
+      "body": "After a renovation added a bath."
+     },
+     {
+      "h3": "It Keeps Breaking",
+      "body": "Repairs add up."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "Start to finish:",
+    "steps": [
+     {
+      "h3": "1. Measure the Space",
+      "body": "Closets, stairs and doorways."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Connections, relief valve, drain pan and venting."
+     },
+     {
+      "h3": "3. Test and Haul Away",
+      "body": "Including the trip down the stairs."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Lincoln Park",
+    "intro": "Replacing a water heater in a city home has its own challenges.",
+    "items": [
+     {
+      "h3": "Closet Installs",
+      "body": "Condo heaters often fit a tight closet. We match the size or recommend a better fit."
+     },
+     {
+      "h3": "Drain Pans Over Living Space",
+      "body": "A pan and drain protect the unit below."
+     },
+     {
+      "h3": "Venting in Older Buildings",
+      "body": "Gas heaters need venting that meets code, which may mean changes."
+     },
+     {
+      "h3": "Considering Tankless?",
+      "body": "See [tankless water heaters](/chicago-lincoln-park/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "One flat price and a clean install.",
+    "steps": [
+     {
+      "h3": "1. Options Explained",
+      "body": "Size, fuel and venting."
+     },
+     {
+      "h3": "2. One Price",
+      "body": "Parts, labor and haul-away."
+     },
+     {
+      "h3": "3. Usually Same Day",
+      "body": "Most swaps finish in a day."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "installing-a-heater-in-a-condo-closet",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Closet Installs",
+    "h2": "Installing a Heater in a Condo Closet",
+    "body": "A closet installation has a few requirements: room for the heater and service access, proper venting or an electric model, a drain pan with a drain line where possible and a way to get the old tank out and the new one in. In a walk-up building, that might mean three flights of stairs. We plan the size, the route and the timing before install day, so the swap goes smoothly.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-water-heater",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Water Heater",
+    "body": "Size, fuel and venting come first. Closet installs may need a drain pan and a compact model. Stairs and building rules can affect labor. We check everything and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alicja Ziecina",
+      "url": null,
+      "text": "Lou was super helpful in fixing our water heater and gave very informed suggestions. Thank you Lou for your quick work!"
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     },
+     {
+      "name": "Mark",
+      "url": null,
+      "text": "Christian stopped by today and cleaned my hot water tank and cleaned my sewer line.He was in and out in no time.He did a great job.He was very professional, thorough and pleasant.I highly recommend his service"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Will a new heater fit in my condo closet?",
+      "preview": "We measure first.",
+      "answer": "We measure the closet and the path in before we quote, and we'll recommend a model that fits."
+     },
+     {
+      "q": "Do I need a drain pan?",
+      "preview": "Over living space, yes.",
+      "answer": "If the heater sits above another unit or finished space, a pan with a drain is strongly recommended."
+     },
+     {
+      "q": "Can you install a bigger heater after our renovation?",
+      "preview": "Usually, if the space and venting allow.",
+      "answer": "Usually. We check the space, venting and gas or electric supply first."
+     },
+     {
+      "q": "Do you remove the old heater?",
+      "preview": "Yes.",
+      "answer": "Yes, including carrying it out of the building."
+     },
+     {
+      "q": "Can I switch from gas to electric?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes, if the electrical service can support it. We'll check."
+     },
+     {
+      "q": "How much does water heater installation cost in Lincoln Park?",
+      "preview": "It depends on size, type and venting. You'll approve a flat price first.",
+      "answer": "It depends on the size, fuel type, venting and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Installation in Lincoln Park, Chicago",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/water-heater-installation",
+   "description": "Water heater installation and replacement in Lincoln Park, Chicago. Sized for your unit or home, installed to code and priced flat.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Installation in Lincoln Park",
+ "metaDescription": "Water heater installation and replacement in Lincoln Park, Chicago. Sized for your unit or home, installed to code and priced flat."
+}

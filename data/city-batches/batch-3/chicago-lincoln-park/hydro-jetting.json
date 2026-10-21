@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Hydro Jetting",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Hydro Jetting in Lincoln Park, Chicago",
+   "sub": "When several kitchens and bathrooms share one old drain line, buildup comes back fast. Hydro jetting scours the pipe walls clean. We camera the line first and give you a flat price. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+    "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Hydro Jetting?",
+    "body": "Hydro jetting clears a sewer line with a high-pressure water stream, fed through the same cleanout access point used for rodding. A specialized nozzle sprays water in every direction as it moves through the pipe, scouring grease, scale, and roots off the entire pipe wall instead of just cutting a path through the middle. It's the fix for buildup that keeps coming back after rodding, or for roots that have worked into the pipe joints. Rodding opens the line back up. Hydro jetting cleans it.",
+    "img": {
+     "src": "/images/city-services-v2/hydro-jetting-diagram.webp",
+     "alt": "Diagram showing how hydro jetting clears a residential sewer line, with a cross-section view of the underground pipe, jet nozzle, high-pressure water spray, and debris being flushed toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "when-you-need-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "When It Makes Sense",
+    "h2": "When Lincoln Park Lines Need Jetting",
+    "intro": "Jetting is the right call for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Grease From Several Kitchens",
+      "body": "Shared building lines coat quickly."
+     },
+     {
+      "h3": "Roots That Keep Coming Back",
+      "body": "It removes growth from the whole pipe wall."
+     },
+     {
+      "h3": "Scale in Old Cast Iron Stacks",
+      "body": "It restores the pipe's opening."
+     },
+     {
+      "h3": "Prep for Lining",
+      "body": "A liner needs a clean pipe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Jetting Works in Lincoln Park",
+    "intro": "Lincoln Park's older buildings put a lot of demand on century-old drain lines.",
+    "items": [
+     {
+      "h3": "Shared Building Drains",
+      "body": "In two-flats and condo buildings, the main line carries everyone's grease."
+     },
+     {
+      "h3": "Cast Iron and Clay",
+      "body": "We camera first and set the pressure for the pipe's condition."
+     },
+     {
+      "h3": "Garden Unit Kitchens",
+      "body": "A below-grade kitchen drains through the lowest part of the line, where grease settles first."
+     },
+     {
+      "h3": "Before and After Footage",
+      "body": "You see the result."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "what-happens-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We look before we jet.",
+    "steps": [
+     {
+      "h3": "1. Inspect",
+      "body": "Camera first."
+     },
+     {
+      "h3": "2. Jet",
+      "body": "Pressure set for the pipe."
+     },
+     {
+      "h3": "3. Show the Result",
+      "body": "At the price you approved."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "jetting-kitchen-stacks-in-multi-unit-buildings",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Stacks",
+    "h2": "Jetting Kitchen Stacks in Multi-Unit Buildings",
+    "body": "In a building with stacked kitchens, grease from every unit runs down the same vertical pipe and into one horizontal line in the basement. That line is where grease cools, settles and builds up. Rodding opens it for a while, but the buildup stays. Jetting from a basement cleanout scours the line clean, and in many buildings we can also jet the stack from above to clear buildup higher up.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Hydro Jetting Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Judith Schader",
+      "url": "https://maps.app.goo.gl/8sp2hFNkS7FD3Yp38",
+      "text": "He rodded out the kitchen sink drain piping and fixed the leaks... In the end he offered us an excellent maintenance plan, which will definitely save us money and headaches in the future."
+     },
+     {
+      "name": "David Torrey",
+      "url": null,
+      "text": "Jake Betke, his crew and his supervising manager Kyle Dooley did an exceptional job on our bundled plumbing projects this week. They worked really hard to get everything done on time and to do the difficult work well. I've had Jake help us in the past and this job was typical - expertly done plumbing and sewer work at a fair price."
+     },
+     {
+      "name": "Scott Green",
+      "url": null,
+      "text": "Prompt response to a water issue. Very professional and considerate. Would recommend!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Hydro Jetting Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Can hydro jetting clean a building's main stack?",
+      "preview": "Often, from a cleanout.",
+      "answer": "Often. Cast iron stacks with heavy scale can be jetted from an accessible cleanout. We check the pipe first."
+     },
+     {
+      "q": "Is jetting safe for 100-year-old pipe?",
+      "preview": "If it's sound. We check first.",
+      "answer": "If the camera shows the pipe is sound, yes. Broken sections get repaired first."
+     },
+     {
+      "q": "How is jetting different from rodding?",
+      "preview": "It cleans the whole wall, not just a path.",
+      "answer": "Rodding cuts a path through a clog. Jetting removes grease, scale and roots from the entire pipe wall."
+     },
+     {
+      "q": "How long do the results last?",
+      "preview": "Years for grease, less for roots.",
+      "answer": "Often years for grease and scale. Roots grow back eventually through open joints."
+     },
+     {
+      "q": "How often should a building's kitchen line be jetted?",
+      "preview": "Often every year or two.",
+      "answer": "Often every year or two in buildings with stacked kitchens. The camera tells us."
+     },
+     {
+      "q": "How much does hydro jetting cost in Lincoln Park?",
+      "preview": "It depends on the line and buildup. You'll approve a flat price first.",
+      "answer": "It depends on the line length, access and how much buildup there is. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Line That Stays Clear?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Hydro Jetting in Lincoln Park, Chicago",
+   "serviceType": "Hydro Jetting",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/hydro-jetting",
+   "description": "Hydro jetting in Lincoln Park, Chicago. High-pressure water clears grease, roots and scale from old building drains. Camera first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Hydro Jetting in Lincoln Park, Chicago",
+ "metaDescription": "Hydro jetting in Lincoln Park, Chicago. High-pressure water clears grease, roots and scale from old building drains. Camera first."
+}

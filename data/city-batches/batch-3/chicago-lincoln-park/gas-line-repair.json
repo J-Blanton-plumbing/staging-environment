@@ -1,0 +1,351 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Repair in Lincoln Park, Chicago",
+   "sub": "A faint gas smell in the basement, a red tag from Peoples Gas or old piping to appliances long gone. Our licensed plumbers find gas leaks, repair the piping and pressure-test it before service is restored. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Safety First",
+    "h2": "Smell Gas in Your Lincoln Park Building?",
+    "intro": "Get out first:",
+    "steps": [
+     {
+      "h3": "1. Get Out",
+      "body": "Everyone leaves the building."
+     },
+     {
+      "h3": "2. No Sparks",
+      "body": "No switches, phones or appliances."
+     },
+     {
+      "h3": "3. Call From Outside",
+      "body": "Peoples Gas or 911."
+     },
+     {
+      "h3": "4. Then Call Us",
+      "body": "We'll find and fix the leak."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When Gas Piping Needs a Plumber",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You Smell Gas Near an Appliance",
+      "body": "Range, water heater, dryer or fireplace."
+     },
+     {
+      "h3": "Peoples Gas Shut Off Service",
+      "body": "Repairs and a pressure test come first."
+     },
+     {
+      "h3": "Old Lines Lead Nowhere",
+      "body": "Branches to removed appliances."
+     },
+     {
+      "h3": "Connectors Are Old",
+      "body": "Uncoated brass should be replaced."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "We locate gas leaks with electronic detectors and by testing fittings, then pressure-test the system to confirm it's sealed.",
+     "In older Lincoln Park buildings, we often find leaks at old unions, at original valves and on branches left from appliances removed decades ago. After the repair, the system is tested again so Peoples Gas can restore service."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Lines in Lincoln Park",
+    "intro": "Gas piping in older buildings has been added to many times.",
+    "items": [
+     {
+      "h3": "Black Iron That's Been Modified",
+      "body": "Decades of renovations leave branches and joints."
+     },
+     {
+      "h3": "Meters for Several Units",
+      "body": "Multi-unit buildings often have a meter bank in the basement."
+     },
+     {
+      "h3": "Gas Fireplaces and Ranges",
+      "body": "Common upgrades that tie into old piping."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find it, fix it, prove it.",
+    "steps": [
+     {
+      "h3": "1. Licensed Gas Work",
+      "body": "Done by our licensed plumbers."
+     },
+     {
+      "h3": "2. A Price You Approve",
+      "body": "Once we find it."
+     },
+     {
+      "h3": "3. Pressure-Tested",
+      "body": "Before service returns."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "gas-leaks-in-buildings-with-many-meters",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Multi-Unit Buildings",
+    "h2": "Gas Leaks in Buildings With Many Meters",
+    "body": "A Lincoln Park building may have a row of gas meters in the basement, one for each unit, plus one for shared equipment. When Peoples Gas shuts off service, tracing which piping belongs to which meter is the first job. We find the leak on the affected system, repair it and pressure-test it, so service can be restored to the right units without disturbing the others.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Victoria Elliot",
+      "url": null,
+      "text": "Christian M was amazing to work with! Responsive, friendly, professional, and got the job done quickly. Super pleased to not have this pesky leak anymore"
+     },
+     {
+      "name": "Vidal Cordova",
+      "url": null,
+      "text": "Thomas was professional in his work and approachable at answering questions and making helpful comments."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "What should I do if I smell gas?",
+      "preview": "Leave and call Peoples Gas or 911.",
+      "answer": "Leave the building without touching switches. Call Peoples Gas or 911 from outside, then call us."
+     },
+     {
+      "q": "Who owns the gas piping in my building?",
+      "preview": "The utility up to the meter, the owner after.",
+      "answer": "Peoples Gas handles the line up to and including the meter. Piping after the meter belongs to the owner or the condo association."
+     },
+     {
+      "q": "Can you cap old gas lines?",
+      "preview": "Yes.",
+      "answer": "Yes. We cap abandoned branches properly and test the system."
+     },
+     {
+      "q": "How long until gas service is restored?",
+      "preview": "After the repair and pressure test.",
+      "answer": "Once we repair and test the line, Peoples Gas can restore service."
+     },
+     {
+      "q": "Will the whole building lose gas?",
+      "preview": "Usually only the affected meter.",
+      "answer": "Usually only the meter with the leak, unless the problem is before the meters."
+     },
+     {
+      "q": "How much does gas line repair cost in Lincoln Park?",
+      "preview": "It depends on the leak. You'll approve a flat price first.",
+      "answer": "It depends on where the leak is and how much pipe needs work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Need Your Gas Line Checked?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Repair in Lincoln Park, Chicago",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/gas-line-repair",
+   "description": "Gas line repair and leak detection in Lincoln Park, Chicago. Licensed plumbers find the leak, repair it and pressure-test the line.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Repair in Lincoln Park, Chicago",
+ "metaDescription": "Gas line repair and leak detection in Lincoln Park, Chicago. Licensed plumbers find the leak, repair it and pressure-test the line."
+}

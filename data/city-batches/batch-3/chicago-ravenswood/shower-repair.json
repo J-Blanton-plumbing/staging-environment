@@ -1,0 +1,325 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower and Tub Repair in Ravenswood, Chicago",
+   "sub": "A shower that drips, a clawfoot tub with a leaking faucet or a stain on the ceiling below. We repair shower and tub valves and fixtures in older Ravenswood homes. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower and Tub Problems We Fix",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Drips",
+      "body": "Worn washers or a cartridge."
+     },
+     {
+      "h3": "Hot and Cold Swings",
+      "body": "No balancing valve, or a worn one."
+     },
+     {
+      "h3": "A Clawfoot Tub Leaks",
+      "body": "At the faucet, drain or supply lines."
+     },
+     {
+      "h3": "A Stain Below",
+      "body": "A leak at the valve or drain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Ravenswood Homes",
+    "intro": "Ravenswood bathrooms range from original vintage to fully renovated.",
+    "items": [
+     {
+      "h3": "Clawfoot Tubs and Exposed Plumbing",
+      "body": "Older tub faucets, risers and drains need specific parts."
+     },
+     {
+      "h3": "Two- and Three-Handle Valves",
+      "body": "We rebuild or replace them."
+     },
+     {
+      "h3": "Leaks Into Units Below",
+      "body": "We find the source fast to limit damage."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Fix it without tearing out tile when possible.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Through the trim if we can."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No drips, steady temperature."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "clawfoot-tub-shower-conversions",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Clawfoot Tubs",
+    "h2": "Clawfoot Tub Shower Conversions",
+    "body": "A clawfoot tub with a shower conversion kit adds a riser, a showerhead and a ring for a curtain. It's a popular update in vintage bathrooms. We install the kit, connect it to the existing supply and make sure the drain and overflow seal properly. If the old tub faucet is leaking, this is a good time to replace it with one that's made for showers.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-shower-repair",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Shower Repair",
+    "body": "Rebuilding an older valve is usually quick if parts are available. Replacing a valve behind original tile takes more. Clawfoot tub fixtures need specific parts. We diagnose and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jewell Gold",
+      "url": null,
+      "text": "Ron is professionial, courteous and knowledgable. I asked for a verification that shower drain installed 8 years ago was up to code. Ron not only made pictures and gave his diagnosis, he took it a step farther and made a video. Awseome service."
+     },
+     {
+      "name": "Karyn Soerens",
+      "url": null,
+      "text": "Picture it: you get home from being out of town to relax and take a glorious shower. You’re halfway through the shampoo when your husband comes in yelling saying the water needs to be shut off because it’s all coming up in the basement. Ugh. So you start looking for who to call. The plumber your parents used is out of town for two weeks. [...]"
+     },
+     {
+      "name": "Kim Budnik",
+      "url": null,
+      "text": "Edgar rodded out both my shower drain and vanity sink. He’s was professional and knowledgeable . I think J Blanton is on the pricey side , but I’m very happy with Edgar’s work."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Can you repair a clawfoot tub faucet?",
+      "preview": "Yes.",
+      "answer": "Yes. We repair and replace clawfoot faucets, risers, shower conversions and drains."
+     },
+     {
+      "q": "Why does my shower turn hot when someone flushes?",
+      "preview": "No balancing valve.",
+      "answer": "Older valves don't balance pressure. A new pressure-balancing valve fixes it."
+     },
+     {
+      "q": "Can you replace an old three-handle valve?",
+      "preview": "Yes.",
+      "answer": "Yes, with a single-handle valve and a trim plate that covers the old holes."
+     },
+     {
+      "q": "Is my shower leaking into the unit below?",
+      "preview": "We test the valve, drain and tile.",
+      "answer": "We test the valve, the drain and the tile to find the source."
+     },
+     {
+      "q": "Can a clawfoot tub drain be replaced?",
+      "preview": "Yes.",
+      "answer": "Yes. Drains and overflows for clawfoot tubs are still available."
+     },
+     {
+      "q": "Why does my shower take long to get hot?",
+      "preview": "Distance from the heater.",
+      "answer": "The farther the shower is from the heater, the longer hot water takes to arrive."
+     },
+     {
+      "q": "How much does shower repair cost in Ravenswood?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower and Tub Repair in Ravenswood, Chicago",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/shower-repair",
+   "description": "Shower and tub repair in Ravenswood, Chicago. Old valves, clawfoot tub fixtures and leaks into the unit below fixed. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Ravenswood, Chicago",
+ "metaDescription": "Shower and tub repair in Ravenswood, Chicago. Old valves, clawfoot tub fixtures and leaks into the unit below fixed. Flat price first."
+}

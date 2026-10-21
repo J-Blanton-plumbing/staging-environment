@@ -1,0 +1,304 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Installation and Repair in Skokie, IL",
+   "sub": "A pump that won't stop running, one that hums without pumping or a basement that needs one for the first time. We install, repair and replace sump pumps and add battery backups. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs You Need Sump Pump Service",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pump Runs and Runs",
+      "body": "A stuck switch, a bad check valve or a pump that's too small."
+     },
+     {
+      "h3": "It Hums but Nothing Moves",
+      "body": "A jammed impeller or failing motor."
+     },
+     {
+      "h3": "You've Never Had One, and Water Comes In",
+      "body": "A new pit and pump may be the fix."
+     },
+     {
+      "h3": "There's No Battery Backup",
+      "body": "Storms and power outages come together."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Skokie Basements",
+    "intro": "Not every postwar Skokie home was built with a sump pump, and many that have one are on an older setup.",
+    "items": [
+     {
+      "h3": "Adding a Pit to an Older Basement",
+      "body": "Where groundwater seeps in, a new pit and pump can keep the floor dry."
+     },
+     {
+      "h3": "Battery Backups",
+      "body": "A backup keeps running when the power is out."
+     },
+     {
+      "h3": "Discharge Away From the House",
+      "body": "On compact lots, we route the discharge so it doesn't come right back toward the foundation."
+     },
+     {
+      "h3": "Never Into the Sewer",
+      "body": "Sump water belongs outside, not in the sanitary line."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A pump you can trust in a storm.",
+    "steps": [
+     {
+      "h3": "1. Test the System",
+      "body": "Pump, switch, check valve and discharge."
+     },
+     {
+      "h3": "2. Repair, Replace or Install",
+      "body": "At a flat price."
+     },
+     {
+      "h3": "3. Add a Backup",
+      "body": "If you want one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "getting-your-sump-pump-ready-for-storm-season",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Storm Ready",
+    "h2": "Getting Your Sump Pump Ready for Storm Season",
+    "body": "Before spring, pour a bucket of water into the pit and watch the pump start and stop. Check that the discharge line outside isn't blocked or frozen. If the pump is more than 7 years old, consider replacing it before it fails. And add a battery backup if you don't have one. In a storm like May 2020, power outages and heavy rain can arrive together.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Nelson Hanan",
+      "url": null,
+      "text": "Both technicians, Thomas Maloney and John Hogan, were very professional, knowledgeable, and friendly. I would recommend J. Blandon Plumbing. Services Sump pump installation"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Can you install a sump pump in a basement that doesn't have one?",
+      "preview": "Often, yes.",
+      "answer": "Often. We cut a pit where water collects, install the pump and run a discharge line outside."
+     },
+     {
+      "q": "Do I need a battery backup?",
+      "preview": "If you store anything or use the basement, yes.",
+      "answer": "If your basement is finished or holds anything you care about, yes."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "About 7 to 10 years.",
+      "answer": "Most last about 7 to 10 years, less if they run often."
+     },
+     {
+      "q": "Can my sump pump drain into the floor drain?",
+      "preview": "No.",
+      "answer": "No. That sends groundwater into the sewer, which adds to backups. It should discharge outside."
+     },
+     {
+      "q": "Can a sump pump drain into the sewer?",
+      "preview": "Usually not allowed.",
+      "answer": "Usually not. Sump water should go outside, away from the house."
+     },
+     {
+      "q": "How much does sump pump installation cost in Skokie?",
+      "preview": "It depends on the pit, pump and backup. You'll approve a flat price first.",
+      "answer": "It depends on whether a new pit is needed, the pump and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Installation and Repair in Skokie, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/skokie/sump-pumps",
+   "description": "Sump pump installation, repair and battery backups in Skokie, IL. Tested, sized for your pit and priced flat before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Installation & Repair in Skokie, IL",
+ "metaDescription": "Sump pump installation, repair and battery backups in Skokie, IL. Tested, sized for your pit and priced flat before any work."
+}

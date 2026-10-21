@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Rodding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Drain Cleaning and Rodding in Skokie, IL",
+   "sub": "When water comes up at the basement floor drain or every drain slows down at once, your main sewer line is blocked. We rod it clear, show you the cause on camera and price it before we start. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-rodding-front-yard.webp",
+    "alt": "J. Blanton plumber feeding the cable from a drum rodding machine into an outdoor sewer cleanout in a front yard"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-sewer-rodding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Sewer Rodding?",
+    "body": "Sewer rodding clears a blocked main line with a long, flexible steel cable fed through a cleanout access point. A cutting head on the end breaks through roots, grease, and debris and pushes the blockage toward the street connection, restoring flow through the pipe. It's the standard first fix for a clogged or backed-up sewer line. For most homes, it's the only fix needed.",
+    "img": {
+     "src": "/images/city-services-v2/sewer-rodding-diagram.webp",
+     "alt": "Diagram showing a rodding cable fed through a cleanout access point into the main sewer line, with a cutting head clearing the blockage toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Skokie Main Line Needs Cleaning",
+    "intro": "A main line clog looks like this:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water at the Floor Drain on Laundry Day",
+      "body": "The washer empties, and the basement drain fills."
+     },
+     {
+      "h3": "Toilets and Tubs Slow Together",
+      "body": "Fixtures on different floors share one line to the street."
+     },
+     {
+      "h3": "Bubbling in the Basement Toilet",
+      "body": "Air trapped behind the clog escapes through the lowest fixture."
+     },
+     {
+      "h3": "It's Been About a Year",
+      "body": "Roots in postwar clay usually return on schedule."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Blocks Main Lines in Skokie",
+    "intro": "With most homes built in the 1940s, 50s and 60s, Skokie main lines clog for familiar reasons.",
+    "items": [
+     {
+      "h3": "Roots in Clay Joints",
+      "body": "The most common cause by far, especially near big parkway trees."
+     },
+     {
+      "h3": "Scale in Old Cast Iron",
+      "body": "Rust scale inside the pipe catches paper and grease."
+     },
+     {
+      "h3": "A Sag Where the Line Settled",
+      "body": "Water and solids sit in the low spot until they block it."
+     },
+     {
+      "h3": "Fast Regrowth",
+      "body": "If roots are back in months, [hydro jetting](/skokie/hydro-jetting) or a [repair](/skokie/sewer-repair) lasts longer."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Sewer Cleaning Visits Go",
+    "intro": "Open the line, then show you what we found.",
+    "steps": [
+     {
+      "h3": "1. Set Up at the Cleanout",
+      "body": "Floors covered before the machine comes in."
+     },
+     {
+      "h3": "2. Cut It Clear, Then Camera It",
+      "body": "So you see the roots, scale or break that caused it."
+     },
+     {
+      "h3": "3. Price First, Always",
+      "body": "Including options if the camera finds damage."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "sewer-lines-from-skokie-s-building-boom",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Post-War Homes",
+    "h2": "Sewer Lines From Skokie's Building Boom",
+    "body": "Skokie grew from about 15,000 people in 1950 to nearly 60,000 by 1960. Most homes from that boom still drain through clay laterals laid at the time, now more than 60 years old. Their joints are where roots get in. That's why so many Skokie homeowners have their main line rodded every year or two, and why a camera look after rodding is worth it.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Rodding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Brynn Dumalski",
+      "url": null,
+      "text": "George came and solved our problems right away. They are a full service plumbing company. It was a relief to know that our problem would be solved. He’s also great with dogs."
+     },
+     {
+      "name": "Michael Gillespie",
+      "url": null,
+      "text": "Came late at night to unclog drain that kept overflowing. Got in unclogged for me. Thanks again man. I'll be able to sleep tonight."
+     },
+     {
+      "name": "Lisa",
+      "url": null,
+      "text": "Highly recommend this company. The initial appointment was scheduled very quickly and after the diagnosis, the work was performed the next day. Jovany the onsite technician was thorough, efficient and great to work with. Couldn't be happier. Thanks!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Line Cleaning Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "What's the difference between sewer line drain cleaning and rodding?",
+      "preview": "They're the same job.",
+      "answer": "They describe the same service: cutting through roots and clogs in the main line with a motorized cable."
+     },
+     {
+      "q": "How often should a Skokie home have the main line cleaned?",
+      "preview": "Yearly if roots are a known problem.",
+      "answer": "If roots have blocked your line before, once a year is common, usually in late winter or early spring."
+     },
+     {
+      "q": "Is rodding safe for a 70-year-old clay pipe?",
+      "preview": "Yes, with the right cutter. We camera it after.",
+      "answer": "Yes, with a cutting head sized for the pipe. The camera afterward shows whether the clay is cracked or broken."
+     },
+     {
+      "q": "Where is the cleanout in a 1950s Skokie home?",
+      "preview": "Usually in the basement near the front wall.",
+      "answer": "Usually in the basement, near where the line leaves for the street, often by the floor drain. Some homes also have one outside."
+     },
+     {
+      "q": "Can rodding fix a line that keeps clogging?",
+      "preview": "It clears it. The camera shows why it clogs.",
+      "answer": "Rodding clears it. The camera shows whether roots, a break or a sag keeps causing it."
+     },
+     {
+      "q": "How much does sewer line cleaning cost in Skokie?",
+      "preview": "It depends on access and the clog. You'll approve a flat price first.",
+      "answer": "It depends on the cleanout location, the length of the line and what's blocking it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Main Line Flowing?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Drain Cleaning and Rodding in Skokie, IL",
+   "serviceType": "Sewer Rodding",
+   "url": "https://jblantonplumbing.com/skokie/sewer-rodding",
+   "description": "Sewer line drain cleaning and rodding in Skokie, IL. Roots and clogs cut out of the main line and shown on camera. Flat price, 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Drain Cleaning in Skokie, IL",
+ "metaDescription": "Sewer line drain cleaning and rodding in Skokie, IL. Roots and clogs cut out of the main line and shown on camera. Flat price, 24/7."
+}

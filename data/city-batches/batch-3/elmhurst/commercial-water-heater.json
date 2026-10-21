@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Elmhurst, IL",
+   "sub": "A restaurant on York Street, a medical office near the hospital or a shop on Spring Road. When the water heater fails, business stops. We repair, replace and maintain commercial water heaters in Elmhurst. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Elmhurst Businesses We Work With",
+    "intro": "Including:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Downtown Restaurants and Cafes",
+      "body": "Hot water for dishwashing from open to close."
+     },
+     {
+      "h3": "Medical and Dental Offices",
+      "body": "Every exam room sink."
+     },
+     {
+      "h3": "Salons and Studios",
+      "body": "Shampoo bowls and showers."
+     },
+     {
+      "h3": "Retail and Offices",
+      "body": "Restrooms and break rooms."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Services",
+    "intro": "For the life of the equipment:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Diagnosed on site, priced before we start."
+     },
+     {
+      "h3": "Replacement",
+      "body": "Sized for peak demand, timed around your hours."
+     },
+     {
+      "h3": "Maintenance",
+      "body": "Flushing and descaling, which matter with 8-grain water."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Downtown Elmhurst and Beyond",
+    "intro": "Our York Street office is in the middle of downtown.",
+    "items": [
+     {
+      "h3": "Hard Water and Commercial Heaters",
+      "body": "Heavy daily use plus about 8 grains of hardness means scale builds fast. Regular descaling protects the equipment."
+     },
+     {
+      "h3": "Mid-Shift Failures",
+      "body": "Our line is open 24/7."
+     },
+     {
+      "h3": "Prices Before Work",
+      "body": "Flat-rate pricing."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "hot-water-for-downtown-elmhurst-businesses",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Downtown",
+    "h2": "Hot Water for Downtown Elmhurst Businesses",
+    "body": "Downtown Elmhurst's restaurants, salons and shops near York Street and the train station depend on steady hot water. Older storefronts can hide unusual piping, and a new business often inherits equipment of unknown age. We record what you have, recommend a maintenance schedule and size any replacement for your busiest hour, so a failure doesn't catch you on a busy day.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "signs-a-commercial-heater-is-near-the-end",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Warning Signs",
+    "h2": "Signs a Commercial Heater Is Near the End",
+    "body": "Watch for rusty hot water, rumbling as the burner fires, water around the base and a heater that takes longer to recover after a rush. A unit that needs repairs every few months is telling you something too. If your heater is past its expected life, we can price a replacement now and schedule it for a slow day, rather than waiting for it to fail during business hours.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-commercial-water-heater-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Commercial Water Heater Work",
+    "body": "Capacity is the biggest factor, followed by fuel type and venting. Access matters too: a heater in a tight basement or mezzanine takes more labor to replace than one in an open utility room. Code updates, like new relief valves, expansion tanks or venting changes, can add to the job. We explain each line before you approve the flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "diana anton",
+      "url": null,
+      "text": "Ron was thorough, knowledgeable and competently fixed our sink that has been backing up for years. I highly recommend."
+     },
+     {
+      "name": "Jeff",
+      "url": null,
+      "text": "Lou was very professional and his experience shows. He took a quick look at our broken hot water heater, saw a dirty component and knew right away that replacing the part would solve the problem. Thanks Lou!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Elmhurst Businesses",
+    "items": [
+     {
+      "q": "Can you work outside business hours?",
+      "preview": "For planned work, we try.",
+      "answer": "For planned replacements and maintenance, we'll work around your hours where we can."
+     },
+     {
+      "q": "Do you take emergency commercial calls?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. Call any time if your water heater fails."
+     },
+     {
+      "q": "How often should a commercial heater be descaled?",
+      "preview": "It depends on use.",
+      "answer": "It depends on how much hot water you use. Busy kitchens may need it more than once a year."
+     },
+     {
+      "q": "Can you maintain several units?",
+      "preview": "Yes.",
+      "answer": "Yes. We'll set a schedule and keep records for each one."
+     },
+     {
+      "q": "Can you tell us how old our heater is?",
+      "preview": "Yes, from the label.",
+      "answer": "Yes. The serial number usually shows the date it was made."
+     },
+     {
+      "q": "Can you install two smaller heaters instead of one big one?",
+      "preview": "Often.",
+      "answer": "Often. Two units give you backup if one fails, and they can be easier to carry into an older building."
+     },
+     {
+      "q": "How much does commercial water heater replacement cost in Elmhurst?",
+      "preview": "It depends on capacity, fuel and venting. You'll approve a flat price first.",
+      "answer": "It depends on capacity, fuel type, venting and code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Elmhurst, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/elmhurst/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Elmhurst, IL businesses. 24/7 phone line and a flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Elmhurst, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Elmhurst, IL businesses. 24/7 phone line and a flat price before work."
+}

@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Elmhurst, IL",
+   "sub": "Buying an older Elmhurst home, planning a basement remodel or tired of rodding every year? A camera inspection shows exactly what's in the line. We record it, mark each problem and walk you through it. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Why Elmhurst Homeowners Scope Their Sewer",
+    "intro": "The most common reasons:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Before Closing on a Home",
+      "body": "About half the homes here have lines from before 1970."
+     },
+     {
+      "h3": "Repeat Rodding",
+      "body": "Find out whether a repair would end it."
+     },
+     {
+      "h3": "Planning a Remodel",
+      "body": "Check under the basement floor first."
+     },
+     {
+      "h3": "After a Storm Backup",
+      "body": "Your line or the city's?"
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-elmhurst",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Elmhurst Sewer Lines",
+    "intro": "Elmhurst footage tells a consistent story.",
+    "items": [
+     {
+      "h3": "Roots at Clay Joints",
+      "body": "By far the most common finding."
+     },
+     {
+      "h3": "Cracked Cast Iron at the Foundation",
+      "body": "Where the line leaves the house."
+     },
+     {
+      "h3": "Offset Joints",
+      "body": "Sections that shifted over the decades."
+     },
+     {
+      "h3": "Clean, Healthy Lines Too",
+      "body": "Some lines just need a cleaning."
+     },
+     {
+      "h3": "Mixed Pipe",
+      "body": "Newer PVC tied into older clay at the property line."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You see what we see.",
+    "steps": [
+     {
+      "h3": "1. Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Every Problem Located",
+      "body": "Position and depth marked."
+     },
+     {
+      "h3": "3. Walked Through With You",
+      "body": "And the video is yours to keep."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-sewer-inspection",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Sewer Inspection",
+    "body": "If there's an accessible cleanout and the line is clear, an inspection is straightforward. If the line is blocked, we clear it first. If there's no cleanout, we may go through a toilet or vent, which takes more time. We tell you which situation you're in and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "J. Ham",
+      "url": "https://maps.app.goo.gl/fNFyTEGqmipVtH2dA",
+      "text": "I had J. Blanton Plumbing come service a potential sewer line back-up and I was super impressed with the entire experience. My technician was Stephen Walen and he was fantastic. He scoped our entire line so we could see where our main line hooks up to off-shoots of our other pipes. He walked through all different short & long-term scenarios so we could make informed decisions."
+     },
+     {
+      "name": "fixedweasel",
+      "url": "https://maps.app.goo.gl/p3keNRv3PKhqGfop7",
+      "text": "I had a camera inspection as well as a Hydrojet cleaning, rod, and flush of my 70' main 6\" sewer line... The camera inspection was done by George and Raul. They were prompt, professional, and detailed with the description of the process... we were able to see together where the problems were in the main and at what specific distances. I was given several options for resolution on the spot with price quotes up front."
+     },
+     {
+      "name": "Jon Ricco",
+      "url": "https://maps.app.goo.gl/LutNjGckvrsqCkcE9",
+      "text": "Edgar is a fantastic tech and was extremely professional and fantastic to work with. He was upfront and allowed me to view the issues from the camera before any money changed hands. He had multiple suggestions on how to further prevent issues, but was never pushy on trying to sell additional fixes."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Is a sewer scope worth it before buying in Elmhurst?",
+      "preview": "Yes, for most homes here.",
+      "answer": "Yes. With so many homes built before 1970, a camera look before closing can turn up a repair worth negotiating."
+     },
+     {
+      "q": "Can you inspect without a cleanout?",
+      "preview": "Usually, through a toilet or vent.",
+      "answer": "Usually. We can go in through a toilet or a roof vent, or add a cleanout."
+     },
+     {
+      "q": "How long does it take?",
+      "preview": "About an hour for most homes.",
+      "answer": "About an hour for most homes, including the walkthrough."
+     },
+     {
+      "q": "Can you locate the problem from the yard?",
+      "preview": "Yes.",
+      "answer": "Yes. Our locator finds the camera's signal from above and marks the spot and depth."
+     },
+     {
+      "q": "Should I scope a newer home before buying?",
+      "preview": "Yes, especially on a teardown lot.",
+      "answer": "Yes. A new house can still connect to an older sewer line."
+     },
+     {
+      "q": "Can a camera inspection be done in winter?",
+      "preview": "Yes.",
+      "answer": "Yes. The work happens inside the pipe, so weather rarely matters."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Elmhurst?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Elmhurst, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/elmhurst/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Elmhurst, IL. Roots, cracks and bellies recorded and located before you buy, remodel or repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Elmhurst, IL",
+ "metaDescription": "Sewer camera inspections in Elmhurst, IL. Roots, cracks and bellies recorded and located before you buy, remodel or repair."
+}

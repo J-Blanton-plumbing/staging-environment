@@ -1,0 +1,313 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Drain Cleaning in Ravenswood, Chicago",
+   "sub": "A kitchen sink that won't drain, a clawfoot tub that drains in slow motion or a basement floor drain that fills on laundry day. We clear it, explain why and price it before any work. Our office is on Ravenswood Avenue. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It Your Drain or the Building's?",
+    "body": "Call when plunging hasn't worked, the same drain clogs again soon or you smell sewage. Then check who else is affected. If only your sink or tub is slow, the clog is in your branch line. If the upstairs unit's drains are slow too, or the basement floor drain is filling, the shared main line is blocked and needs [sewer rodding](/chicago-ravenswood/sewer-rodding).",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in Ravenswood",
+    "bodies": [
+     "Hair and soap in bathrooms, grease in kitchens and lint from laundry cause most clogs. We clear them with a cable sized for the pipe and show you what came out.",
+     "Many Ravenswood homes still have original galvanized and cast iron drains. They narrow with age, so clogs come back faster. A camera look tells us whether a stubborn drain needs [hydro jetting](/chicago-ravenswood/hydro-jetting) or a section of pipe replaced."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging",
+    "bodies": [
+     "Grease is behind most kitchen clogs. It coats the pipe and traps food and soap.",
+     "In a two-flat or condo, stacked kitchens often share a drain. If your sink backs up when your neighbor's dishwasher runs, the clog is in the shared line. If the disposal is involved, see [garbage disposal repair](/chicago-ravenswood/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in Ravenswood Homes",
+    "intro": "Century-old pipe and shared lines make clogs a regular call here.",
+    "items": [
+     {
+      "h3": "Old Galvanized and Cast Iron",
+      "body": "Rough insides catch debris."
+     },
+     {
+      "h3": "Stacked Kitchens and Baths",
+      "body": "Several units share one vertical drain."
+     },
+     {
+      "h3": "Main Line Trouble",
+      "body": "When every unit is slow, it's the main. See [sewer drain clearing](#sewer-drain-clearing)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When the basement floor drain backs up or every unit's drains slow down, the main sewer drain is blocked. It takes a machine that can reach from the cleanout to the city sewer.",
+     "We clear it and scope it so you see the cause, usually roots in old clay or grease from several kitchens. If it keeps happening, we'll go over [rodding](/chicago-ravenswood/sewer-rodding), [jetting](/chicago-ravenswood/hydro-jetting) or a [repair](/chicago-ravenswood/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Ravenswood Calls J. Blanton for Clogs",
+    "intro": "Licensed plumbers, most drains cleared in one visit.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights and weekends."
+     },
+     {
+      "h3": "2. A Price First",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Respect for Shared Spaces",
+      "body": "Hallways and stairs kept clean."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "fixedweasel",
+      "url": "https://maps.app.goo.gl/p3keNRv3PKhqGfop7",
+      "text": "I had a camera inspection as well as a Hydrojet cleaning, rod, and flush of my 70' main 6\" sewer line... The camera inspection was done by George and Raul. They were prompt, professional, and detailed with the description of the process... we were able to see together where the problems were in the main and at what specific distances. I was given several options for resolution on the spot with price quotes up front."
+     },
+     {
+      "name": "Mike Fruland",
+      "url": null,
+      "text": "Christian was super fast and friendly. Highly recommended. Have used J. Blanton in the past and their customer service is excellent."
+     },
+     {
+      "name": "Tyler Ko",
+      "url": "https://maps.app.goo.gl/he5PCDkFqheoKPiy8",
+      "text": "Had a camera inspection of a clogged sewer drain by George. He was very helpful, polite, professional and informative. We ended up moving forward with a sewer trenchless liner service and look forward to a good experience for the main service."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Do you offer emergency drain cleaning?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. Call any time and we'll get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Why does my sink back up when upstairs runs water?",
+      "preview": "You share a drain.",
+      "answer": "Your units share a drain line, and the clog is below your fixture in the shared part."
+     },
+     {
+      "q": "Can you clear an old clawfoot tub drain?",
+      "preview": "Yes.",
+      "answer": "Yes. Older tub drains have their own quirks, and we have the tools for them."
+     },
+     {
+      "q": "Should I use a chemical drain cleaner?",
+      "preview": "Not on old pipe.",
+      "answer": "We don't recommend it, especially on old galvanized or cast iron."
+     },
+     {
+      "q": "Can you clear a stack clog without entering every unit?",
+      "preview": "Usually.",
+      "answer": "Usually, from the roof vent or a cleanout. We'll let you know if we need access."
+     },
+     {
+      "q": "How much does drain cleaning cost in Ravenswood?",
+      "preview": "It depends on where the clog is. You'll approve a flat price first.",
+      "answer": "It depends on where the clog is and what's causing it. You'll approve a flat price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Drains That Keep Draining?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Drain Cleaning in Ravenswood, Chicago",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/drain-cleaning",
+   "description": "Drain cleaning in Ravenswood, Chicago. Kitchen, bath and basement drains unclogged in houses, two-flats and condos. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Drain Cleaning in Ravenswood, Chicago",
+ "metaDescription": "Drain cleaning in Ravenswood, Chicago. Kitchen, bath and basement drains unclogged in houses, two-flats and condos. Call 24/7."
+}

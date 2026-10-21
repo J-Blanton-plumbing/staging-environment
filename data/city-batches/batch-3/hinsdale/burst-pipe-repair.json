@@ -1,0 +1,361 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Hinsdale, IL",
+   "sub": "Water coming through a ceiling, a pipe spraying in the basement or a fixture that stopped running in a cold snap. Shut off the main valve and call us. Our line is open 24/7. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "If a Pipe Bursts",
+    "intro": "Do these first:",
+    "steps": [
+     {
+      "h3": "1. Close the Main Water Valve",
+      "body": "Usually in the basement where the line enters from the street."
+     },
+     {
+      "h3": "2. Cut Power Near the Water",
+      "body": "If you can reach the breaker safely."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "To drain the pressure out of the system."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any time, day or night."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "Look for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Coming Through a Ceiling",
+      "bullets": [
+       "Often under a bath or along an exterior wall."
+      ]
+     },
+     {
+      "h3": "A Sudden Pressure Drop",
+      "bullets": [
+       "Across the house."
+      ]
+     },
+     {
+      "h3": "Spreading Stains",
+      "bullets": [
+       "On plaster or drywall."
+      ]
+     },
+     {
+      "h3": "Running Water Sounds",
+      "bullets": [
+       "With everything off."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "In a cold snap:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "One Faucet Won't Run",
+      "body": "While others do."
+     },
+     {
+      "h3": "Frost on an Exposed Pipe",
+      "body": "In a crawl space, garage or basement."
+     },
+     {
+      "h3": "A Toilet Won't Refill",
+      "body": "Its supply line may be frozen."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Hinsdale Homes",
+    "intro": "A few spots in Hinsdale homes are the first to freeze.",
+    "items": [
+     {
+      "h3": "Exterior Walls in Older Homes",
+      "body": "Older houses often have little insulation where pipes run along outside walls."
+     },
+     {
+      "h3": "Additions and Sunrooms",
+      "body": "Plumbing in additions built over crawl spaces is exposed to cold from below."
+     },
+     {
+      "h3": "Outdoor Spigots and Sprinkler Lines",
+      "body": "Lines that weren't drained in the fall split when they freeze."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, fix the pipe and find out why.",
+    "steps": [
+     {
+      "h3": "1. Fast Response",
+      "body": "Our line is open 24/7."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Approved before the repair."
+     },
+     {
+      "h3": "3. Prevent the Next One",
+      "body": "We tell you what to change."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mark Jeffery",
+      "url": null,
+      "text": "In this week of artic chiberia I cannot say how much I appreciated the care, attention that Ronnie Levandowski did last night with his service of attending to my burst pipes in the basement. He was detailed, thorough, skilled, walked me through the options he was able to do to stop the water and fix the problem. [...]"
+     },
+     {
+      "name": "Lucas Fleck",
+      "url": null,
+      "text": "These guys were fast, honest, and left my house the way it was before they started. Had to get all new drain pipes put in was quoted 3 days and they had it done in 2. Just want to say thanks to William, James, and Thomas for helping us out"
+     },
+     {
+      "name": "Evan Knott",
+      "url": null,
+      "text": "Work was thorough, quick, tidy, and restored to better condition than before."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "What should I do if a pipe is frozen but not burst?",
+      "preview": "Open the faucet and warm the pipe gently.",
+      "answer": "Open the faucet and warm the pipe gently with a hair dryer. Never use an open flame. If you can't reach it, call us."
+     },
+     {
+      "q": "Can you repair a burst pipe behind plaster?",
+      "preview": "Yes, through a small opening.",
+      "answer": "Yes. We locate the break and open only what we need to reach it."
+     },
+     {
+      "q": "How do I keep pipes from freezing in a cold snap?",
+      "preview": "Heat, open cabinets and a slow drip.",
+      "answer": "Keep the heat on, open cabinet doors on exterior walls and let a faucet on an exterior wall drip on the coldest nights."
+     },
+     {
+      "q": "Does insurance cover burst pipes?",
+      "preview": "Often, for sudden damage.",
+      "answer": "Often, for sudden damage. Policies vary, so check with your agent."
+     },
+     {
+      "q": "Our sprinkler line burst. Can you fix it?",
+      "preview": "We fix the plumbing side up to the backflow device.",
+      "answer": "We repair the water supply to the sprinkler system up to the backflow device. Irrigation contractors handle the zones in the yard."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Hinsdale?",
+      "preview": "It depends on the break. You'll approve a flat price first.",
+      "answer": "It depends on where the pipe burst and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Burst Pipe? Call Us Now.",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Hinsdale, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/hinsdale/burst-pipe-repair",
+   "description": "Burst and frozen pipe repair in Hinsdale, IL. Our line is open 24/7, and we repair the break with as little damage to your home as possible.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst & Frozen Pipe Repair in Hinsdale, IL",
+ "metaDescription": "Burst and frozen pipe repair in Hinsdale, IL. Our line is open 24/7, and we repair the break with as little damage to your home as possible."
+}

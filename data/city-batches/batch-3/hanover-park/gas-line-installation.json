@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in Hanover Park, IL",
+   "sub": "A gas range for a new kitchen, a line to the patio grill or a generator for storm season. Our licensed plumbers size, install and test gas lines in Hanover Park homes. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Gas Line Projects for Hanover Park Homes",
+    "intro": "Common jobs:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Standby Generators",
+      "body": "Keep the sump pump and furnace running in an outage."
+     },
+     {
+      "h3": "Gas Ranges",
+      "body": "For a kitchen switching from electric."
+     },
+     {
+      "h3": "Outdoor Grills and Fire Pits",
+      "body": "A hard line instead of propane tanks."
+     },
+     {
+      "h3": "Garage Heaters",
+      "body": "Comfort for a workshop in winter."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "From Plan to Pressure Test",
+    "intro": "How a new gas line goes in:",
+    "steps": [
+     {
+      "h3": "1. Add Up the Load",
+      "body": "Every appliance on the line, old and new."
+     },
+     {
+      "h3": "2. Run and Support the Pipe",
+      "body": "With a shutoff at the new appliance."
+     },
+     {
+      "h3": "3. Pressure-Test, Then Connect",
+      "body": "No connection until it holds."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in Hanover Park",
+    "intro": "Common projects in homes from the '70s and '80s:",
+    "items": [
+     {
+      "h3": "Standby Generators",
+      "body": "After storms like 2007, many homeowners want backup power. We run the gas line. An electrician handles the wiring."
+     },
+     {
+      "h3": "Kitchen Remodels",
+      "body": "Switching to a gas range."
+     },
+     {
+      "h3": "Fireplaces",
+      "body": "See [gas fireplace service](/hanover-park/gas-fireplace)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "gas-lines-for-standby-generators",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Storm Season",
+    "h2": "Gas Lines for Standby Generators",
+    "body": "A natural gas generator can keep your sump pump, furnace and refrigerator running for as long as the power is out, with no fuel to store. It needs a gas line sized for its load on top of everything already in the house, and sometimes a larger meter from Nicor. We size and run the gas line and pressure-test it. A licensed electrician handles the transfer switch and wiring. Plan ahead, before the next big storm.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-gas-line",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Gas Line",
+    "body": "The distance from the meter, the route and the size of the line matter most. A generator line can be larger and longer than a dryer line. Outdoor and underground runs take more work. We plan the route and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "NBA All Day",
+      "url": null,
+      "text": "Welhem completed some plumbing services to ensure my washer/dryer could be installed. He was prompt and professional and did great work."
+     },
+     {
+      "name": "Miss Joy",
+      "url": null,
+      "text": "Jacob C. Jacob was fantastic. From scheduling to the actual visit, the entire experience with this company was smooth and professional. After dealing with plumbers who overcharge and underdeliver, this was a huge relief. Jacob was knowledgeable, patient, and took the time to clearly explain the issue and our options with pricing ranges. We never felt rushed or pressured. [...]"
+     },
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Can you run a gas line for a standby generator?",
+      "preview": "Yes.",
+      "answer": "Yes. We size the line for the generator and everything else on the system."
+     },
+     {
+      "q": "Can my existing gas line handle a new appliance?",
+      "preview": "We check first.",
+      "answer": "We calculate the load and check the pipe before connecting."
+     },
+     {
+      "q": "Do you handle permits?",
+      "preview": "Where required.",
+      "answer": "Yes, where the village requires one."
+     },
+     {
+      "q": "Can you run gas to the patio?",
+      "preview": "Yes.",
+      "answer": "Yes, with a protected line and a shutoff."
+     },
+     {
+      "q": "Will a generator need a bigger gas meter?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes. If the total load is too high for your meter, Nicor may need to upgrade it. We'll tell you after we add up the load."
+     },
+     {
+      "q": "Can you run gas to a garage heater?",
+      "preview": "Yes.",
+      "answer": "Yes, with a line sized for the heater and a shutoff nearby."
+     },
+     {
+      "q": "How much does gas line installation cost in Hanover Park?",
+      "preview": "It depends on the run. You'll approve a flat price first.",
+      "answer": "It depends on the length of the run, the appliance and the route. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in Hanover Park, IL",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/hanover-park/gas-line-installation",
+   "description": "Gas line installation in Hanover Park, IL, for ranges, dryers, grills and fireplaces. Licensed, sized right and pressure-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in Hanover Park, IL",
+ "metaDescription": "Gas line installation in Hanover Park, IL, for ranges, dryers, grills and fireplaces. Licensed, sized right and pressure-tested."
+}

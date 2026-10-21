@@ -1,0 +1,330 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Ravenswood, Chicago",
+   "sub": "No hot water in the upstairs unit, a leak in the basement or a heater that won't stay lit. We find what failed, tell you whether it's worth fixing and give you a flat price before we start. Our office is on Ravenswood Avenue. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Water Heater Needs Repair",
+    "intro": "Common calls:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Hot Water",
+      "body": "A pilot, igniter, element or valve."
+     },
+     {
+      "h3": "Runs Out Fast",
+      "body": "Sediment or a failing burner."
+     },
+     {
+      "h3": "A Leak at the Base",
+      "body": "Valves can be fixed. Tanks can't."
+     },
+     {
+      "h3": "The Pilot Won't Stay Lit",
+      "body": "Often a thermocouple or venting problem."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Ravenswood Homes",
+    "intro": "In two-flats and older homes, water heater setups vary.",
+    "items": [
+     {
+      "h3": "One Heater per Unit",
+      "body": "Many two-flats have a heater for each unit, side by side in the basement."
+     },
+     {
+      "h3": "Shared Chimneys",
+      "body": "Gas heaters may share a chimney with boilers or furnaces. We check the draft."
+     },
+     {
+      "h3": "Old Basements",
+      "body": "Low ceilings and narrow stairs take planning."
+     },
+     {
+      "h3": "Condo Closets",
+      "body": "A leak can reach the unit below."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We repair gas and electric tank heaters, power-vent units and tankless heaters in Ravenswood homes and two-flats.",
+     "When you call, read us the label. If it's time for a new one, see [water heater installation](/chicago-ravenswood/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "A yearly flush clears sediment and helps the heater last. We test the relief valve, check the anode rod and inspect the burner and venting.",
+     "Tankless heaters need descaling on a schedule."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Diagnose first.",
+    "steps": [
+     {
+      "h3": "1. Find the Failure",
+      "body": "Before talking price."
+     },
+     {
+      "h3": "2. Repair or Replace, Explained",
+      "body": "When the heater is near the end."
+     },
+     {
+      "h3": "3. Venting Checked",
+      "body": "Every time."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "two-heaters-two-units-what-to-know",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Two-Flats",
+    "h2": "Two Heaters, Two Units: What to Know",
+    "body": "Many Ravenswood two-flats have a separate water heater for each unit, often installed at different times. When one fails, it's worth checking the other. If they share a chimney, both vents need to draft properly. If one heater is much newer, there's no reason to replace both. We'll look at the age and condition of each and tell you honestly what makes sense for the building.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Judith Kulb",
+      "url": null,
+      "text": "Anthony was our technician to take out our old water heater and install a new one as well as install new inside parts to two of our toilets. He was very professional, courteous, respectful of our home, and very pleasant with whom to deal. We were very happy to have had Anthony as our plumber."
+     },
+     {
+      "name": "Alison Rebello",
+      "url": null,
+      "text": "Couldn’t recommend J. Blanton enough. Thomas came to replace a tankless heater and was so knowledgeable and friendly. We will be using them for all plumbing services moving forward!"
+     },
+     {
+      "name": "Althea Smith",
+      "url": null,
+      "text": "Once again J Blanton got us scheduled quickly. Their technicians were efficient and left the workspace immaculate."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "My two-flat has two heaters. Should I replace both?",
+      "preview": "Only if both are at the end.",
+      "answer": "Only if both are near the end. If they're the same age, replacing them together can save a second visit."
+     },
+     {
+      "q": "Is it worth repairing an older heater?",
+      "preview": "Under 8 years, usually. Over 12, usually not.",
+      "answer": "Under about 8 years, usually yes. Past 12 or with a tank leak, replace it."
+     },
+     {
+      "q": "Why does my pilot keep going out?",
+      "preview": "Often a thermocouple or a draft problem.",
+      "answer": "Often a worn thermocouple. In older buildings, poor draft in a shared chimney can also do it."
+     },
+     {
+      "q": "How long do water heaters last?",
+      "preview": "About 8 to 12 years.",
+      "answer": "Usually somewhere around 8 to 12 years."
+     },
+     {
+      "q": "Why does the upstairs unit run out of hot water first?",
+      "preview": "Distance and sizing.",
+      "answer": "Hot water cools on a long run, and the heater may be sized too small for that unit's use."
+     },
+     {
+      "q": "How much does water heater repair cost in Ravenswood?",
+      "preview": "It depends on the part. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of heater. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Ravenswood, Chicago",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/water-heater-repair",
+   "description": "Water heater repair in Ravenswood, Chicago, for houses, two-flats and condos. Diagnosed first, flat price before work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Ravenswood, Chicago",
+ "metaDescription": "Water heater repair in Ravenswood, Chicago, for houses, two-flats and condos. Diagnosed first, flat price before work. Call 24/7."
+}

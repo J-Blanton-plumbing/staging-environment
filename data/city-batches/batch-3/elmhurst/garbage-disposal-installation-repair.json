@@ -1,0 +1,329 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Installation and Repair in Elmhurst, IL",
+   "sub": "A disposal that hums, leaks or won't start, or a kitchen that never had one. We install, repair and replace garbage disposals in Elmhurst homes. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Elmhurst Disposal Failing?",
+    "intro": "We fix disposals that:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Hum Without Grinding",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "Leak",
+      "body": "A worn seal or cracked housing."
+     },
+     {
+      "h3": "Won't Start",
+      "body": "A tripped reset or bad switch."
+     },
+     {
+      "h3": "Drain Slowly",
+      "body": "A clog past the unit."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Elmhurst Kitchens",
+    "intro": "Many Elmhurst kitchens are adding or upgrading disposals.",
+    "items": [
+     {
+      "h3": "First-Time Installs",
+      "body": "Older kitchens may need an outlet and drain changes."
+     },
+     {
+      "h3": "Old Drain Lines",
+      "body": "Ground food can clog older pipe."
+     },
+     {
+      "h3": "Units Past 10 Years",
+      "body": "Often leak from the housing."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair if it's worth it.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, motor, seal or drain."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replace."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No leaks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "picking-a-replacement-disposal",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Choosing a Disposal",
+    "h2": "Picking a Replacement Disposal",
+    "body": "Most households do well with a 1/2 or 3/4 horsepower disposal. More power grinds finer and jams less. Stainless steel parts last longer. A sound-insulated model is quieter, which matters in an open kitchen. If your dishwasher drains through the disposal, we'll make sure the new one has the right connection and the knockout plug is removed.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-disposal-job",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Disposal Job",
+    "body": "The disposal itself is one part. The rest depends on what's under the sink: whether there's an outlet, whether the drain lines up and whether the dishwasher connects through it. A straight swap is quick. A first-time install may need an outlet and drain changes. We look first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "diana anton",
+      "url": null,
+      "text": "Ron was thorough, knowledgeable and competently fixed our sink that has been backing up for years. I highly recommend."
+     },
+     {
+      "name": "Bhavya P.",
+      "url": "https://maps.app.goo.gl/kdPkhHCRsqDNVFfi6",
+      "text": "Stephen Walan has done a great job helping us to remove our kitchen sink clog using hydro jetting. He listened and answered all our questions patiently. J. Blanton's overall service and communication was good."
+     },
+     {
+      "name": "Emily Bleuher",
+      "url": null,
+      "text": "Edgar was amazing! He not only fixed our leaky sink, but also completely improved the overall plumbing structure and made things run more efficiently. Thank you!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Can you install a disposal where there wasn't one?",
+      "preview": "Usually.",
+      "answer": "Usually. We may need to add an outlet and adjust the drain."
+     },
+     {
+      "q": "My disposal hums. What should I do?",
+      "preview": "Turn it off. It's probably jammed.",
+      "answer": "Turn it off. Try the reset button and the hex key under the unit. If it won't turn, call us."
+     },
+     {
+      "q": "Should I repair or replace it?",
+      "preview": "If it leaks from the body or is old, replace it.",
+      "answer": "If the housing leaks or it's over about 10 years old, replacing it usually makes more sense."
+     },
+     {
+      "q": "What shouldn't go in a disposal?",
+      "preview": "Grease, bones, fibrous food and coffee grounds.",
+      "answer": "Grease, bones, fibrous foods, eggshells and coffee grounds cause most problems."
+     },
+     {
+      "q": "What's a knockout plug?",
+      "preview": "A plug inside the dishwasher inlet.",
+      "answer": "A plug inside a new disposal's dishwasher inlet. It must be removed if the dishwasher connects there."
+     },
+     {
+      "q": "Why does my disposal leak from the bottom?",
+      "preview": "Usually a failed internal seal.",
+      "answer": "A leak from the bottom of the unit usually means an internal seal has failed. That can't be repaired, so the disposal needs replacing."
+     },
+     {
+      "q": "Can a disposal go in a kitchen island sink?",
+      "preview": "Usually, with an outlet and proper venting.",
+      "answer": "Usually. The island needs an outlet and a drain with proper venting. We'll check both."
+     },
+     {
+      "q": "How much does garbage disposal installation cost in Elmhurst?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and the connections. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Disposal?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Installation and Repair in Elmhurst, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/elmhurst/garbage-disposal-installation-repair",
+   "description": "Garbage disposal installation and repair in Elmhurst, IL. Jammed, leaking or dead disposals fixed or replaced, with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Installation in Elmhurst, IL",
+ "metaDescription": "Garbage disposal installation and repair in Elmhurst, IL. Jammed, leaking or dead disposals fixed or replaced, with a flat price first."
+}

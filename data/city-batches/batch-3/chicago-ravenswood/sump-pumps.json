@@ -1,0 +1,329 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Repair and Replacement in Ravenswood, Chicago",
+   "sub": "A pump that runs nonstop, hums without pumping or a garden unit that needs better protection. We repair, replace and install sump pumps and add battery backups. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Runs Nonstop",
+      "body": "A stuck float or failing valve."
+     },
+     {
+      "h3": "It Hums Without Pumping",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "It's 7 to 10 Years Old",
+      "body": "Replace before it fails."
+     },
+     {
+      "h3": "No Backup",
+      "body": "Storms bring outages."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Ravenswood Basements",
+    "intro": "Not every older Ravenswood home has a sump pump, but those that do depend on it.",
+    "items": [
+     {
+      "h3": "Garden Units",
+      "body": "A failed pump floods living space."
+     },
+     {
+      "h3": "Small, Old Pits",
+      "body": "We replace pumps in tight or shallow pits."
+     },
+     {
+      "h3": "Battery Backups",
+      "body": "Keep the pump running in an outage."
+     },
+     {
+      "h3": "Discharge on a City Lot",
+      "body": "Routed so the water drains properly."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A pump you can count on.",
+    "steps": [
+     {
+      "h3": "1. Test It",
+      "body": "Pump, float, valve and discharge."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Add a Backup",
+      "body": "If you'd like one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "replacing-a-pump-in-an-old-small-pit",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Older Pits",
+    "h2": "Replacing a Pump in an Old, Small Pit",
+    "body": "Some older Ravenswood basements have small, shallow or unlined pits that were dug decades ago. A modern pump may not fit, or it may cycle on and off too often because the pit holds so little water. We can fit a compact pump, adjust the float or, if needed, install a new liner and a deeper pit. A pump that runs in short bursts all day wears out much faster.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-sump-pump-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Sump Pump Work",
+    "body": "The pump size and type, a backup and an alarm are the main pieces. A new liner or deeper pit adds more. We test and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jon Ruiz",
+      "url": null,
+      "text": "Ron was amazing. Extremely quick and efficient and super friendly Services Sump pump installation"
+     },
+     {
+      "name": "Nelson Hanan",
+      "url": null,
+      "text": "Both technicians, Thomas Maloney and John Hogan, were very professional, knowledgeable, and friendly. I would recommend J. Blandon Plumbing. Services Sump pump installation"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Does a garden unit need a battery backup?",
+      "preview": "Yes.",
+      "answer": "Yes, if someone lives or stores things below grade."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "About 7 to 10 years.",
+      "answer": "Most last about 7 to 10 years."
+     },
+     {
+      "q": "Is a sump pump the same as an ejector pump?",
+      "preview": "No.",
+      "answer": "No. A sump pump moves groundwater. An [ejector pump](/chicago-ravenswood/ejector-pump) moves wastewater from basement fixtures."
+     },
+     {
+      "q": "Can you add a sump pump to an old basement?",
+      "preview": "Often.",
+      "answer": "Often, if water collects in one area."
+     },
+     {
+      "q": "Why does my pump turn on and off constantly?",
+      "preview": "A small pit or float problem.",
+      "answer": "Usually a small pit, a float set too low or a failed check valve."
+     },
+     {
+      "q": "Can you add a battery backup to an old pit?",
+      "preview": "Usually.",
+      "answer": "Usually, if the pit is large enough for two pumps."
+     },
+     {
+      "q": "How much does sump pump repair cost in Ravenswood?",
+      "preview": "It depends on the pump and backup. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the pit and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Repair and Replacement in Ravenswood, Chicago",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/sump-pumps",
+   "description": "Sump pump repair, replacement and battery backups in Ravenswood, Chicago. Tested and priced flat before any work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Repair in Ravenswood, Chicago",
+ "metaDescription": "Sump pump repair, replacement and battery backups in Ravenswood, Chicago. Tested and priced flat before any work. Call 24/7."
+}
