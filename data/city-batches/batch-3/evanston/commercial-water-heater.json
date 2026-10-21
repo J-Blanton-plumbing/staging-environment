@@ -1,0 +1,326 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Evanston, IL",
+   "sub": "A restaurant on Davis Street, a cafe on Main Street or a shop on Central Street. When the water heater fails, business stops. We repair, replace and maintain commercial water heaters across Evanston. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Businesses We Serve",
+    "h2": "Evanston Businesses We Serve",
+    "intro": "Including:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Restaurants and Cafes",
+      "body": "Hot water from open to close."
+     },
+     {
+      "h3": "Salons and Studios",
+      "body": "Back-to-back appointments."
+     },
+     {
+      "h3": "Offices and Shops",
+      "body": "Restrooms and break rooms."
+     },
+     {
+      "h3": "Fitness Studios",
+      "body": "Showers in constant use."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Services",
+    "intro": "For the life of the equipment:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Diagnosed and priced first."
+     },
+     {
+      "h3": "Replacement",
+      "body": "Sized to your peak demand."
+     },
+     {
+      "h3": "Maintenance",
+      "body": "Flushing, descaling and safety checks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "type": "local",
+    "id": "evanston-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Serving Evanston Businesses",
+    "intro": "Our office is on Orrington Avenue, in the middle of downtown Evanston.",
+    "items": [
+     {
+      "h3": "Restaurant Kitchens",
+      "body": "We also clear kitchen drains and grease lines."
+     },
+     {
+      "h3": "Hard Water Scale",
+      "body": "Evanston's water leaves scale in commercial tanks and tankless units. Regular descaling protects them."
+     },
+     {
+      "h3": "After-Hours Failures",
+      "body": "Our line is open 24/7."
+     },
+     {
+      "h3": "Prices Before Work",
+      "body": "Flat-rate pricing."
+     },
+     {
+      "h3": "Mixed-Use Buildings",
+      "body": "Shops downstairs and apartments upstairs often share systems. We trace the piping first."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "hot-water-demands-in-evanston-restaurants",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "For Restaurants",
+    "h2": "Hot Water Demands in Evanston Restaurants",
+    "body": "A restaurant kitchen uses hot water constantly: handwashing, prep sinks, dish machines and cleanup. Health codes set temperatures for some of these, and a heater that can't keep up shows up fast during a busy service. We size commercial heaters around peak demand, not average use, and keep them running with scheduled flushing and descaling. When grease is part of the problem downstream, we clear and jet those lines too.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "serving-businesses-across-evanston",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Local Businesses",
+    "h2": "Serving Businesses Across Evanston",
+    "body": "Evanston's businesses range from busy restaurants downtown to salons on Central Street and shops along Main Street and Chicago Avenue. Many work out of older buildings where the water heater was added long after the building went up. We trace the piping, check the venting and keep a record of each unit, so repairs are faster and replacements can be planned.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-commercial-water-heater-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Commercial Water Heater Work",
+    "body": "Capacity, fuel and venting drive most of the price. Older downtown buildings can add steps, like tracing unusual piping or upgrading venting to meet current code. Getting equipment in and out of a basement or back room matters too. We look at all of it and quote one flat price before work starts.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kimberly Ristau",
+      "url": null,
+      "text": "Andrew and Ty save the day getting a glass out of the disposal and assessed my kitchen plumbing and setup for some potential kitchen upgrades. Great communication and logistics from J Blantons and great expertise from this team. Cat approved!"
+     },
+     {
+      "name": "Jon Wink",
+      "url": null,
+      "text": "100% great service. Unclogged two overflowing toilets. Fast, professional and good price. Highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Evanston Businesses",
+    "items": [
+     {
+      "q": "Do you take emergency commercial calls?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. Call any time."
+     },
+     {
+      "q": "Can you work before or after business hours?",
+      "preview": "For planned work, we'll try.",
+      "answer": "For planned replacements, we'll schedule around your hours where we can."
+     },
+     {
+      "q": "How do you size a commercial heater?",
+      "preview": "By your busiest hour.",
+      "answer": "We look at peak demand and the temperatures you need."
+     },
+     {
+      "q": "Can you install a booster heater for a dish machine?",
+      "preview": "Yes.",
+      "answer": "Yes. We install and service booster heaters for commercial dish machines."
+     },
+     {
+      "q": "Do you install tankless systems for businesses?",
+      "preview": "Yes.",
+      "answer": "Yes, including multiple units linked together for higher demand."
+     },
+     {
+      "q": "How much does commercial water heater work cost in Evanston?",
+      "preview": "It depends on capacity, fuel and venting. You'll approve a flat price first.",
+      "answer": "It depends on capacity, fuel type, venting and code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Evanston, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/evanston/commercial-water-heater",
+   "description": "Commercial water heater repair, replacement and maintenance for Evanston restaurants, shops and offices. 24/7 line, flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Evanston, IL",
+ "metaDescription": "Commercial water heater repair, replacement and maintenance for Evanston restaurants, shops and offices. 24/7 line, flat price first."
+}

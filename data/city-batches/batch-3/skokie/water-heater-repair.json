@@ -1,0 +1,320 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Skokie, IL",
+   "sub": "Cold showers, water around the base of the tank or a pilot that won't stay lit. We find what failed, tell you whether it's worth repairing and give you a flat price before any work. Our office is on Lincoln Avenue. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Skokie Water Heater Needs Repair",
+    "intro": "Common reasons for a call:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Hot Water",
+      "body": "A pilot, thermocouple, gas valve or element that failed."
+     },
+     {
+      "h3": "Hot Water Runs Out Early",
+      "body": "Sediment, a broken dip tube or a failing burner."
+     },
+     {
+      "h3": "Water on the Floor",
+      "body": "Valve leaks can be fixed. Tank leaks can't."
+     },
+     {
+      "h3": "Rumbling or Popping",
+      "body": "Sediment cooking on the bottom of the tank."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Skokie Homes",
+    "intro": "Most Skokie water heaters sit in basements built in the 1940s, 50s and 60s, and that shapes the job.",
+    "items": [
+     {
+      "h3": "Chimney Venting",
+      "body": "Many gas water heaters here still vent into the original chimney. If the furnace was upgraded to wall venting, the water heater may not draft well on its own. We check it every time."
+     },
+     {
+      "h3": "Old Gas and Water Connections",
+      "body": "Original shutoff valves and connectors are often worn and get replaced during a repair."
+     },
+     {
+      "h3": "Tight Basement Stairs",
+      "body": "Narrow stairs and low beams matter when a heater has to come out."
+     },
+     {
+      "h3": "Basement Floor Drains",
+      "body": "A leaking heater usually drains to the floor drain, so a slow drain means water spreads."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We repair gas and electric tank heaters, power-vent models and tankless units in Skokie homes. We test first and recommend second.",
+     "When you call, read us the label on the tank: fuel, size and manufacture date. If it's time for a new one, see [water heater installation](/skokie/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "Flushing the tank once a year clears sediment, keeps the heater efficient and helps it last. We also test the relief valve, check the anode rod and look at the burner and the venting.",
+     "Tankless heaters are descaled on a schedule. If your heater has never had service, this is the place to start."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix what's broken and tell you what's next.",
+    "steps": [
+     {
+      "h3": "1. Diagnose the Failure",
+      "body": "Before we talk price."
+     },
+     {
+      "h3": "2. Repair or Replace, Side by Side",
+      "body": "When the heater is near the end."
+     },
+     {
+      "h3": "3. Venting Checked Every Time",
+      "body": "Safety before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "James Frederick",
+      "url": null,
+      "text": "Andrew and Ty did a great job installing a replacement water heater in our home today. Thanks for your service guys!"
+     },
+     {
+      "name": "Craig Wardrip",
+      "url": null,
+      "text": "Excellent work done quickly. Only objection is the high price!"
+     },
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "My water heater vents into the chimney. Is that a problem?",
+      "preview": "It can be, if the furnace no longer shares it.",
+      "answer": "It can be. When a high-efficiency furnace is vented out the wall, the old chimney may be too large for the water heater alone. We test the draft and recommend a fix if needed."
+     },
+     {
+      "q": "Is it worth repairing a 12-year-old water heater?",
+      "preview": "Usually not.",
+      "answer": "Usually not. Past about 12 years, or if the tank is leaking, replacement is the better value."
+     },
+     {
+      "q": "Why does my water heater make popping sounds?",
+      "preview": "Sediment on the bottom of the tank.",
+      "answer": "Sediment on the bottom of the tank traps water that boils as the burner fires. Flushing helps if it's not too far gone."
+     },
+     {
+      "q": "How long do water heaters last in Skokie?",
+      "preview": "About 8 to 12 years.",
+      "answer": "Tank heaters usually last somewhere around 8 to 12 years."
+     },
+     {
+      "q": "Why does my water heater smell like rotten eggs?",
+      "preview": "Usually the anode rod.",
+      "answer": "Usually a reaction with the anode rod. Replacing the rod often fixes it."
+     },
+     {
+      "q": "How much does water heater repair cost in Skokie?",
+      "preview": "It depends on the part and the heater. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of heater. We diagnose it, and you approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Skokie, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/skokie/water-heater-repair",
+   "description": "Water heater repair in Skokie, IL. No hot water, leaks or a pilot that won't stay lit. We diagnose first and quote a flat price. 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Skokie, IL",
+ "metaDescription": "Water heater repair in Skokie, IL. No hot water, leaks or a pilot that won't stay lit. We diagnose first and quote a flat price. 24/7."
+}

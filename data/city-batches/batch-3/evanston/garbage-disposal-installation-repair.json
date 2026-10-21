@@ -1,0 +1,330 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Installation and Repair in Evanston, IL",
+   "sub": "A disposal that hums, leaks or won't turn on, or a kitchen that's never had one. We install, repair and replace garbage disposals in Evanston homes. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Garbage Disposal Problems",
+    "intro": "We fix disposals that:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Hum but Don't Grind",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "Leak",
+      "body": "A worn seal or cracked body."
+     },
+     {
+      "h3": "Won't Start",
+      "body": "A tripped reset or bad switch."
+     },
+     {
+      "h3": "Drain Slowly",
+      "body": "A clog past the unit."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Evanston Kitchens",
+    "intro": "A few things matter in older kitchens.",
+    "items": [
+     {
+      "h3": "First-Time Installs",
+      "body": "May need an outlet and a drain adjustment."
+     },
+     {
+      "h3": "Older Drain Lines",
+      "body": "Ground food can settle in old pipe. See [drain cleaning](/evanston/drain-cleaning)."
+     },
+     {
+      "h3": "Dishwasher Connections",
+      "body": "A clogged disposal backs up the dishwasher."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair if it's worth it.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, motor, seal or drain."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replace."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No leaks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "adding-a-disposal-to-an-older-kitchen",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Older Kitchens",
+    "h2": "Adding a Disposal to an Older Kitchen",
+    "body": "Many older Evanston kitchens were built without a disposal. Adding one usually takes three things: a switched outlet under the sink, a drain that can handle ground food and enough room in the cabinet. We'll check the drain first, since older pipe with grease buildup should be cleaned before a disposal starts sending more food down it. If the dishwasher drains through the sink, we connect it to the disposal.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-disposal-job",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Disposal Job",
+    "body": "A straight swap is the simplest job. A first-time install may need an outlet, a new trap and drain changes, especially in older kitchens. If the drain beyond the sink is partly clogged, it should be cleared first. We check everything and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kim Budnik",
+      "url": null,
+      "text": "Edgar rodded out both my shower drain and vanity sink. He’s was professional and knowledgeable . I think J Blanton is on the pricey side , but I’m very happy with Edgar’s work."
+     },
+     {
+      "name": "Nicole Rose",
+      "url": null,
+      "text": "Tony Z did a great job replacing leaky pipes under my kitchen sink. He checked throughly to make sure the issue was solved. The whole experience was positive. I recommend."
+     },
+     {
+      "name": "Rodney Hayes",
+      "url": null,
+      "text": "Rolando and crew were professional in every aspect of replacing our bathroom sink. Bathroom looks so much better with the smaller pedestal sink."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Can you install a disposal where there wasn't one?",
+      "preview": "Usually.",
+      "answer": "Usually. We may need to add an outlet and adjust the drain."
+     },
+     {
+      "q": "My disposal hums. What should I do?",
+      "preview": "Turn it off. It's probably jammed.",
+      "answer": "Turn it off. Try the reset button and the hex key under the unit. If it won't turn, call us."
+     },
+     {
+      "q": "Should I repair or replace it?",
+      "preview": "If it leaks from the body or is old, replace it.",
+      "answer": "If the body leaks or it's more than about 10 years old, replacing it usually makes more sense."
+     },
+     {
+      "q": "What shouldn't go in a disposal?",
+      "preview": "Grease, fibrous food and coffee grounds.",
+      "answer": "Grease, celery and other fibrous food, eggshells in quantity and coffee grounds."
+     },
+     {
+      "q": "Do I need an electrician for a disposal?",
+      "preview": "Only if there's no outlet.",
+      "answer": "Only if there's no outlet under the sink. We'll tell you before we start."
+     },
+     {
+      "q": "Why does my disposal smell?",
+      "preview": "Food trapped under the splash guard.",
+      "answer": "Usually food trapped under the rubber splash guard. Cleaning it often fixes the smell."
+     },
+     {
+      "q": "Can a disposal handle bones?",
+      "preview": "Small ones, sometimes. It's better not to.",
+      "answer": "Some can grind small bones, but it's hard on the unit. It's better to keep them out."
+     },
+     {
+      "q": "How much does garbage disposal installation cost in Evanston?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and the connections. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Disposal?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Installation and Repair in Evanston, IL",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/evanston/garbage-disposal-installation-repair",
+   "description": "Garbage disposal installation and repair in Evanston, IL. Jammed, leaking or dead disposals fixed or replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Installation in Evanston",
+ "metaDescription": "Garbage disposal installation and repair in Evanston, IL. Jammed, leaking or dead disposals fixed or replaced. Flat price first."
+}

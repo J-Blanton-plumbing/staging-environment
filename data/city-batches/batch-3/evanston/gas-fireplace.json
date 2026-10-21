@@ -1,0 +1,353 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in Evanston, IL",
+   "sub": "A pilot that won't stay lit, gas logs that leave soot or a wood fireplace you'd like to switch to gas. We repair and service gas fireplaces and handle the gas line work. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Evanston Gas Fireplace Acting Up?",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Flame, Pilot On",
+      "body": "A valve, thermopile or wall switch."
+     },
+     {
+      "h3": "Pilot Keeps Dying",
+      "body": "Dirt or a failing thermocouple."
+     },
+     {
+      "h3": "Black Soot",
+      "body": "The flame isn't burning clean."
+     },
+     {
+      "h3": "Thinking About Gas Logs",
+      "body": "For a wood-burning fireplace."
+     },
+     {
+      "h3": "Smell Gas",
+      "body": "Get out, then call Nicor Gas or 911."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Repair and Service",
+    "intro": "We handle:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Pilots, thermocouples, valves and igniters."
+     },
+     {
+      "h3": "Yearly Service",
+      "body": "Cleaning and leak testing."
+     },
+     {
+      "h3": "Gas Lines",
+      "body": "See [gas line installation](/evanston/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Fireplaces in Evanston Homes",
+    "intro": "Many older Evanston homes have original masonry fireplaces.",
+    "items": [
+     {
+      "h3": "Wood-to-Gas Conversions",
+      "body": "Vented log sets need the damper held open."
+     },
+     {
+      "h3": "Older Fireboxes",
+      "body": "Not every log set fits safely."
+     },
+     {
+      "h3": "Carbon Monoxide Detectors",
+      "body": "Keep one near every sleeping area."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Tested, fixed and leak-checked.",
+    "steps": [
+     {
+      "h3": "1. Find the Failed Part",
+      "body": "We test before we replace."
+     },
+     {
+      "h3": "2. Approve the Price",
+      "body": "Before any work."
+     },
+     {
+      "h3": "3. Check Every Connection",
+      "body": "For leaks, with the fire running."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "converting-an-evanston-wood-fireplace-to-gas",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Conversions",
+    "h2": "Converting an Evanston Wood Fireplace to Gas",
+    "body": "A gas log set gives you a fire with the flip of a switch and no ash to clean. In an older masonry fireplace, the conversion has three parts. A chimney professional confirms the flue is sound. We run a gas line to the firebox and install a shutoff valve. Then the log set is installed and tested. Vented logs need the damper held partly open, so we install a clamp to keep it from closing.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-fireplace-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Fireplace Work",
+    "body": "A yearly service is a short visit. A failed thermocouple, igniter or valve costs more because of the part. A wood-to-gas conversion depends on how far the gas line has to run and the log set you choose. We diagnose first and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Anthony Kamykowski",
+      "url": null,
+      "text": "Needed a gas leak repair. Ty did an excellent job. He was thorough, professional, and knowledgeable. Seems like an honest company!"
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Can my wood fireplace be converted to gas?",
+      "preview": "Often, if the chimney is sound.",
+      "answer": "Often. We run the gas line and install the valve. A chimney specialist handles the flue."
+     },
+     {
+      "q": "Why won't my pilot stay lit?",
+      "preview": "A dirty pilot or weak thermocouple.",
+      "answer": "Usually a dirty pilot or a weak thermocouple."
+     },
+     {
+      "q": "Do gas logs need the damper open?",
+      "preview": "Vented logs do.",
+      "answer": "Yes, vented logs need the damper held partly open."
+     },
+     {
+      "q": "When should I service my fireplace?",
+      "preview": "Early fall.",
+      "answer": "Early fall, before the first cold night."
+     },
+     {
+      "q": "Should I choose vented or unvented logs?",
+      "preview": "Vented logs are the more common choice.",
+      "answer": "Vented logs look more like a wood fire and send exhaust up the chimney. Unvented logs have stricter rules. We'll talk through the options."
+     },
+     {
+      "q": "Can you install a gas fireplace insert?",
+      "preview": "We handle the gas line.",
+      "answer": "We run the gas line and connect the insert. Venting and chimney work are done by a fireplace specialist."
+     },
+     {
+      "q": "How much does gas fireplace repair cost in Evanston?",
+      "preview": "It depends on the part. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of fireplace. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Fireplace That Lights?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in Evanston, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/evanston/gas-fireplace",
+   "description": "Gas fireplace repair and service in Evanston, IL. Pilots, valves and gas logs fixed, conversions plumbed and every fitting leak-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair in Evanston, IL",
+ "metaDescription": "Gas fireplace repair and service in Evanston, IL. Pilots, valves and gas logs fixed, conversions plumbed and every fitting leak-tested."
+}

@@ -1,0 +1,325 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Repair and Installation in Lincoln Park, Chicago",
+   "sub": "A disposal that hums, leaks or won't start. We repair it or replace it, and we clear the drain line past it if that's the real problem. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Garbage Disposal Problems",
+    "intro": "We fix disposals that:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Hum but Don't Grind",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "Leak",
+      "body": "A worn seal or cracked housing."
+     },
+     {
+      "h3": "Won't Start",
+      "body": "A tripped reset or bad switch."
+     },
+     {
+      "h3": "Drain Slowly",
+      "body": "A clog past the unit."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Lincoln Park Kitchens",
+    "intro": "In shared buildings, a disposal clog can affect more than your sink.",
+    "items": [
+     {
+      "h3": "Shared Stacks",
+      "body": "Food waste from several kitchens ends up in the same stack."
+     },
+     {
+      "h3": "Older Drains",
+      "body": "Older pipe clogs faster with ground food."
+     },
+     {
+      "h3": "Units Past 10 Years",
+      "body": "Older disposals often leak."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair if it's worth it.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, motor, seal or drain."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replace."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No leaks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "disposals-in-condo-buildings",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Condos",
+    "h2": "Disposals in Condo Buildings",
+    "body": "In a building where several kitchens share one drain, what goes down your disposal can show up in a neighbor's sink. Run cold water, feed food slowly and keep grease, rice, pasta and coffee grounds out. If the building has frequent kitchen line clogs, the board may want the line jetted on a schedule. We can help with both.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-disposal-job",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Disposal Job",
+    "body": "A straight swap is quick. A first-time install in a condo may need an outlet and drain changes. If the shared kitchen line is slow, clearing it first helps. We check and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Fred Cleary",
+      "url": null,
+      "text": "Our kitchen sink was not draining and technician Josh was sent out to tackle the issue. Josh did a great job getting the drain flowing freely. It was a challenging job but Josh did not quit until the drain was open. We would recommend Josh to any future customers and we would request that he be sent to our house for any additional work down the road. [...]"
+     },
+     {
+      "name": "Excite",
+      "url": null,
+      "text": "Anthony was right on time, very respectful of my place and cleaning up after working under the kitchen sink. Completely spotless afterwards. Showed me the instruction manual and pointed out when to replace filters to my reverse osmosis water system. And the salesman the week before was a fair negotiator. Overall great experience. Todd F"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Can my disposal clog the building's drain?",
+      "preview": "It can, with the wrong foods.",
+      "answer": "It can. Grease, fibrous food and coffee grounds build up in shared lines."
+     },
+     {
+      "q": "My disposal just hums. What now?",
+      "preview": "Turn it off. It's likely jammed.",
+      "answer": "Turn it off and try the reset button and the hex key under the unit. If it won't turn, call us."
+     },
+     {
+      "q": "Can you install a disposal in my condo?",
+      "preview": "Usually, if building rules allow.",
+      "answer": "Usually. Some buildings restrict disposals, so check with your association."
+     },
+     {
+      "q": "Should I repair or replace it?",
+      "preview": "If it leaks from the body or is old, replace it.",
+      "answer": "If the housing leaks or it's more than about 10 years old, replacing it usually makes more sense."
+     },
+     {
+      "q": "Is a quieter disposal worth it?",
+      "preview": "In a condo, often.",
+      "answer": "In a condo with shared walls, a sound-insulated model is often worth it."
+     },
+     {
+      "q": "Why does my disposal trip the breaker?",
+      "preview": "A jam or a failing motor.",
+      "answer": "Usually a jam or a motor at the end of its life."
+     },
+     {
+      "q": "How much does garbage disposal replacement cost in Lincoln Park?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and connections. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Disposal?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Repair and Installation in Lincoln Park, Chicago",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/garbage-disposal-installation-repair",
+   "description": "Garbage disposal repair and installation in Lincoln Park, Chicago. Jams, leaks and dead units fixed or replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Repair in Lincoln Park",
+ "metaDescription": "Garbage disposal repair and installation in Lincoln Park, Chicago. Jams, leaks and dead units fixed or replaced. Flat price first."
+}

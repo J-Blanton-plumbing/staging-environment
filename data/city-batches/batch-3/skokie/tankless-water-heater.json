@@ -1,0 +1,332 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Skokie, IL",
+   "sub": "Continuous hot water and a basement with more room. We install, repair and descale tankless water heaters and tell you upfront whether your home's gas line and venting are ready for one. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Water Heater Works",
+    "body": "Instead of keeping a tank of water hot all day, a tankless heater fires only when a hot tap opens. Water flows through a heat exchanger and comes out hot for as long as you need it. The limit is flow rate: a unit can only heat so many gallons per minute, so it has to be sized for your busiest moment, like a shower running while the washer fills.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless for Skokie Homes",
+    "intro": "The trade-offs:",
+    "head": [
+     "",
+     "Tank",
+     "Tankless"
+    ],
+    "rows": [
+     [
+      "Hot water",
+      "Runs out when the tank empties",
+      "Continuous, up to its flow rate"
+     ],
+     [
+      "Floor space",
+      "A tank in the basement",
+      "Mounts on the wall"
+     ],
+     [
+      "Venting",
+      "Often the chimney",
+      "Its own vent, usually through the wall"
+     ],
+     [
+      "Upkeep",
+      "Yearly flush",
+      "Yearly descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Skokie Home?",
+    "intro": "Many Skokie homes can switch, but a few things need checking first.",
+    "items": [
+     {
+      "h3": "Gas Line Size",
+      "body": "Postwar gas lines were sized for a furnace and a tank heater. A tankless unit may need a larger line."
+     },
+     {
+      "h3": "New Venting",
+      "body": "Tankless units can't use the old chimney. They vent through the wall or roof."
+     },
+     {
+      "h3": "Room in the Basement",
+      "body": "Freeing up floor space is a plus in compact basements."
+     },
+     {
+      "h3": "Scale Still Matters",
+      "body": "Even Lake Michigan water leaves minerals in the heat exchanger over time."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We check the house before we sell the heater.",
+    "steps": [
+     {
+      "h3": "1. Gas and Venting Review",
+      "body": "Before any recommendation."
+     },
+     {
+      "h3": "2. Sized for Real Use",
+      "body": "Your busiest hour, not an average."
+     },
+     {
+      "h3": "3. A Flat Price",
+      "body": "Approved before we begin."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "does-tankless-fit-a-skokie-ranch",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Fit Check",
+    "h2": "Does Tankless Fit a Skokie Ranch?",
+    "body": "In a ranch or Cape Cod with a basement utility area, a wall-mounted tankless heater can open up floor space for storage or laundry. The vent usually runs out through the rim joist to the side yard. The gas line from the meter may need to be larger. We look at both before quoting, so you know the full scope of the job.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Louie Desancic",
+      "url": null,
+      "text": "Vincent and his partner (I don’t remember his name, I’m sorry) they did an awesome job, kept me informed the whole time and were very polite and friendly. Great job boys"
+     },
+     {
+      "name": "Shaun Huang",
+      "url": null,
+      "text": "The guys did a great job. Andrew and Enrique were able to figure out the issue quickly and move me towards a reasonable solution. Kyle came out the next day and finished the work efficiently. Appreciate them a lot and will continue doing business with them in the future!"
+     },
+     {
+      "name": "James Frederick",
+      "url": null,
+      "text": "Andrew and Ty did a great job installing a replacement water heater in our home today. Thanks for your service guys!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Can a tankless heater use my existing chimney?",
+      "preview": "No. It needs its own vent.",
+      "answer": "No. Tankless units vent through their own pipe, usually through a side wall."
+     },
+     {
+      "q": "Will my gas line need to be replaced?",
+      "preview": "Often it needs to be upsized.",
+      "answer": "Often. Many postwar gas lines are too small for a tankless unit. We check before we quote."
+     },
+     {
+      "q": "How often should a tankless unit be descaled?",
+      "preview": "About once a year.",
+      "answer": "About once a year for most homes."
+     },
+     {
+      "q": "Do you repair tankless heaters?",
+      "preview": "Yes.",
+      "answer": "Yes. We diagnose error codes, descale heat exchangers, clean sensors and replace failed parts."
+     },
+     {
+      "q": "Is tankless worth it for two people?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes. Smaller households save less, but gain space and endless hot water."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Skokie?",
+      "preview": "It depends on the unit and the gas and venting work. You'll approve a flat price first.",
+      "answer": "It depends on the unit and how much gas line and venting work is needed. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Talk Tankless?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Skokie, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/skokie/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Skokie, IL. Honest advice on gas and venting first, then a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Skokie, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Skokie, IL. Honest advice on gas and venting first, then a flat price."
+}

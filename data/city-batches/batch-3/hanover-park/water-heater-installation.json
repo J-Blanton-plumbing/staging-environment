@@ -1,0 +1,358 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Replacement and Installation in Hanover Park, IL",
+   "sub": "A leaking tank, a heater past 12 years or one that can't keep up with the household. We size the replacement, install it to code and haul the old one away. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Replace Your Water Heater",
+    "intro": "Usually when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Leaks",
+      "body": "It can't be repaired."
+     },
+     {
+      "h3": "It's 10 to 12 Years or Older",
+      "body": "Check the label."
+     },
+     {
+      "h3": "Rusty Hot Water",
+      "body": "Corrosion inside."
+     },
+     {
+      "h3": "Repairs Keep Coming",
+      "body": "Time for a new one."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Replace Your Water Heater",
+    "intro": "Start to finish:",
+    "steps": [
+     {
+      "h3": "1. Check Size and Venting",
+      "body": "Before we quote."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Connections, relief valve and venting."
+     },
+     {
+      "h3": "3. Test and Haul Away",
+      "body": "Leaks and draft checked."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Hanover Park",
+    "intro": "A few things we check on every install.",
+    "items": [
+     {
+      "h3": "Venting",
+      "body": "Natural draft or power-vent, matched to your setup."
+     },
+     {
+      "h3": "Expansion Tanks",
+      "body": "Often needed with newer plumbing codes."
+     },
+     {
+      "h3": "Bigger Households",
+      "body": "We size for your busiest hour."
+     },
+     {
+      "h3": "Going Tankless?",
+      "body": "See [tankless water heaters](/hanover-park/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "One flat price.",
+    "steps": [
+     {
+      "h3": "1. Options Explained",
+      "body": "Size, fuel and venting."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Parts, labor, haul-away."
+     },
+     {
+      "h3": "3. Usually Same Day",
+      "body": "For most swaps."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "choosing-a-replacement-heater",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Your Options",
+    "h2": "Choosing a Replacement Heater",
+    "body": "Most Hanover Park homeowners replace like for like, a 40- or 50-gallon gas tank, because it's the simplest swap. But a replacement is also the best time to rethink. A larger tank or a high-recovery model helps a busy household. A power-vent unit solves some venting problems. A tankless heater frees up floor space and doesn't run out. We'll walk through what each one means for your space, your venting and your gas line before you decide.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-water-heater",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Water Heater",
+    "body": "Tank size and fuel type come first. Power-vent models cost more than standard ones. An expansion tank or venting changes may be needed to meet code. Access to the utility room matters too. We check everything and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "nil golan",
+      "url": null,
+      "text": "I really like the service very nice people highly recommended"
+     },
+     {
+      "name": "Spiro Nicolet",
+      "url": null,
+      "text": "Ronnie really cares about his customers and his profession. A credit to your company! Merry Christmas!"
+     },
+     {
+      "name": "Jason Kelly",
+      "url": null,
+      "text": "Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Replacement Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "What size water heater do I need?",
+      "preview": "It depends on your household.",
+      "answer": "Most homes use 40 or 50 gallons. Larger families may need more."
+     },
+     {
+      "q": "Do I need an expansion tank?",
+      "preview": "Often.",
+      "answer": "Often, especially if your home has a check valve or pressure regulator."
+     },
+     {
+      "q": "Can you replace it the same day?",
+      "preview": "Usually.",
+      "answer": "Usually, for a like-for-like swap."
+     },
+     {
+      "q": "Do you take the old one?",
+      "preview": "Yes.",
+      "answer": "Yes, we haul it away."
+     },
+     {
+      "q": "How long does installation take?",
+      "preview": "A few hours for most swaps.",
+      "answer": "Usually a few hours for a like-for-like replacement."
+     },
+     {
+      "q": "Do you set the temperature?",
+      "preview": "Yes.",
+      "answer": "Yes. We set it to a safe, comfortable level and show you how to adjust it."
+     },
+     {
+      "q": "Should I replace my water heater before it fails?",
+      "preview": "If it's past 12 years, consider it.",
+      "answer": "If it's past 12 years, planning a replacement avoids an emergency and water damage."
+     },
+     {
+      "q": "How much does water heater replacement cost in Hanover Park?",
+      "preview": "It depends on size, type and venting. You'll approve a flat price first.",
+      "answer": "It depends on size, fuel type, venting and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Replacement and Installation in Hanover Park, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/hanover-park/water-heater-installation",
+   "description": "Water heater replacement and installation in Hanover Park, IL. Sized right, installed to code, old tank hauled away. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Replacement in Hanover Park, IL",
+ "metaDescription": "Water heater replacement and installation in Hanover Park, IL. Sized right, installed to code, old tank hauled away. Flat price."
+}

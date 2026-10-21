@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Hydro Jetting",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Hydro Jetting in Evanston, IL",
+   "sub": "When a line clogs again a few months after rodding, roots and grease are still lining the pipe. Hydro jetting scours it clean from wall to wall. We camera the line first and give you a flat price. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+    "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Hydro Jetting?",
+    "body": "Hydro jetting clears a sewer line with a high-pressure water stream, fed through the same cleanout access point used for rodding. A specialized nozzle sprays water in every direction as it moves through the pipe, scouring grease, scale, and roots off the entire pipe wall instead of just cutting a path through the middle. It's the fix for buildup that keeps coming back after rodding, or for roots that have worked into the pipe joints. Rodding opens the line back up. Hydro jetting cleans it.",
+    "img": {
+     "src": "/images/city-services-v2/hydro-jetting-diagram.webp",
+     "alt": "Diagram showing how hydro jetting clears a residential sewer line, with a cross-section view of the underground pipe, jet nozzle, high-pressure water spray, and debris being flushed toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "when-you-need-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "When It Makes Sense",
+    "h2": "When an Evanston Line Needs Jetting",
+    "intro": "Jetting is the right call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Rodding Doesn't Last",
+      "body": "Roots grow back fast."
+     },
+     {
+      "h3": "A Restaurant or Shared Kitchen Drain",
+      "body": "Grease builds in layers."
+     },
+     {
+      "h3": "Cast Iron Has Narrowed",
+      "body": "Scale cut away, flow restored."
+     },
+     {
+      "h3": "Before a Liner",
+      "body": "Lining needs a clean pipe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Hydro Jetting in Evanston's Older Lines",
+    "intro": "Most Evanston sewers are 80 to over 100 years old, so we check before we jet.",
+    "items": [
+     {
+      "h3": "Camera Before Pressure",
+      "body": "We don't jet a broken pipe. Cracked sections get repaired first."
+     },
+     {
+      "h3": "Pressure Matched to the Pipe",
+      "body": "Old clay and cast iron need different settings."
+     },
+     {
+      "h3": "Restaurants and Shared Buildings",
+      "body": "Commercial kitchens on Davis Street and Main Street fight grease constantly."
+     },
+     {
+      "h3": "Longer Between Calls",
+      "body": "A jetted line usually stays clear much longer than a rodded one."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "what-happens-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Inspect, jet, prove it.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "Confirm the pipe can take it."
+     },
+     {
+      "h3": "2. Jet the Full Line",
+      "body": "To the city main."
+     },
+     {
+      "h3": "3. Before and After Video",
+      "body": "At the price you approved."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "why-kitchen-lines-need-jetting",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "For Kitchens",
+    "h2": "Why Kitchen Lines Need Jetting",
+    "body": "Grease goes down the drain warm and liquid, then cools and sticks to the pipe walls. Over months it builds up in layers, narrowing the pipe until food scraps can't get through. A cable punches a hole in that layer, but the rest stays put and the clog returns. A jetter scours the grease off the walls with high-pressure water. In older Evanston homes with long kitchen drain runs, jetting usually lasts much longer than a cable.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Hydro Jetting Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kim Budnik",
+      "url": null,
+      "text": "Edgar rodded out both my shower drain and vanity sink. He’s was professional and knowledgeable . I think J Blanton is on the pricey side , but I’m very happy with Edgar’s work."
+     },
+     {
+      "name": "Kerry Reyes",
+      "url": null,
+      "text": "Joey helped a lot . Took care of our annual maintenance and a drain problem quickly. Great service!"
+     },
+     {
+      "name": "Karen Brown",
+      "url": null,
+      "text": "Ron came out and went through the whole house for some faucet replacements and a drain issue. He was extremely knowledgeable, honest, and put us at ease (even our dog loved him!). I would definitely recommend J. Blanton for plumbing issues."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Hydro Jetting Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Is hydro jetting safe for an old clay line?",
+      "preview": "If the camera shows it's intact.",
+      "answer": "Yes, if the pipe is intact. We camera it first and repair broken sections before jetting."
+     },
+     {
+      "q": "How long does hydro jetting last?",
+      "preview": "Usually much longer than rodding.",
+      "answer": "Usually much longer than rodding, because the walls are clean. Roots return eventually through open joints."
+     },
+     {
+      "q": "Will jetting fix a broken pipe?",
+      "preview": "No.",
+      "answer": "No. Jetting cleans pipe. A break needs a [repair](/evanston/sewer-repair) or a [liner](/evanston/trenchless-sewer-repair)."
+     },
+     {
+      "q": "Do you jet restaurant drains?",
+      "preview": "Yes.",
+      "answer": "Yes. We jet kitchen and grease lines for Evanston restaurants and cafes."
+     },
+     {
+      "q": "Can you jet a kitchen drain inside the house?",
+      "preview": "Yes.",
+      "answer": "Yes, with a smaller jetter sized for kitchen lines."
+     },
+     {
+      "q": "How much does hydro jetting cost in Evanston?",
+      "preview": "It depends on the line and buildup. You'll approve a flat price first.",
+      "answer": "It depends on the length of the line, access and buildup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Line That Stays Clear?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Hydro Jetting in Evanston, IL",
+   "serviceType": "Hydro Jetting",
+   "url": "https://jblantonplumbing.com/evanston/hydro-jetting",
+   "description": "Hydro jetting in Evanston, IL. High-pressure water scours roots, grease and scale out of old sewer lines. Camera first, flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Hydro Jetting in Evanston, IL",
+ "metaDescription": "Hydro jetting in Evanston, IL. High-pressure water scours roots, grease and scale out of old sewer lines. Camera first, flat price."
+}

@@ -1,0 +1,234 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Ravenswood, Chicago",
+   "sub": "Serving Chicagoland since 1993, with a local office on Ravenswood Avenue. Our line is open 24/7 for homeowners in Ravenswood, Lincoln Square and across the North Side. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Ravenswood",
+   "intro": "Our licensed plumbers work on every kind of Ravenswood home, from Victorian houses and bungalows to two-flats and condos. Pick a service to see how we handle it in Ravenswood.",
+   "cards": [
+    {
+     "title": "Sewer Repair",
+     "href": "/chicago-ravenswood/sewer-repair",
+     "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/chicago-ravenswood/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Burst & Frozen Pipes",
+     "href": "/chicago-ravenswood/burst-pipe-repair",
+     "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+     "image": {
+      "src": "/images/city-hubs/burst-copper-pipe-basement.webp",
+      "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+     }
+    },
+    {
+     "title": "Water Testing & Filtration",
+     "href": "/chicago-ravenswood/water-filtration-systems",
+     "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+     "image": {
+      "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+      "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/chicago-ravenswood/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/chicago-ravenswood/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Garbage Disposals",
+     "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+     "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+     "image": {
+      "src": "/images/city-hubs/garbage-disposal-installation.webp",
+      "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Ravenswood Avenue",
+   "h2": "Our Ravenswood Office",
+   "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, Chicago, IL 60640, along the Metra tracks just south of Foster Avenue. It keeps our plumbers close to homes across Ravenswood and the neighboring North Side neighborhoods. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "5126 N Ravenswood Ave, Chicago, IL 60640",
+   "areasH3": "North Side Neighborhoods We Serve",
+   "areas": [
+    {
+     "label": "Lincoln Square",
+     "href": "/chicago-lincoln-square",
+     "area": "Lincoln Square, Chicago, IL"
+    },
+    {
+     "label": "Andersonville",
+     "href": "/chicago-andersonville",
+     "area": "Andersonville, Chicago, IL"
+    },
+    {
+     "label": "Edgewater",
+     "href": "/chicago-edgewater",
+     "area": "Edgewater, Chicago, IL"
+    },
+    {
+     "label": "North Center",
+     "href": "/chicago-north-center",
+     "area": "North Center, Chicago, IL"
+    },
+    {
+     "label": "Uptown",
+     "href": "/chicago-uptown",
+     "area": "Uptown, Chicago, IL"
+    },
+    {
+     "label": "Albany Park",
+     "href": "/chicago-albany-park",
+     "area": "Albany Park, Chicago, IL"
+    },
+    {
+     "label": "West Ridge",
+     "href": "/chicago-west-ridge",
+     "area": "West Ridge, Chicago, IL"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/VJMvxgyoQkK36Wzn6",
+   "schemaArea": "Ravenswood, Chicago, IL"
+  },
+  "depth": {
+   "h2": "What Ravenswood Homes Need From a Plumber",
+   "intro": "Ravenswood straddles the Lincoln Square and Uptown community areas. In Lincoln Square, the median home was built in 1944 and nearly half were built before 1940. About 1 in 3 homes there is in a building with two to four units. Here’s what that means for your plumbing.",
+   "tiles": [
+    {
+     "title": "Century-Old Sewer Lines and Drain Stacks",
+     "body": "Homes from before 1940 often still have clay sewer lines and cast iron drain stacks. Clay lets roots in at the joints, and cast iron scales up and cracks along the seams. A [camera inspection](/chicago-ravenswood/video-camera-sewer-inspections) shows the condition of your line before you decide on a [sewer repair](/chicago-ravenswood/sewer-repair)."
+    },
+    {
+     "title": "Two-Flats: One Line, Two Homes",
+     "body": "In a two-flat or three-flat, every unit drains into the same sewer line. A clog in the main line can back up into the lowest unit even when that unit did nothing wrong. Keeping the main line clear with regular [sewer rodding](/chicago-ravenswood/sewer-rodding) protects everyone in the building."
+    },
+    {
+     "title": "Heavy Rain and Basement Backups",
+     "body": "In July 2011, record rainfall flooded basements across Ravenswood. Chicago’s sewers carry rainwater and wastewater in the same pipes, so a big storm can push water back into basements. A [backflow valve](/chicago-ravenswood/flood-control-maintenance) or an [overhead sewer](/chicago-ravenswood/overhead-sewer-systems) keeps it out."
+    },
+    {
+     "title": "Old Pipe, Low Pressure and Water Quality",
+     "body": "Older homes can still have original galvanized steel water pipe, which rusts inside and slowly cuts water pressure. If you’re worried about what’s in your water, we can [test it and recommend a filter](/chicago-ravenswood/water-filtration-systems). If a pipe freezes and splits, we’re on call 24/7 for [burst pipe repair](/chicago-ravenswood/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Ravenswood Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Ravenswood Reviews",
+   "intro": "4.6 stars from 3,500+ Google reviews for our Ravenswood office.",
+   "rating": "4.6",
+   "ratingSub": "3,500+ Google reviews for our Ravenswood office",
+   "items": [
+    {
+     "name": "Kate Kaku",
+     "url": "https://maps.app.goo.gl/VmrNW7RbW1mj2UZR9",
+     "text": "Edgar did a great job getting my sludged up clogged pipes cleaned out in my 100 year old Chicago bungalow. Not easy with drainage going in unexpected places. Thank you Edgar!"
+    },
+    {
+     "name": "Jennifer Springer",
+     "url": "https://maps.app.goo.gl/e36yzq687mVQKsTPA",
+     "text": "Rich and Liam were absolutely fantastic and did an amazing job installing new piping in our condo building. It was a big project but they were prepared and everything went according to plan! I appreciated their active communication and answering all my questions as this was my first time dealing with such a project. Cannot recommend them enough!"
+    },
+    {
+     "name": "Cassandra Forte",
+     "url": "https://maps.app.goo.gl/iZw6N2JiNMohBWvX8",
+     "text": "Edgar was an excellent technician who came out and tackled our plumbing issue while also talking us through options, necessary steps, and potential solutions so we can avoid the issue in the future. J Blanton Plumbing has consistently helped us with our old house and plumbing and is usually available quickly. Edgar made us feel taken care of and that we could trust the work being done."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Ravenswood Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Ravenswood?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. Work on a century-old drain stack can take more time than a newer system. We give you a flat-rate price before any work begins, so you know the cost going in."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our office on Ravenswood Avenue keeps our plumbers close by, and we [treat emergencies as a priority](/chicago-ravenswood/emergency-plumbing). Arrival times depend on the day and traffic, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "I own a two-flat. Who’s responsible for the sewer line?",
+     "preview": "As the owner, you’re responsible for your building’s sewer line and for keeping it clear.",
+     "a": "As the owner, you’re responsible for your building’s sewer line and for keeping it clear. Every unit drains into it, so one blockage can affect the whole building. A camera inspection shows its condition and where any problem is."
+    },
+    {
+     "q": "Why is my water pressure so low?",
+     "preview": "In older homes, the most common cause is galvanized steel water pipe that has rusted and narrowed inside.",
+     "a": "In older homes, the most common cause is galvanized steel water pipe that has rusted and narrowed inside. A clogged aerator or a failing valve can do it too. We’ll check the fixtures first, then the pipes, and explain your options."
+    },
+    {
+     "q": "Do I need a water filter?",
+     "preview": "Chicago’s water is treated and tested, but some homeowners want a filter for taste, peace of mind or protection for appliances.",
+     "a": "Chicago’s water is treated and tested, but some homeowners want a filter for taste, peace of mind or protection for appliances. We can [test your water](/chicago-ravenswood/water-filtration-systems#water-testing) and recommend an under-sink or whole-house filter that fits your home."
+    },
+    {
+     "q": "How do I protect my basement from sewer backups?",
+     "preview": "Start with a backflow valve on your sewer line and a regular check of the line for roots and debris.",
+     "a": "Start with a backflow valve on your sewer line and a regular check of the line for roots and debris. For homes with repeat backups, an overhead sewer system lifts basement wastewater above the level where backups happen. We can look at your setup and tell you which option makes sense."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which neighborhoods do you serve from Ravenswood?",
+     "preview": "Along with Ravenswood, our office serves Lincoln Square, Andersonville, Edgewater, North Center, Uptown, Albany Park, West Ridge and more.",
+     "a": "Along with Ravenswood, our office serves Lincoln Square, Andersonville, Edgewater, North Center, Uptown, Albany Park, West Ridge and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Ravenswood start small, like roots in an old clay sewer line or a water heater past its prime. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Ravenswood Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Ravenswood, Chicago",
+ "metaDescription": "Local plumbers on Ravenswood Avenue in Chicago. Sewer, drain and pipe work for century-old homes. Call 24/7 for an upfront price before work starts."
+}

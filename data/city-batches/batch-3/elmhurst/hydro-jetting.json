@@ -1,0 +1,316 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Hydro Jetting",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Hydro Jet Sewer Cleaning in Elmhurst, IL",
+   "sub": "If roots are back a few months after every rodding, the pipe walls are still covered in growth. A hydro jet scours the line clean from end to end. We camera it first and give you a flat price before we start. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+    "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Hydro Jetting?",
+    "body": "Hydro jetting clears a sewer line with a high-pressure water stream, fed through the same cleanout access point used for rodding. A specialized nozzle sprays water in every direction as it moves through the pipe, scouring grease, scale, and roots off the entire pipe wall instead of just cutting a path through the middle. It's the fix for buildup that keeps coming back after rodding, or for roots that have worked into the pipe joints. Rodding opens the line back up. Hydro jetting cleans it.",
+    "img": {
+     "src": "/images/city-services-v2/hydro-jetting-diagram.webp",
+     "alt": "Diagram showing how hydro jetting clears a residential sewer line, with a cross-section view of the underground pipe, jet nozzle, high-pressure water spray, and debris being flushed toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "when-you-need-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "When It Makes Sense",
+    "h2": "When Elmhurst Lines Need Hydro Jetting",
+    "intro": "Hydro jetting is worth it when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You're Rodding More Than Once a Year",
+      "body": "The roots on the walls grow right back."
+     },
+     {
+      "h3": "Cast Iron Has Narrowed With Scale",
+      "body": "Jetting restores the full opening."
+     },
+     {
+      "h3": "The Kitchen Line Is Packed With Grease",
+      "body": "Common in 60-year-old kitchen drains."
+     },
+     {
+      "h3": "A Liner Is Next",
+      "body": "Lining starts with a clean pipe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Hydro Jetting Works on Elmhurst Lines",
+    "intro": "Elmhurst's postwar clay and cast iron lines are exactly the kind that build up roots and scale.",
+    "items": [
+     {
+      "h3": "Camera First, Every Time",
+      "body": "We check that the clay is intact and set the pressure for it."
+     },
+     {
+      "h3": "Root Growth Comes Off the Walls",
+      "body": "Not just out of the middle of the pipe."
+     },
+     {
+      "h3": "Longer Between Calls",
+      "body": "A jetted line usually stays clear longer than a rodded one."
+     },
+     {
+      "h3": "Video of the Result",
+      "body": "You see the clean pipe before we leave."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "what-happens-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Look first, then jet.",
+    "steps": [
+     {
+      "h3": "1. Inspect",
+      "body": "No jetting a broken pipe."
+     },
+     {
+      "h3": "2. Jet",
+      "body": "Pressure matched to clay, cast iron or PVC."
+     },
+     {
+      "h3": "3. Prove It",
+      "body": "A second camera pass at the price you approved."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-you-ll-see-after-jetting",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Results",
+    "h2": "What You'll See After Jetting",
+    "body": "We record the line before and after. Before, you'll usually see roots hanging from joints, grease coating the pipe or a rough, scaled surface in cast iron. After, the walls should look clean and round, with the joints and any cracks clearly visible. That second look is valuable. It tells us whether the pipe is sound enough to keep maintaining or whether a liner would be the smarter long-term choice.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Hydro Jetting Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "SuperElvis_",
+      "url": null,
+      "text": "My tech, Cameron D., was very helpful & thorough. Thank you much!"
+     },
+     {
+      "name": "Kevin Barnicle",
+      "url": null,
+      "text": "My plumber from now on! J Blanton was so easy and pleasant to schedule. Stephen W. arrived on time, super professional and kind. He was very clean and a great communicator. He new everything. I’ll call them again if I have an issue."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Hydro Jetting Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Is hydro jetting safe for a 1950s clay line?",
+      "preview": "If it's intact. We check first.",
+      "answer": "If the camera shows the clay is intact, yes. If a section is broken or collapsed, we'll recommend a [repair](/elmhurst/sewer-repair) first."
+     },
+     {
+      "q": "How long does hydro jetting take?",
+      "preview": "Usually a few hours.",
+      "answer": "Usually a few hours for a typical home, including both camera passes."
+     },
+     {
+      "q": "Does jetting stop roots permanently?",
+      "preview": "No, but it slows them down.",
+      "answer": "No. Roots can return through an open joint. Jetting clears them more thoroughly, and a liner seals the joints for good."
+     },
+     {
+      "q": "Can jetting help a slow kitchen drain?",
+      "preview": "Yes, especially with grease.",
+      "answer": "Yes. Decades of grease in a kitchen line is one of the best uses for jetting."
+     },
+     {
+      "q": "Do I get the before and after video?",
+      "preview": "Yes.",
+      "answer": "Yes. It's yours to keep."
+     },
+     {
+      "q": "How much does hydro jet sewer cleaning cost in Elmhurst?",
+      "preview": "It depends on the line and buildup. You'll approve a flat price first.",
+      "answer": "It depends on the line length, access and how much buildup there is. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Line That Stays Clear?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Hydro Jet Sewer Cleaning in Elmhurst, IL",
+   "serviceType": "Hydro Jetting",
+   "url": "https://jblantonplumbing.com/elmhurst/hydro-jetting",
+   "description": "Hydro jet sewer cleaning in Elmhurst, IL. High-pressure water strips roots, grease and scale off the pipe walls. Camera first, flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Hydro Jet Sewer Cleaning in Elmhurst, IL",
+ "metaDescription": "Hydro jet sewer cleaning in Elmhurst, IL. High-pressure water strips roots, grease and scale off the pipe walls. Camera first, flat price."
+}

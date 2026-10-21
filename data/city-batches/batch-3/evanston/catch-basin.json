@@ -1,0 +1,336 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Catch Basin",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Catch Basin Cleaning, Repair and Installation in Evanston, IL",
+   "sub": "A driveway that floods, a backyard basin packed with leaves or an old brick basin falling apart. We clean, rebuild, replace and install catch basins, and clear the lines behind them. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+    "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-a-catch-basin",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What a Catch Basin Does",
+    "body": "A catch basin is a chamber under a grate that collects runoff from a yard, driveway, gangway or downspouts. Leaves and grit settle to the bottom, and the water flows out through a pipe. In many older Evanston yards, that pipe ties into the house sewer, so a neglected basin can affect your basement too.",
+    "img": {
+     "src": "/images/city-services-v2/catch-basin-diagram.webp",
+     "alt": "Diagram of a catch basin showing the inlet grate, water line, sediment settling in the sump and the outlet pipe carrying water away"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs an Evanston Catch Basin Needs Service",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Pools Over the Grate",
+      "body": "The basin or its outlet is clogged."
+     },
+     {
+      "h3": "Leaves Bury It Every Fall",
+      "body": "Under Evanston's big trees."
+     },
+     {
+      "h3": "The Walls Are Crumbling",
+      "body": "Old brick loses mortar."
+     },
+     {
+      "h3": "The Driveway Floods",
+      "body": "Water heads for the garage or basement."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "catch-basin-services-in-evanston",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "What We Do",
+    "h2": "Catch Basin Services in Evanston",
+    "intro": "From routine cleaning to a brand-new basin:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Cleaning",
+      "body": "Leaves, silt and debris removed."
+     },
+     {
+      "h3": "Repair and Rebuilding",
+      "body": "New walls, frames and grates."
+     },
+     {
+      "h3": "Replacement",
+      "body": "A new basin where the old one failed."
+     },
+     {
+      "h3": "New Installation",
+      "body": "Where water has nowhere to go."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-catch-basins",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Catch Basins on Evanston Properties",
+    "intro": "Big trees and old properties keep catch basins busy here.",
+    "items": [
+     {
+      "h3": "Leaf Load",
+      "body": "Evanston's canopy drops a lot of leaves, and basins fill fast every fall."
+     },
+     {
+      "h3": "Brick Basins From Decades Ago",
+      "body": "They crack, settle and lose mortar."
+     },
+     {
+      "h3": "Tied to the House Sewer",
+      "body": "Some older basins drain into the lateral, so a backup in one shows up in the other."
+     },
+     {
+      "h3": "New Basins for Problem Spots",
+      "body": "Low corners of yards and driveways that always hold water."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "The basin and the pipe behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean It Out",
+      "body": "Down to the bottom."
+     },
+     {
+      "h3": "2. Test the Outlet",
+      "body": "Water first, camera if needed."
+     },
+     {
+      "h3": "3. Price Repairs First",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Catch Basin Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kim Budnik",
+      "url": null,
+      "text": "Edgar rodded out both my shower drain and vanity sink. He’s was professional and knowledgeable . I think J Blanton is on the pricey side , but I’m very happy with Edgar’s work."
+     },
+     {
+      "name": "Kerry Reyes",
+      "url": null,
+      "text": "Joey helped a lot . Took care of our annual maintenance and a drain problem quickly. Great service!"
+     },
+     {
+      "name": "Karen Brown",
+      "url": null,
+      "text": "Ron came out and went through the whole house for some faucet replacements and a drain issue. He was extremely knowledgeable, honest, and put us at ease (even our dog loved him!). I would definitely recommend J. Blanton for plumbing issues."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Catch Basin Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "How often should a catch basin be cleaned?",
+      "preview": "At least once a year.",
+      "answer": "At least once a year, usually after the leaves fall. Under big trees, twice a year helps."
+     },
+     {
+      "q": "Can you install a new catch basin?",
+      "preview": "Yes.",
+      "answer": "Yes. We install new basins in low spots and connect them to a proper drain line."
+     },
+     {
+      "q": "Should I repair or replace my old basin?",
+      "preview": "It depends on the walls and outlet.",
+      "answer": "If the walls are sound, a rebuild of the top and a new grate is often enough. If it's collapsing, replacement makes more sense."
+     },
+     {
+      "q": "Can a clogged basin flood my basement?",
+      "preview": "Yes.",
+      "answer": "Yes. Pooled water can seep in through walls and window wells, and a basin tied to the sewer can back up."
+     },
+     {
+      "q": "Do you clean commercial parking lot basins?",
+      "preview": "We focus on residential basins.",
+      "answer": "We focus on homes. For large parking lots, a vacuum truck service is usually the better fit."
+     },
+     {
+      "q": "How much does catch basin work cost in Evanston?",
+      "preview": "It depends on the job. You'll approve a flat price first.",
+      "answer": "It depends on whether it's a cleaning, repair, replacement or new install. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Yard That Drains?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Catch Basin Cleaning, Repair and Installation in Evanston, IL",
+   "serviceType": "Catch Basin",
+   "url": "https://jblantonplumbing.com/evanston/catch-basin",
+   "description": "Catch basin cleaning, repair and installation in Evanston, IL. Yard, driveway and gangway basins cleared, rebuilt or replaced.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Catch Basin Cleaning & Repair in Evanston, IL",
+ "metaDescription": "Catch basin cleaning, repair and installation in Evanston, IL. Yard, driveway and gangway basins cleared, rebuilt or replaced."
+}

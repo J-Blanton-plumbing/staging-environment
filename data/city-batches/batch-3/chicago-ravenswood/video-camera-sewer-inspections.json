@@ -1,0 +1,329 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Ravenswood, Chicago",
+   "sub": "Before you buy a two-flat, renovate a basement or pay for a repair, find out what's really in the sewer line. We record it, mark each problem and walk you through it. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Why Ravenswood Owners Scope Their Sewer",
+    "intro": "Usually:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying an Older Home or Two-Flat",
+      "body": "The lateral may be original."
+     },
+     {
+      "h3": "Converting the Garden Unit",
+      "body": "Check the line and under-slab drains first."
+     },
+     {
+      "h3": "Roots Every Year",
+      "body": "See whether a repair would end it."
+     },
+     {
+      "h3": "After a Storm Backup",
+      "body": "Your line or the city's?"
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-chicago-ravenswood",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Ravenswood Sewer Lines",
+    "intro": "Typical findings:",
+    "items": [
+     {
+      "h3": "Roots in Clay Joints",
+      "body": "The most common."
+     },
+     {
+      "h3": "Cracked Cast Iron at the Foundation",
+      "body": "Where the line leaves the building."
+     },
+     {
+      "h3": "Old Patches",
+      "body": "Repairs from decades past."
+     },
+     {
+      "h3": "Bellies Under the Yard",
+      "body": "Low spots where the pipe settled."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You watch it with us.",
+    "steps": [
+     {
+      "h3": "1. In Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Located and Measured",
+      "body": "Every problem marked."
+     },
+     {
+      "h3": "3. Explained",
+      "body": "And the video is yours."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "split",
+    "id": "scoping-the-sewer-before-you-buy-a-two-flat",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Buying a Two-Flat",
+    "h2": "Scoping the Sewer Before You Buy a Two-Flat",
+    "body": "A two-flat's sewer line carries waste from two households, sometimes three, and on an older building it may be original clay. That makes it one of the biggest unknowns in the purchase. A camera inspection during your contract period shows whether the line is clean, needs regular rodding or needs a repair. You'll get the footage to share with your agent and attorney, which can make a real difference in negotiations.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-sewer-inspection",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Sewer Inspection",
+    "body": "Access matters most. A basement cleanout is simplest. A blocked line needs clearing first. Going through a toilet or vent takes more time. We quote a flat price before we start.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Martha L",
+      "url": null,
+      "text": "Andrew provided excellent service and thorough explanation during semi-annual inspection today. Thank you!"
+     },
+     {
+      "name": "Jane Ernst",
+      "url": null,
+      "text": "We had a very slow draining issue that would make our whole system gurgle when water drained from the washing machine. We called J. Blanton Plumbing and they were able to schedule us for the next day (as I had requested). Initially, Andreas Pastos came out and sent a camera down to evaluate the situation. [...]"
+     },
+     {
+      "name": "Lenka Reznicek",
+      "url": null,
+      "text": "Look what Christian at J Blanton Plumbing was able to clear from our drain!! What a whopper 🐟😲Thank you for a great service visit and inspection!! 🙏👏 let the water flow!!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Should I scope the sewer before buying a two-flat?",
+      "preview": "Yes.",
+      "answer": "Yes. A standard inspection doesn't cover it, and a repair under an old building can be significant."
+     },
+     {
+      "q": "Can the camera see under the basement slab?",
+      "preview": "Yes.",
+      "answer": "Yes, from the cleanout all the way to the city sewer."
+     },
+     {
+      "q": "Can you tell if it's the city's problem?",
+      "preview": "Yes.",
+      "answer": "Yes. We follow the line to the main and show you where the problem is."
+     },
+     {
+      "q": "Do I keep the video?",
+      "preview": "Yes.",
+      "answer": "Yes, to share with a seller, an agent or other owners."
+     },
+     {
+      "q": "Will you inspect under-slab drains too?",
+      "preview": "If we can reach them.",
+      "answer": "If we can reach them from a floor drain or cleanout, yes."
+     },
+     {
+      "q": "Can you inspect a line with no cleanout?",
+      "preview": "Usually, through a toilet or vent.",
+      "answer": "Usually. We can go through a toilet flange or roof vent if needed."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Ravenswood?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Ravenswood, Chicago",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Ravenswood, Chicago. See roots, cracks and breaks under older homes on video before you buy or repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Ravenswood, Chicago",
+ "metaDescription": "Sewer camera inspections in Ravenswood, Chicago. See roots, cracks and breaks under older homes on video before you buy or repair."
+}

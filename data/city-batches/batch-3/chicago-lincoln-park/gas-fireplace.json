@@ -1,0 +1,342 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in Lincoln Park, Chicago",
+   "sub": "A pilot that won't stay lit, a fireplace that shuts off by itself or a wood-burning fireplace you want converted to gas. We repair and service gas fireplaces and handle the gas line work. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Problems With Your Lincoln Park Gas Fireplace?",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pilot Goes Out",
+      "body": "A dirty pilot or weak thermocouple."
+     },
+     {
+      "h3": "It Shuts Off by Itself",
+      "body": "The safety system is cutting the gas."
+     },
+     {
+      "h3": "Sooty Logs or Glass",
+      "body": "A dirty or poorly set flame."
+     },
+     {
+      "h3": "You Want Gas Instead of Wood",
+      "body": "Gas logs or an insert."
+     },
+     {
+      "h3": "You Smell Gas",
+      "body": "Leave, then call Peoples Gas or 911."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Repair, Service and Gas Lines",
+    "intro": "We handle:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Pilots, thermocouples, valves and igniters."
+     },
+     {
+      "h3": "Yearly Service",
+      "body": "Cleaning and leak testing."
+     },
+     {
+      "h3": "Gas Lines",
+      "body": "For new units and conversions. See [gas line installation](/chicago-lincoln-park/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Fireplaces in Lincoln Park Homes",
+    "intro": "Many older Lincoln Park homes have original fireplaces, and many have been converted to gas.",
+    "items": [
+     {
+      "h3": "Converted Masonry Fireplaces",
+      "body": "Vented gas logs need the damper held open with a clamp."
+     },
+     {
+      "h3": "Direct-Vent Units in Condos",
+      "body": "Sealed units vent through the wall."
+     },
+     {
+      "h3": "Chimney Condition",
+      "body": "We handle the gas side and point you to a chimney specialist if needed."
+     },
+     {
+      "h3": "Carbon Monoxide Detectors",
+      "body": "We recommend one near sleeping areas and on every floor."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Licensed gas work and an honest diagnosis.",
+    "steps": [
+     {
+      "h3": "1. Test First",
+      "body": "Only replace what failed."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Leak-Tested",
+      "body": "Every fitting."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "masonry-insert-or-direct-vent",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Know Your Fireplace",
+    "h2": "Masonry, Insert or Direct-Vent?",
+    "body": "Lincoln Park homes have all three. Older greystones and frame houses often have masonry fireplaces, some converted to gas logs. Many renovations added direct-vent units that vent through a wall and use a sealed glass front. Others have inserts that fit inside an old firebox. Each has different parts and service needs. Tell us what you have, or show us a photo, and we'll come prepared.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-fireplace-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Fireplace Work",
+    "body": "A service visit is simple. A failed part depends on the fireplace type and model. Running gas to a masonry fireplace depends on the route through the building. We diagnose and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Anthony Kamykowski",
+      "url": null,
+      "text": "Needed a gas leak repair. Ty did an excellent job. He was thorough, professional, and knowledgeable. Seems like an honest company!"
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Can my old fireplace be converted to gas?",
+      "preview": "Often, if the chimney is sound.",
+      "answer": "Often. The chimney must be in good shape. We run the gas line and install the valve."
+     },
+     {
+      "q": "Why won't my pilot stay lit?",
+      "preview": "A dirty pilot or weak thermocouple.",
+      "answer": "Usually a dirty pilot or weak thermocouple or thermopile."
+     },
+     {
+      "q": "Does my gas log fireplace need the damper open?",
+      "preview": "Yes, for vented logs.",
+      "answer": "Yes. Vented gas logs need a fixed damper opening."
+     },
+     {
+      "q": "When should I service my fireplace?",
+      "preview": "Early fall.",
+      "answer": "Early fall, before the first cold night."
+     },
+     {
+      "q": "Does a direct-vent fireplace need the damper open?",
+      "preview": "No, it has its own vent.",
+      "answer": "No. It vents through its own pipe, not the chimney."
+     },
+     {
+      "q": "How much does gas fireplace repair cost in Lincoln Park?",
+      "preview": "It depends on the part. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of fireplace. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Fireplace That Lights?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in Lincoln Park, Chicago",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/gas-fireplace",
+   "description": "Gas fireplace repair, service and gas line installation in Lincoln Park, Chicago. Pilots, valves and logs fixed and leak-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair in Lincoln Park, Chicago",
+ "metaDescription": "Gas fireplace repair, service and gas line installation in Lincoln Park, Chicago. Pilots, valves and logs fixed and leak-tested."
+}

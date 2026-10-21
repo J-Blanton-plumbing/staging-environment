@@ -1,0 +1,321 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Hinsdale, IL",
+   "sub": "An old clay lateral under a house near Robbins Park, a new home tied into a line that's 70 years old, or a backup that keeps returning after every rodding. We put a camera in the line, show you the problem and price the repair before anything starts. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Hinsdale Sewer Line Needs Repair",
+    "intro": "A simple clog clears and stays clear. These suggest the pipe is damaged:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Backups That Return Within Months",
+      "body": "Roots or a broken section keep catching debris after every cleaning."
+     },
+     {
+      "h3": "Slow Drains in a Brand-New House",
+      "body": "A new home connected to an old lateral can inherit its problems."
+     },
+     {
+      "h3": "A Soft or Sunken Spot in the Yard",
+      "body": "Soil washing into a break leaves a dip along the sewer path."
+     },
+     {
+      "h3": "A Camera Report From a Home Sale",
+      "body": "Cracks, offset joints or a sag recorded during an inspection."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Hinsdale",
+    "intro": "About 1 in 6 Hinsdale homes was built before 1940, and more than 4 in 10 went up after 1990, often where an older house stood. Both ends of that range bring sewer trouble.",
+    "items": [
+     {
+      "h3": "Clay Laterals Under Historic Homes",
+      "body": "Houses around Robbins Park and the older blocks near downtown often still drain through clay pipe. Every joint is an opening for roots."
+     },
+     {
+      "h3": "New Houses, Old Connections",
+      "body": "When a house is rebuilt, the line to the street isn't always replaced. A camera look tells you whether yours was."
+     },
+     {
+      "h3": "Mature Parkway Trees",
+      "body": "Hinsdale's big elms, oaks and maples have had decades to find the sewer."
+     },
+     {
+      "h3": "Postwar Cast Iron and Clay",
+      "body": "About a quarter of homes date from 1940 to 1969. Their lines are now 57 to 86 years old."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Hinsdale",
+    "intro": "Hinsdale yards are worth protecting, so we plan before we dig.",
+    "steps": [
+     {
+      "h3": "1. Camera and Locate",
+      "body": "We mark the depth and position of each problem from the cleanout to the main."
+     },
+     {
+      "h3": "2. Choose the Least Disruptive Fix",
+      "body": "Spot repair, lining or replacement, based on what the video shows."
+     },
+     {
+      "h3": "3. Price It Before Work",
+      "body": "A flat rate you approve, with the footage to support it."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/hinsdale/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/hinsdale/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "Hinsdale lots often have mature trees, stone walks and finished landscaping over the sewer path. The camera footage tells us which method keeps them intact."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Stone",
+      "url": null,
+      "text": "Thank you to Scott and Payton for coming by and helping us out. [...]"
+     },
+     {
+      "name": "Muhammad Omer",
+      "url": null,
+      "text": "Excellent service. The whole crew including Alberto, Giovanni, Teddy and Gael were very professional and thorough. They made a very complex project look very easy. Very depndable service."
+     },
+     {
+      "name": "Jackson Krecioch",
+      "url": null,
+      "text": "Thomas was great came out on the weekend to make sure I was taken care of! Really appreciate his initiative!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "We built a new home. Why would the sewer line be old?",
+      "preview": "The builder may have reused the existing lateral.",
+      "answer": "If the builder tied into the existing lateral instead of running a new one, your new house is draining through the old pipe. A [camera inspection](/hinsdale/video-camera-sewer-inspections) shows what's there."
+     },
+     {
+      "q": "Can you repair a line without disturbing landscaping or a stone walk?",
+      "preview": "Often, with trenchless methods.",
+      "answer": "Often. [Trenchless repair](/hinsdale/trenchless-sewer-repair) works through small openings, so most hardscape and plantings can stay in place."
+     },
+     {
+      "q": "Is it the sewer line or the village main?",
+      "preview": "The camera shows where the problem is.",
+      "answer": "We run the camera to the main and mark where the problem is. If it's in the village sewer, we'll tell you so you can report it."
+     },
+     {
+      "q": "Should we repair the line before finishing the basement?",
+      "preview": "Yes. Check it first.",
+      "answer": "Yes. Camera the main and the drains under the floor before the new finishes go in. Fixing a break first costs far less than opening a finished floor later."
+     },
+     {
+      "q": "How much does sewer line repair cost in Hinsdale?",
+      "preview": "That depends on the damage and the method. You'll approve a flat price first.",
+      "answer": "It depends on what the camera finds, the depth and length of the damaged section, the repair method and what's on top of it. You'll approve a flat-rate price before work begins."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Hinsdale, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/hinsdale/sewer-repair",
+   "description": "Sewer line repair in Hinsdale, IL, from 1890s clay laterals to lines under new builds. Camera first, then a flat price before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Hinsdale, IL",
+ "metaDescription": "Sewer line repair in Hinsdale, IL, from 1890s clay laterals to lines under new builds. Camera first, then a flat price before any work."
+}

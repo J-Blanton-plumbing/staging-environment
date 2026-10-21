@@ -1,0 +1,351 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Repair in Evanston, IL",
+   "sub": "A faint gas smell near the range, a red tag from Nicor or old piping to appliances you removed years ago. Our licensed plumbers find leaks, repair the piping and pressure-test it before service is restored. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Safety First",
+    "h2": "Smell Gas in Your Evanston Home?",
+    "intro": "Do these in order:",
+    "steps": [
+     {
+      "h3": "1. Get Everyone Outside",
+      "body": "Pets too. Don't stop to look for the leak."
+     },
+     {
+      "h3": "2. Leave Switches Alone",
+      "body": "Don't turn anything on or off."
+     },
+     {
+      "h3": "3. Call From a Distance",
+      "body": "Nicor Gas or 911, away from the house."
+     },
+     {
+      "h3": "4. Call Us for the Repair",
+      "body": "Once the utility says it's safe."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When Gas Piping Needs a Plumber",
+    "intro": "Call us when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Smell Near an Appliance",
+      "body": "Range, dryer or water heater."
+     },
+     {
+      "h3": "Service Was Shut Off",
+      "body": "Repair and pressure test first."
+     },
+     {
+      "h3": "Abandoned Branches",
+      "body": "From removed appliances."
+     },
+     {
+      "h3": "Old Flexible Connectors",
+      "body": "Uncoated brass should go."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "We find gas leaks with electronic detectors and fitting-by-fitting tests, then pressure-test the system to confirm it's tight.",
+     "In older Evanston homes, leaks often show up at old unions and valves, on branches left from removed appliances and at fittings near the meter. After the repair, Nicor Gas can restore service."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Lines in Evanston Homes",
+    "intro": "Gas piping in older homes has often been changed many times.",
+    "items": [
+     {
+      "h3": "Black Iron Modified Over Decades",
+      "body": "More joints, more chances to leak."
+     },
+     {
+      "h3": "Converted Appliances",
+      "body": "Old lines to removed appliances need to be capped properly."
+     },
+     {
+      "h3": "New Appliances on Old Pipe",
+      "body": "We check sizing before connecting."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Licensed, careful and tested.",
+    "steps": [
+     {
+      "h3": "1. Pinpoint the Leak",
+      "body": "With detectors, not guesswork."
+     },
+     {
+      "h3": "2. Price the Repair",
+      "body": "You approve before we start."
+     },
+     {
+      "h3": "3. Prove It's Tight",
+      "body": "A pressure test before gas returns."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "gas-piping-in-older-evanston-homes",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Older Homes",
+    "h2": "Gas Piping in Older Evanston Homes",
+    "body": "In a house that's been updated several times, the gas piping tells the story. You'll often find a branch to a long-gone stove, a line that once fed a gas light or a dryer connection in the wrong room. Each one is a set of fittings that can loosen over time. When we repair a leak, we also look for these abandoned branches and cap them properly, so the system has fewer places to fail.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Nicole Rose",
+      "url": null,
+      "text": "Tony Z did a great job replacing leaky pipes under my kitchen sink. He checked throughly to make sure the issue was solved. The whole experience was positive. I recommend."
+     },
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     },
+     {
+      "name": "Nivaldo Eduardo",
+      "url": null,
+      "text": "Brandon was friendly, knowledgeable, professional and fast. He replaced my toilet and water valve efficiently. Thanks for all your help."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "What should I do if I smell gas?",
+      "preview": "Leave and call Nicor Gas or 911.",
+      "answer": "Leave without touching switches. Call Nicor Gas or 911 from outside, then call us."
+     },
+     {
+      "q": "Who is responsible for gas piping?",
+      "preview": "Nicor up to the meter. You after it.",
+      "answer": "Nicor Gas handles everything up to and including the meter. Piping after the meter belongs to the homeowner."
+     },
+     {
+      "q": "Can you cap old gas lines?",
+      "preview": "Yes.",
+      "answer": "Yes, and we pressure-test the system after."
+     },
+     {
+      "q": "How long until service is restored?",
+      "preview": "After the repair and test.",
+      "answer": "Once we repair and test the line, Nicor Gas can restore service."
+     },
+     {
+      "q": "Is a faint gas smell near the stove normal?",
+      "preview": "A brief whiff when lighting can be. A steady smell isn't.",
+      "answer": "A brief smell when a burner lights can happen. A steady smell is not normal. Leave and call Nicor Gas."
+     },
+     {
+      "q": "How much does gas line repair cost in Evanston?",
+      "preview": "It depends on the leak. You'll approve a flat price first.",
+      "answer": "It depends on where the leak is and how much pipe needs work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Need Your Gas Line Checked?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Repair in Evanston, IL",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/evanston/gas-line-repair",
+   "description": "Gas line repair and leak detection in Evanston, IL. Licensed plumbers find the leak, repair the piping and pressure-test the system.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Repair in Evanston, IL",
+ "metaDescription": "Gas line repair and leak detection in Evanston, IL. Licensed plumbers find the leak, repair the piping and pressure-test the system."
+}

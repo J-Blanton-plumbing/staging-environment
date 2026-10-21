@@ -1,0 +1,331 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Evanston, IL",
+   "sub": "In Evanston, the sewer lateral from your house to the street belongs to you, and on many blocks it's 80 to 100 years old. We camera the line, show you the break and price the repair before any digging. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Evanston Sewer Line Failing?",
+    "intro": "These point past a simple clog:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Backups on Dry Days",
+      "body": "Rain isn't the cause. Your lateral is."
+     },
+     {
+      "h3": "Rodding Every Spring",
+      "body": "Roots keep finding the same joint."
+     },
+     {
+      "h3": "A Wet Spot or Dip Near the Parkway",
+      "body": "Soil washing into a broken pipe."
+     },
+     {
+      "h3": "Sewer Smell in the Basement",
+      "body": "A cracked pipe under the floor."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Evanston Sewer Laterals Break",
+    "intro": "About 4 in 10 Evanston homes were built before 1940, and the city says most of its sewers are 80 to over 100 years old.",
+    "items": [
+     {
+      "h3": "Clay Pipe From the Early 1900s",
+      "body": "Short sections joined every two or three feet. Each joint is a doorway for roots."
+     },
+     {
+      "h3": "Old Elms and Oaks",
+      "body": "Evanston's parkway canopy is beautiful and thirsty. Roots follow the moisture straight into old pipe."
+     },
+     {
+      "h3": "Cast Iron Under the Basement",
+      "body": "The pipe that leaves the house is often cast iron, and it rusts through along the bottom."
+     },
+     {
+      "h3": "The Lateral Is the Owner's",
+      "body": "The City of Evanston maintains the main. The pipe from your house to it is your responsibility."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Evanston",
+    "intro": "Proof first, then the fix that fits.",
+    "steps": [
+     {
+      "h3": "1. Record It End to End",
+      "body": "From your cleanout to the city main."
+     },
+     {
+      "h3": "2. Match the Method to the Damage",
+      "body": "Spot repair, lining or replacement."
+     },
+     {
+      "h3": "3. A Flat Price You Approve",
+      "body": "Before we open the ground."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/evanston/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/evanston/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "Evanston laterals often cross the parkway under a city tree. Trenchless methods can protect the tree and the sidewalk."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Christopher C.",
+      "url": null,
+      "text": "The ENG team did an amazing job installing a liner on our sewer line. It was a very technical job that required a full days work, but they managed wonderfully despite the unexpected snow and inclement weather conditions. Just as important, they were very kind through the process. Thank you!!! Services Outdoor plumbing system repair"
+     },
+     {
+      "name": "Lisa",
+      "url": null,
+      "text": "Highly recommend this company. The initial appointment was scheduled very quickly and after the diagnosis, the work was performed the next day. Jovany the onsite technician was thorough, efficient and great to work with. Couldn't be happier. Thanks!!"
+     },
+     {
+      "name": "Brenda Garcia",
+      "url": null,
+      "text": "Fixed my unfortunate sewer that I was struggling with for over a week. Kept backing up every single day and he Anthony solved the problem in about an hour."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Who is responsible for the sewer line in Evanston?",
+      "preview": "The homeowner owns the lateral.",
+      "answer": "The City of Evanston says sewer laterals are the property owner's responsibility. The city maintains the main in the street."
+     },
+     {
+      "q": "Do I have to replace the whole line?",
+      "preview": "Not if only part is damaged.",
+      "answer": "No. Many old laterals need one section repaired. A [camera inspection](/evanston/video-camera-sewer-inspections) shows how much is bad."
+     },
+     {
+      "q": "Can you repair the line without cutting the parkway tree?",
+      "preview": "Often, with trenchless methods.",
+      "answer": "Often. [Trenchless repair](/evanston/trenchless-sewer-repair) works through small openings and leaves root zones mostly undisturbed."
+     },
+     {
+      "q": "Didn't the city's sewer project fix backups?",
+      "preview": "It added capacity to the city system, not to your lateral.",
+      "answer": "The city built relief sewers between 1991 and 2008. That work helps the public system, but a broken or root-filled lateral can still back up your basement."
+     },
+     {
+      "q": "Do you handle permits?",
+      "preview": "Yes, for our work.",
+      "answer": "Yes. Sewer work in Evanston usually needs a permit, and we handle it for the work we do."
+     },
+     {
+      "q": "Should I fix the lateral before I finish my basement?",
+      "preview": "Yes, if the camera shows damage.",
+      "answer": "Yes. Fixing it first means you won't have to cut through a new floor later."
+     },
+     {
+      "q": "How much does sewer repair cost in Evanston?",
+      "preview": "It depends on the damage and method. You'll approve a flat price first.",
+      "answer": "It depends on what the camera finds, the depth, the method and what's above the line. You'll approve a flat-rate price before any work."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Evanston, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/evanston/sewer-repair",
+   "description": "Sewer line repair in Evanston, IL. Your lateral is yours to fix, so we show you the damage on camera and price the repair before we dig.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Evanston, IL",
+ "metaDescription": "Sewer line repair in Evanston, IL. Your lateral is yours to fix, so we show you the damage on camera and price the repair before we dig."
+}

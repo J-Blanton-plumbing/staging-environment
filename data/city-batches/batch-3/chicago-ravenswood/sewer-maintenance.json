@@ -1,0 +1,374 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Ravenswood, Chicago",
+   "sub": "In a Ravenswood two-flat, a sewer backup hits the garden unit first. Scheduled maintenance keeps roots and grease under control so everyone's drains keep working. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "When a Ravenswood Line Needs a Schedule",
+    "intro": "It makes sense when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Roots Have Blocked It Before",
+      "body": "They return."
+     },
+     {
+      "h3": "Several Units Share One Line",
+      "body": "More grease, more paper."
+     },
+     {
+      "h3": "Someone Lives in the Garden Unit",
+      "body": "They take the hit."
+     },
+     {
+      "h3": "The Line Is Original",
+      "body": "Old clay needs more care."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "Suggested Service Intervals",
+    "intro": "A starting point:",
+    "head": [
+     "Your Home",
+     "Suggested Schedule"
+    ],
+    "rows": [
+     [
+      "Clay line with roots",
+      "Rod or jet yearly"
+     ],
+     [
+      "Two-flat or three-flat with grease",
+      "Jet every 1 to 2 years"
+     ],
+     [
+      "Single-family, no history",
+      "Camera check every few years"
+     ],
+     [
+      "Recently lined",
+      "Camera check after a few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Ravenswood Storms",
+    "intro": "In July 2011, record rainfall flooded basements across Ravenswood.",
+    "items": [
+     {
+      "h3": "Every Bit of Capacity Helps",
+      "body": "A half-blocked line backs up faster when the city sewer is full."
+     },
+     {
+      "h3": "Service in Late Winter",
+      "body": "Before spring roots and summer storms."
+     },
+     {
+      "h3": "Test Your Protection",
+      "body": "We check backflow valves and [overhead sewer systems](/chicago-ravenswood/overhead-sewer-systems) on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/chicago-ravenswood/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/chicago-ravenswood/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/chicago-ravenswood/sewer-rodding) or [Hydro Jetting](/chicago-ravenswood/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/chicago-ravenswood/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Plans Work",
+    "intro": "Based on the footage.",
+    "steps": [
+     {
+      "h3": "1. Scope First",
+      "body": "See what's there."
+     },
+     {
+      "h3": "2. Rod or Jet",
+      "body": "Whatever it needs."
+     },
+     {
+      "h3": "3. Agree on a Plan",
+      "body": "Interval and price up front."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-sewer-maintenance",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Sewer Maintenance",
+    "body": "Rodding is the simplest visit. Jetting takes more time and equipment. A camera check adds a few minutes and a lot of information. Access to the cleanout matters too. We quote a flat price for each visit.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "MCM MUSIC",
+      "url": null,
+      "text": "Christian came by for no drip club maintenance and went above and beyond! Can’t wait for our next visit, 10/10!"
+     },
+     {
+      "name": "Jorge De La Vega",
+      "url": null,
+      "text": "Christian was fantastic l! He’s been here a few times for no drip club visits and he’s the man! Did our tankless water heater maintenance and was friendly and efficient, highly recommend 🙌🏼"
+     },
+     {
+      "name": "Martha L",
+      "url": null,
+      "text": "Andrew provided excellent service and thorough explanation during semi-annual inspection today. Thank you!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Should two-flat owners schedule sewer maintenance?",
+      "preview": "If the line has a history, yes.",
+      "answer": "If it's had roots or backups, yes. It protects the garden unit."
+     },
+     {
+      "q": "When's the best time?",
+      "preview": "Late winter or early spring.",
+      "answer": "Late winter or early spring, before roots grow and storms arrive."
+     },
+     {
+      "q": "Does maintenance stop storm backups?",
+      "preview": "It helps, but protection does more.",
+      "answer": "A clean line drains better. When the city sewer is full, a backflow valve or overhead sewer is what keeps water out."
+     },
+     {
+      "q": "Is maintenance part of the No Drip Club?",
+      "preview": "The club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club) includes regular maintenance visits for homeowners."
+     },
+     {
+      "q": "Should the building have one schedule for all units?",
+      "preview": "Yes, the line is shared.",
+      "answer": "Yes. The lateral is shared, so one schedule covers everyone."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Ravenswood?",
+      "preview": "It depends on the service. You'll approve a flat price first.",
+      "answer": "It depends on whether the line needs rodding, jetting or a camera check. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Ravenswood, Chicago",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/sewer-maintenance",
+   "description": "Sewer maintenance for Ravenswood homes and two-flats. Scheduled rodding, jetting and camera checks to keep garden units dry.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Ravenswood, Chicago",
+ "metaDescription": "Sewer maintenance for Ravenswood homes and two-flats. Scheduled rodding, jetting and camera checks to keep garden units dry."
+}

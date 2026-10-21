@@ -1,0 +1,338 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Hanover Park, IL",
+   "sub": "Buying a home, finishing the basement or tired of the same clog? A camera inspection shows exactly what's going on in your sewer line. We record it and walk you through it. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Why Hanover Park Homeowners Scope Their Sewer",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying a Home",
+      "body": "A standard inspection skips the sewer."
+     },
+     {
+      "h3": "Finishing the Basement",
+      "body": "Check before the floor is covered."
+     },
+     {
+      "h3": "Repeat Clogs",
+      "body": "Find the cause."
+     },
+     {
+      "h3": "Before Paying for a Repair",
+      "body": "See it yourself."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-hanover-park",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Hanover Park Sewer Lines",
+    "intro": "Lines that are 35 to 55 years old tend to show:",
+    "items": [
+     {
+      "h3": "Roots at Joints",
+      "body": "From mature yard trees."
+     },
+     {
+      "h3": "Bellies",
+      "body": "Low spots where the pipe settled."
+     },
+     {
+      "h3": "Offset Joints",
+      "body": "Sections out of line."
+     },
+     {
+      "h3": "Cracks",
+      "body": "From age and shifting soil."
+     },
+     {
+      "h3": "Old Repairs",
+      "body": "Patches from earlier owners that may not last."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You see what we see.",
+    "steps": [
+     {
+      "h3": "1. In Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Located and Measured",
+      "body": "Depth and distance."
+     },
+     {
+      "h3": "3. Explained",
+      "body": "And the video is yours."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "split",
+    "id": "how-to-read-your-sewer-camera-footage",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What You'll See",
+    "h2": "How to Read Your Sewer Camera Footage",
+    "body": "We narrate the video as we go, but it helps to know what to look for. A clean line looks round and empty, with joints that line up. Roots look like hair or fine threads at a joint. Standing water that stretches a long way usually means a belly. A visible step at a joint means the pipe has shifted. Cracks show up as dark lines. We'll pause on each one, note the distance from the cleanout and tell you whether it needs action now, later or never.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-sewer-inspection",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Sewer Inspection",
+    "body": "An inspection through a clear, accessible cleanout is straightforward. A blocked line needs clearing first. With no cleanout, we may go through a toilet or vent. Locating a problem from the surface is part of the visit. We quote a flat price before we start.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Stone",
+      "url": null,
+      "text": "Thank you to Scott and Payton for coming by and helping us out. [...]"
+     },
+     {
+      "name": "Alison Thakur",
+      "url": null,
+      "text": "Scott B came out to do a full sewer scope and review options as we have a very old home with clay pipes. He was knowledge, professional, and extremely kind. He worked with us on pricing - very trustworthy and transparent! We've never had a bad experience with anyone from J. Blanton. Absolutely recommend!"
+     },
+     {
+      "name": "Alkan Sezginis",
+      "url": "https://maps.app.goo.gl/pWz1WmrZSV3Eg8Gz5",
+      "text": "Christian M came out to do our annual service and was super helpful and friendly. I got to see the inside of our sewer access with a big snake camera and he walked me through everything that he was seeing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Should I get a sewer inspection before buying?",
+      "preview": "Yes.",
+      "answer": "Yes. A standard home inspection doesn't cover the sewer line."
+     },
+     {
+      "q": "Can the camera find a belly?",
+      "preview": "Yes.",
+      "answer": "Yes. Standing water in the pipe shows where it has settled."
+     },
+     {
+      "q": "Can you locate a problem from the surface?",
+      "preview": "Yes.",
+      "answer": "Yes. We mark the spot and note the depth."
+     },
+     {
+      "q": "Do I get the video?",
+      "preview": "Yes.",
+      "answer": "Yes, to share with a seller, your agent or another contractor."
+     },
+     {
+      "q": "How long does an inspection take?",
+      "preview": "Usually about an hour.",
+      "answer": "Usually about an hour, longer if the line needs clearing first."
+     },
+     {
+      "q": "Can you inspect a line that's backed up?",
+      "preview": "We clear it first.",
+      "answer": "We usually need to clear it first so the camera can see. We can do both in the same visit."
+     },
+     {
+      "q": "Is a camera inspection the same as a sewer scope?",
+      "preview": "Yes.",
+      "answer": "Yes. Both mean recording the inside of the sewer line with a camera."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Hanover Park?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Hanover Park, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/hanover-park/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Hanover Park, IL. See roots, cracks and sags in your line on video before you buy, finish or repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Hanover Park, IL",
+ "metaDescription": "Sewer camera inspections in Hanover Park, IL. See roots, cracks and sags in your line on video before you buy, finish or repair."
+}

@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Lincoln Park, Chicago",
+   "sub": "An alarm going off in the garden unit, a basement toilet that won't flush or a sewer smell near the basin. We repair and replace ejector pumps in Lincoln Park homes and buildings. Our office is on Diversey Parkway. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What an Ejector Pump Does",
+    "body": "Fixtures below the sewer line, like a garden unit bathroom or a basement laundry, drain into a sealed basin. The ejector pump lifts that wastewater up into the building's main line. A float starts the pump, and a check valve keeps water from flowing back. If any part fails, the basin fills and the fixtures back up.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Ejector Pump Is Failing",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Alarm Is On",
+      "body": "The basin is too full."
+     },
+     {
+      "h3": "Garden Unit Drains Are Slow",
+      "body": "The pump can't keep up."
+     },
+     {
+      "h3": "Sewer Smell Near the Basin",
+      "body": "A worn seal or vent problem."
+     },
+     {
+      "h3": "The Pump Runs All the Time",
+      "body": "A stuck float or bad check valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Lincoln Park",
+    "intro": "Garden units and finished basements are common here, and many depend on an ejector pump.",
+    "items": [
+     {
+      "h3": "Garden Unit Kitchens and Baths",
+      "body": "Grease and wipes are hard on pumps. Good habits help them last."
+     },
+     {
+      "h3": "Overhead Sewer Systems",
+      "body": "In a converted basement, the pump handles every basement drain."
+     },
+     {
+      "h3": "Shared Responsibility",
+      "body": "In a condo building, the pump may be a common element. We document what we find."
+     },
+     {
+      "h3": "Alarms That Work",
+      "body": "We test the alarm every visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the pump and explain why it failed.",
+    "steps": [
+     {
+      "h3": "1. Inspect the Basin",
+      "body": "Pump, float, valve, seal and vent."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Test With Water",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "ejector-pumps-in-finished-garden-units",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Access",
+    "h2": "Ejector Pumps in Finished Garden Units",
+    "body": "In finished garden units, the ejector basin is often hidden under a floor panel or in a closet. That's fine, as long as it can be reached for service. When we replace a pump, we check that the lid seals tightly, the vent is clear and the alarm can be heard from the living space. If the basin is buried under flooring, we'll talk about adding an access panel.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "monica reyna-vukotich",
+      "url": null,
+      "text": "Excellent! Got here at the tone stated, called with an estimated time of arrival."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     },
+     {
+      "name": "Nelson Hanan",
+      "url": null,
+      "text": "Both technicians, Thomas Maloney and John Hogan, were very professional, knowledgeable, and friendly. I would recommend J. Blandon Plumbing. Services Sump pump installation"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "The alarm is on in the garden unit. What should we do?",
+      "preview": "Stop using the basement fixtures and call us.",
+      "answer": "Stop using every fixture that drains to the basin, including the garden unit's sinks, toilet and laundry, and call us."
+     },
+     {
+      "q": "How long do ejector pumps last?",
+      "preview": "Often 7 to 10 years.",
+      "answer": "Often around 7 to 10 years, depending on use."
+     },
+     {
+      "q": "Why does it smell like sewage downstairs?",
+      "preview": "A worn seal, vent or dry trap.",
+      "answer": "Usually a worn lid seal, a vent issue or a dry floor drain trap."
+     },
+     {
+      "q": "Can you add a backup pump?",
+      "preview": "Sometimes.",
+      "answer": "Some basins can hold two pumps. We'll check yours."
+     },
+     {
+      "q": "Can a basin be moved during a remodel?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes. It's easiest to plan before the floor goes in."
+     },
+     {
+      "q": "How much does ejector pump replacement cost in Lincoln Park?",
+      "preview": "It depends on the pump and basin. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the basin and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Garden Unit Backed Up? Call Us.",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Lincoln Park, Chicago",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/ejector-pump",
+   "description": "Ejector pump repair and replacement in Lincoln Park, Chicago, for garden units, basement baths and overhead sewers. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair in Lincoln Park, Chicago",
+ "metaDescription": "Ejector pump repair and replacement in Lincoln Park, Chicago, for garden units, basement baths and overhead sewers. Flat price first."
+}

@@ -1,0 +1,371 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Frozen and Burst Pipe Repair in Skokie, IL",
+   "sub": "No water at one faucet in a cold snap, or water spraying in the basement when a frozen pipe thaws. Shut off the main and call us. Our line is open 24/7. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "If a Pipe Bursts",
+    "intro": "Do these first:",
+    "steps": [
+     {
+      "h3": "1. Shut Off the Main Valve",
+      "body": "Usually at the front of the basement near the meter."
+     },
+     {
+      "h3": "2. Turn Off Power Near the Water",
+      "body": "If you can reach the breaker safely."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "To relieve pressure."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any time."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "Look for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Spraying or Dripping Water",
+      "bullets": [
+       "From a pipe, wall or ceiling."
+      ]
+     },
+     {
+      "h3": "Pressure Drops Everywhere",
+      "bullets": [
+       "Across the house."
+      ]
+     },
+     {
+      "h3": "Spreading Stains",
+      "bullets": [
+       "On ceilings or walls."
+      ]
+     },
+     {
+      "h3": "Running Water Sounds",
+      "bullets": [
+       "With nothing on."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "In a cold snap:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "No Water at One Faucet",
+      "body": "While others run."
+     },
+     {
+      "h3": "Frost on a Pipe",
+      "body": "In a crawl space or along a basement wall."
+     },
+     {
+      "h3": "Strange Smells From a Drain",
+      "body": "A frozen drain can trap odors."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Skokie Homes",
+    "intro": "In Skokie's postwar homes, a few spots freeze first.",
+    "items": [
+     {
+      "h3": "Pipes Along Outside Walls",
+      "body": "Kitchen sinks on exterior walls are a common trouble spot."
+     },
+     {
+      "h3": "Unheated Porches and Additions",
+      "body": "Plumbing added to an enclosed porch or addition can freeze from below."
+     },
+     {
+      "h3": "Old Galvanized Pipe",
+      "body": "Pipe already weakened by rust can split more easily when it freezes."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, fix the pipe and prevent the next one.",
+    "steps": [
+     {
+      "h3": "1. Fast Response",
+      "body": "24/7."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Before the repair."
+     },
+     {
+      "h3": "3. Prevention Advice",
+      "body": "What to change before the next freeze."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "where-pipes-freeze-in-skokie-homes",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Weak Spots",
+    "h2": "Where Pipes Freeze in Skokie Homes",
+    "body": "In Skokie ranches and Cape Cods, pipes freeze where they run near the outside: kitchen sinks on exterior walls, laundry lines near a basement window, outdoor faucets and pipes in crawl spaces under additions. Insulating those spots and sealing drafts helps. On the coldest nights, open cabinet doors and let a faucet drip.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Lisa",
+      "url": null,
+      "text": "Highly recommend this company. The initial appointment was scheduled very quickly and after the diagnosis, the work was performed the next day. Jovany the onsite technician was thorough, efficient and great to work with. Couldn't be happier. Thanks!!"
+     },
+     {
+      "name": "Elizabeth Colon",
+      "url": null,
+      "text": "I am pleased with the job Edwin Sanchez and the assistant performed on my Kitchen drain line. The sink had to have a line repipe and he had to Open the wall and repair piping in wall with attaching existing drains. Edwin and his assistant took care to clean up and place everything back in place. Thanks for coming on time and finishing the job."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Frozen Pipe Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "My kitchen faucet won't run in a cold snap. What should I do?",
+      "preview": "Open the cabinet, open the faucet and warm the pipe gently.",
+      "answer": "Open the cabinet doors, open the faucet and warm the pipe gently with a hair dryer. Never use an open flame. If it doesn't come back, call us."
+     },
+     {
+      "q": "How do I keep pipes from freezing?",
+      "preview": "Heat, open cabinets and a slow drip on the coldest nights.",
+      "answer": "Keep the heat on, open cabinets on exterior walls and let a faucet drip on the coldest nights."
+     },
+     {
+      "q": "Can you repair a pipe inside a wall?",
+      "preview": "Yes, through a small opening.",
+      "answer": "Yes. We locate the break and open only what we need."
+     },
+     {
+      "q": "Should I replace old galvanized pipe after a burst?",
+      "preview": "It's worth discussing.",
+      "answer": "If the burst pipe is galvanized and the rest of the system is the same age, it's worth discussing a larger repair or repipe."
+     },
+     {
+      "q": "Can frost-proof sillcocks still freeze?",
+      "preview": "Yes, if a hose is left on.",
+      "answer": "Yes, if a hose is left connected. Disconnect hoses before winter."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Skokie?",
+      "preview": "It depends on the break. You'll approve a flat price first.",
+      "answer": "It depends on where the pipe burst and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Frozen or Burst Pipe? Call Us Now.",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Frozen and Burst Pipe Repair in Skokie, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/skokie/burst-pipe-repair",
+   "description": "Frozen and burst pipe repair in Skokie, IL. Our line is open 24/7. We stop the damage, fix the pipe and help prevent the next freeze.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Frozen & Burst Pipe Repair in Skokie, IL",
+ "metaDescription": "Frozen and burst pipe repair in Skokie, IL. Our line is open 24/7. We stop the damage, fix the pipe and help prevent the next freeze."
+}

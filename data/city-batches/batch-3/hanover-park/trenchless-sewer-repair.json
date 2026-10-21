@@ -1,0 +1,340 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Trenchless Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Trenchless Sewer Repair in Hanover Park, IL",
+   "sub": "Your sewer line probably runs under the front lawn, a driveway or landscaping you've spent years on. Trenchless repair rebuilds the pipe through small openings, so most of that stays as it is. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/trenchless-sewer-liner-prep.webp",
+    "alt": "Two J. Blanton plumbers pouring resin into a sewer liner bag to prepare a trenchless pipe lining"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-trenchless",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Basics",
+    "h2": "What Is Trenchless Sewer Repair?",
+    "body": "Trenchless sewer repair, also called no-dig sewer repair, fixes a damaged pipe without digging a trench along its full length. Instead of opening up your yard from the house to the street, we work through one or two access points and repair the pipe from the inside or replace it in place. There are two main methods: cured-in-place pipe (CIPP) lining and pipe bursting. Both fix the line underground, so what's above it stays untouched.",
+    "img": {
+     "src": "/images/city-services-v2/trenchless-sewer-repair-setup.webp",
+     "alt": "Two J. Blanton plumbers setting up sewer camera and cable equipment beside a home's foundation before a trenchless sewer repair"
+    }
+   },
+   {
+    "type": "local",
+    "id": "why-trenchless-hanover-park",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Trenchless Fits Hanover Park",
+    "intro": "Lines from the 1970s and '80s are often good candidates.",
+    "items": [
+     {
+      "h3": "Cracked or Root-Filled Pipe",
+      "body": "Lining seals it from the inside."
+     },
+     {
+      "h3": "Driveways and Patios",
+      "body": "Most of it stays in place."
+     },
+     {
+      "h3": "Bellies Are Different",
+      "body": "A sagging section usually needs to be dug and reset first."
+     },
+     {
+      "h3": "Fewer Openings",
+      "body": "Usually one or two small access points."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "when-trenchless-applies",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Know Your Options",
+    "h2": "Which Repair Fits Your Line?",
+    "intro": "The footage decides:",
+    "head": [
+     "Camera Finding",
+     "Approach",
+     "Why"
+    ],
+    "rows": [
+     [
+      "Cracks or roots, pipe still round",
+      "Lining",
+      "Seals from inside"
+     ],
+     [
+      "Too broken to line",
+      "Pipe bursting",
+      "New pipe in the old path"
+     ],
+     [
+      "A sag or belly",
+      "Spot excavation",
+      "Reset the grade"
+     ],
+     [
+      "Full collapse",
+      "Excavation",
+      "Nothing left to line"
+     ]
+    ],
+    "note": "We show you the footage behind every recommendation."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Planned around your yard.",
+    "steps": [
+     {
+      "h3": "1. Clean and Record",
+      "body": "Every defect measured."
+     },
+     {
+      "h3": "2. Plan the Openings",
+      "body": "Around driveways and gardens."
+     },
+     {
+      "h3": "3. Flat Price, Final Video",
+      "body": "Approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/sewer-excavation-trench.webp",
+     "alt": "Traditional sewer excavation with a trench dug across the yard down to the damaged pipe, the kind of dig trenchless repair avoids"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-happens-on-a-trenchless-repair-day",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "What to Expect",
+    "h2": "What Happens on a Trenchless Repair Day",
+    "body": "A lining job usually starts in the morning with a cleaning and a fresh camera run, so we're working from today's footage. Next, a liner soaked in resin is pulled or pushed into the old pipe and inflated so it presses against the walls. It cures in place, often in a few hours. Then we reopen any side connections from inside the pipe and run the camera one last time so you can see the finished line. Most Hanover Park homeowners have their plumbing back the same day.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Trenchless Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Hannah Burque",
+      "url": null,
+      "text": "Great experience, J Blanton scoped and lined our sewer and installed a cleanout, it was quick and easy."
+     },
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Trenchless Sewer Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Can trenchless repair fix a sagging line?",
+      "preview": "Not usually.",
+      "answer": "Not usually. A liner follows the old pipe, so a sag stays a sag. That section needs to be dug and reset."
+     },
+     {
+      "q": "How long does a liner last?",
+      "preview": "Decades.",
+      "answer": "Liners are designed to last for decades."
+     },
+     {
+      "q": "Will I need a permit?",
+      "preview": "Usually, and we handle it.",
+      "answer": "Sewer work usually needs a village permit. We handle it for our work."
+     },
+     {
+      "q": "How long does the job take?",
+      "preview": "Often one day.",
+      "answer": "Many lining jobs are done in a day."
+     },
+     {
+      "q": "Is a lined pipe smaller than the old one?",
+      "preview": "Slightly, but it flows better.",
+      "answer": "Slightly smaller inside, but the new surface is smooth with no joints, so it usually flows as well or better."
+     },
+     {
+      "q": "Can you line just part of the line?",
+      "preview": "Yes.",
+      "answer": "Yes. If only one section is damaged, we can line that part and leave the rest."
+     },
+     {
+      "q": "How much does trenchless sewer repair cost in Hanover Park?",
+      "preview": "It depends on length, depth and method. You'll approve a flat price first.",
+      "answer": "It depends on how much of the line needs work, the depth, the method and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Without the Trench?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Trenchless Sewer Repair in Hanover Park, IL",
+   "serviceType": "Trenchless Sewer Repair",
+   "url": "https://jblantonplumbing.com/hanover-park/trenchless-sewer-repair",
+   "description": "Trenchless sewer repair in Hanover Park, IL. Pipe lining and bursting that save the lawn, driveway and landscaping. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Trenchless Sewer Repair in Hanover Park, IL",
+ "metaDescription": "Trenchless sewer repair in Hanover Park, IL. Pipe lining and bursting that save the lawn, driveway and landscaping. Flat price first."
+}

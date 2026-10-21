@@ -1,0 +1,308 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Filtration Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Filtration and Water Testing in Mokena, IL",
+   "sub": "Whether you're on village water or one of the private wells around town, we test your water and recommend the filter or softener that fits it. No guesswork, and a flat price before we install anything. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+    "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "options",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Your Options",
+    "h2": "Water Treatment Options for Mokena Homes",
+    "intro": "What we install:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Under-Sink Filters",
+      "body": "Better-tasting drinking and cooking water at the kitchen sink."
+     },
+     {
+      "h3": "Whole-House Filters",
+      "body": "Filtered water at every tap and shower."
+     },
+     {
+      "h3": "Water Softeners",
+      "body": "Less scale on fixtures, glass doors and in the water heater."
+     },
+     {
+      "h3": "Well Water Treatment",
+      "body": "Filters and softeners matched to what's in your well."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "water-testing",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Water Testing",
+    "h2": "Water Testing in Mokena",
+    "bodies": [
+     "Testing comes first. We check the things that affect your plumbing and your taste buds, like hardness, iron, chlorine and sediment, and explain the results in plain terms.",
+     "If you're on a private well, testing tells us what treatment you actually need. For health-related questions about well water, the Will County Health Department and state-certified labs offer well water testing, and we're happy to point you to them."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-water",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water in Mokena Homes",
+    "intro": "Most Mokena homes get Lake Michigan water from the City of Chicago. Some homes in and around town are on private wells.",
+    "items": [
+     {
+      "h3": "Village Water",
+      "body": "Lake Michigan water is treated before it reaches you. Many homeowners still filter it for taste or to protect appliances."
+     },
+     {
+      "h3": "Private Wells",
+      "body": "Well water can carry iron, sediment and hardness that stain fixtures and build up in the water heater."
+     },
+     {
+      "h3": "Protecting a Newer Water Heater",
+      "body": "A softener or filter can help a new heater or [tankless unit](/mokena/tankless-water-heater) last longer."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Test, explain, then recommend.",
+    "steps": [
+     {
+      "h3": "1. Test Your Water",
+      "body": "So the system fits the problem."
+     },
+     {
+      "h3": "2. Options Side by Side",
+      "body": "From a single filter to whole-house treatment."
+     },
+     {
+      "h3": "3. Flat Price, Clean Install",
+      "body": "Approved before we start."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Filtration Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Excite",
+      "url": null,
+      "text": "Anthony was right on time, very respectful of my place and cleaning up after working under the kitchen sink. Completely spotless afterwards. Showed me the instruction manual and pointed out when to replace filters to my reverse osmosis water system. And the salesman the week before was a fair negotiator. Overall great experience. Todd F"
+     },
+     {
+      "name": "Ted Frankel",
+      "url": null,
+      "text": "The plumbers working for J Blanton are excellent. Anthony did a great job installing a water softening system and reverse osmosis filtration system."
+     },
+     {
+      "name": "Mike Olsa",
+      "url": null,
+      "text": "We had our water heater leak and Kyle from J Blanton came and installed a tankless system in only a few hours. It works amazing and he was very fast and thorough. Thanks for the great job Kyle."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Filtration Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Does Mokena village water need a filter?",
+      "preview": "It's treated, but many people filter for taste.",
+      "answer": "Village water is treated and tested. Most people who add a filter do it for taste, smell or to protect fixtures and appliances."
+     },
+     {
+      "q": "I'm on a private well. What should I test for?",
+      "preview": "Start with hardness, iron and sediment.",
+      "answer": "For plumbing, start with hardness, iron and sediment. For health questions, get a full test from a state-certified lab."
+     },
+     {
+      "q": "Do I need a water softener?",
+      "preview": "It depends on your hardness.",
+      "answer": "It depends on your water. We test the hardness and tell you whether a softener is worth it for your home."
+     },
+     {
+      "q": "How often do filters need changing?",
+      "preview": "It depends on the system.",
+      "answer": "Under-sink cartridges usually last several months. Whole-house filters vary. We'll tell you the schedule for yours."
+     },
+     {
+      "q": "How much does water filtration cost in Mokena?",
+      "preview": "It depends on the system. You'll approve a flat price first.",
+      "answer": "It depends on what your water needs and the system you choose. You'll approve a flat-rate price before we install."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Better Water?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Filtration and Water Testing in Mokena, IL",
+   "serviceType": "Water Filtration Systems",
+   "url": "https://jblantonplumbing.com/mokena/water-filtration-systems",
+   "description": "Water testing and filtration in Mokena, IL. Under-sink filters, whole-house systems and softeners for village water and private wells.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Filtration & Testing in Mokena, IL",
+ "metaDescription": "Water testing and filtration in Mokena, IL. Under-sink filters, whole-house systems and softeners for village water and private wells."
+}

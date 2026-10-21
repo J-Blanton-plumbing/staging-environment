@@ -1,0 +1,226 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Hanover Park, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on Greenbrook Boulevard. Our line is open 24/7 for homeowners in Hanover Park and the neighboring northwest suburbs. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Hanover Park",
+   "intro": "More than 6 in 10 Hanover Park homes were built in the 1970s and 80s, and a lot of their original plumbing is now 35 to 55 years old. Pick a service to see how we handle it in Hanover Park.",
+   "cards": [
+    {
+     "title": "Drain Cleaning",
+     "href": "/hanover-park/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/hanover-park/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/hanover-park/sewer-repair",
+     "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/hanover-park/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn’t flood your basement.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/hanover-park/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Burst & Frozen Pipes",
+     "href": "/hanover-park/burst-pipe-repair",
+     "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+     "image": {
+      "src": "/images/city-hubs/burst-copper-pipe-basement.webp",
+      "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+     }
+    },
+    {
+     "title": "Leak Repair",
+     "href": "/hanover-park/leak-repairs",
+     "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Greenbrook Boulevard",
+   "h2": "Our Hanover Park Office",
+   "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, Hanover Park, IL 60133. It keeps our plumbers close to homes across Hanover Park and the neighboring northwest suburbs. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "1300 Greenbrook Blvd, Suite B5, Hanover Park, IL 60133",
+   "areasH3": "Northwest Suburbs We Serve",
+   "areas": [
+    {
+     "label": "Bartlett",
+     "href": "/bartlett"
+    },
+    {
+     "label": "Roselle",
+     "href": "/roselle"
+    },
+    {
+     "label": "Schaumburg",
+     "href": "/schaumburg"
+    },
+    {
+     "label": "Bloomingdale",
+     "href": "/bloomingdale"
+    },
+    {
+     "label": "Hoffman Estates",
+     "href": "/hoffman-estates"
+    },
+    {
+     "label": "Keeneyville",
+     "href": "/keeneyville"
+    },
+    {
+     "label": "Carol Stream",
+     "href": "/carol-stream"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/aXNDUP9VjkfZrRwN7"
+  },
+  "depth": {
+   "h2": "What Hanover Park Homes Need From a Plumber",
+   "intro": "Hanover Park went from a few hundred people in 1960 to more than 28,000 by 1980. The median home here was built in 1976. When most of a town goes up in the same two decades, its plumbing tends to need the same things at the same time.",
+   "tiles": [
+    {
+     "title": "1970s and 80s Homes Showing Their Age",
+     "body": "Water heaters, sump pumps, shutoff valves and supply lines from that era are well past the age they were built to last, and many homes have gone through several water heaters by now. A [whole-home checkup](/hanover-park/plumbing-maintenance) tells you what’s close to the end, so you can replace it before it fails."
+    },
+    {
+     "title": "Storms, Power Outages and Sump Pumps",
+     "body": "On August 23, 2007, Hanover Park got 3.25 inches of rain in a short time, followed by widespread power outages. Some basements took on water from sewer backups, others because the sump pump stopped when the power went out. A [sump pump with a battery backup](/hanover-park/sump-pumps) keeps running in a blackout, and a [backflow valve](/hanover-park/flood-control-maintenance) helps keep sewer water out."
+    },
+    {
+     "title": "Main Line Clogs and Roots",
+     "body": "Sewer lines from the 1970s are now about 50 years old, and trees planted with the subdivisions have had decades to grow toward them. When several drains slow down at once, the main line is usually the problem. We [clear the line](/hanover-park/drain-cleaning) and can [camera it](/hanover-park/video-camera-sewer-inspections) to show you what caused it."
+    },
+    {
+     "title": "Winter Freezes and Burst Pipes",
+     "body": "Long cold snaps are hard on pipes in exterior walls, crawl spaces and unheated basements. A split pipe can flood a basement fast once it thaws. We’re on call 24/7 for [burst pipe repair](/hanover-park/burst-pipe-repair), and we can add shutoff valves so you can isolate a problem area next time."
+    }
+   ]
+  },
+  "whyH2": "Why Hanover Park Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Hanover Park Reviews",
+   "intro": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+   "rating": "4.7",
+   "ratingSub": "5,669+ Google reviews across all J. Blanton locations",
+   "items": [
+    {
+     "name": "Olivia Winkelmann",
+     "url": "https://maps.app.goo.gl/mXykRkayPLmUAZbY8",
+     "text": "Robert was very professional, kind, and efficient when he came to replace/install our water heater. He came right on time, cleaned up after himself, and left the space better than he found it. My husband and I highly recommend requesting Robert for any future work you need done."
+    },
+    {
+     "name": "Frank Thompson",
+     "url": "https://maps.app.goo.gl/ZxNkHSjA79SiQ9UPA",
+     "text": "Derrick and his team did a video scoping of our slow drain used hydro jet and the root ball couldn’t be cut.  New drain line with clean out in place.  They come back after several months once the dirt settles to adjust the height of the clean out from the ground."
+    },
+    {
+     "name": "Matthew Greenberg",
+     "url": "https://maps.app.goo.gl/cRDdky9VC1fA2mJL7",
+     "text": "Alec was fantastic. He was informative and helped me to thoroughly understand all of my options while not being pushy or overbearing. We came away with a short-medium-long term plan for my property and I learned more than I ever had about the plumbing in my home. He was professional, efficient, and effective, and I would gladly work with him again should the need arise."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Hanover Park Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Hanover Park?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Greenbrook Boulevard office keeps our plumbers close to Hanover Park, and we [treat emergencies as a priority](/hanover-park/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "Is basement flooding a common problem in Hanover Park?",
+     "preview": "It’s a real risk.",
+     "a": "It’s a real risk. Heavy storms can overload the sewers, and power outages can stop a sump pump right when you need it. A battery backup and a backflow valve are the two upgrades we recommend most often here."
+    },
+    {
+     "q": "Do cold snaps cause burst pipes in Hanover Park homes?",
+     "preview": "They can, especially in homes from the 1970s and 80s with pipes in exterior walls, crawl spaces or unheated basements.",
+     "a": "They can, especially in homes from the 1970s and 80s with pipes in exterior walls, crawl spaces or unheated basements. Keep cabinet doors open on cold nights, disconnect garden hoses in the fall and know where your main shutoff is."
+    },
+    {
+     "q": "My drains are all slow at once. What does that mean?",
+     "preview": "When several drains slow down or gurgle at the same time, the clog is usually in the main sewer line, not in one fixture.",
+     "a": "When several drains slow down or gurgle at the same time, the clog is usually in the main sewer line, not in one fixture. We’ll clear it and can run a camera to show you whether roots or a damaged pipe caused it."
+    },
+    {
+     "q": "Do you give a price before starting work?",
+     "preview": "Yes. We explain what we found and give you a flat-rate price before we start.",
+     "a": "Yes. We explain what we found and give you a flat-rate price before we start. The price we quote is the price you pay."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Hanover Park?",
+     "preview": "Along with Hanover Park, our office serves Bartlett, Roselle, Schaumburg, Bloomingdale, Hoffman Estates, Keeneyville, Carol Stream and more.",
+     "a": "Along with Hanover Park, our office serves Bartlett, Roselle, Schaumburg, Bloomingdale, Hoffman Estates, Keeneyville, Carol Stream and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Hanover Park start small, like a sump pump past its prime or a water heater that’s been running since the 2000s. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Hanover Park Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Hanover Park, IL",
+ "metaDescription": "Local plumbers on Greenbrook Boulevard in Hanover Park, IL. Drains, sump pumps and emergencies. Call 24/7 for an upfront price before work starts."
+}

@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Hanover Park, IL",
+   "sub": "Water in the basement after a storm, from a backed-up floor drain or from a pump that quit. We find where it's coming from, fix it and help keep it from happening again. Our office is on Greenbrook Boulevard. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Hanover Park Basements Flood",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Failed Sump Pump",
+      "body": "Or no power to run it."
+     },
+     {
+      "h3": "Sewer Backup",
+      "body": "Through the floor drain."
+     },
+     {
+      "h3": "Seepage",
+      "body": "Groundwater through walls or floor."
+     },
+     {
+      "h3": "A Burst Pipe",
+      "body": "Plumbing water."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Hanover Park",
+    "intro": "On Aug 23, 2007, 3.25 inches of rain fell fast and the power went out across the area.",
+    "items": [
+     {
+      "h3": "Two Kinds of Water",
+      "body": "Basements took water from sewer backups and from sump pumps that stopped."
+     },
+     {
+      "h3": "Battery Backups Matter",
+      "body": "A sump pump without power can't protect anything."
+     },
+     {
+      "h3": "Find the Source First",
+      "body": "We figure out which kind you have."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Some water is a plumbing problem and some comes through the foundation. We handle the plumbing side: [sump pumps](/hanover-park/sump-pumps), battery backups, backflow valves, standpipes and [overhead sewer systems](/hanover-park/overhead-sewer-systems).",
+     "If water is seeping through cracks in the walls, a waterproofing contractor is the right call, and we'll tell you so."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop it, find it, protect it.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "Pump or line first."
+     },
+     {
+      "h3": "2. Find the Source",
+      "body": "Sewer, groundwater or plumbing."
+     },
+     {
+      "h3": "3. Price Protection",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "the-first-hour-of-a-basement-flood",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Right Now",
+    "h2": "The First Hour of a Basement Flood",
+    "body": "Safety comes first. If water is near outlets or the furnace, stay out and shut off power at the panel only if you can reach it from a dry spot. Stop running water upstairs. If the sump pump has stopped, check whether it has power. Move what you can to higher ground and take photos for insurance. Then call us. We'll find out whether the water is coming from the sewer, the ground or a pipe, because each one has a different fix.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "monica reyna-vukotich",
+      "url": null,
+      "text": "Excellent! Got here at the tone stated, called with an estimated time of arrival."
+     },
+     {
+      "name": "Bonnie Polniak",
+      "url": null,
+      "text": "I just want to say thank you To Dereck who was dispatched to my house on Tuesday very late to help solve the mystery of water coming from under the wall in the basement .he was extremely nice and informative .thank u."
+     },
+     {
+      "name": "Milana Weil",
+      "url": null,
+      "text": "Fantastic service! J. Blanton Plumbing provided same day service when our bathroom was flooding due to a faulty pipe. Anthony went above and beyond, and did not leave our home until the issue was resolved. He was professional, pleasant and communicative throughout the process and provided the best experience we have had in a long time. It's safe to say that we will continue to use the services of J. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "How do I know if it's sewer water or groundwater?",
+      "preview": "Where it enters tells you.",
+      "answer": "Through the floor drain is usually sewer water. Around the sump pit or walls is usually groundwater."
+     },
+     {
+      "q": "What's the best protection for my basement?",
+      "preview": "A sump pump with a battery backup, plus backflow protection.",
+      "answer": "For most Hanover Park basements, a reliable sump pump with a battery backup. If you've had sewer backups, add a backflow valve or overhead sewer."
+     },
+     {
+      "q": "Do you dry out basements?",
+      "preview": "We fix the cause. A restoration company dries it.",
+      "answer": "We fix the plumbing cause. A restoration company handles water removal and drying."
+     },
+     {
+      "q": "Does insurance cover basement flooding?",
+      "preview": "Sewer backups often need a rider.",
+      "answer": "Sewer and sump backup usually need a separate rider. Check with your agent."
+     },
+     {
+      "q": "Should I run a shop vac?",
+      "preview": "For clean water, yes. For sewage, no.",
+      "answer": "For clear groundwater, a shop vac helps. For sewage, leave it to a restoration company."
+     },
+     {
+      "q": "How much does basement flooding repair cost in Hanover Park?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on the cause and what's needed. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Water in the Basement? Call Us Now.",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Hanover Park, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/hanover-park/basement-flooding",
+   "description": "Basement flooding help in Hanover Park, IL. We find whether it's sewer water, groundwater or a failed pump, fix it and protect the basement.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Hanover Park, IL",
+ "metaDescription": "Basement flooding help in Hanover Park, IL. We find whether it's sewer water, groundwater or a failed pump, fix it and protect the basement."
+}

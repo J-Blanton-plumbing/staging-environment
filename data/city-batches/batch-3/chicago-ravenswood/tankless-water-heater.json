@@ -1,0 +1,347 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Ravenswood, Chicago",
+   "sub": "In a tight basement or condo closet, a wall-mounted tankless heater frees up space and doesn't run out mid-shower. We install, repair and descale them, and tell you honestly if one fits. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Heater Works",
+    "body": "A tankless heater fires only when a hot tap opens. Water passes through a heat exchanger and comes out hot for as long as you need it. Each unit has a flow limit, so it's sized for the most hot water your home uses at once.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless in an Older Chicago Home",
+    "intro": "The trade-offs:",
+    "head": [
+     "",
+     "Tank",
+     "Tankless"
+    ],
+    "rows": [
+     [
+      "Space",
+      "On the floor",
+      "On the wall"
+     ],
+     [
+      "Hot water",
+      "Limited to the tank",
+      "Continuous, up to its flow"
+     ],
+     [
+      "Venting",
+      "Often a shared chimney",
+      "Its own vent"
+     ],
+     [
+      "Upkeep",
+      "Yearly flush",
+      "Yearly descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Ravenswood Home?",
+    "intro": "Possibly, with a few checks.",
+    "items": [
+     {
+      "h3": "Venting Route",
+      "body": "Gas units usually vent through an outside wall."
+     },
+     {
+      "h3": "Gas Supply",
+      "body": "Older lines may need to be upsized."
+     },
+     {
+      "h3": "One per Unit in a Two-Flat",
+      "body": "Each unit can have its own wall-mounted heater."
+     },
+     {
+      "h3": "Condo Rules",
+      "body": "Check with your association about exterior vents."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We check the building first.",
+    "steps": [
+     {
+      "h3": "1. Venting and Gas",
+      "body": "Reviewed first."
+     },
+     {
+      "h3": "2. Sized for Your Use",
+      "body": "Busiest moment, not an average."
+     },
+     {
+      "h3": "3. A Flat Price",
+      "body": "Approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "tankless-heaters-in-a-two-flat",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Two-Flats",
+    "h2": "Tankless Heaters in a Two-Flat",
+    "body": "Replacing two old tanks in a shared basement with two wall-mounted tankless heaters frees up floor space for storage or laundry. Each unit keeps its own hot water. The catch is gas and venting. Two tankless units can draw a lot of gas at once, so we check the meter and piping. Each one also needs its own vent, usually through an outside wall, which takes planning on a tight city lot.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-tankless-install",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Tankless Install",
+    "body": "Gas line size and venting are the two big variables, especially in older buildings. Two units for a two-flat double the planning. We check first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Judith Kulb",
+      "url": null,
+      "text": "Anthony was our technician to take out our old water heater and install a new one as well as install new inside parts to two of our toilets. He was very professional, courteous, respectful of our home, and very pleasant with whom to deal. We were very happy to have had Anthony as our plumber."
+     },
+     {
+      "name": "Althea Smith",
+      "url": null,
+      "text": "Once again J Blanton got us scheduled quickly. Their technicians were efficient and left the workspace immaculate."
+     },
+     {
+      "name": "Jason Wallers",
+      "url": null,
+      "text": "Christian and Saul were great - super friendly and efficient with fixing our water heater! Even recommended preventative work which would save us money in the future."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Can a tankless heater use my chimney?",
+      "preview": "No.",
+      "answer": "No. It needs its own vent, usually through a side wall."
+     },
+     {
+      "q": "Can each unit in a two-flat have its own tankless heater?",
+      "preview": "Yes.",
+      "answer": "Yes, if the gas supply and venting allow it."
+     },
+     {
+      "q": "How often does it need descaling?",
+      "preview": "About once a year.",
+      "answer": "About once a year for most homes."
+     },
+     {
+      "q": "Do you repair tankless units?",
+      "preview": "Yes.",
+      "answer": "Yes. We descale, clean sensors and replace failed parts."
+     },
+     {
+      "q": "Does a tankless heater need a new gas line?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes. Older lines may be too small. We check before quoting."
+     },
+     {
+      "q": "Can a tankless heater fit in a condo closet?",
+      "preview": "Often.",
+      "answer": "Often, if venting can reach an outside wall."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Ravenswood?",
+      "preview": "It depends on the unit and installation. You'll approve a flat price first.",
+      "answer": "It depends on the unit and the gas and venting work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Talk Tankless?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Ravenswood, Chicago",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Ravenswood, Chicago. Space-saving and sized right, with a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Ravenswood, Chicago",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Ravenswood, Chicago. Space-saving and sized right, with a flat price."
+}

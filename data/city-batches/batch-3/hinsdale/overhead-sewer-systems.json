@@ -1,0 +1,341 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewer Systems in Hinsdale, IL",
+   "sub": "If your floor drain backs up during heavy storms, an overhead sewer system lifts basement wastewater above the level where backups happen. We plan and install them around finished basements and older foundations. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Does Your Hinsdale Home Need an Overhead Sewer?",
+    "intro": "Consider one when:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Backups Line Up With Storms",
+      "body": "The floor drain fills during heavy rain, not on dry days."
+     },
+     {
+      "h3": "Your Line Is Clear on Camera",
+      "body": "No roots or breaks, and it still backs up."
+     },
+     {
+      "h3": "You Have a Deep, Older Basement",
+      "body": "Gravity drains sit below the street sewer."
+     },
+     {
+      "h3": "You're Finishing or Renovating",
+      "body": "Protect the space before the new finishes go in."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "split",
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "Every drain below the street sewer's flow line, like your floor drain, a basement bathroom, or a laundry line, normally relies on gravity to reach the sewer. An overhead sewer system reroutes those drains into a sump pit instead. An [ejector pump](/hinsdale/ejector-pump) lifts that wastewater up to a line above flood level, where a check valve keeps it from flowing back down. From there, gravity carries it the rest of the way to the street sewer, the same as every drain upstairs.",
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Overhead Sewers in Hinsdale",
+    "intro": "In June 2021, sewer water bubbled more than 5 feet high near County Line Road and Walnut Street, and a basement nearby took on about 3 feet of water.",
+    "items": [
+     {
+      "h3": "Historic Basements",
+      "body": "Older homes often have deep basements and gravity floor drains. We plan the pit and pipe path around stone or brick foundations."
+     },
+     {
+      "h3": "Renovated Lower Levels",
+      "body": "Many Hinsdale basements are finished to a high standard. The system is laid out to keep walls and ceilings intact where possible."
+     },
+     {
+      "h3": "Check the Line First",
+      "body": "We camera your sewer before recommending a conversion. A [sewer repair](/hinsdale/sewer-repair) may solve it."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Backflow Valve vs. Sump Pump",
+    "intro": "Each one solves a different problem:",
+    "head": [
+     "",
+     "Sump Pump",
+     "Backflow Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "Problem it solves",
+      "Groundwater around the foundation",
+      "Sewage flowing back into the house",
+      "Storm backups through basement drains"
+     ],
+     [
+      "How it works",
+      "Pumps water out of a pit",
+      "A flap closes when flow reverses",
+      "Lifts basement wastewater above flood level"
+     ],
+     [
+      "Best for",
+      "Damp or older foundations",
+      "Homes where a passive valve is enough",
+      "Repeat backups and finished basements"
+     ]
+    ],
+    "note": "We'll tell you which ones your basement needs."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Every conversion starts with your sewer line.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "No system you don't need."
+     },
+     {
+      "h3": "2. Planned Around Your Finishes",
+      "body": "Pit, pump and piping placed carefully."
+     },
+     {
+      "h3": "3. Flat Price, Water-Tested",
+      "body": "Approved first and tested before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Tanya Hill",
+      "url": null,
+      "text": "Ray was awesome! My kitchen sink was backed up and he took care of things courteously, neatly and thoroughly. Ray explained the mechanics of why my issue may have happened and how to prevent it from happening again. I recommend Ray and JVS to anyone looking for a plumber!"
+     },
+     {
+      "name": "Graham McClure",
+      "url": "https://maps.app.goo.gl/9Z2dPHcr4jAzDott8",
+      "text": "John was very professional and knowledgeable, he quickly helped us drain our flooded basement and left us feeling confident in the work he had done. Confidence is priceless when it comes to plumbing."
+     },
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible. Services Sump pump repair, Sump pump installation"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Can an overhead sewer go into a finished basement?",
+      "preview": "Yes, with careful planning.",
+      "answer": "Yes. We plan the pit location and the pipe route to limit how much finished wall and ceiling has to open."
+     },
+     {
+      "q": "Does an overhead sewer stop groundwater?",
+      "preview": "No. That's a sump pump's job.",
+      "answer": "No. It stops sewer backups. Groundwater needs a [sump pump](/hinsdale/sump-pumps)."
+     },
+     {
+      "q": "Can we keep the basement bathroom and bar sink?",
+      "preview": "Yes.",
+      "answer": "Yes. They drain to the new pit along with the floor drain."
+     },
+     {
+      "q": "How long does installation take?",
+      "preview": "Usually a few days.",
+      "answer": "Usually a few days, depending on the layout and the finishes."
+     },
+     {
+      "q": "How much does an overhead sewer system cost in Hinsdale?",
+      "preview": "It depends on your basement. You'll approve a flat price first.",
+      "answer": "It depends on sewer depth, layout, fixtures and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Protect Your Basement?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewer Systems in Hinsdale, IL",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/hinsdale/overhead-sewer-systems",
+   "description": "Overhead sewer installation for Hinsdale, IL homes with storm backups. Camera first, a plan for your basement and a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewer Systems in Hinsdale, IL",
+ "metaDescription": "Overhead sewer installation for Hinsdale, IL homes with storm backups. Camera first, a plan for your basement and a flat price."
+}

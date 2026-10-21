@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Skokie, IL",
+   "sub": "With so many Skokie sewer lines now 60 to 80 years old, a camera inspection is the best way to know what you're dealing with. We record the line, mark each problem's location and depth and walk you through it. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Reasons Skokie Homeowners Get a Camera Inspection",
+    "intro": "The usual reasons:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying a Postwar Home",
+      "body": "The lateral is likely as old as the house."
+     },
+     {
+      "h3": "The Line Gets Rodded Every Year",
+      "body": "Find out whether a repair would end it."
+     },
+     {
+      "h3": "Before a Basement Remodel",
+      "body": "Check the line and under-floor drains first."
+     },
+     {
+      "h3": "After a Storm Backup",
+      "body": "Learn whether it was your line or the village sewer."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-skokie",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Skokie Sewer Lines",
+    "intro": "Skokie footage tends to show the same things, because so much of the town was built at once.",
+    "items": [
+     {
+      "h3": "Roots at Clay Joints",
+      "body": "The most common finding."
+     },
+     {
+      "h3": "Scaled or Cracked Cast Iron",
+      "body": "Under the basement floor, where the line leaves the house."
+     },
+     {
+      "h3": "Offset Joints",
+      "body": "Sections that shifted over the decades."
+     },
+     {
+      "h3": "Past Repairs",
+      "body": "PVC patches joined to the original clay."
+     },
+     {
+      "h3": "Old Repairs",
+      "body": "Past fixes from previous owners."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You see exactly what we see.",
+    "steps": [
+     {
+      "h3": "1. In Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Every Problem Located",
+      "body": "Position and depth marked."
+     },
+     {
+      "h3": "3. Explained Plainly",
+      "body": "Plus a copy of the video."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "split",
+    "id": "why-skokie-buyers-scope-the-sewer",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Buying a Home",
+    "h2": "Why Skokie Buyers Scope the Sewer",
+    "body": "Most Skokie homes were built in the 1940s, '50s and '60s, and many still drain through their original clay lateral. A standard home inspection doesn't look inside that pipe. A camera inspection during your inspection period shows roots, cracks and sags, with the location and depth of each. If a repair is needed, you'll know before closing, when it can still be part of the conversation.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Rachael Dawson",
+      "url": null,
+      "text": "We’ve been using this company for a few months now to do work on our recently purchased house. Christian was out to do our inspection today. Good communication prior to and during the inspection. Work recommended and quoted seems reasonable. Dog approves."
+     },
+     {
+      "name": "Jessica Sexton",
+      "url": null,
+      "text": "Andrew was very professional and personable! He was thourough in his inspection and very courteous. He also really hit it off with my family including the cats! Lol"
+     },
+     {
+      "name": "Timothy Dondanville",
+      "url": null,
+      "text": "Scott was thorough, honest and efficient. I appreciated his transparency. He walked through the inspection process and answered many questions."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Is a camera inspection worth it before buying in Skokie?",
+      "preview": "Yes. Most laterals here are 60+ years old.",
+      "answer": "Yes. Most Skokie laterals are 60 years old or more, and a standard home inspection doesn't look inside them."
+     },
+     {
+      "q": "Can the camera see under the basement floor?",
+      "preview": "Yes, through the cleanout.",
+      "answer": "Yes. From the cleanout, the camera follows the line under the floor and out to the street."
+     },
+     {
+      "q": "How accurate is the location?",
+      "preview": "Accurate enough to plan a repair.",
+      "answer": "Our locator picks up the camera's signal from above and marks the spot and the depth, so repairs can be planned precisely."
+     },
+     {
+      "q": "Can I share the video with the seller?",
+      "preview": "Yes, you keep it.",
+      "answer": "Yes. You keep the recording to share with a seller, an agent or another contractor."
+     },
+     {
+      "q": "Can you inspect my line after a storm backup?",
+      "preview": "Yes.",
+      "answer": "Yes. It shows whether your line was blocked or the sewer system was full."
+     },
+     {
+      "q": "Can you scope the line on short notice?",
+      "preview": "Usually within a few days.",
+      "answer": "Usually within a few days, to fit your inspection window."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Skokie?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Skokie, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/skokie/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Skokie, IL. See roots, cracks and sags on video, located and measured, before you pay for a repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Skokie, IL",
+ "metaDescription": "Sewer camera inspections in Skokie, IL. See roots, cracks and sags on video, located and measured, before you pay for a repair."
+}

@@ -1,0 +1,326 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Skokie, IL",
+   "sub": "Most Skokie sewer lines went in during the same postwar building boom, and many are now cracking, sagging or full of roots. We camera your line, show you exactly what's wrong and price the repair before any work. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Your Skokie Sewer Line May Be Damaged If",
+    "intro": "These go beyond an ordinary clog:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "You Rod the Line Every Year",
+      "body": "Roots keep finding the same broken joint."
+     },
+     {
+      "h3": "Water Seeps Up at the Floor Drain",
+      "body": "Especially after heavy rain or a big load of laundry."
+     },
+     {
+      "h3": "Sewer Gas in the Basement",
+      "body": "A crack or a dry, damaged trap can let odor in."
+     },
+     {
+      "h3": "The Parkway Sinks Over the Line",
+      "body": "Soil falling into a break leaves a low spot."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Skokie",
+    "intro": "Skokie grew from about 15,000 people in 1950 to nearly 60,000 in 1960. Nearly 2 in 3 homes here were built between 1940 and 1969.",
+    "items": [
+     {
+      "h3": "Clay Laterals at 60 to 80 Years",
+      "body": "Clay pipe from the postwar boom has joints every few feet, and decades of roots have pried many of them open."
+     },
+     {
+      "h3": "Cast Iron That Scales and Splits",
+      "body": "Cast iron under the basement floor rusts from the inside and can crack along the bottom."
+     },
+     {
+      "h3": "Parkway Trees Planted With the Subdivisions",
+      "body": "The trees that line Skokie's blocks are now big enough to send roots into every gap."
+     },
+     {
+      "h3": "Patches From Past Repairs",
+      "body": "Many lines have been dug up and fixed in one spot already, leaving joints between different materials."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Skokie",
+    "intro": "No guessing, and no digging we don't need.",
+    "steps": [
+     {
+      "h3": "1. Video the Entire Lateral",
+      "body": "Cleanout to main, with the footage of every crack and root mat."
+     },
+     {
+      "h3": "2. Pick the Method That Fits",
+      "body": "Spot repair for one break, lining or replacement for a failing line."
+     },
+     {
+      "h3": "3. Approve a Flat Price",
+      "body": "Before anything is dug or lined."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/skokie/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/skokie/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "Skokie laterals often run under a front walk, a parkway tree and the street curb. The footage shows us which repair keeps the disruption smallest."
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Robert Koehler",
+      "url": null,
+      "text": "Emmanuel, Gio, and Greg were a great team. Handled the job with complete professionalism and left confident the money was well spent with the right people. Fixed the sewer line using the best method and technology. Good interpersonal skills. Thank you."
+     },
+     {
+      "name": "Brynn Dumalski",
+      "url": null,
+      "text": "George came and solved our problems right away. They are a full service plumbing company. It was a relief to know that our problem would be solved. He’s also great with dogs."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "My home is from the 1950s. Does the whole sewer line need replacing?",
+      "preview": "Not always. The camera decides.",
+      "answer": "Not always. Some lines from that era need one section fixed, and others are failing end to end. A [camera inspection](/skokie/video-camera-sewer-inspections) shows which one you have."
+     },
+     {
+      "q": "Can roots really break a sewer pipe?",
+      "preview": "Yes. They pry joints open and crack old clay.",
+      "answer": "Yes. Roots grow into small gaps, thicken over time and can pry joints apart or crack old clay. That's why they keep coming back after rodding."
+     },
+     {
+      "q": "Is lining a good option for old clay pipe?",
+      "preview": "Often, if the pipe still holds its shape.",
+      "answer": "Often. If the clay is cracked but still round, a [trenchless liner](/skokie/trenchless-sewer-repair) can seal it from the inside without a long trench."
+     },
+     {
+      "q": "Who fixes the part of the line under the street?",
+      "preview": "It depends on where the problem is.",
+      "answer": "Homeowners are usually responsible for the line from the house to the public sewer. We'll show you on camera where the problem is, so you know who handles it."
+     },
+     {
+      "q": "How long does a sewer repair take in Skokie?",
+      "preview": "Often one or two days.",
+      "answer": "A spot repair is often done in a day. Larger jobs take a day or two."
+     },
+     {
+      "q": "How much does sewer repair cost in Skokie?",
+      "preview": "It depends on the damage, depth and method. You'll approve a flat price first.",
+      "answer": "It depends on what the camera shows, how deep the pipe is, the repair method and what's above it. You'll approve a flat-rate price before any work."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Skokie, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/skokie/sewer-repair",
+   "description": "Sewer line repair in Skokie, IL for 1940s to 1960s clay and cast iron laterals. See the problem on camera, then approve a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Skokie, IL",
+ "metaDescription": "Sewer line repair in Skokie, IL for 1940s to 1960s clay and cast iron laterals. See the problem on camera, then approve a flat price."
+}

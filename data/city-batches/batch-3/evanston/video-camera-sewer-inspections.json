@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Evanston, IL",
+   "sub": "Since the lateral is yours in Evanston, it pays to know its condition. Before you buy a house, finish a basement or approve a repair, we put a camera in the line and walk you through what we see. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Why Evanston Homeowners Scope Their Sewer",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying an Older Home",
+      "body": "A home inspection usually doesn't include the sewer."
+     },
+     {
+      "h3": "Finishing the Basement",
+      "body": "Check under the slab first."
+     },
+     {
+      "h3": "Rodding Every Year",
+      "body": "See if a repair would end it."
+     },
+     {
+      "h3": "After a Backup",
+      "body": "Find the cause before the next one."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-evanston",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Evanston Sewer Lines",
+    "intro": "Most of what we record comes back to the age of the pipe:",
+    "items": [
+     {
+      "h3": "Roots at Clay Joints",
+      "body": "By far the most common finding."
+     },
+     {
+      "h3": "Offset Joints",
+      "body": "Sections that have shifted out of line."
+     },
+     {
+      "h3": "Cracked Cast Iron Under the Floor",
+      "body": "Where the line leaves the house."
+     },
+     {
+      "h3": "Old Patches",
+      "body": "Earlier repairs that have started to fail."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You see what we see.",
+    "steps": [
+     {
+      "h3": "1. In Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Every Problem Located",
+      "body": "Depth and distance marked."
+     },
+     {
+      "h3": "3. Explained Plainly",
+      "body": "And the video is yours."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "split",
+    "id": "why-a-sewer-scope-matters-when-buying-in-evanston",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Buying a Home",
+    "h2": "Why a Sewer Scope Matters When Buying in Evanston",
+    "body": "In Evanston, the lateral belongs to the property owner, and on an older house it may be close to 100 years old. A sewer scope during your inspection period shows whether the line is clean, needs a cleaning or needs a repair. That footage gives you facts to negotiate with, before closing. It's a small cost compared to finding out after you move in, when the repair is fully yours.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Guadalupe",
+      "url": null,
+      "text": "Julian and Christian were out at my house today very nice and respectful boys they flushed out my water heater and inspected my sewer with a very fancy camera very helpful boys and they let me tell them some of my jokes"
+     },
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Lee Smith",
+      "url": null,
+      "text": "We had a good experience with Mike. He inspected our sewer line and showed us the camera footage and clearly explained the sewer relining repair we needed. Mike was knowledgeable and helpful. All in all a good experience."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Should I scope the sewer before buying in Evanston?",
+      "preview": "Yes.",
+      "answer": "Yes. The lateral is the owner's responsibility here, and a home inspection doesn't usually cover it."
+     },
+     {
+      "q": "Can you tell where the break is?",
+      "preview": "Yes, location and depth.",
+      "answer": "Yes. We mark the spot on the surface and note the depth, so any repair is targeted."
+     },
+     {
+      "q": "Can you see where my line meets the city sewer?",
+      "preview": "Usually.",
+      "answer": "Usually, yes. That shows whether a problem is in your lateral or at the connection."
+     },
+     {
+      "q": "Do I get the video?",
+      "preview": "Yes.",
+      "answer": "Yes. Share it with a seller, your agent or another contractor."
+     },
+     {
+      "q": "How soon can you inspect during a home sale?",
+      "preview": "Usually within a few days.",
+      "answer": "Usually within a few days, so it fits your inspection window."
+     },
+     {
+      "q": "Can a camera tell me how old my sewer line is?",
+      "preview": "It shows the material, which hints at age.",
+      "answer": "It shows the pipe material and condition, which usually tells us roughly when it was installed."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Evanston?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Evanston, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/evanston/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Evanston, IL. See roots, cracks and breaks in your lateral on video before you buy, renovate or repair.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Evanston, IL",
+ "metaDescription": "Sewer camera inspections in Evanston, IL. See roots, cracks and breaks in your lateral on video before you buy, renovate or repair."
+}

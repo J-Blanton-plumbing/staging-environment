@@ -1,0 +1,311 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Installation in Hinsdale, IL",
+   "sub": "A professional range in a new kitchen, an outdoor kitchen on the patio or a whole-house generator. Our licensed plumbers size, run and test gas lines in Hinsdale homes. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "what-we-connect",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Connect",
+    "h2": "Popular Gas Projects in Hinsdale",
+    "intro": "What homeowners here ask us to connect:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Professional Ranges and Cooktops",
+      "body": "High-output burners need the right line size."
+     },
+     {
+      "h3": "Outdoor Kitchens and Fire Features",
+      "body": "Grills, fire pits and fireplaces on the patio."
+     },
+     {
+      "h3": "Pool and Spa Heaters",
+      "body": "Sized for a large load."
+     },
+     {
+      "h3": "Whole-House Generators",
+      "body": "So power outages don't stop the pumps."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "From Load Calculation to Pressure Test",
+    "intro": "No guesswork on gas lines:",
+    "steps": [
+     {
+      "h3": "1. Add Up Every Appliance",
+      "body": "Furnace, water heater, range, fireplace and the new load together."
+     },
+     {
+      "h3": "2. Choose the Route and Pipe Size",
+      "body": "Then install it with proper supports and a shutoff at each appliance."
+     },
+     {
+      "h3": "3. Test Before It's Connected",
+      "body": "A pressure test proves the new line is tight."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-gas",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Projects in Hinsdale",
+    "intro": "Hinsdale projects tend to be on the larger side.",
+    "items": [
+     {
+      "h3": "Big Loads Add Up",
+      "body": "A pro range, a pool heater and a generator can exceed the capacity of an older line or meter."
+     },
+     {
+      "h3": "Coordinating With the Utility",
+      "body": "If the meter needs an upgrade, we help coordinate with Nicor Gas."
+     },
+     {
+      "h3": "Fireplace Conversions",
+      "body": "Older wood-burning fireplaces can often be fitted with gas logs. See [gas fireplace service](/hinsdale/gas-fireplace)."
+     },
+     {
+      "h3": "Patio Heaters and Fire Tables",
+      "body": "Fixed gas lines to patio heaters and fire tables replace propane tanks and run off the same system as the house."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-gas-line",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Gas Line",
+    "body": "Distance, route and size matter most. Outdoor kitchens, pool heaters and generators can need large lines and long runs. We add up the total load, plan the route and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "NBA All Day",
+      "url": null,
+      "text": "Welhem completed some plumbing services to ensure my washer/dryer could be installed. He was prompt and professional and did great work."
+     },
+     {
+      "name": "Ngawang Lhabrang",
+      "url": null,
+      "text": "Update: 6/6/25: Manager Damien called within the hour and rectified situation. Thank you for accomodating. The scheduling process was an absolute mess. I filled out the online form and began texting with their team on the morning of Wednesday, 6/4/25, to arrange an evening appointment. I was told Friday evening, 6/6/25, was available. Based on the text exchange, it seemed the appointment was confirmed. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Installation Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Will a professional range need a bigger gas line?",
+      "preview": "Often, yes.",
+      "answer": "Often. High-output burners can need more gas than the original range line can carry. We calculate it before installing."
+     },
+     {
+      "q": "Can a gas line run to a detached garage or pool house?",
+      "preview": "Yes, buried and protected.",
+      "answer": "Yes. We run it underground at the right depth, with a shutoff at the building."
+     },
+     {
+      "q": "Do we need a meter upgrade?",
+      "preview": "Sometimes, with several big appliances.",
+      "answer": "Sometimes. If the total load is more than the meter can deliver, we'll help coordinate an upgrade with Nicor Gas."
+     },
+     {
+      "q": "Who pulls the permit?",
+      "preview": "We do, where one is required.",
+      "answer": "We handle the permit and inspection where the village requires one."
+     },
+     {
+      "q": "Can you run gas for an outdoor kitchen?",
+      "preview": "Yes.",
+      "answer": "Yes, sized for every appliance, with shutoffs at each."
+     },
+     {
+      "q": "What does a new gas line cost in Hinsdale?",
+      "preview": "That depends on the run and the appliances. You'll see a flat price first.",
+      "answer": "That depends on how far the line runs, which appliances it serves and the route. You'll see a flat-rate price before work starts."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Add a Gas Line?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Installation in Hinsdale, IL",
+   "serviceType": "Gas Line Installation",
+   "url": "https://jblantonplumbing.com/hinsdale/gas-line-installation",
+   "description": "Gas line installation in Hinsdale, IL for ranges, outdoor kitchens, fire features, pool heaters and generators. Licensed and tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Installation in Hinsdale, IL",
+ "metaDescription": "Gas line installation in Hinsdale, IL for ranges, outdoor kitchens, fire features, pool heaters and generators. Licensed and tested."
+}

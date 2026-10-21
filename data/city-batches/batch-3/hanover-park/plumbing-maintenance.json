@@ -1,0 +1,328 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Plumbing Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Plumbing Maintenance in Hanover Park, IL",
+   "sub": "Most Hanover Park homes are now 35 to 55 years old, and a lot of their plumbing is original. A yearly checkup shows you what's wearing out, so you can plan instead of react. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/plumbing-maintenance-vanity.webp",
+    "alt": "Plumber checking the drain and supply lines under a bathroom vanity during routine maintenance"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "whats-checked",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "What We Check",
+    "h2": "What a Hanover Park Plumbing Inspection Covers",
+    "intro": "A full look at:",
+    "steps": [
+     {
+      "h3": "Water Heater",
+      "body": "Age, venting and relief valve."
+     },
+     {
+      "h3": "Sump and Ejector Pumps",
+      "body": "Tested under load."
+     },
+     {
+      "h3": "Supply Pipe and Shutoffs",
+      "body": "Valves that actually work."
+     },
+     {
+      "h3": "Drains and the Sewer Line",
+      "body": "Signs of roots or buildup."
+     },
+     {
+      "h3": "Fixtures",
+      "body": "Drips and running toilets."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Maintenance Matters in Hanover Park",
+    "intro": "More than 6 in 10 homes here were built between 1970 and 1989.",
+    "items": [
+     {
+      "h3": "Many Systems Aging at Once",
+      "body": "Water heaters, pumps, valves and sewer lines."
+     },
+     {
+      "h3": "Sump Pumps Before Storm Season",
+      "body": "The 2007 storm showed why."
+     },
+     {
+      "h3": "Plan for Big Projects",
+      "body": "Know what's coming."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "An honest report.",
+    "steps": [
+     {
+      "h3": "1. A Full Checkup",
+      "body": "Every major part."
+     },
+     {
+      "h3": "2. A Written Summary",
+      "body": "Fine, close or urgent."
+     },
+     {
+      "h3": "3. Prices for Anything Needed",
+      "body": "You decide when."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "a-seasonal-plumbing-checklist",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Plan Ahead",
+    "h2": "A Seasonal Plumbing Checklist",
+    "body": "In spring, test the sump pump and battery backup before storm season. In summer, check hoses on the washer and dishwasher for bulges or cracks. In fall, drain outdoor faucets and flush the water heater. In winter, keep an eye on pipes in the garage and near outside walls during cold snaps. A yearly visit from us covers the parts that are harder to check yourself, like the sewer line and gas connections.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-you-get-after-a-checkup",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "What You Get",
+    "h2": "What You Get After a Checkup",
+    "body": "A short written summary with each system marked as fine, worth watching or needing attention. We note the age of the water heater and pumps and flag anything near the end of its life. Recommended work comes with a flat price, and you decide when to do it.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Plumbing Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     },
+     {
+      "name": "Brian Mulvihill",
+      "url": null,
+      "text": "Christian at J Blanton did an amazing job during his maintenance visit. He arrived promptly and ready with all of his equipment and got right to work. He was very knowledgeable and even provided some valuable education about plumbing. Thank you Christian!"
+     },
+     {
+      "name": "Jose Flores",
+      "url": null,
+      "text": "Christian and Julian stopped by for maintenance, my wife and I had been complaining about a running toilet for a few weeks. Christian changed out our flapper, and even tightened down the toilet bolts while he was at it, at no extra charge! I love having a plumbing company that doesn’t try to upsell on everything possible. Thank you Christian and Julian! [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Plumbing Maintenance Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "How often should I have a checkup?",
+      "preview": "Once a year.",
+      "answer": "Once a year is a good rule."
+     },
+     {
+      "q": "Does the No Drip Club include checkups?",
+      "preview": "Yes.",
+      "answer": "The [No Drip Club](/no-drip-club) includes regular maintenance visits."
+     },
+     {
+      "q": "What's most likely to fail in a 1970s home?",
+      "preview": "Water heaters, pumps and shutoff valves.",
+      "answer": "Water heaters, sump pumps and old shutoff valves are the usual first failures."
+     },
+     {
+      "q": "Is an inspection useful before buying?",
+      "preview": "Yes, with a sewer camera.",
+      "answer": "Yes. Pair it with a [sewer camera inspection](/hanover-park/video-camera-sewer-inspections)."
+     },
+     {
+      "q": "How often should washer hoses be replaced?",
+      "preview": "About every 5 years.",
+      "answer": "About every 5 years, or sooner if they bulge or crack. Braided steel hoses last longer."
+     },
+     {
+      "q": "Can you test my sump pump during the checkup?",
+      "preview": "Yes.",
+      "answer": "Yes. We test it with water and check the battery backup."
+     },
+     {
+      "q": "How much does plumbing maintenance cost in Hanover Park?",
+      "preview": "It depends on the visit. You'll approve a flat price first.",
+      "answer": "It depends on what's included. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Plumbing Checkup?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Plumbing Maintenance in Hanover Park, IL",
+   "serviceType": "Plumbing Maintenance",
+   "url": "https://jblantonplumbing.com/hanover-park/plumbing-maintenance",
+   "description": "Plumbing maintenance and inspections in Hanover Park, IL. Catch aging pipes, pumps and water heaters before they fail and flood the house.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Plumbing Maintenance in Hanover Park, IL",
+ "metaDescription": "Plumbing maintenance and inspections in Hanover Park, IL. Catch aging pipes, pumps and water heaters before they fail and flood the house."
+}

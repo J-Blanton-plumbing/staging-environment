@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Catch Basin",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Catch Basin Cleaning and Repair in Lincoln Park, Chicago",
+   "sub": "A gangway that floods, a back patio that holds water or a yard drain buried under leaves. We clean and repair catch basins and clear the lines they drain into. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+    "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-a-catch-basin",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What a Catch Basin Does",
+    "body": "A catch basin is a small chamber under a grate that collects water from a yard, patio, gangway or downspout and sends it into a drain line. Debris settles in the bottom so it doesn't clog the pipe. In Chicago, many older yard basins are tied into the building's sewer, so a clogged basin can also affect the line.",
+    "img": {
+     "src": "/images/city-services-v2/catch-basin-diagram.webp",
+     "alt": "Diagram of a catch basin showing the inlet grate, water line, sediment settling in the sump and the outlet pipe carrying water away"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "When a Lincoln Park Catch Basin Needs Service",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Gangway Floods",
+      "body": "Water pools between buildings and runs toward the basement."
+     },
+     {
+      "h3": "The Patio Holds Water",
+      "body": "After every rain."
+     },
+     {
+      "h3": "The Grate Is Buried",
+      "body": "Under leaves or debris."
+     },
+     {
+      "h3": "The Basin Is Cracked",
+      "body": "Old brick basins shift and crumble."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-catch-basins",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Catch Basins on Lincoln Park Lots",
+    "intro": "Narrow lots and paved yards leave runoff few places to go.",
+    "items": [
+     {
+      "h3": "Gangways and Areaways",
+      "body": "Water between buildings heads straight for basement walls and stairwells."
+     },
+     {
+      "h3": "Old Brick Basins",
+      "body": "Decades-old basins crack and lose mortar."
+     },
+     {
+      "h3": "Connected to the Sewer",
+      "body": "Many older basins drain to the building sewer, so a heavy storm can back them up too."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "The basin and the line behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean It Out",
+      "body": "Debris removed."
+     },
+     {
+      "h3": "2. Check the Line",
+      "body": "With water, and a camera if needed."
+     },
+     {
+      "h3": "3. Price Repairs First",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "small-drains-on-lincoln-park-lots",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Patios and Gangways",
+    "h2": "Small Drains on Lincoln Park Lots",
+    "body": "On a Lincoln Park lot, outdoor drains are small and easy to forget: a grate in the back patio, a drain at the bottom of the basement stairs or one in the gangway. Each one is the only way water leaves that spot. When it clogs with leaves or sand, water pools against the building and finds its way inside. Clearing them once a year, and after big storms, prevents a lot of wet basements.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Catch Basin Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Tyler Ko",
+      "url": "https://maps.app.goo.gl/he5PCDkFqheoKPiy8",
+      "text": "Had a camera inspection of a clogged sewer drain by George. He was very helpful, polite, professional and informative. We ended up moving forward with a sewer trenchless liner service and look forward to a good experience for the main service."
+     },
+     {
+      "name": "Fred Cleary",
+      "url": null,
+      "text": "Our kitchen sink was not draining and technician Josh was sent out to tackle the issue. Josh did a great job getting the drain flowing freely. It was a challenging job but Josh did not quit until the drain was open. We would recommend Josh to any future customers and we would request that he be sent to our house for any additional work down the road. [...]"
+     },
+     {
+      "name": "Rebecca Mutek",
+      "url": null,
+      "text": "Andrew & Ty did a great job! They were very quick & professional! Highly recommend them for all your drain clogs."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Catch Basin Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "How often should a catch basin be cleaned?",
+      "preview": "At least once a year.",
+      "answer": "At least once a year, usually in the fall. Basins under trees may need it more often."
+     },
+     {
+      "q": "Can a clogged basin flood my basement?",
+      "preview": "Yes.",
+      "answer": "Yes. Water that pools by the building can come in through walls, window wells or stairwells."
+     },
+     {
+      "q": "Is my back patio drain a catch basin?",
+      "preview": "Often, yes.",
+      "answer": "Often. Many patio and areaway drains are small catch basins with the same need for cleaning."
+     },
+     {
+      "q": "Can you rebuild an old brick basin?",
+      "preview": "Often.",
+      "answer": "Often. We rebuild walls and reset grates, or replace the basin if it's too far gone."
+     },
+     {
+      "q": "Can you clear a stairwell drain at the basement door?",
+      "preview": "Yes.",
+      "answer": "Yes. These clog often and flood the door when they do."
+     },
+     {
+      "q": "How much does catch basin work cost in Lincoln Park?",
+      "preview": "It depends on the job. You'll approve a flat price first.",
+      "answer": "It depends on whether it's a cleaning, a repair or line work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Yard That Drains?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Catch Basin Cleaning and Repair in Lincoln Park, Chicago",
+   "serviceType": "Catch Basin",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/catch-basin",
+   "description": "Catch basin cleaning and repair for Lincoln Park homes. Gangway, yard and patio drains cleared, old basins repaired. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Catch Basin Cleaning in Lincoln Park, Chicago",
+ "metaDescription": "Catch basin cleaning and repair for Lincoln Park homes. Gangway, yard and patio drains cleared, old basins repaired. Flat price first."
+}

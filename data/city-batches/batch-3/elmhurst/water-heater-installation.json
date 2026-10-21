@@ -1,0 +1,337 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Installation in Elmhurst, IL",
+   "sub": "A leaking tank, a heater that's past 12 years or one that can't keep up anymore. We size and install the right replacement, check the venting and haul the old one away, usually in a single visit. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When It's Time for a New Water Heater",
+    "intro": "Replace it when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Is Leaking",
+      "body": "It can't be repaired."
+     },
+     {
+      "h3": "It's Over 10 to 12 Years",
+      "body": "Check the label date."
+     },
+     {
+      "h3": "Rusty Hot Water",
+      "body": "The tank is corroding inside."
+     },
+     {
+      "h3": "Repairs Keep Coming",
+      "body": "Put the money toward a new one."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "From quote to haul-away:",
+    "steps": [
+     {
+      "h3": "1. Size It for Your Household",
+      "body": "And your basement."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Connections, relief valve, venting and an expansion tank if needed."
+     },
+     {
+      "h3": "3. Test and Remove the Old One",
+      "body": "Draft and leaks checked."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Elmhurst Homes",
+    "intro": "Elmhurst homes span more than a century, and the install varies with them.",
+    "items": [
+     {
+      "h3": "Venting in Older Homes",
+      "body": "A new heater may need a chimney liner or different venting."
+     },
+     {
+      "h3": "Hard Water and a New Tank",
+      "body": "Pairing a new heater with a softener or yearly flushing helps it last."
+     },
+     {
+      "h3": "Larger Families in Newer Homes",
+      "body": "Homes built after 1990 often need more capacity."
+     },
+     {
+      "h3": "Considering Tankless?",
+      "body": "See [tankless water heaters](/elmhurst/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "One price, usually one day.",
+    "steps": [
+     {
+      "h3": "1. Options Explained",
+      "body": "Size, fuel and venting."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Parts, labor and haul-away."
+     },
+     {
+      "h3": "3. Done the Same Day",
+      "body": "For most replacements."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "choosing-a-new-heater-for-an-elmhurst-home",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Your Options",
+    "h2": "Choosing a New Heater for an Elmhurst Home",
+    "body": "In a mid-century Elmhurst home, a standard gas tank vented through the chimney is the simplest replacement. If the furnace now vents through a side wall, the chimney may be too big for the water heater alone, and a liner or power-vent heater solves that. In newer homes, a larger tank or a tankless heater can keep up with several bathrooms. We'll lay out the options and prices before you decide.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jeff",
+      "url": null,
+      "text": "Lou was very professional and his experience shows. He took a quick look at our broken hot water heater, saw a dirty component and knew right away that replacing the part would solve the problem. Thanks Lou!"
+     },
+     {
+      "name": "Paul Wittcoff",
+      "url": null,
+      "text": "Shayne was outstanding with knowledge and installation of a new Water Heater valve and did so quickly and efficiently"
+     },
+     {
+      "name": "Mike Olsa",
+      "url": null,
+      "text": "We had our water heater leak and Kyle from J Blanton came and installed a tankless system in only a few hours. It works amazing and he was very fast and thorough. Thanks for the great job Kyle."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "How long does water heater installation take?",
+      "preview": "Usually a few hours.",
+      "answer": "A standard replacement usually takes a few hours."
+     },
+     {
+      "q": "What size water heater do I need?",
+      "preview": "It depends on your household.",
+      "answer": "Most homes use a 40 to 50 gallon tank. Larger families may need more. We'll size it to how you use water."
+     },
+     {
+      "q": "Do I need a new vent or chimney liner?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes, especially when the water heater is the only appliance left on the chimney. We test and explain."
+     },
+     {
+      "q": "Can you install it today if my old one failed?",
+      "preview": "Often, if the size is in stock.",
+      "answer": "Often. Common sizes are usually available the same day."
+     },
+     {
+      "q": "Is an expansion tank required?",
+      "preview": "Often, yes.",
+      "answer": "Often, especially if your home has a pressure regulator or check valve."
+     },
+     {
+      "q": "How much does water heater installation cost in Elmhurst?",
+      "preview": "It depends on size, type and venting. You'll approve a flat price first.",
+      "answer": "It depends on the size, fuel type, venting and code updates. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Installation in Elmhurst, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/elmhurst/water-heater-installation",
+   "description": "Water heater installation and replacement in Elmhurst, IL. Sized right, vented safely and installed to code, with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Installation in Elmhurst, IL",
+ "metaDescription": "Water heater installation and replacement in Elmhurst, IL. Sized right, vented safely and installed to code, with a flat price first."
+}

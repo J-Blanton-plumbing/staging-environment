@@ -1,0 +1,324 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Camera Inspections in Hinsdale, IL",
+   "sub": "Before you buy, build or remodel, find out what's actually inside the sewer line. We record it on video, mark the location and depth of every problem and walk you through what matters. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Homeowners Call",
+    "h2": "Reasons to Get a Sewer Camera Inspection in Hinsdale",
+    "intro": "Most inspections start with one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Buying a Historic Home",
+      "body": "A house from the early 1900s almost certainly has an old lateral."
+     },
+     {
+      "h3": "Building or Rebuilding",
+      "body": "Find out whether the existing line to the street is worth keeping."
+     },
+     {
+      "h3": "Repeat Backups",
+      "body": "Learn whether it's roots, a sag or a break."
+     },
+     {
+      "h3": "After a Big Storm",
+      "body": "Find out if it was your line or an overloaded sewer."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "what-we-find-hinsdale",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Find in Hinsdale Sewer Lines",
+    "intro": "Footage in Hinsdale varies a lot from one street to the next.",
+    "items": [
+     {
+      "h3": "Clay With Root Intrusion",
+      "body": "The most common finding under older homes."
+     },
+     {
+      "h3": "Old Laterals Under New Houses",
+      "body": "A new foundation connected to an old clay or cast iron line."
+     },
+     {
+      "h3": "Patches From Past Repairs",
+      "body": "Different materials joined together over decades of fixes."
+     },
+     {
+      "h3": "Lines That Just Need Cleaning",
+      "body": "Sometimes the pipe is fine and only needs jetting."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How a Camera Inspection Works With Us",
+    "intro": "You watch the screen with us.",
+    "steps": [
+     {
+      "h3": "1. In Through the Cleanout",
+      "body": "No digging."
+     },
+     {
+      "h3": "2. Every Problem Located",
+      "body": "Position and depth marked from above."
+     },
+     {
+      "h3": "3. A Clear Explanation",
+      "body": "What matters, what doesn't and a copy of the video."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "type": "split",
+    "id": "scoping-the-sewer-in-a-historic-hinsdale-home",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Older Homes",
+    "h2": "Scoping the Sewer in a Historic Hinsdale Home",
+    "body": "Homes in and around the Robbins Park Historic District include some of the oldest in the area, and their sewer laterals can be just as old. Even newer homes on older lots may tie into an original line at the property edge. A camera inspection before you buy or renovate shows the material, the condition and any roots or breaks, so you can plan a repair before it becomes an emergency.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-sewer-inspection",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Sewer Inspection",
+    "body": "Access and line length matter most. A long run on a large lot takes more time. If the line is blocked, we clear it first. We quote a flat price before we start.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Stone",
+      "url": null,
+      "text": "Thank you to Scott and Payton for coming by and helping us out. [...]"
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     },
+     {
+      "name": "Alexander Spors",
+      "url": null,
+      "text": "Robert took his time to inspect our water leak, explain the scope of work, and answer any questions we had."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Camera Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Should I get a sewer inspection before buying in Hinsdale?",
+      "preview": "Yes, especially for an older home.",
+      "answer": "Yes. A standard home inspection doesn't include the sewer line. For an older home, the camera can turn up a repair worth negotiating."
+     },
+     {
+      "q": "We're tearing down and rebuilding. Should we inspect the old line?",
+      "preview": "Yes, before you decide to reuse it.",
+      "answer": "Yes. Before the builder ties the new house into the existing lateral, a camera inspection tells you whether that line is worth keeping."
+     },
+     {
+      "q": "Can you tell how deep the problem is?",
+      "preview": "Yes.",
+      "answer": "Yes. The camera head carries a transmitter, and our locator marks both the spot and the depth from the surface."
+     },
+     {
+      "q": "Do I get to keep the video?",
+      "preview": "Yes.",
+      "answer": "Yes. You keep the recording for your records, a sale or a repair quote."
+     },
+     {
+      "q": "Can a camera inspection help with a renovation plan?",
+      "preview": "Yes.",
+      "answer": "Yes. It tells you whether the sewer should be repaired before new floors and finishes go in."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost in Hinsdale?",
+      "preview": "It depends on access and length. You'll approve a flat price first.",
+      "answer": "It depends on access and the length of the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to See Inside Your Sewer Line?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Camera Inspections in Hinsdale, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/hinsdale/video-camera-sewer-inspections",
+   "description": "Sewer camera inspections in Hinsdale, IL. Roots, cracks and old connections recorded, located and measured before you spend on repairs.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Hinsdale, IL",
+ "metaDescription": "Sewer camera inspections in Hinsdale, IL. Roots, cracks and old connections recorded, located and measured before you spend on repairs."
+}

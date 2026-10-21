@@ -1,0 +1,367 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Faucet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Faucet Repair and Installation in Ravenswood, Chicago",
+   "sub": "A two-handle faucet that drips, a kitchen faucet with weak flow or new fixtures for a renovation. We repair and install faucets and fixtures in Ravenswood homes and two-flats. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/faucet-installation-bathroom-sink.webp",
+    "alt": "J. Blanton plumber in branded red leather gloves installing a new chrome faucet on a white bathroom sink with an adjustable wrench"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call About a Faucet",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Drips",
+      "body": "Worn washers, seats or a cartridge."
+     },
+     {
+      "h3": "Weak Flow",
+      "body": "A clogged aerator or old pipe."
+     },
+     {
+      "h3": "Water Under the Sink",
+      "body": "A leaking supply line."
+     },
+     {
+      "h3": "The Shutoff Won't Turn",
+      "body": "Old valves seize."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-faucet",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Kitchen Faucets",
+    "h2": "Kitchen Faucet Repair and Installation",
+    "bodies": [
+     "We repair and install kitchen faucets, from older two-handle models to modern pull-downs.",
+     "We replace worn shutoffs and supply lines at the same time."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-plumbing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Plumbing",
+    "h2": "Kitchen Plumbing Services",
+    "bodies": [
+     "We handle drains, shutoffs, dishwasher hookups, ice maker lines and [garbage disposals](/chicago-ravenswood/garbage-disposal-installation-repair).",
+     "Renovating? We'll handle the plumbing for a new layout."
+    ],
+    "img": {
+     "src": "/images/city-services-v2/kitchen-sink-drain-plumbing.webp",
+     "alt": "Plumbing under a double kitchen sink: white PVC drain and P-trap, braided supply lines with chrome shutoff valves, and a garbage disposal"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "fixture-installation",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Fixture Installation",
+    "h2": "Plumbing Fixture Installation",
+    "bodies": [
+     "We install sinks, faucets, toilets and showerheads, and check the shutoffs while we're there.",
+     "Replacing several fixtures? We'll plan one visit."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-fixtures",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Local Knowledge",
+    "h2": "Faucets and Fixtures in Ravenswood Homes",
+    "intro": "Older homes mean older fixtures and valves.",
+    "items": [
+     {
+      "h3": "Two-Handle Faucets",
+      "body": "Washers and seats wear and drip. Many can be rebuilt."
+     },
+     {
+      "h3": "Seized Shutoffs",
+      "body": "We replace them during the repair."
+     },
+     {
+      "h3": "Old Supply Pipe",
+      "body": "Can restrict flow to a new faucet."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "The right fix.",
+    "steps": [
+     {
+      "h3": "1. Repair or Replace",
+      "body": "Explained."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Leak-Tested",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "rebuilding-vintage-faucets",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Vintage Fixtures",
+    "h2": "Rebuilding Vintage Faucets",
+    "body": "Plenty of Ravenswood homes still have original or older two-handle faucets, some with real character. When they drip, the fix is usually new washers and seats, not a new faucet. We carry common parts and can source others. If a faucet is too worn to rebuild, we'll help you find a replacement that fits the existing holes and the style of the room.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-faucet-work",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Faucet Work",
+    "body": "Rebuilding an old two-handle faucet is usually quick. Replacing a faucet takes longer when old fittings are seized or the shutoffs need replacing. Wall-mount faucets can involve the pipes in the wall. We check first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "Customer Stories",
+    "h2": "Faucet and Fixture Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Marissa B",
+      "url": null,
+      "text": "Clayton took care of what we needed fixed in a timely manner. Very polite as well. Thank you!"
+     },
+     {
+      "name": "Sheldon Magida",
+      "url": null,
+      "text": "Replaced leaking valve behind toilet. Very quick & clean job. Will definitely use again if there’s another plumbing issue."
+     },
+     {
+      "name": "Jeannie Smith",
+      "url": "https://maps.app.goo.gl/96wBa6YbYwQptVSS6",
+      "text": "We had Christian come for our home maintenance check and he was wonderful! I appreciated how thorough he was, that he provided me with feedback and notes for each potential issue he saw, and he even cleaned out a messy drain in my sink."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 100,
+    "eyebrow": "Got Questions?",
+    "h2": "Faucet Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Can you rebuild my old two-handle faucet?",
+      "preview": "Often.",
+      "answer": "Often, if parts are available. If not, we'll recommend a replacement that fits."
+     },
+     {
+      "q": "Can you install a faucet I bought?",
+      "preview": "Yes.",
+      "answer": "Yes, if it's complete and fits the sink."
+     },
+     {
+      "q": "Should I replace the shutoffs?",
+      "preview": "If they're old, yes.",
+      "answer": "If they're original or stiff, yes."
+     },
+     {
+      "q": "Why is my new faucet's flow weak?",
+      "preview": "An aerator or old pipe.",
+      "answer": "Usually debris in the aerator, sometimes old supply pipe."
+     },
+     {
+      "q": "Can you replace a wall-mount faucet?",
+      "preview": "Yes.",
+      "answer": "Yes, though the supply pipes in the wall may need work too."
+     },
+     {
+      "q": "Can you install a new faucet on an old porcelain sink?",
+      "preview": "Usually.",
+      "answer": "Usually, if the holes and spacing match. We'll check first."
+     },
+     {
+      "q": "How much does faucet repair cost in Ravenswood?",
+      "preview": "It depends on the faucet. You'll approve a flat price first.",
+      "answer": "It depends on the faucet and what's wrong. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 110,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 120,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 130,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Faucet?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Faucet Repair and Installation in Ravenswood, Chicago",
+   "serviceType": "Faucet Installation & Repair",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/faucet-installation-repair",
+   "description": "Faucet repair and installation in Ravenswood, Chicago. Old two-handle faucets rebuilt, new fixtures installed, shutoffs replaced.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Faucet Repair & Installation in Ravenswood",
+ "metaDescription": "Faucet repair and installation in Ravenswood, Chicago. Old two-handle faucets rebuilt, new fixtures installed, shutoffs replaced."
+}

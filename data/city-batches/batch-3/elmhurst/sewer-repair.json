@@ -1,0 +1,335 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Repair in Elmhurst, IL",
+   "sub": "About half of Elmhurst's homes were built before 1970, and their clay sewer lines are where most repair calls start. We put a camera in the line, show you what failed and price the fix before we touch anything. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Elmhurst Sewer Line Damaged?",
+    "intro": "Watch for these, not just a slow drain:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Cleaning Helps for a Few Months, Then Doesn't",
+      "body": "A cracked or offset joint keeps snagging debris."
+     },
+     {
+      "h3": "A Wet or Sunken Strip of Lawn",
+      "body": "Leaking sewage softens the soil over the line."
+     },
+     {
+      "h3": "Basement Floor Drain Smells",
+      "body": "Sewer gas escaping through a damaged pipe or a dry trap."
+     },
+     {
+      "h3": "The Inspection Report Says 'Further Evaluation'",
+      "body": "Usually means roots, breaks or a belly on video."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Elmhurst",
+    "intro": "The median Elmhurst home was built in 1966. About 4 in 10 went up between 1940 and 1969, and about 1 in 7 is older still.",
+    "items": [
+     {
+      "h3": "Postwar Clay Laterals",
+      "body": "Most lines from the 1940s to the 1960s are vitrified clay. The pipe itself lasts, but the joints let roots in."
+     },
+     {
+      "h3": "Prewar Homes Near Downtown",
+      "body": "Homes built before 1940 can have clay or cast iron that's been patched more than once."
+     },
+     {
+      "h3": "Big Parkway Trees",
+      "body": "Mature trees along Elmhurst's streets have had 60 years to find the sewer."
+     },
+     {
+      "h3": "New Builds on Old Lots",
+      "body": "About 3 in 10 homes were built after 1990, some tied into older connections at the street."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How We Repair Sewer Lines in Elmhurst",
+    "intro": "We don't dig until the video tells us where.",
+    "steps": [
+     {
+      "h3": "1. Scope It End to End",
+      "body": "Cleanout to city main, with every defect located and measured."
+     },
+     {
+      "h3": "2. Fix Only What's Broken",
+      "body": "A spot repair, a liner or a full replacement, based on the footage."
+     },
+     {
+      "h3": "3. Lock In a Flat Price",
+      "body": "Before any excavation or lining."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "table",
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/elmhurst/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/elmhurst/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "In Elmhurst, the line often passes under a mature parkway tree and a front walk. The footage tells us which method keeps both."
+   },
+   {
+    "type": "split",
+    "id": "new-house-old-sewer",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "New Builds",
+    "h2": "New House, Old Sewer?",
+    "body": "About 3 in 10 Elmhurst homes were built in 1990 or later, many on lots where an older house came down. A new home doesn't always mean a new sewer line. Sometimes the builder connected to the original lateral to the street. If your newer home has root clogs or slow drains, a camera inspection will show whether part of the line is older clay that never got replaced.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "Courtney Macke",
+      "url": null,
+      "text": "Danny, Jerry, Eladio, and Pedro were an amazing team! They were very organized and tidy while digging up our yard to line our sewer. I would highly recommend!"
+     },
+     {
+      "name": "Mike Craig",
+      "url": null,
+      "text": "Very friendly and honest, enjoyed the experience, as much as you can enjoy having to have a plumber come to your house. :)"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Why does my sewer line keep needing cleaning?",
+      "preview": "Usually roots coming through a damaged joint.",
+      "answer": "Usually roots growing through a cracked or separated clay joint. Cleaning removes them, but they grow back until the joint is sealed or replaced."
+     },
+     {
+      "q": "Is a liner better than digging?",
+      "preview": "Often, if the pipe still holds its shape.",
+      "answer": "Often. A [trenchless liner](/elmhurst/trenchless-sewer-repair) seals every joint from inside without a trench. A collapsed or sagging section still needs a spot dig."
+     },
+     {
+      "q": "Who is responsible for the line under the parkway?",
+      "preview": "Usually the homeowner, to the city main.",
+      "answer": "In most cases, the homeowner is responsible for the line from the house to the city main. We'll show you where the problem is on camera."
+     },
+     {
+      "q": "Should I fix the sewer before finishing my basement?",
+      "preview": "Yes.",
+      "answer": "Yes. Scope the line and the under-floor drains first. It's much cheaper than opening a finished floor later."
+     },
+     {
+      "q": "Do I need a permit for sewer repair in Elmhurst?",
+      "preview": "Usually, and we handle it.",
+      "answer": "Usually. We handle the permit for the work we do."
+     },
+     {
+      "q": "How much does sewer line repair cost in Elmhurst?",
+      "preview": "It depends on the damage and the method. You'll approve a flat price first.",
+      "answer": "It depends on what the camera finds, the depth, the repair method and what sits above the line. You'll approve a flat-rate price before any work."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Repair in Elmhurst, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/elmhurst/sewer-repair",
+   "description": "Sewer line repair in Elmhurst, IL for clay laterals from the 1940s, 50s and 60s. See the damage on camera, then approve a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Repair in Elmhurst, IL",
+ "metaDescription": "Sewer line repair in Elmhurst, IL for clay laterals from the 1940s, 50s and 60s. See the damage on camera, then approve a flat price."
+}

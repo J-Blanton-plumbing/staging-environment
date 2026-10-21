@@ -1,0 +1,316 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Hinsdale, IL",
+   "sub": "An alarm going off, a basement toilet that won't drain or a sewer smell near the basin. We repair and replace ejector pumps for basement bathrooms, bars and laundry rooms. Our office is on Spinning Wheel Road. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What an Ejector Pump Does",
+    "body": "Fixtures below the sewer line can't drain by gravity. A basement toilet, shower, bar sink or laundry drains into a sealed basin, and the ejector pump lifts the wastewater up into the main line. A float switch turns the pump on, and a check valve keeps the water from falling back. If one part fails, the basin fills and backs up into the room.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Ejector Pump Is Failing",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Alarm Is Sounding",
+      "body": "The basin is filling faster than the pump empties it."
+     },
+     {
+      "h3": "Basement Fixtures Drain Slowly",
+      "body": "The pump is weak or the line is partly blocked."
+     },
+     {
+      "h3": "There's a Sewer Smell",
+      "body": "A worn lid seal or a vent problem."
+     },
+     {
+      "h3": "The Pump Never Stops",
+      "body": "A stuck float or a failed check valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Hinsdale Homes",
+    "intro": "Finished basements with full baths, bars and laundry rooms are common in Hinsdale, and they all depend on the ejector pump.",
+    "items": [
+     {
+      "h3": "Renovated Basements",
+      "body": "Basements finished in the last 20 years often have pumps nearing the end of their life."
+     },
+     {
+      "h3": "Bar Sinks and Laundry",
+      "body": "Grease and lint are hard on pumps. A lint trap on the washer hose helps."
+     },
+     {
+      "h3": "Alarms Matter",
+      "body": "A working alarm is the only warning before water reaches the floor. We test it every visit."
+     },
+     {
+      "h3": "Part of Flood Protection",
+      "body": "In some homes, the ejector basin is the heart of an [overhead sewer system](/hinsdale/overhead-sewer-systems)."
+     },
+     {
+      "h3": "Pumps Under Finished Floors",
+      "body": "Some basins sit in closets or under removable panels. We work carefully around the finishes."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the pump and explain why it failed.",
+    "steps": [
+     {
+      "h3": "1. Inspect the Basin",
+      "body": "Pump, float, check valve, seal and vent."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Water-Test It",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mark Jeffery",
+      "url": null,
+      "text": "In this week of artic chiberia I cannot say how much I appreciated the care, attention that Ronnie Levandowski did last night with his service of attending to my burst pipes in the basement. He was detailed, thorough, skilled, walked me through the options he was able to do to stop the water and fix the problem. [...]"
+     },
+     {
+      "name": "Christopher C.",
+      "url": null,
+      "text": "The ENG team did an amazing job installing a liner on our sewer line. It was a very technical job that required a full days work, but they managed wonderfully despite the unexpected snow and inclement weather conditions. Just as important, they were very kind through the process. Thank you!!! Services Outdoor plumbing system repair"
+     },
+     {
+      "name": "Bonnie Polniak",
+      "url": null,
+      "text": "I just want to say thank you To Dereck who was dispatched to my house on Tuesday very late to help solve the mystery of water coming from under the wall in the basement .he was extremely nice and informative .thank u."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Can we use the basement bathroom while the alarm is on?",
+      "preview": "No. Stop using every basement drain.",
+      "answer": "No. Stop using every drain that feeds the basin until the pump is fixed, or it will overflow."
+     },
+     {
+      "q": "How long does an ejector pump last?",
+      "preview": "Often 7 to 10 years.",
+      "answer": "Often around 7 to 10 years, depending on use and what goes down the drains."
+     },
+     {
+      "q": "Why does our basement smell like sewage?",
+      "preview": "Usually the basin seal, the vent or a dry trap.",
+      "answer": "Usually a worn lid seal, a loose vent connection or a floor drain trap that dried out. We check all three."
+     },
+     {
+      "q": "Can you add an ejector pump for a new basement bathroom?",
+      "preview": "Yes.",
+      "answer": "Yes. We install the basin, a pump sized for the fixtures and the venting it needs."
+     },
+     {
+      "q": "How much does ejector pump replacement cost in Hinsdale?",
+      "preview": "It depends on the pump and basin. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the basin condition and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Basement Bathroom Backed Up? Call Us.",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Hinsdale, IL",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/hinsdale/ejector-pump",
+   "description": "Ejector pump repair and replacement in Hinsdale, IL for basement bathrooms, bars and laundry. Alarms, floats and basins fixed. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair in Hinsdale, IL",
+ "metaDescription": "Ejector pump repair and replacement in Hinsdale, IL for basement bathrooms, bars and laundry. Alarms, floats and basins fixed. Flat price."
+}

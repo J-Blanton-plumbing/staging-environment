@@ -1,0 +1,353 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Replacement and Installation in Evanston, IL",
+   "sub": "A tank that's leaking, a heater past 12 years or one that can't keep up anymore. We size the replacement, install it to code, check the venting and haul the old one away. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Replace Your Water Heater",
+    "intro": "Usually when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Leaks",
+      "body": "It can't be repaired."
+     },
+     {
+      "h3": "It's 10 to 12 Years or Older",
+      "body": "Check the label."
+     },
+     {
+      "h3": "Rusty Hot Water",
+      "body": "The tank is corroding."
+     },
+     {
+      "h3": "Repairs Keep Coming",
+      "body": "Put the money into a new one."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Replace Your Water Heater",
+    "intro": "Start to finish:",
+    "steps": [
+     {
+      "h3": "1. Check Space and Venting",
+      "body": "Before we quote."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Connections, relief valve and venting."
+     },
+     {
+      "h3": "3. Test and Haul Away",
+      "body": "Leaks and draft checked."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Evanston Homes",
+    "intro": "Older homes add a few steps to a simple swap.",
+    "items": [
+     {
+      "h3": "Chimney Venting",
+      "body": "If the furnace has moved to a side vent, the water heater may need a liner or new venting."
+     },
+     {
+      "h3": "Narrow Basement Stairs",
+      "body": "We measure so the new tank fits."
+     },
+     {
+      "h3": "Hard Water",
+      "body": "A new heater lasts longer with yearly flushing, or a [water softener](/evanston/water-filtration-systems)."
+     },
+     {
+      "h3": "Going Tankless?",
+      "body": "See [tankless water heaters](/evanston/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "One flat price.",
+    "steps": [
+     {
+      "h3": "1. Options Explained",
+      "body": "Size, fuel and venting."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Parts, labor, haul-away."
+     },
+     {
+      "h3": "3. Usually Same Day",
+      "body": "For most swaps."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "venting-a-new-heater-in-an-older-evanston-home",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Venting",
+    "h2": "Venting a New Heater in an Older Evanston Home",
+    "body": "Many older Evanston homes vent the furnace and water heater through the same masonry chimney. When a high-efficiency furnace is installed, it often gets its own plastic vent, leaving the water heater alone in a chimney sized for two. That can cause poor draft and condensation. When we replace your water heater, we check the draft and tell you whether the chimney needs a liner or whether a power-vent heater is the better choice.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-water-heater",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Water Heater",
+    "body": "Size and fuel come first. In older Evanston homes, venting can be a big factor: a chimney liner or power-vent unit may be needed. Access, like steep stairs or a tight space, adds labor. Code updates like an expansion tank may apply. We check everything and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     },
+     {
+      "name": "Carol Dolan",
+      "url": null,
+      "text": "Julian and Avery did a great god at our maintenance visit. They were very knowledgeable and thorough they even flushed my water heater! Thank you Avery and Julian from J Blanton."
+     },
+     {
+      "name": "Logan Payton",
+      "url": null,
+      "text": "Joey was timely and efficient. He took care of checking and servicing our water heater, and went above and beyond to also check on previous repair work that had been done!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Replacement Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "What size water heater do I need?",
+      "preview": "It depends on your household.",
+      "answer": "It depends on how many people live there and how many bathrooms you have. Most homes use 40 or 50 gallons."
+     },
+     {
+      "q": "Do I need a chimney liner?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes, if the heater is the last appliance on an old chimney. We test the draft."
+     },
+     {
+      "q": "Can you replace it the same day?",
+      "preview": "Usually.",
+      "answer": "Usually, for a like-for-like swap."
+     },
+     {
+      "q": "Do you take the old one?",
+      "preview": "Yes.",
+      "answer": "Yes, we haul it away."
+     },
+     {
+      "q": "Should I get a bigger tank?",
+      "preview": "Only if you run out often.",
+      "answer": "Only if you run out of hot water often. A bigger tank costs more to keep hot."
+     },
+     {
+      "q": "Can you install a water heater on an upper floor?",
+      "preview": "Yes, with a drain pan.",
+      "answer": "Yes, with a drain pan and proper venting to protect the rooms below."
+     },
+     {
+      "q": "How much does water heater replacement cost in Evanston?",
+      "preview": "It depends on size, type and venting. You'll approve a flat price first.",
+      "answer": "It depends on size, fuel type, venting and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Replacement and Installation in Evanston, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/evanston/water-heater-installation",
+   "description": "Water heater replacement and installation in Evanston, IL. Sized right, vented to code and the old tank hauled away. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Replacement in Evanston, IL",
+ "metaDescription": "Water heater replacement and installation in Evanston, IL. Sized right, vented to code and the old tank hauled away. Flat price."
+}

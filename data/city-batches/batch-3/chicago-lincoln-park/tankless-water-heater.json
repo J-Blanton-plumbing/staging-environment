@@ -1,0 +1,332 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Lincoln Park, Chicago",
+   "sub": "In a city home where every square foot counts, a wall-mounted tankless heater frees up space and never runs out mid-shower. We install, repair and descale them, and we tell you honestly if one fits your home. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How Tankless Water Heaters Work",
+    "body": "A tankless heater heats water only when a hot tap opens, so there's no tank to keep hot all day. Water passes through a heat exchanger and comes out hot as long as the tap runs. Each unit has a flow limit, so it's sized for the most hot water you'll use at once.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless in a City Home",
+    "intro": "How they compare:",
+    "head": [
+     "",
+     "Tank",
+     "Tankless"
+    ],
+    "rows": [
+     [
+      "Space",
+      "A tank on the floor or in a closet",
+      "A unit on the wall"
+     ],
+     [
+      "Hot water",
+      "Limited to the tank",
+      "Continuous, up to its flow rate"
+     ],
+     [
+      "Venting",
+      "Often a chimney",
+      "Its own vent through a wall"
+     ],
+     [
+      "Upkeep",
+      "Yearly flush",
+      "Yearly descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Lincoln Park Home?",
+    "intro": "Many homes here are good candidates. A few things need checking.",
+    "items": [
+     {
+      "h3": "Venting Location",
+      "body": "Gas tankless units usually vent through an outside wall, which isn't always easy in attached buildings."
+     },
+     {
+      "h3": "Gas Supply",
+      "body": "Gas units need a larger supply than a tank. Electric units need a lot of power."
+     },
+     {
+      "h3": "Condo Rules",
+      "body": "Some associations have rules about exterior vents."
+     },
+     {
+      "h3": "Space Savings",
+      "body": "A wall unit frees up a closet or basement corner."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We check the building before recommending a unit.",
+    "steps": [
+     {
+      "h3": "1. Venting and Supply",
+      "body": "Checked first."
+     },
+     {
+      "h3": "2. Sized for Your Use",
+      "body": "Your busiest moment."
+     },
+     {
+      "h3": "3. A Flat Price",
+      "body": "Before we start."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "tankless-heaters-in-condo-units",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Condo Units",
+    "h2": "Tankless Heaters in Condo Units",
+    "body": "A tankless heater can open up a whole closet in a condo unit, but a gas unit usually needs a vent through an outside wall, and any unit needs enough gas or electric capacity. In many Lincoln Park buildings, exterior vents need board approval, and some units don't have a wall that reaches outside. We'll look at your unit and building first and tell you honestly whether tankless is practical.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alicja Ziecina",
+      "url": null,
+      "text": "Lou was super helpful in fixing our water heater and gave very informed suggestions. Thank you Lou for your quick work!"
+     },
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Can I put a tankless heater in my condo?",
+      "preview": "Often, if venting is possible.",
+      "answer": "Often. The unit needs a vent through an exterior wall and an adequate gas or electric supply. Check your association's rules too."
+     },
+     {
+      "q": "How often does a tankless heater need descaling?",
+      "preview": "About once a year.",
+      "answer": "About once a year for most homes."
+     },
+     {
+      "q": "Do you repair tankless units?",
+      "preview": "Yes.",
+      "answer": "Yes. We diagnose error codes, descale and replace failed parts."
+     },
+     {
+      "q": "Will my gas line need an upgrade?",
+      "preview": "Often.",
+      "answer": "Often. Gas tankless units need more gas at once than a tank. We check before we quote."
+     },
+     {
+      "q": "Are electric tankless heaters an option?",
+      "preview": "For some units.",
+      "answer": "For some units, if the electrical service is large enough. Many need an upgrade."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Lincoln Park?",
+      "preview": "It depends on the unit and venting. You'll approve a flat price first.",
+      "answer": "It depends on the unit, venting and supply work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Talk Tankless?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Lincoln Park, Chicago",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Lincoln Park, Chicago. Space-saving, sized right and priced flat first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Lincoln Park, Chicago",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Lincoln Park, Chicago. Space-saving, sized right and priced flat first."
+}

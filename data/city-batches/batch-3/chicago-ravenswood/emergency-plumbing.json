@@ -1,0 +1,314 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24-Hour Emergency Plumber in Ravenswood, Chicago",
+   "sub": "A burst pipe in a cold snap, sewage in the garden unit or water leaking into the apartment below. Call us any time, including weekends and holidays. We'll get a plumber to you as soon as we can. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It an Emergency?",
+    "intro": "Call right away for:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Burst Pipe",
+      "body": "Water you can't stop."
+     },
+     {
+      "h3": "Sewage Coming Up",
+      "body": "In the basement or garden unit."
+     },
+     {
+      "h3": "A Leak Into Another Unit",
+      "body": "Through the floor or ceiling."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave, then call Peoples Gas or 911."
+     },
+     {
+      "h3": "No Heat to the Water",
+      "body": "In the middle of winter."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in Ravenswood",
+    "intro": "Old buildings and shared walls shape most calls.",
+    "items": [
+     {
+      "h3": "Frozen and Burst Pipes",
+      "body": "Pipes on exterior walls and back porches freeze first."
+     },
+     {
+      "h3": "Storm Backups",
+      "body": "Like July 2011, when basements flooded across the neighborhood."
+     },
+     {
+      "h3": "Leaks Between Units",
+      "body": "A failed line upstairs reaches the unit below."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "Fast help and a price first.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Even in an emergency."
+     },
+     {
+      "h3": "3. Fixed Right",
+      "body": "Not just patched."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "emergencies-in-two-flats-and-condos",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Shared Buildings",
+    "h2": "Emergencies in Two-Flats and Condos",
+    "body": "In a shared building, one unit's emergency quickly becomes everyone's. Know where your unit's shutoff is, and where the building main is. In many two-flats, it's in the basement near the meter. Keep a phone number for the other owners or the association. If water is coming through a ceiling, it's probably from the unit above. Shut off what you can, warn your neighbors and call us.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "emergencies-during-a-chicago-cold-snap",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Cold Snaps",
+    "h2": "Emergencies During a Chicago Cold Snap",
+    "body": "When temperatures drop below zero, our calls shift to frozen and burst pipes, especially on enclosed back porches and kitchen walls in older buildings. Keep the heat steady, open cabinet doors and let a faucet drip. If a pipe bursts, shut off the water at your unit's valve or the building main and call us.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Sam B",
+      "url": null,
+      "text": "Andrew A was friendly, efficient and did a thorough job fixing our bathtub faucet. Called in the night before and he was there the next morning and fixed everything within 2 hours. Would definitely reach out again if needed and ask for Andrew's assistance."
+     },
+     {
+      "name": "Abby Graham",
+      "url": null,
+      "text": "Alex could not have been greater! We noticed the leak last night, called J. Blandon this morning and he was here an hour later. Walked us through all of our options and explained everything. Honestly took what could have been a huge headache and made it reassuring and confident on our resolution.Kyle was awesome and even hung in there for a replacement part."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Are you really a 24-hour plumber?",
+      "preview": "Yes.",
+      "answer": "Yes. Our phone line is open around the clock."
+     },
+     {
+      "q": "Water is leaking into the unit below. What do I do?",
+      "preview": "Shut off your water and call us.",
+      "answer": "Close the fixture shutoff or your unit's main valve, then call us and let your neighbor know."
+     },
+     {
+      "q": "Who do I call if I smell gas?",
+      "preview": "Peoples Gas or 911, from outside.",
+      "answer": "Leave the building and call Peoples Gas or 911 from outside. We'll handle the repair once it's safe."
+     },
+     {
+      "q": "Will I know the price first?",
+      "preview": "Yes.",
+      "answer": "Yes. You'll approve a flat-rate price before work begins."
+     },
+     {
+      "q": "How fast can you get here?",
+      "preview": "As soon as we can.",
+      "answer": "We're on Ravenswood Avenue, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Is the leak my responsibility or my neighbor's?",
+      "preview": "It depends on the source.",
+      "answer": "It depends on where it starts. We'll find the source. Insurance and the association decide the rest."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? Call Us Now.",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24-Hour Emergency Plumber in Ravenswood, Chicago",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/emergency-plumbing",
+   "description": "24-hour emergency plumber in Ravenswood, Chicago. Sewer backups, burst pipes, failed pumps and no hot water. Call any time.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "24-Hour Plumber in Ravenswood, Chicago",
+ "metaDescription": "24-hour emergency plumber in Ravenswood, Chicago. Sewer backups, burst pipes, failed pumps and no hot water. Call any time."
+}

@@ -1,0 +1,342 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24-Hour Emergency Plumber in Evanston, IL",
+   "sub": "A burst pipe, sewage in the basement or water you can't stop. Call us any time, including nights, weekends and holidays. We'll get a plumber to you as soon as we can. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It a Plumbing Emergency?",
+    "intro": "Call right away for:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Burst Pipe",
+      "body": "Water you can't stop."
+     },
+     {
+      "h3": "Sewage in the Basement",
+      "body": "Through the floor drain."
+     },
+     {
+      "h3": "No Hot Water in Winter",
+      "body": "Or a leaking tank."
+     },
+     {
+      "h3": "A Failed Sump Pump in a Storm",
+      "body": "Water rising."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave, then call Nicor Gas or 911."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in Evanston",
+    "intro": "The age of the housing shapes most of our calls.",
+    "items": [
+     {
+      "h3": "Storm Backups",
+      "body": "Combined sewers fill fast in heavy rain."
+     },
+     {
+      "h3": "Frozen Pipes",
+      "body": "Older homes have pipes on exterior walls and in crawl spaces."
+     },
+     {
+      "h3": "Old Lateral Failures",
+      "body": "A root-blocked line can back up on any day."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Right Now",
+    "h2": "What to Do Before We Arrive",
+    "intro": "These steps limit the damage:",
+    "steps": [
+     {
+      "h3": "1. Find the Main Shutoff",
+      "body": "Usually in the basement where the water line enters."
+     },
+     {
+      "h3": "2. Turn Off the Water Heater",
+      "body": "If the leak is near it."
+     },
+     {
+      "h3": "3. Move Valuables",
+      "body": "Off the basement floor."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any time."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "steps",
+    "id": "what-you-get-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "Fast help and a price first.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Even in an emergency."
+     },
+     {
+      "h3": "3. Fixed Right",
+      "body": "Not just patched."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "know-where-your-shutoffs-are",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Be Ready",
+    "h2": "Know Where Your Shutoffs Are",
+    "body": "The fastest way to limit water damage is knowing where to turn the water off. Your main shutoff is usually in the basement, on the wall where the water line comes in, near the meter. Each sink and toilet should have its own small valve. Water heaters have a valve on the cold line above the tank. Find them now, make sure they turn and show everyone in the house. In an emergency, those first minutes matter most.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "during-a-storm-in-evanston",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Storm Nights",
+    "h2": "During a Storm in Evanston",
+    "body": "Because the whole city is on combined sewers, heavy rain can push water back into basements quickly. If water starts coming up the floor drain, stop running water in the house so you're not adding to it. Move valuables up and keep people out of the water. Call us. Once the storm passes, we'll find out whether your lateral played a part and talk about protection.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Stephen Slade",
+      "url": null,
+      "text": "It was wonderful that Anthony was able to come the same day that I called for my father-in-law who is 90 and was having plumbing issues. He was very prompt and cleared the issue very quickly. Thank you so much, Anthony."
+     },
+     {
+      "name": "Jorge Geovanny Peña Gomez",
+      "url": null,
+      "text": "Mr.Knight is an amazing technician very professional patient and extremely efficient . Thank you so much J. Blanton plumbing."
+     },
+     {
+      "name": "Jon M Cunningham",
+      "url": null,
+      "text": "I’ve had a few folks from J Blanton out. Had some work done with them a couple times and although there was a snag on one of the jobs, it was resolved same day. Everyone I’ve worked with has been kind and pleasant and explained issues fully as well as answered questions, including Scott Brown who just came out. Much appreciated! [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Are you really available 24 hours?",
+      "preview": "Yes.",
+      "answer": "Yes. Our phone line is open around the clock."
+     },
+     {
+      "q": "Who do I call if I smell gas?",
+      "preview": "Nicor Gas or 911, from outside.",
+      "answer": "Leave the house and call Nicor Gas or 911 from outside. We'll handle the repair once it's safe."
+     },
+     {
+      "q": "Will I know the price first?",
+      "preview": "Yes.",
+      "answer": "Yes. You'll approve a flat-rate price before work begins."
+     },
+     {
+      "q": "Should I shut off my water?",
+      "preview": "If water is leaking, yes.",
+      "answer": "If you can't stop a leak at the fixture, shut off the main valve."
+     },
+     {
+      "q": "How fast can you get here?",
+      "preview": "As soon as we can.",
+      "answer": "Our office is downtown on Orrington Avenue, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "q": "My main shutoff won't turn. What do I do?",
+      "preview": "Don't force it. Call us.",
+      "answer": "Don't force it, since old valves can break. Call us and we'll replace it."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? Call Us Now.",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24-Hour Emergency Plumber in Evanston, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/evanston/emergency-plumbing",
+   "description": "24/7 emergency plumber in Evanston, IL. Sewer backups, burst pipes, failed pumps and no hot water. Call any time, day or night.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Evanston, IL | 24/7",
+ "metaDescription": "24/7 emergency plumber in Evanston, IL. Sewer backups, burst pipes, failed pumps and no hot water. Call any time, day or night."
+}

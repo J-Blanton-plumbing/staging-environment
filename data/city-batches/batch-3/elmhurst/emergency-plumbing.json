@@ -1,0 +1,313 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Emergency Plumber in Elmhurst, IL",
+   "sub": "Sewage at the floor drain, a pipe that burst in a cold snap or a water heater leaking all over the basement. Call us any time, including weekends and holidays. We'll get a plumber to you as soon as we can. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It an Emergency?",
+    "intro": "Call right away for:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Burst Pipe",
+      "body": "Water you can't stop."
+     },
+     {
+      "h3": "Sewage Coming Up",
+      "body": "Through a floor drain or toilet."
+     },
+     {
+      "h3": "A Leaking Water Heater Tank",
+      "body": "Shut off its water first."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave, then call Nicor Gas or 911."
+     },
+     {
+      "h3": "A Failed Sump Pump in a Storm",
+      "body": "Water rising in the pit."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in Elmhurst",
+    "intro": "Elmhurst emergencies tend to follow the weather.",
+    "items": [
+     {
+      "h3": "Storm Backups",
+      "body": "Like April 2013, when 7.26 inches fell in two days."
+     },
+     {
+      "h3": "Burst Pipes in Cold Snaps",
+      "body": "Pipes along exterior walls freeze first."
+     },
+     {
+      "h3": "Water Heaters That Fail Suddenly",
+      "body": "Hard water and age take their toll."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "Fast help, clear pricing.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights, weekends, holidays."
+     },
+     {
+      "h3": "2. A Price First",
+      "body": "Even in an emergency."
+     },
+     {
+      "h3": "3. Fixed Right",
+      "body": "Not just patched."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "getting-ready-before-an-emergency",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Be Ready",
+    "h2": "Getting Ready Before an Emergency",
+    "body": "Take five minutes now. Find the main water shutoff, usually in the basement near the meter. Make sure it turns. Find the gas shutoff at the meter outside. Check that your sump pump runs when you pour water into the pit. Save our number in your phone. When something goes wrong at night, those few steps save time and limit damage.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "the-emergencies-elmhurst-homeowners-call-about-most",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Common Calls",
+    "h2": "The Emergencies Elmhurst Homeowners Call About Most",
+    "body": "Most of our urgent calls in Elmhurst fall into a few groups: sump pumps that stop during heavy rain, sewer backups through the basement floor drain, water heaters that leak without warning and pipes that freeze in garages or outside walls. Each one has a quick first step you can take, like shutting off the water or checking the pump's power, while we're on the way.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "R Richey",
+      "url": null,
+      "text": "J. Blanton was great. I was not the nicest this morning when I called because I was super stressed about my plumbing being totally backed up for the second time in 6 weeks, and they were so sweet. They got someone out same day and communicated constantly until he arrived. Stephen was absolutely amazing. [...]"
+     },
+     {
+      "name": "Kathleen Kelly",
+      "url": null,
+      "text": "Brendon Knight was wonderful. He was in very good spirits and made a not so good day for me lighthearted. I flushed my keys down the toilet and he provided empathy as well as a little humor to the situation. Needless to say he was also very professional. You should be proud to have him represent your company."
+     },
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Do you really answer 24/7?",
+      "preview": "Yes.",
+      "answer": "Yes. Our phone line is open around the clock."
+     },
+     {
+      "q": "My water heater is leaking. What do I do first?",
+      "preview": "Shut off its cold water valve and power or gas.",
+      "answer": "Close the cold water valve on top of the heater and turn off its power or gas. Then call us."
+     },
+     {
+      "q": "Where's the main water shutoff?",
+      "preview": "Usually in the basement near the meter.",
+      "answer": "In most Elmhurst homes, it's in the basement where the water line comes in, near the meter."
+     },
+     {
+      "q": "Will I see the price first?",
+      "preview": "Yes.",
+      "answer": "Yes. You'll approve a flat-rate price before work begins."
+     },
+     {
+      "q": "How fast can you get here?",
+      "preview": "As soon as we can.",
+      "answer": "Arrival times depend on the day and weather, but we work to get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Should I shut off the water heater if the main is off?",
+      "preview": "Yes, for a long shutoff.",
+      "answer": "If the water will be off for a while, turn the heater to vacation or pilot."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? Call Us Now.",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Emergency Plumber in Elmhurst, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/elmhurst/emergency-plumbing",
+   "description": "24/7 emergency plumber in Elmhurst, IL. Sewer backups, burst pipes, failed water heaters and pumps. Call any time, day or night.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Elmhurst, IL",
+ "metaDescription": "24/7 emergency plumber in Elmhurst, IL. Sewer backups, burst pipes, failed water heaters and pumps. Call any time, day or night."
+}

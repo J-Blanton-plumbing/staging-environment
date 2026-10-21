@@ -1,0 +1,330 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Lincoln Park, Chicago",
+   "sub": "No hot water in your unit, a leak in the utility closet or a heater that keeps shutting off. We find what failed, tell you whether it's worth repairing and give you a flat price before we start. Our office is on Diversey Parkway. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Water Heater Needs Repair",
+    "intro": "Common calls:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Hot Water",
+      "body": "A pilot, igniter, element or valve that failed."
+     },
+     {
+      "h3": "Hot Water Runs Out Fast",
+      "body": "Sediment or a failing burner or element."
+     },
+     {
+      "h3": "A Leak in the Closet",
+      "body": "Valve leaks can be fixed. Tank leaks can't."
+     },
+     {
+      "h3": "The Heater Shuts Off",
+      "body": "Often a venting or safety switch problem."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Lincoln Park Homes",
+    "intro": "Water heaters here live in basements, utility closets and tight mechanical rooms.",
+    "items": [
+     {
+      "h3": "Heaters in Condo Closets",
+      "body": "A leak inside a unit can reach the neighbor below. We check pans and drains."
+     },
+     {
+      "h3": "Shared Chimney Venting",
+      "body": "In older buildings, gas heaters may vent into a chimney shared with other appliances."
+     },
+     {
+      "h3": "Electric Units in Newer Condos",
+      "body": "Many condos have electric heaters, with elements and thermostats that fail."
+     },
+     {
+      "h3": "Getting a Heater Out",
+      "body": "Narrow stairs and tight closets take planning."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We repair gas and electric tank heaters, power-vent units and tankless heaters in Lincoln Park houses, two-flats and condos.",
+     "When you call, read us the label: fuel, size and date. If it's time to replace it, see [water heater installation](/chicago-lincoln-park/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "A yearly flush clears sediment and helps the heater last. We also test the relief valve, check the anode rod and inspect the burner or elements and the venting.",
+     "Tankless heaters need descaling on a schedule."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A diagnosis you can trust.",
+    "steps": [
+     {
+      "h3": "1. Find the Failure",
+      "body": "Before we talk price."
+     },
+     {
+      "h3": "2. Repair vs. Replace",
+      "body": "Both options when the heater is near the end."
+     },
+     {
+      "h3": "3. Clean Up",
+      "body": "Closets and hallways left as we found them."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "water-heaters-in-lincoln-park-condos",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Condos",
+    "h2": "Water Heaters in Lincoln Park Condos",
+    "body": "Many condo units have their own water heater in a closet, often on an upper floor. That location means a small leak can become a big problem for the unit below. If you see water around the base, shut off the cold supply at the top of the heater and call us. We'll tell you whether it's a valve we can replace or a tank that's failed, and we'll plan the replacement around your building's rules.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Megan Duffy Rostan",
+      "url": null,
+      "text": "Excellent service provided by Christian and Brandon! We had a “no-drip club” inspection. They flushed our water heaters and were very clear about our next steps. Very professional."
+     },
+     {
+      "name": "Mark",
+      "url": null,
+      "text": "Christian stopped by today and cleaned my hot water tank and cleaned my sewer line.He was in and out in no time.He did a great job.He was very professional, thorough and pleasant.I highly recommend his service"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "My condo heater is leaking. What should I do?",
+      "preview": "Shut off the water to the heater and call us.",
+      "answer": "Close the cold water valve on top of the heater and turn off its power or gas. Then call us. If water is reaching the unit below, let your neighbor know."
+     },
+     {
+      "q": "Is it worth repairing an older heater?",
+      "preview": "Under 8 years, usually. Over 12, usually not.",
+      "answer": "If it's under about 8 years and a part failed, usually yes. Past 12 years or if the tank leaks, replacement is the better value."
+     },
+     {
+      "q": "Do you service electric water heaters?",
+      "preview": "Yes.",
+      "answer": "Yes. We replace elements, thermostats and the rest of the parts on electric heaters."
+     },
+     {
+      "q": "How long do water heaters last?",
+      "preview": "About 8 to 12 years.",
+      "answer": "Tank heaters usually last somewhere around 8 to 12 years."
+     },
+     {
+      "q": "Do I need to tell my association about a new heater?",
+      "preview": "Check your rules.",
+      "answer": "Some associations require notice or a permit. Check your rules."
+     },
+     {
+      "q": "How much does water heater repair cost in Lincoln Park?",
+      "preview": "It depends on the part and the heater. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of heater. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Lincoln Park, Chicago",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/water-heater-repair",
+   "description": "Water heater repair in Lincoln Park, Chicago, for houses, two-flats and condos. Diagnosed first, flat price before work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Lincoln Park, Chicago",
+ "metaDescription": "Water heater repair in Lincoln Park, Chicago, for houses, two-flats and condos. Diagnosed first, flat price before work. Call 24/7."
+}

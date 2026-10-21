@@ -1,0 +1,312 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Hydro Jetting",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Hydro Jetting in Mokena, IL",
+   "sub": "If your line clogs again a few months after every rodding, the pipe walls are still coated. Hydro jetting washes them back to clean pipe. We camera the line first and give you a flat price before we start. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+    "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Hydro Jetting?",
+    "body": "Hydro jetting clears a sewer line with a high-pressure water stream, fed through the same cleanout access point used for rodding. A specialized nozzle sprays water in every direction as it moves through the pipe, scouring grease, scale, and roots off the entire pipe wall instead of just cutting a path through the middle. It's the fix for buildup that keeps coming back after rodding, or for roots that have worked into the pipe joints. Rodding opens the line back up. Hydro jetting cleans it.",
+    "img": {
+     "src": "/images/city-services-v2/hydro-jetting-diagram.webp",
+     "alt": "Diagram showing how hydro jetting clears a residential sewer line, with a cross-section view of the underground pipe, jet nozzle, high-pressure water spray, and debris being flushed toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "when-you-need-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "When It Makes Sense",
+    "h2": "When Mokena Homes Need Hydro Jetting",
+    "intro": "Jetting is the better choice when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Rodding Only Buys a Few Months",
+      "body": "A cable opens a hole through the clog. Jetting removes the buildup around it."
+     },
+     {
+      "h3": "The Kitchen Line Is Coated in Grease",
+      "body": "Twenty or thirty years of family cooking leaves layers a cable can't reach."
+     },
+     {
+      "h3": "Fine Roots Keep Returning",
+      "body": "Jetting clears the hair-thin roots rodding leaves behind."
+     },
+     {
+      "h3": "A Liner Is Planned",
+      "body": "Every lining job starts with a jetted, clean pipe."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Jetting Works on Mokena Lines",
+    "intro": "Most Mokena sewer lines went in during the 1990s and 2000s. After 20 or 30 years, buildup starts to matter.",
+    "items": [
+     {
+      "h3": "Smooth PVC Holds Up to Pressure",
+      "body": "Newer PVC lines handle jetting well, and it gets them back to full size."
+     },
+     {
+      "h3": "Low Spots Collect Sludge",
+      "body": "Where a line sagged, solids settle in a layer. Jetting flushes the layer out."
+     },
+     {
+      "h3": "Older Clay and Cast Iron",
+      "body": "In homes built before the 1970s, we check the pipe first and adjust the pressure to its condition."
+     },
+     {
+      "h3": "Video Before and After",
+      "body": "You see the line before we jet and the clean pipe when we're done."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "what-happens-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We look before we jet.",
+    "steps": [
+     {
+      "h3": "1. Camera the Line",
+      "body": "We confirm the pipe is sound enough for the pressure."
+     },
+     {
+      "h3": "2. Jet at the Right Pressure",
+      "body": "Matched to the pipe material and the buildup."
+     },
+     {
+      "h3": "3. Show the Result",
+      "body": "A final camera pass and a price you approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Hydro Jetting Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "J Ham",
+      "url": null,
+      "text": "I had J. Blanton Plumbing come service a potential sewer line back-up and I was super impressed with the entire experience. My technician was Stephen Walen and he was fantastic. He scoped our entire line so we could see where our main line hooks up to off-shoots of our other pipes. He walked through all different short & long-term scenarios so we could make informed decisions. [...]"
+     },
+     {
+      "name": "Pat Martin",
+      "url": null,
+      "text": "Rick was on time, polite, willing to explain the whole process. Tree roots had broken the remaining clay pipes under my front lawn and ramp. Inserting a liner with a 25 year warranty was the most logical choice I could make. The job went well and quickly. BONUS: . Here's a photo of plumber Ron Thomas with my dog Honeycomb. [...]"
+     },
+     {
+      "name": "Bhavya p",
+      "url": null,
+      "text": "Stephen Walan has done a great job helping us to remove our kitchen sink clog using hydro jetting. He listened and answered all our questions patiently. J.Blanton overall service and communication was good."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Hydro Jetting Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Is hydro jetting safe for my sewer line?",
+      "preview": "If the pipe is intact, yes. We check first.",
+      "answer": "If the pipe is sound, yes. We camera it first. If a section is broken or collapsed, a [repair](/mokena/sewer-repair) comes first."
+     },
+     {
+      "q": "Will jetting fix a sag in my line?",
+      "preview": "It cleans it out, but it can't lift the pipe.",
+      "answer": "No. Jetting flushes the sludge out of a low spot, which helps, but the sag will collect debris again. A spot repair fixes the slope."
+     },
+     {
+      "q": "How is hydro jetting different from rodding?",
+      "preview": "Rodding opens a path. Jetting cleans the whole pipe.",
+      "answer": "Rodding cuts through a clog. Jetting scours the entire pipe wall, removing grease, scale and roots instead of punching a hole through them."
+     },
+     {
+      "q": "How long do the results last?",
+      "preview": "Often years for grease. Roots grow back over time.",
+      "answer": "For grease and sludge, often several years with good habits. Roots will eventually return if the joint they came through is still open."
+     },
+     {
+      "q": "How much does hydro jetting cost in Mokena?",
+      "preview": "It depends on the line and the buildup. You'll approve a flat price first.",
+      "answer": "It depends on the length of the line, access and how much buildup there is. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Line That Stays Clear?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Hydro Jetting in Mokena, IL",
+   "serviceType": "Hydro Jetting",
+   "url": "https://jblantonplumbing.com/mokena/hydro-jetting",
+   "description": "Hydro jetting in Mokena, IL. High-pressure water scours grease, roots and buildup out of sewer and drain lines. Camera first and a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Hydro Jetting in Mokena, IL",
+ "metaDescription": "Hydro jetting in Mokena, IL. High-pressure water scours grease, roots and buildup out of sewer and drain lines. Camera first and a flat price."
+}

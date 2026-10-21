@@ -1,0 +1,330 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower and Tub Repair in Hanover Park, IL",
+   "sub": "A shower that drips, water that turns hot or cold without warning or a stain on the ceiling below. We repair shower and tub valves and fixtures in Hanover Park homes. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Drips",
+      "body": "A worn cartridge."
+     },
+     {
+      "h3": "Temperature Swings",
+      "body": "An old or worn valve."
+     },
+     {
+      "h3": "Low Pressure",
+      "body": "A clogged showerhead or valve."
+     },
+     {
+      "h3": "A Stain Below",
+      "body": "A leak at the valve or drain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Hanover Park Homes",
+    "intro": "Many bathrooms here still have original valves.",
+    "items": [
+     {
+      "h3": "Original Valves",
+      "body": "Valves from the '70s and '80s wear out and don't balance pressure."
+     },
+     {
+      "h3": "Fiberglass Tub Units",
+      "body": "A cracked base can leak into the ceiling below."
+     },
+     {
+      "h3": "Second-Floor Bathrooms",
+      "body": "Leaks show up on the first-floor ceiling."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Fix it without tearing out the wall where we can.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Through the trim if possible."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No drips, steady temperature."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "replacing-an-original-shower-valve",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Upgrade Option",
+    "h2": "Replacing an Original Shower Valve",
+    "body": "If your shower still has the valve that came with the house, a replacement can solve several problems at once. A pressure-balancing or thermostatic valve keeps the temperature steady when someone flushes or starts the dishwasher. A new cartridge-style valve is easier to repair later. With a fiberglass surround, we can often reach the valve from an access panel or from the room behind, so you don't have to replace the whole unit.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-shower-repair",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Shower Repair",
+    "body": "A cartridge swap is usually quick. Replacing an original valve takes longer, especially with a fiberglass surround. Leak testing adds time when the source isn't obvious. We diagnose and quote a flat price before work starts.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     },
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Jan Berkson",
+      "url": null,
+      "text": "John Hogan arrived on time and provided great service. He gave me an estimate before starting, was very thorough and tidy and even gave me good information about what might be needed in the near future to further address the situation with my bathtub drain. Very knowledgeable, courteous and friendly- instills confidence!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Why does my shower turn hot when someone flushes?",
+      "preview": "No pressure-balancing valve.",
+      "answer": "Older valves don't balance pressure. A new pressure-balancing valve fixes it."
+     },
+     {
+      "q": "Can you replace a valve without tearing out the tub surround?",
+      "preview": "Often.",
+      "answer": "Often. We work from behind the trim or through an access panel."
+     },
+     {
+      "q": "Is my shower leaking into the ceiling?",
+      "preview": "We'll test the valve, drain and tub.",
+      "answer": "We test the valve, the drain and the tub or base to find the source."
+     },
+     {
+      "q": "Why is my shower pressure low?",
+      "preview": "Usually a clogged showerhead or cartridge.",
+      "answer": "Usually a clogged showerhead or cartridge."
+     },
+     {
+      "q": "Can you fix a tub spout that sprays when the shower is on?",
+      "preview": "Yes.",
+      "answer": "Yes. The diverter in the spout is usually worn. A new spout fixes it."
+     },
+     {
+      "q": "Can you replace a fiberglass tub and shower unit?",
+      "preview": "We handle the plumbing.",
+      "answer": "We handle the plumbing for the new unit. A remodeler or installer handles the surround."
+     },
+     {
+      "q": "Why is there water outside my shower after use?",
+      "preview": "Often a worn door seal or caulk.",
+      "answer": "Often a worn door seal or caulk, not the plumbing. We'll check the valve and drain to be sure."
+     },
+     {
+      "q": "How much does shower repair cost in Hanover Park?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower and Tub Repair in Hanover Park, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/hanover-park/shower-repair",
+   "description": "Shower and tub repair in Hanover Park, IL. Dripping valves, temperature swings and leaks into the ceiling below fixed. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Hanover Park, IL",
+ "metaDescription": "Shower and tub repair in Hanover Park, IL. Dripping valves, temperature swings and leaks into the ceiling below fixed. Flat price first."
+}

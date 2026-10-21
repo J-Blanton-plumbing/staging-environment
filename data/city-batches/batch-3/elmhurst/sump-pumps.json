@@ -1,0 +1,318 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Repair and Installation in Elmhurst, IL",
+   "sub": "A pump that runs nonstop, hums without pumping or didn't start in the last storm. We repair, replace and install sump pumps and add battery backups so the next storm doesn't flood the basement. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Sump Pump Ready for the Next Storm?",
+    "intro": "Not if:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Runs Constantly",
+      "body": "A stuck switch or failing check valve."
+     },
+     {
+      "h3": "It Hums but Doesn't Pump",
+      "body": "A jam or a dying motor."
+     },
+     {
+      "h3": "It's Past 7 to 10 Years",
+      "body": "Replace before it fails."
+     },
+     {
+      "h3": "There's No Backup",
+      "body": "Storms often knock out power."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sump Pumps in Elmhurst Basements",
+    "intro": "On April 17 and 18, 2013, Elmhurst got 7.26 inches of rain. Storms like that are when a sump pump earns its keep.",
+    "items": [
+     {
+      "h3": "Same Neighborhoods, Same Storms",
+      "body": "Residents in 2013 saw the same flooding they saw in 2010."
+     },
+     {
+      "h3": "Battery Backups",
+      "body": "Keep the pump running if the power goes out."
+     },
+     {
+      "h3": "Discharge Lines",
+      "body": "Routed away from the foundation and protected from freezing."
+     },
+     {
+      "h3": "New Pits in Older Basements",
+      "body": "Where water seeps in, a new pit and pump can help."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A pump you can count on.",
+    "steps": [
+     {
+      "h3": "1. Test the System",
+      "body": "Pump, switch, valve and discharge."
+     },
+     {
+      "h3": "2. Repair, Replace or Install",
+      "body": "At a flat price."
+     },
+     {
+      "h3": "3. Add a Backup",
+      "body": "If you'd like one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-2013-taught-elmhurst-about-sump-pumps",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Storms",
+    "h2": "What 2013 Taught Elmhurst About Sump Pumps",
+    "body": "In April 2013, more than 7 inches of rain fell on Elmhurst, and homes old and new in every part of town took on water. In a storm like that, sump pumps run for hours. Some fail from the strain, and others stop when the power goes out. A pump in good condition, sized for the pit, with a battery backup and a high-water alarm, is the setup that holds up in a storm like that.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "why-the-sump-pit-matters-too",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The Pit",
+    "h2": "Why the Sump Pit Matters Too",
+    "body": "A good pump can still struggle in a bad pit. If the pit is too small, the pump turns on and off constantly and wears out early. If it's unlined, silt can clog the pump. A cracked or missing lid lets debris in and moisture out. When we replace a pump, we look at the pit too, and recommend a new liner or lid if it will help the pump last.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Daniel Schleis",
+      "url": null,
+      "text": "Appreciate the professional and fast service. Clayton was great help! Highly recommend."
+     },
+     {
+      "name": "Dan McCarthy",
+      "url": null,
+      "text": "Professional and on time. Did a good job replacing an ejector pump and a sump pump. Highly recommend and Derek was great to work with!"
+     },
+     {
+      "name": "Mark Czarnecki",
+      "url": null,
+      "text": "Greg did an outstanding job replacing our sump pumps. Always professional and courteous. Well done😃"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Do I need a battery backup sump pump?",
+      "preview": "If the basement is finished, yes.",
+      "answer": "If your basement is finished or holds anything important, yes."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "About 7 to 10 years.",
+      "answer": "Most last about 7 to 10 years."
+     },
+     {
+      "q": "Can you install a sump pump in a basement without one?",
+      "preview": "Often.",
+      "answer": "Often. We cut a new pit where water collects and run the discharge outside."
+     },
+     {
+      "q": "Can my sump pump discharge into the sewer?",
+      "preview": "No.",
+      "answer": "No. Sump water should go outside, not into the sanitary sewer."
+     },
+     {
+      "q": "Should I have two pumps in the pit?",
+      "preview": "A primary and a backup is best.",
+      "answer": "A primary pump plus a battery backup is the most reliable setup."
+     },
+     {
+      "q": "What's a high-water alarm?",
+      "preview": "A sensor that warns you when the pit fills.",
+      "answer": "A small sensor in the pit that sounds an alarm or alerts your phone when water rises too high."
+     },
+     {
+      "q": "How much does sump pump installation cost in Elmhurst?",
+      "preview": "It depends on the pump, pit and backup. You'll approve a flat price first.",
+      "answer": "It depends on the pump, whether a pit is needed and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Repair and Installation in Elmhurst, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/elmhurst/sump-pumps",
+   "description": "Sump pump repair, installation and battery backups in Elmhurst, IL. Tested, sized for your pit and priced flat before any work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Repair & Installation in Elmhurst, IL",
+ "metaDescription": "Sump pump repair, installation and battery backups in Elmhurst, IL. Tested, sized for your pit and priced flat before any work."
+}

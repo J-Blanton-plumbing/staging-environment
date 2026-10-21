@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Mokena, IL",
+   "sub": "A shower that drips after you shut it off, turns cold when someone flushes or barely sprays. We repair shower valves, replace fixtures and find leaks before they damage the ceiling below. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Keeps Dripping",
+      "body": "A worn cartridge in the valve."
+     },
+     {
+      "h3": "The Temperature Jumps",
+      "body": "A pressure-balancing cartridge that's worn out."
+     },
+     {
+      "h3": "The Spray Is Weak",
+      "body": "A clogged showerhead or valve screen."
+     },
+     {
+      "h3": "There's a Stain on the Ceiling Below",
+      "body": "A leak at the valve, drain or pan."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Mokena Homes",
+    "intro": "Most shower valves in Mokena are from the 1990s and 2000s, and parts are usually still available.",
+    "items": [
+     {
+      "h3": "Cartridge Repairs Through the Trim",
+      "body": "On most valves from this era, a new cartridge fixes drips and temperature swings without opening the wall."
+     },
+     {
+      "h3": "Upstairs Showers Over Finished Rooms",
+      "body": "A small leak can stain the ceiling below. We find the source before opening anything."
+     },
+     {
+      "h3": "Basement Showers",
+      "body": "They drain to an [ejector pump](/mokena/ejector-pump), so a slow basement shower may be a pump problem."
+     },
+     {
+      "h3": "Fiberglass and Acrylic Units",
+      "body": "Many Mokena bathrooms have one-piece tub and shower units. A crack in the base can leak into the ceiling below, and we can tell you whether it's the valve, the drain or the unit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We find the problem without tearing out the tile.",
+    "steps": [
+     {
+      "h3": "1. Diagnose the Valve",
+      "body": "Through the trim whenever possible."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Approved before we start."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No drips, steady temperature."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-shower-repair",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Shower Repair",
+    "body": "A cartridge replacement is quick. Replacing a valve or fixing a leak in a one-piece unit takes more. We diagnose and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jewell Gold",
+      "url": null,
+      "text": "Ron is professionial, courteous and knowledgable. I asked for a verification that shower drain installed 8 years ago was up to code. Ron not only made pictures and gave his diagnosis, he took it a step farther and made a video. Awseome service."
+     },
+     {
+      "name": "Cristián Roa",
+      "url": null,
+      "text": "Vincent was professional, friendly and made sure I understood the problem in my bathroom."
+     },
+     {
+      "name": "Kim Budnik",
+      "url": null,
+      "text": "Edgar rodded out both my shower drain and vanity sink. He’s was professional and knowledgeable . I think J Blanton is on the pricey side , but I’m very happy with Edgar’s work."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Why does my shower turn hot or cold when someone flushes?",
+      "preview": "A worn pressure-balancing cartridge.",
+      "answer": "The pressure-balancing cartridge in the valve is worn out. Replacing it usually fixes the problem."
+     },
+     {
+      "q": "Can you fix a shower leak without removing tile?",
+      "preview": "Usually, if it's the valve.",
+      "answer": "Usually. Most valve repairs are done through the trim plate. Leaks in the pan or behind the tile may need more work."
+     },
+     {
+      "q": "Can you replace my shower valve?",
+      "preview": "Yes.",
+      "answer": "Yes. We can replace an old valve with a newer pressure-balancing or thermostatic valve."
+     },
+     {
+      "q": "Why is my shower spray so weak?",
+      "preview": "Usually a clogged showerhead or screen.",
+      "answer": "Usually mineral buildup in the showerhead or the valve screen. Cleaning or replacing them restores the flow."
+     },
+     {
+      "q": "Can you replace a tub with a walk-in shower?",
+      "preview": "We handle the plumbing for the conversion.",
+      "answer": "Yes, we handle the plumbing: moving the drain, installing the new valve and connecting the fixtures. Tile and glass are done by your remodeler."
+     },
+     {
+      "q": "Can you add a second showerhead?",
+      "preview": "Often.",
+      "answer": "Often, if the valve and supply can handle the flow."
+     },
+     {
+      "q": "How much does shower repair cost in Mokena?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Mokena, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/mokena/shower-repair",
+   "description": "Shower repair in Mokena, IL. Leaking valves, temperature swings, weak spray and new shower fixtures installed. Flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Mokena, IL",
+ "metaDescription": "Shower repair in Mokena, IL. Leaking valves, temperature swings, weak spray and new shower fixtures installed. Flat price before work."
+}

@@ -1,0 +1,335 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Trenchless Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Trenchless Sewer Repair in Evanston, IL",
+   "sub": "Your Evanston sewer lateral likely runs under a mature parkway tree, a sidewalk and a front garden. Trenchless repair rebuilds the pipe through small openings, so the yard and the tree stay put. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/trenchless-sewer-liner-prep.webp",
+    "alt": "Two J. Blanton plumbers pouring resin into a sewer liner bag to prepare a trenchless pipe lining"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-trenchless",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Basics",
+    "h2": "What Is Trenchless Sewer Repair?",
+    "body": "Trenchless sewer repair, also called no-dig sewer repair, fixes a damaged pipe without digging a trench along its full length. Instead of opening up your yard from the house to the street, we work through one or two access points and repair the pipe from the inside or replace it in place. There are two main methods: cured-in-place pipe (CIPP) lining and pipe bursting. Both fix the line underground, so what's above it stays untouched.",
+    "img": {
+     "src": "/images/city-services-v2/trenchless-sewer-repair-setup.webp",
+     "alt": "Two J. Blanton plumbers setting up sewer camera and cable equipment beside a home's foundation before a trenchless sewer repair"
+    }
+   },
+   {
+    "type": "local",
+    "id": "why-trenchless-evanston",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Trenchless Fits Evanston",
+    "intro": "Evanston's tree canopy and older lots make digging expensive and disruptive.",
+    "items": [
+     {
+      "h3": "Parkway Trees",
+      "body": "A trench can cut major roots. Trenchless leaves the root zone mostly alone."
+     },
+     {
+      "h3": "Clay Joints Sealed in One Pass",
+      "body": "A liner seals the joints along the lined section."
+     },
+     {
+      "h3": "Brick Walks and Mature Gardens",
+      "body": "Most of it stays in place."
+     },
+     {
+      "h3": "Breaks Fixed First",
+      "body": "A liner needs an open, round pipe."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "when-trenchless-applies",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Know Your Options",
+    "h2": "Which Repair Fits Your Line?",
+    "intro": "The footage decides:",
+    "head": [
+     "Camera Finding",
+     "Approach",
+     "Why"
+    ],
+    "rows": [
+     [
+      "Cracks or roots, pipe still round",
+      "Lining",
+      "Seals from inside"
+     ],
+     [
+      "Too broken to line",
+      "Pipe bursting",
+      "New pipe in the old path"
+     ],
+     [
+      "One bad section",
+      "Spot repair",
+      "Fix only that part"
+     ],
+     [
+      "Full collapse",
+      "Excavation",
+      "Nothing left to line"
+     ]
+    ],
+    "note": "We show you the footage behind every recommendation."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Planned around your yard.",
+    "steps": [
+     {
+      "h3": "1. Clean and Record",
+      "body": "Every defect measured."
+     },
+     {
+      "h3": "2. Plan the Access Points",
+      "body": "Around trees and walks."
+     },
+     {
+      "h3": "3. Flat Price, Final Video",
+      "body": "Approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/sewer-excavation-trench.webp",
+     "alt": "Traditional sewer excavation with a trench dug across the yard down to the damaged pipe, the kind of dig trenchless repair avoids"
+    }
+   },
+   {
+    "type": "split",
+    "id": "sewer-repair-near-evanston-s-parkway-trees",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Protect the Canopy",
+    "h2": "Sewer Repair Near Evanston's Parkway Trees",
+    "body": "Evanston values its parkway trees, and many sewer laterals pass right under them. Digging a trench there can cut major roots and hurt a tree that took decades to grow. Lining and pipe bursting work from small access pits placed away from the trunk, so the root zone stays mostly intact. If a repair does need to happen on the parkway, a permit from the city is usually part of the process, and we'll handle it.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Trenchless Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "Jeffrey Paddock",
+      "url": null,
+      "text": "We had a sewer liner installed yesterday by Mason Lanier & his crew from J. Blanton Plumbing. They were on time, worked efficiently & diligently to complete all the work in difficult weather conditions. We are very pleased to have this work completed & impressed with Mason & Co."
+     },
+     {
+      "name": "Courtney Macke",
+      "url": null,
+      "text": "Danny, Jerry, Eladio, and Pedro were an amazing team! They were very organized and tidy while digging up our yard to line our sewer. I would highly recommend!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Trenchless Sewer Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Can a 100-year-old clay line be lined?",
+      "preview": "Often, if it holds its shape.",
+      "answer": "Often. If the pipe is cracked but still round, it can be lined."
+     },
+     {
+      "q": "Will trenchless repair hurt my parkway tree?",
+      "preview": "It's much gentler than a trench.",
+      "answer": "It's far less disruptive than a trench because we work through small openings away from the roots."
+     },
+     {
+      "q": "How long does a liner last?",
+      "preview": "Decades.",
+      "answer": "Liners are designed to last for decades."
+     },
+     {
+      "q": "Will I have plumbing during the job?",
+      "preview": "For most of the day, yes.",
+      "answer": "Usually you're without plumbing for only part of the day."
+     },
+     {
+      "q": "Will a liner keep roots out?",
+      "preview": "In the lined section, yes.",
+      "answer": "Yes, in the lined section. It has no joints for roots to get into. We check the ends and connections on camera."
+     },
+     {
+      "q": "How much does trenchless sewer repair cost in Evanston?",
+      "preview": "It depends on length, depth and method. You'll approve a flat price first.",
+      "answer": "It depends on how much of the line needs work, the depth, the method and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Without the Trench?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Trenchless Sewer Repair in Evanston, IL",
+   "serviceType": "Trenchless Sewer Repair",
+   "url": "https://jblantonplumbing.com/evanston/trenchless-sewer-repair",
+   "description": "Trenchless sewer repair in Evanston, IL. Lining and pipe bursting that spare parkway trees, driveways and gardens. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Trenchless Sewer Repair in Evanston, IL",
+ "metaDescription": "Trenchless sewer repair in Evanston, IL. Lining and pipe bursting that spare parkway trees, driveways and gardens. Flat price first."
+}

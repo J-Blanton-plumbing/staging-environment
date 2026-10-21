@@ -1,0 +1,226 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Mokena, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on Jodi Road. Our line is open 24/7 for homeowners in Mokena and across the southwest suburbs. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Mokena",
+   "intro": "Most Mokena homes went up in the 1990s and 2000s, and a lot of their original equipment is reaching the end of its life at the same time. Pick a service to see how we handle it in Mokena.",
+   "cards": [
+    {
+     "title": "Sewer Repair",
+     "href": "/mokena/sewer-repair",
+     "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/mokena/drain-cleaning",
+     "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Sump & Ejector Pumps",
+     "href": "/mokena/sump-pumps",
+     "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/mokena/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/mokena/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Leak Repair",
+     "href": "/mokena/leak-repairs",
+     "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    },
+    {
+     "title": "Toilets & Showers",
+     "href": "/mokena/toilet-installation-repair",
+     "desc": "Running toilets, leaky shower valves and new fixture installs.",
+     "image": {
+      "src": "/images/city-hubs/toilet-fill-valve-repair.webp",
+      "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Jodi Road",
+   "h2": "Our Mokena Office",
+   "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, Mokena, IL 60448. It keeps our plumbers close to homes across Mokena and the neighboring southwest suburbs. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "19027 S Jodi Rd, Unit H-1B, Mokena, IL 60448",
+   "areasH3": "Southwest Suburbs We Serve",
+   "areas": [
+    {
+     "label": "Frankfort",
+     "href": "/frankfort"
+    },
+    {
+     "label": "New Lenox",
+     "href": "/new-lenox"
+    },
+    {
+     "label": "Tinley Park",
+     "href": "/tinley-park"
+    },
+    {
+     "label": "Orland Park",
+     "href": "/orland-park"
+    },
+    {
+     "label": "Homer Glen",
+     "href": "/homer-glen"
+    },
+    {
+     "label": "Frankfort Square",
+     "href": "/frankfort-square"
+    },
+    {
+     "label": "Lockport",
+     "href": "/lockport"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/1PJCyK8a9qqvNqfB7"
+  },
+  "depth": {
+   "h2": "What Mokena Homes Need From a Plumber",
+   "intro": "Mokena grew fast. The village had about 1,600 people in 1970 and more than 18,000 by 2010, and the median home here was built in 1995. That means thousands of homes with plumbing of about the same age, wearing out on about the same schedule.",
+   "tiles": [
+    {
+     "title": "Subdivisions Hitting the 25 to 30 Year Mark",
+     "body": "More than half of Mokena’s homes were built between 1990 and 2009. The first water heater, the first sump pump and the first ejector pump in those homes were never meant to last 30 years. A [water heater that leaks or runs out too fast](/mokena/water-heater-repair) is usually the first to go, and a [whole-home checkup](/mokena/plumbing-maintenance) shows what’s next."
+    },
+    {
+     "title": "Flash Flooding and Basement Backups",
+     "body": "In August 2025, the National Weather Service reported significant flash flooding in Mokena, as storms dropped 4 to 8 inches of rain across the region. Storms like that test every sump pump in town. A [sump pump with a battery backup](/mokena/sump-pumps) keeps running if the power goes out, and a [backflow valve](/mokena/flood-control-maintenance) stops sewer water from coming up through a floor drain."
+    },
+    {
+     "title": "Settled Sewer Lines and Roots",
+     "body": "Newer PVC sewer lines don’t crack like old clay, but they can sag where the soil settled after the house went up. Water and debris collect in the low spot, and roots from trees planted with the subdivision find any loose joint. [Sewer rodding](/mokena/sewer-rodding) clears the line, and a [camera inspection](/mokena/video-camera-sewer-inspections) shows whether it needs a [repair](/mokena/sewer-repair)."
+    },
+    {
+     "title": "Winter Freezes and Outdoor Spigots",
+     "body": "Mokena winters bring long stretches below freezing. Pipes in exterior walls, garages and outdoor spigot lines freeze first, and a split pipe often starts leaking inside a wall once it thaws. We can [find and fix the leak](/mokena/leak-repairs), and we’re on call 24/7 if a [pipe bursts](/mokena/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Mokena Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Mokena Reviews",
+   "intro": "4.8 stars from 160+ Google reviews for our Mokena office.",
+   "rating": "4.8",
+   "ratingSub": "160+ Google reviews for our Mokena office",
+   "items": [
+    {
+     "name": "Joseph Adamkiewicz",
+     "url": "https://maps.app.goo.gl/2fm4A1haVbZ4sLiY9",
+     "text": "John Cosgriff did a great job completing my sewer line repair and replacing a section of the water main.  What originally looked like a simple job turned into something much more complicated.  John was obviously very knowledgeable and experienced with all the skills needed to complete the job.  He also kept me well-informed on what this 2-3 day job entailed and addressed all my questions and concerns.  I’m very satisfied with his work and wouldn’t hesitate to use him again."
+    },
+    {
+     "name": "Erik Mahlke",
+     "url": "https://maps.app.goo.gl/QwchWJYKX5hxLNtu9",
+     "text": "Robert D. did a great job of installing my new sump pump and ejector pit motor which had failed.  He cleaned up the areas well.  He was also very quick and efficient in his work.  He also explained what I need to monitor on the battery back up."
+    },
+    {
+     "name": "Brian Bertoia",
+     "url": "https://maps.app.goo.gl/X8N2SVsCTD5asxWs5",
+     "text": "Josh was a great technician today and was very helpful in explaining to us the options we have with fixing our 55 year old home/plumbing system!"
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Mokena Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Mokena?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Jodi Road office keeps our plumbers close to Mokena, and we [treat emergencies as a priority](/mokena/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "My home was built in the late 1990s. What should I check first?",
+     "preview": "Start with the water heater, the sump pump and, if you have a basement bathroom, the ejector pump.",
+     "a": "Start with the water heater, the sump pump and, if you have a basement bathroom, the ejector pump. Equipment that came with the house is often 25 years old or more by now. A whole-home checkup tells you what’s close to the end, so you can replace it on your schedule instead of after it fails."
+    },
+    {
+     "q": "What is power rodding, and does my sewer line need it?",
+     "preview": "Power rodding is a motorized cable that cuts through roots and clogs in your main sewer line.",
+     "a": "Power rodding is a motorized cable that cuts through roots and clogs in your main sewer line. If several drains are slow at once, or water comes up through the basement floor drain, the main line is likely blocked. We rod it clear and can [camera the line](/mokena/video-camera-sewer-inspections) to show you what caused it."
+    },
+    {
+     "q": "How do I keep my basement dry during heavy rain?",
+     "preview": "Start with a sump pump in good shape, a battery backup in case the power goes out and a backflow valve on your sewer line.",
+     "a": "Start with a sump pump in good shape, a battery backup in case the power goes out and a backflow valve on your sewer line. We can test your pump, check the discharge line and tell you which [flood protection](/mokena/basement-flooding) makes sense for your home."
+    },
+    {
+     "q": "When should I replace my water heater?",
+     "preview": "Tank water heaters usually last somewhere around 8 to 12 years.",
+     "a": "Tank water heaters usually last somewhere around 8 to 12 years. Rusty water, rumbling noises, a leak at the base or hot water that runs out faster than it used to all mean it’s time to have it checked. [Replacing it](/mokena/water-heater-installation) on your schedule is easier than dealing with a flooded basement."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Mokena?",
+     "preview": "Along with Mokena, our office serves Frankfort, New Lenox, Tinley Park, Orland Park, Homer Glen, Frankfort Square, Lockport and more.",
+     "a": "Along with Mokena, our office serves Frankfort, New Lenox, Tinley Park, Orland Park, Homer Glen, Frankfort Square, Lockport and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Mokena start small, like a sump pump past its prime or a water heater from when the house was built. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Mokena Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Mokena, IL",
+ "metaDescription": "Local plumbers on Jodi Road in Mokena, IL. Serving Chicagoland since 1993. Call 24/7 for sewer, drain and sump pump help with an upfront price."
+}

@@ -1,0 +1,330 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Evanston, IL",
+   "sub": "No hot water, a heater that runs out fast or a puddle at the base of the tank. We find what failed, tell you honestly whether it's worth fixing and give you a flat price before we start. Our Evanston office is on Orrington Avenue, downtown. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Water Heater Needs Repair",
+    "intro": "Common calls:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Hot Water",
+      "body": "A pilot, igniter, element or gas valve."
+     },
+     {
+      "h3": "Runs Out Fast",
+      "body": "Sediment or a failing part."
+     },
+     {
+      "h3": "Rumbling or Popping",
+      "body": "Sediment on the bottom."
+     },
+     {
+      "h3": "Water at the Base",
+      "body": "Valves can be fixed. A tank leak can't."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heaters in Evanston Homes",
+    "intro": "Evanston's water and housing both affect how long a heater lasts.",
+    "items": [
+     {
+      "h3": "Hard Water",
+      "body": "The city reports about 7.8 grains per gallon. That leaves sediment in tanks and scale in tankless units."
+     },
+     {
+      "h3": "Old Chimneys",
+      "body": "Many older homes vent the water heater through a masonry chimney. We check the draft."
+     },
+     {
+      "h3": "Tight Basements",
+      "body": "Low ceilings and narrow stairs need planning."
+     },
+     {
+      "h3": "Condos and Two-Flats",
+      "body": "A leak can reach the unit below."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We repair gas and electric tank heaters, power-vent units and tankless heaters in Evanston homes.",
+     "Read us the label when you call. If it's time to replace, see [water heater installation](/evanston/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "With Evanston's hard water, a yearly flush keeps sediment from building up. We test the relief valve, check the anode rod and inspect the burner and venting.",
+     "Tankless heaters need descaling on a schedule."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Diagnose first, then a price.",
+    "steps": [
+     {
+      "h3": "1. Find the Failure",
+      "body": "Before we talk price."
+     },
+     {
+      "h3": "2. Repair or Replace, Explained",
+      "body": "When the heater is near the end."
+     },
+     {
+      "h3": "3. Venting Checked",
+      "body": "Every visit."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "why-flushing-matters-with-evanston-water",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Hard Water",
+    "h2": "Why Flushing Matters With Evanston Water",
+    "body": "Evanston's water is hard, around 7.8 grains per gallon. As water heats, some of those minerals settle to the bottom of the tank as sediment. Over time, that layer insulates the water from the burner, so the heater works harder, makes popping sounds and wears out sooner. A yearly flush drains the sediment before it hardens. If your heater has never been flushed, we'll tell you whether it's still worth doing.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Diana Tesauro",
+      "url": null,
+      "text": "Mr. Welham Mendoza, from Blanton Plumbing, installed a water heater in our home on April 3, 2026. Mr. Mendoza was on time, friendly, professional, and clear in explaining how our system worked. He had to make a second trip to secure a water heater that fit. He was extremely knowledgeable and efficient in the installation."
+     },
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     },
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Is it worth repairing an older heater?",
+      "preview": "Under 8 years, usually. Over 12, usually not.",
+      "answer": "Under about 8 years, a repair usually makes sense. Past 12, or with a leaking tank, replacement is the better value."
+     },
+     {
+      "q": "Why does my heater make popping noises?",
+      "preview": "Sediment on the bottom of the tank.",
+      "answer": "Sediment is trapping water under it, and the bubbles pop as it heats. A flush can help if it's caught early."
+     },
+     {
+      "q": "Does Evanston's water shorten heater life?",
+      "preview": "Hardness adds sediment.",
+      "answer": "At about 7.8 grains per gallon, sediment builds up over time. Flushing once a year helps."
+     },
+     {
+      "q": "How long do water heaters last?",
+      "preview": "About 8 to 12 years.",
+      "answer": "Usually somewhere around 8 to 12 years."
+     },
+     {
+      "q": "Can I flush my water heater myself?",
+      "preview": "You can, carefully.",
+      "answer": "You can, with a hose on the drain valve. Be careful with hot water and an old valve that may not close again."
+     },
+     {
+      "q": "How much does water heater repair cost in Evanston?",
+      "preview": "It depends on the part. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of heater. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Evanston, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/evanston/water-heater-repair",
+   "description": "Water heater repair in Evanston, IL. Gas, electric and tankless heaters diagnosed and fixed, with a flat price before we start. 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Evanston, IL",
+ "metaDescription": "Water heater repair in Evanston, IL. Gas, electric and tankless heaters diagnosed and fixed, with a flat price before we start. 24/7."
+}

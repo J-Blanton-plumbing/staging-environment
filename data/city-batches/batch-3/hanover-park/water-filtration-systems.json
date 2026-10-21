@@ -1,0 +1,338 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Filtration Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Filtration Systems in Hanover Park, IL",
+   "sub": "Better-tasting drinking water, less chlorine in the shower or protection for new appliances. We test your water and recommend a filtration system that fits your home. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+    "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "options",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Your Options",
+    "h2": "Filtration Options for Hanover Park Homes",
+    "intro": "We install:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Whole-House Filters",
+      "body": "Filtered water at every tap."
+     },
+     {
+      "h3": "Under-Sink Filters",
+      "body": "For drinking and cooking."
+     },
+     {
+      "h3": "Reverse Osmosis",
+      "body": "Very clean water from a dedicated faucet."
+     },
+     {
+      "h3": "Softeners",
+      "body": "Where scale is a concern."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "water-testing",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Water Testing",
+    "h2": "Water Testing in Hanover Park",
+    "bodies": [
+     "We test hardness, chlorine and sediment at your tap and explain the results plainly.",
+     "Hanover Park's water is Lake Michigan water, treated by the City of Chicago and delivered through a regional water agency. The village publishes a yearly water quality report. For health-related testing, a state-certified lab can run a full panel, and we'll point you to one."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-water",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water in Hanover Park Homes",
+    "intro": "Under normal conditions, Hanover Park uses 100% Lake Michigan water.",
+    "items": [
+     {
+      "h3": "Treated City Water",
+      "body": "Many people filter for chlorine taste or peace of mind."
+     },
+     {
+      "h3": "Backup Wells",
+      "body": "The village keeps four wells for emergency use only."
+     },
+     {
+      "h3": "Whole-House or Point-of-Use",
+      "body": "A whole-house filter covers every tap. An under-sink filter covers drinking water."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Test first, then recommend.",
+    "steps": [
+     {
+      "h3": "1. Test Your Water",
+      "body": "At your tap."
+     },
+     {
+      "h3": "2. Explain the Options",
+      "body": "Whole-house to under-sink."
+     },
+     {
+      "h3": "3. Flat Price, Clean Install",
+      "body": "Approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "which-filter-fits-your-hanover-park-home",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Your Options",
+    "h2": "Which Filter Fits Your Hanover Park Home?",
+    "body": "Start with the reason. If it's taste or chlorine smell in drinking water, an under-sink carbon filter or reverse osmosis system at the kitchen sink is usually enough. If you want filtered water at every faucet and shower, a whole-house filter goes on the main line where water enters the home. If scale on fixtures is the complaint, a test tells us whether a softener is worth it on Lake Michigan water. We'll match the system to the goal.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-filtration",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Filtration",
+    "body": "Under-sink filters are the simplest. Reverse osmosis adds a tank and faucet. Whole-house systems go on the main line and need space nearby. Your household size and goals decide the equipment. We test first and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Filtration Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Spiro Nicolet",
+      "url": null,
+      "text": "Ronnie really cares about his customers and his profession. A credit to your company! Merry Christmas!"
+     },
+     {
+      "name": "Matt Schick",
+      "url": null,
+      "text": "Second time we have used J Blanton. Matt did a great job installing our tankless water heater. Alex was very helpful talking through the pros and cons of tank vs tankless. Thanks guys!"
+     },
+     {
+      "name": "Jason Kelly",
+      "url": null,
+      "text": "Christian came out today, even though it was passed 5 he still made the trip. Super friendly and got the water heater taken care of quick."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Filtration Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Where does Hanover Park's water come from?",
+      "preview": "Lake Michigan.",
+      "answer": "Under normal conditions, 100% Lake Michigan water, treated by the City of Chicago."
+     },
+     {
+      "q": "Do I need a water softener?",
+      "preview": "It depends. We'll test your water first.",
+      "answer": "Lake Michigan water is hard, but less hard than most well water. Some homes add a softener to cut scale, and many do fine without one. We'll test and tell you."
+     },
+     {
+      "q": "Whole-house or under-sink?",
+      "preview": "It depends on your goal.",
+      "answer": "For better drinking water, under-sink. For every tap and shower, whole-house."
+     },
+     {
+      "q": "How often do filters need changing?",
+      "preview": "It depends on the system.",
+      "answer": "Under-sink cartridges every several months. Whole-house filters vary."
+     },
+     {
+      "q": "Will a whole-house filter lower my water pressure?",
+      "preview": "Not if it's sized right.",
+      "answer": "Not if it's sized for your home's flow. We size it so pressure stays steady."
+     },
+     {
+      "q": "Do filters remove chlorine taste?",
+      "preview": "Carbon filters do.",
+      "answer": "Yes. Carbon filters reduce chlorine taste and odor."
+     },
+     {
+      "q": "How much does water filtration cost in Hanover Park?",
+      "preview": "It depends on the system. You'll approve a flat price first.",
+      "answer": "It depends on the system and installation. You'll approve a flat-rate price before we install."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Better Water?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Filtration Systems in Hanover Park, IL",
+   "serviceType": "Water Filtration Systems",
+   "url": "https://jblantonplumbing.com/hanover-park/water-filtration-systems",
+   "description": "Water filtration and testing in Hanover Park, IL. Whole-house, under-sink and reverse osmosis systems matched to your home.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Filtration Systems in Hanover Park, IL",
+ "metaDescription": "Water filtration and testing in Hanover Park, IL. Whole-house, under-sink and reverse osmosis systems matched to your home."
+}

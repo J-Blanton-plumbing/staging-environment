@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Emergency Plumber in Skokie, IL",
+   "sub": "Sewage at the floor drain, a pipe spraying in the basement or no hot water on a January night. Call us any time, including weekends and holidays. We'll get a plumber to you as soon as we can. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It an Emergency?",
+    "intro": "Call right away for:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Sewage in the Basement",
+      "body": "Through the floor drain, toilet or tub."
+     },
+     {
+      "h3": "A Burst or Leaking Pipe",
+      "body": "That doesn't stop when you close the valve."
+     },
+     {
+      "h3": "A Failed Pump",
+      "body": "Sump or ejector, with water rising."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave the house, then call Nicor Gas or 911."
+     },
+     {
+      "h3": "No Water or Heat to the Water",
+      "body": "Especially in winter."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in Skokie",
+    "intro": "When most of a town's plumbing is the same age, the emergencies follow a pattern.",
+    "items": [
+     {
+      "h3": "Main Line Backups",
+      "body": "Roots in old clay can stop a line overnight."
+     },
+     {
+      "h3": "Old Pipe That Gives Out",
+      "body": "Galvanized and cast iron can fail without warning."
+     },
+     {
+      "h3": "Storm Backups",
+      "body": "In May 2020, 7.35 inches of rain fell on Skokie in five days."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "Help that shows up and a price you see first.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights, weekends and holidays."
+     },
+     {
+      "h3": "2. A Flat Price First",
+      "body": "Even in an emergency."
+     },
+     {
+      "h3": "3. Fixed Properly",
+      "body": "Not just patched until morning."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-to-do-on-a-storm-night",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Storm Nights",
+    "h2": "What to Do on a Storm Night",
+    "body": "If rain is heavy and water starts rising at the floor drain, stop using water in the house so you're not adding to it. Check that the sump pump is running and has power. Move valuables off the basement floor. If sewage is coming up, keep everyone out of the water. Then call us. We'll clear the line and, once the storm passes, talk about protection.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "the-emergencies-skokie-homeowners-call-about-most",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Common Calls",
+    "h2": "The Emergencies Skokie Homeowners Call About Most",
+    "body": "Most of our urgent Skokie calls are sewer backups through the basement floor drain, sump and ejector pumps that stop during storms, frozen pipes on outside walls and water heaters that leak without warning. Each has a quick first step while we're on the way: stop using water, check the pump's power or shut off the main.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Michael Gillespie",
+      "url": null,
+      "text": "Came late at night to unclog drain that kept overflowing. Got in unclogged for me. Thanks again man. I'll be able to sleep tonight."
+     },
+     {
+      "name": "Chrysa P",
+      "url": null,
+      "text": "Awesome! Trevor was friendly and fixed our toilet blockage problem. Same day service. Also provided me w estimate in case I’d like to get a new toilet in the future. Highly recommend - found my new plumbing service! 😊"
+     },
+     {
+      "name": "Mary Ellen Bowers",
+      "url": null,
+      "text": "John showed up on an emergency call and within a few minutes of arriving resolved our issues. Thank you John and J. Blanton plumbing."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Do you answer at 2 a.m.?",
+      "preview": "Yes.",
+      "answer": "Yes. Our phone line is open 24/7, including weekends and holidays."
+     },
+     {
+      "q": "What should I do until you get here?",
+      "preview": "Shut off the water and stay safe.",
+      "answer": "For a leak, close the main valve. For a backup, stop using water. Stay out of water near outlets."
+     },
+     {
+      "q": "Where's the main water shutoff in a Skokie home?",
+      "preview": "Usually in the basement at the front wall.",
+      "answer": "In most homes, it's in the basement where the water line comes in from the street, near the meter."
+     },
+     {
+      "q": "Will I know the price before you start?",
+      "preview": "Yes.",
+      "answer": "Yes. You'll get a flat-rate price before any work begins."
+     },
+     {
+      "q": "How quickly can you get to me?",
+      "preview": "As soon as we can.",
+      "answer": "Arrival times depend on the day and the weather, but we work to get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Should I call during a storm or wait?",
+      "preview": "Call if water is rising.",
+      "answer": "Call if water is rising or the sump pump has stopped."
+     },
+     {
+      "q": "Can you help if my overhead sewer pump stops?",
+      "preview": "Yes, 24/7.",
+      "answer": "Yes. Stop using basement fixtures and call us."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? Call Us Now.",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Emergency Plumber in Skokie, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/skokie/emergency-plumbing",
+   "description": "24/7 emergency plumber in Skokie, IL. Sewer backups, burst pipes, failed pumps and no hot water. Call any time, day or night.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Skokie, IL",
+ "metaDescription": "24/7 emergency plumber in Skokie, IL. Sewer backups, burst pipes, failed pumps and no hot water. Call any time, day or night."
+}

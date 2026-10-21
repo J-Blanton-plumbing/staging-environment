@@ -1,0 +1,361 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Frozen and Burst Pipe Repair in Lincoln Park, Chicago",
+   "sub": "No water at the kitchen sink on a frigid morning, or water pouring through the ceiling when a frozen pipe thaws. Shut off the water and call us. Our line is open 24/7. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "If a Pipe Bursts",
+    "intro": "Do these first:",
+    "steps": [
+     {
+      "h3": "1. Shut Off the Water",
+      "body": "Your unit's shutoff or the building main."
+     },
+     {
+      "h3": "2. Turn Off Power Near the Water",
+      "body": "If it's safe."
+     },
+     {
+      "h3": "3. Tell Your Neighbors",
+      "body": "If water is heading their way."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any time."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "Look for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Through a Ceiling",
+      "bullets": [
+       "Often under a kitchen or bath."
+      ]
+     },
+     {
+      "h3": "Pressure Drops",
+      "bullets": [
+       "Across the unit or building."
+      ]
+     },
+     {
+      "h3": "Spreading Stains",
+      "bullets": [
+       "On walls or ceilings."
+      ]
+     },
+     {
+      "h3": "Running Water Sounds",
+      "bullets": [
+       "With nothing on."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "In a cold snap:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "One Faucet Won't Run",
+      "body": "While others do."
+     },
+     {
+      "h3": "Frost on a Pipe",
+      "body": "On a back porch or in a basement."
+     },
+     {
+      "h3": "A Toilet Won't Refill",
+      "body": "Its line may be frozen."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Lincoln Park",
+    "intro": "Lake winds and old buildings make some pipes vulnerable.",
+    "items": [
+     {
+      "h3": "Pipes Along Exterior Walls",
+      "body": "Kitchen sinks on outside walls freeze first."
+     },
+     {
+      "h3": "Back Porches and Additions",
+      "body": "Plumbing added to enclosed porches is exposed to the cold."
+     },
+     {
+      "h3": "Vacant Units",
+      "body": "An unheated unit can freeze pipes that serve the whole building."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, fix the pipe, prevent the next one.",
+    "steps": [
+     {
+      "h3": "1. Fast Response",
+      "body": "24/7."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Before the repair."
+     },
+     {
+      "h3": "3. Prevention",
+      "body": "What to change."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "where-pipes-freeze-in-lincoln-park-buildings",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Weak Spots",
+    "h2": "Where Pipes Freeze in Lincoln Park Buildings",
+    "body": "In older Lincoln Park buildings, pipes freeze where heat doesn't reach: kitchen sinks on outside walls, enclosed back porches, unheated basements and pipes near drafty windows. In condo buildings, a vacant unit with the heat turned down can freeze and flood the units below. On the coldest nights, keep the heat steady, open cabinet doors on outside walls and let a faucet drip.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Keith Spengel",
+      "url": null,
+      "text": "Ty was awesome. Not only did he find the problem more accurately than previous people who came out, he fixed it same day and explained everything in detail with a great personality and an accommodating demeanor. I couldn’t be happier with the work that he did and how he did it."
+     },
+     {
+      "name": "Connor Schickel",
+      "url": null,
+      "text": "I’ve used J Blanton multiple times. They have helped identify a pipe with root growth through their No Drip Club. Mike Perez has done a great job walking me through all the steps to get the root out of my pipe and had to work through some very tough turns to identify the roots. [...]"
+     },
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Frozen Pipe Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "My kitchen faucet is frozen. What should I do?",
+      "preview": "Open the cabinet, open the faucet and warm the pipe gently.",
+      "answer": "Open the cabinet doors, open the faucet and warm the pipe with a hair dryer. Never use a flame. If it doesn't thaw, call us."
+     },
+     {
+      "q": "How can I keep pipes from freezing in an older building?",
+      "preview": "Heat, open cabinets and a slow drip.",
+      "answer": "Keep the heat up, open cabinets on exterior walls and let a faucet drip on the coldest nights."
+     },
+     {
+      "q": "Can you repair a pipe inside a shared wall?",
+      "preview": "Yes.",
+      "answer": "Yes. We locate the break and open only what we need."
+     },
+     {
+      "q": "Does insurance cover burst pipes?",
+      "preview": "Often, for sudden damage.",
+      "answer": "Often. Check with your agent or association."
+     },
+     {
+      "q": "My upstairs neighbor is away and I hear water. What do I do?",
+      "preview": "Contact the building and call us.",
+      "answer": "Contact the association or building contact right away and call us. Shutting off the main may be needed."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Lincoln Park?",
+      "preview": "It depends on the break. You'll approve a flat price first.",
+      "answer": "It depends on where the pipe burst and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Frozen or Burst Pipe? Call Us Now.",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Frozen and Burst Pipe Repair in Lincoln Park, Chicago",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/burst-pipe-repair",
+   "description": "Frozen and burst pipe repair in Lincoln Park, Chicago. Our line is open 24/7. We stop the water, fix the pipe and help prevent the next one.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Frozen & Burst Pipe Repair in Lincoln Park",
+ "metaDescription": "Frozen and burst pipe repair in Lincoln Park, Chicago. Our line is open 24/7. We stop the water, fix the pipe and help prevent the next one."
+}

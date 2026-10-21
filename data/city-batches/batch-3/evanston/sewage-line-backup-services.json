@@ -1,0 +1,333 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in Evanston, IL",
+   "sub": "Sewage coming up through the floor drain is an emergency, and our line is open 24/7. We clear the line, show you why it backed up and help keep it from happening again. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "What to Do During a Sewage Backup",
+    "intro": "Until we get there:",
+    "steps": [
+     {
+      "h3": "1. Stop Running Water",
+      "body": "Every gallon ends up in the basement."
+     },
+     {
+      "h3": "2. Stay Out of the Water",
+      "body": "Sewage carries bacteria."
+     },
+     {
+      "h3": "3. Mind the Electrical",
+      "body": "Outlets and appliances near the water."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Tell us where it's coming up."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What Causes It",
+    "h2": "Why Evanston Basements Back Up",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Combined Sewers Fill in a Storm",
+      "body": "Rain and wastewater share pipes."
+     },
+     {
+      "h3": "Roots in the Lateral",
+      "body": "Old clay lets them in."
+     },
+     {
+      "h3": "A Broken Section",
+      "body": "Flow stops at the break."
+     },
+     {
+      "h3": "Grease and Wipes",
+      "body": "They catch on roots."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Backups in Evanston",
+    "intro": "All of Evanston is served by combined sewers, so storm water and household wastewater share the same pipes.",
+    "items": [
+     {
+      "h3": "Storm or Clog?",
+      "body": "Only during heavy rain points to a full city sewer. On a dry day, your lateral is blocked."
+     },
+     {
+      "h3": "Your Lateral, Your Repair",
+      "body": "The city maintains the main. The pipe from your home is yours."
+     },
+     {
+      "h3": "Protection",
+      "body": "A backflow valve or [overhead sewer system](/evanston/overhead-sewer-systems) keeps sewer water out."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Clear, explain, prevent.",
+    "steps": [
+     {
+      "h3": "1. Clear the Line",
+      "body": "Drains working again."
+     },
+     {
+      "h3": "2. Show the Cause",
+      "body": "On camera."
+     },
+     {
+      "h3": "3. Price Any Repair First",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "storm-backup-or-blocked-lateral",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Find the Cause",
+    "h2": "Storm Backup or Blocked Lateral?",
+    "body": "The timing tells you a lot. If sewage came up during or right after a heavy storm, the combined sewer in the street likely filled and pushed water back. If it came up on a dry day, the problem is almost always in your lateral: roots, grease or a break. The fix is different. A blocked lateral needs cleaning or repair. Storm backups need a backflow valve or an overhead sewer. Our camera tells us which one you're dealing with.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Lisa",
+      "url": null,
+      "text": "Highly recommend this company. The initial appointment was scheduled very quickly and after the diagnosis, the work was performed the next day. Jovany the onsite technician was thorough, efficient and great to work with. Couldn't be happier. Thanks!!"
+     },
+     {
+      "name": "Brenda Garcia",
+      "url": null,
+      "text": "Fixed my unfortunate sewer that I was struggling with for over a week. Kept backing up every single day and he Anthony solved the problem in about an hour."
+     },
+     {
+      "name": "Tanya Hill",
+      "url": null,
+      "text": "Ray was awesome! My kitchen sink was backed up and he took care of things courteously, neatly and thoroughly. Ray explained the mechanics of why my issue may have happened and how to prevent it from happening again. I recommend Ray and JVS to anyone looking for a plumber!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Backup Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Why does my basement back up only in big storms?",
+      "preview": "The combined sewer is full.",
+      "answer": "Evanston's sewers carry rain and wastewater together. In heavy storms, they fill and push water back into the lowest drains."
+     },
+     {
+      "q": "Do you clean up after a sewage backup?",
+      "preview": "We fix the plumbing. A restoration company cleans up.",
+      "answer": "We clear the line and repair the cause. For cleanup and drying, call a water restoration company. Many Evanston homeowners call both."
+     },
+     {
+      "q": "Is a sewer backup covered by insurance?",
+      "preview": "Often only with a rider.",
+      "answer": "Many policies need a sewer backup rider. Check with your agent."
+     },
+     {
+      "q": "What's the best protection?",
+      "preview": "An overhead sewer for repeat backups.",
+      "answer": "For repeat backups, an overhead sewer. For lighter risk, a backflow valve or standpipe."
+     },
+     {
+      "q": "How much does sewer backup service cost in Evanston?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on what caused it and how we reach the line. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Sewage in the Basement? Call Us Now.",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in Evanston, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/evanston/sewage-line-backup-services",
+   "description": "Sewage in your Evanston basement? We clear the line 24/7, find the cause on camera and help protect your basement from the next one.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Backup Service in Evanston, IL",
+ "metaDescription": "Sewage in your Evanston basement? We clear the line 24/7, find the cause on camera and help protect your basement from the next one."
+}

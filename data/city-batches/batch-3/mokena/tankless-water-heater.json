@@ -1,0 +1,337 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Mokena, IL",
+   "sub": "Endless hot water and more space in the utility room. We install, repair and maintain tankless water heaters and tell you honestly whether one makes sense for your home. From our office on Jodi Road.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Water Heater Works",
+    "body": "A tankless heater heats water only when a tap opens. Water flows through a heat exchanger, a burner or element fires and hot water comes out as long as you need it. There's no tank to keep hot all day, so it uses less energy when you're not using water. The trade-off: it has a limit on how much hot water it can make at once, so it has to be sized for your busiest moment.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless for Mokena Homes",
+    "intro": "How they compare:",
+    "head": [
+     "",
+     "Tank",
+     "Tankless"
+    ],
+    "rows": [
+     [
+      "Hot water supply",
+      "Limited to the tank",
+      "Continuous, up to its flow rate"
+     ],
+     [
+      "Typical life",
+      "About 8 to 12 years",
+      "Often longer with maintenance"
+     ],
+     [
+      "Space",
+      "A tank on the floor",
+      "A unit on the wall"
+     ],
+     [
+      "Maintenance",
+      "Yearly flush",
+      "Yearly descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Mokena Home?",
+    "intro": "Many Mokena homes are a good fit, with a few things to check first.",
+    "items": [
+     {
+      "h3": "Gas Line Size",
+      "body": "Gas tankless units need a lot of gas at once. The line from the meter may need to be upsized."
+     },
+     {
+      "h3": "Venting",
+      "body": "Tankless units need their own venting, usually through the side wall."
+     },
+     {
+      "h3": "Busy Mornings",
+      "body": "We size the unit so two showers and the dishwasher can run at once."
+     },
+     {
+      "h3": "Descaling Matters",
+      "body": "Minerals build up in the heat exchanger. A yearly flush keeps it running right."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Honest advice first.",
+    "steps": [
+     {
+      "h3": "1. Check the Gas and Venting",
+      "body": "Before we recommend a unit."
+     },
+     {
+      "h3": "2. Size It for Your Peak",
+      "body": "Not just the average day."
+     },
+     {
+      "h3": "3. Flat Price, Clean Install",
+      "body": "Approved before we start."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-tankless-install",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Tankless Install",
+    "body": "The gas line and venting are the main variables, along with treatment if the home is on well water. We check everything first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Brian Bilicki",
+      "url": null,
+      "text": "Christian serviced out tankless water heater. Excellent service highly recommend!"
+     },
+     {
+      "name": "Robert Ritten",
+      "url": null,
+      "text": "Christian did a great job serving our tankless water heater!!"
+     },
+     {
+      "name": "Deanna Serpico",
+      "url": null,
+      "text": "Christian was very thorough and friendly assisting with my tankless water heater maintenance."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Why does my tankless heater go cold in the middle of a shower?",
+      "preview": "Often scale, a flow issue or too much demand.",
+      "answer": "Often scale in the heat exchanger, a dirty inlet screen or more fixtures running than the unit can handle. Descaling fixes the first two."
+     },
+     {
+      "q": "How often should a tankless heater be descaled?",
+      "preview": "About once a year.",
+      "answer": "About once a year for most homes. Homes on well water may need it more often."
+     },
+     {
+      "q": "Do you repair tankless units?",
+      "preview": "Yes.",
+      "answer": "Yes. We diagnose error codes, clean flame sensors and inlet screens, descale heat exchangers and replace failed parts."
+     },
+     {
+      "q": "Can I switch from a tank to tankless?",
+      "preview": "Usually, with gas and venting changes.",
+      "answer": "Usually. Most switches need a larger gas line and new venting. We check both before giving you a price."
+     },
+     {
+      "q": "Is tankless worth it for a family of four or five?",
+      "preview": "Often, if it's sized right.",
+      "answer": "Often. A properly sized unit can run two showers and the dishwasher at once. We'll look at your gas line and venting before you decide."
+     },
+     {
+      "q": "Can a tankless heater run on well water?",
+      "preview": "Yes, with treatment.",
+      "answer": "Yes, but well water often needs softening or filtering to protect the heat exchanger."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Mokena?",
+      "preview": "It depends on the unit and the gas and venting work. You'll approve a flat price first.",
+      "answer": "It depends on the unit size and how much gas line and venting work is needed. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Talk Tankless?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Mokena, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/mokena/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Mokena, IL. Honest advice on whether tankless fits your home, and a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Mokena, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Mokena, IL. Honest advice on whether tankless fits your home, and a flat price."
+}

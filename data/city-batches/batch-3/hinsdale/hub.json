@@ -1,0 +1,226 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Hinsdale, IL",
+   "sub": "Serving Chicagoland since 1993, with a local office on Spinning Wheel Road. Our line is open 24/7 for homeowners in Hinsdale and across the western suburbs. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Hinsdale",
+   "intro": "Our licensed plumbers work on every kind of Hinsdale home, from 1890s houses near Robbins Park to new builds on the same streets. Pick a service to see how we handle it in Hinsdale.",
+   "cards": [
+    {
+     "title": "Sewer Repair",
+     "href": "/hinsdale/sewer-repair",
+     "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/hinsdale/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/hinsdale/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Drain Cleaning",
+     "href": "/hinsdale/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Leak Repair",
+     "href": "/hinsdale/leak-repairs",
+     "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+     "image": {
+      "src": "/images/city-hubs/hidden-leak-wall-damage.webp",
+      "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/hinsdale/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Toilets & Fixtures",
+     "href": "/hinsdale/toilet-installation-repair",
+     "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+     "image": {
+      "src": "/images/city-hubs/toilet-fill-valve-repair.webp",
+      "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Spinning Wheel Road",
+   "h2": "Our Hinsdale Office",
+   "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, Hinsdale, IL 60521. It keeps our plumbers close to homes across Hinsdale and the neighboring western suburbs. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "15 Spinning Wheel Rd, Suite 216A, Hinsdale, IL 60521",
+   "areasH3": "Western Suburbs We Serve",
+   "areas": [
+    {
+     "label": "Clarendon Hills",
+     "href": "/clarendon-hills"
+    },
+    {
+     "label": "Western Springs",
+     "href": "/western-springs"
+    },
+    {
+     "label": "Burr Ridge",
+     "href": "/burr-ridge"
+    },
+    {
+     "label": "Oak Brook",
+     "href": "/oak-brook"
+    },
+    {
+     "label": "Willowbrook",
+     "href": "/willowbrook"
+    },
+    {
+     "label": "Westmont",
+     "href": "/westmont"
+    },
+    {
+     "label": "La Grange",
+     "href": "/la-grange"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/UNeMN8g1J4MJ1thi9"
+  },
+  "depth": {
+   "h2": "What Hinsdale Homes Need From a Plumber",
+   "intro": "Hinsdale’s housing is a mix of eras on the same block. About 1 in 6 homes was built before 1940, and more than 4 in 10 went up after 1990, many of them where an older house used to stand. The median home here was built in 1981, but that number hides a wide range.",
+   "tiles": [
+    {
+     "title": "Historic Homes Around Robbins Park",
+     "body": "The Robbins Park Historic District alone has 368 buildings on streets laid out in the 1860s and 1870s. Homes from that era often still have cast iron drains and clay sewer pipe, even after the kitchens and baths were redone. A [camera inspection](/hinsdale/video-camera-sewer-inspections) shows the condition of your line before you decide on a [sewer repair](/hinsdale/sewer-repair)."
+    },
+    {
+     "title": "New Builds on Old Sewer Connections",
+     "body": "When a new home replaces an older one, the line to the street isn’t always replaced with it. A brand-new house can end up connected to an old clay lateral. If you have slow drains or a backup in a newer home, a camera look at the full line is the fastest way to find out why."
+    },
+    {
+     "title": "Heavy Rain and Basement Backups",
+     "body": "In June 2021, a storm sent sewer water bubbling more than 5 feet high near County Line Road and Walnut Street, and one homeowner nearby had about 3 feet of water in a basement that had never flooded before. A [sump pump with a battery backup](/hinsdale/sump-pumps) and a [backflow valve](/hinsdale/flood-control-maintenance) are the first lines of defense."
+    },
+    {
+     "title": "Protecting Finished Spaces From Hidden Leaks",
+     "body": "In a home with plaster walls, custom tile and finished basements, a small leak can do a lot of damage before you see it. We [find the leak](/hinsdale/leak-repairs) and open as little as possible to fix it. If a pipe bursts in a winter freeze, we’re on call 24/7 for [burst pipe repair](/hinsdale/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why Hinsdale Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Hinsdale Reviews",
+   "intro": "4.8 stars from 430+ Google reviews for our Hinsdale office.",
+   "rating": "4.8",
+   "ratingSub": "430+ Google reviews for our Hinsdale office",
+   "items": [
+    {
+     "name": "Tameka A.",
+     "url": "https://maps.app.goo.gl/LAv7SZ57JEKkEPvCA",
+     "text": "Scott was an absolute pleasure to work with . He came to my home to inspect my sewage line and he explained everything to me throughly.  He was clearly an expert and he showed me the line with a camera which was a game changer. I was able to see everything with my own two eyes instead of having to trust a technician telling me my line had to be replaced. In addition to educating me, Scott gave me tips and was genuinely a kind person who I felt like had my best interest in mind."
+    },
+    {
+     "name": "Robert Falconer",
+     "url": "https://maps.app.goo.gl/tzFB3EanZ8yR8xoi8",
+     "text": "Michael and Jason did my water heater install.  Two tankless on demand heaters.  They arrived on time and prepared.  Very knowledgeable and very professional. Did a very neat and clean installation.  Answered all my questions.  Finished when they said they would and cleaned up.  This was a very satisfying experience with top quality install, and exceptionally courteous and professional installers."
+    },
+    {
+     "name": "Poongodi Surendar",
+     "url": "https://maps.app.goo.gl/az26aKCEZYvQ8fvTA",
+     "text": "I had an excellent experience working with Adem from J Blanton Plumbing. From the very beginning, Adem guided me through the entire process with patience, professionalism, and clear communication. He took the time to explain everything, answered all of my questions, and made sure I understood my options before any work was done."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Hinsdale Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Hinsdale?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. Work behind plaster or custom tile can take more care than work in an open basement. We give you a flat-rate price before any work begins, so you know the cost going in."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Spinning Wheel Road office keeps our plumbers close to Hinsdale, and we [treat emergencies as a priority](/hinsdale/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "My home is over 100 years old. What should I check?",
+     "preview": "Start with the sewer line and the drains.",
+     "a": "Start with the sewer line and the drains. Homes from that era often have clay sewer pipe and cast iron drains, and both wear out with age. A camera inspection shows the condition of your sewer line. Age alone doesn’t mean something is wrong, but an inspection lets you plan repairs instead of reacting to a backup."
+    },
+    {
+     "q": "We just built a new home. Do we still need a sewer inspection?",
+     "preview": "It’s worth checking. If the builder reused the old line to the street, your new house may be connected to an older clay lateral.",
+     "a": "It’s worth checking. If the builder reused the old line to the street, your new house may be connected to an older clay lateral. A camera inspection shows what’s there and whether it was replaced."
+    },
+    {
+     "q": "Can you do plumbing work without damaging plaster, tile or finished floors?",
+     "preview": "We plan the work around them.",
+     "a": "We plan the work around them. We locate the problem before we open anything, protect floors and finishes while we work and open as little as possible. When a sewer line needs work under a finished yard, [trenchless repair](/hinsdale/trenchless-sewer-repair) can often avoid digging up the landscaping."
+    },
+    {
+     "q": "When should I replace my water heater?",
+     "preview": "Tank water heaters usually last somewhere around 8 to 12 years.",
+     "a": "Tank water heaters usually last somewhere around 8 to 12 years. Rusty water, rumbling noises, a leak at the base or hot water that runs out faster than it used to all mean it’s time to have it checked. If you’re considering a [tankless water heater](/hinsdale/tankless-water-heater), we can tell you whether your gas line and venting are ready for one."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which communities do you serve from Hinsdale?",
+     "preview": "Along with Hinsdale, our office serves Clarendon Hills, Western Springs, Burr Ridge, Oak Brook, Willowbrook, Westmont, La Grange and more.",
+     "a": "Along with Hinsdale, our office serves Clarendon Hills, Western Springs, Burr Ridge, Oak Brook, Willowbrook, Westmont, La Grange and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Hinsdale start small, like roots in an old clay sewer line or a water heater past its prime. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Hinsdale Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Hinsdale, IL",
+ "metaDescription": "Local plumbers on Spinning Wheel Road in Hinsdale, IL. Serving Chicagoland since 1993. Call 24/7 for an upfront price before any work starts."
+}

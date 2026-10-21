@@ -1,0 +1,320 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Trenchless Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Trenchless Sewer Repair in Hinsdale, IL",
+   "sub": "In Hinsdale, the sewer line often runs under a century-old oak, a stone walk or a garden that took years to grow in. Trenchless repair fixes the pipe through small openings, so most of that stays where it is. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/trenchless-sewer-liner-prep.webp",
+    "alt": "Two J. Blanton plumbers pouring resin into a sewer liner bag to prepare a trenchless pipe lining"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-trenchless",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Basics",
+    "h2": "What Is Trenchless Sewer Repair?",
+    "body": "Trenchless sewer repair, also called no-dig sewer repair, fixes a damaged pipe without digging a trench along its full length. Instead of opening up your yard from the house to the street, we work through one or two access points and repair the pipe from the inside or replace it in place. There are two main methods: cured-in-place pipe (CIPP) lining and pipe bursting. Both fix the line underground, so what's above it stays untouched.",
+    "img": {
+     "src": "/images/city-services-v2/trenchless-sewer-repair-setup.webp",
+     "alt": "Two J. Blanton plumbers setting up sewer camera and cable equipment beside a home's foundation before a trenchless sewer repair"
+    }
+   },
+   {
+    "type": "local",
+    "id": "why-trenchless-hinsdale",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Trenchless Fits Hinsdale",
+    "intro": "Hinsdale homeowners invest a lot in their yards. Trenchless repair respects that investment.",
+    "items": [
+     {
+      "h3": "Old Trees Over the Line",
+      "body": "A liner goes inside the pipe, so there's no trench through the root zone."
+     },
+     {
+      "h3": "Hardscape and Driveways",
+      "body": "Stone walks, pavers and long driveways can usually stay in place."
+     },
+     {
+      "h3": "Joints Opened by Roots",
+      "body": "When roots have opened joints from end to end, lining seals all of them at once."
+     },
+     {
+      "h3": "Breaks and Sags Get a Spot Repair First",
+      "body": "A liner follows the pipe. A collapsed or sagging section is fixed before lining."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "when-trenchless-applies",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Know Your Options",
+    "h2": "Which Repair Method Fits Your Line?",
+    "intro": "The video decides:",
+    "head": [
+     "Camera Finding",
+     "Likely Approach",
+     "Why"
+    ],
+    "rows": [
+     [
+      "Roots or cracks, pipe still round",
+      "Pipe lining",
+      "Seals every joint from inside"
+     ],
+     [
+      "Pipe too damaged to line",
+      "Pipe bursting",
+      "New pipe follows the old path"
+     ],
+     [
+      "One sag or broken section",
+      "Spot repair",
+      "Fixes the problem area directly"
+     ],
+     [
+      "Collapsed line",
+      "Excavation",
+      "Nothing left to line or burst"
+     ]
+    ],
+    "note": "Every recommendation comes with the footage behind it."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A trenchless job is only as good as the inspection behind it.",
+    "steps": [
+     {
+      "h3": "1. Clean and Measure",
+      "body": "The line is cleared and recorded, with distances to every problem."
+     },
+     {
+      "h3": "2. Plan the Access Points",
+      "body": "Placed to protect trees, walks and beds."
+     },
+     {
+      "h3": "3. Flat Price and Final Video",
+      "body": "Approved before work, and recorded again after."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/sewer-excavation-trench.webp",
+     "alt": "Traditional sewer excavation with a trench dug across the yard down to the damaged pipe, the kind of dig trenchless repair avoids"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Trenchless Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Heidi Grace Bush",
+      "url": null,
+      "text": "Updating to also call out Emanuel and Gio, who worked on lining our 110 year old sewer for the past two days. They were flexible, friendly, and professional. No one wants to deal with plumbing issues so we’re thanking for the people who do! 5 stars for Shane Waychoff! He rescued us from a small sewage issue in our basement. [...]"
+     },
+     {
+      "name": "Pat Martin",
+      "url": null,
+      "text": "Rick was on time, polite, willing to explain the whole process. Tree roots had broken the remaining clay pipes under my front lawn and ramp. Inserting a liner with a 25 year warranty was the most logical choice I could make. The job went well and quickly. BONUS: . Here's a photo of plumber Ron Thomas with my dog Honeycomb. [...]"
+     },
+     {
+      "name": "Timothy Watjen",
+      "url": null,
+      "text": "We got our sewer line repaired and a new clean out point installed as well as the sewer liner installed end up, wow. I'm really grateful because one we just bought the house, and through the sewer line connection because the house is so old. They discovered that the assure connection to the house, the main sewer line was made out of terracotta. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Trenchless Sewer Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Can a liner go into a very old clay pipe?",
+      "preview": "Often, if it still holds its shape.",
+      "answer": "Often. If the camera shows the pipe is still round and open, it can be lined. Broken sections may need a spot repair first."
+     },
+     {
+      "q": "Will lining hurt our old trees?",
+      "preview": "It avoids digging through the roots.",
+      "answer": "Lining happens inside the existing pipe, so there's no trench through the root zone."
+     },
+     {
+      "q": "How long does a sewer liner last?",
+      "preview": "Decades.",
+      "answer": "Liners are designed to last for decades, and they have no joints for roots to get through."
+     },
+     {
+      "q": "Can trenchless repair be done in winter?",
+      "preview": "Usually, yes.",
+      "answer": "Usually. Lining doesn't depend on digging through frozen ground, so many jobs can be done year-round."
+     },
+     {
+      "q": "How much does trenchless sewer repair cost in Hinsdale?",
+      "preview": "It depends on length, depth and method. You'll approve a flat price first.",
+      "answer": "It depends on how much of the line needs work, the depth, the method and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Without the Trench?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Trenchless Sewer Repair in Hinsdale, IL",
+   "serviceType": "Trenchless Sewer Repair",
+   "url": "https://jblantonplumbing.com/hinsdale/trenchless-sewer-repair",
+   "description": "Trenchless sewer repair in Hinsdale, IL. Lining and pipe bursting that spare mature trees, stone walks and finished landscaping.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Trenchless Sewer Repair in Hinsdale, IL",
+ "metaDescription": "Trenchless sewer repair in Hinsdale, IL. Lining and pipe bursting that spare mature trees, stone walks and finished landscaping."
+}

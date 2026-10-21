@@ -1,0 +1,323 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Ravenswood, Chicago",
+   "sub": "Water in the basement or garden unit after a storm, from a backed-up floor drain or a failed pump. We find the source, fix it and help keep it from happening again. Our office is on Ravenswood Avenue. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Ravenswood Basements Flood",
+    "intro": "Usually one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Sewer Backup in a Storm",
+      "body": "Combined sewers push water back."
+     },
+     {
+      "h3": "Seepage Through Old Walls",
+      "body": "Through century-old foundations."
+     },
+     {
+      "h3": "A Failed Pump",
+      "body": "Sump or ejector."
+     },
+     {
+      "h3": "A Burst Pipe",
+      "body": "Plumbing water."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Ravenswood",
+    "intro": "In July 2011, record rainfall flooded basements across Ravenswood.",
+    "items": [
+     {
+      "h3": "Garden Units",
+      "body": "Living space below grade is the most exposed."
+     },
+     {
+      "h3": "Sewer Water or Groundwater?",
+      "body": "Different problems, different fixes."
+     },
+     {
+      "h3": "Find the Source First",
+      "body": "We figure out which you have."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Some water is a plumbing problem and some is the foundation. We handle the plumbing side: backflow valves, standpipes, [overhead sewer systems](/chicago-ravenswood/overhead-sewer-systems), [sump pumps](/chicago-ravenswood/sump-pumps) and battery backups.",
+     "If water is coming through cracks in old foundation walls, a waterproofing contractor is the right call, and we'll tell you so."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop it, find it, protect it.",
+    "steps": [
+     {
+      "h3": "1. Stop the Water",
+      "body": "Line or pump first."
+     },
+     {
+      "h3": "2. Find the Source",
+      "body": "Sewer, groundwater or plumbing."
+     },
+     {
+      "h3": "3. Price Protection",
+      "body": "Flat rate."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "lowering-your-risk-in-a-ravenswood-basement",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Prevent It",
+    "h2": "Lowering Your Risk in a Ravenswood Basement",
+    "body": "Start outside: keep the gangway drain and window wells clear and send downspouts away from the walls. Then check the plumbing. A clear lateral drains better in a storm. A sump pump with a battery backup handles groundwater. If sewer water has come up the floor drain before, a backflow valve or overhead sewer is the protection that actually keeps it out. In a building with a garden unit, that last step matters most.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Milana Weil",
+      "url": null,
+      "text": "Fantastic service! J. Blanton Plumbing provided same day service when our bathroom was flooding due to a faulty pipe. Anthony went above and beyond, and did not leave our home until the issue was resolved. He was professional, pleasant and communicative throughout the process and provided the best experience we have had in a long time. It's safe to say that we will continue to use the services of J. [...]"
+     },
+     {
+      "name": "Lorraine",
+      "url": null,
+      "text": "The No Drip club has been the best decision for our house ever! JB helps when things are going wrong but more importantly their proactive approach to service has saved us from some really poopy situations."
+     },
+     {
+      "name": "Linda L",
+      "url": null,
+      "text": "Matt W came out and worked a big job (water softener and sump pump) efficiently and with great attitude and humor! Ho got everything done quickly and was very informative"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Is it sewer water or groundwater?",
+      "preview": "Where it enters tells you.",
+      "answer": "Through the floor drain is usually sewer water. At the walls is groundwater."
+     },
+     {
+      "q": "We flooded in 2011. Could it happen again?",
+      "preview": "Yes, without protection.",
+      "answer": "Yes. Big storms will keep coming. Protection is what changes the outcome."
+     },
+     {
+      "q": "Do you remove water and dry the basement?",
+      "preview": "We fix the cause. A restoration company dries it.",
+      "answer": "We fix the plumbing cause. A restoration company handles drying."
+     },
+     {
+      "q": "What's the best protection for a garden unit?",
+      "preview": "An overhead sewer for repeat backups.",
+      "answer": "For repeat sewer backups, an overhead sewer. For groundwater, a sump pump with a backup."
+     },
+     {
+      "q": "Do older basements need different protection?",
+      "preview": "The same tools, planned around old walls.",
+      "answer": "The same tools work. We just plan the installation around old foundations."
+     },
+     {
+      "q": "How much does basement flooding repair cost in Ravenswood?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on the cause and what's needed. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Water in the Basement? Call Us Now.",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Ravenswood, Chicago",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/basement-flooding",
+   "description": "Basement and garden unit flooding help in Ravenswood, Chicago. We find the source, fix it and help protect the space. Open 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Ravenswood, Chicago",
+ "metaDescription": "Basement and garden unit flooding help in Ravenswood, Chicago. We find the source, fix it and help protect the space. Open 24/7."
+}

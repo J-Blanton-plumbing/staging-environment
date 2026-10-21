@@ -1,0 +1,350 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewer Systems in Lincoln Park, Chicago",
+   "sub": "If your basement or garden unit floods every time a big storm hits, an overhead sewer keeps sewer water out for good. We install them in Lincoln Park houses and small buildings. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Does Your Lincoln Park Home Need an Overhead Sewer?",
+    "intro": "Consider one when:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Backups Come With Storms",
+      "body": "Not on dry days."
+     },
+     {
+      "h3": "Your Line Is Clear on Camera",
+      "body": "And it still backs up."
+     },
+     {
+      "h3": "Someone Lives or Works Below Grade",
+      "body": "A garden unit or finished basement."
+     },
+     {
+      "h3": "You're Renovating the Lower Level",
+      "body": "Protect it before the finishes go in."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "split",
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "Every drain below the street sewer's flow line, like your floor drain, a basement bathroom, or a laundry line, normally relies on gravity to reach the sewer. An overhead sewer system reroutes those drains into a sump pit instead. An [ejector pump](/chicago-lincoln-park/ejector-pump) lifts that wastewater up to a line above flood level, where a check valve keeps it from flowing back down. From there, gravity carries it the rest of the way to the street sewer, the same as every drain upstairs.",
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Overhead Sewers in Lincoln Park",
+    "intro": "According to MWRD, two-thirds of an inch of rain in an hour can overwhelm Chicago's combined sewers. In July 2023, the McCook Reservoir filled to capacity.",
+    "items": [
+     {
+      "h3": "Garden Units",
+      "body": "Below-grade apartments in two-flats and three-flats are the most exposed spaces in the neighborhood."
+     },
+     {
+      "h3": "Tight Basements",
+      "body": "Low ceilings and old foundations take careful planning."
+     },
+     {
+      "h3": "Camera the Line First",
+      "body": "A blocked lateral can cause backups too. A [sewer repair](/chicago-lincoln-park/sewer-repair) may be the fix."
+     },
+     {
+      "h3": "Condo Approvals",
+      "body": "We provide the plan and footage boards need to decide."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Backflow Valve vs. Standpipe",
+    "intro": "Three common options in Chicago:",
+    "head": [
+     "",
+     "Standpipe",
+     "Backflow Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "What it does",
+      "Raises the floor drain opening",
+      "Closes when flow reverses",
+      "Lifts all basement wastewater above flood level"
+     ],
+     [
+      "Best for",
+      "Light, occasional backups",
+      "Moderate risk",
+      "Repeat backups and living space below grade"
+     ],
+     [
+      "Basement fixtures",
+      "Not protected",
+      "Partly protected",
+      "Fully protected"
+     ]
+    ],
+    "note": "We'll tell you which ones your basement needs."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Every conversion starts with your line.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "Rule out a simpler fix."
+     },
+     {
+      "h3": "2. Plan for Your Basement",
+      "body": "Pit, pump and piping placed carefully."
+     },
+     {
+      "h3": "3. Flat Price, Water-Tested",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Markie Waymire",
+      "url": null,
+      "text": "Scott was so helpful and easy to work with! He was so patient and thorough in explaining our options! And Walter loved him!"
+     },
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Betty Knows",
+      "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+      "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Can a garden unit bathroom work with an overhead sewer?",
+      "preview": "Yes.",
+      "answer": "Yes. The bathroom, kitchen and floor drains all empty into the new pit, and the pump lifts the wastewater out."
+     },
+     {
+      "q": "What's a standpipe?",
+      "preview": "A sealed pipe that raises the floor drain opening.",
+      "answer": "A standpipe is a sealed pipe in the floor drain that raises the opening above backup level. It's a simple fix for light backups, but it doesn't protect basement fixtures."
+     },
+     {
+      "q": "Does an overhead sewer stop seepage?",
+      "preview": "No. That's a different problem.",
+      "answer": "No. It stops sewer backups. Water seeping through walls or the floor is a groundwater or foundation issue."
+     },
+     {
+      "q": "How long does installation take?",
+      "preview": "Usually a few days.",
+      "answer": "Usually a few days, depending on the layout and fixtures."
+     },
+     {
+      "q": "Will an overhead sewer work in a condo building?",
+      "preview": "Yes, with association approval.",
+      "answer": "Yes. Because it changes shared plumbing, the association usually approves it."
+     },
+     {
+      "q": "How much does an overhead sewer cost in Lincoln Park?",
+      "preview": "It depends on your basement. You'll approve a flat price first.",
+      "answer": "It depends on the sewer depth, layout, fixtures and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Protect Your Basement?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewer Systems in Lincoln Park, Chicago",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/overhead-sewer-systems",
+   "description": "Overhead sewer installation for Lincoln Park homes and two-flats with storm backups. Camera first, a plan and a flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewers in Lincoln Park, Chicago",
+ "metaDescription": "Overhead sewer installation for Lincoln Park homes and two-flats with storm backups. Camera first, a plan and a flat price."
+}

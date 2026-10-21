@@ -1,0 +1,325 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Lincoln Park, Chicago",
+   "sub": "A shower that drips, swings hot and cold or is leaking into the ceiling below. We repair shower valves and find leaks before they damage a neighbor's unit. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Drips",
+      "body": "A worn cartridge or washers."
+     },
+     {
+      "h3": "Hot and Cold Swings",
+      "body": "A worn balancing valve."
+     },
+     {
+      "h3": "Weak Spray",
+      "body": "A clogged head or old pipe."
+     },
+     {
+      "h3": "A Ceiling Stain Below",
+      "body": "A leak at the valve or drain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Lincoln Park Homes",
+    "intro": "Many Lincoln Park showers are stacked over someone else's ceiling.",
+    "items": [
+     {
+      "h3": "Leaks Into Units Below",
+      "body": "We find the source quickly to limit damage downstairs."
+     },
+     {
+      "h3": "Older Two-Handle Valves",
+      "body": "We rebuild them or replace them with pressure-balancing valves."
+     },
+     {
+      "h3": "Original Tile",
+      "body": "We work through the trim whenever possible."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find the leak before opening the wall.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Through the trim when possible."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No drips."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "using-access-panels-to-avoid-tile-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Access",
+    "h2": "Using Access Panels to Avoid Tile Work",
+    "body": "Many Lincoln Park bathrooms have an access panel in a closet or hallway behind the shower wall. When there is one, we can reach the valve and pipes without touching the tile. When there isn't, we work through the valve opening in the shower wall. If a repair needs more room, we'll tell you before we cut, and suggest adding a panel so future work is easier.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-shower-repair",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Shower Repair",
+    "body": "A cartridge swap is quick. Replacing an older valve costs more, especially without an access panel. Finding a leak into the unit below may need testing. We diagnose and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Jack Ehlert",
+      "url": null,
+      "text": "Thanks Christian for such a great maintenance! Flushing our water heater and going above and beyond rodding out our tub!"
+     },
+     {
+      "name": "Jan Berkson",
+      "url": null,
+      "text": "John Hogan arrived on time and provided great service. He gave me an estimate before starting, was very thorough and tidy and even gave me good information about what might be needed in the near future to further address the situation with my bathtub drain. Very knowledgeable, courteous and friendly- instills confidence!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Is my shower leaking into the unit below?",
+      "preview": "We test the valve, drain and tile.",
+      "answer": "If there's a stain below, we test the valve, the drain and the tile and grout to find the source."
+     },
+     {
+      "q": "Can you replace an old two-handle valve?",
+      "preview": "Yes.",
+      "answer": "Yes, with a single-handle pressure-balancing valve and a trim plate that covers the old openings."
+     },
+     {
+      "q": "Why does my shower turn hot when someone flushes?",
+      "preview": "No balancing valve.",
+      "answer": "Older valves don't balance pressure. A new valve fixes it."
+     },
+     {
+      "q": "Can you fix a drip without opening the wall?",
+      "preview": "Usually.",
+      "answer": "Usually, through the trim."
+     },
+     {
+      "q": "Can you add an access panel?",
+      "preview": "Yes.",
+      "answer": "Yes, where a wall behind the shower allows it."
+     },
+     {
+      "q": "Can you fix low pressure in an upper-floor shower?",
+      "preview": "Often.",
+      "answer": "Often, by clearing scale or replacing a worn cartridge. Sometimes the supply pipe is the cause."
+     },
+     {
+      "q": "How much does shower repair cost in Lincoln Park?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-lincoln-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Lincoln Park, Chicago",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/shower-repair",
+   "description": "Shower repair in Lincoln Park, Chicago. Drips, temperature swings and leaks into the unit below fixed, with a flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Lincoln Park, Chicago",
+ "metaDescription": "Shower repair in Lincoln Park, Chicago. Drips, temperature swings and leaks into the unit below fixed, with a flat price first."
+}

@@ -1,0 +1,324 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Hinsdale, IL",
+   "sub": "A shower that drips, swings from hot to cold or has lost pressure in one of its sprays. We repair shower valves and fixtures, including multi-head and steam showers, and find leaks before they damage the room below. Our office is on Spinning Wheel Road.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Constant Drip",
+      "body": "A worn valve cartridge."
+     },
+     {
+      "h3": "Temperature Swings",
+      "body": "A worn pressure-balancing or thermostatic cartridge."
+     },
+     {
+      "h3": "Weak Body Sprays or Rain Heads",
+      "body": "Scale or a failing diverter."
+     },
+     {
+      "h3": "A Stain Below the Shower",
+      "body": "A leak at the valve, drain or pan."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hinsdale-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Hinsdale Homes",
+    "intro": "Hinsdale bathrooms range from original tile to custom spa showers.",
+    "items": [
+     {
+      "h3": "Custom Showers With Several Valves",
+      "body": "Multi-head systems use thermostatic valves and diverters that need specific parts."
+     },
+     {
+      "h3": "Steam Showers",
+      "body": "Steam generators need regular maintenance, and their drain and water lines need care."
+     },
+     {
+      "h3": "Leaks Through Old Plaster",
+      "body": "In older homes, a shower leak can show as a stain or bulge in the plaster below. We find the source first."
+     },
+     {
+      "h3": "Tub-to-Shower Conversions",
+      "body": "Many older baths are being converted to walk-in showers. We move the drain, set the new valve and connect the fixtures."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We find the problem without tearing out tile when we can.",
+    "steps": [
+     {
+      "h3": "1. Diagnose Through the Trim",
+      "body": "Most valve repairs don't need the wall opened."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Approved before we start."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No drips, steady temperature, full spray."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-shower-repair",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Shower Repair",
+    "body": "A cartridge or seal replacement is usually quick. Multi-head showers, thermostatic valves and steam units take more time to diagnose and repair. Working behind stone or tile adds labor. We diagnose first and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "nil golan",
+      "url": null,
+      "text": "I really like the service very nice people highly recommended"
+     },
+     {
+      "name": "Yao Hemming",
+      "url": null,
+      "text": "Great experience with Ron! He is very friendly and professional. He walked us through the process and options for our problem and did a great job! Very excited to use our bathtub again! Thank you very much!"
+     },
+     {
+      "name": "Thomas Fahey",
+      "url": null,
+      "text": "Christian was fantastic, appreciate his hard work & expertise. Even installed a shower head for us at no charge"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Questions From Hinsdale Homeowners",
+    "items": [
+     {
+      "q": "Do you repair steam showers?",
+      "preview": "We service the plumbing side.",
+      "answer": "Yes, we service the water supply, drain and generator connections. Electrical or control board issues may need the manufacturer's service."
+     },
+     {
+      "q": "Can you fix a leak without removing tile?",
+      "preview": "Usually, if it's the valve.",
+      "answer": "Usually. Most valve repairs go through the trim. Leaks in the pan or behind the tile may need more."
+     },
+     {
+      "q": "Why does my shower turn hot when someone runs water elsewhere?",
+      "preview": "A worn balancing cartridge.",
+      "answer": "The pressure-balancing or thermostatic cartridge is worn. Replacing it usually solves it."
+     },
+     {
+      "q": "Can you replace an old shower valve during a remodel?",
+      "preview": "Yes.",
+      "answer": "Yes. We install new valves, diverters and body spray lines as part of a remodel."
+     },
+     {
+      "q": "Why is there a stain on the ceiling under our shower?",
+      "preview": "A leak at the valve, drain or pan.",
+      "answer": "A leak at the valve, the drain or the shower pan. We test each one before anything is opened."
+     },
+     {
+      "q": "Can you install a steam shower?",
+      "preview": "We handle the plumbing.",
+      "answer": "We handle the water supply and drain. The generator and enclosure come from the shower supplier."
+     },
+     {
+      "q": "Can you add body sprays to my shower?",
+      "preview": "Often, with the right valve.",
+      "answer": "Often, if the supply and valve can handle the extra flow."
+     },
+     {
+      "q": "How much does shower repair cost in Hinsdale?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hinsdale",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/hinsdale/sewer-repair",
+      "desc": "Camera inspections, root removal and repairs for older clay and cast iron sewer lines.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hinsdale/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/hinsdale/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hinsdale/leak-repairs",
+      "desc": "Hidden leaks behind plaster, tile and finished ceilings, found and fixed with as little damage as possible.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hinsdale/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/hinsdale/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hinsdale/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Hinsdale office is at 15 Spinning Wheel Rd, Suite 216A, and our phone line is open 24/7.",
+    "communities": "We also serve [Clarendon Hills](/clarendon-hills), [Western Springs](/western-springs), [Burr Ridge](/burr-ridge), [Oak Brook](/oak-brook), [Willowbrook](/willowbrook), [Westmont](/westmont), [La Grange](/la-grange) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Hinsdale, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/hinsdale/shower-repair",
+   "description": "Shower repair in Hinsdale, IL. Leaking valves, temperature swings, body sprays and steam showers repaired with care. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hinsdale",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hinsdale",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 Spinning Wheel Rd, Suite 216A",
+     "addressLocality": "Hinsdale",
+     "addressRegion": "IL",
+     "postalCode": "60521",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hinsdale, IL",
+    "Clarendon Hills, IL",
+    "Western Springs, IL",
+    "Burr Ridge, IL",
+    "Oak Brook, IL",
+    "Willowbrook, IL",
+    "Westmont, IL",
+    "La Grange, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Hinsdale, IL",
+ "metaDescription": "Shower repair in Hinsdale, IL. Leaking valves, temperature swings, body sprays and steam showers repaired with care. Flat price first."
+}

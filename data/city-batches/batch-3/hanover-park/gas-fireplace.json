@@ -1,0 +1,353 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in Hanover Park, IL",
+   "sub": "A pilot that won't stay lit, a fireplace that clicks but won't light or an insert you'd like to add. We repair and service gas fireplaces and handle the gas line work. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Hanover Park Gas Fireplace Problems",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pilot Won't Stay Lit",
+      "body": "A dirty pilot or weak thermocouple."
+     },
+     {
+      "h3": "It Clicks but Won't Light",
+      "body": "An igniter or gas valve."
+     },
+     {
+      "h3": "Soot on the Glass",
+      "body": "A dirty or poorly set flame."
+     },
+     {
+      "h3": "You Want an Insert",
+      "body": "Gas line and valve."
+     },
+     {
+      "h3": "You Smell Gas",
+      "body": "Leave, then call Nicor Gas or 911."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Services in Hanover Park",
+    "intro": "We handle:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Pilots, thermocouples, valves and igniters."
+     },
+     {
+      "h3": "Yearly Service",
+      "body": "Cleaning and leak testing."
+     },
+     {
+      "h3": "Gas Lines",
+      "body": "See [gas line installation](/hanover-park/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Fireplaces in Hanover Park Homes",
+    "intro": "Many homes here have factory-built fireplaces from the original build.",
+    "items": [
+     {
+      "h3": "Factory-Built Units",
+      "body": "Parts are model-specific. We'll find what fits."
+     },
+     {
+      "h3": "Direct-Vent Inserts",
+      "body": "A popular upgrade for older wood fireplaces."
+     },
+     {
+      "h3": "Carbon Monoxide Detectors",
+      "body": "Keep one near every sleeping area."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Licensed gas work.",
+    "steps": [
+     {
+      "h3": "1. Test First",
+      "body": "Replace only what failed."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Leak-Tested",
+      "body": "Every fitting."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "factory-built-vs-masonry-fireplaces",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Know Your Fireplace",
+    "h2": "Factory-Built vs. Masonry Fireplaces",
+    "body": "Many Hanover Park homes have factory-built fireplaces, a metal firebox framed into the wall with a metal chimney, instead of a brick fireplace. They're designed for specific log sets and parts, so the model number matters. Look for a label inside the firebox or behind the lower grille. Give us that number when you call, and we'll come with the right parts or tell you what can be safely installed.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-fireplace-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Fireplace Work",
+    "body": "A service visit is simple. Replacing a failed part depends on the part and the fireplace model, since factory-built units often need specific components. Adding a gas line for an insert depends on the route. We diagnose and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "j smith",
+      "url": null,
+      "text": "Communication, information and installation went great. Price was very competitive. Shane explained everything extremely well and Alex installed hot water tank beautifully. Shortly after Alex left a gas leak from an old valve on the piping to the tank occurred and needed to be replaced, Alex came back same night and fixed it. This is a 5-Star company."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Anthony Kamykowski",
+      "url": null,
+      "text": "Needed a gas leak repair. Ty did an excellent job. He was thorough, professional, and knowledgeable. Seems like an honest company!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Why won't my pilot stay lit?",
+      "preview": "A dirty pilot or weak thermocouple.",
+      "answer": "Usually a dirty pilot or a weak thermocouple."
+     },
+     {
+      "q": "Can you add a gas insert to my wood fireplace?",
+      "preview": "Often.",
+      "answer": "Often. We run the gas line and connect the insert. A chimney specialist handles any liner work."
+     },
+     {
+      "q": "Why is there soot on the glass?",
+      "preview": "A dirty or poorly set flame.",
+      "answer": "Usually a dirty burner or logs out of position."
+     },
+     {
+      "q": "When should I service my fireplace?",
+      "preview": "Early fall.",
+      "answer": "Early fall, before the first cold night."
+     },
+     {
+      "q": "Can I burn wood in a factory-built fireplace?",
+      "preview": "Only if it's rated for wood.",
+      "answer": "Only if the manufacturer rates it for wood. Many are gas-only. Check the label."
+     },
+     {
+      "q": "Why does my fireplace turn off after a few minutes?",
+      "preview": "Often a thermocouple or thermopile.",
+      "answer": "Often a weak thermocouple or thermopile, or a dirty pilot. We'll test and replace what failed."
+     },
+     {
+      "q": "How much does gas fireplace repair cost in Hanover Park?",
+      "preview": "It depends on the part. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of fireplace. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Fireplace That Lights?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in Hanover Park, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/hanover-park/gas-fireplace",
+   "description": "Gas fireplace repair and service in Hanover Park, IL. Pilots, valves and igniters fixed, gas lines run and every fitting leak-tested.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair in Hanover Park, IL",
+ "metaDescription": "Gas fireplace repair and service in Hanover Park, IL. Pilots, valves and igniters fixed, gas lines run and every fitting leak-tested."
+}

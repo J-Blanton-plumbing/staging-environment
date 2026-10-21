@@ -1,0 +1,368 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Line Maintenance in Evanston, IL",
+   "sub": "Old clay laterals and big trees mean roots will come back. A maintenance schedule clears them before they cause a backup, and costs a lot less than cleaning up a flooded basement. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why Maintain",
+    "h2": "Does Your Evanston Line Need a Schedule?",
+    "intro": "It makes sense if:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "You've Had Root Clogs",
+      "body": "They'll return."
+     },
+     {
+      "h3": "A Big Tree Is Near the Line",
+      "body": "Parkway or backyard."
+     },
+     {
+      "h3": "The Basement Is Finished",
+      "body": "A backup costs more."
+     },
+     {
+      "h3": "The Lateral Is Original",
+      "body": "Clay from the early 1900s."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "table",
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Plan Ahead",
+    "h2": "Suggested Service Intervals",
+    "intro": "A starting point we adjust after the camera:",
+    "head": [
+     "Your Line",
+     "Suggested Schedule"
+    ],
+    "rows": [
+     [
+      "Clay with a root history",
+      "Rod or jet yearly"
+     ],
+     [
+      "Cast iron with scale",
+      "Jet every 1 to 2 years"
+     ],
+     [
+      "No problems so far",
+      "Camera check every few years"
+     ],
+     [
+      "Recently lined",
+      "Camera check after a few years"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance and Evanston Storms",
+    "intro": "The entire city is served by combined sewers, which carry storm water and wastewater in the same pipe.",
+    "items": [
+     {
+      "h3": "Full City Sewers Push Back",
+      "body": "A partly blocked lateral backs up faster when the main is full."
+     },
+     {
+      "h3": "Relief Sewers Help, Laterals Still Matter",
+      "body": "The city added relief capacity from 1991 to 2008. Your lateral is still yours to keep clear."
+     },
+     {
+      "h3": "Late Winter Timing",
+      "body": "Before roots grow and spring storms arrive."
+     },
+     {
+      "h3": "Protection Check",
+      "body": "We test backflow valves and [overhead sewer systems](/evanston/overhead-sewer-systems) on the same visit."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/evanston/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/evanston/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/evanston/sewer-rodding) or [Hydro Jetting](/evanston/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/evanston/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Maintenance Plans Work",
+    "intro": "Based on footage, not guesswork.",
+    "steps": [
+     {
+      "h3": "1. Scope It",
+      "body": "See what's there."
+     },
+     {
+      "h3": "2. Rod or Jet",
+      "body": "Whatever the line needs."
+     },
+     {
+      "h3": "3. Set a Schedule",
+      "body": "Interval and price up front."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kerry Reyes",
+      "url": null,
+      "text": "Joey helped a lot . Took care of our annual maintenance and a drain problem quickly. Great service!"
+     },
+     {
+      "name": "Nick Peacock",
+      "url": null,
+      "text": "Christian came out for a maintenance check and did a great job."
+     },
+     {
+      "name": "Martel Dunigan",
+      "url": null,
+      "text": "Meet Christian today after signing my no drip contract with the company! Definitely a great guy."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "How often should I service my sewer line?",
+      "preview": "Yearly if roots are a problem.",
+      "answer": "If you've had root clogs, yearly. If not, a camera check every few years is enough."
+     },
+     {
+      "q": "Does maintenance prevent storm backups?",
+      "preview": "It helps. Protection devices do more.",
+      "answer": "A clear line drains better. When the combined sewer is full, a backflow valve or overhead sewer is what keeps water out."
+     },
+     {
+      "q": "Is it better to rod or jet?",
+      "preview": "Jetting lasts longer on grease and fine roots.",
+      "answer": "Rodding is fine for routine root cutting. Jetting cleans the walls and usually lasts longer."
+     },
+     {
+      "q": "Is maintenance part of the No Drip Club?",
+      "preview": "The club includes regular maintenance visits.",
+      "answer": "The [No Drip Club](/no-drip-club) includes regular maintenance visits for homeowners."
+     },
+     {
+      "q": "Should I add a cleanout?",
+      "preview": "If you don't have an outside one, it helps.",
+      "answer": "If you don't have an outside cleanout, adding one makes every future service faster and cleaner."
+     },
+     {
+      "q": "How much does sewer maintenance cost in Evanston?",
+      "preview": "It depends on the service. You'll approve a flat price first.",
+      "answer": "It depends on whether the line needs rodding, jetting or a camera check. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Stay Ahead of Your Sewer?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Line Maintenance in Evanston, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/evanston/sewer-maintenance",
+   "description": "Sewer line maintenance in Evanston, IL. Scheduled rodding, jetting and camera checks for old laterals under big trees. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Evanston, IL",
+ "metaDescription": "Sewer line maintenance in Evanston, IL. Scheduled rodding, jetting and camera checks for old laterals under big trees. Flat price."
+}

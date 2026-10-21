@@ -1,0 +1,367 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Faucet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Faucet Repair and Installation in Hanover Park, IL",
+   "sub": "A faucet that drips all night, a kitchen faucet that's seen better days or new fixtures for a remodel. We repair and install faucets and fixtures in Hanover Park homes. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/faucet-installation-bathroom-sink.webp",
+    "alt": "J. Blanton plumber in branded red leather gloves installing a new chrome faucet on a white bathroom sink with an adjustable wrench"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call About a Faucet",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Drips",
+      "body": "A worn cartridge or washer."
+     },
+     {
+      "h3": "Weak Flow",
+      "body": "A clogged aerator."
+     },
+     {
+      "h3": "Water Under the Sink",
+      "body": "A loose connection."
+     },
+     {
+      "h3": "The Shutoff Won't Turn",
+      "body": "Original valves seize."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-faucet",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Kitchen Faucets",
+    "h2": "Kitchen Faucet Repair and Installation",
+    "bodies": [
+     "We repair and install kitchen faucets, from basic models to pull-downs and touchless faucets.",
+     "We replace old shutoffs and supply lines at the same time."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-plumbing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Plumbing",
+    "h2": "Kitchen Plumbing Services",
+    "bodies": [
+     "We handle sink drains, shutoffs, dishwasher hookups, ice maker lines and [garbage disposals](/hanover-park/garbage-disposal-installation-repair).",
+     "Remodeling? We'll handle the plumbing for a new layout."
+    ],
+    "img": {
+     "src": "/images/city-services-v2/kitchen-sink-drain-plumbing.webp",
+     "alt": "Plumbing under a double kitchen sink: white PVC drain and P-trap, braided supply lines with chrome shutoff valves, and a garbage disposal"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "fixture-installation",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Fixture Installation",
+    "h2": "Plumbing Fixture Installation",
+    "bodies": [
+     "We install sinks, faucets, toilets and showerheads, and check the shutoffs while we're there.",
+     "Replacing several fixtures? We'll plan one visit."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-fixtures",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "eyebrow": "Local Knowledge",
+    "h2": "Faucets and Fixtures in Hanover Park Homes",
+    "intro": "Many homes here are on their second or third set of fixtures.",
+    "items": [
+     {
+      "h3": "Original Shutoff Valves",
+      "body": "Valves from the '70s and '80s often seize. We replace them during the job."
+     },
+     {
+      "h3": "Remodel Upgrades",
+      "body": "New faucets on old supply lines."
+     },
+     {
+      "h3": "Quality Matters",
+      "body": "We'll tell you if a faucet is worth repairing."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "The right fix.",
+    "steps": [
+     {
+      "h3": "1. Repair or Replace",
+      "body": "Explained."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Leak-Tested",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "tips-before-buying-a-new-faucet",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Before You Buy",
+    "h2": "Tips Before Buying a New Faucet",
+    "body": "Count the holes in your sink or countertop before shopping. A one-hole faucet can cover three holes with a deck plate, but not the other way around. Check the spread on bathroom faucets, usually 4 or 8 inches. Look for a brand that sells replacement cartridges, so a future drip is a simple repair. And if your shutoff valves are original to the house, plan to replace them at the same time. We can do it all in one visit.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-faucet-work",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Faucet Work",
+    "body": "A cartridge replacement is quick. A new faucet takes longer if the old one is corroded in place or the shutoffs need replacing. Kitchen faucets with sprayers or filters add a few steps. We check first and give you one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "Customer Stories",
+    "h2": "Faucet and Fixture Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Alejandro Aixala",
+      "url": null,
+      "text": "5/1/25 We've been working with J Blanton for 5+ years now and are very happy with our experience. Our most recent technician was Lawrence Wagner who did an excellent job helping us with a clogged kitchen sink. Fixing it and then recommending the best way for us to maintain it from clogging again. He was very efficient and explained everything well."
+     },
+     {
+      "name": "Nivaldo Eduardo",
+      "url": null,
+      "text": "Brandon was friendly, knowledgeable, professional and fast. He replaced my toilet and water valve efficiently. Thanks for all your help."
+     },
+     {
+      "name": "Sandra Plasencia",
+      "url": null,
+      "text": "Christian and Julian did a great job today on my maintenance visit! Even went above and beyond to rod my bathroom sink!! Thank you so much !!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 100,
+    "eyebrow": "Got Questions?",
+    "h2": "Faucet Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Should I repair or replace my faucet?",
+      "preview": "If parts are available, repair is often cheaper.",
+      "answer": "If it's a quality faucet with parts available, repair. If it's worn out, replace it."
+     },
+     {
+      "q": "Can you install a faucet I bought?",
+      "preview": "Yes.",
+      "answer": "Yes, if it's complete and fits the sink."
+     },
+     {
+      "q": "Why is my faucet's flow weak?",
+      "preview": "Usually a clogged aerator.",
+      "answer": "Usually debris or scale in the aerator."
+     },
+     {
+      "q": "Should I replace the shutoffs?",
+      "preview": "If they're original, yes.",
+      "answer": "If they're original or stiff, yes."
+     },
+     {
+      "q": "Can you fix a pull-down faucet that won't retract?",
+      "preview": "Usually.",
+      "answer": "Usually. The weight on the hose may have slipped, or the hose is catching under the sink."
+     },
+     {
+      "q": "Can you replace a bathroom vanity faucet?",
+      "preview": "Yes.",
+      "answer": "Yes, including the drain assembly if needed."
+     },
+     {
+      "q": "How much does faucet repair cost in Hanover Park?",
+      "preview": "It depends on the faucet. You'll approve a flat price first.",
+      "answer": "It depends on the faucet and what's wrong. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 110,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 120,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 130,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Faucet?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Faucet Repair and Installation in Hanover Park, IL",
+   "serviceType": "Faucet Installation & Repair",
+   "url": "https://jblantonplumbing.com/hanover-park/faucet-installation-repair",
+   "description": "Faucet repair and installation in Hanover Park, IL. Drips stopped, new faucets installed and old shutoffs replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Faucet Repair & Installation in Hanover Park",
+ "metaDescription": "Faucet repair and installation in Hanover Park, IL. Drips stopped, new faucets installed and old shutoffs replaced. Flat price first."
+}

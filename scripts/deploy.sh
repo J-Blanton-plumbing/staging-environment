@@ -1044,6 +1044,20 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 #    Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-216-hub-reviews-gbp.ts commit --changed-file .city-pages-snapshot/changed.txt
+# 5. Brief 216 (Track D): publish City Pages Batch 3 (Mokena, Hinsdale, Skokie,
+#    Lincoln Park, Elmhurst, Ravenswood, Evanston, Hanover Park: 8 hubs + 232
+#    service pages) from data/city-batches/batch-3, exactly as step 3 does for
+#    Batch 2: every gate re-runs, any failure writes NOTHING; per page archive
+#    (every column verbatim) -> City Hub switch (Evanston: local-office,
+#    Hanover Park: local-office-v3, the rest coverage-area) -> "Version 1 - ..."
+#    -> publish. Missing service rows (Mokena's leak-repairs, plumbing-
+#    maintenance, sewage-line-backup-services, video-camera-sewer-inspections)
+#    are created and published in the same run, each printed as CREATED.
+#    Write-once; the cities it publishes go to changed.txt. Pre-swap (Brief
+#    171). Exit 1 only when a write did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/import-city-batch.ts --from-json data/city-batches/batch-3 --publish --create-missing --brief=216 \
+  --changed-file .city-pages-snapshot/changed.txt
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

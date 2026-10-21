@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Elmhurst, IL",
+   "sub": "A tank that rumbles and pops, hot water that runs out halfway through a shower or water on the floor. We find what failed, tell you whether it's worth fixing and give you a flat price first. Our office is on York Street, downtown. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Elmhurst Water Heater Needs Help",
+    "intro": "Most repair calls look like this:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Rumbling and Popping",
+      "body": "Scale and sediment on the bottom of the tank."
+     },
+     {
+      "h3": "Hot Water Doesn't Last",
+      "body": "Sediment taking up space, or a failing burner or element."
+     },
+     {
+      "h3": "A Puddle at the Base",
+      "body": "A valve leak is fixable. A tank leak isn't."
+     },
+     {
+      "h3": "No Hot Water at All",
+      "body": "A pilot, igniter or thermostat that failed."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Elmhurst Homes",
+    "intro": "Elmhurst's water is Lake Michigan water from the DuPage Water Commission, and the city reports its hardness at about 8 grains per gallon.",
+    "items": [
+     {
+      "h3": "Scale Builds Up Over Time",
+      "body": "At that hardness, minerals settle in the tank every year. A yearly flush keeps it in check."
+     },
+     {
+      "h3": "Chimney Venting in Postwar Homes",
+      "body": "Many gas heaters still vent into the original chimney. We check the draft every time."
+     },
+     {
+      "h3": "Tight Older Basements",
+      "body": "Low ceilings and narrow stairs matter when a heater has to come out."
+     },
+     {
+      "h3": "Tankless Units Need Descaling",
+      "body": "Hardness affects tankless heat exchangers too."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We repair gas and electric tank heaters, power-vent units and tankless heaters in Elmhurst homes. We test first, then recommend.",
+     "When you call, read us the label: fuel, size and date. If it's time for a new one, see [water heater installation](/elmhurst/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "With Elmhurst's hard water, a yearly flush makes a real difference. We drain the sediment, test the relief valve, check the anode rod and inspect the burner or elements and venting.",
+     "Tankless units get descaled on a schedule. If your heater has never been flushed, start here."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Diagnose first, price second.",
+    "steps": [
+     {
+      "h3": "1. Test Every Part",
+      "body": "Before we talk about cost."
+     },
+     {
+      "h3": "2. Repair or Replace, Explained",
+      "body": "Both options when the heater is near the end."
+     },
+     {
+      "h3": "3. Venting Checked",
+      "body": "Every time."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mike Olsa",
+      "url": null,
+      "text": "We had our water heater leak and Kyle from J Blanton came and installed a tankless system in only a few hours. It works amazing and he was very fast and thorough. Thanks for the great job Kyle."
+     },
+     {
+      "name": "Dennis Williams",
+      "url": null,
+      "text": "Michael was very professional installer had leak and replaced water heater. He kept me updated on his progress. Very helpful"
+     },
+     {
+      "name": "Jorge De La Vega",
+      "url": null,
+      "text": "Christian was fantastic l! He’s been here a few times for no drip club visits and he’s the man! Did our tankless water heater maintenance and was friendly and efficient, highly recommend 🙌🏼"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Why does my water heater pop and rumble?",
+      "preview": "Sediment from hard water.",
+      "answer": "Sediment on the bottom of the tank traps water that boils as the burner fires. With Elmhurst's hardness, it builds up over time. Flushing helps."
+     },
+     {
+      "q": "Do I need emergency water heater service?",
+      "preview": "If it's leaking from the tank, yes.",
+      "answer": "If water is coming from the tank itself, shut off the water to it and call us right away. No hot water can usually wait for a scheduled visit."
+     },
+     {
+      "q": "Should I add a water softener?",
+      "preview": "It can help heaters last longer.",
+      "answer": "It can. Softer water means less scale in the heater and on fixtures. See [water filtration and softeners](/elmhurst/water-filtration-systems)."
+     },
+     {
+      "q": "How long do water heaters last in Elmhurst?",
+      "preview": "About 8 to 12 years.",
+      "answer": "Usually somewhere around 8 to 12 years. Yearly flushing helps them reach the longer end."
+     },
+     {
+      "q": "Why is my hot water rusty?",
+      "preview": "Usually the tank or anode rod.",
+      "answer": "Usually a corroding tank or a worn anode rod. If only the hot side is rusty, the heater is the likely cause."
+     },
+     {
+      "q": "How much does water heater repair cost in Elmhurst?",
+      "preview": "It depends on the part. You'll approve a flat price first.",
+      "answer": "It depends on what failed and the type of heater. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Elmhurst, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/elmhurst/water-heater-repair",
+   "description": "Water heater repair in Elmhurst, IL. Scale, leaks, no hot water and pilot problems diagnosed first, with a flat price. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Elmhurst, IL",
+ "metaDescription": "Water heater repair in Elmhurst, IL. Scale, leaks, no hot water and pilot problems diagnosed first, with a flat price. Call 24/7."
+}

@@ -1,0 +1,380 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Evanston, IL",
+   "sub": "Water pouring from a ceiling, a pipe that split overnight or a faucet that won't run in a cold snap. Shut off the water and call us. Our line is open 24/7. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "If a Pipe Bursts",
+    "intro": "Do these first:",
+    "steps": [
+     {
+      "h3": "1. Shut Off the Main",
+      "body": "Usually in the basement."
+     },
+     {
+      "h3": "2. Turn Off Power Nearby",
+      "body": "If it's safe."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "To drain the lines."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Any time."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "Look for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Through a Ceiling",
+      "bullets": [
+       "Under a bath or kitchen."
+      ]
+     },
+     {
+      "h3": "Pressure Drops Suddenly",
+      "bullets": [
+       "Throughout the house."
+      ]
+     },
+     {
+      "h3": "Spreading Stains",
+      "bullets": [
+       "On walls or ceilings."
+      ]
+     },
+     {
+      "h3": "Running Water Sounds",
+      "bullets": [
+       "With nothing on."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "In a cold snap:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Faucet Won't Run",
+      "body": "While others do."
+     },
+     {
+      "h3": "Frost on an Exposed Pipe",
+      "body": "In a crawl space or garage."
+     },
+     {
+      "h3": "Strange Smells From a Drain",
+      "body": "Air can't move through."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Evanston",
+    "intro": "Cold winter wind and older construction make for a few weak spots.",
+    "items": [
+     {
+      "h3": "Exterior Walls",
+      "body": "Pipes in older outside walls often have little insulation."
+     },
+     {
+      "h3": "Crawl Spaces and Additions",
+      "body": "Added rooms are often less protected."
+     },
+     {
+      "h3": "Outdoor Faucets",
+      "body": "If not shut off and drained before winter."
+     },
+     {
+      "h3": "Windy Walls",
+      "body": "Walls that face the wind lose heat fastest on the coldest nights."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, fix the pipe, prevent the next one.",
+    "steps": [
+     {
+      "h3": "1. Fast Response",
+      "body": "24/7."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Before the repair."
+     },
+     {
+      "h3": "3. Prevention Tips",
+      "body": "Before the next freeze."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "getting-an-evanston-home-ready-for-winter",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Before Winter",
+    "h2": "Getting an Evanston Home Ready for Winter",
+    "body": "Shut off outdoor faucets from the inside valve and drain them. Disconnect hoses. Insulate pipes in crawl spaces, unheated porches and outside walls you can reach. Seal drafts near pipes, especially on the windy side of the house. On the coldest nights, open cabinet doors under sinks on outside walls and let a faucet drip. If you'll be away, keep the heat on and ask a neighbor to check in.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Nicole Rose",
+      "url": null,
+      "text": "Tony Z did a great job replacing leaky pipes under my kitchen sink. He checked throughly to make sure the issue was solved. The whole experience was positive. I recommend."
+     },
+     {
+      "name": "Lindsay Campbell",
+      "url": "https://maps.app.goo.gl/PCQiBNvdjfRWhVrAA",
+      "text": "Emanuel and his partner G just did our sewer pipe lining and were absolutely fabulous! They kept me in the loop during service and let me know where things were at every step of the way without being too obtrusive, I work from home and was not disturbed in the slightest while they were working."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "How do I keep pipes from freezing?",
+      "preview": "Heat, open cabinets and a slow drip.",
+      "answer": "Keep the heat up, open cabinets on outside walls and let a faucet drip on the coldest nights."
+     },
+     {
+      "q": "Can I thaw a frozen pipe myself?",
+      "preview": "Gently, never with a flame.",
+      "answer": "Gently with a hair dryer or warm towels. Never use an open flame. If you can't reach it, call us."
+     },
+     {
+      "q": "Does insurance cover burst pipes?",
+      "preview": "Often, for sudden damage.",
+      "answer": "Often. Check with your agent."
+     },
+     {
+      "q": "Can you repair a pipe inside a plaster wall?",
+      "preview": "Yes.",
+      "answer": "Yes. We locate the break and open only what's needed."
+     },
+     {
+      "q": "Do I need to call if a pipe froze but didn't burst?",
+      "preview": "Call if you can't thaw it safely.",
+      "answer": "If you can't reach it or thaw it gently, call. A frozen pipe can split as it thaws."
+     },
+     {
+      "q": "Why did a pipe burst in a room that stays warm?",
+      "preview": "The frozen spot may be elsewhere.",
+      "answer": "The pipe can freeze in a cold wall or crawl space and split where pressure builds, sometimes in a warm room nearby."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Evanston?",
+      "preview": "It depends on the break. You'll approve a flat price first.",
+      "answer": "It depends on where the pipe burst and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Burst Pipe? Call Us Now.",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Evanston, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/evanston/burst-pipe-repair",
+   "description": "Burst and frozen pipe repair in Evanston, IL. Our line is open 24/7. We stop the water, repair the pipe and help prevent the next one.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst Pipe Repair in Evanston, IL",
+ "metaDescription": "Burst and frozen pipe repair in Evanston, IL. Our line is open 24/7. We stop the water, repair the pipe and help prevent the next one."
+}

@@ -1,0 +1,332 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Hanover Park, IL",
+   "sub": "An alarm sounding in the basement, a basement toilet that won't flush or a sewer smell near the pit. We repair and replace ejector pumps in Hanover Park homes. Our office is on Greenbrook Boulevard. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What an Ejector Pump Does",
+    "body": "Fixtures below the sewer line, like a basement bathroom or laundry, drain into a sealed basin. The ejector pump lifts that wastewater into the main line. A float starts it and a check valve stops water from falling back. If one part fails, those fixtures back up.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Ejector Pump Is Failing",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Alarm Sounds",
+      "body": "The basin is too full."
+     },
+     {
+      "h3": "Slow Basement Drains",
+      "body": "The pump can't keep up."
+     },
+     {
+      "h3": "Sewer Smell",
+      "body": "A seal or vent issue."
+     },
+     {
+      "h3": "Constant Running",
+      "body": "A stuck float or bad valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Hanover Park Homes",
+    "intro": "Finished basements with bathrooms are common here.",
+    "items": [
+     {
+      "h3": "Basement Bathrooms",
+      "body": "Many were added after the house was built."
+     },
+     {
+      "h3": "Overhead Sewer Systems",
+      "body": "The pump handles every basement drain."
+     },
+     {
+      "h3": "Wipes and Grease",
+      "body": "The top causes of failure."
+     },
+     {
+      "h3": "Power Outages",
+      "body": "An ejector pump stops without power, so go easy on basement fixtures."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Fix it and explain why.",
+    "steps": [
+     {
+      "h3": "1. Inspect the Basin",
+      "body": "Pump, float, valve, seal and vent."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Water-Test It",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "is-it-the-pump-or-the-system",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Diagnose First",
+    "h2": "Is It the Pump or the System?",
+    "body": "When basement fixtures back up, the pump gets the blame, but it's not always the pump. A stuck float keeps a good pump from starting. A failed check valve lets water fall back so the pump runs nonstop. A clogged vent makes the basin gurgle and smell. Wipes wrapped around the impeller can stall it. We open the basin, test each part and replace only what failed. If the pump is old and worn, we'll tell you that too.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Mike Robb",
+      "url": "https://maps.app.goo.gl/1GJLvNz5PeBxvKku8",
+      "text": "We had an emergency situation on a weekend when our sewer main broke in the basement, and this company was an absolute lifesaver! They responded quickly, offered very reasonable rates, and immediately sent someone out to diagnose the problem. Within no time, they had a crew on-site to tackle the issue."
+     },
+     {
+      "name": "Graham McClure",
+      "url": "https://maps.app.goo.gl/9Z2dPHcr4jAzDott8",
+      "text": "John was very professional and knowledgeable, he quickly helped us drain our flooded basement and left us feeling confident in the work he had done. Confidence is priceless when it comes to plumbing."
+     },
+     {
+      "name": "Dan McCarthy",
+      "url": null,
+      "text": "Professional and on time. Did a good job replacing an ejector pump and a sump pump. Highly recommend and Derek was great to work with!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "My ejector pump alarm is going off. What now?",
+      "preview": "Stop using basement fixtures and call us.",
+      "answer": "Stop using every fixture that drains to the basin and call us."
+     },
+     {
+      "q": "How long do ejector pumps last?",
+      "preview": "Often 7 to 10 years.",
+      "answer": "Often around 7 to 10 years."
+     },
+     {
+      "q": "Can I flush wipes into an ejector system?",
+      "preview": "No.",
+      "answer": "No. Wipes, even flushable ones, are the top cause of pump failure."
+     },
+     {
+      "q": "Why does it smell like sewer near the pit?",
+      "preview": "A seal, vent or dry trap.",
+      "answer": "Usually a worn lid seal, a vent issue or a dry floor drain trap."
+     },
+     {
+      "q": "Can I use the basement bathroom during a power outage?",
+      "preview": "Not much.",
+      "answer": "Not much. The pump can't run, so the basin fills. Go easy until power returns."
+     },
+     {
+      "q": "Can an ejector pump have a battery backup?",
+      "preview": "Some setups can.",
+      "answer": "Some can. Ask us about options for your basin."
+     },
+     {
+      "q": "How much does ejector pump replacement cost in Hanover Park?",
+      "preview": "It depends on the pump and basin. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the basin and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Basement Backed Up? Call Us.",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Hanover Park, IL",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/hanover-park/ejector-pump",
+   "description": "Ejector pump repair and replacement in Hanover Park, IL, for basement bathrooms, laundry and overhead sewers. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair in Hanover Park, IL",
+ "metaDescription": "Ejector pump repair and replacement in Hanover Park, IL, for basement bathrooms, laundry and overhead sewers. Flat price first."
+}

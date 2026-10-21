@@ -1,0 +1,308 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Help in Mokena, IL",
+   "sub": "Water in the basement after a storm, from a failed pump or from a backed-up drain. We find the source, fix it and help make sure it doesn't happen again. From our office on Jodi Road. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Why It Happens",
+    "h2": "Why Mokena Basements Flood",
+    "intro": "Most basement water comes from one of these:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Sump Pump That Failed",
+      "body": "Worn out, stuck or without power in a storm."
+     },
+     {
+      "h3": "Sewer Backup",
+      "body": "Water coming up through the floor drain."
+     },
+     {
+      "h3": "A Failed Ejector Pump",
+      "body": "A basement bathroom basin that overflowed."
+     },
+     {
+      "h3": "A Burst Pipe or Water Heater",
+      "body": "Plumbing water, not rain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Mokena",
+    "intro": "In August 2025, the National Weather Service reported significant flash flooding in Mokena, with 4 to 8 inches of rain across the region.",
+    "items": [
+     {
+      "h3": "Finished Basements Are Common",
+      "body": "Many Mokena homes have finished lower levels, so a small amount of water does a lot of damage."
+     },
+     {
+      "h3": "Pumps From the Builder",
+      "body": "Original sump and ejector pumps in 1990s and 2000s homes are near or past their life."
+     },
+     {
+      "h3": "Find the Source First",
+      "body": "Rainwater and sewer water need different fixes. We figure out which you have."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Some basement water is a plumbing problem, and some is a foundation problem. We handle the plumbing side: [sump pumps](/mokena/sump-pumps), battery backups, discharge lines, backflow valves and [overhead sewer systems](/mokena/overhead-sewer-systems).",
+     "If water is coming through cracks in the foundation walls, that's a waterproofing contractor's job, and we'll tell you so. Fixing the plumbing first often solves more than people expect."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, find the cause, then protect the basement.",
+    "steps": [
+     {
+      "h3": "1. Stop the Source",
+      "body": "Pump, pipe or drain, fixed first."
+     },
+     {
+      "h3": "2. Find Out Why",
+      "body": "So it doesn't happen again."
+     },
+     {
+      "h3": "3. Price Before Protection",
+      "body": "A flat rate for any upgrade."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Carol G",
+      "url": null,
+      "text": "Replacement of concrete basement sink to a more modern sink and workable faucet. Area clean after work done. Informative, friendly, and gets right to work Services Service not listed"
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     },
+     {
+      "name": "Rich Kings",
+      "url": null,
+      "text": "Outstanding Work on a Tough Basement Job! I can’t say enough good things about this plumbing team. They tackled a very challenging pipe replacement job in our basement, and from start to finish, they were professional, skilled, and incredibly thorough. The space was tight, the old piping was a mess, and there were unexpected complications along the way but they handled everything with confidence and expertise. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Is it rainwater or sewer water?",
+      "preview": "Where it comes in tells you.",
+      "answer": "Water seeping at the walls or rising in the sump pit is groundwater. Water coming up through the floor drain or toilet is usually sewer water. They need different fixes."
+     },
+     {
+      "q": "What should I do first when the basement floods?",
+      "preview": "Stay safe and stop the source.",
+      "answer": "Stay away from electrical outlets and appliances near the water. If it's a pipe, shut off the main water valve. Then call us."
+     },
+     {
+      "q": "Do you clean up flooded basements?",
+      "preview": "We fix the plumbing. Cleanup is a separate company.",
+      "answer": "We fix the cause: the pump, the pipe or the drain. For water removal and drying, a restoration company is the right call."
+     },
+     {
+      "q": "How can I protect my basement from the next storm?",
+      "preview": "A good pump, a battery backup and a backflow valve.",
+      "answer": "Start with a reliable sump pump, a battery backup and a backflow valve. For repeat sewer backups, consider an overhead sewer."
+     },
+     {
+      "q": "How much does basement flooding repair cost in Mokena?",
+      "preview": "It depends on the cause. You'll approve a flat price first.",
+      "answer": "It depends on what caused the water and what needs to be repaired or added. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/mokena/drain-cleaning",
+      "desc": "Slow or backed-up drains and main lines, rodded clear and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Water in the Basement? Call Us Now.",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Help in Mokena, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/mokena/basement-flooding",
+   "description": "Basement flooding help in Mokena, IL. We find where the water is coming from, fix the cause and help protect your basement. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding Help in Mokena, IL",
+ "metaDescription": "Basement flooding help in Mokena, IL. We find where the water is coming from, fix the cause and help protect your basement. Call 24/7."
+}

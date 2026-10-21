@@ -1,0 +1,320 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Toilet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Toilet Repair and Installation in Evanston, IL",
+   "sub": "A toilet that runs all night, leaks at the base or clogs every week. We repair or replace it, and in older homes we check the flange underneath too. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+    "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Toilet Problems We Fix",
+    "intro": "We handle:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Running",
+      "body": "A flapper or fill valve."
+     },
+     {
+      "h3": "Leaking at the Base",
+      "body": "A failed seal or flange."
+     },
+     {
+      "h3": "Clogging",
+      "body": "An old toilet or a line problem."
+     },
+     {
+      "h3": "Rocking",
+      "body": "Loose bolts or a damaged flange."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-toilets",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Toilets in Evanston Homes",
+    "intro": "In older homes, the toilet is often newer than the pipe under it.",
+    "items": [
+     {
+      "h3": "Corroded Flanges",
+      "body": "Old cast iron flanges let the toilet move and leak."
+     },
+     {
+      "h3": "Frequent Clogs",
+      "body": "Sometimes the toilet, sometimes the line behind it."
+     },
+     {
+      "h3": "Mineral Buildup",
+      "body": "Hard water wears fill valves and flappers."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair or replace, explained.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Tank, bowl, seal and flange."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "Tight and sealed."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "is-it-time-for-a-new-toilet",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Upgrade Option",
+    "h2": "Is It Time for a New Toilet?",
+    "body": "If your toilet is older, clogs often or runs no matter how many parts you replace, a new one may save money and hassle. Today's toilets use far less water per flush and clear the bowl well. Comfort-height models are easier for many people to use. If the floor around the old toilet is soft, we'll check the flange and subfloor before setting the new one, so it doesn't rock or leak later.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-toilet-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Toilet Work",
+    "body": "Small parts like flappers and fill valves are quick fixes. Resetting a toilet on a new seal takes longer. In older homes, a corroded flange or soft floor can add work. A new toilet depends on the model. We check first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Toilet Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Allyson Mauch",
+      "url": null,
+      "text": "Ronnie and Brendan were quick to arrive, communicative, and efficient! Everything is now working as it should. All in all a good experience. Services Toilet repair"
+     },
+     {
+      "name": "Mike Dettmann",
+      "url": null,
+      "text": "Edgar and Gael were the best. Very professional and did a great job. Over came a lot of unforeseen challenges, nice work."
+     },
+     {
+      "name": "Jose Flores",
+      "url": null,
+      "text": "Christian and Julian stopped by for maintenance, my wife and I had been complaining about a running toilet for a few weeks. Christian changed out our flapper, and even tightened down the toilet bolts while he was at it, at no extra charge! I love having a plumbing company that doesn’t try to upsell on everything possible. Thank you Christian and Julian! [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Toilet Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "Why does my toilet keep running?",
+      "preview": "A flapper or fill valve.",
+      "answer": "Usually a worn flapper or fill valve. Both are quick repairs."
+     },
+     {
+      "q": "Why does my toilet rock?",
+      "preview": "Loose bolts or a damaged flange.",
+      "answer": "Loose bolts or a damaged flange. We fix the flange and reset it."
+     },
+     {
+      "q": "Why does my toilet clog so often?",
+      "preview": "An older toilet or a line problem.",
+      "answer": "Older toilets clog more. If it's newer, the drain line may need clearing."
+     },
+     {
+      "q": "Can you install a toilet I bought?",
+      "preview": "Yes.",
+      "answer": "Yes, with a new seal and supply line."
+     },
+     {
+      "q": "How long does it take to replace a toilet?",
+      "preview": "Usually a couple of hours.",
+      "answer": "Usually a couple of hours, longer if the flange needs repair."
+     },
+     {
+      "q": "Why does my toilet run on its own every so often?",
+      "preview": "A slow leak through the flapper.",
+      "answer": "That's called phantom flushing. Water slowly leaks past the flapper and the tank refills. A new flapper fixes it."
+     },
+     {
+      "q": "Can you fix a toilet that won't stop gurgling?",
+      "preview": "We'll check the vent and drain.",
+      "answer": "Gurgling often points to a partial clog or a vent problem. We'll find which."
+     },
+     {
+      "q": "How much does toilet repair cost in Evanston?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and whether you're repairing or replacing. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Toilet?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Toilet Repair and Installation in Evanston, IL",
+   "serviceType": "Toilet Installation & Repair",
+   "url": "https://jblantonplumbing.com/evanston/toilet-installation-repair",
+   "description": "Toilet repair and installation in Evanston, IL. Running, leaking, clogging and rocking toilets fixed or replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Toilet Repair & Installation in Evanston",
+ "metaDescription": "Toilet repair and installation in Evanston, IL. Running, leaking, clogging and rocking toilets fixed or replaced. Flat price first."
+}

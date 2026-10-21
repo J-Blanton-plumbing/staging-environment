@@ -1,0 +1,349 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Leak Repairs",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Leak and Pipe Repair in Ravenswood, Chicago",
+   "sub": "Low pressure from century-old pipe, a stain spreading on the ceiling or a neighbor reporting water. We find leaks, repair the pipe and tell you honestly when it's time to replace old galvanized lines. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+    "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs of a Leak or Failing Pipe",
+    "intro": "Watch for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Low Pressure Throughout",
+      "body": "Old galvanized pipe closing up."
+     },
+     {
+      "h3": "Rusty Water in the Morning",
+      "body": "Corrosion inside the pipe."
+     },
+     {
+      "h3": "Ceiling Stains",
+      "body": "Under a bath or kitchen."
+     },
+     {
+      "h3": "A Neighbor Reports Water",
+      "body": "Common in shared buildings."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "what-we-fix",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "What We Fix",
+    "h2": "Leaks and Pipes We Handle",
+    "intro": "We work on:",
+    "steps": [
+     {
+      "h3": "Supply Pipe",
+      "body": "Galvanized, copper and PEX."
+     },
+     {
+      "h3": "Drain and Vent Pipe",
+      "body": "Cast iron and galvanized."
+     },
+     {
+      "h3": "Pipe Replacement",
+      "body": "Old galvanized lines replaced with new pipe."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-leaks",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Leaks and Old Pipe in Ravenswood",
+    "intro": "With nearly half the homes built before 1940, original pipe is common.",
+    "items": [
+     {
+      "h3": "Galvanized Steel at the End of Its Life",
+      "body": "It rusts inside, cuts pressure and leaks at threaded joints."
+     },
+     {
+      "h3": "Leaks Travel Between Floors",
+      "body": "In a two-flat, water shows up far from its source."
+     },
+     {
+      "h3": "Repair or Replace?",
+      "body": "One leak can be repaired. A failing system is better replaced. If a pipe has burst, see [burst pipe repair](/chicago-ravenswood/burst-pipe-repair)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Find it first.",
+    "steps": [
+     {
+      "h3": "1. Locate the Leak",
+      "body": "Listening tools and pressure tests."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replacement, explained."
+     },
+     {
+      "h3": "3. Test Before Closing Up",
+      "body": "No guessing."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "planning-a-repipe-in-an-older-home",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Planning",
+    "h2": "Planning a Repipe in an Older Home",
+    "body": "Replacing galvanized supply pipe in an older Ravenswood home doesn't always mean opening every wall. We trace the existing lines, then plan new routes through the basement, closets and plumbing chases. In a two-flat, we can repipe one unit at a time. You'll get a clear plan, a flat price and an idea of which walls, if any, need patching afterward.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-leak-repair",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Leak Repair",
+    "body": "Finding a leak between floors takes testing. Reaching it may mean opening plaster. Repairing one section is quicker than replacing a run of galvanized pipe. We find it and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Leak Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     },
+     {
+      "name": "Evan Knott",
+      "url": null,
+      "text": "Work was thorough, quick, tidy, and restored to better condition than before."
+     },
+     {
+      "name": "Marissa B",
+      "url": null,
+      "text": "Clayton took care of what we needed fixed in a timely manner. Very polite as well. Thank you!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Leak and Pipe Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Should I replace my galvanized pipe?",
+      "preview": "If it's leaking or pressure is low, it's worth discussing.",
+      "answer": "If you have leaks, rusty water or low pressure, replacing it is worth discussing. We'll show you what we find."
+     },
+     {
+      "q": "How do I know if I have galvanized pipe?",
+      "preview": "Gray steel pipe with threaded joints.",
+      "answer": "Look at the pipes near the water heater. Gray steel with threaded fittings is usually galvanized."
+     },
+     {
+      "q": "Can you replace pipe without gutting the walls?",
+      "preview": "Often, with careful routing.",
+      "answer": "Often. We route new lines through basements, closets and chases to limit wall openings."
+     },
+     {
+      "q": "Does insurance cover leak damage?",
+      "preview": "Sudden damage often.",
+      "answer": "Policies vary. Check with your agent."
+     },
+     {
+      "q": "How long does a repipe take?",
+      "preview": "Usually a few days per unit.",
+      "answer": "Usually a few days per unit, depending on access."
+     },
+     {
+      "q": "Can you install water leak sensors?",
+      "preview": "Yes.",
+      "answer": "Yes, near water heaters, washers and sinks."
+     },
+     {
+      "q": "How much does pipe repair cost in Ravenswood?",
+      "preview": "It depends on the scope. You'll approve a flat price first.",
+      "answer": "It depends on the leak or how much pipe needs replacing. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Leak?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Leak and Pipe Repair in Ravenswood, Chicago",
+   "serviceType": "Leak Repairs",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/leak-repairs",
+   "description": "Leak detection and pipe repair in Ravenswood, Chicago. Old galvanized pipe, hidden leaks and leaks between floors fixed. Flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Leak & Pipe Repair in Ravenswood, Chicago",
+ "metaDescription": "Leak detection and pipe repair in Ravenswood, Chicago. Old galvanized pipe, hidden leaks and leaks between floors fixed. Flat price."
+}

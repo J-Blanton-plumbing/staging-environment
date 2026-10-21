@@ -1,0 +1,369 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Elmhurst, IL",
+   "sub": "Water spraying in the basement, a ceiling dripping or a faucet that stopped running in a deep freeze. Shut off the main and call us. Our line is open 24/7. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "steps",
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Right Now",
+    "h2": "If a Pipe Bursts",
+    "intro": "First things first:",
+    "steps": [
+     {
+      "h3": "1. Close the Main Valve",
+      "body": "In the basement near the meter."
+     },
+     {
+      "h3": "2. Kill Power Near the Water",
+      "body": "If the breaker is safe to reach."
+     },
+     {
+      "h3": "3. Open a Faucet",
+      "body": "To let the pressure out."
+     },
+     {
+      "h3": "4. Call Us",
+      "body": "Day or night."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs a Pipe Has Burst",
+    "intro": "Look for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Water Spraying or Dripping",
+      "bullets": [
+       "From a pipe, wall or ceiling."
+      ]
+     },
+     {
+      "h3": "Pressure Drops Everywhere",
+      "bullets": [
+       "Across the house."
+      ]
+     },
+     {
+      "h3": "Stains That Spread",
+      "bullets": [
+       "On drywall or plaster."
+      ]
+     },
+     {
+      "h3": "Running Water Sounds",
+      "bullets": [
+       "With everything off."
+      ]
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "tiles",
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Frozen Pipes",
+    "h2": "Signs Your Pipes Are Frozen",
+    "intro": "During a cold snap:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "A Faucet Won't Run",
+      "body": "While others do."
+     },
+     {
+      "h3": "Frost on a Pipe",
+      "body": "In a crawl space or along a wall."
+     },
+     {
+      "h3": "A Bulge in the Pipe",
+      "body": "Ice is expanding inside."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Elmhurst Homes",
+    "intro": "In Elmhurst's older homes, a few spots freeze first.",
+    "items": [
+     {
+      "h3": "Kitchen Sinks on Outside Walls",
+      "body": "Common in 1950s and 60s layouts."
+     },
+     {
+      "h3": "Crawl Spaces and Additions",
+      "body": "Plumbing over unheated space."
+     },
+     {
+      "h3": "Hose Bibs Left Connected",
+      "body": "The line behind the spigot freezes and splits."
+     },
+     {
+      "h3": "Hose Bibs",
+      "body": "Outdoor faucets left on over winter split inside the wall."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Stop the water, fix the pipe, prevent the next one.",
+    "steps": [
+     {
+      "h3": "1. Fast Response",
+      "body": "24/7."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Before the repair."
+     },
+     {
+      "h3": "3. Prevention Tips",
+      "body": "What to change before the next freeze."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "what-happens-after-a-burst-pipe-is-fixed",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "After the Repair",
+    "h2": "What Happens After a Burst Pipe Is Fixed",
+    "body": "Once the pipe is repaired and the water is back on, the drying starts. Wet drywall, insulation and flooring need to dry fully, or mold can follow. A restoration company can measure moisture and dry the space properly. We'll show you where the pipe froze and why, and suggest simple changes, like insulation, a heat source or rerouting, so the same spot doesn't freeze next winter.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "John Trojanowski",
+      "url": null,
+      "text": "J. Blanton has been prompt, efficient, and courteous throughout the process."
+     },
+     {
+      "name": "Paul Wittcoff",
+      "url": null,
+      "text": "Shayne was outstanding with knowledge and installation of a new Water Heater valve and did so quickly and efficiently"
+     },
+     {
+      "name": "Kayla Kasbohm",
+      "url": null,
+      "text": "Andrew was very professional but also personable, explaining the issue and how they were going to fix it and gave me some tips to help avoid having a recurrence. They were able to get my kitchen sink up and running again right before the holidays which was a life saver."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Do you offer frozen pipe services?",
+      "preview": "Yes, thawing and repair.",
+      "answer": "Yes. We thaw frozen lines safely and repair any that split."
+     },
+     {
+      "q": "Can I thaw a frozen pipe myself?",
+      "preview": "Gently, with a hair dryer.",
+      "answer": "Open the faucet and warm the pipe gently with a hair dryer. Never use a flame. If you can't reach it, call us."
+     },
+     {
+      "q": "How do I keep pipes from freezing?",
+      "preview": "Heat, open cabinets and a slow drip.",
+      "answer": "Keep the heat on, open cabinets on exterior walls and let a faucet drip on the coldest nights."
+     },
+     {
+      "q": "Does insurance cover burst pipes?",
+      "preview": "Often, for sudden damage.",
+      "answer": "Often. Policies vary, so check with your agent."
+     },
+     {
+      "q": "Which pipes freeze most in Elmhurst homes?",
+      "preview": "Those on outside walls and in garages.",
+      "answer": "Pipes on outside walls, in attached garages and in crawl spaces under additions."
+     },
+     {
+      "q": "Should I shut off the water before a trip in winter?",
+      "preview": "It's a good idea.",
+      "answer": "It's a good idea for longer trips, as long as the heat stays on."
+     },
+     {
+      "q": "How much does burst pipe repair cost in Elmhurst?",
+      "preview": "It depends on the break. You'll approve a flat price first.",
+      "answer": "It depends on where the pipe burst and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Burst Pipe? Call Us Now.",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Elmhurst, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/elmhurst/burst-pipe-repair",
+   "description": "Burst and frozen pipe repair in Elmhurst, IL. Our line is open 24/7. We stop the water, repair the break and help prevent the next one.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst & Frozen Pipe Repair in Elmhurst, IL",
+ "metaDescription": "Burst and frozen pipe repair in Elmhurst, IL. Our line is open 24/7. We stop the water, repair the break and help prevent the next one."
+}

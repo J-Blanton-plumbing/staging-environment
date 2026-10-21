@@ -1,0 +1,315 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Garbage Disposal Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Garbage Disposal Installation and Repair in Ravenswood, Chicago",
+   "sub": "A disposal that hums, leaks or won't start, or a kitchen that's never had one. We install, repair and replace disposals in Ravenswood homes and condos. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+    "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Garbage Disposal Problems",
+    "intro": "We fix disposals that:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Hum Without Grinding",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "Leak",
+      "body": "A worn seal or cracked housing."
+     },
+     {
+      "h3": "Won't Start",
+      "body": "A tripped reset or bad switch."
+     },
+     {
+      "h3": "Drain Slowly",
+      "body": "A clog past the unit."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-disposals",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Garbage Disposals in Ravenswood Kitchens",
+    "intro": "Older kitchens add a few considerations.",
+    "items": [
+     {
+      "h3": "First-Time Installs",
+      "body": "May need an outlet and drain changes."
+     },
+     {
+      "h3": "Old Drain Lines",
+      "body": "Ground food can clog older pipe."
+     },
+     {
+      "h3": "Shared Drains",
+      "body": "In a two-flat, a disposal clog can affect the stack."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair if it's worth it.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Jam, motor, seal or drain."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Repair or replace."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "No leaks."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "disposals-in-buildings-with-shared-drains",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Shared Drains",
+    "h2": "Disposals in Buildings With Shared Drains",
+    "body": "In a condo or two-flat, a disposal sends ground food into a drain that other units also use. Ground food mixed with grease can settle in an old horizontal line and cause clogs that affect more than one unit. Running plenty of cold water, keeping grease out and not overloading the disposal helps the whole building. If the shared line clogs often, a camera look can show where the buildup is.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-disposal-job",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Disposal Job",
+    "body": "A straight swap is quick. A first-time install in an older kitchen may need an outlet and drain changes. A slow shared drain should be cleared first. We check and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Garbage Disposal Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Carol G",
+      "url": null,
+      "text": "Replacement of concrete basement sink to a more modern sink and workable faucet. Area clean after work done. Informative, friendly, and gets right to work Services Service not listed"
+     },
+     {
+      "name": "susan lanz",
+      "url": null,
+      "text": "Andrew A and D’Ron fixed our clogged kitchen sink and other items with same day service and were amazing to work with."
+     },
+     {
+      "name": "Jeannie Smith",
+      "url": "https://maps.app.goo.gl/96wBa6YbYwQptVSS6",
+      "text": "We had Christian come for our home maintenance check and he was wonderful! I appreciated how thorough he was, that he provided me with feedback and notes for each potential issue he saw, and he even cleaned out a messy drain in my sink."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Garbage Disposal Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Can you install a disposal in an older kitchen?",
+      "preview": "Usually.",
+      "answer": "Usually. We may need to add an outlet and adjust the drain."
+     },
+     {
+      "q": "My disposal hums. What should I do?",
+      "preview": "Turn it off. It's likely jammed.",
+      "answer": "Turn it off. Try the reset button and the hex key under the unit. If it won't turn, call us."
+     },
+     {
+      "q": "Can a disposal clog an old drain?",
+      "preview": "It can.",
+      "answer": "It can, especially with grease, fibrous food and coffee grounds."
+     },
+     {
+      "q": "Should I repair or replace it?",
+      "preview": "If it leaks from the body or is old, replace it.",
+      "answer": "If the housing leaks or it's more than about 10 years old, replacing it usually makes more sense."
+     },
+     {
+      "q": "Is my condo allowed to have a disposal?",
+      "preview": "Check your association rules.",
+      "answer": "Check with your association. Most allow them."
+     },
+     {
+      "q": "My disposal won't start. What should I check?",
+      "preview": "The reset button and the switch.",
+      "answer": "Press the red reset button under the unit and check the wall switch and breaker. If it still won't start, call us."
+     },
+     {
+      "q": "How much does garbage disposal installation cost in Ravenswood?",
+      "preview": "It depends on the unit. You'll approve a flat price first.",
+      "answer": "It depends on the unit and connections. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix Your Disposal?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Garbage Disposal Installation and Repair in Ravenswood, Chicago",
+   "serviceType": "Garbage Disposal Installation & Repair",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/garbage-disposal-installation-repair",
+   "description": "Garbage disposal installation and repair in Ravenswood, Chicago. Jammed, leaking or dead disposals fixed or replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Garbage Disposal Installation in Ravenswood",
+ "metaDescription": "Garbage disposal installation and repair in Ravenswood, Chicago. Jammed, leaking or dead disposals fixed or replaced. Flat price first."
+}

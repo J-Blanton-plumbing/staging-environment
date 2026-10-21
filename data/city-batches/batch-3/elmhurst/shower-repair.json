@@ -1,0 +1,334 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Elmhurst, IL",
+   "sub": "A shower that drips, swings hot and cold or barely sprays through a scaled-up head. We repair and replace shower valves and fixtures in Elmhurst homes. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Drips",
+      "body": "A worn cartridge or washers."
+     },
+     {
+      "h3": "Temperature Swings",
+      "body": "A worn or missing balancing valve."
+     },
+     {
+      "h3": "Weak, Uneven Spray",
+      "body": "Scale in the showerhead."
+     },
+     {
+      "h3": "A Stain Below",
+      "body": "A leak at the valve or drain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Elmhurst Homes",
+    "intro": "Hard water and postwar valves shape shower calls here.",
+    "items": [
+     {
+      "h3": "Scaled Showerheads and Cartridges",
+      "body": "Minerals clog nozzles and stiffen valves."
+     },
+     {
+      "h3": "Two- and Three-Handle Valves",
+      "body": "We rebuild or replace older valves."
+     },
+     {
+      "h3": "Original Tile",
+      "body": "We work through the trim when we can."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Fix it without tearing out tile when possible.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Through the trim."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "Steady temperature, full spray."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "hard-water-and-your-shower",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Hard Water",
+    "h2": "Hard Water and Your Shower",
+    "body": "Scale from Elmhurst's water builds up in showerheads and valve cartridges. A showerhead that sprays sideways can often be cleaned by soaking it in vinegar. A valve that drips or is hard to turn usually has a worn cartridge. We carry common cartridges and can find most others. If the valve is very old, replacing it with a pressure-balancing valve fixes temperature swings too.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "shower-repairs-in-mid-century-elmhurst-baths",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Older Baths",
+    "h2": "Shower Repairs in Mid-Century Elmhurst Baths",
+    "body": "Bathrooms in Elmhurst homes from the 1950s and '60s often have a tiled tub and shower with a two- or three-handle valve. Those valves can usually be rebuilt with new stems and washers. When they can't, a single-handle pressure-balancing valve is the upgrade. We work through the existing opening and cover the old holes with a trim plate, so most of the tile stays intact.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-shower-repair",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Shower Repair",
+    "body": "A cartridge or washer replacement is usually a short visit. Replacing the whole valve takes longer, especially if access means working through tile. A leak below the shower can be the valve, the drain or the pan, and testing finds which. We diagnose first and quote one flat price before any work.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Cristián Roa",
+      "url": null,
+      "text": "Vincent was professional, friendly and made sure I understood the problem in my bathroom."
+     },
+     {
+      "name": "nil golan",
+      "url": null,
+      "text": "I really like the service very nice people highly recommended"
+     },
+     {
+      "name": "Chuck Petty",
+      "url": null,
+      "text": "GREAT WORK AND CUSTOMER SERVICE!!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "Why is my shower spray weak?",
+      "preview": "Scale in the head or valve.",
+      "answer": "Usually mineral scale in the showerhead or valve screen. Cleaning or replacing them restores flow."
+     },
+     {
+      "q": "Why does my shower get hot when someone flushes?",
+      "preview": "No balancing valve.",
+      "answer": "Older valves don't balance pressure. A new pressure-balancing valve fixes it."
+     },
+     {
+      "q": "Can you fix a drip without opening the wall?",
+      "preview": "Usually.",
+      "answer": "Usually, by replacing the cartridge or washers through the trim."
+     },
+     {
+      "q": "Can you replace an old three-handle valve?",
+      "preview": "Yes.",
+      "answer": "Yes, with a single-handle valve and a trim plate that covers the old holes."
+     },
+     {
+      "q": "Can you replace a showerhead with a rain head?",
+      "preview": "Yes.",
+      "answer": "Yes, if the supply and arm can support it."
+     },
+     {
+      "q": "Why does my shower drain slowly?",
+      "preview": "Usually hair and soap buildup.",
+      "answer": "Usually hair and soap in the trap. We clear it and check the line beyond it."
+     },
+     {
+      "q": "How much does shower repair cost in Elmhurst?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Elmhurst, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/elmhurst/shower-repair",
+   "description": "Shower repair in Elmhurst, IL. Drips, temperature swings and scale-clogged heads fixed, older valves replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Elmhurst, IL",
+ "metaDescription": "Shower repair in Elmhurst, IL. Drips, temperature swings and scale-clogged heads fixed, older valves replaced. Flat price first."
+}

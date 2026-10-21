@@ -1,0 +1,327 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Skokie, IL",
+   "sub": "A basement toilet that won't flush, a laundry tub that won't drain or an alarm that keeps going off. We repair and replace ejector pumps, including the ones that run overhead sewer systems. Our office is on Lincoln Avenue. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Does an Ejector Pump Do?",
+    "body": "Basement fixtures that sit below the sewer line can't drain on their own. They empty into a sealed basin, and the ejector pump pushes the wastewater up and out to the main line. A float starts the pump, and a check valve stops the water from falling back. In homes with an overhead sewer, the same kind of pump handles every basement drain.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Ejector Pump Needs Help",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Alarm Goes Off",
+      "body": "Water in the basin is too high."
+     },
+     {
+      "h3": "Basement Drains Are Slow",
+      "body": "The pump can't keep up."
+     },
+     {
+      "h3": "A Sewer Smell Lingers",
+      "body": "Often the lid seal or the vent."
+     },
+     {
+      "h3": "The Pump Runs Nonstop",
+      "body": "A stuck float or bad check valve."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Skokie Homes",
+    "intro": "Many Skokie basements have an ejector pump, either for a basement bathroom or as part of an overhead sewer.",
+    "items": [
+     {
+      "h3": "Overhead Sewer Pumps",
+      "body": "If your basement was converted to an overhead sewer, the ejector pump is what keeps it working. When it fails, every basement drain stops."
+     },
+     {
+      "h3": "Laundry Lint",
+      "body": "Washers draining to the basin send lint that wears out pumps. A lint trap helps."
+     },
+     {
+      "h3": "Old Pumps From Earlier Conversions",
+      "body": "Pumps installed 15 or 20 years ago are due for replacement."
+     },
+     {
+      "h3": "Alarms That Work",
+      "body": "We test the alarm on every visit. See [overhead sewer systems](/skokie/overhead-sewer-systems)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We fix the pump and explain what failed.",
+    "steps": [
+     {
+      "h3": "1. Check the Whole Basin",
+      "body": "Pump, float, check valve, lid and vent."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "At a flat price."
+     },
+     {
+      "h3": "3. Test It With Water",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "ejector-pumps-in-overhead-sewer-systems",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Overhead Sewers",
+    "h2": "Ejector Pumps in Overhead Sewer Systems",
+    "body": "Many Skokie homes with overhead sewers rely on an ejector pump to lift every drop of basement wastewater. If that pump fails, the basement fixtures back up, even in dry weather. We replace failed pumps with units sized for the system, check the float and check valve and test the alarm. A second pump or battery backup adds protection if you use the basement every day.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "jose",
+      "url": null,
+      "text": "Joey came out and help me with my pump and it was quick and simple !"
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Elaine Smitko",
+      "url": null,
+      "text": "Welhem installed a new sump pump system yesterday and did a great job!! He was very professional and answered all my questions . Very pleased with the job he did."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "My overhead sewer pump stopped. What do I do?",
+      "preview": "Stop using basement drains and call us.",
+      "answer": "Stop using the laundry, floor drain and any basement fixtures, and call us. Without the pump, the basin will overflow."
+     },
+     {
+      "q": "How long do ejector pumps last?",
+      "preview": "Often 7 to 10 years.",
+      "answer": "Often around 7 to 10 years, depending on use."
+     },
+     {
+      "q": "Why does the basement smell like sewer?",
+      "preview": "A worn seal, vent issue or dry trap.",
+      "answer": "Usually a worn basin lid seal, a vent connection or a floor drain trap that dried out."
+     },
+     {
+      "q": "Can you add a second pump as a backup?",
+      "preview": "Sometimes, depending on the basin.",
+      "answer": "Sometimes. Some basins can hold a duplex setup with two pumps. We'll look at yours."
+     },
+     {
+      "q": "How do I know if my overhead sewer pump is working?",
+      "preview": "Run water and listen.",
+      "answer": "Run water in a basement fixture and listen for the pump to start and stop."
+     },
+     {
+      "q": "How much does ejector pump replacement cost in Skokie?",
+      "preview": "It depends on the pump and basin. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the basin and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Basement Drains Backed Up? Call Us.",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Skokie, IL",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/skokie/ejector-pump",
+   "description": "Ejector pump repair and replacement in Skokie, IL for basement bathrooms, laundry and overhead sewers. Flat price before work.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair in Skokie, IL",
+ "metaDescription": "Ejector pump repair and replacement in Skokie, IL for basement bathrooms, laundry and overhead sewers. Flat price before work."
+}

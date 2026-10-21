@@ -1,0 +1,235 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in Lincoln Park, Chicago",
+   "sub": "Serving Chicagoland since 1993, with a local office on Diversey Parkway. Our line is open 24/7 for homeowners in Lincoln Park and across the North Side. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Lincoln Park",
+   "intro": "Our licensed plumbers work on every kind of Lincoln Park home, from greystones and two-flats to single-family houses and condos. Pick a service to see how we handle it in Lincoln Park.",
+   "cards": [
+    {
+     "title": "Drain Cleaning",
+     "href": "/chicago-lincoln-park/drain-cleaning",
+     "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Sump & Ejector Pumps",
+     "href": "/chicago-lincoln-park/sump-pumps",
+     "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/chicago-lincoln-park/sewer-repair",
+     "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/chicago-lincoln-park/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Burst & Frozen Pipes",
+     "href": "/chicago-lincoln-park/burst-pipe-repair",
+     "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+     "image": {
+      "src": "/images/city-hubs/burst-copper-pipe-basement.webp",
+      "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+     }
+    },
+    {
+     "title": "Gas Lines & Fireplaces",
+     "href": "/chicago-lincoln-park/gas-fireplace",
+     "desc": "Gas fireplace repair, gas line work and leak checks.",
+     "image": {
+      "src": "/images/city-hubs/gas-line-meter-inspection.webp",
+      "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/chicago-lincoln-park/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "On Diversey Parkway",
+   "h2": "Our Lincoln Park Office",
+   "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, Chicago, IL 60614, at Diversey and Halsted. It keeps our plumbers close to homes across Lincoln Park and the neighboring North Side neighborhoods. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+   "address": "800 W Diversey Pkwy, Chicago, IL 60614",
+   "areasH3": "North Side Neighborhoods We Serve",
+   "areas": [
+    {
+     "label": "Old Town",
+     "href": "/old-town",
+     "area": "Old Town, Chicago, IL"
+    },
+    {
+     "label": "Gold Coast",
+     "href": "/gold-coast",
+     "area": "Gold Coast, Chicago, IL"
+    },
+    {
+     "label": "Lake View",
+     "href": "/chicago-lake-view",
+     "area": "Lake View, Chicago, IL"
+    },
+    {
+     "label": "Lake View East",
+     "href": "/lake-view-east",
+     "area": "Lake View East, Chicago, IL"
+    },
+    {
+     "label": "Wrigleyville",
+     "href": "/wrigleyville",
+     "area": "Wrigleyville, Chicago, IL"
+    },
+    {
+     "label": "Bucktown",
+     "href": "/bucktown",
+     "area": "Bucktown, Chicago, IL"
+    },
+    {
+     "label": "North Halsted",
+     "href": "/north-halsted",
+     "area": "North Halsted, Chicago, IL"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/43NysTymxTxciDPLA",
+   "schemaName": "Chicago Lincoln Park",
+   "schemaArea": "Lincoln Park, Chicago, IL"
+  },
+  "depth": {
+   "h2": "What Lincoln Park Homes Need From a Plumber",
+   "intro": "About 1 in 3 homes in Lincoln Park was built before 1940, and the neighborhood sits on one of the oldest sewer systems in the country. Whether you own a single-family home, a two-flat or a condo, those two facts shape most of the plumbing problems we see here.",
+   "tiles": [
+    {
+     "title": "Greystones, Two-Flats and Century-Old Drains",
+     "body": "Homes from before 1940 often still have cast iron drain stacks and clay sewer lines under the basement floor. Cast iron scales up inside and cracks along the seams, and clay lets roots in at the joints. A [camera inspection](/chicago-lincoln-park/video-camera-sewer-inspections) shows the condition of your line before you decide on a [sewer repair](/chicago-lincoln-park/sewer-repair)."
+    },
+    {
+     "title": "Combined Sewers and Basement Backups",
+     "body": "Chicago’s sewers carry rainwater and wastewater in the same pipes, and most of them were built before 1930. According to MWRD, two-thirds of an inch of rain in an hour can overwhelm the system and push water back into basements. A [backflow valve](/chicago-lincoln-park/flood-control-maintenance) or an [overhead sewer](/chicago-lincoln-park/overhead-sewer-systems) keeps it out."
+    },
+    {
+     "title": "Garden Units and Ejector Pumps",
+     "body": "A bathroom or laundry below the sewer line needs an [ejector pump](/chicago-lincoln-park/ejector-pump) to push wastewater up and out, and many garden units and finished basements here have one. When it fails, the basin fills fast. A yearly check of the pump, float and alarm prevents most surprises."
+    },
+    {
+     "title": "Frozen Pipes in Older Walls",
+     "body": "Lake winds and long cold snaps are hard on pipes in exterior walls, back porches and unheated rooms. A pipe that splits inside a wall can leak for hours before anyone notices. We’re on call 24/7 for [burst pipe repair](/chicago-lincoln-park/burst-pipe-repair), and we can [find the leak](/chicago-lincoln-park/leak-repairs) without tearing out more than we need to."
+    }
+   ]
+  },
+  "whyH2": "Why Lincoln Park Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "What Our Customers Say",
+   "h2": "Real Lincoln Park Reviews",
+   "intro": "4.7 stars from 410+ Google reviews for our Lincoln Park office.",
+   "rating": "4.7",
+   "ratingSub": "410+ Google reviews for our Lincoln Park office",
+   "items": [
+    {
+     "name": "Mark Lindzy",
+     "url": "https://maps.app.goo.gl/9Lbg2Bozw5D1oGgf9",
+     "text": "Our home was built 100 years ago so I accepted the J. Blanton offer of a sewer drain line scoping to make sure our pipes out to the city lines are clear and working. They discovered broken terracotta right below our basement floor instead, so we just had them repair that. Thomas came to do this work solo, and he broke up the concrete floor and dug out the area around the drain pipe quickly and efficiently, and replaced the whole section with new PVC piping and refilled and poured new concrete in about 4 hours time. He was courteous and professional and I would recommend J. Blanton to anyone needing plumbing service. We even joined their No Drip Club!"
+    },
+    {
+     "name": "Helen Wood",
+     "url": "https://maps.app.goo.gl/WKcqUgQRD7Js9rNp6",
+     "text": "So thankful that Josh was able to come out on a Sunday. He was able to determine the problem and had an immediate solution. He fixed my broken sump pump and verified that the second pump was in good working order. Would highly recommend Josh and J Blanton plumbing."
+    },
+    {
+     "name": "Maru Dudek",
+     "url": "https://maps.app.goo.gl/BmLkc8btSmE5Ei1J9",
+     "text": "Welhem and his colleague took the time to explain our options and helped guide our decision.  We appreciated their expertise which set us up for the next phase of the work.  Well done!"
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Lincoln Park Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Lincoln Park?",
+     "preview": "It depends on the job.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. Work on a century-old drain stack can take more time than a newer system. We give you a flat-rate price before any work begins, so you know the cost going in."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our Diversey Parkway office keeps our plumbers close to Lincoln Park, and we [treat emergencies as a priority](/chicago-lincoln-park/emergency-plumbing). Arrival times depend on the day and traffic, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "Why does my basement floor drain back up when it rains?",
+     "preview": "In most of Chicago, rainwater and sewage share the same pipes.",
+     "a": "In most of Chicago, rainwater and sewage share the same pipes. In a heavy storm, the city sewer fills up and water pushes back toward the lowest opening, which is often your floor drain. A backflow valve or an overhead sewer system stops it. Your own line can also be partly blocked, so we check that too."
+    },
+    {
+     "q": "My kitchen sink keeps clogging. Is it the sink or the building’s drain?",
+     "preview": "If only the kitchen sink is slow, the clog is usually in the sink line.",
+     "a": "If only the kitchen sink is slow, the clog is usually in the sink line. If other drains gurgle or back up when the sink drains, the problem may be in the main stack or the sewer line. We’ll find where it is and [clear it](/chicago-lincoln-park/drain-cleaning)."
+    },
+    {
+     "q": "Do you work on two-flats and condos?",
+     "preview": "Yes. We work for owners of single-family homes, two-flats and condo units.",
+     "a": "Yes. We work for owners of single-family homes, two-flats and condo units. In a condo, we’ll help you figure out whether the problem is in your unit’s plumbing or a shared line, so you know who should handle it."
+    },
+    {
+     "q": "Can you service a gas fireplace?",
+     "preview": "Yes. We repair gas fireplaces, check the gas line and connections for leaks and can run a new gas line for a fireplace or range.",
+     "a": "Yes. We repair gas fireplaces, check the gas line and connections for leaks and can run a new gas line for a fireplace or range. See our [gas fireplace services](/chicago-lincoln-park/gas-fireplace)."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which neighborhoods do you serve from Lincoln Park?",
+     "preview": "Along with Lincoln Park, our office serves Old Town, the Gold Coast, Lake View, Lake View East, Wrigleyville, Bucktown, North Halsted and more.",
+     "a": "Along with Lincoln Park, our office serves Old Town, the Gold Coast, Lake View, Lake View East, Wrigleyville, Bucktown, North Halsted and more. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Lincoln Park start small, like roots in an old clay sewer line or an ejector pump past its prime. The [No Drip Club](/no-drip-club) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your Lincoln Park Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Lincoln Park, Chicago",
+ "metaDescription": "Local plumbers on Diversey Parkway in Lincoln Park, Chicago. Drains, sewers and ejector pumps. Call 24/7 for an upfront price before work starts."
+}

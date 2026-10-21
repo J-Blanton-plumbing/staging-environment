@@ -1,0 +1,308 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Drain Cleaning in Mokena, IL",
+   "sub": "A kitchen sink that holds water, a basement shower that drains slower every week or a floor drain that fills when the washer empties. We clear it, tell you why it clogged and give you a flat price before we start. From our office on Jodi Road. Open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It Time to Call a Plumber?",
+    "body": "A plunger is fine for a one-time clog. Call us when the plunger doesn't do it, when the same sink is slow again a week later or when a drain starts to smell. Then count the slow drains. If it's just one, the blockage is close to that fixture. If the basement floor drain fills while the washer pumps out, or a toilet bubbles when the tub empties, the main line is the problem, and that's a job for [power rodding](/mokena/sewer-rodding).",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "type": "fold",
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in Mokena",
+    "bodies": [
+     "Bathroom sinks and tubs clog with hair and soap scum. Kitchens clog with grease and food scraps. Laundry lines clog with lint. We pick a cable sized for the pipe, clear the line and show you what we pulled out.",
+     "The drain pipe in most Mokena homes is in good condition. What causes trouble is the layout: island sinks, second-floor laundries and long, flat runs where debris settles. If one drain keeps clogging, we'll look inside it with a camera before we clear it a third time."
+    ],
+    "img": null
+   },
+   {
+    "type": "fold",
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging",
+    "bodies": [
+     "Cooking grease is the usual cause. It goes down the drain as a liquid, cools on the pipe walls and catches every bit of food and soap that follows.",
+     "When both bowls hold water, or the dishwasher empties into the sink instead of the drain, the blockage is past the trap and deeper in the wall. We clear it back to the main stack. If the disposal is part of the problem, see [garbage disposal repair](/mokena/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "mokena-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in Mokena Homes",
+    "intro": "More than half of Mokena's homes were built between 1990 and 2009, and their drain problems follow a pattern.",
+    "items": [
+     {
+      "h3": "Island Sinks and Long Runs",
+      "body": "Kitchen islands and second-floor laundries mean long, flat drain runs where debris settles."
+     },
+     {
+      "h3": "Basement Bathrooms",
+      "body": "A clog below the sewer line can involve the [ejector pump](/mokena/ejector-pump), not just the drain."
+     },
+     {
+      "h3": "Main Line Trouble",
+      "body": "Several slow drains at once usually mean a blockage in the main. That's [sewer drain clearing](#sewer-drain-clearing)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "fold",
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When all the drains slow down at once, or water shows up at the basement floor drain, the clog is in the main line that carries everything to the street. That takes a machine with enough cable to reach from the cleanout to the village sewer.",
+     "After we open the line, we run a camera so you can see what stopped it. Here, it's most often wipes and paper caught in a sag, or roots at a loose joint. If it's not a one-time clog, we'll lay out the choices: [power rodding](/mokena/sewer-rodding) on a schedule, [hydro jetting](/mokena/hydro-jetting) or a [sewer repair](/mokena/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Mokena Homeowners Call J. Blanton for Clogs",
+    "intro": "Licensed Illinois plumbers, with trucks stocked to clear most drains on the first visit.",
+    "steps": [
+     {
+      "h3": "1. Someone Picks Up, Day or Night",
+      "body": "Our phone line never closes."
+     },
+     {
+      "h3": "2. You See the Price First",
+      "body": "A flat rate before any cable goes in."
+     },
+     {
+      "h3": "3. You Learn Why It Clogged",
+      "body": "And how to keep it from happening again."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jan Berkson",
+      "url": null,
+      "text": "John Hogan arrived on time and provided great service. He gave me an estimate before starting, was very thorough and tidy and even gave me good information about what might be needed in the near future to further address the situation with my bathtub drain. Very knowledgeable, courteous and friendly- instills confidence!"
+     },
+     {
+      "name": "Fred Cleary",
+      "url": null,
+      "text": "Our kitchen sink was not draining and technician Josh was sent out to tackle the issue. Josh did a great job getting the drain flowing freely. It was a challenging job but Josh did not quit until the drain was open. We would recommend Josh to any future customers and we would request that he be sent to our house for any additional work down the road. [...]"
+     },
+     {
+      "name": "Jack Hickey",
+      "url": null,
+      "text": "Ron was tremendous. He diagnosed and resolved the problem quickly and explained everything clearly. Highly recommend Ron to anyone needing plumbing help!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From Mokena Homeowners",
+    "items": [
+     {
+      "q": "Can you come out tonight for a backed-up drain?",
+      "preview": "Yes. Call any time.",
+      "answer": "Yes. Our phone line is open 24/7, and we'll send a plumber as soon as we can."
+     },
+     {
+      "q": "How can I tell if it's the main sewer line?",
+      "preview": "Count the slow drains.",
+      "answer": "One slow drain is a local clog. Several slow drains, or water at the floor drain, means the main line."
+     },
+     {
+      "q": "Can you replace a drain pipe that keeps clogging?",
+      "preview": "Yes, after we look at it on camera.",
+      "answer": "Yes. If the camera shows a crack, a sag or a separated joint, we can repair or replace that section."
+     },
+     {
+      "q": "Are store-bought drain cleaners safe to use?",
+      "preview": "We'd skip them.",
+      "answer": "We'd skip them. They rarely clear the whole clog, and they're hard on pipes and on the person who has to open the drain next."
+     },
+     {
+      "q": "What does drain cleaning cost in Mokena?",
+      "preview": "It depends on the clog. You'll approve a flat price first.",
+      "answer": "It depends on where the blockage is and what's causing it. You'll approve a flat price before we begin."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Mokena",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/mokena/sewer-repair",
+      "desc": "Cracked or sagging sewer lines, roots and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/mokena/sump-pumps",
+      "desc": "Repair, replacement and battery backups for the pumps that keep your basement dry and drain a basement bathroom.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/mokena/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/mokena/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, leaking water lines and outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/mokena/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/mokena/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Drains That Keep Draining?",
+    "body": "Our Mokena office is at 19027 S Jodi Rd, Unit H-1B, and our phone line is open 24/7.",
+    "communities": "We also serve [Frankfort](/frankfort), [New Lenox](/new-lenox), [Tinley Park](/tinley-park), [Orland Park](/orland-park), [Homer Glen](/homer-glen), [Frankfort Square](/frankfort-square), [Lockport](/lockport) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Drain Cleaning in Mokena, IL",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/mokena/drain-cleaning",
+   "description": "Drain cleaning in Mokena, IL. Clogged sinks, tubs, floor drains and main lines cleared, the cause explained and a flat price first. 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Mokena",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/mokena",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "19027 S Jodi Rd, Unit H-1B",
+     "addressLocality": "Mokena",
+     "addressRegion": "IL",
+     "postalCode": "60448",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Mokena, IL",
+    "Frankfort, IL",
+    "New Lenox, IL",
+    "Tinley Park, IL",
+    "Orland Park, IL",
+    "Homer Glen, IL",
+    "Frankfort Square, IL",
+    "Lockport, IL"
+   ]
+  }
+ },
+ "metaTitle": "Drain Cleaning in Mokena, IL",
+ "metaDescription": "Drain cleaning in Mokena, IL. Clogged sinks, tubs, floor drains and main lines cleared, the cause explained and a flat price first. 24/7."
+}

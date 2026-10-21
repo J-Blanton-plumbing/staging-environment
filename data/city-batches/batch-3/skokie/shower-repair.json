@@ -1,0 +1,325 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Shower Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Shower Repair in Skokie, IL",
+   "sub": "A shower that drips, scalds when someone flushes or barely sprays. We repair and replace shower valves, including the older two- and three-handle valves common in postwar homes. Our office is on Lincoln Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/shower-valve-cartridge-repair.webp",
+    "alt": "J. Blanton plumber removing the cartridge from a shower valve during a shower repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Shower Problems We Fix",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Drips After It's Off",
+      "body": "Worn washers or a cartridge."
+     },
+     {
+      "h3": "It Scalds or Goes Cold",
+      "body": "No pressure-balancing valve, or a worn one."
+     },
+     {
+      "h3": "The Spray Is Weak",
+      "body": "A clogged head or old pipe."
+     },
+     {
+      "h3": "There's a Stain Below",
+      "body": "A leak at the valve or drain."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "skokie-showers",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Shower Repairs in Skokie Homes",
+    "intro": "Many Skokie bathrooms still have their original shower valves behind the tile.",
+    "items": [
+     {
+      "h3": "Two- and Three-Handle Valves",
+      "body": "Older valves use washers and stems that wear. We rebuild them or replace them with a modern valve."
+     },
+     {
+      "h3": "Safer Temperature Control",
+      "body": "Older valves don't balance pressure, so a flush can make the water spike. A new pressure-balancing valve fixes it."
+     },
+     {
+      "h3": "Original Tile Is Hard to Match",
+      "body": "We work through the smallest opening possible."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We protect the tile when we can.",
+    "steps": [
+     {
+      "h3": "1. Diagnose the Valve",
+      "body": "Through the trim if possible."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Rebuild or replace."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "Steady temperature, no drips."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "shower-repairs-in-vintage-tile-bathrooms",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Vintage Baths",
+    "h2": "Shower Repairs in Vintage Tile Bathrooms",
+    "body": "Many Skokie homes still have original tile bathrooms from the 1950s, often in colors that are hard to match. When a valve needs work, we try to do it from behind the wall or through the valve opening, so the tile stays intact. If a valve must be replaced, a trim plate can cover the old holes. You keep the bathroom you like, with a shower that works.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-shower-repair",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Shower Repair",
+    "body": "A cartridge or washer replacement is quick. Replacing an original valve behind vintage tile takes more care. Leak testing adds time. We diagnose and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Shower Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Chuck Petty",
+      "url": null,
+      "text": "GREAT WORK AND CUSTOMER SERVICE!!"
+     },
+     {
+      "name": "Karyn Soerens",
+      "url": null,
+      "text": "Picture it: you get home from being out of town to relax and take a glorious shower. You’re halfway through the shampoo when your husband comes in yelling saying the water needs to be shut off because it’s all coming up in the basement. Ugh. So you start looking for who to call. The plumber your parents used is out of town for two weeks. [...]"
+     },
+     {
+      "name": "Peggy Webber",
+      "url": null,
+      "text": "Edgar did an excellent job on our shower and kitchen sink. He was friendly and efficient. Kept work area clean."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Shower Questions From Skokie Homeowners",
+    "items": [
+     {
+      "q": "Can you replace an old three-handle valve?",
+      "preview": "Yes.",
+      "answer": "Yes. We can install a single-handle pressure-balancing valve, usually with a trim plate that covers the old openings."
+     },
+     {
+      "q": "Why does my shower get hot when someone flushes?",
+      "preview": "No balancing valve or a worn one.",
+      "answer": "Older valves don't balance pressure. Installing a pressure-balancing valve solves it."
+     },
+     {
+      "q": "Can you fix a drip without opening the wall?",
+      "preview": "Usually.",
+      "answer": "Usually. Most drips are fixed by replacing washers, seats or a cartridge through the trim."
+     },
+     {
+      "q": "Why is the ceiling under my shower stained?",
+      "preview": "A leak at the valve, drain or tile.",
+      "answer": "A leak at the valve, the drain or failed grout. We find the source before anything is opened."
+     },
+     {
+      "q": "Is my shower pan leaking?",
+      "preview": "We can test it.",
+      "answer": "We can test the pan, drain and valve to find the source."
+     },
+     {
+      "q": "Can you replace a tub spout?",
+      "preview": "Yes.",
+      "answer": "Yes, including the diverter if it's worn."
+     },
+     {
+      "q": "How much does shower repair cost in Skokie?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and how we reach it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Skokie",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/skokie/sewer-repair",
+      "desc": "Root intrusion, cracked pipe and repeat backups in sewer lines that are now 60 to 80 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/skokie/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/skokie/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Fixtures",
+      "href": "/skokie/toilet-installation-repair",
+      "desc": "Running toilets, leaky faucets and new fixture installs for kitchens and bathrooms.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/skokie/leak-repairs",
+      "desc": "Leaking water lines, low pressure from old galvanized pipe and hidden leaks behind walls.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/skokie/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/skokie/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Shower That Works?",
+    "body": "Our Skokie office is at 8001 Lincoln Ave, Suite 301, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincolnwood](/lincolnwood), [Morton Grove](/morton-grove), [Niles](/niles), [Evanston](/evanston), [Wilmette](/wilmette), [Glenview](/glenview), [Golf](/golf) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Shower Repair in Skokie, IL",
+   "serviceType": "Shower Repair",
+   "url": "https://jblantonplumbing.com/skokie/shower-repair",
+   "description": "Shower repair in Skokie, IL. Dripping valves, temperature swings and weak spray fixed, including older two-handle valves. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Skokie",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/skokie",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8001 Lincoln Ave, Suite 301",
+     "addressLocality": "Skokie",
+     "addressRegion": "IL",
+     "postalCode": "60077",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Skokie, IL",
+    "Lincolnwood, IL",
+    "Morton Grove, IL",
+    "Niles, IL",
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Glenview, IL",
+    "Golf, IL"
+   ]
+  }
+ },
+ "metaTitle": "Shower Repair in Skokie, IL",
+ "metaDescription": "Shower repair in Skokie, IL. Dripping valves, temperature swings and weak spray fixed, including older two-handle valves. Flat price first."
+}

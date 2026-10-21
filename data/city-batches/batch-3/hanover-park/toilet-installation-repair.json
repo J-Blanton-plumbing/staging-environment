@@ -1,0 +1,329 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Toilet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Toilet Repair and Installation in Hanover Park, IL",
+   "sub": "A toilet that runs all night, leaks at the base or clogs every week. We repair it or replace it, and check the flange and supply line while we're there. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+    "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Toilet Problems We Fix",
+    "intro": "We handle:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Running",
+      "body": "A flapper or fill valve."
+     },
+     {
+      "h3": "Leaking at the Base",
+      "body": "A failed seal."
+     },
+     {
+      "h3": "Clogging",
+      "body": "An older toilet or a line problem."
+     },
+     {
+      "h3": "Rocking",
+      "body": "Loose bolts or a damaged flange."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-toilets",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Toilets in Hanover Park Homes",
+    "intro": "Common issues in homes from the '70s and '80s:",
+    "items": [
+     {
+      "h3": "Older Toilets",
+      "body": "Some use far more water per flush than new models."
+     },
+     {
+      "h3": "Basement Bathrooms",
+      "body": "Some drain to an [ejector pump](/hanover-park/ejector-pump)."
+     },
+     {
+      "h3": "Worn Seals",
+      "body": "A slow leak can damage the subfloor."
+     },
+     {
+      "h3": "Water Use",
+      "body": "Newer toilets use much less water per flush."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Repair or replace, explained.",
+    "steps": [
+     {
+      "h3": "1. Diagnose",
+      "body": "Tank, bowl, seal and flange."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "First."
+     },
+     {
+      "h3": "3. Tested",
+      "body": "Tight and sealed."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "repair-or-replace-your-toilet",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Decide",
+    "h2": "Repair or Replace Your Toilet?",
+    "body": "Most toilet problems are cheap to fix. A new flapper, fill valve or wax seal costs far less than a new toilet. Replacement makes sense when the bowl or tank is cracked, when it clogs no matter what you do or when it's an older model that uses much more water per flush than today's toilets. If you're remodeling a Hanover Park bathroom anyway, a new toilet is an easy upgrade to add.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-toilet-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of Toilet Work",
+    "body": "Small repairs are quick. Resetting a toilet or replacing a flange takes longer. A new toilet depends on the model you choose. Basement toilets that drain to an ejector pump may need a check of the pump too. We look first and quote a flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Toilet Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Joyce Williams",
+      "url": null,
+      "text": "Great service and expertise-- corrected our issue the day after we called. Special shout out to Lawrence, the technician who served our home-- he was friendly, answered our questions and explained the fix in layman's terms."
+     },
+     {
+      "name": "Judith Kulb",
+      "url": null,
+      "text": "Anthony was our technician to take out our old water heater and install a new one as well as install new inside parts to two of our toilets. He was very professional, courteous, respectful of our home, and very pleasant with whom to deal. We were very happy to have had Anthony as our plumber."
+     },
+     {
+      "name": "K Franko",
+      "url": null,
+      "text": "Stephen and Brendon were great. Explained the options, transparent pricing on parts, had quick support from management on bid questions and great communication from scheduling to job completion. Efficient, cleaned up the area and worked well together even though they came at different times for different portions of the job. Definitely recommend them."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Toilet Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Why does my toilet keep running?",
+      "preview": "A flapper or fill valve.",
+      "answer": "Usually a worn flapper or fill valve."
+     },
+     {
+      "q": "Should I replace my old toilet?",
+      "preview": "If it clogs often or uses a lot of water, it's worth considering.",
+      "answer": "If it clogs often, cracks or uses a lot of water per flush, replacement is worth it."
+     },
+     {
+      "q": "Why does my toilet rock?",
+      "preview": "Loose bolts or a damaged flange.",
+      "answer": "Loose bolts or a damaged flange. We fix it and reset the toilet."
+     },
+     {
+      "q": "Can you install a toilet I bought?",
+      "preview": "Yes.",
+      "answer": "Yes, with a new seal and supply line."
+     },
+     {
+      "q": "How do I know if my toilet is leaking?",
+      "preview": "Try a dye test.",
+      "answer": "Add a few drops of food coloring to the tank. If color shows in the bowl without flushing, the flapper is leaking."
+     },
+     {
+      "q": "Can you fix a weak flush?",
+      "preview": "Often.",
+      "answer": "Often. Clogged rim holes, a low water level or a worn flapper are the usual causes."
+     },
+     {
+      "q": "How much does toilet repair cost in Hanover Park?",
+      "preview": "It depends on the problem. You'll approve a flat price first.",
+      "answer": "It depends on what's wrong and whether you're repairing or replacing. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Fix That Toilet?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Toilet Repair and Installation in Hanover Park, IL",
+   "serviceType": "Toilet Installation & Repair",
+   "url": "https://jblantonplumbing.com/hanover-park/toilet-installation-repair",
+   "description": "Toilet repair and installation in Hanover Park, IL. Running, leaking, clogging and rocking toilets fixed or replaced. Flat price first.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Toilet Repair & Installation in Hanover Park",
+ "metaDescription": "Toilet repair and installation in Hanover Park, IL. Running, leaking, clogging and rocking toilets fixed or replaced. Flat price first."
+}

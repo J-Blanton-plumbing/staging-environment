@@ -1,0 +1,353 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Installation in Ravenswood, Chicago",
+   "sub": "A leaking tank, a heater past 12 years or one that can't keep up after a renovation. We size and install the replacement, check the venting and carry the old one out. Our office is on Ravenswood Avenue.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "When to Replace Your Water Heater",
+    "intro": "Usually when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Leaks",
+      "body": "It can't be repaired."
+     },
+     {
+      "h3": "It's 10 to 12 Years or More",
+      "body": "Check the label."
+     },
+     {
+      "h3": "Rusty Hot Water",
+      "body": "Corrosion inside."
+     },
+     {
+      "h3": "Repairs Keep Coming",
+      "body": "Time for a new one."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "steps",
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "How It Works",
+    "h2": "How We Install Your New Water Heater",
+    "intro": "Start to finish:",
+    "steps": [
+     {
+      "h3": "1. Measure Stairs and Space",
+      "body": "Old basements need planning."
+     },
+     {
+      "h3": "2. Install to Code",
+      "body": "Connections, relief valve and venting."
+     },
+     {
+      "h3": "3. Test and Haul Away",
+      "body": "Draft and leaks checked."
+     }
+    ],
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-ravenswood-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Installs in Ravenswood",
+    "intro": "Older buildings add a few steps.",
+    "items": [
+     {
+      "h3": "Two Heaters, One Basement",
+      "body": "We can replace one or both and keep the venting safe."
+     },
+     {
+      "h3": "Shared Chimney Venting",
+      "body": "A new heater may need a liner or different venting."
+     },
+     {
+      "h3": "Condo Closets",
+      "body": "Drain pans protect the unit below."
+     },
+     {
+      "h3": "Considering Tankless?",
+      "body": "See [tankless water heaters](/chicago-ravenswood/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "One flat price.",
+    "steps": [
+     {
+      "h3": "1. Options Explained",
+      "body": "Size, fuel and venting."
+     },
+     {
+      "h3": "2. A Flat Price",
+      "body": "Parts, labor, haul-away."
+     },
+     {
+      "h3": "3. Usually Same Day",
+      "body": "For most swaps."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "getting-a-new-heater-into-an-old-basement",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Access",
+    "h2": "Getting a New Heater Into an Old Basement",
+    "body": "Old Chicago basements weren't built with today's appliances in mind. Stairs can be steep and narrow, with a turn at the bottom. Doorways can be low. Before we quote, we measure the path from the street to the heater's spot. If a standard tank won't fit, we'll suggest a shorter or narrower model, or a tankless unit that carries in easily. You won't find out on install day that it doesn't fit.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-new-water-heater",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a New Water Heater",
+    "body": "Size, fuel and venting come first. Shared chimneys may need a liner. Narrow stairs and low ceilings add labor. We check everything and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Judith Kulb",
+      "url": null,
+      "text": "Anthony was our technician to take out our old water heater and install a new one as well as install new inside parts to two of our toilets. He was very professional, courteous, respectful of our home, and very pleasant with whom to deal. We were very happy to have had Anthony as our plumber."
+     },
+     {
+      "name": "Alison Rebello",
+      "url": null,
+      "text": "Couldn’t recommend J. Blanton enough. Thomas came to replace a tankless heater and was so knowledgeable and friendly. We will be using them for all plumbing services moving forward!"
+     },
+     {
+      "name": "Jason Wallers",
+      "url": null,
+      "text": "Christian and Saul were great - super friendly and efficient with fixing our water heater! Even recommended preventative work which would save us money in the future."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Ravenswood Homeowners",
+    "items": [
+     {
+      "q": "Will a new heater fit down my basement stairs?",
+      "preview": "We measure first.",
+      "answer": "We measure before quoting and recommend a model that fits."
+     },
+     {
+      "q": "Do I need a chimney liner?",
+      "preview": "Sometimes.",
+      "answer": "Sometimes, if the heater is the only appliance left on the chimney or the flue is oversized. We test it."
+     },
+     {
+      "q": "Can you replace both heaters in a two-flat at once?",
+      "preview": "Yes.",
+      "answer": "Yes, usually in the same visit."
+     },
+     {
+      "q": "Do you take the old heater?",
+      "preview": "Yes.",
+      "answer": "Yes, including carrying it up the stairs."
+     },
+     {
+      "q": "Can a water heater go in a closet?",
+      "preview": "Often, with the right model and venting.",
+      "answer": "Often, if there's proper venting, combustion air and a drain pan."
+     },
+     {
+      "q": "Do you install heat pump water heaters?",
+      "preview": "Ask us about your space.",
+      "answer": "They need space and airflow. Ask us whether your basement is a good fit."
+     },
+     {
+      "q": "How much does water heater installation cost in Ravenswood?",
+      "preview": "It depends on size, type and venting. You'll approve a flat price first.",
+      "answer": "It depends on the size, fuel type, venting and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Ravenswood",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-ravenswood/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under century-old homes.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-ravenswood/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-ravenswood/burst-pipe-repair",
+      "desc": "Repair for frozen or burst pipes, from basement water lines to back porch spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Testing & Filtration",
+      "href": "/chicago-ravenswood/water-filtration-systems",
+      "desc": "Water testing and filtration systems, from under-sink filters to whole-house units.",
+      "img": {
+       "src": "/images/city-services-v2/water-filtration-reverse-osmosis.webp",
+       "alt": "J. Blanton plumber replacing the filter cartridges on an under-sink reverse osmosis water filtration system"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-ravenswood/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Garbage Disposals",
+      "href": "/chicago-ravenswood/garbage-disposal-installation-repair",
+      "desc": "Repair and replacement for garbage disposals that jam, leak or just hum.",
+      "img": {
+       "src": "/images/city-services-v2/garbage-disposal-installation.webp",
+       "alt": "J. Blanton plumber showing a tablet photo of the garbage disposal installed under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/chicago-ravenswood/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for Reliable Hot Water?",
+    "body": "Our Ravenswood office is at 5126 N Ravenswood Ave, and our phone line is open 24/7.",
+    "communities": "We also serve [Lincoln Square](/chicago-lincoln-square), [Andersonville](/chicago-andersonville), [Edgewater](/chicago-edgewater), [North Center](/chicago-north-center), [Uptown](/chicago-uptown), [Albany Park](/chicago-albany-park), [West Ridge](/chicago-west-ridge) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Installation in Ravenswood, Chicago",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/chicago-ravenswood/water-heater-installation",
+   "description": "Water heater installation and replacement in Ravenswood, Chicago, for houses, two-flats and condos. Installed to code, flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Ravenswood",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-ravenswood",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5126 N Ravenswood Ave",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60640",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Chicago Ravenswood, IL",
+    "Lincoln Square, IL",
+    "Andersonville, IL",
+    "Edgewater, IL",
+    "North Center, IL",
+    "Uptown, IL",
+    "Albany Park, IL",
+    "West Ridge, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Installation in Ravenswood",
+ "metaDescription": "Water heater installation and replacement in Ravenswood, Chicago, for houses, two-flats and condos. Installed to code, flat price."
+}

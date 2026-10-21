@@ -1,0 +1,361 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewer Systems in Hanover Park, IL",
+   "sub": "If your basement takes on sewer water in heavy storms, an overhead sewer keeps it out for good. For lighter risk, a backflow valve may be enough. We'll help you decide. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Does Your Hanover Park Home Need Flood Protection?",
+    "intro": "Consider it when:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Backups Follow Heavy Rain",
+      "body": "Not dry days."
+     },
+     {
+      "h3": "Your Line Is Clear on Camera",
+      "body": "And it still backs up."
+     },
+     {
+      "h3": "The Basement Is Finished",
+      "body": "Or will be."
+     },
+     {
+      "h3": "You Flooded in 2007",
+      "body": "And don't want a repeat."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "split",
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "Every drain below the street sewer's flow line, like your floor drain, a basement bathroom, or a laundry line, normally relies on gravity to reach the sewer. An overhead sewer system reroutes those drains into a sump pit instead. An [ejector pump](/hanover-park/ejector-pump) lifts that wastewater up to a line above flood level, where a check valve keeps it from flowing back down. From there, gravity carries it the rest of the way to the street sewer, the same as every drain upstairs.",
+    "img": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Overhead Sewers in Hanover Park",
+    "intro": "In the August 2007 storm, 3.25 inches of rain fell fast, and many basements took on sewer water.",
+    "items": [
+     {
+      "h3": "Finished Basements",
+      "body": "Common in homes from the '70s and '80s."
+     },
+     {
+      "h3": "Power Outages",
+      "body": "The 2007 storm also knocked out power. An overhead sewer pump needs a battery backup or generator."
+     },
+     {
+      "h3": "Camera First",
+      "body": "A clogged or broken line can cause backups too. A [sewer repair](/hanover-park/sewer-repair) may be enough."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "table",
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Backflow Valve vs. Standpipe",
+    "intro": "Common options:",
+    "head": [
+     "",
+     "Standpipe",
+     "Backflow Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "What it does",
+      "Raises the floor drain opening",
+      "Closes on reverse flow",
+      "Lifts all basement wastewater above flood level"
+     ],
+     [
+      "Best for",
+      "Occasional light backups",
+      "Moderate risk",
+      "Repeat backups and finished basements"
+     ],
+     [
+      "Basement fixtures",
+      "Not protected",
+      "Partly protected",
+      "Fully protected"
+     ]
+    ],
+    "note": "We'll tell you which one fits your basement."
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Start with the line.",
+    "steps": [
+     {
+      "h3": "1. Camera First",
+      "body": "Rule out a simpler fix."
+     },
+     {
+      "h3": "2. Plan the Layout",
+      "body": "Pit, pump and piping."
+     },
+     {
+      "h3": "3. Flat Price, Water-Tested",
+      "body": "Before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "how-an-overhead-sewer-goes-in",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "What to Expect",
+    "h2": "How an Overhead Sewer Goes In",
+    "body": "First, we cut the basement floor to reach the existing drains and set a sealed pit with a pump. Basement fixtures are re-piped to drain into that pit. A new line runs up the wall and out above the flood level, then drops into the sewer outside. The old connection at the floor is closed off so sewer water can't push back in. We test with water before closing the floor. In a finished Hanover Park basement, we plan the route to touch as little finish work as possible.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Milana Weil",
+      "url": null,
+      "text": "Fantastic service! J. Blanton Plumbing provided same day service when our bathroom was flooding due to a faulty pipe. Anthony went above and beyond, and did not leave our home until the issue was resolved. He was professional, pleasant and communicative throughout the process and provided the best experience we have had in a long time. It's safe to say that we will continue to use the services of J. [...]"
+     },
+     {
+      "name": "Betty Knows",
+      "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+      "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+     },
+     {
+      "name": "Tanya Hill",
+      "url": null,
+      "text": "Ray was awesome! My kitchen sink was backed up and he took care of things courteously, neatly and thoroughly. Ray explained the mechanics of why my issue may have happened and how to prevent it from happening again. I recommend Ray and JVS to anyone looking for a plumber!"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Is a backflow valve enough?",
+      "preview": "For moderate risk, it can be.",
+      "answer": "For occasional backups, often. For repeat backups or a finished basement, an overhead sewer gives full protection."
+     },
+     {
+      "q": "What happens in a power outage?",
+      "preview": "The pump needs backup power.",
+      "answer": "The pump needs power, so a battery backup or generator is worth it. The 2007 storm showed why."
+     },
+     {
+      "q": "Does it stop water through the walls?",
+      "preview": "No.",
+      "answer": "No. That's groundwater. A [sump pump](/hanover-park/sump-pumps) handles it."
+     },
+     {
+      "q": "How long does installation take?",
+      "preview": "Usually a few days.",
+      "answer": "Usually a few days, depending on the layout."
+     },
+     {
+      "q": "Will an overhead sewer change how my basement works?",
+      "preview": "Day to day, no.",
+      "answer": "Day to day, no. Fixtures drain normally. The difference is that the basement no longer connects directly to a sewer that can push back."
+     },
+     {
+      "q": "Do I need a permit?",
+      "preview": "Yes, and we handle it.",
+      "answer": "Yes. We handle the village permit for our work."
+     },
+     {
+      "q": "How much does an overhead sewer cost in Hanover Park?",
+      "preview": "It depends on your basement. You'll approve a flat price first.",
+      "answer": "It depends on sewer depth, layout, fixtures and access. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/hanover-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups, so a power outage doesn't flood your basement.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Protect Your Basement?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewer Systems in Hanover Park, IL",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/hanover-park/overhead-sewer-systems",
+   "description": "Overhead sewers and backflow protection in Hanover Park, IL, for basements that back up in heavy storms. Camera first, flat price.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewers in Hanover Park, IL",
+ "metaDescription": "Overhead sewers and backflow protection in Hanover Park, IL, for basements that back up in heavy storms. Camera first, flat price."
+}

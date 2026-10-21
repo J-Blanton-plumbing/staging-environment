@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sump Pumps",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sump Pump Repair and Installation in Hanover Park, IL",
+   "sub": "A pump that runs nonstop, hums without pumping or has never been tested. We repair, replace and install sump pumps and add battery backups for Hanover Park basements. Our office is on Greenbrook Boulevard.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Sump Pump Needs Attention",
+    "intro": "Call when:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Runs Nonstop",
+      "body": "A stuck float or bad check valve."
+     },
+     {
+      "h3": "It Hums Without Pumping",
+      "body": "A jam or failing motor."
+     },
+     {
+      "h3": "It's 7 to 10 Years Old",
+      "body": "Replace before it fails."
+     },
+     {
+      "h3": "No Battery Backup",
+      "body": "Outages come with storms."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "hanover-park-sump-pumps",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sump Pumps Matter in Hanover Park",
+    "intro": "In the Aug 23, 2007 storm, 3.25 inches of rain fell fast and the power went out. Basements flooded when sump pumps stopped.",
+    "items": [
+     {
+      "h3": "Battery Backups",
+      "body": "The single best upgrade for a Hanover Park basement."
+     },
+     {
+      "h3": "Pumps From the Original Build",
+      "body": "Some pits still have small or tired pumps."
+     },
+     {
+      "h3": "Discharge Lines",
+      "body": "Frozen or buried lines send water back into the pit."
+     },
+     {
+      "h3": "Test Before Spring",
+      "body": "Pour water in the pit and watch it run."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A pump you can count on.",
+    "steps": [
+     {
+      "h3": "1. Test It",
+      "body": "Pump, float, valve and discharge."
+     },
+     {
+      "h3": "2. Repair or Replace",
+      "body": "Flat price first."
+     },
+     {
+      "h3": "3. Add a Backup",
+      "body": "Battery or water-powered."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "battery-backup-options",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Your Options",
+    "h2": "Battery Backup Options",
+    "body": "A battery backup pump sits in the same pit as your main pump and takes over when the power fails or the main pump can't keep up. It's the protection that matters most in Hanover Park, where the 2007 storm brought both heavy rain and outages. Battery systems run for hours depending on the battery and how often the pump cycles. Some homes add a high-water alarm too, so you know right away if something goes wrong.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Sump Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Amanda Margaret",
+      "url": null,
+      "text": "Andrew A and Andrew M were remarkable!!!! We were in such a panic - just moving into our new home that day and they were professional and so knowledgeable! They are amazing!!!"
+     },
+     {
+      "name": "yihong qiu",
+      "url": null,
+      "text": "Julian and Christian were at my house and flushed my water heater they also gave me a lot of information on my pumps that I didn’t know thank you j Blanton for keeping me informed"
+     },
+     {
+      "name": "Sharayah Strong",
+      "url": null,
+      "text": "Welhem and Josh have been so kind with my flooded crawl space and sump pump replacement process. It’s my first time owning a home and while these things can be stressful, they have been wonderful about getting things resolved as quickly as possible. Services Sump pump repair, Sump pump installation"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Sump Pump Questions From Hanover Park Homeowners",
+    "items": [
+     {
+      "q": "Do I need a battery backup sump pump?",
+      "preview": "In Hanover Park, it's a good idea.",
+      "answer": "Yes, if you'd like your basement protected when the power goes out. That's what happened in 2007."
+     },
+     {
+      "q": "How long do sump pumps last?",
+      "preview": "About 7 to 10 years.",
+      "answer": "Most last about 7 to 10 years."
+     },
+     {
+      "q": "How do I test my sump pump?",
+      "preview": "Pour water into the pit.",
+      "answer": "Pour a bucket of water into the pit. The pump should start, empty it and shut off."
+     },
+     {
+      "q": "Is a sump pump the same as an ejector pump?",
+      "preview": "No.",
+      "answer": "No. A sump pump moves groundwater. An [ejector pump](/hanover-park/ejector-pump) moves wastewater."
+     },
+     {
+      "q": "How long does a battery backup last?",
+      "preview": "Hours, depending on use.",
+      "answer": "It depends on the battery and how often the pump runs. A strong storm drains it faster."
+     },
+     {
+      "q": "Should I replace the main pump and backup together?",
+      "preview": "If both are old, yes.",
+      "answer": "If both are near the end of their life, replacing them together saves a second visit."
+     },
+     {
+      "q": "How much does sump pump repair cost in Hanover Park?",
+      "preview": "It depends on the pump and backup. You'll approve a flat price first.",
+      "answer": "It depends on the pump, the pit and whether you add a backup. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Hanover Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/hanover-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains and main lines, cleared and checked on camera.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/hanover-park/sewer-repair",
+      "desc": "Roots, cracked pipe and repeat backups in sewer lines that are now about 50 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/hanover-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/hanover-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak Repair",
+      "href": "/hanover-park/leak-repairs",
+      "desc": "Hidden leaks behind walls and ceilings, drips under the sink and leaking water lines.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/hanover-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready for a Dry Basement?",
+    "body": "Our Hanover Park office is at 1300 Greenbrook Blvd, Suite B5, and our phone line is open 24/7.",
+    "communities": "We also serve [Bartlett](/bartlett), [Roselle](/roselle), [Schaumburg](/schaumburg), [Bloomingdale](/bloomingdale), [Hoffman Estates](/hoffman-estates), [Keeneyville](/keeneyville), [Carol Stream](/carol-stream) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sump Pump Repair and Installation in Hanover Park, IL",
+   "serviceType": "Sump Pumps",
+   "url": "https://jblantonplumbing.com/hanover-park/sump-pumps",
+   "description": "Sump pump repair, installation and battery backups in Hanover Park, IL. Tested, sized right and priced flat before any work. 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Hanover Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/hanover-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1300 Greenbrook Blvd, Suite B5",
+     "addressLocality": "Hanover Park",
+     "addressRegion": "IL",
+     "postalCode": "60133",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Hanover Park, IL",
+    "Bartlett, IL",
+    "Roselle, IL",
+    "Schaumburg, IL",
+    "Bloomingdale, IL",
+    "Hoffman Estates, IL",
+    "Keeneyville, IL",
+    "Carol Stream, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sump Pump Repair & Installation in Hanover Park",
+ "metaDescription": "Sump pump repair, installation and battery backups in Hanover Park, IL. Tested, sized right and priced flat before any work. 24/7."
+}

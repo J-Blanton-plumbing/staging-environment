@@ -1,0 +1,326 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Rodding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Rodding in Elmhurst, IL",
+   "sub": "If the basement floor drain is filling up or every drain in the house is slow, the main line is blocked. We rod it clear, run a camera so you see the cause and give you a flat price first. Our office is on York Street, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-rodding-front-yard.webp",
+    "alt": "J. Blanton plumber feeding the cable from a drum rodding machine into an outdoor sewer cleanout in a front yard"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "what-is-sewer-rodding",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "What Is Sewer Rodding?",
+    "body": "Sewer rodding clears a blocked main line with a long, flexible steel cable fed through a cleanout access point. A cutting head on the end breaks through roots, grease, and debris and pushes the blockage toward the street connection, restoring flow through the pipe. It's the standard first fix for a clogged or backed-up sewer line. For most homes, it's the only fix needed.",
+    "img": {
+     "src": "/images/city-services-v2/sewer-rodding-diagram.webp",
+     "alt": "Diagram showing a rodding cable fed through a cleanout access point into the main sewer line, with a cutting head clearing the blockage toward the street connection"
+    }
+   },
+   {
+    "type": "tiles",
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Elmhurst Main Line Needs Rodding",
+    "intro": "Call before it backs up all the way:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Laundry Drain Overflows",
+      "body": "The washer empties faster than the line can carry it."
+     },
+     {
+      "h3": "Gurgling Throughout the House",
+      "body": "Air pushed ahead of the clog escapes through other drains."
+     },
+     {
+      "h3": "A Toilet That Bubbles When the Tub Drains",
+      "body": "They share the line to the street."
+     },
+     {
+      "h3": "Every Spring, Like Clockwork",
+      "body": "Roots in clay come back on a schedule."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "elmhurst-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "What Clogs Main Lines in Elmhurst",
+    "intro": "With so many homes from the postwar decades, we see the same causes again and again.",
+    "items": [
+     {
+      "h3": "Root Balls at Clay Joints",
+      "body": "The number one cause in Elmhurst's older neighborhoods."
+     },
+     {
+      "h3": "Scale in the Cast Iron Under the Floor",
+      "body": "Rust buildup inside the pipe snags paper."
+     },
+     {
+      "h3": "Grease Downstream of the Kitchen",
+      "body": "It hardens where the kitchen line meets the main."
+     },
+     {
+      "h3": "When Rodding Isn't Enough",
+      "body": "If you're calling every few months, [hydro jetting](/elmhurst/hydro-jetting) or a [repair](/elmhurst/sewer-repair) is the better fix."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "How Our Rodding Visits Work",
+    "intro": "Open the line, then explain it.",
+    "steps": [
+     {
+      "h3": "1. Protect the Basement",
+      "body": "Floors covered, work done from the cleanout."
+     },
+     {
+      "h3": "2. Rod, Then Scope",
+      "body": "Clear to the city main, then on camera."
+     },
+     {
+      "h3": "3. Price Before Work",
+      "body": "Plus options if the camera finds damage."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "rodding-lines-under-elmhurst-s-mid-century-homes",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Older Homes",
+    "h2": "Rodding Lines Under Elmhurst's Mid-Century Homes",
+    "body": "About 4 in 10 Elmhurst homes went up between 1940 and 1969, and many still have their original clay laterals. Those pipes have short sections with a joint every few feet, and mature trees on established blocks have had decades to find them. A yearly rodding keeps roots from closing the line. If roots come back within months, the camera shows whether jetting or a liner would be a better use of your money.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Rodding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "R Richey",
+      "url": null,
+      "text": "J. Blanton was great. I was not the nicest this morning when I called because I was super stressed about my plumbing being totally backed up for the second time in 6 weeks, and they were so sweet. They got someone out same day and communicated constantly until he arrived. Stephen was absolutely amazing. [...]"
+     },
+     {
+      "name": "Terrence Thompson",
+      "url": null,
+      "text": "The technicians and plumbers involved were prompt, friendly, courteous and explained everything with the sewer lining project. The sewer lines were cleaned, repaired, and inspected before the new lining was installed. I recommend them with no reservations!"
+     },
+     {
+      "name": "Mike Willman",
+      "url": null,
+      "text": "They showed up quickly only 45 min after I called. Steve was awesome. Extremely knowledgeable and friendly and most importantly fixed our clogged drain line. Steve also clearly explained options for a more permanent fix of our drain line."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Rodding Questions From Elmhurst Homeowners",
+    "items": [
+     {
+      "q": "How often should an older Elmhurst home be rodded?",
+      "preview": "Yearly if roots are a known problem.",
+      "answer": "If roots have blocked your line before, once a year is common, usually in late winter."
+     },
+     {
+      "q": "Is rodding or jetting better for roots?",
+      "preview": "Jetting lasts longer. Rodding is faster and simpler.",
+      "answer": "Rodding cuts a path through the roots and works well for routine maintenance. [Hydro jetting](/elmhurst/hydro-jetting) removes more of the growth, so it usually lasts longer."
+     },
+     {
+      "q": "Can rodding damage old clay pipe?",
+      "preview": "Not with the right cutter.",
+      "answer": "Not with the right cutter. The camera afterward shows whether the pipe was already cracked."
+     },
+     {
+      "q": "Where's the cleanout in an Elmhurst home?",
+      "preview": "Usually in the basement near the floor drain.",
+      "answer": "Usually in the basement near where the line leaves the house. Some homes also have one outside."
+     },
+     {
+      "q": "Should I be home during the rodding?",
+      "preview": "Yes, to show us the cleanout.",
+      "answer": "It helps, so you can show us the cleanout and see the footage."
+     },
+     {
+      "q": "How much does sewer rodding cost in Elmhurst?",
+      "preview": "It depends on access and the clog. You'll approve a flat price first.",
+      "answer": "It depends on the cleanout location, the length of the line and what's blocking it. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "variant": "sewer"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Elmhurst",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/elmhurst/sewer-repair",
+      "desc": "Cracked clay laterals, roots and repeat backups in sewer lines from the 1940s, 50s and 60s.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/elmhurst/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Hydro Jetting",
+      "href": "/elmhurst/hydro-jetting",
+      "desc": "High-pressure sewer cleaning that scours roots, grease and scale off the pipe walls.",
+      "img": {
+       "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+       "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Drain Cleaning",
+      "href": "/elmhurst/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/elmhurst/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/elmhurst/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/elmhurst/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Get Your Main Line Flowing?",
+    "body": "Our Elmhurst office is at 116 S York St, Suite 212, and our phone line is open 24/7.",
+    "communities": "We also serve [Villa Park](/villa-park), [Lombard](/lombard), [Oak Brook](/oak-brook), [Oakbrook Terrace](/oakbrook-terrace), [Westchester](/westchester), [Glen Ellyn](/glen-ellyn) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Rodding in Elmhurst, IL",
+   "serviceType": "Sewer Rodding",
+   "url": "https://jblantonplumbing.com/elmhurst/sewer-rodding",
+   "description": "Sewer rodding in Elmhurst, IL. Root-clogged main lines cut clear, then checked on camera so you see the cause. Flat price, 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Elmhurst",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/elmhurst",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "116 S York St, Suite 212",
+     "addressLocality": "Elmhurst",
+     "addressRegion": "IL",
+     "postalCode": "60126",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Elmhurst, IL",
+    "Villa Park, IL",
+    "Lombard, IL",
+    "Oak Brook, IL",
+    "Oakbrook Terrace, IL",
+    "Westchester, IL",
+    "Glen Ellyn, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Rodding in Elmhurst, IL",
+ "metaDescription": "Sewer rodding in Elmhurst, IL. Root-clogged main lines cut clear, then checked on camera so you see the cause. Flat price, 24/7."
+}

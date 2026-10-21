@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Emergency Plumber in Lincoln Park, Chicago",
+   "sub": "Water leaking into the unit below, sewage in the garden unit or a pipe that froze and split. Call us any time, including weekends and holidays. We'll get a plumber to you as soon as we can. Our office is on Diversey Parkway.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "tiles",
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "Know the Signs",
+    "h2": "Is It an Emergency?",
+    "intro": "Call right away for:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Water Leaking Into Another Unit",
+      "body": "Or through a ceiling."
+     },
+     {
+      "h3": "Sewage Coming Up",
+      "body": "In a basement or garden unit."
+     },
+     {
+      "h3": "A Burst Pipe",
+      "body": "Especially in a cold snap."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "Leave, then call Peoples Gas or 911."
+     },
+     {
+      "h3": "No Hot Water",
+      "body": "In the middle of winter."
+     }
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "chicago-lincoln-park-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Local Knowledge",
+    "h2": "Emergencies We See in Lincoln Park",
+    "intro": "Old buildings and shared walls shape most emergency calls here.",
+    "items": [
+     {
+      "h3": "Leaks Between Units",
+      "body": "A failed supply line upstairs can reach several units below."
+     },
+     {
+      "h3": "Storm Backups",
+      "body": "Chicago's combined sewers can overflow into basements in a heavy rain."
+     },
+     {
+      "h3": "Frozen Pipes",
+      "body": "Pipes along exterior walls and back porches freeze first."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What You Get When You Call J. Blanton",
+    "intro": "Fast help and a straight answer.",
+    "steps": [
+     {
+      "h3": "1. Answered 24/7",
+      "body": "Nights, weekends, holidays."
+     },
+     {
+      "h3": "2. A Price First",
+      "body": "Even in an emergency."
+     },
+     {
+      "h3": "3. Fixed Properly",
+      "body": "Not just patched."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "emergencies-in-a-condo-building",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "Condos",
+    "h2": "Emergencies in a Condo Building",
+    "body": "In a condo, the first step in a leak is knowing what you control. Most units have a shutoff for the unit, often in a kitchen or bathroom access panel or a utility closet. The building main is usually in the basement. Find both before you need them. If water is coming through your ceiling, the source is probably above you. Shut off what you can, tell the neighbor and building contact, and call us.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Keith Spengel",
+      "url": null,
+      "text": "Ty was awesome. Not only did he find the problem more accurately than previous people who came out, he fixed it same day and explained everything in detail with a great personality and an accommodating demeanor. I couldn’t be happier with the work that he did and how he did it."
+     },
+     {
+      "name": "Mark Paterson",
+      "url": null,
+      "text": "Ty did a nice job installing. Thanks also to Shane for coming out and quoting the job yesterday on a Sunday."
+     },
+     {
+      "name": "Rachel Malone",
+      "url": null,
+      "text": "Anthony was very, nice and knowledgeable. He listened, surveyed the problem and fixed the issue while providing helpful information. The best thing of all the cost was very reasonable for an emergency call."
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Lincoln Park Homeowners",
+    "items": [
+     {
+      "q": "Water is leaking into my downstairs neighbor's unit. What do I do?",
+      "preview": "Shut off your water and call us.",
+      "answer": "Close the shutoff valve for the fixture, or your unit's main valve, and call us. Let your neighbor know."
+     },
+     {
+      "q": "Where's the shutoff in a condo?",
+      "preview": "Usually in a closet, under a sink or near the water heater.",
+      "answer": "Many units have a main shutoff in a utility closet, near the water heater or under the kitchen sink. Find it before you need it."
+     },
+     {
+      "q": "Who do I call if I smell gas?",
+      "preview": "Peoples Gas or 911, from outside.",
+      "answer": "Leave the building and call Peoples Gas or 911 from outside. We'll handle the repair once it's safe."
+     },
+     {
+      "q": "Will I know the price first?",
+      "preview": "Yes.",
+      "answer": "Yes. You'll get a flat-rate price before work begins."
+     },
+     {
+      "q": "How fast can you get here?",
+      "preview": "As soon as we can.",
+      "answer": "Arrival times depend on the day and traffic, but we work to get a plumber to you as soon as we can."
+     },
+     {
+      "q": "Can you shut off water for the whole building?",
+      "preview": "Yes, if we can reach the main.",
+      "answer": "Yes, if we can access the main. Building staff often control it."
+     },
+     {
+      "q": "What if the leak is coming from a common pipe?",
+      "preview": "Call us and your association.",
+      "answer": "Call us and your association. We'll find the source and help stop it."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Lincoln Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/chicago-lincoln-park/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump & Ejector Pumps",
+      "href": "/chicago-lincoln-park/sump-pumps",
+      "desc": "Repair and replacement for the sump and ejector pumps that keep garden units and finished basements dry.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/chicago-lincoln-park/sewer-repair",
+      "desc": "Cracked clay and cast iron sewer lines, roots and repeat backups under older buildings.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/chicago-lincoln-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst in exterior walls, crawl spaces and unheated rooms.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/chicago-lincoln-park/gas-fireplace",
+      "desc": "Gas fireplace repair, gas line work and leak checks.",
+      "img": {
+       "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+       "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/chicago-lincoln-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Plumbing Emergency? Call Us Now.",
+    "body": "Our Lincoln Park office is at 800 W Diversey Pkwy, and our phone line is open 24/7.",
+    "communities": "We also serve [Old Town](/old-town), [Gold Coast](/gold-coast), [Lake View](/chicago-lake-view), [Lake View East](/lake-view-east), [Wrigleyville](/wrigleyville), [Bucktown](/bucktown), [North Halsted](/north-halsted) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Emergency Plumber in Lincoln Park, Chicago",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/chicago-lincoln-park/emergency-plumbing",
+   "description": "24/7 emergency plumber in Lincoln Park, Chicago. Sewer backups, burst pipes, leaks into units below and no hot water. Call any time.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Chicago Lincoln Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/chicago-lincoln-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "800 W Diversey Pkwy",
+     "addressLocality": "Chicago",
+     "addressRegion": "IL",
+     "postalCode": "60614",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Lincoln Park, IL",
+    "Old Town, IL",
+    "Gold Coast, IL",
+    "Lake View, IL",
+    "Lake View East, IL",
+    "Wrigleyville, IL",
+    "Bucktown, IL",
+    "North Halsted, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Lincoln Park, Chicago",
+ "metaDescription": "24/7 emergency plumber in Lincoln Park, Chicago. Sewer backups, burst pipes, leaks into units below and no hot water. Call any time."
+}

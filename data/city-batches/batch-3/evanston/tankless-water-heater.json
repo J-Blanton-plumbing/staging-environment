@@ -1,0 +1,342 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Evanston, IL",
+   "sub": "Endless hot water and a heater that hangs on the wall. We install, repair and descale tankless water heaters in Evanston, and we'll tell you honestly whether one makes sense for your home. Our Evanston office is on Orrington Avenue, downtown.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "type": "split",
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Heater Works",
+    "body": "A tankless heater fires only when a hot tap opens. Water flows through a heat exchanger and comes out hot for as long as you need it. Each unit has a flow limit, so we size it for the most hot water your home uses at once.",
+    "img": null
+   },
+   {
+    "type": "table",
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "eyebrow": "Compare",
+    "h2": "Tank vs. Tankless in Evanston",
+    "intro": "The trade-offs:",
+    "head": [
+     "",
+     "Tank",
+     "Tankless"
+    ],
+    "rows": [
+     [
+      "Space",
+      "Floor",
+      "Wall"
+     ],
+     [
+      "Hot water",
+      "Limited to the tank",
+      "Continuous, up to its flow"
+     ],
+     [
+      "Venting",
+      "Often the chimney",
+      "Its own vent"
+     ],
+     [
+      "Upkeep",
+      "Yearly flush",
+      "Yearly descaling"
+     ]
+    ],
+    "note": null
+   },
+   {
+    "type": "local",
+    "id": "evanston-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "eyebrow": "Local Knowledge",
+    "h2": "Is Tankless Right for Your Evanston Home?",
+    "intro": "A few local factors decide it.",
+    "items": [
+     {
+      "h3": "Scale From Local Water",
+      "body": "At about 7.8 grains per gallon, a yearly descaling keeps it running well."
+     },
+     {
+      "h3": "Venting",
+      "body": "Tankless units vent through a wall, not the chimney."
+     },
+     {
+      "h3": "Gas Line Size",
+      "body": "Older gas piping may need to be upsized."
+     },
+     {
+      "h3": "Condo Rules",
+      "body": "Check with your association about exterior vents."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "type": "steps",
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We check the house first.",
+    "steps": [
+     {
+      "h3": "1. Venting and Gas",
+      "body": "Reviewed first."
+     },
+     {
+      "h3": "2. Sized for Your Use",
+      "body": "Not an average."
+     },
+     {
+      "h3": "3. A Flat Price",
+      "body": "Approved first."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "type": "split",
+    "id": "tankless-heaters-and-evanston-s-water",
+    "cls": "ss-panel",
+    "order": 50,
+    "eyebrow": "Local Water",
+    "h2": "Tankless Heaters and Evanston's Water",
+    "body": "A tankless heater has a narrow heat exchanger, and minerals in hard water can build up inside it. With Evanston's hard water, that means descaling about once a year to keep the unit efficient and protect the warranty. Many homeowners pair a tankless heater with a water softener or a scale-reduction filter. We'll explain the options and set you up with a maintenance schedule when we install it.",
+    "img": null
+   },
+   {
+    "type": "split",
+    "id": "what-affects-the-price-of-a-tankless-install",
+    "cls": "ss-panel",
+    "order": 60,
+    "eyebrow": "Pricing",
+    "h2": "What Affects the Price of a Tankless Install",
+    "body": "Gas line size and venting are the two big variables. Older homes often need a larger gas line to the heater and a new vent through an outside wall. Removing the old tank and adding isolation valves for descaling are part of the job. We check everything first and quote one flat price.",
+    "img": null
+   },
+   {
+    "type": "reviews",
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Craig Wardrip",
+      "url": null,
+      "text": "Excellent work done quickly. Only objection is the high price!"
+     },
+     {
+      "name": "Diana Tesauro",
+      "url": null,
+      "text": "Mr. Welham Mendoza, from Blanton Plumbing, installed a water heater in our home on April 3, 2026. Mr. Mendoza was on time, friendly, professional, and clear in explaining how our system worked. He had to make a second trip to secure a water heater that fit. He was extremely knowledgeable and efficient in the installation."
+     },
+     {
+      "name": "Bill Tengler",
+      "url": null,
+      "text": "Edgar's the man. Not only did he install my water heater, but asked to test the quality of the water to see if that could've lead to the damage and the leak of my last water heater. My water was at a 7 on the hardness scale, and it's supposed to be at 2 or 3. So he reccomends a new water softener, and im thankful that he did. [...]"
+     }
+    ]
+   },
+   {
+    "type": "faq",
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Questions From Evanston Homeowners",
+    "items": [
+     {
+      "q": "How often does a tankless heater need descaling in Evanston?",
+      "preview": "About once a year.",
+      "answer": "About once a year with Evanston's water. A softener can stretch that."
+     },
+     {
+      "q": "Can a tankless heater vent through my chimney?",
+      "preview": "No.",
+      "answer": "No. It needs its own vent, usually through a side wall."
+     },
+     {
+      "q": "Will I really get endless hot water?",
+      "preview": "Yes, within its flow limit.",
+      "answer": "Yes, as long as you don't ask for more hot water at once than it's sized for."
+     },
+     {
+      "q": "Do you repair tankless units?",
+      "preview": "Yes.",
+      "answer": "Yes. We descale, clean sensors and replace failed parts."
+     },
+     {
+      "q": "Will a tankless heater lower my gas bill?",
+      "preview": "Often a little.",
+      "answer": "Often, because it doesn't keep a tank of water hot all day. Savings depend on your use."
+     },
+     {
+      "q": "How much does a tankless water heater cost in Evanston?",
+      "preview": "It depends on the unit and installation. You'll approve a flat price first.",
+      "answer": "It depends on the unit and the gas and venting work. You'll approve a flat-rate price before we start."
+     }
+    ]
+   },
+   {
+    "type": "ndc",
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "variant": "general"
+   },
+   {
+    "type": "services",
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Evanston",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/evanston/drain-cleaning",
+      "desc": "Clogged kitchen sinks, slow bathroom drains and backed-up basement floor drains.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/evanston/sewer-repair",
+      "desc": "Cracked clay pipe, roots and repeat backups in laterals that can be 80 to 100 years old.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Leak & Pipe Repair",
+      "href": "/evanston/leak-repairs",
+      "desc": "Leaking water lines, hidden leaks behind plaster and worn-out pipe in older homes.",
+      "img": {
+       "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+       "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/evanston/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Catch Basins",
+      "href": "/evanston/catch-basin",
+      "desc": "Cleaning and repair for yard and driveway catch basins that back up when it rains.",
+      "img": {
+       "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+       "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Toilets & Showers",
+      "href": "/evanston/toilet-installation-repair",
+      "desc": "Running toilets, leaky shower valves and new fixture installs.",
+      "img": {
+       "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+       "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/evanston/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "type": "final",
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "eyebrow": "Local Office, 24/7 Phone",
+    "h2": "Ready to Talk Tankless?",
+    "body": "Our Evanston office is at 1603 Orrington Ave, #600-1085, and our phone line is open 24/7.",
+    "communities": "We also serve [Wilmette](/wilmette), [Skokie](/skokie), [Kenilworth](/kenilworth), [Lincolnwood](/lincolnwood), [Rogers Park](/chicago-rogers-park), [Glenview](/glenview), [Winnetka](/winnetka) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Evanston, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/evanston/tankless-water-heater",
+   "description": "Tankless water heater installation, repair and descaling in Evanston, IL. Sized for your home and descaled for local water.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Evanston",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/evanston",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1603 Orrington Ave, #600-1085",
+     "addressLocality": "Evanston",
+     "addressRegion": "IL",
+     "postalCode": "60201",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Evanston, IL",
+    "Wilmette, IL",
+    "Skokie, IL",
+    "Kenilworth, IL",
+    "Lincolnwood, IL",
+    "Rogers Park, IL",
+    "Glenview, IL",
+    "Winnetka, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Evanston, IL",
+ "metaDescription": "Tankless water heater installation, repair and descaling in Evanston, IL. Sized for your home and descaled for local water."
+}
