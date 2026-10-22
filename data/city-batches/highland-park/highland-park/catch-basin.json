@@ -1,0 +1,290 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Catch Basin",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Catch Basin Cleaning and Repair in Highland Park, IL",
+   "sub": "A catch basin collects rain and yard water and sends it where it should go. When it fills with leaves and silt, water pools in the yard, driveway or against the house. We clean and repair catch basins for homeowners across Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/catch-basin-driveway-grate.webp",
+    "alt": "Cast iron catch basin grate at the edge of an asphalt driveway, partly covered with fallen leaves next to a landscaped garden bed"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "what-is-a-catch-basin",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "split",
+    "eyebrow": "The Basics",
+    "h2": "What Does a Catch Basin Do?",
+    "body": "A catch basin is an underground box with a grate on top, usually at a low point in the yard, driveway or near the house. Surface water drains in, heavy debris settles to the bottom, and the water flows out through a pipe. Outdoor catch basins fill up with debris over time and block surface drainage. We clean them out and restore flow, and repair basins that have cracked, shifted or collapsed.",
+    "img": {
+     "src": "/images/city-services-v2/catch-basin-diagram.webp",
+     "alt": "Diagram of a catch basin showing the inlet grate, water line, sediment settling in the sump and the outlet pipe carrying water away"
+    }
+   },
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Catch Basin Needs Service",
+    "intro": "A catch basin problem usually shows up as water where it shouldn't be:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Standing Water After Rain",
+      "body": "Puddles that sit around the grate for hours after a storm mean the basin or its outlet pipe is blocked."
+     },
+     {
+      "h3": "Debris Visible at the Grate",
+      "body": "Leaves, mulch and silt piled at or under the grate are a sign the basin is full and water is backing up."
+     },
+     {
+      "h3": "Sinking Ground or a Loose Grate",
+      "body": "A grate that shifts, or ground that sinks around the basin, points to a cracked or collapsing structure."
+     },
+     {
+      "h3": "Water Against the Foundation",
+      "body": "If yard water is pooling against the house, a blocked basin can push it toward the foundation and into the basement."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-catch-basins",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Catch Basins on Highland Park Properties",
+    "intro": "Highland Park's wooded lots and ravines are beautiful, and they send a lot of leaves and debris toward every drain on the property.",
+    "items": [
+     {
+      "h3": "Mature Trees Mean More Debris",
+      "body": "Fall leaves, seed pods and mulch wash into catch basins with every storm. On heavily treed lots, basins fill faster and need cleaning more often."
+     },
+     {
+      "h3": "Protecting the Basement",
+      "body": "Heavy rain and spring snowmelt already push water toward Highland Park basements. A clear catch basin moves surface water away from the house instead of toward it. For water that's already getting in, see [basement flooding](/highland-park/basement-flooding)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We find out why the water isn't draining before we recommend anything.",
+    "steps": [
+     {
+      "h3": "1. Inspect the Basin and Outlet",
+      "body": "We check the basin, the grate and the outlet pipe. A camera can show us if the pipe leaving the basin is blocked or broken."
+     },
+     {
+      "h3": "2. Clean or Repair, Honestly",
+      "body": "Most basins just need a cleaning. If the structure is cracked or collapsing, we'll show you and explain the repair."
+     },
+     {
+      "h3": "3. A Clear Price First",
+      "body": "You get a flat-rate price before any work begins."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Brian Crain",
+      "url": "https://maps.app.goo.gl/yX9GobAxAt8ryxhy7",
+      "text": "Ron was perfect. He came to do the job at hand and explained various pieces of information along the way that helped me understand the root causes of what we were dealing with and how to avoid problems in the future. [...] Didn't try and push the sale like some companies do, but was more or less educating on what the options were and what they entailed in full so we would know what to expect if we decided to go down those paths."
+     },
+     {
+      "name": "Amanda Gualtieri",
+      "url": "https://maps.app.goo.gl/sdQP1oxjRbV3Wpft9",
+      "text": "After 2 failed attempts at clearing our line with 2 different plumbing companies, Josh with J. Blanton was actually able to properly diagnose the issue and come up with a stable and ongoing solution."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Catch Basin Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How often should a catch basin be cleaned?",
+      "preview": "It depends on debris. Basins under mature trees may need it every year.",
+      "answer": "It depends on how much debris reaches it. Basins under mature trees can need cleaning every year, while others go longer. If water is standing around the grate after rain, it's time."
+     },
+     {
+      "q": "Can a clogged catch basin cause basement flooding?",
+      "preview": "Yes. A blocked basin can send yard water toward the foundation.",
+      "answer": "It can. A blocked basin lets surface water pool in the yard or against the foundation, and that water can find its way into the basement. Keeping the basin clear is one of the simplest ways to move water away from the house."
+     },
+     {
+      "q": "How much does catch basin repair cost?",
+      "preview": "It depends on cleaning versus repair. You get a flat price before any work begins.",
+      "answer": "It depends on whether the basin needs a cleaning, an outlet pipe cleared or structural repair, and how easy it is to reach. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Water Pooling in the Yard? Let's Get It Draining.",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Catch Basin Cleaning and Repair in Highland Park, IL",
+   "serviceType": "Catch Basin",
+   "url": "https://jblantonplumbing.com/highland-park/catch-basin",
+   "description": "Catch basin cleaning and repair for Highland Park, IL homes. We clear leaves and debris and fix damaged basins so yard water drains. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Catch Basin Cleaning & Repair in Highland Park, IL",
+ "metaDescription": "Catch basin cleaning and repair for Highland Park, IL homes. We clear leaves and debris and fix damaged basins so yard water drains. Call 24/7."
+}

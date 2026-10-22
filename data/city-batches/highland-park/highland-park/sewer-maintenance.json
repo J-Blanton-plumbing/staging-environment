@@ -1,0 +1,351 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Maintenance",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Maintenance in Highland Park, IL",
+   "sub": "Regular checkups catch roots and wear before they turn into a backup. We show you the camera footage and tell you the truth about your line, with no manufactured urgency. Serving Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-cleanout-camera-maintenance.webp",
+    "alt": "J. Blanton plumber opening an outdoor sewer cleanout in a front yard, with the sewer camera reel ready beside him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "why",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Prevention Pays Off",
+    "h2": "Why Does Sewer Line Maintenance Matter?",
+    "intro": "Sewer line maintenance catches problems while they're still small and prevents them from becoming expensive fixes down the line. Here's what regular checkups can do for you:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Catch Early Root Intrusion",
+      "body": "Roots are caught before they turn into a blockage."
+     },
+     {
+      "h3": "Flag Aging Pipe",
+      "body": "An aging or clay pipe gets flagged before it cracks."
+     },
+     {
+      "h3": "Stop Small Slow Drains",
+      "body": "A minor slow drain doesn't get the chance to turn into a full backup."
+     },
+     {
+      "h3": "Keep Small Fixes Small",
+      "body": "A small fix doesn't turn into a big one."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "how-often",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "table",
+    "eyebrow": "Maintenance Guidelines",
+    "h2": "How Often Does a Highland Park Sewer Line Need Maintenance?",
+    "intro": "How often your line needs a checkup depends mostly on your pipe's age and what's growing near it. Nearly half of Highland Park homes were built before 1960, and many sit on lots with mature trees, so most homes here land in the first two rows.",
+    "head": [
+     "Risk Tier",
+     "Recommended Frequency",
+     "Why"
+    ],
+    "rows": [
+     [
+      "Older homes (clay, cast iron, or other aging pipe)",
+      "At least once a year",
+      "These materials are more prone to cracking, shifting, and joint failure, especially as they age"
+     ],
+     [
+      "Homes with mature trees nearby",
+      "Every 1 to 2 years",
+      "Tree roots are the leading cause of sewer line blockages and work into small cracks over time"
+     ],
+     [
+      "Newer homes (PVC or modern plastic pipe)",
+      "Every 3 to 5 years",
+      "These materials resist roots and corrosion better, so less frequent checks are usually enough"
+     ]
+    ],
+    "note": "Not sure which category fits your home? A first inspection tells us exactly where you stand."
+   },
+   {
+    "id": "highland-park-maintenance",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewer Maintenance for Highland Park Homes",
+    "intro": "Two facts make regular checkups worth it here: the line is yours, and the trees are big.",
+    "items": [
+     {
+      "h3": "You Own the Line to the Main",
+      "body": "In Highland Park, the homeowner owns and maintains the private sewer line from the house to the city main. The city's flood tips recommend having it checked for roots and debris. A maintenance visit is that check."
+     },
+     {
+      "h3": "Ravines, Trees and Clay Joints",
+      "body": "Highland Park's ravines and tree-lined streets put a lot of roots near older clay pipe. Catching early growth on camera costs far less than a backup in a finished basement."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "what-it-fixes",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "table",
+    "eyebrow": "What's Included",
+    "h2": "What a Maintenance Visit Can (and Can't) Fix",
+    "intro": "A maintenance visit is built around prevention, not repair. Here's where the line falls:",
+    "head": [
+     "Included in a Maintenance Visit",
+     "Needs a Different Service"
+    ],
+    "rows": [
+     [
+      "A camera inspection to check your line's current condition",
+      "An active sewage backup. Likely fix: [Emergency Plumbing](/highland-park/emergency-plumbing)"
+     ],
+     [
+      "Catching early root growth or wear before it becomes a bigger problem",
+      "A cracked or collapsed pipe. Likely fix: [Sewer Repair](/highland-park/sewer-repair)"
+     ],
+     [
+      "A light interior clean as part of the visit",
+      "A heavy clog that needs full clearing. Likely fix: [Sewer Rodding](/highland-park/sewer-rodding) or [Hydro Jetting](/highland-park/hydro-jetting)"
+     ],
+     [
+      "An honest assessment of what your line needs next",
+      "A line at the end of its lifespan. Likely fix: [Trenchless Sewer Repair](/highland-park/trenchless-sewer-repair)"
+     ]
+    ],
+    "note": "If your line needs more than a checkup, we'll tell you exactly what and why. No surprise upsells."
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What We Do Differently",
+    "intro": "A maintenance visit stays a maintenance visit, not a sales pitch for something bigger.",
+    "steps": [
+     {
+      "h3": "1. Camera Inspection",
+      "body": "We run a camera down your line at every visit. You see the same footage we do, so you know your line's actual condition, not a guess."
+     },
+     {
+      "h3": "2. Honest Diagnosis",
+      "body": "We'll tell you straight if everything looks good, or if something's starting to develop. We don't manufacture urgency to sell a bigger job."
+     },
+     {
+      "h3": "3. Upfront Pricing",
+      "body": "Once we know what your line needs, you get a flat rate before anything starts."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Line Maintenance Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jeannie Smith",
+      "url": "https://maps.app.goo.gl/96wBa6YbYwQptVSS6",
+      "text": "We had Christian come for our home maintenance check and he was wonderful! I appreciated how thorough he was, that he provided me with feedback and notes for each potential issue he saw, and he even cleaned out a messy drain in my sink."
+     },
+     {
+      "name": "Alkan Sezginis",
+      "url": "https://maps.app.goo.gl/pWz1WmrZSV3Eg8Gz5",
+      "text": "Christian M came out to do our annual service and was super helpful and friendly. I got to see the inside of our sewer access with a big snake camera and he walked me through everything that he was seeing."
+     },
+     {
+      "name": "Judith Schader",
+      "url": "https://maps.app.goo.gl/8sp2hFNkS7FD3Yp38",
+      "text": "He rodded out the kitchen sink drain piping and fixed the leaks... In the end he offered us an excellent maintenance plan, which will definitely save us money and headaches in the future."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Maintenance Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How often should a Highland Park sewer line be maintained?",
+      "preview": "Older clay or cast iron lines: once a year. Mature trees nearby: every one to two years.",
+      "answer": "It depends on your pipe's age and what's around it. Older pipes, like clay or cast iron, benefit from a check at least once a year. Homes with mature trees nearby should aim for every one to two years. With nearly half of Highland Park homes built before 1960, most lines here fall into one of those two groups."
+     },
+     {
+      "q": "What does a sewer maintenance visit include?",
+      "preview": "A camera inspection, an honest read on your line and a light interior clean.",
+      "answer": "A maintenance visit starts with a [camera inspection](/highland-park/video-camera-sewer-inspections) to check your line's current condition. From there, we give you an honest read on what we see, along with a light interior clean as part of the visit. If something bigger turns up, we'll walk you through it before recommending any next steps."
+     },
+     {
+      "q": "Does regular maintenance actually prevent expensive repairs?",
+      "preview": "Most sewer emergencies give early warning signs. Maintenance catches them while the fix is small.",
+      "answer": "Sewer line emergencies are some of the most expensive plumbing problems a homeowner can face, and most of them don't happen without warning. Regular maintenance catches early signs, like root growth or a developing crack, while they're still a small, inexpensive fix."
+     },
+     {
+      "q": "What's the difference between maintenance and repair?",
+      "preview": "Maintenance is preventive. Repair is for an actual crack, break or backup.",
+      "answer": "Maintenance is scheduled and preventive: a camera inspection and light upkeep to catch problems early. Repair is what happens once there's an actual issue, like a crack, a break, or a line that's already backing up. If your maintenance visit turns up something more serious, that's when [a repair conversation](/highland-park/sewer-repair) starts."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "type": "ndc",
+    "variant": "sewer"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready to Get Your Sewer Line Checked?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Maintenance in Highland Park, IL",
+   "serviceType": "Sewer Maintenance",
+   "url": "https://jblantonplumbing.com/highland-park/sewer-maintenance",
+   "description": "Sewer line maintenance for Highland Park, IL homes. Camera checkups that catch roots and wear early, with a flat price and no manufactured urgency.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Line Maintenance in Highland Park, IL",
+ "metaDescription": "Sewer line maintenance for Highland Park, IL homes. Camera checkups that catch roots and wear early, with a flat price and no manufactured urgency."
+}

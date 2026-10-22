@@ -1,0 +1,330 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Trenchless Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Trenchless Sewer Repair in Highland Park, IL",
+   "sub": "A damaged sewer line doesn't mean digging up your yard. We repair the line through one or two small access points, so the mature trees, landscaping and driveway on your Highland Park lot stay right where they are.",
+   "img": {
+    "src": "/images/city-services-v2/trenchless-sewer-liner-prep.webp",
+    "alt": "Two J. Blanton plumbers pouring resin into a sewer liner bag to prepare a trenchless pipe lining"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "what-is-trenchless",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "split",
+    "eyebrow": "Know the Basics",
+    "h2": "What Is Trenchless Sewer Repair?",
+    "body": "Trenchless sewer repair, also called no-dig sewer repair, fixes a damaged pipe without digging a trench along its full length. Instead of opening up your yard from the house to the street, we work through one or two access points and repair the pipe from the inside or replace it in place. There are two main methods: cured-in-place pipe (CIPP) lining and pipe bursting. Both fix the line underground, so what's above it stays untouched.",
+    "img": {
+     "src": "/images/city-services-v2/trenchless-sewer-repair-setup.webp",
+     "alt": "Two J. Blanton plumbers setting up sewer camera and cable equipment beside a home's foundation before a trenchless sewer repair"
+    }
+   },
+   {
+    "id": "why-trenchless-highland-park",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Trenchless Fits Highland Park Homes",
+    "intro": "Most sewer lines in Highland Park run under something worth protecting. Nearly half of the homes here were built before 1960, often on wooded lots, and the line from the house to the city main belongs to you.",
+    "items": [
+     {
+      "h3": "Mature Trees Stay Standing",
+      "body": "A trench across a wooded lot can cut through the same tree roots you're trying to live with. Lining or bursting works underground, so the trees, beds and hardscape above the line stay where they are."
+     },
+     {
+      "h3": "Old Clay Is a Good Candidate",
+      "body": "Corroded or aging clay and cast iron, root-cracked joints and minor offsets are the problems trenchless handles best. Those are exactly the problems older Highland Park lines tend to have."
+     },
+     {
+      "h3": "You Own the Line to the Main",
+      "body": "In Highland Park, the homeowner owns and maintains the private sewer line from the house to the city main. When you're the one paying to restore the yard afterward, a repair that skips the trench matters."
+     }
+    ],
+    "proof": {
+     "quote": "Tree roots had broken the remaining clay pipes under my front lawn and ramp. Inserting a liner with a 25 year warranty was the most logical choice I could make.",
+     "name": "Pat Martin"
+    }
+   },
+   {
+    "id": "when-trenchless-applies",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "table",
+    "eyebrow": "Common Scenarios",
+    "h2": "When Does Trenchless Apply?",
+    "intro": "Backups, slow drains, sewer odor, soft or unusually lush patches of grass, and gurgling drains are the most common signs of a damaged sewer line. Which repair method fits comes down to the type and extent of the damage.",
+    "head": [
+     "Situation",
+     "Trenchless Usually Works",
+     "Needs Traditional Excavation"
+    ],
+    "rows": [
+     [
+      "Root intrusion cracking the pipe",
+      "Yes",
+      "Not typically"
+     ],
+     [
+      "Corroded or aging clay, cast iron, or Orangeburg pipe",
+      "Yes",
+      "Not typically"
+     ],
+     [
+      "Minor cracks or offset joints",
+      "Yes",
+      "Not typically"
+     ],
+     [
+      "Slow drains or backups traced to pipe damage",
+      "Usually, after a camera inspection confirms it",
+      "Not typically"
+     ],
+     [
+      "Fully collapsed section of pipe",
+      "Not typically",
+      "Yes"
+     ],
+     [
+      "Severe belly (a low spot where the pipe has sunk)",
+      "Not typically",
+      "Yes"
+     ],
+     [
+      "Major structural misalignment",
+      "Not typically",
+      "Yes"
+     ]
+    ],
+    "note": "Not sure which category applies to your line? A [camera inspection](/highland-park/video-camera-sewer-inspections) shows exactly what's happening underground before any repair method gets recommended."
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The Two Methods",
+    "h2": "How Trenchless Sewer Repair Works",
+    "intro": "Both methods fix the line underground. Which one fits depends on how damaged the pipe is.",
+    "steps": [
+     {
+      "h3": "Cured-in-Place Pipe (CIPP) Lining",
+      "body": "We insert a resin-coated liner into the damaged pipe through the access point, then cure it in place so it hardens into a new pipe inside the old one. Every truck runs light-cured lining technology, which cures faster than older UV, water, or steam-based methods."
+     },
+     {
+      "h3": "Pipe Bursting",
+      "body": "For pipes that are too damaged for lining, we pull a new pipe through the old one while breaking the old pipe apart around it. The line gets replaced end to end without opening a trench."
+     },
+     {
+      "h3": "Camera First, Every Time",
+      "body": "We run a camera before recommending either method, and you see the same footage we do. Then you get a flat rate before any work starts."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/sewer-excavation-trench.webp",
+     "alt": "Traditional sewer excavation with a trench dug across the yard down to the damaged pipe, the kind of dig trenchless repair avoids"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Trenchless Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Tyler Ko",
+      "url": "https://maps.app.goo.gl/he5PCDkFqheoKPiy8",
+      "text": "Had a camera inspection of a clogged sewer drain by George. He was very helpful, polite, professional and informative. We ended up moving forward with a sewer trenchless liner service and look forward to a good experience for the main service."
+     },
+     {
+      "name": "Kathleen Smead",
+      "url": "https://maps.app.goo.gl/AebLWcFETFsfAV9f6",
+      "text": "Excellent experience! Totally professional job. Explained everything! So neat!!! No one would ever know I had sewer work done!"
+     },
+     {
+      "name": "Lindsay Campbell",
+      "url": "https://maps.app.goo.gl/PCQiBNvdjfRWhVrAA",
+      "text": "Emanuel and his partner G just did our sewer pipe lining and were absolutely fabulous! They kept me in the loop during service and let me know where things were at every step of the way without being too obtrusive, I work from home and was not disturbed in the slightest while they were working."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Trenchless Sewer Repair Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Will trenchless repair damage the trees on my property?",
+      "preview": "It's the gentlest option. We work through small access points instead of a trench along the whole line.",
+      "answer": "Trenchless work is the gentlest option for a wooded lot. We work through one or two small access points instead of a trench, so we're not cutting through the root zone along the whole line. Access point locations are planned around your trees and landscaping after the camera inspection."
+     },
+     {
+      "q": "Does trenchless work on the clay pipe in older Highland Park homes?",
+      "preview": "Usually. Cracked or root-damaged clay is a good candidate. A collapsed section may still need a spot dig.",
+      "answer": "Usually, yes. Aging clay, cast iron and Orangeburg pipe with cracks, root intrusion or offset joints are good candidates. A fully collapsed section or a severe belly may still need a spot dig. About 1 in 4 Highland Park homes was built before 1940, so a camera inspection is the first step to see which applies."
+     },
+     {
+      "q": "How much does trenchless sewer repair cost in Highland Park?",
+      "preview": "It depends on length, method and access. You get a flat-rate price before any work begins.",
+      "answer": "It depends on the length of the damaged section, the method (lining or bursting), how many access points we need, and what the camera finds. No trench also means no driveway or landscaping restoration afterward. You get a flat-rate price before any work begins."
+     },
+     {
+      "q": "Is it part trenchless, part dig?",
+      "preview": "Sometimes. Older lines can have more than one weak point. The camera shows which applies.",
+      "answer": "Sometimes. Older lines often have more than one weak point, so fixing the obvious problem doesn't always mean the whole line is covered. Only a camera inspection tells you which one applies to your home, before any repair method gets recommended."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "sewer"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready to Fix Your Sewer Line Without the Trench?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Trenchless Sewer Repair in Highland Park, IL",
+   "serviceType": "Trenchless Sewer Repair",
+   "url": "https://jblantonplumbing.com/highland-park/trenchless-sewer-repair",
+   "description": "Trenchless sewer repair in Highland Park, IL. We fix the line through small access points, so your trees, lawn and driveway stay put. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Trenchless Sewer Repair in Highland Park, IL",
+ "metaDescription": "Trenchless sewer repair in Highland Park, IL. We fix the line through small access points, so your trees, lawn and driveway stay put. Call 24/7."
+}

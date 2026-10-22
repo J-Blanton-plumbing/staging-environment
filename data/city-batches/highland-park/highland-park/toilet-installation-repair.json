@@ -1,0 +1,287 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Toilet Installation & Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Toilet Repair and Installation in Highland Park, IL",
+   "sub": "A toilet that runs, rocks, leaks at the base or clogs every week. We repair toilets and install new ones, with a flat price before we start. Serving Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/toilet-fill-valve-repair.webp",
+    "alt": "J. Blanton plumber leaning over an open toilet tank to check the fill valve during a toilet repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Common Toilet Problems We Fix",
+    "intro": "Most toilet problems are simple repairs. A few mean it's time for a new one:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "It Runs Constantly",
+      "body": "A worn flapper, fill valve or float wastes water all day. Usually a quick repair."
+     },
+     {
+      "h3": "Water Around the Base",
+      "body": "A failed wax ring or loose bolts let water leak under the toilet, which can rot the floor. Don't wait on this one."
+     },
+     {
+      "h3": "It Clogs Often",
+      "body": "Frequent clogs can mean an older low-flow design, a problem in the drain line, or roots further down the sewer line."
+     },
+     {
+      "h3": "It Rocks or Is Cracked",
+      "body": "A toilet that rocks needs resetting. A cracked bowl or tank needs replacing."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-toilets",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Toilets in Older Highland Park Homes",
+    "intro": "Nearly half of Highland Park homes were built before 1960. Older bathrooms bring a few things to check when a toilet gives you trouble.",
+    "items": [
+     {
+      "h3": "Clogs That Aren't the Toilet",
+      "body": "If the toilet gurgles when the washer drains, or more than one drain backs up, the clog is in the main line, not the toilet. On tree-lined lots, roots are a common cause. See [sewer rodding](/highland-park/sewer-rodding)."
+     },
+     {
+      "h3": "Older Flanges and Shutoff Valves",
+      "body": "Replacing a toilet in an older home often means a new flange or shutoff valve too. We check both, so the new toilet sits solid and doesn't leak."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A toilet repair should be quick, clean and priced up front.",
+    "steps": [
+     {
+      "h3": "1. Options, Not a Sales Pitch",
+      "body": "Your plumber explains what's wrong in plain English first, then walks you through your options. You decide."
+     },
+     {
+      "h3": "2. A Clear Price Before Any Work Starts",
+      "body": "You get a flat-rate price before we touch anything, with no surprise add-ons when the job is done."
+     },
+     {
+      "h3": "3. Respect for Your Home",
+      "body": "Shoe covers on, work area protected, and the space cleaned up before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Toilet Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Colin Ackerman",
+      "url": null,
+      "text": "Clayton was professional and thorough with my toilet pull and reset. He left the space immaculately clean; much more so than other non-Blanton plumbers I've used."
+     },
+     {
+      "name": "Nivaldo Eduardo",
+      "url": null,
+      "text": "Brandon was friendly, knowledgeable, professional and fast. He replaced my toilet and water valve efficiently. Thanks for all your help."
+     },
+     {
+      "name": "Margaux Shields",
+      "url": null,
+      "text": "Scott from J Blanton Plumbing was great! He fixed out toilet clog and explained things really well. Also, our dog loved him!"
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Toilet Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Should I repair or replace my toilet?",
+      "preview": "Most running and leaking problems are repairs. Cracks or constant clogs usually mean replacement.",
+      "answer": "Running, leaking at the tank or a loose seat are repairs. A cracked bowl or tank, constant clogs on an old design or a toilet that no longer fits your bathroom usually mean replacing it."
+     },
+     {
+      "q": "Why does my toilet keep running?",
+      "preview": "Usually a worn flapper, fill valve or float. A quick repair.",
+      "answer": "Usually a worn flapper, a fill valve that doesn't shut off or a float set too high. These are quick, inexpensive repairs."
+     },
+     {
+      "q": "Why does my toilet gurgle when other drains run?",
+      "preview": "Often a main line blockage or a vent problem, not the toilet itself.",
+      "answer": "Gurgling when the washer, tub or sink drains means air is being pulled through the toilet, often from a blockage in the main line or a venting problem. See [drain cleaning](/highland-park/drain-cleaning)."
+     },
+     {
+      "q": "How much does toilet installation cost?",
+      "preview": "It depends on the toilet and any flange or valve work. You get a flat price first.",
+      "answer": "It depends on the toilet, whether the flange or shutoff valve needs replacing and removal of the old one. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Toilet Running, Leaking or Clogged?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Toilet Repair and Installation in Highland Park, IL",
+   "serviceType": "Toilet Installation & Repair",
+   "url": "https://jblantonplumbing.com/highland-park/toilet-installation-repair",
+   "description": "Toilet repair and installation in Highland Park, IL. Running, leaking, clogged or ready to replace? Flat price before we start. Call us 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Toilet Repair & Install in Highland Park, IL",
+ "metaDescription": "Toilet repair and installation in Highland Park, IL. Running, leaking, clogged or ready to replace? Flat price before we start. Call us 24/7."
+}

@@ -1068,6 +1068,18 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/import-city-batch.ts --from-json data/city-batches/batch-3 --publish --create-missing --brief=216 \
   --changed-file .city-pages-snapshot/changed.txt
+# 6. Brief 217 (Track B4): publish the Highland Park cluster (hub + 29 service
+#    pages, the 19th City Hub cluster) from data/city-batches/highland-park -
+#    the approved static package converted page for page (changes C1-C6 only).
+#    Exactly as steps 3 and 5: every gate re-runs, any failure writes NOTHING;
+#    per page archive (every column verbatim, so Restore brings the legacy
+#    coverage-area page back) -> City Hub switch -> "Version 1 - ..." ->
+#    publish; a missing service row is created and printed as CREATED.
+#    Write-once; Highland Park goes to changed.txt. Pre-swap (Brief 171). Exit
+#    1 only when a write did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/import-city-batch.ts --from-json data/city-batches/highland-park --publish --create-missing --brief=217 \
+  --changed-file .city-pages-snapshot/changed.txt
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

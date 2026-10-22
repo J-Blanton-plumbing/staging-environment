@@ -36,7 +36,8 @@ const SITE = 'https://jblantonplumbing.com';
 
 // Kept in step with src/lib/city-batches.ts and CITY_SERVICE_V2_SLUGS (this script cannot import TS).
 const CITIES = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville', 'arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva',
-  'mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park'];
+  'mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park',
+  'highland-park'];
 const SEWER_PAGES = ['/services/sewer', '/hydro-jetting', '/sewer-rodding', '/sewer-repair', '/sewer-camera-inspection', '/sewer-line-replacement', '/sewer-maintenance', '/overhead-sewer-systems', '/trenchless-sewer-repair', '/sewer-line-installation'];
 /** Brief 217: pages outside the two city templates that must keep the footer's office graph. */
 const OTHER_PAGES = ['/', '/services/plumbing', '/knowledge-hub', '/wilmette', '/wilmette/drain-cleaning'];

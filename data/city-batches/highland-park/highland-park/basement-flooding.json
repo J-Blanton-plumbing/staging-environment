@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Basement Flooding",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Basement Flooding Solutions in Highland Park, IL",
+   "sub": "Water coming up through the floor drain or seeping through the walls after a storm? The cause isn't always obvious, and the fix depends on it. We find the source, stop it and give you a flat price before we start. Office on Green Bay Road. Phone line open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/basement-flooding-standing-water.webp",
+    "alt": "Standing water on a basement concrete floor along water-stained wall framing after a basement flood"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "why-flooding",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Why Is Your Basement Flooding?",
+    "intro": "Not every flooded basement has the same cause. What you're seeing, or smelling, is the first clue to what's actually happening.",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Floor Drain Backs Up After Heavy Rain",
+      "body": "Water coming up through the floor drain points to the sewer side: a blocked private line or a connection that can't keep up."
+     },
+     {
+      "h3": "Water Seeping Through the Walls",
+      "body": "Water along the base of foundation walls is groundwater, not sewage. That's a sump and waterproofing problem."
+     },
+     {
+      "h3": "Sump Pit Filling Faster Than Normal",
+      "body": "A pit that fills even between storms means a high water table, and a pump working harder than it should."
+     },
+     {
+      "h3": "A Sewage Smell From the Drains",
+      "body": "Visible sewage or a sewer smell coming up through the drains is a backup. Stop using water and call."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Basement Flooding in Highland Park Homes",
+    "intro": "Heavy rain and spring snowmelt push water toward Highland Park basements every year. How it gets in depends on your home.",
+    "items": [
+     {
+      "h3": "Separate Storm and Sanitary Sewers",
+      "body": "Highland Park runs separate sanitary and storm sewers, about 120 miles and 163 miles of each. So a wet basement here isn't always a sewer backup. It could be groundwater, a blocked private sewer line or a failed sump pump, and each needs a different fix."
+     },
+     {
+      "h3": "What the City Recommends",
+      "body": "The city's flood tips recommend checking backflow preventers, sump pumps and battery backups, and having your sewer line checked for roots and debris. An [overhead sewer system](/highland-park/overhead-sewer-systems) is the permanent fix when the connection itself can't keep up."
+     },
+     {
+      "h3": "Older Homes, Finished Basements",
+      "body": "Nearly half of Highland Park homes were built before 1960, often before modern flood protection was standard. A finished basement in an older home has the most to lose, so it's worth knowing which protection you have."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "basement-waterproofing",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "fold",
+    "eyebrow": "Basement Waterproofing",
+    "h2": "Basement Waterproofing",
+    "bodies": [
+     "Waterproofing is the right fix when water is forcing its way through the foundation, not backing up through a drain. Signs include damp walls, water along the joint where the wall meets the floor, efflorescence (white, chalky deposits) and puddles that show up after rain without any drain backing up.",
+     "Waterproofing works together with a [sump pump](/highland-park/sump-pumps): the system directs groundwater to the pit, and the pump moves it out and away from the house. Before recommending anything, we confirm the water is coming through the foundation and not from a plumbing leak or a sewer backup, so you don't pay to fix the wrong problem."
+    ],
+    "img": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Choose J. Blanton for Basement Flooding?",
+    "intro": "Every technician is licensed in Illinois and equipped to handle any basement flooding issue safely.",
+    "steps": [
+     {
+      "h3": "1. Weekend and Night Dispatch",
+      "body": "A flooded basement doesn't wait for business hours. Neither do we."
+     },
+     {
+      "h3": "2. Upfront Pricing",
+      "body": "Your technician will walk you through what they found, explain every option and give you a flat rate before any work starts."
+     },
+     {
+      "h3": "3. The Right Fix for the Right Water",
+      "body": "Groundwater, sewer backup and plumbing leaks need different fixes. We diagnose first, so you're not paying for the wrong one."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Basement Flooding Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Graham McClure",
+      "url": "https://maps.app.goo.gl/9Z2dPHcr4jAzDott8",
+      "text": "John was very professional and knowledgeable, he quickly helped us drain our flooded basement and left us feeling confident in the work he had done. Confidence is priceless when it comes to plumbing."
+     },
+     {
+      "name": "Jake Sherin",
+      "url": "https://maps.app.goo.gl/yqQkX6osLZs9uR4A9",
+      "text": "We initially called and Edgar came when we had flooding in our basement, and throughout multiple days of different issues being found, he talked us through each piece, explaining our options, and kept in close communication about the progress and everything that had come up. He helped clear our drain, then fixed some piping in the basement, put a liner in our pipes, and installed a sump pump, staying late to ensure we had working plumbing."
+     },
+     {
+      "name": "Mary Lukas",
+      "url": "https://maps.app.goo.gl/9mSmtio9Qde9FgG7A",
+      "text": "We are SO impressed with our service from J Blanton. Jacob C. was incredibly professional and quickly diagnosed our sump pump issue. Being newer to the area we did not have a plumbing company- and we found our forever company for any future issues!"
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Basement Flooding Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Who do you call when your basement floods?",
+      "preview": "A licensed plumber first, to stop the source. Cleanup and restoration come after.",
+      "answer": "Call a licensed plumber first. A water damage company handles cleanup and restoration, but if water is still entering your basement, the source needs to be stopped before any cleanup is effective. We identify what's causing it and make the fix. Once the water is stopped, restoration can begin."
+     },
+     {
+      "q": "Is a sump pump enough to prevent basement flooding in Highland Park?",
+      "preview": "It depends on the cause. A sump pump handles groundwater, not sewer backups.",
+      "answer": "It depends on what's causing the flooding. A sump pump handles groundwater. It won't stop water backing up through a floor drain from the sewer side, and it won't stop water forcing through foundation walls. Because Highland Park runs separate storm and sanitary sewers, pinning down which water you have is the first step."
+     },
+     {
+      "q": "What's the difference between a sump pump and an ejector pump?",
+      "preview": "A sump pump removes groundwater. An ejector pump moves wastewater from basement fixtures up to the sewer.",
+      "answer": "A [sump pump](/highland-park/sump-pumps) removes groundwater. It sits in a pit at the lowest point of the basement and pumps water out of the house. An [ejector pump](/highland-park/ejector-pump) moves wastewater from fixtures below the main sewer line, like a basement bathroom or laundry room, up to the main sewer level."
+     },
+     {
+      "q": "Does homeowners insurance cover basement flooding?",
+      "preview": "Often not for groundwater or sewer backup. Check your policy. We document the cause for your claim.",
+      "answer": "Standard homeowners insurance typically does not cover flooding caused by groundwater, sewer backup or heavy rain. Those events usually require separate flood insurance or a sewer backup rider. If the flooding is caused by a sudden plumbing failure, like a burst pipe, your standard policy may cover it. Check your policy or contact your insurer to confirm. Our technician will document the cause, which may support your claim."
+     },
+     {
+      "q": "How much does it cost to fix a flooded basement?",
+      "preview": "It depends on the cause and the fix. You get a flat-rate price before any work starts.",
+      "answer": "The cost depends on what's causing the flooding and what fix is required. A sump pump replacement is a different scope than an overhead sewer installation or waterproofing. We provide a flat-rate price before any work starts. Give us a call."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready to Stop Worrying Every Time It Rains?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Basement Flooding Solutions in Highland Park, IL",
+   "serviceType": "Basement Flooding",
+   "url": "https://jblantonplumbing.com/highland-park/basement-flooding",
+   "description": "Basement flooding in Highland Park, IL? We find the real cause, from sump pumps to sewer backups, and fix it with a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Basement Flooding in Highland Park, IL",
+ "metaDescription": "Basement flooding in Highland Park, IL? We find the real cause, from sump pumps to sewer backups, and fix it with a flat price first. Call 24/7."
+}

@@ -1,0 +1,348 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Burst Pipe Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Burst and Frozen Pipe Repair in Highland Park, IL",
+   "sub": "When a pipe splits, every minute counts. Shut off your main water valve and call us, any time of day or night. We find the break, repair it and help you keep it from happening again. Now with an office on Green Bay Road.",
+   "img": {
+    "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+    "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "steps",
+    "eyebrow": "Pipe Burst Right Now?",
+    "h2": "What to Do When a Pipe Bursts",
+    "intro": "Do these three things first. They limit the damage while we're on the way.",
+    "steps": [
+     {
+      "h3": "1. Shut Off the Main",
+      "body": "Your main shutoff valve is usually near the water meter in the basement or a utility room. Turn it clockwise to stop water to the whole house."
+     },
+     {
+      "h3": "2. Cut Power to Wet Areas",
+      "body": "If water is near outlets, appliances or your electrical panel, stay out of the water and turn off power to that area only if you can do it safely."
+     },
+     {
+      "h3": "3. Call Us 24/7",
+      "body": "Our phone line is open nights, weekends and holidays. Tell us where the water is coming from and we'll take it from there."
+     }
+    ],
+    "img": null
+   },
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Signs of a Burst Pipe",
+    "intro": "A burst pipe isn't always water spraying across the basement. When a pipe splits inside a wall, a ceiling or under a floor, the signs are quieter: stains, bubbling paint, warped floors and a water bill that suddenly jumps. Here's where to look:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "On Walls and Ceilings",
+      "bullets": [
+       "Yellow, brown or dark water stains on plaster, drywall or ceiling panels.",
+       "Paint that bubbles, cracks or flakes, or wallpaper that starts to peel.",
+       "Drywall or plaster that sags, bows or feels soft to the touch.",
+       "Mold or mildew along baseboards and in wall corners."
+      ]
+     },
+     {
+      "h3": "On Floors and Baseboards",
+      "bullets": [
+       "Hardwood that cups or buckles, or laminate and vinyl that lifts.",
+       "Wood baseboards that swell, crack or lose their paint.",
+       "Puddles on the floor, drips from the ceiling or water coming out from under cabinets and vanities."
+      ]
+     },
+     {
+      "h3": "Around Exposed Pipes",
+      "bullets": [
+       "Water spraying, dripping or gushing from a crack, joint or pinhole.",
+       "A hissing sound near a pipe.",
+       "Wet spots or puddles under pipes in the basement or crawl space."
+      ]
+     },
+     {
+      "h3": "Other Clues",
+      "bullets": [
+       "A water bill that jumps with no change in how you use water.",
+       "The sound of running water when every fixture is off.",
+       "A water meter that keeps moving when nothing is running.",
+       "Water pressure that suddenly drops."
+      ]
+     }
+    ],
+    "note": "Seeing water come from a wall or ceiling? Shut off the main and call us 24/7, even if you're not sure it's a burst pipe."
+   },
+   {
+    "id": "frozen-pipe-signs",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "tiles",
+    "eyebrow": "Before It Bursts",
+    "h2": "Signs of a Frozen Pipe",
+    "intro": "A frozen pipe almost always gives you a warning before it bursts. As the water inside freezes, pressure builds until the pipe splits, and the leak usually shows up once it thaws. Watch for these signs during a cold snap:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "No Water or Just a Trickle",
+      "body": "A faucet that gives you nothing, or a thin trickle, on a very cold day usually means the pipe feeding it has frozen somewhere along the way."
+     },
+     {
+      "h3": "Frost or Ice on the Pipe",
+      "body": "Frost, ice or heavy condensation on pipes in a basement, crawl space or garage is a pipe on the edge of freezing solid."
+     },
+     {
+      "h3": "A Bulge or Small Split",
+      "body": "A visible bulge or hairline split in an exposed pipe means the ice has already stretched it. It may hold until it thaws, then leak."
+     }
+    ],
+    "note": "Think a pipe is frozen? Keep the faucet open, never thaw it with an open flame, and call us before it thaws and splits."
+   },
+   {
+    "id": "highland-park-freezes",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Pipes Freeze in Highland Park Homes",
+    "intro": "Lake County winters bring long stretches below freezing, and about 1 in 4 Highland Park homes was built before 1940. That combination is hard on pipes.",
+    "items": [
+     {
+      "h3": "Pipes in Exterior Walls and Crawl Spaces",
+      "body": "Pipes in exterior walls, crawl spaces, garages and outdoor spigot lines freeze first. Older homes often have plumbing in spots that weren't insulated the way they would be today."
+     },
+     {
+      "h3": "Outdoor Spigots",
+      "body": "A hose left connected in winter traps water in the spigot line, and that water freezes and splits the pipe inside the wall. It often isn't found until the spring thaw."
+     },
+     {
+      "h3": "Older Pipe Materials",
+      "body": "Galvanized steel and older copper lines are already thinner or corroded after decades of use, so a freeze is more likely to split them. If breaks keep happening, it may be time to talk about the pipes themselves."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "When water is coming into your home, you need a plumber who picks up and explains what's going on.",
+    "steps": [
+     {
+      "h3": "1. Find the Break",
+      "body": "We locate the split, including breaks hidden in walls and ceilings, with as little opening up as possible."
+     },
+     {
+      "h3": "2. A Clear Price Before We Start",
+      "body": "You get a flat-rate price for the repair before any work begins."
+     },
+     {
+      "h3": "3. Prevent the Next One",
+      "body": "We'll point out other pipes at risk and what it takes to protect them, like insulation, rerouting or a freeze-resistant spigot."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Burst Pipe Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Veronica Flores",
+      "url": "https://maps.app.goo.gl/wxQuHgfiuagicWLE6",
+      "text": "I appreciated that they wore foot coverings when in my house. I was panicked because I've previously had substantial water damage in my basement, so having my water spigot line burst and water pouring into my basement, caused a lot concern. Andrew calmly walked me through what he found, answered my questions, and addressed my fears. [...] Pricing was upfront and reasonable."
+     },
+     {
+      "name": "Elise Allen",
+      "url": null,
+      "text": "Kyle did an excellent job. Beautiful work and he had to crawl in my uncomfortable crawlspace in cold weather, so I really appreciate him!"
+     },
+     {
+      "name": "Anthony Bell",
+      "url": null,
+      "text": "Matthew Imlah came, accessed the job and immediately got to work. Finished quickly but thoroughly. Gave suggestions on ways to fix the problem. Excellent work!!"
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Burst Pipe Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How do I keep my pipes from freezing in winter?",
+      "preview": "Disconnect hoses, keep the heat on, open sink cabinets on exterior walls and let a faucet drip.",
+      "answer": "Disconnect garden hoses and shut off and drain outdoor spigots in the fall. Keep the heat on, even when you're away. On the coldest nights, open cabinet doors under sinks on exterior walls and let a faucet drip. Insulating pipes in crawl spaces and garages helps too."
+     },
+     {
+      "q": "What should I do if I think a pipe is frozen?",
+      "preview": "Keep the faucet open, never use an open flame, and call before it splits.",
+      "answer": "Keep the faucet open so water can flow once it thaws. Never use an open flame to thaw a pipe. If you can't find the frozen section, or it's inside a wall, call us before it splits."
+     },
+     {
+      "q": "Does homeowners insurance cover a burst pipe?",
+      "preview": "Sudden bursts are often covered. Check your policy. We can document the cause.",
+      "answer": "A sudden, accidental pipe burst is often covered by a standard policy, while damage from a slow leak or lack of maintenance may not be. Check your policy or ask your insurer. We can document the cause of the break, which may support your claim."
+     },
+     {
+      "q": "How much does burst pipe repair cost?",
+      "preview": "It depends on the location and pipe. You get a flat-rate price before any work begins.",
+      "answer": "It depends on where the break is, how easy it is to reach, the pipe material and how much of the pipe needs replacing. We give you a flat-rate price before any work begins. Financing is available."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Pipe Burst? Shut Off the Main and Call Us.",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Burst and Frozen Pipe Repair in Highland Park, IL",
+   "serviceType": "Burst Pipe Repair",
+   "url": "https://jblantonplumbing.com/highland-park/burst-pipe-repair",
+   "description": "Burst or frozen pipe in Highland Park, IL? Shut off your main and call us 24/7. We find the break, repair it and help you prevent the next one.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Burst & Frozen Pipe Repair in Highland Park, IL",
+ "metaDescription": "Burst or frozen pipe in Highland Park, IL? Shut off your main and call us 24/7. We find the break, repair it and help you prevent the next one."
+}

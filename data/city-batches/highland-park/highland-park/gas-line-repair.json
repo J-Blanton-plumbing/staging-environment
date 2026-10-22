@@ -1,0 +1,314 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Line Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Line Repair in Highland Park, IL",
+   "sub": "Something broke, corroded or started leaking. We find it, fix it and pressure-test the line to confirm it holds. Our plumbers are licensed for gas work and serve homes across Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+    "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "smell-gas",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "steps",
+    "eyebrow": "Smell Gas Right Now?",
+    "h2": "What to Do If You Smell Gas",
+    "intro": "A gas smell is one situation where waiting is not an option.",
+    "steps": [
+     {
+      "h3": "1. Leave Immediately",
+      "body": "Don't stop to grab belongings, and don't switch any lights or electronics on or off."
+     },
+     {
+      "h3": "2. Call From Outside",
+      "body": "Once you're outside, call your gas utility or 911 to report it. Don't go back in until the area has been cleared."
+     },
+     {
+      "h3": "3. Then Call Us",
+      "body": "Once it's safe, call a licensed plumber to locate and fix the source. We'll find it and repair it."
+     }
+    ],
+    "img": null
+   },
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Warning Signs of a Gas Line Problem",
+    "intro": "Corrosion is slow. But when it catches up, these are some of the signs:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Rotten Egg or Sulfur Smell",
+      "body": "Even a faint smell of rotten eggs indoors is worth taking seriously."
+     },
+     {
+      "h3": "Hissing or Whistling",
+      "body": "A hissing sound near a gas line or appliance can mean gas escaping from a fitting or pipe."
+     },
+     {
+      "h3": "Dead Patches in the Yard",
+      "body": "Dead or discolored grass above a buried gas line can point to a leak underground."
+     },
+     {
+      "h3": "A Higher Gas Bill",
+      "body": "A gas bill that's higher than normal with no change in usage can mean gas is going somewhere it shouldn't."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "gas-leak-detection",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "fold",
+    "eyebrow": "Gas Leak Detection",
+    "h2": "Gas Leak Detection",
+    "bodies": [
+     "Finding the leak is the first step of every gas line repair. We locate leaks with pressure testing and gas detection equipment, checking the line from the meter to each appliance, including fittings, valves and connectors that are easy to miss.",
+     "If you've noticed a faint smell, a higher bill or a hissing sound but can't find the source, a leak check tells you what's going on before it turns into an emergency. If the smell is strong, leave first and call your gas utility or 911 from outside."
+    ],
+    "img": null
+   },
+   {
+    "id": "highland-park-gas-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Line Problems in Highland Park Homes",
+    "intro": "The median Highland Park home was built in 1963, and about 1 in 4 went up before 1940. Gas piping ages along with the house.",
+    "items": [
+     {
+      "h3": "Original Black Iron Piping",
+      "body": "Many older homes still run on original black iron or steel gas piping. Corroded fittings and old valves fail slowly, and a leak can go unnoticed for a long time."
+     },
+     {
+      "h3": "Repair or Replace the Run",
+      "body": "A single failed fitting is a repair. When the pressure test and inspection show widespread corrosion, replacing the run can save you from chasing one leak after another. We'll explain both before you decide."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Choose J. Blanton for Gas Line Repair?",
+    "intro": "Gas line work isn't like fixing a faucet. A faulty repair can turn into a serious hazard fast.",
+    "steps": [
+     {
+      "h3": "1. Licensed for Gas Work",
+      "body": "Our plumbers are licensed and trained specifically for gas line work in Illinois."
+     },
+     {
+      "h3": "2. Upfront Pricing",
+      "body": "Your technician explains your options and gives you a flat rate before any money changes hands."
+     },
+     {
+      "h3": "3. Pressure-Tested",
+      "body": "Every repair is pressure-tested to confirm it holds before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Anthony Kamykowski",
+      "url": null,
+      "text": "Needed a gas leak repair. Ty did an excellent job. He was thorough, professional, and knowledgeable. Seems like an honest company!"
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Line Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How do you find a gas leak?",
+      "preview": "With pressure testing and gas detection equipment, from the meter to each appliance.",
+      "answer": "We use pressure testing and gas detection equipment to check the line from the meter to each appliance, including fittings, valves and flexible connectors. See [gas leak detection](#gas-leak-detection)."
+     },
+     {
+      "q": "How long does gas line repair take?",
+      "preview": "Simple repairs often take a few hours. Replacing a run can take a day or more.",
+      "answer": "Straightforward repairs can often be completed in a few hours. Replacing a run of piping may take a full day or longer. Your technician will give you a realistic timeline after assessing the job, before any work begins."
+     },
+     {
+      "q": "Can I repair a gas line myself?",
+      "preview": "No. Gas line work should be done by a licensed pro.",
+      "answer": "Gas line work should be done by a licensed pro. Gas line repairs require specific diagnostic tools, knowledge of local code and a verification process that isn't available to unlicensed individuals."
+     },
+     {
+      "q": "How is gas line repair priced?",
+      "preview": "A licensed technician assesses the job and gives you a flat rate before anything starts.",
+      "answer": "We don't price gas line jobs over the phone. A licensed technician assesses the situation and gives you a flat rate before anything starts. That number doesn't change once you've agreed to it. If the scope changes after work begins, we discuss it with you before proceeding."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Worried About Your Gas Lines?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Line Repair in Highland Park, IL",
+   "serviceType": "Gas Line Repair",
+   "url": "https://jblantonplumbing.com/highland-park/gas-line-repair",
+   "description": "Gas line repair and leak detection in Highland Park, IL. Licensed plumbers find the leak, fix it and pressure-test the line. Call us 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Line Repair & Leak Detection in Highland Park, IL",
+ "metaDescription": "Gas line repair and leak detection in Highland Park, IL. Licensed plumbers find the leak, fix it and pressure-test the line. Call us 24/7."
+}

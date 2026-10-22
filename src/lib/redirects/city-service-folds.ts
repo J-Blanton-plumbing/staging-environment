@@ -1,6 +1,6 @@
 /**
  * City Service Pages V2 (Brief 209 go-live, Marketing 2026-10-14; Batch 2 added by Brief 212, Batch 3 by
- * Brief 216) — the 198 folded city-service URLs (11 per city × 18 cities).
+ * Brief 216, Highland Park by Brief 217) — the 209 folded city-service URLs (11 per city × 19 cities).
  *
  * Each of the 5 cities' V2 pages absorbs 11 thinner service pages as an on-page section with a
  * stable #anchor (e.g. /northbrook/drain-cleaning#clogged-drains). The old URLs 301 to the page
@@ -12,7 +12,8 @@
  * city-service shards (a sitemap URL must never be a redirect source — scripts/validate-sitemap.ts).
  *
  * Source: New Pages/City Service Pages V2/_source/{City}/{City}_CityService_FoldMap.md (Batch 1), the
- * Batch 2 package, and New Pages/City Pages Batch 3/_source/batch3/city-service-pages/{City}/ (Batch 3).
+ * Batch 2 package, New Pages/City Pages Batch 3/_source/batch3/city-service-pages/{City}/ (Batch 3), and
+ * New Pages/Highland Park city cluster/_source/JBP-Highland-Park/LINKING.md (Highland Park).
  */
 export const CITY_SERVICE_FOLD_REDIRECTS: Readonly<Record<string, string>> = {
   // northbrook
@@ -233,4 +234,16 @@ export const CITY_SERVICE_FOLD_REDIRECTS: Readonly<Record<string, string>> = {
   '/hanover-park/gas-line-leak-detection': '/hanover-park/gas-line-repair',
   '/hanover-park/water-heater-maintenance': '/hanover-park/water-heater-repair',
   '/hanover-park/water-testing': '/hanover-park/water-filtration-systems',
+  // highland-park (Brief 217 — the 19th City Hub cluster; LINKING.md's fold table)
+  '/highland-park/clogged-drains': '/highland-park/drain-cleaning',
+  '/highland-park/sewer-drain-clearing': '/highland-park/drain-cleaning',
+  '/highland-park/kitchen-sink-drain': '/highland-park/drain-cleaning',
+  '/highland-park/kitchen-faucet-repair-and-installation': '/highland-park/faucet-installation-repair',
+  '/highland-park/kitchen-plumbing': '/highland-park/faucet-installation-repair',
+  '/highland-park/plumbing-fixture-installations': '/highland-park/faucet-installation-repair',
+  '/highland-park/residential-water-heater': '/highland-park/water-heater-repair',
+  '/highland-park/basement-waterproofing': '/highland-park/basement-flooding',
+  '/highland-park/gas-line-leak-detection': '/highland-park/gas-line-repair',
+  '/highland-park/water-heater-maintenance': '/highland-park/water-heater-repair',
+  '/highland-park/water-testing': '/highland-park/water-filtration-systems',
 };

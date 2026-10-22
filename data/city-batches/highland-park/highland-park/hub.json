@@ -1,0 +1,232 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "hero": {
+   "eyebrow": "24/7 Plumbers",
+   "h1": "Plumbers in Highland Park, IL",
+   "sub": "Serving Chicagoland since 1993, now with an office on Green Bay Road. Our line is open 24/7 for homeowners in Highland Park and across the North Shore. Upfront pricing on every job.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "services": {
+   "h2": "Plumbing Services in Highland Park",
+   "intro": "Our licensed plumbers handle everything from a slow drain to a full sewer line repair. Pick a service to see how we handle it in Highland Park.",
+   "cards": [
+    {
+     "title": "Drain Cleaning",
+     "href": "/highland-park/drain-cleaning",
+     "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+     "image": {
+      "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+     }
+    },
+    {
+     "title": "Sewer Repair",
+     "href": "/highland-park/sewer-repair",
+     "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+     "image": {
+      "src": "/images/city-hubs/sewer-repair-lining-machine.webp",
+      "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+     }
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/highland-park/water-heater-repair",
+     "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+     "image": {
+      "src": "/images/city-hubs/water-heater-tank-service.webp",
+      "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+     }
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/highland-park/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+     "image": {
+      "src": "/images/city-hubs/emergency-leak-under-kitchen-sink.webp",
+      "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+     }
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/highland-park/sump-pumps",
+     "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+     "image": {
+      "src": "/images/city-hubs/sump-pump-pit-repair.webp",
+      "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+     }
+    },
+    {
+     "title": "Burst & Frozen Pipes",
+     "href": "/highland-park/burst-pipe-repair",
+     "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+     "image": {
+      "src": "/images/city-hubs/burst-copper-pipe-basement.webp",
+      "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+     }
+    },
+    {
+     "title": "Gas Lines & Fireplaces",
+     "href": "/highland-park/gas-line-repair",
+     "desc": "Gas line repair, leak detection and gas fireplace service.",
+     "image": {
+      "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+      "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+     }
+    }
+   ]
+  },
+  "office": {
+   "eyebrow": "Now on Green Bay Road",
+   "h2": "Our Highland Park Office",
+   "body": "We’ve been serving Highland Park and the North Shore for years, and now we’re excited to call it home. After more than 30 years in Chicagoland, we’ve opened an office at 1904 Green Bay Rd B, Highland Park, IL 60035. You get the same service and the same 24/7 availability homeowners across Chicagoland have counted on since 1993.",
+   "address": "1904 Green Bay Rd B, Highland Park, IL 60035",
+   "areasH3": "North Shore Communities We Serve",
+   "areas": [
+    {
+     "label": "Highwood",
+     "href": "/highwood"
+    },
+    {
+     "label": "Fort Sheridan",
+     "href": "/fort-sheridan"
+    },
+    {
+     "label": "Deerfield",
+     "href": "/deerfield"
+    },
+    {
+     "label": "Bannockburn",
+     "href": "/bannockburn"
+    },
+    {
+     "label": "Riverwoods",
+     "href": "/riverwoods"
+    },
+    {
+     "label": "Lake Forest",
+     "href": "/lake-forest"
+    },
+    {
+     "label": "Lake Bluff",
+     "href": "/lake-bluff"
+    },
+    {
+     "label": "Glencoe",
+     "href": "/glencoe"
+    }
+   ],
+   "more": "/locations/chicagoland",
+   "gbpUrl": "https://maps.app.goo.gl/2TwjsZRjsfZmukRr6",
+   "mapCid": "14905587217898728371",
+   "mapTitle": "Map of J. Blanton Plumbing, 1904 Green Bay Rd B, Highland Park, IL"
+  },
+  "depth": {
+   "h2": "What Highland Park Homes Need From a Plumber",
+   "intro": "The median home in Highland Park was built in 1963, and about 1 in 4 went up before 1940. Add wooded ravines, mature trees and long Lake County winters, and the same few problems keep showing up.",
+   "tiles": [
+    {
+     "title": "Older Homes, Older Pipes",
+     "body": "Nearly half of Highland Park homes were built before 1960, often with clay sewer pipe, cast iron drains and galvanized water lines. These materials wear out slowly, until a [small leak](/highland-park/leak-repairs) or a [tired water heater](/highland-park/water-heater-repair) turns into a bigger repair."
+    },
+    {
+     "title": "Ravines, Mature Trees and Your Sewer Line",
+     "body": "Highland Park’s ravines and tree-lined streets are [hard on sewer lines](/highland-park/sewer-repair). Roots grow toward moisture and slip into older pipe through the joints. The first signs are slow drains or a gurgle when the washer empties."
+    },
+    {
+     "title": "Heavy Rain, Snowmelt and Basement Backups",
+     "body": "Heavy rain and spring snowmelt can [push water into Highland Park basements](/highland-park/basement-flooding). A [backflow valve](/highland-park/sewage-line-backup-services) stops sewage from coming up through floor drains. A [sump pump with a battery backup](/highland-park/sump-pumps) keeps running when the power goes out. An [overhead sewer system](/highland-park/overhead-sewer-systems) lifts basement wastewater above the level where backups happen."
+    },
+    {
+     "title": "Hard Freezes and Burst Pipes",
+     "body": "Lake County winters bring long stretches below freezing. Pipes in exterior walls, crawl spaces and outdoor spigot lines freeze first, and they can [split and flood a basement](/highland-park/burst-pipe-repair) once they thaw. If you see water where it shouldn’t be, shut off your main valve and call us 24/7."
+    }
+   ]
+  },
+  "whyH2": "Why Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "Real Reviews",
+   "h2": "What Our Customers Say",
+   "intro": "4.7 stars from 5,669+ Google reviews across all locations.",
+   "rating": "4.7",
+   "ratingSub": "5,669+ Google reviews across all locations",
+   "items": [
+    {
+     "name": "Jane Ernst",
+     "url": "https://maps.app.goo.gl/qXqFTQizam56Txrk8",
+     "text": "We had a very slow draining issue that would make our whole system gurgle when water drained from the washing machine. […] Initially, Andreas Pastos came out and sent a camera down to evaluate the situation. It was filled with tree roots that had found their way through the joints in the pipes. He gave us several options. Once we decided that hydro jet was our best option, he arranged to have the equipment to sent to our home. Our technician, Kyle Johnson, arrived quickly and thoroughly hydro jetted our sewer line with camera attached so we could see the process."
+    },
+    {
+     "name": "Brian Crain",
+     "url": "https://maps.app.goo.gl/yX9GobAxAt8ryxhy7",
+     "text": "Ron was perfect. He came to do the job at hand and explained various pieces of information along the way that helped me understand the root causes of what we were dealing with and how to avoid problems in the future. […] Didn’t try and push the sale like some companies do, but was more or less educating on what the options were and what they entailed in full so we would know what to expect if we decided to go down those paths."
+    },
+    {
+     "name": "Veronica Flores",
+     "url": "https://maps.app.goo.gl/wxQuHgfiuagicWLE6",
+     "text": "I appreciated that they wore foot coverings when in my house. I was panicked because I’ve previously had substantial water damage in my basement, so having my water spigot line burst and water pouring into my basement, caused a lot concern. Andrew calmly walked me through what he found, answered my questions, and addressed my fears. […] Pricing was upfront and reasonable."
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From Highland Park Homeowners",
+   "items": [
+    {
+     "q": "How much does a plumber cost in Highland Park?",
+     "preview": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing.",
+     "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. Older homes with clay or cast iron pipe can take more work to repair the right way. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we’ll walk you through it."
+    },
+    {
+     "q": "How fast can you get to my home in an emergency?",
+     "preview": "Call us any time, day or night, including weekends and holidays.",
+     "a": "Call us any time, day or night, including weekends and holidays. Our plumbers serve Highland Park and the North Shore 24/7, and we [treat emergencies as a priority](/highland-park/emergency-plumbing). Arrival times depend on the day, but we’ll get a plumber to you as soon as we can."
+    },
+    {
+     "q": "Can tree roots damage my sewer line?",
+     "preview": "Yes, and it’s a real risk in a city with as many mature trees as Highland Park.",
+     "a": "Yes, and it’s a real risk in a city with as many mature trees as Highland Park. Roots grow toward moisture and slip into sewer lines through cracks and loose joints, especially in older clay pipe. Early signs include slow drains, gurgling and backups in the lowest drain in the house. In Highland Park, homeowners own the private sewer line from the house to the city main, so a root problem there is yours to fix. A [camera inspection](/highland-park/video-camera-sewer-inspections) shows whether roots are the cause, and [hydro jetting](/highland-park/hydro-jetting) or a sewer repair can clear them out."
+    },
+    {
+     "q": "My home was built before 1960. Is it at higher risk?",
+     "preview": "It can be. About 45% of Highland Park homes were built before 1960, and about 1 in 4 before 1940.",
+     "a": "It can be. About 45% of Highland Park homes were built before 1960, and about 1 in 4 before 1940. Homes from those years often have clay sewer pipe, cast iron drains or galvanized water lines, and all of them wear out with age. Age alone doesn’t mean something is wrong. [An inspection](/highland-park/plumbing-maintenance) tells you where your system stands, so you can plan repairs instead of reacting to a leak."
+    },
+    {
+     "q": "How do I protect my basement from sewer backups?",
+     "preview": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris.",
+     "a": "Start with three things: a backflow valve on your sewer line, a sump pump with a battery backup, and a regular check of your sewer line for roots and debris. For homes with repeat backups, an [overhead sewer system](/highland-park/overhead-sewer-systems) lifts basement wastewater above the level where backups happen. We can look at your setup and tell you which option makes sense for your home."
+    },
+    {
+     "q": "Are you licensed and bonded in Illinois?",
+     "preview": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993.",
+     "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+    },
+    {
+     "q": "Which North Shore communities do you serve near Highland Park?",
+     "preview": "Along with Highland Park, we serve Highwood, Fort Sheridan, Deerfield, Bannockburn, Riverwoods, Lake Forest, Lake Bluff, Glencoe and more.",
+     "a": "Along with Highland Park, we serve Highwood, Fort Sheridan, Deerfield, Bannockburn, Riverwoods, Lake Forest, Lake Bluff, Glencoe and more. Our phone line is open 24/7 for all of them."
+    },
+    {
+     "q": "How often should I have my sewer line inspected?",
+     "preview": "There’s no fixed schedule, but older homes with mature trees nearby benefit from a camera inspection every few years, or any time you notice slow drains or gurgling.",
+     "a": "There’s no fixed schedule, but older homes with mature trees nearby benefit from a camera inspection every few years, or any time you notice slow drains or gurgling. Nearly half of Highland Park homes were built before 1960, often with clay sewer pipe that roots get into more easily. An inspection shows the condition of your line so you can fix small problems early."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in Highland Park start small, like a few roots in the sewer line or a water heater past its prime. The [No Drip Club](/no-drip-club/) brings a plumber to your home for regular maintenance, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "A Plumber You Can Call Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  }
+ },
+ "metaTitle": "Plumber in Highland Park, IL",
+ "metaDescription": "Plumbing services in Highland Park, IL, now with an office on Green Bay Rd. Serving Chicagoland since 1993. Call 24/7 for an upfront price before any work starts."
+}

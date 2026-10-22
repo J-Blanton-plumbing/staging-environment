@@ -1,0 +1,315 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Leak Repairs",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Leak Detection and Repair in Highland Park, IL",
+   "sub": "A drip under the sink is easy to spot. A leak inside a wall or under a floor isn't. We find leaks, including the hidden ones, and fix them with a flat price before we start. Serving Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/hidden-leak-wall-damage.webp",
+    "alt": "Interior wall with bubbling, cracked paint and water stains above the baseboard, a sign of a hidden leak behind the wall"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Signs of a Hidden Leak",
+    "intro": "Not all leaks announce themselves. If something feels off, it probably is:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "A Higher Water Bill",
+      "body": "A bill that jumps with no change in how you use water often means water is going somewhere you can't see."
+     },
+     {
+      "h3": "Stains, Bubbling Paint or Soft Spots",
+      "body": "Water stains on ceilings, bubbling paint on walls or soft spots in the floor point to a leak behind the surface."
+     },
+     {
+      "h3": "Musty Smell or Mold",
+      "body": "A damp, musty smell or mold with no obvious cause often traces back to a slow leak."
+     },
+     {
+      "h3": "The Sound of Running Water",
+      "body": "Hearing water run when every fixture is off is a strong sign of a leak in a supply line."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "what-we-fix",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "steps",
+    "eyebrow": "What We Fix",
+    "h2": "Leak Repairs We Handle",
+    "intro": "From a dripping trap to a split line inside a wall:",
+    "steps": [
+     {
+      "h3": "Fixture and Valve Leaks",
+      "body": "Faucets, shutoff valves, supply lines and traps under sinks and behind toilets. See [faucet repair](/highland-park/faucet-installation-repair)."
+     },
+     {
+      "h3": "Hidden Pipe Leaks",
+      "body": "Leaks inside walls, ceilings and floors. We locate them with as little opening up as possible."
+     },
+     {
+      "h3": "Water Line and Drain Leaks",
+      "body": "Leaking supply lines, drain lines and connections in basements and crawl spaces."
+     }
+    ],
+    "img": null
+   },
+   {
+    "id": "highland-park-leaks",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Leaks Start in Highland Park Homes",
+    "intro": "Nearly half of Highland Park homes were built before 1960, often with galvanized water lines, cast iron drains and older copper. These materials wear out slowly, until a small leak turns into a bigger repair.",
+    "items": [
+     {
+      "h3": "Galvanized Steel Water Lines",
+      "body": "Galvanized pipe corrodes from the inside. Over decades it narrows, weakens at the threads and starts to leak, often at joints inside walls."
+     },
+     {
+      "h3": "Older Copper and Fittings",
+      "body": "Older copper can develop pinhole leaks, and old fittings and shutoff valves wear out. A valve that won't close all the way is a leak waiting to happen."
+     },
+     {
+      "h3": "Winter Freezes",
+      "body": "Long Lake County winters add freeze damage to the list. A spigot line that froze in January may not leak until spring. See [burst pipe repair](/highland-park/burst-pipe-repair)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Finding the leak is half the job. Here's how we handle the rest.",
+    "steps": [
+     {
+      "h3": "1. Options, Not a Sales Pitch",
+      "body": "Your plumber explains what's wrong in plain English first, then walks you through your options. You decide."
+     },
+     {
+      "h3": "2. A Clear Price Before Any Work Starts",
+      "body": "You get a flat-rate price before we touch anything, with no surprise add-ons when the job is done."
+     },
+     {
+      "h3": "3. Respect for Your Home",
+      "body": "Shoe covers on, work area protected, and the space cleaned up before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Leak Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Teja Bailey",
+      "url": null,
+      "text": "To call these guys our heroes would be an understatement! They came in and gave very clear instructions on what they would be doing... they actually found the true location of the issue. Very affordable and great to work with."
+     },
+     {
+      "name": "Cecilia Hinrichs",
+      "url": null,
+      "text": "We received Prompt assessment & repair within 24 hours of calling. We appreciate Anthony, he was professional, knowledgeable & repaired sink pipe, valves & bath tub faucets efficiently."
+     },
+     {
+      "name": "Judith Schader",
+      "url": "https://maps.app.goo.gl/8sp2hFNkS7FD3Yp38",
+      "text": "He rodded out the kitchen sink drain piping and fixed the leaks... In the end he offered us an excellent maintenance plan, which will definitely save us money and headaches in the future."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Leak Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How do I know if I have a hidden water leak?",
+      "preview": "Turn off all fixtures and watch your meter. If it moves, you likely have a leak.",
+      "answer": "Turn off every fixture and check your water meter. If the meter keeps moving, water is going somewhere. Other signs include a higher water bill, stains, bubbling paint, soft floors and a musty smell."
+     },
+     {
+      "q": "Can you find a leak without tearing up walls?",
+      "preview": "Usually. We narrow down the location first so any opening is small.",
+      "answer": "In most cases we can narrow down the location before opening anything, so any opening is small and targeted. We'll show you where we think the leak is and why before we cut."
+     },
+     {
+      "q": "Should I repair a leak or replace the pipe?",
+      "preview": "One leak on sound pipe is a repair. Repeat leaks on old pipe may mean replacing the section.",
+      "answer": "A single leak on otherwise sound pipe is usually a repair. If the pipe is old galvanized steel or keeps leaking in new places, replacing the section can save you from repeat repairs. We'll explain both options."
+     },
+     {
+      "q": "How much does leak repair cost?",
+      "preview": "It depends on location and access. You get a flat-rate price before any work begins.",
+      "answer": "It depends on where the leak is, how easy it is to reach and what the pipe or fixture needs. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Found a Leak? Let's Stop It.",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Leak Detection and Repair in Highland Park, IL",
+   "serviceType": "Leak Repairs",
+   "url": "https://jblantonplumbing.com/highland-park/leak-repairs",
+   "description": "Leak detection and repair in Highland Park, IL. We find hidden leaks in walls, floors and water lines and fix them with a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Leak Detection & Repair in Highland Park, IL",
+ "metaDescription": "Leak detection and repair in Highland Park, IL. We find hidden leaks in walls, floors and water lines and fix them with a flat price first. Call 24/7."
+}

@@ -1,0 +1,309 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Drain Cleaning",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Drain Cleaning in Highland Park, IL",
+   "sub": "Slow, gurgling or fully clogged drains in the kitchen, bathroom or basement. We find what's causing it, clear it and give you a clear price before we start. Our plumbers serve homeowners across Highland Park and the North Shore, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "when-to-call",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "split",
+    "eyebrow": "Know the Signs",
+    "h2": "When to Call for Drain Cleaning",
+    "body": "Store-bought drain cleaner might buy you a day. It won't fix the problem, and in older pipes it can make things worse. Call a pro when a drain doesn't respond to plunging, when you notice foul odors coming up from the drain, or when you hear gurgling after running water. Heads up: if multiple drains are backing up at once, that's not a single clog. That's a problem in the main line, and it may need [sewer rodding](/highland-park/sewer-rodding).",
+    "img": {
+     "src": "/images/city-services-v2/drain-warning-signs-illustration.webp",
+     "alt": "Illustration of common signs a drain needs professional cleaning"
+    }
+   },
+   {
+    "id": "clogged-drains",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "fold",
+    "eyebrow": "Clogged Drains",
+    "h2": "Clogged Drain Repair in Highland Park",
+    "bodies": [
+     "A clogged drain is the most common call we get, and most of them have a simple cause: hair and soap in a bathroom drain, grease and food in the kitchen, or sediment in a basement floor drain. We clear the clog with the right tool for the pipe, not the biggest one on the truck, and tell you what caused it so it doesn't come right back.",
+     "If the same drain keeps clogging, or a clog in one fixture shows up in another, the problem is usually further down the line. In Highland Park, where nearly half the homes were built before 1960, that often means an older drain line with buildup on the pipe wall. A quick camera look tells us whether it's a one-time clog or something that needs [hydro jetting](/highland-park/hydro-jetting)."
+    ],
+    "img": null
+   },
+   {
+    "id": "kitchen-sink-drain",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "fold",
+    "eyebrow": "Kitchen Sink Drains",
+    "h2": "Kitchen Sink Drain Unclogging",
+    "bodies": [
+     "The kitchen drain is the most called-about drain in the house. It collects grease, food debris and soap every day, and unlike other clogs it usually builds up slowly until one day nothing moves at all. We clear the blockage, tell you what caused it and show you what was in the pipe.",
+     "If your sink backs up into the other side, or the dishwasher drains into the sink, the clog is past the trap. That's a job for a drain cable, not a plunger. If your disposal is part of the problem, see [garbage disposal repair](/highland-park/garbage-disposal-installation-repair)."
+    ],
+    "img": null
+   },
+   {
+    "id": "highland-park-drains",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Drains Clog in Highland Park Homes",
+    "intro": "The median home in Highland Park was built in 1963, and about 1 in 4 went up before 1940. Older homes come with older drain lines, and older drain lines clog in predictable ways.",
+    "items": [
+     {
+      "h3": "Cast Iron and Galvanized Drain Lines",
+      "body": "Many older homes still have cast iron drains or galvanized pipe. Both roughen on the inside as they age, and that rough surface catches grease, hair and scale. Chemical drain cleaners can speed up the wear."
+     },
+     {
+      "h3": "Basement Floor Drains",
+      "body": "A floor drain that backs up when the washer runs points to a blockage in the main line, not the drain itself. On tree-lined streets, roots in an older clay sewer line are a common cause."
+     },
+     {
+      "h3": "The Line to the Street Is Yours",
+      "body": "In Highland Park, the homeowner owns and maintains the private sewer line from the house to the city main. If the clog is out there, it's yours to clear, which is why we find the real cause before we quote."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "sewer-drain-clearing",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "fold",
+    "eyebrow": "Main Line Clogs",
+    "h2": "Sewer Drain Clearing",
+    "bodies": [
+     "When water comes up through the basement floor drain, or every drain in the house slows down at once, the clog is in the main sewer drain, not a single fixture. Clearing it takes a professional sewer machine that can reach the full length of the line from the cleanout.",
+     "We clear the main line, then run a camera so you can see what caused the blockage: roots, grease, a belly in the pipe or a broken joint. If it's a simple clog, you're done. If it keeps coming back, we'll walk you through [sewer rodding](/highland-park/sewer-rodding) schedules, [hydro jetting](/highland-park/hydro-jetting) or a [sewer repair](/highland-park/sewer-repair)."
+    ],
+    "img": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 60,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Choose J. Blanton for Drain Cleaning?",
+    "intro": "Every technician is licensed in Illinois and equipped to handle any drain cleaning job safely.",
+    "steps": [
+     {
+      "h3": "1. Weekend and Night Dispatch",
+      "body": "A drain backup doesn't wait for business hours. Neither do we."
+     },
+     {
+      "h3": "2. Upfront Pricing",
+      "body": "Your technician will explain your options and provide a flat rate before any money changes hands."
+     },
+     {
+      "h3": "3. We Find the Cause",
+      "body": "We clear the drain and tell you what caused it, so you're not calling us back for the same clog next month."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 70,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Drain Cleaning Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Amanda Gualtieri",
+      "url": "https://maps.app.goo.gl/sdQP1oxjRbV3Wpft9",
+      "text": "After 2 failed attempts at clearing our line with 2 different plumbing companies, Josh with J. Blanton was actually able to properly diagnose the issue and come up with a stable and ongoing solution."
+     },
+     {
+      "name": "Jon Ricco",
+      "url": "https://maps.app.goo.gl/LutNjGckvrsqCkcE9",
+      "text": "Edgar is a fantastic tech and was extremely professional and fantastic to work with. He was upfront and allowed me to view the issues from the camera before any money changed hands. He had multiple suggestions on how to further prevent issues, but was never pushy on trying to sell additional fixes."
+     },
+     {
+      "name": "Sandra Plasencia",
+      "url": null,
+      "text": "Christian and Julian did a great job today on my maintenance visit! Even went above and beyond to rod my bathroom sink!! Thank you so much !!!"
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 80,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Drain Cleaning Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How much does drain cleaning cost in Highland Park?",
+      "preview": "It depends on the location and cause of the clog. You get a clear price before any work begins.",
+      "answer": "It depends on where the clog is, how deep it is and what's causing it. A slow kitchen drain is a different job than a main line backup. We give you a clear price before any work begins, so you know exactly what you're agreeing to."
+     },
+     {
+      "q": "Why do plumbers say not to use drain cleaners?",
+      "preview": "They only work on grease and soap, and they can wear down older cast iron and clay pipes.",
+      "answer": "Because they work on grease and soap buildup and nothing else. They won't touch tree roots, sediment or pipe scale. And in older homes with clay or cast iron pipes, like many in Highland Park, the chemicals can speed up deterioration. A drain that seems cleared often clogs again within days because the actual blockage is still there."
+     },
+     {
+      "q": "Why do my basement floor drain and toilet back up at the same time?",
+      "preview": "Several drains backing up at once means the main sewer line is blocked.",
+      "answer": "When more than one drain backs up at once, the clog is in the main sewer line, not a single fixture. In Highland Park, that line runs from your house to the city main and belongs to the homeowner. It needs [sewer drain clearing](#sewer-drain-clearing), not a plunger."
+     },
+     {
+      "q": "Is professional drain cleaning worth it?",
+      "preview": "Yes, when the clog keeps coming back. It gets to the actual cause instead of masking it.",
+      "answer": "If the clog comes back within days, or you're dealing with slow drains in multiple fixtures, store-bought solutions are masking the problem, not fixing it. Professional drain cleaning gets to the actual cause, which is almost always cheaper than letting it go and dealing with a backup or pipe damage later."
+     },
+     {
+      "q": "When should I call a plumber for a clogged drain?",
+      "preview": "When plunging doesn't work, the clog keeps returning, or several drains are affected.",
+      "answer": "Call when the clog doesn't clear with basic plunging, when it keeps coming back, when multiple drains are affected, or when you notice gurgling or odors that weren't there before. Those are signs the problem is past the point where a hardware store fix will hold."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 90,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 100,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 110,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready to Stop Thinking About Your Drains?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Drain Cleaning in Highland Park, IL",
+   "serviceType": "Drain Cleaning",
+   "url": "https://jblantonplumbing.com/highland-park/drain-cleaning",
+   "description": "Drain cleaning and clogged drain repair in Highland Park, IL. We find the cause, clear it and give you a flat price first. Call us 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Drain Cleaning in Highland Park, IL",
+ "metaDescription": "Drain cleaning and clogged drain repair in Highland Park, IL. We find the cause, clear it and give you a flat price first. Call us 24/7."
+}

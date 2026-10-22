@@ -1,0 +1,297 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Emergency Plumbing",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "24/7 Emergency Plumbing in Highland Park, IL",
+   "sub": "When water is coming into your home, you need a plumber who picks up and shows up. Our phone line is open 24/7, including nights, weekends and holidays, and our plumbers serve Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+    "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "is-it-an-emergency",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Is Your Situation an Emergency?",
+    "intro": "You need an emergency plumber when a problem has to be handled right now to limit damage or risk. Some emergencies are impossible to miss. Others are hiding behind walls or under older pipes.",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Sewer Backing Up",
+      "body": "Sewage coming up through a floor drain, tub or toilet. Stop using water and call. Don't think about it in flooding terms only, a worsening clog can be a system failure you're not seeing yet."
+     },
+     {
+      "h3": "Burst or Frozen Pipe",
+      "body": "When a pipe lets go, every minute counts. Shut off the main water supply if you can and call immediately."
+     },
+     {
+      "h3": "Sump Pump or Ejector Pump Failure",
+      "body": "Storm hit, the basement is flooding and the pump is dead. Call now, not tomorrow when the damage is done."
+     },
+     {
+      "h3": "Water Heater Leaking",
+      "body": "No hot water is inconvenient. Active leaking or strange noises from the tank is an emergency. The difference matters."
+     },
+     {
+      "h3": "Gas Leak",
+      "body": "Don't troubleshoot this one. If you smell gas, get out and call your gas provider or 911 from outside. We'll handle the repair once it's safe."
+     },
+     {
+      "h3": "Hidden Leak or Water Line Issue",
+      "body": "Wet walls, a higher water bill, soft spots in the floor. Not all leaks announce themselves. If something feels off, it probably is."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-emergencies",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "The Emergencies We See in Highland Park Homes",
+    "intro": "The median Highland Park home was built in 1963, and about 1 in 4 went up before 1940. Older plumbing, mature trees and long Lake County winters shape what goes wrong here.",
+    "items": [
+     {
+      "h3": "Frozen and Burst Pipes in Winter",
+      "body": "Pipes in exterior walls, crawl spaces and outdoor spigot lines freeze first, and they can [split and flood a basement](/highland-park/burst-pipe-repair) once they thaw. Know where your main shutoff is before you need it."
+     },
+     {
+      "h3": "Backups From Roots and Old Clay",
+      "body": "Roots from ravines and tree-lined streets get into older clay sewer lines. In Highland Park, the homeowner owns the private line from the house to the city main, so a [backup](/highland-park/sewage-line-backup-services) there is yours to fix."
+     },
+     {
+      "h3": "Wet Basements After Heavy Rain",
+      "body": "Heavy rain and spring snowmelt can [push water into Highland Park basements](/highland-park/basement-flooding). A failed [sump pump](/highland-park/sump-pumps) during a storm is one of the most urgent calls we take."
+     }
+    ],
+    "proof": {
+     "quote": "Called back on a Sunday late afternoon and came out that evening. [...] No one wants to have Sewage backing up, they treated it like an emergency and kept at it.",
+     "name": "Seth Maybury"
+    }
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton in an Emergency",
+    "intro": "When you call, you reach a team that sends a licensed plumber to your door, not a salesperson.",
+    "steps": [
+     {
+      "h3": "1. We Always Pick Up",
+      "body": "Our phone line is open nights, weekends and holidays. When your emergency doesn't wait, neither do we."
+     },
+     {
+      "h3": "2. Upfront Pricing",
+      "body": "We diagnose the problem first, then give you a flat-rate price before work begins."
+     },
+     {
+      "h3": "3. Plain English, No Scare Tactics",
+      "body": "We walk you through what's wrong and what your options are, so you can make an informed decision."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Real Emergencies, Real Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Brian Kay",
+      "url": "https://maps.app.goo.gl/ttUGzkJyZqSojhaj6",
+      "text": "Worked with Greg and Josh to do an emergency replacement of my ejector pit and they were very kind to make sure my cats didn't get out of the apartment while they worked. I actually do say this as someone who has called J Blanton a few times, but they're the plumbers I call to fix other plumbers' mistakes."
+     },
+     {
+      "name": "Debra Haslett",
+      "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+      "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+     },
+     {
+      "name": "Mike Robb",
+      "url": "https://maps.app.goo.gl/1GJLvNz5PeBxvKku8",
+      "text": "We had an emergency situation on a weekend when our sewer main broke in the basement, and this company was an absolute lifesaver! They responded quickly, offered very reasonable rates, and immediately sent someone out to diagnose the problem. Within no time, they had a crew on-site to tackle the issue."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Emergency Plumbing Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How fast can you get to my home in Highland Park?",
+      "preview": "Call any time. We'll give you a realistic arrival window on the phone.",
+      "answer": "Call us any time, day or night, including weekends and holidays. Our plumbers serve Highland Park and the North Shore around the clock. Arrival times depend on the day and call volume, but we'll give you a realistic window when you're on the phone and get a plumber to you as soon as we can."
+     },
+     {
+      "q": "What should I do while waiting for an emergency plumber?",
+      "preview": "Stop the water at the nearest valve or the main. For gas, get out and call from outside.",
+      "answer": "Stop the water first if you can. Shut off the supply valve closest to the problem, under the sink, behind the toilet or at the water heater. If you can't isolate it, shut off the main. If it's a gas leak, don't touch anything: get everyone out and call from outside. Once you're safe, call us and we'll walk you through the next steps."
+     },
+     {
+      "q": "How do I shut off my water in an emergency?",
+      "preview": "Find the main shutoff near your water meter. Turn it clockwise to stop water to the whole house.",
+      "answer": "Every home has a main shutoff valve, usually near the water meter in the basement or a utility room. Turning it clockwise stops water to the whole house. In an older Highland Park home, find and test it before you need it. Individual fixtures have their own shutoff valves under sinks, behind toilets and behind the washer."
+     },
+     {
+      "q": "What counts as a plumbing emergency?",
+      "preview": "Sewage backups, burst pipes, active flooding, failed sump pumps, leaking water heaters and gas leaks.",
+      "answer": "Any situation that needs to be handled right away to prevent damage, a health risk or loss of essential service. Sewage backing up, a burst or frozen pipe, active flooding, a failed sump pump during a storm, a leaking water heater or a suspected gas leak all qualify. If you're unsure, call. We'd rather you check than wait while damage spreads."
+     },
+     {
+      "q": "Do you offer financing for emergency repairs?",
+      "preview": "Yes. Flexible payment plans are available through trusted financial partners.",
+      "answer": "Yes. We offer flexible payment plans through trusted financial partners. If the cost of an emergency repair is more than you're prepared for right now, ask your technician about financing options when they're on-site. Subject to credit approval."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "A Plumber You Can Call Day or Night",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "24/7 Emergency Plumbing in Highland Park, IL",
+   "serviceType": "Emergency Plumbing",
+   "url": "https://jblantonplumbing.com/highland-park/emergency-plumbing",
+   "description": "Emergency plumber in Highland Park, IL. Burst pipes, sewer backups and flooded basements, fixed 24/7 by licensed plumbers. Upfront pricing.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Emergency Plumber in Highland Park, IL 24/7",
+ "metaDescription": "Emergency plumber in Highland Park, IL. Burst pipes, sewer backups and flooded basements, fixed 24/7 by licensed plumbers. Upfront pricing."
+}

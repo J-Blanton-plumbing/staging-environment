@@ -1,0 +1,300 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Video Camera Sewer Inspections",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Video Camera Sewer Inspections in Highland Park, IL",
+   "sub": "Get a clear look inside your sewer line before a small issue turns into an expensive dig. You watch the footage live, we mark anything we find, and you choose the fix with confidence. Serving Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-camera-inspection-backyard.webp",
+    "alt": "Two J. Blanton plumbers watching the monitor of a sewer camera during a backyard sewer line inspection"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "reasons",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Not Just for Problems",
+    "h2": "Common Reasons to Get a Sewer Camera Inspection",
+    "intro": "Homeowners aren't always having sewer problems when they book a camera inspection. Here's when it's worth a look:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Drains That Clog or Back Up More Than Once",
+      "body": "Recurring backups, sewage odors, or unexplained water damage and mold are all signs it's worth having your line inspected. The camera shows what's going on instead of guessing."
+     },
+     {
+      "h3": "Buying an Older North Shore Home",
+      "body": "About 1 in 4 Highland Park homes was built before 1940. We'll show you the condition of the sewer line before you buy or sell, so there are no surprises after closing."
+     },
+     {
+      "h3": "Planning a Remodel",
+      "body": "If you're planning to remodel a kitchen or bathroom, a camera inspection helps you understand if your plumbing can handle the new fixtures before work starts."
+     },
+     {
+      "h3": "Retrieving Valuables",
+      "body": "Dropping a ring down the drain doesn't mean it's lost forever. Our camera can help you locate jewelry and other valuables inside the line."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "what-we-find-highland-park",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "What We Look for in Highland Park Sewer Lines",
+    "intro": "Nearly half of Highland Park homes were built before 1960, many on wooded lots near ravines. That shapes what the camera tends to find.",
+    "items": [
+     {
+      "h3": "Clay Pipe and Root Intrusion",
+      "body": "Clay is common in homes built before the 1980s and prone to root intrusion and cracked joints. Tree roots work through small cracks or loose joints and grow inside the line, restricting flow."
+     },
+     {
+      "h3": "Cast Iron Corrosion",
+      "body": "Cast iron was built to last decades but corrodes and cracks from the inside as it ages. The camera shows scale, pitting and cracks you'd never see from the basement."
+     },
+     {
+      "h3": "Bellies and Separated Joints",
+      "body": "A belly is a low spot where water and waste collect instead of draining, usually from ground settling. Years of freeze-thaw can also pull two pipe sections apart at the joint."
+     },
+     {
+      "h3": "The Line You Own",
+      "body": "In Highland Park, the homeowner owns the private sewer line from the house to the city main. The city's own flood tips recommend having it checked for roots and debris. The camera is how you know what's in it."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "steps",
+    "eyebrow": "No Digging Required",
+    "h2": "How a Sewer Camera Inspection Works",
+    "intro": "No digging required. Here's exactly how we get eyes on your sewer line and what you walk away with.",
+    "steps": [
+     {
+      "h3": "1. Where We Start",
+      "body": "We locate your main drain cleanout, whether it's inside or outside your home. That's where the camera goes in: no digging, no cutting into walls or floors."
+     },
+     {
+      "h3": "2. What We Use",
+      "body": "We send in a waterproof camera with strong LED lighting, built to travel through the pipe and send back a clear, real-time picture of what's inside."
+     },
+     {
+      "h3": "3. What You See and Get",
+      "body": "We watch the footage live with you and mark the exact location of anything we find: root intrusion, cracks, corrosion, blockages, pipe separation, or offset joints. We save the footage and give you a copy for your records."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/camera-inspection-results-homeowner.webp",
+     "alt": "J. Blanton Plumbing technician at the front door of a brick home, showing a camera inspection feed on a tablet to a homeowner"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Camera Inspection Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jason Newman",
+      "url": "https://maps.app.goo.gl/YHikKuGGrdZmN4838",
+      "text": "I had an exceptional experience with Andreas from J. Blanton Plumbing. He came out to perform a camera inspection of my sewer line and was incredibly professional, thorough, and knowledgeable. He took the time to walk me through everything on the screen, explained each detail clearly, and answered all my questions with patience and honesty."
+     },
+     {
+      "name": "Charli Petty",
+      "url": "https://maps.app.goo.gl/N11PRoitwRSoQ9ht8",
+      "text": "Josh came out and was awesome! [...] Right around the promised time, he called and texted to let me know he was on his way and would arrive within the hour. 45 minutes later he arrived, inspected the issue, and walked me through what was needed and the price. He finished the work and showed me everything via camera and showed me an issue that could cause some additional repairs in the future."
+     },
+     {
+      "name": "Tyler Ko",
+      "url": "https://maps.app.goo.gl/he5PCDkFqheoKPiy8",
+      "text": "Had a camera inspection of a clogged sewer drain by George. He was very helpful, polite, professional and informative. We ended up moving forward with a sewer trenchless liner service and look forward to a good experience for the main service."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Camera Inspection Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Should I get a sewer camera inspection before buying a home in Highland Park?",
+      "preview": "Yes. Many homes here are older, and the buyer takes over the private sewer line.",
+      "answer": "It's a smart step, especially here. About 45% of Highland Park homes were built before 1960, often with clay or cast iron sewer lines, and the buyer takes over the private line from the house to the city main. A camera inspection shows the real condition before you close."
+     },
+     {
+      "q": "How often should I have my sewer line inspected?",
+      "preview": "Every few years for older homes with trees nearby, or any time drains slow down or gurgle.",
+      "answer": "There's no fixed schedule, but older homes with mature trees nearby benefit from a camera inspection every few years, or any time you notice slow drains or gurgling. An inspection shows the condition of your line so you can fix small problems early. See [sewer maintenance](/highland-park/sewer-maintenance) for a regular schedule."
+     },
+     {
+      "q": "How much does a sewer camera inspection cost?",
+      "preview": "Cost depends on the length of your line, access points, and what we find along the way.",
+      "answer": "The cost depends on factors like the length of your line, how many access points we need to check, and what we find along the way. Give us a call and we'll walk you through it."
+     },
+     {
+      "q": "Will a sewer camera inspection damage my pipes or my property?",
+      "preview": "No. We access your line through an existing cleanout, so no digging or cutting is required.",
+      "answer": "No. We access your line through an existing cleanout, so there's no digging or cutting into walls or floors. If a cleanout is hard to reach, we'll tell you rather than force our way in."
+     },
+     {
+      "q": "What happens if the camera finds a problem?",
+      "preview": "We show you the footage, explain your options and give you a flat price. You decide what's next.",
+      "answer": "We show you the footage, mark the exact location and explain your options in plain language. That could be [sewer rodding](/highland-park/sewer-rodding), [hydro jetting](/highland-park/hydro-jetting) or a [sewer repair](/highland-park/sewer-repair). You get a flat price before any work, and nothing happens until you decide."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 60,
+    "type": "ndc",
+    "variant": "sewer"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 70,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 80,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Want to See What's in Your Sewer Line?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Video Camera Sewer Inspections in Highland Park, IL",
+   "serviceType": "Video Camera Sewer Inspections",
+   "url": "https://jblantonplumbing.com/highland-park/video-camera-sewer-inspections",
+   "description": "Sewer and drain camera inspections in Highland Park, IL. Watch the footage live, get a copy for your records and a flat price before any work. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Camera Inspection in Highland Park, IL",
+ "metaDescription": "Sewer and drain camera inspections in Highland Park, IL. Watch the footage live, get a copy for your records and a flat price before any work. Call 24/7."
+}

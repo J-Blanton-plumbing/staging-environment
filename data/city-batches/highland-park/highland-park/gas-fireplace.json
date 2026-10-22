@@ -1,0 +1,315 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Gas Fireplace",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Gas Fireplace Repair and Service in Highland Park, IL",
+   "sub": "A gas fireplace that won't light, smells off or keeps shutting down isn't something to troubleshoot yourself. Our plumbers are licensed for gas work and handle fireplace repair, cleaning and maintenance for homes across Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/gas-fireplace-log-set.webp",
+    "alt": "Gas fireplace log set with the gas valve and burner line visible under the grate"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Gas Fireplace Needs Service",
+    "intro": "Most gas fireplace problems come down to the pilot, the ignition, the gas supply or dirt that's built up over a season. Watch for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Pilot Won't Light or Stay Lit",
+      "body": "A dirty or failing thermocouple or thermopile, a clogged pilot orifice or a gas supply issue can keep the pilot from staying on."
+     },
+     {
+      "h3": "Weak, Yellow or Sooty Flames",
+      "body": "Flames that are low, lazy or leaving soot on the glass point to dirty burners, bad air-to-gas mixture or a venting problem."
+     },
+     {
+      "h3": "The Fireplace Shuts Off on Its Own",
+      "body": "A safety sensor that trips can mean a venting or ignition issue. It's doing its job, and it's worth finding out why."
+     },
+     {
+      "h3": "A Gas Smell",
+      "body": "If you smell gas, turn nothing on or off, get everyone out and call your gas utility or 911 from outside. Once it's safe, call us to find and fix the source."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "steps",
+    "eyebrow": "What We Do",
+    "h2": "Gas Fireplace Repair, Cleaning and Maintenance",
+    "intro": "A gas fireplace combines a gas line, a burner and a vent. We work on all three:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "Pilot and ignition problems, thermocouples and thermopiles, valves, igniters and gas supply issues."
+     },
+     {
+      "h3": "Cleaning and Maintenance",
+      "body": "Burner and pilot cleaning, glass cleaning, log and ember placement, a gas leak check and a look at the venting."
+     },
+     {
+      "h3": "Gas Line Work",
+      "body": "New or extended gas lines for a fireplace or insert, installed to code and tested. See [gas line installation](/highland-park/gas-line-installation)."
+     }
+    ],
+    "img": null
+   },
+   {
+    "id": "highland-park-fireplaces",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Gas Fireplaces in Highland Park Homes",
+    "intro": "Long Lake County winters mean a gas fireplace in Highland Park gets real use. That's also why it needs regular attention.",
+    "items": [
+     {
+      "h3": "Service Before the Season",
+      "body": "A fireplace that sat all summer can collect dust, spider webs and debris in the burner and pilot. A cleaning and check in the fall keeps it from failing on the first cold night."
+     },
+     {
+      "h3": "Older Homes, Older Gas Lines",
+      "body": "Nearly half of Highland Park homes were built before 1960, often with original black iron gas piping. Fireplaces added or converted later may be running on older lines worth checking. See [gas line repair](/highland-park/gas-line-repair)."
+     },
+     {
+      "h3": "Carbon Monoxide Safety",
+      "body": "Any gas appliance needs working venting and a working carbon monoxide detector nearby. If your detector goes off, get out and call for help. We'll check the venting and the appliance once it's safe."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "Why Call J. Blanton for Gas Fireplace Service",
+    "intro": "Gas work isn't like fixing a faucet. You can't always tell from the outside whether the job was done right.",
+    "steps": [
+     {
+      "h3": "1. Licensed for Gas Work",
+      "body": "Gas line work should be done by a licensed pro. Our plumbers are licensed and trained for it."
+     },
+     {
+      "h3": "2. Upfront Pricing",
+      "body": "Your technician explains your options and gives you a flat rate before any money changes hands."
+     },
+     {
+      "h3": "3. Tested Before We Leave",
+      "body": "We check for leaks and confirm the fireplace runs safely before we call the job done."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Gas Line and Fireplace Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Anthony Kamykowski",
+      "url": null,
+      "text": "Needed a gas leak repair. Ty did an excellent job. He was thorough, professional, and knowledgeable. Seems like an honest company!"
+     },
+     {
+      "name": "Matt Pipke",
+      "url": null,
+      "text": "Andrew and Ty did a great job fixing and replacing some old natural gas pipe that had a recurring leak. Punctual, efficient, kept me informed, cleaned up well after. I highly recommend."
+     },
+     {
+      "name": "Robert Markman",
+      "url": null,
+      "text": "We had a new gas pipe installed that ws located to sevice our dryer in the basement on July 14th. The Technician was friendly and did a great job with the installation. He cleaned up after himself, and the pricing was competative."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Gas Fireplace Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How often should a gas fireplace be serviced?",
+      "preview": "Once a year, ideally in the fall before heavy use.",
+      "answer": "Once a year is a good rule, ideally in the fall before you start using it. A yearly cleaning and check keeps the pilot, burner and venting working and catches small problems early."
+     },
+     {
+      "q": "Why won't my gas fireplace pilot stay lit?",
+      "preview": "Usually a thermocouple, a clogged pilot or a gas supply issue.",
+      "answer": "The most common causes are a dirty or failing thermocouple or thermopile, a clogged pilot orifice or a gas supply problem. Repeatedly relighting it won't fix the cause. We'll find it and fix it."
+     },
+     {
+      "q": "What should I do if I smell gas near my fireplace?",
+      "preview": "Get out, call your gas utility or 911 from outside, and don't go back in until it's cleared.",
+      "answer": "Leave immediately and don't switch any lights or electronics on or off. Once you're outside, call your gas utility or 911. Don't go back in until the area has been cleared. Once it's safe, call a licensed plumber to locate and fix the source."
+     },
+     {
+      "q": "How much does gas fireplace repair cost?",
+      "preview": "It depends on the problem. A technician gives you a flat rate before anything starts.",
+      "answer": "It depends on what's failed and the parts it needs. We don't price gas work over the phone. A licensed technician looks at the fireplace and gives you a flat rate before anything starts."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready for a Warm, Safe Fireplace?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Gas Fireplace Repair and Service in Highland Park, IL",
+   "serviceType": "Gas Fireplace",
+   "url": "https://jblantonplumbing.com/highland-park/gas-fireplace",
+   "description": "Gas fireplace repair, cleaning and maintenance in Highland Park, IL. Licensed for gas work, upfront pricing and local service. Call us 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Gas Fireplace Repair & Service in Highland Park, IL",
+ "metaDescription": "Gas fireplace repair, cleaning and maintenance in Highland Park, IL. Licensed for gas work, upfront pricing and local service. Call us 24/7."
+}

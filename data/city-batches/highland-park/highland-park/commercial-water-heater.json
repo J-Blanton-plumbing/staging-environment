@@ -1,0 +1,279 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Commercial Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Commercial Water Heaters in Highland Park, IL",
+   "sub": "When the water heater goes down at a restaurant, salon or office, your business goes down with it. We repair, replace and install commercial water heaters for North Shore businesses, with upfront pricing and a phone line that's open 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/commercial-water-heater-system.webp",
+    "alt": "J. Blanton plumber working on the piping and circulator pumps of a commercial water heating system"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "who-we-serve",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Businesses We Serve",
+    "h2": "Commercial Water Heater Service for Your Business",
+    "intro": "Commercial water heaters work harder and longer than residential ones. We service them for businesses like:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Restaurants and Cafes",
+      "body": "Dishwashing, handwashing and prep all depend on hot water at the right temperature. When it drops, service stops."
+     },
+     {
+      "h3": "Salons and Spas",
+      "body": "Back-to-back appointments need steady hot water all day, not a tank that runs out by noon."
+     },
+     {
+      "h3": "Offices and Retail",
+      "body": "Restrooms and break rooms still need reliable hot water, without a heater that's bigger or smaller than you need."
+     },
+     {
+      "h3": "Gyms and Studios",
+      "body": "Showers and laundry put heavy demand on a heater. Sizing and maintenance keep it from failing at peak hours."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "services-list",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "steps",
+    "eyebrow": "What We Do",
+    "h2": "Commercial Water Heater Repair, Replacement and Maintenance",
+    "intro": "One company for the whole life of your heater:",
+    "steps": [
+     {
+      "h3": "Repair",
+      "body": "We diagnose tank and tankless commercial heaters, gas and electric, and fix what's failing so you can get back to business."
+     },
+     {
+      "h3": "Replacement and Installation",
+      "body": "We size the new heater for your peak demand, install it to code and schedule the swap to limit downtime."
+     },
+     {
+      "h3": "Maintenance",
+      "body": "Regular flushing, descaling and safety checks extend the life of a heater that works harder than any residential unit."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/restaurant-kitchen-sink.webp",
+     "alt": "Dishwasher rinsing a pan under a pre-rinse sprayer at a stainless steel sink in a busy restaurant kitchen"
+    }
+   },
+   {
+    "id": "north-shore-businesses",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Service",
+    "h2": "Serving Highland Park and North Shore Businesses",
+    "intro": "Our plumbers serve businesses in Highland Park and nearby North Shore communities.",
+    "items": [
+     {
+      "h3": "Downtime Costs Money",
+      "body": "A failed heater can close a kitchen or cancel appointments. Our phone line is open 24/7, including weekends and holidays, and we work to get a plumber to you as soon as we can."
+     },
+     {
+      "h3": "Winter Demand",
+      "body": "In a Lake County winter, incoming water is colder and the heater works harder. That's when an undersized or aging commercial heater is most likely to fail."
+     },
+     {
+      "h3": "Upfront Pricing",
+      "body": "You get a flat-rate price before any work begins, so you can make the call for your business with the numbers in front of you."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Customer Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jessica Bartucci",
+      "url": null,
+      "text": "Ty was knowledgeable and efficient. He was friendly with staff and clients when we opened and even cleaned up after himself when the job was done. He patiently explained what we could expect and delivered from start to finish."
+     },
+     {
+      "name": "Rich Walker",
+      "url": null,
+      "text": "Alex & Mike were great! They answered all my questions professionally and respectfully. Their work appears to be top notch and explained everything they were doing throughout the project. Very pleased with my whole J. Blanton experience today."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 50,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Commercial Water Heater Questions From Highland Park Businesses",
+    "items": [
+     {
+      "q": "Can you work around our business hours?",
+      "preview": "We try to schedule planned work around your hours. For a failure, call any time.",
+      "answer": "We'll do our best to schedule planned work, like a replacement or maintenance, around your hours to limit downtime. For a failure, call us any time. Our line is open 24/7."
+     },
+     {
+      "q": "What size commercial water heater does my business need?",
+      "preview": "It depends on your peak demand. We size it for your busiest hour.",
+      "answer": "It depends on your peak hot water demand: how many fixtures, dishwashers or showers run at the same time, and the temperature you need. We size the heater for your busiest hour."
+     },
+     {
+      "q": "How often should a commercial water heater be serviced?",
+      "preview": "More often than a home heater. We set a schedule based on your use.",
+      "answer": "Commercial heaters work harder than residential ones, so they benefit from more frequent flushing, descaling and safety checks. We'll recommend a schedule based on your heater and your use."
+     },
+     {
+      "q": "How much does commercial water heater replacement cost?",
+      "preview": "It depends on capacity, fuel and code updates. You get a flat price first.",
+      "answer": "It depends on the heater's capacity, fuel type, venting and any code updates required. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 60,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 70,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Hot Water Down at Your Business? Call Us.",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Commercial Water Heaters in Highland Park, IL",
+   "serviceType": "Commercial Water Heater",
+   "url": "https://jblantonplumbing.com/highland-park/commercial-water-heater",
+   "description": "Commercial water heater repair and installation for Highland Park, IL businesses. Keep hot water running with 24/7 service and upfront pricing.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Commercial Water Heaters in Highland Park, IL",
+ "metaDescription": "Commercial water heater repair and installation for Highland Park, IL businesses. Keep hot water running with 24/7 service and upfront pricing."
+}

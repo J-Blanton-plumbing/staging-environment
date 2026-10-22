@@ -1,0 +1,338 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Overhead Sewer Systems",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Overhead Sewer Systems in Highland Park, IL",
+   "sub": "Does your basement floor drain back up every time it rains hard? An overhead sewer system lifts basement wastewater above the level where backups happen. We install and convert them for homeowners across Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/overhead-sewer-installation.webp",
+    "alt": "J. Blanton Plumbing technician installing an overhead sewer pipe along a basement ceiling"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Does Your Basement Need an Overhead Sewer System?",
+    "intro": "There are several signs your basement needs an overhead sewer system. Some are subtle. Others aren't. Here's what to look for, from mild to severe:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Water at the Floor Drain When It Rains Hard",
+      "body": "A little backup at the floor drain during heavy rain, gone by morning. Easy to ignore. It's usually the first sign your sewer connection can't keep up."
+     },
+     {
+      "h3": "Rodding That Stops Working",
+      "body": "The line gets [rodded](/highland-park/sewer-rodding), it clears, and a few weeks later the backup returns. That's not a clogging problem anymore. It's a sign the connection itself is the limit."
+     },
+     {
+      "h3": "A Backup That's Already Caused Damage",
+      "body": "Sewage in a finished basement. Ruined flooring, drywall, belongings. At this point, another temporary fix isn't worth the risk of round two."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "how-it-works",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "split",
+    "eyebrow": "The Basics",
+    "h2": "How an Overhead Sewer System Works",
+    "body": "Every drain below the street sewer's flow line, like your floor drain, a basement bathroom, or a laundry line, normally relies on gravity to reach the sewer. An overhead sewer system reroutes those drains into a sump pit instead. An [ejector pump](/highland-park/ejector-pump) lifts that wastewater up to a line above flood level, where a check valve keeps it from flowing back down. From there, gravity carries it the rest of the way to the street sewer, the same as every drain upstairs.",
+    "img": null
+   },
+   {
+    "id": "highland-park-basements",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Overhead Sewers and Highland Park Basements",
+    "intro": "The City of Highland Park's own flood tips name overhead sewer systems as one way to help prevent sewer backups, along with backflow preventers and sump pumps with battery backups.",
+    "items": [
+     {
+      "h3": "Older Homes Built on Straight Gravity",
+      "body": "The median Highland Park home was built in 1963, and plenty of older homes run on a straight gravity connection with no overhead system at all. Finished basements in those homes have the most to lose."
+     },
+     {
+      "h3": "Separate Storm and Sanitary Sewers",
+      "body": "Highland Park runs separate sanitary and storm sewers, so a wet basement here isn't always a sewer backup. Groundwater calls for a [sump pump](/highland-park/sump-pumps), a blocked private line calls for [rodding](/highland-park/sewer-rodding), and a low connection that can't keep up calls for an overhead system. We'll tell you which one you're dealing with."
+     },
+     {
+      "h3": "Your Line to the Main",
+      "body": "The homeowner owns and maintains the private sewer line from the house to the city main. We check that line on camera before recommending a conversion, so you're not paying to fix the wrong problem."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "compare",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "type": "table",
+    "eyebrow": "Know Your Options",
+    "h2": "Overhead Sewer vs. Sump Pump vs. Backwater Valve",
+    "intro": "A sump pump, a backwater valve, and an overhead sewer system each solve a different basement water problem, and only one of them fixes a sewer connection that's reached its limit.",
+    "head": [
+     "",
+     "Sump Pump",
+     "Backwater Valve",
+     "Overhead Sewer System"
+    ],
+    "rows": [
+     [
+      "What It Solves",
+      "Groundwater seeping in through the foundation or under the slab.",
+      "Sewage flowing backward into the house through the drain line.",
+      "A sewer connection that backs up because it sits too low relative to the street sewer."
+     ],
+     [
+      "How It Works",
+      "Collects groundwater in a pit and pumps it outside, away from the house.",
+      "A flap in the line closes automatically when flow reverses, blocking sewage from coming back in.",
+      "Reroutes the low drains into a sump pit, then an ejector pump lifts that wastewater above flood level."
+     ],
+     [
+      "When It's Enough",
+      "When the problem is groundwater, not sewage.",
+      "When your plumbing sits high enough above the street sewer for a passive valve to do the job.",
+      "When a passive valve isn't enough and only raising the connection solves it for good."
+     ]
+    ],
+    "note": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "We answer calls 24/7, even on weekends and holidays. Once you schedule a visit, we start with a thorough look at your property, not a sales pitch.",
+    "steps": [
+     {
+      "h3": "1. Honest Diagnosis",
+      "body": "We walk the drainage, lay out every option, and let you decide before we do any work."
+     },
+     {
+      "h3": "2. Upfront Pricing",
+      "body": "You get a flat rate before any money changes hands. No pressure to decide on the spot."
+     },
+     {
+      "h3": "3. Tested Before We Leave",
+      "body": "Every overhead sewer conversion gets tested before we leave, not just installed."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Overhead Sewer System Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Christine Wynn",
+      "url": "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+      "text": "We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys."
+     },
+     {
+      "name": "Siriss Toth",
+      "url": "https://maps.app.goo.gl/hNPVFu8RcjxUAEq49",
+      "text": "We've used J Blanton before [...] Dave and Alexis were on site and prepared to deal with the muck and the troubles. [...] We did really appreciate their efforts, their openness and keeping us apprised of everything going on, the ups and downs of different options and really trying to be budget conscious."
+     },
+     {
+      "name": "Trenton Gligorovic",
+      "url": null,
+      "text": "Josh Reid came by on Saturday night around 8pm to help us with an emergency plumbing issue. He was beyond friendly and very honest with us. He was able to help us route our line to stop the back flow that was occurring in the house. I could tell he really cared about our situation and didn't seem annoyed at all considering it was Saturday night."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Overhead Sewer Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How do I know if I need an overhead sewer system?",
+      "preview": "Start with how often it happens. A backup that returns after rodding is a strong sign.",
+      "answer": "Start with how often it happens and how bad it's gotten. An occasional backup at the floor drain during heavy rain is an early sign. If you've had the line rodded and the backup keeps coming back, that's a sign the connection itself can't keep up. If it's already caused real damage, that's the clearest sign of all."
+     },
+     {
+      "q": "Is an overhead sewer required in Highland Park?",
+      "preview": "It depends on the property and the project. We check what applies during the assessment.",
+      "answer": "Some jurisdictions require an overhead sewer system in specific situations, but there's no single blanket rule across every city we serve. We'll check what applies to your property and your plans, like finishing a basement, during the assessment."
+     },
+     {
+      "q": "Do I need an overhead sewer or a sump pump?",
+      "preview": "They solve different problems: groundwater versus sewer backup. We help you figure out which you have.",
+      "answer": "They solve different problems. A sump pump handles groundwater coming through the foundation. An overhead sewer system stops sewage from backing up through basement drains. Highland Park runs separate storm and sanitary sewers, so it's worth pinning down which water you're seeing before choosing a fix."
+     },
+     {
+      "q": "How long does overhead sewer installation take?",
+      "preview": "Most installations take 2 to 5 days, depending on your home's layout.",
+      "answer": "Most overhead sewer installations take 2 to 5 days, depending on your home's layout and how the connection needs to be routed."
+     },
+     {
+      "q": "How much does an overhead sewer system cost?",
+      "preview": "Cost depends on your home's layout and depth. You get a flat rate before any work begins.",
+      "answer": "Cost depends on a few things specific to your home: how deep the connection needs to go, your home's layout, whether an ejector pit is already in place or needs to be added, and how easy the work area is to access. We'll walk through all of that with you and give you a flat rate before any work begins."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "type": "ndc",
+    "variant": "sewer"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready to Stop Worrying Every Time It Rains?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Overhead Sewer Systems in Highland Park, IL",
+   "serviceType": "Overhead Sewer Systems",
+   "url": "https://jblantonplumbing.com/highland-park/overhead-sewer-systems",
+   "description": "Basement backing up in heavy rain? We install overhead sewer systems for Highland Park, IL homes, with a flat price before we start. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Overhead Sewer Systems in Highland Park, IL",
+ "metaDescription": "Basement backing up in heavy rain? We install overhead sewer systems for Highland Park, IL homes, with a flat price before we start. Call 24/7."
+}

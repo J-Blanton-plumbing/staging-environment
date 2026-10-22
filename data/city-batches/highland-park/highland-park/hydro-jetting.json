@@ -1,0 +1,322 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Hydro Jetting",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Hydro Jetting in Highland Park, IL",
+   "sub": "Tree roots and years of buildup are hard on older sewer lines. Hydro jetting scours the whole pipe wall clean, and you get one flat price before we start. Our plumbers serve homeowners across Highland Park and the North Shore, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/hydro-jetting-sewer-cleanout.webp",
+    "alt": "J. Blanton Plumbing technician kneeling on a residential driveway, feeding a hydro jet hose into a sewer cleanout, with a branded service truck parked at the curb behind him"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "what-is-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "split",
+    "eyebrow": "The Basics",
+    "h2": "What Is Hydro Jetting?",
+    "body": "Hydro jetting clears a sewer line with a high-pressure water stream, fed through the same cleanout access point used for rodding. A specialized nozzle sprays water in every direction as it moves through the pipe, scouring grease, scale, and roots off the entire pipe wall instead of just cutting a path through the middle. It's the fix for buildup that keeps coming back after rodding, or for roots that have worked into the pipe joints. Rodding opens the line back up. Hydro jetting cleans it.",
+    "img": {
+     "src": "/images/city-services-v2/hydro-jetting-diagram.webp",
+     "alt": "Diagram showing how hydro jetting clears a residential sewer line, with a cross-section view of the underground pipe, jet nozzle, high-pressure water spray, and debris being flushed toward the street connection"
+    }
+   },
+   {
+    "id": "when-you-need-hydro-jetting",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "When Your Plumbing Needs Hydro Jetting",
+    "intro": "Hydro jetting clears buildup off the entire pipe wall, not just the one clog blocking it right now. Here's how to know it's time to call:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Drains Gurgle When the Washer Empties",
+      "body": "If your drains gurgle or the basement floor drain backs up when the washing machine empties, water can't get past something in the main line. On tree-lined streets, that something is often roots."
+     },
+     {
+      "h3": "Roots Have Worked Into the Pipe Joints",
+      "body": "Roots find any gap in a pipe joint and grow into the line chasing moisture. A rod clears what's blocking flow right now, but it doesn't stop what's growing at the next joint down the line."
+     },
+     {
+      "h3": "Buildup Has Hardened on the Pipe Wall",
+      "body": "Grease, scale, and sludge coat the inside of the pipe over time. A rod cuts a path through the middle, but it doesn't remove what's stuck to the walls."
+     },
+     {
+      "h3": "The Clog Keeps Coming Back After Rodding",
+      "body": "Rodding breaks through the immediate blockage, but it leaves buildup on the pipe walls that the next clog catches on. Hydro jetting clears what rodding leaves behind."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Highland Park Sewer Lines Clog",
+    "intro": "Highland Park has two things that are hard on sewer lines: older homes and big trees. Nearly half of the homes here were built before 1960, and about 1 in 4 before 1940. Many still have their original clay sewer pipe.",
+    "items": [
+     {
+      "h3": "Older Clay Pipe With Aging Joints",
+      "body": "Clay sewer pipe comes in short sections joined end to end. As a line ages and the ground shifts, those joints open small gaps. Grease and scale catch on the edges, and roots find their way in. Hydro jetting cleans the whole pipe wall, so the next clog has less to catch on."
+     },
+     {
+      "h3": "Ravines, Mature Trees and Root Intrusion",
+      "body": "Highland Park's ravines and tree-lined streets put a lot of roots close to sewer lines. Roots grow toward moisture and slip into older pipe at the joints. Hydro jetting cuts them out and flushes them away. Roots do grow back, so a [camera inspection](/highland-park/video-camera-sewer-inspections) shows where they're getting in, and you can decide if a [sewer repair](/highland-park/sewer-repair) makes sense."
+     },
+     {
+      "h3": "Your Sewer Line Is Your Responsibility",
+      "body": "In Highland Park, the homeowner owns and maintains the private sewer line from the house to the city main. When roots or buildup block it, the fix is on you, not the city. The city's own flood tips recommend having your sewer line checked for roots and debris. A clean line, backed by an [overhead sewer system](/highland-park/overhead-sewer-systems) or other [basement flood protection](/highland-park/basement-flooding), gives heavy rain less of a chance to push water back into your basement."
+     }
+    ],
+    "proof": {
+     "quote": "It was filled with tree roots that had found their way through the joints in the pipes. He gave us several options.",
+     "name": "Jane Ernst"
+    }
+   },
+   {
+    "id": "what-happens-when-you-call-j-blanton",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Nothing is worse than a plumbing service where you don't understand what you're being charged for. Here's how we work the other way.",
+    "steps": [
+     {
+      "h3": "1. Camera Inspection First",
+      "body": "We show you exactly what's built up inside, in plain language."
+     },
+     {
+      "h3": "2. Honest Diagnosis",
+      "body": "We walk you through your options: short-term and long-term."
+     },
+     {
+      "h3": "3. Upfront Pricing",
+      "body": "We quote you a flat rate before any money changes hands."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Hydro Jetting Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "fixedweasel",
+      "url": "https://maps.app.goo.gl/p3keNRv3PKhqGfop7",
+      "text": "I had a camera inspection as well as a Hydrojet cleaning, rod, and flush of my 70' main 6\" sewer line... The camera inspection was done by George and Raul. They were prompt, professional, and detailed with the description of the process... we were able to see together where the problems were in the main and at what specific distances. I was given several options for resolution on the spot with price quotes up front."
+     },
+     {
+      "name": "Alison Thakur",
+      "url": null,
+      "text": "Scott B came out to do a full sewer scope and review options as we have a very old home with clay pipes. He was knowledge, professional, and extremely kind. He worked with us on pricing - very trustworthy and transparent! We've never had a bad experience with anyone from J. Blanton. Absolutely recommend!"
+     },
+     {
+      "name": "Bhavya P.",
+      "url": "https://maps.app.goo.gl/kdPkhHCRsqDNVFfi6",
+      "text": "Stephen Walan has done a great job helping us to remove our kitchen sink clog using hydro jetting. He listened and answered all our questions patiently. J. Blanton's overall service and communication was good."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Hydro Jetting Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Is hydro jetting safe for the old clay pipe in my home?",
+      "preview": "Yes, when the pipe is checked first. We run a camera before any jetting to confirm what the line can handle.",
+      "answer": "Yes, when the pipe is checked first. About 1 in 4 Highland Park homes was built before 1940, and many older lines are clay. We run a camera through the line before any jetting, so we know if a section is cracked or broken. If the pipe can't take the pressure, we'll tell you and walk you through other options, like [sewer rodding](/highland-park/sewer-rodding) or a [sewer repair](/highland-park/sewer-repair)."
+     },
+     {
+      "q": "Who is responsible for the sewer line in Highland Park, the city or the homeowner?",
+      "preview": "The homeowner. You own the private sewer line from your house to the city main.",
+      "answer": "The homeowner. In Highland Park, you own and maintain the private sewer line that runs from your house to the city main. If roots or buildup block that line, the fix is yours to handle. We can inspect it, clean it and show you its condition on camera."
+     },
+     {
+      "q": "How often should I hydro jet my sewer line if I have big trees?",
+      "preview": "When roots are the cause, results usually last one to three years. A camera inspection shows how fast they're coming back.",
+      "answer": "It depends on how fast roots come back in your line. Most homeowners with root intrusion see results last one to three years before the line needs maintenance again. Homes near mature trees or ravines may need it on the shorter end of that range. A camera inspection shows how much has grown back, and [regular sewer maintenance](/highland-park/sewer-maintenance) keeps it from turning into a backup."
+     },
+     {
+      "q": "Is hydrojetting better than snaking?",
+      "preview": "It depends on the problem. Snaking is fast and effective for most clogs; hydro jetting is the stronger fix for hardened buildup or root intrusion.",
+      "answer": "It depends on the problem. A drain snake breaks through a clog to restore flow. It's fast, effective, and the right call for most drain issues. Hydro jetting uses high-pressure water to scour the pipe wall clean from the inside. When buildup has hardened on the pipe wall, roots have worked into the joints, or the same clog keeps coming back after rodding, hydro jetting is the stronger fix. A camera inspection tells us which one your line actually needs."
+     },
+     {
+      "q": "How much does hydro jetting cost in Highland Park?",
+      "preview": "Cost depends on the length of the line, the severity of the buildup, and what the camera inspection finds. We quote pricing upfront.",
+      "answer": "Hydro jetting cost depends on the length of the line, the severity of the buildup, and what the camera inspection finds. Older clay lines with heavy root growth can take more work to clear. Every job starts with a diagnosis. We show you exactly what's in the pipe and give you pricing upfront before any work begins. No surprises once we get started."
+     },
+     {
+      "q": "Can hydrojetting destroy roots?",
+      "preview": "It clears roots that have already worked into the line, but it can't stop new roots from growing back.",
+      "answer": "It can cut through and flush out roots that have worked their way into pipe joints, clearing the line completely. What it can't do is stop roots from growing back. That requires repairing or relining the pipe where the intrusion is happening. The camera inspection shows exactly where the roots are entering so you know what you're dealing with before you decide."
+     },
+     {
+      "q": "Why do plumbers not like Drano?",
+      "preview": "It works chemically, not mechanically, and can corrode older pipes over time without clearing buildup from the walls.",
+      "answer": "The issue isn't that it doesn't work. It's that it works chemically, not mechanically. Drano dissolves organic material, but it can also corrode older pipes over time, especially the cast iron and clay lines common in older homes. It also doesn't remove buildup from pipe walls the way hydro jetting does. It just clears a path through the clog. For a slow drain or minor backup, it might buy you time. For a recurring problem, it's masking something that needs to be properly diagnosed."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "sewer"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready to Get Your Sewer Line Flowing Again?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Hydro Jetting in Highland Park, IL",
+   "serviceType": "Hydro Jetting",
+   "url": "https://jblantonplumbing.com/highland-park/hydro-jetting",
+   "description": "Hydro jetting for Highland Park, IL homes. We clear roots and buildup from older sewer lines and give you a flat price before we start. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Hydro Jetting in Highland Park, IL",
+ "metaDescription": "Hydro jetting for Highland Park, IL homes. We clear roots and buildup from older sewer lines and give you a flat price before we start. Call 24/7."
+}

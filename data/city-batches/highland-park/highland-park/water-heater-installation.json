@@ -1,0 +1,319 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Installation",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Installation in Highland Park, IL",
+   "sub": "When your water heater is past repair, you need the right size, the right fuel and an install that meets today's code. We walk you through your options and give you a flat price before we start. Serving Highland Park and the North Shore.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the connections at the base of a newly installed basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "when-to-replace",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "When It's Time to Replace Your Water Heater",
+    "intro": "Replacement is the right call when repairs stop making sense. Here's how to tell:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "The Tank Is Leaking",
+      "body": "Once the tank itself corrodes through, it can't be repaired. Shut off the water to the heater and call."
+     },
+     {
+      "h3": "It's Past About 10 Years",
+      "body": "Tank heaters typically last about 8 to 12 years. An older heater that needs a major repair is usually a replacement."
+     },
+     {
+      "h3": "You're Always Running Out",
+      "body": "If your household has grown or you've added a bathroom, the heater may simply be too small. Replacement is a chance to size it right."
+     },
+     {
+      "h3": "Repairs Keep Adding Up",
+      "body": "When one repair follows another, the money is usually better spent on a new heater."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "our-process",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "steps",
+    "eyebrow": "How We Install",
+    "h2": "Our Water Heater Installation Process",
+    "intro": "A new water heater touches your gas or electric supply, your venting and your water lines. Here's how we handle each part:",
+    "steps": [
+     {
+      "h3": "1. Size and Fuel",
+      "body": "We look at your household, your bathrooms and your current setup to recommend the right capacity and fuel type, tank or tankless."
+     },
+     {
+      "h3": "2. A Clear Price",
+      "body": "You get a flat-rate price for the heater and the install before any work begins."
+     },
+     {
+      "h3": "3. Install to Code",
+      "body": "We remove the old heater and install the new one with the venting, gas or electric and water connections today's code requires."
+     },
+     {
+      "h3": "4. Test and Clean Up",
+      "body": "We test for leaks and proper operation, walk you through the new heater and leave the work area clean."
+     }
+    ],
+    "img": null
+   },
+   {
+    "id": "highland-park-installs",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Installing Water Heaters in Highland Park Homes",
+    "intro": "Nearly half of Highland Park homes were built before 1960, and about 1 in 4 before 1940. Older homes bring a few things to plan for.",
+    "items": [
+     {
+      "h3": "Older Venting and Gas Lines",
+      "body": "Older chimneys, vents and gas lines weren't always built for today's heaters. We check them before the install, so there are no surprises on the day."
+     },
+     {
+      "h3": "Tight Basements and Utility Rooms",
+      "body": "Older basements can have tight stairs, low ceilings and small utility rooms. We plan the swap around your space, and we'll tell you if a different size or a [tankless unit](/highland-park/tankless-water-heater) fits better."
+     },
+     {
+      "h3": "Winter Demand",
+      "body": "Colder incoming water in a Lake County winter means the heater has to work harder. We size your new heater for the season it'll struggle most in, not just the average day."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Price shock is the most common complaint about water heater replacement. Here's how we avoid it.",
+    "steps": [
+     {
+      "h3": "1. A Technician, Not a Salesperson",
+      "body": "We diagnose the heater before we recommend anything. If a part fixes it, that's what we'll tell you."
+     },
+     {
+      "h3": "2. Repair vs. Replace, Explained",
+      "body": "We walk you through both options, what each costs and how long each is likely to last, so the decision is yours."
+     },
+     {
+      "h3": "3. A Clear Price Before We Start",
+      "body": "You get a flat-rate price before any work begins, and the work area is cleaned up before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Installation Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Diana Tesauro",
+      "url": null,
+      "text": "Mr. Welham Mendoza, from Blanton Plumbing, installed a water heater in our home on April 3, 2026. Mr. Mendoza was on time, friendly, professional, and clear in explaining how our system worked. He had to make a second trip to secure a water heater that fit. He was extremely knowledgeable and efficient in the installation."
+     },
+     {
+      "name": "Rich Walker",
+      "url": null,
+      "text": "Alex & Mike were great! They answered all my questions professionally and respectfully. Their work appears to be top notch and explained everything they were doing throughout the project. Very pleased with my whole J. Blanton experience today."
+     },
+     {
+      "name": "Matt Schick",
+      "url": null,
+      "text": "Second time we have used J Blanton. Matt did a great job installing our tankless water heater. Alex was very helpful talking through the pros and cons of tank vs tankless. Thanks guys!"
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Installation Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "How long does it take to replace a water heater?",
+      "preview": "A straight tank swap usually takes a few hours. Bigger changes take longer.",
+      "answer": "A straight swap of a tank heater usually takes a few hours. Moving the heater, changing fuel type or switching to tankless can take longer. We'll give you a realistic timeline before we start."
+     },
+     {
+      "q": "Can a handyman legally replace a water heater in Illinois?",
+      "preview": "It should be done by a licensed plumber. Gas, venting and plumbing all have to meet code.",
+      "answer": "Water heater replacement involves gas or electric connections, venting and plumbing, and it should be done by a licensed plumber and permitted where required. An improper install can create a carbon monoxide or water damage risk that doesn't show up right away."
+     },
+     {
+      "q": "What size water heater do I need?",
+      "preview": "It depends on your household and bathrooms. We size it for how you actually use hot water.",
+      "answer": "It depends on how many people live in the home, how many bathrooms you have and when you use the most hot water. We'll look at your household and recommend a size, not just replace what you had."
+     },
+     {
+      "q": "How much does it cost to replace a water heater in Highland Park?",
+      "preview": "It depends on the heater and any code updates. You get a flat price first, with financing available.",
+      "answer": "It depends on the heater type, capacity and fuel, plus any venting, gas or code updates your setup needs. We give you a flat-rate price before any work begins. Financing is available so you can get it done now and pay over time."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-gas-valve-check.webp",
+       "alt": "J. Blanton plumber checking the gas control valve on a basement water heater with a flashlight"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready for a New Water Heater?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Installation in Highland Park, IL",
+   "serviceType": "Water Heater Installation",
+   "url": "https://jblantonplumbing.com/highland-park/water-heater-installation",
+   "description": "Water heater installation and replacement in Highland Park, IL. Sized right, installed to code and a flat price before we start. Call us today.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Installation in Highland Park, IL",
+ "metaDescription": "Water heater installation and replacement in Highland Park, IL. Sized right, installed to code and a flat price before we start. Call us today."
+}

@@ -1,0 +1,321 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewer Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewer Repair in Highland Park, IL",
+   "sub": "Tree roots, cracked clay pipe and backups that keep coming back all point to trouble in the line under your yard. We find the cause on camera, show you the footage and give you one flat price before we start. Our plumbers serve homeowners across Highland Park and the North Shore, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+    "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Does Your Sewer Line Need Repair?",
+    "intro": "A sewer line problem doesn't always mean a full replacement. Most issues start smaller than that, and catching them early is what keeps them that way. Here's how to know where you stand:",
+    "minCol": 260,
+    "tiles": [
+     {
+      "h3": "Slow Drains or Gurgling That Keep Coming Back After Rodding",
+      "body": "If rodding clears it but the same slow drain or gurgling returns within a few months, the clog isn't the real problem. Something further down the line is catching debris again."
+     },
+     {
+      "h3": "Recurring Backups or Pooling Water in the Yard",
+      "body": "A backup that keeps happening, or a soggy patch in the yard, points to something wrong with the pipe itself, not a one-time clog. Rodding alone probably won't hold this time."
+     },
+     {
+      "h3": "Confirmed Crack, Joint Separation, or Root Intrusion on Camera",
+      "body": "Once a camera inspection confirms damage to the pipe, this isn't a rodding job anymore. We'll walk you through what repair looks like for your line."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-sewer-lines",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Why Sewer Lines Fail in Highland Park",
+    "intro": "The median home in Highland Park was built in 1963, and about 1 in 4 went up before 1940. Add wooded ravines and mature trees, and you get the three causes we'd check first on any Highland Park sewer line.",
+    "items": [
+     {
+      "h3": "Clay and Cast Iron That Have Reached Their Age",
+      "body": "Homes built before the 1970s often have clay or cast iron sewer lines. Clay typically lasts 50 to 60 years and is especially vulnerable to cracking at the joints. Cast iron usually lasts 50 to 75 years, but corrodes from the inside as it ages. Nearly half of Highland Park homes were built before 1960, so many lines here are at or past that range."
+     },
+     {
+      "h3": "Roots From Ravines and Tree-Lined Streets",
+      "body": "Roots grow toward any source of moisture, and a sewer line is exactly that. Once a root finds a crack or a loose joint, it keeps growing until it blocks the flow or cracks the pipe further. If roots are the only problem, [hydro jetting](/highland-park/hydro-jetting) can clear them. If they've already broken the pipe, it's a repair."
+     },
+     {
+      "h3": "Freeze-Thaw and Shifting Ground",
+      "body": "Lake County winters mean years of ground freezing and thawing around your pipe. Joints take the strain and can separate, or the pipe can settle into a low spot, called a belly, where waste collects instead of flowing through."
+     },
+     {
+      "h3": "The Line Is Yours to Fix",
+      "body": "In Highland Park, the homeowner owns and maintains the private sewer line from the house to the city main. When that line cracks or collapses, the repair is on you, not the city. That's why we show you the footage and the exact location of the damage before recommending anything."
+     }
+    ],
+    "proof": {
+     "quote": "Scott B came out to do a full sewer scope and review options as we have a very old home with clay pipes.",
+     "name": "Alison Thakur"
+    }
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "Nothing is worse than a plumbing service where you don't understand what you're being charged for. Here's how we work the other way.",
+    "steps": [
+     {
+      "h3": "1. Camera Inspection",
+      "body": "We run a camera down the line first, always. You see the same footage we do, so nothing about what's wrong is a guess, ours or yours."
+     },
+     {
+      "h3": "2. Honest Diagnosis",
+      "body": "We'll tell you straight whether it's a repair or a replacement, and why. If a smaller fix holds, that's what we recommend, not the bigger job."
+     },
+     {
+      "h3": "3. Upfront Pricing",
+      "body": "Once we know what we're dealing with, you get a flat rate before any work starts. No surprise numbers once the job is underway."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "repair-methods",
+    "cls": "ss-panel ss-tint",
+    "order": 40,
+    "type": "table",
+    "eyebrow": "Repair Methods",
+    "h2": "How We Repair a Sewer Line",
+    "intro": "Once we know what's wrong, there's usually more than one way to fix it. Which method makes sense depends on the pipe's condition, location, and how it failed.",
+    "head": [
+     "Method",
+     "What It Involves",
+     "Typical Disruption"
+    ],
+    "rows": [
+     [
+      "[Trenchless Pipe Lining](/highland-park/trenchless-sewer-repair)",
+      "A resin-coated liner is pulled through the existing pipe and cured in place, creating a new pipe inside the old one.",
+      "Minimal digging, usually just small access points"
+     ],
+     [
+      "[Trenchless Pipe Bursting](/highland-park/trenchless-sewer-repair)",
+      "A new pipe is pulled through the old one while a bursting head fractures the old pipe outward to make room.",
+      "Minimal digging, works even when the old pipe is badly damaged"
+     ],
+     [
+      "Traditional Excavation (Spot Repair)",
+      "The damaged section is dug up and replaced directly.",
+      "More digging, but sometimes the only option depending on damage location and access"
+     ]
+    ],
+    "note": "On wooded Highland Park lots, a method that saves mature trees and landscaping is often worth asking about. Your technician will walk you through which method fits your situation after the camera inspection."
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Sewer Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jason Newman",
+      "url": "https://maps.app.goo.gl/YHikKuGGrdZmN4838",
+      "text": "I had an exceptional experience with Andreas from J. Blanton Plumbing. He came out to perform a camera inspection of my sewer line and was incredibly professional, thorough, and knowledgeable. He took the time to walk me through everything on the screen, explained each detail clearly, and answered all my questions with patience and honesty."
+     },
+     {
+      "name": "J. Ham",
+      "url": "https://maps.app.goo.gl/fNFyTEGqmipVtH2dA",
+      "text": "I had J. Blanton Plumbing come service a potential sewer line back-up and I was super impressed with the entire experience. My technician was Stephen Walen and he was fantastic. He scoped our entire line so we could see where our main line hooks up to off-shoots of our other pipes. He walked through all different short & long-term scenarios so we could make informed decisions."
+     },
+     {
+      "name": "Sara Corcoran",
+      "url": "https://maps.app.goo.gl/hcHjEjPhBvoYqNnh8",
+      "text": "I had another company come out first to fix my sewer line that got blocked in this cold weather, but the issue was not fully resolved. [...] They all were professional, knowledgeable, offered solutions, and answered all my questions. They all went above and beyond to make sure my issue is fixed efficiently and as soon as possible."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Sewer Repair Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Who pays to fix a sewer line in Highland Park, the city or the homeowner?",
+      "preview": "The homeowner. You own the private sewer line from your house to the city main.",
+      "answer": "In Highland Park, the homeowner owns and maintains the private sewer line that runs from the house to the city main. If that line cracks, separates or fills with roots, the repair is yours to handle. A [camera inspection](/highland-park/video-camera-sewer-inspections) shows exactly where the problem is before you commit to anything."
+     },
+     {
+      "q": "Can a sewer line be repaired without digging up my yard?",
+      "preview": "Often, yes. Trenchless methods work through small access points. The camera shows if your line qualifies.",
+      "answer": "Often, yes. Trenchless lining and pipe bursting fix the line through one or two small access points, which matters on Highland Park lots with mature trees, ravine slopes and established landscaping. A fully collapsed section or a severe belly may still need a spot dig. The camera tells us which applies to your line. See [trenchless sewer repair](/highland-park/trenchless-sewer-repair)."
+     },
+     {
+      "q": "Is my older clay sewer line going to fail?",
+      "preview": "Not necessarily. Clay lasts 50 to 60 years, so a camera check tells you where yours stands.",
+      "answer": "Not necessarily, but it's worth checking. About 1 in 4 Highland Park homes was built before 1940, and clay typically lasts 50 to 60 years before the joints start to crack and let roots in. Age alone doesn't mean something is wrong. A camera inspection shows the real condition so you can plan a repair instead of reacting to a backup."
+     },
+     {
+      "q": "How much does sewer line repair cost in Highland Park?",
+      "preview": "It depends on the damage, the depth and the repair method. You get a flat price before work begins.",
+      "answer": "It depends on what the camera finds: the type of damage, how deep and long the affected section is, the repair method, and what's above the line, like a driveway, patio or mature trees. We give you a flat-rate price before any work begins, so you know the cost going in. Give us a call and we'll walk you through it."
+     },
+     {
+      "q": "Should I repair or replace my sewer line?",
+      "preview": "A single damaged section usually means repair. Damage along most of the line usually means replacement.",
+      "answer": "If the damage is limited to one section and the rest of the pipe is sound, a repair usually makes sense. If the camera shows cracks, root intrusion and corrosion along most of the line, replacing it can save you from paying for repeat repairs. We'll tell you straight which one we'd pick for your line, and why."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "sewer"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Ready to Get Your Sewer Line Fixed?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewer Repair in Highland Park, IL",
+   "serviceType": "Sewer Repair",
+   "url": "https://jblantonplumbing.com/highland-park/sewer-repair",
+   "description": "Sewer line repair for Highland Park, IL homes. Camera inspection first, honest options and a flat price before we start. Call us 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewer Repair in Highland Park, IL",
+ "metaDescription": "Sewer line repair for Highland Park, IL homes. Camera inspection first, honest options and a flat price before we start. Call us 24/7."
+}

@@ -18,6 +18,8 @@ export const CITY_PAGE_BATCHES: readonly CityPageBatch[] = [
     label: 'Batch 3 (Brief 216, Oct 2026)',
     cities: ['mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park'],
   },
+  // Brief 217: the 19th cluster, from the approved Highland Park static package (data/city-batches/highland-park).
+  { id: 4, label: 'Highland Park (Brief 217, Oct 2026)', cities: ['highland-park'] },
 ];
 
 export const CITY_PAGE_BATCH_CITIES: readonly string[] = CITY_PAGE_BATCHES.flatMap((b) => b.cities);

@@ -1,0 +1,300 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Ejector Pump",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Ejector Pump Repair and Replacement in Highland Park, IL",
+   "sub": "A basement bathroom, laundry or wet bar sits below your main sewer line, so an ejector pump lifts the wastewater up to it. When the pump fails, sewage backs up fast. We repair and replace ejector pumps for homeowners across Highland Park and the North Shore, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+    "alt": "J. Blanton plumber working on the pump and wiring inside a basement pit"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "what-is-an-ejector-pump",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "split",
+    "eyebrow": "The Basics",
+    "h2": "What Does an Ejector Pump Do?",
+    "body": "An ejector pump moves wastewater from fixtures below the main sewer line, like a basement bathroom or laundry room, up to the level where gravity can carry it to the sewer. It sits in a sealed basin, usually in the basement floor. When the wastewater reaches a set level, a float triggers the pump and it pushes everything up and out. It's often confused with a [sump pump](/highland-park/sump-pumps), which removes groundwater, not wastewater.",
+    "img": {
+     "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+     "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+    }
+   },
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Ejector Pump Is Failing",
+    "intro": "Ejector pump problems tend to start small. Catch them before the basin overflows:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Sewage Smell in the Basement",
+      "body": "A sealed basin shouldn't smell. An odor points to a failed seal, a vent problem or a basin that isn't emptying."
+     },
+     {
+      "h3": "Basement Fixtures Draining Slowly or Backing Up",
+      "body": "If the basement toilet, shower or laundry backs up while upstairs drains work fine, the ejector pump is the first suspect."
+     },
+     {
+      "h3": "The Alarm Is Going Off",
+      "body": "Many basins have a high-water alarm. If it's sounding, stop using basement fixtures and call."
+     },
+     {
+      "h3": "Constant Running or Loud Noises",
+      "body": "A pump that runs nonstop or grinds is working against a stuck float, a failed check valve or a worn motor."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-ejector",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Ejector Pumps in Highland Park Homes",
+    "intro": "Ejector pumps show up wherever a home has plumbing below the main sewer line, like a basement bathroom, laundry or wet bar.",
+    "items": [
+     {
+      "h3": "Basement Bathrooms Added Later",
+      "body": "Nearly half of Highland Park homes were built before 1960. If a basement bathroom or laundry was added in a later remodel, it likely relies on an ejector pump that may now be reaching its age."
+     },
+     {
+      "h3": "Part of Every Overhead Sewer System",
+      "body": "An [overhead sewer system](/highland-park/overhead-sewer-systems) reroutes basement drains into a pit, and an ejector pump lifts that wastewater above flood level. If you have an overhead system, your ejector pump is what keeps it working."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "An ejector pump failure is a sewage problem, so we treat it like one.",
+    "steps": [
+     {
+      "h3": "1. We Pick Up 24/7",
+      "body": "Our phone line is open nights, weekends and holidays. Stop using basement fixtures and call."
+     },
+     {
+      "h3": "2. Repair or Replace, Honestly",
+      "body": "A stuck float or a failed check valve is a repair. A burned-out motor in an older pump is a replacement. We'll tell you which one you need."
+     },
+     {
+      "h3": "3. Upfront Pricing",
+      "body": "You get a flat rate before any work begins."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Ejector Pump Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Brian Kay",
+      "url": "https://maps.app.goo.gl/ttUGzkJyZqSojhaj6",
+      "text": "Worked with Greg and Josh to do an emergency replacement of my ejector pit and they were very kind to make sure my cats didn't get out of the apartment while they worked. I actually do say this as someone who has called J Blanton a few times, but they're the plumbers I call to fix other plumbers' mistakes."
+     },
+     {
+      "name": "Debra Haslett",
+      "url": "https://maps.app.goo.gl/uRynNegQym1b7zTo6",
+      "text": "I had water backing up in the basement on a Sunday. I called them and he came an hour later. John figured out the problem quickly-ejector pump, and what to do if it happens again. I did get an estimate for a new one if it needs replacing."
+     },
+     {
+      "name": "Christopher Lin",
+      "url": null,
+      "text": "Greg was great! He explained the work clearly, efficiently finished the work, was always very polite."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Ejector Pump Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "What's the difference between an ejector pump and a sump pump?",
+      "preview": "A sump pump removes groundwater. An ejector pump moves wastewater from basement fixtures to the sewer.",
+      "answer": "A sump pump removes groundwater from a pit and pumps it outside. An ejector pump moves wastewater from basement fixtures, like a toilet or laundry, up to the main sewer line. They look similar but they're not interchangeable."
+     },
+     {
+      "q": "How long does an ejector pump last?",
+      "preview": "Often 7 to 10 years or more, depending on use. Older or noisy pumps are worth checking.",
+      "answer": "Many ejector pumps last somewhere between 7 and 10 years or more, depending on use and what goes down the basement drains. If yours is older, noisy or running more than it used to, it's worth having it checked before it fails."
+     },
+     {
+      "q": "What should I do if my ejector pump alarm goes off?",
+      "preview": "Stop using basement fixtures, don't open the basin, and call us.",
+      "answer": "Stop using every fixture that drains to the basin: basement toilet, shower, sink and washer. Don't open the sealed basin. Then call us. We'll find out why the pump isn't keeping up and fix it."
+     },
+     {
+      "q": "How much does ejector pump replacement cost?",
+      "preview": "It depends on the pump, basin and access. You get a flat price before we start.",
+      "answer": "It depends on the pump, the basin, the check valve and venting, and how easy the basin is to reach. We give you a flat-rate price before any work begins."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-discharge-pipe.webp",
+       "alt": "J. Blanton plumber working on the discharge pipe of a basement sump pump"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Basement Fixtures Backing Up? Call Us.",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Ejector Pump Repair and Replacement in Highland Park, IL",
+   "serviceType": "Ejector Pump",
+   "url": "https://jblantonplumbing.com/highland-park/ejector-pump",
+   "description": "Ejector pump repair and replacement in Highland Park, IL. Basement bathroom or laundry backing up? We fix it with a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Ejector Pump Repair & Replacement in Highland Park, IL",
+ "metaDescription": "Ejector pump repair and replacement in Highland Park, IL. Basement bathroom or laundry backing up? We fix it with a flat price first. Call 24/7."
+}

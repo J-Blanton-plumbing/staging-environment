@@ -1,0 +1,314 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Tankless Water Heater",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Tankless Water Heaters in Highland Park, IL",
+   "sub": "Endless hot water and a unit on the wall instead of a tank on the floor. We install, repair and descale tankless water heaters, and we'll tell you honestly whether your home is a good fit before you spend anything. Now with an office on Green Bay Road.",
+   "img": {
+    "src": "/images/city-services-v2/tankless-water-heater-installation.webp",
+    "alt": "Plumber working on the copper water lines of a wall-mounted tankless water heater in a basement"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "how-tankless-works",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "split",
+    "eyebrow": "The Basics",
+    "h2": "How a Tankless Water Heater Works",
+    "body": "A tankless water heater heats water only when you open a hot tap. Water runs through a heat exchanger, a gas burner or electric element heats it on the spot, and it flows to the fixture. There's no tank to keep hot around the clock, so you don't run out halfway through a shower. The tradeoff is that the unit has to be sized for how much hot water you use at the same time, and it needs the gas supply, venting or electrical service to match.",
+    "img": null
+   },
+   {
+    "id": "tank-vs-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "table",
+    "eyebrow": "Know Your Options",
+    "h2": "Tank vs. Tankless: Which Fits Your Home?",
+    "intro": "Neither one is right for every home. Here's how they compare:",
+    "head": [
+     "",
+     "Tank Water Heater",
+     "Tankless Water Heater"
+    ],
+    "rows": [
+     [
+      "Hot water supply",
+      "Limited to the tank size",
+      "Continuous, up to the unit's flow rate"
+     ],
+     [
+      "Space",
+      "Floor space for the tank",
+      "Mounts on the wall"
+     ],
+     [
+      "Typical lifespan",
+      "About 8 to 12 years",
+      "Often longer with regular descaling"
+     ],
+     [
+      "Install requirements",
+      "Usually a straight swap",
+      "May need a larger gas line, new venting or electrical upgrades"
+     ],
+     [
+      "Maintenance",
+      "Annual flush",
+      "Regular descaling"
+     ]
+    ],
+    "note": "We'll look at your household, your gas or electric service and your venting before recommending either."
+   },
+   {
+    "id": "highland-park-tankless",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Tankless in Older Highland Park Homes",
+    "intro": "Nearly half of Highland Park homes were built before 1960. Tankless can be a great upgrade, but older homes need a closer look first.",
+    "items": [
+     {
+      "h3": "Gas Line Capacity",
+      "body": "A gas tankless unit often needs more gas than the old tank did. In older homes, that can mean upsizing the line. See [gas line installation](/highland-park/gas-line-installation)."
+     },
+     {
+      "h3": "Venting and Electrical",
+      "body": "Tankless units vent differently from tank heaters, and electric models can need a panel upgrade. We check both before we quote, so you don't find out halfway through the job."
+     },
+     {
+      "h3": "Winter Flow Rates",
+      "body": "In a Lake County winter, incoming water is much colder, so the unit has to heat it further. We size tankless units for winter, when they have to work hardest."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "A good tankless install starts with an honest answer about whether it fits your home.",
+    "steps": [
+     {
+      "h3": "1. A Technician, Not a Salesperson",
+      "body": "We diagnose the heater before we recommend anything. If a part fixes it, that's what we'll tell you."
+     },
+     {
+      "h3": "2. Repair vs. Replace, Explained",
+      "body": "We walk you through both options, what each costs and how long each is likely to last, so the decision is yours."
+     },
+     {
+      "h3": "3. A Clear Price Before We Start",
+      "body": "You get a flat-rate price before any work begins, and the work area is cleaned up before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Tankless Water Heater Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Matt Schick",
+      "url": null,
+      "text": "Second time we have used J Blanton. Matt did a great job installing our tankless water heater. Alex was very helpful talking through the pros and cons of tank vs tankless. Thanks guys!"
+     },
+     {
+      "name": "Rich Walker",
+      "url": null,
+      "text": "Alex & Mike were great! They answered all my questions professionally and respectfully. Their work appears to be top notch and explained everything they were doing throughout the project. Very pleased with my whole J. Blanton experience today."
+     },
+     {
+      "name": "Logan Payton",
+      "url": null,
+      "text": "Joey was timely and efficient. He took care of checking and servicing our water heater, and went above and beyond to also check on previous repair work that had been done!"
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Tankless Water Heater Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Is a tankless water heater worth it?",
+      "preview": "Often, yes. But older homes may need gas, venting or electrical upgrades first.",
+      "answer": "For many homes, yes: continuous hot water, less space and often a longer life. But the install can cost more when an older home needs a larger gas line, new venting or electrical work. We'll show you what your home needs so you can decide."
+     },
+     {
+      "q": "Can my older home support a tankless water heater?",
+      "preview": "Most can. We check gas capacity, venting and electrical before quoting.",
+      "answer": "Most can, with the right upgrades. The questions are gas line capacity, venting and, for electric units, your electrical panel. We check all three before quoting."
+     },
+     {
+      "q": "Do you repair tankless water heaters?",
+      "preview": "Yes. Scale, ignition and error codes are the most common issues.",
+      "answer": "Yes. Common problems include scale buildup, ignition or flame sensor issues, error codes and venting problems. Regular descaling prevents many of them."
+     },
+     {
+      "q": "How much does a tankless water heater cost to install?",
+      "preview": "It depends on the unit and any upgrades. You get a flat price first.",
+      "answer": "It depends on the unit, whether you need gas, venting or electrical upgrades, and where it's mounted. We give you a flat-rate price before any work begins, and financing is available."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Thinking About Going Tankless?",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tankless Water Heaters in Highland Park, IL",
+   "serviceType": "Tankless Water Heater",
+   "url": "https://jblantonplumbing.com/highland-park/tankless-water-heater",
+   "description": "Tankless water heater installation and repair in Highland Park, IL. Honest advice on whether tankless fits your home, and a flat price first. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Tankless Water Heaters in Highland Park, IL",
+ "metaDescription": "Tankless water heater installation and repair in Highland Park, IL. Honest advice on whether tankless fits your home, and a flat price first. Call 24/7."
+}

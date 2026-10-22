@@ -1,0 +1,315 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Sewage Line Backup Services",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Sewage Backup Service in Highland Park, IL",
+   "sub": "Sewage coming up through a floor drain, tub or toilet means your main line is blocked or failing. Call us any time. We clear the line, show you the cause on camera and help you keep it from happening again. Now with an office on Green Bay Road.",
+   "img": {
+    "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+    "alt": "Plumber feeding a cable into an outdoor drain pit to clear a sewage line backup"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "right-now",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "steps",
+    "eyebrow": "Backup Happening Now?",
+    "h2": "What to Do During a Sewage Backup",
+    "intro": "A sewage backup is a health risk as much as a plumbing problem. Here's what to do while we're on the way:",
+    "steps": [
+     {
+      "h3": "1. Stop Using Water",
+      "body": "Don't flush, run the dishwasher or do laundry. Every gallon that goes down a drain has nowhere to go but back up."
+     },
+     {
+      "h3": "2. Keep People and Pets Away",
+      "body": "Sewage carries bacteria. Keep everyone out of the affected area and don't try to clean it with bare hands."
+     },
+     {
+      "h3": "3. Call Us 24/7",
+      "body": "Our phone line is open around the clock, including weekends and holidays. Tell us which drains are backing up and we'll take it from there."
+     }
+    ],
+    "img": null
+   },
+   {
+    "id": "causes",
+    "cls": "ss-panel",
+    "order": 20,
+    "type": "tiles",
+    "eyebrow": "What Causes It",
+    "h2": "Why Sewage Backs Up Into a Home",
+    "intro": "Most backups come down to one of a few causes. The camera tells us which one you have:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "Roots in the Main Line",
+      "body": "Roots grow into older pipe at the joints and build a net that catches everything else. On tree-lined Highland Park lots, this is the most common cause we'd check first."
+     },
+     {
+      "h3": "Grease and Buildup",
+      "body": "Grease, wipes and scale narrow the pipe over time until one day nothing gets through."
+     },
+     {
+      "h3": "A Broken or Sagging Pipe",
+      "body": "A cracked clay joint or a belly in the line lets waste collect until it backs up. That calls for a [sewer repair](/highland-park/sewer-repair), not just a cleaning."
+     },
+     {
+      "h3": "A Failed Ejector Pump",
+      "body": "If your basement bathroom or laundry drains through an [ejector pump](/highland-park/ejector-pump), a failed pump can back up sewage even when the main line is clear."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-backups",
+    "cls": "ss-panel ss-tint",
+    "order": 30,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Sewage Backups in Highland Park Homes",
+    "intro": "The median home in Highland Park was built in 1963, and nearly half were built before 1960. Older clay lines and mature trees are the combination behind most backups here.",
+    "items": [
+     {
+      "h3": "The Private Line Is Yours",
+      "body": "In Highland Park, the homeowner owns and maintains the private sewer line from the house to the city main. A backup that starts in that line is yours to fix, so an accurate diagnosis saves money."
+     },
+     {
+      "h3": "Stopping the Next One",
+      "body": "Once the line is clear, the fix that lasts depends on the cause: [hydro jetting](/highland-park/hydro-jetting) for roots and buildup, a repair for broken pipe, or an [overhead sewer system](/highland-park/overhead-sewer-systems) for a connection that can't keep up in heavy rain. The city's flood tips also recommend backflow preventers."
+     },
+     {
+      "h3": "Plumber First, Cleanup Second",
+      "body": "Call a licensed plumber before a cleanup crew. If sewage is still coming in, the source has to be stopped before any cleanup is effective. We stop it, then restoration can begin."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "When sewage is in your basement, you need a plumber who shows up and explains what's going on, not a sales pitch.",
+    "steps": [
+     {
+      "h3": "1. Camera Inspection First",
+      "body": "We run a camera down the line and show you what we see, in plain language."
+     },
+     {
+      "h3": "2. Honest Diagnosis",
+      "body": "We walk you through your options, short-term and long-term, and tell you which one we'd pick for your line."
+     },
+     {
+      "h3": "3. Upfront Pricing",
+      "body": "You get a flat rate before any money changes hands."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Sewage Backup Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Seth Maybury",
+      "url": null,
+      "text": "Super helpfull. They called back on a Sunday late afternoon and came out that evening. 3 plumbers came to the house on Monday to finish the job. Joe, George and Anthony. Highly recommend them. No one wants to have Sewage backing up, they treated it like an emergency and kept at it."
+     },
+     {
+      "name": "Betty Knows",
+      "url": "https://maps.app.goo.gl/Frag5JYpxQLVZBJg8",
+      "text": "So it's Christmas Eve and my sewer is backed up. J. Blanton did not hesitate or cancel my appointment. George and Mike were excellent! They were not rushed, answered all my questions. Very knowledgeable and honest, which goes a long way especially as a first time home owner."
+     },
+     {
+      "name": "Trenton Gligorovic",
+      "url": null,
+      "text": "Josh Reid came by on Saturday night around 8pm to help us with an emergency plumbing issue. He was beyond friendly and very honest with us. He was able to help us route our line to stop the back flow that was occurring in the house. I could tell he really cared about our situation and didn't seem annoyed at all considering it was Saturday night."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 60,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Sewage Backup Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Who do I call when sewage backs up into my basement?",
+      "preview": "A licensed plumber first, to stop the source. Cleanup comes after.",
+      "answer": "Call a licensed plumber first. If sewage is still coming in, the source needs to be stopped before any cleanup is effective. We clear the line, find the cause on camera and fix it. Once it's stopped, restoration can begin."
+     },
+     {
+      "q": "Is a sewage backup the city's responsibility in Highland Park?",
+      "preview": "Usually not. Most backups start in the private line the homeowner owns.",
+      "answer": "Usually not. In Highland Park, the homeowner owns and maintains the private sewer line from the house to the city main, and most basement backups start with a blockage in that line. The camera shows where the blockage is."
+     },
+     {
+      "q": "How do I keep sewage from backing up again?",
+      "preview": "It depends on the cause: cleaning, repair, a backflow valve or an overhead sewer.",
+      "answer": "Start with the cause. Roots and buildup call for [hydro jetting](/highland-park/hydro-jetting) and [regular maintenance](/highland-park/sewer-maintenance). Broken pipe calls for a repair. A connection that backs up in heavy rain may need a backflow valve or an overhead sewer system. We'll tell you which one fits your home."
+     },
+     {
+      "q": "How much does it cost to fix a sewage backup?",
+      "preview": "It depends on the cause. You get a flat-rate price before any work begins.",
+      "answer": "It depends on what's causing it: a clog that clears with rodding is a different job than a broken line or a failed ejector pump. We give you a flat-rate price before any work begins, so you know the cost going in."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 70,
+    "type": "ndc",
+    "variant": "sewer"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 80,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-kitchen-sink.webp",
+       "alt": "J. Blanton plumber feeding a drain cleaning cable into the pipe under a kitchen sink"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Water Heaters",
+      "href": "/highland-park/water-heater-repair",
+      "desc": "Repair and replacement for tank and tankless water heaters that leak, make noise or run out of hot water too fast.",
+      "img": {
+       "src": "/images/city-services-v2/water-heater-tank-service.webp",
+       "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 90,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "Sewage Backing Up? Call Us Now.",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Sewage Backup Service in Highland Park, IL",
+   "serviceType": "Sewage Line Backup Services",
+   "url": "https://jblantonplumbing.com/highland-park/sewage-line-backup-services",
+   "description": "Sewage backing up in your Highland Park, IL basement? We stop it, find the cause on camera and help keep it from coming back. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Sewage Backup Service in Highland Park, IL",
+ "metaDescription": "Sewage backing up in your Highland Park, IL basement? We stop it, find the cause on camera and help keep it from coming back. Call 24/7."
+}

@@ -1,0 +1,312 @@
+{
+ "template": "city-service-v2",
+ "page": {
+  "schema": 1,
+  "hero": {
+   "crumb": "Water Heater Repair",
+   "eyebrow": "Serving Chicagoland Since 1993",
+   "h1": "Water Heater Repair in Highland Park, IL",
+   "sub": "No hot water, a leak at the base of the tank or a heater that runs out too fast. We diagnose the problem, tell you honestly whether it's worth repairing and give you a flat price before we start. Our plumbers serve homeowners across Highland Park and the North Shore, 24/7.",
+   "img": {
+    "src": "/images/city-services-v2/water-heater-tank-service.webp",
+    "alt": "J. Blanton plumber checking the controls at the base of a basement water heater"
+   }
+  },
+  "trust": [
+   "Serving Chicagoland since 1993",
+   "Licensed & bonded in Illinois",
+   "4.7 stars · 5,669+ Google reviews across all locations"
+  ],
+  "blocks": [
+   {
+    "id": "signs",
+    "cls": "ss-panel",
+    "order": 10,
+    "type": "tiles",
+    "eyebrow": "Know the Signs",
+    "h2": "Signs Your Water Heater Needs Repair",
+    "intro": "Most water heater problems give you a warning first. Here's what to watch for:",
+    "minCol": 340,
+    "tiles": [
+     {
+      "h3": "No Hot Water, or Not Enough",
+      "body": "A pilot that won't stay lit, a failed element or thermostat, or a tank full of sediment can all cut your hot water short."
+     },
+     {
+      "h3": "Water Leaking From the Bottom",
+      "body": "A small leak at a valve or fitting is often a repair. Water coming from the tank itself usually means the tank has failed."
+     },
+     {
+      "h3": "Rumbling or Popping Noises",
+      "body": "Sediment builds up on the bottom of the tank and crackles as the burner heats through it. It's a sign the tank needs flushing, or is near the end."
+     },
+     {
+      "h3": "Rusty or Smelly Hot Water",
+      "body": "Rust-colored water or a rotten-egg smell from the hot tap points to a corroding tank or a worn anode rod."
+     }
+    ],
+    "note": null
+   },
+   {
+    "id": "highland-park-water-heaters",
+    "cls": "ss-panel ss-tint",
+    "order": 20,
+    "type": "local",
+    "eyebrow": "Local Knowledge",
+    "h2": "Water Heater Problems in Highland Park Homes",
+    "intro": "The median Highland Park home was built in 1963. Water heaters don't last that long, so most homes here are on their second, third or fourth heater, installed around older plumbing.",
+    "items": [
+     {
+      "h3": "Winter Is the Hardest Season",
+      "body": "In a Lake County winter, the water coming into your home is much colder, so the heater works harder to keep up. That's when a struggling heater usually gives out, often on the coldest night of the year."
+     },
+     {
+      "h3": "Older Homes, Newer Code",
+      "body": "When a heater does need replacing, the new one has to meet today's code for venting, gas and water connections, even if the old one didn't. We'll tell you up front if your setup needs changes."
+     },
+     {
+      "h3": "Repair or Replace",
+      "body": "If the repair costs a big share of a new unit, or the tank itself is leaking, replacement usually makes more sense. See [water heater installation](/highland-park/water-heater-installation) or, if you're considering an upgrade, [tankless water heaters](/highland-park/tankless-water-heater)."
+     }
+    ],
+    "proof": null
+   },
+   {
+    "id": "residential-water-heater",
+    "cls": "ss-panel",
+    "order": 30,
+    "type": "fold",
+    "eyebrow": "Residential Water Heaters",
+    "h2": "Residential Water Heater Service",
+    "bodies": [
+     "We service the water heaters found in Highland Park homes: gas and electric tank heaters, tankless units, and heaters installed in basements, utility rooms and garages. Repair, replacement, flushing and safety checks all start the same way: a technician looks at your heater before recommending anything.",
+     "Not sure what you have? The label on the side of the tank lists the fuel type, capacity and manufacture date. Tell us what it says when you call and we'll come prepared. For a new heater, see [water heater installation](/highland-park/water-heater-installation)."
+    ],
+    "img": null
+   },
+   {
+    "id": "water-heater-maintenance",
+    "cls": "ss-panel",
+    "order": 40,
+    "type": "fold",
+    "eyebrow": "Maintenance",
+    "h2": "Water Heater Maintenance and Flushing",
+    "bodies": [
+     "Sediment settles to the bottom of every tank. Over time it makes the heater work harder, creates rumbling noises and shortens the life of the tank. Flushing the tank clears that sediment out. Checking the anode rod, the pressure relief valve and the burner or elements catches wear before it turns into a leak or a cold shower.",
+     "Most manufacturers recommend flushing a tank heater about once a year. Tankless units need regular descaling. If your heater is rumbling, slow to heat or has never been flushed, a maintenance visit is a good first step before a repair."
+    ],
+    "img": null
+   },
+   {
+    "id": "how-we-work",
+    "cls": "ss-panel",
+    "order": 50,
+    "type": "steps",
+    "eyebrow": "The J. Blanton Difference",
+    "h2": "What Happens When You Call J. Blanton",
+    "intro": "The most common complaint about water heater service is getting a sales pitch instead of a diagnosis. Here's how we work instead.",
+    "steps": [
+     {
+      "h3": "1. A Technician, Not a Salesperson",
+      "body": "We diagnose the heater before we recommend anything. If a part fixes it, that's what we'll tell you."
+     },
+     {
+      "h3": "2. Repair vs. Replace, Explained",
+      "body": "We walk you through both options, what each costs and how long each is likely to last, so the decision is yours."
+     },
+     {
+      "h3": "3. A Clear Price Before We Start",
+      "body": "You get a flat-rate price before any work begins, and the work area is cleaned up before we leave."
+     }
+    ],
+    "img": {
+     "src": "/images/city-services-v2/plumber-sewer-camera-front-steps.webp",
+     "alt": "J. Blanton plumber in shoe covers on a home's front steps with a sewer camera"
+    }
+   },
+   {
+    "id": "reviews",
+    "cls": "ss-panel",
+    "order": 60,
+    "type": "reviews",
+    "eyebrow": "Customer Stories",
+    "h2": "Water Heater Repair Reviews",
+    "rating": "4.7 stars from 5,669+ Google reviews across all J. Blanton locations.",
+    "reviews": [
+     {
+      "name": "Jason Wallers",
+      "url": null,
+      "text": "Christian and Saul were great - super friendly and efficient with fixing our water heater! Even recommended preventative work which would save us money in the future."
+     },
+     {
+      "name": "Logan Payton",
+      "url": null,
+      "text": "Joey was timely and efficient. He took care of checking and servicing our water heater, and went above and beyond to also check on previous repair work that had been done!"
+     },
+     {
+      "name": "Carol Dolan",
+      "url": null,
+      "text": "Julian and Avery did a great god at our maintenance visit. They were very knowledgeable and thorough they even flushed my water heater! Thank you Avery and Julian from J Blanton."
+     }
+    ]
+   },
+   {
+    "id": "faq",
+    "cls": "ss-panel ss-tint",
+    "order": 70,
+    "type": "faq",
+    "eyebrow": "Got Questions?",
+    "h2": "Water Heater Questions From Highland Park Homeowners",
+    "items": [
+     {
+      "q": "Should I repair or replace my water heater?",
+      "preview": "A leaking tank means replace. A failed part on a younger heater usually means repair.",
+      "answer": "If the tank itself is leaking, it needs replacing. If it's a part like a thermostat, element, igniter or valve, a repair usually makes sense, especially on a heater under 8 to 10 years old. If the repair would cost a big share of a new unit, we'll tell you, and you decide."
+     },
+     {
+      "q": "What is the life expectancy of a water heater?",
+      "preview": "Tank heaters typically last about 8 to 12 years. Tankless units often last longer.",
+      "answer": "Tank water heaters typically last about 8 to 12 years. Tankless units often last longer with regular descaling. Sediment, water quality and how hard the heater works in winter all affect lifespan."
+     },
+     {
+      "q": "Why is my water heater leaking from the bottom?",
+      "preview": "It's either a valve, which is a repair, or the tank, which means replacement.",
+      "answer": "It can be a drain valve or relief valve that's dripping, which is a repair, or the tank itself corroding through, which means replacement. Turn off the water supply to the heater and call. We'll tell you which one it is."
+     },
+     {
+      "q": "How much does water heater repair cost in Highland Park?",
+      "preview": "It depends on the failed part and heater type. You get a flat price before any work begins.",
+      "answer": "It depends on what's failed, the heater type and the parts it needs. We diagnose first and give you a flat-rate price before any work begins, so you know the cost going in."
+     },
+     {
+      "q": "How often should a water heater be serviced?",
+      "preview": "About once a year for a tank flush. Tankless units need regular descaling.",
+      "answer": "Most manufacturers recommend flushing a tank heater about once a year and descaling tankless units regularly. An annual check also catches a worn anode rod or a sticky relief valve early. See [water heater maintenance](#water-heater-maintenance)."
+     }
+    ]
+   },
+   {
+    "id": "no-drip-club",
+    "cls": "ss-panel ss-midnight ndc ndc--panel",
+    "order": 80,
+    "type": "ndc",
+    "variant": "general"
+   },
+   {
+    "id": "services",
+    "cls": "ss-panel",
+    "order": 90,
+    "type": "services",
+    "eyebrow": "What We Fix",
+    "h2": "Plumbing Services in Highland Park",
+    "cards": [
+     {
+      "title": "Drain Cleaning",
+      "href": "/highland-park/drain-cleaning",
+      "desc": "Slow, gurgling or backed-up drains in kitchens, bathrooms and basements.",
+      "img": {
+       "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+       "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sewer Repair",
+      "href": "/highland-park/sewer-repair",
+      "desc": "Tree roots, cracked clay pipe and repeat backups in the line from your house to the street.",
+      "img": {
+       "src": "/images/city-services-v2/sewer-repair-lining-machine.webp",
+       "alt": "J. Blanton plumbers working a sewer lining machine connected to the cleanout at a residential sewer repair"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Sump Pumps",
+      "href": "/highland-park/sump-pumps",
+      "desc": "Sump pump repair, replacement and battery backups to keep your basement dry through heavy rain and snowmelt.",
+      "img": {
+       "src": "/images/city-services-v2/sump-pump-pit-repair.webp",
+       "alt": "J. Blanton plumber working on the wiring of a basement sump pump pit"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Burst & Frozen Pipes",
+      "href": "/highland-park/burst-pipe-repair",
+      "desc": "Repair for pipes that froze or burst, from basement water lines to outdoor spigots.",
+      "img": {
+       "src": "/images/city-services-v2/burst-copper-pipe-basement.webp",
+       "alt": "Water spraying from a split copper pipe along a basement foundation wall"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Gas Lines & Fireplaces",
+      "href": "/highland-park/gas-line-repair",
+      "desc": "Gas line repair, leak detection and gas fireplace service.",
+      "img": {
+       "src": "/images/city-services-v2/gas-line-meter-inspection.webp",
+       "alt": "J. Blanton plumber inspecting the gas meters and gas line connections in a basement"
+      },
+      "emergency": false
+     },
+     {
+      "title": "Emergency Plumbing",
+      "href": "/highland-park/emergency-plumbing",
+      "desc": "Burst pipes, sewer backups and no hot water, any time of day or night.",
+      "img": {
+       "src": "/images/city-services-v2/emergency-leak-under-kitchen-sink.webp",
+       "alt": "Homeowner on the phone while water leaks from the pipe under her kitchen sink into a bucket"
+      },
+      "emergency": true
+     }
+    ]
+   },
+   {
+    "id": "book",
+    "cls": "ss-panel ss-final",
+    "order": 100,
+    "type": "final",
+    "eyebrow": "Serving the North Shore, 24/7 Phone",
+    "h2": "No Hot Water? Let's Get It Back.",
+    "body": "Our Highland Park office is at 1904 Green Bay Rd B, and our phone line is open 24/7.",
+    "communities": "We also serve [Highwood](/highwood), [Fort Sheridan](/fort-sheridan), [Deerfield](/deerfield), [Bannockburn](/bannockburn), [Riverwoods](/riverwoods), [Lake Forest](/lake-forest), [Lake Bluff](/lake-bluff), [Glencoe](/glencoe) and [more](/locations/chicagoland)."
+   }
+  ],
+  "serviceSchema": {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Water Heater Repair in Highland Park, IL",
+   "serviceType": "Water Heater Repair",
+   "url": "https://jblantonplumbing.com/highland-park/water-heater-repair",
+   "description": "Water heater repair in Highland Park, IL. No hot water, leaks or strange noises? We diagnose first and give you a flat price before we start. Call 24/7.",
+   "provider": {
+    "@type": "Plumber",
+    "name": "J. Blanton Plumbing - Highland Park",
+    "telephone": "",
+    "url": "https://jblantonplumbing.com/highland-park",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1904 Green Bay Rd B",
+     "addressLocality": "Highland Park",
+     "addressRegion": "IL",
+     "postalCode": "60035",
+     "addressCountry": "US"
+    }
+   },
+   "areaServed": [
+    "Highland Park, IL",
+    "Highwood, IL",
+    "Fort Sheridan, IL",
+    "Deerfield, IL",
+    "Bannockburn, IL",
+    "Riverwoods, IL",
+    "Lake Forest, IL",
+    "Lake Bluff, IL",
+    "Glencoe, IL"
+   ]
+  }
+ },
+ "metaTitle": "Water Heater Repair in Highland Park, IL",
+ "metaDescription": "Water heater repair in Highland Park, IL. No hot water, leaks or strange noises? We diagnose first and give you a flat price before we start. Call 24/7."
+}
