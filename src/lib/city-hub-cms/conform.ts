@@ -17,7 +17,9 @@
  *     stored shape: `hero.layout` ('full-bleed' only — 'split' is the absent default) + `hero.video`
  *     (CloudFront / S3 https only, kept only with 'full-bleed'), `office.gbpUrl` (a Google share link;
  *     the address must then split into schema parts), `office.schemaName` / `schemaArea` and
- *     `office.areas[].area` (the Plumber JSON-LD's names, when they differ from the defaults).
+ *     `office.areas[].area` (the Plumber JSON-LD's names, when they differ from the defaults);
+ *     (Brief 217) `office.mapQuery` / `office.mapCid` / `office.mapTitle` (what the office map pins,
+ *     and its title).
  *
  * `errors` lists what an editor must fix; the write path refuses on any error (422), the read path
  * renders the conformed value and falls back to the code module only when the STRUCTURE is wrong.
@@ -238,6 +240,12 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
   if (gbpUrl && !GBP_URL_RE.test(gbpUrl)) ctx.err('office.gbpUrl', 'link', GBP_URL_MESSAGE);
   const schemaName = optText(ctx, office.schemaName, 'office.schemaName');
   const schemaArea = optText(ctx, office.schemaArea, 'office.schemaArea');
+  // Brief 217 (C3): what the office map pins and its title — kept only when set (absent = the address
+  // and the shared title pattern), so every hub saved before them keeps its exact stored shape.
+  const mapQuery = optText(ctx, office.mapQuery, 'office.mapQuery');
+  const mapTitle = optText(ctx, office.mapTitle, 'office.mapTitle');
+  const mapCid = optText(ctx, office.mapCid, 'office.mapCid');
+  if (mapCid && !/^\d{5,25}$/.test(mapCid)) ctx.err('office.mapCid', 'value', 'The listing id (CID) is digits only, e.g. 14905587217898728371.');
   const address = ctx.text(office.address, 'office.address');
   if (gbpUrl && address && !addressParts(address)) {
     ctx.err('office.address', 'value', 'With a Google Business Profile link the address must read “street, city, ST 12345” (it is split into the Google schema).');
@@ -267,6 +275,9 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       ...(gbpUrl ? { gbpUrl } : {}),
       ...(schemaName ? { schemaName } : {}),
       ...(schemaArea ? { schemaArea } : {}),
+      ...(mapQuery ? { mapQuery } : {}),
+      ...(mapTitle ? { mapTitle } : {}),
+      ...(mapCid ? { mapCid } : {}),
     },
     depth: {
       h2: ctx.text(depth.h2, 'depth.h2'),

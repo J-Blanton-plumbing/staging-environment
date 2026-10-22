@@ -323,8 +323,26 @@ function buildOfficeClaims(offices: CmsOffice[]): OfficeClaims {
     else byCity.set(cityKey, rawSlug);
   }
 
+  // Brief 217: a pinned town claims nothing, so it keeps the static map's office (step 3).
+  for (const town of OWN_TOWN_CLAIM_PINNED) {
+    bySlug.delete(town);
+    byCity.delete(town);
+  }
+
   return { bySlug, byCity };
 }
+
+/**
+ * Brief 217 (Hard rule "Brief 208 routing is authoritative", Marketing 2026-10-22) — towns whose office
+ * stays the static map's even though an office record of their own now exists. Adding the Highland
+ * Park office must not change which office ANY town routes to, so the Highland Park town (Brief 208's
+ * table: northbrook) is not claimed by it: the legacy `/highland-park/*` pages keep the Northbrook NAP
+ * block and the store locator keeps "Highland Park → Northbrook", exactly as before. The office itself
+ * is unaffected — it is in the footer list, the footer graph and the locator list, and the new
+ * `/highland-park` City Hub / City Service V2 pages carry its address from their own content.
+ * Releasing the pin (one line here) is a Marketing decision.
+ */
+const OWN_TOWN_CLAIM_PINNED: readonly string[] = ['highland-park'];
 
 /**
  * Brief 178 (Track A1) — which office serves `citySlug`, according to the LIVE

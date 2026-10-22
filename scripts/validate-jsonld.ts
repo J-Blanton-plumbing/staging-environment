@@ -147,6 +147,50 @@ const city = checkJsonLd([JSON.stringify(plumber), JSON.stringify(faq)], CITY_PA
 for (const e of city.errors) fail.push(`city hub fixture: ${e}`);
 expect(checkJsonLd([JSON.stringify(faq)]).errors.some((e) => e.includes('forbidden type present: FAQPage')), 'FAQPage stays forbidden on every other page type');
 
+// Brief 217 (Track C) — one location per city page. The Highland Park node, from data exactly as
+// Marketing specified it (Brief 217 §C4): no geo, telephone from Global Settings (the 773 number).
+const HP_AREAS = ['Highwood', 'Fort Sheridan', 'Deerfield', 'Bannockburn', 'Riverwoods', 'Lake Forest', 'Lake Bluff', 'Glencoe'];
+const hpNode = hubPlumberJsonLd(
+  {
+    slug: 'highland-park',
+    name: 'Highland Park',
+    office: {
+      eyebrow: '', h2: '', body: '', areasH3: '', more: '/locations/chicagoland',
+      address: '1904 Green Bay Rd B, Highland Park, IL 60035',
+      areas: HP_AREAS.map((label) => ({ label, href: `/${label.toLowerCase().replace(/ /g, '-')}` })),
+      gbpUrl: 'https://maps.app.goo.gl/2TwjsZRjsfZmukRr6',
+    },
+  },
+  '773-724-9272',
+  schemaPhone
+);
+const HP_EXPECTED = {
+  '@context': 'https://schema.org',
+  '@type': 'Plumber',
+  '@id': 'https://jblantonplumbing.com/highland-park#office',
+  name: 'J. Blanton Plumbing - Highland Park',
+  url: 'https://jblantonplumbing.com/highland-park',
+  sameAs: ['https://maps.app.goo.gl/2TwjsZRjsfZmukRr6'],
+  hasMap: 'https://maps.app.goo.gl/2TwjsZRjsfZmukRr6',
+  telephone: '+1-773-724-9272',
+  address: { '@type': 'PostalAddress', streetAddress: '1904 Green Bay Rd B', addressLocality: 'Highland Park', addressRegion: 'IL', postalCode: '60035', addressCountry: 'US' },
+  openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '00:00', closes: '23:59' },
+  areaServed: ['Highland Park, IL', 'Highwood, IL', 'Fort Sheridan, IL', 'Deerfield, IL', 'Bannockburn, IL', 'Riverwoods, IL', 'Lake Forest, IL', 'Lake Bluff, IL', 'Glencoe, IL'],
+};
+expect(JSON.stringify(hpNode) === JSON.stringify(HP_EXPECTED), 'the Highland Park office node is exactly Brief 217 §C4 (byte for byte, key order included)');
+// A City Service V2 page: Service (provider = a reference to the office node) + BreadcrumbList + FAQPage
+// + the hub's office node — exactly one office node, no duplicate, nothing forbidden.
+const officeTypes = ['Plumber', 'PlumbingBusiness', 'LocalBusiness'];
+const svcBlocks = [
+  { '@context': 'https://schema.org', '@type': 'Service', name: 'Drain Cleaning in Highland Park, IL', provider: { '@id': hpNode?.['@id'] } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [] },
+  faq,
+  hpNode,
+].map((b) => JSON.stringify(b));
+const svcReport = checkJsonLd(svcBlocks, CITY_PAGE_FORBIDDEN_TYPES);
+for (const e of svcReport.errors) fail.push(`city service fixture: ${e}`);
+expect(officeTypes.reduce((n, t) => n + (svcReport.tally[t] ?? 0), 0) === 1, 'a City Service V2 page carries exactly one office node');
+
 if (fail.length) {
   console.error(`\n[validate-jsonld] FAILED — ${fail.length} problem(s):\n  - ${fail.join('\n  - ')}\n`);
   process.exit(1);

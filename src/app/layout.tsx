@@ -13,6 +13,7 @@ import WhatConvertsScript from '@/components/analytics/WhatConvertsScript';
 import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
 import { isReviewPath } from '@/lib/review-route';
+import { cityTemplateForPath } from '@/lib/cms/city-template-route';
 import { BRAND_SUFFIX, CANONICAL_BASE, TITLE_TEMPLATE, canonicalUrlFor, normalizePath } from '@/lib/seo';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
@@ -94,6 +95,12 @@ export default async function RootLayout({
   // Sitewide phone/CTA values — DB-backed with a site.ts fallback (Brief 66, Track C).
   // Passed down to the client SiteShell → Navbar, which can't read the DB itself.
   const settings = await getGlobalSettingsCached();
+  // Brief 217 (Track C): a City Hub / City Service V2 page signals only its own office in schema, so
+  // the footer's all-offices PlumbingBusiness graph is off on exactly that path (scoped by template;
+  // the visible footer office list is unchanged). Passed only when set, so every other page's props
+  // — and its RSC payload — stay exactly as before.
+  const pathname = headers().get('x-pathname');
+  const officeGraphOff = (await cityTemplateForPath(pathname)) ? { officeGraphOffPath: pathname as string } : {};
 
   return (
     <html lang="en" className={`${industry.variable} ${nunito.variable}`}>
@@ -104,7 +111,7 @@ export default async function RootLayout({
             referrer before anything else runs. Env-gated — blank profile ID
             renders nothing. */}
         <WhatConvertsScript />
-        <SiteShell settings={settings}>{children}</SiteShell>
+        <SiteShell settings={settings} {...officeGraphOff}>{children}</SiteShell>
         {/* Scroll entrance animations — adds .in-view once elements cross viewport.
             Runs after page load; respects prefers-reduced-motion (CSS handles that). */}
         <Script id="scroll-animations" strategy="lazyOnload">{`

@@ -4,6 +4,7 @@ import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import { SITE } from '@/lib/site';
 import { breadcrumbListJsonLd } from '@/lib/schema/breadcrumb-list';
 import { faqPageJsonLd, schemaPhone } from '@/lib/schema/city-pages';
+import type { hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
 import type { CityServiceV2Page, CsBlock, Rich } from '@/lib/content/city-services-v2';
 import { CsIcon } from './icons';
 import CityServiceV2Root from './CityServiceV2Root';
@@ -25,6 +26,9 @@ import CityServiceV2Root from './CityServiceV2Root';
  *   • Structured data: Service + BreadcrumbList, then (Brief 216, Marketing 2026-10-21) ONE FAQPage
  *     derived at render from the page's visible FAQ (src/lib/schema/city-pages.ts). FAQPage is
  *     allowed on the City Hub + City Service V2 templates only; every other page type stays free of it.
+ *     Brief 217 (one location per city page): + the city hub's office node (the same Plumber node,
+ *     same `@id`, the hub emits), with the Service `provider` pointing at it; the footer's sitewide
+ *     PlumbingBusiness graph is off on these pages (SiteShell, by template).
  *   • `noindex` is gone (the package was a review prototype).
  * Copy lives in src/lib/content/city-services-v2 — this file holds none beyond the template's
  * fixed labels (rail, quick links, sticky bar, NDC), which are identical on all 145 pages.
@@ -34,6 +38,9 @@ export interface CsPhone {
   href: string;
   display: string;
 }
+
+/** Brief 217: the hub's office node (the Brief 216 Plumber shape). */
+type OfficeNode = NonNullable<ReturnType<typeof hubPlumberJsonLd>>;
 
 /** Inline style string → React style object (the approved markup's inline styles, verbatim). */
 function s(css: string): CSSProperties {
@@ -487,8 +494,25 @@ function Block({ b, phone }: { b: CsBlock; phone: CsPhone }) {
   }
 }
 
-export default function CityServiceV2View({ page, cityName, phone }: { page: CityServiceV2Page; cityName: string; phone: CsPhone }) {
-  const service = { ...page.serviceSchema, provider: { ...page.serviceSchema.provider, telephone: schemaPhone(phone.display) } };
+export default function CityServiceV2View({
+  page,
+  cityName,
+  phone,
+  office = null,
+}: {
+  page: CityServiceV2Page;
+  cityName: string;
+  phone: CsPhone;
+  /**
+   * Brief 217 (Track C): the city hub's office node (`hubPlumberJsonLd` — built from the HUB's office
+   * data, never stored per page). When set, the page emits it once, after its other JSON-LD, and the
+   * Service `provider` becomes a reference to it (`{"@id": …#office}`), so the page carries exactly one
+   * office node. Null (a hub without a GBP link, or no live hub) → the stored provider, as before.
+   */
+  office?: OfficeNode | null;
+}) {
+  const provider = office ? { '@id': office['@id'] } : { ...page.serviceSchema.provider, telephone: schemaPhone(phone.display) };
+  const service = { ...page.serviceSchema, provider };
   const crumbs = breadcrumbListJsonLd(
     [
       { label: 'Home', href: '/' },
@@ -507,6 +531,7 @@ export default function CityServiceV2View({ page, cityName, phone }: { page: Cit
       <script type="application/ld+json" dangerouslySetInnerHTML={ld(service)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={ld(crumbs)} />
       {faqLd ? <script type="application/ld+json" dangerouslySetInnerHTML={ld(faqLd)} /> : null}
+      {office ? <script type="application/ld+json" dangerouslySetInnerHTML={ld(office)} /> : null}
 
       <section className="ss-hero">
         <div className="hero-pattern" />

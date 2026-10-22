@@ -22,7 +22,9 @@ import HubHeroVideo from './HubHeroVideo';
  *   • Structured data: the VideoObject, then (Brief 216, Marketing 2026-10-21) a page-scoped
  *     Plumber node when the office has a Google Business Profile link (`office.gbpUrl` — sameAs +
  *     hasMap; built here in a fixed key order) and ONE FAQPage derived from the visible FAQ. Both
- *     are derived at render, never stored. The footer's sitewide PlumbingBusiness graph is untouched.
+ *     are derived at render, never stored. Brief 217 (one location per city page): that Plumber node
+ *     is the ONLY office node on the page — the footer's sitewide PlumbingBusiness graph is off on
+ *     this template (SiteShell, decided by template), and the hub's service pages emit the same node.
  *   • `noindex` is gone (the package was a review prototype).
  * Copy lives in the CMS (Brief 212 = Brief 206 Tracks B–E): the page's own content comes from its
  * `city_pages.hub_content` row and the sections every hub shares from the `city-hubs` shared record,
@@ -213,7 +215,10 @@ export default function CityHubView({ hub, shared: SH, phone }: { hub: CityHubRe
       {L.callNow}
     </PhoneLink>
   );
-  const mapSrc = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(hub.office.address)}&z=15&ie=UTF8&output=embed`;
+  // Brief 217 (C3): a hub can pin its Google listing (`office.mapCid`) or search something else
+  // (`office.mapQuery`); neither set = the address, exactly as before.
+  const mapWhat = hub.office.mapCid ? `cid=${hub.office.mapCid}` : `q=${encodeURIComponent(hub.office.mapQuery || hub.office.address)}`;
+  const mapSrc = `https://maps.google.com/maps?hl=en&${mapWhat}&z=15&ie=UTF8&output=embed`;
   const camera = `/${hub.slug}/video-camera-sewer-inspections`;
   const total = SH.stripe.reduce((n, g) => n + g.items.length, 0);
   const [r1, r2, r3] = hub.reviews.items;
@@ -350,7 +355,7 @@ export default function CityHubView({ hub, shared: SH, phone }: { hub: CityHubRe
       <section className="sec" id="office" style={s('background:#F1E8DC')}>
         <div className="wrap hp-office">
           <div className="hp-office-map">
-            <iframe allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={mapSrc} title={fillPattern(SH.patterns.mapTitle, { city })} />
+            <iframe allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={mapSrc} title={hub.office.mapTitle || fillPattern(SH.patterns.mapTitle, { city })} />
           </div>
           <div>
             <span className="t-eyebrow" style={s('color:#BC0E0E')}>{hub.office.eyebrow}</span>

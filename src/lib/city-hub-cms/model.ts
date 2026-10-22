@@ -117,6 +117,13 @@ export interface CityHubStored {
     schemaName?: string;
     /** The hub city's own `areaServed` entry; default = "{City}, {ST}". */
     schemaArea?: string;
+    /** Brief 217 (C3, optional): the office map's search (`q`); default = `address`. */
+    mapQuery?: string;
+    /** Brief 217 (C3, optional): the Google Business Profile's listing id (CID, digits). When set the
+     *  map pins that listing (`cid=`) — the reliable pin: a name + address search can miss it. */
+    mapCid?: string;
+    /** Brief 217 (C3, optional): the map iframe's title; default = the shared `patterns.mapTitle`. */
+    mapTitle?: string;
   };
   depth: { h2: string; intro: string; tiles: Array<{ title: string; body: string }> };
   /** The Why Us H2 (visible heading, per page — Brief 206 decision 3). */
@@ -263,8 +270,12 @@ const SITE = 'https://jblantonplumbing.com';
 
 /**
  * The hub's Plumber node (Marketing 2026-10-21, decision 2), built from data in a FIXED key order — in
- * code, never round-tripped through JSONB. Null when the hub has no GBP link (Highland Park, every
- * hub before its Version 2) or its office address can't be split into schema parts.
+ * code, never round-tripped through JSONB. Null when the hub has no GBP link (every hub before its
+ * Version 2) or its office address can't be split into schema parts.
+ *
+ * Brief 217 (one location per city page, Marketing 2026-10-22): this is the ONE office node on a City
+ * Hub page and on each of its City Service V2 pages (same `@id`; the service page's Service `provider`
+ * references it). No `geo`, no other offices — the footer's all-offices graph is off on both templates.
  */
 export function hubPlumberJsonLd(hub: Pick<CityHubRender, 'slug' | 'name' | 'office'>, phoneDisplay: string, schemaPhone: (d: string) => string) {
   const gbp = hub.office.gbpUrl;

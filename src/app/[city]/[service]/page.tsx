@@ -10,6 +10,9 @@ import { getGlobalSettingsCached, getRegionalPhonesCached } from '@/lib/cms/glob
 import PreviewBanner from '@/components/PreviewBanner';
 import { resolveCityServiceV2, serviceUsesCentralOhioPhone } from '@/lib/cms/city-services-v2';
 import CityServiceV2View from '@/components/city-services-v2/CityServiceV2View';
+import { resolveCityHub } from '@/lib/cms/city-hubs';
+import { hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
+import { schemaPhone } from '@/lib/schema/city-pages';
 import { pageTitle } from '@/lib/seo';
 import { cityServiceRobots } from '@/lib/city-service-indexation';
 import type { CityServiceContent } from '@/types/city-service';
@@ -160,6 +163,10 @@ export default async function CityServicePage({
         };
       }
     }
+    // Brief 217 (Track C): the page signals only its own office — the node its city hub emits (same
+    // @id, built from the hub's office data), never stored per page. No live hub / no GBP link → none.
+    const hubD = await resolveCityHub(params.city);
+    const office = hubD.kind === 'hub' ? hubPlumberJsonLd(hubD.hub, phone.display, schemaPhone) : null;
     const pv = v2d.preview;
     return (
       <>
@@ -174,7 +181,7 @@ export default async function CityServicePage({
             pageSlug={`${params.city}/${params.service}`}
           />
         )}
-        <CityServiceV2View page={v2d.page} cityName={cityEntry.name} phone={phone} />
+        <CityServiceV2View page={v2d.page} cityName={cityEntry.name} phone={phone} office={office} />
       </>
     );
   }

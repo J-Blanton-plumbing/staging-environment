@@ -38,6 +38,8 @@ const SITE = 'https://jblantonplumbing.com';
 const CITIES = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville', 'arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva',
   'mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park'];
 const SEWER_PAGES = ['/services/sewer', '/hydro-jetting', '/sewer-rodding', '/sewer-repair', '/sewer-camera-inspection', '/sewer-line-replacement', '/sewer-maintenance', '/overhead-sewer-systems', '/trenchless-sewer-repair', '/sewer-line-installation'];
+/** Brief 217: pages outside the two city templates that must keep the footer's office graph. */
+const OTHER_PAGES = ['/', '/services/plumbing', '/knowledge-hub', '/wilmette', '/wilmette/drain-cleaning'];
 /** JSON-LD types Brief 216 adds to these pages (allowed once as an addition — see 5. above). */
 const NEW_LD_TYPES = ['FAQPage', 'Plumber'];
 const SERVICES = ['basement-flooding', 'burst-pipe-repair', 'catch-basin', 'commercial-water-heater', 'drain-cleaning', 'ejector-pump', 'emergency-plumbing', 'faucet-installation-repair', 'garbage-disposal-installation-repair', 'gas-fireplace', 'gas-line-installation', 'gas-line-repair', 'hydro-jetting', 'leak-repairs', 'overhead-sewer-systems', 'plumbing-maintenance', 'sewage-line-backup-services', 'sewer-maintenance', 'sewer-repair', 'sewer-rodding', 'shower-repair', 'sump-pumps', 'tankless-water-heater', 'toilet-installation-repair', 'trenchless-sewer-repair', 'video-camera-sewer-inspections', 'water-filtration-systems', 'water-heater-installation', 'water-heater-repair'];
@@ -95,6 +97,62 @@ export function faqProblems(html, expect) {
     if (e.acceptedAnswer?.text !== as[i]) out.push(`FAQPage Q${i + 1}: the answer ≠ the visible answer ("${String(e.acceptedAnswer?.text).slice(0, 80)}" vs "${as[i].slice(0, 80)}")`);
   });
   return out;
+}
+
+const OFFICE_TYPES = ['Plumber', 'PlumbingBusiness', 'LocalBusiness'];
+const isOffice = (n) => [].concat(n?.['@type'] ?? []).some((t) => OFFICE_TYPES.includes(t));
+
+/**
+ * Brief 217 (Marketing 2026-10-22, decision 4) — one location per city page. On a City Hub / City
+ * Service V2 render: NO footer @graph; exactly one office node, its own office's (`/{city}#office`),
+ * sameAs = hasMap = its GBP link, no geo; on a service page the Service `provider` is a reference to
+ * it. `problems` = code faults (exit 1); `notes` = editor state (a hub whose GBP link was removed in
+ * /admin emits no node — reported, exit 0, Brief 186).
+ */
+export function oneLocationProblems(p, html) {
+  const problems = [];
+  const notes = [];
+  const blocks = ldBlocks(html);
+  if (blocks.some((b) => Array.isArray(b['@graph']))) problems.push('the footer\'s all-offices @graph is on the page (one location per city page)');
+  const nodes = blocks.flatMap((b) => (Array.isArray(b['@graph']) ? b['@graph'] : [b])).filter(isOffice);
+  const city = p.split('/')[1];
+  const id = `${SITE}/${city}#office`;
+  const svc = blocks.find((b) => b['@type'] === 'Service');
+  if (nodes.length === 0) {
+    notes.push(`${p}: no office node — the /${city} hub has no Google Business Profile link (editor state)`);
+    return { problems, notes };
+  }
+  if (nodes.length !== 1) problems.push(`${nodes.length} office nodes (expected exactly 1)`);
+  const n = nodes[0];
+  if (n['@id'] !== id) problems.push(`office node @id "${n['@id']}" is not ${id}`);
+  if (!Array.isArray(n.sameAs) || n.sameAs.length !== 1 || n.sameAs[0] !== n.hasMap) problems.push('office node sameAs ≠ [hasMap]');
+  if ('geo' in n) problems.push('office node carries geo (decision 5: no coordinates)');
+  if (svc && JSON.stringify(svc.provider) !== JSON.stringify({ '@id': id })) problems.push(`Service provider is ${JSON.stringify(svc.provider).slice(0, 80)}, not a reference to ${id}`);
+  return { problems, notes };
+}
+
+/** Brief 217: a page OUTSIDE the city templates keeps the footer graph (when the footer lists offices). */
+export function footerGraphProblems(html) {
+  const listed = /class="offices grid/.test(html);
+  const graph = ldBlocks(html).find((b) => Array.isArray(b['@graph']));
+  if (listed && !graph) return ['the footer lists offices but its PlumbingBusiness @graph is missing — the one-location switch leaked outside the city templates'];
+  return [];
+}
+
+/**
+ * Brief 217 (deploy D-a): the one allowed markup delta on a service page — its Service `provider` was
+ * the stored inline Plumber and is now a reference to the office node the page gained. Rewrites the
+ * Service LD line(s) of `fp` to carry that reference, so before and after compare on everything else.
+ */
+function withProviderRef(fp, id) {
+  return fp.split('\n').map((l) => {
+    if (!l.startsWith('LD ')) return l;
+    try {
+      const j = JSON.parse(l.slice(3));
+      if (j['@type'] !== 'Service' || !j.provider) return l;
+      return 'LD ' + JSON.stringify({ ...j, provider: { '@id': id } }).replace(/</g, '\\u003c');
+    } catch { return l; }
+  }).join('\n');
 }
 
 /** SEO rules every one of these pages must meet. */
@@ -192,6 +250,11 @@ async function compare() {
     if (changed.has(city) && s.source !== 'row') failures.push(`${p}: expected to serve its new CMS row this deploy, serves "${s.source}"`);
     if (n !== 1) failures.push(`${p}: listed ${n}× in the sitemap, expected exactly once`);
     if (s.source === 'row' || s.source === 'code') for (const prob of seoProblems(p, r.text)) failures.push(`${p}: ${prob}`);
+    if (s.source === 'row' || s.source === 'code') {
+      const one = oneLocationProblems(p, r.text);
+      for (const prob of one.problems) failures.push(`${p}: ${prob}`);
+      notes.push(...one.notes);
+    }
     const snap = path.join(dir, file(p));
     if (!changed.has(city) && fs.existsSync(snap)) {
       const before = fs.readFileSync(snap, 'utf8');
@@ -204,7 +267,12 @@ async function compare() {
         // Brief 216: a FAQPage / Plumber block ADDED where the snapshot had none is the rollout itself.
         const had = ldTypesIn(before);
         const added = NEW_LD_TYPES.filter((t) => !had.includes(t));
+        // Brief 217: a service page that GAINED its hub's office node, with the Service provider now a
+        // reference to it (one location per city page) — allowed once, only when that node is there.
+        const id = `${SITE}/${city}#office`;
+        const gainedOffice = !had.includes('Plumber') && ldTypesIn(after).includes('Plumber') && after.includes(`"@id":"${id}"`);
         if (added.length && withoutLd(before, added) === withoutLd(after, added)) tally['+jsonld'] = (tally['+jsonld'] ?? 0) + 1;
+        else if (gainedOffice && withoutLd(withProviderRef(before, id), added) === withoutLd(withProviderRef(after, id), added)) tally['+one-location'] = (tally['+one-location'] ?? 0) + 1;
         else failures.push(`${p}: markup changed across the swap — ${firstDiff(before, after)}`);
       }
     }
@@ -213,6 +281,14 @@ async function compare() {
     const r = await get(p).catch(() => ({ status: 0, text: '' }));
     if (r.status !== 200) { notes.push(`${p}: answered ${r.status} (sewer FAQPage rule not checked)`); continue; }
     for (const prob of faqProblems(r.text, 0)) failures.push(`${p}: ${prob} — FAQPage is allowed on the City Hub / City Service V2 templates only`);
+    for (const prob of footerGraphProblems(r.text)) failures.push(`${p}: ${prob}`);
+  }
+  // Brief 217: the one-location rule is scoped to the two city templates — a sample of other page types
+  // (homepage, a category, an article hub, a legacy city page and its service page) keeps the footer graph.
+  for (const p of OTHER_PAGES) {
+    const r = await get(p).catch(() => ({ status: 0, text: '' }));
+    if (r.status !== 200) { notes.push(`${p}: answered ${r.status} (footer graph rule not checked)`); continue; }
+    for (const prob of footerGraphProblems(r.text)) failures.push(`${p}: ${prob}`);
   }
   console.log(`  sources: ${JSON.stringify(tally)}${changed.size ? `; expected to change: ${[...changed].join(', ')}` : ''}`);
   for (const n of notes.slice(0, 20)) console.log(`  i ${n}`);

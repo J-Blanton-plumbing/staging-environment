@@ -53,8 +53,11 @@ const NAV_COLUMNS = [NAV_COL_1, NAV_COL_2, NAV_COL_3];
  * (mirrors how Navbar already receives `settings` for the same reason).
  */
 /**
- * `schema` (Brief 195): false only on the password-protected /review copies,
- * which must carry no JSON-LD. Default true — every other page is unchanged.
+ * `schema` (Brief 195): false on the password-protected /review copies,
+ * which must carry no JSON-LD, and (Brief 217, one location per city page) on
+ * a City Hub / City Service V2 page, which carries its own office's node
+ * instead — SiteShell decides, from the template. Default true — every other
+ * page is unchanged. The visible office list below renders either way.
  */
 export default function Footer({ settings, schema = true }: { settings: GlobalSettings; schema?: boolean }) {
   return (

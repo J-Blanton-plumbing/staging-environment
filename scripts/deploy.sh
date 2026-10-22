@@ -214,6 +214,16 @@ npx ts-node --project tsconfig.scripts.json scripts/migrate-global-settings.ts
 # touching any of the other 14 offices, and reports ALREADY-APPLIED
 # once Columbus exists - a safe no-op on every deploy after the first.
 npx ts-node --project tsconfig.scripts.json scripts/add-columbus-office.ts commit
+# Brief 217 (Track A): append the Highland Park, IL office (street exactly
+# "1904 Green Bay Rd B" - the GBP's, no "#"; map link = its GBP; no office
+# phone - the sitewide 773 number) the same way: by slug, backup to
+# brief217_row_backup, append-only, ALREADY-APPLIED once it exists (also when
+# a Highland Park office was already added by hand in /admin - never
+# overwritten or duplicated). Footer office list, footer graph and store
+# locator list then show it; NO town changes office (the Highland Park town is
+# pinned to its existing office in src/lib/content/cities/index.ts, Brief 208
+# routing authoritative). Exit 1 only for a code/schema fault.
+npx ts-node --project tsconfig.scripts.json scripts/add-highland-park-office.ts commit
 # Brief 158 (Track A): create the ONE missing `city_pages` row - columbus -
 # pre-filled verbatim from src/lib/content/cities/columbus.ts, so
 # /admin/city/columbus opens a POPULATED editor instead of the "No CMS

@@ -290,6 +290,34 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
           }}
           hint="Empty = “City, ST” from the address. Chicago neighborhoods use e.g. “Lincoln Park, Chicago, IL”."
         />
+        {/* Brief 217 (C3): what the office map pins, and its accessible title. */}
+        <TextInput
+          label="Map search (optional)"
+          value={hub.office.mapQuery ?? ''}
+          onChange={(mapQuery) => {
+            const { mapQuery: _q, ...rest } = hub.office;
+            setHub({ office: mapQuery.trim() ? { ...rest, mapQuery } : rest });
+          }}
+          hint="What the office map searches for when no listing id is set below. Empty = the address above."
+        />
+        <TextInput
+          label="Google listing id for the map (CID, optional)"
+          value={hub.office.mapCid ?? ''}
+          onChange={(mapCid) => {
+            const { mapCid: _c, ...rest } = hub.office;
+            setHub({ office: mapCid.trim() ? { ...rest, mapCid: mapCid.trim() } : rest });
+          }}
+          hint="Pins the office’s own Google listing on the map (digits only). It is the hex number after the “:” in the listing’s full Google Maps link (…!1s0x…:0x…), converted to decimal. Empty = the map search above."
+        />
+        <TextInput
+          label="Map title (optional)"
+          value={hub.office.mapTitle ?? ''}
+          onChange={(mapTitle) => {
+            const { mapTitle: _t, ...rest } = hub.office;
+            setHub({ office: mapTitle.trim() ? { ...rest, mapTitle } : rest });
+          }}
+          hint="Read out by screen readers for the map. Empty = the shared “Google Map of our {city} office”."
+        />
         <Select
           label="“more” link"
           value={hub.office.more}

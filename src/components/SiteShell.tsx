@@ -10,9 +10,17 @@ import { isReviewPath } from '@/lib/review-route';
 export default function SiteShell({
   children,
   settings,
+  officeGraphOffPath,
 }: {
   children: ReactNode;
   settings: GlobalSettings;
+  /**
+   * Brief 217 (Track C): the path, if this request's page is a City Hub / City Service V2 render
+   * (decided server-side by the root layout from the template, never a city list). On that path the
+   * footer emits no all-offices PlumbingBusiness graph — the page carries its own office's node. It is
+   * compared with the CURRENT pathname because the root layout is not re-rendered on client navigation.
+   */
+  officeGraphOffPath?: string;
 }) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith('/admin');
@@ -40,8 +48,9 @@ export default function SiteShell({
     <>
       {!isLandingRoute && <Navbar settings={settings} />}
       <main className="flex-1">{children}</main>
-      {/* Brief 195: no JSON-LD on the password-protected /review copies. */}
-      <Footer settings={settings} schema={!isReviewPath(pathname)} />
+      {/* Brief 195: no JSON-LD on the password-protected /review copies. Brief 217: no office graph
+          on a City Hub / City Service V2 page (one location per city page). */}
+      <Footer settings={settings} schema={!isReviewPath(pathname) && pathname !== officeGraphOffPath} />
     </>
   );
 }
