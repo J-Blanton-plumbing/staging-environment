@@ -13,9 +13,8 @@
  *   - map link = the GBP share link; coordinates = the GBP listing's (like every other office record);
  *   - no office-level phone: the office uses the sitewide 773 number (CmsOffice has no phone field);
  *   - showInFooter on (footer office list + store locator, like every other office).
- * NO town changes office (hard rule: Brief 208's routing is authoritative): the Highland Park town is
- * pinned to its existing office (`OWN_TOWN_CLAIM_PINNED` in src/lib/content/cities/index.ts), so this
- * record does not claim it through Brief 178's own-town rule, and there is no distance logic.
+ * The Highland Park town then resolves to this office through Brief 178's own-town rule (exact slug),
+ * like every other office town (Marketing 2026-10-22). No other town moves — there is no distance logic.
  *
  * ── SELECTOR ────────────────────────────────────────────────────────────────
  * By slug, NEVER by array index. An office whose slug (trimmed, one leading "/" stripped) is
