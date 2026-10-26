@@ -170,7 +170,7 @@ const newKey = () => `k${++keySeq}`;
  * with their items, so a reorder never shows one item's half-typed text in another's field.
  */
 export function Repeater<T>({
-  label, items, onChange, newItem, renderItem, itemLabel, min = 1, readOnly, addLabel,
+  label, items, onChange, newItem, renderItem, itemLabel, min = 1, max, readOnly, addLabel,
 }: {
   label: string;
   items: readonly T[];
@@ -179,6 +179,8 @@ export function Repeater<T>({
   renderItem: (item: T, update: (next: T) => void, index: number) => React.ReactNode;
   itemLabel?: (item: T, index: number) => string;
   min?: number;
+  /** Brief 219: the add button disables at this many items (no limit when omitted). */
+  max?: number;
   readOnly?: boolean;
   addLabel?: string;
 }) {
@@ -201,7 +203,10 @@ export function Repeater<T>({
     if (items.length <= min) return;
     set(items.filter((_, x) => x !== i), keys.current.filter((_, x) => x !== i));
   };
-  const add = () => set([...items, newItem(items)], [...keys.current, newKey()]);
+  const atMax = max !== undefined && items.length >= max;
+  const add = () => {
+    if (!atMax) set([...items, newItem(items)], [...keys.current, newKey()]);
+  };
   return (
     <div style={{ marginBottom: '1rem' }}>
       <p style={{ ...LABEL, marginBottom: '0.5rem' }}>
@@ -237,7 +242,13 @@ export function Repeater<T>({
         </div>
       ))}
       {!readOnly && (
-        <button type="button" style={{ ...SMALL_BTN, background: BRAND.cerulean, color: BRAND.cream, border: 'none', padding: '0.35rem 0.85rem' }} onClick={add}>
+        <button
+          type="button"
+          style={{ ...SMALL_BTN, background: atMax ? ADMIN_COLORS.surfaceContainerHigh : BRAND.cerulean, color: BRAND.cream, border: 'none', padding: '0.35rem 0.85rem' }}
+          onClick={add}
+          disabled={atMax}
+          title={atMax ? `At most ${max}` : undefined}
+        >
           + {addLabel ?? 'Add item'}
         </button>
       )}

@@ -404,7 +404,7 @@ const BODY_HTML = `
 
   <section data-screen-label="06 Who We Work With" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); align-items: center">
     <div style="position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; background: #231F20">
-      <img src="https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp" alt="J. Blanton sewer and drain team on site" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+      <img src="/images/preventative.webp" alt="J. Blanton sewer and drain team on site" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
     </div>
     <div style="padding: 56px 64px; display: flex; flex-direction: column; gap: 20px">
       <h2 style="margin: 0; font-family: 'Industry', 'Arial', sans-serif; font-weight: 800; font-size: 34px; line-height: 1.08; letter-spacing: -0.015em">We Partner With</h2>

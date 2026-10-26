@@ -27,7 +27,7 @@ import type { ResolvedBlockStyle } from '@/lib/cms/sub-service-blocks';
 export default async function NoDripClubSimple({
   title = 'Premium Protection with Our No Drip Club',
   body = 'Our No Drip Club offers premium plumbing protection and added peace of mind for homeowners. Members enjoy priority scheduling and routine inspections to catch small issues before they become costly repairs.',
-  image = 'https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp',
+  image = '/images/preventative.webp',
   style,
 }: {
   title?: string;

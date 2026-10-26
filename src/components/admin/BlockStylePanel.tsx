@@ -283,7 +283,7 @@ function BlockPreview({
           asStr(d.ndcBody) ||
           'Our No Drip Club offers premium plumbing protection and added peace of mind for homeowners.'
         }
-        image="https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp"
+        image="/images/preventative.webp"
         style={resolved}
       />
     );

@@ -18,7 +18,7 @@ export const FINANCING = {
   financingMadeSimple: {
     ndcImage: 'https://d1rplazj5a80fb.cloudfront.net/images/no-drip-club.webp',
     characterImage: 'https://d1rplazj5a80fb.cloudfront.net/images/jbcharacter.webp',
-    leftImage: 'https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp',
+    leftImage: '/images/preventative.webp',
     leftImageAlt: 'Financing',
     label: 'FINANCING MADE SIMPLE',
     items: [
@@ -41,12 +41,12 @@ export const FINANCING = {
   },
   surpriseBills: {
     label: 'WE HATE SURPRISE BILLS TOO',
-    leftImage: 'https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp',
+    leftImage: '/images/preventative.webp',
     leftImageAlt: 'Plumbing',
     body: "That's why we created the No Drip Club, a complete peace of mind solution that helps you avoid unexpected water quality issues and costly repairs. With flexible financing options, you can maintain your home's water systems without breaking the bank.",
     ctaLabel: 'JOIN NOW',
     ctaHref: '/no-drip-club',
-    rightImage: 'https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp',
+    rightImage: '/images/preventative.webp',
     rightImageAlt: 'Plumbing',
   },
   articleSlugs: [

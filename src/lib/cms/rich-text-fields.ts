@@ -38,6 +38,9 @@ export const MAIN_PAGE_RICH_TEXT_FIELDS: Record<string, string[]> = {
     'plumbing_issue_body',
   ],
   'knowledge-hub': ['intro_body'],
+  // Brief 219: the homepage No Drip Club body (rendered via renderCmsBlock). The write path sanitizes
+  // every OTHER home field as well, by kind (sanitizeHomeContent in @/lib/cms/sanitize).
+  home: ['ndc_body'],
   // Brief 110: the Terms of Use & Privacy Policy long-form legal body. Rendered
   // as block HTML on the public page via `renderCmsBlock`.
   'privacy-policy': ['body_html'],

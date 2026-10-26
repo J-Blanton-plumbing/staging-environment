@@ -136,7 +136,7 @@ interface OfficeMatch {
  * compile error here. `typeof import(...)` is a type-only construct — it is
  * erased and adds nothing to the bundle.
  */
-type LocatorCopy = typeof import('@/lib/content/locator').LOCATOR_COPY;
+type LocatorCopy = import('@/lib/content/locator').LocatorCopy;
 
 interface Props {
   /**

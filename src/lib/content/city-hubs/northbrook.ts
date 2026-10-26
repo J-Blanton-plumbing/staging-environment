@@ -96,8 +96,8 @@ export const NORTHBROOK_HUB: CityHubContent = {
   "office": {
     "eyebrow": "Headquartered on Techny Road",
     "h2": "Our Northbrook Office",
-    "body": "Northbrook is home base for J. Blanton. Our corporate headquarters is at 1945 Techny Road, Suite 11, Northbrook, IL 60062, so when you call from Northbrook, you’re calling a plumber from your own town. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
-    "address": "1945 Techny Road, Suite 11, Northbrook, IL 60062",
+    "body": "Northbrook is home base for J. Blanton. Our corporate headquarters is at 1945 Techny Road, #11, Northbrook, IL 60062, so when you call from Northbrook, you’re calling a plumber from your own town. We’ve served Chicagoland homeowners since 1993, and our phone line is open 24/7.",
+    "address": "1945 Techny Road, #11, Northbrook, IL 60062",
     "areasH3": "Communities We Serve Near Northbrook",
     "areas": [
       {

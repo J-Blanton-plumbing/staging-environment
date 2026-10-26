@@ -41,7 +41,7 @@ export const WHY_JB: WhyJBContent = {
   aboutUs: {
     heading: 'ABOUT US',
     body: "At J. Blanton Plumbing, we've proudly served Chicagoland since 1993, solving plumbing problems for families with unmatched expertise and 5-star service. For over 30 years, our commitment to quality and cutting-edge solutions has made us a trusted name in the plumbing industry. With offices throughout the Chicagoland region, we deliver modern plumbing services while staying dedicated to the growth and success of skilled trades for future generations.",
-    image: 'https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp',
+    image: '/images/preventative.webp',
     imageAlt: 'J. Blanton plumber providing preventative service',
   },
   whatToExpect: {

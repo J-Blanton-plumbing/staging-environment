@@ -155,7 +155,7 @@ export default async function LocationsPage() {
               </p>
             </div>
             <Image
-              src="https://d1rplazj5a80fb.cloudfront.net/images/preventative.webp"
+              src="/images/preventative.webp"
               alt="Preventative"
               width={470}
               height={320}
@@ -188,7 +188,7 @@ export default async function LocationsPage() {
               Serving Chicagoland with Trusted Plumbing Solutions
             </p>
             <Image
-              src="https://d1rplazj5a80fb.cloudfront.net/images/Flood+Control+copy.webp"
+              src="/images/flood-control.webp"
               alt="Flood Control"
               width={470}
               height={320}

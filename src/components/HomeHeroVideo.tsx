@@ -17,14 +17,23 @@ const MOBILE_QUERY = '(max-width: 780px)';
  * device. Server-side this renders poster-only (no src), which keeps the
  * poster as the fast first paint; the correct file streams in on hydration.
  */
-export default function HomeHeroVideo() {
+export default function HomeHeroVideo({
+  desktopSrc = DESKTOP_SRC,
+  mobileSrc = MOBILE_SRC,
+  poster = '/images/hero-poster.webp',
+}: {
+  /** Brief 219: the two sources and the poster, from /admin/home. */
+  desktopSrc?: string;
+  mobileSrc?: string;
+  poster?: string;
+} = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [src, setSrc] = useState<string | null>(null);
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    setSrc(window.matchMedia(MOBILE_QUERY).matches ? MOBILE_SRC : DESKTOP_SRC);
-  }, []);
+    setSrc(window.matchMedia(MOBILE_QUERY).matches ? mobileSrc : desktopSrc);
+  }, [desktopSrc, mobileSrc]);
 
   useEffect(() => {
     // Safety net: src arrives after hydration, and some browsers won't
@@ -41,7 +50,7 @@ export default function HomeHeroVideo() {
         muted
         playsInline
         preload="metadata"
-        poster="/images/hero-poster.webp"
+        poster={poster}
         src={src ?? undefined}
         onPlaying={() => setPlaying(true)}
         className="absolute inset-0 w-full h-full object-cover z-[1]"

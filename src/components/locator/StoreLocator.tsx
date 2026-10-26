@@ -4,6 +4,7 @@ import {
   LOCATOR_ALL_OFFICES,
   LOCATOR_COPY,
   orderLocatorOffices,
+  type LocatorCopy,
   type LocatorRegionView,
 } from '@/lib/content/locator';
 import { resolveOfficeOverrides } from '@/lib/content/cities';
@@ -23,6 +24,8 @@ interface Props {
   className?: string;
   /** Page-specific classes for the inner width wrapper. */
   contentClassName?: string;
+  /** Brief 219: the interface text, from /admin/home (`HOME.locator`); `LOCATOR_COPY` when omitted. */
+  copy?: LocatorCopy;
 }
 
 /**
@@ -113,6 +116,7 @@ export default function StoreLocator({
   phoneHref,
   className,
   contentClassName,
+  copy,
 }: Props) {
   /* Regions are built from the CMS array as-is (order is irrelevant — they only
      collect slugs); the LIST gets the pinned-then-alphabetical order. */
@@ -170,7 +174,7 @@ export default function StoreLocator({
           regions={regions}
           officeOverrides={officeOverrides}
           allOffices={LOCATOR_ALL_OFFICES}
-          copy={LOCATOR_COPY}
+          copy={copy ?? LOCATOR_COPY}
           phone={phone}
           phoneHref={phoneHref}
         />

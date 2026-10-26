@@ -87,7 +87,7 @@ export const SEWER: SewerContent = {
     body: "Don't wait until your sewer problems get worse. Call us now for immediate sewer repair service.",
   },
   heroImage: `${CDN}/chicago-sewer.webp`,
-  fImage: `${CDN}/preventative.webp`,
+  fImage: '/images/preventative.webp',
   f3Image: `${CDN}/sewer-f3.webp`,
   articles: {
     featuredSlugs: [

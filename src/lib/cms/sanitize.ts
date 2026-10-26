@@ -20,6 +20,7 @@ import sanitizeHtml from 'sanitize-html';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
 import { resolveTokens, escapeHtml } from '@/lib/cms/tokens';
 import { MAIN_PAGE_RICH_TEXT_FIELDS } from '@/lib/cms/rich-text-fields';
+import { HOME_SCALAR_FIELDS, type HomeFeaturedItem, type HomeListItem } from '@/lib/cms/home-content';
 
 /** Tags permitted in CMS rich text. */
 export const CMS_ALLOWED_TAGS: string[] = [
@@ -254,6 +255,9 @@ export function sanitizeMainPageContent(
   slug: string,
   content: Record<string, unknown>
 ): Record<string, unknown> {
+  // Brief 219: the homepage's fields are typed (HOME_SCALAR_FIELDS + two arrays), so EVERY one of
+  // them is sanitized by kind, not only the rich-text keys.
+  if (slug === 'home') return sanitizeHomeContent(content);
   const keys = MAIN_PAGE_RICH_TEXT_FIELDS[slug];
   if (!keys || keys.length === 0) return content;
   const out = { ...content };
@@ -261,6 +265,51 @@ export function sanitizeMainPageContent(
     if (typeof out[key] === 'string') {
       out[key] = sanitizeCmsHtml(out[key] as string);
     }
+  }
+  return out;
+}
+
+/** A stable item id: kept when it is a short token, else derived from the position. */
+function itemId(raw: unknown, prefix: string, i: number): string {
+  const s = typeof raw === 'string' ? sanitizeCmsPlainText(raw).trim() : '';
+  return /^[A-Za-z0-9_-]{1,40}$/.test(s) ? s : `${prefix}-${i + 1}`;
+}
+
+/**
+ * Brief 219 (the Brief 168 rule) — sanitize the `home` row by declared field kind. Runs on every
+ * write path (the direct PATCH and publish both call `sanitizeMainPageContent`) and on render, so a
+ * preview shows exactly what a publish would store:
+ *   • rich      → `sanitizeCmsHtml` (the Brief 73 allow-list, unchanged);
+ *   • every other scalar kind (text, paragraphs, image/media URLs, YouTube id) → `sanitizeCmsPlainText`;
+ *   • the two arrays → every string LEAF, plain text, with stable ids. A non-array or a malformed item
+ *     is dropped, never stored as-is, so no unsanitized array of user strings reaches the database.
+ * Keys the model doesn't own (e.g. the retired `hero_heading`) pass through untouched, as before.
+ * Pure and idempotent: sanitizing sanitized content returns it unchanged.
+ */
+export function sanitizeHomeContent(content: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = { ...content };
+  for (const [key, field] of Object.entries(HOME_SCALAR_FIELDS)) {
+    const v = out[key];
+    if (typeof v !== 'string') continue;
+    out[key] = field.kind === 'rich' ? sanitizeCmsHtml(v) : sanitizeCmsPlainText(v);
+  }
+  if ('hero_rotator_words' in out) {
+    const raw = Array.isArray(out.hero_rotator_words) ? out.hero_rotator_words : [];
+    out.hero_rotator_words = raw
+      .filter((x): x is Partial<HomeListItem> => !!x && typeof x === 'object' && !Array.isArray(x))
+      .map((x, i): HomeListItem => ({
+        id: itemId(x.id, 'word', i),
+        text: sanitizeCmsPlainText(typeof x.text === 'string' ? x.text : ''),
+      }));
+  }
+  if ('knowledge_hub_featured' in out) {
+    const raw = Array.isArray(out.knowledge_hub_featured) ? out.knowledge_hub_featured : [];
+    out.knowledge_hub_featured = raw
+      .filter((x): x is Partial<HomeFeaturedItem> => !!x && typeof x === 'object' && !Array.isArray(x))
+      .map((x, i): HomeFeaturedItem => ({
+        id: itemId(x.id, 'article', i),
+        slug: sanitizeCmsPlainText(typeof x.slug === 'string' ? x.slug : '').trim().toLowerCase(),
+      }));
   }
   return out;
 }

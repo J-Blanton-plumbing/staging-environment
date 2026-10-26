@@ -69,7 +69,7 @@ export const WATER_QUALITY: WaterQualityContent = {
     body: "Don't let poor water quality disrupt your home! Our Chicago water quality experts are ready to restore your water's purity today.",
   },
   heroImage: `${CDN}/water-quality-hero.webp`,
-  fImage: `${CDN}/preventative.webp`,
+  fImage: '/images/preventative.webp',
   f3Image: `${CDN}/manplumber.webp`,
   articles: {
     featuredSlugs: [

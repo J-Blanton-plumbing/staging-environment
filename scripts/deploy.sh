@@ -1080,6 +1080,31 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/import-city-batch.ts --from-json data/city-batches/highland-park --publish --create-missing --brief=217 \
   --changed-file .city-pages-snapshot/changed.txt
+# 7. Brief 219 (Track B): the Northbrook office address "1945 Techny Road,
+#    Suite 11" -> "#11" on the Northbrook hub and its 29 service pages (one new
+#    published version per page, the editor's own checks; read back). Pages
+#    that changed put `northbrook` in changed.txt, so the CITY PAGES LIVE CHECK
+#    expects their markup to change. ALREADY-APPLIED from then on. Pre-swap.
+#    Exit 1 only when a write did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-219-northbrook-address.ts commit --changed-file .city-pages-snapshot/changed.txt
+# Brief 219 (Track C2): seed every homepage field in `main_pages` home with
+# TODAY'S LIVE values, BEFORE the swap. The build still serving ignores the
+# new keys and overrides the hero in code, so nothing visible moves; the new
+# build then renders the same page from the row. First run SETS the hero
+# fields (the row held the hidden pre-v5 hero copy - backed up), everything
+# else is fill-gaps-only. New published version + version bump. Idempotent.
+# Exit 1 only for a code/schema fault (incl. "would render differently").
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-219-home-content.ts commit
+# Brief 219 (Track A3): repoint every DB reference to the old preventative /
+# flood-control copies at the new files, no AWS console work: the new
+# preventative.webp goes up through the editor's own upload path (new S3 key +
+# cms_media row; falls back to the committed /images/preventative.webp if S3
+# is unavailable), then live rows AND saved versions are repointed (backup
+# table, version bump). Old S3 objects and media rows are never touched.
+# Pre-swap: the old build renders whatever URL the row holds. Idempotent.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/repoint-brief-219-images.ts commit --changed-file .city-pages-snapshot/changed.txt
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

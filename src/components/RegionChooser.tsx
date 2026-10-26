@@ -72,8 +72,10 @@ import { HOME } from '@/lib/content/home';
  * every page cloned from the hero template (CLAUDE.md gotcha 1). Nothing in this
  * file is cloned from the hero, and the grid wrapper is `home-region-grid`.
  */
-export default function RegionChooser({ className }: { className?: string }) {
-  const copy = HOME.regions;
+/** Brief 219: the band's copy and card images, from /admin/home. `HOME.regions` when omitted. */
+export type RegionChooserCopy = Pick<typeof HOME.regions, 'heading' | 'intro' | 'supportTemplate' | 'ctaLabels' | 'images'>;
+
+export default function RegionChooser({ className, copy = HOME.regions }: { className?: string; copy?: RegionChooserCopy }) {
 
   return (
     <section
@@ -118,8 +120,8 @@ export default function RegionChooser({ className }: { className?: string }) {
                   Next the card is half the viewport once the grid goes 2-up at
                   900px. Lazy by default — this band sits well below the fold. */}
               <Image
-                src={region.image.src}
-                alt={region.image.alt}
+                src={copy.images[region.key].src}
+                alt={copy.images[region.key].alt}
                 width={region.image.width}
                 height={region.image.height}
                 sizes="(min-width: 900px) 50vw, 100vw"

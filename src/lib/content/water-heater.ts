@@ -103,7 +103,7 @@ export const WATER_HEATER: WaterHeaterContent = {
     body: "Whether you need urgent repairs or are planning ahead for a new system, our team is here to help. From expert diagnostics to careful water heater installation, you'll get clear communication and dependable workmanship.",
   },
   heroImage: `${CDN}/hero_image.webp`,
-  fImage: `${CDN}/preventative.webp`,
+  fImage: '/images/preventative.webp',
   f3Image: `${CDN}/manplumber.webp`,
   articles: {
     featuredSlugs: [

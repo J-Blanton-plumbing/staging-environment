@@ -26,24 +26,34 @@ export default function NoDripClubSection({
   bodyHtml,
   ctaLabel = 'JOIN THE NO DRIP CLUB',
   ctaHref = '/no-drip-club',
+  label = 'NO DRIP CLUB',
+  image = '/images/jbcharacter.webp',
+  imageAlt = 'J. Blanton Character',
 }: {
   bodyHtml: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /**
+   * Brief 219: the band label (rendered twice by the design), the character image and its alt. Only
+   * the homepage passes them (from /admin/home); every other caller keeps these defaults.
+   */
+  label?: string;
+  image?: string;
+  imageAlt?: string;
 }) {
   return (
     <div className="no-drip-club">
       <Image
-        src="/images/jbcharacter.webp"
-        alt="J. Blanton Character"
+        src={image}
+        alt={imageAlt}
         width={350}
         height={450}
         className="character"
       />
       <div className="no-drip-red" />
       <div className="no-drip-labels">
-        <p>NO DRIP CLUB</p>
-        <p>NO DRIP CLUB</p>
+        <p>{label}</p>
+        <p>{label}</p>
       </div>
       <div className="no-drip-content">
         <div className="no-drip-body" dangerouslySetInnerHTML={{ __html: bodyHtml }} />

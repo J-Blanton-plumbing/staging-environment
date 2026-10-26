@@ -13,9 +13,10 @@ import ArticleGrid from '@/components/ArticleGrid';
 import StoreLocator from '@/components/locator/StoreLocator';
 import RegionChooser from '@/components/RegionChooser';
 import NoDripClubSection from '@/components/NoDripClubSection';
-import { renderCmsBlock } from '@/lib/cms/sanitize';
+import { renderCmsBlock, sanitizeHomeContent } from '@/lib/cms/sanitize';
 import { SERVICES } from '@/lib/services';
-import { getArticles } from '@/lib/articles';
+import { getHomeFeaturedArticles } from '@/lib/cms/home-featured';
+import { resolveHomeContent } from '@/lib/cms/home-content';
 import { HOME } from '@/lib/content/home';
 import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getMainPagePreview } from '@/lib/cms/preview';
@@ -30,60 +31,41 @@ import { ldJson } from '@/lib/schema/city-pages';
 import { CANONICAL_BASE, TITLE_TEMPLATE } from '@/lib/seo';
 import './home-hero.css';
 
-/* ═══════════════════════════════════════════════════════════════════════════
- * HERO v5 PREVIEW FLAG — added 2026-09-02 for Marketing review.
- *
- * `true`  → the reworked hero (one left column, two-tier H1, 24/7 perched on
- *           the first letter, Nunito intro, CTA label above a 10px-radius
- *           phone pill).
- * `false` → the shipped hero, byte-for-byte. The original JSX is preserved
- *           verbatim as the else-branch below, so flipping this word is a
- *           complete revert. Nothing here is approved yet.
- *
- * This flag changes LAYOUT AND TYPE ONLY. Every string still comes from the
- * CMS (`main_pages` row `home`: hero_heading / hero_cta / hero_tagline /
- * hero_intro), and a saved DB value always beats the `HOME.hero` fallback in
- * `home.ts` — so the copy is reviewed by editing /admin/home, not this file.
- * `HOME.hero.headingTagline` in particular is marketing-locked by Columbus
- * Integration Brief 04 Track A and is deliberately left untouched.
- *
- * Brief 218 (Track D, 2026-10-26) retired the two-tier `|` split: the hero now
- * renders ONE sr-only <h1> (HERO_V5_COPY.heading) plus an aria-hidden visible
- * line with a rotating market name (HERO_V5_LINE_LEAD + HERO_V5_ROTATOR). In
- * practice this copy is CODE-OWNED while the flag is on — HERO_V5_COPY beats
- * every CMS hero field — so the hero is still not editable in /admin/home.
- * ═════════════════════════════════════════════════════════════════════════ */
-const HERO_V5_PREVIEW = true;
-
 /*
- * The proposed copy, so the preview needs no admin login and no DB write.
+ * Brief 219: the WHOLE homepage reads the `main_pages` row `home` (/admin/home), every piece of copy,
+ * every image and the hero video. The field list, defaults and fallback rules live in
+ * `src/lib/cms/home-content.ts`; the code fallback for a blank field is `HOME` in
+ * `src/lib/content/home.ts` (= the live page of 2026-10-26). Layout stays locked here: the CMS changes
+ * what a section says, never which sections exist or their order.
  *
- * This is an OVERRIDE, not a save: it applies only while HERO_V5_PREVIEW is
- * true, and only to what this page renders. `home.ts` is untouched (its
- * `headingTagline` is marketing-locked by Brief 04 Track A), and the CMS row
- * is untouched, so nothing here can leak into a deploy or overwrite an editor
- * field. When the copy is approved, it gets typed into /admin/home and these
- * four lines are deleted along with the flag.
- *
- * Note the eyebrow drops Ohio from the locked tagline. That is Marketing's
- * call and the new H1 carries Ohio instead — but it IS a change to locked
- * copy, so it must be re-approved before it reaches the CMS.
+ * Retired with this brief: the HERO_V5_PREVIEW flag and its HERO_V5_COPY override (Brief 218's hero
+ * copy is now seeded into the CMS), the two-tier `|` heading, and the `hero_heading` field. The sr-only
+ * <h1> is built from the visible line (`heroH1`), so the two can never disagree.
  */
-const HERO_V5_COPY = {
-  // Brief 218 (Track D, copy locked 2026-10-26): the page's ONE <h1>, rendered sr-only. The visible
-  // headline is the aria-hidden line HERO_V5_LINE_LEAD + the rotating HERO_V5_ROTATOR words.
-  heading: 'Plumbers in Chicagoland and Columbus, OH',
-  headingCta: 'Make a Good Call',
-  headingTagline: 'Serving Homeowners for 30+ Years',
-  intro:
-    'From clogged drains to full sewer line work, we always answer your call and all your questions. Our technicians will walk you through your options and give you a flat rate before work begins. No surprises.',
-};
-
-/** Brief 218 (Track D): the visible, animated headline — "Plumbers in [Chicagoland ↔ Columbus, OH]". */
-const HERO_V5_LINE_LEAD = 'Plumbers in';
-const HERO_V5_ROTATOR = ['Chicagoland', 'Columbus, OH'] as const;
 
 export const dynamic = 'force-dynamic';
+
+/**
+ * The https hosts next.config.mjs lets next/image load (its `images.remotePatterns`): an image field
+ * pointing anywhere else falls back to its default instead of throwing. The uploads CDN comes from
+ * the same env var next.config reads, so an image uploaded in /admin/home is always usable.
+ */
+const IMAGE_HOSTS = [
+  'lh3.googleusercontent.com',
+  'd1rplazj5a80fb.cloudfront.net',
+  ...(() => {
+    try {
+      return process.env.S3_UPLOAD_PUBLIC_BASE_URL ? [new URL(process.env.S3_UPLOAD_PUBLIC_BASE_URL).hostname] : [];
+    } catch {
+      return [];
+    }
+  })(),
+];
+
+/** The entries of `value` that differ from `defaults` (props a client component only needs when edited). */
+function changedFrom<T extends Record<string, string>>(value: T, defaults: T): Partial<T> {
+  return Object.fromEntries(Object.entries(value).filter(([k, v]) => v !== defaults[k])) as Partial<T>;
+}
 
 /**
  * Brief 218 (Track A, copy locked 2026-10-26) replaced the values below. The title is stored and kept
@@ -160,30 +142,17 @@ export default async function HomePage() {
   const jsonLd = homepageJsonLd({ pageName: meta.title, pageDescription: meta.description, departmentIds });
   const preview = await getMainPagePreview('home');
   const db = preview?.content ?? await getMainPageContent('home').catch(() => null);
-  const d = db ?? {};
-  const m = (dbVal: unknown, fb: string) => (typeof dbVal === 'string' && dbVal) ? dbVal : fb;
-  // Brief 95 (A.4): why_body/find_us_body were saved but page.tsx always rendered
-  // the static arrays — wire them. Textareas are multi-paragraph, blank-line
-  // separated (matches the convention used elsewhere, e.g. admin/city-service).
-  const paragraphs = (dbVal: unknown, fb: string[]): string[] => {
-    if (typeof dbVal !== 'string' || !dbVal.trim()) return fb;
-    const parts = dbVal.split('\n\n').map(s => s.trim()).filter(Boolean);
-    return parts.length > 0 ? parts : fb;
-  };
-  const whyBody = paragraphs(d.why_body, HOME.why.body);
-  const findUsBody = paragraphs(d.find_us_body, HOME.findUs.body);
-  const home = {
-    hero: { ...HOME.hero, heading: m(d.hero_heading, HOME.hero.heading), headingCta: m(d.hero_cta, HOME.hero.headingCta), headingTagline: m(d.hero_tagline, HOME.hero.headingTagline), intro: m(d.hero_intro, HOME.hero.intro) },
-    services: { ...HOME.services, heading: m(d.services_heading, HOME.services.heading), intro: m(d.services_intro, HOME.services.intro) },
-    why: { ...HOME.why, heading: m(d.why_heading, HOME.why.heading) },
-    knowledgeHub: { ...HOME.knowledgeHub, heading: m(d.knowledge_hub_heading, HOME.knowledgeHub.heading), intro: m(d.knowledge_hub_intro, HOME.knowledgeHub.intro) },
-    findUs: { ...HOME.findUs, heading: m(d.find_us_heading, HOME.findUs.heading) },
-  };
-  // Copy override — preview only, see HERO_V5_COPY above. With the flag off,
-  // `hero` is exactly what the CMS (or the home.ts fallback) supplies.
-  const hero = HERO_V5_PREVIEW ? { ...home.hero, ...HERO_V5_COPY } : home.hero;
-
-  const articles = getArticles(HOME.knowledgeHub.featuredSlugs);
+  // Brief 219: the stored row (or the draft under the preview cookie) → render values. The same
+  // sanitizer the write path runs, so a preview shows exactly what a publish would store; then every
+  // blank / unusable value falls back to `HOME` (never throws, never undefined).
+  const c = resolveHomeContent(sanitizeHomeContent((db ?? {}) as Record<string, unknown>), IMAGE_HOSTS);
+  const articles = await getHomeFeaturedArticles(c.knowledgeHub.featuredSlugs);
+  // A client component's props are serialized into the page, so the hero video gets them only when
+  // they differ from its built-in defaults; the unedited homepage stays byte-identical.
+  const videoProps = changedFrom(
+    { desktopSrc: c.hero.videoDesktop, mobileSrc: c.hero.videoMobile, poster: c.hero.poster },
+    { desktopSrc: HOME.hero.videoDesktop, mobileSrc: HOME.hero.videoMobile, poster: HOME.hero.poster }
+  );
 
   return (
     <>
@@ -191,17 +160,13 @@ export default async function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(jsonLd)} />
       {/* ============== HERO: 100vh, bright video, bottom-aligned content ============== */}
       <section className="test-hero relative w-full h-screen overflow-hidden bg-navy-900">
-        <HomeHeroVideo />
+        <HomeHeroVideo {...videoProps} />
 
         <div className="test-hero-body absolute inset-0 z-[2] flex items-end">
-          {HERO_V5_PREVIEW ? (
-            /* ── v5: one left column, sr-only H1 + animated line, 24/7 on the "P" ──
+          {/* ── One left column, sr-only H1 + animated line, 24/7 on the "P" ──
                Reading order top→bottom: eyebrow, H1, intro, CTA label, phone
-               pill. The old layout put the intro in a right-hand column whose
-               top sat ~32px ABOVE the H1, so the eye read the paragraph first;
-               a single column removes that problem instead of tuning around
-               it. Brief 218: the column is 700px and the type is the sewer
-               hero's (src/app/home-hero.css). */
+               pill. Brief 218: the column is 700px and the type is the sewer
+               hero's (src/app/home-hero.css). */}
             <div className="test-hero-contents w-[90%] mx-auto mb-[80px] lg:mb-[150px] flex flex-col">
               {/* `mx-auto` belongs to the 90% band (left edge at 5%, matching
                   every other section). The width cap goes on THIS inner column,
@@ -213,13 +178,13 @@ export default async function HomePage() {
                   decorative: it is the clearance the 24/7 mark needs to sit
                   above the headline without touching this line. */}
               <p className="font-display font-semibold uppercase text-white text-[14px] leading-[20px] tracking-[1px] opacity-90 mb-[46px] max-[780px]:text-[12px] max-[780px]:tracking-[1.2px] max-[780px]:mb-[34px]">
-                {hero.headingTagline}
+                {c.hero.eyebrow}
               </p>
 
               {/* Brief 218 (Track D): the page's ONE <h1> is this static,
                   visually hidden one (Tailwind `sr-only` — never display:none),
                   so screen readers and Google read one complete heading. */}
-              <h1 className="sr-only">{hero.heading}</h1>
+              <h1 className="sr-only">{c.hero.h1}</h1>
               {/* The visible headline is NOT a heading: an aria-hidden line
                   whose market name rotates. Both names are in the server HTML;
                   HomeHeroRotator only moves classes. Sewer-hero type, normal
@@ -230,22 +195,22 @@ export default async function HomePage() {
                     keep it on the "P" at every clamp() size. `absolute` (not
                     inline) is deliberate: inline would inflate the line box. */}
                 <Image
-                  src="/images/247.webp"
+                  src={c.hero.badgeImage}
                   alt=""
                   width={100}
                   height={100}
                   priority
                   className="hero-badge"
                 />
-                {`${HERO_V5_LINE_LEAD} `}
-                <HomeHeroRotator words={HERO_V5_ROTATOR} />
+                {`${c.hero.lineLead} `}
+                <HomeHeroRotator words={c.hero.words} />
               </p>
 
               {/* Nunito, not Industry — the sewer hero's intro step (20/30,
                   17/27 at ≤900px). The 26px to the CTA label is that label's
                   own top margin, unchanged. */}
               <p className="intro home-hero-intro">
-                {hero.intro}
+                {c.hero.intro}
               </p>
 
               {/* "Make a Good Call" is already a PhoneLink, so pairing it with
@@ -259,7 +224,7 @@ export default async function HomePage() {
                   display={settings.phoneDisplay}
                   className="text-white hover:text-brand-400 transition-colors"
                 >
-                  {hero.headingCta}
+                  {c.hero.ctaLabel}
                 </PhoneLink>
               </p>
 
@@ -283,69 +248,6 @@ export default async function HomePage() {
               </PhoneLink>
               </div>
             </div>
-          ) : (
-            <div className="test-hero-contents w-[90%] mx-auto mb-[80px] lg:mb-[150px] flex flex-col lg:flex-row">
-              <div className="l lg:w-1/2 lg:mr-[15px] relative mb-10 lg:mb-0">
-                {/* 24/7 badge overlaps the top of the headline, matching the live
-                    `.test-hero .l img` overlay (home.css:35-40, 119-123, 148-150) —
-                    absolutely positioned so it sits integrated into the title block
-                    instead of stacked above it as a separate element (brief-113 B1). */}
-                <Image
-                  src="/images/247.webp"
-                  alt="24/7"
-                  width={100}
-                  height={100}
-                  priority
-                  className="absolute z-10 top-[-33px] left-[-35px] w-[100px] h-[100px] max-[780px]:w-[80px] max-[780px]:h-[80px] max-[780px]:top-[-30px] max-[780px]:left-[-20px] max-[390px]:left-[-10px]"
-                />
-                <h1 className="font-display font-bold uppercase text-white text-[40px] leading-[1.05] tracking-tight max-[1280px]:text-[30px] max-[780px]:text-[26px]">
-                  {home.hero.heading}
-                </h1>
-                {/* Brief 132: these two lines were <h1> and are now <p> — a page must
-                    have exactly one H1 (line 1 above), and a linked phone number should
-                    never be a heading. Classes are unchanged, so rendering is identical
-                    (Tailwind preflight zeroes margins and normalizes font-size for both
-                    tags, and every property globals.css sets on h1 — font-display,
-                    font-bold, tracking-tight, text colour — is restated inline here). */}
-                <p className="font-display font-bold uppercase text-navy-800 text-[50px] leading-[1.05] tracking-tight max-[780px]:text-[26px]">
-                  <PhoneLink
-                    href={settings.phoneHref}
-                    display={settings.phoneDisplay}
-                    className="text-white hover:text-brand-400 transition-colors"
-                  >
-                    {home.hero.headingCta}
-                  </PhoneLink>
-                </p>
-                <p className="font-display font-bold uppercase text-white text-[40px] leading-[1.1] tracking-tight mt-[15px] max-[1280px]:text-[30px] max-[780px]:text-[26px]">
-                  {home.hero.headingTagline}
-                </p>
-              </div>
-
-              <div className="r lg:w-1/2 flex flex-col">
-                <p className="intro font-display font-medium text-white text-[22px] md:text-[30px] leading-[1.16] mb-7">
-                  {home.hero.intro}
-                </p>
-                {/* PhoneLink/PhoneNumber so React renders the WhatConverts tracking
-                    number rather than letting the vendor patch it in. This CTA was
-                    confirmed on iOS to DISPLAY the tracking number and DIAL the
-                    default one — the vendor swapped the text but the href did not
-                    hold. Markup is unchanged; only the anchor and the number text
-                    are now React-owned. */}
-                <PhoneLink
-                  href={settings.phoneHref}
-                  display={settings.phoneDisplay}
-                  className="test-hero-contact inline-flex items-center self-start bg-accent-500 hover:bg-brand-600 text-white font-display font-bold px-7 py-4 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.25)] transition-colors duration-150"
-                >
-                  <span className="w-5 h-5 mr-2.5 flex items-center justify-center">
-                    <Phone className="h-5 w-5" strokeWidth={2.5} />
-                  </span>
-                  <span className="text-lg lg:text-xl tracking-wide">
-                    <PhoneNumber value={settings.phoneDisplay} />
-                  </span>
-                </PhoneLink>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
@@ -358,11 +260,11 @@ export default async function HomePage() {
         <div className="home-services w-[90%] lg:w-[81%] mx-auto relative z-[2]">
           <div className="align1 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 md:mb-[60px]">
             <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
-              {home.services.heading}
+              {c.services.heading}
             </h2>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-2xl">
               <p className="text-navy-800 font-sans text-[19px] leading-[30px] max-[1280px]:text-[16px] max-[770px]:leading-[26px] flex-1">
-                {home.services.intro}
+                {c.services.intro}
               </p>
               {/* Desktop-only — live hides this row's CTA on mobile (the accordion
                   below has its own full-width "VIEW ALL SERVICES" button; brief-113 B2). */}
@@ -370,7 +272,7 @@ export default async function HomePage() {
                 href="/services"
                 className="link-button hidden md:flex flex-shrink-0"
               >
-                VIEW PAGE
+                {c.services.ctaLabel}
               </Link>
             </div>
           </div>
@@ -406,7 +308,7 @@ export default async function HomePage() {
               single line below and paste it after the reviews div, nothing
               else changes.
               --------------------------------------------------------------- */}
-          <RegionChooser className="mt-[90px]" />
+          <RegionChooser className="mt-[90px]" copy={c.regions} />
 
           {/* Google Reviews carousel — Elfsight (same widget ID as live site) */}
           <div className="homepage-google-reviews mt-[90px] mb-[90px]">
@@ -415,7 +317,7 @@ export default async function HomePage() {
 
           {/* TikTok */}
           <TikTokFeed
-            headline={HOME.tiktok.headline}
+            headline={c.tiktokHeadline}
             headlineClassName="tiktok-headline mt-10 leading-tight"
             className="home-tiktok overflow-x-auto"
           />
@@ -430,14 +332,14 @@ export default async function HomePage() {
           <section className="why pt-[130px] max-[900px]:pt-[50px] flex flex-col lg:flex-row lg:items-center justify-between gap-10">
             {/* mobile red label */}
             <p className="red-text why-label-mobile lg:hidden font-display font-bold text-brand-600 text-[28px] tracking-tight leading-none">
-              {home.why.heading}
+              {c.why.heading}
             </p>
 
             {/* YouTube embed */}
             <div className="w-full lg:w-[50%] aspect-video">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/ZDFzUtjBUCk?controls=0&rel=0&fs=0"
-                title="Why J. Blanton"
+                src={`https://www.youtube-nocookie.com/embed/${c.why.videoId}?controls=0&rel=0&fs=0`}
+                title={c.why.videoTitle}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
@@ -448,9 +350,9 @@ export default async function HomePage() {
             {/* why-content */}
             <div className="why-content w-full lg:w-1/2 lg:ml-[30px] text-navy-800">
               <h2 className="red-text hidden lg:block font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none mb-[10px]">
-                {home.why.heading}
+                {c.why.heading}
               </h2>
-              {whyBody.map((p, i) => (
+              {c.why.body.map((p, i) => (
                 <p key={i} className={i === 0 ? 'leading-relaxed text-base' : 'my-5 leading-relaxed text-base'}>
                   {p}
                 </p>
@@ -459,7 +361,7 @@ export default async function HomePage() {
                 href="/why-j-blanton"
                 className="link-button max-[480px]:w-full"
               >
-                MEET OUR TEAM
+                {c.why.ctaLabel}
               </Link>
             </div>
           </section>
@@ -468,17 +370,23 @@ export default async function HomePage() {
               Styling lives in globals.css under `.no-drip-club` so the exact theme
               values (overlay 0.78, skew label offsets, white pill) are matched
               rather than approximated (§11). */}
-          <NoDripClubSection bodyHtml={renderCmsBlock(HOME.noDripClub.body, settings)} />
+          <NoDripClubSection
+            bodyHtml={renderCmsBlock(c.ndc.body, settings)}
+            ctaLabel={c.ndc.ctaLabel}
+            label={c.ndc.label}
+            image={c.ndc.image}
+            imageAlt={c.ndc.imageAlt}
+          />
 
           {/* KNOWLEDGE HUB — 120px top margin, 3-column articles grid */}
           <section className="knowledge-hub mt-[120px] max-[768px]:mt-[30px] pb-[30px] max-[768px]:pb-0">
             <div className="align1 knowledge-hub flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
               <h2 className="red-text font-display font-bold text-brand-600 text-[28px] md:text-[32px] tracking-tight leading-none">
-                {home.knowledgeHub.heading}
+                {c.knowledgeHub.heading}
               </h2>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:max-w-xl">
                 <p className="text-navy-800 font-sans text-[19px] leading-[30px] max-[1280px]:text-[16px] max-[770px]:leading-[26px] flex-1">
-                  {home.knowledgeHub.intro}
+                  {c.knowledgeHub.intro}
                 </p>
                 {/* Desktop-only — removes the phantom mobile button (brief-113 B4);
                     live shows no "view all articles" CTA below ~770px. */}
@@ -486,7 +394,7 @@ export default async function HomePage() {
                   href="/knowledge-hub"
                   className="link-button hidden md:flex flex-shrink-0"
                 >
-                  VIEW ALL ARTICLES
+                  {c.knowledgeHub.ctaLabel}
                 </Link>
               </div>
             </div>
@@ -522,8 +430,9 @@ export default async function HomePage() {
         className="find-us relative z-0 bg-cream-100 pt-[60px] md:pt-[90px] pb-[30px] md:pb-[75px]"
         contentClassName="find-us-contents w-[90%] lg:w-[81%] mx-auto"
         offices={settings.offices}
-        heading={home.findUs.heading}
-        body={findUsBody}
+        heading={c.findUs.heading}
+        body={c.findUs.body}
+        copy={c.locator}
         phone={settings.phoneDisplay}
         phoneHref={settings.phoneHref}
       />
