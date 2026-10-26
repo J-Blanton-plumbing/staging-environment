@@ -1160,6 +1160,15 @@ pm2 startOrRestart ecosystem.config.js --update-env
 # pre-rotation snapshot comes back on the next reboot.
 pm2 save
 rm -rf .next-prev
+# Brief 218 (Track A): the homepage's locked SEO title + meta description into
+# the `main_pages` row `home` (the Brief 149 backfill stored the OLD copy there,
+# and a non-blank CMS field beats the page's STATIC_META). POST-swap on
+# purpose: the old build composes no brand suffix on `/`, so writing the new
+# title before the swap would briefly serve it unbranded. Replaces a field only
+# while it is blank or still the old value; an /admin edit trips the guard
+# (NOT-APPLIED, nothing written). Idempotent - ALREADY-APPLIED from then on.
+# Exit 1 only for a code/schema fault (the new build is already serving).
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-brief-218-home-meta.ts commit
 # Brief 151: prove the restart delivered .env.local to the process.
 # Reads the live process environ and compares each sensitive var
 # against the file. ⚠️ This repo is PUBLIC and these logs are

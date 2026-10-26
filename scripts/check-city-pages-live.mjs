@@ -23,6 +23,11 @@
  *            page whose snapshot had none of that type (once present, any change to it is a delta);
  *         6. (Brief 216) the 10 sewer v2 pages carry NO FAQPage — FAQPage is allowed on the two city
  *            templates only.
+ *         7. (Brief 218) every hub / service office node carries `parentOrganization: {"@id": ORG_ID}`
+ *            (the one key that deploy added — a snapshot delta of exactly that key is allowed), and the
+ *            HOMEPAGE carries its own Organization + WebSite + WebPage graph and NO office node: one
+ *            Organization (`ORG_ID`) whose 19 `department` refs each match a live hub's `#office`,
+ *            no aggregateRating / review in the raw HTML, one <h1> and it is sr-only, both market names.
  * Exit 1 only for a page that should serve and doesn't, a fallback served over real content, a sitemap
  * count other than 1, an SEO-rule break, or an unexpected markup delta.
  */
@@ -39,8 +44,15 @@ const CITIES = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville',
   'mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park',
   'highland-park'];
 const SEWER_PAGES = ['/services/sewer', '/hydro-jetting', '/sewer-rodding', '/sewer-repair', '/sewer-camera-inspection', '/sewer-line-replacement', '/sewer-maintenance', '/overhead-sewer-systems', '/trenchless-sewer-repair', '/sewer-line-installation'];
-/** Brief 217: pages outside the two city templates that must keep the footer's office graph. */
-const OTHER_PAGES = ['/', '/services/plumbing', '/knowledge-hub', '/wilmette', '/wilmette/drain-cleaning'];
+/**
+ * Brief 217: pages outside the two city templates that must keep the footer's office graph. Brief 218
+ * took `/` out: the homepage carries its own Organization graph instead (homepageProblems below).
+ */
+const OTHER_PAGES = ['/services', '/services/plumbing', '/services/sewer', '/locations', '/knowledge-hub', '/wilmette', '/wilmette/drain-cleaning'];
+/** Brief 188 / 218: the ONE Organization `@id` (src/lib/schema/organization-ref.ts). */
+const ORG_ID = `${SITE}/#organization`;
+/** Brief 218: the homepage Organization's department count (the package's 19 offices). */
+const HOME_DEPARTMENTS = 19;
 /** JSON-LD types Brief 216 adds to these pages (allowed once as an addition — see 5. above). */
 const NEW_LD_TYPES = ['FAQPage', 'Plumber'];
 const SERVICES = ['basement-flooding', 'burst-pipe-repair', 'catch-basin', 'commercial-water-heater', 'drain-cleaning', 'ejector-pump', 'emergency-plumbing', 'faucet-installation-repair', 'garbage-disposal-installation-repair', 'gas-fireplace', 'gas-line-installation', 'gas-line-repair', 'hydro-jetting', 'leak-repairs', 'overhead-sewer-systems', 'plumbing-maintenance', 'sewage-line-backup-services', 'sewer-maintenance', 'sewer-repair', 'sewer-rodding', 'shower-repair', 'sump-pumps', 'tankless-water-heater', 'toilet-installation-repair', 'trenchless-sewer-repair', 'video-camera-sewer-inspections', 'water-filtration-systems', 'water-heater-installation', 'water-heater-repair'];
@@ -102,6 +114,15 @@ export function faqProblems(html, expect) {
 
 const OFFICE_TYPES = ['Plumber', 'PlumbingBusiness', 'LocalBusiness'];
 const isOffice = (n) => [].concat(n?.['@type'] ?? []).some((t) => OFFICE_TYPES.includes(t));
+const typesOf = (n) => [].concat(n?.['@type'] ?? []);
+/** Every top-level node on the page (an `@graph` block contributes its nodes). */
+const ldNodes = (blocks) => blocks.flatMap((b) => (Array.isArray(b['@graph']) ? b['@graph'] : [b]));
+/**
+ * Brief 218 (fact-check 5): the footer's all-offices graph, found by TYPE — an `@graph` holding
+ * PlumbingBusiness nodes. "Any block with @graph" stopped meaning that once the homepage gained its own
+ * Organization `@graph`.
+ */
+const footerGraphOf = (blocks) => blocks.find((b) => Array.isArray(b['@graph']) && b['@graph'].some((n) => typesOf(n).includes('PlumbingBusiness')));
 
 /**
  * Brief 217 (Marketing 2026-10-22, decision 4) — one location per city page. On a City Hub / City
@@ -114,7 +135,7 @@ export function oneLocationProblems(p, html) {
   const problems = [];
   const notes = [];
   const blocks = ldBlocks(html);
-  if (blocks.some((b) => Array.isArray(b['@graph']))) problems.push('the footer\'s all-offices @graph is on the page (one location per city page)');
+  if (footerGraphOf(blocks)) problems.push('the footer\'s all-offices @graph is on the page (one location per city page)');
   const nodes = blocks.flatMap((b) => (Array.isArray(b['@graph']) ? b['@graph'] : [b])).filter(isOffice);
   const city = p.split('/')[1];
   const id = `${SITE}/${city}#office`;
@@ -128,6 +149,7 @@ export function oneLocationProblems(p, html) {
   if (n['@id'] !== id) problems.push(`office node @id "${n['@id']}" is not ${id}`);
   if (!Array.isArray(n.sameAs) || n.sameAs.length !== 1 || n.sameAs[0] !== n.hasMap) problems.push('office node sameAs ≠ [hasMap]');
   if ('geo' in n) problems.push('office node carries geo (decision 5: no coordinates)');
+  if (JSON.stringify(n.parentOrganization) !== JSON.stringify({ '@id': ORG_ID })) problems.push(`office node parentOrganization is ${JSON.stringify(n.parentOrganization)}, not {"@id":"${ORG_ID}"} (Brief 218)`);
   if (svc && JSON.stringify(svc.provider) !== JSON.stringify({ '@id': id })) problems.push(`Service provider is ${JSON.stringify(svc.provider).slice(0, 80)}, not a reference to ${id}`);
   return { problems, notes };
 }
@@ -135,7 +157,7 @@ export function oneLocationProblems(p, html) {
 /** Brief 217: a page OUTSIDE the city templates keeps the footer graph (when the footer lists offices). */
 export function footerGraphProblems(html) {
   const listed = /class="offices grid/.test(html);
-  const graph = ldBlocks(html).find((b) => Array.isArray(b['@graph']));
+  const graph = footerGraphOf(ldBlocks(html));
   if (listed && !graph) return ['the footer lists offices but its PlumbingBusiness @graph is missing — the one-location switch leaked outside the city templates'];
   return [];
 }
@@ -154,6 +176,35 @@ function withProviderRef(fp, id) {
       return 'LD ' + JSON.stringify({ ...j, provider: { '@id': id } }).replace(/</g, '\\u003c');
     } catch { return l; }
   }).join('\n');
+}
+
+/**
+ * Brief 218 (Track B/D) — the homepage: its own Organization + WebSite + WebPage graph, no office node,
+ * one sr-only <h1>, both market names in the server HTML. `liveOfficeIds` = the `#office` @ids the
+ * hub pages served this run (each department ref must be one of them).
+ */
+export function homepageProblems(html, liveOfficeIds) {
+  const out = [];
+  const nodes = ldNodes(ldBlocks(html));
+  const offices = nodes.filter(isOffice);
+  if (offices.length) out.push(`${offices.length} office node(s) (${[...new Set(offices.flatMap(typesOf))].join('/')}) on the homepage — expected 0`);
+  const orgs = nodes.filter((n) => typesOf(n).includes('Organization'));
+  if (orgs.length !== 1) out.push(`${orgs.length} Organization nodes (expected exactly 1)`);
+  const org = orgs[0];
+  if (org && org['@id'] !== ORG_ID) out.push(`Organization @id "${org['@id']}" is not ${ORG_ID}`);
+  const dept = Array.isArray(org?.department) ? org.department : [];
+  if (org && dept.length !== HOME_DEPARTMENTS) out.push(`Organization department has ${dept.length} refs (expected ${HOME_DEPARTMENTS})`);
+  if (liveOfficeIds) for (const d of dept) if (!liveOfficeIds.has(d?.['@id'])) out.push(`department ref ${d?.['@id']} matches no office node a live hub served`);
+  for (const t of ['WebSite', 'WebPage']) {
+    const n = nodes.filter((x) => typesOf(x).includes(t)).length;
+    if (n !== 1) out.push(`${n} ${t} nodes (expected exactly 1)`);
+  }
+  if (/"aggregateRating"|AggregateRating|"review"\s*:|"@type"\s*:\s*"Review"/.test(html)) out.push('aggregateRating / review markup in the raw HTML');
+  const h1s = html.match(/<h1[\s>][^>]*>?/g) || [];
+  if (h1s.length !== 1) out.push(`${h1s.length} <h1> elements (expected exactly 1)`);
+  else if (!/<h1 class="sr-only">/.test(html)) out.push('the one <h1> is not the sr-only one');
+  for (const w of ['Chicagoland', 'Columbus, OH']) if (!html.includes(`>${w}</span>`)) out.push(`"${w}" is not in the server HTML`);
+  return out;
 }
 
 /** SEO rules every one of these pages must meet. */
@@ -184,6 +235,23 @@ async function snapshot() {
     }
   }
   console.log(`city-pages snapshot: ${saved}/${PAGES.length} pages saved to ${out}`);
+}
+
+/**
+ * Brief 218 (Track C): the one key that deploy adds to every office node — `parentOrganization` =
+ * {"@id": ORG_ID}. Drops exactly that key/value from Plumber LD lines, so before and after compare on
+ * everything else (a different value is left in place, and so still shows as a delta).
+ */
+function withoutParentOrg(fp) {
+  return fp.split('\n').map((l) => {
+    if (!l.startsWith('LD ')) return l;
+    try {
+      const j = JSON.parse(l.slice(3));
+      if (!typesOf(j).includes('Plumber') || JSON.stringify(j.parentOrganization) !== JSON.stringify({ '@id': ORG_ID })) return l;
+      const { parentOrganization: _p, ...rest } = j;
+      return 'LD ' + JSON.stringify(rest).replace(/</g, '\\u003c');
+    } catch { return l; }
+  }).join('\n');
 }
 
 /** A fingerprint with the LD lines of `types` removed (the Brief 216 allowed-addition comparison). */
@@ -234,6 +302,7 @@ async function compare() {
   }
   const counts = await sitemapCounts().catch((e) => { failures.push(`sitemap unreadable: ${e.message}`); return {}; });
   const tally = {};
+  const liveOfficeIds = new Set();
   for (const p of PAGES) {
     const city = p.split('/')[1];
     const s = sources[p] ?? { source: '(missing)', row: '?' };
@@ -251,6 +320,7 @@ async function compare() {
     if (changed.has(city) && s.source !== 'row') failures.push(`${p}: expected to serve its new CMS row this deploy, serves "${s.source}"`);
     if (n !== 1) failures.push(`${p}: listed ${n}× in the sitemap, expected exactly once`);
     if (s.source === 'row' || s.source === 'code') for (const prob of seoProblems(p, r.text)) failures.push(`${p}: ${prob}`);
+    if (p.split('/').length === 2) for (const n of ldNodes(ldBlocks(r.text)).filter(isOffice)) if (n['@id']) liveOfficeIds.add(n['@id']);
     if (s.source === 'row' || s.source === 'code') {
       const one = oneLocationProblems(p, r.text);
       for (const prob of one.problems) failures.push(`${p}: ${prob}`);
@@ -272,7 +342,8 @@ async function compare() {
         // reference to it (one location per city page) — allowed once, only when that node is there.
         const id = `${SITE}/${city}#office`;
         const gainedOffice = !had.includes('Plumber') && ldTypesIn(after).includes('Plumber') && after.includes(`"@id":"${id}"`);
-        if (added.length && withoutLd(before, added) === withoutLd(after, added)) tally['+jsonld'] = (tally['+jsonld'] ?? 0) + 1;
+        if (withoutParentOrg(before) === withoutParentOrg(after)) tally['+parentOrganization'] = (tally['+parentOrganization'] ?? 0) + 1;
+        else if (added.length && withoutLd(before, added) === withoutLd(after, added)) tally['+jsonld'] = (tally['+jsonld'] ?? 0) + 1;
         else if (gainedOffice && withoutLd(withProviderRef(before, id), added) === withoutLd(withProviderRef(after, id), added)) tally['+one-location'] = (tally['+one-location'] ?? 0) + 1;
         else failures.push(`${p}: markup changed across the swap — ${firstDiff(before, after)}`);
       }
@@ -291,6 +362,13 @@ async function compare() {
     if (r.status !== 200) { notes.push(`${p}: answered ${r.status} (footer graph rule not checked)`); continue; }
     for (const prob of footerGraphProblems(r.text)) failures.push(`${p}: ${prob}`);
   }
+  // Brief 218: the homepage's own graph (and no footer graph) — department refs checked against the
+  // office nodes the hubs served above.
+  {
+    const r = await get('/').catch(() => ({ status: 0, text: '' }));
+    if (r.status !== 200) failures.push(`/: answered ${r.status}`);
+    else for (const prob of homepageProblems(r.text, liveOfficeIds)) failures.push(`/: ${prob}`);
+  }
   console.log(`  sources: ${JSON.stringify(tally)}${changed.size ? `; expected to change: ${[...changed].join(', ')}` : ''}`);
   for (const n of notes.slice(0, 20)) console.log(`  i ${n}`);
   if (failures.length) {
@@ -303,7 +381,7 @@ async function compare() {
     console.log('!'.repeat(72));
     process.exit(1);
   }
-  console.log(`city-pages live check: all ${PAGES.length} pages OK (+ ${SEWER_PAGES.length} sewer pages FAQPage-free)`);
+  console.log(`city-pages live check: all ${PAGES.length} pages OK (+ ${SEWER_PAGES.length} sewer pages FAQPage-free, ${OTHER_PAGES.length} pages with the footer graph, the homepage graph)`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {

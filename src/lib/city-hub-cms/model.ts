@@ -19,6 +19,7 @@
  * from Global Settings, and the phone REGION is derived from the city's state (never a field).
  */
 import { clone } from '@/lib/cms-v2/shared';
+import { organizationRef } from '@/lib/schema/organization-ref';
 
 export const CITY_HUB_TEMPLATE = 'city-hub';
 export const CITY_HUB_SHARED_TEMPLATE = 'city-hub-shared';
@@ -276,6 +277,10 @@ const SITE = 'https://jblantonplumbing.com';
  * Brief 217 (one location per city page, Marketing 2026-10-22): this is the ONE office node on a City
  * Hub page and on each of its City Service V2 pages (same `@id`; the service page's Service `provider`
  * references it). No `geo`, no other offices — the footer's all-offices graph is off on both templates.
+ *
+ * Brief 218 (Track C): `parentOrganization` points at the ONE Organization (`organizationRef()`, the
+ * Brief 188 `ORG_ID` the articles' publisher and the homepage graph share), and the homepage lists this
+ * node's `@id` in its Organization `department` — never change the `@id`.
  */
 export function hubPlumberJsonLd(hub: Pick<CityHubRender, 'slug' | 'name' | 'office'>, phoneDisplay: string, schemaPhone: (d: string) => string) {
   const gbp = hub.office.gbpUrl;
@@ -287,6 +292,7 @@ export function hubPlumberJsonLd(hub: Pick<CityHubRender, 'slug' | 'name' | 'off
     '@type': 'Plumber',
     '@id': `${SITE}/${hub.slug}#office`,
     name: `J. Blanton Plumbing - ${hub.office.schemaName || hub.name}`,
+    parentOrganization: organizationRef(),
     url: `${SITE}/${hub.slug}`,
     sameAs: [gbp],
     hasMap: gbp,

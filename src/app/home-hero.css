@@ -1,0 +1,55 @@
+/*
+ * Brief 218 (Track D) — the homepage hero's headline line + intro on the /services/sewer hero type
+ * system (#sewer-v2, measured 2026-10-26), PORTED here and scoped to the homepage hero (.test-hero).
+ * Nothing from #sewer-v2 is imported or edited. Imported by src/app/page.tsx only.
+ *
+ *   visible line   Industry 700, clamp(38px, 5.2vw, 64px) / 1.05, -0.01em, normal case, Cream, mb 16px
+ *   intro          Nunito 400, 20px / 30px (≤900px: 17px / 27px), Cream, max-width 672px, mt 0
+ *   column         max-width 700px
+ * The visible line is an aria-hidden <p>; the page's one <h1> is the sr-only one above it.
+ */
+.test-hero .hub-h1-home {
+  position: relative;
+  margin: 0 0 16px;
+  font-family: var(--font-industry), Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(38px, 5.2vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: #F9F3EC;
+}
+
+/* The 24/7 mark, perched on the top-left of the "P" (Marketing decision 4). Em-relative, so it keeps
+   one proportion at every size the clamp() produces: the old hero's at 1440px (74px wide at -11px /
+   -19px on a 58.3px first tier = 1.27em, -0.19em, -0.33em — measured on production 2026-10-26). The
+   old fixed 74px/60px mark covered relatively MORE of the "Pl" at every narrower width (2em at 900
+   and 375), so this never covers more than it did. At 64px: 81px, -12px, -21px. */
+.test-hero .hub-h1-home .hero-badge {
+  position: absolute;
+  z-index: 10;
+  width: 1.27em;
+  height: auto;
+  left: -0.19em;
+  top: -0.33em;
+}
+
+.test-hero .home-hero-intro {
+  margin: 0;
+  max-width: 672px;
+  font-family: var(--font-nunito), Nunito, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #F9F3EC;
+}
+@media (max-width: 900px) {
+  .test-hero .home-hero-intro { font-size: 17px; line-height: 27px; }
+}
+
+/* Track D3 — the rotating market name. Both words share one grid cell, so the line never jumps. */
+.hero-rot { display: inline-grid; vertical-align: top; }
+.hero-rot > span { grid-area: 1 / 1; white-space: nowrap; transition: opacity .3s ease-out, transform 320ms ease-out; }
+.hero-rot > span:not(.is-on) { opacity: 0; transform: translateY(.35em); }
+.hero-rot > span.is-out { opacity: 0; transform: translateY(-.35em); }
+@media (prefers-reduced-motion: reduce) { .hero-rot > span { transition: none; } }

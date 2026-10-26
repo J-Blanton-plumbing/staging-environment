@@ -99,8 +99,11 @@ export default async function RootLayout({
   // the footer's all-offices PlumbingBusiness graph is off on exactly that path (scoped by template;
   // the visible footer office list is unchanged). Passed only when set, so every other page's props
   // — and its RSC payload — stay exactly as before.
+  // Brief 218 (Track B): also off on `/` only — the homepage carries its own Organization graph, whose
+  // `department` refs point at the hubs' office nodes instead of repeating 19 offices.
   const pathname = headers().get('x-pathname');
-  const officeGraphOff = (await cityTemplateForPath(pathname)) ? { officeGraphOffPath: pathname as string } : {};
+  const officeGraphOff =
+    pathname === '/' || (await cityTemplateForPath(pathname)) ? { officeGraphOffPath: pathname as string } : {};
 
   return (
     <html lang="en" className={`${industry.variable} ${nunito.variable}`}>

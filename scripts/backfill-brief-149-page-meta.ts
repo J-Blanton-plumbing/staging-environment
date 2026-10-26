@@ -76,9 +76,12 @@ const mode = resolveRunMode(SCRIPT);
  * kept their metadata there.
  */
 const MAIN_PAGE_META: Record<string, { title: string; description: string }> = {
+  // Brief 218: the homepage's new STATIC_META (an already-filled row is moved by
+  // scripts/update-brief-218-home-meta.ts, never by this gap-filler).
   home: {
-    title: 'Chicago Plumbing Experts | Make a Good Call',
-    description: 'J. Blanton Plumbing — Chicago and suburbs, over 30 years.',
+    title: 'Plumbers in Chicagoland & Columbus, OH',
+    description:
+      "Need a plumber near you? For 30+ years, we've helped homeowners with water heaters, clogged drains, sewer lines and more. Available 24/7, with upfront pricing.",
   },
   'why-j-blanton': {
     title: 'Why J. Blanton',

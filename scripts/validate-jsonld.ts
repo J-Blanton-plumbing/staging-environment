@@ -23,7 +23,8 @@ import { checkJsonLd, CITY_PAGE_FORBIDDEN_TYPES } from '../src/lib/schema/jsonld
 import { faqPageJsonLd, schemaPhone } from '../src/lib/schema/city-pages';
 import { hubPlumberJsonLd } from '../src/lib/city-hub-cms/model';
 import { articleCrumbs, termCrumbs } from '../src/lib/cms/kh-crumbs';
-import { ORG_ID } from '../src/lib/schema/organization-ref';
+import { ORG_ID, ORG_LOGO_URL, organizationNode } from '../src/lib/schema/organization-ref';
+import { homepageJsonLd, HOME_PACKAGE_DEPARTMENT_IDS } from '../src/lib/schema/homepage';
 import { canonicalUrlFor } from '../src/lib/seo';
 import { SITE } from '../src/lib/site';
 
@@ -135,8 +136,8 @@ const hubFixture = {
 const plumber = hubPlumberJsonLd(hubFixture, '773-724-9272', schemaPhone);
 expect(!!plumber, 'a hub with a GBP link emits a Plumber node');
 expect(
-  Object.keys(plumber ?? {}).join(',') === '@context,@type,@id,name,url,sameAs,hasMap,telephone,address,openingHoursSpecification,areaServed',
-  'the Plumber node keeps the Brief 216 key order'
+  Object.keys(plumber ?? {}).join(',') === '@context,@type,@id,name,parentOrganization,url,sameAs,hasMap,telephone,address,openingHoursSpecification,areaServed',
+  'the Plumber node keeps the Brief 216 key order (+ Brief 218 parentOrganization after name)'
 );
 expect(plumber?.telephone === '+1-773-724-9272' && plumber.hasMap === plumber.sameAs[0], 'Plumber telephone is E.164-style and hasMap = sameAs');
 expect(JSON.stringify(plumber?.areaServed) === '["Evanston, IL","Wilmette, IL","Rogers Park, Chicago, IL"]', 'areaServed = city + communities, area override honoured');
@@ -169,6 +170,7 @@ const HP_EXPECTED = {
   '@type': 'Plumber',
   '@id': 'https://jblantonplumbing.com/highland-park#office',
   name: 'J. Blanton Plumbing - Highland Park',
+  parentOrganization: { '@id': 'https://jblantonplumbing.com/#organization' },
   url: 'https://jblantonplumbing.com/highland-park',
   sameAs: ['https://maps.app.goo.gl/2TwjsZRjsfZmukRr6'],
   hasMap: 'https://maps.app.goo.gl/2TwjsZRjsfZmukRr6',
@@ -177,7 +179,7 @@ const HP_EXPECTED = {
   openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '00:00', closes: '23:59' },
   areaServed: ['Highland Park, IL', 'Highwood, IL', 'Fort Sheridan, IL', 'Deerfield, IL', 'Bannockburn, IL', 'Riverwoods, IL', 'Lake Forest, IL', 'Lake Bluff, IL', 'Glencoe, IL'],
 };
-expect(JSON.stringify(hpNode) === JSON.stringify(HP_EXPECTED), 'the Highland Park office node is exactly Brief 217 §C4 (byte for byte, key order included)');
+expect(JSON.stringify(hpNode) === JSON.stringify(HP_EXPECTED), 'the Highland Park office node is exactly Brief 217 §C4 + Brief 218 parentOrganization (byte for byte, key order included)');
 // A City Service V2 page: Service (provider = a reference to the office node) + BreadcrumbList + FAQPage
 // + the hub's office node — exactly one office node, no duplicate, nothing forbidden.
 const officeTypes = ['Plumber', 'PlumbingBusiness', 'LocalBusiness'];
@@ -190,6 +192,27 @@ const svcBlocks = [
 const svcReport = checkJsonLd(svcBlocks, CITY_PAGE_FORBIDDEN_TYPES);
 for (const e of svcReport.errors) fail.push(`city service fixture: ${e}`);
 expect(officeTypes.reduce((n, t) => n + (svcReport.tally[t] ?? 0), 0) === 1, 'a City Service V2 page carries exactly one office node');
+
+// Brief 218 (Track B) — the homepage graph: Organization (the Brief 188 ORG_ID with the Primary Logo,
+// so the articles' publisher and this node are one entity with one logo) + WebSite + WebPage, the
+// package's department list, and nothing forbidden (no AggregateRating / Review / FAQPage / Product).
+const HOME_TITLE = 'Plumbers in Chicagoland & Columbus, OH | J. Blanton Plumbing';
+const HOME_DESC = "Need a plumber near you? For 30+ years, we've helped homeowners with water heaters, clogged drains, sewer lines and more. Available 24/7, with upfront pricing.";
+const home = homepageJsonLd({ pageName: HOME_TITLE, pageDescription: HOME_DESC, departmentIds: HOME_PACKAGE_DEPARTMENT_IDS });
+const homeReport = checkJsonLd([JSON.stringify(home)]);
+for (const e of homeReport.errors) fail.push(`homepage: ${e}`);
+const [hOrg, hSite, hPage] = home['@graph'];
+expect(home['@graph'].map((n) => n['@type']).join(',') === 'Organization,WebSite,WebPage', 'homepage graph = Organization, WebSite, WebPage');
+expect(hOrg['@id'] === ORG_ID && 'logo' in hOrg && JSON.stringify(hOrg.logo) === JSON.stringify(organizationNode().logo), 'homepage Organization reuses ORG_ID and the Primary Logo object (no second logo)');
+expect('image' in hOrg && hOrg.image === ORG_LOGO_URL, 'homepage Organization image = the Primary Logo URL');
+expect(!JSON.stringify(home).includes('logo-text.webp') && !JSON.stringify(home).includes('#logo'), 'the package logo-text.webp / #logo is not emitted');
+const hDept = (hOrg as { department?: { '@id': string }[] }).department ?? [];
+expect(hDept.length === 19 && hDept.every((d, i) => d['@id'] === HOME_PACKAGE_DEPARTMENT_IDS[i]), 'homepage department = the package 19 office ids');
+expect(hPage['@type'] === 'WebPage' && hPage.name === HOME_TITLE && hPage.description === HOME_DESC, 'WebPage name / description = the rendered title / description');
+expect(hSite['@type'] === 'WebSite' && JSON.stringify(hSite.publisher) === JSON.stringify({ '@id': ORG_ID }), 'WebSite publisher = ORG_ID');
+expect(!/aggregateRating|"review"|"Product"|FAQPage/.test(JSON.stringify(home)), 'homepage graph carries no aggregateRating / review / Product / FAQPage');
+expect(!homeReport.allTypes.some((t) => ['Plumber', 'PlumbingBusiness', 'LocalBusiness'].includes(t)), 'homepage graph carries no office node');
+expect(JSON.stringify(plumber?.parentOrganization) === JSON.stringify({ '@id': ORG_ID }), 'the hub office node points parentOrganization at ORG_ID');
 
 if (fail.length) {
   console.error(`\n[validate-jsonld] FAILED — ${fail.length} problem(s):\n  - ${fail.join('\n  - ')}\n`);

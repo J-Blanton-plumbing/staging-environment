@@ -21,7 +21,14 @@ import { getMainPageContent } from '@/lib/cms/main-pages';
 import { getMainPagePreview } from '@/lib/cms/preview';
 import PreviewBanner from '@/components/PreviewBanner';
 import type { Metadata } from 'next';
+import { cache } from 'react';
 import { getMainPageMeta } from '@/lib/cms/page-meta';
+import HomeHeroRotator from '@/components/HomeHeroRotator';
+import { getHomeDepartmentIds } from '@/lib/cms/home-departments';
+import { homepageJsonLd } from '@/lib/schema/homepage';
+import { ldJson } from '@/lib/schema/city-pages';
+import { CANONICAL_BASE, TITLE_TEMPLATE } from '@/lib/seo';
+import './home-hero.css';
 
 /* ═══════════════════════════════════════════════════════════════════════════
  * HERO v5 PREVIEW FLAG — added 2026-09-02 for Marketing review.
@@ -40,10 +47,11 @@ import { getMainPageMeta } from '@/lib/cms/page-meta';
  * `HOME.hero.headingTagline` in particular is marketing-locked by Columbus
  * Integration Brief 04 Track A and is deliberately left untouched.
  *
- * The two-tier H1 reads ONE field and splits it on a `|`: text before the pipe
- * is the large first tier, text after it the smaller second tier. So the
- * Heading field wants "Plumbing Experts in | Chicagoland & Central Ohio". A
- * heading with no pipe still renders correctly, as a single tier.
+ * Brief 218 (Track D, 2026-10-26) retired the two-tier `|` split: the hero now
+ * renders ONE sr-only <h1> (HERO_V5_COPY.heading) plus an aria-hidden visible
+ * line with a rotating market name (HERO_V5_LINE_LEAD + HERO_V5_ROTATOR). In
+ * practice this copy is CODE-OWNED while the flag is on — HERO_V5_COPY beats
+ * every CMS hero field — so the hero is still not editable in /admin/home.
  * ═════════════════════════════════════════════════════════════════════════ */
 const HERO_V5_PREVIEW = true;
 
@@ -62,16 +70,29 @@ const HERO_V5_PREVIEW = true;
  * copy, so it must be re-approved before it reaches the CMS.
  */
 const HERO_V5_COPY = {
-  heading: 'Plumbing Experts in | Chicagoland & Central Ohio',
+  // Brief 218 (Track D, copy locked 2026-10-26): the page's ONE <h1>, rendered sr-only. The visible
+  // headline is the aria-hidden line HERO_V5_LINE_LEAD + the rotating HERO_V5_ROTATOR words.
+  heading: 'Plumbers in Chicagoland and Columbus, OH',
   headingCta: 'Make a Good Call',
   headingTagline: 'Serving Homeowners for 30+ Years',
   intro:
     'From clogged drains to full sewer line work, we always answer your call and all your questions. Our technicians will walk you through your options and give you a flat rate before work begins. No surprises.',
 };
 
+/** Brief 218 (Track D): the visible, animated headline — "Plumbers in [Chicagoland ↔ Columbus, OH]". */
+const HERO_V5_LINE_LEAD = 'Plumbers in';
+const HERO_V5_ROTATOR = ['Chicagoland', 'Columbus, OH'] as const;
+
 export const dynamic = 'force-dynamic';
 
 /**
+ * Brief 218 (Track A, copy locked 2026-10-26) replaced the values below. The title is stored and kept
+ * suffix-free like every other title source; `generateMetadata` composes the brand through
+ * TITLE_TEMPLATE itself, because the root layout's `title.template` does NOT apply to a page in the
+ * layout's own segment — that is why the old homepage <title> never carried "| J. Blanton Plumbing".
+ * Production's `main_pages.home` meta fields hold the Brief 149 backfill (= the old values), which
+ * beat this fallback: `scripts/update-brief-218-home-meta.ts` (deploy step) writes the new copy there.
+ *
  * Brief 149 (Track C) — the `main_pages.meta_title` / `meta_description` fields
  * for `home` were editable in the admin and read by nothing: this page's <title>
  * came from the literal below. They now drive the page, with the literal kept as
@@ -83,17 +104,60 @@ export const dynamic = 'force-dynamic';
  * brand suffix, so it is left alone; a brand name mid-string always was.
  */
 const STATIC_META = {
-  title: 'Chicago Plumbing Experts | Make a Good Call',
-  description: 'J. Blanton Plumbing — Chicago and suburbs, over 30 years.',
+  title: 'Plumbers in Chicagoland & Columbus, OH',
+  description:
+    "Need a plumber near you? For 30+ years, we've helped homeowners with water heaters, clogged drains, sewer lines and more. Available 24/7, with upfront pricing.",
 };
 
-export async function generateMetadata(): Promise<Metadata> {
+/** Brief 218 (Track A): the share image (1200×630, committed at public/images/og-home.jpg). */
+const OG_IMAGE = {
+  url: `${CANONICAL_BASE}/images/og-home.jpg`,
+  width: 1200,
+  height: 630,
+  alt: 'J. Blanton Plumbing technician standing next to a branded red service van',
+};
+
+/**
+ * The ONE resolved title + description for this request, shared by the <head> and the WebPage
+ * JSON-LD node (React `cache`: one read per request), so the two can never drift apart. `title` is
+ * the full rendered title, brand included exactly once.
+ */
+const homeMeta = cache(async () => {
   const meta = await getMainPageMeta('home', STATIC_META);
-  return { title: meta.title, description: meta.description };
+  return { title: TITLE_TEMPLATE.replace('%s', meta.title), description: meta.description };
+});
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { title, description } = await homeMeta();
+  // Next merges metadata SHALLOWLY: a page-level `openGraph` replaces the layout's whole object, so
+  // site_name / locale / type are re-declared here exactly as the layout sets them.
+  return {
+    title: { absolute: title },
+    description,
+    openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      siteName: 'J. Blanton Plumbing',
+      title,
+      description,
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [OG_IMAGE.url],
+    },
+  };
 }
 
 export default async function HomePage() {
   const settings = await getGlobalSettingsCached();
+  // Brief 218 (Track B): the homepage's own Organization + WebSite + WebPage graph. The footer's
+  // all-offices graph is off on `/` (root layout → SiteShell `officeGraphOffPath`).
+  const meta = await homeMeta();
+  const departmentIds = await getHomeDepartmentIds(settings.offices.map((o) => o.slug));
+  const jsonLd = homepageJsonLd({ pageName: meta.title, pageDescription: meta.description, departmentIds });
   const preview = await getMainPagePreview('home');
   const db = preview?.content ?? await getMainPageContent('home').catch(() => null);
   const d = db ?? {};
@@ -118,33 +182,32 @@ export default async function HomePage() {
   // Copy override — preview only, see HERO_V5_COPY above. With the flag off,
   // `hero` is exactly what the CMS (or the home.ts fallback) supplies.
   const hero = HERO_V5_PREVIEW ? { ...home.hero, ...HERO_V5_COPY } : home.hero;
-  // Two-tier H1 — `heroLine2` is undefined when the Heading carries no `|`,
-  // and its <span> is then not rendered at all.
-  const [heroLine1, heroLine2] = hero.heading.split('|').map((part) => part.trim());
 
   const articles = getArticles(HOME.knowledgeHub.featuredSlugs);
 
   return (
     <>
       {preview && <PreviewBanner label={preview.meta.label} creatorName={preview.meta.creator_name} editorUrl="/admin/home" liveUrl="/" draftId={preview.meta.id} pageType="main" pageSlug="home" />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(jsonLd)} />
       {/* ============== HERO: 100vh, bright video, bottom-aligned content ============== */}
       <section className="test-hero relative w-full h-screen overflow-hidden bg-navy-900">
         <HomeHeroVideo />
 
         <div className="test-hero-body absolute inset-0 z-[2] flex items-end">
           {HERO_V5_PREVIEW ? (
-            /* ── v5: one left column, two-tier H1, 24/7 on the "P" ──────────
+            /* ── v5: one left column, sr-only H1 + animated line, 24/7 on the "P" ──
                Reading order top→bottom: eyebrow, H1, intro, CTA label, phone
                pill. The old layout put the intro in a right-hand column whose
                top sat ~32px ABOVE the H1, so the eye read the paragraph first;
                a single column removes that problem instead of tuning around
-               it. `max-w-[720px]` stops the intro sprawling across the video. */
+               it. Brief 218: the column is 700px and the type is the sewer
+               hero's (src/app/home-hero.css). */
             <div className="test-hero-contents w-[90%] mx-auto mb-[80px] lg:mb-[150px] flex flex-col">
               {/* `mx-auto` belongs to the 90% band (left edge at 5%, matching
                   every other section). The width cap goes on THIS inner column,
                   never on the band — putting max-w on the band made mx-auto
                   centre the text block instead of left-aligning it. */}
-              <div className="w-full max-w-[640px] flex flex-col items-start">
+              <div className="w-full max-w-[700px] flex flex-col items-start">
               {/* Eyebrow — the 14px/600/1px-tracking label step this page
                   already uses elsewhere. The 46px bottom margin is not
                   decorative: it is the clearance the 24/7 mark needs to sit
@@ -153,45 +216,35 @@ export default async function HomePage() {
                 {hero.headingTagline}
               </p>
 
-              {/* Two tiers from ONE CMS field, split on `|` (see heroLine1/2).
-                  Tier 1 leads at 52px, tier 2 supports at 36px — a 1.4 ratio,
-                  matching the step spacing the rest of the page uses. */}
-              <h1 className="relative font-display font-bold uppercase text-white tracking-[-0.02em] m-0">
-                {/* The mark is nailed to the top-left of the first letter, so
-                    its offsets are tuned to THIS asset at THIS size — change
-                    tier 1's font-size or its first word and these need
-                    re-tuning. `absolute` (not inline) is deliberate: inline
-                    inflated the first line box and opened a visible gap
-                    between the two tiers. */}
+              {/* Brief 218 (Track D): the page's ONE <h1> is this static,
+                  visually hidden one (Tailwind `sr-only` — never display:none),
+                  so screen readers and Google read one complete heading. */}
+              <h1 className="sr-only">{hero.heading}</h1>
+              {/* The visible headline is NOT a heading: an aria-hidden line
+                  whose market name rotates. Both names are in the server HTML;
+                  HomeHeroRotator only moves classes. Sewer-hero type, normal
+                  case, Cream (text-white is #fff) — src/app/home-hero.css. */}
+              <p className="hub-h1-home" aria-hidden="true">
+                {/* The 24/7 mark, moved here from the old <h1> with alt="" (it
+                    sits inside an aria-hidden line now). Em-relative offsets
+                    keep it on the "P" at every clamp() size. `absolute` (not
+                    inline) is deliberate: inline would inflate the line box. */}
                 <Image
                   src="/images/247.webp"
-                  alt="24/7"
+                  alt=""
                   width={100}
                   height={100}
                   priority
-                  className="absolute z-10 left-[-11px] top-[-19px] w-[74px] h-auto max-[780px]:w-[60px] max-[780px]:left-[-8px] max-[780px]:top-[-16px]"
+                  className="hero-badge"
                 />
-                <span
-                  className="block"
-                  style={{ fontSize: 'clamp(30px, 4.05vw, 60px)', lineHeight: 1, letterSpacing: '-0.025em' }}
-                >
-                  {heroLine1}
-                </span>
-                {heroLine2 && (
-                  <span
-                    className="block"
-                    style={{ fontSize: 'clamp(26px, 2.85vw, 42px)', lineHeight: 1.06, letterSpacing: '-0.02em' }}
-                  >
-                    {heroLine2}
-                  </span>
-                )}
-              </h1>
+                {`${HERO_V5_LINE_LEAD} `}
+                <HomeHeroRotator words={HERO_V5_ROTATOR} />
+              </p>
 
-              {/* Nunito (`font-sans`), not Industry. Body copy everywhere else
-                  on this page is Nunito 16/26-30; the old hero was the only
-                  place setting a paragraph in Industry Medium at 30px, which
-                  is what made it compete with the headline. */}
-              <p className="intro font-sans font-normal text-white text-[18px] leading-[30px] mt-[22px] mb-0 max-w-[52ch] max-[780px]:text-[16px] max-[780px]:leading-[27px]">
+              {/* Nunito, not Industry — the sewer hero's intro step (20/30,
+                  17/27 at ≤900px). The 26px to the CTA label is that label's
+                  own top margin, unchanged. */}
+              <p className="intro home-hero-intro">
                 {hero.intro}
               </p>
 
