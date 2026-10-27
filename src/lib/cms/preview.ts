@@ -241,6 +241,21 @@ export async function getMainPagePreview(slug: string): Promise<{
   };
 }
 
+/**
+ * Brief 220 — the Homepage 2026 version named by the preview cookie, if that is what it names. Shown
+ * at `/` regardless of the Live homepage switch, so Marketing can review it while Classic is live.
+ */
+export async function getHome2026Preview(): Promise<{ content: Record<string, unknown>; meta: PreviewMeta } | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== 'home-2026' || draft.page_slug !== 'home-2026') return null;
+  return {
+    content: (draft.content ?? {}) as Record<string, unknown>,
+    meta: { id, label: draft.label, creator_name: draft.creator_name },
+  };
+}
+
 export async function getEpPreview(): Promise<{
   db: EpCmsContent;
   meta: PreviewMeta;

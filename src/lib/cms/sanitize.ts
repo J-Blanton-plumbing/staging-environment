@@ -21,6 +21,7 @@ import type { GlobalSettings } from '@/lib/cms/global-settings';
 import { resolveTokens, escapeHtml } from '@/lib/cms/tokens';
 import { MAIN_PAGE_RICH_TEXT_FIELDS } from '@/lib/cms/rich-text-fields';
 import { HOME_SCALAR_FIELDS, type HomeFeaturedItem, type HomeListItem } from '@/lib/cms/home-content';
+import { H26_SCALAR_FIELDS, HOME_2026_SLUG, HOME_2026_TEMPLATE } from '@/lib/cms/home-2026-content';
 
 /** Tags permitted in CMS rich text. */
 export const CMS_ALLOWED_TAGS: string[] = [
@@ -258,6 +259,8 @@ export function sanitizeMainPageContent(
   // Brief 219: the homepage's fields are typed (HOME_SCALAR_FIELDS + two arrays), so EVERY one of
   // them is sanitized by kind, not only the rich-text keys.
   if (slug === 'home') return sanitizeHomeContent(content);
+  // Brief 220: the Homepage 2026 record (a second homepage, chosen by the Live homepage switch).
+  if (slug === HOME_2026_SLUG) return sanitizeHome2026Content(content);
   const keys = MAIN_PAGE_RICH_TEXT_FIELDS[slug];
   if (!keys || keys.length === 0) return content;
   const out = { ...content };
@@ -310,6 +313,60 @@ export function sanitizeHomeContent(content: Record<string, unknown>): Record<st
         id: itemId(x.id, 'article', i),
         slug: sanitizeCmsPlainText(typeof x.slug === 'string' ? x.slug : '').trim().toLowerCase(),
       }));
+  }
+  return out;
+}
+
+/**
+ * Brief 220 (the Brief 168 rule) — sanitize the Homepage 2026 record (`main_pages` row `home-2026`) by
+ * declared field kind, on every write path (publish → `updateMainPage` → `sanitizeMainPageContent`)
+ * and on render, so a preview shows exactly what a publish would store. Homepage 2026 has no rich
+ * text: EVERY scalar and every string leaf of the four sets is plain text (`<script>` in a job quote
+ * or `onerror` in an alt is dropped with the markup). A malformed set or item is dropped, never stored
+ * as-is. Keys the model doesn't own pass through untouched. Pure and idempotent.
+ */
+export function sanitizeHome2026Content(content: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = { ...content };
+  const plain = (v: unknown) => sanitizeCmsPlainText(typeof v === 'string' ? v : '');
+  const items = (v: unknown) =>
+    (Array.isArray(v) ? v : []).filter((x): x is Record<string, unknown> => !!x && typeof x === 'object' && !Array.isArray(x));
+  if ('template' in out) out.template = HOME_2026_TEMPLATE;
+  for (const key of Object.keys(H26_SCALAR_FIELDS)) {
+    if (typeof out[key] === 'string') out[key] = plain(out[key]);
+  }
+  if ('trust_items' in out) {
+    out.trust_items = items(out.trust_items).map((x, i) => ({ id: itemId(x.id, 'trust', i), text: plain(x.text) }));
+  }
+  if ('services_cards' in out) {
+    out.services_cards = items(out.services_cards).map((x, i) => ({
+      id: itemId(x.id, 'card', i),
+      title: plain(x.title),
+      href: plain(x.href).trim(),
+      description: plain(x.description),
+      image: plain(x.image).trim(),
+      alt: plain(x.alt),
+    }));
+  }
+  if ('jobs' in out) {
+    out.jobs = items(out.jobs).map((x, i) => {
+      const stars = typeof x.stars === 'number' ? x.stars : parseInt(plain(x.stars), 10);
+      return {
+        id: itemId(x.id, 'job', i),
+        tab_title: plain(x.tab_title),
+        tab_city: plain(x.tab_city),
+        title: plain(x.title),
+        location: plain(x.location),
+        stars: Number.isFinite(stars) ? Math.min(5, Math.max(1, Math.round(stars))) : 5,
+        quote: plain(x.quote),
+        author: plain(x.author),
+        author_label: plain(x.author_label),
+        review_url: plain(x.review_url).trim(),
+        photos: items(x.photos).map((p, k) => ({ id: itemId(p.id, 'photo', k), image: plain(p.image).trim(), alt: plain(p.alt) })),
+      };
+    });
+  }
+  if ('kh_featured' in out) {
+    out.kh_featured = items(out.kh_featured).map((x, i) => ({ id: itemId(x.id, 'article', i), slug: plain(x.slug).trim().toLowerCase() }));
   }
   return out;
 }

@@ -50,6 +50,11 @@ export async function PATCH(
   if (params.slug === 'city-hubs') {
     return NextResponse.json({ error: 'The shared City Hub sections are edited at /admin/city-hubs.' }, { status: 409 });
   }
+  // Brief 220: the Homepage 2026 record likewise — versions only (/admin/home → Homepage 2026), so
+  // its content can never be replaced by a Classic-shaped payload.
+  if (params.slug === 'home-2026') {
+    return NextResponse.json({ error: 'Homepage 2026 is edited through its versions at /admin/home.' }, { status: 409 });
+  }
 
   const client = await pool.connect();
   try {

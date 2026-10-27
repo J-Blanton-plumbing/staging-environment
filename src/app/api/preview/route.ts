@@ -18,6 +18,9 @@ function pageUrl(pageType: string, pageSlug: string): string {
   if (pageType === 'city' || pageType === 'city-coverage' || pageType === 'city-local') return `/${pageSlug}`;
   // Brief 212: the shared City Hub sections have no page of their own — preview them on a City Hub.
   if (pageType === 'city-hub-shared') return '/northbrook';
+  // Brief 220: Homepage 2026 has no URL of its own; its preview renders at `/` whatever the Live
+  // homepage switch says (src/lib/cms/homepage-switch.ts reads the cookie's draft type).
+  if (pageType === 'home-2026') return '/';
   if (pageType === 'emergency-plumbing') return '/emergency-plumbing';
   if (pageType === 'service') {
     return SERVICE_CATEGORY_SLUGS.has(pageSlug) ? `/services/${pageSlug}` : `/${pageSlug}`;

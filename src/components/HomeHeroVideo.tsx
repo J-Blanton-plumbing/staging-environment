@@ -21,11 +21,20 @@ export default function HomeHeroVideo({
   desktopSrc = DESKTOP_SRC,
   mobileSrc = MOBILE_SRC,
   poster = '/images/hero-poster.webp',
+  className,
+  scrim = true,
 }: {
   /** Brief 219: the two sources and the poster, from /admin/home. */
   desktopSrc?: string;
   mobileSrc?: string;
   poster?: string;
+  /**
+   * Brief 220 (Homepage 2026): the <video>'s class instead of the Classic hero's Tailwind classes,
+   * and no scrim (the 2026 hero's own overlay does that job). Both optional and absent on Classic, so
+   * the Classic hero renders exactly as before.
+   */
+  className?: string;
+  scrim?: boolean;
 } = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [src, setSrc] = useState<string | null>(null);
@@ -53,7 +62,8 @@ export default function HomeHeroVideo({
         poster={poster}
         src={src ?? undefined}
         onPlaying={() => setPlaying(true)}
-        className="absolute inset-0 w-full h-full object-cover z-[1]"
+        className={className ?? 'absolute inset-0 w-full h-full object-cover z-[1]'}
+        aria-hidden={className ? true : undefined}
       />
       {/* Legibility scrim replicating the live site's look. The live hero has
           no CSS overlay — its darkness is baked into the old export's color
@@ -64,10 +74,12 @@ export default function HomeHeroVideo({
           doesn't have). Gated on `playing` because the poster already carries
           the baked-dark grade — scrimming it too would double-darken first
           paint relative to live. */}
-      <div
-        aria-hidden
-        className={`absolute inset-0 z-[1] bg-[rgba(0,0,0,0.45)] pointer-events-none transition-opacity duration-500 ${playing ? 'opacity-100' : 'opacity-0'}`}
-      />
+      {scrim && (
+        <div
+          aria-hidden
+          className={`absolute inset-0 z-[1] bg-[rgba(0,0,0,0.45)] pointer-events-none transition-opacity duration-500 ${playing ? 'opacity-100' : 'opacity-0'}`}
+        />
+      )}
     </>
   );
 }

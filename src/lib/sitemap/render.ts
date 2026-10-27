@@ -110,6 +110,12 @@ export const SITEMAP_LASTMOD_SOURCES = {
    * Fix 3 fails the deploy on. Normally all of these return zero rows.
    */
   mainUnpublished: `SELECT slug FROM main_pages WHERE status = 'draft'`,
+  /**
+   * Brief 220 — which homepage record renders at `/` (the Live homepage switch), so the homepage's
+   * lastmod follows the ACTIVE record. Read through to_jsonb so a database without the column (before
+   * ensure-schema adds it) answers NULL = Classic instead of failing.
+   */
+  homepageActive: `SELECT to_jsonb(g) ->> 'homepage_active' AS active FROM global_settings g WHERE id = 1`,
   categoryUnpublished: `SELECT slug FROM service_category_pages WHERE status = 'draft'`,
   emergencyPlumbingUnpublished: `SELECT 1 AS dark FROM emergency_plumbing_page
           WHERE status = 'draft' AND id = (SELECT id FROM emergency_plumbing_page ORDER BY id LIMIT 1)`,
@@ -322,7 +328,7 @@ const toMap = (rows: SlugRow[]): Map<string, Date> => {
 /** `/sitemap-pages.xml` — static pages, `/services/*`, top-level sub-services. */
 export function renderPagesSitemap(): Promise<string> {
   return cached('pages', TTL_FRESH_MS, async () => {
-    const [mainRows, categoryRows, subServiceRows, epRows, darkMain, darkCategory, darkEp] =
+    const [mainRows, categoryRows, subServiceRows, epRows, darkMain, darkCategory, darkEp, homeActive] =
       await Promise.all([
         safeQuery<SlugRow>('main_pages', SITEMAP_LASTMOD_SOURCES.main),
         safeQuery<SlugRow>('service_category_pages', SITEMAP_LASTMOD_SOURCES.category),
@@ -340,6 +346,7 @@ export function renderPagesSitemap(): Promise<string> {
           'emergency_plumbing_page unpublished',
           SITEMAP_LASTMOD_SOURCES.emergencyPlumbingUnpublished
         ),
+        safeQuery<{ active: string | null }>('global_settings homepage_active', SITEMAP_LASTMOD_SOURCES.homepageActive),
       ]);
     const mainLastMod = toMap(mainRows);
     const categoryLastMod = toMap(categoryRows);
@@ -349,6 +356,10 @@ export function renderPagesSitemap(): Promise<string> {
     // Brief 159 (Track E1): the dark sets. See SITEMAP_LASTMOD_SOURCES for why
     // these are subtracted rather than filtered-in.
     const darkMainSlugs = new Set(darkMain.map((r) => r.slug));
+    // Brief 220: `/` takes the lastmod of the record the Live homepage switch shows — the same rule
+    // the page uses (Homepage 2026 only when it is selected AND published; anything else = Classic).
+    const homeSlug =
+      homeActive[0]?.active === 'home-2026' && mainLastMod.has('home-2026') && !darkMainSlugs.has('home-2026') ? 'home-2026' : null;
     const darkCategorySlugs = new Set(darkCategory.map((r) => r.slug));
     const epIsDark = darkEp.length > 0;
     const darkCount = darkMainSlugs.size + darkCategorySlugs.size + (epIsDark ? 1 : 0);
@@ -365,7 +376,7 @@ export function renderPagesSitemap(): Promise<string> {
           p.path === '/emergency-plumbing'
             ? epLastMod
             : p.mainSlug
-              ? mainLastMod.get(p.mainSlug)
+              ? mainLastMod.get(p.mainSlug === 'home' && homeSlug ? homeSlug : p.mainSlug)
               : undefined,
         changeFrequency: p.changeFrequency,
         priority: p.priority,

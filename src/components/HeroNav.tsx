@@ -3,7 +3,8 @@ import { cn } from '@/lib/utils';
 
 // Navigation config for the white 4-link strip below the hero.
 // Shared on the home page and every category page. Default hrefs use the live slugs.
-const HERO_NAV = [
+// Brief 220: exported so Homepage 2026 renders the SAME four links as its hero pills.
+export const HERO_NAV = [
   { href: '/emergency-plumbing', label: 'EMERGENCY PLUMBING' },
   { href: '/knowledge-hub', label: 'KNOWLEDGE HUB' },
   { href: '/financing', label: 'FINANCING' },

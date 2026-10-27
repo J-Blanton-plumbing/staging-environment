@@ -193,6 +193,10 @@ const STATEMENTS: string[] = [
   // phone. Seeded once (fill-gaps) by migrate-brief-192-central-ohio-phone.ts.
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS central_ohio_phone_display TEXT`,
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS central_ohio_phone_href TEXT`,
+  // Brief 220: the Live homepage switch ('classic' | 'home-2026'). Nullable, NO default here: NULL
+  // renders Classic. Created as 'classic' ONLY when NULL by seed-brief-220-home-2026.ts, and written
+  // after that by /admin/home alone — a schema step or a seed must never reset it.
+  `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS homepage_active TEXT`,
 
   // ── main_pages ──────────────────────────────────────────────────────────
   `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS content JSONB NOT NULL DEFAULT '{}'::jsonb`,

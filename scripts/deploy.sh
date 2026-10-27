@@ -1105,6 +1105,18 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/s
 # Pre-swap: the old build renders whatever URL the row holds. Idempotent.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/repoint-brief-219-images.ts commit --changed-file .city-pages-snapshot/changed.txt
+# Brief 220 (Track C1): Homepage 2026 - a SECOND homepage record (main_pages
+# row home-2026) plus the Live homepage switch (global_settings
+# .homepage_active). Creates the switch as 'classic' ONLY when it is NULL and
+# never writes it otherwise (a seed that reset it would roll the homepage back
+# on every deploy). Backs up the Classic row (unchanged). First run only:
+# uploads the 37 Homepage 2026 images as NEW S3 keys (editor upload path,
+# identical uploads reused, never overwritten), gates on zero fallbacks, then
+# publishes "Version 1 - Homepage 2026" via createDraft + publishDraft.
+# ALREADY-APPLIED from then on. Pre-swap: the old build has no route for the
+# row and never reads the switch, so `/` stays Classic. Exit 1 only for a
+# code/schema/config fault (incl. the gate). Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-220-home-2026.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

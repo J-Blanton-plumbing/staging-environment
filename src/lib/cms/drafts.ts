@@ -34,6 +34,7 @@ import {
   writeCityServiceV2Live,
 } from '@/lib/cms/city-services-v2-write';
 import { CITY_SERVICE_V2_TEMPLATE, isCityServiceV2DraftContent } from '@/lib/city-service-v2-cms/model';
+import { HOME_2026_PAGE_TYPE, HOME_2026_SLUG, HOME_2026_TEMPLATE, isHome2026Content } from '@/lib/cms/home-2026-content';
 
 export interface DraftRow {
   id: number;
@@ -127,6 +128,11 @@ async function getLivePageState(
     // sends (the four named types below are legacy pre-unification values kept
     // for old draft rows). Without this case, main-page drafts were created
     // with base_version NULL — silently skipping the DP-2 staleness guard.
+    // Brief 220: the Homepage 2026 record's live template is fixed — every version of it must carry
+    // the same stamp (DP-4 then refuses anything else).
+    case HOME_2026_PAGE_TYPE:
+      res = await pool.query(`SELECT version, '${HOME_2026_TEMPLATE}'::text AS template_type FROM main_pages WHERE slug = $1`, [pageSlug]);
+      break;
     case 'main':
     case CITY_HUB_SHARED_PAGE_TYPE:
     case 'financing':
@@ -156,6 +162,26 @@ function sanitizeVersionContent(pageType: string, content: unknown): unknown {
   return { ...c, v2: sanitizeArticleV2Content(c.v2) };
 }
 
+/**
+ * Brief 220 — Homepage 2026 content lives only in Homepage 2026 versions (page_type 'home-2026',
+ * slug 'home-2026'), and those versions hold only Homepage 2026 content. Any other combination — a
+ * Classic payload sent to the 2026 record, 2026 content sent to the Classic 'home' page or anywhere
+ * else, a 'main' version of the slug 'home-2026' — is refused (422) before anything is written.
+ */
+function assertHome2026Placement(pageType: string, pageSlug: string, content: unknown): void {
+  const is2026Target = pageType === HOME_2026_PAGE_TYPE;
+  if (is2026Target && pageSlug !== HOME_2026_SLUG) throw new ValidationError('Homepage 2026 versions belong to the Homepage 2026 record only.');
+  if (!is2026Target && pageSlug === HOME_2026_SLUG) throw new ValidationError('The Homepage 2026 record is edited in the Homepage 2026 editor only.');
+  if (content === undefined || content === null) return;
+  if (is2026Target !== isHome2026Content(content)) {
+    throw new ValidationError(
+      is2026Target
+        ? 'This content is not Homepage 2026 content, so it can’t be saved to Homepage 2026.'
+        : 'Homepage 2026 content can only be saved to the Homepage 2026 record.'
+    );
+  }
+}
+
 export async function createDraft({
   pageType,
   pageSlug,
@@ -180,6 +206,10 @@ export async function createDraft({
   content = await prepareCityHubVersionContent(pageType, pageSlug, content);
   content = await prepareCityServiceV2VersionContent(pageType, pageSlug, content);
   templateType = cityHubTemplateFor(content) ?? (isCityServiceV2DraftContent(content) ? CITY_SERVICE_V2_TEMPLATE : templateType);
+  // Brief 220: Homepage 2026 content goes ONLY into a Homepage 2026 version (stamped), and nothing
+  // else does — so Classic content can never open in the 2026 editor, or the reverse.
+  assertHome2026Placement(pageType, pageSlug, content);
+  if (pageType === HOME_2026_PAGE_TYPE) templateType = HOME_2026_TEMPLATE;
 
   // Brief 75 (DP-2): snapshot the live row's current version so publishDraft can
   // later detect that the live page changed after this draft was captured.
@@ -357,6 +387,9 @@ export async function publishDraft(
     article: (slug, content, by) =>
       updateArticleCmsContent(slug, content as Parameters<typeof updateArticleCmsContent>[1], by),
     main:               mainPageWriter,
+    // Brief 220: the Homepage 2026 record (main_pages row 'home-2026') — the shared main-page writer,
+    // which runs sanitizeHome2026Content for this slug.
+    [HOME_2026_PAGE_TYPE]: mainPageWriter,
     financing:          mainPageWriter,
     'customer-stories': mainPageWriter,
     'help-and-support': mainPageWriter,
@@ -371,6 +404,12 @@ export async function publishDraft(
   // plus the publish-only checks (no placeholder, no empty required field — 422).
   await assertCityHubPublishable(draft.page_type, draft.page_slug, draft.content);
   await assertCityServiceV2Publishable(draft.page_type, draft.page_slug, draft.content);
+  // Brief 220: a Homepage 2026 version publishes only onto the Homepage 2026 record, and only when it
+  // carries the stamp; Classic ('main'/'home') versions never reach that record.
+  assertHome2026Placement(draft.page_type, draft.page_slug, draft.content);
+  if (draft.page_type === HOME_2026_PAGE_TYPE && draft.template_type !== HOME_2026_TEMPLATE) {
+    throw new ConflictError('This version was not made in the Homepage 2026 editor, so it can’t be published to Homepage 2026.');
+  }
   const hubVersion = isCityHubDraftContent(draft.content);
   const writer = isSewerV2DraftContent(draft.content)
     ? (slug: string, content: unknown, by: number) => writeSewerV2Live(draft.page_type, slug, content, by)
@@ -581,6 +620,11 @@ export async function updateDraftContent(
       await assertCityHubVersionWritable(pt, ps, tt);
       await assertCityServiceV2VersionWritable(pt, ps, tt);
       const incoming = cityHubTemplateFor(content) ?? (isCityServiceV2DraftContent(content) ? CITY_SERVICE_V2_TEMPLATE : null);
+      // Brief 220: a Homepage 2026 version takes only Homepage 2026 content, and the reverse.
+      assertHome2026Placement(pt, ps, content);
+      if ((tt === HOME_2026_TEMPLATE) !== (pt === HOME_2026_PAGE_TYPE)) {
+        throw new ValidationError('This version belongs to the other homepage and can’t be edited here.');
+      }
       const v2Stamps = ['city-hub', 'city-hub-shared', CITY_SERVICE_V2_TEMPLATE];
       if ((incoming || (tt && v2Stamps.includes(tt))) && incoming !== tt) {
         throw new ValidationError('This content can’t be saved into this version — save it as a new version instead.');

@@ -15,6 +15,8 @@ import { getCanonicalOverridesCached } from '@/lib/cms/canonical-overrides';
 import { isReviewPath } from '@/lib/review-route';
 import { cityTemplateForPath } from '@/lib/cms/city-template-route';
 import { BRAND_SUFFIX, CANONICAL_BASE, TITLE_TEMPLATE, canonicalUrlFor, normalizePath } from '@/lib/seo';
+import DeferredEmbedScripts from '@/components/home/DeferredEmbedScripts';
+import { homeRecordForRequest } from '@/lib/cms/homepage-switch';
 
 // Industry — the J. Blanton brand display font, self-hosted from public/fonts/Industry/.
 // Medium (500) → H3 subheadings, Demi (600) → nav/labels, Bold (700) → H1/H2,
@@ -104,6 +106,11 @@ export default async function RootLayout({
   const pathname = headers().get('x-pathname');
   const officeGraphOff =
     pathname === '/' || (await cityTemplateForPath(pathname)) ? { officeGraphOffPath: pathname as string } : {};
+  // Brief 220: Homepage 2026 loads NO Elfsight code (Marketing D2) and has no TikTok section, so when
+  // `/` renders it the two sitewide embed scripts below are swapped for DeferredEmbedScripts, which
+  // loads them only once the visitor navigates on to another page. Every other request — including
+  // `/` on the Classic homepage — renders exactly the two <Script> elements it always did.
+  const embedsDeferred = pathname === '/' && (await homeRecordForRequest()).record === 'home-2026';
 
   return (
     <html lang="en" className={`${industry.variable} ${nunito.variable}`}>
@@ -129,9 +136,9 @@ export default async function RootLayout({
           })();
         `}</Script>
         {/* Elfsight platform (Google Reviews / TikTok / Locations Map widgets) */}
-        <Script src="https://static.elfsight.com/platform/platform.js" strategy="lazyOnload" />
+        {embedsDeferred ? <DeferredEmbedScripts /> : <Script src="https://static.elfsight.com/platform/platform.js" strategy="lazyOnload" />}
         {/* TikTok embed */}
-        <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />
+        {embedsDeferred ? null : <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />}
         {/* Brief 169: the site's "Schedule a Service" popup. One mount owns every
             `.schedule-popup` trigger on the site through a delegated click
             listener, and embeds Mainline's own /schedule-service form. The iframe
