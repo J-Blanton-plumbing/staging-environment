@@ -1,17 +1,18 @@
 import type { Metadata } from 'next';
-import SubServicePageView from '@/components/SubServicePageView';
-import { getSubServiceMeta } from '@/lib/cms/sub-service-pages';
+import { WhServiceRoute, whServiceMetadata } from '@/components/water-heater-v2/WhRoutes';
 
-// Force SSR so DB edits and drafts are reflected immediately.
+/**
+ * Brief 222 — `/tankless-water-heater`: a Water Heater Cluster v1 service page (WH Service Page, Index). Content
+ * comes from this page's `sub_service_pages` row (`v2_content`) via WhRoutes, with the code module
+ * src/lib/content/water-heater-v2/tankless-water-heater.ts as the fallback; edited in /admin/sub-service/tankless-water-heater.
+ */
+
 export const dynamic = 'force-dynamic';
 
-const SLUG = 'tankless-water-heater';
-
-export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getSubServiceMeta(SLUG);
-  return meta ? { title: meta.title, description: meta.description } : {};
+export function generateMetadata(): Promise<Metadata> {
+  return whServiceMetadata('tankless-water-heater');
 }
 
 export default function Page() {
-  return <SubServicePageView slug={SLUG} />;
+  return <WhServiceRoute slug="tankless-water-heater" />;
 }

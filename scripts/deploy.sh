@@ -1003,6 +1003,19 @@ node scripts/check-sewer-v2-live.mjs --snapshot --base=http://localhost:3000 --o
 #    page is reported, exit 0. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-sewer-v2-content.ts commit
+# -- Brief 222: the Water Heater Cluster v1 (hub + 5 service pages) on the CMS --
+# Copy src/lib/content/water-heater-v2 into v2_content (+ meta columns) for the
+# 6 pages and the water-heater-shared sections, write-once per page ("already
+# seeded, no change" once a row holds v2 content - never overwrites a Marketing
+# edit). Existing rows (hub, tankless, commercial) are archived first as the
+# unpublished version "Pre-v2 archive (2026-10)"; the 3 rows that never existed
+# (water-heater-repair/-installation/-maintenance) are created WITHOUT touching
+# status, and every version is published through publishDraft. MUST stay before
+# the build swap: the new code 404s an unpublished row and the sitemap lists
+# these pages by published row. The old build ignores v2_content. Exit 1 only
+# when a write it attempted did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-water-heater-v2-content.ts commit
 # -- Brief 212 (Tracks A/B): City Hubs + City Service Pages V2 move onto the CMS --
 # 1. Snapshot what the STILL-LIVE build serves for the 10 city hubs + their
 #    290 service pages (src/lib/city-batches.ts), BEFORE the seeds below write,
@@ -1204,6 +1217,13 @@ pm2 startOrRestart ecosystem.config.js --update-env
 # pre-rotation snapshot comes back on the next reboot.
 pm2 save
 rm -rf .next-prev
+# Brief 222 (Track D3): /residential-water-heater now 301s to the hub, so its
+# sub_service_pages row is unpublished ONCE (kept, not deleted; a later
+# re-publish in /admin is never undone - changelog marker). POST-swap on
+# purpose: before the swap the old build still served that URL from the row.
+# Exit 1 only when the unpublish it attempted did not land.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-water-heater-v2-content.ts commit --retire-residential
 # Brief 218 (Track A): the homepage's locked SEO title + meta description into
 # the `main_pages` row `home` (the Brief 149 backfill stored the OLD copy there,
 # and a non-blank CMS field beats the page's STATIC_META). POST-swap on

@@ -6,6 +6,7 @@ import pool from '@/lib/db';
 import { writeChangelog } from '@/lib/cms/changelog';
 import { errorCode } from '@/lib/cms/errors';
 import { OLD_SHAPE_MESSAGE, SEWER_V2_HUB_SLUG } from '@/lib/sewer-v2-cms/model';
+import { WH_OLD_SHAPE_MESSAGE, WH_V2_HUB_SLUG } from '@/lib/water-heater-v2-cms/model';
 
 export async function GET(
   req: NextRequest,
@@ -44,6 +45,10 @@ export async function PUT(
     // tab of the old category editor is refused.
     if (params.slug === SEWER_V2_HUB_SLUG) {
       return NextResponse.json({ error: OLD_SHAPE_MESSAGE }, { status: 409 });
+    }
+    // Brief 222: the same for the Water Heater hub (/admin/water-heater edits versions only).
+    if (params.slug === WH_V2_HUB_SLUG) {
+      return NextResponse.json({ error: WH_OLD_SHAPE_MESSAGE }, { status: 409 });
     }
 
     // Reject payloads missing required string fields or with wrong types for required fields

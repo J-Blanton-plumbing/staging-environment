@@ -28,6 +28,13 @@ export const CITY_PAGE_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'FA
  */
 export const HOMEPAGE_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'AggregateRating');
 
+/**
+ * Brief 222 (Marketing 2026-10-28): the 6 water heater pages emit one FAQPage generated from their visible
+ * FAQ, and the company `Organization` node carries Brief 221's `aggregateRating` (the rating card on those
+ * pages shows exactly those numbers). Review / SearchAction stay forbidden there too.
+ */
+export const WATER_HEATER_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'FAQPage' && t !== 'Question' && t !== 'Answer' && t !== 'AggregateRating');
+
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 
 /** Every JSON-LD script body in an HTML document, in order. */

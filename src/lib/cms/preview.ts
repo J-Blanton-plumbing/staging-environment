@@ -13,6 +13,7 @@ import type { CityServiceCmsContent } from '@/lib/cms/city-service-pages';
 import { subServiceToServiceContent, normalizeBlockOrder, normalizeBlocks, blocksToFields } from '@/lib/cms/sub-service-pages';
 import type { ServiceContent } from '@/types/service';
 import { isSewerV2DraftContent, type SewerV2DraftContent } from '@/lib/sewer-v2-cms/model';
+import { isWhV2DraftContent, type WhV2DraftContent } from '@/lib/water-heater-v2-cms/model';
 import {
   CITY_HUB_SHARED_PAGE_TYPE,
   CITY_HUB_SHARED_SLUG,
@@ -310,6 +311,22 @@ export async function getSewerV2Preview(
   const draft = await getDraft(id).catch(() => null);
   if (!draft || draft.page_type !== pageType || draft.page_slug !== slug) return null;
   if (!isSewerV2DraftContent(draft.content)) return null;
+  return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
+}
+
+/**
+ * Brief 222 — preview for the 6 water heater pages: the draft named by the preview cookie, when it is a
+ * water heater v2 version of THIS page. An old-shaped version is never previewed on these pages.
+ */
+export async function getWaterHeaterV2Preview(
+  pageType: 'service' | 'sub-service',
+  slug: string
+): Promise<{ content: WhV2DraftContent; meta: PreviewMeta } | null> {
+  const id = await authorizedPreviewId();
+  if (id === null) return null;
+  const draft = await getDraft(id).catch(() => null);
+  if (!draft || draft.page_type !== pageType || draft.page_slug !== slug) return null;
+  if (!isWhV2DraftContent(draft.content)) return null;
   return { content: draft.content, meta: { id, label: draft.label, creator_name: draft.creator_name } };
 }
 

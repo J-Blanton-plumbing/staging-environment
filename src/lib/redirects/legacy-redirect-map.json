@@ -5731,7 +5731,7 @@
   },
   {
     "from": "/faq/how-can-i-improve-the-energy-efficiency-of-my-residential-water-heater-to-save-on-utility-costs",
-    "to": "/residential-water-heater",
+    "to": "/services/water-heater",
     "status": 301,
     "bucket": "faq"
   },
@@ -5881,7 +5881,7 @@
   },
   {
     "from": "/faq/how-can-i-troubleshoot-a-potential-leak-in-my-residential-water-heater-and-prevent-water-damage-in-my-home",
-    "to": "/residential-water-heater",
+    "to": "/services/water-heater",
     "status": 301,
     "bucket": "faq"
   },
@@ -6151,7 +6151,7 @@
   },
   {
     "from": "/faq/what-are-some-common-reasons-why-my-residential-water-heater-may-be-producing-lukewarm-water-instead-of-hot-water",
-    "to": "/residential-water-heater",
+    "to": "/services/water-heater",
     "status": 301,
     "bucket": "faq"
   },
@@ -6229,7 +6229,7 @@
   },
   {
     "from": "/faq/what-are-some-maintenance-tips-to-prolong-the-lifespan-of-my-residential-water-heater-and-prevent-breakdowns",
-    "to": "/residential-water-heater",
+    "to": "/services/water-heater",
     "status": 301,
     "bucket": "faq"
   },
@@ -6565,7 +6565,7 @@
   },
   {
     "from": "/faq/what-are-the-signs-that-indicate-my-residential-water-heater-needs-to-be-replaced",
-    "to": "/residential-water-heater",
+    "to": "/services/water-heater",
     "status": 301,
     "bucket": "faq"
   },
@@ -7014,8 +7014,20 @@
     "bucket": "misc"
   },
   {
+    "from": "/residential-water-heater",
+    "to": "/services/water-heater",
+    "status": 301,
+    "bucket": "misc"
+  },
+  {
     "from": "/residential-water-heater-service",
-    "to": "/residential-water-heater",
+    "to": "/services/water-heater",
+    "status": 301,
+    "bucket": "misc"
+  },
+  {
+    "from": "/restaurant-water-heater",
+    "to": "/commercial-water-heater",
     "status": 301,
     "bucket": "misc"
   },
@@ -7224,25 +7236,7 @@
     "bucket": "misc"
   },
   {
-    "from": "/water-heater-installation",
-    "to": "/services/water-heater",
-    "status": 301,
-    "bucket": "misc"
-  },
-  {
     "from": "/water-heater-installation-service",
-    "to": "/services/water-heater",
-    "status": 301,
-    "bucket": "misc"
-  },
-  {
-    "from": "/water-heater-maintenance",
-    "to": "/services/water-heater",
-    "status": 301,
-    "bucket": "misc"
-  },
-  {
-    "from": "/water-heater-repair",
     "to": "/services/water-heater",
     "status": 301,
     "bucket": "misc"

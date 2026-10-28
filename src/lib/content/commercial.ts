@@ -71,7 +71,7 @@ export const COMMERCIAL: CommercialContent = {
       },
       {
         label: 'Restaurant Water Heater',
-        href: '/restaurant-water-heater',
+        href: '/commercial-water-heater', // Brief 222: /restaurant-water-heater 301s here (its "Restaurant Water Heaters" section)
         image: `${CDN}/commercial-water-heater.webp`,
         desc: '',
       },

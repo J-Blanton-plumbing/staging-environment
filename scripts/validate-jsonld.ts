@@ -271,6 +271,60 @@ const literalHub: CityHubStored = { ...baseHub, reviews: { ...baseHub.reviews, r
 expect(applyHubRatings(literalHub, rctx).aggregateRating === null && applyHubRatings(literalHub, rctx).hub === literalHub, 'stale literal copy → no aggregateRating, the hub object untouched');
 expect(applyHubRatings(tokenHub, none).aggregateRating === null, 'no row → no aggregateRating');
 
+// Brief 222 — the 6 water heater pages: one @graph each (company Organization [+ aggregateRating only when
+// shown], WebPage, [WebSite on the hub], BreadcrumbList, Service, FAQPage), checked with the water heater
+// allowance; FAQPage = the visible FAQ; every hasOfferCatalog anchor is a section id of the page; no rating
+// literal from the package (4.7 / 5,669) anywhere unless it is the synced figure.
+{
+  const { WH_HUB } = require('../src/lib/content/water-heater-v2/hub') as typeof import('../src/lib/content/water-heater-v2/hub');
+  const { WH_PAGES } = require('../src/lib/water-heater-v2-cms/code-defaults') as typeof import('../src/lib/water-heater-v2-cms/code-defaults');
+  const { WH_SHARED_DEFAULT } = require('../src/lib/content/water-heater-v2/shared-content') as typeof import('../src/lib/content/water-heater-v2/shared-content');
+  const { waterHeaterJsonLd } = require('../src/lib/schema/water-heater') as typeof import('../src/lib/schema/water-heater');
+  const { WATER_HEATER_FORBIDDEN_TYPES } = require('../src/lib/schema/jsonld-assert') as typeof import('../src/lib/schema/jsonld-assert');
+  const pagesWh = [WH_HUB, ...Object.values(WH_PAGES)];
+  const spokePaths = Object.keys(WH_PAGES).map((s) => `/${s}`);
+  const idsIn = (n: unknown, out = new Set<string>()): Set<string> => {
+    if (Array.isArray(n)) n.forEach((x) => idsIn(x, out));
+    else if (n && typeof n === 'object') {
+      const o = n as Record<string, unknown>;
+      const attrs = o.attrs as Record<string, unknown> | undefined;
+      if (typeof attrs?.id === 'string') out.add(attrs.id);
+      Object.values(o).forEach((x) => idsIn(x, out));
+    }
+    return out;
+  };
+  for (const pg of pagesWh) {
+    const hub = pg.template === 'wh-hub';
+    const path = hub ? '/services/water-heater' : `/${pg.slug}`;
+    const faq = pg.sections.find((s) => s.kind === 'faq');
+    const faqs = faq && faq.kind === 'faq' ? faq.items : [];
+    for (const rating of [null, aggregateRatingJsonLd({ ratingValue: 4.73, reviewCount: 10931 })]) {
+      const g = waterHeaterJsonLd({
+        path, hub, title: `${pg.meta.title} | J. Blanton Plumbing`, description: pg.meta.description, crumb: pg.hero.crumb,
+        crumbParent: WH_SHARED_DEFAULT.crumbParent, service: pg.service, spokePaths, faqs, phoneDisplay: '773-724-9272', aggregateRating: rating,
+      });
+      const raw = JSON.stringify(g);
+      const r = checkJsonLd([raw], WATER_HEATER_FORBIDDEN_TYPES);
+      for (const e of r.errors) fail.push(`water heater ${path}: ${e}`);
+      for (const e of aggregateRatingProblems([raw], ['Organization'])) fail.push(`water heater ${path}: ${e}`);
+      const types = g['@graph'].map((n) => n['@type']).join(',');
+      const want = `Organization,WebPage,${hub ? 'WebSite,' : ''}BreadcrumbList,Service,FAQPage`;
+      expect(types === want, `water heater ${path}: node list ${types} ≠ ${want}`);
+      const faqNode = g['@graph'].find((n) => n['@type'] === 'FAQPage') as { mainEntity: unknown[] };
+      expect(faqNode.mainEntity.length === faqs.length && faqs.length === 6, `water heater ${path}: FAQPage has ${faqNode.mainEntity.length} questions, the page shows ${faqs.length} (6 expected)`);
+      expect(!rating ? !/aggregateRating|"4\.7"|5,?669/.test(raw) : !/5,?669/.test(raw), `water heater ${path}: a rating literal or an unshown aggregateRating in the graph`);
+      expect(!/"Plumber"|"Review"|"price"/.test(raw), `water heater ${path}: Plumber / Review / price must not be emitted`);
+    }
+    const ids = idsIn(pg.sections);
+    for (const it of pg.service.catalog?.items ?? []) {
+      const hash = it.url.split('#')[1];
+      if (hash) expect(ids.has(hash), `water heater ${path}: catalog anchor #${hash} is not a section id on the page`);
+    }
+  }
+  expect(checkJsonLd([JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage' })], WATER_HEATER_FORBIDDEN_TYPES).errors.length === 0, 'the water heater allowance permits FAQPage');
+  expect(checkJsonLd([JSON.stringify({ '@context': 'https://schema.org', '@type': 'Review' })], WATER_HEATER_FORBIDDEN_TYPES).errors.length > 0, 'the water heater allowance still forbids Review');
+}
+
 if (fail.length) {
   console.error(`\n[validate-jsonld] FAILED — ${fail.length} problem(s):\n  - ${fail.join('\n  - ')}\n`);
   process.exit(1);

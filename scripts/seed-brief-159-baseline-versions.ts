@@ -36,6 +36,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { Pool, PoolClient } from 'pg';
 import { announceMode, resolveRunMode, verdict } from './lib/run-mode';
+import { WH_V2_HUB_SLUG, WH_V2_SERVICE_SLUGS } from '../src/lib/water-heater-v2-cms/model';
 import {
   SUB_SERVICE_BLOCK_ORDER,
   assembleBlocks,
@@ -403,6 +404,10 @@ async function seedPageType(client: PoolClient, spec: PageTypeSpec, authorId: nu
   } else if (spec.pageType === 'main') {
     sewerV2Rows.add('city-hubs');
   }
+  // Brief 222: the 6 water heater pages always belong to the water heater seed and editor — skipped even
+  // before their row holds `v2_content` (this step runs before seed-water-heater-v2-content on a deploy).
+  if (spec.pageType === 'sub-service') for (const s of WH_V2_SERVICE_SLUGS) sewerV2Rows.add(s);
+  else if (spec.pageType === 'service') sewerV2Rows.add(WH_V2_HUB_SLUG);
 
   const bySlug = new Map<string, typeof drafts>();
   for (const d of drafts) {

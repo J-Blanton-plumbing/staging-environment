@@ -16,6 +16,8 @@ import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 import SewerV2Editor from '@/components/admin/sewer-v2/SewerV2Editor';
 import { SEWER_V2_HUB_SLUG } from '@/lib/sewer-v2-cms/model';
+import WaterHeaterV2Editor from '@/components/admin/water-heater-v2/WaterHeaterV2Editor';
+import { WH_V2_HUB_SLUG } from '@/lib/water-heater-v2-cms/model';
 
 interface SubcategoryField {
   label: string;
@@ -88,11 +90,13 @@ const PAGE_LABELS: Record<string, string> = {
 
 /**
  * Brief 204: `/admin/sewer` is the Sewer v2 hub editor (+ the sections shared by all 10 sewer pages).
- * Every other category keeps this file's editor, unchanged.
+ * Brief 222: `/admin/water-heater` is the Water Heater hub editor (+ the sections shared by all 6
+ * water heater pages). Every other category keeps this file's editor, unchanged.
  */
 export default function AdminServicePageDispatch() {
   const params = useParams();
   const slug = typeof params.slug === 'string' ? params.slug : '';
+  if (slug === WH_V2_HUB_SLUG) return <WaterHeaterV2Editor slug={slug} />;
   return slug === SEWER_V2_HUB_SLUG ? <SewerV2Editor kind="hub" slug={slug} /> : <AdminServicePage />;
 }
 

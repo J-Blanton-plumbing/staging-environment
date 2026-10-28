@@ -153,7 +153,9 @@ export function isInlineOnly(nodes: readonly SewerNode[] | undefined): boolean {
     (n) =>
       typeof n === 'string' ||
       'phoneNumber' in n ||
-      ('phone' in n && (n.phone.kids ?? []).every((k) => typeof k === 'string')) ||
+      // Brief 222: a phone link may also show the number itself (`<a href=tel>{{phone}}</a>` — the water
+      // heater FAQs). No sewer rich field holds that shape, so their classification is unchanged.
+      ('phone' in n && (n.phone.kids ?? []).every((k) => typeof k === 'string' || (typeof k === 'object' && 'phoneNumber' in k))) ||
       ('tag' in n && INLINE_TAGS.has(n.tag) && isInlineOnly((n as SewerElement).kids))
   );
 }

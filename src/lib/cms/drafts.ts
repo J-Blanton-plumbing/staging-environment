@@ -18,6 +18,8 @@ import {
 import { clearSitemapCache } from '@/lib/sitemap/render';
 import { assertSewerV2Publishable, assertSewerV2VersionWritable, prepareSewerV2VersionContent, writeSewerV2Live } from '@/lib/cms/sewer-v2-write';
 import { isSewerV2DraftContent, SEWER_V2_TEMPLATE } from '@/lib/sewer-v2-cms/model';
+import { assertWhPublishable, assertWhVersionWritable, prepareWhVersionContent, writeWhLive } from '@/lib/cms/water-heater-v2-write';
+import { isWhV2DraftContent, whTemplateOf } from '@/lib/water-heater-v2-cms/model';
 import {
   assertCityHubPublishable,
   assertCityHubVersionWritable,
@@ -201,6 +203,9 @@ export async function createDraft({
   // and v2 content is accepted nowhere else. Every other page type passes through unchanged.
   content = prepareSewerV2VersionContent(pageType, pageSlug, content);
   if (isSewerV2DraftContent(content)) templateType = SEWER_V2_TEMPLATE;
+  // Brief 222: the same rule for the 6 water heater pages, stamped with their template version.
+  content = prepareWhVersionContent(pageType, pageSlug, content);
+  if (isWhV2DraftContent(content)) templateType = whTemplateOf(content);
   // Brief 212: City Hub / shared-record / City Service V2 versions are sanitised + layout-locked the
   // same way (422 on anything an editor must fix), and stamped with their template.
   content = await prepareCityHubVersionContent(pageType, pageSlug, content);
@@ -400,6 +405,7 @@ export async function publishDraft(
   // one of the 10 Sewer v2 pages, and v2 content never onto any other page — refused HERE, before
   // any writer runs, so the admin button, the preview banner and a stale tab are all covered.
   assertSewerV2Publishable(draft.page_type, draft.page_slug, draft.content);
+  assertWhPublishable(draft.page_type, draft.page_slug, draft.content);
   // Brief 212: the same guard for City Hub rows, the shared City Hub record and City Service V2 rows,
   // plus the publish-only checks (no placeholder, no empty required field — 422).
   await assertCityHubPublishable(draft.page_type, draft.page_slug, draft.content);
@@ -413,6 +419,8 @@ export async function publishDraft(
   const hubVersion = isCityHubDraftContent(draft.content);
   const writer = isSewerV2DraftContent(draft.content)
     ? (slug: string, content: unknown, by: number) => writeSewerV2Live(draft.page_type, slug, content, by)
+    : isWhV2DraftContent(draft.content)
+      ? (slug: string, content: unknown, by: number) => writeWhLive(draft.page_type, slug, content, by)
     : hubVersion
       ? (slug: string, content: unknown, by: number) => writeCityHubLive(slug, content, by)
       : isCityHubSharedDraftContent(draft.content)
@@ -613,6 +621,9 @@ export async function updateDraftContent(
         content = sanitizeVersionContent(t.rows[0].page_type, content);
       }
       content = prepareSewerV2VersionContent(t.rows[0].page_type, t.rows[0].page_slug, content);
+      // Brief 222: the same for the water heater pages (old-shaped versions are read-only there).
+      assertWhVersionWritable(t.rows[0].page_type, t.rows[0].page_slug, t.rows[0].template_type);
+      content = prepareWhVersionContent(t.rows[0].page_type, t.rows[0].page_slug, content);
       // Brief 212: City Hub / shared-record / City Service V2 content is only ever written into a
       // version stamped with that template (anything else is saved as a NEW version), and an
       // old-shaped version of a City Hub or V2 row is read-only.

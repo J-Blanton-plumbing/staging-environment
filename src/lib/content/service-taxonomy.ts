@@ -181,6 +181,12 @@ export function hubSlugFor(serviceSlug: string): string {
  * Brief 204: they read their `sub_service_pages` rows again (code module as fallback when there is
  * no row; an unpublished row 404s), so the sitemap lists them by the published-row rule like every
  * other slug here. The deploy seed gives all nine a published row before the build swap.
+ *
+ * Brief 222: the Water Heater Cluster v1 adds water-heater-repair / -installation / -maintenance
+ * (new routes, same render gate as the sewer pages; the deploy seed gives them a published row) and
+ * retires residential-water-heater and restaurant-water-heater: both now 301 (to the hub and to
+ * /commercial-water-heater), so the services menu falls back to the category hub for them and the
+ * sitemap no longer lists them. `/{city}/residential-water-heater` city pages are unaffected.
  */
 export const SUB_SERVICE_ROUTES = [
   'basement-flooding',
@@ -197,10 +203,8 @@ export const SUB_SERVICE_ROUTES = [
   'kitchen-sink-drain',
   'laundry-room-plumbing',
   'overhead-sewer-systems',
-  'residential-water-heater',
   'restaurant-drain-clearing',
   'restaurant-plumbing-services',
-  'restaurant-water-heater',
   'sewer-camera-inspection',
   'sewer-line-installation',
   'sewer-line-replacement',
@@ -210,6 +214,9 @@ export const SUB_SERVICE_ROUTES = [
   'tankless-water-heater',
   'trenchless-sewer-repair',
   'water-filtration-systems',
+  'water-heater-installation',
+  'water-heater-maintenance',
+  'water-heater-repair',
 ] as const;
 
 const SUB_SERVICE_ROUTE_SET: ReadonlySet<string> = new Set<string>(SUB_SERVICE_ROUTES);

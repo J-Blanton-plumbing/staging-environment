@@ -539,6 +539,22 @@ jobs:
             node scripts/check-sewer-v2-live.mjs --compare --base=http://localhost:3000 --snapshot-dir=.sewer-v2-snapshot
             echo '======================================================='
 
+            # -- Brief 222: WATER HEATER V2 LIVE CHECK ------------------------------
+            # The 6 water heater pages: 200 from their CMS row, in the sitemap once, one
+            # H1, self canonical, one JSON-LD @graph (rating card = company
+            # aggregateRating, FAQPage = visible FAQ, catalog anchors on the page), one
+            # tel target, every internal link 200 with no hop; the 2 retired URLs one
+            # 301 each. An unpublished page is editor state, not a failure (Brief 186).
+            echo ''
+            echo '================== WATER HEATER V2 LIVE CHECK =================='
+            LAST_CHECK="WATER HEATER V2 LIVE CHECK"
+            if [ ! -f scripts/check-water-heater-v2-live.mjs ]; then
+              echo "MISSING: $(pwd)/scripts/check-water-heater-v2-live.mjs does not exist."
+              exit 1
+            fi
+            node scripts/check-water-heater-v2-live.mjs --base=http://localhost:3000
+            echo '======================================================='
+
             # -- Brief 212: CITY PAGES LIVE CHECK ----------------------------------
             # The 18 city hubs + 522 service pages (src/lib/city-batches.ts): 200, a
             # row holding hub/V2 content is what serves (source APIs), listed in the

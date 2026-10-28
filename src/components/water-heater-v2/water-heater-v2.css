@@ -1,0 +1,335 @@
+/* =====================================================================
+   Water Heater Cluster v1 — scoped stylesheet (Brief 222)
+
+   The package's css/water-heater.css, ported mechanically by .scripts-out/b222/port-css.cjs. Every
+   selector is prefixed with #sewer-v2.wh-v2: the water heater pages render the Sewer v2 root (#sewer-v2, styled
+   by src/components/sewer-v2/sewer-v2.css — the package's base stylesheet) with one more class, so
+   these rules can never reach the 10 sewer pages, the Navbar or the Footer. Only the 6 water heater
+   routes import this file.
+   ===================================================================== */
+
+/* Hand-written: things the package did not need to say. */
+
+/* §1 #14 — every content image carries its intrinsic width/height (no layout shift). Images whose class
+   gives them a size keep it (any class rule outranks :where); the rest scale from the attributes. */
+#sewer-v2.wh-v2 :where(img[width][height]) { height: auto; }
+
+/* Text-less controls inherit the browser's black button text after the scoped reset; Midnight instead
+   (no visible change — the ported ≤700px rule still makes "Show N more" Cerulean). */
+#sewer-v2.wh-v2 .rj-thumb, #sewer-v2.wh-v2 .wh-more { color: var(--c-midnight); }
+
+/* The two tel: buttons the package styled inline (PhoneLink takes no style prop). */
+#sewer-v2.wh-v2 .wh-inline-cta > .btn-hero-cta { white-space: nowrap; }
+
+/* sewer-v2.css carries the SEWER package's trust stripe, which stacks the list as a column at ≤700px.
+   The water heater package never had that rule (its own stripe below is a row, then a 2-column grid at
+   ≤640px), so it is undone here between 641px and 700px. */
+@media (max-width: 700px) {
+  #sewer-v2.wh-v2 .trust-stripe-list { flex-direction: row; align-items: normal; gap: 12px 56px; }
+  #sewer-v2.wh-v2 .trust-stripe-list li { font-size: 15px; }
+}
+
+/* ---------- ported from water-heater.css ---------- */
+/* =====================================================================
+   water-heater.css
+   Water Heater Services hub (prototype). Loads AFTER style_v2_emil_skill.css.
+   Rule: no new colors, fonts, radii or motion values. Everything here is built
+   from the V2 tokens (--c-*, --r-*, --sp-*, --dur-*, --ease-out) so the page stays
+   inside the Sewer Ecosystem V2 design system. New components are prefixed .wh-
+   ===================================================================== */
+
+/* --- Hero: placeholder state (no photo yet). Navy + the hub gradient + wrench texture --- */
+#sewer-v2.wh-v2 .wh-hero-ph{position:absolute;inset:0;z-index:-2;background:var(--c-midnight);}
+#sewer-v2.wh-v2 .wh-hero-ph .hero-pattern{z-index:0;opacity:.07;}
+#sewer-v2.wh-v2 .wh-proto-tag{position:absolute;top:18px;right:clamp(22px,4vw,48px);z-index:2;padding:6px 12px;border:1.5px dashed rgba(249,243,236,.5);border-radius:var(--r-pill);font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:12px;color:rgba(249,243,236,.8);}
+
+/* --- Animated market name in the visible H1. Both names share one grid cell,
+   so the line keeps the width of the longest name and nothing reflows. --- */
+#sewer-v2.wh-v2 .wh-rot{display:inline-grid;vertical-align:top;}
+#sewer-v2.wh-v2 .wh-rot>span{grid-area:1/1;white-space:nowrap;transition:opacity var(--dur-base) var(--ease-out),transform 320ms var(--ease-out);}
+#sewer-v2.wh-v2 .wh-rot>span:not(.is-on){opacity:0;transform:translateY(.35em);}
+#sewer-v2.wh-v2 .wh-rot>span.is-out{opacity:0;transform:translateY(-.35em);}
+#sewer-v2.wh-v2 .wh-rot-accent{color:#F9F3EC;}
+
+/* --- Image placeholder that fills a slot (cards, tiles, splits) --- */
+#sewer-v2.wh-v2 .wh-ph{width:100%;font-size:13px;}
+#sewer-v2.wh-v2 .wh-ph-card{aspect-ratio:16/10;border-radius:var(--r-panel);}
+#sewer-v2.wh-v2 .wh-ph-tall{aspect-ratio:4/3;border-radius:var(--r-hero);}
+
+/* --- Services grid: 3 columns for 6 services --- */
+#sewer-v2.wh-v2 .wh-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;padding-top:0;border-top:0;}
+@media(max-width:1000px){#sewer-v2.wh-v2 .wh-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-grid{grid-template-columns:1fr;margin-top:32px;}}
+/* Emergency card: red, same as the "Emergency Service" card in the sewer cross-sell roster */
+#sewer-v2.wh-v2 .wh-card-emg{background:var(--c-carmine);border-radius:var(--r-panel);padding:24px;color:#F9F3EC;}
+#sewer-v2.wh-v2 .wh-card-emg .svc-title{color:#fff;}
+#sewer-v2.wh-v2 .wh-card-emg .svc-desc{color:#F9F3EC;}
+#sewer-v2.wh-v2 .wh-card-emg .svc-cta-onred{margin-top:auto;align-self:flex-start;}
+#sewer-v2.wh-v2 .wh-emg-icon{width:56px;height:56px;border-radius:50%;background:rgba(249,243,236,.14);display:flex;align-items:center;justify-content:center;}
+
+/* Trust bar sits under the services grid on this page (copy order), so it gets a divider instead of top padding */
+#sewer-v2.wh-v2 .wh-trust-sec{padding-top:0;padding-bottom:72px;}
+#sewer-v2.wh-v2 .wh-trust-sec .hub-trust{padding-top:48px;border-top:1px solid var(--c-sand-500);}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-trust-sec{padding-bottom:40px;}#sewer-v2.wh-v2 .wh-trust-sec .hub-trust{padding-top:32px;}}
+
+/* --- Problem ID: symptom list with a severity rail (mild at the top, serious at the bottom) --- */
+#sewer-v2.wh-v2 .wh-signs{background:#fff;border-radius:var(--r-hero);box-shadow:0 1px 3px rgba(10,27,46,.08);padding:clamp(20px,3vw,36px);}
+#sewer-v2.wh-v2 .wh-signs-head{display:grid;grid-template-columns:28px minmax(0,1fr) minmax(0,1.15fr);gap:0 24px;padding-bottom:14px;border-bottom:2px solid var(--c-sand-400);}
+#sewer-v2.wh-v2 .wh-signs-head span{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--c-midnight);}
+#sewer-v2.wh-v2 .wh-signs-list{list-style:none;margin:0;padding:0;position:relative;}
+#sewer-v2.wh-v2 .wh-sign{display:grid;grid-template-columns:28px minmax(0,1fr) minmax(0,1.15fr);gap:6px 24px;padding:20px 0;border-bottom:1px solid var(--c-sand-400);}
+#sewer-v2.wh-v2 .wh-sign:last-child{border-bottom:0;padding-bottom:0;}
+#sewer-v2.wh-v2 .wh-dot{width:14px;height:14px;border-radius:50%;margin-top:5px;background:var(--sev);box-shadow:0 0 0 4px color-mix(in srgb,var(--sev) 18%,transparent);}
+#sewer-v2.wh-v2 .wh-sign-q{margin:0;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:700;font-size:17px;line-height:1.45;color:var(--c-midnight);}
+#sewer-v2.wh-v2 .wh-sign-a{margin:0;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:16px;line-height:1.55;color:var(--c-slate);}
+#sewer-v2.wh-v2 .wh-sev-scale{display:flex;align-items:center;gap:10px;margin:0 0 18px;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--c-slate);}
+#sewer-v2.wh-v2 .wh-sev-bar{flex:1;height:6px;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--c-sand-500),var(--c-carmine) 70%,var(--c-rosewood));}
+#sewer-v2.wh-v2 .wh-alert{display:flex;gap:14px;align-items:flex-start;margin-top:24px;padding:18px 20px;background:var(--c-cream);border-left:4px solid var(--c-carmine);border-radius:0 var(--r-card) var(--r-card) 0;}
+#sewer-v2.wh-v2 .wh-alert svg{flex:none;margin-top:2px;color:var(--c-carmine);}
+#sewer-v2.wh-v2 .wh-alert p{margin:0;}
+#sewer-v2.wh-v2 .wh-sticky-media{margin-top:32px;}
+@media(max-width:760px){
+  #sewer-v2.wh-v2 .wh-signs-head{display:none;}
+  #sewer-v2.wh-v2 .wh-sign{grid-template-columns:22px minmax(0,1fr);}
+  #sewer-v2.wh-v2 .wh-sign-a{grid-column:2;}
+  #sewer-v2.wh-v2 .wh-sign-a::before{content:"Usually means: ";font-weight:700;color:var(--c-midnight);}
+}
+@media(max-width:1000px){#sewer-v2.wh-v2 .wh-sticky-media{display:none;}}
+
+/* --- Repair or replace: two equal decision cards --- */
+#sewer-v2.wh-v2 .wh-decide{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:48px;}
+#sewer-v2.wh-v2 .wh-dcard{background:#fff;border-radius:var(--r-hero);padding:clamp(24px,3vw,40px);box-shadow:0 1px 3px rgba(10,27,46,.08);border-top:4px solid var(--c-midnight);display:flex;flex-direction:column;}
+#sewer-v2.wh-v2 .wh-dcard--rep{border-top-color:var(--c-carmine);}
+#sewer-v2.wh-v2 .wh-dicon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--c-sand-200);color:var(--c-midnight);margin-bottom:20px;}
+#sewer-v2.wh-v2 .wh-dcard--rep .wh-dicon{color:var(--c-carmine);}
+#sewer-v2.wh-v2 .wh-dcard h3{margin:0 0 12px;}
+#sewer-v2.wh-v2 .wh-dcard .t-body-sm{color:var(--c-slate);}
+#sewer-v2.wh-v2 .wh-checks{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:12px;}
+#sewer-v2.wh-v2 .wh-checks li{display:flex;gap:12px;align-items:flex-start;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:17px;line-height:1.5;color:var(--c-midnight);}
+#sewer-v2.wh-v2 .wh-checks .ndc-check{background:var(--c-midnight);flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+#sewer-v2.wh-v2 .wh-dcard--rep .wh-checks .ndc-check{background:var(--c-carmine);}
+#sewer-v2.wh-v2 .wh-dcard-foot{margin-top:auto;padding-top:20px;border-top:1px solid var(--c-sand-400);}
+@media(max-width:900px){#sewer-v2.wh-v2 .wh-decide{grid-template-columns:1fr;}}
+
+/* --- Tank or tankless: reuses .hub-split + .hub-tile; label is bold text, not a heading --- */
+#sewer-v2.wh-v2 .wh-tile-copy .t-label{color:var(--c-carmine);margin:0 0 10px;display:block;}
+#sewer-v2.wh-v2 .wh-tile-copy .t-label a{color:inherit;text-decoration:underline;text-underline-offset:3px;}
+#sewer-v2.wh-v2 .wh-bullets{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;}
+#sewer-v2.wh-v2 .wh-bullets li{font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:16px;line-height:24px;color:var(--c-slate);}
+#sewer-v2.wh-v2 .wh-bullets li::marker{color:var(--c-carmine);}
+#sewer-v2.wh-v2 .wh-tile-ph{width:200px;height:200px;font-size:12px;}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-tile-ph{width:100%;height:auto;aspect-ratio:16/10;}}
+
+/* --- Why us: numbered reasons --- */
+#sewer-v2.wh-v2 .wh-why{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,5vw,72px);align-items:center;}
+#sewer-v2.wh-v2 .wh-reasons{list-style:none;margin:28px 0 32px;padding:0;display:flex;flex-direction:column;}
+#sewer-v2.wh-v2 .wh-reason{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:20px 0;border-top:1px solid var(--c-sand-500);}
+#sewer-v2.wh-v2 .wh-reason:last-child{border-bottom:1px solid var(--c-sand-500);}
+#sewer-v2.wh-v2 .wh-num{font-family:var(--font-nunito),'Nunito',sans-serif;font-weight:800;font-size:48px;line-height:.9;color:var(--c-carmine);font-variant-numeric:tabular-nums;}
+#sewer-v2.wh-v2 .wh-reason h3{margin:0 0 6px;}
+#sewer-v2.wh-v2 .wh-reason p{margin:0;}
+@media(max-width:1000px){#sewer-v2.wh-v2 .wh-why{grid-template-columns:1fr;}#sewer-v2.wh-v2 .wh-why>.wh-ph{order:2;}}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-reason{grid-template-columns:48px minmax(0,1fr);}#sewer-v2.wh-v2 .wh-num{font-size:38px;}}
+
+/* --- Business: compact routing band --- */
+#sewer-v2.wh-v2 .wh-biz{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(20px,4vw,56px);align-items:center;}
+#sewer-v2.wh-v2 .wh-biz-icon{width:72px;height:72px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--c-carmine);box-shadow:0 1px 3px rgba(10,27,46,.08);}
+#sewer-v2.wh-v2 .wh-biz .t-h2{font-size:clamp(24px,2.6vw,32px);}
+@media(max-width:900px){#sewer-v2.wh-v2 .wh-biz{grid-template-columns:1fr;}#sewer-v2.wh-v2 .wh-biz-icon{display:none;}#sewer-v2.wh-v2 .wh-biz .svc-cta{justify-self:start;}}
+
+/* --- Inline call CTA used under content sections --- */
+#sewer-v2.wh-v2 .wh-inline-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-inline-cta .btn{width:100%;}}
+
+@media(prefers-reduced-motion:reduce){#sewer-v2.wh-v2 .wh-rot>span{transition:none;}}
+
+/* Reviews head has no intro paragraph on this page, so the proof card needs its own gap above the quotes */
+#sewer-v2.wh-v2 #reviews .hub-rev-head{margin-bottom:40px;}
+#sewer-v2.wh-v2 #reviews .hub-rev-head h2{margin-bottom:0!important;}
+@media(max-width:1000px){#sewer-v2.wh-v2 #reviews .hub-rev-head{gap:24px;}}
+
+/* --- 2026-10-22 round 2 --- */
+/* Featured service placeholder (matches .hub-feat-img 3:2) */
+#sewer-v2.wh-v2 .wh-ph-feat{aspect-ratio:3/2;border-radius:var(--r-hero);font-size:14px;}
+#sewer-v2.wh-v2 .wh-grid{margin-top:64px;padding-top:56px;border-top:1px solid var(--c-sand-500);}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-grid{margin-top:48px;padding-top:40px;}}
+/* Emergency card spans two columns as a wide red band */
+#sewer-v2.wh-v2 .wh-card-emg{grid-column:span 2;flex-direction:row;align-items:center;gap:24px;padding:28px 32px;}
+#sewer-v2.wh-v2 .wh-card-emg .wh-emg-icon{flex:none;}
+#sewer-v2.wh-v2 .wh-emg-copy{flex:1;min-width:0;}
+#sewer-v2.wh-v2 .wh-card-emg .svc-cta-onred{margin-top:0;align-self:center;flex:none;}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-card-emg{grid-column:auto;flex-direction:column;align-items:flex-start;padding:24px;}#sewer-v2.wh-v2 .wh-card-emg .svc-cta-onred{align-self:flex-start;}}
+/* Inline call CTAs added under Problem ID and Repair or Replace */
+#sewer-v2.wh-v2 .wh-cta-gap{margin-top:28px;}
+#sewer-v2.wh-v2 .wh-cta-center{justify-content:center;margin-top:40px;}
+/* Paused headline rotator: no visual change, just stops */
+/* 4 standard cards on the hub's 4-column grid; Emergency becomes a full-width band under them */
+#sewer-v2.wh-v2 .wh-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+#sewer-v2.wh-v2 .wh-card-emg{grid-column:1/-1;}
+@media(max-width:1200px){#sewer-v2.wh-v2 .wh-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:640px){#sewer-v2.wh-v2 .wh-grid{grid-template-columns:1fr;}#sewer-v2.wh-v2 .wh-card-emg{grid-column:auto;}}
+
+/* --- Trust stripe (matches live jblantonplumbing.com/services/sewer .trust-stripe) --- */
+#sewer-v2.wh-v2 .trust-stripe{background:var(--c-carmine);padding:22px clamp(22px,4vw,48px);}
+#sewer-v2.wh-v2 .trust-stripe-list{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 56px;}
+#sewer-v2.wh-v2 .trust-stripe-list li{display:flex;align-items:center;gap:10px;color:var(--c-cream);font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:15px;line-height:1.3;letter-spacing:.06em;text-transform:uppercase;}
+#sewer-v2.wh-v2 .trust-stripe-list svg{width:20px;height:20px;flex-shrink:0;}
+@media(max-width:640px){#sewer-v2.wh-v2 .trust-stripe{padding:18px 22px;}#sewer-v2.wh-v2 .trust-stripe-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;justify-content:start;}#sewer-v2.wh-v2 .trust-stripe-list li{font-size:13px;align-items:flex-start;}#sewer-v2.wh-v2 .trust-stripe-list svg{width:18px;height:18px;}}
+
+/* --- Section photos (replacing placeholders) --- */
+#sewer-v2.wh-v2 .wh-media-img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-hero);}
+#sewer-v2.wh-v2 .wh-why-img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:var(--r-hero);}
+@media(max-width:1000px){#sewer-v2.wh-v2 .wh-why-img{aspect-ratio:4/3;object-position:50% 25%;}#sewer-v2.wh-v2 .wh-why>.wh-why-img{order:2;}}
+
+/* --- Motion pass (find-animation-opportunities, 2026-10-22) --- */
+/* 1. Mobile sticky call bar: hidden while the hero call button or the final CTA is on screen.
+   Enters and exits the same bottom edge. Overrides the shared on-load slide-up for this page only. */
+@media(max-width:1000px){
+  #sewer-v2.wh-v2.js .ss-sticky-cta{animation:none;transform:translateY(100%);visibility:hidden;transition:transform 200ms var(--ease-out),visibility 0s linear 200ms;}
+  #sewer-v2.wh-v2.js .ss-sticky-cta.is-shown{transform:none;visibility:visible;transition:transform 320ms var(--ease-drawer),visibility 0s;}
+}
+@media(max-width:1000px) and (prefers-reduced-motion:reduce){
+  #sewer-v2.wh-v2.js .ss-sticky-cta{transform:none;opacity:0;transition:opacity 150ms ease,visibility 0s linear 150ms;}
+  #sewer-v2.wh-v2.js .ss-sticky-cta.is-shown{opacity:1;transition:opacity 150ms ease,visibility 0s;}
+}
+/* 2. Mild-to-serious bar grows left to right once, then the dots fade in top to bottom */
+#sewer-v2.wh-v2.js .wh-sev-bar{transform:scaleX(0);transform-origin:left center;transition:transform 600ms var(--ease-out);}
+#sewer-v2.wh-v2.js .wh-signs.is-in .wh-sev-bar{transform:none;}
+#sewer-v2.wh-v2.js .wh-dot{opacity:0;transform:scale(.6);transition:opacity 220ms var(--ease-out),transform 220ms var(--ease-out);transition-delay:calc(500ms + var(--d,0) * 40ms);}
+#sewer-v2.wh-v2.js .wh-signs.is-in .wh-dot{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){#sewer-v2.wh-v2.js .wh-sev-bar,#sewer-v2.wh-v2.js .wh-dot{transition:none;transform:none;opacity:1;}}
+
+/* --- Spoke pages (Installation, Maintenance, Tankless, Commercial), 2026-10-28 ---
+   Built on the Sewer V2 sub-service layout (.ss-hero / .ss-shell / .ss-rail). Only the overrides below are new. */
+/* Comparison tables: row headers wrap (the sewer method table assumed short labels) */
+#sewer-v2.wh-v2 .wh-table{min-width:560px;}
+#sewer-v2.wh-v2 .wh-table tbody th{white-space:normal;width:30%;}
+#sewer-v2.wh-v2 .wh-table--2 tbody th{width:42%;}
+#sewer-v2.wh-v2 .wh-table-card{padding:clamp(18px,3vw,32px)!important;}
+@media(max-width:700px){#sewer-v2.wh-v2 .wh-table{min-width:0;}#sewer-v2.wh-v2 .wh-table tbody th{width:100%;}}
+/* Safety note inside a panel */
+#sewer-v2.wh-v2 .ss-panel .wh-alert{margin-top:24px;}
+
+/* --- Featured job review with photos (Reviews panel), 2026-10-28 ---
+   Mixes the live homepage "Real Jobs, Real Reviews" gallery with the spoke .ss-rev card.
+   First review gets photos; the rest stay text-only. Stacks when the panel is narrower than 680px. */
+#sewer-v2.wh-v2 .ss-revs{container-type:inline-size;}
+#sewer-v2.wh-v2 .ss-rev--job{padding:0;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);}
+#sewer-v2.wh-v2 .rj-gallery{padding:12px;background:var(--c-sand-50);border-right:1px solid var(--c-sand-400);}
+#sewer-v2.wh-v2 .rj-stage{position:relative;aspect-ratio:3/2;border-radius:8px;overflow:hidden;background:var(--c-sand-200);}
+#sewer-v2.wh-v2 .rj-main{display:block;width:100%;height:100%;object-fit:cover;transition:opacity 180ms var(--ease-out);}
+#sewer-v2.wh-v2 .rj-main.is-swapping{opacity:.35;}
+#sewer-v2.wh-v2 .rj-nav{position:absolute;top:50%;translate:0 -50%;width:40px;height:40px;border:0;border-radius:50%;padding:0;display:grid;place-items:center;background:rgba(249,243,236,.92);color:var(--c-midnight);box-shadow:0 2px 8px rgba(10,27,46,.2);cursor:pointer;transition:background 160ms var(--ease-out),transform 160ms var(--ease-out);}
+#sewer-v2.wh-v2 .rj-nav:hover{background:#fff;}
+#sewer-v2.wh-v2 .rj-nav:active{transform:scale(.92);}
+#sewer-v2.wh-v2 .rj-nav:focus-visible,#sewer-v2.wh-v2 .rj-thumb:focus-visible{outline:2px solid var(--c-cerulean);outline-offset:2px;}
+#sewer-v2.wh-v2 .rj-prev{left:10px;}
+#sewer-v2.wh-v2 .rj-next{right:10px;}
+#sewer-v2.wh-v2 .rj-count{position:absolute;left:10px;bottom:10px;padding:5px 9px;border-radius:6px;background:rgba(10,27,46,.8);color:#F9F3EC;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:1.2;}
+#sewer-v2.wh-v2 .rj-thumbs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:8px;}
+#sewer-v2.wh-v2 .rj-thumb{aspect-ratio:3/2;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;background:none;cursor:pointer;opacity:.62;transition:opacity 160ms var(--ease-out),border-color 160ms var(--ease-out);}
+#sewer-v2.wh-v2 .rj-thumb img{display:block;width:100%;height:100%;object-fit:cover;}
+#sewer-v2.wh-v2 .rj-thumb:hover{opacity:1;}
+#sewer-v2.wh-v2 .rj-thumb[aria-current="true"]{opacity:1;border-color:var(--c-carmine);}
+#sewer-v2.wh-v2 .rj-body{padding:20px 22px;display:flex;flex-direction:column;}
+#sewer-v2.wh-v2:not(.js) .rj-nav,#sewer-v2.wh-v2:not(.js) .rj-thumbs{display:none;}
+@container (max-width:680px){
+  #sewer-v2.wh-v2 .ss-rev--job{grid-template-columns:1fr;}
+  #sewer-v2.wh-v2 .rj-gallery{border-right:0;border-bottom:1px solid var(--c-sand-400);}
+  #sewer-v2.wh-v2 .rj-nav{width:36px;height:36px;}
+}
+@media(prefers-reduced-motion:reduce){#sewer-v2.wh-v2 .rj-main,#sewer-v2.wh-v2 .rj-nav,#sewer-v2.wh-v2 .rj-thumb{transition:none;}}
+/* Reviewer name linked to Google: keeps the navy label color, underline on hover */
+#sewer-v2.wh-v2 .ss-rev .review-author a{color:inherit;text-decoration:none;}
+#sewer-v2.wh-v2 .ss-rev .review-author a:hover{text-decoration:underline;text-underline-offset:3px;}
+#sewer-v2.wh-v2 .ss-rev .review-author a:focus-visible{outline:2px solid var(--c-cerulean);outline-offset:2px;border-radius:2px;}
+
+/* --- Multi-service spokes (Tankless, Commercial), 2026-10-28 ---
+   Rail = "On this page" index + trust stats, pinned. Emergency card shows below them only when the
+   screen is tall enough to fit all three (min-height:880px); the mobile sticky call bar covers small screens.
+   Financing lives in the content as a mid-page CTA (.ss-finp). TOC modeled on the Knowledge Hub article. */
+#sewer-v2.wh-v2 .ss-toc{background:#fff;border:1px solid var(--c-sand-400);border-radius:var(--r-panel);padding:18px 20px;}
+#sewer-v2.wh-v2 .ss-toc-sum{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer;}
+#sewer-v2.wh-v2 .ss-toc-sum::-webkit-details-marker{display:none;}
+#sewer-v2.wh-v2 .ss-toc-sum .t-eyebrow{font-size:13px;color:var(--c-slate);}
+#sewer-v2.wh-v2 .ss-toc-chev{color:var(--c-midnight);flex-shrink:0;transition:transform 200ms var(--ease-out);}
+#sewer-v2.wh-v2 .ss-toc[open] .ss-toc-chev{transform:rotate(180deg);}
+#sewer-v2.wh-v2 .ss-toc-list{list-style:none;margin:12px 0 0;padding:0;border-left:2px solid var(--c-sand-400);}
+#sewer-v2.wh-v2 .ss-toc-list a{display:block;margin-left:-2px;padding:6px 0 6px 14px;border-left:2px solid transparent;font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-size:15px;line-height:1.35;color:var(--c-midnight);text-decoration:none;transition:color 150ms var(--ease-out),border-color 150ms var(--ease-out);}
+#sewer-v2.wh-v2 .ss-toc-list a[aria-current="location"]{border-left-color:var(--c-carmine);font-weight:700;}
+#sewer-v2.wh-v2 .ss-toc-list a:focus-visible,#sewer-v2.wh-v2 .ss-toc-sum:focus-visible{outline:2px solid var(--c-cerulean);outline-offset:2px;border-radius:2px;}
+@media(hover:hover) and (pointer:fine){#sewer-v2.wh-v2 .ss-toc-list a:hover{color:var(--c-carmine);}}
+@media(min-width:1001px){
+  #sewer-v2.wh-v2 .ss-toc-sum{cursor:default;pointer-events:none;}
+  #sewer-v2.wh-v2 .ss-toc-chev{display:none;}
+  #sewer-v2.wh-v2 .ss-rail--toc .ss-call--opt{display:none;}
+}
+@media(min-width:1001px) and (min-height:880px){
+  #sewer-v2.wh-v2 .ss-rail--toc .ss-call--opt{display:flex;}
+}
+@media(max-width:1000px){
+  #sewer-v2.wh-v2 .ss-toc{order:-1;padding:16px 18px;}
+  #sewer-v2.wh-v2 .ss-toc-list{margin-top:10px;}
+  #sewer-v2.wh-v2 .ss-toc-list a{padding:8px 0 8px 14px;font-size:16px;}
+}
+@media(prefers-reduced-motion:reduce){#sewer-v2.wh-v2 .ss-toc-chev,#sewer-v2.wh-v2 .ss-toc-list a{transition:none;}}
+/* Financing mid-page CTA (panel version of the hub's red financing band) */
+#sewer-v2.wh-v2 .ss-finp{background:var(--c-carmine);border-color:var(--c-carmine);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:center;}
+#sewer-v2.wh-v2 .ss-finp-img{display:block;width:100%;height:100%;max-height:260px;object-fit:cover;border-radius:var(--r-card);}
+@media(max-width:700px){
+  #sewer-v2.wh-v2 .ss-finp{grid-template-columns:1fr;}
+  #sewer-v2.wh-v2 .ss-finp-img{order:-1;max-height:180px;}
+  #sewer-v2.wh-v2 .ss-finp .btn{width:100%;text-align:center;}
+}
+
+/* Vertical photo in a two-column .ss-split section (2026-10-28). Portrait 2:3 on desktop; shorter crop on phones. */
+#sewer-v2.wh-v2 .ss-vimg{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:center 35%;border-radius:14px;}
+@media(max-width:700px){#sewer-v2.wh-v2 .ss-vimg{aspect-ratio:4/5;}}
+/* Landscape photo shown as a portrait crop beside copy in a .ss-split section (2026-10-28). Full 3:2 on phones. */
+#sewer-v2.wh-v2 .ss-sideimg{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:64% center;border-radius:14px;}
+@media(max-width:1000px){#sewer-v2.wh-v2 .ss-sideimg{aspect-ratio:3/2;object-position:center;}}
+#sewer-v2.wh-v2 .ss-sideimg--land{aspect-ratio:1/1;object-position:center;}
+@media(max-width:1000px){#sewer-v2.wh-v2 .ss-sideimg--land{aspect-ratio:3/2;}}
+
+/* --- Visual critique fixes, 2026-10-28 --- */
+/* #2 Trust stat: big number + sentence-case label (service-specific review counts) */
+#sewer-v2.wh-v2 .trust-stat{display:flex;flex-direction:column;gap:2px;min-width:0;}
+#sewer-v2.wh-v2 .trust-num{font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:28px;line-height:1;color:var(--c-carmine);font-variant-numeric:tabular-nums;}
+#sewer-v2.wh-v2 .trust-txt{font-family:var(--font-nunito),'Nunito',system-ui,sans-serif;font-weight:700;font-size:14px;line-height:1.3;color:var(--c-midnight);}
+/* #3 Tap targets: gallery arrows 44px, thumbs 44px tall on narrow cards, TOC toggle full-row, reviewer links taller hit area */
+#sewer-v2.wh-v2 .rj-nav{width:44px;height:44px;}
+@container (max-width:680px){
+  #sewer-v2.wh-v2 .rj-nav{width:44px;height:44px;}
+  #sewer-v2.wh-v2 .rj-thumb{aspect-ratio:auto;height:44px;}
+}
+@media(max-width:1000px){
+  #sewer-v2.wh-v2 .ss-toc{padding:0 18px;}
+  #sewer-v2.wh-v2 .ss-toc-sum{min-height:52px;padding:4px 0;}
+  #sewer-v2.wh-v2 .ss-toc[open] .ss-toc-list{margin:2px 0 16px;}
+}
+#sewer-v2.wh-v2 .review-author a{display:inline-flex;align-items:center;gap:5px;padding:12px 0;margin:-12px 0;}
+/* #11 Linked reviewer names get an external-link icon so they read as clickable */
+#sewer-v2.wh-v2 .review-author a[target="_blank"]::after{content:"";width:12px;height:12px;flex-shrink:0;background:currentColor;opacity:.55;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5'/%3E%3C/svg%3E") center/contain no-repeat;}
+#sewer-v2.wh-v2 .review-author a[target="_blank"]:hover::after{opacity:1;}
+/* #10 Gallery counter label 12px */
+#sewer-v2.wh-v2 .rj-count{font-size:12px;}
+/* #9 Google rating + BBB card next to the spoke reviews title (same component as the hub) */
+#sewer-v2.wh-v2 .ss-head--proof{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
+#sewer-v2.wh-v2 .ss-head--proof>div:first-child{flex:1 1 auto;min-width:0;}
+#sewer-v2.wh-v2 .ss-proof{width:280px;border:1px solid var(--c-sand-400);box-shadow:none;padding:14px 18px;}
+#sewer-v2.wh-v2 .ss-proof .hub-proof-score strong{font-size:26px;}
+@media(max-width:860px){
+  #sewer-v2.wh-v2 .ss-head--proof{flex-direction:column;gap:16px;}
+  #sewer-v2.wh-v2 .ss-proof{width:100%;max-width:420px;}
+}
+/* #6 Mobile length: long comparison tables show 3 rows + "Show more"; FAQ answers hidden until opened */
+#sewer-v2.wh-v2 .wh-more{display:none;}
+@media(max-width:700px){
+  #sewer-v2.wh-v2 .wh-collapsible:not(.is-expanded) tbody tr:nth-child(n+4){display:none;}
+  #sewer-v2.wh-v2 .wh-more{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:8px;padding:0 4px;border:0;background:none;cursor:pointer;font-family:var(--font-industry),'Arial',sans-serif;font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--c-cerulean);}
+  #sewer-v2.wh-v2 .wh-more svg{transition:transform 200ms var(--ease-out);}
+  #sewer-v2.wh-v2 .wh-more[aria-expanded="true"] svg{transform:rotate(180deg);}
+  #sewer-v2.wh-v2 .wh-more:focus-visible{outline:2px solid var(--c-cerulean);outline-offset:2px;border-radius:4px;}
+  #sewer-v2.wh-v2 .faq-item2:not(.open) .faq-panel{display:none;}
+}
+@media(prefers-reduced-motion:reduce){#sewer-v2.wh-v2 .wh-more svg{transition:none;}}

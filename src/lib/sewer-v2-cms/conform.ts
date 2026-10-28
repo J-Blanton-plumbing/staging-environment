@@ -401,6 +401,22 @@ function conformSection(v: unknown, t: SewerSection, ctx: Ctx, path: string): Se
 
 // ── entry points ──────────────────────────────────────────────────────────────────
 
+/**
+ * Brief 222: the same tree rules for another template's node trees (the water heater pages' panels and
+ * trust box) and FAQ answers. Thin wrappers over the functions above, which are unchanged.
+ */
+export function conformTreeNode(v: unknown, t: SewerNode, s: Sanitizers, path: string): ConformResult<SewerNode> {
+  const ctx = new Ctx(s);
+  const value = conformNode(v, t, [], ctx, path);
+  return { value, errors: ctx.errors };
+}
+
+export function conformRichAnswer(v: unknown, t: string | SewerNode[], s: Sanitizers, path: string): ConformResult<string | SewerNode[]> {
+  const ctx = new Ctx(s);
+  const value = conformFaqAnswer(v, t, ctx, path);
+  return { value, errors: ctx.errors };
+}
+
 export function conformService(input: unknown, code: SewerServiceStored, s: Sanitizers): ConformResult<SewerServiceStored> {
   const ctx = new Ctx(s);
   const v = isObj(input) ? input : {};

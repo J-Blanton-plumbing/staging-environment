@@ -204,15 +204,21 @@ const MISC_TARGETS: Record<string, string | null> = {
   locations: null,
   'no-drip-club': null,
   'privacy-policy': null,
-  'residential-water-heater': null,
   'restaurant-drain-clearing': null,
   'restaurant-plumbing-services': null,
-  'restaurant-water-heater': null,
   services: null,
   // Brief 200: these two are now served by the Sewer Ecosystem v2 pages
   // (each was a 301 to /services/sewer before).
   'overhead-sewer-systems': null,
   'sewer-camera-inspection': null,
+  // Brief 222: served by the Water Heater Cluster v1 pages (each was a 301 to /services/water-heater).
+  'water-heater-installation': null,
+  'water-heater-maintenance': null,
+  'water-heater-repair': null,
+
+  // Brief 222 (Track D3): retired top-level pages — one 301 each, straight to the final page.
+  'residential-water-heater': '/services/water-heater',
+  'restaurant-water-heater': '/commercial-water-heater',
   'sewer-maintenance': null,
   'sewer-repair': null,
   'sewer-rodding': null,
@@ -239,7 +245,8 @@ const MISC_TARGETS: Record<string, string | null> = {
   'basement-waterproofing': '/basement-flooding',
   'bathroom-plumbing': '/bathroom-plumbing-chicago',
   'drain-cleaning-services-chicagoland': '/drain-cleaning-services-in-chicago',
-  'residential-water-heater-service': '/residential-water-heater',
+  // Brief 222: was /residential-water-heater, which now 301s itself — the final page, so it stays one hop.
+  'residential-water-heater-service': '/services/water-heater',
   'sewer-maintenance-service': '/sewer-maintenance',
   'garbage-disposal-installation-repair-service': '/services/plumbing',
   'sewer-camera-inspection-service': '/services/sewer',
@@ -298,9 +305,6 @@ const MISC_TARGETS: Record<string, string | null> = {
   'water-leak-repair': '/services/plumbing',
   'catch-basin-cleaning': '/services/drain',
   'commercial-plumbing-installation': '/services/commercial',
-  'water-heater-installation': '/services/water-heater',
-  'water-heater-maintenance': '/services/water-heater',
-  'water-heater-repair': '/services/water-heater',
   'water-heater-services': '/services/water-heater',
   'water-testing': '/water-filtration-systems',
 
@@ -386,7 +390,8 @@ const FAQ_CATEGORY_TARGETS: Record<string, string> = {
   // No `plumbing-repairs` service slug exists — generic plumbing repair Q&A.
   'Plumbing Repairs': '/services/plumbing',
   'Plumbing Services': '/services/plumbing',
-  'Residential Water Heater': '/residential-water-heater',
+  // Brief 222: /residential-water-heater now 301s to the hub — target the hub directly (one hop).
+  'Residential Water Heater': '/services/water-heater',
   'Sewage Line Backup Services': '/services/sewer',
   // Both inspection categories land on the sewer hub — the new site's inspection
   // service (`video-camera-sewer-inspections`) has no top-level route.

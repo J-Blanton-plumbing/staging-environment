@@ -38,6 +38,8 @@ import { ADMIN_COLORS, ADMIN_SHADOWS } from '@/lib/admin/theme';
 import { SITE } from '@/lib/site';
 import SewerV2Editor from '@/components/admin/sewer-v2/SewerV2Editor';
 import { isSewerV2ServiceSlug } from '@/lib/sewer-v2-cms/model';
+import WaterHeaterV2Editor from '@/components/admin/water-heater-v2/WaterHeaterV2Editor';
+import { isWhServiceSlug } from '@/lib/water-heater-v2-cms/model';
 
 interface ServiceCategory {
   slug: string;
@@ -171,10 +173,12 @@ function BlockBoxHeader({
 
 /**
  * Brief 204: the 9 Sewer v2 service pages open the Sewer v2 editor. The other sub-service pages keep
- * this file's block editor, unchanged.
+ * this file's block editor, unchanged. Brief 222: the 5 water heater service pages open the water
+ * heater editor.
  */
 export default function SubServiceAdminDispatch() {
   const { slug } = useParams<{ slug: string }>();
+  if (isWhServiceSlug(slug)) return <WaterHeaterV2Editor slug={slug} />;
   return isSewerV2ServiceSlug(slug) ? <SewerV2Editor kind="service" slug={slug} /> : <SubServiceAdminPage />;
 }
 
