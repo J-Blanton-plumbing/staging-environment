@@ -30,7 +30,8 @@ import PreviewBanner from '@/components/PreviewBanner';
 import { getCityPageMeta } from '@/lib/cms/page-meta';
 import CityHubView from '@/components/city-hubs/CityHubView';
 import { hubPhoneRegion, resolveCityHub } from '@/lib/cms/city-hubs';
-import { CITY_HUB_SHARED_PAGE_TYPE, CITY_HUB_SHARED_SLUG } from '@/lib/city-hub-cms/model';
+import { applyHubRatings, CITY_HUB_SHARED_PAGE_TYPE, CITY_HUB_SHARED_SLUG } from '@/lib/city-hub-cms/model';
+import { getRatingContext } from '@/lib/cms/office-ratings';
 import { pageTitle } from '@/lib/seo';
 
 /**
@@ -115,6 +116,9 @@ export default async function CityPage({ params }: { params: { city: string } })
         };
       }
     }
+    // Brief 221: the live-rating tokens (this office + the company total) filled in, and the office's
+    // `aggregateRating` for its Plumber node when the rating card shows exactly those numbers.
+    const rated = applyHubRatings(hubDispatch.hub, await getRatingContext(params.city));
     const pv = hubDispatch.preview;
     return (
       <>
@@ -129,7 +133,7 @@ export default async function CityPage({ params }: { params: { city: string } })
             pageSlug={pv.scope === 'shared' ? CITY_HUB_SHARED_SLUG : params.city}
           />
         )}
-        <CityHubView hub={hubDispatch.hub} shared={hubDispatch.shared} phone={phone} />
+        <CityHubView hub={rated.hub} shared={hubDispatch.shared} phone={phone} aggregateRating={rated.aggregateRating} />
       </>
     );
   }

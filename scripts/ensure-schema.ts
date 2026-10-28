@@ -197,6 +197,25 @@ const STATEMENTS: string[] = [
   // renders Classic. Created as 'classic' ONLY when NULL by seed-brief-220-home-2026.ts, and written
   // after that by /admin/home alone — a schema step or a seed must never reset it.
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS homepage_active TEXT`,
+  // Brief 221 (B2): office slug → Mainline GBP `location` key, e.g. {"chicago-ravenswood": "ravenswood"}.
+  // Its own column, NOT a key on `offices`: the root layout serializes the offices onto every page.
+  // Nullable, no default: seeded fill-gaps-only by seed-brief-221-mainline-locations.ts, edited in
+  // /admin/global-settings after that.
+  `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS office_mainline_locations JSONB`,
+
+  // ── office_ratings (Brief 221 B1) ───────────────────────────────────────
+  // Each office's Google rating + review count from Mainline, plus the company total ('company').
+  // Written ONLY by scripts/sync-gbp-ratings.ts — never by a seed or a deploy step. A failed check keeps
+  // the last good numbers and records `last_error`; numbers are NULL only until the first good sync.
+  `CREATE TABLE IF NOT EXISTS office_ratings (
+    office_slug       TEXT PRIMARY KEY,
+    mainline_location TEXT,
+    rating_value      NUMERIC(2,1),
+    review_count      INTEGER,
+    source_synced_at  TIMESTAMPTZ,
+    fetched_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+    last_error        TEXT
+  )`,
 
   // ── main_pages ──────────────────────────────────────────────────────────
   `ALTER TABLE main_pages ADD COLUMN IF NOT EXISTS content JSONB NOT NULL DEFAULT '{}'::jsonb`,

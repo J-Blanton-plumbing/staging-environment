@@ -27,7 +27,9 @@
  *            (the one key that deploy added — a snapshot delta of exactly that key is allowed), and the
  *            HOMEPAGE carries its own Organization + WebSite + WebPage graph and NO office node: one
  *            Organization (`ORG_ID`) whose 19 `department` refs each match a live hub's `#office`,
- *            no aggregateRating / review in the raw HTML, one <h1> and it is sr-only, both market names.
+ *            no review / Product in the raw HTML, one <h1> and it is sr-only, both market names.
+ *         8. (Brief 221) an aggregateRating sits only on the page's own office node (city pages) or the
+ *            Organization (homepage), in the spec's shape, and the page SHOWS that rating and count.
  * Exit 1 only for a page that should serve and doesn't, a fallback served over real content, a sitemap
  * count other than 1, an SEO-rule break, or an unexpected markup delta.
  */
@@ -199,11 +201,50 @@ export function homepageProblems(html, liveOfficeIds) {
     const n = nodes.filter((x) => typesOf(x).includes(t)).length;
     if (n !== 1) out.push(`${n} ${t} nodes (expected exactly 1)`);
   }
-  if (/"aggregateRating"|AggregateRating|"review"\s*:|"@type"\s*:\s*"Review"/.test(html)) out.push('aggregateRating / review markup in the raw HTML');
+  // Brief 221 (C2): the Organization MAY carry the company aggregateRating (Homepage 2026, when its review
+  // box shows those numbers); nothing else may, and no Review / Product markup ever.
+  if (/"review"\s*:|"@type"\s*:\s*"(?:Review|Product)"/.test(html)) out.push('review / Product markup in the raw HTML');
+  out.push(...ratingProblems(html, (n) => typesOf(n).includes('Organization')));
   const h1s = html.match(/<h1[\s>][^>]*>?/g) || [];
   if (h1s.length !== 1) out.push(`${h1s.length} <h1> elements (expected exactly 1)`);
-  else if (!/<h1 class="sr-only">/.test(html)) out.push('the one <h1> is not the sr-only one');
-  for (const w of ['Chicagoland', 'Columbus, OH']) if (!html.includes(`>${w}</span>`)) out.push(`"${w}" is not in the server HTML`);
+  // The sr-only H1 + rotating market line is the CLASSIC homepage's (Brief 218). Homepage 2026 (Brief
+  // 220, live since Marketing's switch) has one visible H1 — checking it for Classic's would fail every deploy.
+  else if (!html.includes('class="home-2026"')) {
+    if (!/<h1 class="sr-only">/.test(html)) out.push('the one <h1> is not the sr-only one');
+    for (const w of ['Chicagoland', 'Columbus, OH']) if (!html.includes(`>${w}</span>`)) out.push(`"${w}" is not in the server HTML`);
+  }
+  return out;
+}
+
+/** 3529 → "3,529" (the site's count format). */
+const commas = (s) => String(s).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const shownWhole = (text, n) => new RegExp('(?<![\\d.,])' + n.replace(/[.,]/g, (c) => '\\' + c) + '(?![\\d]|[.,]\\d)').test(text);
+
+/**
+ * Brief 221 (Track C) — every AggregateRating on the page is the `aggregateRating` of an allowed node
+ * (`isOwner`: the page's office node on a city page, the Organization on the homepage), in the spec's
+ * shape, and its rating AND its comma-formatted count are VISIBLE on the page (visible = schema).
+ */
+export function ratingProblems(html, isOwner) {
+  const out = [];
+  const nodes = ldNodes(ldBlocks(html));
+  // Counted in the JSON-LD blocks (the RSC payload repeats each block's text).
+  const all = ldBlocks(html).reduce((k, b) => k + (JSON.stringify(b).match(/"AggregateRating"/g) || []).length, 0);
+  const rated = nodes.filter((n) => n.aggregateRating);
+  if (all !== rated.length) out.push(`${all} AggregateRating(s) in the JSON-LD, ${rated.length} on a top-level node's aggregateRating`);
+  if (rated.length > 1) out.push(`${rated.length} nodes carry an aggregateRating (expected at most 1)`);
+  const visible = decode(html.replace(/<script\b[\s\S]*?<\/script>/g, '').replace(/<head>[\s\S]*?<\/head>/, ''));
+  for (const n of rated) {
+    const r = n.aggregateRating;
+    if (!isOwner(n)) out.push(`aggregateRating on a ${typesOf(n).join('/')} node (${n['@id'] ?? ''})`);
+    if (r['@type'] !== 'AggregateRating' || !/^[1-5]\.\d$/.test(r.ratingValue) || !/^[1-9]\d*$/.test(r.reviewCount) || r.bestRating !== '5' || r.worstRating !== '1') {
+      out.push(`aggregateRating is not the Brief 221 shape: ${JSON.stringify(r)}`);
+      continue;
+    }
+    if (!shownWhole(visible, r.ratingValue) || !shownWhole(visible, commas(r.reviewCount))) {
+      out.push(`aggregateRating ${r.ratingValue} · ${r.reviewCount} is not what the page shows (visible = schema)`);
+    }
+  }
   return out;
 }
 
@@ -325,6 +366,8 @@ async function compare() {
       const one = oneLocationProblems(p, r.text);
       for (const prob of one.problems) failures.push(`${p}: ${prob}`);
       notes.push(...one.notes);
+      // Brief 221: the office node's rating (when it has one) is the one the page shows.
+      for (const prob of ratingProblems(r.text, (n) => n['@id'] === `${SITE}/${city}#office`)) failures.push(`${p}: ${prob}`);
     }
     const snap = path.join(dir, file(p));
     if (!changed.has(city) && fs.existsSync(snap)) {

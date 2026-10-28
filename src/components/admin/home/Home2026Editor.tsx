@@ -18,6 +18,7 @@ import ArticlePicker, { type PickerArticle } from '@/components/admin/ArticlePic
 import V2EditorShell from '@/components/admin/v2-shared/V2EditorShell';
 import { BRAND, Group, ImageInput, Notice, Repeater, Select, TextInput } from '@/components/admin/sewer-v2/ui';
 import { ADMIN_COLORS } from '@/lib/admin/theme';
+import { COMPANY_RATING_TOKEN_HELP } from '@/lib/cms/tokens';
 import {
   H26_LIMITS,
   H26_LIST_DEFAULTS,
@@ -147,8 +148,8 @@ function Fields({ c, set, articles }: { c: Content; set: (next: Content) => void
       </Group>
 
       <Group title="Rating (used in the trust bar and the review box)">
-        {T('rating', 'Google rating', { hint: 'e.g. 4.7 — fills {rating}.' })}
-        {T('review_count', 'Number of Google reviews', { hint: 'e.g. 5,669+ — fills {review_count}.' })}
+        {T('rating', 'Google rating', { hint: `e.g. 4.7 — fills {rating}. ${COMPANY_RATING_TOKEN_HELP}` })}
+        {T('review_count', 'Number of Google reviews', { hint: `e.g. 5,669+ — fills {review_count}. ${COMPANY_RATING_TOKEN_HELP}` })}
       </Group>
 
       <Group title="Trust bar">

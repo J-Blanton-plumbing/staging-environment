@@ -18,6 +18,7 @@
  *
  * Layout is locked: sections can't be added, removed or reordered. Only the items inside a set can.
  */
+import { hasRatingTokens, NO_RATINGS, resolveRatingTokens, type RatingTokenContext } from '@/lib/cms/tokens';
 
 /** The `main_pages` slug of the Homepage 2026 record. It has NO public URL of its own. */
 export const HOME_2026_SLUG = 'home-2026';
@@ -432,7 +433,12 @@ const arr = (v: unknown) => (Array.isArray(v) ? v : []);
  * unusable value falls back to its default, so a half-filled row, a malformed array or a bad URL
  * can't break the page. `imageHosts` = the https hosts next.config allows for next/image.
  */
-export function resolveHome2026Content(raw: unknown, imageHosts: readonly string[] = []): Home2026Resolved {
+export function resolveHome2026Content(
+  raw: unknown,
+  imageHosts: readonly string[] = [],
+  /** Brief 221: the synced company total for `{{company_rating}}` / `{{company_review_count}}`. */
+  ratings: RatingTokenContext = NO_RATINGS
+): Home2026Resolved {
   const d = obj(raw);
   const fallbacks: string[] = [];
   const usable = (kind: Home2026FieldKind, s: string): string | null => {
@@ -454,8 +460,14 @@ export function resolveHome2026Content(raw: unknown, imageHosts: readonly string
     return out;
   };
 
-  const rating = v('rating').trim();
-  const reviewCount = v('review_count').trim();
+  // Brief 221 (D2): the pair may hold the live-rating tokens; with no synced row behind one, the
+  // field's default (= the copy the page showed before the tokens), never a raw token or a blank.
+  const rated = (key: string) => {
+    const t = v(key).trim();
+    return hasRatingTokens(t) ? resolveRatingTokens(t, ratings) ?? H26_SCALAR_FIELDS[key].def : t;
+  };
+  const rating = rated('rating');
+  const reviewCount = rated('review_count');
   const ratingValues = { rating, review_count: reviewCount };
   const rv = (key: string) => (RATING_TOKEN_FIELDS.has(key) ? fill(v(key), ratingValues) : v(key));
   const paragraphs = (key: string): string[] => {

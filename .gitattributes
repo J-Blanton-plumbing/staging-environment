@@ -18,3 +18,5 @@
 /scripts/deploy.sh     text eol=lf
 /scripts/backup-db.sh  text eol=lf
 /scripts/restore-db.sh text eol=lf
+# Brief 221: the daily rating sync's cron wrapper also runs on the box.
+/scripts/sync-gbp-ratings-cron.sh text eol=lf

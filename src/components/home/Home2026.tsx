@@ -22,6 +22,9 @@ import { getHomeFeaturedArticles } from '@/lib/cms/home-featured';
 import { FALLBACK_ARTICLE_IMAGE } from '@/lib/cms/related-articles';
 import { getHomeDepartmentIds } from '@/lib/cms/home-departments';
 import { homepageJsonLd } from '@/lib/schema/homepage';
+import { getRatingContext } from '@/lib/cms/office-ratings';
+import { formatRatingValue, ratingShownIn } from '@/lib/cms/tokens';
+import { aggregateRatingJsonLd } from '@/lib/schema/aggregate-rating';
 import { ldJson } from '@/lib/schema/city-pages';
 import { TITLE_TEMPLATE } from '@/lib/seo';
 import { REGIONS } from '@/lib/content/locations-regions';
@@ -110,13 +113,22 @@ export default async function Home2026() {
   const settings = await getGlobalSettingsCached();
   const meta = await home2026Meta();
   const departmentIds = await getHomeDepartmentIds(settings.offices.map((o) => o.slug));
-  // The same Brief 218 graph as Classic, named by this record's resolved title / description.
-  const jsonLd = homepageJsonLd({ pageName: meta.title, pageDescription: meta.description, departmentIds });
   const preview = await getHome2026Preview();
   const db = preview?.content ?? (await getMainPageContent(HOME_2026_SLUG).catch(() => null));
   // The stored record (or the draft under the preview cookie) → render values: the same sanitizer the
   // write path runs, then every blank / unusable value falls back to its default (never throws).
-  const c = resolveHome2026Content(sanitizeHome2026Content((db ?? {}) as Record<string, unknown>), IMAGE_HOSTS);
+  // Brief 221: `{{company_rating}}` / `{{company_review_count}}` filled from the synced company total.
+  const ratings = await getRatingContext(null);
+  const c = resolveHome2026Content(sanitizeHome2026Content((db ?? {}) as Record<string, unknown>), IMAGE_HOSTS, ratings);
+  // Brief 221 (C2): the Organization carries the company rating only when the page shows exactly it —
+  // the review box's big number and the count in its caption (visible = schema).
+  const company = ratings.company;
+  const aggregateRating =
+    company && c.rating === formatRatingValue(company.ratingValue) && ratingShownIn([c.rating, c.reviews.proofSub], company)
+      ? aggregateRatingJsonLd(company)
+      : null;
+  // The same Brief 218 graph as Classic, named by this record's resolved title / description.
+  const jsonLd = homepageJsonLd({ pageName: meta.title, pageDescription: meta.description, departmentIds, aggregateRating });
   const articles = await getHomeFeaturedArticles(c.kh.featuredSlugs);
   const directory = homeServiceDirectory();
   const offices: FinderOffice[] = orderLocatorOffices(settings.offices).map((o) => ({

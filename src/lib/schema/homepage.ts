@@ -14,9 +14,12 @@
  * office that gets a hub joins automatically (the dev notes' rule). `HOME_PACKAGE_DEPARTMENT_IDS` is
  * the package's list, kept only so the build and the live check can assert the two agree.
  *
- * No `aggregateRating`, `review`, `Product` or `FAQPage` in this graph (Brief 218 hard rule). The
+ * No `review`, `Product` or `FAQPage` in this graph (Brief 218 hard rule). Brief 221 (Track C2, Marketing
+ * 2026-10-28) overrides the "no aggregateRating" part for the Organization ONLY: the company's synced
+ * Google numbers are appended last, and only when the homepage visibly shows exactly them. The
  * Elfsight widget injects its own `Product` in the browser; that is Marketing decision 2, not ours.
  */
+import type { AggregateRatingNode } from '@/lib/schema/aggregate-rating';
 import { organizationNode, ORG_ID, ORG_LOGO_URL } from '@/lib/schema/organization-ref';
 
 const SITE = 'https://jblantonplumbing.com';
@@ -56,9 +59,11 @@ export interface HomepageJsonLdInput {
   pageDescription: string;
   /** Office node `@id`s for `department`, in order. */
   departmentIds: readonly string[];
+  /** Brief 221 (C2): the company rating, when the page shows it (Homepage 2026). Absent = no property. */
+  aggregateRating?: AggregateRatingNode | null;
 }
 
-export function homepageJsonLd({ pageName, pageDescription, departmentIds }: HomepageJsonLdInput) {
+export function homepageJsonLd({ pageName, pageDescription, departmentIds, aggregateRating = null }: HomepageJsonLdInput) {
   const org = organizationNode();
   return {
     '@context': 'https://schema.org',
@@ -106,6 +111,7 @@ export function homepageJsonLd({ pageName, pageDescription, departmentIds }: Hom
           })),
         },
         department: departmentIds.map((id) => ({ '@id': id })),
+        ...(aggregateRating ? { aggregateRating } : {}),
       },
       {
         '@type': 'WebSite',

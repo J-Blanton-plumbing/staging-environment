@@ -27,6 +27,11 @@ interface OfficeFormState {
   lng: string;
   /** Brief 107 (Track B) — whether this office appears in the public footer directory. */
   showInFooter: boolean;
+  /**
+   * Brief 221 (B2) — the office's `location` key on Mainline's GBP page (e.g. "ravenswood"), the source
+   * of its daily Google rating. Saved to its own column, NOT onto the office record.
+   */
+  mainlineLocation: string;
 }
 
 interface FormState {
@@ -59,7 +64,7 @@ const EMPTY_SERVICE_DESC: ServiceDescState = {
 
 const EMPTY_OFFICE: OfficeFormState = {
   slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', lat: '', lng: '',
-  showInFooter: true,
+  showInFooter: true, mainlineLocation: '',
 };
 
 const EMPTY: FormState = {
@@ -137,7 +142,12 @@ const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng' | 's
   { key: 'state', label: 'State', placeholder: 'IL' },
   { key: 'zip', label: 'ZIP', placeholder: '60062' },
   { key: 'mapUrl', label: 'Google Maps Link', placeholder: 'https://maps.app.goo.gl/…' },
+  // Brief 221 (B2): where this office's Google rating comes from (synced daily from Mainline).
+  { key: 'mainlineLocation', label: 'Mainline GBP Location (rating source)', placeholder: 'evanston' },
 ];
+
+/** Brief 221: office slug as the rating sync keys it ("/hanover-park" → "hanover-park"). */
+const officeKey = (slug: string) => slug.trim().replace(/^\/+/, '').replace(/\/+$/, '').toLowerCase();
 
 function toNum(v: string): number | null {
   const trimmed = v.trim();
@@ -234,8 +244,10 @@ export default function GlobalSettingsPage() {
     fetch('/api/cms/global-settings')
       .then(r => r.json())
       .then(data => {
+        const mainline: Record<string, string> = data.officeMainlineLocations && typeof data.officeMainlineLocations === 'object' ? data.officeMainlineLocations : {};
         const offices: OfficeFormState[] = Array.isArray(data.offices)
           ? data.offices.map((o: Record<string, unknown>) => ({
+              mainlineLocation: typeof o.slug === 'string' ? mainline[officeKey(o.slug)] ?? '' : '',
               slug: typeof o.slug === 'string' ? o.slug : '',
               name: typeof o.name === 'string' ? o.name : '',
               streetAddress: typeof o.streetAddress === 'string' ? o.streetAddress : '',
@@ -308,7 +320,11 @@ export default function GlobalSettingsPage() {
     setStatus('saving');
     setErrorMsg('');
     try {
-      const payload = { ...form, offices: form.offices.map(toCmsOffice) };
+      // Brief 221: the Mainline locations travel as their own map (office slug → location), never on the
+      // office records the site serializes onto every page.
+      const officeMainlineLocations: Record<string, string> = {};
+      for (const o of form.offices) if (officeKey(o.slug) && o.mainlineLocation.trim()) officeMainlineLocations[officeKey(o.slug)] = o.mainlineLocation.trim();
+      const payload = { ...form, offices: form.offices.map(toCmsOffice), officeMainlineLocations };
       const res = await fetch('/api/cms/global-settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -513,6 +529,12 @@ export default function GlobalSettingsPage() {
                     <p style={{ fontSize: '0.7rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.75rem 0 1rem' }}>
                       Used for this office&apos;s page link (/{office.slug || 'slug'}). Renaming an
                       existing office&apos;s slug can break its city page link.
+                    </p>
+                  )}
+                  {key === 'mainlineLocation' && (
+                    <p style={{ fontSize: '0.7rem', color: `${ADMIN_COLORS.onSurfaceVariant}99`, margin: '-0.75rem 0 1rem' }}>
+                      The office&apos;s key on Mainline&apos;s GBP page (?location=…). Its Google rating and review count
+                      sync daily into {'{{office_rating}}'} / {'{{office_review_count}}'}. Blank = no rating for this office.
                     </p>
                   )}
                 </div>

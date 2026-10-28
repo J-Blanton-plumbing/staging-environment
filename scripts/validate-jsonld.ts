@@ -19,9 +19,11 @@
  */
 import { buildBlogPosting, HEADLINE_MAX, type BlogPostingInput } from '../src/lib/schema/blog-posting';
 import { breadcrumbListJsonLd } from '../src/lib/schema/breadcrumb-list';
-import { checkJsonLd, CITY_PAGE_FORBIDDEN_TYPES } from '../src/lib/schema/jsonld-assert';
+import { aggregateRatingProblems, checkJsonLd, CITY_PAGE_FORBIDDEN_TYPES, HOMEPAGE_FORBIDDEN_TYPES } from '../src/lib/schema/jsonld-assert';
+import { aggregateRatingJsonLd } from '../src/lib/schema/aggregate-rating';
+import { renderRatingField, ratingShownIn } from '../src/lib/cms/tokens';
 import { faqPageJsonLd, schemaPhone } from '../src/lib/schema/city-pages';
-import { hubPlumberJsonLd } from '../src/lib/city-hub-cms/model';
+import { applyHubRatings, blankCityHub, hubPlumberJsonLd, type CityHubStored } from '../src/lib/city-hub-cms/model';
 import { articleCrumbs, termCrumbs } from '../src/lib/cms/kh-crumbs';
 import { ORG_ID, ORG_LOGO_URL, organizationNode } from '../src/lib/schema/organization-ref';
 import { homepageJsonLd, HOME_PACKAGE_DEPARTMENT_IDS } from '../src/lib/schema/homepage';
@@ -210,9 +212,64 @@ const hDept = (hOrg as { department?: { '@id': string }[] }).department ?? [];
 expect(hDept.length === 19 && hDept.every((d, i) => d['@id'] === HOME_PACKAGE_DEPARTMENT_IDS[i]), 'homepage department = the package 19 office ids');
 expect(hPage['@type'] === 'WebPage' && hPage.name === HOME_TITLE && hPage.description === HOME_DESC, 'WebPage name / description = the rendered title / description');
 expect(hSite['@type'] === 'WebSite' && JSON.stringify(hSite.publisher) === JSON.stringify({ '@id': ORG_ID }), 'WebSite publisher = ORG_ID');
-expect(!/aggregateRating|"review"|"Product"|FAQPage/.test(JSON.stringify(home)), 'homepage graph carries no aggregateRating / review / Product / FAQPage');
+expect(!/aggregateRating|"review"|"Product"|FAQPage/.test(JSON.stringify(home)), 'homepage graph without a rating carries no aggregateRating / review / Product / FAQPage');
 expect(!homeReport.allTypes.some((t) => ['Plumber', 'PlumbingBusiness', 'LocalBusiness'].includes(t)), 'homepage graph carries no office node');
 expect(JSON.stringify(plumber?.parentOrganization) === JSON.stringify({ '@id': ORG_ID }), 'the hub office node points parentOrganization at ORG_ID');
+
+// Brief 221 (Track C) — aggregateRating ONLY in the existing business nodes, appended last, as strings.
+const rating = aggregateRatingJsonLd({ ratingValue: 4.8, reviewCount: 3529 });
+expect(
+  JSON.stringify(rating) === '{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"3529","bestRating":"5","worstRating":"1"}',
+  'aggregateRating = the spec template (strings, key order)'
+);
+const ratedPlumber = hubPlumberJsonLd(hubFixture, '773-724-9272', schemaPhone, rating);
+expect(!!ratedPlumber && Object.keys(ratedPlumber).pop() === 'aggregateRating', 'the office node appends aggregateRating LAST');
+expect(JSON.stringify({ ...ratedPlumber, aggregateRating: undefined }) === JSON.stringify(plumber), 'nothing else in the office node changes');
+const ratedCity = checkJsonLd([JSON.stringify(ratedPlumber), JSON.stringify(faq)], CITY_PAGE_FORBIDDEN_TYPES);
+for (const e of [...ratedCity.errors, ...aggregateRatingProblems([JSON.stringify(ratedPlumber)], ['Plumber'])]) fail.push(`rated city fixture: ${e}`);
+const ratedHome = homepageJsonLd({
+  pageName: HOME_TITLE,
+  pageDescription: HOME_DESC,
+  departmentIds: HOME_PACKAGE_DEPARTMENT_IDS,
+  aggregateRating: aggregateRatingJsonLd({ ratingValue: 4.72, reviewCount: 10916 }),
+});
+const ratedHomeOrg = ratedHome['@graph'][0] as Record<string, unknown>;
+expect(
+  Object.keys(ratedHomeOrg).pop() === 'aggregateRating' && (ratedHomeOrg.aggregateRating as { ratingValue: string }).ratingValue === '4.7',
+  'homepage Organization appends the company aggregateRating last, rounded to 4.7'
+);
+for (const e of [...checkJsonLd([JSON.stringify(ratedHome)], HOMEPAGE_FORBIDDEN_TYPES).errors, ...aggregateRatingProblems([JSON.stringify(ratedHome)], ['Organization'])]) {
+  fail.push(`rated homepage: ${e}`);
+}
+expect(!/"review"|"Product"|FAQPage/.test(JSON.stringify(ratedHome)), 'rated homepage graph carries no review / Product / FAQPage');
+expect(
+  aggregateRatingProblems([JSON.stringify({ '@context': 'https://schema.org', '@type': 'Product', aggregateRating: rating })], ['Plumber']).length > 0,
+  'the checker rejects aggregateRating on any other node type'
+);
+expect(checkJsonLd([JSON.stringify(ratedPlumber)]).errors.some((e) => e.includes('AggregateRating')), 'AggregateRating stays forbidden on every other page type');
+// The tokens: visible copy = schema numbers; no row → the pre-token text, never a raw token or "0".
+const rctx = { office: { ratingValue: 4.8, reviewCount: 3529 }, company: { ratingValue: 4.7, reviewCount: 10916 } };
+const none = { office: null, company: null };
+expect(renderRatingField('{{office_rating}} stars from {{office_review_count}} Google reviews', rctx) === '4.8 stars from 3,529 Google reviews', 'office tokens: rating + comma count');
+expect(renderRatingField('{{company_rating}} · {{company_review_count}}', rctx) === '4.7 · 10,916', 'company tokens');
+expect(renderRatingField('{{office_rating}} x', none, { '{{office_rating}} x': '4.6 x' }) === '4.6 x', 'no row → the stored pre-token fallback');
+expect(renderRatingField('{{office_rating}} x', none) === '', 'no row and no fallback → empty, never a raw token');
+expect(renderRatingField('4.7 stars', none) === '4.7 stars', 'text without tokens is returned as is');
+expect(!ratingShownIn(['3,529 Google reviews'], rctx.office) && ratingShownIn(['4.8 · 3,529'], rctx.office), 'the visible check needs the rating AND the count');
+expect(!ratingShownIn(['4.8 · 13,529'], rctx.office), 'the visible check matches whole numbers only');
+// A hub on the tokens gets the office rating; the same hub with stale literal copy ("860+") does not.
+const baseHub = blankCityHub('Evanston');
+const tokenHub: CityHubStored = {
+  ...baseHub,
+  trust: ['{{company_rating}} stars · {{company_review_count}} Google reviews across all locations'],
+  reviews: { ...baseHub.reviews, intro: '{{office_rating}} stars from {{office_review_count}} Google reviews for our Evanston office.', rating: '{{office_rating}}', ratingSub: '{{office_review_count}} Google reviews for our Evanston office' },
+};
+const appliedHub = applyHubRatings(tokenHub, rctx);
+expect(appliedHub.aggregateRating?.reviewCount === '3529' && appliedHub.hub.reviews.ratingSub === '3,529 Google reviews for our Evanston office', 'a tokenised hub renders the office numbers and carries them in aggregateRating');
+expect(appliedHub.hub.trust[0] === '4.7 stars · 10,916 Google reviews across all locations', 'the trust bar renders the company numbers');
+const literalHub: CityHubStored = { ...baseHub, reviews: { ...baseHub.reviews, rating: '4.8', ratingSub: '860+ Google reviews for our Evanston office' } };
+expect(applyHubRatings(literalHub, rctx).aggregateRating === null && applyHubRatings(literalHub, rctx).hub === literalHub, 'stale literal copy → no aggregateRating, the hub object untouched');
+expect(applyHubRatings(tokenHub, none).aggregateRating === null, 'no row → no aggregateRating');
 
 if (fail.length) {
   console.error(`\n[validate-jsonld] FAILED — ${fail.length} problem(s):\n  - ${fail.join('\n  - ')}\n`);

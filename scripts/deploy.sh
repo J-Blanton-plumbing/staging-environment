@@ -1117,6 +1117,13 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # row and never reads the switch, so `/` stays Classic. Exit 1 only for a
 # code/schema/config fault (incl. the gate). Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-220-home-2026.ts commit
+# Brief 221 (B2): which Mainline GBP location each office's Google rating is
+# read from (global_settings.office_mainline_locations, edited in
+# /admin/global-settings). FILL-GAPS ONLY - an edited value is never
+# overwritten - and it NEVER writes a rating: only sync-gbp-ratings.ts writes
+# office_ratings (a seed that wrote numbers would roll the live ratings back on
+# every deploy). Invisible to both builds, so pre-swap is fine. Idempotent.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-221-mainline-locations.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.
@@ -1206,6 +1213,31 @@ rm -rf .next-prev
 # (NOT-APPLIED, nothing written). Idempotent - ALREADY-APPLIED from then on.
 # Exit 1 only for a code/schema fault (the new build is already serving).
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-brief-218-home-meta.ts commit
+# Brief 221 (B3): refresh office_ratings from Mainline's GBP page once per
+# deploy (the daily cron below does it every day). Default is SYNC, on purpose
+# (a data refresh, not a content port). Mainline down, a wrong token or a
+# rejected number keeps the last good numbers and exits 0; NOT CONFIGURED
+# (MAINLINE_GBP_RATINGS_URL / _TOKEN missing from .env.local) writes nothing
+# and exits 0. Exit 1 only for a code/schema fault. POST-swap: only the new
+# build reads the table.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/sync-gbp-ratings.ts
+# Brief 221 (D2): the review numbers on the 19 City Hubs, their 551 City
+# Service V2 pages and Homepage 2026 move onto the live-rating tokens - one new
+# published version per page, the previous one kept; a page whose rating copy
+# was edited in /admin since is SKIPPED and listed. POST-swap ONLY: the build
+# being replaced doesn't know the tokens and would print them raw. Changed
+# cities go to changed.txt so the CITY PAGES LIVE CHECK expects them to change.
+# ALREADY-APPLIED from then on. Exit 1 only when a write did not land.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-221-rating-tokens.ts commit --changed-file .city-pages-snapshot/changed.txt
+# Brief 221 (B3): the DAILY sync - one crontab line for this user, replaced
+# (never duplicated) on every deploy, tagged jbp-gbp-ratings-sync. 14:30 UTC is
+# after Mainline's own morning GBP sync. It carries this shell's PATH so cron
+# finds the same node/npx. Never fails the deploy (the new build is already
+# serving): a box without crontab prints how to install it by hand.
+GBP_CRON="30 14 * * * cd $(pwd) && PATH=$PATH bash scripts/sync-gbp-ratings-cron.sh # jbp-gbp-ratings-sync"
+if command -v crontab >/dev/null 2>&1; then { { crontab -l 2>/dev/null || true; } | { grep -v 'jbp-gbp-ratings-sync' || true; }; echo "$GBP_CRON"; } | crontab - && echo 'GBP-RATINGS CRON: daily sync installed (14:30 UTC, log ~/gbp-ratings-sync.log)' || echo 'GBP-RATINGS CRON: NOT installed - crontab refused the write; install it by hand (Brief 221 report)'; fi
+if ! command -v crontab >/dev/null 2>&1; then echo 'GBP-RATINGS CRON: NOT installed - no crontab on this box; install a daily timer for scripts/sync-gbp-ratings-cron.sh by hand (Brief 221 report)'; fi
 # Brief 151: prove the restart delivered .env.local to the process.
 # Reads the live process environ and compares each sensitive var
 # against the file. ⚠️ This repo is PUBLIC and these logs are

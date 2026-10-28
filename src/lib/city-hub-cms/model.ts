@@ -19,6 +19,8 @@
  * from Global Settings, and the phone REGION is derived from the city's state (never a field).
  */
 import { clone } from '@/lib/cms-v2/shared';
+import { renderRatingField, ratingShownIn, type RatingTokenContext } from '@/lib/cms/tokens';
+import { aggregateRatingJsonLd, type AggregateRatingNode } from '@/lib/schema/aggregate-rating';
 import { organizationRef } from '@/lib/schema/organization-ref';
 
 export const CITY_HUB_TEMPLATE = 'city-hub';
@@ -140,6 +142,12 @@ export interface CityHubStored {
   faq: { h2: string; items: Array<{ q: string; preview: string; a: string }> };
   ndc: string;
   final: { eyebrow: string; h2: string; body: string };
+  /**
+   * Brief 221 (D1/D2, optional): token text → the text that field held before it was migrated to the
+   * live-rating tokens. Rendered only while a token has no `office_ratings` row behind it. Absent on
+   * every hub without tokens, so their stored shape is unchanged.
+   */
+  ratingFallbacks?: Record<string, string>;
 }
 
 /** What `CityHubView` renders: the stored content + the two derived identity fields. */
@@ -282,7 +290,13 @@ const SITE = 'https://jblantonplumbing.com';
  * Brief 188 `ORG_ID` the articles' publisher and the homepage graph share), and the homepage lists this
  * node's `@id` in its Organization `department` — never change the `@id`.
  */
-export function hubPlumberJsonLd(hub: Pick<CityHubRender, 'slug' | 'name' | 'office'>, phoneDisplay: string, schemaPhone: (d: string) => string) {
+export function hubPlumberJsonLd(
+  hub: Pick<CityHubRender, 'slug' | 'name' | 'office'>,
+  phoneDisplay: string,
+  schemaPhone: (d: string) => string,
+  /** Brief 221 (C1): the office's synced Google numbers, appended LAST; only when they are visible. */
+  aggregateRating: AggregateRatingNode | null = null
+) {
   const gbp = hub.office.gbpUrl;
   const a = addressParts(hub.office.address);
   if (!gbp || !a) return null;
@@ -305,7 +319,30 @@ export function hubPlumberJsonLd(hub: Pick<CityHubRender, 'slug' | 'name' | 'off
       closes: '23:59',
     },
     areaServed: [hub.office.schemaArea || `${hub.name}, ${st}`, ...hub.office.areas.map((x) => x.area || `${x.label}, ${st}`)],
+    ...(aggregateRating ? { aggregateRating } : {}),
   };
+}
+
+/**
+ * Brief 221 (D1 + C1) — a hub as the page renders it: the live-rating tokens in the trust bar and the
+ * reviews intro / rating card filled from `ctx` (or the pre-token fallback), and the office's
+ * `aggregateRating` when — and only when — the office has a row AND the rendered rating card shows
+ * exactly those numbers (visible = schema). A hub without tokens comes back as the SAME object.
+ */
+export function applyHubRatings<T extends CityHubStored>(hub: T, ctx: RatingTokenContext): { hub: T; aggregateRating: AggregateRatingNode | null } {
+  const fb = hub.ratingFallbacks;
+  const field = (t: string) => renderRatingField(t, ctx, fb);
+  const trust = hub.trust.map(field);
+  const reviews = { ...hub.reviews, intro: field(hub.reviews.intro), rating: field(hub.reviews.rating), ratingSub: field(hub.reviews.ratingSub) };
+  const changed =
+    trust.some((t, i) => t !== hub.trust[i]) ||
+    reviews.intro !== hub.reviews.intro ||
+    reviews.rating !== hub.reviews.rating ||
+    reviews.ratingSub !== hub.reviews.ratingSub;
+  const office = ctx.office;
+  // The card's big number IS the rating, and the card's caption carries the count.
+  const shown = !!office && reviews.rating.trim() === aggregateRatingJsonLd(office).ratingValue && ratingShownIn([reviews.rating, reviews.ratingSub], office);
+  return { hub: changed ? { ...hub, trust, reviews } : hub, aggregateRating: shown && office ? aggregateRatingJsonLd(office) : null };
 }
 
 // ── Brief 216 (Track C3): the full-bleed hero's media ─────────────────────────────────────────────

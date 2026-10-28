@@ -17,6 +17,7 @@
  */
 import type { CityServiceV2Page, CsBlock } from '@/lib/content/city-services-v2/types';
 import { clone, mdLinks, mdPlain } from '@/lib/cms-v2/shared';
+import { renderRatingField, ratingShownIn, type RatingTokenContext } from '@/lib/cms/tokens';
 
 export const CITY_SERVICE_V2_TEMPLATE = 'city-service-v2';
 export const PRE_V2_ARCHIVE_LABEL = 'Pre-V2 archive (2026-10)';
@@ -32,6 +33,8 @@ export interface CityServiceStored {
   blocks: CsBlock[];
   /** Derived on every save from the page's fields; `provider.telephone` is filled at render. */
   serviceSchema: CityServiceV2Page['serviceSchema'];
+  /** Brief 221 (optional): the pre-token text of the rating-bearing fields (see CityServiceV2Page). */
+  ratingFallbacks?: Record<string, string>;
 }
 
 export interface CityServiceV2DraftContent {
@@ -54,12 +57,28 @@ export function isCityServiceV2DraftContent(c: unknown): c is CityServiceV2Draft
 
 /** A code-module / imported page → the object the row stores (deep copy). */
 export function pageToStored(page: CityServiceV2Page): CityServiceStored {
-  return clone({ schema: 1, hero: page.hero, trust: page.trust, blocks: page.blocks, serviceSchema: page.serviceSchema });
+  return clone({
+    schema: 1,
+    hero: page.hero,
+    trust: page.trust,
+    blocks: page.blocks,
+    serviceSchema: page.serviceSchema,
+    ...(page.ratingFallbacks ? { ratingFallbacks: page.ratingFallbacks } : {}),
+  });
 }
 
 /** Stored + identity + meta → what `CityServiceV2View` renders. */
 export function storedToPage(city: string, service: string, stored: CityServiceStored, meta: { title: string; description: string }): CityServiceV2Page {
-  return { city, service, meta, hero: stored.hero, trust: stored.trust, blocks: stored.blocks, serviceSchema: stored.serviceSchema };
+  return {
+    city,
+    service,
+    meta,
+    hero: stored.hero,
+    trust: stored.trust,
+    blocks: stored.blocks,
+    serviceSchema: stored.serviceSchema,
+    ...(stored.ratingFallbacks ? { ratingFallbacks: stored.ratingFallbacks } : {}),
+  };
 }
 
 /**
@@ -137,4 +156,29 @@ export function requiredEmptyServiceFields(stored: CityServiceStored, metaTitle:
   };
   (stored.blocks ?? []).forEach((b, i) => walk(b, `blocks[${i}](${b.type})`));
   return out;
+}
+
+/**
+ * Brief 221 (D1 + C1) — a V2 page as it renders: the live-rating tokens in the rail trust items and in
+ * each reviews section's rating line filled from `ctx` (its hub office + the company total), else the
+ * pre-token fallback. Returns whether the page SHOWS its office's synced numbers (a reviews rating line
+ * carrying both), which is the condition for the office node's `aggregateRating`. A page without
+ * tokens comes back as the SAME object.
+ */
+export function applyServiceRatings(page: CityServiceV2Page, ctx: RatingTokenContext): { page: CityServiceV2Page; officeRatingShown: boolean } {
+  const fb = page.ratingFallbacks;
+  const field = (t: string) => renderRatingField(t, ctx, fb);
+  const trust = page.trust.map(field);
+  let changed = trust.some((t, i) => t !== page.trust[i]);
+  const blocks = page.blocks.map((b) => {
+    if (b.type !== 'reviews') return b;
+    const rating = field(b.rating);
+    if (rating === b.rating) return b;
+    changed = true;
+    return { ...b, rating };
+  });
+  const lines = blocks.flatMap((b) => (b.type === 'reviews' ? [b.rating] : []));
+  const office = ctx.office;
+  const officeRatingShown = !!office && lines.some((l) => ratingShownIn([l], office));
+  return { page: changed ? { ...page, trust, blocks } : page, officeRatingShown };
 }

@@ -13,6 +13,7 @@ import TemplateSwitcher from '@/components/admin/TemplateSwitcher';
 import { BRAND, Group, ImageInput, Notice, Repeater, Select, TextInput } from '@/components/admin/sewer-v2/ui';
 import { MdTextInput } from '@/components/admin/v2-shared/MdTextInput';
 import V2EditorShell from '@/components/admin/v2-shared/V2EditorShell';
+import { COMPANY_RATING_TOKEN_HELP, RATING_TOKEN_HELP } from '@/lib/cms/tokens';
 import {
   blankCityHub,
   CITY_HUB_TEMPLATE,
@@ -206,7 +207,7 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         )}
       </Group>
 
-      <Group title="Trust bar">
+      <Group title="Trust bar" note={COMPANY_RATING_TOKEN_HELP}>
         <Repeater<string> label="Items" items={hub.trust} onChange={(trust) => setHub({ trust })} newItem={() => ''} addLabel="Add an item"
           renderItem={(t, update) => <TextInput label="Text" value={t} onChange={update} />} itemLabel={(t, i) => `${i + 1} — ${t.slice(0, 48)}`} />
       </Group>
@@ -356,9 +357,9 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
       <Group title={hub.reviews.h2 || 'Reviews'} note="Exactly 3 reviews: the first is the large one. The stars’ screen-reader label is built from the rating.">
         <TextInput label="Eyebrow" value={hub.reviews.eyebrow} onChange={(eyebrow) => setHub({ reviews: { ...hub.reviews, eyebrow } })} />
         <TextInput label="Heading" value={hub.reviews.h2} onChange={(h2) => setHub({ reviews: { ...hub.reviews, h2 } })} />
-        <TextInput label="Intro" value={hub.reviews.intro} onChange={(intro) => setHub({ reviews: { ...hub.reviews, intro } })} multiline />
-        <TextInput label="Rating (e.g. 4.7)" value={hub.reviews.rating} onChange={(rating) => setHub({ reviews: { ...hub.reviews, rating } })} />
-        <TextInput label="Rating caption" value={hub.reviews.ratingSub} onChange={(ratingSub) => setHub({ reviews: { ...hub.reviews, ratingSub } })} />
+        <TextInput label="Intro" value={hub.reviews.intro} onChange={(intro) => setHub({ reviews: { ...hub.reviews, intro } })} multiline hint={RATING_TOKEN_HELP} />
+        <TextInput label="Rating (e.g. 4.7)" value={hub.reviews.rating} onChange={(rating) => setHub({ reviews: { ...hub.reviews, rating } })} hint={RATING_TOKEN_HELP} />
+        <TextInput label="Rating caption" value={hub.reviews.ratingSub} onChange={(ratingSub) => setHub({ reviews: { ...hub.reviews, ratingSub } })} hint={RATING_TOKEN_HELP} />
         {hub.reviews.items.map((r, i) => {
           const update = (next: HubReview) => setHub({ reviews: { ...hub.reviews, items: hub.reviews.items.map((x, y) => (y === i ? next : x)) as CityHubStored['reviews']['items'] } });
           return (

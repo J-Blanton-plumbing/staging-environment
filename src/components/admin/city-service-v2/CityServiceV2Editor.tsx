@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { ADMIN_COLORS } from '@/lib/admin/theme';
 import { BRAND, Group, ImageInput, Notice, Repeater, TextInput } from '@/components/admin/sewer-v2/ui';
 import { MdTextInput } from '@/components/admin/v2-shared/MdTextInput';
+import { COMPANY_RATING_TOKEN_HELP, RATING_TOKEN_HELP } from '@/lib/cms/tokens';
 import V2EditorShell from '@/components/admin/v2-shared/V2EditorShell';
 import type { CsBlock, CsImage } from '@/lib/content/city-services-v2/types';
 import {
@@ -95,7 +96,7 @@ function ServiceFields({ value, onChange, city }: { value: CityServiceV2DraftCon
         <MdTextInput label="Text" value={p.hero.sub} onChange={(sub) => setPage({ hero: { ...p.hero, sub } })} multiline />
         {img('Photo', p.hero.img, (n) => setPage({ hero: { ...p.hero, img: n } }))}
       </Group>
-      <Group title="Trust rail (3 items)">
+      <Group title="Trust rail (3 items)" note={COMPANY_RATING_TOKEN_HELP}>
         {p.trust.map((t, i) => (
           <TextInput key={i} label={`Item ${i + 1}`} value={t} onChange={(v) => setPage({ trust: p.trust.map((x, y) => (y === i ? v : x)) })} />
         ))}
@@ -233,7 +234,7 @@ function BlockFields({ b, set, city }: { b: CsBlock; set: (n: CsBlock) => void; 
       return (
         <>
           {head}
-          <TextInput label="Rating line" value={b.rating} onChange={(rating) => set({ ...b, rating })} />
+          <TextInput label="Rating line" value={b.rating} onChange={(rating) => set({ ...b, rating })} hint={RATING_TOKEN_HELP} />
           <Repeater label="Reviews (1 to 3)" items={b.reviews} onChange={(reviews) => set({ ...b, reviews: reviews.slice(0, 3) })} newItem={() => ({ name: '', url: null, text: '' })} addLabel="Add a review" itemLabel={(r, i) => `${i + 1} — ${r.name}`}
             renderItem={(r, u) => (
               <>

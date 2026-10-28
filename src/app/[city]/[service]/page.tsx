@@ -12,6 +12,9 @@ import { resolveCityServiceV2, serviceUsesCentralOhioPhone } from '@/lib/cms/cit
 import CityServiceV2View from '@/components/city-services-v2/CityServiceV2View';
 import { resolveCityHub } from '@/lib/cms/city-hubs';
 import { hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
+import { applyServiceRatings } from '@/lib/city-service-v2-cms/model';
+import { getRatingContext } from '@/lib/cms/office-ratings';
+import { aggregateRatingJsonLd } from '@/lib/schema/aggregate-rating';
 import { schemaPhone } from '@/lib/schema/city-pages';
 import { pageTitle } from '@/lib/seo';
 import { cityServiceRobots } from '@/lib/city-service-indexation';
@@ -166,7 +169,12 @@ export default async function CityServicePage({
     // Brief 217 (Track C): the page signals only its own office — the node its city hub emits (same
     // @id, built from the hub's office data), never stored per page. No live hub / no GBP link → none.
     const hubD = await resolveCityHub(params.city);
-    const office = hubD.kind === 'hub' ? hubPlumberJsonLd(hubD.hub, phone.display, schemaPhone) : null;
+    // Brief 221: the live-rating tokens (this hub's office + the company total) and, when the page shows
+    // its office's synced numbers, the same `aggregateRating` the hub's office node carries.
+    const ratings = await getRatingContext(params.city);
+    const { page, officeRatingShown } = applyServiceRatings(v2d.page, ratings);
+    const officeRating = officeRatingShown && ratings.office ? aggregateRatingJsonLd(ratings.office) : null;
+    const office = hubD.kind === 'hub' ? hubPlumberJsonLd(hubD.hub, phone.display, schemaPhone, officeRating) : null;
     const pv = v2d.preview;
     return (
       <>
@@ -181,7 +189,7 @@ export default async function CityServicePage({
             pageSlug={`${params.city}/${params.service}`}
           />
         )}
-        <CityServiceV2View page={v2d.page} cityName={cityEntry.name} phone={phone} office={office} />
+        <CityServiceV2View page={page} cityName={cityEntry.name} phone={phone} office={office} />
       </>
     );
   }

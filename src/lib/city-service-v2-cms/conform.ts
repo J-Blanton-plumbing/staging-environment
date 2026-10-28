@@ -31,6 +31,7 @@ import {
   type ConformIssue,
 } from '@/lib/cms-v2/shared';
 import type { CityServiceStored } from './model';
+import { keepRatingFallbacks } from '@/lib/cms/tokens';
 
 export interface ServiceChecks {
   plain(s: string): string;
@@ -324,6 +325,14 @@ export function conformService(raw: unknown, layout: readonly CsBlock[], city: s
   for (const [k, v] of Object.entries(provider)) {
     if (typeof v === 'string' && hasLiteralPhone(v)) ctx.err(`serviceSchema.provider.${k}`, 'phone', PHONE_MESSAGE);
   }
+  // Brief 221: the pre-token fallbacks of the rating-bearing fields (rail trust items + each reviews
+  // section's rating line), kept only while those fields still carry that token text.
+  const ratingFallbacks = keepRatingFallbacks(
+    r.ratingFallbacks,
+    [...value.trust, ...value.blocks.flatMap((b) => (b.type === 'reviews' ? [b.rating] : []))],
+    (v, k) => ctx.text(v, `ratingFallbacks[${k}]`)
+  );
+  if (ratingFallbacks) value.ratingFallbacks = ratingFallbacks;
   return { value, errors: ctx.errors };
 }
 

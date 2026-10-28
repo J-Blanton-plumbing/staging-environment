@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { getGlobalSettings, updateGlobalSettings, getRegionalPhones } from '@/lib/cms/global-settings';
+import { getOfficeMainlineLocations, setOfficeMainlineLocations } from '@/lib/cms/office-ratings';
 import { getSession } from '@/lib/auth/session';
 import { requireCmsSession } from '@/lib/auth/api-guard';
 
@@ -25,7 +26,8 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Global settings not found. Run the migration script.' }, { status: 404 });
     }
     // Brief 192: the regional phones travel with the settings for the editor only.
-    return NextResponse.json({ ...settings, ...(await getRegionalPhones()) });
+    // Brief 221: so does the office → Mainline location map (its own column, never on `offices`).
+    return NextResponse.json({ ...settings, ...(await getRegionalPhones()), officeMainlineLocations: await getOfficeMainlineLocations() });
   } catch (err) {
     console.error('GET /api/cms/global-settings error:', err);
     return NextResponse.json({ error: 'Failed to fetch global settings' }, { status: 500 });
@@ -55,6 +57,10 @@ export async function PUT(req: NextRequest) {
       centralOhioPhoneDisplay: typeof body.centralOhioPhoneDisplay === 'string' ? body.centralOhioPhoneDisplay.trim() : undefined,
       centralOhioPhoneHref: typeof body.centralOhioPhoneHref === 'string' ? body.centralOhioPhoneHref.trim() : undefined,
     });
+    // Brief 221 (B2): written only when the editor sent it, so an older client never blanks the map.
+    if (body.officeMainlineLocations && typeof body.officeMainlineLocations === 'object' && !Array.isArray(body.officeMainlineLocations)) {
+      await setOfficeMainlineLocations(body.officeMainlineLocations as Record<string, string>);
+    }
     // Brief 107 — settings are read by the shared root layout (Navbar, Footer,
     // LocalBusinessSchema) on every force-dynamic page, so revalidating the
     // root layout covers every route in one call. Combined with the

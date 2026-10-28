@@ -3,6 +3,7 @@ import { PhoneLink, PhoneNumber } from '@/components/PhoneLink';
 import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import type { CityHubRender, CityHubShared, HubPhoto } from '@/lib/city-hub-cms/model';
 import { fillPattern, hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
+import type { AggregateRatingNode } from '@/lib/schema/aggregate-rating';
 import { faqPageJsonLd, ldJson, schemaPhone } from '@/lib/schema/city-pages';
 import CityHubRoot from './CityHubRoot';
 import HubHeroVideo from './HubHeroVideo';
@@ -207,7 +208,18 @@ const YT_EMBED = 'https://www.youtube.com/embed/';
 
 const NDC_LINK_STYLE = s('color:#F9F3EC;text-decoration:underline;text-underline-offset:3px');
 
-export default function CityHubView({ hub, shared: SH, phone }: { hub: CityHubRender; shared: CityHubShared; phone: CityHubPhone }) {
+export default function CityHubView({
+  hub,
+  shared: SH,
+  phone,
+  aggregateRating = null,
+}: {
+  hub: CityHubRender;
+  shared: CityHubShared;
+  phone: CityHubPhone;
+  /** Brief 221 (C1): the office's synced Google numbers for its Plumber node (`applyHubRatings`). */
+  aggregateRating?: AggregateRatingNode | null;
+}) {
   const L = SH.labels;
   const callNow = (
     <PhoneLink href={phone.href} display={phone.display} className="btn btn-hero-cta t-btn">
@@ -237,7 +249,7 @@ export default function CityHubView({ hub, shared: SH, phone }: { hub: CityHubRe
     embedUrl: `${YT_EMBED}${SH.video.youtubeId}`,
   };
   // Brief 216: derived at render, never stored (see the header).
-  const plumberJsonLd = hubPlumberJsonLd(hub, phone.display, schemaPhone);
+  const plumberJsonLd = hubPlumberJsonLd(hub, phone.display, schemaPhone, aggregateRating);
   const faqJsonLd = hub.faq.items.length ? faqPageJsonLd(hub.faq.items) : null;
   const heroPhoto = hub.hero.photo === 'standard' ? SH.vanPhoto : hub.hero.photo;
   const fullBleed = hub.hero.layout === 'full-bleed';

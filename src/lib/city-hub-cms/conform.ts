@@ -51,6 +51,7 @@ import {
   type HubPhoto,
   type HubReview,
 } from './model';
+import { keepRatingFallbacks, RATING_TOKEN_ONLY_RE } from '@/lib/cms/tokens';
 
 export interface HubChecks {
   /** Plain-text rule (server: sanitizeCmsPlainText; editor pre-check: identity). */
@@ -211,7 +212,9 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
     return { name: ctx.text(o.name, `${p}.name`), url, text: ctx.text(o.text, `${p}.text`) };
   }) as CityHubStored['reviews']['items'];
   const rating = ctx.text(reviews.rating, 'reviews.rating');
-  if (rating && !RATING_RE.test(rating)) ctx.err('reviews.rating', 'value', 'The rating is a number from 1 to 5 with at most one decimal (e.g. 4.7).');
+  if (rating && !RATING_RE.test(rating) && !RATING_TOKEN_ONLY_RE.test(rating)) {
+    ctx.err('reviews.rating', 'value', 'The rating is a number from 1 to 5 with at most one decimal (e.g. 4.7), or {{office_rating}}.');
+  }
 
   // Brief 216 (Track C3): the hero layout and its video. 'split' is stored as absent, and a video is
   // kept only with 'full-bleed', so every hub saved before Brief 216 keeps exactly its stored shape.
@@ -307,6 +310,14 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
     ndc: ctx.text(r.ndc, 'ndc', { rich: true }),
     final: { eyebrow: ctx.text(final.eyebrow, 'final.eyebrow'), h2: ctx.text(final.h2, 'final.h2'), body: ctx.text(final.body, 'final.body') },
   };
+  // Brief 221: the pre-token fallbacks of the rating-bearing fields, kept only while those fields still
+  // carry that token text (absent otherwise — a hub without tokens keeps its exact stored shape).
+  const ratingFallbacks = keepRatingFallbacks(
+    r.ratingFallbacks,
+    [...value.trust, value.reviews.intro, value.reviews.rating, value.reviews.ratingSub],
+    (v, k) => ctx.text(v, `ratingFallbacks[${k}]`)
+  );
+  if (ratingFallbacks) value.ratingFallbacks = ratingFallbacks;
   return { value, errors: ctx.errors };
 }
 

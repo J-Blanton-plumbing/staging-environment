@@ -64,4 +64,9 @@ export interface CityServiceV2Page {
   blocks: CsBlock[];
   /** The approved `Service` JSON-LD; `provider.telephone` is filled at render from Global Settings. */
   serviceSchema: Record<string, unknown> & { provider: Record<string, unknown> & { telephone: string } };
+  /**
+   * Brief 221 (optional): token text → the text that field held before the live-rating tokens. Used
+   * only while a token has no `office_ratings` row. Absent on every page without tokens.
+   */
+  ratingFallbacks?: Record<string, string>;
 }

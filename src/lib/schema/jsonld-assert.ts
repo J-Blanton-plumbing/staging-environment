@@ -19,7 +19,14 @@ export const FORBIDDEN_TYPES = ['AggregateRating', 'Review', 'FAQPage', 'Questio
  * Brief 216 (Marketing 2026-10-21, decision 1): the City Hub and City Service V2 templates — and ONLY
  * those two — emit one FAQPage derived from their visible FAQ. Everywhere else FORBIDDEN_TYPES applies.
  */
-export const CITY_PAGE_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'FAQPage' && t !== 'Question' && t !== 'Answer');
+export const CITY_PAGE_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'FAQPage' && t !== 'Question' && t !== 'Answer' && t !== 'AggregateRating');
+
+/**
+ * Brief 221 (Track C, Marketing 2026-10-28): `AggregateRating` is allowed in exactly two places — the
+ * `aggregateRating` of a City Hub / City Service V2 page's office node (Plumber), and of the homepage
+ * Organization. Never a Product, never Review nodes. `aggregateRatingProblems` checks where it sits.
+ */
+export const HOMEPAGE_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'AggregateRating');
 
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 
@@ -102,4 +109,53 @@ export function checkJsonLd(blocks: string[], forbidden: readonly string[] = FOR
 
   for (const t of forbidden) if (all.has(t)) errors.push(`forbidden type present: ${t}`);
   return { errors, tally, allTypes: Array.from(all).sort() };
+}
+
+/**
+ * Brief 221: every AggregateRating must be the `aggregateRating` of a top-level node of `ownerTypes`,
+ * in the Brief 221 shape (ratingValue "N.N" within 1–5, reviewCount a whole number > 0, best/worst
+ * "5"/"1"). Returns the problems (none = OK).
+ */
+export function aggregateRatingProblems(blocks: string[], ownerTypes: readonly string[]): string[] {
+  const out: string[] = [];
+  let owned = 0;
+  let total = 0;
+  const count = (v: Json): void => {
+    if (Array.isArray(v)) {
+      v.forEach(count);
+      return;
+    }
+    if (v && typeof v === 'object') {
+      if (typesOf(v).includes('AggregateRating')) total++;
+      Object.values(v).forEach(count);
+    }
+  };
+  for (const raw of blocks) {
+    let doc: Json;
+    try {
+      doc = JSON.parse(raw) as Json;
+    } catch {
+      continue;
+    }
+    count(doc);
+    if (!doc || typeof doc !== 'object' || Array.isArray(doc)) continue;
+    const graph = doc['@graph'];
+    const nodes: Json[] = Array.isArray(graph) ? graph : [doc];
+    for (const n of nodes) {
+      if (!n || typeof n !== 'object' || Array.isArray(n)) continue;
+      const r = n.aggregateRating;
+      if (r === undefined) continue;
+      if (!typesOf(n).some((t) => ownerTypes.includes(t))) out.push(`aggregateRating on a ${typesOf(n).join('/')} node (allowed only on ${ownerTypes.join('/')})`);
+      if (!r || typeof r !== 'object' || Array.isArray(r) || r['@type'] !== 'AggregateRating') {
+        out.push('aggregateRating is not an AggregateRating object');
+        continue;
+      }
+      owned++;
+      if (typeof r.ratingValue !== 'string' || !/^[1-5]\.\d$/.test(r.ratingValue) || Number(r.ratingValue) > 5) out.push(`aggregateRating ratingValue "${String(r.ratingValue)}" is not "N.N" within 1–5`);
+      if (typeof r.reviewCount !== 'string' || !/^[1-9]\d*$/.test(r.reviewCount)) out.push(`aggregateRating reviewCount "${String(r.reviewCount)}" is not a whole number above 0`);
+      if (r.bestRating !== '5' || r.worstRating !== '1') out.push('aggregateRating bestRating / worstRating are not "5" / "1"');
+    }
+  }
+  if (total !== owned) out.push(`${total - owned} AggregateRating node(s) outside an allowed aggregateRating property`);
+  return out;
 }
