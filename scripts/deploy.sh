@@ -1213,6 +1213,24 @@ rm -rf .next-prev
 # (NOT-APPLIED, nothing written). Idempotent - ALREADY-APPLIED from then on.
 # Exit 1 only for a code/schema fault (the new build is already serving).
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-brief-218-home-meta.ts commit
+# Brief 221: the Mainline ratings endpoint's URL + token arrive from GitHub
+# repo secrets (deploy.yml `envs:`) and are written into .env.local, where the
+# sync below and its daily cron read them. An unset secret arrives empty and
+# leaves .env.local exactly as it is - so removing a secret never blanks the
+# box. Values are never echoed (the repo is PUBLIC); only the length is.
+gbp_env_set() {
+  local key="$1" val="$2"
+  if [ -z "$val" ]; then echo "MAINLINE ENV: $key not set in GitHub secrets - .env.local left as is"; return 0; fi
+  case "$val" in *$'\n'*|*$'\r'*) echo "MAINLINE ENV: $key contains a line break - NOT written"; return 0;; esac
+  touch .env.local
+  { grep -v "^${key}=" .env.local || true; } > .env.local.gbp-tmp
+  printf '%s=%s\n' "$key" "$val" >> .env.local.gbp-tmp
+  cat .env.local.gbp-tmp > .env.local
+  rm -f .env.local.gbp-tmp
+  echo "MAINLINE ENV: $key written to .env.local (length ${#val})"
+}
+gbp_env_set MAINLINE_GBP_RATINGS_URL "${MAINLINE_GBP_RATINGS_URL:-}"
+gbp_env_set MAINLINE_GBP_RATINGS_TOKEN "${MAINLINE_GBP_RATINGS_TOKEN:-}"
 # Brief 221 STARTING LOAD (Marketing 2026-10-28, until Mainline's endpoint
 # exists): the /admin/gbp numbers of 2026-10-28, written ONLY for an office
 # whose office_ratings row has no numbers yet - never over a synced value, so

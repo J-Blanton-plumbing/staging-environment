@@ -11,10 +11,18 @@ jobs:
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.0
+        # Brief 221: the Mainline ratings endpoint's URL + token, from repo secrets.
+        # Exported into the remote shell (`envs:`); scripts/deploy.sh writes them
+        # into .env.local for the rating sync and its daily cron. A secret that is
+        # not set arrives empty and changes nothing on the box.
+        env:
+          MAINLINE_GBP_RATINGS_URL: ${{ secrets.MAINLINE_GBP_RATINGS_URL }}
+          MAINLINE_GBP_RATINGS_TOKEN: ${{ secrets.MAINLINE_GBP_RATINGS_TOKEN }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          envs: MAINLINE_GBP_RATINGS_URL,MAINLINE_GBP_RATINGS_TOKEN
           script_stop: true
           # The action's default command_timeout is 10m, and it kills the step at
           # that mark. Healthy deploys had crept from ~470s to ~500s; run #139
