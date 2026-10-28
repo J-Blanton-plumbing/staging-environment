@@ -1213,6 +1213,13 @@ rm -rf .next-prev
 # (NOT-APPLIED, nothing written). Idempotent - ALREADY-APPLIED from then on.
 # Exit 1 only for a code/schema fault (the new build is already serving).
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-brief-218-home-meta.ts commit
+# Brief 221 STARTING LOAD (Marketing 2026-10-28, until Mainline's endpoint
+# exists): the /admin/gbp numbers of 2026-10-28, written ONLY for an office
+# whose office_ratings row has no numbers yet - never over a synced value, so
+# it can't roll anything back. A no-op (ALREADY-APPLIED) once every office has
+# numbers; the real sync below replaces them as soon as it is configured.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/sync-gbp-ratings.ts --bootstrap-from-file=data/gbp-ratings/bootstrap-2026-10-28.json
 # Brief 221 (B3): refresh office_ratings from Mainline's GBP page once per
 # deploy (the daily cron below does it every day). Default is SYNC, on purpose
 # (a data refresh, not a content port). Mainline down, a wrong token or a

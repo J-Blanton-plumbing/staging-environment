@@ -1,0 +1,156 @@
+{
+  "syncedAt": "2026-10-28T18:57:09.000Z",
+  "total": {
+    "rating": 4.72,
+    "reviewCount": 10931
+  },
+  "locations": [
+    {
+      "slug": "evanston",
+      "name": "Evanston",
+      "rating": 4.8,
+      "reviewCount": 865,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "skokie",
+      "name": "Skokie",
+      "rating": 4.7,
+      "reviewCount": 386,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "ravenswood",
+      "name": "Ravenswood",
+      "rating": 4.6,
+      "reviewCount": 3532,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "geneva",
+      "name": "Geneva",
+      "rating": 4.9,
+      "reviewCount": 358,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "arlington-heights",
+      "name": "Arlington Heights",
+      "rating": 4.8,
+      "reviewCount": 707,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "hinsdale",
+      "name": "Hinsdale",
+      "rating": 4.8,
+      "reviewCount": 436,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "mchenry",
+      "name": "McHenry",
+      "rating": 4.7,
+      "reviewCount": 608,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "elmhurst",
+      "name": "Elmhurst",
+      "rating": 4.8,
+      "reviewCount": 284,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "northbrook",
+      "name": "Northbrook",
+      "rating": 4.7,
+      "reviewCount": 760,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "lincoln-park",
+      "name": "Lincoln Park",
+      "rating": 4.7,
+      "reviewCount": 420,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "naperville",
+      "name": "Naperville",
+      "rating": 4.7,
+      "reviewCount": 572,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "elgin",
+      "name": "Elgin",
+      "rating": 4.8,
+      "reviewCount": 348,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "algonquin",
+      "name": "Algonquin",
+      "rating": 4.8,
+      "reviewCount": 396,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "joliet",
+      "name": "Joliet",
+      "rating": 4.9,
+      "reviewCount": 321,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "tinley-park",
+      "name": "Tinley Park",
+      "rating": 4.8,
+      "reviewCount": 157,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "mokena",
+      "name": "Mokena",
+      "rating": 4.8,
+      "reviewCount": 172,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "bathrooms",
+      "name": "Bathrooms",
+      "rating": 4.9,
+      "reviewCount": 202,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "restoration",
+      "name": "Restoration",
+      "rating": 4.9,
+      "reviewCount": 195,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "columbus-grandview-heights",
+      "name": "Columbus - Grandview Heights",
+      "rating": 4.9,
+      "reviewCount": 131,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "hanover-park",
+      "name": "Hanover Park",
+      "rating": 4.9,
+      "reviewCount": 41,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    },
+    {
+      "slug": "highland-park",
+      "name": "Highland Park",
+      "rating": 5,
+      "reviewCount": 40,
+      "updatedAt": "2026-10-28T18:57:09.000Z"
+    }
+  ]
+}

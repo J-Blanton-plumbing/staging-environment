@@ -10,10 +10,9 @@
  * Only offices that exist in Global Settings are seeded (by slug, a leading "/" ignored — the live
  * Hanover Park record is "/hanover-park").
  *
- * ⚠ Highland Park's Mainline location was on page 2 of the GBP list and could not be read for this
- * brief; "highland-park" is the expected key (every other office's key is its own city name). If it
- * is wrong, the sync records "location not in the Mainline response" for that office and the page
- * keeps its pre-token copy — correct it in /admin/global-settings.
+ * All 19 keys were confirmed against the `?location=` links on /admin/gbp on 2026-10-28 (Highland Park
+ * is on page 2 of that list). If one ever changes, the sync records "location not in the Mainline
+ * response" for that office and it keeps its last numbers — correct it in /admin/global-settings.
  *
  *   npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-221-mainline-locations.ts          # preview
  *   npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-221-mainline-locations.ts commit   # apply
@@ -54,7 +53,7 @@ export const BRIEF_221_MAINLINE_LOCATIONS: Readonly<Record<string, string>> = {
   mokena: 'mokena',
   columbus: 'columbus-grandview-heights',
   'hanover-park': 'hanover-park',
-  'highland-park': 'highland-park', // ⚠ unconfirmed — see the header
+  'highland-park': 'highland-park',
 };
 
 async function main() {

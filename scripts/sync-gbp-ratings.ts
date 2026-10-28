@@ -7,6 +7,14 @@
  *   npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/sync-gbp-ratings.ts             # sync (default)
  *   npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/sync-gbp-ratings.ts --dry-run   # old → new, no writes
  *   … --from-file=<payload.json>   test only: read a saved endpoint response instead of calling Mainline
+ *   … --bootstrap-from-file=<payload.json>   STARTING LOAD: fill only offices with NO numbers yet (below)
+ *
+ * ── STARTING LOAD (Marketing 2026-10-28) ────────────────────────────────────
+ * Until Mainline's endpoint exists, deploy.sh runs `--bootstrap-from-file=data/gbp-ratings/bootstrap-2026-10-28.json`
+ * (the /admin/gbp numbers of 2026-10-28 13:57 CT, saved in the endpoint's shape). It writes an office ONLY
+ * while its row has no numbers — never over a synced or earlier value — so running on every deploy can't roll
+ * anything back, and the first real sync replaces it. Same per-office guards; a rejected value is skipped,
+ * nothing recorded. Once every office has numbers it is a no-op (ALREADY-APPLIED).
  *
  * DEFAULT IS COMMIT, on purpose: this is a data refresh, not a content port — the Brief 146 trap was a
  * deploy step that SILENTLY did nothing, and a refresh that defaults to doing nothing is that trap.
@@ -51,7 +59,9 @@ import { verdict } from './lib/run-mode';
 const SCRIPT = 'sync-gbp-ratings';
 const argv = process.argv.slice(2);
 const dry = argv.some((a) => ['--dry-run', 'dry-run', '--dry', 'dry'].includes(a));
-const fromFile = argv.find((a) => a.startsWith('--from-file='))?.slice('--from-file='.length) ?? '';
+const bootstrapFile = argv.find((a) => a.startsWith('--bootstrap-from-file='))?.slice('--bootstrap-from-file='.length) ?? '';
+const bootstrap = !!bootstrapFile;
+const fromFile = bootstrapFile || (argv.find((a) => a.startsWith('--from-file='))?.slice('--from-file='.length) ?? '');
 const urlArg = argv.find((a) => a.startsWith('--url='))?.slice('--url='.length) ?? '';
 
 /** A >10% drop in the count since the last good value is rejected. */
@@ -139,7 +149,7 @@ const shown = (r: { rating_value: string | number | null; review_count: number |
   r && r.rating_value != null && r.review_count != null ? `${formatRatingValue(Number(r.rating_value))} · ${formatReviewCount(r.review_count)}` : '(none)';
 
 async function main() {
-  console.log(dry ? 'MODE: DRY RUN (no writes)\n' : 'MODE: SYNC (writing office_ratings)\n');
+  console.log(`${dry ? 'MODE: DRY RUN (no writes)' : bootstrap ? 'MODE: STARTING LOAD (offices with no numbers only)' : 'MODE: SYNC (writing office_ratings)'}\n`);
   const configured = !!fromFile || ((urlArg || env('MAINLINE_GBP_RATINGS_URL')) && env('MAINLINE_GBP_RATINGS_TOKEN'));
   if (!configured) {
     console.log('NOT CONFIGURED: MAINLINE_GBP_RATINGS_URL and MAINLINE_GBP_RATINGS_TOKEN must both be set (.env.local on the box).');
@@ -172,10 +182,21 @@ async function main() {
   let updated = 0;
   let unchanged = 0;
   const rejected: string[] = [];
+  let present = 0;
   for (const t of targets) {
     const prev = prevRows.get(t.slug);
+    if (bootstrap && prev && prev.rating_value != null && prev.review_count != null) {
+      present++;
+      console.log(`  HAS      ${t.slug.padEnd(22)} ${shown(prev)} — already has numbers, never overwritten by the starting load`);
+      continue;
+    }
     const f = payload ? (t.slug === COMPANY_RATING_SLUG ? payload.total : payload.locations.get(t.location.toLowerCase())) : null;
     const why = runError || problem(f, prev);
+    if (bootstrap && (why || !f)) {
+      rejected.push(`${t.slug}: ${why}`);
+      console.log(`  SKIPPED  ${t.slug.padEnd(22)} — ${why}`);
+      continue;
+    }
     if (why || !f) {
       rejected.push(`${t.slug}: ${why}`);
       console.log(`  KEPT     ${t.slug.padEnd(22)} ${shown(prev).padEnd(14)} — ${why}`);
@@ -192,7 +213,7 @@ async function main() {
     const rating = Math.round(f.rating * 10) / 10;
     const next = { rating_value: rating, review_count: f.reviewCount };
     const same = prev && Number(prev.rating_value) === rating && prev.review_count === f.reviewCount;
-    console.log(`  ${same ? 'SAME   ' : 'UPDATED'}  ${t.slug.padEnd(22)} ${shown(prev).padEnd(14)} → ${shown(next)}${t.slug === COMPANY_RATING_SLUG ? `  (Mainline: ${f.rating})` : ''}`);
+    console.log(`  ${same ? 'SAME   ' : bootstrap ? 'FILLED ' : 'UPDATED'}  ${t.slug.padEnd(22)} ${shown(prev).padEnd(14)} → ${shown(next)}${t.slug === COMPANY_RATING_SLUG ? `  (Mainline: ${f.rating})` : ''}`);
     if (same) unchanged++;
     else updated++;
     if (!dry) {
@@ -213,9 +234,12 @@ async function main() {
     if (extra.length) console.log(`  report-only: Mainline locations no office reads: ${extra.join(', ')}`);
   }
 
-  const summary = `${updated} updated, ${unchanged} unchanged, ${rejected.length} kept (old numbers)`;
+  const summary = bootstrap
+    ? `${updated} filled, ${present} already had numbers, ${rejected.length} skipped`
+    : `${updated} updated, ${unchanged} unchanged, ${rejected.length} kept (old numbers)`;
   console.log(`\n${summary}${dry ? ' — dry run, nothing written' : ''}`);
   if (dry) verdict(SCRIPT, 'NOT-APPLIED (dry run)', summary);
+  else if (bootstrap) verdict(SCRIPT, updated ? 'APPLIED' : rejected.length ? 'NOT-APPLIED (guard tripped)' : 'ALREADY-APPLIED', summary);
   else if (runError) verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', runError);
   else if (rejected.length) verdict(SCRIPT, 'NOT-APPLIED (guard tripped)', summary);
   else verdict(SCRIPT, updated ? 'APPLIED' : 'ALREADY-APPLIED', summary);
