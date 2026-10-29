@@ -1249,7 +1249,8 @@ gbp_env_set() {
   rm -f .env.local.gbp-tmp
   echo "MAINLINE ENV: $key written to .env.local (length ${#val})"
 }
-gbp_env_set MAINLINE_GBP_RATINGS_URL "${MAINLINE_GBP_RATINGS_URL:-}"
+# The URL is not a secret: it defaults to Mainline's endpoint, so only the token needs a repo secret.
+gbp_env_set MAINLINE_GBP_RATINGS_URL "${MAINLINE_GBP_RATINGS_URL:-https://mainline.jblantonplumbing.com/api/public/gbp-ratings}"
 gbp_env_set MAINLINE_GBP_RATINGS_TOKEN "${MAINLINE_GBP_RATINGS_TOKEN:-}"
 # Brief 221 STARTING LOAD (Marketing 2026-10-28, until Mainline's endpoint
 # exists): the /admin/gbp numbers of 2026-10-28, written ONLY for an office
@@ -1264,8 +1265,10 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # rejected number keeps the last good numbers and exits 0; NOT CONFIGURED
 # (MAINLINE_GBP_RATINGS_URL / _TOKEN missing from .env.local) writes nothing
 # and exits 0. Exit 1 only for a code/schema fault. POST-swap: only the new
-# build reads the table.
-npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/sync-gbp-ratings.ts
+# build reads the table. Cities whose shown numbers change go to changed.txt,
+# so the CITY PAGES LIVE CHECK expects them to differ from the snapshot.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/sync-gbp-ratings.ts --changed-file=.city-pages-snapshot/changed.txt
 # Brief 221 (D2): the review numbers on the 19 City Hubs, their 551 City
 # Service V2 pages and Homepage 2026 move onto the live-rating tokens - one new
 # published version per page, the previous one kept; a page whose rating copy

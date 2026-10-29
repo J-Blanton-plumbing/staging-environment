@@ -39,6 +39,7 @@ import { createDraft, publishDraft } from '../src/lib/cms/drafts';
 import { conformCityHubContent } from '../src/lib/cms/city-hubs-write';
 import { CITY_HUB_TEMPLATE, CITY_PAGE_TYPES, HUB_V2_REVIEWS_GBP_LABEL, type CityHubDraftContent, type CityHubStored } from '../src/lib/city-hub-cms/model';
 import { CITY_PAGE_BATCHES } from '../src/lib/city-batches';
+import { hasRatingTokens } from '../src/lib/cms/tokens';
 import { ratingFromIntro } from './lib/city-batch-md/hub';
 import { authorId } from './lib/city-pages-seed';
 import { inPipeline, resolveRunMode, verdict } from './lib/run-mode';
@@ -96,6 +97,14 @@ async function one(slug: string, u: Update, by: number, apply: boolean): Promise
   }
   const live = row.hub;
   const want = patched(live, u);
+  // Brief 221 moved the rating copy (intro + rating card) onto live-rating tokens, which supersedes
+  // this update's literal numbers. Keep the token copy: writing the literals back would ping-pong with
+  // update-brief-221-rating-tokens.ts on every deploy (10 versions a deploy on the Batch 2 hubs).
+  if ([live.reviews.intro, live.reviews.rating, live.reviews.ratingSub].some((t) => hasRatingTokens(t))) {
+    want.reviews.intro = live.reviews.intro;
+    want.reviews.rating = live.reviews.rating;
+    want.reviews.ratingSub = live.reviews.ratingSub;
+  }
   if (canon(want) === canon(live)) return { outcome: 'already', detail: 'already carries the update, no change' };
   if (live.office.gbpUrl && live.office.gbpUrl !== u.gbpUrl) return { outcome: 'not-applied', detail: `office.gbpUrl was set to "${live.office.gbpUrl}" in /admin — left alone` };
   if (u.items && live.reviews.h2 !== INTERIM_H2 && live.reviews.h2 !== u.h2) return { outcome: 'not-applied', detail: `reviews were edited in /admin since ("${live.reviews.h2}") — left alone` };

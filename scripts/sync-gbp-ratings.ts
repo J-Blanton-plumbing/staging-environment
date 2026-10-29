@@ -8,6 +8,9 @@
  *   npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/sync-gbp-ratings.ts --dry-run   # old → new, no writes
  *   … --from-file=<payload.json>   test only: read a saved endpoint response instead of calling Mainline
  *   … --bootstrap-from-file=<payload.json>   STARTING LOAD: fill only offices with NO numbers yet (below)
+ *   … --changed-file=<path>   append the hub cities whose shown numbers this run changed (one per line),
+ *       for the deploy's CITY PAGES LIVE CHECK; a company-total change lists every office city, since
+ *       every hub and service page shows it. deploy.sh passes .city-pages-snapshot/changed.txt.
  *
  * ── STARTING LOAD (Marketing 2026-10-28) ────────────────────────────────────
  * Until Mainline's endpoint exists, deploy.sh runs `--bootstrap-from-file=data/gbp-ratings/bootstrap-2026-10-28.json`
@@ -40,7 +43,7 @@
  * pages keep their last good numbers. Exit 1 only for a code / schema fault (e.g. the table is missing).
  * Not configured (no URL / token in the env) → reported, nothing written, exit 0.
  */
-import { existsSync, readFileSync } from 'fs';
+import { appendFileSync, existsSync, readFileSync } from 'fs';
 
 const envFile = existsSync('.env.local') ? readFileSync('.env.local', 'utf8') : '';
 const env = (k: string) => {
@@ -63,6 +66,7 @@ const bootstrapFile = argv.find((a) => a.startsWith('--bootstrap-from-file='))?.
 const bootstrap = !!bootstrapFile;
 const fromFile = bootstrapFile || (argv.find((a) => a.startsWith('--from-file='))?.slice('--from-file='.length) ?? '');
 const urlArg = argv.find((a) => a.startsWith('--url='))?.slice('--url='.length) ?? '';
+const changedFile = argv.find((a) => a.startsWith('--changed-file='))?.slice('--changed-file='.length) ?? '';
 
 /** A >10% drop in the count since the last good value is rejected. */
 const MAX_DROP = 0.1;
@@ -180,6 +184,7 @@ async function main() {
 
   const now = new Date().toISOString();
   let updated = 0;
+  const changedSlugs: string[] = [];
   let unchanged = 0;
   const rejected: string[] = [];
   let present = 0;
@@ -215,7 +220,10 @@ async function main() {
     const same = prev && Number(prev.rating_value) === rating && prev.review_count === f.reviewCount;
     console.log(`  ${same ? 'SAME   ' : bootstrap ? 'FILLED ' : 'UPDATED'}  ${t.slug.padEnd(22)} ${shown(prev).padEnd(14)} → ${shown(next)}${t.slug === COMPANY_RATING_SLUG ? `  (Mainline: ${f.rating})` : ''}`);
     if (same) unchanged++;
-    else updated++;
+    else {
+      updated++;
+      changedSlugs.push(t.slug);
+    }
     if (!dry) {
       await pool.query(
         `INSERT INTO office_ratings (office_slug, mainline_location, rating_value, review_count, source_synced_at, fetched_at, last_error)
@@ -224,6 +232,17 @@ async function main() {
            review_count = EXCLUDED.review_count, source_synced_at = EXCLUDED.source_synced_at, fetched_at = EXCLUDED.fetched_at, last_error = NULL`,
         [t.slug, t.location, rating, f.reviewCount, f.updatedAt ?? payload?.syncedAt ?? null, now]
       );
+    }
+  }
+
+  if (changedFile && !dry && changedSlugs.length) {
+    const cities = changedSlugs.includes(COMPANY_RATING_SLUG) ? Object.keys(mapping) : changedSlugs;
+    try {
+      appendFileSync(changedFile, cities.map((c) => `${c}\n`).join(''));
+      console.log(`\n  changed-file: ${cities.length} cit${cities.length === 1 ? 'y' : 'ies'} listed for the live check`);
+    } catch (e) {
+      // Never fail the sync over the live check's bookkeeping: the numbers are already written.
+      console.log(`\n  changed-file: could not write ${changedFile} (${(e as Error).message}) - the live check may flag these cities`);
     }
   }
 
