@@ -53,6 +53,9 @@ function Section({ section, shared, phone, ratings }: { section: WhSection; shar
       return <WhServicesSection section={section} phone={phone} />;
     case 'financing':
       return <WhFinancingPanel section={section} shared={shared} phone={phone} />;
+    case 'locations':
+      // Brief 225: the emergency hub's section (rendered by EmHubView); no water heater page has one.
+      return null;
   }
 }
 

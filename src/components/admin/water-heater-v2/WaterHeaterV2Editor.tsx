@@ -24,11 +24,13 @@ import { COMPANY_RATING_TOKEN_HELP } from '@/lib/cms/tokens';
 import type { SewerNode } from '@/lib/content/sewer-v2/types';
 import type { WhHubStored, WhSection, WhSharedContent, WhStored, WhTreeNode } from '@/lib/content/water-heater-v2/types';
 import {
+  isEmSlug,
   isWhV2DraftContent,
+  whPageType,
   whPathFor,
   whTemplateOf,
+  whTemplatesFor,
   WH_OLD_SHAPE_MESSAGE,
-  WH_TEMPLATES,
   WH_TEMPLATE_LABEL,
   WH_V2_HUB_SLUG,
   type WhV2DraftContent,
@@ -63,8 +65,11 @@ function treeTitle(node: WhTreeNode): string {
 }
 
 export default function WaterHeaterV2Editor({ slug }: { slug: string }) {
-  const hub = slug === WH_V2_HUB_SLUG;
-  const pageType = hub ? 'service' : 'sub-service';
+  // Brief 225: `/admin/emergency-plumbing` opens this editor too — the Emergency Hub is a hub-shaped page
+  // (hero, sections, its own "shared" record) on its own row; it shares nothing with the water heater pages.
+  const em = isEmSlug(slug);
+  const hub = slug === WH_V2_HUB_SLUG || em;
+  const pageType = whPageType(slug);
   const publicPath = whPathFor(slug);
   const [load, setLoad] = useState<Load | null>(null);
   const [loadError, setLoadError] = useState('');
@@ -106,7 +111,7 @@ export default function WaterHeaterV2Editor({ slug }: { slug: string }) {
   }, [slug]);
 
   const activeRow = dv.versions.find((v) => v.id === dv.activeId) ?? null;
-  const activeIsOld = !!activeRow && !(WH_TEMPLATES as readonly (string | null)[]).includes(activeRow.template_type);
+  const activeIsOld = !!activeRow && !(whTemplatesFor(slug) as readonly (string | null)[]).includes(activeRow.template_type);
   const readOnly = legacy !== null;
 
   const [localNotice, setLocalNotice] = useState('');
@@ -135,7 +140,7 @@ export default function WaterHeaterV2Editor({ slug }: { slug: string }) {
   const set = (patch: Partial<WhV2DraftContent>) => setContent((c) => (c ? { ...c, ...patch } : c));
   const body = content.whV2;
   const template = whTemplateOf(content);
-  const title = hub ? 'Water Heater Services (hub)' : body.hero.crumb || slug;
+  const title = em ? 'Emergency Plumbing (hub)' : hub ? 'Water Heater Services (hub)' : body.hero.crumb || slug;
   const setBody = (next: WhStored | WhHubStored) => set({ whV2: next });
 
   return (
@@ -165,7 +170,9 @@ export default function WaterHeaterV2Editor({ slug }: { slug: string }) {
           @media (min-width: 768px) { .admin-editor-content.attrs-open { margin-right: ${SIDEBAR_WIDTH_PX}px; } }
         `}</style>
         <Notice>
-          {hub ? (
+          {em ? (
+            <>This is the <strong>Emergency Plumbing hub</strong> (<a href={publicPath} target="_blank" rel="noreferrer" style={{ color: BRAND.cream }}>{publicPath}</a>) — {WH_TEMPLATE_LABEL[template]}. It shares nothing with any other page. The emergency checklist and the “While You Wait” steps have no links on purpose (the page exists to get the call), and the financing band is fixed copy. </>
+          ) : hub ? (
             <>This is the <strong>Water Heater Services hub</strong> (<a href={publicPath} target="_blank" rel="noreferrer" style={{ color: BRAND.cream }}>{publicPath}</a>) and, further down, the sections <strong>shared across all 6 water heater pages</strong>. </>
           ) : (
             <>Editing <a href={publicPath} target="_blank" rel="noreferrer" style={{ color: BRAND.cream }}>{publicPath}</a> — {WH_TEMPLATE_LABEL[template]}. </>
@@ -191,8 +198,8 @@ export default function WaterHeaterV2Editor({ slug }: { slug: string }) {
               <TextInput label="SEO title (Google)" value={content.metaTitle} onChange={(v) => set({ metaTitle: v })} limit={60} />
               <TextInput label="SEO description (Google)" value={content.metaDescription} onChange={(v) => set({ metaDescription: v })} limit={160} multiline />
             </Group>
-            <PageFields value={body} onChange={setBody} hub={hub} />
-            {hub && <SharedFields value={(body as WhHubStored).shared} onChange={(shared) => setBody({ ...(body as WhHubStored), shared })} />}
+            <PageFields value={body} onChange={setBody} hub={hub} em={em} />
+            {hub && <SharedFields value={(body as WhHubStored).shared} onChange={(shared) => setBody({ ...(body as WhHubStored), shared })} em={em} />}
           </div>
         )}
       </div>
@@ -216,7 +223,7 @@ export default function WaterHeaterV2Editor({ slug }: { slug: string }) {
           ...statusCtl.versionProps,
         }}
         slug={{ value: slug, editable: false, disabledNote: "This page's URL is fixed.", permalink: `${SITE.baseUrl}${publicPath}` }}
-        parent={{ label: 'Water Heater Services', editable: false, value: WH_V2_HUB_SLUG, options: [], onChange: () => {} }}
+        parent={em ? { label: 'None (top-level page)', editable: false, value: '', options: [], onChange: () => {} } : { label: 'Water Heater Services', editable: false, value: WH_V2_HUB_SLUG, options: [], onChange: () => {} }}
         open={attrsOpen}
         onClose={() => setAttrsOpen(false)}
       />
@@ -226,34 +233,45 @@ export default function WaterHeaterV2Editor({ slug }: { slug: string }) {
 
 // ── the page ──────────────────────────────────────────────────────────────────────
 
-function PageFields({ value, onChange, hub }: { value: WhStored; onChange: (v: WhStored) => void; hub: boolean }) {
+function PageFields({ value, onChange, hub, em }: { value: WhStored; onChange: (v: WhStored) => void; hub: boolean; em: boolean }) {
   const h = value.hero;
   const setHero = (patch: Partial<WhStored['hero']>) => onChange({ ...value, hero: { ...h, ...patch } });
   const setSection = (i: number, s: WhSection) => onChange({ ...value, sections: value.sections.map((x, y) => (y === i ? s : x)) });
   const rail = value.rail;
   return (
     <>
-      <Group title="Hero" note="The page has ONE heading for Google and screen readers (the hidden H1 below). The visible headline is the lead text followed by the market names, which rotate.">
+      <Group
+        title="Hero"
+        note={
+          em
+            ? 'The H1 is the page’s one heading (Google and screen readers read it, and it is the visible headline). The quick-link pills are further down, under “This page’s own settings”.'
+            : 'The page has ONE heading for Google and screen readers (the hidden H1 below). The visible headline is the lead text followed by the market names, which rotate.'
+        }
+      >
         {!hub && <TextInput label="Breadcrumb label" value={h.crumb} onChange={(crumb) => setHero({ crumb })} />}
         <TextInput label="Eyebrow" value={h.eyebrow} onChange={(eyebrow) => setHero({ eyebrow })} />
-        <TextInput label="H1 (hidden heading Google reads)" value={h.h1} onChange={(h1) => setHero({ h1 })} />
-        <TextInput label="Visible headline — lead (ends with a space)" value={h.lead} onChange={(lead) => setHero({ lead })} />
-        <Repeater<string>
-          label="Visible headline — rotating market names"
-          items={h.words}
-          onChange={(words) => setHero({ words })}
-          newItem={() => ''}
-          itemLabel={(w, i) => `${i + 1}${w ? ` — ${w}` : ''}`}
-          renderItem={(w, update) => <TextInput label="Market name" value={w} onChange={update} />}
-          max={4}
-          addLabel="Add a market name"
-        />
+        <TextInput label={em ? 'H1 (the headline)' : 'H1 (hidden heading Google reads)'} value={h.h1} onChange={(h1) => setHero({ h1 })} />
+        {!em && (
+          <>
+            <TextInput label="Visible headline — lead (ends with a space)" value={h.lead} onChange={(lead) => setHero({ lead })} />
+            <Repeater<string>
+              label="Visible headline — rotating market names"
+              items={h.words}
+              onChange={(words) => setHero({ words })}
+              newItem={() => ''}
+              itemLabel={(w, i) => `${i + 1}${w ? ` — ${w}` : ''}`}
+              renderItem={(w, update) => <TextInput label="Market name" value={w} onChange={update} />}
+              max={4}
+              addLabel="Add a market name"
+            />
+          </>
+        )}
         <TextInput label="Intro" value={h.intro} onChange={(intro) => setHero({ intro })} multiline />
         <ImageInput label="Hero photo" src={h.image.src} alt={h.image.alt} onSrc={(src) => setHero({ image: { ...h.image, src } })} onAlt={(alt) => setHero({ image: { ...h.image, alt } })} />
       </Group>
 
       {value.sections.map((s, i) => (
-        <SectionFields key={i} section={s} onChange={(n) => setSection(i, n)} />
+        <SectionFields key={i} section={s} onChange={(n) => setSection(i, n)} em={em} />
       ))}
 
       {rail && (
@@ -278,8 +296,12 @@ function PageFields({ value, onChange, hub }: { value: WhStored; onChange: (v: W
       <Group title="Structured data for Google (Service)" note="Describes this page’s service to search engines. The FAQ structured data is built from the visible FAQ automatically.">
         <TextInput label="Service name" value={value.service.name} onChange={(name) => onChange({ ...value, service: { ...value.service, name } })} />
         <TextInput label="Service type" value={value.service.serviceType} onChange={(serviceType) => onChange({ ...value, service: { ...value.service, serviceType } })} />
-        <TextInput label="Description" value={value.service.description} onChange={(description) => onChange({ ...value, service: { ...value.service, description } })} multiline />
-        <TextInput label="Audience" value={value.service.audienceType} onChange={(audienceType) => onChange({ ...value, service: { ...value.service, audienceType } })} />
+        {!em && (
+          <>
+            <TextInput label="Description" value={value.service.description} onChange={(description) => onChange({ ...value, service: { ...value.service, description } })} multiline />
+            <TextInput label="Audience" value={value.service.audienceType} onChange={(audienceType) => onChange({ ...value, service: { ...value.service, audienceType } })} />
+          </>
+        )}
         {value.service.catalog && (
           <>
             <TextInput label="Catalog name" value={value.service.catalog.name} onChange={(name) => onChange({ ...value, service: { ...value.service, catalog: { ...value.service.catalog!, name } } })} />
@@ -298,19 +320,51 @@ function PageFields({ value, onChange, hub }: { value: WhStored; onChange: (v: W
   );
 }
 
-function SectionFields({ section, onChange }: { section: WhSection; onChange: (s: WhSection) => void }) {
+function SectionFields({ section, onChange, em }: { section: WhSection; onChange: (s: WhSection) => void; em: boolean }) {
   switch (section.kind) {
     case 'panel':
+      // Brief 225: the emergency hub's financing band is fixed copy (shown, not editable).
+      if (em && (section.el as { cls?: string }).cls === 'hub-fin') {
+        return (
+          <Group title={`Section: ${treeTitle(section.el) || 'Financing'}`} note="Fixed financing copy — the same block as the sewer hub. It can’t be edited here, and it never names a lender.">
+            <Notice>Not editable.</Notice>
+          </Group>
+        );
+      }
       return (
         <Group title={`Section: ${treeTitle(section.el) || 'untitled'}`} note={RHYTHM_NOTE}>
           <Tree node={section.el} onChange={(el) => onChange({ ...section, el })} />
         </Group>
       );
-    case 'reviews':
+    case 'locations':
       return (
-        <Group title="Reviews (this page only)" note={<>The rating card beside the heading is shared (on the hub) and shows the live Google rating. Leave a reviewer’s link blank until a real Google review link exists — the name is then not linked.</>}>
+        <Group
+          title={`Section: ${section.heading || 'Locations'}`}
+          note="The offices by state. Add, remove or reorder states and offices. Leave an office’s link blank to show it as plain text (for a city whose emergency page is not live yet). The map itself is fixed."
+        >
           <TextInput label="Eyebrow" value={section.eyebrow} onChange={(eyebrow) => onChange({ ...section, eyebrow })} />
           <TextInput label="Heading" value={section.heading} onChange={(heading) => onChange({ ...section, heading })} />
+          <TextInput label="Intro text" value={section.intro} onChange={(intro) => onChange({ ...section, intro })} multiline />
+          <ValueEditor value={section.states} keyName="states" label="States and their offices" onChange={(states) => onChange({ ...section, states: states as typeof section.states })} />
+          <TextInput label="Closing line" value={section.close} onChange={(close) => onChange({ ...section, close })} multiline />
+          <TextInput label="Map title (screen readers)" value={section.map.title} onChange={(title) => onChange({ ...section, map: { ...section.map, title } })} />
+        </Group>
+      );
+    case 'reviews':
+      return (
+        <Group
+          title="Reviews (this page only)"
+          note={
+            em ? (
+              <>The rating card beside the heading shows the live Google rating (edit its labels under “This page’s own settings”). Leave a reviewer’s link blank until a real Google review link exists — the name is then not linked.</>
+            ) : (
+              <>The rating card beside the heading is shared (on the hub) and shows the live Google rating. Leave a reviewer’s link blank until a real Google review link exists — the name is then not linked.</>
+            )
+          }
+        >
+          <TextInput label="Eyebrow" value={section.eyebrow} onChange={(eyebrow) => onChange({ ...section, eyebrow })} />
+          <TextInput label="Heading" value={section.heading} onChange={(heading) => onChange({ ...section, heading })} />
+          {section.intro !== undefined && <TextInput label="Intro text" value={section.intro} onChange={(intro) => onChange({ ...section, intro })} multiline />}
           <ValueEditor value={section.items} keyName="items" label="Reviews" onChange={(items) => onChange({ ...section, items: items as typeof section.items })} />
           {section.layout === 'spoke' &&
             (section.gallery ? (
@@ -373,8 +427,31 @@ function SectionFields({ section, onChange }: { section: WhSection; onChange: (s
 
 // ── shared ────────────────────────────────────────────────────────────────────────
 
-function SharedFields({ value, onChange }: { value: WhSharedContent; onChange: (v: WhSharedContent) => void }) {
+function SharedFields({ value, onChange, em }: { value: WhSharedContent; onChange: (v: WhSharedContent) => void; em: boolean }) {
   const set = (patch: Partial<WhSharedContent>) => onChange({ ...value, ...patch });
+  if (em) {
+    // Brief 225: the emergency hub's own record (nothing here is shared with another page). No Emergency
+    // rail card on this page and the financing copy is fixed, so neither is shown.
+    return (
+      <div id="shared" style={{ borderTop: `3px solid ${BRAND.carmine}`, paddingTop: '1.5rem', marginTop: '2rem' }}>
+        <h2 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '20px', color: ADMIN_COLORS.onSurface, margin: '0 0 0.75rem' }}>This page’s own settings</h2>
+        <Group title="Rating card" note={<>The rating and review count come from Google every day (Brief 221). {COMPANY_RATING_TOKEN_HELP} Never type the numbers.</>}>
+          <ValueEditor value={value.proof} keyName="proof" label="" onChange={(proof) => set({ proof: proof as WhSharedContent['proof'] })} />
+        </Group>
+        <Group title="Hero quick-link pills" note="Hidden on phones. In-page links start with # (#wait, #locations, #faq).">
+          <ValueEditor value={value.quickLinks} keyName="quickLinks" label="" onChange={(quickLinks) => set({ quickLinks: quickLinks as WhSharedContent['quickLinks'] })} />
+        </Group>
+        <Group title="Mobile sticky call bar" note="{{phone}} in the screen-reader label is replaced with the phone number.">
+          <ValueEditor value={value.sticky} keyName="sticky" label="" onChange={(sticky) => set({ sticky: sticky as WhSharedContent['sticky'] })} />
+        </Group>
+        <Group title="Small labels">
+          <TextInput label="Breadcrumb name (Google’s breadcrumb for this page)" value={value.crumbParent.label} onChange={(label) => set({ crumbParent: { ...value.crumbParent, label } })} />
+          <TextInput label="“24 hours” badge — screen-reader label" value={value.badge24Label} onChange={(badge24Label) => set({ badge24Label })} />
+          <ValueEditor value={value.review} keyName="review" label="Review cards" onChange={(review) => set({ review: review as WhSharedContent['review'] })} />
+        </Group>
+      </div>
+    );
+  }
   return (
     <div id="shared" style={{ borderTop: `3px solid ${BRAND.carmine}`, paddingTop: '1.5rem', marginTop: '2rem' }}>
       <h2 style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif', fontSize: '20px', color: ADMIN_COLORS.onSurface, margin: '0 0 0.75rem' }}>Shared across all 6 water heater pages</h2>

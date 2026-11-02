@@ -42,12 +42,16 @@ export interface WhTreeElement {
   kids?: WhTreeNode[];
 }
 
-export type WhTemplate = 'wh-hub' | 'wh-standard' | 'wh-index';
+/** Brief 225: `em-hub` — the Emergency Plumbing hub (`/emergency-plumbing`), the same model on its own row. */
+export type WhTemplate = 'wh-hub' | 'wh-standard' | 'wh-index' | 'em-hub';
 
 /** A photo whose alt text comes from the package HTML. */
 export interface WhImage {
   src: string;
   alt: string;
+  /** Brief 225: the photo's intrinsic size (the emergency hero) — layout, locked; absent on the water heater pages. */
+  width?: number;
+  height?: number;
 }
 
 export interface WhHero {
@@ -99,6 +103,8 @@ export type WhSection =
       style: string;
       eyebrow: string;
       heading: string;
+      /** Brief 225: the line under the heading (emergency hub); absent on the water heater pages. */
+      intro?: string;
       items: WhReview[];
       /** Spoke pages only; null = text-only reviews. */
       gallery: WhGallery | null;
@@ -114,7 +120,21 @@ export type WhSection =
       emergency: { title: string; desc: string; image: string; alt: string; cta: string };
     }
   /** Index pages: the in-content financing panel. Copy is the shared (fixed) financing copy. */
-  | { kind: 'financing'; style: string; enabled: boolean };
+  | { kind: 'financing'; style: string; enabled: boolean }
+  /**
+   * Brief 225 (emergency hub): the map + the offices by state. An office with an empty `href` renders as
+   * plain text (its city emergency page is not live, §1 #8). The map embed is locked (the live sewer hub's).
+   */
+  | {
+      kind: 'locations';
+      style: string;
+      map: { title: string; src: string };
+      eyebrow: string;
+      heading: string;
+      intro: string;
+      states: { name: string; offices: { label: string; href: string }[] }[];
+      close: string;
+    };
 
 export interface WhRail {
   /**

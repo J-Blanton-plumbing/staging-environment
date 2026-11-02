@@ -170,6 +170,10 @@ const STATEMENTS: string[] = [
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS updated_by_email TEXT`,
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS canonical_url TEXT`,
+  // Brief 225: the Emergency Hub v2 content (the page + its own shared record). Additive and nullable; the
+  // old build never reads it. Rollback (no data loss — the legacy columns and the "Pre-v2 archive (2026-11)"
+  // version are untouched): ALTER TABLE emergency_plumbing_page DROP COLUMN v2_content;
+  `ALTER TABLE emergency_plumbing_page ADD COLUMN IF NOT EXISTS v2_content JSONB`,
 
   // ── global_settings ─────────────────────────────────────────────────────
   `ALTER TABLE global_settings ADD COLUMN IF NOT EXISTS header_phone TEXT`,

@@ -23,7 +23,9 @@
 /** Element tags a panel body may use. Anything else is a port error. */
 export type SewerTag =
   | 'div' | 'span' | 'p' | 'h2' | 'h3' | 'h4' | 'ul' | 'ol' | 'li' | 'strong' | 'em' | 'br' | 'a' | 'img'
-  | 'table' | 'thead' | 'tbody' | 'tr' | 'th' | 'td' | 'figure' | 'figcaption' | 'button' | 'section' | 'article' | 'nav';
+  | 'table' | 'thead' | 'tbody' | 'tr' | 'th' | 'td' | 'figure' | 'figcaption' | 'button' | 'section' | 'article' | 'nav'
+  // Brief 225: the emergency hub's gas callout (`aside.em-gas`). No sewer page uses it.
+  | 'aside';
 
 /** Inline SVGs used by the approved markup, keyed by name (see sewer-v2/icons.tsx). */
 export type SewerIconName =

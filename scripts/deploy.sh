@@ -1016,6 +1016,16 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # when a write it attempted did not land. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-water-heater-v2-content.ts commit
+# -- Brief 225: the Emergency Plumbing Hub v2 (/emergency-plumbing) on the CMS --
+# Copy src/lib/content/emergency-v2/hub.ts into emergency_plumbing_page.v2_content
+# (+ meta columns), write-once ("already seeded, no change" once the row holds v2
+# content - never overwrites a Marketing edit). The row's pre-v2 content is
+# archived first as the unpublished version "Pre-v2 archive (2026-11)", and the
+# v2 version is published through publishDraft. Pre-swap: the old build ignores
+# v2_content. Exit 1 only when a write it attempted did not land. Do NOT add
+# `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/seed-emergency-v2-content.ts commit
 # -- Brief 212 (Tracks A/B): City Hubs + City Service Pages V2 move onto the CMS --
 # 1. Snapshot what the STILL-LIVE build serves for the 10 city hubs + their
 #    290 service pages (src/lib/city-batches.ts), BEFORE the seeds below write,

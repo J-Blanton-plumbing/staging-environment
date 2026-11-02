@@ -555,6 +555,17 @@ jobs:
             node scripts/check-water-heater-v2-live.mjs --base=http://localhost:3000
             echo '======================================================='
 
+            # -- Brief 225: EMERGENCY V2 LIVE CHECK (all checks live in the script file) --
+            echo ''
+            echo '================== EMERGENCY V2 LIVE CHECK =================='
+            LAST_CHECK="EMERGENCY V2 LIVE CHECK"
+            if [ ! -f scripts/check-emergency-v2-live.mjs ]; then
+              echo "MISSING: $(pwd)/scripts/check-emergency-v2-live.mjs does not exist."
+              exit 1
+            fi
+            node scripts/check-emergency-v2-live.mjs --base=http://localhost:3000
+            echo '======================================================='
+
             # -- Brief 212: CITY PAGES LIVE CHECK ----------------------------------
             # The 18 city hubs + 522 service pages (src/lib/city-batches.ts): 200, a
             # row holding hub/V2 content is what serves (source APIs), listed in the

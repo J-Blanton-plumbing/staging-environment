@@ -10,6 +10,7 @@ import { WH_WATER_HEATER_MAINTENANCE } from '@/lib/content/water-heater-v2/water
 import { WH_TANKLESS_WATER_HEATER } from '@/lib/content/water-heater-v2/tankless-water-heater';
 import { WH_COMMERCIAL_WATER_HEATER } from '@/lib/content/water-heater-v2/commercial-water-heater';
 import { WH_SHARED_DEFAULT } from '@/lib/content/water-heater-v2/shared-content';
+import { EM_HUB, EM_SHARED_DEFAULT } from '@/lib/content/emergency-v2/hub';
 import type { WhHubStored, WhPage, WhStored } from '@/lib/content/water-heater-v2/types';
 import { pageToStored, type WhServiceSlug } from './model';
 
@@ -35,4 +36,13 @@ export function codeWhHubStored(): WhHubStored {
 
 export function codeWhHubMeta(): { title: string; description: string } {
   return { ...WH_HUB.meta };
+}
+
+/** Brief 225 — the emergency hub (`/emergency-plumbing`): its page + its own "shared" record. */
+export function codeEmHubStored(): WhHubStored {
+  return { ...pageToStored(EM_HUB), shared: JSON.parse(JSON.stringify(EM_SHARED_DEFAULT)) };
+}
+
+export function codeEmHubMeta(): { title: string; description: string } {
+  return { ...EM_HUB.meta };
 }

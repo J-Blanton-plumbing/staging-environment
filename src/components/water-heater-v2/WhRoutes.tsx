@@ -1,17 +1,13 @@
-import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PreviewBanner from '@/components/PreviewBanner';
-import { getGlobalSettingsCached } from '@/lib/cms/global-settings';
 import { getRatingContext } from '@/lib/cms/office-ratings';
-import { renderRatingField, ratingShownIn, type RatingTokenContext } from '@/lib/cms/tokens';
-import { loadWhHub, loadWhServicePage, whMetaFor, type WhLoad } from '@/lib/cms/water-heater-v2';
+import { ratingShownIn, type RatingTokenContext } from '@/lib/cms/tokens';
+import { loadWhHub, loadWhServicePage, type WhLoad } from '@/lib/cms/water-heater-v2';
 import { aggregateRatingJsonLd } from '@/lib/schema/aggregate-rating';
 import { waterHeaterJsonLd } from '@/lib/schema/water-heater';
-import { canonicalUrlFor, TITLE_TEMPLATE } from '@/lib/seo';
-import type { WhSharedContent } from '@/lib/content/water-heater-v2/types';
+import { TITLE_TEMPLATE } from '@/lib/seo';
 import { whPathFor, WH_V2_HUB_SLUG, WH_V2_SERVICE_SLUGS, type WhServiceSlug } from '@/lib/water-heater-v2-cms/model';
-import type { WhPhone } from './WhNodes';
-import type { WhRatingTexts } from './WhParts';
+import { metadataFor, ratingTexts, shortTail, sitePhone } from './route-helpers';
 import { WhHubView, WhServiceView } from './WhViews';
 
 /**
@@ -28,41 +24,10 @@ import { WhHubView, WhServiceView } from './WhViews';
 
 export type { WhServiceSlug };
 
-async function sitePhone(): Promise<WhPhone> {
-  const settings = await getGlobalSettingsCached();
-  return { href: settings.phoneHref, display: settings.phoneDisplay };
-}
-
-/** Strips a short brand tail ("| J. Blanton") an editor may type; the template adds the full brand. */
-const shortTail = (t: string) => t.replace(/\s*[|\-–—]\s*J\.?\s*Blanton\s*$/i, '').trim();
-
-async function metadataFor(slug: string): Promise<Metadata> {
-  const meta = await whMetaFor(slug);
-  if (!meta) return {};
-  const title = shortTail(meta.title);
-  const full = TITLE_TEMPLATE.replace('%s', title);
-  const url = canonicalUrlFor(whPathFor(slug));
-  return {
-    title,
-    description: meta.description,
-    // Next merges metadata shallowly: a page `openGraph` replaces the layout's, so its site-wide keys
-    // are restated here (Brief 218 lesson).
-    openGraph: { type: 'website', locale: 'en_US', siteName: 'J. Blanton Plumbing', title: full, description: meta.description, url, images: [{ url: meta.image }] },
-    twitter: { card: 'summary_large_image', title: full, description: meta.description, images: [meta.image] },
-  };
-}
+// Brief 225: sitePhone / shortTail / metadataFor / ratingTexts moved, unchanged, to ./route-helpers.
 
 export const whServiceMetadata = (slug: WhServiceSlug) => metadataFor(slug);
 export const whHubMetadata = () => metadataFor(WH_V2_HUB_SLUG);
-
-/** The rating card's texts (Brief 221 company tokens resolved), or null while there is no company row. */
-function ratingTexts(shared: WhSharedContent, ctx: RatingTokenContext): WhRatingTexts | null {
-  if (!ctx.company) return null;
-  const rating = renderRatingField(shared.proof.rating, ctx);
-  const starsLabel = renderRatingField(shared.proof.starsLabel, ctx);
-  const sub = renderRatingField(shared.proof.sub, ctx);
-  return rating && starsLabel && sub ? { rating, starsLabel, sub } : null;
-}
 
 async function viewProps(load: WhLoad, hub: boolean) {
   const [phone, ctx] = await Promise.all([sitePhone(), getRatingContext(null).catch(() => ({ office: null, company: null }) as RatingTokenContext)]);

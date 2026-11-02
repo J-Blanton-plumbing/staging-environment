@@ -202,8 +202,18 @@ function MobileLocationsGroup({
   );
 }
 
-export default function Navbar({ settings }: { settings: GlobalSettings }) {
+/**
+ * Brief 225 (B3): a page-level header variant. `call-first` (only `/emergency-plumbing`, set in code by
+ * SiteShell — not a CMS setting): the desktop CTA reads "Call Now" and dials the site number instead of
+ * opening the schedule popup, and the separate desktop phone text link is hidden, so the call is the
+ * page's strongest action. The mobile icon buttons and the drawer are unchanged. Without the prop every
+ * page renders exactly as before.
+ */
+export type NavbarVariant = 'call-first';
+
+export default function Navbar({ settings, variant }: { settings: GlobalSettings; variant?: NavbarVariant }) {
   const [open, setOpen] = useState(false);
+  const callFirst = variant === 'call-first';
 
   // React renders the WhatConverts tracking number itself instead of letting the
   // vendor script patch it in afterwards. The header's icon-only call button was
@@ -269,20 +279,38 @@ export default function Navbar({ settings }: { settings: GlobalSettings }) {
                 This used to render the hardcoded `headerPhone` tracking line; now
                 that WhatConverts does dynamic number insertion, a second static
                 number here would just be a number DNI never swaps. */}
-            <Link
-              href={phoneHref}
-              className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-medium text-[1.05vw] min-[1525px]:text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
-            >
-              <Phone className="h-[22px] w-[22px] mr-1.5" strokeWidth={2.5} />
-              {phoneDisplay}
-            </Link>
+            {callFirst ? (
+              // Brief 225 (B3): "Call Now" — the ScheduleButton's exact look, as a tel: link.
+              <Link
+                href={phoneHref}
+                className={cn(
+                  // ScheduleButton's classes (variant blue, size md) minus `schedule-popup`, + the header's own.
+                  'link-button inline-flex items-center justify-center gap-2 font-display font-semibold tracking-wider rounded-full transition-colors duration-150 cursor-pointer',
+                  'bg-accent-500 hover:bg-brand-600 text-white',
+                  'text-sm px-5 py-3',
+                  'rounded-none px-[15px] xl:px-[30px] h-full text-[1vw] tracking-normal font-medium uppercase'
+                )}
+              >
+                <span>Call Now</span>
+              </Link>
+            ) : (
+              <>
+                <Link
+                  href={phoneHref}
+                  className="flex items-center px-[25px] text-brand-600 hover:text-brand-700 hover:bg-brand-50 font-display font-medium text-[1.05vw] min-[1525px]:text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
+                >
+                  <Phone className="h-[22px] w-[22px] mr-1.5" strokeWidth={2.5} />
+                  {phoneDisplay}
+                </Link>
 
-            {/* SCHEDULE A SERVICE — schedule popup trigger (Brief 169), BLUE */}
-            <ScheduleButton
-              variant="blue"
-              size="md"
-              className="rounded-none px-[15px] xl:px-[30px] h-full text-[1vw] tracking-normal font-medium"
-            />
+                {/* SCHEDULE A SERVICE — schedule popup trigger (Brief 169), BLUE */}
+                <ScheduleButton
+                  variant="blue"
+                  size="md"
+                  className="rounded-none px-[15px] xl:px-[30px] h-full text-[1vw] tracking-normal font-medium"
+                />
+              </>
+            )}
 
           </div>
 

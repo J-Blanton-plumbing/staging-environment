@@ -35,6 +35,13 @@ export const HOMEPAGE_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'Agg
  */
 export const WATER_HEATER_FORBIDDEN_TYPES = FORBIDDEN_TYPES.filter((t) => t !== 'FAQPage' && t !== 'Question' && t !== 'Answer' && t !== 'AggregateRating');
 
+/**
+ * Brief 225 (Marketing 2026-11-02): `/emergency-plumbing` (the Emergency Hub) follows the water heater hub's
+ * model exactly — one FAQPage generated from its visible FAQ, and Brief 221's company `aggregateRating` on the
+ * `Organization` only when the rating card shows it. Same allowance, nothing wider; Review stays forbidden.
+ */
+export const EMERGENCY_FORBIDDEN_TYPES = WATER_HEATER_FORBIDDEN_TYPES;
+
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 
 /** Every JSON-LD script body in an HTML document, in order. */

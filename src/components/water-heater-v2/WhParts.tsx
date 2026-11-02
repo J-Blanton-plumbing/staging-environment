@@ -41,7 +41,7 @@ function Rotator({ hero }: { hero: WhHero }) {
   );
 }
 
-function HeroCall({ phone, badge24Label }: { phone: WhPhone; badge24Label: string }) {
+export function HeroCall({ phone, badge24Label }: { phone: WhPhone; badge24Label: string }) {
   return (
     <>
       <PhoneLink href={phone.href} display={phone.display} className="btn btn-hero-cta t-btn">
@@ -270,10 +270,20 @@ export function WhReviewsSection({
       <section className={section.cls} id="reviews" style={s(section.style)}>
         <div className="wrap">
           <div className="hub-rev-head">
-            <div style={s('max-width:780px')}>
-              <span className="t-eyebrow" style={s('color:#BC0E0E')}>{section.eyebrow}</span>
-              <h2 className="hub-h2 t-h2" style={s('margin:12px 0 40px')}>{section.heading}</h2>
-            </div>
+            {/* Brief 225: the emergency hub's intro line. One JSX slot either way, so a page without it
+                renders (and serialises) exactly as before. */}
+            {section.intro !== undefined ? (
+              <div style={s('max-width:780px')}>
+                <span className="t-eyebrow" style={s('color:#BC0E0E')}>{section.eyebrow}</span>
+                <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{section.heading}</h2>
+                <p className="t-body pv-mute" style={s('margin:0 0 40px')}>{section.intro}</p>
+              </div>
+            ) : (
+              <div style={s('max-width:780px')}>
+                <span className="t-eyebrow" style={s('color:#BC0E0E')}>{section.eyebrow}</span>
+                <h2 className="hub-h2 t-h2" style={s('margin:12px 0 40px')}>{section.heading}</h2>
+              </div>
+            )}
             <WhProof shared={shared} ratings={ratings} spoke={false} />
           </div>
           <div className="hub-reviews">

@@ -1,16 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getEpCmsContent, updateEpCmsContent } from '@/lib/cms/emergency-plumbing';
+import { getEpCmsContent } from '@/lib/cms/emergency-plumbing';
 import { getSession } from '@/lib/auth/session';
 import { requireCmsSession } from '@/lib/auth/api-guard';
-import pool from '@/lib/db';
-import { writeChangelog } from '@/lib/cms/changelog';
-import { errorCode } from '@/lib/cms/errors';
+import { WH_OLD_SHAPE_MESSAGE } from '@/lib/water-heater-v2-cms/model';
 
 // See src/app/api/cms/global-settings/route.ts for why this is needed: a GET
 // handler with no dynamic function usage gets statically cached at build time
 // on a real `next build` deploy, serving one build-time snapshot forever.
 export const dynamic = 'force-dynamic';
 
+/** The pre-v2 (Brief 16/38) columns of the row, read-only. The Emergency Hub editor uses /api/cms/water-heater-v2/emergency-plumbing. */
 export async function GET(req: NextRequest) {
   const auth = await requireCmsSession(req);
   if (!auth.ok) return auth.response;
@@ -27,39 +26,16 @@ export async function GET(req: NextRequest) {
   }
 }
 
+/**
+ * Brief 225: the page is the Emergency Hub now — every edit goes through versions (/admin/emergency-plumbing →
+ * /api/cms/drafts → publish), so a direct save of the pre-v2 columns is refused, the Brief 204/222 rule for
+ * the sewer and water heater pages. (The pre-v2 writer, updateEpCmsContent, is kept: publishDraft still maps
+ * page type 'emergency-plumbing' to it, but a v2 version always takes the v2 writer first.)
+ */
 export async function PUT(req: NextRequest) {
   const session = await getSession(req);
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-
-  try {
-    const body = await req.json();
-    if (body._ping) return NextResponse.json({ ok: true });
-
-    const updatedBy = session?.userId ?? null;
-    // Brief 75/78 (DP-1): optimistic concurrency — reject a stale direct edit (409).
-    const expectedVersion = typeof body.version === 'number' ? body.version : null;
-    const version = await updateEpCmsContent(body, updatedBy, expectedVersion);
-
-    if (updatedBy) {
-      const client = await pool.connect();
-      try {
-        await writeChangelog(client, 'emergency-plumbing', 'emergency-plumbing', updatedBy, body);
-      } finally {
-        client.release();
-      }
-    }
-
-    return NextResponse.json({ ok: true, version });
-  } catch (err) {
-    if (errorCode(err) === '409') {
-      return NextResponse.json(
-        { error: err instanceof Error ? err.message : 'Conflict' },
-        { status: 409 }
-      );
-    }
-    console.error('[cms/emergency-plumbing PUT]', err);
-    return NextResponse.json({ error: 'Failed to save' }, { status: 500 });
-  }
+  return NextResponse.json({ error: WH_OLD_SHAPE_MESSAGE }, { status: 409 });
 }

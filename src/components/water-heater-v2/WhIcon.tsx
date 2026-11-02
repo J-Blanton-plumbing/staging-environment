@@ -1,6 +1,7 @@
 import { createElement } from 'react';
 import { parseStyle } from '@/components/sewer-v2/SewerNodes';
 import { WH_ICONS } from './wh-icon-data';
+import { EM_ICONS } from '@/components/emergency-v2/em-icon-data';
 
 /**
  * Brief 222 — renders one of the package's inline SVGs by name (see wh-icon-data.ts). The outer <svg>'s
@@ -17,7 +18,8 @@ const PROP: Record<string, string> = {
 };
 
 export function WhIcon({ name }: { name: string }) {
-  const icon = WH_ICONS[name];
+  // Brief 225: the emergency hub's few SVGs the water heater set lacks (names never collide: `em…`).
+  const icon = WH_ICONS[name] ?? EM_ICONS[name];
   if (!icon) return null;
   const props: Record<string, unknown> = { dangerouslySetInnerHTML: { __html: icon.inner } };
   for (const [k, v] of Object.entries(icon.attrs)) {

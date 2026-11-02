@@ -325,6 +325,39 @@ expect(applyHubRatings(tokenHub, none).aggregateRating === null, 'no row → no 
   expect(checkJsonLd([JSON.stringify({ '@context': 'https://schema.org', '@type': 'Review' })], WATER_HEATER_FORBIDDEN_TYPES).errors.length > 0, 'the water heater allowance still forbids Review');
 }
 
+// Brief 225 — /emergency-plumbing (Emergency Hub): one @graph (company Organization [+ aggregateRating only
+// when shown], WebPage, BreadcrumbList, Service, FAQPage); FAQPage = the visible FAQ (8); the Service carries
+// the copy doc's areaServed (Illinois + Ohio, State), 24/7 hoursAvailable and a ServiceChannel, provider →
+// ORG_ID; no Plumber / Review / price, no phone number and no rating literal.
+{
+  const { EM_HUB, EM_SHARED_DEFAULT } = require('../src/lib/content/emergency-v2/hub') as typeof import('../src/lib/content/emergency-v2/hub');
+  const { emergencyJsonLd } = require('../src/lib/schema/emergency') as typeof import('../src/lib/schema/emergency');
+  const { EMERGENCY_FORBIDDEN_TYPES } = require('../src/lib/schema/jsonld-assert') as typeof import('../src/lib/schema/jsonld-assert');
+  const faq = EM_HUB.sections.find((s) => s.kind === 'faq');
+  const faqs = faq && faq.kind === 'faq' ? faq.items : [];
+  for (const rating of [null, aggregateRatingJsonLd({ ratingValue: 4.73, reviewCount: 10931 })]) {
+    const g = emergencyJsonLd({
+      path: '/emergency-plumbing', title: `${EM_HUB.meta.title} | J. Blanton Plumbing`, description: EM_HUB.meta.description,
+      crumbLabel: EM_SHARED_DEFAULT.crumbParent.label, service: EM_HUB.service, faqs, phoneDisplay: '312-555-0100', aggregateRating: rating,
+    });
+    const raw = JSON.stringify(g);
+    const r = checkJsonLd([raw], EMERGENCY_FORBIDDEN_TYPES);
+    for (const e of r.errors) fail.push(`emergency hub: ${e}`);
+    for (const e of aggregateRatingProblems([raw], ['Organization'])) fail.push(`emergency hub: ${e}`);
+    const types = g['@graph'].map((n) => n['@type']).join(',');
+    expect(types === 'Organization,WebPage,BreadcrumbList,Service,FAQPage', `emergency hub: node list ${types}`);
+    const faqNode = g['@graph'].find((n) => n['@type'] === 'FAQPage') as { mainEntity: { acceptedAnswer: { text: string } }[] };
+    expect(faqNode.mainEntity.length === 8 && faqs.length === 8, `emergency hub: FAQPage has ${faqNode.mainEntity.length} questions, the page shows ${faqs.length} (8 expected)`);
+    expect(/See our Columbus emergency plumbing page/.test(faqNode.mainEntity[7].acceptedAnswer.text), 'emergency hub: FAQ #8 keeps the Columbus link text as plain text');
+    const svc = g['@graph'].find((n) => n['@type'] === 'Service') as Record<string, unknown>;
+    expect(JSON.stringify(svc.areaServed) === JSON.stringify([{ '@type': 'State', name: 'Illinois' }, { '@type': 'State', name: 'Ohio' }]), 'emergency hub: areaServed is Illinois + Ohio');
+    expect((svc.hoursAvailable as { dayOfWeek: string[] }).dayOfWeek.length === 7, 'emergency hub: hoursAvailable Mon–Sun');
+    expect((svc.provider as { '@id': string })['@id'].endsWith('/#organization'), 'emergency hub: provider → ORG_ID');
+    expect(rating !== null || !/aggregateRating|"4\.7"/.test(raw), 'emergency hub: an unshown aggregateRating or a rating literal in the graph');
+    expect(!/"Plumber"|"Review"|"price"|\[PHONE\]|773-?724-?9272|7737249272/.test(raw), 'emergency hub: Plumber / Review / price / a phone number must not be emitted');
+  }
+}
+
 if (fail.length) {
   console.error(`\n[validate-jsonld] FAILED — ${fail.length} problem(s):\n  - ${fail.join('\n  - ')}\n`);
   process.exit(1);

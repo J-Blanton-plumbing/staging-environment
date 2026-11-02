@@ -42,11 +42,16 @@ export default function SiteShell({
     (route) => pathname === route || pathname.startsWith(route + '/')
   );
 
+  // Brief 225 (B3): pages whose header leads with the call ("Call Now" dials, no separate phone text
+  // link). A code setting, not CMS — one entry per page. Every other page gets the Navbar exactly as before.
+  const CALL_FIRST_ROUTES = ['/emergency-plumbing'];
+  const navVariant = CALL_FIRST_ROUTES.includes(pathname) ? ({ variant: 'call-first' } as const) : {};
+
   if (isAdmin) return <>{children}</>;
 
   return (
     <>
-      {!isLandingRoute && <Navbar settings={settings} />}
+      {!isLandingRoute && <Navbar settings={settings} {...navVariant} />}
       <main className="flex-1">{children}</main>
       {/* Brief 195: no JSON-LD on the password-protected /review copies. Brief 217: no office graph
           on a City Hub / City Service V2 page (one location per city page). */}

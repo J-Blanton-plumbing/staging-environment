@@ -15,10 +15,13 @@ import { WH_UI } from '@/lib/content/water-heater-v2/ui';
  *   4. job-photo gallery  — arrows, thumbnails, ←/→ keys and swipe; wraps at both ends
  *   5. "On this page"     — open on desktop, collapsed below 1001px (closes after a jump); scrollspy
  *   6. long tables        — more than 3 rows: 3 + "Show N more" on phones (CSS hides the button above 700px)
+ *
+ * Brief 225: the emergency hub reuses it with `root="em"` (its root is `#sewer-v2.em-v2`). The prop is
+ * omitted on the water heater pages, so their serialised props are unchanged.
  */
-export default function WhBehaviors() {
+export default function WhBehaviors({ root: family = 'wh' }: { root?: 'wh' | 'em' }) {
   useEffect(() => {
-    const root = document.querySelector<HTMLElement>('#sewer-v2.wh-v2');
+    const root = document.querySelector<HTMLElement>(family === 'em' ? '#sewer-v2.em-v2' : '#sewer-v2.wh-v2');
     if (!root) return;
     const cleanups: Array<() => void> = [];
     const on = <K extends keyof HTMLElementEventMap>(el: EventTarget, type: K | string, fn: EventListener, opts?: AddEventListenerOptions) => {
@@ -80,7 +83,8 @@ export default function WhBehaviors() {
     // 2. Mobile sticky call bar.
     const bar = root.querySelector<HTMLElement>('.ss-sticky-cta');
     if (bar) {
-      const watch = [root.querySelector('.hero-cta'), root.querySelector('#book')].filter((x): x is Element => !!x);
+      // Brief 225: the emergency hub's final CTA has no `#book` id (nothing links to it), so fall back to its class.
+      const watch = [root.querySelector('.hero-cta'), root.querySelector('#book') ?? root.querySelector('.final-cta')].filter((x): x is Element => !!x);
       if (!hasIO || !watch.length) bar.classList.add('is-shown');
       else {
         const visible = new Set<Element>();
@@ -232,7 +236,7 @@ export default function WhBehaviors() {
     });
 
     return () => cleanups.forEach((fn) => fn());
-  }, []);
+  }, [family]);
 
   return null;
 }

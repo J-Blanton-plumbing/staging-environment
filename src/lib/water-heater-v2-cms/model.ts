@@ -10,10 +10,23 @@
  * and stamped `template_type` 'wh-hub' / 'wh-standard' / 'wh-index' (the template version it uses). A
  * version without the marker is "old-shaped" (the "Pre-v2 archive (2026-10)", a legacy draft): it can
  * be opened read-only but never published onto these pages.
+ *
+ * Brief 225 — the same model carries a THIRD page family: the Emergency Plumbing hub (`/emergency-plumbing`,
+ * template `em-hub`). It is one page on its own singleton row, `emergency_plumbing_page.v2_content`
+ * (`WhHubStored`: the page + its own "shared" record — it shares nothing with the water heater or sewer
+ * pages), page type `emergency-plumbing`, versions marked `template: 'emergency-v2'` and stamped `em-hub`.
+ * The water heater helpers below answer exactly as before for the 6 water heater slugs; the `…Family…` /
+ * `…For(slug)` helpers are what the shared read/write path uses for all 7 pages.
  */
 import type { WhHubStored, WhPage, WhStored, WhTemplate } from '@/lib/content/water-heater-v2/types';
 
 export const WH_V2_MARKER = 'water-heater-v2';
+export const EM_V2_MARKER = 'emergency-v2';
+export const EM_V2_SLUG = 'emergency-plumbing';
+export const EM_V2_PATH = '/emergency-plumbing';
+export const EM_PAGE_TYPE = 'emergency-plumbing';
+export const EM_TEMPLATES: readonly WhTemplate[] = ['em-hub'];
+export const EM_PRE_V2_ARCHIVE_LABEL = 'Pre-v2 archive (2026-11)';
 export const WH_V2_HUB_SLUG = 'water-heater';
 export const WH_V2_HUB_PATH = '/services/water-heater';
 export const WH_V2_SERVICE_SLUGS = [
@@ -31,6 +44,7 @@ export const WH_TEMPLATE_LABEL: Record<WhTemplate, string> = {
   'wh-hub': 'WH Hub',
   'wh-standard': 'WH Service Page (Standard)',
   'wh-index': 'WH Service Page (Index)',
+  'em-hub': 'Emergency Hub',
 };
 
 export const WH_PRE_V2_ARCHIVE_LABEL = 'Pre-v2 archive (2026-10)';
@@ -42,39 +56,63 @@ export function isWhServiceSlug(slug: string): slug is WhServiceSlug {
 export function isWhSlug(slug: string): boolean {
   return slug === WH_V2_HUB_SLUG || isWhServiceSlug(slug);
 }
-/** The page type every version of a water heater page carries. */
-export function whPageType(slug: string): 'service' | 'sub-service' {
+/** Brief 225: the emergency hub. */
+export function isEmSlug(slug: string): boolean {
+  return slug === EM_V2_SLUG;
+}
+/** Brief 225: one of the 7 pages this model serves (the 6 water heater pages + the emergency hub). */
+export function isWhFamilySlug(slug: string): boolean {
+  return isWhSlug(slug) || isEmSlug(slug);
+}
+/** The page type every version of a water heater page (or the emergency hub) carries. */
+export function whPageType(slug: string): 'service' | 'sub-service' | typeof EM_PAGE_TYPE {
+  if (isEmSlug(slug)) return EM_PAGE_TYPE;
   return slug === WH_V2_HUB_SLUG ? 'service' : 'sub-service';
 }
-/** A version of one of the 6 pages (either page type, so a cross-typed legacy draft is caught too). */
+/** A version of one of the 7 pages (any of their page types, so a cross-typed legacy draft is caught too). */
 export function isWhTarget(pageType: string, slug: string): boolean {
-  return (pageType === 'sub-service' || pageType === 'service') && isWhSlug(slug);
+  return (pageType === 'sub-service' || pageType === 'service' || pageType === EM_PAGE_TYPE) && isWhFamilySlug(slug);
 }
 export function whPathFor(slug: string): string {
+  if (isEmSlug(slug)) return EM_V2_PATH;
   return slug === WH_V2_HUB_SLUG ? WH_V2_HUB_PATH : `/${slug}`;
+}
+/** The template versions a version of this page may be stamped with. */
+export function whTemplatesFor(slug: string): readonly WhTemplate[] {
+  return isEmSlug(slug) ? EM_TEMPLATES : WH_TEMPLATES;
+}
+/** The content marker a version of this page carries. */
+export function whMarkerFor(slug: string): WhV2DraftContent['template'] {
+  return isEmSlug(slug) ? EM_V2_MARKER : WH_V2_MARKER;
+}
+/** The label of this page's pre-v2 archive version. */
+export function whArchiveLabelFor(slug: string): string {
+  return isEmSlug(slug) ? EM_PRE_V2_ARCHIVE_LABEL : WH_PRE_V2_ARCHIVE_LABEL;
 }
 
 export interface WhV2DraftContent {
-  template: typeof WH_V2_MARKER;
+  template: typeof WH_V2_MARKER | typeof EM_V2_MARKER;
   whV2: WhStored | WhHubStored;
   metaTitle: string;
   metaDescription: string;
 }
 
 export function isWhV2DraftContent(content: unknown): content is WhV2DraftContent {
+  const marker = !!content && typeof content === 'object' ? (content as Record<string, unknown>).template : undefined;
   return (
     !!content &&
     typeof content === 'object' &&
     !Array.isArray(content) &&
-    (content as Record<string, unknown>).template === WH_V2_MARKER &&
+    (marker === WH_V2_MARKER || marker === EM_V2_MARKER) &&
     !!(content as Record<string, unknown>).whV2 &&
     typeof (content as Record<string, unknown>).whV2 === 'object'
   );
 }
 
-/** The template version a water heater version is stamped with. */
+/** The template version a water heater (or emergency hub) version is stamped with. */
 export function whTemplateOf(content: WhV2DraftContent): WhTemplate {
   const t = (content.whV2 as WhStored).template;
+  if (content.template === EM_V2_MARKER) return 'em-hub';
   return (WH_TEMPLATES as readonly string[]).includes(t) ? t : 'wh-standard';
 }
 

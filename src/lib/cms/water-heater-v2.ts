@@ -23,7 +23,11 @@ import { SEWER_V2_SANITIZERS } from '@/lib/cms/sewer-v2-sanitize';
 import { pageTitle } from '@/lib/seo';
 import type { WhPage, WhSharedContent, WhStored } from '@/lib/content/water-heater-v2/types';
 import {
-  isWhSlug,
+  EM_PAGE_TYPE,
+  EM_V2_MARKER,
+  EM_V2_SLUG,
+  isEmSlug,
+  isWhFamilySlug,
   mergeOver,
   storedToPage,
   whPathFor,
@@ -34,7 +38,7 @@ import {
   type WhV2DraftContent,
 } from '@/lib/water-heater-v2-cms/model';
 import { conformWhHub, conformWhPage } from '@/lib/water-heater-v2-cms/conform';
-import { codeWhHubMeta, codeWhHubStored, codeWhServiceMeta, codeWhServiceStored } from '@/lib/water-heater-v2-cms/code-defaults';
+import { codeEmHubMeta, codeEmHubStored, codeWhHubMeta, codeWhHubStored, codeWhServiceMeta, codeWhServiceStored } from '@/lib/water-heater-v2-cms/code-defaults';
 import type { WhHubStored } from '@/lib/content/water-heater-v2/types';
 
 export type WhV2Source = 'row' | 'code' | 'preview';
@@ -47,9 +51,22 @@ interface RowState {
   metaDescription: string | null;
 }
 
-async function readRow(table: 'sub_service_pages' | 'service_category_pages', slug: string): Promise<RowState | null | 'error'> {
+type WhTable = 'sub_service_pages' | 'service_category_pages' | 'emergency_plumbing_page';
+
+/**
+ * Brief 225: `emergency_plumbing_page` is a singleton with no slug column — its one row is pinned the way
+ * every other reader of it pins it (ORDER BY id, Brief 145).
+ */
+const EM_ROW_WHERE = 'id = (SELECT id FROM emergency_plumbing_page ORDER BY id LIMIT 1)';
+const rowWhere = (table: WhTable) => (table === 'emergency_plumbing_page' ? { sql: EM_ROW_WHERE, params: [] as string[] } : null);
+
+async function readRow(table: WhTable, slug: string): Promise<RowState | null | 'error'> {
   try {
-    const res = await pool.query(`SELECT status, version, v2_content, meta_title, meta_description FROM ${table} WHERE slug = $1`, [slug]);
+    const em = rowWhere(table);
+    const res = await pool.query(
+      `SELECT status, version, v2_content, meta_title, meta_description FROM ${table} WHERE ${em ? em.sql : 'slug = $1'}`,
+      em ? em.params : [slug]
+    );
     const r = res.rows[0];
     if (!r) return null;
     return { status: r.status, version: r.version ?? 0, v2: r.v2_content ?? null, metaTitle: r.meta_title, metaDescription: r.meta_description };
@@ -85,6 +102,17 @@ function hubFromStored(raw: unknown, where: string): WhHubStored | null {
   const { value, errors } = conformWhHub(raw, code, SEWER_V2_SANITIZERS);
   if (structureBroken(errors)) {
     console.error(`[water-heater-v2] ${where}: stored layout no longer matches the code module — rendering the code module`, errors.slice(0, 3));
+    return null;
+  }
+  return mergeOver(value, code);
+}
+
+/** Brief 225: the emergency hub (its own page + "shared" record), conformed against its code module. */
+function emFromStored(raw: unknown, where: string): WhHubStored | null {
+  const code = codeEmHubStored();
+  const { value, errors } = conformWhHub(raw, code, SEWER_V2_SANITIZERS);
+  if (structureBroken(errors)) {
+    console.error(`[emergency-v2] ${where}: stored layout no longer matches the code module — rendering the code module`, errors.slice(0, 3));
     return null;
   }
   return mergeOver(value, code);
@@ -156,9 +184,36 @@ export const loadWhHub = cache(async (): Promise<WhLoad | null> => {
   return { page: storedToPage(WH_V2_HUB_SLUG, stored, metaOver(row.metaTitle, row.metaDescription, codeWhHubMeta())), shared: stored.shared, preview: null, source: 'row' };
 });
 
+/**
+ * Brief 225 — `/emergency-plumbing` (the Emergency Hub), or null when its row is not published (→ 404). The
+ * same render gate as the hub above, on the singleton `emergency_plumbing_page` row: preview draft → row
+ * (conformed, merged over the code module) → code module (no row / no `v2_content` yet / DB down).
+ */
+export const loadEmHub = cache(async (): Promise<WhLoad | null> => {
+  const preview = await getWaterHeaterV2Preview(EM_PAGE_TYPE, EM_V2_SLUG).catch(() => null);
+  if (preview) {
+    const stored = emFromStored(preview.content.whV2, `preview draft ${preview.meta.id}`);
+    if (stored) {
+      const meta = metaOver(preview.content.metaTitle, preview.content.metaDescription, codeEmHubMeta());
+      return { page: storedToPage(EM_V2_SLUG, stored, meta), shared: stored.shared, preview: preview.meta, source: 'preview' };
+    }
+  }
+  const code = (): WhLoad => {
+    const c = codeEmHubStored();
+    return { page: storedToPage(EM_V2_SLUG, c, codeEmHubMeta()), shared: c.shared, preview: null, source: 'code' };
+  };
+  const row = await readRow('emergency_plumbing_page', EM_V2_SLUG);
+  if (row === 'error' || row === null) return code();
+  if (row.status !== 'published') return null;
+  if (!row.v2) return code();
+  const stored = memoised(`em:${row.version}`, () => emFromStored(row.v2, 'emergency_plumbing_page'));
+  if (!stored) return code();
+  return { page: storedToPage(EM_V2_SLUG, stored, metaOver(row.metaTitle, row.metaDescription, codeEmHubMeta())), shared: stored.shared, preview: null, source: 'row' };
+});
+
 /** `<title>` (suffix-free; the root layout appends the brand once) and description. */
 export async function whMetaFor(slug: string): Promise<{ title: string; description: string; image: string } | null> {
-  const load = slug === WH_V2_HUB_SLUG ? await loadWhHub() : await loadWhServicePage(slug as WhServiceSlug);
+  const load = isEmSlug(slug) ? await loadEmHub() : slug === WH_V2_HUB_SLUG ? await loadWhHub() : await loadWhServicePage(slug as WhServiceSlug);
   return load ? { title: pageTitle(load.page.meta.title), description: load.page.meta.description, image: load.page.hero.image.src } : null;
 }
 
@@ -181,6 +236,14 @@ export async function waterHeaterV2Sources(): Promise<Record<string, { source: W
     }
     out[whPathFor(slug)] = { source };
   }
+  // Brief 225: the emergency hub, through the same endpoint (read by check-emergency-v2-live.mjs).
+  const emRow = await readRow('emergency_plumbing_page', EM_V2_SLUG);
+  let em: WhV2Source | 'not-found' = 'code';
+  if (emRow && emRow !== 'error') {
+    if (emRow.status !== 'published') em = 'not-found';
+    else if (emRow.v2 && memoised(`em:${emRow.version}`, () => emFromStored(emRow.v2, 'emergency_plumbing_page'))) em = 'row';
+  }
+  out[whPathFor(EM_V2_SLUG)] = { source: em };
   return out;
 }
 
@@ -193,26 +256,31 @@ export interface WhEditorLoad {
   source: 'row' | 'code';
 }
 
-/** The editor's initial state for one of the 6 pages (no preview overlay). */
+/** The editor's initial state for one of the 7 pages (no preview overlay). */
 export async function loadWhForEditor(slug: string): Promise<WhEditorLoad | null> {
-  if (!isWhSlug(slug)) return null;
+  if (!isWhFamilySlug(slug)) return null;
+  const em = isEmSlug(slug);
   const hub = slug === WH_V2_HUB_SLUG;
-  const table = hub ? 'service_category_pages' : 'sub_service_pages';
-  const res = await pool.query(`SELECT status, version, updated_at, v2_content, meta_title, meta_description FROM ${table} WHERE slug = $1`, [slug]);
+  const table: WhTable = em ? 'emergency_plumbing_page' : hub ? 'service_category_pages' : 'sub_service_pages';
+  const pin = rowWhere(table);
+  const res = await pool.query(
+    `SELECT status, version, updated_at, v2_content, meta_title, meta_description FROM ${table} WHERE ${pin ? pin.sql : 'slug = $1'}`,
+    pin ? pin.params : [slug]
+  );
   const r = res.rows[0];
   const v2 = r?.v2_content ?? null;
   let body: WhStored | WhHubStored | null = null;
-  if (v2) body = hub ? hubFromStored(v2, `${table}/${slug}`) : serviceFromStored(slug as WhServiceSlug, v2, `${table}/${slug}`);
+  if (v2) body = em ? emFromStored(v2, table) : hub ? hubFromStored(v2, `${table}/${slug}`) : serviceFromStored(slug as WhServiceSlug, v2, `${table}/${slug}`);
   const source: 'row' | 'code' = body ? 'row' : 'code';
-  if (!body) body = hub ? codeWhHubStored() : codeWhServiceStored(slug as WhServiceSlug);
-  const codeMeta = hub ? codeWhHubMeta() : codeWhServiceMeta(slug as WhServiceSlug);
+  if (!body) body = em ? codeEmHubStored() : hub ? codeWhHubStored() : codeWhServiceStored(slug as WhServiceSlug);
+  const codeMeta = em ? codeEmHubMeta() : hub ? codeWhHubMeta() : codeWhServiceMeta(slug as WhServiceSlug);
   const meta = source === 'row' ? metaOver(r?.meta_title, r?.meta_description, codeMeta) : codeMeta;
   return {
     exists: !!r,
     status: r?.status ?? null,
     version: r?.version ?? 0,
     updatedAt: r?.updated_at ? new Date(r.updated_at).toISOString() : null,
-    content: { template: WH_V2_MARKER, whV2: body, metaTitle: meta.title, metaDescription: meta.description },
+    content: { template: em ? EM_V2_MARKER : WH_V2_MARKER, whV2: body, metaTitle: meta.title, metaDescription: meta.description },
     source,
   };
 }

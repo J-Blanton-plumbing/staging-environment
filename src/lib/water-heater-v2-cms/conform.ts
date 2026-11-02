@@ -21,13 +21,18 @@ import { conformRichAnswer, conformTreeNode, type ConformResult, type Sanitizers
 export { describeIssues } from '@/lib/cms-v2/shared';
 
 const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
-const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
+/** Key-order-insensitive (Brief 225: a locked OBJECT read back from JSONB has its keys sorted — Brief 212). */
+const canon = (v: unknown): unknown =>
+  Array.isArray(v) ? v.map(canon) : isObj(v) ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, canon(v[k])])) : v;
+const same = (a: unknown, b: unknown) => JSON.stringify(canon(a)) === JSON.stringify(canon(b));
 
 /** Literal rating figures the package hard-coded (handoff §4) — only the Brief 221 tokens may say them. */
 const RATING_LITERAL_RE = /(?<![\d.])(?:4\.7|5,?669)(?![\d])/;
 
 class Ctx {
   errors: ConformIssue[] = [];
+  /** Brief 225: conforming the emergency hub (its extra rules: no links in the checklist / steps, fixed financing). */
+  em = false;
   constructor(public s: Sanitizers) {}
   err(path: string, kind: ConformIssue['kind'], message: string) {
     this.errors.push({ path, kind, message });
@@ -129,8 +134,26 @@ function section(ctx: Ctx, v: unknown, t: WhSection, path: string): WhSection {
     return t;
   }
   switch (t.kind) {
-    case 'panel':
+    case 'panel': {
+      if (ctx.em) {
+        const te = t.el as { cls?: string; attrs?: Record<string, string | true> };
+        // Brief 225 hard rule: the financing copy is fixed (same block as the sewer hub; never name a lender).
+        if (te.cls === 'hub-fin') {
+          if (!same(v.el, t.el)) ctx.err(`${path}.el`, 'value', 'The financing band is fixed copy and can’t be edited.');
+          return t;
+        }
+        const el = ctx.tree(v.el, t.el, `${path}.el`);
+        // Brief 225 hard rule: the emergency checklist and the "While You Wait" steps have no links — the page
+        // exists to get the call, so nothing there sends the visitor away.
+        if (te.attrs?.id === 'services' || te.attrs?.id === 'wait') {
+          const hasLink = (n: unknown): boolean =>
+            Array.isArray(n) ? n.some(hasLink) : isObj(n) ? n.tag === 'a' || Object.values(n).some(hasLink) : false;
+          if (hasLink(el)) ctx.err(`${path}.el`, 'link', 'This section has no links on purpose: the page exists to get the call.');
+        }
+        return { kind: 'panel', el };
+      }
       return { kind: 'panel', el: ctx.tree(v.el, t.el, `${path}.el`) };
+    }
     case 'reviews': {
       ctx.locked(v.layout, t.layout, `${path}.layout`);
       ctx.locked(v.cls, t.cls, `${path}.cls`);
@@ -150,7 +173,40 @@ function section(ctx: Ctx, v: unknown, t: WhSection, path: string): WhSection {
           gallery = { label: ctx.text(v.gallery.label, 'x', `${path}.gallery.label`), photos };
         }
       }
-      return { kind: 'reviews', layout: t.layout, cls: t.cls, style: t.style, eyebrow: ctx.text(v.eyebrow, t.eyebrow, `${path}.eyebrow`), heading: ctx.text(v.heading, t.heading, `${path}.heading`), items, gallery };
+      // Brief 225: the optional line under the heading is part of the layout (present on the emergency hub only).
+      let intro: { intro?: string } = {};
+      if (t.intro !== undefined) intro = { intro: ctx.text(v.intro, t.intro, `${path}.intro`) };
+      else if (v.intro !== undefined) ctx.err(`${path}.intro`, 'structure', 'This page’s reviews have no intro line.');
+      return { kind: 'reviews', layout: t.layout, cls: t.cls, style: t.style, eyebrow: ctx.text(v.eyebrow, t.eyebrow, `${path}.eyebrow`), heading: ctx.text(v.heading, t.heading, `${path}.heading`), ...intro, items, gallery };
+    }
+    case 'locations': {
+      ctx.locked(v.style, t.style, `${path}.style`);
+      const m = isObj(v.map) ? v.map : {};
+      ctx.locked(m.src, t.map.src, `${path}.map.src`);
+      const states =
+        ctx.list(v.states, `${path}.states`, (st, i) => {
+          const so = isObj(st) ? st : {};
+          const tt = t.states[Math.min(i, t.states.length - 1)];
+          const sp = `${path}.states[${i}]`;
+          const offices =
+            ctx.list(so.offices, `${sp}.offices`, (o, j) => {
+              const oo = isObj(o) ? o : {};
+              const to = tt.offices[Math.min(j, tt.offices.length - 1)];
+              // Blank link = the office shows as plain text (its city emergency page is not live, §1 #8).
+              return { label: ctx.text(oo.label, to.label, `${sp}.offices[${j}].label`), href: ctx.link(oo.href ?? '', '', `${sp}.offices[${j}].href`, { optional: true }) };
+            }) ?? tt.offices;
+          return { name: ctx.text(so.name, tt.name, `${sp}.name`), offices };
+        }) ?? t.states;
+      return {
+        kind: 'locations',
+        style: t.style,
+        map: { title: ctx.text(m.title, t.map.title, `${path}.map.title`), src: t.map.src },
+        eyebrow: ctx.text(v.eyebrow, t.eyebrow, `${path}.eyebrow`),
+        heading: ctx.text(v.heading, t.heading, `${path}.heading`),
+        intro: ctx.text(v.intro, t.intro, `${path}.intro`),
+        states,
+        close: ctx.text(v.close, t.close, `${path}.close`),
+      };
     }
     case 'faq': {
       ctx.locked(v.layout, t.layout, `${path}.layout`);
@@ -198,15 +254,22 @@ function page(ctx: Ctx, input: unknown, code: WhStored): WhStored {
   const h = isObj(v.hero) ? v.hero : {};
   const th = code.hero;
   const hi = isObj(h.image) ? h.image : {};
-  const words = ctx.list(h.words, 'hero.words', (w, i) => ctx.text(w, 'x', `hero.words[${i}]`), { min: 1, max: 4 }) ?? th.words;
+  // Brief 225: the emergency hub's H1 is visible (no rotating headline), so its lead and market names are
+  // locked empty; its hero photo carries a locked intrinsic size.
+  const em = code.template === 'em-hub';
+  const words = em ? ctx.locked(h.words, th.words, 'hero.words') : ctx.list(h.words, 'hero.words', (w, i) => ctx.text(w, 'x', `hero.words[${i}]`), { min: 1, max: 4 }) ?? th.words;
   const hero = {
-    crumb: code.template === 'wh-hub' ? '' : ctx.text(h.crumb, th.crumb, 'hero.crumb'),
+    crumb: code.template === 'wh-hub' || em ? '' : ctx.text(h.crumb, th.crumb, 'hero.crumb'),
     eyebrow: ctx.text(h.eyebrow, th.eyebrow, 'hero.eyebrow'),
     h1: ctx.text(h.h1, th.h1, 'hero.h1'),
-    lead: ctx.text(h.lead, th.lead, 'hero.lead'),
+    lead: em ? ctx.locked(h.lead, th.lead, 'hero.lead') : ctx.text(h.lead, th.lead, 'hero.lead'),
     words,
     intro: ctx.text(h.intro, th.intro, 'hero.intro'),
-    image: { src: ctx.image(hi.src, th.image.src, 'hero.image.src'), alt: ctx.text(hi.alt, th.image.alt, 'hero.image.alt') },
+    image: {
+      src: ctx.image(hi.src, th.image.src, 'hero.image.src'),
+      alt: ctx.text(hi.alt, th.image.alt, 'hero.image.alt'),
+      ...(th.image.width && th.image.height ? { width: th.image.width, height: th.image.height } : {}),
+    },
   };
   const sectionsIn = Array.isArray(v.sections) ? v.sections : [];
   if (sectionsIn.length !== code.sections.length) ctx.err('sections', 'structure', 'Sections can’t be added, removed or reordered.');
@@ -330,8 +393,18 @@ export function conformWhPage(input: unknown, code: WhStored, s: Sanitizers): Co
 
 export function conformWhHub(input: unknown, code: WhHubStored, s: Sanitizers): ConformResult<WhHubStored> {
   const ctx = new Ctx(s);
+  ctx.em = code.template === 'em-hub';
   const body = page(ctx, input, code);
-  const sh = shared(ctx, isObj(input) ? input.shared : undefined, code.shared);
+  const shIn = isObj(input) ? input.shared : undefined;
+  let sh = shared(ctx, shIn, code.shared);
+  if (ctx.em) {
+    // Brief 225: the emergency hub shows no Emergency rail card, and its financing copy is fixed — both are
+    // locked to the code default so a hidden value can never drift.
+    const so = isObj(shIn) ? shIn : {};
+    ctx.locked(so.call, code.shared.call, 'shared.call');
+    ctx.locked(so.financing, code.shared.financing, 'shared.financing');
+    sh = { ...sh, call: code.shared.call, financing: code.shared.financing };
+  }
   return { value: { ...body, shared: sh }, errors: ctx.errors };
 }
 

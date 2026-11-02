@@ -317,9 +317,10 @@ export async function getSewerV2Preview(
 /**
  * Brief 222 — preview for the 6 water heater pages: the draft named by the preview cookie, when it is a
  * water heater v2 version of THIS page. An old-shaped version is never previewed on these pages.
+ * Brief 225: the emergency hub too (page type 'emergency-plumbing').
  */
 export async function getWaterHeaterV2Preview(
-  pageType: 'service' | 'sub-service',
+  pageType: 'service' | 'sub-service' | 'emergency-plumbing',
   slug: string
 ): Promise<{ content: WhV2DraftContent; meta: PreviewMeta } | null> {
   const id = await authorizedPreviewId();
