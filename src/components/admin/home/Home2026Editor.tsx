@@ -194,14 +194,15 @@ function Fields({ c, set, articles }: { c: Content; set: (next: Content) => void
         {T('services_dir_count', '“Explore all” directory: count line', { hint: '{count} = the number of service pages (counted automatically).' })}
       </Group>
 
-      <Group title="Areas we service" note="Region names, counties and community counts come from the Locations pages and are counted automatically.">
+      <Group title="Areas we serve" note="Region names, counties and community counts come from the Locations pages and are counted automatically.">
         {T('areas_eyebrow', 'Eyebrow')}
         {T('areas_heading', 'Heading')}
         {T('areas_intro', 'Intro', { multiline: true })}
-        {T('areas_stat_template', 'Line above each region name', { hint: '{tenure} = the region’s years line, {count} = its communities.' })}
         <ImageInput label="Chicagoland: photo" src={v('areas_image_chicagoland')} onSrc={on('areas_image_chicagoland')} alt={v('areas_image_alt_chicagoland')} onAlt={on('areas_image_alt_chicagoland')} />
+        {T('areas_stat_template', 'Chicagoland: line above the region name', { hint: '{tenure} = the region’s years line, {count} = its communities.' })}
         {T('areas_cta_chicagoland', 'Chicagoland: link label')}
         <ImageInput label="Central Ohio: photo" src={v('areas_image_columbus')} onSrc={on('areas_image_columbus')} alt={v('areas_image_alt_columbus')} onAlt={on('areas_image_alt_columbus')} />
+        {T('areas_stat_template_columbus', 'Central Ohio: line above the region name', { hint: '{tenure} = the region’s years line, {count} = its communities.' })}
         {T('areas_cta_columbus', 'Central Ohio: link label')}
       </Group>
 

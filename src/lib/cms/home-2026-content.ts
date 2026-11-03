@@ -101,16 +101,18 @@ export const H26_SCALAR_FIELDS: Record<string, { kind: Home2026FieldKind; def: s
   services_heading: { kind: 'text', def: 'Services' },
   services_intro: {
     kind: 'textarea',
-    def: 'Our team of tenacious plumbers are always ready to leap into action to save your day, no matter how light or severe the situation.',
+    def: 'Our team of tenacious plumbers is always ready to leap into action to save your day, no matter how light or severe the situation.',
   },
   services_card_cta: { kind: 'text', def: 'Read More' },
   services_dir_title: { kind: 'text', def: 'Explore all our plumbing services' },
   services_dir_count: { kind: 'text', def: '{count} services' },
 
   areas_eyebrow: { kind: 'text', def: 'Where We Work' },
-  areas_heading: { kind: 'text', def: 'Areas We Service' },
+  areas_heading: { kind: 'text', def: 'Areas We Serve' },
   areas_intro: { kind: 'textarea', def: 'Choose your region to see every city and neighborhood we cover.' },
   areas_stat_template: { kind: 'text', def: '{tenure}, {count} communities' },
+  // Its own line: Central Ohio's tenure is "Now serving", which takes no comma (Marketing 2026-11-03).
+  areas_stat_template_columbus: { kind: 'text', def: '{tenure} {count} communities' },
   areas_image_chicagoland: { kind: 'image', def: '/images/region-chicagoland.webp' },
   areas_image_alt_chicagoland: { kind: 'text', def: 'The Chicago skyline at dusk, seen across the lakefront' },
   areas_cta_chicagoland: { kind: 'text', def: 'See Chicagoland Areas' },
@@ -138,19 +140,19 @@ export const H26_SCALAR_FIELDS: Record<string, { kind: Home2026FieldKind; def: s
   why_body: {
     kind: 'paragraphs',
     def:
-      'At J. Blanton, we understand the importance of an owner’s home. We know that when disaster strikes, you need more than just a plumber; you need a problem solver who can bring fast relief to unexpected chaos.' +
+      'At J. Blanton, we understand how much your home means to you. We know that when disaster strikes, you need more than just a plumber; you need a problem solver who can bring fast relief to unexpected chaos.' +
       '\n\n' +
-      'For more than 30 years, our professionals have raced through heat, rain, snow, and hail to restore order and peace back into the homes of many Chicagoland families.',
+      'For more than 30 years, our professionals have raced through heat, rain, snow, and hail to bring order and peace back to the homes of many Chicagoland families.',
   },
   why_cta_call: { kind: 'text', def: 'Make a Good Call' },
   why_cta_label: { kind: 'text', def: 'Why J. Blanton' },
   why_video_id: { kind: 'youtube', def: 'ZDFzUtjBUCk' },
-  why_video_title: { kind: 'text', def: 'Turning Bad Calls to Good Calls' },
+  why_video_title: { kind: 'text', def: 'Turning Bad Calls into Good Calls' },
 
   ndc_mark: { kind: 'text', def: 'No Drip Club' },
   ndc_body: {
     kind: 'textarea',
-    def: 'There are Good Calls, and then there’s the No Drip Club. Members enjoy significant annual savings on home checkups, emergency repairs, and unlock exclusive perks, including VIP treatment whenever they call for service.',
+    def: 'There are Good Calls, and then there’s the No Drip Club. Members enjoy significant annual savings on home checkups and emergency repairs, and unlock exclusive perks, including VIP treatment whenever they call for service.',
   },
   ndc_cta: { kind: 'text', def: 'Join the No Drip Club' },
   ndc_image: { kind: 'image', def: '/images/jbcharacter.webp' },
@@ -207,7 +209,7 @@ export const H26_LIST_DEFAULTS: {
     { id: 'plumbing', title: 'Plumbing', href: '/services/plumbing', description: 'Our Illinois-certified plumbers are trained and skilled for complex plumbing tasks.', image: `${IMG}/cards/plumbing.webp`, alt: 'J. Blanton plumber working on the faucet of a basement utility sink' },
     { id: 'sewer', title: 'Sewer', href: '/services/sewer', description: 'Sewer services ensure clogs are resolved and plumbing stays smooth.', image: `${IMG}/cards/sewer.webp`, alt: 'J. Blanton plumber running sewer lining equipment in a backyard' },
     { id: 'drain', title: 'Drain', href: '/services/drain', description: 'Drain services keep your home’s plumbing running smoothly.', image: `${IMG}/cards/drains.webp`, alt: 'J. Blanton plumber working on the drain under a kitchen sink' },
-    { id: 'water-heater', title: 'Water Heater', href: '/services/water-heater', description: 'Ensure consistent hot water with J. Blanton Plumbing’s.', image: `${IMG}/cards/water-heater.webp`, alt: 'J. Blanton plumber measuring for a water heater installation' },
+    { id: 'water-heater', title: 'Water Heater', href: '/services/water-heater', description: 'Ensure consistent hot water with J. Blanton Plumbing’s water heater services.', image: `${IMG}/cards/water-heater.webp`, alt: 'J. Blanton plumber measuring for a water heater installation' },
     { id: 'water-quality', title: 'Water Quality', href: '/services/water-quality', description: 'Water filtration ensures clean, safe water and protects your health and plumbing.', image: `${IMG}/cards/svc-water-quality.webp`, alt: 'Under-sink water filtration system installed by J. Blanton Plumbing' },
     { id: 'commercial', title: 'Commercial', href: '/services/commercial', description: 'Reliable and efficient plumbing solutions tailored to meet the needs of your business.', image: `${IMG}/cards/commercial.webp`, alt: 'J. Blanton plumber checking a commercial pump system' },
   ],
@@ -386,8 +388,7 @@ export interface Home2026Resolved {
     eyebrow: string;
     heading: string;
     intro: string;
-    statTemplate: string;
-    regions: Record<'chicagoland' | 'columbus', { image: string; alt: string; cta: string }>;
+    regions: Record<'chicagoland' | 'columbus', { stat: string; image: string; alt: string; cta: string }>;
   };
   reviews: {
     eyebrow: string;
@@ -578,10 +579,9 @@ export function resolveHome2026Content(
       eyebrow: v('areas_eyebrow'),
       heading: v('areas_heading'),
       intro: v('areas_intro'),
-      statTemplate: v('areas_stat_template'),
       regions: {
-        chicagoland: { image: v('areas_image_chicagoland'), alt: v('areas_image_alt_chicagoland'), cta: v('areas_cta_chicagoland') },
-        columbus: { image: v('areas_image_columbus'), alt: v('areas_image_alt_columbus'), cta: v('areas_cta_columbus') },
+        chicagoland: { stat: v('areas_stat_template'), image: v('areas_image_chicagoland'), alt: v('areas_image_alt_chicagoland'), cta: v('areas_cta_chicagoland') },
+        columbus: { stat: v('areas_stat_template_columbus'), image: v('areas_image_columbus'), alt: v('areas_image_alt_columbus'), cta: v('areas_cta_columbus') },
       },
     },
     reviews: {

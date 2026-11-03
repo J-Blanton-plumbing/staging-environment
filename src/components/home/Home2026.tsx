@@ -274,7 +274,7 @@ export default async function Home2026() {
                   <article className="region-card" key={r.key}>
                     <Image src={rc.image} width={1000} height={500} alt={rc.alt} sizes="(max-width: 800px) 100vw, 50vw" loading="lazy" />
                     <div className="region-card-body">
-                      <span className="region-stat">{fill(c.areas.statTemplate, { tenure: r.tenure, count: r.cities.length })}</span>
+                      <span className="region-stat">{fill(rc.stat, { tenure: r.tenure, count: r.cities.length })}</span>
                       <h3 className="t-h3 h26-m0">
                         <Link href={r.href} className="h26-inherit">
                           {r.label}

@@ -1155,6 +1155,16 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/s
 # office_ratings (a seed that wrote numbers would roll the live ratings back on
 # every deploy). Invisible to both builds, so pre-swap is fine. Idempotent.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/seed-brief-221-mainline-locations.ts commit
+# Homepage copy fixes (Marketing 2026-11-03, items 1-11): one new published
+# version of the Homepage 2026 record (grammar/phrasing fixes, "Areas We
+# Serve", the Central Ohio card's own "Now serving 138 communities" line) and
+# three office fixes in Global Settings, matched by slug (McHenry city,
+# Algonquin #200F, Hinsdale #216A - homepage office list + footer). Each fix
+# replaces its exact old text only; one edited in /admin since is skipped and
+# listed. Offices backed up first; everything read back. Pre-swap is fine:
+# the old build renders the same strings and ignores the new key.
+# ALREADY-APPLIED from then on. Exit 1 only when a write did not land.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-2026-11-homepage-copy-fixes.ts commit
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

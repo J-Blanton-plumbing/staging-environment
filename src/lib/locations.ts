@@ -12,7 +12,7 @@ export interface Location {
 
 export const LOCATIONS: Location[] = [
   { slug: 'northbrook',           name: 'Northbrook (Corporate)',  address: '1945 Techny Road, #11',            city: 'Northbrook',         state: 'IL', zip: '60062', lat: 42.1278, lng: -87.8451, isCorporate: true },
-  { slug: 'algonquin',            name: 'Algonquin',               address: '2390 Esplanade Dr #200f',          city: 'Algonquin',          state: 'IL', zip: '60102', lat: 42.1656, lng: -88.2942 },
+  { slug: 'algonquin',            name: 'Algonquin',               address: '2390 Esplanade Dr #200F',          city: 'Algonquin',          state: 'IL', zip: '60102', lat: 42.1656, lng: -88.2942 },
   { slug: 'geneva',               name: 'Geneva',                  address: '115 Campbell St #201C',            city: 'Geneva',             state: 'IL', zip: '60134', lat: 41.8875, lng: -88.3054 },
   { slug: 'arlington-heights',    name: 'Arlington Heights',       address: '1204 East Central Road — Suite 2', city: 'Arlington Heights',  state: 'IL', zip: '60005', lat: 42.0884, lng: -87.9806 },
   { slug: 'chicago-lincoln-park', name: 'Chicago — Lincoln Park',  address: '800 W Diversey Pkwy',              city: 'Chicago',            state: 'IL', zip: '60614', lat: 41.9325, lng: -87.6437 },
