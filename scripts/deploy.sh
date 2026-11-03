@@ -1026,6 +1026,14 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-emergency-v2-content.ts commit
+# Brief 225 follow-up (Marketing 2026-11-03): the three reviewer names on
+# /emergency-plumbing link to their Google reviews - one new published version
+# (the seeded one stays in history). A reviewer renamed or re-linked in /admin
+# since = nothing written (NOT-APPLIED). ALREADY-APPLIED from then on. Pre-swap:
+# the build being replaced already renders a set link. Exit 1 only when the
+# write did not land.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-225-review-links.ts commit
 # -- Brief 212 (Tracks A/B): City Hubs + City Service Pages V2 move onto the CMS --
 # 1. Snapshot what the STILL-LIVE build serves for the 10 city hubs + their
 #    290 service pages (src/lib/city-batches.ts), BEFORE the seeds below write,

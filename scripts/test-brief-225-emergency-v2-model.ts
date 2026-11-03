@@ -142,7 +142,8 @@ console.log('\n3. Section order + copy decisions');
   ok(EM_HUB.hero.h1 === '24/7 Emergency Plumbing Services' && EM_HUB.hero.words.length === 0, 'visible H1, no rotator');
   ok(J(el(s, panelById(s, 'services'))).match(/"tag":"a"/g) === null && J(el(s, panelById(s, 'wait'))).match(/"tag":"a"/g) === null, 'checklist and steps carry no links');
   const rev = s.sections[idx(s, 'reviews')] as Extract<WhSection, { kind: 'reviews' }>;
-  ok(rev.items.length === 3 && rev.items.every((r) => r.href === '') && rev.items[0].quote.includes('😭'), 'three reviews, names unlinked, the emoji kept verbatim');
+  // Marketing 2026-11-03: each name links to its Google review (was unlinked at launch).
+  ok(rev.items.length === 3 && rev.items.every((r) => /^https:\/\/maps\.app\.goo\.gl\/\w+$/.test(r.href)) && rev.items[0].quote.includes('😭'), 'three reviews, names linked to their Google reviews, the emoji kept verbatim');
   ok(!/7737249272|773-724-9272/.test(J([EM_HUB, EM_SHARED_DEFAULT])), 'no literal phone anywhere in the code module');
   ok(!/(?<![\d.])4\.7(?!\d)/.test(J([EM_HUB, EM_SHARED_DEFAULT])), 'no literal 4.7 anywhere in the code module');
   ok(J(EM_SHARED_DEFAULT.proof).includes('{{company_rating}}') && J(EM_SHARED_DEFAULT.proof).includes('{{company_review_count}}'), 'the rating card carries the Brief 221 tokens');

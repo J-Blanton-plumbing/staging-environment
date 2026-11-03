@@ -60,6 +60,12 @@
   #sewer-v2.em-v2 .hub-proof{max-width:none;margin-bottom:clamp(24px,4vw,56px);}
 }
 
+/* Marketing 2026-11-03: each reviewer's name links to their Google review. The link keeps the plain name's
+   look (the shared HubAuthor styles it inline with text-decoration:none, hence !important) and underlines on
+   hover / keyboard focus so it reads as clickable. */
+#sewer-v2.em-v2 .review-author a:hover,
+#sewer-v2.em-v2 .review-author a:focus-visible { text-decoration: underline !important; text-underline-offset: 3px; }
+
 /* ---------------------------------------------------------------------
    Ported from the package (do not edit by hand — re-run the port script)
    --------------------------------------------------------------------- */
