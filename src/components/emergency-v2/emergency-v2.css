@@ -42,6 +42,24 @@
   #sewer-v2.em-v2 .faq-item2:not(.open) .faq-panel{display:none;}
 }
 
+/* Marketing 2026-11-02 (after go-live): once "What to Do While You Wait" stacks into one column (≤1000px),
+   its call button sits BELOW the steps and the gas callout instead of above them. The intro column's box is
+   dissolved (display:contents) so the button can be reordered after the steps; the spacing the two-column
+   gap gave is restated as margins. Desktop is unchanged. */
+@media(max-width:1000px){
+  #sewer-v2.em-v2 #wait .hub-split{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+  #sewer-v2.em-v2 #wait .hub-sticky{display:contents;}
+  #sewer-v2.em-v2 #wait .hub-split > :last-child{order:1;margin-top:clamp(32px,6vw,96px);}
+  #sewer-v2.em-v2 #wait .hub-sticky > .btn-hero-cta{order:2;align-self:flex-start;margin-top:28px;}
+}
+
+/* Marketing 2026-11-02 (after go-live): once the reviews header stacks (≤1000px) the rating card is as wide
+   as the review cards below it (the base caps it at 420px) and sits the review grid's own gap above the
+   first review instead of touching it. */
+@media(max-width:1000px){
+  #sewer-v2.em-v2 .hub-proof{max-width:none;margin-bottom:clamp(24px,4vw,56px);}
+}
+
 /* ---------------------------------------------------------------------
    Ported from the package (do not edit by hand — re-run the port script)
    --------------------------------------------------------------------- */
