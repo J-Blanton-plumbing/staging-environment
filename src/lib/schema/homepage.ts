@@ -31,11 +31,11 @@ export const HOME_PACKAGE_DEPARTMENT_IDS: readonly string[] = [
   'columbus', 'hanover-park', 'highland-park',
 ].map((slug) => `${SITE}/${slug}#office`);
 
-/** The package's corporate phone and address (Northbrook, corporate) — verbatim. */
+/** The package's corporate phone and address (Northbrook, corporate); the address as on its Google profile since 2026-11-03. */
 export const HOME_ORG_TELEPHONE = '+1-773-724-9272';
 export const HOME_ORG_ADDRESS = {
   '@type': 'PostalAddress',
-  streetAddress: '1945 Techny Road, #11',
+  streetAddress: '1945 Techny Rd #11',
   addressLocality: 'Northbrook',
   addressRegion: 'IL',
   postalCode: '60062',

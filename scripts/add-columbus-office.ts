@@ -59,7 +59,7 @@ const mode = resolveRunMode(SCRIPT);
 const COLUMBUS_OFFICE = {
   slug: 'columbus',
   name: 'Columbus',
-  streetAddress: '1387 W. Goodale Blvd',
+  streetAddress: '1387 Goodale Blvd',
   city: 'Columbus',
   state: 'OH',
   zip: '43212',

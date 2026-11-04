@@ -1165,6 +1165,17 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/s
 # the old build renders the same strings and ignores the new key.
 # ALREADY-APPLIED from then on. Exit 1 only when a write did not land.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-2026-11-homepage-copy-fixes.ts commit
+# Office addresses as on each office's Google Business Profile (Marketing
+# 2026-11-03, item 12): Global Settings streets/ZIPs (footer, homepage list,
+# locator, schema graph) matched by slug, backed up first, and the old street
+# string -> the Google one on each City Hub + its City Service V2 pages (one new
+# published version per page, the editor's own checks, read back). Cities that
+# changed go to changed.txt, so the CITY PAGES LIVE CHECK expects them to
+# change. A value edited in /admin since is skipped and listed. Pre-swap is
+# fine: both builds render these strings as stored. ALREADY-APPLIED from then
+# on. Exit 1 only when a write did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-2026-11-office-addresses-gbp.ts commit --changed-file .city-pages-snapshot/changed.txt
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

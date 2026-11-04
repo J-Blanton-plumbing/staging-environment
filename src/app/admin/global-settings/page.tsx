@@ -137,7 +137,7 @@ const DESC_MAX = 120;
 const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng' | 'showInFooter'>; label: string; placeholder?: string }> = [
   { key: 'name', label: 'Office Name', placeholder: 'Northbrook (Corporate)' },
   { key: 'slug', label: 'Page Slug', placeholder: 'northbrook' },
-  { key: 'streetAddress', label: 'Street Address', placeholder: '1945 Techny Road, #11' },
+  { key: 'streetAddress', label: 'Street Address', placeholder: '1945 Techny Rd #11' },
   { key: 'city', label: 'City', placeholder: 'Northbrook' },
   { key: 'state', label: 'State', placeholder: 'IL' },
   { key: 'zip', label: 'ZIP', placeholder: '60062' },

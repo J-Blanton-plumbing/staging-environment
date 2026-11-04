@@ -314,5 +314,5 @@ export const HANOVER_PARK_V3: CityV3Content = {
   officeCity: 'Hanover Park',
   // Used only when global settings has no matching office record, so the map
   // still pins correctly with the database down.
-  officeAddressFallback: '1300 Greenbrook Blvd, Suite B5, Hanover Park, IL 60133',
+  officeAddressFallback: '1300 Greenbrook Blvd Ste B5, Hanover Park, IL 60133',
 };
