@@ -984,6 +984,20 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # follow Brief 202 (CLAUDE.md gotcha 27). Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-214-paws-and-claws-evanston.ts commit
+# Brief 226 (Marketing 2026-11-10): real overhead sewer reviews on
+# /overhead-sewer-systems and the 18 /{city}/overhead-sewer-systems pages (the
+# 3 review items per page, plus the city H2 "Real Overhead Sewer System
+# Reviews"; rating lines untouched). Data: data/brief-226-overhead-reviews.json.
+# One new published version per page, the editor's own checks, read back. A page
+# whose reviewers are not the brief's "remove" set was edited in /admin since:
+# skipped and listed, nothing written. ALREADY-APPLIED from then on.
+# DELIBERATELY BEFORE the Sewer v2 and City Pages snapshots below: the still-live
+# build renders these fields from the row exactly as the new build does, so the
+# snapshots already hold the new reviews and both live checks stay byte-
+# identical across the swap. Exit 1 only when a write did not land. Do NOT add
+# `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-226-overhead-reviews.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from

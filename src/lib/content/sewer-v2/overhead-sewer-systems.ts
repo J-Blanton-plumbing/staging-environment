@@ -667,19 +667,19 @@ export const OVERHEAD_SEWER_SYSTEMS: SewerServicePage = {
       heading: "Overhead Sewer System Reviews",
       items: [
         {
-          quote: "\"We had Scott and Payton come by and give us a camera review of our sewer and discuss the different remedies for making sure we didn't have any backups in the future. They were very thorough and knowledgeable and super nice guys.\"",
-          name: "Christine Wynn",
-          href: "https://maps.app.goo.gl/F7Y2DQF3gJcTdaps5",
+          quote: "\"Our entire sewer system was collapsed, but Kyle and his crew offered peace of mind options at reasonable prices. They dug out our entire basement 10 - 11 inches for more livable space, and installed an overhead sewer system. Their quality work and additional measures to help ensure we would never have to worry about a wet or flooded basement went beyond our expectations.\"",
+          name: "Michael Ratulowski",
+          href: "https://maps.app.goo.gl/mytyFQDuJugENLKb9",
         },
         {
-          quote: "\"We've used J Blanton before [...] Dave and Alexis were on site and prepared to deal with the muck and the troubles. [...] We did really appreciate their efforts, their openness and keeping us apprised of everything going on, the ups and downs of different options and really trying to be budget conscious. Will definitely use them again if the need should arise.\"",
-          name: "Siriss Toth",
-          href: "https://maps.app.goo.gl/hNPVFu8RcjxUAEq49",
+          quote: "\"I had J Blanton Plumbing install overhead sewers, sump pump, battery back up, drain tile, ejector pump, and new piping from the house to the city's piping with two clean outs. Very big project. [...] The guys that worked on the project were very nice and personable. [...] I was happy with the people, happy with the work conducted and happy with the price.\"",
+          name: "Andrew H",
+          href: "https://maps.app.goo.gl/u5eFECq2hwNnXtyp6",
         },
         {
-          quote: "\"Andrew was out in about and hour and fixed our sewer back up in less than that, fire significantly cheaper than any other place we've used! Thank you!\"",
-          name: "Crystal Ritchie",
-          href: "https://maps.app.goo.gl/pzt6S1r2AkvwXg2J7",
+          quote: "\"Boomer and Steve were excellent. Fair pricing, completely professional, and tidy on a complex problem with a basement overhead system in a tight space. Grateful for trustworthiness and prompt work!\"",
+          name: "Dan Vittum",
+          href: "https://maps.app.goo.gl/4oej7zpsDg24rxUK9",
         },
       ],
     },

@@ -1,0 +1,54 @@
+{
+  "_source": "Brief 226 (Marketing 2026-11-10). Review text copied word for word from 'New Pages/Overhead Sewer Reviews/Overhead_Sewer_Reviews_Replacement.md' (surrounding quote marks dropped; the sewer v2 page stores them, the City Service V2 card adds its own). Names are stored in the cards' existing case; the card's t-label style renders them in caps. The per-city picks are fixed here (Brief 226 section 4) - never a new random pick.",
+  "versionLabel": "Overhead sewer reviews (2026-11)",
+  "service": "overhead-sewer-systems",
+  "cityH2": "Real Overhead Sewer System Reviews",
+  "mainH2": "Overhead Sewer System Reviews",
+  "bank": {
+    "A": {
+      "name": "Michael Ratulowski",
+      "url": "https://maps.app.goo.gl/mytyFQDuJugENLKb9",
+      "text": "Our entire sewer system was collapsed, but Kyle and his crew offered peace of mind options at reasonable prices. They dug out our entire basement 10 - 11 inches for more livable space, and installed an overhead sewer system. Their quality work and additional measures to help ensure we would never have to worry about a wet or flooded basement went beyond our expectations."
+    },
+    "B": {
+      "name": "Andrew H",
+      "url": "https://maps.app.goo.gl/u5eFECq2hwNnXtyp6",
+      "text": "I had J Blanton Plumbing install overhead sewers, sump pump, battery back up, drain tile, ejector pump, and new piping from the house to the city's piping with two clean outs. Very big project. [...] The guys that worked on the project were very nice and personable. [...] I was happy with the people, happy with the work conducted and happy with the price."
+    },
+    "C": {
+      "name": "Dan Vittum",
+      "url": "https://maps.app.goo.gl/4oej7zpsDg24rxUK9",
+      "text": "Boomer and Steve were excellent. Fair pricing, completely professional, and tidy on a complex problem with a basement overhead system in a tight space. Grateful for trustworthiness and prompt work!"
+    },
+    "D": {
+      "name": "Travis McBride",
+      "url": "https://maps.app.goo.gl/GJpM4DNJGTsMpv5x9",
+      "text": "Wally and Ted replaced our overhead sewer system's broken ejector pump and did a camera inspection of our sewer line. A few days later, Shane came to replace our venting pipe on the system with a correct setup and angle coming out of the pit per Wally's recommendation. Great work was done by everyone."
+    }
+  },
+  "main": {
+    "path": "/overhead-sewer-systems",
+    "remove": ["Christine Wynn", "Siriss Toth", "Crystal Ritchie"],
+    "reviews": ["A", "B", "C"]
+  },
+  "cities": [
+    { "city": "northbrook", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["B", "A", "D"] },
+    { "city": "columbus", "remove": ["Jake Sherin", "Jack Stone", "Markie Waymire"], "reviews": ["C", "D", "A"] },
+    { "city": "tinley-park", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["D", "B", "C"] },
+    { "city": "joliet", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["A", "B", "C"] },
+    { "city": "naperville", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["C", "A", "B"] },
+    { "city": "arlington-heights", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["A", "D", "C"] },
+    { "city": "elgin", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["C", "B", "A"] },
+    { "city": "mchenry", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["B", "A", "C"] },
+    { "city": "algonquin", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["A", "B", "D"] },
+    { "city": "geneva", "remove": ["Jack Stone", "Markie Waymire", "Brian T"], "reviews": ["B", "C", "D"] },
+    { "city": "mokena", "remove": ["Jake Sherin", "Betty Knows", "R Richey"], "reviews": ["D", "C", "B"] },
+    { "city": "hinsdale", "remove": ["Tanya Hill", "Graham McClure", "Sharayah Strong"], "reviews": ["B", "C", "A"] },
+    { "city": "skokie", "remove": ["Milana Weil", "Brian T", "Jack Stone"], "reviews": ["A", "C", "D"] },
+    { "city": "chicago-lincoln-park", "remove": ["Markie Waymire", "Jake Sherin", "Betty Knows"], "reviews": ["D", "A", "C"] },
+    { "city": "elmhurst", "remove": ["R Richey", "Sharayah Strong", "Tanya Hill"], "reviews": ["C", "B", "D"] },
+    { "city": "chicago-ravenswood", "remove": ["Milana Weil", "Graham McClure", "Brian T"], "reviews": ["A", "D", "B"] },
+    { "city": "evanston", "remove": ["Jack Stone", "Markie Waymire", "Jake Sherin"], "reviews": ["D", "C", "A"] },
+    { "city": "hanover-park", "remove": ["Milana Weil", "Betty Knows", "Tanya Hill"], "reviews": ["B", "D", "A"] }
+  ]
+}
