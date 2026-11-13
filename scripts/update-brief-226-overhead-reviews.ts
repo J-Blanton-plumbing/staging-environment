@@ -1,14 +1,16 @@
 /**
  * Brief 226 (Marketing 2026-11-10) — the overhead sewer pages show real overhead sewer reviews.
  *
- * The reviews on `/overhead-sewer-systems` and the 18 `/{city}/overhead-sewer-systems` City Service V2 pages
- * were general sewer reviews (camera inspections, backups, rodding). Each page gets 3 of Marketing's 4
+ * The reviews on `/overhead-sewer-systems` and the 19 `/{city}/overhead-sewer-systems` City Service V2 pages
+ * (the brief's 18, plus Highland Park — Marketing 2026-11-13, after the first deploy) were general sewer reviews (camera inspections, backups, rodding). Each page gets 3 of Marketing's 4
  * overhead sewer reviews, in a FIXED order per page (the "random pick" was made once, in the brief, and is
  * stored in the data file — never a new pick per page load). City pages also get the H2
  * "Real Overhead Sewer System Reviews"; the main page keeps "Overhead Sewer System Reviews".
  *
  * Source: data/brief-226-overhead-reviews.json (review text word for word from Marketing's
- * Overhead_Sewer_Reviews_Replacement.md — the bank, the main page's set and the 18 city picks).
+ * Overhead_Sewer_Reviews_Replacement.md — the bank, the main page's set and the 18 city picks; Highland Park's
+ * pick, C, D, B, was added 2026-11-13). A page already done reports ALREADY-APPLIED, so adding a city to the data
+ * file only ever writes that city.
  *
  * Per page it PATCHES the live published content — only the review items (name, Google review link, text)
  * and, on city pages, the reviews H2. The eyebrow, the rating line (and its Brief 221 live tokens) and

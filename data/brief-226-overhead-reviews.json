@@ -49,6 +49,7 @@
     { "city": "elmhurst", "remove": ["R Richey", "Sharayah Strong", "Tanya Hill"], "reviews": ["C", "B", "D"] },
     { "city": "chicago-ravenswood", "remove": ["Milana Weil", "Graham McClure", "Brian T"], "reviews": ["A", "D", "B"] },
     { "city": "evanston", "remove": ["Jack Stone", "Markie Waymire", "Jake Sherin"], "reviews": ["D", "C", "A"] },
-    { "city": "hanover-park", "remove": ["Milana Weil", "Betty Knows", "Tanya Hill"], "reviews": ["B", "D", "A"] }
+    { "city": "hanover-park", "remove": ["Milana Weil", "Betty Knows", "Tanya Hill"], "reviews": ["B", "D", "A"] },
+    { "city": "highland-park", "remove": ["Christine Wynn", "Siriss Toth", "Trenton Gligorovic"], "reviews": ["C", "D", "B"], "added": "2026-11-13 - Marketing approved adding Highland Park after the first deploy (not in the original brief table); fixed pick C, D, B (an order no other city uses)" }
   ]
 }

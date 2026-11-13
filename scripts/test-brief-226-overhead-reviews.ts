@@ -5,12 +5,12 @@
  *
  * Proves:
  *   1. the data file is the brief: 4 reviews with https Google links, the main page's A, B, C, 18 fixed city
- *      picks — all orders different, every 3-review set used, D on 13 pages — and no `[` token in any quote
- *      other than the approved `[...]` cut;
+ *      picks (+ Highland Park, Marketing 2026-11-13) — all orders different, every 3-review set used, D on 13
+ *      of the brief's 18 — and no `[` token in any quote other than the approved `[...]` cut;
  *   2. the SOURCE DATA a seed or re-import reads holds the same reviews (Brief 226 "Seeds and re-imports must
  *      not undo this"): the Sewer v2 code module (quotes with their quote marks, H2 unchanged), the 5 Batch 1
- *      City Service V2 code modules and the 13 Batch 2/3 import records (city H2 "Real Overhead Sewer System
- *      Reviews");
+ *      City Service V2 code modules and the 14 Batch 2/3 + Highland Park import records (city H2 "Real
+ *      Overhead Sewer System Reviews");
  *   3. the editor's own checks (the same conform the update script and /admin run, with the real server
  *      sanitisers) accept every one of those pages and store each quote, name and link UNCHANGED — nothing
  *      cleans, re-quotes or trims the review text.
@@ -50,7 +50,7 @@ const pick = (keys: string[]) => keys.map((k) => D.bank[k]);
 
 const BATCH_1 = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville'];
 const BATCH_FILE: Record<string, string> = {};
-for (const b of ['batch-2', 'batch-3']) {
+for (const b of ['batch-2', 'batch-3', 'highland-park']) {
   for (const c of fs.readdirSync(path.join(ROOT, 'data', 'city-batches', b))) {
     const f = path.join(ROOT, 'data', 'city-batches', b, c, `${D.service}.json`);
     if (fs.existsSync(f)) BATCH_FILE[c] = f;
@@ -78,14 +78,17 @@ async function main() {
   ok(D.bank.B.text.split('[...]').length === 3, 'B keeps both [...] cuts');
   ok(D.bank.A.text.includes('10 - 11 inches'), 'A keeps "10 - 11 inches"');
   ok(D.main.reviews.join('') === 'ABC', 'main page: A, B, C in that order');
-  ok(D.cities.length === 18, '18 city pages');
+  // The brief's 18 + Highland Park (Marketing 2026-11-13).
+  ok(D.cities.length === 19, '19 city pages');
+  ok(D.cities.slice(0, 18).every((c) => c.city !== 'highland-park') && D.cities[18].city === 'highland-park', 'the brief’s 18, then Highland Park');
   const orders = D.cities.map((c) => c.reviews.join(''));
-  ok(new Set(orders).size === 18, 'all 18 city orders are different');
+  ok(new Set(orders).size === 19, 'all 19 city orders are different');
   ok(orders.every((o) => o.length === 3 && new Set(o).size === 3), 'every city page shows 3 different reviews');
   const sets: Record<string, number> = {};
   for (const o of orders) sets[[...o].sort().join('')] = (sets[[...o].sort().join('')] ?? 0) + 1;
   ok(['ABC', 'ABD', 'ACD', 'BCD'].every((s) => sets[s] > 0), `all 4 possible sets are used (${JSON.stringify(sets)})`);
-  ok(D.cities.filter((c) => c.reviews.includes('D')).length === 13, 'D is on 13 city pages');
+  ok(D.cities.slice(0, 18).filter((c) => c.reviews.includes('D')).length === 13, 'D is on 13 of the brief’s 18 city pages');
+  ok(D.cities[18].reviews.join('') === 'CDB', 'Highland Park: C, D, B');
   ok(D.cityH2 === 'Real Overhead Sewer System Reviews' && D.mainH2 === 'Overhead Sewer System Reviews', 'H2s as decided (city changed, main kept)');
 
   console.log('\n2 + 3. /overhead-sewer-systems — Sewer v2 code module, through the editor’s checks');
@@ -101,7 +104,7 @@ async function main() {
     ok(JSON.stringify(after) === JSON.stringify(sec), 'conform stores the reviews section unchanged');
   } else ok(false, 'the code module has a reviews section');
 
-  console.log('\n2 + 3. The 18 city pages — code modules (Batch 1) and import records (Batch 2/3)');
+  console.log('\n2 + 3. The 19 city pages — code modules (Batch 1) and import records (Batch 2/3, Highland Park)');
   for (const c of D.cities) {
     const slug = `${c.city}/${D.service}`;
     let draft: CityServiceV2DraftContent | null = null;

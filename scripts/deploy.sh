@@ -985,8 +985,9 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/seed-brief-214-paws-and-claws-evanston.ts commit
 # Brief 226 (Marketing 2026-11-10): real overhead sewer reviews on
-# /overhead-sewer-systems and the 18 /{city}/overhead-sewer-systems pages (the
-# 3 review items per page, plus the city H2 "Real Overhead Sewer System
+# /overhead-sewer-systems and the 19 /{city}/overhead-sewer-systems pages (the
+# brief's 18 + Highland Park, added 2026-11-13): the 3 review items per page,
+# plus the city H2 "Real Overhead Sewer System
 # Reviews"; rating lines untouched). Data: data/brief-226-overhead-reviews.json.
 # One new published version per page, the editor's own checks, read back. A page
 # whose reviewers are not the brief's "remove" set was edited in /admin since:
