@@ -50,6 +50,8 @@ export const SITEMAP_STATIC_PAGES: readonly SitemapStaticPage[] = [
   { path: '/services',                                         changeFrequency: 'monthly', priority: 0.9 },
   { path: '/emergency-plumbing',                               changeFrequency: 'monthly', priority: 0.9 },
   { path: '/contact',                                          changeFrequency: 'monthly', priority: 0.8 },
+  // Brief 228 — the native contact form page (was a 301 to /contact until then).
+  { path: '/contact-us',                                       changeFrequency: 'monthly', priority: 0.8 },
   { path: '/no-drip-club',       mainSlug: 'no-drip-club',     changeFrequency: 'monthly', priority: 0.8 },
   { path: '/customer-stories',   mainSlug: 'customer-stories', changeFrequency: 'weekly',  priority: 0.7 },
   { path: '/why-j-blanton',      mainSlug: 'why-j-blanton',    changeFrequency: 'monthly', priority: 0.7 },

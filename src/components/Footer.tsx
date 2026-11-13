@@ -42,6 +42,8 @@ const NAV_COL_3 = [
   { href: '/help-and-support', label: 'Help & Support' },
   { href: '/financing',        label: 'Financing' },
   { href: '/locations',        label: 'Locations' },
+  // Brief 228 — the new /contact-us page (native form → Mainline), on every page.
+  { href: '/contact-us',       label: 'Contact Us' },
 ];
 
 const NAV_COLUMNS = [NAV_COL_1, NAV_COL_2, NAV_COL_3];

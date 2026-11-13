@@ -79,7 +79,6 @@ const CONFIG_REDIRECTS: Record<string, string> = {
   '/services/emergency-plumbing': '/emergency-plumbing',
   '/reviews': '/customer-stories',
   '/gas-lines-chicago': '/gas-lines',
-  '/contact-us': '/contact',
   '/booking': '/contact',
 };
 

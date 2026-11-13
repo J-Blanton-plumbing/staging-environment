@@ -115,7 +115,6 @@ const ALREADY_REDIRECTED = new Set(
     '/services/emergency-plumbing',
     '/reviews',
     '/gas-lines-chicago',
-    '/contact-us',
     '/booking',
     '/admin/sub-services',
   ].map(normalizePath)
@@ -189,6 +188,10 @@ const MISC_TARGETS: Record<string, string | null> = {
   'commercial-jetting': null,
   'commercial-water-heater': null,
   'customer-stories': null,
+  // Brief 228: /contact-us is a real page again (native form → Mainline). It
+  // used to sit in ALREADY_REDIRECTED (next.config's old /contact-us → /contact
+  // 301, now removed); identity here so a re-run can never re-emit a redirect.
+  'contact-us': null,
   'drain-cleaning-services-in-chicago': null,
   'emergency-plumbing': null,
   financing: null,
@@ -1116,7 +1119,7 @@ async function main() {
     }
 
     // ── Top-level page: city, flat legacy city-service, boiler, or misc ──────
-    // next.config.mjs already redirects some live slugs (/plumbing, /contact-us,
+    // next.config.mjs already redirects some live slugs (/plumbing, /booking,
     // …). Check before the MISC_TARGETS lookup so those slugs are attributed to
     // the existing rule rather than reported as an unhandled gap.
     if (ALREADY_REDIRECTED.has(from)) {
