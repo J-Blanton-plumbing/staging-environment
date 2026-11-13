@@ -148,6 +148,8 @@ export const resolveCityHub = cache(async (slug: string, opts: { preview?: boole
   const entry = getCity(slug);
   if (!entry) return { kind: 'legacy', templateOverride: null };
   const name = entry.name;
+  // Brief 227: an office page carries its service hub's name (its services dropdown lists that city).
+  const render = (stored: CityHubStored) => toRender(stored, slug, name, stored.serviceHub ? getCity(stored.serviceHub)?.name : undefined);
   const usePreview = opts.preview !== false;
 
   // Row 1: a City Hub version of this city under the preview cookie.
@@ -159,7 +161,7 @@ export const resolveCityHub = cache(async (slug: string, opts: { preview?: boole
         const { shared } = await loadCityHubSharedLive();
         return {
           kind: 'hub',
-          hub: toRender(hub, slug, name),
+          hub: render(hub),
           shared,
           meta: { title: pv.content.metaTitle || (codeHubMeta(slug)?.title ?? name), description: pv.content.metaDescription || (codeHubMeta(slug)?.description ?? '') },
           preview: { ...pv.meta, scope: 'hub' },
@@ -207,11 +209,11 @@ export const resolveCityHub = cache(async (slug: string, opts: { preview?: boole
     const spv = await getCityHubSharedPreview().catch(() => null);
     if (spv) {
       const shared = sharedFromStored(spv.content.shared, `shared preview draft ${spv.meta.id}`);
-      if (shared) return { kind: 'hub', hub: toRender(base.hub, slug, name), shared, meta: base.meta, preview: { ...spv.meta, scope: 'shared' }, source: base.source };
+      if (shared) return { kind: 'hub', hub: render(base.hub), shared, meta: base.meta, preview: { ...spv.meta, scope: 'shared' }, source: base.source };
     }
   }
   const { shared } = await loadCityHubSharedLive();
-  return { kind: 'hub', hub: toRender(base.hub, slug, name), shared, meta: base.meta, preview: null, source: base.source };
+  return { kind: 'hub', hub: render(base.hub), shared, meta: base.meta, preview: null, source: base.source };
 });
 
 /**

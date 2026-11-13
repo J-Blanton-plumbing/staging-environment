@@ -245,6 +245,10 @@ export default function CityHubView({
   const ndcBox = hub.ndcBox;
   const breadcrumbJsonLd = bc ? hubBreadcrumbJsonLd(bc.trail, bc.current, `https://jblantonplumbing.com/${hub.slug}`) : null;
   const total = SH.stripe.reduce((n, g) => n + g.items.length, 0);
+  // Brief 227: an office page's "Explore all our plumbing services" dropdown lists its service hub's
+  // pages (/columbus/…), so its links, count and label name that city. Every other hub: its own.
+  const dirSlug = hub.serviceHub || hub.slug;
+  const dirCity = hub.serviceHubName || hub.name;
   const [r1, r2, r3] = hub.reviews.items;
   const STARS = <Stars label={L.reviewStars} />;
   const city = hub.name;
@@ -408,11 +412,11 @@ export default function CityHubView({
             <summary className="svc-dir-head">
               <span className="svc-dir-t">{SH.stripeTitle}</span>
               <span className="svc-dir-meta">
-                <span className="svc-dir-n">{fillPattern(SH.patterns.stripeCount, { n: total, city })}</span>
+                <span className="svc-dir-n">{fillPattern(SH.patterns.stripeCount, { n: total, city: dirCity })}</span>
                 <span aria-hidden="true" className="svc-dir-arrow">→</span>
               </span>
             </summary>
-            <nav aria-label={fillPattern(SH.patterns.directoryAria, { city })}>
+            <nav aria-label={fillPattern(SH.patterns.directoryAria, { city: dirCity })}>
               <div className="svc-dir-grid">
                 {SH.stripe.map(({ group, items }) => (
                   <details className="svc-grp" open key={group}>
@@ -426,7 +430,7 @@ export default function CityHubView({
                     <ul>
                       {items.map(({ label, slug }) => (
                         <li key={slug}>
-                          <a href={`/${hub.slug}/${slug}`}>{label}</a>
+                          <a href={`/${dirSlug}/${slug}`}>{label}</a>
                         </li>
                       ))}
                     </ul>

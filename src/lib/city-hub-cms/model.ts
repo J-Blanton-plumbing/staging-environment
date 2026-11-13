@@ -241,6 +241,8 @@ export interface CityHubRender extends CityHubStored {
   slug: string;
   /** The city registry name (never stored). */
   name: string;
+  /** Brief 227: the registry name of `serviceHub` (office pages only; never stored). */
+  serviceHubName?: string;
 }
 
 /** The sections every City Hub shares (`main_pages` row `city-hubs`). */
@@ -345,8 +347,8 @@ export function splitSentences(text: string): string[] {
 }
 
 /** Stored + identity → what the view renders. */
-export function toRender(stored: CityHubStored, slug: string, name: string): CityHubRender {
-  return { ...clone(stored), slug, name };
+export function toRender(stored: CityHubStored, slug: string, name: string, serviceHubName?: string): CityHubRender {
+  return { ...clone(stored), slug, name, ...(stored.serviceHub && serviceHubName ? { serviceHubName } : {}) };
 }
 
 // ── Brief 216 (Track A2): the page-scoped Plumber JSON-LD ─────────────────────────────────────────
