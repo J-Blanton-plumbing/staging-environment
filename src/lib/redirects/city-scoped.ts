@@ -56,6 +56,7 @@ import {
   SUB_SERVICE_ROUTES,
   globalServiceHref,
 } from '@/lib/content/service-taxonomy';
+import { OFFICE_PAGE_REDIRECTS } from './office-pages';
 
 /**
  * WordPress appends `-2`/`-3` when a slug collides on create. Ten such URLs are
@@ -81,14 +82,16 @@ export function lookupCityScopedRedirect(pathname: string): string | null {
   const segments = pathname.split('/').filter(Boolean);
   if (segments.length !== 2) return null;
   const [city, segment] = segments;
-  if (!getCity(city)) return null;
+  // Brief 227: nothing exists under an office page (it has no service pages), so no rule fires there.
+  if (!getCity(city) || getCity(city)?.officePage) return null;
   if (getCityService(segment)) return null; // serves — nothing to do
 
   // A duplicate-slug artifact resolves to whatever its base resolves to, which
   // is usually the city-service page itself.
   if (WP_DUPLICATE_SUFFIX.test(segment)) {
     const base = segment.replace(WP_DUPLICATE_SUFFIX, '');
-    if (getCityService(base)) return `/${city}/${base}`;
+    // Brief 227: a retired legacy page's service URL 301s on (office-pages.ts) — go straight there.
+    if (getCityService(base)) return OFFICE_PAGE_REDIRECTS[`/${city}/${base}`] ?? `/${city}/${base}`;
     return targetForSegment(base);
   }
 
@@ -120,6 +123,7 @@ export function allCityScopedRedirectPairs(): Array<{ from: string; to: string }
 
   const pairs: Array<{ from: string; to: string }> = [];
   for (const city of CITY_REGISTRY) {
+    if (city.officePage) continue; // Brief 227 — see lookupCityScopedRedirect
     for (const segment of segments) {
       const to = targetForSegment(segment);
       if (to) pairs.push({ from: `/${city.slug}/${segment}`, to });

@@ -409,7 +409,8 @@ export function resolveOfficeSlug(citySlug: string, offices: CmsOffice[]): strin
 export function resolveOfficeOverrides(offices: CmsOffice[]): Record<string, string> {
   const { bySlug, byCity } = buildOfficeClaims(offices);
   const out: Record<string, string> = {};
-  for (const entry of CITY_REGISTRY) {
+  // Brief 227: office pages are not in the locator's search index, so they never need an override.
+  for (const entry of AREA_REGISTRY) {
     const resolved = bySlug.get(entry.slug) ?? byCity.get(entry.slug) ?? null;
     if (resolved && resolved !== getOfficeKey(entry.slug)) out[entry.slug] = resolved;
   }
@@ -589,14 +590,42 @@ const coverageEntries: RegistryEntry[] = Object.keys(cityToOffice)
     county: getOhioArea(slug)?.county,
   }));
 
+/**
+ * Brief 227 — OFFICE PAGES (see `RegistryEntry.officePage`): an office's own City Hub page with no
+ * service pages of its own. German Village (Columbus, OH) is the first: a new slug, NOT the legacy
+ * coverage-area neighborhood page `/columbus-german-village`, which stays registered (its knowledge
+ * hub area tag, the `/locations/central-ohio` list and the Ohio "we also serve" graph keep using it)
+ * and 301s here (src/lib/redirects/office-pages.ts). Not in `cityToOffice`, so it is never a coverage
+ * entry and no town's dispatch office changes.
+ */
+const OFFICE_PAGES: RegistryEntry[] = [
+  {
+    slug: 'columbus-german-village-oh',
+    name: 'German Village',
+    type: 'coverage-area',
+    hasOffice: true,
+    state: OHIO_STATE,
+    officePage: { serviceHub: 'columbus' },
+  },
+];
+
 /** All city pages, sorted A→Z by display name (the order the live §10 grid uses). */
 export const CITY_REGISTRY: RegistryEntry[] = [
   ...coverageEntries,
   ...BUILT_LOCAL_OFFICE,
   ...LOCAL_OFFICE_V2,
+  ...OFFICE_PAGES,
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 const BY_SLUG = new Map(CITY_REGISTRY.map((c) => [c.slug, c]));
+
+/** Brief 227 — an office page (no service pages of its own; kept out of every area list). */
+export function isOfficePage(slug: string): boolean {
+  return !!BY_SLUG.get(slug)?.officePage;
+}
+
+/** Brief 227 — the registry minus office pages: every list of AREAS (grids, /locations, the locator index). */
+export const AREA_REGISTRY: RegistryEntry[] = CITY_REGISTRY.filter((c) => !c.officePage);
 
 /* ── Per-city copy lookups ──────────────────────────────────────────────────── */
 const COVERAGE_CONTENT: Record<string, CoverageAreaContent> = {
@@ -665,10 +694,11 @@ export type CityGridRegion = 'chicagoland' | 'ohio';
 export function getGridCities(
   region: CityGridRegion = 'chicagoland'
 ): { slug: string; name: string }[] {
+  // Brief 227: office pages are never in a grid (AREA_REGISTRY), so every grid is unchanged.
   const entries =
     region === 'ohio'
-      ? CITY_REGISTRY.filter((c) => c.state === OHIO_STATE)
-      : CITY_REGISTRY.filter((c) => c.state !== OHIO_STATE || c.slug === 'columbus');
+      ? AREA_REGISTRY.filter((c) => c.state === OHIO_STATE)
+      : AREA_REGISTRY.filter((c) => c.state !== OHIO_STATE || c.slug === 'columbus');
   return entries.map((c) => ({ slug: c.slug, name: c.name }));
 }
 

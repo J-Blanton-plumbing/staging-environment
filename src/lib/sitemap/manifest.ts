@@ -47,6 +47,7 @@ import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
 import { isCityServiceIndexable } from '@/lib/city-service-indexation';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
+import { isRetiredCityPage } from '@/lib/redirects/office-pages';
 
 /**
  * The sitemaps protocol caps a single file at 50,000 URLs / 50 MB uncompressed.
@@ -95,7 +96,10 @@ export const CITY_SERVICE_SHARDS: readonly CityServiceShard[] = [
  * brief.
  */
 export function cityServiceEligibleSlugs(): string[] {
-  return CITY_REGISTRY.map((c) => c.slug).filter(isCityServiceIndexable);
+  // Brief 227: an office page has no service pages, and a retired city page's service URLs 301.
+  return CITY_REGISTRY.filter((c) => !c.officePage && !isRetiredCityPage(c.slug))
+    .map((c) => c.slug)
+    .filter(isCityServiceIndexable);
 }
 
 /**
@@ -153,7 +157,8 @@ export function pagesSitemapPaths(): string[] {
 
 /** The `/{city}` landing pages. */
 export function citySitemapPaths(): string[] {
-  return CITY_REGISTRY.map((c) => `/${c.slug}`);
+  // Brief 227: a retired city page 301s to its office page (src/lib/redirects/office-pages.ts).
+  return CITY_REGISTRY.filter((c) => !isRetiredCityPage(c.slug)).map((c) => `/${c.slug}`);
 }
 
 export type SitemapChildKind = 'pages' | 'cities' | 'articles' | 'city-services';

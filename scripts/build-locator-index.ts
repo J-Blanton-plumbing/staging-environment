@@ -48,7 +48,8 @@ export const OUT_PATH = path.join(
  * ("O'Fallon"-shaped names) that would otherwise break the literal.
  */
 export function renderIndex(): string {
-  const rows = CITY_REGISTRY.map(
+  // Brief 227: office pages are not areas a visitor searches for (their office is in the list itself).
+  const rows = CITY_REGISTRY.filter((c) => !c.officePage).map(
     (c) => [c.slug, c.name, getOfficeKey(c.slug)] as const
   ).sort((a, b) => a[1].localeCompare(b[1]) || a[0].localeCompare(b[0]));
 

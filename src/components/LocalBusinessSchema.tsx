@@ -1,5 +1,5 @@
 import { SITE } from '@/lib/site';
-import type { CmsOffice } from '@/lib/cms/offices';
+import { officePhone, type CmsOffice } from '@/lib/cms/offices';
 
 /**
  * LocalBusiness (PlumbingBusiness) JSON-LD — Brief 102, Track D.
@@ -52,7 +52,9 @@ export default function LocalBusinessSchema({ offices, phoneDisplay, phoneHref, 
       '@type': 'PlumbingBusiness',
       name: `J. Blanton Plumbing, Sewer & Drain - ${o.name}`,
       url: `${SITE.baseUrl}/${o.slug}`,
-      telephone,
+      // Brief 227: an office with its own phone (German Village only) carries it; every other node
+      // keeps the sitewide number, exactly as before.
+      telephone: ((p) => (p ? toE164(p.href, p.display) : telephone))(officePhone(o)),
       address: {
         '@type': 'PostalAddress',
         streetAddress: o.streetAddress,

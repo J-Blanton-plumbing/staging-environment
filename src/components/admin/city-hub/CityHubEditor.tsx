@@ -113,7 +113,7 @@ export default function CityHubEditor({ slug }: { slug: string }) {
             every hub: {SHARED_LINK}.
             {!live && <> <strong>This city is not on the City Hub template yet</strong> — the live page keeps its current design until a City Hub version is published.</>}
             {load.source === 'none' && <> Every per-city field starts empty; a City Hub can’t go live until all of them are filled in.</>}
-            {load.phoneRegion === 'central-ohio' && <> This is an Ohio city: its page body shows the Central Ohio phone from Global Settings.</>}
+            {load.phoneRegion === 'central-ohio' && !load.hub?.serviceHub && <> This is an Ohio city: its page body shows the Central Ohio phone from Global Settings.</>}
           </>
         }
         renderFields={(c, set) => <HubFields value={c} onChange={set} load={load} slug={slug} />}
@@ -138,7 +138,11 @@ export default function CityHubEditor({ slug }: { slug: string }) {
 function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent; onChange: (v: CityHubDraftContent) => void; load: Load; slug: string }) {
   const hub = value.hub;
   const setHub = (patch: Partial<CityHubStored>) => onChange({ ...value, hub: { ...hub, ...patch } });
-  const svcOf = (href: string) => href.replace(new RegExp(`^/${slug}/`), '');
+  // Brief 227: an office page's service links go to its service hub's pages (/columbus/…).
+  const own = hub.serviceHub || slug;
+  const svcOf = (href: string) => href.replace(new RegExp(`^/${own}/`), '');
+  const featured = hub.services.featured;
+  const panel = hub.office.neighborhoods;
   const custom = hub.hero.photo !== 'standard' ? (hub.hero.photo as HubPhoto) : null;
   return (
     <>
@@ -147,7 +151,33 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         <TextInput label="SEO description (Google)" value={value.metaDescription} onChange={(metaDescription) => onChange({ ...value, metaDescription })} limit={160} multiline />
       </Group>
 
+      {hub.serviceHub && (
+        <Notice>
+          This is an <strong>office page</strong>: it has no service pages of its own, so every service link on it goes to the {hub.serviceHub} pages (/{hub.serviceHub}/…).
+          Its phone is the office phone in Global Settings.
+        </Notice>
+      )}
       <Group title={`Hero — “${hub.hero.h1 || 'Plumbers in …'}”`} note={PHONE_HINT}>
+        {/* Brief 227: the breadcrumb above the eyebrow (office pages only). */}
+        {hub.breadcrumb && (
+          <>
+            <Repeater<{ label: string; href: string }>
+              label="Breadcrumb steps (linked)"
+              items={hub.breadcrumb.trail}
+              onChange={(trail) => setHub({ breadcrumb: { ...hub.breadcrumb!, trail } })}
+              newItem={() => ({ label: '', href: '' })}
+              addLabel="Add a step"
+              itemLabel={(t, i) => `${i + 1} — ${t.label}`}
+              renderItem={(t, update) => (
+                <>
+                  <TextInput label="Label" value={t.label} onChange={(label) => update({ ...t, label })} />
+                  <TextInput label="Link (a page on this site)" value={t.href} onChange={(href) => update({ ...t, href })} link />
+                </>
+              )}
+            />
+            <TextInput label="Breadcrumb — this page" value={hub.breadcrumb.current} onChange={(current) => setHub({ breadcrumb: { ...hub.breadcrumb!, current } })} />
+          </>
+        )}
         <TextInput label="Eyebrow" value={hub.hero.eyebrow} onChange={(eyebrow) => setHub({ hero: { ...hub.hero, eyebrow } })} />
         <TextInput label="Heading (H1)" value={hub.hero.h1} onChange={(h1) => setHub({ hero: { ...hub.hero, h1 } })} />
         <TextInput label="Text" value={hub.hero.sub} onChange={(sub) => setHub({ hero: { ...hub.hero, sub } })} multiline />
@@ -215,6 +245,50 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
       <Group title={hub.services.h2 || 'Services'} note={<>The “Explore all our plumbing services” list is shared: {SHARED_LINK}.</>}>
         <TextInput label="Heading" value={hub.services.h2} onChange={(h2) => setHub({ services: { ...hub.services, h2 } })} />
         <TextInput label="Intro" value={hub.services.intro} onChange={(intro) => setHub({ services: { ...hub.services, intro } })} multiline />
+        {/* Brief 227: the featured tile + row list (office pages) in place of the card grid. */}
+        {featured && (
+          <>
+            <TextInput label="Featured — eyebrow" value={featured.eyebrow} onChange={(eyebrow) => setHub({ services: { ...hub.services, featured: { ...featured, eyebrow } } })} />
+            <Select
+              label="Featured — service page"
+              value={svcOf(featured.href)}
+              options={[{ value: '', label: '— choose —' }, ...load.serviceOptions]}
+              onChange={(sv) => setHub({ services: { ...hub.services, featured: { ...featured, href: sv ? `/${own}/${sv}` : '' } } })}
+            />
+            <TextInput label="Featured — title" value={featured.title} onChange={(title) => setHub({ services: { ...hub.services, featured: { ...featured, title } } })} />
+            <TextInput label="Featured — text" value={featured.intro} onChange={(intro) => setHub({ services: { ...hub.services, featured: { ...featured, intro } } })} multiline />
+            <TextInput label="Featured — button" value={featured.cta} onChange={(cta) => setHub({ services: { ...hub.services, featured: { ...featured, cta } } })} />
+            <ImageInput
+              label="Featured — photo"
+              src={featured.image.src}
+              alt={featured.image.alt}
+              onSrc={(src) => setHub({ services: { ...hub.services, featured: { ...featured, image: { ...featured.image, src } } } })}
+              onAlt={(alt) => setHub({ services: { ...hub.services, featured: { ...featured, image: { ...featured.image, alt } } } })}
+            />
+            <Repeater<{ title: string; href: string; desc: string }>
+              label="Service list"
+              items={hub.services.list ?? []}
+              onChange={(list) => setHub({ services: { ...hub.services, list } })}
+              newItem={() => ({ title: '', href: '', desc: '' })}
+              addLabel="Add a row"
+              itemLabel={(r, i) => `${i + 1} — ${r.title}`}
+              renderItem={(r, update) => (
+                <>
+                  <Select label="Service page" value={svcOf(r.href)} options={[{ value: '', label: '— choose —' }, ...load.serviceOptions]} onChange={(sv) => update({ ...r, href: sv ? `/${own}/${sv}` : '' })} />
+                  <TextInput label="Title" value={r.title} onChange={(title) => update({ ...r, title })} />
+                  <TextInput label="One-line description" value={r.desc} onChange={(desc) => update({ ...r, desc })} multiline />
+                </>
+              )}
+            />
+          </>
+        )}
+        {hub.services.linkBar && (
+          <>
+            <TextInput label="Link bar — text" value={hub.services.linkBar.label} onChange={(label) => setHub({ services: { ...hub.services, linkBar: { ...hub.services.linkBar!, label } } })} />
+            <TextInput label="Link bar — link" value={hub.services.linkBar.href} onChange={(href) => setHub({ services: { ...hub.services, linkBar: { ...hub.services.linkBar!, href } } })} link />
+          </>
+        )}
+        {!featured && (
         <Repeater
           label="Service cards"
           items={hub.services.cards}
@@ -224,13 +298,14 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
           itemLabel={(c, i) => `${i + 1} — ${c.title}`}
           renderItem={(c, update) => (
             <>
-              <Select label="Service page" value={svcOf(c.href)} options={[{ value: '', label: '— choose —' }, ...load.serviceOptions]} onChange={(s) => update({ ...c, href: s ? `/${slug}/${s}` : '' })} />
+              <Select label="Service page" value={svcOf(c.href)} options={[{ value: '', label: '— choose —' }, ...load.serviceOptions]} onChange={(s) => update({ ...c, href: s ? `/${own}/${s}` : '' })} />
               <TextInput label="Title" value={c.title} onChange={(title) => update({ ...c, title })} />
               <TextInput label="Description" value={c.desc} onChange={(desc) => update({ ...c, desc })} multiline />
               <ImageInput label="Photo" src={c.image.src} alt={c.image.alt} onSrc={(src) => update({ ...c, image: { ...c.image, src } })} onAlt={(alt) => update({ ...c, image: { ...c.image, alt } })} />
             </>
           )}
         />
+        )}
       </Group>
 
       <Group title={hub.office.h2 || 'Office'} note="The address drives the map pin and the address card.">
@@ -238,6 +313,28 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         <TextInput label="Heading" value={hub.office.h2} onChange={(h2) => setHub({ office: { ...hub.office, h2 } })} />
         <TextInput label="Text" value={hub.office.body} onChange={(body) => setHub({ office: { ...hub.office, body } })} multiline />
         <TextInput label="Address" value={hub.office.address} onChange={(address) => setHub({ office: { ...hub.office, address } })} />
+        {/* Brief 227 (office pages): the license line on the office card, and the plain-text neighborhood panel. */}
+        {'license' in hub.office && (
+          <TextInput label="License line (office card only)" value={hub.office.license ?? ''} onChange={(license) => setHub({ office: { ...hub.office, license } })} />
+        )}
+        {panel && (
+          <>
+            <TextInput label="Neighborhoods — heading" value={panel.h3} onChange={(h3) => setHub({ office: { ...hub.office, neighborhoods: { ...panel, h3 } } })} />
+            <Repeater<string>
+              label="Neighborhoods (plain text, no links — also the office’s service area in the Google schema)"
+              items={panel.names}
+              onChange={(names) => setHub({ office: { ...hub.office, neighborhoods: { ...panel, names } } })}
+              newItem={() => ''}
+              addLabel="Add a neighborhood"
+              itemLabel={(n, i) => `${i + 1} — ${n}`}
+              renderItem={(n, update) => <TextInput label="Name" value={n} onChange={update} />}
+            />
+            <TextInput label="Neighborhoods — closing line" value={panel.closing} onChange={(closing) => setHub({ office: { ...hub.office, neighborhoods: { ...panel, closing } } })} multiline />
+            <TextInput label="Region link (data-state-url)" value={panel.stateUrl} onChange={(stateUrl) => setHub({ office: { ...hub.office, neighborhoods: { ...panel, stateUrl } } })} />
+            <TextInput label="Region name (data-state-name)" value={panel.stateName} onChange={(stateName) => setHub({ office: { ...hub.office, neighborhoods: { ...panel, stateName } } })} />
+          </>
+        )}
+        {!panel && (<>
         <TextInput label="Communities heading" value={hub.office.areasH3} onChange={(areasH3) => setHub({ office: { ...hub.office, areasH3 } })} />
         <Repeater<CityHubStored['office']['areas'][number]>
           label="Communities"
@@ -262,6 +359,7 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
             </>
           )}
         />
+        </>)}
         {/* Brief 216 (Track A2): the page-scoped Plumber JSON-LD. */}
         <TextInput
           label="Google Business Profile link"
@@ -319,12 +417,14 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
           }}
           hint="Read out by screen readers for the map. Empty = the shared “Google Map of our {city} office”."
         />
+        {!panel && (
         <Select
           label="“more” link"
           value={hub.office.more}
           options={[{ value: '/locations/chicagoland', label: '/locations/chicagoland' }, { value: '/locations/central-ohio', label: '/locations/central-ohio' }, ...(['/locations/chicagoland', '/locations/central-ohio'].includes(hub.office.more) ? [] : [{ value: hub.office.more, label: hub.office.more || '— choose —' }])]}
           onChange={(more) => setHub({ office: { ...hub.office, more } })}
         />
+        )}
       </Group>
 
       <Group title={hub.depth.h2 || 'Local Knowledge'}>
@@ -346,7 +446,17 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         />
       </Group>
 
-      <Group title="Financing banner" note={<>Shared by every City Hub: {SHARED_LINK}.</>} />
+      {hub.fin ? (
+        <Group title="Financing banner" note={<>This page’s own wording (the eyebrow, button and fine print stay shared: {SHARED_LINK}). The phone heading swaps in at phone widths.</>}>
+          <TextInput label="Label — small line" value={hub.fin.labelTop} onChange={(labelTop) => setHub({ fin: { ...hub.fin!, labelTop } })} />
+          <TextInput label="Label — big figure" value={hub.fin.labelValue} onChange={(labelValue) => setHub({ fin: { ...hub.fin!, labelValue } })} />
+          <TextInput label="Heading (desktop and tablet)" value={hub.fin.h2} onChange={(h2) => setHub({ fin: { ...hub.fin!, h2 } })} />
+          <TextInput label="Heading (phones)" value={hub.fin.h2Mobile} onChange={(h2Mobile) => setHub({ fin: { ...hub.fin!, h2Mobile } })} />
+          <TextInput label="Text" value={hub.fin.body} onChange={(body) => setHub({ fin: { ...hub.fin!, body } })} multiline />
+        </Group>
+      ) : (
+        <Group title="Financing banner" note={<>Shared by every City Hub: {SHARED_LINK}.</>} />
+      )}
 
       <Group title={hub.whyH2 || 'Why Us'} note={<>The intro, the three items and the photo are shared by every City Hub: {SHARED_LINK}.</>}>
         <TextInput label="Heading" value={hub.whyH2} onChange={(whyH2) => setHub({ whyH2 })} />
@@ -403,7 +513,27 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         />
       </Group>
 
-      <Group title="No Drip Club" note={<>The eyebrow, heading, benefits, button and mascot are shared: {SHARED_LINK}. This city’s sentence is below.</>}>
+      <Group
+        title="No Drip Club"
+        note={hub.ndcBox ? <>This page’s own eyebrow, heading, benefits and button text (the mascot and the button link stay shared: {SHARED_LINK}).</> : <>The eyebrow, heading, benefits, button and mascot are shared: {SHARED_LINK}. This city’s sentence is below.</>}
+      >
+        {hub.ndcBox && (
+          <>
+            <TextInput label="Eyebrow (desktop and tablet)" value={hub.ndcBox.eyebrow} onChange={(eyebrow) => setHub({ ndcBox: { ...hub.ndcBox!, eyebrow } })} />
+            <TextInput label="Eyebrow (phones)" value={hub.ndcBox.eyebrowMobile} onChange={(eyebrowMobile) => setHub({ ndcBox: { ...hub.ndcBox!, eyebrowMobile } })} />
+            <TextInput label="Heading" value={hub.ndcBox.h2} onChange={(h2) => setHub({ ndcBox: { ...hub.ndcBox!, h2 } })} />
+            <Repeater<string>
+              label="Benefits"
+              items={hub.ndcBox.benefits}
+              onChange={(benefits) => setHub({ ndcBox: { ...hub.ndcBox!, benefits } })}
+              newItem={() => ''}
+              addLabel="Add a benefit"
+              itemLabel={(b, i) => `${i + 1} — ${b.slice(0, 48)}`}
+              renderItem={(b, update) => <TextInput label="Benefit" value={b} onChange={update} />}
+            />
+            <TextInput label="Button text" value={hub.ndcBox.cta} onChange={(cta) => setHub({ ndcBox: { ...hub.ndcBox!, cta } })} />
+          </>
+        )}
         <MdTextInput label="This city’s sentence" value={hub.ndc} onChange={(ndc) => setHub({ ndc })} multiline />
       </Group>
 
@@ -412,7 +542,7 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         <TextInput label="Heading" value={hub.final.h2} onChange={(h2) => setHub({ final: { ...hub.final, h2 } })} />
         <TextInput label="Text" value={hub.final.body} onChange={(body) => setHub({ final: { ...hub.final, body } })} multiline />
       </Group>
-      <Notice>Phone numbers on this page come from Global Settings{load.phoneRegion === 'central-ohio' ? ' (the body uses the Central Ohio phone)' : ''}.</Notice>
+      <Notice>Phone numbers on this page come from Global Settings{hub.serviceHub ? ' (this office page uses its own office phone, set on the office in Global Settings)' : load.phoneRegion === 'central-ohio' ? ' (the body uses the Central Ohio phone)' : ''}.</Notice>
     </>
   );
 }

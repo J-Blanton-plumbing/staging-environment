@@ -29,7 +29,7 @@ import { ConflictError, NotFoundError, ValidationError } from '@/lib/cms/errors'
 import { writeChangelog } from '@/lib/cms/changelog';
 import { pageTypeAliasesFor } from '@/lib/cms/page-status';
 import { clearSitemapCache } from '@/lib/sitemap/render';
-import { CITY_HUB_TEMPLATE, CITY_PAGE_TYPES, PRE_HUB_ARCHIVE_LABEL } from '@/lib/city-hub-cms/model';
+import { CITY_HUB_TEMPLATE, CITY_PAGE_TYPES, PRE_HUB_ARCHIVE_LABEL, PRE_OFFICE_ARCHIVE_LABEL } from '@/lib/city-hub-cms/model';
 import { CITY_SERVICE_V2_TEMPLATE, PRE_V2_ARCHIVE_LABEL } from '@/lib/city-service-v2-cms/model';
 
 export type ArchiveKind = 'hub' | 'service';
@@ -49,6 +49,8 @@ function where(kind: ArchiveKind, slug: string): { sql: string; params: string[]
 }
 
 const aliases = (kind: ArchiveKind) => (kind === 'hub' ? [...CITY_PAGE_TYPES] : ['city-service']);
+/** The labels an archive of this kind may carry (Brief 227 adds the pre-office archive for hubs). */
+const archiveLabels = (kind: ArchiveKind): string[] => (kind === 'hub' ? [PRE_HUB_ARCHIVE_LABEL, PRE_OFFICE_ARCHIVE_LABEL] : [PRE_V2_ARCHIVE_LABEL]);
 
 export interface ArchiveResult {
   created: boolean;
@@ -66,12 +68,22 @@ export interface ArchiveResult {
  * (the code module, or the legacy template's built-in copy); the pre-brief production HTML of those
  * URLs is the baseline for that claim.
  */
-export async function createPreTemplateArchive(client: PoolClient, kind: ArchiveKind, slug: string, by: number, brief = 212, createdThisRun = false): Promise<ArchiveResult> {
+export async function createPreTemplateArchive(
+  client: PoolClient,
+  kind: ArchiveKind,
+  slug: string,
+  by: number,
+  brief = 212,
+  createdThisRun = false,
+  /** Brief 227: a hub archive's label (`PRE_OFFICE_ARCHIVE_LABEL` for a retired legacy page). */
+  label: string = KIND[kind].label
+): Promise<ArchiveResult> {
   const k = KIND[kind];
+  if (!archiveLabels(kind).includes(label)) throw new ValidationError(`"${label}" is not an archive label.`);
   const w = where(kind, slug);
   const existing = await client.query<{ id: number }>(
     `SELECT id FROM page_drafts WHERE page_type = ANY($1) AND page_slug = $2 AND label = $3 ORDER BY id LIMIT 1`,
-    [aliases(kind), slug, k.label]
+    [aliases(kind), slug, label]
   );
   if (existing.rows[0]) return { created: false, draftId: existing.rows[0].id };
   const row = (await client.query(`SELECT * FROM ${k.table} WHERE ${w.sql}`, w.params)).rows[0] as Record<string, unknown> | undefined;
@@ -91,7 +103,7 @@ export async function createPreTemplateArchive(client: PoolClient, kind: Archive
   const ins = await client.query<{ id: number }>(
     `INSERT INTO page_drafts (page_type, page_slug, label, content, created_by, template_type, base_version)
      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
-    [k.pageType, slug, k.label, JSON.stringify(content), by, kind === 'hub' && templateType !== CITY_HUB_TEMPLATE ? templateType : null, row.version ?? null]
+    [k.pageType, slug, label, JSON.stringify(content), by, kind === 'hub' && templateType !== CITY_HUB_TEMPLATE ? templateType : null, row.version ?? null]
   );
   return { created: true, draftId: ins.rows[0].id };
 }
@@ -113,15 +125,15 @@ async function loadArchive(client: PoolClient, ref: { draftId: number } | { kind
     'draftId' in ref
       ? await client.query(`SELECT id, page_type, page_slug, label, content FROM page_drafts WHERE id = $1`, [ref.draftId])
       : await client.query(
-          `SELECT id, page_type, page_slug, label, content FROM page_drafts WHERE page_type = ANY($1) AND page_slug = $2 AND label = $3 ORDER BY id LIMIT 1`,
-          [aliases(ref.kind), ref.slug, KIND[ref.kind].label]
+          `SELECT id, page_type, page_slug, label, content FROM page_drafts WHERE page_type = ANY($1) AND page_slug = $2 AND label = ANY($3) ORDER BY id LIMIT 1`,
+          [aliases(ref.kind), ref.slug, archiveLabels(ref.kind)]
         );
   const d = res.rows[0];
   if (!d) throw new NotFoundError('No pre-template archive version for this page.');
   const kind: ArchiveKind | null = (CITY_PAGE_TYPES as readonly string[]).includes(d.page_type) ? 'hub' : d.page_type === 'city-service' ? 'service' : null;
   const cols = d.content?._archive?.columns;
-  if (!kind || d.label !== KIND[kind].label || !cols || typeof cols !== 'object') {
-    throw new ValidationError('Only a "Pre-hub archive (2026-10)" or "Pre-V2 archive (2026-10)" version can be restored.');
+  if (!kind || !archiveLabels(kind).includes(d.label) || !cols || typeof cols !== 'object') {
+    throw new ValidationError('Only a "Pre-hub archive (2026-10)", "Pre-office archive (2026-11)" or "Pre-V2 archive (2026-10)" version can be restored.');
   }
   return { id: d.id as number, slug: d.page_slug as string, label: d.label as string, kind, content: d.content as Record<string, unknown>, columns: cols as Record<string, unknown> };
 }

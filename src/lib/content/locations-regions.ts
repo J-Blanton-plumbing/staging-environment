@@ -23,7 +23,9 @@
  * (below, run at module load) fails the BUILD if the groups stop summing to the
  * registered Ohio count. A missing county is now a red build, not a quiet loss.
  */
-import { CITY_REGISTRY } from '@/lib/content/cities/index';
+// Brief 227: AREA_REGISTRY = the registry minus office pages (an office page is not an area and is on
+// no region page), so every list and count below is unchanged by an office page.
+import { AREA_REGISTRY as CITY_REGISTRY } from '@/lib/content/cities/index';
 import { OHIO_STATE, ohioCounties } from '@/lib/content/cities/ohio-areas';
 import {
   CHICAGO_NEIGHBORHOOD_SLUGS,

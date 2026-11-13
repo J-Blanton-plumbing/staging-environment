@@ -57,9 +57,22 @@ export function linkProblem(
   href: string,
   city: string,
   pageIds: Set<string>,
-  layoutOf: (city: string, service: string) => readonly CsBlock[] | undefined = serviceLayout
+  layoutOf: (city: string, service: string) => readonly CsBlock[] | undefined = serviceLayout,
+  /**
+   * Brief 227 — an OFFICE PAGE (hub content with `serviceHub`): its service links go to the service
+   * hub's pages (`/columbus/{service}`, `/columbus#services`), and its sourced copy may cite external
+   * https pages. Absent for every other page, so their gate is unchanged.
+   */
+  office?: { serviceHub: string }
 ): { ok: true; kind: LinkCheck['kind'] } | { ok: false; why: string } {
   if (STATIC_OK.has(href)) return { ok: true, kind: 'static' };
+  if (office) {
+    if (/^https:\/\/[^\s"<>]+$/.test(href)) return { ok: true, kind: 'static' };
+    if (href === '/locations') return { ok: true, kind: 'static' };
+    if (href === `/${office.serviceHub}#services`) return { ok: true, kind: 'anchor' };
+    const s = href.match(/^\/([a-z0-9-]+)\/([a-z0-9-]+)$/);
+    if (s && s[1] === office.serviceHub) return linkProblem(href, office.serviceHub, new Set(), serviceLayout);
+  }
   if (href.startsWith('#')) return pageIds.has(href.slice(1)) ? { ok: true, kind: 'anchor' } : { ok: false, why: `anchor ${href} is not a section on this page` };
   const m = href.match(/^\/([a-z0-9-]+)\/([a-z0-9-]+)(?:#([a-z0-9-]+))?$/);
   if (m) {

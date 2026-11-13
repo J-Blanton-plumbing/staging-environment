@@ -31,6 +31,12 @@ export const CITY_HUB_SHARED_SLUG = 'city-hubs';
 export const CITY_HUB_SHARED_PAGE_TYPE = 'city-hub-shared';
 
 export const PRE_HUB_ARCHIVE_LABEL = 'Pre-hub archive (2026-10)';
+/**
+ * Brief 227 — the archive of a legacy city page RETIRED in favour of an office page (the
+ * `/columbus-german-village` row; its replacement is a new slug, so the row itself is never
+ * overwritten). Same `_archive.columns` recipe and the same Restore as a pre-hub archive.
+ */
+export const PRE_OFFICE_ARCHIVE_LABEL = 'Pre-office archive (2026-11)';
 /** Brief 216 (Track A) — the Batch 1–2 hub update. */
 export const HUB_V2_REVIEWS_GBP_LABEL = 'Version 2 — Office reviews + GBP schema (2026-10)';
 export const HUB_V1_LABEL = 'Version 1 — City Hub';
@@ -86,9 +92,69 @@ export interface HubHeroVideo {
   srcMobile?: string;
 }
 
+// ── Brief 227 — the OFFICE PAGE pieces (German Village). Every one is optional and absent on every
+// other hub, so their stored shape and their rendering are unchanged (the view puts each piece in the
+// JSX slot of the element it replaces — never a new sibling — so their RSC payload is unchanged too).
+
+/** A visible breadcrumb above the hero eyebrow (+ its BreadcrumbList JSON-LD). */
+export interface HubBreadcrumb {
+  /** The linked steps, in order (e.g. Locations / Central Ohio / Columbus). */
+  trail: Array<{ label: string; href: string }>;
+  /** The current page (not linked). */
+  current: string;
+}
+
+/** The featured service tile that replaces the card grid. */
+export interface HubFeatured {
+  eyebrow: string;
+  title: string;
+  href: string;
+  intro: string;
+  /** The button label (it links to `href`). */
+  cta: string;
+  image: HubImage;
+}
+
+/** The plain-text neighborhood panel that replaces the linked communities line. */
+export interface HubNeighborhoods {
+  h3: string;
+  /** Plain text, no links; also the office's `areaServed` in its Plumber JSON-LD. */
+  names: string[];
+  closing: string;
+  /** The panel's `data-state-url` / `data-state-name`. */
+  stateUrl: string;
+  stateName: string;
+}
+
+/** Per-page financing banner copy (one H2 element; the mobile text swaps in by CSS). */
+export interface HubFinOverride {
+  labelTop: string;
+  labelValue: string;
+  h2: string;
+  h2Mobile: string;
+  body: string;
+}
+
+/** Per-page No Drip Club box copy (the mascot, button link and the page's sentence stay as they are). */
+export interface HubNdcOverride {
+  eyebrow: string;
+  eyebrowMobile: string;
+  h2: string;
+  benefits: string[];
+  cta: string;
+}
+
 /** One city's hub content (`city_pages.hub_content`). */
 export interface CityHubStored {
   schema: 1;
+  /**
+   * Brief 227 (optional, office pages): the city whose service pages this page links to (German
+   * Village → 'columbus'). Every service link — cards, featured tile, list, the Why Us camera link —
+   * must point at `/{serviceHub}/…`. Absent = this page's own `/{slug}/…` (every other hub).
+   */
+  serviceHub?: string;
+  /** Brief 227 (optional): breadcrumb above the hero eyebrow. */
+  breadcrumb?: HubBreadcrumb;
   hero: {
     eyebrow: string;
     h1: string;
@@ -101,8 +167,19 @@ export interface CityHubStored {
     /** Brief 216: the full-bleed hero's video (kept only with layout 'full-bleed'). */
     video?: HubHeroVideo;
   };
+  /** A trust item that renders empty (a rating token with no row behind it) is not shown (Brief 227). */
   trust: string[];
-  services: { h2: string; intro: string; cards: HubCard[] };
+  services: {
+    h2: string;
+    intro: string;
+    /** The card grid. Empty (and not required) when `featured` is set. */
+    cards: HubCard[];
+    /** Brief 227 (optional): one featured tile + the row list below, in place of the card grid. */
+    featured?: HubFeatured;
+    list?: Array<{ title: string; href: string; desc: string }>;
+    /** Brief 227 (optional): one link in place of the "Explore all our plumbing services" directory. */
+    linkBar?: { label: string; href: string };
+  };
   office: {
     eyebrow: string;
     h2: string;
@@ -127,6 +204,11 @@ export interface CityHubStored {
     mapCid?: string;
     /** Brief 217 (C3, optional): the map iframe's title; default = the shared `patterns.mapTitle`. */
     mapTitle?: string;
+    /** Brief 227 (optional): a license line on the office card (shown once on the page). */
+    license?: string;
+    /** Brief 227 (optional): the plain-text neighborhood panel, in place of the linked communities
+     *  line (`areasH3` / `areas` / `more` are then not shown and not required). */
+    neighborhoods?: HubNeighborhoods;
   };
   depth: { h2: string; intro: string; tiles: Array<{ title: string; body: string }> };
   /** The Why Us H2 (visible heading, per page — Brief 206 decision 3). */
@@ -142,6 +224,10 @@ export interface CityHubStored {
   faq: { h2: string; items: Array<{ q: string; preview: string; a: string }> };
   ndc: string;
   final: { eyebrow: string; h2: string; body: string };
+  /** Brief 227 (optional): this page's financing banner copy over the shared record's. */
+  fin?: HubFinOverride;
+  /** Brief 227 (optional): this page's No Drip Club box copy over the shared record's. */
+  ndcBox?: HubNdcOverride;
   /**
    * Brief 221 (D1/D2, optional): token text → the text that field held before it was migrated to the
    * live-rating tokens. Rendered only while a token has no `office_ratings` row behind it. Absent on
@@ -265,9 +351,13 @@ export function toRender(stored: CityHubStored, slug: string, name: string): Cit
 
 // ── Brief 216 (Track A2): the page-scoped Plumber JSON-LD ─────────────────────────────────────────
 
-/** A Google Business Profile share link: maps.app.goo.gl or google.com/maps only. */
-export const GBP_URL_RE = /^https:\/\/(?:maps\.app\.goo\.gl\/[A-Za-z0-9_-]+|www\.google\.com\/maps\/[^\s"<>]+)$/;
-export const GBP_URL_MESSAGE = 'Use the office’s Google share link (https://maps.app.goo.gl/… or https://www.google.com/maps/…).';
+/**
+ * A Google Business Profile share link: maps.app.goo.gl or google.com/maps only. Brief 227 adds the
+ * listing's public CID link (`https://www.google.com/maps?cid=<digits>`) — a listing without a share
+ * link yet (German Village) is still named exactly; never an owner `business.google.com` link.
+ */
+export const GBP_URL_RE = /^https:\/\/(?:maps\.app\.goo\.gl\/[A-Za-z0-9_-]+|www\.google\.com\/maps\/[^\s"<>]+|www\.google\.com\/maps\?cid=\d{5,25})$/;
+export const GBP_URL_MESSAGE = 'Use the office’s Google share link (https://maps.app.goo.gl/…, https://www.google.com/maps/… or https://www.google.com/maps?cid=…).';
 
 /** "1603 Orrington Ave, #600-1085, Evanston, IL 60201" → its schema parts, or null when it isn't that shape. */
 export function addressParts(address: string): { streetAddress: string; addressLocality: string; addressRegion: string; postalCode: string } | null {
@@ -318,7 +408,10 @@ export function hubPlumberJsonLd(
       opens: '00:00',
       closes: '23:59',
     },
-    areaServed: [hub.office.schemaArea || `${hub.name}, ${st}`, ...hub.office.areas.map((x) => x.area || `${x.label}, ${st}`)],
+    // Brief 227: an office page's neighborhood panel IS its service area ("German Village, Columbus, OH").
+    areaServed: hub.office.neighborhoods
+      ? hub.office.neighborhoods.names.map((n) => `${n}, ${a.addressLocality}, ${st}`)
+      : [hub.office.schemaArea || `${hub.name}, ${st}`, ...hub.office.areas.map((x) => x.area || `${x.label}, ${st}`)],
     ...(aggregateRating ? { aggregateRating } : {}),
   };
 }
@@ -378,22 +471,62 @@ export function requiredEmptyFields(hub: CityHubStored, metaTitle: string, metaD
   list('trust', hub.trust).forEach((t, i) => need(`trust[${i}]`, t));
   need('services.h2', hub.services?.h2);
   need('services.intro', hub.services?.intro);
-  list('services.cards', hub.services?.cards).forEach((c: HubCard, i) => {
-    need(`services.cards[${i}].title`, c?.title);
-    need(`services.cards[${i}].href`, c?.href);
-    need(`services.cards[${i}].desc`, c?.desc);
-    need(`services.cards[${i}].image.src`, c?.image?.src);
-    need(`services.cards[${i}].image.alt`, c?.image?.alt);
-  });
-  for (const k of ['eyebrow', 'h2', 'body', 'address', 'areasH3', 'more'] as const) need(`office.${k}`, hub.office?.[k]);
+  // Brief 227: with a featured tile the card grid is not shown, so the tile + its list are required instead.
+  const featured = hub.services?.featured;
+  if (featured) {
+    for (const k of ['eyebrow', 'title', 'href', 'intro', 'cta'] as const) need(`services.featured.${k}`, featured[k]);
+    need('services.featured.image.src', featured.image?.src);
+    need('services.featured.image.alt', featured.image?.alt);
+    list('services.list', hub.services?.list).forEach((r: { title: string; href: string; desc: string }, i) => {
+      need(`services.list[${i}].title`, r?.title);
+      need(`services.list[${i}].href`, r?.href);
+      need(`services.list[${i}].desc`, r?.desc);
+    });
+  } else {
+    list('services.cards', hub.services?.cards).forEach((c: HubCard, i) => {
+      need(`services.cards[${i}].title`, c?.title);
+      need(`services.cards[${i}].href`, c?.href);
+      need(`services.cards[${i}].desc`, c?.desc);
+      need(`services.cards[${i}].image.src`, c?.image?.src);
+      need(`services.cards[${i}].image.alt`, c?.image?.alt);
+    });
+  }
+  if (hub.services?.linkBar) {
+    need('services.linkBar.label', hub.services.linkBar.label);
+    need('services.linkBar.href', hub.services.linkBar.href);
+  }
+  const panel = hub.office?.neighborhoods;
+  for (const k of ['eyebrow', 'h2', 'body', 'address'] as const) need(`office.${k}`, hub.office?.[k]);
+  if (panel) {
+    // Brief 227: the plain-text panel replaces the linked communities line.
+    for (const k of ['h3', 'closing', 'stateUrl', 'stateName'] as const) need(`office.neighborhoods.${k}`, panel[k]);
+    list('office.neighborhoods.names', panel.names).forEach((n, i) => need(`office.neighborhoods.names[${i}]`, n));
+  } else {
+    for (const k of ['areasH3', 'more'] as const) need(`office.${k}`, hub.office?.[k]);
+  }
+  if (hub.office && 'license' in hub.office) need('office.license', hub.office.license);
+  if (hub.breadcrumb) {
+    need('breadcrumb.current', hub.breadcrumb.current);
+    list('breadcrumb.trail', hub.breadcrumb.trail).forEach((s: { label: string; href: string }, i) => {
+      need(`breadcrumb.trail[${i}].label`, s?.label);
+      need(`breadcrumb.trail[${i}].href`, s?.href);
+    });
+  }
+  if (hub.fin) for (const k of ['labelTop', 'labelValue', 'h2', 'h2Mobile', 'body'] as const) need(`fin.${k}`, hub.fin[k]);
+  if (hub.ndcBox) {
+    for (const k of ['eyebrow', 'eyebrowMobile', 'h2', 'cta'] as const) need(`ndcBox.${k}`, hub.ndcBox[k]);
+    list('ndcBox.benefits', hub.ndcBox.benefits).forEach((b, i) => need(`ndcBox.benefits[${i}]`, b));
+  }
   if (hub.hero?.layout === 'full-bleed' && hub.hero.video) {
     need('hero.video.src', hub.hero.video.src);
     need('hero.video.poster', hub.hero.video.poster);
   }
-  list('office.areas', hub.office?.areas).forEach((a: { label: string; href: string }, i) => {
-    need(`office.areas[${i}].label`, a?.label);
-    need(`office.areas[${i}].href`, a?.href);
-  });
+  if (!panel) {
+    list('office.areas', hub.office?.areas).forEach((a: { label: string; href: string }, i) => {
+      need(`office.areas[${i}].label`, a?.label);
+      need(`office.areas[${i}].href`, a?.href);
+    });
+  }
   need('depth.h2', hub.depth?.h2);
   need('depth.intro', hub.depth?.intro);
   list('depth.tiles', hub.depth?.tiles).forEach((t: { title: string; body: string }, i) => {

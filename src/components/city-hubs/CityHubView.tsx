@@ -4,7 +4,7 @@ import ScheduleTrigger from '@/components/schedule/ScheduleTrigger';
 import type { CityHubRender, CityHubShared, HubPhoto } from '@/lib/city-hub-cms/model';
 import { fillPattern, hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
 import type { AggregateRatingNode } from '@/lib/schema/aggregate-rating';
-import { faqPageJsonLd, ldJson, schemaPhone } from '@/lib/schema/city-pages';
+import { faqPageJsonLd, hubBreadcrumbJsonLd, ldJson, schemaPhone } from '@/lib/schema/city-pages';
 import CityHubRoot from './CityHubRoot';
 import HubHeroVideo from './HubHeroVideo';
 
@@ -231,7 +231,19 @@ export default function CityHubView({
   // (`office.mapQuery`); neither set = the address, exactly as before.
   const mapWhat = hub.office.mapCid ? `cid=${hub.office.mapCid}` : `q=${encodeURIComponent(hub.office.mapQuery || hub.office.address)}`;
   const mapSrc = `https://maps.google.com/maps?hl=en&${mapWhat}&z=15&ie=UTF8&output=embed`;
-  const camera = `/${hub.slug}/video-camera-sewer-inspections`;
+  // Brief 227: an office page's service links (the shared Why Us camera link included) go to its
+  // service hub's pages; every other hub links to its own.
+  const camera = `/${hub.serviceHub || hub.slug}/video-camera-sewer-inspections`;
+  // Brief 227 — the office-page pieces. Each one renders in the JSX SLOT of the element it replaces
+  // (`x ? <new/> : <old/>`, never a new `{x && …}` sibling), so a hub without them renders — HTML and
+  // RSC payload — exactly as before.
+  const bc = hub.breadcrumb;
+  const featured = hub.services.featured;
+  const linkBar = hub.services.linkBar;
+  const panel = hub.office.neighborhoods;
+  const fin = hub.fin;
+  const ndcBox = hub.ndcBox;
+  const breadcrumbJsonLd = bc ? hubBreadcrumbJsonLd(bc.trail, bc.current, `https://jblantonplumbing.com/${hub.slug}`) : null;
   const total = SH.stripe.reduce((n, g) => n + g.items.length, 0);
   const [r1, r2, r3] = hub.reviews.items;
   const STARS = <Stars label={L.reviewStars} />;
@@ -256,7 +268,14 @@ export default function CityHubView({
 
   return (
     <CityHubRoot className={`city-hub city-hub--${hub.slug}`}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, '\\u003c') }} />
+      {breadcrumbJsonLd ? (
+        <>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, '\\u003c') }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(breadcrumbJsonLd)} />
+        </>
+      ) : (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, '\\u003c') }} />
+      )}
       {plumberJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(plumberJsonLd)} /> : null}
       {faqJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(faqJsonLd)} /> : null}
 
@@ -275,7 +294,22 @@ export default function CityHubView({
           <HeroPicture photo={heroPhoto} sizes={fullBleed ? '100vw' : undefined} />
         )}
         <div className="hub-hero-in">
-          <span className="t-eyebrow pv-in" style={s('--i:0;color:#F9F3EC')}>{hub.hero.eyebrow}</span>
+          {bc ? (
+            <>
+              <nav aria-label="Breadcrumb" className="ss-crumb hub-crumb pv-in" style={s('--i:0')}>
+                {bc.trail.map((step) => (
+                  <Fragment key={step.href}>
+                    <a href={step.href}>{step.label}</a>
+                    <span aria-hidden="true">/</span>
+                  </Fragment>
+                ))}
+                <span aria-current="page">{bc.current}</span>
+              </nav>
+              <span className="t-eyebrow pv-in" style={s('--i:0;color:#F9F3EC')}>{hub.hero.eyebrow}</span>
+            </>
+          ) : (
+            <span className="t-eyebrow pv-in" style={s('--i:0;color:#F9F3EC')}>{hub.hero.eyebrow}</span>
+          )}
           <h1 className="t-h1 hub-h1 pv-in" style={s('--i:1;color:#F9F3EC;margin:14px 0 16px')}>{hub.hero.h1}</h1>
           <p className="t-body pv-in" style={s('--i:2;color:#F9F3EC;margin:0 0 26px;max-width:56ch')}>{hub.hero.sub}</p>
           <div className="pv-in" style={s('--i:3')}>
@@ -297,7 +331,8 @@ export default function CityHubView({
       {/* 2. TRUST BAR */}
       <section aria-label={SH.trustLabel} className="trust-stripe">
         <ul className="wrap trust-stripe-list">
-          {hub.trust.map((t) => (
+          {/* Brief 227: a rating item with no rating row behind it renders empty — and is not shown. */}
+          {hub.trust.filter((t) => t.trim() !== '').map((t) => (
             <li key={t}>
               <CheckCircle />
               <span>{t}</span>
@@ -314,6 +349,37 @@ export default function CityHubView({
             <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{hub.services.h2}</h2>
             <p className="t-body pv-mute" style={s('margin:0 0 8px')}>{hub.services.intro}</p>
           </div>
+          {featured ? (
+            <div className="hub-svc-office">
+              <article className="hub-feat">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt={featured.image.alt} className="hub-feat-img" height={500} loading="lazy" src={featured.image.src} width={800} />
+                <div>
+                  <span className="t-eyebrow" style={s('color:#BC0E0E')}>{featured.eyebrow}</span>
+                  <h3 className="svc-title hub-feat-title" style={s('margin:12px 0 12px')}>
+                    <a href={featured.href}>{featured.title}</a>
+                  </h3>
+                  <p className="svc-desc" style={s('margin:0 0 24px')}>{featured.intro}</p>
+                  <a className="svc-cta" href={featured.href}>
+                    {`${featured.cta} `}<span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </article>
+              <nav aria-label={hub.services.h2} className="hub-svc-rows">
+                <ul>
+                  {(hub.services.list ?? []).map((r) => (
+                    <li key={r.href}>
+                      <a href={r.href}>
+                        <span className="svc-title">{r.title}</span>
+                        <span className="svc-desc">{r.desc}</span>
+                        <span aria-hidden="true" className="hub-svc-rows-arrow">→</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          ) : (
           <div className="hub-grid hub-grid--flat">
             {hub.services.cards.map((c) => (
               <article className="hub-card" key={c.href}>
@@ -329,6 +395,15 @@ export default function CityHubView({
               </article>
             ))}
           </div>
+          )}
+          {linkBar ? (
+            <a className="svc-dir hub-linkbar" href={linkBar.href}>
+              <span className="svc-dir-head">
+                <span className="svc-dir-t">{linkBar.label}</span>
+                <span aria-hidden="true" className="svc-dir-arrow">→</span>
+              </span>
+            </a>
+          ) : (
           <details className="svc-dir">
             <summary className="svc-dir-head">
               <span className="svc-dir-t">{SH.stripeTitle}</span>
@@ -360,6 +435,7 @@ export default function CityHubView({
               </div>
             </nav>
           </details>
+          )}
         </div>
       </section>
 
@@ -377,13 +453,31 @@ export default function CityHubView({
               <PinIcon />
               <div>
                 <strong>{fillPattern(SH.patterns.addressName, { city })}</strong>
-                <span className="t-body-sm pv-mute">{hub.office.address}</span>
+                {hub.office.license ? (
+                  <>
+                    <span className="t-body-sm pv-mute">{hub.office.address}</span>
+                    <span className="t-body-sm hub-license">{hub.office.license}</span>
+                  </>
+                ) : (
+                  <span className="t-body-sm pv-mute">{hub.office.address}</span>
+                )}
               </div>
             </div>
             <div className="hero-btns">
               {callNow}
               <ScheduleTrigger as="button" className="btn btn-outline t-btn" label={SH.officeSchedule} />
             </div>
+            {panel ? (
+            <div className="hp-areas hub-nbhd" data-state-name={panel.stateName} data-state-url={panel.stateUrl} id="service-areas">
+              <h3 className="t-h4" style={s('margin:0 0 14px')}>{panel.h3}</h3>
+              <ul className="hub-nbhd-list">
+                {panel.names.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+              <p className="t-body-sm pv-mute" style={s('margin:16px 0 0')}>{panel.closing}</p>
+            </div>
+            ) : (
             <div className="hp-areas">
               <h3 className="t-h4" style={s('margin:0 0 10px')}>{hub.office.areasH3}</h3>
               <p className="t-body-sm pv-mute" style={s('margin:0')}>
@@ -396,6 +490,7 @@ export default function CityHubView({
                 <a href={hub.office.more}>{L.more}</a>.
               </p>
             </div>
+            )}
           </div>
         </div>
       </section>
@@ -427,12 +522,31 @@ export default function CityHubView({
       {/* 6. MID CTA (financing) */}
       <section className="hub-fin">
         <div className="wrap hub-fin-in">
+          {fin ? (
+            <>
+              <p className="hub-fin-rate">
+                <span className="hub-fin-rate-top">{fin.labelTop}</span>
+                <span className="hub-fin-rate-val">{fin.labelValue}</span>
+              </p>
+              <div className="hub-fin-copy">
+                <span className="t-eyebrow" style={s('color:#F9F3EC')}>{SH.fin.eyebrow}</span>
+                {/* One H2 element: the mobile wording swaps in by CSS (≤640px), never a second heading. */}
+                <h2 className="t-h2" style={s('color:#F9F3EC;margin:12px 0 10px;max-width:440px')}>
+                  <span className="hub-swap-d">{fin.h2}</span>
+                  <span className="hub-swap-m">{fin.h2Mobile}</span>
+                </h2>
+                <p className="t-body-sm" style={s('color:#F9F3EC;margin:0 0 8px;max-width:440px')}>{fin.body}</p>
+                <p className="t-body-sm" style={s('color:#F9F3EC;opacity:.75;margin:0;max-width:440px;font-size:.8em')}>{SH.fin.disclaimer}</p>
+              </div>
+            </>
+          ) : (
           <div className="hub-fin-copy">
             <span className="t-eyebrow" style={s('color:#F9F3EC')}>{SH.fin.eyebrow}</span>
             <h2 className="t-h2" style={s('color:#F9F3EC;margin:12px 0 10px;max-width:440px')}>{SH.fin.h2}</h2>
             <p className="t-body-sm" style={s('color:#F9F3EC;margin:0 0 8px;max-width:440px')}>{SH.fin.body}</p>
             <p className="t-body-sm" style={s('color:#F9F3EC;opacity:.75;margin:0;max-width:440px;font-size:.8em')}>{SH.fin.disclaimer}</p>
           </div>
+          )}
           <PhoneLink href={phone.href} display={phone.display} className="btn btn-onred t-btn hub-fin-cta">
             {SH.fin.cta}
           </PhoneLink>
@@ -493,9 +607,11 @@ export default function CityHubView({
             <div style={s('max-width:780px')}>
               <span className="t-eyebrow" style={s('color:#BC0E0E')}>{hub.reviews.eyebrow}</span>
               <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{hub.reviews.h2}</h2>
-              <p className="t-body pv-mute" style={s('margin:0 0 40px')}>{hub.reviews.intro}</p>
+              {/* Brief 227: an intro / rating that renders empty (no rating row) is not shown. */}
+              {hub.reviews.intro.trim() !== '' ? <p className="t-body pv-mute" style={s('margin:0 0 40px')}>{hub.reviews.intro}</p> : null}
             </div>
             <aside aria-label={SH.reviewsProofLabel} className="hub-proof">
+              {hub.reviews.rating.trim() !== '' ? (
               <div className="hub-proof-row">
                 <GoogleG />
                 <div>
@@ -506,6 +622,7 @@ export default function CityHubView({
                   <span className="hub-proof-sub">{hub.reviews.ratingSub}</span>
                 </div>
               </div>
+              ) : null}
               <a className="hub-proof-row hub-proof-bbb" href={SH.bbb.href} rel="noreferrer" target="_blank">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img alt={SH.bbb.alt} height={36} src={SH.bbb.src} width={92} />
@@ -577,20 +694,27 @@ export default function CityHubView({
         <div className="wrap">
           <div className="ndc-grid">
             <div className="ndc-text">
-              <p className="t-eyebrow ndc-eyebrow">{SH.ndc.eyebrow}</p>
-              <h2 className="t-h2 ndc-h2">{SH.ndc.h2}</h2>
+              {ndcBox ? (
+                <p className="t-eyebrow ndc-eyebrow">
+                  <span className="hub-swap-d">{ndcBox.eyebrow}</span>
+                  <span className="hub-swap-m">{ndcBox.eyebrowMobile}</span>
+                </p>
+              ) : (
+                <p className="t-eyebrow ndc-eyebrow">{SH.ndc.eyebrow}</p>
+              )}
+              <h2 className="t-h2 ndc-h2">{ndcBox ? ndcBox.h2 : SH.ndc.h2}</h2>
               <p className="ndc-body">
                 <Rich text={hub.ndc} linkStyle={NDC_LINK_STYLE} />
               </p>
               <ul className="ndc-list">
-                {SH.ndc.benefits.map((b) => (
+                {(ndcBox ? ndcBox.benefits : SH.ndc.benefits).map((b) => (
                   <li key={b}>
                     <NdcCheck />
                     <span>{b}</span>
                   </li>
                 ))}
               </ul>
-              <a className="btn btn-primary t-btn ndc-btn" href={SH.ndc.href}>{SH.ndc.cta}</a>
+              <a className="btn btn-primary t-btn ndc-btn" href={SH.ndc.href}>{ndcBox ? ndcBox.cta : SH.ndc.cta}</a>
             </div>
             <div className="ndc-figure">
               {/* eslint-disable-next-line @next/next/no-img-element */}

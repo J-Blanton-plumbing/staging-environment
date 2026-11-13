@@ -30,6 +30,7 @@ import { CITY_SLUG_TO_HUB_ALIAS, hasSubServiceRoute } from '@/lib/content/servic
 import { CITY_REGISTRY } from '@/lib/content/cities';
 import { CITY_SERVICE_FOLD_REDIRECTS } from './city-service-folds';
 import { RETIRED_CITY_SERVICE_SLUGS } from './retired-city-services';
+import { OFFICE_PAGE_REDIRECTS } from './office-pages';
 
 /**
  * One-off slug corrections and consolidations.
@@ -197,6 +198,8 @@ export const DERIVED_RETIRED_CITY_SERVICE_REDIRECTS: Readonly<Record<string, str
   Object.freeze(
     Object.fromEntries(
       CITY_REGISTRY.reduce<Array<[string, string]>>((pairs, city) => {
+        // Brief 227: an office page has no service pages, so there is nothing under it to retire.
+        if (city.officePage) return pairs;
         for (const service of RETIRED_CITY_SERVICE_SLUGS) {
           pairs.push([`/${city.slug}/${service}`, `/${city.slug}`]);
         }
@@ -216,10 +219,14 @@ export const DERIVED_RETIRED_CITY_SERVICE_REDIRECTS: Readonly<Record<string, str
  * shards so none is advertised.
  *
  * Brief 211: the derived `/{city}/plumbing-services` → `/{city}` 301s, same mechanism.
+ *
+ * Brief 227: the legacy German Village URLs (`./office-pages.ts`), after the derived rules so its
+ * chain collapse of `/columbus-german-village/plumbing-services` wins.
  */
 export const ALIAS_REDIRECTS: Readonly<Record<string, string>> = Object.freeze({
   ...DERIVED_HUB_ALIAS_REDIRECTS,
   ...CITY_SERVICE_FOLD_REDIRECTS,
   ...DERIVED_RETIRED_CITY_SERVICE_REDIRECTS,
+  ...OFFICE_PAGE_REDIRECTS,
   ...MANUAL_ALIAS_REDIRECTS,
 });

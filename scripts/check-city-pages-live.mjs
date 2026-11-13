@@ -45,6 +45,12 @@ const SITE = 'https://jblantonplumbing.com';
 const CITIES = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville', 'arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva',
   'mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park',
   'highland-park'];
+/**
+ * Brief 227: OFFICE PAGES — a City Hub with NO service pages of its own (src/lib/content/cities
+ * `officePage`). Their hub is checked like every hub; every `/{slug}/{service}` must 404, and the legacy
+ * page each one replaced must 301 to it in ONE hop (src/lib/redirects/office-pages.ts).
+ */
+const OFFICE_PAGES = [{ slug: 'columbus-german-village-oh', legacy: '/columbus-german-village' }];
 const SEWER_PAGES = ['/services/sewer', '/hydro-jetting', '/sewer-rodding', '/sewer-repair', '/sewer-camera-inspection', '/sewer-line-replacement', '/sewer-maintenance', '/overhead-sewer-systems', '/trenchless-sewer-repair', '/sewer-line-installation'];
 /**
  * Brief 217: pages outside the two city templates that must keep the footer's office graph. Brief 218
@@ -54,11 +60,12 @@ const OTHER_PAGES = ['/services', '/services/plumbing', '/services/sewer', '/loc
 /** Brief 188 / 218: the ONE Organization `@id` (src/lib/schema/organization-ref.ts). */
 const ORG_ID = `${SITE}/#organization`;
 /** Brief 218: the homepage Organization's department count (the package's 19 offices). */
-const HOME_DEPARTMENTS = 19;
+const HOME_DEPARTMENTS = 20; // Brief 227: + German Village (the 20th office)
 /** JSON-LD types Brief 216 adds to these pages (allowed once as an addition — see 5. above). */
 const NEW_LD_TYPES = ['FAQPage', 'Plumber'];
 const SERVICES = ['basement-flooding', 'burst-pipe-repair', 'catch-basin', 'commercial-water-heater', 'drain-cleaning', 'ejector-pump', 'emergency-plumbing', 'faucet-installation-repair', 'garbage-disposal-installation-repair', 'gas-fireplace', 'gas-line-installation', 'gas-line-repair', 'hydro-jetting', 'leak-repairs', 'overhead-sewer-systems', 'plumbing-maintenance', 'sewage-line-backup-services', 'sewer-maintenance', 'sewer-repair', 'sewer-rodding', 'shower-repair', 'sump-pumps', 'tankless-water-heater', 'toilet-installation-repair', 'trenchless-sewer-repair', 'video-camera-sewer-inspections', 'water-filtration-systems', 'water-heater-installation', 'water-heater-repair'];
-const PAGES = CITIES.flatMap((c) => [`/${c}`, ...SERVICES.map((s) => `/${c}/${s}`)]);
+const PAGES = [...CITIES.flatMap((c) => [`/${c}`, ...SERVICES.map((s) => `/${c}/${s}`)]), ...OFFICE_PAGES.map((o) => `/${o.slug}`)];
+const HUB_SLUGS = [...CITIES, ...OFFICE_PAGES.map((o) => o.slug)];
 const file = (p) => p.slice(1).replace(/\//g, '__') + '.txt';
 
 async function get(p) {
@@ -313,7 +320,7 @@ function firstDiff(a, b) {
 async function sitemapCounts() {
   const index = (await get('/sitemap.xml')).text;
   const children = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
-  const counts = Object.fromEntries(PAGES.map((p) => [p, 0]));
+  const counts = Object.fromEntries([...PAGES, ...OFFICE_PAGES.map((o) => o.legacy)].map((p) => [p, 0]));
   for (const c of children) {
     const xml = (await get(c)).text;
     for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
@@ -335,7 +342,7 @@ async function compare() {
   const notes = [];
   let sources = {};
   try {
-    const hubs = JSON.parse((await get(`/api/city-hubs/source?slugs=${CITIES.join(',')}`)).text);
+    const hubs = JSON.parse((await get(`/api/city-hubs/source?slugs=${HUB_SLUGS.join(',')}`)).text);
     const svcs = JSON.parse((await get(`/api/city-services-v2/source?cities=${CITIES.join(',')}`)).text);
     sources = { ...hubs, ...svcs };
   } catch (e) {
@@ -391,6 +398,17 @@ async function compare() {
         else failures.push(`${p}: markup changed across the swap — ${firstDiff(before, after)}`);
       }
     }
+  }
+  // Brief 227: an office page has no service pages, and its legacy page 301s to it in one hop.
+  for (const o of OFFICE_PAGES) {
+    for (const svc of ['drain-cleaning', 'sewer-repair', 'plumbing-services']) {
+      const r = await get(`/${o.slug}/${svc}`).catch((e) => ({ status: 0, text: '' }));
+      if (r.status !== 404) failures.push(`/${o.slug}/${svc}: answered ${r.status} — an office page has no service pages (expected 404)`);
+    }
+    const res = await fetch(BASE + o.legacy, { redirect: 'manual', headers: { 'User-Agent': 'jbp-city-pages-check' } }).catch(() => null);
+    const loc = res?.headers.get('location') ?? '';
+    if (!res || res.status !== 301 || new URL(loc, BASE).pathname !== `/${o.slug}`) failures.push(`${o.legacy}: expected one 301 to /${o.slug}, got ${res?.status ?? 'no answer'} ${loc}`);
+    if (counts[o.legacy]) failures.push(`${o.legacy}: a redirect source is listed in the sitemap`);
   }
   for (const p of SEWER_PAGES) {
     const r = await get(p).catch(() => ({ status: 0, text: '' }));

@@ -56,7 +56,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const cityEntry = getCity(params.city);
   const serviceData = getCityService(params.service);
-  if (!cityEntry || !serviceData) return {};
+  if (!cityEntry || !serviceData || cityEntry.officePage) return {};
   // Brief 209 go-live: a City Service Pages V2 page carries its approved title/description from
   // code. Every title on the site closes with the layout template's "| J. Blanton Plumbing",
   // whatever its length (Marketing, 2026-10-14). The approved titles carry their own short brand
@@ -138,7 +138,8 @@ export default async function CityServicePage({
 }) {
   const cityEntry = getCity(params.city);
   const serviceData = getCityService(params.service);
-  if (!cityEntry || !serviceData) notFound();
+  // Brief 227: an office page has NO service pages of its own (its links go to /{serviceHub}/…).
+  if (!cityEntry || !serviceData || cityEntry.officePage) notFound();
 
   const settings = await getGlobalSettingsCached();
 

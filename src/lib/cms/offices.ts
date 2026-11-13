@@ -38,6 +38,22 @@ export interface CmsOffice {
    * Does NOT affect `LocalBusinessSchema` — see that component's docblock.
    */
   showInFooter?: boolean;
+  /**
+   * Brief 227 — an office-level phone (display form, e.g. "(614) 379-4898"). Optional and absent on
+   * every office but German Village (Marketing 2026-11-13, decision 6: its GBP number). When set, the
+   * office's own City Hub page uses it for every phone position and its Plumber schema, and the
+   * footer's PlumbingBusiness node for this office carries it. Absent = the sitewide (or Central Ohio)
+   * phone, exactly as before. Never written as an empty string (the admin form omits a blank one).
+   */
+  phone?: string;
+}
+
+/** Brief 227 — an office's own phone as `{ href, display }`, or null when it has none. */
+export function officePhone(o: Pick<CmsOffice, 'phone'> | undefined | null): { href: string; display: string } | null {
+  const display = typeof o?.phone === 'string' ? o.phone.trim() : '';
+  if (!display) return null;
+  const digits = display.replace(/[^0-9+]/g, '');
+  return digits ? { href: `tel:${digits}`, display } : null;
 }
 
 /**

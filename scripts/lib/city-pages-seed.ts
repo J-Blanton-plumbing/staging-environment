@@ -43,6 +43,11 @@ export interface LoadOptions {
   publish: boolean;
   label: string;
   createMissing?: boolean;
+  /**
+   * Brief 227: create a MISSING `city_pages` row for this hub (an office page is a brand-new slug).
+   * Only with `publish` — like a created service row, it is never left as an empty page.
+   */
+  createHubRow?: boolean;
   /** The brief recorded in a new archive's `_archive.brief` (default 212). */
   brief?: number;
 }
@@ -105,12 +110,33 @@ export async function loadHub(slug: string, draft: CityHubDraftContent, o: LoadO
 
 async function loadHubInner(slug: string, draft: CityHubDraftContent, o: LoadOptions): Promise<PageResult> {
   const path = `/${slug}`;
-  const row = (
-    await pool.query<{ template_type: string | null; has_hub: boolean; status: string }>(
-      `SELECT template_type, (hub_content IS NOT NULL) AS has_hub, status FROM city_pages WHERE city_slug = $1`,
+  const readRow = async () =>
+    (
+      await pool.query<{ template_type: string | null; has_hub: boolean; status: string }>(
+        `SELECT template_type, (hub_content IS NOT NULL) AS has_hub, status FROM city_pages WHERE city_slug = $1`,
+        [slug]
+      )
+    ).rows[0];
+  let row = await readRow();
+  let createdRow = false;
+  if (!row && o.createHubRow && o.publish) {
+    if (!o.apply) return { path, outcome: 'would-load', detail: `would CREATE the missing city_pages row; switch → City Hub; create "${o.label}"; publish` };
+    // Brief 227: an office page's row. The Brief 157 traps: the key is `city_slug`, and
+    // `hero_heading_line1` is NOT NULL ('' — a non-empty value would replace a legacy page's H1).
+    // `status` is left to its column default ('published'), checked right after, exactly as a created
+    // service row (Marketing 2026-10-15): never an unpublished, empty page.
+    const ins = await pool.query<{ status: string }>(
+      `INSERT INTO city_pages (city_slug, city_type, template_type, hero_heading_line1, created_by, created_at, updated_at)
+       VALUES ($1, 'coverage-area', 'coverage-area', '', 'brief-${o.brief ?? 212}-seed', NOW(), NOW()) RETURNING status`,
       [slug]
-    )
-  ).rows[0];
+    );
+    if (ins.rows[0]?.status !== 'published') {
+      await pool.query(`DELETE FROM city_pages WHERE city_slug = $1 AND hub_content IS NULL AND created_by = $2`, [slug, `brief-${o.brief ?? 212}-seed`]);
+      throw Object.assign(new Error(`a created city_pages row came out '${ins.rows[0]?.status}', not 'published' — removed again`), { code: '409' });
+    }
+    createdRow = true;
+    row = await readRow();
+  }
   if (!row) return { path, outcome: 'missing', detail: 'no city_pages row — reported, not created' };
   if (row.has_hub) {
     return row.status === 'published'
@@ -120,14 +146,17 @@ async function loadHubInner(slug: string, draft: CityHubDraftContent, o: LoadOpt
   const fv = await findVersion([...CITY_PAGE_TYPES], slug, o.label, CITY_HUB_TEMPLATE, conformCityHubContent(slug, draft));
   const existing = fv.reuse;
   const steps = [
+    createdRow ? 'CREATED the missing city_pages row' : null,
     `archive "${row.template_type ?? 'coverage-area'}" row`,
     row.template_type === CITY_HUB_TEMPLATE ? 'already on City Hub' : `switch ${row.template_type ?? 'coverage-area'} → City Hub`,
     existing ? `reuse identical version #${existing.id}` : `create "${fv.label}"`,
     o.publish ? 'publish' : 'leave unpublished',
-  ].join('; ');
+  ]
+    .filter(Boolean)
+    .join('; ');
   if (!o.apply) return { path, outcome: 'would-load', detail: `would ${steps}` };
 
-  await archive('hub', slug, o.by, false, o.brief);
+  await archive('hub', slug, o.by, createdRow, o.brief);
   if (row.template_type !== CITY_HUB_TEMPLATE) {
     await switchTemplate({ pageType: 'city', pageSlug: slug, toTemplate: CITY_HUB_TEMPLATE, switchedBy: o.by });
   }

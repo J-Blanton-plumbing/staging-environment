@@ -118,7 +118,7 @@ export const COLUMBUS_HUB: CityHubContent = {
       },
       {
         "label": "German Village",
-        "href": "/columbus-german-village"
+        "href": "/columbus-german-village-oh"
       },
       {
         "label": "Bexley",
@@ -175,9 +175,9 @@ export const COLUMBUS_HUB: CityHubContent = {
         "text": "Jarrod Grimm was verv professional and able to answer all our questions. The camera technology leaves all the guesswork out of what is going on in the drains.  Great service.  I would recommend J Blanton Plumbing"
       },
       {
-        "name": "Stacy N",
-        "url": "https://maps.app.goo.gl/ep5gUrCMepDFdYqDA",
-        "text": "Called them out on a Saturday morning after our sump pump died and we were panicking about the basement flooding here in German Village, and J. Blanton Plumbing had someone out same-day to replace it. The tech was clean, careful with our floors, and explained everything before starting the work - couldn’t ask for better service."
+        "name": "Brady Bendau",
+        "url": "https://maps.app.goo.gl/RxkqxbL2EHVXcNwR6",
+        "text": "Called them out on a Tuesday morning after our water heater finally gave out here in Grandview Heights, and I honestly expected to wait days for someone to help. J Blanton Plumbing had a tech out same day and the replacement was done before dinner, no mess left behind either. Fast, professional, and reasonably priced too so we're definitely calling them again if anything else pops up."
       }
     ]
   },

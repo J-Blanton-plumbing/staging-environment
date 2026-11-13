@@ -1,0 +1,241 @@
+{
+ "template": "city-hub",
+ "hub": {
+  "schema": 1,
+  "serviceHub": "columbus",
+  "breadcrumb": {
+   "trail": [
+    {
+     "label": "Locations",
+     "href": "/locations"
+    },
+    {
+     "label": "Central Ohio",
+     "href": "/locations/central-ohio"
+    },
+    {
+     "label": "Columbus",
+     "href": "/columbus"
+    }
+   ],
+   "current": "German Village"
+  },
+  "hero": {
+   "eyebrow": "24/7 Local Plumbers",
+   "h1": "Plumbers in German Village, Columbus, OH",
+   "sub": "Our German Village office is on City Park Avenue, and our phone line is open 24/7. You get a flat price before any work starts, from a plumber who knows the older homes in the area.",
+   "photo": "standard",
+   "crop": "standard"
+  },
+  "trust": [
+   "Serving homeowners 30+ years",
+   "Local office on City Park Ave",
+   "{{office_rating}} stars · {{office_review_count}} Google reviews"
+  ],
+  "services": {
+   "h2": "Plumbing Services in German Village",
+   "intro": "From a slow kitchen drain to a sewer line under a brick walk, our plumbers handle it all. Pick a service to see how we handle it across Columbus.",
+   "cards": [],
+   "featured": {
+    "eyebrow": "Same-Day Service Available",
+    "title": "Drain Cleaning in German Village",
+    "href": "/columbus/drain-cleaning",
+    "intro": "Slow or backed-up drains are common in homes with plumbing from several eras. We clear the line and show you what caused it.",
+    "cta": "Learn more about drain cleaning",
+    "image": {
+     "src": "/images/city-hubs/drain-cleaning-outdoor-drain.webp",
+     "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+    }
+   },
+   "list": [
+    {
+     "title": "Sewer Repair",
+     "href": "/columbus/sewer-repair",
+     "desc": "Roots, cracks and repeat backups in the line from your home to the street."
+    },
+    {
+     "title": "Water Heaters",
+     "href": "/columbus/water-heater-repair",
+     "desc": "Repair and replacement when your water heater leaks, rumbles or runs out of hot water."
+    },
+    {
+     "title": "Emergency Plumbing",
+     "href": "/columbus/emergency-plumbing",
+     "desc": "Burst pipes, sewer backups and no hot water, any hour of the day or night."
+    },
+    {
+     "title": "Sump Pumps",
+     "href": "/columbus/sump-pumps",
+     "desc": "Repair, replacement and battery backups to help keep your basement dry in heavy rain."
+    },
+    {
+     "title": "Burst & Frozen Pipes",
+     "href": "/columbus/burst-pipe-repair",
+     "desc": "Fast repair for pipes that freeze and split along outside walls or in crawl spaces."
+    },
+    {
+     "title": "Toilets & Fixtures",
+     "href": "/columbus/toilet-installation-repair",
+     "desc": "Running toilets, dripping faucets and new fixtures for kitchens and baths."
+    }
+   ],
+   "linkBar": {
+    "label": "See all our plumbing services in Columbus",
+    "href": "/columbus#services"
+   }
+  },
+  "office": {
+   "eyebrow": "On City Park Avenue",
+   "h2": "Our German Village Office",
+   "body": "Our German Village office puts our plumbers close to the Village’s brick streets and the neighborhoods around them. We’ve been serving homeowners for more than 30 years, and our phone line is open 24/7.",
+   "address": "490 City Park Ave, Suite B2, Columbus, OH 43215",
+   "areasH3": "",
+   "areas": [],
+   "more": "",
+   "gbpUrl": "https://www.google.com/maps?cid=885424617987951227",
+   "schemaName": "German Village",
+   "mapTitle": "Map of J. Blanton Plumbing, 490 City Park Ave, Columbus, OH",
+   "mapCid": "885424617987951227",
+   "license": "Ohio plumbing license PL.12313",
+   "neighborhoods": {
+    "h3": "Neighborhoods We Serve Near German Village",
+    "names": [
+     "Arena District",
+     "Brewery District",
+     "Downtown",
+     "Franklinton",
+     "German Village",
+     "Italian Village",
+     "King-Lincoln Bronzeville",
+     "Olde Towne East"
+    ],
+    "closing": "Don’t see your neighborhood listed? We may still serve it. Call us 24/7 and we’ll let you know.",
+    "stateUrl": "/locations/central-ohio",
+    "stateName": "Central Ohio"
+   }
+  },
+  "depth": {
+   "h2": "What German Village Homes Need From a Plumber",
+   "intro": "Most German Village homes were built between 1840 and 1914, on small lots close to the sidewalk. That history is a big part of the neighborhood’s charm. It also shapes the plumbing problems these homes run into.",
+   "tiles": [
+    {
+     "title": "Homes Built Between 1840 and 1914",
+     "body": "German Village [mainly developed between 1840 and 1914](https://germanvillage.com/history/). In homes this old, the plumbing has usually been updated more than once, so one house can have pipes from several eras. The City of Columbus notes that [homes built before 1963 often have downspouts or foundation drains tied into the sanitary sewer](https://www.columbus.gov/files/sharedassets/city/v/2/utilities/documents/department-publications/uusummer2024rev.pdf), which sends rainwater into the line. A [camera inspection](/columbus/video-camera-sewer-inspections) shows what’s really down there before you decide on a repair."
+    },
+    {
+     "title": "Combined Sewers and Heavy Rain",
+     "body": "German Village is one of the Columbus neighborhoods [served by combined sewers](https://www.columbus.gov/Services/Columbus-Water-Power/About-Columbus-Water-Power/Columbus-Water-Power-FAQs/Sewer-FAQS). These older systems [carry rainwater and sewage in the same pipes](https://www.columbus.gov/Templates/Detail.aspx?id=56102), so a big storm can fill them up and push water back through a basement floor drain. If it happens, we’re on call 24/7 for [sewage backups](/columbus/sewage-line-backup-services). For homes with repeat backups, an [overhead sewer system](/columbus/overhead-sewer-systems) or a [sump pump with a battery backup](/columbus/sump-pumps) can help keep the basement dry."
+    },
+    {
+     "title": "Small Lots, Brick Walks and Your Sewer Line",
+     "body": "Homes here sit close together and close to the sidewalk, on [tree-lined, brick-paved streets](https://germanvillage.com/history/). That leaves very little room to dig. When a sewer line needs work, we find the problem with a camera first, and [trenchless sewer repair](/columbus/trenchless-sewer-repair) can often fix the line with far less digging. Keep in mind that any change to the outside of a home in the district [needs approval from the German Village Commission](https://germanvillage.com/residents/faqs/)."
+    },
+    {
+     "title": "Cold Snaps and Pipes on Outside Walls",
+     "body": "On January 19, 1994, Columbus hit [22 degrees below zero](https://news.yahoo.com/friday-marks-anniversary-coldest-day-005952638.html), its coldest temperature on record. Cold like that finds the weak spots first: pipes on outside walls, in crawl spaces and the line to an outdoor spigot. Know where your main shut-off valve is, and call us 24/7 if a [pipe bursts](/columbus/burst-pipe-repair)."
+    }
+   ]
+  },
+  "whyH2": "Why German Village Homeowners Choose J. Blanton",
+  "reviews": {
+   "eyebrow": "Real Reviews",
+   "h2": "Real German Village Reviews",
+   "intro": "{{office_rating}} stars from {{office_review_count}} Google reviews",
+   "rating": "{{office_rating}}",
+   "ratingSub": "{{office_review_count}} Google reviews for our German Village office",
+   "items": [
+    {
+     "name": "Stacy N",
+     "url": "https://maps.app.goo.gl/ep5gUrCMepDFdYqDA",
+     "text": "Called them out on a Saturday morning after our sump pump died and we were panicking about the basement flooding here in German Village, and J. Blanton Plumbing had someone out same-day to replace it. The tech was clean, careful with our floors, and explained everything before starting the work - couldn't ask for better service."
+    },
+    {
+     "name": "Kathleen Brewer",
+     "url": "https://maps.app.goo.gl/gPqNqLZsUv5TwUyh8",
+     "text": "Daniel did an excellent job of recording our sewer pipes and sharing the results with us. He is efficient, knowledgeable and very professional. We are studying his recommendations."
+    },
+    {
+     "name": "nita",
+     "url": "https://maps.app.goo.gl/uTMtdzP5wHnSBZnQ9",
+     "text": "Daniel was amazing!! He walked us through every step of the process. He was educational with no pressure on our next steps. Fantastic service!"
+    }
+   ]
+  },
+  "faq": {
+   "h2": "Plumbing Questions From German Village Homeowners",
+   "items": [
+    {
+     "q": "What’s the most common plumbing problem you see in Columbus?",
+     "preview": "Sewer line trouble, and it isn’t close.",
+     "a": "Sewer line trouble, and it isn’t close. When Columbus homeowners tell us in their reviews what we fixed, the sewer line comes up more than anything else: tree roots in older pipe and lines that keep backing up. Leaks and clogged drains come next. In German Village, older homes and combined sewers make the sewer line the first thing worth checking. A [camera inspection](/columbus/video-camera-sewer-inspections) shows you exactly what’s going on before you decide on a repair."
+    },
+    {
+     "q": "How much does a plumber cost in German Village?",
+     "preview": "Nobody likes calling a plumber without knowing what it will cost.",
+     "a": "Nobody likes calling a plumber without knowing what it will cost. The price depends on what’s wrong, how hard it is to reach, the parts needed and the age of your plumbing. In German Village, tight lots and brick walks can make a sewer line harder to reach. Before any work starts, we explain what we found and give you a flat price, so you know the cost going in."
+    },
+    {
+     "q": "Do plumbers in Columbus charge by the hour?",
+     "preview": "Hourly billing makes it hard to know what you’ll end up paying.",
+     "a": "Hourly billing makes it hard to know what you’ll end up paying. Some plumbers charge by the hour, but we don’t. You get one flat price for the job before we start, and that’s the price you pay."
+    },
+    {
+     "q": "Is the tap water in German Village OK to drink?",
+     "preview": "It’s a fair question in a neighborhood with homes this old.",
+     "a": "It’s a fair question in a neighborhood with homes this old. German Village gets its water from the City of Columbus, and the city reports that its water [meets all state and federal standards](https://www.columbus.gov/files/sharedassets/city/v/1/utilities/documents/news-releases/cwp-press-release-ccr-2025-annual-report.pdf). Some homeowners still want a filter for taste or peace of mind. We can [test your water and recommend a filter](/columbus/water-filtration-systems) that fits your home."
+    },
+    {
+     "q": "Where does German Village get its water, and is it hard?",
+     "preview": "Your water comes from the City of Columbus, which runs three water plants: Dublin Road on the Scioto River reservoirs, Hap Cremean on Hoover Reservoir, and Parsons Avenue, which draws from wells.",
+     "a": "Your water comes from the City of Columbus, which runs three water plants: Dublin Road on the Scioto River reservoirs, Hap Cremean on Hoover Reservoir, and Parsons Avenue, which draws from wells. In 2025, hardness at the three plants averaged [98 to 125 milligrams per liter](https://www.columbus.gov/files/sharedassets/city/v/1/utilities/ccr/consumer-confidence-report-2025.pdf), or about 6 to 7 grains per gallon. That’s enough to leave scale on faucets and sediment in your [water heater](/columbus/water-heater-repair) over time."
+    },
+    {
+     "q": "What are the worst plumbing problems for a German Village home?",
+     "preview": "The worst ones are the ones that cause damage fast: sewage coming up through a basement floor drain during a storm, and a pipe that freezes and bursts in a cold snap.",
+     "a": "The worst ones are the ones that cause damage fast: sewage coming up through a basement floor drain during a storm, and a pipe that freezes and bursts in a cold snap. Both are reasons to call right away, day or night. Our [emergency plumbers](/columbus/emergency-plumbing) answer 24/7, including weekends and holidays."
+    },
+    {
+     "q": "Do I need German Village Commission approval for plumbing work?",
+     "preview": "Most plumbing work happens inside the house and doesn’t change how your home looks.",
+     "a": "Most plumbing work happens inside the house and doesn’t change how your home looks. Any change to the outside of a home in the district [needs a Certificate of Appropriateness](https://germanvillage.com/residents/faqs/) from the German Village Commission. If a project will change the outside of your home, check with the city’s [Historic Preservation Office](https://www.columbus.gov/Business-Development/Building-Zoning-Services/Boards-and-Commissions/Historic-Preservation-Design-Review-Boards-Commissions-Panels/German-Village-Commission) before work starts."
+    },
+    {
+     "q": "Are you licensed in Ohio?",
+     "preview": "Yes. J. Blanton Plumbing is licensed to do plumbing work in Ohio.",
+     "a": "Yes. J. Blanton Plumbing is licensed to do plumbing work in Ohio. You’ll find our license number with our office address above."
+    },
+    {
+     "q": "Which neighborhoods do you serve from German Village?",
+     "preview": "Along with German Village, our office serves Arena District, Brewery District, Downtown, Franklinton, Italian Village, King-Lincoln Bronzeville and Olde Towne East.",
+     "a": "Along with German Village, our office serves Arena District, Brewery District, Downtown, Franklinton, Italian Village, King-Lincoln Bronzeville and Olde Towne East. Our phone line is open 24/7 for all of them."
+    }
+   ]
+  },
+  "ndc": "Most plumbing problems in German Village start small. The [No Drip Club](/no-drip-club/) brings a plumber to your home, so issues get caught early.",
+  "final": {
+   "eyebrow": "Ready When You Are",
+   "h2": "Your German Village Plumber, Day or Night",
+   "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+  },
+  "fin": {
+   "labelTop": "As low as",
+   "labelValue": "0%",
+   "h2": "Fix It Today Before It Turns Into Costly Damage",
+   "h2Mobile": "Fix It With Financing As Low As 0%",
+   "body": "A big plumbing repair never comes at a good time. We’ve partnered with trusted lenders, so you can get it fixed now and pay over time."
+  },
+  "ndcBox": {
+   "eyebrow": "Annual Protection Plan",
+   "eyebrowMobile": "No Drip Club",
+   "h2": "Join and Get 2 Free Maintenance Visits a Year",
+   "benefits": [
+    "10% Discount on All General Plumbing & Sewer Services",
+    "5-Year Parts and Labor Warranty on Approved Projects",
+    "VIP Priority Scheduling Status (Skip the Queue)"
+   ],
+   "cta": "See All No Drip Club Perks"
+  }
+ },
+ "metaTitle": "Plumber in German Village, Columbus, OH",
+ "metaDescription": "Local plumbers on City Park Ave in German Village, Columbus, Ohio. Serving homeowners 30+ years. Call 24/7 for a flat price before any work starts."
+}

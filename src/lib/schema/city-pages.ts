@@ -33,5 +33,21 @@ export function faqPageJsonLd(items: ReadonlyArray<{ q: string; a: string }>) {
   };
 }
 
+/**
+ * Brief 227 — a City Hub's visible breadcrumb as one BreadcrumbList (same steps, same order; the last
+ * item is the page itself). Built in a fixed key order at render, never stored.
+ */
+export function hubBreadcrumbJsonLd(trail: ReadonlyArray<{ label: string; href: string }>, current: string, pageUrl: string, site = 'https://jblantonplumbing.com') {
+  const abs = (href: string) => (/^https?:\/\//.test(href) ? href : `${site}${href}`);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      ...trail.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.label, item: abs(s.href) })),
+      { '@type': 'ListItem', position: trail.length + 1, name: current, item: pageUrl },
+    ],
+  };
+}
+
 /** A JSON-LD object as the body of a `<script type="application/ld+json">` (`<` escaped). */
 export const ldJson = (o: unknown) => ({ __html: JSON.stringify(o).replace(/</g, '\\u003c') });

@@ -33,6 +33,7 @@ import { hubPhoneRegion, resolveCityHub } from '@/lib/cms/city-hubs';
 import { applyHubRatings, CITY_HUB_SHARED_PAGE_TYPE, CITY_HUB_SHARED_SLUG } from '@/lib/city-hub-cms/model';
 import { getRatingContext } from '@/lib/cms/office-ratings';
 import { pageTitle } from '@/lib/seo';
+import { officePhone } from '@/lib/cms/offices';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
@@ -104,7 +105,13 @@ export default async function CityPage({ params }: { params: { city: string } })
   if (hubDispatch.kind === 'hub') {
     const settings = await getGlobalSettingsCached();
     let phone = { href: settings.phoneHref, display: settings.phoneDisplay };
-    if (hubPhoneRegion(params.city) === 'central-ohio') {
+    // Brief 227 (decision 6): an office with its OWN phone in Global Settings (German Village, the GBP
+    // number) uses it on its own hub — every phone position and its Plumber node. No office but
+    // German Village has one, so every other hub keeps the phone below, unchanged.
+    const ownPhone = officePhone(settings.offices.find((o) => o.slug === params.city));
+    if (ownPhone) {
+      phone = ownPhone;
+    } else if (hubPhoneRegion(params.city) === 'central-ohio') {
       // Brief 192: the Central Ohio phone from Global Settings; blank = the main phone. The
       // header keeps the main (WhatConverts) number by design — it never reads this. The region is
       // derived from the city's state (Brief 206 §2.2), so a future Ohio hub gets it automatically.

@@ -224,6 +224,18 @@ npx ts-node --project tsconfig.scripts.json scripts/add-columbus-office.ts commi
 # Brief 178's own-town rule and no other town moves. Exit 1 only for a
 # code/schema fault.
 npx ts-node --project tsconfig.scripts.json scripts/add-highland-park-office.ts commit
+# Brief 227 (Tracks A + C): append the German Village (Columbus, OH) office -
+# the 20th - the same way: slug columbus-german-village-oh (= its office page),
+# street exactly "490 City Park Ave, Suite B2", map link = the listing's public
+# Google link (CID), and the FIRST office-level phone "(614) 379-4898" (no
+# other office gets the key). Also sets its Mainline rating source
+# (office_mainline_locations, fill-gap only; it never writes a rating). Backup
+# to brief227_row_backup, append-only, ALREADY-APPLIED once present (also when
+# added by hand in /admin). Before the swap and the City Pages snapshot on
+# purpose: the still-live build already renders the new footer entry, so the
+# live check stays byte-identical (its link 404s on that build until the swap,
+# minutes). No town changes office. Exit 1 only for a code/schema fault.
+npx ts-node --project tsconfig.scripts.json scripts/add-german-village-office.ts commit
 # Brief 158 (Track A): create the ONE missing `city_pages` row - columbus -
 # pre-filled verbatim from src/lib/content/cities/columbus.ts, so
 # /admin/city/columbus opens a POPULATED editor instead of the "No CMS
@@ -999,6 +1011,16 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-brief-226-overhead-reviews.ts commit
+# Brief 227: (1) the legacy /columbus-german-village row gets its unpublished
+# "Pre-office archive (2026-11)" version (every column verbatim; the row itself
+# is never written - it 301s to the new office page); (2) /columbus gets one new
+# published version: the Stacy N review -> Brady Bendau, and its German Village
+# community link -> /columbus-german-village-oh. A value edited in /admin since
+# is left alone and listed. ALREADY-APPLIED from then on. BEFORE the City Pages
+# snapshot below, for the same reason as Brief 226 above. Exit 1 only when a
+# write did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/update-brief-227-german-village.ts commit
 # -- Brief 204: the Sewer v2 pages (hub + 9 services) move onto the CMS ------
 # 1. Snapshot what the STILL-LIVE build serves for the 10 sewer URLs, so the
 #    health check can prove the new build renders them byte-identically from
@@ -1125,6 +1147,18 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 #    1 only when a write did not land. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/import-city-batch.ts --from-json data/city-batches/highland-park --publish --create-missing --brief=217 \
+  --changed-file .city-pages-snapshot/changed.txt
+# 6b. Brief 227 (Track B): publish the German Village OFFICE PAGE - the 20th
+#    hub, /columbus-german-village-oh, hub ONLY (an office page has no service
+#    pages; its links go to /columbus/{service}) - from data/city-batches/
+#    german-village. Every gate re-runs; any failure writes NOTHING. A new slug,
+#    so its city_pages row is CREATED by this run (--create-missing --publish,
+#    printed as CREATED) -> archive -> City Hub switch -> "Version 1 - City
+#    Hub" -> publish. Write-once; the slug goes to changed.txt. Pre-swap: the
+#    still-live build does not know the slug (404) until the swap. Exit 1 only
+#    when a write did not land. Do NOT add `|| true`.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/import-city-batch.ts --from-json data/city-batches/german-village --publish --create-missing --brief=227 \
   --changed-file .city-pages-snapshot/changed.txt
 # 7. Brief 219 (Track B): the Northbrook office address "1945 Techny Road,
 #    Suite 11" -> "#11" on the Northbrook hub and its 29 service pages (one new

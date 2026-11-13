@@ -32,6 +32,11 @@ interface OfficeFormState {
    * of its daily Google rating. Saved to its own column, NOT onto the office record.
    */
   mainlineLocation: string;
+  /**
+   * Brief 227 — the office's own phone (German Village only today). Blank = the sitewide phone; a blank
+   * one is never written onto the record, so offices without one keep their exact stored shape.
+   */
+  phone: string;
 }
 
 interface FormState {
@@ -64,7 +69,7 @@ const EMPTY_SERVICE_DESC: ServiceDescState = {
 
 const EMPTY_OFFICE: OfficeFormState = {
   slug: '', name: '', streetAddress: '', city: '', state: '', zip: '', mapUrl: '', lat: '', lng: '',
-  showInFooter: true, mainlineLocation: '',
+  showInFooter: true, mainlineLocation: '', phone: '',
 };
 
 const EMPTY: FormState = {
@@ -142,6 +147,8 @@ const OFFICE_FIELDS: Array<{ key: keyof Omit<OfficeFormState, 'lat' | 'lng' | 's
   { key: 'state', label: 'State', placeholder: 'IL' },
   { key: 'zip', label: 'ZIP', placeholder: '60062' },
   { key: 'mapUrl', label: 'Google Maps Link', placeholder: 'https://maps.app.goo.gl/…' },
+  // Brief 227: an office-level phone (blank = the sitewide phone, like every office but German Village).
+  { key: 'phone', label: 'Office Phone (optional — blank = sitewide number)', placeholder: '(614) 379-4898' },
   // Brief 221 (B2): where this office's Google rating comes from (synced daily from Mainline).
   { key: 'mainlineLocation', label: 'Mainline GBP Location (rating source)', placeholder: 'evanston' },
 ];
@@ -232,6 +239,7 @@ function toCmsOffice(o: OfficeFormState) {
     lat: toNum(o.lat),
     lng: toNum(o.lng),
     showInFooter: o.showInFooter,
+    ...(o.phone.trim() ? { phone: o.phone.trim() } : {}),
   };
 }
 
@@ -258,6 +266,7 @@ export default function GlobalSettingsPage() {
               lat: o.lat == null ? '' : String(o.lat),
               lng: o.lng == null ? '' : String(o.lng),
               showInFooter: o.showInFooter !== false,
+              phone: typeof o.phone === 'string' ? o.phone : '',
             }))
           : [];
         setForm({

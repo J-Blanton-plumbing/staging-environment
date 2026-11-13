@@ -20,6 +20,8 @@ export const CITY_PAGE_BATCHES: readonly CityPageBatch[] = [
   },
   // Brief 217: the 19th cluster, from the approved Highland Park static package (data/city-batches/highland-park).
   { id: 4, label: 'Highland Park (Brief 217, Oct 2026)', cities: ['highland-park'] },
+  // Brief 227: the 20th hub — the German Village OFFICE PAGE (hub only, no service pages; data/city-batches/german-village).
+  { id: 5, label: 'German Village office page (Brief 227, Nov 2026)', cities: ['columbus-german-village-oh'] },
 ];
 
 export const CITY_PAGE_BATCH_CITIES: readonly string[] = CITY_PAGE_BATCHES.flatMap((b) => b.cities);

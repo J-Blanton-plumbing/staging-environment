@@ -382,10 +382,15 @@ async function fromJsonRun(dir: string) {
         errors.push(...gate(() => (draft = conformCityHubContent(slug, raw))));
         errors.push(...(await gateAsync(() => assertCityHubPublishable('city', slug, raw))));
         errors.push(...textGates(raw.hub), ...textGates({ metaTitle: raw.metaTitle, metaDescription: raw.metaDescription }));
+        // Brief 227: an office page (`serviceHub`) links to its service hub's pages and cites sources.
+        const office = typeof raw.hub?.serviceHub === 'string' && raw.hub.serviceHub ? { serviceHub: raw.hub.serviceHub as string } : undefined;
+        if (office && !entry.officePage) errors.push(`hub.serviceHub: "${slug}" is not an office page in CITY_REGISTRY`);
+        if (entry.officePage && office?.serviceHub !== entry.officePage.serviceHub) errors.push(`hub.serviceHub must be "${entry.officePage.serviceHub}" (the registry's office page entry)`);
         for (const l of allLinks(raw.hub)) {
-          const r = linkProblem(l.href, slug, new Set(), layoutOf);
+          const r = linkProblem(l.href, slug, new Set(), layoutOf, office);
           if (!r.ok) errors.push(`${l.path}: ${r.why}`);
         }
+        if (office && pages.size !== 1) errors.push('an office page has NO service pages — only hub.json belongs in its folder');
         reports.push({ path: `/${slug}`, kind: 'hub', blocks: 12, corrections: [], errors, notes: [], draft });
       } else if (CITY_SERVICE_V2_SLUGS.includes(name)) {
         c.services.set(name, f);
@@ -428,13 +433,16 @@ async function applyRun(cities: Map<string, CityFiles>, reports: PageReport[]) {
     const hubRow = (await pool.query(`SELECT 1 FROM city_pages WHERE city_slug = $1`, [c.slug])).rowCount;
     const svcRows = new Set((await pool.query<{ s: string }>(`SELECT service_slug AS s FROM city_service_pages WHERE city_slug = $1`, [c.slug])).rows.map((r) => r.s));
     const missingSvc = rs.filter((r) => r.kind === 'service').map((r) => r.path.split('/')[2]).filter((s) => !svcRows.has(s));
-    if (!hubRow || (missingSvc.length && !createMissing)) {
+    // Brief 227: an OFFICE PAGE is a new slug, so its city_pages row is created by the run that publishes
+    // it (--create-missing --publish, like a missing service row). Every other city still needs its row.
+    const officeRowCreatable = !hubRow && createMissing && publish && !!CITY_REGISTRY.find((x) => x.slug === c.slug)?.officePage;
+    if ((!hubRow && !officeRowCreatable) || (missingSvc.length && !createMissing)) {
       results.push({ path: `/${c.slug}`, outcome: 'missing', detail: `${!hubRow ? 'no city_pages row; ' : ''}${missingSvc.length} city_service_pages row(s) missing (${missingSvc.slice(0, 5).join(', ')}${missingSvc.length > 5 ? ', …' : ''}) — city skipped, nothing written (pass --create-missing to create them)` });
       continue;
     }
     for (const r of rs) {
       if (!r.draft) continue;
-      const o = { by, apply: true, publish, label: r.kind === 'hub' ? HUB_V1_LABEL : SERVICE_V1_LABEL, createMissing, brief: Number(arg('brief') ?? 212) };
+      const o = { by, apply: true, publish, label: r.kind === 'hub' ? HUB_V1_LABEL : SERVICE_V1_LABEL, createMissing, createHubRow: officeRowCreatable, brief: Number(arg('brief') ?? 212) };
       const res = r.kind === 'hub' ? await loadHub(c.slug, r.draft as CityHubDraftContent, o) : await loadService(c.slug, r.path.split('/')[2], r.draft as CityServiceV2DraftContent, o);
       results.push(res);
     }

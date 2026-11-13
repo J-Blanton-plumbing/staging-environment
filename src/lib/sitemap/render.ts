@@ -36,6 +36,7 @@ import { CITY_REGISTRY } from '@/lib/content/cities';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
+import { isRetiredCityPage } from '@/lib/redirects/office-pages';
 import {
   CityServiceShard,
   SITEMAP_CHILDREN,
@@ -426,7 +427,8 @@ export function renderCitiesSitemap(): Promise<string> {
       console.warn(`[sitemap] ${dark.size} city page(s) are unpublished and EXCLUDED from /sitemap-cities.xml.`);
     }
     return urlsetXml(
-      CITY_REGISTRY.filter((c) => !dark.has(c.slug)).map((c) => ({
+      // Brief 227: a retired city page 301s to its office page — never advertised (manifest.ts).
+      CITY_REGISTRY.filter((c) => !dark.has(c.slug) && !isRetiredCityPage(c.slug)).map((c) => ({
         path: `/${c.slug}`,
         lastModified: cityLastMod.get(c.slug),
         changeFrequency: 'monthly' as const,

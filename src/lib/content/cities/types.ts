@@ -120,6 +120,16 @@ export interface RegistryEntry {
    * local detail the brief forbids. Renders only when present.
    */
   driveTimeMinutes?: number;
+
+  /**
+   * Brief 227 — set ONLY on an OFFICE PAGE: an office's own page on the City Hub template that has
+   * NO service pages of its own (German Village, `/columbus-german-village-oh`). Its service links go
+   * to `serviceHub`'s pages (`/columbus/{service}`). Office pages are in the registry so `/{slug}`
+   * routes and dispatches like any hub, but they are kept OUT of every area list (city grids,
+   * `/locations`, the locator search index, the city-service sitemap) and `/{slug}/{anything}` 404s.
+   * Unset on every other entry.
+   */
+  officePage?: { serviceHub: string };
 }
 
 /* ────────────────────────────────────────────────────────────────────────────

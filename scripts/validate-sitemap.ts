@@ -67,6 +67,7 @@ import {
   SHARD_URL_CEILING,
   SITEMAP_CHILDREN,
   cityServiceEligibleSlugs,
+  citySitemapPaths,
   citySlugsForShard,
 } from '@/lib/sitemap/manifest';
 import { isCityServiceIndexable } from '@/lib/city-service-indexation';
@@ -201,7 +202,8 @@ const PROVABLE_DYNAMIC_ROUTES: Record<string, (urlPath: string) => boolean> = {
   // proof, exactly as it is for `[city]`.
   '[city]/[service]/page.tsx': (p) => {
     const [city, service] = p.split('/').filter(Boolean);
-    return CITY_SLUGS.has(city) && CITY_SERVICE_SLUGS.has(service);
+    // Brief 227: an office page has no service pages (the route 404s them).
+    return CITY_SLUGS.has(city) && CITY_SERVICE_SLUGS.has(service) && !CITY_REGISTRY.find((c) => c.slug === city)?.officePage;
   },
   /*
    * Columbus Integration Brief 02 (Track C): `[city]/[service]` also carries a
@@ -457,7 +459,8 @@ const main = () => {
     ...SITEMAP_STATIC_PAGES.map((p) => ({ path: p.path || '/', from: 'SITEMAP_STATIC_PAGES' })),
     ...SERVICE_CATEGORY_SLUGS.map((s) => ({ path: `/services/${s}`, from: 'SERVICE_CATEGORY_SLUGS' })),
     ...SUB_SERVICE_ROUTES.map((s) => ({ path: `/${s}`, from: 'SUB_SERVICE_ROUTES' })),
-    ...CITY_REGISTRY.map((c) => ({ path: `/${c.slug}`, from: 'CITY_REGISTRY' })),
+    // Brief 227: the same list the cities child emits (a retired city page 301s to its office page).
+    ...citySitemapPaths().map((p) => ({ path: p, from: 'CITY_REGISTRY' })),
     // Brief 153: the /{city}/{service} layer — 11,160 URLs, the whole point of
     // this brief. Enumerated from the manifest, i.e. the same function the routes
     // call, so "listed" and "checked" cannot drift.

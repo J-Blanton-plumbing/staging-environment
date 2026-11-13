@@ -44,7 +44,12 @@ import {
   HUB_MEDIA_URL_RE,
   type CityHubShared,
   type CityHubStored,
+  type HubBreadcrumb,
   type HubCard,
+  type HubFeatured,
+  type HubFinOverride,
+  type HubNdcOverride,
+  type HubNeighborhoods,
   type HubCrop,
   type HubHeroLayout,
   type HubHeroVideo,
@@ -177,16 +182,102 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
   const faq = ctx.obj(r.faq, 'faq');
   const final = ctx.obj(r.final, 'final');
 
+  // Brief 227: an office page's service links go to its service hub's pages (/columbus/…).
+  const serviceHub = optText(ctx, r.serviceHub, 'serviceHub');
+  if (serviceHub && (!/^[a-z0-9-]+$/.test(serviceHub) || serviceHub === slug || !checks.cityExists(serviceHub))) {
+    ctx.err('serviceHub', 'value', 'The service hub must be another registered city (e.g. columbus).');
+  }
+  const own = serviceHub || slug;
+  const serviceHref = (v: unknown, path: string, what: string) => {
+    const href = ctx.href(v, path);
+    const m = href.match(/^\/([a-z0-9-]+)\/([a-z0-9-]+)$/);
+    if (href && (!m || m[1] !== own || !checks.cityServiceExists(m[2]))) {
+      ctx.err(path, 'link', `${what} must link to one of ${serviceHub ? `${serviceHub}’s` : 'this city’s'} service pages (/${own}/…).`);
+    }
+    return href;
+  };
+
   const cards: HubCard[] = ctx.list(services.cards, 'services.cards').map((c, i) => {
     const p = `services.cards[${i}]`;
     const o = ctx.obj(c, p);
-    const href = ctx.href(o.href, `${p}.href`);
-    const m = href.match(/^\/([a-z0-9-]+)\/([a-z0-9-]+)$/);
-    if (href && (!m || m[1] !== slug || !checks.cityServiceExists(m[2]))) {
-      ctx.err(`${p}.href`, 'link', `A service card must link to one of this city’s service pages (/${slug}/…).`);
-    }
+    const href = serviceHref(o.href, `${p}.href`, 'A service card');
     return { title: ctx.text(o.title, `${p}.title`), href, desc: ctx.text(o.desc, `${p}.desc`), image: ctx.image(o.image, `${p}.image`) };
   });
+
+  // ── Brief 227: the office-page pieces, each kept only when present (absent on every other hub) ──
+  let featured: HubFeatured | undefined;
+  let svcList: Array<{ title: string; href: string; desc: string }> | undefined;
+  if (services.featured !== undefined && services.featured !== null) {
+    const o = ctx.obj(services.featured, 'services.featured');
+    featured = {
+      eyebrow: ctx.text(o.eyebrow, 'services.featured.eyebrow'),
+      title: ctx.text(o.title, 'services.featured.title'),
+      href: serviceHref(o.href, 'services.featured.href', 'The featured service'),
+      intro: ctx.text(o.intro, 'services.featured.intro'),
+      cta: ctx.text(o.cta, 'services.featured.cta'),
+      image: ctx.image(o.image, 'services.featured.image'),
+    };
+    svcList = ctx.list(services.list ?? [], 'services.list').map((x, i) => {
+      const p = `services.list[${i}]`;
+      const o2 = ctx.obj(x, p);
+      return { title: ctx.text(o2.title, `${p}.title`), href: serviceHref(o2.href, `${p}.href`, 'A service row'), desc: ctx.text(o2.desc, `${p}.desc`) };
+    });
+  } else if (services.list !== undefined && services.list !== null) {
+    ctx.err('services.list', 'structure', 'The service list is shown only with a featured service.');
+  }
+  let linkBar: { label: string; href: string } | undefined;
+  if (services.linkBar !== undefined && services.linkBar !== null) {
+    const o = ctx.obj(services.linkBar, 'services.linkBar');
+    linkBar = { label: ctx.text(o.label, 'services.linkBar.label'), href: ctx.href(o.href, 'services.linkBar.href') };
+  }
+  let breadcrumb: HubBreadcrumb | undefined;
+  if (r.breadcrumb !== undefined && r.breadcrumb !== null) {
+    const o = ctx.obj(r.breadcrumb, 'breadcrumb');
+    breadcrumb = {
+      trail: ctx.list(o.trail, 'breadcrumb.trail').map((x, i) => {
+        const s = ctx.obj(x, `breadcrumb.trail[${i}]`);
+        const href = ctx.href(s.href, `breadcrumb.trail[${i}].href`);
+        if (href && !href.startsWith('/')) ctx.err(`breadcrumb.trail[${i}].href`, 'link', 'A breadcrumb step links to a page on this site (/locations, /columbus …).');
+        return { label: ctx.text(s.label, `breadcrumb.trail[${i}].label`), href };
+      }),
+      current: ctx.text(o.current, 'breadcrumb.current'),
+    };
+  }
+  let neighborhoods: HubNeighborhoods | undefined;
+  if (office.neighborhoods !== undefined && office.neighborhoods !== null) {
+    const o = ctx.obj(office.neighborhoods, 'office.neighborhoods');
+    neighborhoods = {
+      h3: ctx.text(o.h3, 'office.neighborhoods.h3'),
+      names: ctx.list(o.names, 'office.neighborhoods.names').map((n, i) => ctx.text(n, `office.neighborhoods.names[${i}]`)),
+      closing: ctx.text(o.closing, 'office.neighborhoods.closing'),
+      stateUrl: ctx.href(o.stateUrl, 'office.neighborhoods.stateUrl'),
+      stateName: ctx.text(o.stateName, 'office.neighborhoods.stateName'),
+    };
+  }
+  const hasLicense = office.license !== undefined && office.license !== null;
+  const license = hasLicense ? ctx.text(office.license, 'office.license') : '';
+  let fin: HubFinOverride | undefined;
+  if (r.fin !== undefined && r.fin !== null) {
+    const o = ctx.obj(r.fin, 'fin');
+    fin = {
+      labelTop: ctx.text(o.labelTop, 'fin.labelTop'),
+      labelValue: ctx.text(o.labelValue, 'fin.labelValue'),
+      h2: ctx.text(o.h2, 'fin.h2'),
+      h2Mobile: ctx.text(o.h2Mobile, 'fin.h2Mobile'),
+      body: ctx.text(o.body, 'fin.body'),
+    };
+  }
+  let ndcBox: HubNdcOverride | undefined;
+  if (r.ndcBox !== undefined && r.ndcBox !== null) {
+    const o = ctx.obj(r.ndcBox, 'ndcBox');
+    ndcBox = {
+      eyebrow: ctx.text(o.eyebrow, 'ndcBox.eyebrow'),
+      eyebrowMobile: ctx.text(o.eyebrowMobile, 'ndcBox.eyebrowMobile'),
+      h2: ctx.text(o.h2, 'ndcBox.h2'),
+      benefits: ctx.list(o.benefits, 'ndcBox.benefits').map((b, i) => ctx.text(b, `ndcBox.benefits[${i}]`)),
+      cta: ctx.text(o.cta, 'ndcBox.cta'),
+    };
+  }
 
   const areas = ctx.list(office.areas, 'office.areas').map((a, i) => {
     const p = `office.areas[${i}]`;
@@ -256,6 +347,8 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
 
   const value: CityHubStored = {
     schema: 1,
+    ...(serviceHub ? { serviceHub } : {}),
+    ...(breadcrumb ? { breadcrumb } : {}),
     hero: {
       eyebrow: ctx.text(hero.eyebrow, 'hero.eyebrow'),
       h1: ctx.text(hero.h1, 'hero.h1'),
@@ -266,7 +359,13 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       ...(video ? { video } : {}),
     },
     trust: ctx.list(r.trust, 'trust').map((t, i) => ctx.text(t, `trust[${i}]`)),
-    services: { h2: ctx.text(services.h2, 'services.h2'), intro: ctx.text(services.intro, 'services.intro'), cards },
+    services: {
+      h2: ctx.text(services.h2, 'services.h2'),
+      intro: ctx.text(services.intro, 'services.intro'),
+      cards,
+      ...(featured ? { featured, list: svcList ?? [] } : {}),
+      ...(linkBar ? { linkBar } : {}),
+    },
     office: {
       eyebrow: ctx.text(office.eyebrow, 'office.eyebrow'),
       h2: ctx.text(office.h2, 'office.h2'),
@@ -281,6 +380,8 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       ...(mapQuery ? { mapQuery } : {}),
       ...(mapTitle ? { mapTitle } : {}),
       ...(mapCid ? { mapCid } : {}),
+      ...(hasLicense ? { license } : {}),
+      ...(neighborhoods ? { neighborhoods } : {}),
     },
     depth: {
       h2: ctx.text(depth.h2, 'depth.h2'),
@@ -309,6 +410,8 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
     },
     ndc: ctx.text(r.ndc, 'ndc', { rich: true }),
     final: { eyebrow: ctx.text(final.eyebrow, 'final.eyebrow'), h2: ctx.text(final.h2, 'final.h2'), body: ctx.text(final.body, 'final.body') },
+    ...(fin ? { fin } : {}),
+    ...(ndcBox ? { ndcBox } : {}),
   };
   // Brief 221: the pre-token fallbacks of the rating-bearing fields, kept only while those fields still
   // carry that token text (absent otherwise — a hub without tokens keeps its exact stored shape).
