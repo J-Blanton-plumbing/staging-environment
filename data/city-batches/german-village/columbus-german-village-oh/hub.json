@@ -35,16 +35,18 @@
   "services": {
    "h2": "Plumbing Services in German Village",
    "intro": "From a slow kitchen drain to a sewer line under a brick walk, our plumbers handle it all. Pick a service to see how we handle it across Columbus.",
+   "featured": {
+    "eyebrow": "Same-Day Service Available",
+    "title": "Drain Cleaning in German Village",
+    "href": "/columbus/drain-cleaning",
+    "intro": "Slow or backed-up drains are common in homes with plumbing from several eras. We clear the line and show you what caused it.",
+    "cta": "Learn more about drain cleaning",
+    "image": {
+     "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
+     "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
+    }
+   },
    "cards": [
-    {
-     "title": "Drain Cleaning",
-     "href": "/columbus/drain-cleaning",
-     "desc": "Slow or backed-up drains are common in homes with plumbing from several eras. We clear the line and show you what caused it.",
-     "image": {
-      "src": "/images/city-services-v2/drain-cleaning-outdoor-drain.webp",
-      "alt": "Plumber feeding a drain cleaning cable into an outdoor drain pit to clear a clogged line"
-     }
-    },
     {
      "title": "Sewer Repair",
      "href": "/columbus/sewer-repair",

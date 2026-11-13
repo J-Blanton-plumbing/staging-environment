@@ -217,7 +217,8 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       cta: ctx.text(o.cta, 'services.featured.cta'),
       image: ctx.image(o.image, 'services.featured.image'),
     };
-    svcList = ctx.list(services.list ?? [], 'services.list').map((x, i) => {
+    // Under the featured tile: the row list when the page has one, else the card grid.
+    if (services.list !== undefined && services.list !== null) svcList = ctx.list(services.list, 'services.list').map((x, i) => {
       const p = `services.list[${i}]`;
       const o2 = ctx.obj(x, p);
       return { title: ctx.text(o2.title, `${p}.title`), href: serviceHref(o2.href, `${p}.href`, 'A service row'), desc: ctx.text(o2.desc, `${p}.desc`) };
@@ -363,7 +364,8 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       h2: ctx.text(services.h2, 'services.h2'),
       intro: ctx.text(services.intro, 'services.intro'),
       cards,
-      ...(featured ? { featured, list: svcList ?? [] } : {}),
+      ...(featured ? { featured } : {}),
+      ...(featured && svcList ? { list: svcList } : {}),
       ...(linkBar ? { linkBar } : {}),
     },
     office: {

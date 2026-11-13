@@ -243,7 +243,25 @@ export default function CityHubView({
   const panel = hub.office.neighborhoods;
   const fin = hub.fin;
   const ndcBox = hub.ndcBox;
-  const breadcrumbJsonLd = bc ? hubBreadcrumbJsonLd(bc.trail, bc.current, `https://jblantonplumbing.com/${hub.slug}`) : null;
+  // The service card grid (every hub's; an office page shows it under its featured tile).
+  const cardGrid = (className: string) => (
+    <div className={className}>
+      {hub.services.cards.map((c) => (
+        <article className="hub-card" key={c.href}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img alt={c.image.alt} className="hub-card-img" height={500} loading="lazy" src={c.image.src} width={800} />
+          <h3 className="svc-title" style={s('margin:16px 0 8px')}>
+            <a href={c.href}>{c.title}</a>
+          </h3>
+          <p className="svc-desc" style={s('margin:0 0 16px')}>{c.desc}</p>
+          <a aria-label={fillPattern(SH.patterns.cardAria, { card: c.title, city: hub.name })} className="svc-cta" href={c.href}>
+            {`${L.learnMore} `}<span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  );
+  const breadcrumbJsonLd = bc ?hubBreadcrumbJsonLd(bc.trail, bc.current, `https://jblantonplumbing.com/${hub.slug}`) : null;
   const total = SH.stripe.reduce((n, g) => n + g.items.length, 0);
   // Brief 227: an office page's "Explore all our plumbing services" dropdown lists its service hub's
   // pages (/columbus/…), so its links, count and label name that city. Every other hub: its own.
@@ -369,36 +387,27 @@ export default function CityHubView({
                   </a>
                 </div>
               </article>
-              <nav aria-label={hub.services.h2} className="hub-svc-rows">
-                <ul>
-                  {(hub.services.list ?? []).map((r) => (
-                    <li key={r.href}>
-                      <a href={r.href}>
-                        <span className="svc-title">{r.title}</span>
-                        <span className="svc-desc">{r.desc}</span>
-                        <span aria-hidden="true" className="hub-svc-rows-arrow">→</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              {/* Under the featured tile: the row list (when the page has one), else the card grid. */}
+              {hub.services.list ? (
+                <nav aria-label={hub.services.h2} className="hub-svc-rows">
+                  <ul>
+                    {hub.services.list.map((r) => (
+                      <li key={r.href}>
+                        <a href={r.href}>
+                          <span className="svc-title">{r.title}</span>
+                          <span className="svc-desc">{r.desc}</span>
+                          <span aria-hidden="true" className="hub-svc-rows-arrow">→</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ) : (
+                cardGrid('hub-grid hub-grid--after-feat')
+              )}
             </div>
           ) : (
-          <div className="hub-grid hub-grid--flat">
-            {hub.services.cards.map((c) => (
-              <article className="hub-card" key={c.href}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img alt={c.image.alt} className="hub-card-img" height={500} loading="lazy" src={c.image.src} width={800} />
-                <h3 className="svc-title" style={s('margin:16px 0 8px')}>
-                  <a href={c.href}>{c.title}</a>
-                </h3>
-                <p className="svc-desc" style={s('margin:0 0 16px')}>{c.desc}</p>
-                <a aria-label={fillPattern(SH.patterns.cardAria, { card: c.title, city })} className="svc-cta" href={c.href}>
-                  {`${L.learnMore} `}<span aria-hidden="true">→</span>
-                </a>
-              </article>
-            ))}
-          </div>
+            cardGrid('hub-grid hub-grid--flat')
           )}
           {linkBar ? (
             <a className="svc-dir hub-linkbar" href={linkBar.href}>

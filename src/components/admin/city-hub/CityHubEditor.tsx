@@ -265,6 +265,7 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
               onSrc={(src) => setHub({ services: { ...hub.services, featured: { ...featured, image: { ...featured.image, src } } } })}
               onAlt={(alt) => setHub({ services: { ...hub.services, featured: { ...featured, image: { ...featured.image, alt } } } })}
             />
+            {hub.services.list && (
             <Repeater<{ title: string; href: string; desc: string }>
               label="Service list"
               items={hub.services.list ?? []}
@@ -280,6 +281,7 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
                 </>
               )}
             />
+            )}
           </>
         )}
         {hub.services.linkBar && (
@@ -288,9 +290,9 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
             <TextInput label="Link bar — link" value={hub.services.linkBar.href} onChange={(href) => setHub({ services: { ...hub.services, linkBar: { ...hub.services.linkBar!, href } } })} link />
           </>
         )}
-        {!featured && (
+        {!hub.services.list && (
         <Repeater
-          label="Service cards"
+          label={featured ? 'Service cards (under the featured service)' : 'Service cards'}
           items={hub.services.cards}
           onChange={(cards) => setHub({ services: { ...hub.services, cards } })}
           newItem={() => ({ title: '', href: '', desc: '', image: { src: '', alt: '' } })}

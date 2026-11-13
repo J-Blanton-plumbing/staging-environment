@@ -172,9 +172,9 @@ export interface CityHubStored {
   services: {
     h2: string;
     intro: string;
-    /** The card grid. Empty (and not required) when `featured` is set. */
+    /** The card grid. Empty (and not required) when `featured` comes with a row `list`. */
     cards: HubCard[];
-    /** Brief 227 (optional): one featured tile + the row list below, in place of the card grid. */
+    /** Brief 227 (optional): one featured tile above the card grid — or above the row `list`, which then replaces the grid. */
     featured?: HubFeatured;
     list?: Array<{ title: string; href: string; desc: string }>;
     /** Brief 227 (optional): one link in place of the "Explore all our plumbing services" directory. */
@@ -473,13 +473,16 @@ export function requiredEmptyFields(hub: CityHubStored, metaTitle: string, metaD
   list('trust', hub.trust).forEach((t, i) => need(`trust[${i}]`, t));
   need('services.h2', hub.services?.h2);
   need('services.intro', hub.services?.intro);
-  // Brief 227: with a featured tile the card grid is not shown, so the tile + its list are required instead.
+  // Brief 227: a featured tile is followed by EITHER its row list OR the card grid (German Village:
+  // the featured tile + 6 cards); whichever is shown is required.
   const featured = hub.services?.featured;
   if (featured) {
     for (const k of ['eyebrow', 'title', 'href', 'intro', 'cta'] as const) need(`services.featured.${k}`, featured[k]);
     need('services.featured.image.src', featured.image?.src);
     need('services.featured.image.alt', featured.image?.alt);
-    list('services.list', hub.services?.list).forEach((r: { title: string; href: string; desc: string }, i) => {
+  }
+  if (featured && hub.services?.list) {
+    list('services.list', hub.services.list).forEach((r: { title: string; href: string; desc: string }, i) => {
       need(`services.list[${i}].title`, r?.title);
       need(`services.list[${i}].href`, r?.href);
       need(`services.list[${i}].desc`, r?.desc);

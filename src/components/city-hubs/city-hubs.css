@@ -768,7 +768,12 @@
 #city-hub-v2 .hub-crumb [aria-current]{color:#F9F3EC;}
 #city-hub-v2 .hub-svc-office .hub-feat{margin-top:48px;}
 #city-hub-v2 .hub-feat-title a{color:inherit;}
+/* The featured tile's column may never grow past the screen (its long button is nowrap), and on phones the button wraps. */
+@media(max-width:1000px){#city-hub-v2 .hub-svc-office .hub-feat{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:640px){#city-hub-v2 .hub-svc-office .hub-feat .svc-cta{white-space:normal;text-align:left;}}
 @media(hover:hover) and (pointer:fine){#city-hub-v2 .hub-feat-title a:hover{color:var(--c-cerulean);}}
+/* Under a featured tile: the card grid at 3 columns on desktop (6 cards = two even rows). */
+@media(min-width:1201px){#city-hub-v2 .hub-grid--after-feat{grid-template-columns:repeat(3,minmax(0,1fr));}}
 #city-hub-v2 .hub-svc-rows{margin-top:56px;}
 #city-hub-v2 .hub-svc-rows ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--c-sand-500);}
 #city-hub-v2 .hub-svc-rows li{border-bottom:1px solid var(--c-sand-500);}
