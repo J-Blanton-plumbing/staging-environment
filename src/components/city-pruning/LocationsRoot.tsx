@@ -3,8 +3,10 @@
 import { useEffect, useLayoutEffect, useRef, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 
-// The design system (city-hubs.css) + the pilot stylesheet, code-split into their own async chunk.
-const LocationsStyles = dynamic(() => import('./LocationsStyles'));
+// The design system (city-hubs.css) + the pilot stylesheet: the SAME two lazy style modules the hubs load
+// (a second module importing the same CSS files made webpack drop pruning.css from this route).
+const CityHubStyles = dynamic(() => import('@/components/city-hubs/CityHubStyles'));
+const PruningStyles = dynamic(() => import('./PruningStyles'));
 
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
@@ -27,7 +29,8 @@ export default function LocationsRoot({ className, children }: { className?: str
   }, []);
   return (
     <div className={className} id="city-hub-v2" ref={ref}>
-      <LocationsStyles />
+      <CityHubStyles />
+      <PruningStyles />
       {children}
     </div>
   );
