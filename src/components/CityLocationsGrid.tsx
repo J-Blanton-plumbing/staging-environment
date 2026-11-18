@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
+import { pruneHref } from '@/lib/city-pruning/phase1';
 
 /**
  * Coverage Area city-locations grid — theme `.city-locations` (page-city.php
@@ -64,7 +65,7 @@ export default function CityLocationsGrid({
               <div key={c.slug} className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 flex-shrink-0 text-brand-600" strokeWidth={2} aria-hidden="true" />
                 <Link
-                  href={`/${c.slug}`}
+                  href={pruneHref(`/${c.slug}`)}
                   className="text-[15px] text-navy-800 hover:text-brand-600 hover:underline"
                 >
                   {c.name}

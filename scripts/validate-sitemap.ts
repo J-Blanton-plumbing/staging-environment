@@ -52,7 +52,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'fs';
 import path from 'path';
 
 import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
-import { CITY_REGISTRY } from '@/lib/content/cities';
+import { CITY_REGISTRY, hasNoServicePages } from '@/lib/content/cities';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { LEGACY_CATEGORY_TARGETS, SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
 import { SITEMAP_STATIC_PAGES } from '@/lib/sitemap-pages';
@@ -203,7 +203,7 @@ const PROVABLE_DYNAMIC_ROUTES: Record<string, (urlPath: string) => boolean> = {
   '[city]/[service]/page.tsx': (p) => {
     const [city, service] = p.split('/').filter(Boolean);
     // Brief 227: an office page has no service pages (the route 404s them).
-    return CITY_SLUGS.has(city) && CITY_SERVICE_SLUGS.has(service) && !CITY_REGISTRY.find((c) => c.slug === city)?.officePage;
+    return CITY_SLUGS.has(city) && CITY_SERVICE_SLUGS.has(service) && !hasNoServicePages(CITY_REGISTRY.find((c) => c.slug === city));
   },
   /*
    * Columbus Integration Brief 02 (Track C): `[city]/[service]` also carries a

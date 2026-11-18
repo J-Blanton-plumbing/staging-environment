@@ -48,7 +48,7 @@
  * (`/catch-basin`) or are themselves redirects (`/water-testing`), and a derived
  * rule that produced either would be a broken target or a chain.
  */
-import { CITY_REGISTRY, getCity } from '@/lib/content/cities';
+import { CITY_REGISTRY, getCity, hasNoServicePages } from '@/lib/content/cities';
 import { getCityService } from '@/lib/content/city-services';
 import {
   LEGACY_CATEGORY_TARGETS,
@@ -83,7 +83,8 @@ export function lookupCityScopedRedirect(pathname: string): string | null {
   if (segments.length !== 2) return null;
   const [city, segment] = segments;
   // Brief 227: nothing exists under an office page (it has no service pages), so no rule fires there.
-  if (!getCity(city) || getCity(city)?.officePage) return null;
+  // Brief 229: the same for a pilot Tier 3 town page.
+  if (!getCity(city) || hasNoServicePages(getCity(city))) return null;
   if (getCityService(segment)) return null; // serves — nothing to do
 
   // A duplicate-slug artifact resolves to whatever its base resolves to, which
@@ -123,7 +124,7 @@ export function allCityScopedRedirectPairs(): Array<{ from: string; to: string }
 
   const pairs: Array<{ from: string; to: string }> = [];
   for (const city of CITY_REGISTRY) {
-    if (city.officePage) continue; // Brief 227 — see lookupCityScopedRedirect
+    if (hasNoServicePages(city)) continue; // Brief 227 / 229 — see lookupCityScopedRedirect
     for (const segment of segments) {
       const to = targetForSegment(segment);
       if (to) pairs.push({ from: `/${city.slug}/${segment}`, to });

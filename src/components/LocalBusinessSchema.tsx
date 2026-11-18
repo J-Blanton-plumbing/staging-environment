@@ -1,5 +1,6 @@
 import { SITE } from '@/lib/site';
 import { officePhone, type CmsOffice } from '@/lib/cms/offices';
+import { officePagePath } from '@/lib/city-pruning/pilot-pages';
 
 /**
  * LocalBusiness (PlumbingBusiness) JSON-LD — Brief 102, Track D.
@@ -51,7 +52,8 @@ export default function LocalBusinessSchema({ offices, phoneDisplay, phoneHref, 
     '@graph': offices.map((o) => ({
       '@type': 'PlumbingBusiness',
       name: `J. Blanton Plumbing, Sewer & Drain - ${o.name}`,
-      url: `${SITE.baseUrl}/${o.slug}`,
+      // Brief 229: a City Pruning pilot office links to its new page (/mokena-il); every other: unchanged.
+      url: `${SITE.baseUrl}${officePagePath(o.slug)}`,
       // Brief 227: an office with its own phone (German Village only) carries it; every other node
       // keeps the sitewide number, exactly as before.
       telephone: ((p) => (p ? toE164(p.href, p.display) : telephone))(officePhone(o)),

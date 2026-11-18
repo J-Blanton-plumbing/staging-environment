@@ -49,7 +49,7 @@ export const OUT_PATH = path.join(
  */
 export function renderIndex(): string {
   // Brief 227: office pages are not areas a visitor searches for (their office is in the list itself).
-  const rows = CITY_REGISTRY.filter((c) => !c.officePage).map(
+  const rows = CITY_REGISTRY.filter((c) => !c.officePage && !c.pilot).map(
     (c) => [c.slug, c.name, getOfficeKey(c.slug)] as const
   ).sort((a, b) => a[1].localeCompare(b[1]) || a[0].localeCompare(b[0]));
 

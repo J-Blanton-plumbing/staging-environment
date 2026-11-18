@@ -320,7 +320,8 @@ const ILLINOIS_COUNTIES_COPY = 'Cook, DuPage, Lake, McHenry, Kane and Will count
 
 export const CHICAGOLAND: RegionDef = {
   key: 'chicagoland',
-  href: '/locations/chicagoland',
+  // Brief 229: the state pages replaced the region pages (/locations/chicagoland 301s here).
+  href: '/locations/illinois',
   label: 'Chicagoland',
   heading: 'Chicagoland, Illinois',
   counties: ILLINOIS_COUNTIES_COPY,
@@ -336,7 +337,8 @@ export const CHICAGOLAND: RegionDef = {
 
 export const COLUMBUS_REGION: RegionDef = {
   key: 'columbus',
-  href: '/locations/central-ohio',
+  // Brief 229: /locations/central-ohio 301s here (Marketing 2026-11-18 approved /locations/ohio).
+  href: '/locations/ohio',
   label: 'Central Ohio',
   heading: 'Central Ohio & Columbus',
   // Derived, never typed — the whole point of the rule in the file header.

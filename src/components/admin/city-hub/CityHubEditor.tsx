@@ -423,7 +423,7 @@ function HubFields({ value, onChange, load, slug }: { value: CityHubDraftContent
         <Select
           label="“more” link"
           value={hub.office.more}
-          options={[{ value: '/locations/chicagoland', label: '/locations/chicagoland' }, { value: '/locations/central-ohio', label: '/locations/central-ohio' }, ...(['/locations/chicagoland', '/locations/central-ohio'].includes(hub.office.more) ? [] : [{ value: hub.office.more, label: hub.office.more || '— choose —' }])]}
+          options={[{ value: '/locations/illinois', label: '/locations/illinois' }, { value: '/locations/ohio', label: '/locations/ohio' }, ...(['/locations/illinois', '/locations/ohio'].includes(hub.office.more) ? [] : [{ value: hub.office.more, label: hub.office.more || '— choose —' }])]}
           onChange={(more) => setHub({ office: { ...hub.office, more } })}
         />
         )}

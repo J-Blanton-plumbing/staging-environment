@@ -2,9 +2,13 @@
 
 import { useEffect, useLayoutEffect, useRef, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
+import { wireServiceAreasSearch, wireTownCarousel } from '@/components/city-pruning/behaviors';
 
 // The hub stylesheet, code-split so it is linked on the 5 hub pages only (see CityHubStyles).
 const CityHubStyles = dynamic(() => import('./CityHubStyles'));
+// Brief 229: the City Pruning pilot pages' stylesheet — loaded the same way, rendered only on a `.pruned`
+// root, so it is linked on those pages only (never on a control hub).
+const PruningStyles = dynamic(() => import('@/components/city-pruning/PruningStyles'));
 
 const EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
@@ -25,6 +29,7 @@ const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : use
  */
 export default function CityHubRoot({ className, children }: { className?: string; children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
+  const pruned = (className ?? '').split(/\s+/).includes('pruned');
 
   useIsoLayoutEffect(() => {
     const root = ref.current;
@@ -90,12 +95,19 @@ export default function CityHubRoot({ className, children }: { className?: strin
       cleanups.push(() => summaries.forEach((s) => s.removeEventListener('click', onSummary)));
     }
 
+    // 5–6. Brief 229 — the pilot pages' service-areas search and Tier 3 carousel (a `.pruned` root only).
+    if (root.classList.contains('pruned')) {
+      cleanups.push(wireServiceAreasSearch(root));
+      cleanups.push(wireTownCarousel(root));
+    }
+
     return () => cleanups.forEach((fn) => fn());
   }, []);
 
   return (
     <div id="city-hub-v2" ref={ref} className={className}>
       <CityHubStyles />
+      {pruned ? <PruningStyles /> : null}
       {children}
     </div>
   );

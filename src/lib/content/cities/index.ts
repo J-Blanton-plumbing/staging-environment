@@ -63,6 +63,7 @@ import {
   getOhioArea,
 } from './ohio-areas';
 import { getOhioTemplateContent } from './ohio-template-content';
+import { PILOT_HUBS, PILOT_TOWNS, pilotOfficeSlug } from '@/lib/city-pruning/phase1';
 
 /** The 12 distinct dispatch offices, keyed to match `CmsOffice.slug` (Brief 102).
  * Brief 154 adds `columbus` — the first OUT-OF-STATE office; every other key
@@ -372,6 +373,9 @@ function buildOfficeClaims(offices: CmsOffice[]): OfficeClaims {
  * between requests.
  */
 export function resolveOfficeSlug(citySlug: string, offices: CmsOffice[]): string {
+  // Brief 229: a pilot page resolves as its office's legacy slug (`mokena-il` → `mokena`, a pilot town
+  // → its hub's), so the office record keeps its slug and every other town's answer is unchanged.
+  citySlug = pilotOfficeSlug(citySlug) ?? citySlug;
   const fallback = cityToOffice[citySlug] ?? DEFAULT_OFFICE;
   const want = typeof citySlug === 'string' ? citySlug.trim() : '';
   if (!want) return fallback;
@@ -609,12 +613,36 @@ const OFFICE_PAGES: RegistryEntry[] = [
   },
 ];
 
+/**
+ * Brief 229 — the City Pruning Phase 1 Pilot pages (see `RegistryEntry.pilot` and
+ * src/lib/city-pruning/phase1.ts): 3 Tier 1 hubs and 7 Tier 3 town pages at new `-il` URLs. Not in
+ * `cityToOffice` (so no town's dispatch office changes) and not in `AREA_REGISTRY` (so no grid or area
+ * list gains an item). Their legacy entries stay registered; middleware 301s them here.
+ */
+const PILOT_PAGES: RegistryEntry[] = [
+  ...Object.entries(PILOT_HUBS).map(([slug, legacySlug]): RegistryEntry => ({
+    slug,
+    name: displayName(legacySlug),
+    type: 'coverage-area',
+    hasOffice: true,
+    pilot: { kind: 'hub', legacySlug },
+  })),
+  ...Object.entries(PILOT_TOWNS).map(([slug, t]): RegistryEntry => ({
+    slug,
+    name: t.name,
+    type: 'coverage-area',
+    hasOffice: false,
+    pilot: { kind: 'town', legacySlug: t.legacy, hub: t.hub },
+  })),
+];
+
 /** All city pages, sorted A→Z by display name (the order the live §10 grid uses). */
 export const CITY_REGISTRY: RegistryEntry[] = [
   ...coverageEntries,
   ...BUILT_LOCAL_OFFICE,
   ...LOCAL_OFFICE_V2,
   ...OFFICE_PAGES,
+  ...PILOT_PAGES,
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 const BY_SLUG = new Map(CITY_REGISTRY.map((c) => [c.slug, c]));
@@ -624,8 +652,19 @@ export function isOfficePage(slug: string): boolean {
   return !!BY_SLUG.get(slug)?.officePage;
 }
 
-/** Brief 227 — the registry minus office pages: every list of AREAS (grids, /locations, the locator index). */
-export const AREA_REGISTRY: RegistryEntry[] = CITY_REGISTRY.filter((c) => !c.officePage);
+/**
+ * Brief 229 — a registry page with NO `/{slug}/{service}` layer: an office page (Brief 227) or a pilot
+ * Tier 3 town page. `/{slug}/{anything}` 404s and the city-service sitemap and derived rules skip it.
+ */
+export function hasNoServicePages(entry: RegistryEntry | undefined): boolean {
+  return !!entry && (!!entry.officePage || entry.pilot?.kind === 'town');
+}
+
+/**
+ * Brief 227 — the registry minus office pages: every list of AREAS (grids, /locations, the locator index).
+ * Brief 229 — minus the pilot pages too (their legacy entries keep the grid item; its href is swapped).
+ */
+export const AREA_REGISTRY: RegistryEntry[] = CITY_REGISTRY.filter((c) => !c.officePage && !c.pilot);
 
 /* ── Per-city copy lookups ──────────────────────────────────────────────────── */
 const COVERAGE_CONTENT: Record<string, CoverageAreaContent> = {

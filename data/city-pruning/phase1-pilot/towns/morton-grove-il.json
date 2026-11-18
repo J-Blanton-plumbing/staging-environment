@@ -1,0 +1,173 @@
+{
+ "url": "/morton-grove-il",
+ "town": "Morton Grove",
+ "state": "IL",
+ "hub": "Skokie",
+ "hubUrl": "/skokie-il",
+ "featuredService": "Sewer Repair",
+ "region": "North suburbs",
+ "hero": {
+  "eyebrow": "Serving Chicagoland for 30+ Years",
+  "h1": "24/7 Plumbing Services in Morton Grove, IL",
+  "intro": "Need a plumbing repair in the north suburbs? We dispatch from our local office in Skokie, so there’s always a plumber near you. Upfront pricing on every job, and same-day service available for emergencies."
+ },
+ "services": {
+  "eyebrow": "What We Fix",
+  "h2": "Plumbing Repairs in Morton Grove",
+  "intro": "Our licensed plumbers work on homes across Morton Grove, from the older northeast side to newer blocks near the Edens.",
+  "cards": [
+   {
+    "tag": "Sewer Repair",
+    "h3": "Sewer Repair in Morton Grove",
+    "paragraph": "[Northeastern Morton Grove, bounded by the golf course, Main Street, the Edens Expressway and the river, runs on about 22.7 miles of combined sewer](https://mortongroveil.org/wp-content/uploads/2026/02/2022-CSO-OM-Plan.pdf), carrying sewage and storm water in one pipe. In homes on that side, heavy rain can push more flow into the line than it can carry. That means the lowest drain in the house, often a basement floor drain, backs up first. We camera-inspect your line and talk through backflow protection if you’re in that area.",
+    "cta": "Learn more about sewer repair",
+    "href": "/skokie-il/sewer-repair"
+   },
+   {
+    "tag": "Emergency Plumbing",
+    "h3": "Emergency Plumbing in Morton Grove",
+    "paragraph": "[Heavy rain on March 30, 2023 flooded streets across Morton Grove and neighboring Niles](https://www.cbsnews.com/chicago/news/intense-rain-streets-underwater-niles-morton-grove), closing roads and leaving some families cleaning up flooded basements by morning. A storm that size can overwhelm an aging line fast, and it doesn’t wait for business hours. When water starts coming into your home, every hour makes the cleanup harder. We answer the phone 24/7, weekends and holidays included, and we’ll get a plumber out to you as soon as we can.",
+    "cta": "Learn more about emergency plumbing",
+    "href": "/skokie-il/emergency-plumbing"
+   },
+   {
+    "tag": "Drain Cleaning",
+    "h3": "Drain Cleaning in Morton Grove",
+    "paragraph": "Morton Grove’s older blocks near the village center still carry original clay and cast iron drain lines, and both age in their own way. Cast iron scales up inside over the decades, while clay joints let roots from parkway trees work in. Either problem shows up the same way: the same kitchen or basement drain clogs not long after it’s cleared. A plunger or store-bought snake usually just moves the clog along. We clear the line and run a camera through it.",
+    "cta": "Learn more about drain cleaning",
+    "href": "/skokie-il/drain-cleaning"
+   },
+   {
+    "tag": "Water Heaters",
+    "h3": "Water Heaters in Morton Grove",
+    "paragraph": "[Morton Grove buys its drinking water from Evanston through the Morton Grove/Niles Water Commission, drawing from Lake Michigan rather than Chicago](https://mortongroveil.org/wp-content/uploads/2026/02/2025-CCR-ANNUAL-REPORT_FINAL_PUBLISH.pdf). It’s still treated lake water, so the usual minerals still build up inside a tank over the years. A tank installed before the switch has run through two different sources by now. If yours rumbles or runs out of hot water early, it’s worth a look. Some units are worth saving, others aren’t - we’ll tell you which.",
+    "cta": "Learn more about water heaters",
+    "href": "/skokie-il/water-heater-repair"
+   },
+   {
+    "tag": "Toilets & Fixtures",
+    "h3": "Toilets & Fixtures in Morton Grove",
+    "paragraph": "Fixtures in Morton Grove’s older homes have usually been replaced at least once, but the shutoff valves and seals behind them don’t always get swapped out at the same time. That’s often why a toilet runs constantly long after a remodel, or a shower valve starts leaking behind the tile years later. Left alone, a running toilet adds up on the water bill, and a hidden leak can damage the subfloor. We repair or replace fixtures and valves, and install new ones when it’s time.",
+    "cta": "Learn more about toilets & fixtures",
+    "href": "/skokie-il/toilet-installation-repair"
+   },
+   {
+    "tag": "Leak & Pipe Repair",
+    "h3": "Leak & Pipe Repair in Morton Grove",
+    "paragraph": "Many Morton Grove homes still run original supply lines behind plaster walls, and pipe that old corrodes from the inside where nobody can see it. A slow leak can run for weeks before a stain or soft spot in the floor gives it away, and by then it may have reached the framing. If you notice a drop in water pressure or a damp spot that won’t dry, it’s worth tracing down. We find the leak, repair or replace the pipe, and check nearby sections.",
+    "cta": "Learn more about leak & pipe repair",
+    "href": "/skokie-il/leak-repairs"
+   },
+   {
+    "tag": "Sump Pumps",
+    "h3": "Sump Pumps in Morton Grove",
+    "paragraph": "In the part of Morton Grove served by [combined sewer lines](https://mortongroveil.org/wp-content/uploads/2026/02/2022-CSO-OM-Plan.pdf), a working sump pump is often the only thing standing between a hard storm and a flooded basement. A pump that’s aging, too small for the job, or running without battery backup is most likely to quit during a power outage - right when you need it most. A failed pump usually means standing water within hours. We test, repair and replace sump pumps, and can add a battery backup for when the power drops.",
+    "cta": "Learn more about sump pumps",
+    "href": "/skokie-il/sump-pumps"
+   }
+  ],
+  "redBar": {
+   "label": "See all our plumbing services",
+   "href": "/skokie-il#services"
+  }
+ },
+ "office": {
+  "eyebrow": "Fast Local Dispatch",
+  "h2": "Plumbers Near You in Morton Grove",
+  "body": "Our plumbers work all over Morton Grove and the rest of the north suburbs, and they know the homes here. Call us any time, day or night.",
+  "addressName": "J. Blanton Plumbing - Skokie",
+  "address": "8001 Lincoln Ave, Suite 301, Skokie, IL 60077",
+  "license": "Illinois plumbing license EH0211882",
+  "panelHeading": "Nearby Communities We Serve",
+  "communities": [
+   {
+    "label": "Golf"
+   },
+   {
+    "label": "Lincolnwood",
+    "href": "/lincolnwood-il"
+   },
+   {
+    "label": "Niles",
+    "href": "/niles-il"
+   },
+   {
+    "label": "Park Ridge",
+    "href": "/park-ridge-il"
+   },
+   {
+    "label": "Schiller Park"
+   },
+   {
+    "label": "Skokie",
+    "href": "/skokie-il"
+   }
+  ],
+  "closing": "Don’t see your town listed? We may still serve it. Call us 24/7 and we’ll let you know."
+ },
+ "why": {
+  "h2": "Why Morton Grove Homeowners Choose J. Blanton",
+  "intro": "The most common complaint about plumbing companies is simple: you called a plumber and got a salesman. Here’s how we work instead.",
+  "items": [
+   {
+    "h3": "Options, Not a Sales Pitch",
+    "body": "Our plumber explains the problem in plain English first. When it’s a drain or sewer issue, we can run a camera down the line so you see what we see. Then you decide."
+   },
+   {
+    "h3": "A Clear Price Before Any Work Starts",
+    "body": "We give you a flat-rate price before we touch anything. The price we quote is the price you pay, with no surprise add-ons when the job is done."
+   },
+   {
+    "h3": "We Treat an Emergency Like One",
+    "body": "Our phone line is open around the clock, including weekends and holidays. When water is coming into your Morton Grove basement, we work to get a plumber to you as soon as we can."
+   }
+  ]
+ },
+ "reviews": {
+  "h2": "What Morton Grove Homeowners Say",
+  "items": [
+   {
+    "text": "We had an emergency situation with our kitchen faucet. John Hogan repaired it for us on a Sunday! I highly recommend this company.",
+    "name": "Tom Weyland"
+   },
+   {
+    "text": "Edgar and his assistant Skylar were great. Had my repair work done quickly and offered me great details and options prior to the install. They also quickly found the source of my leaky faucet and adjusted that. They were very professional and a great help. Highly recommend them.",
+    "name": "Joseph Frazier"
+   }
+  ]
+ },
+ "faq": [
+  {
+   "q": "Do you have plumbers near me in Morton Grove?",
+   "a": "Yes. Our plumbers work all over Morton Grove and the nearby north suburban towns, including Niles, Lincolnwood and Skokie. Call us 24/7 and we’ll get a plumber to you."
+  },
+  {
+   "q": "Are you licensed and bonded in Illinois?",
+   "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+  },
+  {
+   "q": "How much does a plumber cost in Morton Grove?",
+   "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in."
+  },
+  {
+   "q": "Why does my basement flood when it rains hard?",
+   "a": "[About 22.7 miles of sewer in the northeastern part of Morton Grove carry sewage and storm water in the same pipe](https://mortongroveil.org/wp-content/uploads/2026/02/2022-CSO-OM-Plan.pdf), and a big storm can push more water into that line than it can hold. When that happens, water looks for the lowest opening in your home. We can camera your line and talk through backflow protection."
+  },
+  {
+   "q": "Has Morton Grove had bad flooding before?",
+   "a": "Yes. [A heavy rainstorm on March 30, 2023, flooded streets and some basements across Morton Grove and neighboring Niles](https://www.cbsnews.com/chicago/news/intense-rain-streets-underwater-niles-morton-grove). Storms like that are rare, but any hard rain can strain an older line."
+  },
+  {
+   "q": "Does Morton Grove get Lake Michigan water?",
+   "a": "Yes, through a different route than most of Chicagoland. [Morton Grove buys Lake Michigan water from Evanston through the Morton Grove/Niles Water Commission](https://mortongroveil.org/wp-content/uploads/2026/02/2025-CCR-ANNUAL-REPORT_FINAL_PUBLISH.pdf) rather than the City of Chicago. It’s still treated lake water, so the usual mineral buildup inside a water heater still applies over time."
+  }
+ ],
+ "ndc": {
+  "h2": "Join and Save 10% on Plumbing and Sewer Services",
+  "body": "Most plumbing problems in Morton Grove start small. The No Drip Club brings a plumber to your home, so issues get caught early."
+ },
+ "final": {
+  "h2": "Your Morton Grove Plumber, Day or Night",
+  "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+ }
+}

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getCity } from '@/lib/content/cities';
+import { getCity, hasNoServicePages } from '@/lib/content/cities';
 import { getCityService } from '@/lib/content/city-services';
 import CityServicePageTemplate, { replaceCityTokens } from '@/components/CityServicePageTemplate';
 import { getCityServiceCmsContent } from '@/lib/cms/city-service-pages';
@@ -18,6 +18,7 @@ import { aggregateRatingJsonLd } from '@/lib/schema/aggregate-rating';
 import { schemaPhone } from '@/lib/schema/city-pages';
 import { pageTitle } from '@/lib/seo';
 import { cityServiceRobots } from '@/lib/city-service-indexation';
+import { pilotOfficeSlug } from '@/lib/city-pruning/phase1';
 import type { CityServiceContent } from '@/types/city-service';
 
 export const dynamic = 'force-dynamic';
@@ -56,7 +57,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const cityEntry = getCity(params.city);
   const serviceData = getCityService(params.service);
-  if (!cityEntry || !serviceData || cityEntry.officePage) return {};
+  if (!cityEntry || !serviceData || hasNoServicePages(cityEntry)) return {};
   // Brief 209 go-live: a City Service Pages V2 page carries its approved title/description from
   // code. Every title on the site closes with the layout template's "| J. Blanton Plumbing",
   // whatever its length (Marketing, 2026-10-14). The approved titles carry their own short brand
@@ -139,7 +140,8 @@ export default async function CityServicePage({
   const cityEntry = getCity(params.city);
   const serviceData = getCityService(params.service);
   // Brief 227: an office page has NO service pages of its own (its links go to /{serviceHub}/…).
-  if (!cityEntry || !serviceData || cityEntry.officePage) notFound();
+  // Brief 229: nor does a pilot Tier 3 town page (its links go to its hub's).
+  if (!cityEntry || !serviceData || hasNoServicePages(cityEntry)) notFound();
 
   const settings = await getGlobalSettingsCached();
 
@@ -172,10 +174,14 @@ export default async function CityServicePage({
     const hubD = await resolveCityHub(params.city);
     // Brief 221: the live-rating tokens (this hub's office + the company total) and, when the page shows
     // its office's synced numbers, the same `aggregateRating` the hub's office node carries.
-    const ratings = await getRatingContext(params.city);
+    // Brief 229: a pilot hub's office ratings stay keyed by its legacy office slug (mokena-il → mokena).
+    const ratings = await getRatingContext(pilotOfficeSlug(params.city) ?? params.city);
     const { page, officeRatingShown } = applyServiceRatings(v2d.page, ratings);
     const officeRating = officeRatingShown && ratings.office ? aggregateRatingJsonLd(ratings.office) : null;
-    const office = hubD.kind === 'hub' ? hubPlumberJsonLd(hubD.hub, phone.display, schemaPhone, officeRating) : null;
+    // Brief 229: on a pilot hub's service pages the office node carries the hub's Google listing number
+    // (the hub's own node does); every other city's service pages keep the site phone, unchanged.
+    const schemaTel = cityEntry.pilot ? hubD.kind === 'hub' ? hubD.hub.office.schemaTelephone : undefined : undefined;
+    const office = hubD.kind === 'hub' ? hubPlumberJsonLd(hubD.hub, phone.display, schemaPhone, officeRating, schemaTel) : null;
     const pv = v2d.preview;
     return (
       <>

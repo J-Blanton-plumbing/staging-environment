@@ -67,8 +67,9 @@ export const SITEMAP_STATIC_PAGES: readonly SitemapStaticPage[] = [
    * back to the build's default rather than a CMS timestamp (see the TODO in
    * each page file).
    */
-  { path: '/locations/chicagoland',                            changeFrequency: 'monthly', priority: 0.6 },
-  { path: '/locations/central-ohio',                           changeFrequency: 'monthly', priority: 0.6 },
+  // Brief 229: the state pages that replaced the two region pages (both old URLs 301 here).
+  { path: '/locations/illinois',                               changeFrequency: 'monthly', priority: 0.6 },
+  { path: '/locations/ohio',                                   changeFrequency: 'monthly', priority: 0.6 },
   { path: '/knowledge-hub',      mainSlug: 'knowledge-hub',    changeFrequency: 'weekly',  priority: 0.7 },
   { path: '/financing',          mainSlug: 'financing',        changeFrequency: 'monthly', priority: 0.6 },
   { path: '/help-and-support',   mainSlug: 'help-and-support', changeFrequency: 'monthly', priority: 0.6 },

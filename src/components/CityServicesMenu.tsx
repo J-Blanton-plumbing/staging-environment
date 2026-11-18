@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { coverageServiceCategories } from '@/lib/content/cities/shared';
 import { getCity } from '@/lib/content/cities';
+import { pilotFinalHref } from '@/lib/city-pruning/phase1';
 
 /**
  * Coverage Area "OUR SERVICES" — the STATIC 5-category menu from
@@ -61,7 +62,8 @@ export default function CityServicesMenu({ citySlug }: { citySlug?: string }) {
                 {cat.links.map((link) => (
                   <li key={link.label}>
                     {link.href ? (
-                      <Link href={link.href}>{link.label}</Link>
+                      // Brief 229: a pilot hub's fold slug links to the page it lives on (it 301s); every other city: unchanged.
+                      <Link href={pilotFinalHref(link.href)}>{link.label}</Link>
                     ) : (
                       // No verified destination — show the label, never guess a
                       // URL (Brief 138, Track B item 5). Unreachable today.

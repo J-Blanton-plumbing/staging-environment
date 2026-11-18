@@ -1,0 +1,173 @@
+{
+ "url": "/lincolnwood-il",
+ "town": "Lincolnwood",
+ "state": "IL",
+ "hub": "Skokie",
+ "hubUrl": "/skokie-il",
+ "featuredService": "Sewer Repair",
+ "region": "North suburbs",
+ "hero": {
+  "eyebrow": "Serving Chicagoland for 30+ Years",
+  "h1": "24/7 Plumbing Services in Lincolnwood, IL",
+  "intro": "Need a plumbing repair in the north suburbs? We dispatch from our local office in Skokie, so there’s always a plumber near you. Upfront pricing on every job, and same-day service available for emergencies."
+ },
+ "services": {
+  "eyebrow": "What We Fix",
+  "h2": "Plumbing Repairs in Lincolnwood",
+  "intro": "Our licensed plumbers work on homes across Lincolnwood, from the village’s older post-war blocks to newer builds.",
+  "cards": [
+   {
+    "tag": "Sewer Repair",
+    "h3": "Sewer Repair in Lincolnwood",
+    "paragraph": "[Lincolnwood’s Stormwater Master Plan found the village sewer system handles only a 2- to 3-year level of protection](https://www.lincolnwoodil.org/Archive.aspx?ADID=945), short of the 10-year standard the village is working toward. Older clay lines under its post-war streets add to the risk, cracking or filling with roots. That combination means a hard rain can push a weak line past its limit fast. We camera-inspect your line, clear what’s blocking it, and talk through whether a backflow valve makes sense.",
+    "cta": "Learn more about sewer repair",
+    "href": "/skokie-il/sewer-repair"
+   },
+   {
+    "tag": "Emergency Plumbing",
+    "h3": "Emergency Plumbing in Lincolnwood",
+    "paragraph": "Lincolnwood is a tight, built-out village bordered by Chicago, Skokie and Niles, and it sees the same hard summer storms that soak the rest of the north suburbs. An older line can only take so much rain before it backs up, and when that happens inside your home, waiting even an hour makes the cleanup bigger. Day or night, including weekends and holidays, our line stays open, and we work to get a plumber to your door as soon as we can.",
+    "cta": "Learn more about emergency plumbing",
+    "href": "/skokie-il/emergency-plumbing"
+   },
+   {
+    "tag": "Drain Cleaning",
+    "h3": "Drain Cleaning in Lincolnwood",
+    "paragraph": "[More than two-thirds of Lincolnwood homes were built before 1970, median year 1958](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Lincolnwood.pdf), so most still run on original clay or cast iron drain lines. Cast iron scales up inside over the decades, and clay joints let tree roots work in, so a quick clear often doesn’t last. That usually shows up as the same kitchen or basement drain backing up again. We clear the line and run a camera through it first.",
+    "cta": "Learn more about drain cleaning",
+    "href": "/skokie-il/drain-cleaning"
+   },
+   {
+    "tag": "Water Heaters",
+    "h3": "Water Heaters in Lincolnwood",
+    "paragraph": "[Lincolnwood switched its water supply from Chicago to Evanston’s Lake Michigan system in 2020](https://dailynorthwestern.com/2020/09/23/city/lincolnwood-completes-construction-project-connecting-to-evanston-water-supply), after years of steep Chicago rate increases. The new supply is still treated lake water, so the same minerals that build up inside any tank over the years are still at work. A heater installed before the switch has run through two different supplies. If yours rumbles or runs out of hot water early, it’s worth a look. We help you repair it or size a replacement.",
+    "cta": "Learn more about water heaters",
+    "href": "/skokie-il/water-heater-repair"
+   },
+   {
+    "tag": "Toilets & Fixtures",
+    "h3": "Toilets & Fixtures in Lincolnwood",
+    "paragraph": "Toilets and fixtures in Lincolnwood’s older homes have usually been swapped out at least once, but the supply valves and seals behind them don’t always get replaced at the same time. That mismatch is often why a toilet runs constantly or a shower valve starts leaking years after a remodel. Left alone, a running toilet adds up on the water bill, and a hidden leak can damage the subfloor. From a quick valve repair to a full fixture swap, we handle the job, old or new.",
+    "cta": "Learn more about toilets & fixtures",
+    "href": "/skokie-il/toilet-installation-repair"
+   },
+   {
+    "tag": "Leak & Pipe Repair",
+    "h3": "Leak & Pipe Repair in Lincolnwood",
+    "paragraph": "Many Lincolnwood homes still carry original supply lines behind plaster walls, and decades-old pipe corrodes from the inside where you can’t see it. A slow leak can run for weeks before a stain or soft spot in the floor gives it away, and by then it may have reached the framing underneath. If you notice a drop in pressure or a damp spot, it’s worth tracing down. We find the leak, repair or replace the pipe, and check nearby sections.",
+    "cta": "Learn more about leak & pipe repair",
+    "href": "/skokie-il/leak-repairs"
+   },
+   {
+    "tag": "Sump Pumps",
+    "h3": "Sump Pumps in Lincolnwood",
+    "paragraph": "With [Lincolnwood’s sewer system rated for only a 2- to 3-year level of protection](https://www.lincolnwoodil.org/Archive.aspx?ADID=945), a sump pump is often the last line of defense between a hard rain and a wet basement. A pump that’s undersized, old or without a battery backup can fail right when a storm knocks out power, which is exactly when you need it most. A failed pump usually means standing water within hours. We test, repair and replace sump pumps, and can add a battery backup for when the power drops.",
+    "cta": "Learn more about sump pumps",
+    "href": "/skokie-il/sump-pumps"
+   }
+  ],
+  "redBar": {
+   "label": "See all our plumbing services",
+   "href": "/skokie-il#services"
+  }
+ },
+ "office": {
+  "eyebrow": "Fast Local Dispatch",
+  "h2": "Plumbers Near You in Lincolnwood",
+  "body": "Our plumbers work all over Lincolnwood and the rest of the north suburbs, and they know the homes here. Call us any time, day or night.",
+  "addressName": "J. Blanton Plumbing - Skokie",
+  "address": "8001 Lincoln Ave, Suite 301, Skokie, IL 60077",
+  "license": "Illinois plumbing license EH0211882",
+  "panelHeading": "Nearby Communities We Serve",
+  "communities": [
+   {
+    "label": "Golf"
+   },
+   {
+    "label": "Morton Grove",
+    "href": "/morton-grove-il"
+   },
+   {
+    "label": "Niles",
+    "href": "/niles-il"
+   },
+   {
+    "label": "Park Ridge",
+    "href": "/park-ridge-il"
+   },
+   {
+    "label": "Schiller Park"
+   },
+   {
+    "label": "Skokie",
+    "href": "/skokie-il"
+   }
+  ],
+  "closing": "Don’t see your town listed? We may still serve it. Call us 24/7 and we’ll let you know."
+ },
+ "why": {
+  "h2": "Why Lincolnwood Homeowners Choose J. Blanton",
+  "intro": "The most common complaint about plumbing companies is simple: you called a plumber and got a salesman. Here’s how we work instead.",
+  "items": [
+   {
+    "h3": "Options, Not a Sales Pitch",
+    "body": "Our plumber explains the problem in plain English first. When it’s a drain or sewer issue, we can run a camera down the line so you see what we see. Then you decide."
+   },
+   {
+    "h3": "A Clear Price Before Any Work Starts",
+    "body": "We give you a flat-rate price before we touch anything. The price we quote is the price you pay, with no surprise add-ons when the job is done."
+   },
+   {
+    "h3": "We Treat an Emergency Like One",
+    "body": "Our phone line is open around the clock, including weekends and holidays. When water is coming into your Lincolnwood basement, we work to get a plumber to you as soon as we can."
+   }
+  ]
+ },
+ "reviews": {
+  "h2": "What Lincolnwood Homeowners Say",
+  "items": [
+   {
+    "text": "[...] They are very professional and knowledgeable. After a few days Stephen Lemont came out to do hydro jetting. The amount of roots I had down on a sewer line were large. Stephen went above and beyond. Stephen had some recommendations for me to do after the job is complete. This has been by far the best company I hired to do any job in my house. Easy enough to do scheduling and every step along the way I had been informed by the company. [...]",
+    "name": "Irfan Karbhari"
+   },
+   {
+    "text": "We had an emergency situation with our kitchen faucet. John Hogan repaired it for us on a Sunday! I highly recommend this company.",
+    "name": "Tom Weyland"
+   }
+  ]
+ },
+ "faq": [
+  {
+   "q": "Do you have plumbers near me in Lincolnwood?",
+   "a": "Yes. Our plumbers work all over Lincolnwood and the nearby north suburban towns, including Morton Grove, Niles and Skokie. Call us 24/7 and we’ll get a plumber to you."
+  },
+  {
+   "q": "Are you licensed and bonded in Illinois?",
+   "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+  },
+  {
+   "q": "How much does a plumber cost in Lincolnwood?",
+   "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in."
+  },
+  {
+   "q": "Why do I keep getting the same drain clog?",
+   "a": "[More than two-thirds of Lincolnwood homes were built before 1970](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Lincolnwood.pdf), and most still run on their original clay or cast iron drain lines. Roots or scale inside them cause the same spot to clog again and again. Clearing the clog only buys time. We run a camera through the line so you know whether the pipe itself needs repair."
+  },
+  {
+   "q": "Why does my basement flood during a heavy storm?",
+   "a": "[Lincolnwood’s sewer system is currently rated for only a 2- to 3-year level of protection](https://www.lincolnwoodil.org/Archive.aspx?ADID=945), and the village is working through a ten-project plan to bring it up to a 10-year standard. Until those projects are finished, a hard storm can still push water back into a basement. We check your line and can recommend a backflow valve or sump pump backup."
+  },
+  {
+   "q": "Did Lincolnwood’s water change recently?",
+   "a": "Yes. [Lincolnwood switched its entire water supply from Chicago to Evanston’s Lake Michigan system in 2020](https://dailynorthwestern.com/2020/09/23/city/lincolnwood-completes-construction-project-connecting-to-evanston-water-supply). It’s still treated lake water, so the same mineral buildup that affects any water heater over time still applies."
+  }
+ ],
+ "ndc": {
+  "h2": "Join and Save 10% on Plumbing and Sewer Services",
+  "body": "Most plumbing problems in Lincolnwood start small. The No Drip Club brings a plumber to your home, so issues get caught early."
+ },
+ "final": {
+  "h2": "Your Lincolnwood Plumber, Day or Night",
+  "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+ }
+}

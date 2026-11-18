@@ -42,9 +42,22 @@ const BASE = String(args.base ?? 'http://localhost:3000').replace(/\/$/, '');
 const SITE = 'https://jblantonplumbing.com';
 
 // Kept in step with src/lib/city-batches.ts and CITY_SERVICE_V2_SLUGS (this script cannot import TS).
-const CITIES = ['northbrook', 'columbus', 'tinley-park', 'joliet', 'naperville', 'arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva',
-  'mokena', 'hinsdale', 'skokie', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park',
+// Brief 229 (City Pruning Phase 1 Pilot): Tinley Park, Mokena and Skokie moved to their -il URLs (the legacy
+// URLs 301 — checked below, PILOT_MOVES).
+const CITIES = ['northbrook', 'columbus', 'tinley-park-il', 'joliet', 'naperville', 'arlington-heights', 'elgin', 'mchenry', 'algonquin', 'geneva',
+  'mokena-il', 'hinsdale', 'skokie-il', 'chicago-lincoln-park', 'elmhurst', 'chicago-ravenswood', 'evanston', 'hanover-park',
   'highland-park'];
+/**
+ * Brief 229: the pilot's legacy URLs and where each must 301 in ONE hop (a sample of every redirect group;
+ * scripts/city-pruning/check-phase1-redirects.mjs walks all 1,184 rows), and the pages whose title renders
+ * WITHOUT the automatic brand suffix (Track E: exactly these, so zero brand tails is the rule there).
+ */
+const PILOT_MOVES = [
+  ['/mokena', '/mokena-il'], ['/tinley-park', '/tinley-park-il'], ['/skokie', '/skokie-il'],
+  ['/mokena/drain-cleaning', '/mokena-il/drain-cleaning'], ['/frankfort', '/frankfort-il'], ['/alsip', '/tinley-park-il'],
+  ['/orland-park/drain-cleaning', '/tinley-park-il/drain-cleaning'], ['/locations/chicagoland', '/locations/illinois'], ['/locations/central-ohio', '/locations/ohio'],
+];
+const NO_BRAND_SUFFIX = new Set(['/tinley-park-il', '/joliet', '/columbus']);
 /**
  * Brief 227: OFFICE PAGES — a City Hub with NO service pages of its own (src/lib/content/cities
  * `officePage`). Their hub is checked like every hub; every `/{slug}/{service}` must 404, and the legacy
@@ -56,7 +69,8 @@ const SEWER_PAGES = ['/services/sewer', '/hydro-jetting', '/sewer-rodding', '/se
  * Brief 217: pages outside the two city templates that must keep the footer's office graph. Brief 218
  * took `/` out: the homepage carries its own Organization graph instead (homepageProblems below).
  */
-const OTHER_PAGES = ['/services', '/services/plumbing', '/services/sewer', '/locations', '/knowledge-hub', '/wilmette', '/wilmette/drain-cleaning'];
+// Brief 229: /locations is a pilot page now (ItemList of offices, no footer graph) — /financing samples a main page instead.
+const OTHER_PAGES = ['/services', '/services/plumbing', '/services/sewer', '/financing', '/knowledge-hub', '/wilmette', '/wilmette/drain-cleaning'];
 /** Brief 188 / 218: the ONE Organization `@id` (src/lib/schema/organization-ref.ts). */
 const ORG_ID = `${SITE}/#organization`;
 /** Brief 218: the homepage Organization's department count (the package's 19 offices). */
@@ -263,7 +277,8 @@ export function seoProblems(p, html) {
   out.push(...faqProblems(html, 1));
   const title = (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] ?? '';
   const tails = (title.match(/J\.(?:\s|&nbsp;)?Blanton|\bJBP\b/g) || []).length;
-  if (tails !== 1) out.push(`title "${title}" carries ${tails} brand tails (expected 1)`);
+  const wantTails = NO_BRAND_SUFFIX.has(p) ? 0 : 1; // Brief 229: the suffix-free pages
+  if (tails !== wantTails) out.push(`title "${title}" carries ${tails} brand tails (expected ${wantTails})`);
   const canon = (html.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] ?? '';
   if (canon !== SITE + p) out.push(`canonical "${canon}" is not self (${SITE + p})`);
   return out;
@@ -409,6 +424,13 @@ async function compare() {
     const loc = res?.headers.get('location') ?? '';
     if (!res || res.status !== 301 || new URL(loc, BASE).pathname !== `/${o.slug}`) failures.push(`${o.legacy}: expected one 301 to /${o.slug}, got ${res?.status ?? 'no answer'} ${loc}`);
     if (counts[o.legacy]) failures.push(`${o.legacy}: a redirect source is listed in the sitemap`);
+  }
+  // Brief 229: the pilot's legacy URLs — one 301 to the final page (query string kept), never in the sitemap.
+  for (const [from, to] of PILOT_MOVES) {
+    const res = await fetch(BASE + from + '?gclid=TEST123', { redirect: 'manual', headers: { 'User-Agent': 'jbp-city-pages-check' } }).catch(() => null);
+    const loc = res?.headers.get('location') ?? '';
+    const u = loc ? new URL(loc, BASE) : null;
+    if (!res || res.status !== 301 || u?.pathname !== to || u?.search !== '?gclid=TEST123') failures.push(`${from}: expected one 301 to ${to}?gclid=TEST123, got ${res?.status ?? 'no answer'} ${loc}`);
   }
   for (const p of SEWER_PAGES) {
     const r = await get(p).catch(() => ({ status: 0, text: '' }));

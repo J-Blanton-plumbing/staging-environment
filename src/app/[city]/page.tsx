@@ -34,6 +34,9 @@ import { applyHubRatings, CITY_HUB_SHARED_PAGE_TYPE, CITY_HUB_SHARED_SLUG } from
 import { getRatingContext } from '@/lib/cms/office-ratings';
 import { pageTitle } from '@/lib/seo';
 import { officePhone } from '@/lib/cms/offices';
+import { pilotOfficeSlug } from '@/lib/city-pruning/phase1';
+import { getTownPage, townMeta } from '@/lib/city-pruning/towns';
+import TownPageView from '@/components/city-pruning/TownPageView';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
@@ -73,11 +76,22 @@ export function generateStaticParams() {
  * than a 500 on a page whose body renders fine.
  */
 export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
+  // Brief 229 (Track B): a Tier 3 town page's title renders EXACTLY as the titles sheet writes it.
+  const townEntry = getCity(params.city);
+  if (townEntry?.pilot?.kind === 'town') {
+    const meta = townMeta(params.city);
+    return meta ? { title: { absolute: meta.title }, description: meta.description } : {};
+  }
   // Brief 212: a City Hub's title/description — its row's meta columns (suffix-free; the layout's
   // template adds the brand once) when it renders from the row, its code module's otherwise.
   if (getCity(params.city)) {
     const hub = await resolveCityHub(params.city);
-    if (hub.kind === 'hub') return { title: pageTitle(hub.meta.title), description: hub.meta.description };
+    // Brief 229 (Track E): a page whose content opts out of the automatic brand suffix renders its title
+    // exactly as stored ({ absolute }); every other hub keeps the layout template's suffix.
+    if (hub.kind === 'hub') {
+      const title = hub.hub.seo?.titleSuffix === false ? { absolute: hub.meta.title } : pageTitle(hub.meta.title);
+      return { title, description: hub.meta.description };
+    }
   }
 
   const fallback = staticCityMeta(params.city);
@@ -89,6 +103,31 @@ export async function generateMetadata({ params }: { params: { city: string } })
 export default async function CityPage({ params }: { params: { city: string } }) {
   const entry = getCity(params.city);
   if (!entry) notFound();
+
+  /*
+   * Brief 229 (Track B) — a Tier 3 TOWN PAGE of the City Pruning pilot (/frankfort-il …). Its copy is
+   * code data (src/lib/city-pruning/towns.ts); its city_pages row is the publish gate (an unpublished
+   * row 404s; no row / DB down renders, failing open like every city page). The hub supplies the card
+   * photos and the trust stripe; the shared City Hub record supplies the shared sections.
+   */
+  if (entry.pilot?.kind === 'town') {
+    const town = getTownPage(params.city);
+    if (!town || !(await isPageLive('city', params.city))) notFound();
+    const hubD = await resolveCityHub(town.hubUrl.replace(/^\//, ''), { preview: false });
+    if (hubD.kind !== 'hub') notFound();
+    const settings = await getGlobalSettingsCached();
+    const ratings = await getRatingContext(null);
+    return (
+      <TownPageView
+        hub={hubD.hub}
+        phone={{ href: settings.phoneHref, display: settings.phoneDisplay }}
+        ratings={ratings}
+        shared={hubD.shared}
+        slug={params.city}
+        town={town}
+      />
+    );
+  }
 
   /*
    * Brief 212 (= Brief 206 Tracks B–E) — City Hubs read the CMS.
@@ -125,7 +164,8 @@ export default async function CityPage({ params }: { params: { city: string } })
     }
     // Brief 221: the live-rating tokens (this office + the company total) filled in, and the office's
     // `aggregateRating` for its Plumber node when the rating card shows exactly those numbers.
-    const rated = applyHubRatings(hubDispatch.hub, await getRatingContext(params.city));
+    // Brief 229: a pilot hub's office ratings stay keyed by its legacy office slug (mokena-il → mokena).
+    const rated = applyHubRatings(hubDispatch.hub, await getRatingContext(pilotOfficeSlug(params.city) ?? params.city));
     const pv = hubDispatch.preview;
     return (
       <>

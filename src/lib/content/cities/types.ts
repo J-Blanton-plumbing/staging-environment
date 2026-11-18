@@ -130,6 +130,19 @@ export interface RegistryEntry {
    * Unset on every other entry.
    */
   officePage?: { serviceHub: string };
+
+  /**
+   * Brief 229 — set ONLY on a page the City Pruning Phase 1 Pilot created at a new state-suffixed URL
+   * (src/lib/city-pruning/phase1.ts). `legacySlug` is the registry slug whose `/{slug}` now 301s here.
+   *   kind 'hub'  — `/mokena-il` etc.: a Tier 1 City Hub WITH service pages (`/{hub}-il/{service}`). Its
+   *                 office record, ratings and Mainline location stay keyed by `legacySlug`.
+   *   kind 'town' — `/frankfort-il` etc.: a Tier 3 town page with NO service pages (`/{slug}/{anything}`
+   *                 404s, like an office page); `hub` is the new hub whose office serves it.
+   * Pilot pages are kept OUT of every area list (city grids, the locator index, the region lists), so
+   * no other page gains an item; the legacy entries stay registered (their rows, versions and grid
+   * items are untouched — the grids' hrefs are swapped to the final target instead).
+   */
+  pilot?: { kind: 'hub' | 'town'; legacySlug: string; hub?: string };
 }
 
 /* ────────────────────────────────────────────────────────────────────────────

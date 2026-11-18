@@ -1,0 +1,195 @@
+{
+ "url": "/orland-park-il",
+ "town": "Orland Park",
+ "state": "IL",
+ "hub": "Tinley Park",
+ "hubUrl": "/tinley-park-il",
+ "featuredService": "Drain Cleaning",
+ "region": "Southwest suburbs",
+ "hero": {
+  "eyebrow": "Serving Chicagoland for 30+ Years",
+  "h1": "24/7 Plumbing Services in Orland Park, IL",
+  "intro": "Need a plumbing repair in the southwest suburbs? We dispatch from our local office in Tinley Park, so there’s always a plumber near you. Upfront pricing on every job, and same-day service available for emergencies."
+ },
+ "services": {
+  "eyebrow": "What We Fix",
+  "h2": "Plumbing Repairs in Orland Park",
+  "intro": "Our licensed plumbers work on homes across Orland Park, from its 1970s and 1980s subdivisions to the newer construction built since the 1990s.",
+  "cards": [
+   {
+    "tag": "Drain Cleaning",
+    "h3": "Drain Cleaning in Orland Park",
+    "paragraph": "[Orland Park’s median year built is 1989, with 41.3% of homes built between 1970 and 1989](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Orland-Park.pdf), so a large share of original drain lines are now 35 to 55 years old. Lines that age scale up inside or sag at the joints, and a slow kitchen or basement drain is often the first sign. Left alone, the same spot tends to clog again. We clear the line and run a camera through it, so you see what’s causing it.",
+    "cta": "Learn more about drain cleaning",
+    "href": "/tinley-park-il/drain-cleaning"
+   },
+   {
+    "tag": "Sewer Repair",
+    "h3": "Sewer Repair in Orland Park",
+    "paragraph": "A large share of Orland Park’s sewer laterals date to the village’s biggest growth years in the 1970s and 1980s, and clay or cast iron pipe from that era is old enough to crack, sag or fill with roots. For a homeowner, that often shows up as a slow drain that turns into a backup after a hard rain. We camera-inspect the line first, then walk you through repair options, including trenchless methods where your yard allows it, before any work begins.",
+    "cta": "Learn more about sewer repair",
+    "href": "/tinley-park-il/sewer-repair"
+   },
+   {
+    "tag": "Sump & Ejector Pumps",
+    "h3": "Sump & Ejector Pumps in Orland Park",
+    "paragraph": "[A 2017 storm dropped roughly 1.5 inches of rain on Orland Park in 24 hours and flooded Southwest Highway, Will-Cook Road and 143rd Street](https://patch.com/illinois/orlandpark/high-water-orland-park-streets), the kind of rain that tests sump and ejector pumps hard. A pump running for years can fail quietly, often right when a big storm hits and you need it most. We test, repair and replace sump and ejector pumps, and can add a battery backup so a power outage doesn’t leave your basement unprotected.",
+    "cta": "Learn more about sump & ejector pumps",
+    "href": "/tinley-park-il/sump-pumps"
+   },
+   {
+    "tag": "Toilets & Faucets",
+    "h3": "Toilets & Faucets in Orland Park",
+    "paragraph": "Fixtures in Orland Park’s older subdivisions have usually been swapped out at least once since the 1970s and 1980s, and the supply valves and seals behind them don’t always get replaced at the same time. That mismatch is often why a toilet runs constantly or a faucet starts dripping years after a remodel. Left alone, a running toilet adds up on the water bill fast. We repair or replace fixtures and valves, and install new ones when it’s time for an upgrade.",
+    "cta": "Learn more about toilets & faucets",
+    "href": "/tinley-park-il/toilet-installation-repair"
+   },
+   {
+    "tag": "Water Heaters",
+    "h3": "Water Heaters in Orland Park",
+    "paragraph": "[Orland Park moved off well water onto Lake Michigan supply in 1985](https://orlandpark.org/government/water-information/water-redundancy), drawing water through a regional main that now serves the village along with a dozen neighboring communities. Minerals in treated lake water settle inside a tank over the decades, and that slow buildup is a common reason an older heater starts to rumble or run out of hot water sooner. We repair what’s worth repairing and help you size a tank or tankless replacement.",
+    "cta": "Learn more about water heaters",
+    "href": "/tinley-park-il/water-heater-repair"
+   },
+   {
+    "tag": "Emergency Plumbing",
+    "h3": "Emergency Plumbing in Orland Park",
+    "paragraph": "[Heavy rain in March 2017 flooded several major Orland Park roads](https://patch.com/illinois/orlandpark/high-water-orland-park-streets), including Southwest Highway and Will-Cook Road, and the village had to work with the state to relieve standing water. A storm that intense can overwhelm an aging sewer line or a tired sump pump just as fast. When water starts coming into your home, every minute counts. Our line runs 24 hours a day, every day of the year, and we get a plumber moving toward you as soon as we can.",
+    "cta": "Learn more about emergency plumbing",
+    "href": "/tinley-park-il/emergency-plumbing"
+   },
+   {
+    "tag": "Burst Pipes & Spigots",
+    "h3": "Burst Pipes & Spigots in Orland Park",
+    "paragraph": "Many Orland Park homes from the 1970s and 1980s have outdoor spigots and supply lines that run through unheated garages, and those are the first to feel it when temperatures drop fast overnight. A spigot or line that freezes can crack quietly and only show itself once it thaws and starts leaking. That kind of damage can spread behind walls before anyone notices. If a pipe or spigot freezes or bursts, shut off the water where you can and call us right away.",
+    "cta": "Learn more about burst pipes & spigots",
+    "href": "/tinley-park-il/burst-pipe-repair"
+   }
+  ],
+  "redBar": {
+   "label": "See all our plumbing services",
+   "href": "/tinley-park-il#services"
+  }
+ },
+ "office": {
+  "eyebrow": "Fast Local Dispatch",
+  "h2": "Plumbers Near You in Orland Park",
+  "body": "Our plumbers work all over Orland Park and the rest of the southwest suburbs, and they know the homes here. Call us any time, day or night.",
+  "addressName": "J. Blanton Plumbing - Tinley Park",
+  "address": "8200 185th St, Suite G28, Tinley Park, IL 60487",
+  "license": "Illinois plumbing license EH0211882",
+  "panelHeading": "Nearby Communities We Serve",
+  "communities": [
+   {
+    "label": "Alsip"
+   },
+   {
+    "label": "Blue Island"
+   },
+   {
+    "label": "Country Club Hills"
+   },
+   {
+    "label": "Flossmoor"
+   },
+   {
+    "label": "Harvey"
+   },
+   {
+    "label": "Homewood"
+   },
+   {
+    "label": "Markham"
+   },
+   {
+    "label": "Matteson"
+   },
+   {
+    "label": "Midlothian"
+   },
+   {
+    "label": "Oak Forest"
+   },
+   {
+    "label": "Palos Heights"
+   },
+   {
+    "label": "Park Forest",
+    "href": "/park-forest-il"
+   },
+   {
+    "label": "South Holland"
+   },
+   {
+    "label": "Tinley Park",
+    "href": "/tinley-park-il"
+   }
+  ],
+  "closing": "Don’t see your town listed? We may still serve it. Call us 24/7 and we’ll let you know."
+ },
+ "why": {
+  "h2": "Why Orland Park Homeowners Choose J. Blanton",
+  "intro": "The most common complaint about plumbing companies is simple: you called a plumber and got a salesman. Here’s how we work instead.",
+  "items": [
+   {
+    "h3": "Options, Not a Sales Pitch",
+    "body": "Our plumber explains the problem in plain English first. When it’s a drain or sewer issue, we can run a camera down the line so you see what we see. Then you decide."
+   },
+   {
+    "h3": "A Clear Price Before Any Work Starts",
+    "body": "We give you a flat-rate price before we touch anything. The price we quote is the price you pay, with no surprise add-ons when the job is done."
+   },
+   {
+    "h3": "We Treat an Emergency Like One",
+    "body": "Our phone line is open around the clock, including weekends and holidays. When water is coming into your Orland Park basement, we work to get a plumber to you as soon as we can."
+   }
+  ]
+ },
+ "reviews": {
+  "h2": "What Orland Park Homeowners Say",
+  "items": [
+   {
+    "text": "The first technician who came out to give a quote and to look at everything was awesome! Very professional and extremely knowledgeable! The technician who came out to do the work itself was Lou, he was also very knowledgeable but more importantly very professional!",
+    "name": "Joshua Piecha"
+   },
+   {
+    "text": "Brandon was pretty amazing! Very knowledgeable and he took a lot of time to explain in clear language as we went through the inspection. You will be in very good hands with him, if you ever need a walkthrough of your property.",
+    "name": "Oluwafunto Olaniyan"
+   }
+  ]
+ },
+ "faq": [
+  {
+   "q": "Do you have plumbers near me in Orland Park?",
+   "a": "Yes. Our plumbers work all over Orland Park and the nearby southwest suburbs, including Tinley Park, Palos Heights and Oak Forest. Call us 24/7 and we’ll get a plumber to you."
+  },
+  {
+   "q": "Are you licensed and bonded in Illinois?",
+   "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+  },
+  {
+   "q": "How much does a plumber cost in Orland Park?",
+   "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in."
+  },
+  {
+   "q": "Why does my Orland Park basement flood during a heavy storm?",
+   "a": "[A March 2017 storm dropped about 1.5 inches of rain in 24 hours and flooded Southwest Highway, Will-Cook Road and 143rd Street](https://patch.com/illinois/orlandpark/high-water-orland-park-streets). A storm that size can overwhelm an older sewer line or a weak sump pump at home too. We check your line and pump, and can recommend a backup system."
+  },
+  {
+   "q": "Why do I keep getting the same drain clog?",
+   "a": "[A large share of Orland Park’s homes were built between 1970 and 1989](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Orland-Park.pdf), so many original drain lines are now decades old and starting to scale or sag. Clearing the clog only buys time. We run a camera through the line so you know whether the pipe itself needs repair."
+  },
+  {
+   "q": "Is Orland Park’s water hard on my water heater?",
+   "a": "Orland Park has drawn its water from Lake Michigan since 1985, after years on well water. Minerals in treated lake water build up inside a tank over the years, which is a common reason an older heater starts to rumble or lose capacity."
+  }
+ ],
+ "ndc": {
+  "h2": "Join and Get 2 Free Maintenance Visits a Year",
+  "body": "Most plumbing problems in Orland Park start small. The No Drip Club brings a plumber to your home, so issues get caught early."
+ },
+ "final": {
+  "h2": "Your Orland Park Plumber, Day or Night",
+  "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+ }
+}

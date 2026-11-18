@@ -1,0 +1,195 @@
+{
+ "url": "/park-forest-il",
+ "town": "Park Forest",
+ "state": "IL",
+ "hub": "Tinley Park",
+ "hubUrl": "/tinley-park-il",
+ "featuredService": "Drain Cleaning",
+ "region": "Southwest suburbs",
+ "hero": {
+  "eyebrow": "Serving Chicagoland for 30+ Years",
+  "h1": "24/7 Plumbing Services in Park Forest, IL",
+  "intro": "Need a plumbing repair in the south suburbs? We dispatch from our local office in Tinley Park, so there’s always a plumber near you. Upfront pricing on every job, and same-day service available for emergencies."
+ },
+ "services": {
+  "eyebrow": "What We Fix",
+  "h2": "Plumbing Repairs in Park Forest",
+  "intro": "Our licensed plumbers work on Park Forest’s postwar homes and the few newer builds mixed in among them.",
+  "cards": [
+   {
+    "tag": "Drain Cleaning",
+    "h3": "Drain Cleaning in Park Forest",
+    "paragraph": "[Park Forest’s median year built is 1958, and 77.9% of homes were built between 1940 and 1969](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Park-Forest.pdf), among the oldest housing stock in the southwest suburbs. Original drain lines from that era are often 55 to 85 years old, and clay or cast iron pipe scales up or sags at the joints over that span. A slow kitchen or basement drain is usually the first sign. We clear the line and run a camera through it, so you see what’s causing it.",
+    "cta": "Learn more about drain cleaning",
+    "href": "/tinley-park-il/drain-cleaning"
+   },
+   {
+    "tag": "Sewer Repair",
+    "h3": "Sewer Repair in Park Forest",
+    "paragraph": "With most of Park Forest built before 1970, a lot of the village’s sewer laterals are original clay pipe laid during its postwar construction boom. Pipe that old is prone to cracking, sagging or filling with roots from mature parkway trees, and the result is often a slow drain that turns into a backup after a hard rain. We camera-inspect the line first, then walk you through repair options, including trenchless methods where your yard allows it.",
+    "cta": "Learn more about sewer repair",
+    "href": "/tinley-park-il/sewer-repair"
+   },
+   {
+    "tag": "Sump & Ejector Pumps",
+    "h3": "Sump & Ejector Pumps in Park Forest",
+    "paragraph": "[National Weather Service records show 2.99 inches of rain fell on Park Forest on September 6, 2023](https://www.weather.gov/media/lot/stormdata/pdf/Sep2023.pdf), part of a storm that flooded viaducts and underpasses across the southern suburbs that morning. Rain at that rate pushes sump and ejector pumps hard, and a pump that’s been running for years can fail quietly, often right when you need it most. We test, repair and replace sump and ejector pumps, and can add a battery backup for storms like that one.",
+    "cta": "Learn more about sump & ejector pumps",
+    "href": "/tinley-park-il/sump-pumps"
+   },
+   {
+    "tag": "Toilets & Faucets",
+    "h3": "Toilets & Faucets in Park Forest",
+    "paragraph": "Fixtures in Park Forest’s 1950s and 1960s homes have usually been swapped out more than once, and the supply valves and seals behind them don’t always get replaced at the same time as the fixture itself. That mismatch is often why a toilet runs constantly or a faucet starts dripping years after a remodel. Left alone, a running toilet adds up fast on the water bill. We repair or replace fixtures and valves, and install new ones when it’s time for an upgrade.",
+    "cta": "Learn more about toilets & faucets",
+    "href": "/tinley-park-il/toilet-installation-repair"
+   },
+   {
+    "tag": "Water Heaters",
+    "h3": "Water Heaters in Park Forest",
+    "paragraph": "[Park Forest draws its water from six wells about 300 feet deep into a dolomite limestone aquifer](https://villageofparkforest.com/299/Water), and the village softens it with lime and soda ash before it reaches your tap. Even softened groundwater carries more dissolved minerals than lake water, and that buildup inside a tank is a common reason an older heater starts to rumble or run out of hot water sooner than it used to. Some units are worth saving, others aren’t - we’ll tell you which.",
+    "cta": "Learn more about water heaters",
+    "href": "/tinley-park-il/water-heater-repair"
+   },
+   {
+    "tag": "Emergency Plumbing",
+    "h3": "Emergency Plumbing in Park Forest",
+    "paragraph": "[The September 2023 storm that dropped nearly 3 inches of rain on Park Forest](https://www.weather.gov/media/lot/stormdata/pdf/Sep2023.pdf) caused flash flooding across the southern suburbs, the kind of rain that can overwhelm an aging sewer line or a tired sump pump fast. When water starts coming into your home, every minute counts. Day or night, including weekends and holidays, our line stays open, and we work to get a plumber to your door as soon as we can.",
+    "cta": "Learn more about emergency plumbing",
+    "href": "/tinley-park-il/emergency-plumbing"
+   },
+   {
+    "tag": "Burst Pipes & Spigots",
+    "h3": "Burst Pipes & Spigots in Park Forest",
+    "paragraph": "Many of Park Forest’s 1950s and 1960s homes have outdoor spigots and supply lines that run through unheated crawl spaces, and those are the first to feel it when temperatures drop fast overnight. A spigot or line that freezes can crack quietly and only show itself once it thaws and starts leaking. That kind of damage can spread behind walls before anyone notices. If a pipe or spigot freezes or bursts, shut off the water where you can and call us right away.",
+    "cta": "Learn more about burst pipes & spigots",
+    "href": "/tinley-park-il/burst-pipe-repair"
+   }
+  ],
+  "redBar": {
+   "label": "See all our plumbing services",
+   "href": "/tinley-park-il#services"
+  }
+ },
+ "office": {
+  "eyebrow": "Fast Local Dispatch",
+  "h2": "Plumbers Near You in Park Forest",
+  "body": "Our plumbers work all over Park Forest and the rest of the southwest suburbs, and they know the homes here. Call us any time, day or night.",
+  "addressName": "J. Blanton Plumbing - Tinley Park",
+  "address": "8200 185th St, Suite G28, Tinley Park, IL 60487",
+  "license": "Illinois plumbing license EH0211882",
+  "panelHeading": "Nearby Communities We Serve",
+  "communities": [
+   {
+    "label": "Alsip"
+   },
+   {
+    "label": "Blue Island"
+   },
+   {
+    "label": "Country Club Hills"
+   },
+   {
+    "label": "Flossmoor"
+   },
+   {
+    "label": "Harvey"
+   },
+   {
+    "label": "Homewood"
+   },
+   {
+    "label": "Markham"
+   },
+   {
+    "label": "Matteson"
+   },
+   {
+    "label": "Midlothian"
+   },
+   {
+    "label": "Oak Forest"
+   },
+   {
+    "label": "Orland Park",
+    "href": "/orland-park-il"
+   },
+   {
+    "label": "Palos Heights"
+   },
+   {
+    "label": "South Holland"
+   },
+   {
+    "label": "Tinley Park",
+    "href": "/tinley-park-il"
+   }
+  ],
+  "closing": "Don’t see your town listed? We may still serve it. Call us 24/7 and we’ll let you know."
+ },
+ "why": {
+  "h2": "Why Park Forest Homeowners Choose J. Blanton",
+  "intro": "The most common complaint about plumbing companies is simple: you called a plumber and got a salesman. Here’s how we work instead.",
+  "items": [
+   {
+    "h3": "Options, Not a Sales Pitch",
+    "body": "Our plumber explains the problem in plain English first. When it’s a drain or sewer issue, we can run a camera down the line so you see what we see. Then you decide."
+   },
+   {
+    "h3": "A Clear Price Before Any Work Starts",
+    "body": "We give you a flat-rate price before we touch anything. The price we quote is the price you pay, with no surprise add-ons when the job is done."
+   },
+   {
+    "h3": "We Treat an Emergency Like One",
+    "body": "Our phone line is open around the clock, including weekends and holidays. When water is coming into your Park Forest basement, we work to get a plumber to you as soon as we can."
+   }
+  ]
+ },
+ "reviews": {
+  "h2": "What Park Forest Homeowners Say",
+  "items": [
+   {
+    "text": "Brandon was pretty amazing! Very knowledgeable and he took a lot of time to explain in clear language as we went through the inspection. You will be in very good hands with him, if you ever need a walkthrough of your property.",
+    "name": "Oluwafunto Olaniyan"
+   },
+   {
+    "text": "Ron was professional and efficient. He wore covers on his shoes and kept me updated as he worked. His situation briefing was detailed and understandable. Upon completion of the service he prepared a set of detailed options and quotes on possible actions to prevent future issues. No heavy sales pitch was given for any of the options nor to sign up for the company's service plan. I will be following up with them in the near future.",
+    "name": "Jay Janousek"
+   }
+  ]
+ },
+ "faq": [
+  {
+   "q": "Do you have plumbers near me in Park Forest?",
+   "a": "Yes. Our plumbers work all over Park Forest and the nearby southwest suburbs, including Tinley Park, Matteson and Homewood. Call us 24/7 and we’ll get a plumber to you."
+  },
+  {
+   "q": "Are you licensed and bonded in Illinois?",
+   "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+  },
+  {
+   "q": "How much does a plumber cost in Park Forest?",
+   "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in."
+  },
+  {
+   "q": "Why does my Park Forest basement flood during a heavy storm?",
+   "a": "[A September 2023 storm dropped nearly 3 inches of rain on Park Forest in a matter of hours](https://www.weather.gov/media/lot/stormdata/pdf/Sep2023.pdf), and that kind of rain can overwhelm an older sewer line or a weak sump pump. We check your line and pump, and can recommend a backup system."
+  },
+  {
+   "q": "Why do I keep getting the same drain clog?",
+   "a": "[Nearly 78% of Park Forest’s homes were built between 1940 and 1969](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Park-Forest.pdf), so a lot of original drain lines are now 55 years old or more and starting to scale or sag. Clearing the clog only buys time. We run a camera through the line so you know whether the pipe itself needs repair."
+  },
+  {
+   "q": "Is Park Forest’s water hard on my water heater?",
+   "a": "[Park Forest draws its water from wells into a dolomite limestone aquifer](https://villageofparkforest.com/299/Water), and even after the village softens it, groundwater carries more minerals than lake water. That buildup inside a tank is a common reason an older heater starts to rumble or lose capacity."
+  }
+ ],
+ "ndc": {
+  "h2": "Join and Get 2 Free Maintenance Visits a Year",
+  "body": "Most plumbing problems in Park Forest start small. The No Drip Club brings a plumber to your home, so issues get caught early."
+ },
+ "final": {
+  "h2": "Your Park Forest Plumber, Day or Night",
+  "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+ }
+}

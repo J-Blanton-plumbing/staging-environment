@@ -144,9 +144,42 @@ export interface HubNdcOverride {
   cta: string;
 }
 
+// ── Brief 229 — the Tier 1 City Hub template v7 (City Pruning Phase 1 Pilot). Every piece is optional
+// and absent on every hub but the 3 pilot hubs (/mokena-il, /tinley-park-il, /skokie-il), so their
+// stored shape and rendering are unchanged (each renders in the JSX slot of what it replaces).
+
+/** The v7 "Do We Serve Your Town?" panel (`.cb-panel#service-areas`) under the office map band. */
+export interface HubServiceAreas {
+  /** "Do We Serve Your Town?" (12+ towns, with search) or "Communities We Serve Near {City}". */
+  h3: string;
+  /** The line under the heading (search variant only), e.g. "16 communities near Highland Park. …". */
+  intro?: string;
+  /** A to Z. A Tier 3 town carries its page's `href`; every other town is plain text. */
+  towns: Array<{ label: string; href?: string }>;
+  closing: string;
+  /** The panel's `data-state-url` / `data-state-name` (the no-match line links to the state page). */
+  stateUrl: string;
+  stateName: string;
+}
+
+/** Brief 229 (Track E) — a page's own title rule. `suffix: false` = the title renders exactly as stored. */
+export interface HubSeo {
+  titleSuffix: false;
+}
+
 /** One city's hub content (`city_pages.hub_content`). */
 export interface CityHubStored {
   schema: 1;
+  /**
+   * Brief 229 (optional): 'v7' = the Tier 1 template v7 — the featured service tile + row list
+   * (`services.featured` + `services.list` with thumbnails) and the office map band + the
+   * `office.serviceAreas` panel. Absent on every other hub.
+   */
+  tier1?: 'v7';
+  /** Brief 229 (Track E, optional): this page's Why Us cards over the shared record's. */
+  whyItems?: Array<{ h3: string; body: string }>;
+  /** Brief 229 (Track E, optional): this page's title renders without the automatic brand suffix. */
+  seo?: HubSeo;
   /**
    * Brief 227 (optional, office pages): the city whose service pages this page links to (German
    * Village → 'columbus'). Every service link — cards, featured tile, list, the Why Us camera link —
@@ -176,7 +209,8 @@ export interface CityHubStored {
     cards: HubCard[];
     /** Brief 227 (optional): one featured tile above the card grid — or above the row `list`, which then replaces the grid. */
     featured?: HubFeatured;
-    list?: Array<{ title: string; href: string; desc: string }>;
+    /** Brief 229: a v7 row carries its card's photo as a thumbnail (`image`, absent on German Village). */
+    list?: Array<{ title: string; href: string; desc: string; image?: HubImage }>;
     /** Brief 227 (optional): one link in place of the "Explore all our plumbing services" directory. */
     linkBar?: { label: string; href: string };
   };
@@ -209,6 +243,13 @@ export interface CityHubStored {
     /** Brief 227 (optional): the plain-text neighborhood panel, in place of the linked communities
      *  line (`areasH3` / `areas` / `more` are then not shown and not required). */
     neighborhoods?: HubNeighborhoods;
+    /** Brief 229 (v7, optional): the service-areas panel; also the Plumber node's `areaServed`. */
+    serviceAreas?: HubServiceAreas;
+    /**
+     * Brief 229 (optional): the office's Google listing number for its Plumber JSON-LD `telephone`
+     * ("+1-708-240-3862") — schema only: every visible phone keeps rendering from Global Settings.
+     */
+    schemaTelephone?: string;
   };
   depth: { h2: string; intro: string; tiles: Array<{ title: string; body: string }> };
   /** The Why Us H2 (visible heading, per page — Brief 206 decision 3). */
@@ -387,7 +428,13 @@ export function hubPlumberJsonLd(
   phoneDisplay: string,
   schemaPhone: (d: string) => string,
   /** Brief 221 (C1): the office's synced Google numbers, appended LAST; only when they are visible. */
-  aggregateRating: AggregateRatingNode | null = null
+  aggregateRating: AggregateRatingNode | null = null,
+  /**
+   * Brief 229: the Google listing number (`office.schemaTelephone`, "+1-708-240-3862") in place of the
+   * site phone — schema only. The hub page always passes its own; a service page passes it only for a
+   * pilot hub (src/app/[city]/[service]/page.tsx), so every other page's node is unchanged.
+   */
+  telephoneOverride?: string
 ) {
   const gbp = hub.office.gbpUrl;
   const a = addressParts(hub.office.address);
@@ -402,7 +449,7 @@ export function hubPlumberJsonLd(
     url: `${SITE}/${hub.slug}`,
     sameAs: [gbp],
     hasMap: gbp,
-    telephone: schemaPhone(phoneDisplay),
+    telephone: telephoneOverride || schemaPhone(phoneDisplay),
     address: { '@type': 'PostalAddress', ...a, addressCountry: 'US' },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
@@ -411,9 +458,12 @@ export function hubPlumberJsonLd(
       closes: '23:59',
     },
     // Brief 227: an office page's neighborhood panel IS its service area ("German Village, Columbus, OH").
+    // Brief 229: a v7 hub's service-areas panel is its service area (the hub city + every panel town).
     areaServed: hub.office.neighborhoods
       ? hub.office.neighborhoods.names.map((n) => `${n}, ${a.addressLocality}, ${st}`)
-      : [hub.office.schemaArea || `${hub.name}, ${st}`, ...hub.office.areas.map((x) => x.area || `${x.label}, ${st}`)],
+      : hub.office.serviceAreas
+        ? [hub.office.schemaArea || `${hub.name}, ${st}`, ...hub.office.serviceAreas.towns.map((t) => `${t.label}, ${st}`)]
+        : [hub.office.schemaArea || `${hub.name}, ${st}`, ...hub.office.areas.map((x) => x.area || `${x.label}, ${st}`)],
     ...(aggregateRating ? { aggregateRating } : {}),
   };
 }
@@ -501,8 +551,13 @@ export function requiredEmptyFields(hub: CityHubStored, metaTitle: string, metaD
     need('services.linkBar.href', hub.services.linkBar.href);
   }
   const panel = hub.office?.neighborhoods;
+  const areasPanel = hub.office?.serviceAreas;
   for (const k of ['eyebrow', 'h2', 'body', 'address'] as const) need(`office.${k}`, hub.office?.[k]);
-  if (panel) {
+  if (areasPanel) {
+    // Brief 229: the v7 service-areas panel replaces the linked communities line.
+    for (const k of ['h3', 'closing', 'stateUrl', 'stateName'] as const) need(`office.serviceAreas.${k}`, areasPanel[k]);
+    list('office.serviceAreas.towns', areasPanel.towns).forEach((t: { label: string }, i) => need(`office.serviceAreas.towns[${i}].label`, t?.label));
+  } else if (panel) {
     // Brief 227: the plain-text panel replaces the linked communities line.
     for (const k of ['h3', 'closing', 'stateUrl', 'stateName'] as const) need(`office.neighborhoods.${k}`, panel[k]);
     list('office.neighborhoods.names', panel.names).forEach((n, i) => need(`office.neighborhoods.names[${i}]`, n));
@@ -526,7 +581,7 @@ export function requiredEmptyFields(hub: CityHubStored, metaTitle: string, metaD
     need('hero.video.src', hub.hero.video.src);
     need('hero.video.poster', hub.hero.video.poster);
   }
-  if (!panel) {
+  if (!panel && !areasPanel) {
     list('office.areas', hub.office?.areas).forEach((a: { label: string; href: string }, i) => {
       need(`office.areas[${i}].label`, a?.label);
       need(`office.areas[${i}].href`, a?.href);
@@ -566,7 +621,7 @@ export function blankCityHub(name: string): CityHubStored {
     hero: { eyebrow: '24/7 Local Plumbers', h1: '', sub: '', photo: 'standard', crop: 'standard' },
     trust: ['Serving Chicagoland since 1993', 'Licensed & bonded in Illinois', '4.7 stars · 5,669+ Google reviews across all locations'],
     services: { h2: `Plumbing Services in ${name}`, intro: '', cards: [{ title: '', href: '', desc: '', image: { src: '', alt: '' } }] },
-    office: { eyebrow: '', h2: `Our ${name} Office`, body: '', address: '', areasH3: `Communities We Serve Near ${name}`, areas: [{ label: '', href: '' }], more: '/locations/chicagoland' },
+    office: { eyebrow: '', h2: `Our ${name} Office`, body: '', address: '', areasH3: `Communities We Serve Near ${name}`, areas: [{ label: '', href: '' }], more: '/locations/illinois' },
     depth: { h2: `What ${name} Homes Need From a Plumber`, intro: '', tiles: [{ title: '', body: '' }] },
     whyH2: `Why ${name} Homeowners Choose J. Blanton`,
     reviews: {

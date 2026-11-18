@@ -14,13 +14,24 @@
  */
 import { resolveCityHub } from '@/lib/cms/city-hubs';
 import { resolveCityServiceV2 } from '@/lib/cms/city-services-v2';
+import { getCity } from '@/lib/content/cities';
 
-export type CityTemplate = 'city-hub' | 'city-service-v2';
+/**
+ * Brief 229 adds two templates whose structured data names offices in its own way, so the footer's
+ * all-offices graph is off on them too: the Tier 3 town page (README §2: no Plumber with an address
+ * on a town page — the Service's provider is the hub's #office @id only) and the three locations pages
+ * (an ItemList of the offices as Plumber items, per the package's schema spec).
+ */
+export type CityTemplate = 'city-hub' | 'city-service-v2' | 'tier3-town' | 'locations';
+
+const LOCATIONS_PATHS: ReadonlySet<string> = new Set(['/locations', '/locations/illinois', '/locations/ohio']);
 
 /** The city template `pathname` renders, or null (any other page — including a 404). Never throws. */
 export async function cityTemplateForPath(pathname: string | null | undefined): Promise<CityTemplate | null> {
   if (!pathname) return null;
+  if (LOCATIONS_PATHS.has(pathname)) return 'locations';
   const seg = pathname.split('/').filter(Boolean);
+  if (seg.length === 1 && getCity(seg[0])?.pilot?.kind === 'town') return 'tier3-town';
   if (seg.length < 1 || seg.length > 2 || seg.some((s) => !/^[a-z0-9-]+$/.test(s))) return null;
   try {
     if (seg.length === 1) return (await resolveCityHub(seg[0])).kind === 'hub' ? 'city-hub' : null;
