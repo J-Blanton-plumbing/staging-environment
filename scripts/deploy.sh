@@ -1225,6 +1225,22 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/u
 # on. Exit 1 only when a write did not land. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-2026-11-office-addresses-gbp.ts commit --changed-file .city-pages-snapshot/changed.txt
+# Brief 229 - City Pruning Phase 1 Pilot (CMS side; the 1,184 redirects ship in
+# code, src/lib/city-pruning/phase1.ts). NEW rows next to the legacy ones, never
+# a rename (the Brief 202 old-slug seed trap - every seed above keys on the
+# legacy slugs and keeps reporting ALREADY-*): /mokena-il /tinley-park-il
+# /skokie-il City Hubs (Tier 1 v7) copied from the legacy hubs' published
+# content + their 99 service pages, the Joliet + Columbus Nov 2026 copy (one new
+# published version each), and the 7 Tier 3 town rows (template 'tier3-town').
+# PRE-SWAP on purpose: the new build 301s /mokena -> /mokena-il the moment it
+# goes live, so the rows must already exist (the old build ignores them - its
+# registry has no -il slugs). Joliet/Columbus + the 3 new hubs go to changed.txt
+# so the CITY PAGES LIVE CHECK expects them to change. ALREADY-APPLIED from then
+# on. Exit 1 only when a write did not land. Do NOT add `|| true`. MUST stay
+# before verify-sitemap-queries.ts below (it asserts every registry slug - the
+# 10 new pilot slugs included - has a city_pages row).
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
+  scripts/city-pruning/apply-phase1-pilot.ts commit --changed-file .city-pages-snapshot/changed.txt
 # Brief 147 (Track D) + Brief 158 (Track C): validate the database against
 # what the checked-in code assumes, BEFORE the swap below.
 #  - every sitemap <lastmod> source query runs against the real schema.

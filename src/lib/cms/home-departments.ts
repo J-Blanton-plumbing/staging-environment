@@ -15,6 +15,7 @@ import { resolveCityHub } from '@/lib/cms/city-hubs';
 import { hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
 import { schemaPhone } from '@/lib/schema/city-pages';
 import { HOME_PACKAGE_DEPARTMENT_IDS } from '@/lib/schema/homepage';
+import { pilotPageOfOffice } from '@/lib/city-pruning/pilot-pages';
 
 const TTL_MS = 60_000;
 let memo: { key: string; at: number; ids: string[] } | null = null;
@@ -29,7 +30,8 @@ export async function getHomeDepartmentIds(officeSlugs: readonly string[]): Prom
   const ids: string[] = [];
   for (const slug of slugs) {
     try {
-      const d = await resolveCityHub(slug, { preview: false });
+      // Brief 229: a City Pruning pilot office's hub is its new page (/mokena-il), so its @id follows it.
+      const d = await resolveCityHub(pilotPageOfOffice(slug) ?? slug, { preview: false });
       // The phone does not affect the @id; the builder only needs a value to format.
       const node = d.kind === 'hub' ? hubPlumberJsonLd(d.hub, '', schemaPhone) : null;
       if (node) ids.push(node['@id']);

@@ -1,0 +1,102 @@
+page_type,final_url_later,current_url,link_to_use_now,note
+Locations index,/locations,/locations,/locations,pilot: new URL
+State page,/locations/illinois,/locations/chicagoland,/locations/illinois,pilot: new URL
+State page,/locations/ohio,/locations/central-ohio,/locations/ohio,pilot: new URL
+City hub,/algonquin-il,/algonquin,/algonquin,outside pilot: keep current URL
+City hub,/arlington-heights-il,/arlington-heights,/arlington-heights,outside pilot: keep current URL
+City hub,/chicago-il,/chicago,/chicago,outside pilot: keep current URL
+City hub,/elgin-il,/elgin,/elgin,outside pilot: keep current URL
+City hub,/elmhurst-il,/elmhurst,/elmhurst,outside pilot: keep current URL
+City hub,/evanston-il,/evanston,/evanston,outside pilot: keep current URL
+City hub,/geneva-il,/geneva,/geneva,outside pilot: keep current URL
+City hub,/hanover-park-il,/hanover-park,/hanover-park,outside pilot: keep current URL
+City hub,/highland-park-il,/highland-park,/highland-park,outside pilot: keep current URL
+City hub,/hinsdale-il,/hinsdale,/hinsdale,outside pilot: keep current URL
+City hub,/joliet-il,/joliet,/joliet,outside pilot: keep current URL
+City hub,/mchenry-il,/mchenry,/mchenry,outside pilot: keep current URL
+City hub,/mokena-il,/mokena,/mokena-il,pilot: new URL
+City hub,/naperville-il,/naperville,/naperville,outside pilot: keep current URL
+City hub,/northbrook-il,/northbrook,/northbrook,outside pilot: keep current URL
+City hub,/skokie-il,/skokie,/skokie-il,pilot: new URL
+City hub,/tinley-park-il,/tinley-park,/tinley-park-il,pilot: new URL
+City hub,/columbus-oh,/columbus,/columbus,outside pilot: keep current URL
+Office page (no services),/chicago-lincoln-park-il,/chicago-lincoln-park,/chicago-lincoln-park,outside pilot: keep current URL
+Office page (no services),/columbus-german-village-oh,/columbus-german-village,/columbus-german-village,outside pilot: keep current URL
+Town page (no services),/antioch-il,/antioch,/antioch,outside pilot: keep current URL
+Town page (no services),/aurora-il,/aurora,/aurora,outside pilot: keep current URL
+Town page (no services),/bartlett-il,/bartlett,/bartlett,outside pilot: keep current URL
+Town page (no services),/bolingbrook-il,/bolingbrook,/bolingbrook,outside pilot: keep current URL
+Town page (no services),/buffalo-grove-il,/buffalo-grove,/buffalo-grove,outside pilot: keep current URL
+Town page (no services),/carol-stream-il,/carol-stream,/carol-stream,outside pilot: keep current URL
+Town page (no services),/cary-il,/cary,/cary,outside pilot: keep current URL
+Town page (no services),/clarendon-hills-il,/clarendon-hills,/clarendon-hills,outside pilot: keep current URL
+Town page (no services),/crest-hill-il,/crest-hill,/crest-hill,outside pilot: keep current URL
+Town page (no services),/crystal-lake-il,/crystal-lake,/crystal-lake,outside pilot: keep current URL
+Town page (no services),/darien-il,/darien,/darien,outside pilot: keep current URL
+Town page (no services),/deerfield-il,/deerfield,/deerfield,outside pilot: keep current URL
+Town page (no services),/des-plaines-il,/des-plaines,/des-plaines,outside pilot: keep current URL
+Town page (no services),/downers-grove-il,/downers-grove,/downers-grove,outside pilot: keep current URL
+Town page (no services),/elk-grove-il,/elk-grove,/elk-grove,outside pilot: keep current URL
+Town page (no services),/forest-park-il,/forest-park,/forest-park,outside pilot: keep current URL
+Town page (no services),/fox-lake-il,/fox-lake,/fox-lake,outside pilot: keep current URL
+Town page (no services),/frankfort-il,/frankfort,/frankfort-il,pilot: new URL
+Town page (no services),/glen-ellyn-il,/glen-ellyn,/glen-ellyn,outside pilot: keep current URL
+Town page (no services),/glencoe-il,/glencoe,/glencoe,outside pilot: keep current URL
+Town page (no services),/glenview-il,/glenview,/glenview,outside pilot: keep current URL
+Town page (no services),/grayslake-il,/grayslake,/grayslake,outside pilot: keep current URL
+Town page (no services),/gurnee-il,/gurnee,/gurnee,outside pilot: keep current URL
+Town page (no services),/hampshire-il,/hampshire,/hampshire,outside pilot: keep current URL
+Town page (no services),/harwood-heights-il,/harwood-heights,/harwood-heights,outside pilot: keep current URL
+Town page (no services),/hoffman-estates-il,/hoffman-estates,/hoffman-estates,outside pilot: keep current URL
+Town page (no services),/huntley-il,/huntley,/huntley,outside pilot: keep current URL
+Town page (no services),/island-lake-il,/island-lake,/island-lake,outside pilot: keep current URL
+Town page (no services),/kenilworth-il,/kenilworth,/kenilworth,outside pilot: keep current URL
+Town page (no services),/la-grange-il,/la-grange,/la-grange,outside pilot: keep current URL
+Town page (no services),/lake-bluff-il,/lake-bluff,/lake-bluff,outside pilot: keep current URL
+Town page (no services),/lake-forest-il,/lake-forest,/lake-forest,outside pilot: keep current URL
+Town page (no services),/lake-villa-il,/lake-villa,/lake-villa,outside pilot: keep current URL
+Town page (no services),/lake-zurich-il,/lake-zurich,/lake-zurich,outside pilot: keep current URL
+Town page (no services),/lake-in-the-hills-il,/lake-in-the-hills,/lake-in-the-hills,outside pilot: keep current URL
+Town page (no services),/libertyville-il,/libertyville,/libertyville,outside pilot: keep current URL
+Town page (no services),/lincolnshire-il,/lincolnshire,/lincolnshire,outside pilot: keep current URL
+Town page (no services),/lincolnwood-il,/lincolnwood,/lincolnwood-il,pilot: new URL
+Town page (no services),/lockport-il,/lockport,/lockport,outside pilot: keep current URL
+Town page (no services),/lombard-il,/lombard,/lombard,outside pilot: keep current URL
+Town page (no services),/morton-grove-il,/morton-grove,/morton-grove-il,pilot: new URL
+Town page (no services),/mount-prospect-il,/mount-prospect,/mount-prospect,outside pilot: keep current URL
+Town page (no services),/mundelein-il,/mundelein,/mundelein,outside pilot: keep current URL
+Town page (no services),/niles-il,/niles,/niles-il,pilot: new URL
+Town page (no services),/oak-brook-il,/oak-brook,/oak-brook,outside pilot: keep current URL
+Town page (no services),/oak-park-il,/oak-park,/oak-park,outside pilot: keep current URL
+Town page (no services),/orland-park-il,/orland-park,/orland-park-il,pilot: new URL
+Town page (no services),/palatine-il,/palatine,/palatine,outside pilot: keep current URL
+Town page (no services),/park-forest-il,/park-forest,/park-forest-il,pilot: new URL
+Town page (no services),/park-ridge-il,/park-ridge,/park-ridge-il,pilot: new URL
+Town page (no services),/plainfield-il,/plainfield,/plainfield,outside pilot: keep current URL
+Town page (no services),/river-forest-il,/river-forest,/river-forest,outside pilot: keep current URL
+Town page (no services),/riverside-il,/riverside,/riverside,outside pilot: keep current URL
+Town page (no services),/rolling-meadows-il,/rolling-meadows,/rolling-meadows,outside pilot: keep current URL
+Town page (no services),/romeoville-il,/romeoville,/romeoville,outside pilot: keep current URL
+Town page (no services),/round-lake-il,/round-lake,/round-lake,outside pilot: keep current URL
+Town page (no services),/schaumburg-il,/schaumburg,/schaumburg,outside pilot: keep current URL
+Town page (no services),/south-elgin-il,/south-elgin,/south-elgin,outside pilot: keep current URL
+Town page (no services),/spring-grove-il,/spring-grove,/spring-grove,outside pilot: keep current URL
+Town page (no services),/st-charles-il,/st-charles,/st-charles,outside pilot: keep current URL
+Town page (no services),/vernon-hills-il,/vernon-hills,/vernon-hills,outside pilot: keep current URL
+Town page (no services),/villa-park-il,/villa-park,/villa-park,outside pilot: keep current URL
+Town page (no services),/wauconda-il,/wauconda,/wauconda,outside pilot: keep current URL
+Town page (no services),/waukegan-il,/waukegan,/waukegan,outside pilot: keep current URL
+Town page (no services),/westchester-il,/westchester,/westchester,outside pilot: keep current URL
+Town page (no services),/western-springs-il,/western-springs,/western-springs,outside pilot: keep current URL
+Town page (no services),/westmont-il,/westmont,/westmont,outside pilot: keep current URL
+Town page (no services),/wheeling-il,/wheeling,/wheeling,outside pilot: keep current URL
+Town page (no services),/willowbrook-il,/willowbrook,/willowbrook,outside pilot: keep current URL
+Town page (no services),/wilmette-il,/wilmette,/wilmette,outside pilot: keep current URL
+Town page (no services),/winnetka-il,/winnetka,/winnetka,outside pilot: keep current URL
+Town page (no services),/wonder-lake-il,/wonder-lake,/wonder-lake,outside pilot: keep current URL
+Town page (no services),/woodridge-il,/woodridge,/woodridge,outside pilot: keep current URL
+Town page (no services),/woodstock-il,/woodstock,/woodstock,outside pilot: keep current URL
+Town page (no services),/dublin-oh,/dublin,/dublin,outside pilot: keep current URL
+Town page (no services),/hilliard-oh,/hilliard,/hilliard,outside pilot: keep current URL
+Town page (no services),/lancaster-oh,/lancaster,/lancaster,outside pilot: keep current URL
+Town page (no services),/westerville-oh,/westerville,/westerville,outside pilot: keep current URL

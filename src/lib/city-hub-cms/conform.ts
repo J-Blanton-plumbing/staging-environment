@@ -55,6 +55,7 @@ import {
   type HubHeroVideo,
   type HubPhoto,
   type HubReview,
+  type HubServiceAreas,
 } from './model';
 import { keepRatingFallbacks, RATING_TOKEN_ONLY_RE } from '@/lib/cms/tokens';
 
@@ -221,7 +222,9 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
     if (services.list !== undefined && services.list !== null) svcList = ctx.list(services.list, 'services.list').map((x, i) => {
       const p = `services.list[${i}]`;
       const o2 = ctx.obj(x, p);
-      return { title: ctx.text(o2.title, `${p}.title`), href: serviceHref(o2.href, `${p}.href`, 'A service row'), desc: ctx.text(o2.desc, `${p}.desc`) };
+      // Brief 229: a v7 row's thumbnail (kept only when present).
+      const img = o2.image !== undefined && o2.image !== null ? ctx.image(o2.image, `${p}.image`) : null;
+      return { title: ctx.text(o2.title, `${p}.title`), href: serviceHref(o2.href, `${p}.href`, 'A service row'), desc: ctx.text(o2.desc, `${p}.desc`), ...(img ? { image: img } : {}) };
     });
   } else if (services.list !== undefined && services.list !== null) {
     ctx.err('services.list', 'structure', 'The service list is shown only with a featured service.');
@@ -254,6 +257,56 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       stateUrl: ctx.href(o.stateUrl, 'office.neighborhoods.stateUrl'),
       stateName: ctx.text(o.stateName, 'office.neighborhoods.stateName'),
     };
+  }
+  // ── Brief 229: the Tier 1 v7 pieces, each kept only when present (absent on every other hub) ──
+  let tier1: 'v7' | undefined;
+  if (r.tier1 !== undefined && r.tier1 !== null && r.tier1 !== '') {
+    if (r.tier1 === 'v7') tier1 = 'v7';
+    else ctx.err('tier1', 'value', `The Tier 1 template version is "v7" (got "${String(r.tier1)}").`);
+  }
+  let serviceAreas: HubServiceAreas | undefined;
+  if (office.serviceAreas !== undefined && office.serviceAreas !== null) {
+    const o = ctx.obj(office.serviceAreas, 'office.serviceAreas');
+    const intro = optText(ctx, o.intro, 'office.serviceAreas.intro');
+    serviceAreas = {
+      h3: ctx.text(o.h3, 'office.serviceAreas.h3'),
+      ...(intro ? { intro } : {}),
+      towns: ctx.list(o.towns, 'office.serviceAreas.towns').map((x, i) => {
+        const p = `office.serviceAreas.towns[${i}]`;
+        const t = ctx.obj(x, p);
+        const href = t.href !== undefined && t.href !== null && t.href !== '' ? ctx.href(t.href, `${p}.href`) : '';
+        const m = href.match(/^\/([a-z0-9-]+)$/);
+        if (href && (!m || !checks.cityExists(m[1]))) ctx.err(`${p}.href`, 'link', 'A town link must point at a town page (e.g. /frankfort-il).');
+        return { label: ctx.text(t.label, `${p}.label`), ...(href ? { href } : {}) };
+      }),
+      closing: ctx.text(o.closing, 'office.serviceAreas.closing'),
+      stateUrl: ctx.href(o.stateUrl, 'office.serviceAreas.stateUrl'),
+      stateName: ctx.text(o.stateName, 'office.serviceAreas.stateName'),
+    };
+  }
+  // Brief 229: a schema-only value (never rendered as text, so call tracking has nothing to swap) — the
+  // one field exempt from the "{{phone}} instead of a number" rule; it must be exactly +1-XXX-XXX-XXXX.
+  const schemaTelephone = typeof office.schemaTelephone === 'string' ? office.schemaTelephone.trim() : '';
+  if (office.schemaTelephone !== undefined && office.schemaTelephone !== null && typeof office.schemaTelephone !== 'string') {
+    ctx.err('office.schemaTelephone', 'structure', 'Expected text.');
+  }
+  if (schemaTelephone && !/^\+1-\d{3}-\d{3}-\d{4}$/.test(schemaTelephone)) {
+    ctx.err('office.schemaTelephone', 'value', 'The schema phone is the Google listing number as +1-708-240-3862.');
+  }
+  let whyItems: Array<{ h3: string; body: string }> | undefined;
+  if (r.whyItems !== undefined && r.whyItems !== null) {
+    whyItems = ctx.list(r.whyItems, 'whyItems').map((x, i) => {
+      const o = ctx.obj(x, `whyItems[${i}]`);
+      // `{camera}` stays a token (the view swaps in /{city}/video-camera-sewer-inspections), as on the shared record.
+      const body = ctx.text(typeof o.body === 'string' ? o.body.replace(/\{camera\}/g, '/camera-token') : o.body, `whyItems[${i}].body`, { rich: true });
+      return { h3: ctx.text(o.h3, `whyItems[${i}].h3`), body: body.replace(/\/camera-token/g, '{camera}') };
+    });
+  }
+  let seo: { titleSuffix: false } | undefined;
+  if (r.seo !== undefined && r.seo !== null) {
+    const o = ctx.obj(r.seo, 'seo');
+    if (o.titleSuffix === false) seo = { titleSuffix: false };
+    else if (o.titleSuffix !== undefined) ctx.err('seo.titleSuffix', 'value', 'Only "no brand suffix" (false) can be set here.');
   }
   const hasLicense = office.license !== undefined && office.license !== null;
   const license = hasLicense ? ctx.text(office.license, 'office.license') : '';
@@ -348,6 +401,9 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
 
   const value: CityHubStored = {
     schema: 1,
+    ...(tier1 ? { tier1 } : {}),
+    ...(whyItems ? { whyItems } : {}),
+    ...(seo ? { seo } : {}),
     ...(serviceHub ? { serviceHub } : {}),
     ...(breadcrumb ? { breadcrumb } : {}),
     hero: {
@@ -384,6 +440,8 @@ export function conformHub(raw: unknown, slug: string, crop: HubCrop, checks: Hu
       ...(mapCid ? { mapCid } : {}),
       ...(hasLicense ? { license } : {}),
       ...(neighborhoods ? { neighborhoods } : {}),
+      ...(serviceAreas ? { serviceAreas } : {}),
+      ...(schemaTelephone ? { schemaTelephone } : {}),
     },
     depth: {
       h2: ctx.text(depth.h2, 'depth.h2'),

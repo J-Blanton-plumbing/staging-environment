@@ -7,6 +7,10 @@ import type { AggregateRatingNode } from '@/lib/schema/aggregate-rating';
 import { faqPageJsonLd, hubBreadcrumbJsonLd, ldJson, schemaPhone } from '@/lib/schema/city-pages';
 import CityHubRoot from './CityHubRoot';
 import HubHeroVideo from './HubHeroVideo';
+import { pilotServiceHref, pruneHref } from '@/lib/city-pruning/phase1';
+// Brief 229: plain server markup — CityHubRoot wires the search and links pruning.css on a `.pruned` root
+// (no new client component on the [city] route, so every other city page keeps its exact chunks).
+import SearchBox from '@/components/city-pruning/SearchBox';
 
 /**
  * City Hubs V2 (Brief 205) — ALL the markup of a city hub page (/joliet, /tinley-park,
@@ -61,8 +65,9 @@ function Rich({ text, linkStyle }: { text: string; linkStyle?: CSSProperties }) 
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
+    // Brief 229 (Track F): a link to a page the City Pruning pilot redirects → its final target.
     parts.push(
-      <a key={m.index} href={m[2]} style={linkStyle}>
+      <a key={m.index} href={pruneHref(m[2])} style={linkStyle}>
         {m[1]}
       </a>
     );
@@ -109,6 +114,16 @@ function CheckCircle() {
     <svg aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="9.5" />
       <path d="m8 12.3 2.7 2.7L16.2 9.5" />
+    </svg>
+  );
+}
+
+/** Brief 229 — the v7 license callout's shield-check (the package's inline SVG). */
+function ShieldIcon() {
+  return (
+    <svg aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+      <path d="m9 12 2 2 4-4" />
     </svg>
   );
 }
@@ -237,7 +252,9 @@ export default function CityHubView({
   // Brief 227 — the office-page pieces. Each one renders in the JSX SLOT of the element it replaces
   // (`x ? <new/> : <old/>`, never a new `{x && …}` sibling), so a hub without them renders — HTML and
   // RSC payload — exactly as before.
-  const bc = hub.breadcrumb;
+  // Brief 229 (Track 0 step 6): a breadcrumb step the pilot redirects (German Village's
+  // /locations/central-ohio) links to its final page — in the visible crumb and in its BreadcrumbList.
+  const bc = hub.breadcrumb ? { ...hub.breadcrumb, trail: hub.breadcrumb.trail.map((st) => ({ ...st, href: pruneHref(st.href) })) } : undefined;
   const featured = hub.services.featured;
   const linkBar = hub.services.linkBar;
   const panel = hub.office.neighborhoods;
@@ -283,13 +300,18 @@ export default function CityHubView({
     embedUrl: `${YT_EMBED}${SH.video.youtubeId}`,
   };
   // Brief 216: derived at render, never stored (see the header).
-  const plumberJsonLd = hubPlumberJsonLd(hub, phone.display, schemaPhone, aggregateRating);
+  // Brief 229: a pilot hub's (and Joliet's) Plumber node carries its Google listing number.
+  const plumberJsonLd = hubPlumberJsonLd(hub, phone.display, schemaPhone, aggregateRating, hub.office.schemaTelephone);
+  // Brief 229 — the Tier 1 template v7 (the 3 pilot hubs only): its services and office sections each
+  // render in the JSX slot of the section they replace, so every other hub renders exactly as before.
+  const v7 = hub.tier1 === 'v7';
+  const areasPanel = hub.office.serviceAreas;
   const faqJsonLd = hub.faq.items.length ? faqPageJsonLd(hub.faq.items) : null;
   const heroPhoto = hub.hero.photo === 'standard' ? SH.vanPhoto : hub.hero.photo;
   const fullBleed = hub.hero.layout === 'full-bleed';
 
   return (
-    <CityHubRoot className={`city-hub city-hub--${hub.slug}`}>
+    <CityHubRoot className={`city-hub city-hub--${hub.slug}${v7 ? ' pruned' : ''}`}>
       {breadcrumbJsonLd ? (
         <>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, '\\u003c') }} />
@@ -371,7 +393,41 @@ export default function CityHubView({
             <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{hub.services.h2}</h2>
             <p className="t-body pv-mute" style={s('margin:0 0 8px')}>{hub.services.intro}</p>
           </div>
-          {featured ? (
+          {v7 && featured && hub.services.list ? (
+            <div className="sc-wrap">
+              <article className="sc-f">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt={featured.image.alt} className="sc-fimg" height={500} src={featured.image.src} width={800} />
+                <div className="sv-ftxt sc-ftxt">
+                  <span className="t-eyebrow sv-eye sc-eye">{featured.eyebrow}</span>
+                  <h3 className="sv-ft sc-ft">
+                    <a href={featured.href}>{featured.title}</a>
+                  </h3>
+                  <p className="sv-fd sc-fd">{featured.intro}</p>
+                  <a aria-label={`Learn more about ${featured.title}`} className="svc-cta-onred" href={featured.href}>
+                    {`${featured.cta} `}<span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </article>
+              <nav aria-label={`More plumbing services in ${city}`} className="sc-list">
+                <ul>
+                  {hub.services.list.map((r) => (
+                    <li key={r.href}>
+                      <a className="sc-row" href={r.href}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img alt="" height={500} loading="lazy" src={r.image?.src ?? ''} width={800} />
+                        <span className="sc-rt">
+                          <span className="sc-rh">{r.title}</span>
+                          <span className="sc-rd">{r.desc}</span>
+                        </span>
+                        <span aria-hidden="true" className="sc-arr">→</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          ) : featured ? (
             <div className="hub-svc-office">
               <article className="hub-feat">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -439,7 +495,8 @@ export default function CityHubView({
                     <ul>
                       {items.map(({ label, slug }) => (
                         <li key={slug}>
-                          <a href={`/${dirSlug}/${slug}`}>{label}</a>
+                          {/* Brief 229: a pilot hub's fold slugs link to the page they live on (they 301); every other hub: unchanged. */}
+                          <a href={pilotServiceHref(dirSlug, slug)}>{label}</a>
                         </li>
                       ))}
                     </ul>
@@ -452,7 +509,63 @@ export default function CityHubView({
         </div>
       </section>
 
-      {/* 4. OFFICE */}
+      {/* 4. OFFICE — Brief 229: a v7 hub's map band + office card + service-areas panel in this slot */}
+      {v7 && areasPanel ? (
+      <section className="sec" id="office" style={s('background:#F1E8DC')}>
+        <div className="wrap">
+          <div className="cc-band">
+            <iframe
+              allowFullScreen
+              className="cc-map"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src={mapSrc}
+              title={hub.office.mapTitle || fillPattern(SH.patterns.mapTitle, { city })}
+            />
+            <div className="cc-card">
+              <span className="t-eyebrow" style={s('color:#BC0E0E')}>{hub.office.eyebrow}</span>
+              <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{hub.office.h2}</h2>
+              <p className="t-body pv-mute" style={s('margin:0 0 20px')}>{hub.office.body}</p>
+              <div className="hp-addr">
+                <PinIcon />
+                <div>
+                  <strong>{fillPattern(SH.patterns.addressName, { city })}</strong>
+                  <span className="t-body-sm pv-mute">{hub.office.address}</span>
+                </div>
+              </div>
+              {hub.office.license ? (
+                <div className="hp-addr cc-license">
+                  <ShieldIcon />
+                  <div>
+                    <strong>{hub.office.license}</strong>
+                  </div>
+                </div>
+              ) : null}
+              <div className="hero-btns">
+                {callNow}
+                <ScheduleTrigger as="button" className="btn btn-outline t-btn" label={SH.officeSchedule} />
+              </div>
+            </div>
+          </div>
+          <div className="cb-panel" data-phone-href={phone.href} data-state-name={areasPanel.stateName} data-state-url={areasPanel.stateUrl} id="service-areas">
+            <div className="cb-top">
+              <div>
+                <h3 className="t-h4" style={s(areasPanel.intro ? 'margin:0 0 6px' : 'margin:0')}>{areasPanel.h3}</h3>
+                {areasPanel.intro ? <p className="t-body-sm pv-mute" style={s('margin:0')}>{areasPanel.intro}</p> : null}
+              </div>
+              {areasPanel.towns.length >= 12 ? <SearchBox /> : null}
+            </div>
+            <ul className="cb-list" data-cb-list="">
+              {areasPanel.towns.map((t) => (
+                <li key={t.label}>{t.href ? <a href={t.href}>{t.label}</a> : t.label}</li>
+              ))}
+            </ul>
+            <p aria-live="polite" className="t-body-sm cb-empty" data-cb-empty="" hidden />
+            <p className="t-body-sm pv-mute cb-foot">{areasPanel.closing}</p>
+          </div>
+        </div>
+      </section>
+      ) : (
       <section className="sec" id="office" style={s('background:#F1E8DC')}>
         <div className="wrap hp-office">
           <div className="hp-office-map">
@@ -481,7 +594,7 @@ export default function CityHubView({
               <ScheduleTrigger as="button" className="btn btn-outline t-btn" label={SH.officeSchedule} />
             </div>
             {panel ? (
-            <div className="hp-areas hub-nbhd" data-state-name={panel.stateName} data-state-url={panel.stateUrl} id="service-areas">
+            <div className="hp-areas hub-nbhd" data-state-name={panel.stateName} data-state-url={pruneHref(panel.stateUrl)} id="service-areas">
               <h3 className="t-h4" style={s('margin:0 0 14px')}>{panel.h3}</h3>
               <ul className="hub-nbhd-list">
                 {panel.names.map((n) => (
@@ -496,17 +609,19 @@ export default function CityHubView({
               <p className="t-body-sm pv-mute" style={s('margin:0')}>
                 {hub.office.areas.map((a, i) => (
                   <Fragment key={a.href}>
-                    <a href={a.href}>{a.label}</a>
+                    {/* Brief 229 (Track F): a community the pilot redirects links to its final page. */}
+                    <a href={pruneHref(a.href)}>{a.label}</a>
                     {i < hub.office.areas.length - 1 ? ', ' : L.and}
                   </Fragment>
                 ))}
-                <a href={hub.office.more}>{L.more}</a>.
+                <a href={pruneHref(hub.office.more)}>{L.more}</a>.
               </p>
             </div>
             )}
           </div>
         </div>
       </section>
+      )}
 
       {/* 5. LOCAL DEPTH */}
       <section className="sec" style={s('background:#F9F3EC')}>
@@ -574,7 +689,7 @@ export default function CityHubView({
             <h2 className="hub-h2 t-h2" style={s('margin:12px 0 18px')}>{hub.whyH2}</h2>
             <p className="t-body pv-mute" style={s('margin:0 0 32px')}>{SH.why.intro}</p>
             <div className="hp-why-list">
-              {SH.why.items.map((w) => (
+              {(hub.whyItems ?? SH.why.items).map((w) => (
                 <div className="hp-why-item" key={w.h3}>
                   <h3 className="t-h4" style={s('margin:0 0 8px')}>{w.h3}</h3>
                   <p className="t-body-sm pv-mute" style={s('margin:0')}>

@@ -5,6 +5,7 @@ import { SITE } from '@/lib/site';
 import { formatOfficeAddress } from '@/lib/cms/offices';
 import type { GlobalSettings } from '@/lib/cms/global-settings';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
+import { officePagePath } from '@/lib/city-pruning/pilot-pages';
 
 // Footer nav — 3 columns, order/grouping per the live theme (brief-06 §3).
 // Mixed case (no uppercase transform), live slugs (brief-06 §4/§5).
@@ -168,7 +169,7 @@ export default function Footer({ settings, schema = true }: { settings: GlobalSe
                   <div className="flex items-center gap-[7px] mb-[7px]">
                     <MapPin className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
                     <Link
-                      href={`/${office.slug}`}
+                      href={officePagePath(office.slug)}
                       className="font-display font-semibold uppercase text-sm tracking-wide hover:opacity-80 leading-tight"
                     >
                       {office.name}

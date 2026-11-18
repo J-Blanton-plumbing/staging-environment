@@ -3,6 +3,7 @@ import { parseStyle as s } from '@/components/sewer-v2/SewerNodes';
 import { HeroCall } from '@/components/water-heater-v2/WhParts';
 import type { WhPhone } from '@/components/water-heater-v2/WhNodes';
 import type { WhHero, WhSection, WhSharedContent } from '@/lib/content/water-heater-v2/types';
+import { pruneHref } from '@/lib/city-pruning/phase1';
 
 /**
  * Brief 225 — the Emergency Hub's own structured parts, markup element for element as the package
@@ -50,7 +51,8 @@ export function EmLocations({ section }: { section: Extract<WhSection, { kind: '
             <h3 className="em-state">{st.name}</h3>
             <ul className="em-offices">
               {st.offices.map((o, j) => (
-                <li key={`${j}:${o.label}`}>{o.href ? <a href={o.href}>{o.label}</a> : <span>{o.label}</span>}</li>
+                <li key={`${j}:${o.label}`}>{/* Brief 229 (Track F): an office the City Pruning pilot moved links to its new page. */}
+                  {o.href ? <a href={pruneHref(o.href)}>{o.label}</a> : <span>{o.label}</span>}</li>
               ))}
             </ul>
           </Fragment>

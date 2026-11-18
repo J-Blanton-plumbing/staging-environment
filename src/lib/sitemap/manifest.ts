@@ -39,7 +39,7 @@
  * shard has no route, if a route has no declared shard, if the ranges leave a
  * gap or overlap, or if a shard grows past `SHARD_URL_CEILING`.
  */
-import { CITY_REGISTRY } from '@/lib/content/cities';
+import { CITY_REGISTRY, hasNoServicePages } from '@/lib/content/cities';
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { SERVICE_CATEGORY_SLUGS } from '@/lib/services';
 import { SUB_SERVICE_ROUTES } from '@/lib/content/service-taxonomy';
@@ -48,6 +48,7 @@ import { isCityServiceIndexable } from '@/lib/city-service-indexation';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
 import { isRetiredCityPage } from '@/lib/redirects/office-pages';
+import { PILOT_DERIVED_REDIRECTS } from '@/lib/city-pruning/phase1';
 
 /**
  * The sitemaps protocol caps a single file at 50,000 URLs / 50 MB uncompressed.
@@ -97,7 +98,8 @@ export const CITY_SERVICE_SHARDS: readonly CityServiceShard[] = [
  */
 export function cityServiceEligibleSlugs(): string[] {
   // Brief 227: an office page has no service pages, and a retired city page's service URLs 301.
-  return CITY_REGISTRY.filter((c) => !c.officePage && !isRetiredCityPage(c.slug))
+  // Brief 229: nor does a pilot Tier 3 town page (`hasNoServicePages`).
+  return CITY_REGISTRY.filter((c) => !hasNoServicePages(c) && !isRetiredCityPage(c.slug))
     .map((c) => c.slug)
     .filter(isCityServiceIndexable);
 }
@@ -140,7 +142,8 @@ export function cityServicePathsForShard(shard: CityServiceShard): string[] {
   for (const city of citySlugsForShard(shard)) {
     for (const service of services) {
       const p = `/${city}/${service}`;
-      if (!Object.prototype.hasOwnProperty.call(CITY_SERVICE_FOLD_REDIRECTS, p)) out.push(p);
+      // Brief 229: a pilot hub's copies of its legacy hub's folds 301 too (PILOT_DERIVED_REDIRECTS).
+      if (!Object.prototype.hasOwnProperty.call(CITY_SERVICE_FOLD_REDIRECTS, p) && !Object.prototype.hasOwnProperty.call(PILOT_DERIVED_REDIRECTS, p)) out.push(p);
     }
   }
   return out;

@@ -25,6 +25,7 @@
 import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { CITY_SERVICE_FOLD_REDIRECTS } from './city-service-folds';
 import { isRetiredCityService, RETIRED_CITY_SERVICE_SLUGS } from './retired-city-services';
+import { isPrunedLegacyCity } from '@/lib/city-pruning/phase1';
 
 /** The legacy coverage-area page that moved to an office page, and where it went. */
 export const RETIRED_CITY_PAGES: Readonly<Record<string, string>> = Object.freeze({
@@ -62,7 +63,11 @@ export const OFFICE_PAGE_REDIRECTS: Readonly<Record<string, string>> = Object.fr
   ...Object.fromEntries(RETIRED_CITY_SERVICE_SLUGS.map((s) => [`/${LEGACY}/${s}`, `/${NEW}`])),
 });
 
-/** A retired city page (it 301s): never in the sitemap. */
+/**
+ * A retired city page (it 301s): never in the sitemap — neither it nor its `/{slug}/{service}` layer.
+ * Brief 229: also the 27 legacy pages of the City Pruning Phase 1 Pilot (3 hubs + 24 towns), whose
+ * `/{slug}` and service URLs 301 to the new `-il` pages (src/lib/city-pruning/phase1.ts).
+ */
 export function isRetiredCityPage(slug: string): boolean {
-  return Object.prototype.hasOwnProperty.call(RETIRED_CITY_PAGES, slug);
+  return Object.prototype.hasOwnProperty.call(RETIRED_CITY_PAGES, slug) || isPrunedLegacyCity(slug);
 }

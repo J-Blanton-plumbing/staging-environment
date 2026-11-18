@@ -1,0 +1,1107 @@
+{
+ "serviceAreas": {
+  "Mokena": [
+   {
+    "town": "Arbury Hills",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Frankfort",
+    "tier": "Tier 3 (link)",
+    "link": "/frankfort-il",
+    "state": "IL"
+   },
+   {
+    "town": "Frankfort Square",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Manhattan",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Monee",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Peotone",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Steger",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "University Park",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   }
+  ],
+  "Skokie": [
+   {
+    "town": "Franklin Park",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Golf",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Lincolnwood",
+    "tier": "Tier 3 (link)",
+    "link": "/lincolnwood-il",
+    "state": "IL"
+   },
+   {
+    "town": "Morton Grove",
+    "tier": "Tier 3 (link)",
+    "link": "/morton-grove-il",
+    "state": "IL"
+   },
+   {
+    "town": "Niles",
+    "tier": "Tier 3 (link)",
+    "link": "/niles-il",
+    "state": "IL"
+   },
+   {
+    "town": "Park Ridge",
+    "tier": "Tier 3 (link)",
+    "link": "/park-ridge-il",
+    "state": "IL"
+   },
+   {
+    "town": "Schiller Park",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   }
+  ],
+  "Tinley Park": [
+   {
+    "town": "Alsip",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Blue Island",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Country Club Hills",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Crestwood",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Flossmoor",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Harvey",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Hazel Crest",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Homewood",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Markham",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Matteson",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Midlothian",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Oak Forest",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Orland Hills",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Orland Park",
+    "tier": "Tier 3 (link)",
+    "link": "/orland-park-il",
+    "state": "IL"
+   },
+   {
+    "town": "Palos Heights",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Palos Park",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "Park Forest",
+    "tier": "Tier 3 (link)",
+    "link": "/park-forest-il",
+    "state": "IL"
+   },
+   {
+    "town": "Richton Park",
+    "tier": "GBP only (text only)",
+    "link": null,
+    "state": "IL"
+   },
+   {
+    "town": "South Holland",
+    "tier": "Tier 4 (text only)",
+    "link": null,
+    "state": "IL"
+   }
+  ]
+ },
+ "offices": [
+  {
+   "office": "Algonquin",
+   "state": "IL",
+   "address": "2390 Esplanade Dr, Suite 200F, Algonquin, IL 60102",
+   "phone": "(779) 220-0798",
+   "lat": 42.1453218,
+   "lng": -88.3385145
+  },
+  {
+   "office": "Arlington Heights",
+   "state": "IL",
+   "address": "1204 E Central Rd, Suite 3, Arlington Heights, IL 60005",
+   "phone": "(224) 603-1859",
+   "lat": 42.0666917,
+   "lng": -87.9682229
+  },
+  {
+   "office": "Chicago Ravenswood",
+   "state": "IL",
+   "address": "5126 N Ravenswood Ave, Chicago, IL 60640",
+   "phone": "(773) 657-4820",
+   "lat": 41.9754732,
+   "lng": -87.6752721
+  },
+  {
+   "office": "Chicago Lincoln Park",
+   "state": "IL",
+   "address": "800 W Diversey Pkwy, Chicago, IL 60614",
+   "phone": "(773) 831-7574",
+   "lat": 41.9328424,
+   "lng": -87.6492684
+  },
+  {
+   "office": "Elgin",
+   "state": "IL",
+   "address": "964 N McLean Blvd, Elgin, IL 60123",
+   "phone": "(224) 642-2904",
+   "lat": 42.0556331,
+   "lng": -88.3157781
+  },
+  {
+   "office": "Elmhurst",
+   "state": "IL",
+   "address": "116 S York St, Suite 212, Elmhurst, IL 60126",
+   "phone": "(224) 215-2223",
+   "lat": 41.8986653,
+   "lng": -87.9401667
+  },
+  {
+   "office": "Evanston",
+   "state": "IL",
+   "address": "1603 Orrington Ave, #600-1085, Evanston, IL 60201",
+   "phone": "(847) 801-9961",
+   "lat": 42.0468419,
+   "lng": -87.6808723
+  },
+  {
+   "office": "Geneva",
+   "state": "IL",
+   "address": "115 Campbell St, 201C, Geneva, IL 60134",
+   "phone": "(630) 273-7421",
+   "lat": 41.88584,
+   "lng": -88.3062757
+  },
+  {
+   "office": "Hanover Park",
+   "state": "IL",
+   "address": "1300 Greenbrook Blvd, Suite B5, Hanover Park, IL 60133",
+   "phone": "(630) 580-8252",
+   "lat": 41.9796166,
+   "lng": -88.1371156
+  },
+  {
+   "office": "Highland Park",
+   "state": "IL",
+   "address": "1904 Green Bay Rd, B, Highland Park, IL 60035",
+   "phone": "(847) 579-2634",
+   "lat": 42.1870645,
+   "lng": -87.8044747
+  },
+  {
+   "office": "Hinsdale",
+   "state": "IL",
+   "address": "15 Spinning Wheel Rd, #216A, Hinsdale, IL 60521",
+   "phone": "(331) 289-3020",
+   "lat": 41.8205399,
+   "lng": -87.9192296
+  },
+  {
+   "office": "Joliet",
+   "state": "IL",
+   "address": "311 N Ottawa St, Suite 2, Joliet, IL 60432",
+   "phone": "(815) 200-9953",
+   "lat": 41.5303224,
+   "lng": -88.0836034
+  },
+  {
+   "office": "McHenry",
+   "state": "IL",
+   "address": "3406 W Elm St, McHenry, IL 60050",
+   "phone": "(815) 900-2214",
+   "lat": 42.3452919,
+   "lng": -88.2641496
+  },
+  {
+   "office": "Mokena",
+   "state": "IL",
+   "address": "19027 S Jodi Rd, Unit H-1B, Mokena, IL 60448",
+   "phone": "(708) 240-3862",
+   "lat": 41.5454053,
+   "lng": -87.8415355
+  },
+  {
+   "office": "Naperville",
+   "state": "IL",
+   "address": "200 S Main St, Suite 3, Naperville, IL 60540",
+   "phone": "(331) 330-7403",
+   "lat": 41.772807,
+   "lng": -88.1493811
+  },
+  {
+   "office": "Northbrook",
+   "state": "IL",
+   "address": "1945 Techny Rd, #11, Northbrook, IL 60062",
+   "phone": "(224) 326-4864",
+   "lat": 42.1159057,
+   "lng": -87.826603
+  },
+  {
+   "office": "Skokie",
+   "state": "IL",
+   "address": "8001 Lincoln Ave, Suite 301, Skokie, IL 60077",
+   "phone": "(847) 220-6177",
+   "lat": 42.026568,
+   "lng": -87.754307
+  },
+  {
+   "office": "Tinley Park",
+   "state": "IL",
+   "address": "8200 185th St, Suite G-28, Tinley Park, IL 60487",
+   "phone": "(708) 247-1422",
+   "lat": 41.5549893,
+   "lng": -87.8189271
+  },
+  {
+   "office": "Columbus",
+   "state": "OH",
+   "address": "1387 Goodale Blvd, Columbus, OH 43212",
+   "phone": "(614) 547-6516",
+   "lat": 39.9757661,
+   "lng": -83.0416765
+  }
+ ],
+ "linkMap": [
+  {
+   "pageType": "Locations index",
+   "finalUrlLater": "/locations",
+   "currentUrl": "/locations",
+   "linkToUseNow": "/locations",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "State page",
+   "finalUrlLater": "/locations/illinois",
+   "currentUrl": "/locations/chicagoland",
+   "linkToUseNow": "/locations/illinois",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "State page",
+   "finalUrlLater": "/locations/ohio",
+   "currentUrl": "/locations/central-ohio",
+   "linkToUseNow": "/locations/ohio",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/algonquin-il",
+   "currentUrl": "/algonquin",
+   "linkToUseNow": "/algonquin",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/arlington-heights-il",
+   "currentUrl": "/arlington-heights",
+   "linkToUseNow": "/arlington-heights",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/chicago-il",
+   "currentUrl": "/chicago",
+   "linkToUseNow": "/chicago",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/elgin-il",
+   "currentUrl": "/elgin",
+   "linkToUseNow": "/elgin",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/elmhurst-il",
+   "currentUrl": "/elmhurst",
+   "linkToUseNow": "/elmhurst",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/evanston-il",
+   "currentUrl": "/evanston",
+   "linkToUseNow": "/evanston",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/geneva-il",
+   "currentUrl": "/geneva",
+   "linkToUseNow": "/geneva",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/hanover-park-il",
+   "currentUrl": "/hanover-park",
+   "linkToUseNow": "/hanover-park",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/highland-park-il",
+   "currentUrl": "/highland-park",
+   "linkToUseNow": "/highland-park",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/hinsdale-il",
+   "currentUrl": "/hinsdale",
+   "linkToUseNow": "/hinsdale",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/joliet-il",
+   "currentUrl": "/joliet",
+   "linkToUseNow": "/joliet",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/mchenry-il",
+   "currentUrl": "/mchenry",
+   "linkToUseNow": "/mchenry",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/mokena-il",
+   "currentUrl": "/mokena",
+   "linkToUseNow": "/mokena-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/naperville-il",
+   "currentUrl": "/naperville",
+   "linkToUseNow": "/naperville",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/northbrook-il",
+   "currentUrl": "/northbrook",
+   "linkToUseNow": "/northbrook",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/skokie-il",
+   "currentUrl": "/skokie",
+   "linkToUseNow": "/skokie-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/tinley-park-il",
+   "currentUrl": "/tinley-park",
+   "linkToUseNow": "/tinley-park-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "City hub",
+   "finalUrlLater": "/columbus-oh",
+   "currentUrl": "/columbus",
+   "linkToUseNow": "/columbus",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Office page (no services)",
+   "finalUrlLater": "/chicago-lincoln-park-il",
+   "currentUrl": "/chicago-lincoln-park",
+   "linkToUseNow": "/chicago-lincoln-park",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Office page (no services)",
+   "finalUrlLater": "/columbus-german-village-oh",
+   "currentUrl": "/columbus-german-village",
+   "linkToUseNow": "/columbus-german-village",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/antioch-il",
+   "currentUrl": "/antioch",
+   "linkToUseNow": "/antioch",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/aurora-il",
+   "currentUrl": "/aurora",
+   "linkToUseNow": "/aurora",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/bartlett-il",
+   "currentUrl": "/bartlett",
+   "linkToUseNow": "/bartlett",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/bolingbrook-il",
+   "currentUrl": "/bolingbrook",
+   "linkToUseNow": "/bolingbrook",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/buffalo-grove-il",
+   "currentUrl": "/buffalo-grove",
+   "linkToUseNow": "/buffalo-grove",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/carol-stream-il",
+   "currentUrl": "/carol-stream",
+   "linkToUseNow": "/carol-stream",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/cary-il",
+   "currentUrl": "/cary",
+   "linkToUseNow": "/cary",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/clarendon-hills-il",
+   "currentUrl": "/clarendon-hills",
+   "linkToUseNow": "/clarendon-hills",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/crest-hill-il",
+   "currentUrl": "/crest-hill",
+   "linkToUseNow": "/crest-hill",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/crystal-lake-il",
+   "currentUrl": "/crystal-lake",
+   "linkToUseNow": "/crystal-lake",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/darien-il",
+   "currentUrl": "/darien",
+   "linkToUseNow": "/darien",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/deerfield-il",
+   "currentUrl": "/deerfield",
+   "linkToUseNow": "/deerfield",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/des-plaines-il",
+   "currentUrl": "/des-plaines",
+   "linkToUseNow": "/des-plaines",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/downers-grove-il",
+   "currentUrl": "/downers-grove",
+   "linkToUseNow": "/downers-grove",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/elk-grove-il",
+   "currentUrl": "/elk-grove",
+   "linkToUseNow": "/elk-grove",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/forest-park-il",
+   "currentUrl": "/forest-park",
+   "linkToUseNow": "/forest-park",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/fox-lake-il",
+   "currentUrl": "/fox-lake",
+   "linkToUseNow": "/fox-lake",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/frankfort-il",
+   "currentUrl": "/frankfort",
+   "linkToUseNow": "/frankfort-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/glen-ellyn-il",
+   "currentUrl": "/glen-ellyn",
+   "linkToUseNow": "/glen-ellyn",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/glencoe-il",
+   "currentUrl": "/glencoe",
+   "linkToUseNow": "/glencoe",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/glenview-il",
+   "currentUrl": "/glenview",
+   "linkToUseNow": "/glenview",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/grayslake-il",
+   "currentUrl": "/grayslake",
+   "linkToUseNow": "/grayslake",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/gurnee-il",
+   "currentUrl": "/gurnee",
+   "linkToUseNow": "/gurnee",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/hampshire-il",
+   "currentUrl": "/hampshire",
+   "linkToUseNow": "/hampshire",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/harwood-heights-il",
+   "currentUrl": "/harwood-heights",
+   "linkToUseNow": "/harwood-heights",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/hoffman-estates-il",
+   "currentUrl": "/hoffman-estates",
+   "linkToUseNow": "/hoffman-estates",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/huntley-il",
+   "currentUrl": "/huntley",
+   "linkToUseNow": "/huntley",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/island-lake-il",
+   "currentUrl": "/island-lake",
+   "linkToUseNow": "/island-lake",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/kenilworth-il",
+   "currentUrl": "/kenilworth",
+   "linkToUseNow": "/kenilworth",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/la-grange-il",
+   "currentUrl": "/la-grange",
+   "linkToUseNow": "/la-grange",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lake-bluff-il",
+   "currentUrl": "/lake-bluff",
+   "linkToUseNow": "/lake-bluff",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lake-forest-il",
+   "currentUrl": "/lake-forest",
+   "linkToUseNow": "/lake-forest",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lake-villa-il",
+   "currentUrl": "/lake-villa",
+   "linkToUseNow": "/lake-villa",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lake-zurich-il",
+   "currentUrl": "/lake-zurich",
+   "linkToUseNow": "/lake-zurich",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lake-in-the-hills-il",
+   "currentUrl": "/lake-in-the-hills",
+   "linkToUseNow": "/lake-in-the-hills",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/libertyville-il",
+   "currentUrl": "/libertyville",
+   "linkToUseNow": "/libertyville",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lincolnshire-il",
+   "currentUrl": "/lincolnshire",
+   "linkToUseNow": "/lincolnshire",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lincolnwood-il",
+   "currentUrl": "/lincolnwood",
+   "linkToUseNow": "/lincolnwood-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lockport-il",
+   "currentUrl": "/lockport",
+   "linkToUseNow": "/lockport",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lombard-il",
+   "currentUrl": "/lombard",
+   "linkToUseNow": "/lombard",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/morton-grove-il",
+   "currentUrl": "/morton-grove",
+   "linkToUseNow": "/morton-grove-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/mount-prospect-il",
+   "currentUrl": "/mount-prospect",
+   "linkToUseNow": "/mount-prospect",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/mundelein-il",
+   "currentUrl": "/mundelein",
+   "linkToUseNow": "/mundelein",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/niles-il",
+   "currentUrl": "/niles",
+   "linkToUseNow": "/niles-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/oak-brook-il",
+   "currentUrl": "/oak-brook",
+   "linkToUseNow": "/oak-brook",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/oak-park-il",
+   "currentUrl": "/oak-park",
+   "linkToUseNow": "/oak-park",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/orland-park-il",
+   "currentUrl": "/orland-park",
+   "linkToUseNow": "/orland-park-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/palatine-il",
+   "currentUrl": "/palatine",
+   "linkToUseNow": "/palatine",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/park-forest-il",
+   "currentUrl": "/park-forest",
+   "linkToUseNow": "/park-forest-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/park-ridge-il",
+   "currentUrl": "/park-ridge",
+   "linkToUseNow": "/park-ridge-il",
+   "note": "pilot: new URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/plainfield-il",
+   "currentUrl": "/plainfield",
+   "linkToUseNow": "/plainfield",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/river-forest-il",
+   "currentUrl": "/river-forest",
+   "linkToUseNow": "/river-forest",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/riverside-il",
+   "currentUrl": "/riverside",
+   "linkToUseNow": "/riverside",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/rolling-meadows-il",
+   "currentUrl": "/rolling-meadows",
+   "linkToUseNow": "/rolling-meadows",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/romeoville-il",
+   "currentUrl": "/romeoville",
+   "linkToUseNow": "/romeoville",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/round-lake-il",
+   "currentUrl": "/round-lake",
+   "linkToUseNow": "/round-lake",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/schaumburg-il",
+   "currentUrl": "/schaumburg",
+   "linkToUseNow": "/schaumburg",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/south-elgin-il",
+   "currentUrl": "/south-elgin",
+   "linkToUseNow": "/south-elgin",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/spring-grove-il",
+   "currentUrl": "/spring-grove",
+   "linkToUseNow": "/spring-grove",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/st-charles-il",
+   "currentUrl": "/st-charles",
+   "linkToUseNow": "/st-charles",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/vernon-hills-il",
+   "currentUrl": "/vernon-hills",
+   "linkToUseNow": "/vernon-hills",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/villa-park-il",
+   "currentUrl": "/villa-park",
+   "linkToUseNow": "/villa-park",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/wauconda-il",
+   "currentUrl": "/wauconda",
+   "linkToUseNow": "/wauconda",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/waukegan-il",
+   "currentUrl": "/waukegan",
+   "linkToUseNow": "/waukegan",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/westchester-il",
+   "currentUrl": "/westchester",
+   "linkToUseNow": "/westchester",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/western-springs-il",
+   "currentUrl": "/western-springs",
+   "linkToUseNow": "/western-springs",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/westmont-il",
+   "currentUrl": "/westmont",
+   "linkToUseNow": "/westmont",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/wheeling-il",
+   "currentUrl": "/wheeling",
+   "linkToUseNow": "/wheeling",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/willowbrook-il",
+   "currentUrl": "/willowbrook",
+   "linkToUseNow": "/willowbrook",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/wilmette-il",
+   "currentUrl": "/wilmette",
+   "linkToUseNow": "/wilmette",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/winnetka-il",
+   "currentUrl": "/winnetka",
+   "linkToUseNow": "/winnetka",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/wonder-lake-il",
+   "currentUrl": "/wonder-lake",
+   "linkToUseNow": "/wonder-lake",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/woodridge-il",
+   "currentUrl": "/woodridge",
+   "linkToUseNow": "/woodridge",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/woodstock-il",
+   "currentUrl": "/woodstock",
+   "linkToUseNow": "/woodstock",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/dublin-oh",
+   "currentUrl": "/dublin",
+   "linkToUseNow": "/dublin",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/hilliard-oh",
+   "currentUrl": "/hilliard",
+   "linkToUseNow": "/hilliard",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/lancaster-oh",
+   "currentUrl": "/lancaster",
+   "linkToUseNow": "/lancaster",
+   "note": "outside pilot: keep current URL"
+  },
+  {
+   "pageType": "Town page (no services)",
+   "finalUrlLater": "/westerville-oh",
+   "currentUrl": "/westerville",
+   "linkToUseNow": "/westerville",
+   "note": "outside pilot: keep current URL"
+  }
+ ],
+ "townMeta": {
+  "/frankfort-il": {
+   "title": "24/7 Plumbers Near You in Frankfort, IL | Emergency Service Available",
+   "description": "Need a plumber in Frankfort? J. Blanton Plumbing fixes drains, sewers and water heaters across the southwest suburbs. Upfront pricing. Call anytime!"
+  },
+  "/orland-park-il": {
+   "title": "24/7 Plumbers Near You in Orland Park, IL | Emergency Service Available",
+   "description": "Need a plumber in Orland Park? J. Blanton Plumbing fixes drains, sewers and water heaters across the southwest suburbs. Upfront pricing. Call anytime!"
+  },
+  "/park-forest-il": {
+   "title": "24/7 Plumbers Near You in Park Forest, IL | Emergency Service Available",
+   "description": "Need a plumber in Park Forest? J. Blanton Plumbing fixes drains, sewers and water heaters across the south suburbs. Upfront pricing. Call anytime!"
+  },
+  "/park-ridge-il": {
+   "title": "24/7 Plumbers Near You in Park Ridge, IL | Emergency Service Available",
+   "description": "Need a plumber in Park Ridge? J. Blanton Plumbing fixes drains, sewers and water heaters across the north suburbs. Upfront pricing. Call anytime!"
+  },
+  "/niles-il": {
+   "title": "24/7 Plumbers Near You in Niles, IL | Emergency Service Available",
+   "description": "Need a plumber in Niles? J. Blanton Plumbing fixes drains, sewers and water heaters across the north suburbs. Upfront pricing. Call anytime!"
+  },
+  "/morton-grove-il": {
+   "title": "24/7 Plumbers Near You in Morton Grove, IL | Emergency Service Available",
+   "description": "Need a plumber in Morton Grove? J. Blanton Plumbing fixes drains, sewers and water heaters across the north suburbs. Upfront pricing. Call anytime!"
+  },
+  "/lincolnwood-il": {
+   "title": "24/7 Plumbers Near You in Lincolnwood, IL | Emergency Service Available",
+   "description": "Need a plumber in Lincolnwood? J. Blanton Plumbing fixes drains, sewers and water heaters across the north suburbs. Upfront pricing. Call anytime!"
+  }
+ }
+}

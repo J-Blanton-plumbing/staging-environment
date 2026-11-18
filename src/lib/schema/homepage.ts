@@ -27,7 +27,8 @@ const SITE = 'https://jblantonplumbing.com';
 /** The package's 19 office `@id`s, in its order (= Global Settings office order on 2026-10-26). */
 export const HOME_PACKAGE_DEPARTMENT_IDS: readonly string[] = [
   'northbrook', 'algonquin', 'geneva', 'arlington-heights', 'chicago-lincoln-park', 'chicago-ravenswood', 'elgin',
-  'elmhurst', 'evanston', 'hinsdale', 'mchenry', 'naperville', 'skokie', 'joliet', 'tinley-park', 'mokena',
+  // Brief 229: the 3 City Pruning pilot hubs' office nodes moved with their pages (/skokie-il#office …).
+  'elmhurst', 'evanston', 'hinsdale', 'mchenry', 'naperville', 'skokie-il', 'joliet', 'tinley-park-il', 'mokena-il',
   'columbus', 'hanover-park', 'highland-park',
 ].map((slug) => `${SITE}/${slug}#office`);
 
@@ -84,13 +85,13 @@ export function homepageJsonLd({ pageName, pageDescription, departmentIds, aggre
           {
             '@type': 'AdministrativeArea',
             name: 'Chicagoland',
-            url: `${SITE}/locations/chicagoland`,
+            url: `${SITE}/locations/illinois`,
             containedInPlace: { '@type': 'State', name: 'Illinois' },
           },
           {
             '@type': 'AdministrativeArea',
             name: 'Central Ohio',
-            url: `${SITE}/locations/central-ohio`,
+            url: `${SITE}/locations/ohio`,
             containedInPlace: { '@type': 'State', name: 'Ohio' },
           },
         ],

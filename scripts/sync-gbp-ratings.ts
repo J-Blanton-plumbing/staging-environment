@@ -58,6 +58,7 @@ import pool from '../src/lib/db';
 import { cleanMainlineLocations, COMPANY_RATING_SLUG, normOfficeSlug } from '../src/lib/cms/office-ratings';
 import { formatRatingValue, formatReviewCount } from '../src/lib/cms/tokens';
 import { verdict } from './lib/run-mode';
+import { pilotPageOfOffice } from '../src/lib/city-pruning/pilot-pages';
 
 const SCRIPT = 'sync-gbp-ratings';
 const argv = process.argv.slice(2);
@@ -236,7 +237,9 @@ async function main() {
   }
 
   if (changedFile && !dry && changedSlugs.length) {
-    const cities = changedSlugs.includes(COMPANY_RATING_SLUG) ? Object.keys(mapping) : changedSlugs;
+    const offices = changedSlugs.includes(COMPANY_RATING_SLUG) ? Object.keys(mapping) : changedSlugs;
+    // Brief 229: a City Pruning pilot office's pages moved (mokena → /mokena-il …) — list the new hub too.
+    const cities = offices.flatMap((c) => (pilotPageOfOffice(c) ? [c, pilotPageOfOffice(c) as string] : [c]));
     try {
       appendFileSync(changedFile, cities.map((c) => `${c}\n`).join(''));
       console.log(`\n  changed-file: ${cities.length} cit${cities.length === 1 ? 'y' : 'ies'} listed for the live check`);

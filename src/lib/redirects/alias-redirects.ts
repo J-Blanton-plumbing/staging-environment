@@ -27,7 +27,7 @@
  *    working page away. The same validator checks this.
  */
 import { CITY_SLUG_TO_HUB_ALIAS, hasSubServiceRoute } from '@/lib/content/service-taxonomy';
-import { CITY_REGISTRY } from '@/lib/content/cities';
+import { CITY_REGISTRY, hasNoServicePages } from '@/lib/content/cities';
 import { CITY_SERVICE_FOLD_REDIRECTS } from './city-service-folds';
 import { RETIRED_CITY_SERVICE_SLUGS } from './retired-city-services';
 import { OFFICE_PAGE_REDIRECTS } from './office-pages';
@@ -199,7 +199,8 @@ export const DERIVED_RETIRED_CITY_SERVICE_REDIRECTS: Readonly<Record<string, str
     Object.fromEntries(
       CITY_REGISTRY.reduce<Array<[string, string]>>((pairs, city) => {
         // Brief 227: an office page has no service pages, so there is nothing under it to retire.
-        if (city.officePage) return pairs;
+        // Brief 229: nor does a pilot Tier 3 town page.
+        if (hasNoServicePages(city)) return pairs;
         for (const service of RETIRED_CITY_SERVICE_SLUGS) {
           pairs.push([`/${city.slug}/${service}`, `/${city.slug}`]);
         }

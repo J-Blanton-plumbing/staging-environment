@@ -7,6 +7,7 @@ import { faqPageJsonLd, schemaPhone } from '@/lib/schema/city-pages';
 import type { hubPlumberJsonLd } from '@/lib/city-hub-cms/model';
 import type { CityServiceV2Page, CsBlock, Rich } from '@/lib/content/city-services-v2';
 import { CsIcon } from './icons';
+import { pruneHref } from '@/lib/city-pruning/phase1';
 import CityServiceV2Root from './CityServiceV2Root';
 
 /**
@@ -67,8 +68,9 @@ function R({ text }: { text: Rich }) {
   while ((m = re.exec(text)) !== null) {
     const at = m.index;
     if (at > last) parts.push(text.slice(last, at));
+    // Brief 229 (Track F): a link to a page the City Pruning pilot redirects → its final target.
     parts.push(
-      <a key={at} href={m[2]}>
+      <a key={at} href={pruneHref(m[2])}>
         {m[1]}
       </a>
     );

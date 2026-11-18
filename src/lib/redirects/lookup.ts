@@ -21,6 +21,7 @@
 import legacyRedirectMap from './legacy-redirect-map.json';
 import { ALIAS_REDIRECTS } from './alias-redirects';
 import { lookupCityScopedRedirect } from './city-scoped';
+import { PILOT_DERIVED_REDIRECTS, PRUNING_PHASE1_REDIRECTS, pruneFinal } from '@/lib/city-pruning/phase1';
 
 /**
  * 410 is supported for forward-compatibility: if a bucket is ever retired
@@ -49,13 +50,22 @@ interface LegacyRedirectRow {
  * post-migration slug decision always wins over whatever the export happened to
  * contain. Both are exact-path Maps built once at module scope.
  */
+/*
+ * Brief 229 (City Pruning Phase 1 Pilot): every target is passed through `pruneFinal()`, so a rule that
+ * used to land on a page this release redirects (a legacy `/mokena-il-sewer-rodding` → `/mokena/…`, a
+ * Brief 209 fold, Brief 211's `/{city}/plumbing-services`) now lands on the FINAL page in one hop. The
+ * pilot's own 1,184 rows go LAST so they win, after the new hubs' copies of their folds
+ * (src/lib/city-pruning/phase1.ts).
+ */
 const REDIRECTS: ReadonlyMap<string, LegacyRedirect> = new Map<string, LegacyRedirect>([
   ...(legacyRedirectMap as LegacyRedirectRow[]).map(
-    (row) => [row.from, { to: row.to, status: row.status === 410 ? 410 : 301 }] as const
+    (row) => [row.from, { to: pruneFinal(row.to), status: row.status === 410 ? 410 : 301 }] as const
   ),
   ...Object.entries(ALIAS_REDIRECTS).map(
-    ([from, to]) => [from, { to, status: 301 }] as const
+    ([from, to]) => [from, { to: pruneFinal(to), status: 301 }] as const
   ),
+  ...Object.entries(PILOT_DERIVED_REDIRECTS).map(([from, to]) => [from, { to, status: 301 }] as const),
+  ...Object.entries(PRUNING_PHASE1_REDIRECTS).map(([from, to]) => [from, { to, status: 301 }] as const),
 ]);
 
 /** Entry count — exposed for diagnostics/tests, not used by routing. */
@@ -90,5 +100,6 @@ export function lookupRedirect(pathname: string): LegacyRedirect | undefined {
   const exact = REDIRECTS.get(pathname);
   if (exact) return exact;
   const cityScoped = lookupCityScopedRedirect(pathname);
-  return cityScoped ? { to: cityScoped, status: 301 } : undefined;
+  // Brief 229: a derived target that this release redirects is collapsed to its final page.
+  return cityScoped ? { to: pruneFinal(cityScoped), status: 301 } : undefined;
 }

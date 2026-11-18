@@ -37,6 +37,7 @@ import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
 import { isRetiredCityPage } from '@/lib/redirects/office-pages';
+import { PILOT_DERIVED_REDIRECTS } from '@/lib/city-pruning/phase1';
 import {
   CityServiceShard,
   SITEMAP_CHILDREN,
@@ -535,6 +536,8 @@ export function renderCityServiceShard(shard: CityServiceShard): Promise<string>
         if (unpublished.has(key)) continue;
         // Brief 209 go-live: folded into a V2 page and 301'd — never advertise a redirect source.
         if (Object.prototype.hasOwnProperty.call(CITY_SERVICE_FOLD_REDIRECTS, `/${key}`)) continue;
+        // Brief 229: a pilot hub's copies of its legacy hub's folds 301 too.
+        if (Object.prototype.hasOwnProperty.call(PILOT_DERIVED_REDIRECTS, `/${key}`)) continue;
         entries.push({
           path: `/${key}`,
           lastModified: lastMod.get(key),

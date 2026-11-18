@@ -1,0 +1,173 @@
+{
+ "url": "/park-ridge-il",
+ "town": "Park Ridge",
+ "state": "IL",
+ "hub": "Skokie",
+ "hubUrl": "/skokie-il",
+ "featuredService": "Sewer Repair",
+ "region": "North suburbs",
+ "hero": {
+  "eyebrow": "Serving Chicagoland for 30+ Years",
+  "h1": "24/7 Plumbing Services in Park Ridge, IL",
+  "intro": "Need a plumbing repair in the north suburbs? We dispatch from our local office in Skokie, so there’s always a plumber near you. Upfront pricing on every job, and same-day service available for emergencies."
+ },
+ "services": {
+  "eyebrow": "What We Fix",
+  "h2": "Plumbing Repairs in Park Ridge",
+  "intro": "Our licensed plumbers work on homes across Park Ridge, from its oldest blocks near Uptown to newer construction further out.",
+  "cards": [
+   {
+    "tag": "Sewer Repair",
+    "h3": "Sewer Repair in Park Ridge",
+    "paragraph": "[Park Ridge’s original trunk sewers on Devon and Touhy date to the 1920s](https://cms9files.revize.com/parkridgeil/Document_center/Resident%20services/Public%20Works/Sewers%20101%20for%20web.pdf), with four relief sewers added in the 1960s and 1970s, and most of the rest of the city runs on combined storm and sanitary sewers block by block. The city’s own materials note the Deep Tunnel system was built to cut pollution, not stop flooding. That means a hard storm can still back up a line decades after it was laid. We camera-inspect your line and talk through backflow protection.",
+    "cta": "Learn more about sewer repair",
+    "href": "/skokie-il/sewer-repair"
+   },
+   {
+    "tag": "Emergency Plumbing",
+    "h3": "Emergency Plumbing in Park Ridge",
+    "paragraph": "[Much of Park Ridge sits on combined sewers that carry storm water and sewage in the same pipe](https://cms9files.revize.com/parkridgeil/Document_center/Resident%20services/Public%20Works/Sewers%20101%20for%20web.pdf), and the city’s own guidance is clear that the system wasn’t built to prevent flooding outright. A hard storm doesn’t wait for a convenient time, and a backed-up line can send water into your home fast. Our phone line is open 24/7, including weekends and holidays, and we work to get a plumber to you as soon as we can.",
+    "cta": "Learn more about emergency plumbing",
+    "href": "/skokie-il/emergency-plumbing"
+   },
+   {
+    "tag": "Drain Cleaning",
+    "h3": "Drain Cleaning in Park Ridge",
+    "paragraph": "[About two-thirds of Park Ridge homes were built before 1970, with a median year built of 1960](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Park-Ridge.pdf), and a lot of that drain pipe is still the original clay or cast iron. Cast iron scales up inside over the decades, and clay joints let tree roots work in, so a quick clear rarely solves it for good. That usually shows up as the same kitchen or basement drain backing up not long after. We clear the line and run a camera through it.",
+    "cta": "Learn more about drain cleaning",
+    "href": "/skokie-il/drain-cleaning"
+   },
+   {
+    "tag": "Water Heaters",
+    "h3": "Water Heaters in Park Ridge",
+    "paragraph": "[Park Ridge purchases all of its drinking water from the City of Chicago, Lake Michigan water treated at the Jardine plant](https://cms9files.revize.com/parkridgeil/Public%20Works/Park%20Ridge%202025%20CCR%20Report%20FINAL%204.2.26.pdf), and the same minerals that build up inside any tank over the years are at work. A heater running a decade or more has handled a lot of that mineral load by now. If yours rumbles or runs out of hot water early, it’s worth a look. We repair what’s worth repairing and help you size a replacement.",
+    "cta": "Learn more about water heaters",
+    "href": "/skokie-il/water-heater-repair"
+   },
+   {
+    "tag": "Toilets & Fixtures",
+    "h3": "Toilets & Fixtures in Park Ridge",
+    "paragraph": "Fixtures in Park Ridge’s older homes have usually been replaced at least once, but the shutoff valves and seals behind them don’t always get swapped out at the same time. That mismatch is often why a toilet runs constantly or a shower valve starts leaking behind the tile years after a remodel. Left alone, a running toilet adds up on the water bill, and a hidden leak can damage the subfloor. We repair or swap out fixtures and valves, and handle new installs when the time comes.",
+    "cta": "Learn more about toilets & fixtures",
+    "href": "/skokie-il/toilet-installation-repair"
+   },
+   {
+    "tag": "Leak & Pipe Repair",
+    "h3": "Leak & Pipe Repair in Park Ridge",
+    "paragraph": "Many Park Ridge homes still carry original supply lines behind plaster walls, and decades-old pipe corrodes from the inside where you can’t see it. A slow leak can run for weeks before a stain or soft spot in the floor gives it away, and by then it may have reached the framing underneath. If you notice a drop in water pressure or a damp spot that won’t dry, it’s worth tracing down. We find the leak, repair or replace the pipe, and check nearby sections.",
+    "cta": "Learn more about leak & pipe repair",
+    "href": "/skokie-il/leak-repairs"
+   },
+   {
+    "tag": "Sump Pumps",
+    "h3": "Sump Pumps in Park Ridge",
+    "paragraph": "On the blocks still served by [Park Ridge’s combined sewers](https://cms9files.revize.com/parkridgeil/Document_center/Resident%20services/Public%20Works/Sewers%20101%20for%20web.pdf), a working sump pump is often the last line of defense between a hard storm and a wet basement. A pump that’s old, undersized or without a battery backup can fail right when a storm knocks out power, which is exactly when you need it most. A failed pump usually means standing water within hours. We test, repair and replace pumps, and can add a battery backup for outages.",
+    "cta": "Learn more about sump pumps",
+    "href": "/skokie-il/sump-pumps"
+   }
+  ],
+  "redBar": {
+   "label": "See all our plumbing services",
+   "href": "/skokie-il#services"
+  }
+ },
+ "office": {
+  "eyebrow": "Fast Local Dispatch",
+  "h2": "Plumbers Near You in Park Ridge",
+  "body": "Our plumbers work all over Park Ridge and the rest of the north suburbs, and they know the homes here. Call us any time, day or night.",
+  "addressName": "J. Blanton Plumbing - Skokie",
+  "address": "8001 Lincoln Ave, Suite 301, Skokie, IL 60077",
+  "license": "Illinois plumbing license EH0211882",
+  "panelHeading": "Nearby Communities We Serve",
+  "communities": [
+   {
+    "label": "Golf"
+   },
+   {
+    "label": "Lincolnwood",
+    "href": "/lincolnwood-il"
+   },
+   {
+    "label": "Morton Grove",
+    "href": "/morton-grove-il"
+   },
+   {
+    "label": "Niles",
+    "href": "/niles-il"
+   },
+   {
+    "label": "Schiller Park"
+   },
+   {
+    "label": "Skokie",
+    "href": "/skokie-il"
+   }
+  ],
+  "closing": "Don’t see your town listed? We may still serve it. Call us 24/7 and we’ll let you know."
+ },
+ "why": {
+  "h2": "Why Park Ridge Homeowners Choose J. Blanton",
+  "intro": "The most common complaint about plumbing companies is simple: you called a plumber and got a salesman. Here’s how we work instead.",
+  "items": [
+   {
+    "h3": "Options, Not a Sales Pitch",
+    "body": "Our plumber explains the problem in plain English first. When it’s a drain or sewer issue, we can run a camera down the line so you see what we see. Then you decide."
+   },
+   {
+    "h3": "A Clear Price Before Any Work Starts",
+    "body": "We give you a flat-rate price before we touch anything. The price we quote is the price you pay, with no surprise add-ons when the job is done."
+   },
+   {
+    "h3": "We Treat an Emergency Like One",
+    "body": "Our phone line is open around the clock, including weekends and holidays. When water is coming into your Park Ridge basement, we work to get a plumber to you as soon as we can."
+   }
+  ]
+ },
+ "reviews": {
+  "h2": "What Park Ridge Homeowners Say",
+  "items": [
+   {
+    "text": "[...] They are very professional and knowledgeable. After a few days Stephen Lemont came out to do hydro jetting. The amount of roots I had down on a sewer line were large. Stephen went above and beyond. Stephen had some recommendations for me to do after the job is complete. This has been by far the best company I hired to do any job in my house. Easy enough to do scheduling and every step along the way I had been informed by the company. [...]",
+    "name": "Irfan Karbhari"
+   },
+   {
+    "text": "We had an emergency situation with our kitchen faucet. John Hogan repaired it for us on a Sunday! I highly recommend this company.",
+    "name": "Tom Weyland"
+   }
+  ]
+ },
+ "faq": [
+  {
+   "q": "Do you have plumbers near me in Park Ridge?",
+   "a": "Yes. Our plumbers work all over Park Ridge and the nearby north suburban towns, including Niles, Morton Grove and Skokie. Call us 24/7 and we’ll get a plumber to you."
+  },
+  {
+   "q": "Are you licensed and bonded in Illinois?",
+   "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+  },
+  {
+   "q": "How much does a plumber cost in Park Ridge?",
+   "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in."
+  },
+  {
+   "q": "Why does my basement back up when it rains hard?",
+   "a": "[Most of Park Ridge runs on combined sewers that carry storm water and sewage in the same pipe](https://cms9files.revize.com/parkridgeil/Document_center/Resident%20services/Public%20Works/Sewers%20101%20for%20web.pdf), and the city’s own materials say the system was never built to prevent flooding outright. When a storm pushes more water into the line than it can carry, it looks for the lowest opening in your home. We can camera your line and talk through backflow protection."
+  },
+  {
+   "q": "How old are Park Ridge’s sewers?",
+   "a": "[The city’s original large trunk sewers on Devon and Touhy date to the 1920s](https://cms9files.revize.com/parkridgeil/Document_center/Resident%20services/Public%20Works/Sewers%20101%20for%20web.pdf), with four large relief sewers added in the 1960s and 1970s. Pipe that old can crack, sag or fill with roots, which is part of why older blocks see repeat backups."
+  },
+  {
+   "q": "Is Park Ridge’s water from Lake Michigan?",
+   "a": "Yes. [Park Ridge buys all of its drinking water from the City of Chicago](https://cms9files.revize.com/parkridgeil/Public%20Works/Park%20Ridge%202025%20CCR%20Report%20FINAL%204.2.26.pdf), which draws from Lake Michigan and treats it at the Jardine plant. The usual mineral buildup inside a water heater over time still applies."
+  }
+ ],
+ "ndc": {
+  "h2": "Join and Save 10% on Plumbing and Sewer Services",
+  "body": "Most plumbing problems in Park Ridge start small. The No Drip Club brings a plumber to your home, so issues get caught early."
+ },
+ "final": {
+  "h2": "Your Park Ridge Plumber, Day or Night",
+  "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+ }
+}

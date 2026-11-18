@@ -1,0 +1,164 @@
+{
+ "url": "/frankfort-il",
+ "town": "Frankfort",
+ "state": "IL",
+ "hub": "Mokena",
+ "hubUrl": "/mokena-il",
+ "featuredService": "Sewer Repair",
+ "region": "Southwest suburbs",
+ "hero": {
+  "eyebrow": "Serving Chicagoland for 30+ Years",
+  "h1": "24/7 Plumbing Services in Frankfort, IL",
+  "intro": "Need a plumbing repair in the southwest suburbs? We dispatch from our local office in Mokena, so there’s always a plumber near you. Upfront pricing on every job, and same-day service available for emergencies."
+ },
+ "services": {
+  "eyebrow": "What We Fix",
+  "h2": "Plumbing Repairs in Frankfort",
+  "intro": "Our licensed plumbers work on homes across Frankfort, from the historic downtown to newer subdivisions.",
+  "cards": [
+   {
+    "tag": "Sewer Repair",
+    "h3": "Sewer Repair in Frankfort",
+    "paragraph": "Frankfort grew fast in the 1990s and 2000s, and [more than half of its homes were built between 1990 and 2009](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Frankfort.pdf). That newer construction means PVC is common, but builder-grade fittings and poor backfill can still let a line settle or crack years later. A settling line usually shows up as a slow drain or a gurgling toilet before it backs up fully. We camera-inspect the line to find the exact cause before any repair starts.",
+    "cta": "Learn more about sewer repair",
+    "href": "/mokena/sewer-repair"
+   },
+   {
+    "tag": "Drain Cleaning",
+    "h3": "Drain Cleaning in Frankfort",
+    "paragraph": "Even in a newer town like Frankfort, grease, soap and hair build up in drain lines the same way they do anywhere else, and a handful of older homes near the historic downtown still run on original clay or cast iron pipe. A clog that keeps coming back in the same sink usually means the problem is further down the line. Plunging just moves it a few feet. We clear the line and run a camera through it so you know what’s going on.",
+    "cta": "Learn more about drain cleaning",
+    "href": "/mokena/drain-cleaning"
+   },
+   {
+    "tag": "Sump & Ejector Pumps",
+    "h3": "Sump & Ejector Pumps in Frankfort",
+    "paragraph": "A hard rain can drop several inches on Frankfort fast, and [a 2019 storm dumped 3 to 8 inches of rain along the I-80 corridor near Frankfort, flooding yards and roads](https://patch.com/illinois/frankfort/flooding-reported-frankfort-after-5-inches-rain). When that much water hits the ground fast, a sump pump without a battery backup can fail right when the power goes out. A failed pump usually means a wet basement within hours. We test, repair and replace sump pumps, and we can wire in a battery backup so the pump keeps working when the power doesn’t.",
+    "cta": "Learn more about sump & ejector pumps",
+    "href": "/mokena/sump-pumps"
+   },
+   {
+    "tag": "Emergency Plumbing",
+    "h3": "Emergency Plumbing in Frankfort",
+    "paragraph": "Frankfort has seen flash flooding close roads and flood yards during fast-moving summer storms, the kind that can overwhelm a basement drain or a sump pump in minutes. When water is already coming in, waiting for a slow morning appointment isn’t an option. Our phone line is open 24/7, including weekends and holidays, and we work to get a plumber to you as soon as we can, day or night.",
+    "cta": "Learn more about emergency plumbing",
+    "href": "/mokena/emergency-plumbing"
+   },
+   {
+    "tag": "Water Heaters",
+    "h3": "Water Heaters in Frankfort",
+    "paragraph": "Frankfort draws its water from [10 wells pulling from the Silurian dolomite aquifer, not Lake Michigan like much of Chicagoland](https://new.patch.com/illinois/frankfort/frankfort-hosts-public-house-discussing-water-supply), and that well water carries more calcium and magnesium than lake water. Those minerals settle inside a tank year after year, making it work harder and shortening its life. If yours is rumbling or running out of hot water early, it’s worth a look. We’ll repair what makes sense to repair, and help you pick a replacement when it doesn’t.",
+    "cta": "Learn more about water heaters",
+    "href": "/mokena/water-heater-repair"
+   },
+   {
+    "tag": "Leak Repair",
+    "h3": "Leak Repair in Frankfort",
+    "paragraph": "Many Frankfort homes are only a couple of decades old, so original supply lines and fittings are starting to reach the age where seals dry out and connections loosen. A slow leak behind a wall or under a slab can run for weeks before a stain or a higher water bill gives it away. By then it may have already damaged flooring or framing nearby. We trace the leak to its source, repair or replace the pipe and check nearby sections for the same wear.",
+    "cta": "Learn more about leak repair",
+    "href": "/mokena/leak-repairs"
+   },
+   {
+    "tag": "Toilets & Showers",
+    "h3": "Toilets & Showers in Frankfort",
+    "paragraph": "Fixtures installed during [Frankfort’s building boom of the 1990s and 2000s](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Frankfort.pdf) are now old enough that supply valves, flappers and shower cartridges are wearing out on a lot of homes at once. That’s often why a toilet runs constantly or a shower valve starts dripping behind the tile years after it was installed. Left alone, a running toilet adds up on the water bill and a hidden leak can damage the subfloor. We repair or replace fixtures and install new ones when it’s time.",
+    "cta": "Learn more about toilets & showers",
+    "href": "/mokena/toilet-installation-repair"
+   }
+  ],
+  "redBar": {
+   "label": "See all our plumbing services",
+   "href": "/mokena-il#services"
+  }
+ },
+ "office": {
+  "eyebrow": "Fast Local Dispatch",
+  "h2": "Plumbers Near You in Frankfort",
+  "body": "Our plumbers work all over Frankfort and the rest of the southwest suburbs, and they know the homes here. Call us any time, day or night.",
+  "addressName": "J. Blanton Plumbing - Mokena",
+  "address": "19027 S Jodi Rd, Unit H-1B, Mokena, IL 60448",
+  "license": "Illinois plumbing license EH0211882",
+  "panelHeading": "Nearby Communities We Serve",
+  "communities": [
+   {
+    "label": "Arbury Hills"
+   },
+   {
+    "label": "Frankfort Square"
+   },
+   {
+    "label": "Manhattan"
+   },
+   {
+    "label": "Mokena",
+    "href": "/mokena-il"
+   }
+  ],
+  "closing": "Don’t see your town listed? We may still serve it. Call us 24/7 and we’ll let you know."
+ },
+ "why": {
+  "h2": "Why Frankfort Homeowners Choose J. Blanton",
+  "intro": "The most common complaint about plumbing companies is simple: you called a plumber and got a salesman. Here’s how we work instead.",
+  "items": [
+   {
+    "h3": "Options, Not a Sales Pitch",
+    "body": "Our plumber explains the problem in plain English first. When it’s a drain or sewer issue, we can run a camera down the line so you see what we see. Then you decide."
+   },
+   {
+    "h3": "A Clear Price Before Any Work Starts",
+    "body": "We give you a flat-rate price before we touch anything. The price we quote is the price you pay, with no surprise add-ons when the job is done."
+   },
+   {
+    "h3": "We Treat an Emergency Like One",
+    "body": "Our phone line is open around the clock, including weekends and holidays. When water is coming into your Frankfort basement, we work to get a plumber to you as soon as we can."
+   }
+  ]
+ },
+ "reviews": {
+  "h2": "What Frankfort Homeowners Say",
+  "items": [
+   {
+    "text": "John Cosgriff did a great job completing my sewer line repair and replacing a section of the water main. What originally looked like a simple job turned into something much more complicated. John was obviously very knowledgeable and experienced with all the skills needed to complete the job. He also kept me well-informed on what this 2-3 day job entailed and addressed all my questions and concerns. I'm very satisfied with his work and wouldn't hesitate to use him again.",
+    "name": "Joseph Adamkiewicz"
+   },
+   {
+    "text": "Robert D. did a great job of installing my new sump pump and ejector pit motor which had failed. He cleaned up the areas well. He was also very quick and efficient in his work. He also explained what I need to monitor on the battery back up.",
+    "name": "Erik Mahlke"
+   }
+  ]
+ },
+ "faq": [
+  {
+   "q": "Do you have plumbers near me in Frankfort?",
+   "a": "Yes. Our plumbers work all over Frankfort and the nearby southwest suburbs, including Mokena, Frankfort Square and Manhattan. Call us 24/7 and we’ll get a plumber to you."
+  },
+  {
+   "q": "Are you licensed and bonded in Illinois?",
+   "a": "Yes. We’re licensed and bonded in Illinois, and we’ve been serving Chicagoland homeowners since 1993."
+  },
+  {
+   "q": "How much does a plumber cost in Frankfort?",
+   "a": "It depends on the job. The main factors are what’s wrong, how hard it is to reach, the parts or materials needed and the age of your plumbing. We give you a flat-rate price before any work begins, so you know the cost going in."
+  },
+  {
+   "q": "Is Frankfort’s well water hard on my plumbing?",
+   "a": "Yes, often. [Frankfort’s water comes from 10 wells drawing on the Silurian dolomite aquifer](https://new.patch.com/illinois/frankfort/frankfort-hosts-public-house-discussing-water-supply), which carries more calcium and magnesium than Lake Michigan water used elsewhere in the region. That buildup is a common reason a water heater or fixture wears out sooner than expected."
+  },
+  {
+   "q": "Why did my yard flood during the last big storm?",
+   "a": "Frankfort has had fast-moving storms drop [several inches of rain in a single night](https://patch.com/illinois/frankfort/flooding-reported-frankfort-after-5-inches-rain), enough to flood yards and close roads around town. That kind of rain can overwhelm a sump pump quickly, especially if the power goes out with the storm. We can test your pump and add a battery backup."
+  },
+  {
+   "q": "Is my home too new to have plumbing problems?",
+   "a": "Not necessarily. [More than half of Frankfort’s homes were built between 1990 and 2009](https://cmap.illinois.gov/wp-content/uploads/dlm_uploads/Frankfort.pdf), and fixtures, water heaters and sump pumps from that era are reaching the end of their expected life at the same time. Newer construction still needs the same regular checks as an older home."
+  }
+ ],
+ "ndc": {
+  "h2": "Join and Save 10% on Plumbing and Sewer Services",
+  "body": "Most plumbing problems in Frankfort start small. The No Drip Club brings a plumber to your home, so issues get caught early."
+ },
+ "final": {
+  "h2": "Your Frankfort Plumber, Day or Night",
+  "body": "Small leaks and slow drains don’t fix themselves. Call us early, and we’ll keep a small problem from turning into a big one."
+ }
+}
