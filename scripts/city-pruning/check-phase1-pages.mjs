@@ -44,9 +44,9 @@ const TITLES = {
   '/joliet': COPY.joliet.title,
   '/columbus': COPY.columbus.title,
   ...Object.fromEntries(Object.entries(DATA.townMeta).map(([u, m]) => [u, m.title])),
-  // The changes-MD title already names the brand and the page keeps the automatic suffix (it is not one
-  // of the brief's 10 suffix-free pages) — flagged for Marketing in the report.
-  '/locations': 'J. Blanton Plumbing Locations | Illinois & Ohio Offices | J. Blanton Plumbing',
+  // The changes-MD title already opens with the brand, so the page sets it ABSOLUTE (no template suffix;
+  // Marketing 2026-11-19).
+  '/locations': 'J. Blanton Plumbing Locations | Illinois & Ohio Offices',
 };
 /** Links that already 301 on every hub before this release (not pilot sources) — reported, not failed. */
 const PRE_EXISTING = (h) => h === '/no-drip-club/' || /^\/(joliet|columbus)\/(kitchen-faucet-repair-and-installation|kitchen-plumbing|plumbing-fixture-installations|sewer-drain-clearing|basement-waterproofing|clogged-drains|kitchen-sink-drain|residential-water-heater|water-heater-maintenance|gas-line-leak-detection|water-testing)$/.test(h);

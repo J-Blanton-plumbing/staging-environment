@@ -11,14 +11,15 @@ export const dynamic = 'force-dynamic';
 /**
  * `/locations` — Brief 229 (Track D): a full remake from the City Pruning package's approved Locations
  * Index template v1 (office finder, Browse by State, every place we serve A to Z). Head per the changes
- * MD §6; the root layout composes the brand suffix (this page is not one of the 10 suffix-free pages).
+ * MD §6. The title is ABSOLUTE: it already opens with the brand, so the root layout's "| J. Blanton
+ * Plumbing" template would name it twice (Marketing, 2026-11-19 review of the Brief 229 report).
  *
  * The page renders from the package's data (src/lib/city-pruning/locations-data.json) — the old
  * `main_pages.locations` content (hero, region cards, service-center list) no longer has a place on it.
  * The row still gates the page: unpublished → 404 (Brief 159), as before.
  */
 export const metadata: Metadata = {
-  title: 'J. Blanton Plumbing Locations | Illinois & Ohio Offices',
+  title: { absolute: 'J. Blanton Plumbing Locations | Illinois & Ohio Offices' },
   description:
     'Find your closest J. Blanton Plumbing office. Local offices across Chicagoland and Columbus, OH, with plumbers available 24/7. Search by town or ZIP.',
 };

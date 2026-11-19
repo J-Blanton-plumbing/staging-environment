@@ -150,9 +150,25 @@ for (const f of fs.readdirSync(townDir).filter((x) => x.endsWith('.md')).sort())
 const hubDir = path.join(PKG, 'content', 'hub_copy_updates');
 const HUBS = { tinley_park: 'TinleyPark_Hub_Optimization_Nov2026.md', joliet: 'Joliet_Hub_Optimization_Nov2026.md', columbus: 'Columbus_Hub_Optimization_Nov2026.md' };
 const SLUG = { tinley_park: 'tinley-park-il', joliet: 'joliet', columbus: 'columbus' };
+/**
+ * Marketing corrections to the package MDs, applied to the raw text before parsing (the importer's
+ * corrections pattern, gotcha 34): every `find` must occur exactly `count` times or the run fails.
+ */
+const HUB_CORRECTIONS = {
+  // Marketing 2026-11-19: "take the West out" — the office is 1387 Goodale Blvd (NAP sheet + Google listing).
+  'Columbus_Hub_Optimization_Nov2026.md': [{ find: 'office on West Goodale Boulevard', replace: 'office on Goodale Boulevard', count: 2 }],
+};
+function corrected(file, md) {
+  for (const c of HUB_CORRECTIONS[file] ?? []) {
+    const n = md.split(c.find).length - 1;
+    if (n !== c.count) fail(`${file}: correction "${c.find}" found ${n} time(s), expected ${c.count}`);
+    md = md.split(c.find).join(c.replace);
+  }
+  return md;
+}
 const updates = {};
 for (const [key, file] of Object.entries(HUBS)) {
-  const md = fs.readFileSync(path.join(hubDir, file), 'utf8');
+  const md = corrected(file, fs.readFileSync(path.join(hubDir, file), 'utf8'));
   const S = sections(md);
   const bullet = (sec, label) => {
     const l = (S[sec]?.lines ?? []).find((x) => x.trim().startsWith(`- **${label}:**`));
