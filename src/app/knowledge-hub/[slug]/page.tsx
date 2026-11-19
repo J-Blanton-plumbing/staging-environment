@@ -29,6 +29,8 @@ export const dynamic = 'force-dynamic';
  * Brief 159's baseline versions ("Version 1 — live") are stamped with the SEED
  * time, not with when anyone published anything, so they are excluded when the
  * schema derives a CMS-created article's publish dates (Brief 188 Track F2).
+ * Brief 229: when such a version was itself PUBLISHED (an article a seed put live), datePublished stays
+ * the article's created_at, so republishing it (e.g. an address fix) moves only dateModified.
  */
 const BASELINE_VERSION_LABEL = 'Version 1 — live';
 
@@ -46,7 +48,13 @@ async function getArticleFromDb(slug: string, allowDraft: boolean) {
                   AND d.published_at IS NOT NULL AND d.label <> $2) AS first_published_at,
               (SELECT max(d.published_at) FROM page_drafts d
                 WHERE d.page_type = 'article' AND d.page_slug = a.slug
-                  AND d.published_at IS NOT NULL AND d.label <> $2) AS last_published_at
+                  AND d.published_at IS NOT NULL AND d.label <> $2) AS last_published_at,
+              -- Brief 229: a baseline-labelled version that was itself PUBLISHED means the article went
+              -- live with its first version (a seed that published it, e.g. Brief 191's Columbus article)
+              -- — so it was live since created_at, and a later publish is a modification, not its debut.
+              EXISTS (SELECT 1 FROM page_drafts d
+                       WHERE d.page_type = 'article' AND d.page_slug = a.slug
+                         AND d.published_at IS NOT NULL AND d.label = $2) AS baseline_published
        FROM cms_articles a WHERE a.slug = $1 ${allowDraft ? '' : "AND a.status = 'published'"} LIMIT 1`,
       [slug, BASELINE_VERSION_LABEL]
     );
@@ -64,7 +72,9 @@ async function getArticleFromDb(slug: string, allowDraft: boolean) {
       status: row.status as string,
       wpPostId: (row.wp_post_id ?? null) as number | null,
       createdAt: row.created_at ? new Date(row.created_at) : null,
-      firstPublishedAt: row.first_published_at ? new Date(row.first_published_at) : null,
+      // Brief 229: a published baseline version → datePublished stays created_at (buildBlogPosting's
+      // fallback, what the page emitted before any editorial publish); later publishes only set dateModified.
+      firstPublishedAt: row.first_published_at && !row.baseline_published ? new Date(row.first_published_at) : null,
       lastPublishedAt: row.last_published_at ? new Date(row.last_published_at) : null,
       /** Brief 190: raw stored values — normalized / sanitized where they are used. */
       template: (row.template ?? null) as unknown,
