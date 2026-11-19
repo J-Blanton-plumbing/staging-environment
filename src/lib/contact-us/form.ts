@@ -49,6 +49,23 @@ export const SMS_MARKETING_TITLE = 'Marketing & Promotional Texts';
 export const SMS_MARKETING_TEXT =
   'I agree to receive recurring automated marketing and promotional text messages from J. Blanton Plumbing at the number provided. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase.';
 
+/**
+ * The required "I agree" checkbox (Marketing 2026-11-19). It gates the submit on
+ * OUR side only — client and proxy both refuse without it — and is NOT sent to
+ * Mainline: Mainline's Contact Us form (migration 1057) has no such field, and
+ * /api/leads keeps only the keys in the form definition. Recording the
+ * agreement in Mainline needs a field added there first.
+ *
+ * Both links go to /privacy-policy: that one page is the site's "Terms of Use &
+ * Privacy Policy" (terms section first, privacy section second). There is no
+ * separate terms page on jblantonplumbing.com or on Mainline.
+ */
+export const PRIVACY_POLICY_HREF = '/privacy-policy';
+export const TERMS_HREF = '/privacy-policy';
+
+/** Mainline's public "Stop marketing from J. Blanton Plumbing" page (mail, email and text marketing). */
+export const OPT_OUT_HREF = 'https://mainline.jblantonplumbing.com/opt-out';
+
 /** What the visitor typed, as the client sends it to our proxy. */
 export interface ContactUsInput {
   first_name: string;
@@ -59,9 +76,11 @@ export interface ContactUsInput {
   message: string;
   sms_service_consent: boolean;
   sms_marketing_consent: boolean;
+  /** Our-side only — never forwarded to Mainline (see PRIVACY_POLICY_HREF). */
+  terms_agreed: boolean;
 }
 
-export type ContactUsField = 'first_name' | 'last_name' | 'email' | 'phone' | 'service_category';
+export type ContactUsField = 'first_name' | 'last_name' | 'email' | 'phone' | 'service_category' | 'terms_agreed';
 export type ContactUsErrors = Partial<Record<ContactUsField, string>>;
 
 /** Order the fields appear in — focus goes to the first invalid one in this order. */
@@ -71,6 +90,7 @@ export const CONTACT_US_FIELD_ORDER: readonly ContactUsField[] = [
   'email',
   'phone',
   'service_category',
+  'terms_agreed',
 ];
 
 /** Length caps (server + client). Generous for real input, small enough to stay under the 10 KB body cap. */
@@ -113,6 +133,7 @@ export const CONTACT_US_ERROR_TEXT: Record<ContactUsField, string> = {
   email: 'Enter a valid email address, like name@example.com.',
   phone: 'Enter a 10-digit phone number, like (555) 555-5555.',
   service_category: 'Choose a service.',
+  terms_agreed: 'Check the box to agree to the Privacy Policy and Terms and Conditions.',
 };
 
 /** Validates one submission. Same rules on the client and the server. */
@@ -126,6 +147,7 @@ export function validateContactUs(input: ContactUsInput): ContactUsErrors {
   if (!email || email.length > MAX_LEN.email || !EMAIL_RE.test(email)) e.email = CONTACT_US_ERROR_TEXT.email;
   if (input.phone.length > MAX_LEN.phone || !phoneDigits(input.phone)) e.phone = CONTACT_US_ERROR_TEXT.phone;
   if (!isServiceValue(input.service_category)) e.service_category = CONTACT_US_ERROR_TEXT.service_category;
+  if (input.terms_agreed !== true) e.terms_agreed = CONTACT_US_ERROR_TEXT.terms_agreed;
   return e;
 }
 
@@ -142,5 +164,6 @@ export function toContactUsInput(raw: unknown): ContactUsInput {
     message: s('message'),
     sms_service_consent: o.sms_service_consent === true,
     sms_marketing_consent: o.sms_marketing_consent === true,
+    terms_agreed: o.terms_agreed === true,
   };
 }

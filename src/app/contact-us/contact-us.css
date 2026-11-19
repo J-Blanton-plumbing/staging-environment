@@ -151,6 +151,15 @@
 .contact-us-page .ct-check strong { display: block; font-family: var(--font-industry), 'Arial', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; color: var(--c-midnight); margin-bottom: 4px; }
 .contact-us-page .ct-check span { font-family: var(--font-nunito), 'Nunito', sans-serif; font-size: 14px; line-height: 21px; color: var(--c-slate); }
 
+/* Opt-out note (end of the SMS panel) + the required agreement (Marketing 2026-11-19) */
+.contact-us-page .ct-optout { margin: 18px 0 0; padding-top: 18px; border-top: 1px solid var(--c-sand-400); font-family: var(--font-nunito), 'Nunito', sans-serif; font-size: 14px; line-height: 21px; color: var(--c-slate); }
+.contact-us-page .ct-optout a,
+.contact-us-page .ct-agree a { text-decoration: underline; text-underline-offset: 2px; }
+.contact-us-page .ct-agree { grid-column: 1 / -1; display: grid; gap: 8px; }
+.contact-us-page .ct-agree .ct-check span { font-size: 16px; line-height: 24px; color: var(--c-midnight); }
+.contact-us-page .ct-agree b { color: var(--c-carmine); font-weight: 700; }
+.contact-us-page .ct-check input[aria-invalid="true"] { outline: 2px solid var(--c-carmine); outline-offset: 2px; }
+
 .contact-us-page .ct-submit { grid-column: 1 / -1; justify-self: start; min-width: 220px; margin-top: 8px; }
 @media (max-width: 700px) {
   .contact-us-page .ct-grid { grid-template-columns: 1fr; }

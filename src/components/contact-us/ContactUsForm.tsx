@@ -6,10 +6,13 @@ import {
   CONTACT_US_FIELD_ORDER,
   CONTACT_US_FORM_SLUG,
   CONTACT_US_SERVICE_OPTIONS,
+  OPT_OUT_HREF,
+  PRIVACY_POLICY_HREF,
   SMS_MARKETING_TEXT,
   SMS_MARKETING_TITLE,
   SMS_SERVICE_TEXT,
   SMS_SERVICE_TITLE,
+  TERMS_HREF,
   validateContactUs,
   type ContactUsErrors,
   type ContactUsField,
@@ -44,6 +47,7 @@ const FIELD_ID: Record<ContactUsField, string> = {
   email: 'ct-em',
   phone: 'ct-ph',
   service_category: 'ct-sv',
+  terms_agreed: 'ct-terms',
 };
 
 const FIELD_LABEL: Record<ContactUsField, string> = {
@@ -52,6 +56,7 @@ const FIELD_LABEL: Record<ContactUsField, string> = {
   email: 'Email',
   phone: 'Phone',
   service_category: 'Service request',
+  terms_agreed: 'Privacy Policy and Terms agreement',
 };
 
 const EMPTY: ContactUsInput = {
@@ -63,6 +68,7 @@ const EMPTY: ContactUsInput = {
   message: '',
   sms_service_consent: false,
   sms_marketing_consent: false,
+  terms_agreed: false,
 };
 
 function newEventId(): string {
@@ -416,7 +422,41 @@ export default function ContactUsForm({
               <span>{SMS_MARKETING_TEXT}</span>
             </div>
           </label>
+          <p className="ct-optout">
+            To stop marketing texts, emails or mail from us at any time, visit our{' '}
+            <a href={OPT_OUT_HREF} target="_blank" rel="noopener">
+              opt-out page
+            </a>
+            .
+          </p>
         </fieldset>
+        {/* Required agreement (Marketing 2026-11-19). The links open in a new tab so a half-filled form is never lost. */}
+        <div className="ct-agree">
+          <label className="ct-check">
+            <input
+              type="checkbox"
+              {...a11y('terms_agreed')}
+              name="terms_agreed"
+              required
+              checked={v.terms_agreed}
+              onChange={(e) => set('terms_agreed', e.target.checked)}
+            />
+            <div>
+              <span>
+                I agree to the{' '}
+                <a href={PRIVACY_POLICY_HREF} target="_blank" rel="noopener">
+                  Privacy Policy
+                </a>{' '}
+                and{' '}
+                <a href={TERMS_HREF} target="_blank" rel="noopener">
+                  Terms and Conditions
+                </a>
+                . <b>*</b>
+              </span>
+            </div>
+          </label>
+          {err('terms_agreed')}
+        </div>
         {/* Honeypot: invisible to people and assistive tech, never in the tab order. */}
         <div className="ct-hp" aria-hidden="true">
           <label htmlFor="ct-website">Website</label>
