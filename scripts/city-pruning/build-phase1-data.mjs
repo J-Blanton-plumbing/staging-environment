@@ -3,8 +3,12 @@
  * Brief 229 — City Pruning Phase 1 Pilot: turns the package's data CSVs (committed verbatim under
  * data/city-pruning/phase1-pilot/) into the two JSON modules the site reads.
  *
- *   src/lib/city-pruning/phase1-redirects.json   { "/from": "/to", … }  — the 1,184 301s. Plain data:
- *                                                 it is bundled into the Edge middleware.
+ *   src/lib/city-pruning/phase1-redirects.json   { "/from": "/to", … }  — the 111 301s for pages that MOVE.
+ *                                                 Plain data: it is bundled into the Edge middleware.
+ *   src/lib/city-pruning/phase1-noindex.json     the 1,073 URLs that stay LIVE with noindex, out of every
+ *                                                 sitemap (Brief 230, plan "Changed Nov 19": PPC keeps
+ *                                                 every page it uses) — 17 Tier 4 town pages + the 24
+ *                                                 pilot-area towns' service pages.
  *   src/lib/city-pruning/phase1-data.json        service areas per pilot hub, the office NAP list,
  *                                                 the locations/state link map, the town titles.
  *
@@ -50,17 +54,50 @@ const read = (f) => parseCsv(fs.readFileSync(path.join(DATA, f), 'utf8'));
 
 const fail = (m) => { console.error(`[build-phase1-data] ${m}`); process.exit(1); };
 
-// ── Redirects ───────────────────────────────────────────────────────────────────────────────────
+// ── Redirects vs noindex (Brief 230): the CSV's `group` column decides ─────────────────────────────
+/** Moved pages: their content lives at the new URL → 301. */
+const MOVE_GROUPS = { 'hub slug change': 3, 'hub service slug change': 99, 'Tier 3 town slug change': 7, 'state page slug change': 2 };
+/** Pages that stay live with noindex, out of the sitemap (the target column is unused for these). */
+const NOINDEX_GROUPS = { 'Tier 4 town to hub': 17, 'town service page to hub service': 1056 };
 const redirects = {};
+const noindexPaths = [];
+const groupCount = {};
 for (const r of read('redirects_phase1_pilot.csv')) {
+  groupCount[r.group] = (groupCount[r.group] ?? 0) + 1;
+  if (!(r.group in MOVE_GROUPS) && !(r.group in NOINDEX_GROUPS)) fail(`row ${r.source}: unknown group "${r.group}"`);
   if (r.type !== '301') fail(`row ${r.source}: type ${r.type} (only 301 is allowed)`);
   for (const p of [r.source, r.target]) {
     if (!/^\/[a-z0-9\-/]+$/.test(p) || p.endsWith('/') || p.includes('//')) fail(`row ${r.source}: "${p}" is not a normalized path`);
   }
-  if (redirects[r.source]) fail(`duplicate source ${r.source}`);
-  redirects[r.source] = r.target;
+  if (redirects[r.source] || noindexPaths.includes(r.source)) fail(`duplicate source ${r.source}`);
+  if (r.group in MOVE_GROUPS) redirects[r.source] = r.target;
+  else noindexPaths.push(r.source);
+}
+for (const [g, n] of Object.entries({ ...MOVE_GROUPS, ...NOINDEX_GROUPS })) {
+  if ((groupCount[g] ?? 0) !== n) fail(`group "${g}": ${groupCount[g] ?? 0} rows, expected ${n}`);
 }
 for (const [from, to] of Object.entries(redirects)) if (redirects[to]) fail(`chain inside the file: ${from} → ${to} → ${redirects[to]}`);
+// Noindex paths are /{town} or /{town}/{service}; none of their towns may be a page that moves.
+const movedSlugs = new Set(Object.keys(redirects).filter((p) => p.split('/').length === 2).map((p) => p.slice(1)));
+const movedTargets = new Set(Object.values(redirects).filter((p) => p.split('/').length === 2).map((p) => p.slice(1)));
+const tier4Towns = new Set();
+const serviceTowns = new Set();
+for (const p of noindexPaths) {
+  const seg = p.slice(1).split('/');
+  if (seg.length === 1) tier4Towns.add(seg[0]);
+  else if (seg.length === 2) serviceTowns.add(seg[0]);
+  else fail(`noindex path ${p} is neither /{town} nor /{town}/{service}`);
+  if (redirects[p]) fail(`${p} is both a redirect and a noindex page`);
+  if (seg.length === 1 && (movedSlugs.has(seg[0]) || movedTargets.has(seg[0]))) fail(`noindex town ${seg[0]} is a page that moves`);
+}
+for (const t of serviceTowns) if (movedTargets.has(t)) fail(`noindex service town ${t} is a pilot page`);
+for (const t of tier4Towns) if (!serviceTowns.has(t)) fail(`Tier 4 town ${t} has no service rows`);
+if (tier4Towns.size !== 17 || serviceTowns.size !== 24) fail(`expected 17 Tier 4 towns and 24 service towns, got ${tier4Towns.size} / ${serviceTowns.size}`);
+const noindex = {
+  townPages: [...tier4Towns].sort(),
+  serviceTowns: [...serviceTowns].sort(),
+  paths: noindexPaths.slice().sort(),
+};
 
 // ── Service areas (pilot hubs) ──────────────────────────────────────────────────────────────────
 const serviceAreas = {};
@@ -99,6 +136,7 @@ for (const r of read('tier3_titles_metas.csv')) {
 const files = {
   'phase1-redirects.json': JSON.stringify(redirects, null, 0).replace(/","/g, '",\n"').replace(/^\{/, '{\n').replace(/\}$/, '\n}') + '\n',
   'phase1-data.json': JSON.stringify({ serviceAreas, offices, linkMap, townMeta }, null, 1) + '\n',
+  'phase1-noindex.json': JSON.stringify(noindex, null, 1) + '\n',
 };
 const check = process.argv.includes('--check');
 let stale = 0;
@@ -111,4 +149,4 @@ for (const [name, body] of Object.entries(files)) {
   console.log(`[build-phase1-data] wrote ${path.relative(ROOT, p)}`);
 }
 if (stale) process.exit(1);
-console.log(`[build-phase1-data] ${Object.keys(redirects).length} redirects, ${offices.length} offices, ${linkMap.length} link-map rows, ${Object.keys(townMeta).length} town titles.`);
+console.log(`[build-phase1-data] ${Object.keys(redirects).length} redirects, ${noindex.paths.length} noindex paths (${noindex.townPages.length} town pages, ${noindex.serviceTowns.length} service towns), ${offices.length} offices, ${linkMap.length} link-map rows, ${Object.keys(townMeta).length} town titles.`);

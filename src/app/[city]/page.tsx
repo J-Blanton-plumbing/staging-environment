@@ -37,6 +37,7 @@ import { officePhone } from '@/lib/cms/offices';
 import { pilotOfficeSlug } from '@/lib/city-pruning/phase1';
 import { getTownPage, townMeta } from '@/lib/city-pruning/towns';
 import TownPageView from '@/components/city-pruning/TownPageView';
+import { pilotTownPageRobots } from '@/lib/city-pruning/noindex';
 
 /**
  * Shared dynamic city builder (brief-10, routing DECIDED 2026-06-03).
@@ -97,6 +98,10 @@ export async function generateMetadata({ params }: { params: { city: string } })
   const fallback = staticCityMeta(params.city);
   if (!fallback) return {};
   const meta = await getCityPageMeta(params.city, fallback);
+  // Brief 230: a City Pruning pilot Tier 4 town page stays live with `noindex, follow` (out of the cities
+  // sitemap — src/lib/city-pruning/noindex.ts). Every other page's metadata keeps NO robots key, as before.
+  const robots = pilotTownPageRobots(params.city);
+  if (robots) return { title: meta.title, description: meta.description, robots };
   return { title: meta.title, description: meta.description };
 }
 

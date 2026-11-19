@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { pruneHref } from '@/lib/city-pruning/phase1';
+import { isPilotNoindexTownPage } from '@/lib/city-pruning/noindex';
 
 /**
  * Coverage Area city-locations grid — theme `.city-locations` (page-city.php
@@ -38,9 +39,15 @@ const REGION_TRUST_LINE: Record<CityGridRegion, string> = {
 export default function CityLocationsGrid({
   cities,
   region = 'chicagoland',
+  unlinkPilotNoindex = false,
 }: {
   cities: { slug: string; name: string }[];
   region?: CityGridRegion;
+  /**
+   * Brief 230: on a City Pruning pilot page, a town the pilot keeps live with noindex (Tier 4) is listed
+   * as text, never linked — the Service Areas panel's convention. Off everywhere else (output unchanged).
+   */
+  unlinkPilotNoindex?: boolean;
 }) {
   const perColumn = Math.ceil(cities.length / 4);
   const columns: { slug: string; name: string }[][] = [];
@@ -64,12 +71,16 @@ export default function CityLocationsGrid({
             {col.map((c) => (
               <div key={c.slug} className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 flex-shrink-0 text-brand-600" strokeWidth={2} aria-hidden="true" />
+                {unlinkPilotNoindex && isPilotNoindexTownPage(c.slug) ? (
+                  <span className="text-[15px] text-navy-800">{c.name}</span>
+                ) : (
                 <Link
                   href={pruneHref(`/${c.slug}`)}
                   className="text-[15px] text-navy-800 hover:text-brand-600 hover:underline"
                 >
                   {c.name}
                 </Link>
+                )}
               </div>
             ))}
           </div>

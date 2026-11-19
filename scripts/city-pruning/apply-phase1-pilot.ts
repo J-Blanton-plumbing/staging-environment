@@ -19,6 +19,8 @@
  *      (Track E). Title/meta: Mokena + Skokie keep theirs; Tinley Park's from its MD, no brand suffix.
  *   B. 29 City Service V2 pages per hub → /{hub}-il/{service}: the legacy page's published v2_content,
  *      links relinked (the Service url / provider url follow on save — they are derived).
+ *      Brief 230: "relinked" also means a link to a page the pilot keeps LIVE with noindex (a Tier 4 town,
+ *      a town service page) becomes its plain label on these pilot pages; the run lists every one.
  *   C. The 4 legacy-template service pages per hub (bathroom-plumbing, drain-camera-inspection,
  *      flood-control-maintenance, gas-lines): where the legacy page has a row, a copy row + a version
  *      made from its live version (relinked); without a row the page renders from code, as today.
@@ -50,6 +52,7 @@ import {
 import { CITY_SERVICE_V2_TEMPLATE, type CityServiceStored, type CityServiceV2DraftContent } from '../../src/lib/city-service-v2-cms/model';
 import { PILOT_HUBS, PILOT_TOWNS, PRUNING_PHASE1_REDIRECTS, pruneHref } from '../../src/lib/city-pruning/phase1';
 import { townMeta } from '../../src/lib/city-pruning/towns';
+import { isPilotNoindexPath } from '../../src/lib/city-pruning/noindex';
 import pilotData from '../../src/lib/city-pruning/phase1-data.json';
 import { getCity } from '../../src/lib/content/cities';
 import { authorId, loadHub, loadService, type PageResult } from '../lib/city-pages-seed';
@@ -86,11 +89,46 @@ const LEGACY_TEMPLATE_SERVICES = ['bathroom-plumbing', 'drain-camera-inspection'
 const PRE_BRIEF_H1: Record<string, string> = { joliet: 'Plumbers in Joliet, IL', columbus: 'Plumbers in Columbus, OH' };
 
 // ── Relinking: every internal link to a pilot redirect source → its final target ──────────────────
+// Brief 230: and a link to a page the pilot keeps live with NOINDEX (a Tier 4 town, a town service page)
+// renders as plain text on the pilot pages — the Service Areas panel's Tier 4 convention. A structured
+// href FIELD (a whole string that is a URL) can't be unlinked: it is left as is and listed (UNLINKABLE).
 const SITE_PATH = /^(?:https?:\/\/(?:www\.)?jblantonplumbing\.com)?\/[^\s"<>()]*$/i;
+const sitePath = (h: string): string | null => {
+  const u = h.replace(/^https?:\/\/(?:www\.)?jblantonplumbing\.com/i, '');
+  if (!u.startsWith('/')) return null;
+  const p = u.split(/[?#]/)[0];
+  return (p.length > 1 ? p.replace(/\/+$/, '') : p).toLowerCase();
+};
+const toNoindex = (h: string) => {
+  const p = sitePath(h);
+  return p !== null && isPilotNoindexPath(p);
+};
+/** Every link this run turned into text (Brief 230 Track D inventory), and the ones it could not. */
+const UNLINKED: string[] = [];
+const UNLINKABLE: string[] = [];
+let relinkContext = '';
 function relinkStr(s: string): string {
-  if (SITE_PATH.test(s)) return pruneHref(s);
+  if (SITE_PATH.test(s)) {
+    const out = pruneHref(s);
+    if (toNoindex(out)) UNLINKABLE.push(`${relinkContext}: field "${s}"`);
+    return out;
+  }
   return s
-    .replace(/\]\(([^)\s]+)\)/g, (_m, h: string) => `](${pruneHref(h)})`)
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, label: string, h: string) => {
+      const to = pruneHref(h);
+      if (toNoindex(to)) {
+        UNLINKED.push(`${relinkContext}: [${label}](${h})`);
+        return label;
+      }
+      return `[${label}](${to})`;
+    })
+    .replace(/<a\b[^>]*\shref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g, (m, h: string, inner: string) => {
+      if (toNoindex(pruneHref(h))) {
+        UNLINKED.push(`${relinkContext}: <a href="${h}">`);
+        return inner;
+      }
+      return m;
+    })
     .replace(/href="([^"]+)"/g, (_m, h: string) => `href="${pruneHref(h)}"`)
     .replace(/https:\/\/jblantonplumbing\.com\/[a-z0-9\-/]+/g, (u) => pruneHref(u));
 }
@@ -117,6 +155,7 @@ const snapshot: Record<string, unknown> = {};
 
 // ── A. The 3 hubs ─────────────────────────────────────────────────────────────────────────────────
 function buildV7(legacy: CityHubStored, newSlug: string, cityName: string, by: { whyItems: Array<{ h3: string; body: string }> }): CityHubStored {
+  relinkContext = `/${newSlug}`;
   const h = relink(clone(legacy));
   const [first, ...rest] = h.services.cards;
   h.tier1 = 'v7';
@@ -276,6 +315,7 @@ async function services(by: number) {
         continue;
       }
       snapshot[`city_service_pages/${legacy}/${r.service_slug}`] = { v2_content: r.v2, meta_title: r.mt, meta_description: r.md };
+      relinkContext = p;
       const page = relink(clone(r.v2 as CityServiceStored));
       const draft: CityServiceV2DraftContent = { template: CITY_SERVICE_V2_TEMPLATE, page, metaTitle: r.mt ?? '', metaDescription: r.md ?? '' };
       results.push(
@@ -304,6 +344,7 @@ async function services(by: number) {
 /** C. A legacy-template service row → a copy at the new slug (+ a version from its live version). */
 async function copyLegacyServiceRow(legacy: string, newSlug: string, svc: string, by: number): Promise<Row> {
   const p = `/${newSlug}/${svc}`;
+  relinkContext = p;
   const exists = await pool.query(`SELECT 1 FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2`, [newSlug, svc]);
   if (exists.rowCount) return { path: p, outcome: 'already', detail: 'row already copied, no change' };
   const src = (await pool.query(`SELECT * FROM city_service_pages WHERE city_slug = $1 AND service_slug = $2`, [legacy, svc])).rows[0];
@@ -490,6 +531,9 @@ async function main() {
   await columbusServices(by);
   await towns();
   for (const r of results) console.log(`  ${r.path.padEnd(44)} ${r.outcome.toUpperCase().padEnd(12)} ${r.detail}`);
+  // Brief 230 (Track D): links to a noindexed pilot page, turned into text on the pilot pages this run built.
+  if (UNLINKED.length) console.log(`\n  links to noindexed pages rendered as text (${UNLINKED.length}):\n${UNLINKED.map((x) => `    ${x}`).join('\n')}`);
+  if (UNLINKABLE.length) console.log(`\n  !! structured href fields pointing at a noindexed page (left as is, ${UNLINKABLE.length}):\n${UNLINKABLE.map((x) => `    ${x}`).join('\n')}`);
   const snapDir = arg('--snapshot-dir');
   if (snapDir && Object.keys(snapshot).length) {
     fs.mkdirSync(snapDir, { recursive: true });

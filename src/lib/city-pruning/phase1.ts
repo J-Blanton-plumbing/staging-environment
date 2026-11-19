@@ -1,20 +1,21 @@
 /**
  * Brief 229 — City Pruning, Phase 1 Pilot (Marketing + Antonio, 2026-11-18).
  *
- * Three hub areas move to state-suffixed URLs and their thin town pages consolidate:
+ * Three hub areas move to state-suffixed URLs (301), and their thin town pages leave the index:
  *
  *   /mokena, /tinley-park, /skokie            → /mokena-il, /tinley-park-il, /skokie-il  (Tier 1 hubs v7)
  *   /{hub}/{service} (33 per hub)             → /{hub}-il/{service}                       (content unchanged)
  *   7 Tier 3 towns /{town}                    → /{town}-il                                (new town pages)
- *   17 Tier 4 towns /{town}                   → /{hub}-il                                 (consolidated)
- *   /{town}/{service} for the 24 towns        → /{hub}-il/{service}                       (1,056 rows)
+ *   17 Tier 4 towns /{town}                   → stay LIVE, noindex, out of the sitemap    (Brief 230)
+ *   /{town}/{service} for the 24 towns        → stay LIVE, noindex, out of the sitemap    (Brief 230, 1,056 rows)
  *   /locations/chicagoland, /central-ohio     → /locations/illinois, /locations/ohio
  *
  * Plain data + pure functions, no Node or DB imports: this module is bundled into the Edge middleware
  * (through src/lib/redirects/lookup.ts) as well as server components.
  *
  * ─── How the redirects are applied (src/lib/redirects/lookup.ts) ──────────────────────────────────
- *   1. The 1,184 rows of `phase1-redirects.json` (generated from the package CSV — never hand-edit;
+ *   1. The 111 rows of `phase1-redirects.json` (Brief 230: only pages that MOVE; the other 1,073 package rows
+ *      stay live with noindex — `phase1-noindex.json`, src/lib/city-pruning/noindex.ts) (generated from the package CSV — never hand-edit;
  *      `node scripts/city-pruning/build-phase1-data.mjs`) are exact-path 301s that WIN over every other
  *      map (no source is in any other map today — verified in Track 0).
  *   2. Every OTHER redirect's target is passed through `pruneFinal()`, so a legacy rule that used to
@@ -34,7 +35,7 @@ import { PILOT_HUBS } from './pilot-pages';
 
 export { PILOT_HUBS, PILOT_TOWNS, pilotOfficeSlug, pilotPageOfOffice, officePagePath, type PilotTown } from './pilot-pages';
 
-/** The 1,184 package redirects, exactly as supplied (after Track 0: no row needed retargeting). */
+/** The 111 package redirects for pages that move, exactly as supplied (Brief 230; Track 0: no row needed retargeting). */
 export const PRUNING_PHASE1_REDIRECTS: Readonly<Record<string, string>> = Object.freeze(REDIRECTS as Record<string, string>);
 
 /** The new hubs' copies of their legacy hub's Brief 209 folds (see the header, point 3). */
@@ -99,7 +100,7 @@ export function pruneHref(href: string): string {
   return to ? `${origin}${to}${tail}` : href;
 }
 
-/** Every legacy registry slug whose `/{slug}` now 301s (3 hubs + 24 towns). */
+/** Every legacy registry slug whose `/{slug}` now 301s (3 hubs + 7 Tier 3 towns; Brief 230: Tier 4 towns stay live). */
 export const PRUNED_LEGACY_CITY_SLUGS: ReadonlySet<string> = new Set(
   Object.keys(PRUNING_PHASE1_REDIRECTS)
     .map((p) => p.split('/').filter(Boolean))

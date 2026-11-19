@@ -1,6 +1,6 @@
 /**
  * Brief 229 — the City Pruning Phase 1 Pilot's PAGE MAP, dependency-free (no redirect JSON), so the
- * footer, the footer schema and the client-safe paths can import it without pulling the 1,184-row
+ * footer, the footer schema and the client-safe paths can import it without pulling the
  * redirect map into their bundles. src/lib/city-pruning/phase1.ts re-exports all of it.
  */
 

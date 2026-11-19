@@ -264,7 +264,8 @@ export default async function CityServicePageTemplate({ city, service, settings 
 
       {/* ── 10. CITY-LOCATIONS GRID ──────────────────────────────────────── */}
       <section className="mx-auto max-w-[1200px] px-6 pb-[80px]">
-        <CityLocationsGrid cities={gridCities} region={gridRegion} />
+        {/* Brief 230: a pilot hub's legacy-template service page lists the pilot's noindexed towns as text. */}
+        <CityLocationsGrid cities={gridCities} region={gridRegion} unlinkPilotNoindex={Boolean(city.pilot)} />
       </section>
 
       {/* ── 11. FAQ ACCORDION ────────────────────────────────────────────── */}
