@@ -1225,7 +1225,7 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/u
 # on. Exit 1 only when a write did not land. Do NOT add `|| true`.
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
   scripts/update-2026-11-office-addresses-gbp.ts commit --changed-file .city-pages-snapshot/changed.txt
-# Brief 229 - City Pruning Phase 1 Pilot (CMS side; the 1,184 redirects ship in
+# Brief 229 - City Pruning Phase 1 Pilot (CMS side; the 111 redirects + 1,073 noindex pages ship in
 # code, src/lib/city-pruning/phase1.ts). NEW rows next to the legacy ones, never
 # a rename (the Brief 202 old-slug seed trap - every seed above keys on the
 # legacy slugs and keeps reporting ALREADY-*): /mokena-il /tinley-park-il
