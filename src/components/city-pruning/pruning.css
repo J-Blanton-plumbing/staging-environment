@@ -319,6 +319,8 @@
 
 /* Nov 9: Google's embed draws its place card and "Open in Maps" link in the top-left corner, so the finder panel sits on the right on desktop. Google's own link replaces ours. */
 @media(min-width:1001px){#city-hub-v2.pruned .lc-panel{left:auto;right:32px;}}
+/* Nov 19: same reason for the office card on the Tier 1 hubs and Tier 3 town pages (#office .cc-band): it sits on the right wherever it floats over the map. */
+@media(min-width:701px){#city-hub-v2.pruned .cc-card{margin-left:auto;}}
 #city-hub-v2.pruned .lc-open{display:none;}
 
 
