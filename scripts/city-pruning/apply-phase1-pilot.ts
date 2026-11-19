@@ -25,6 +25,8 @@
  *   D. Joliet + Columbus (Track E): one new published version each on the CURRENT row and URL.
  *   E. The 7 Tier 3 town pages: their city_pages rows (template 'tier3-town', published) — the publish
  *      gate and the sitemap lastmod; the copy itself is code data (src/lib/city-pruning/towns.ts).
+ *   F. Marketing's 2026-11-19 review: "West/W. Goodale" → "Goodale" on every Columbus City Service V2
+ *      page (one published version each), as D does on the Columbus hub.
  *
  * Guards (Brief 186: editor state is reported, exit 0): a legacy page that is not a published row with
  * content → NOT-APPLIED for it; a new page that already has content → ALREADY-APPLIED; Joliet/Columbus
@@ -35,6 +37,7 @@ import path from 'path';
 import pool from '../../src/lib/db';
 import { createDraft, publishDraft } from '../../src/lib/cms/drafts';
 import { conformCityHubContent } from '../../src/lib/cms/city-hubs-write';
+import { conformCityServiceV2Content } from '../../src/lib/cms/city-services-v2-write';
 import {
   CITY_HUB_TEMPLATE,
   CITY_PAGE_TYPES,
@@ -392,6 +395,64 @@ async function copyUpdates(by: number, sharedWhy: Array<{ h3: string; body: stri
   }
 }
 
+// ── F. Columbus service pages: Goodale without "West" ────────────────────────────────────────────────
+/**
+ * Marketing 2026-11-19 (review of this brief's report): the Columbus office is on Goodale Blvd — "West" /
+ * "W." comes out of every Columbus City Service V2 page too, not only the hub (D). The street ADDRESS
+ * ("1387 W. Goodale Blvd") was already rewritten by update-2026-11-office-addresses-gbp.ts, which runs
+ * earlier in deploy.sh; what is left is prose ("from our office on West Goodale Boulevard", the trust item
+ * "Local office on W. Goodale Blvd") and one meta description. Same contract as that script: per page,
+ * through the editor's own checks, a NEW VERSION that is PUBLISHED and read back; a page that isn't a
+ * published V2 row is left alone; a page with nothing to change is ALREADY-APPLIED.
+ */
+const STREET_RE = /\b(?:West|W\.) Goodale\b/;
+async function columbusServices(by: number) {
+  const rows = (
+    await pool.query<{ service_slug: string; status: string; v2: CityServiceStored | null; mt: string | null; md: string | null }>(
+      `SELECT service_slug, status, v2_content AS v2, meta_title AS mt, meta_description AS md FROM city_service_pages WHERE city_slug = 'columbus' AND v2_content IS NOT NULL ORDER BY service_slug`
+    )
+  ).rows;
+  for (const r of rows) {
+    const slug = `columbus/${r.service_slug}`;
+    const p = `/${slug}`;
+    if (r.status !== 'published' || !r.v2) {
+      results.push({ path: p, outcome: 'not-applied', detail: `'${r.status}' — left alone` });
+      continue;
+    }
+    const before = JSON.stringify([r.v2, r.mt, r.md]);
+    if (!STREET_RE.test(before)) {
+      results.push({ path: p, outcome: 'already', detail: 'no "West/W. Goodale", no change' });
+      continue;
+    }
+    snapshot[`city_service_pages/${slug}`] = { v2_content: r.v2, meta_title: r.mt, meta_description: r.md };
+    const draft: CityServiceV2DraftContent = {
+      template: CITY_SERVICE_V2_TEMPLATE,
+      page: fixStreetNames(r.v2, 'columbus'),
+      metaTitle: fixStreetNames(r.mt ?? '', 'columbus'),
+      metaDescription: fixStreetNames(r.md ?? '', 'columbus'),
+    };
+    const clean = conformCityServiceV2Content(slug, draft, r.v2);
+    const label = 'Goodale Blvd without “West” (Brief 229 review)';
+    if (!apply) {
+      results.push({ path: p, outcome: 'would-load', detail: `would publish "${label}"` });
+      continue;
+    }
+    const id = (await createDraft({ pageType: 'city-service', pageSlug: slug, label, content: clean, createdBy: by, templateType: CITY_SERVICE_V2_TEMPLATE })).id;
+    await publishDraft(id, by);
+    const after = (
+      await pool.query<{ v2: unknown; mt: string | null; md: string | null }>(
+        `SELECT v2_content AS v2, meta_title AS mt, meta_description AS md FROM city_service_pages WHERE city_slug = 'columbus' AND service_slug = $1`,
+        [r.service_slug]
+      )
+    ).rows[0];
+    results.push(
+      STREET_RE.test(JSON.stringify([after?.v2, after?.mt, after?.md]))
+        ? { path: p, outcome: 'failed', detail: `published #${id} but the live row still says West/W. Goodale` }
+        : { path: p, outcome: 'loaded', detail: `published "${label}" #${id}` }
+    );
+  }
+}
+
 // ── E. The 7 town rows ────────────────────────────────────────────────────────────────────────────
 async function towns() {
   for (const slug of Object.keys(PILOT_TOWNS)) {
@@ -426,6 +487,7 @@ async function main() {
   await hubs(by, sharedWhy);
   await services(by);
   await copyUpdates(by, sharedWhy);
+  await columbusServices(by);
   await towns();
   for (const r of results) console.log(`  ${r.path.padEnd(44)} ${r.outcome.toUpperCase().padEnd(12)} ${r.detail}`);
   const snapDir = arg('--snapshot-dir');
@@ -438,9 +500,14 @@ async function main() {
   const changedFile = arg('--changed-file');
   // The CITY PAGES LIVE CHECK expects these to change this deploy: Joliet/Columbus (new copy) and the 3 new
   // hubs + their service pages (new URLs — the snapshot from the previous build has nothing to match).
-  const visible = results
-    .filter((r) => r.outcome === 'loaded' && (r.path === '/joliet' || r.path === '/columbus' || Object.prototype.hasOwnProperty.call(PILOT_HUBS, r.path.slice(1))))
-    .map((r) => r.path.slice(1));
+  // F's Columbus service pages count as "columbus" (the live check keys on the city).
+  const visible = [
+    ...new Set(
+      results
+        .filter((r) => r.outcome === 'loaded' && (r.path === '/joliet' || r.path === '/columbus' || r.path.startsWith('/columbus/') || Object.prototype.hasOwnProperty.call(PILOT_HUBS, r.path.slice(1))))
+        .map((r) => (r.path.startsWith('/columbus/') ? 'columbus' : r.path.slice(1)))
+    ),
+  ];
   if (changedFile && visible.length) fs.appendFileSync(changedFile, visible.join('\n') + '\n');
   const n = (o: Outcome) => results.filter((r) => r.outcome === o).length;
   if (n('failed')) {

@@ -11,17 +11,17 @@ export const COLUMBUS_HUB: CityHubContent = {
   "phoneRegion": "central-ohio",
   "seo": {
     "title": "Plumber in Columbus, OH",
-    "description": "Local plumbers on W. Goodale Blvd in Columbus, Ohio. In business since 1993. Call 24/7 for an upfront price before any work starts."
+    "description": "Local plumbers on Goodale Blvd in Columbus, Ohio. In business since 1993. Call 24/7 for an upfront price before any work starts."
   },
   "hero": {
     "eyebrow": "24/7 Local Plumbers",
     "h1": "Plumbers in Columbus, OH",
-    "sub": "In business since 1993, now with a local office on West Goodale Boulevard. Our line is open 24/7 for homeowners in Columbus and across Central Ohio. Upfront pricing on every job.",
+    "sub": "In business since 1993, now with a local office on Goodale Boulevard. Our line is open 24/7 for homeowners in Columbus and across Central Ohio. Upfront pricing on every job.",
     "variant": "columbus"
   },
   "trust": [
     "Serving homeowners 30+ years",
-    "Local office on W. Goodale Blvd",
+    "Local office on Goodale Blvd",
     "4.7 stars · 5,669+ Google reviews across all locations"
   ],
   "services": {
@@ -94,10 +94,10 @@ export const COLUMBUS_HUB: CityHubContent = {
     ]
   },
   "office": {
-    "eyebrow": "On West Goodale Boulevard",
+    "eyebrow": "On Goodale Boulevard",
     "h2": "Our Columbus Office",
-    "body": "Our Columbus office is at 1387 W. Goodale Blvd, Columbus, OH 43212, close to Grandview Heights. From there, our plumbers cover the city’s older neighborhoods and the suburbs around them. We’ve been in business since 1993, and our phone line is open 24/7.",
-    "address": "1387 W. Goodale Blvd, Columbus, OH 43212",
+    "body": "Our Columbus office is at 1387 Goodale Blvd, Columbus, OH 43212, close to Grandview Heights. From there, our plumbers cover the city’s older neighborhoods and the suburbs around them. We’ve been in business since 1993, and our phone line is open 24/7.",
+    "address": "1387 Goodale Blvd, Columbus, OH 43212",
     "areasH3": "Columbus Neighborhoods and Nearby Communities We Serve",
     "areas": [
       {
