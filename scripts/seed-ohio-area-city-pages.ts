@@ -50,6 +50,16 @@
  * missing row on one of those means a different bug with a different fix and
  * this script must not paper over it. Measured today: 137/137 Ohio coverage-area.
  *
+ * One exception, named by slug: the 10 City Pruning pilot pages (Brief 229 —
+ * `PILOT_HUBS` + `PILOT_TOWNS`, `/mokena-il` … `/lincolnwood-il`). Their rows are
+ * created by `scripts/city-pruning/apply-phase1-pilot.ts`, which runs much LATER
+ * in deploy.sh (pre-swap, after the City Hub imports), so on the deploy that
+ * ships them they are legitimately missing here. They are left out of the
+ * missing set, listed, and never created by this script. A missing pilot row
+ * after the deploy is still caught: verify-sitemap-queries.ts runs after the
+ * pilot step and asserts every registered slug has a row. (Deploy #184 died
+ * here on 2026-11-19 before this exception existed — nothing was written.)
+ *
  * ── SELECTOR ────────────────────────────────────────────────────────────────
  * By `city_slug`, never by `id` — ids differ per environment (Brief 146 lesson).
  * Note the column is `city_slug`, not `slug`: that trap has cost this project
@@ -72,6 +82,7 @@ import { existsSync, readFileSync } from 'fs';
 import { Pool } from 'pg';
 import { CITY_REGISTRY } from '../src/lib/content/cities/index';
 import { OHIO_STATE } from '../src/lib/content/cities/ohio-areas';
+import { PILOT_HUBS, PILOT_TOWNS } from '../src/lib/city-pruning/pilot-pages';
 import { announceMode, resolveRunMode, verdict } from './lib/run-mode';
 
 const SCRIPT = 'seed-ohio-area-city-pages';
@@ -94,11 +105,20 @@ async function main() {
         (r) => r.city_slug
       )
     );
-    const missing = CITY_REGISTRY.filter((c) => !have.has(c.slug));
+    // Brief 229: the pilot pages' rows come from apply-phase1-pilot.ts later in the same deploy.
+    const pilotSlugs = new Set([...Object.keys(PILOT_HUBS), ...Object.keys(PILOT_TOWNS)]);
+    const pilotPending = CITY_REGISTRY.filter((c) => !have.has(c.slug) && pilotSlugs.has(c.slug));
+    const missing = CITY_REGISTRY.filter((c) => !have.has(c.slug) && !pilotSlugs.has(c.slug));
 
     console.log(
       `${have.size} city_pages row(s) exist; ${CITY_REGISTRY.length} cities registered; ${missing.length} missing.`
     );
+    if (pilotPending.length > 0) {
+      console.log(
+        `${pilotPending.length} City Pruning pilot page(s) without a row yet — left to apply-phase1-pilot.ts later in this deploy: ` +
+          pilotPending.map((c) => c.slug).join(', ')
+      );
+    }
 
     if (missing.length === 0) {
       console.log('Nothing to do — every registered city already has a row.');
