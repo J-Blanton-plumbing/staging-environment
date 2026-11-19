@@ -6,6 +6,9 @@
  * phase1-redirects.json. The Track F count — "links updated" — is the difference between a run against
  * the baseline build and a run against this branch.
  *
+ * Brief 230: the 1,073 pages the pilot keeps live with noindex are out of the sitemap, so they are added
+ * from phase1-noindex.json (all of them) — they must not link to a moved URL either.
+ *
  *   node scripts/city-pruning/sweep-phase1-links.mjs [--base=http://localhost:3000] [--every=10] [--articles=80] [--out=sweep.json]
  */
 import fs from 'node:fs';
@@ -36,7 +39,8 @@ for (const child of [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new U
   else if (child.includes('articles')) urls.push(...locs.filter((_, i) => i % Math.max(1, Math.floor(locs.length / ARTICLES)) === 0));
   else urls.push(...locs);
 }
-const pages = [...new Set(urls)];
+const NOINDEX = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'lib', 'city-pruning', 'phase1-noindex.json'), 'utf8')).paths;
+const pages = [...new Set([...urls, ...NOINDEX])];
 const found = {};
 let total = 0;
 let i = 0;
@@ -55,7 +59,7 @@ async function worker() {
   }
 }
 await Promise.all(Array.from({ length: 6 }, worker));
-const summary = { base: BASE, pagesSwept: pages.length, pagesWithLinksToSources: Object.keys(found).length, links: total };
+const summary = { base: BASE, pagesSwept: pages.length, noindexPagesIncluded: NOINDEX.length, pagesWithLinksToSources: Object.keys(found).length, links: total };
 if (args.out) fs.writeFileSync(String(args.out), JSON.stringify({ summary, found }, null, 1));
 console.log(JSON.stringify(summary));
 for (const [p, h] of Object.entries(found).slice(0, 30)) console.log(`  ${p}: ${Object.entries(h).map(([k, v]) => `${k}×${v}`).join(', ')}`);

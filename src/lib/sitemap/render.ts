@@ -37,6 +37,7 @@ import { getAllServiceSlugs } from '@/lib/content/city-services';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
 import { isRetiredCityPage } from '@/lib/redirects/office-pages';
+import { isPilotNoindexTownPage } from '@/lib/city-pruning/noindex';
 import { PILOT_DERIVED_REDIRECTS } from '@/lib/city-pruning/phase1';
 import {
   CityServiceShard,
@@ -429,7 +430,8 @@ export function renderCitiesSitemap(): Promise<string> {
     }
     return urlsetXml(
       // Brief 227: a retired city page 301s to its office page — never advertised (manifest.ts).
-      CITY_REGISTRY.filter((c) => !dark.has(c.slug) && !isRetiredCityPage(c.slug)).map((c) => ({
+      // Brief 230: a City Pruning pilot Tier 4 town page is live but `noindex, follow` (manifest.ts).
+      CITY_REGISTRY.filter((c) => !dark.has(c.slug) && !isRetiredCityPage(c.slug) && !isPilotNoindexTownPage(c.slug)).map((c) => ({
         path: `/${c.slug}`,
         lastModified: cityLastMod.get(c.slug),
         changeFrequency: 'monthly' as const,

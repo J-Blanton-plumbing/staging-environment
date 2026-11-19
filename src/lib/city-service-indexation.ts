@@ -45,6 +45,7 @@ import type { Metadata } from 'next';
 
 import { getCity } from '@/lib/content/cities';
 import { OHIO_STATE } from '@/lib/content/cities/ohio-areas';
+import { isPilotNoindexServiceTown } from '@/lib/city-pruning/noindex';
 
 /**
  * Ohio city slugs whose `/{city}/{service}` pages are cleared for indexing.
@@ -81,6 +82,9 @@ const INDEXED_OHIO = new Set(CITY_SERVICE_INDEXED_OHIO_CITIES);
  * sitemap entry could matter. False for an Ohio city until it is listed above.
  */
 export function isCityServiceIndexable(citySlug: string): boolean {
+  // Brief 230: the City Pruning pilot's 24 towns keep their service pages LIVE but noindexed and out of
+  // the sitemap (PPC keeps them as landing pages) — src/lib/city-pruning/noindex.ts.
+  if (isPilotNoindexServiceTown(citySlug)) return false;
   if (getCity(citySlug)?.state !== OHIO_STATE) return true;
   return INDEXED_OHIO.has(citySlug);
 }

@@ -71,6 +71,7 @@ import {
   citySlugsForShard,
 } from '@/lib/sitemap/manifest';
 import { isCityServiceIndexable } from '@/lib/city-service-indexation';
+import { PILOT_NOINDEX_PATHS, PILOT_NOINDEX_SERVICE_TOWNS, PILOT_NOINDEX_TOWN_PAGES, isPilotNoindexTownPage } from '@/lib/city-pruning/noindex';
 import { NON_PUBLIC_SUBDOMAINS } from '@/lib/non-public-hosts';
 import legacyRedirectMap from '@/lib/redirects/legacy-redirect-map.json';
 
@@ -571,6 +572,36 @@ const main = () => {
       }
     }
   }
+
+  // ── Brief 230: the City Pruning pilot's noindex pages ────────────────────
+  // 17 Tier 4 town pages + the 24 towns' service layer stay LIVE with `noindex, follow` and out of every
+  // sitemap (src/lib/city-pruning/noindex.ts, generated from the package CSV). Prove all three halves:
+  // no sitemap lists one; each one is served (a registered town, a real service slug); none redirects.
+  const sitemapSet = new Set(sitemapPaths.map((x) => x.path));
+  const registered = new Map(CITY_REGISTRY.map((c) => [c.slug, c]));
+  for (const t of PILOT_NOINDEX_TOWN_PAGES) {
+    if (!registered.has(t)) fail(`Brief 230: noindex town page /${t} is not in CITY_REGISTRY — it would 404, not serve.`);
+    if (sitemapSet.has(`/${t}`)) fail(`Brief 230: /${t} is a noindex pilot town page but a sitemap lists it.`);
+  }
+  for (const t of PILOT_NOINDEX_SERVICE_TOWNS) {
+    const c = registered.get(t);
+    if (!c) fail(`Brief 230: noindex service town "${t}" is not in CITY_REGISTRY — its service pages would 404.`);
+    else if (hasNoServicePages(c)) fail(`Brief 230: noindex service town "${t}" has no service pages (hasNoServicePages).`);
+    if (isCityServiceIndexable(t)) fail(`Brief 230: "${t}" service pages are not noindexed by city-service-indexation.ts.`);
+  }
+  let noindexChecked = 0;
+  for (const p of PILOT_NOINDEX_PATHS) {
+    const seg = p.split('/').filter(Boolean);
+    if (seg.length === 2 && !CITY_SERVICE_SLUGS.has(seg[1])) fail(`Brief 230: noindex path ${p} names no city-service slug — it would 404.`);
+    if (isRedirectSource(p)) fail(`Brief 230: noindex path ${p} is a REDIRECT SOURCE — it must stay live (PPC landing page).`);
+    if (sitemapSet.has(p)) fail(`Brief 230: noindex path ${p} is listed in a sitemap.`);
+    noindexChecked++;
+  }
+  for (const { path: p } of sitemapPaths) {
+    const seg = p.split('/').filter(Boolean);
+    if (seg.length === 1 && isPilotNoindexTownPage(seg[0])) fail(`Brief 230: sitemap lists the noindex town page ${p}.`);
+  }
+  console.log(`[validate-sitemap] Brief 230: ${noindexChecked} pilot noindex paths live, unredirected and out of every sitemap.`);
 
   // ── 5. No redirect chains ────────────────────────────────────────────────
   let chains = 0;

@@ -22,6 +22,10 @@ const SITE = 'https://jblantonplumbing.com';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..', '..');
 const R = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'lib', 'city-pruning', 'phase1-redirects.json'), 'utf8'));
 const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'lib', 'city-pruning', 'phase1-data.json'), 'utf8'));
+// Brief 230: pages the pilot keeps live with noindex — a pilot page shows them as text, never as a link.
+const NI = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'lib', 'city-pruning', 'phase1-noindex.json'), 'utf8'));
+const NI_TOWNS = new Set(NI.townPages), NI_SERVICE_TOWNS = new Set(NI.serviceTowns);
+const isNoindexPath = (h) => { const s = h.split(/[?#]/)[0].replace(/\/+$/, '').split('/').filter(Boolean); return (s.length === 1 && NI_TOWNS.has(s[0])) || (s.length === 2 && NI_SERVICE_TOWNS.has(s[0])); };
 const COPY = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'city-pruning', 'phase1-pilot', 'hub-copy-updates.json'), 'utf8'));
 
 /** The 4 hub service pages on the legacy city-service template (no Service JSON-LD there, before or after). */
@@ -159,6 +163,9 @@ for (const { p, kind } of PAGES) {
   const links = [...new Set([...html.matchAll(/<a[^>]+href="([^"]+)"/g)].map((m) => decode(m[1])).filter((h) => h.startsWith('/') && !h.startsWith('//') && !h.startsWith('/_next')).map((h) => h.split('#')[0]).filter(Boolean))];
   const toSources = links.filter((h) => R[h.split('?')[0].replace(/\/+$/, '')]);
   if (toSources.length) probs.push(`links to redirect sources: ${toSources.slice(0, 5).join(', ')}`);
+  // Brief 230: Joliet / Columbus are not pilot pages (copy updates only) — their links are out of scope here.
+  const toNoindex = p === '/joliet' || p === '/columbus' ? [] : links.filter(isNoindexPath);
+  if (toNoindex.length) probs.push(`links to noindexed pilot pages: ${toNoindex.slice(0, 5).join(', ')}`);
   if (args.crawl) {
     const bad = [];
     for (const h of links) {

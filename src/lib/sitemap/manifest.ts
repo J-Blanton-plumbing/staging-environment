@@ -48,6 +48,7 @@ import { isCityServiceIndexable } from '@/lib/city-service-indexation';
 import { CITY_SERVICE_FOLD_REDIRECTS } from '@/lib/redirects/city-service-folds';
 import { isRetiredCityService } from '@/lib/redirects/retired-city-services';
 import { isRetiredCityPage } from '@/lib/redirects/office-pages';
+import { isPilotNoindexTownPage } from '@/lib/city-pruning/noindex';
 import { PILOT_DERIVED_REDIRECTS } from '@/lib/city-pruning/phase1';
 
 /**
@@ -161,7 +162,8 @@ export function pagesSitemapPaths(): string[] {
 /** The `/{city}` landing pages. */
 export function citySitemapPaths(): string[] {
   // Brief 227: a retired city page 301s to its office page (src/lib/redirects/office-pages.ts).
-  return CITY_REGISTRY.filter((c) => !isRetiredCityPage(c.slug)).map((c) => `/${c.slug}`);
+  // Brief 230: a City Pruning pilot Tier 4 town page is live but `noindex, follow` — never advertised.
+  return CITY_REGISTRY.filter((c) => !isRetiredCityPage(c.slug) && !isPilotNoindexTownPage(c.slug)).map((c) => `/${c.slug}`);
 }
 
 export type SitemapChildKind = 'pages' | 'cities' | 'articles' | 'city-services';

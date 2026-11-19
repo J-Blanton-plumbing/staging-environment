@@ -49,14 +49,22 @@ const CITIES = ['northbrook', 'columbus', 'tinley-park-il', 'joliet', 'napervill
   'highland-park'];
 /**
  * Brief 229: the pilot's legacy URLs and where each must 301 in ONE hop (a sample of every redirect group;
- * scripts/city-pruning/check-phase1-redirects.mjs walks all 1,184 rows), and the pages whose title renders
+ * scripts/city-pruning/check-phase1-redirects.mjs walks all 111 rows), and the pages whose title renders
  * WITHOUT the automatic brand suffix (Track E: exactly these, so zero brand tails is the rule there).
+ * Brief 230: only pages that MOVE 301; Tier 4 towns and town service pages stay live with noindex.
  */
 const PILOT_MOVES = [
   ['/mokena', '/mokena-il'], ['/tinley-park', '/tinley-park-il'], ['/skokie', '/skokie-il'],
-  ['/mokena/drain-cleaning', '/mokena-il/drain-cleaning'], ['/frankfort', '/frankfort-il'], ['/alsip', '/tinley-park-il'],
-  ['/orland-park/drain-cleaning', '/tinley-park-il/drain-cleaning'], ['/locations/chicagoland', '/locations/illinois'], ['/locations/central-ohio', '/locations/ohio'],
+  ['/mokena/drain-cleaning', '/mokena-il/drain-cleaning'], ['/skokie/water-heater-repair', '/skokie-il/water-heater-repair'],
+  ['/frankfort', '/frankfort-il'], ['/niles', '/niles-il'],
+  ['/locations/chicagoland', '/locations/illinois'], ['/locations/central-ohio', '/locations/ohio'],
 ];
+/**
+ * Brief 230: pages the pilot keeps LIVE with `noindex, follow` (PPC landing pages) — a sample of Tier 4
+ * town pages and town service pages across the 3 areas: 200, the robots meta once, a self canonical, and
+ * in no sitemap (scripts/city-pruning/check-phase1-noindex.mjs walks all 1,073).
+ */
+const PILOT_NOINDEX = ['/alsip', '/arbury-hills', '/golf', '/orland-park/drain-cleaning', '/frankfort-square/sewer-repair', '/schiller-park/water-heater-repair', '/park-ridge/sump-pumps'];
 const NO_BRAND_SUFFIX = new Set(['/tinley-park-il', '/joliet', '/columbus']);
 /**
  * Brief 227: OFFICE PAGES — a City Hub with NO service pages of its own (src/lib/content/cities
@@ -335,7 +343,7 @@ function firstDiff(a, b) {
 async function sitemapCounts() {
   const index = (await get('/sitemap.xml')).text;
   const children = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
-  const counts = Object.fromEntries([...PAGES, ...OFFICE_PAGES.map((o) => o.legacy)].map((p) => [p, 0]));
+  const counts = Object.fromEntries([...PAGES, ...OFFICE_PAGES.map((o) => o.legacy), ...PILOT_NOINDEX].map((p) => [p, 0]));
   for (const c of children) {
     const xml = (await get(c)).text;
     for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
@@ -431,6 +439,15 @@ async function compare() {
     const loc = res?.headers.get('location') ?? '';
     const u = loc ? new URL(loc, BASE) : null;
     if (!res || res.status !== 301 || u?.pathname !== to || u?.search !== '?gclid=TEST123') failures.push(`${from}: expected one 301 to ${to}?gclid=TEST123, got ${res?.status ?? 'no answer'} ${loc}`);
+  }
+  for (const p of PILOT_NOINDEX) {
+    const r = await get(p).catch(() => ({ status: 0, text: '' }));
+    if (r.status !== 200) { failures.push(`${p}: expected 200 (a live noindex pilot page), got ${r.status}`); continue; }
+    const robots = [...r.text.matchAll(/<meta name="robots" content="([^"]*)"/g)].map((m) => m[1]);
+    if (robots.length !== 1 || robots[0] !== 'noindex, follow') failures.push(`${p}: robots meta ${JSON.stringify(robots)} — expected exactly one "noindex, follow"`);
+    const canon = (r.text.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] ?? '';
+    if (canon !== SITE + p) failures.push(`${p}: canonical "${canon}" is not self — a noindex page must not canonicalise elsewhere`);
+    if ((counts[p] ?? 0) !== 0) failures.push(`${p}: a noindex pilot page is listed in the sitemap ${counts[p]}×`);
   }
   for (const p of SEWER_PAGES) {
     const r = await get(p).catch(() => ({ status: 0, text: '' }));

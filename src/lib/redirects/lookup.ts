@@ -54,7 +54,7 @@ interface LegacyRedirectRow {
  * Brief 229 (City Pruning Phase 1 Pilot): every target is passed through `pruneFinal()`, so a rule that
  * used to land on a page this release redirects (a legacy `/mokena-il-sewer-rodding` → `/mokena/…`, a
  * Brief 209 fold, Brief 211's `/{city}/plumbing-services`) now lands on the FINAL page in one hop. The
- * pilot's own 1,184 rows go LAST so they win, after the new hubs' copies of their folds
+ * pilot's own 111 rows (Brief 230: moved pages only) go LAST so they win, after the new hubs' copies of their folds
  * (src/lib/city-pruning/phase1.ts).
  */
 const REDIRECTS: ReadonlyMap<string, LegacyRedirect> = new Map<string, LegacyRedirect>([
