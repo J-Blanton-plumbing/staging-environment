@@ -153,6 +153,23 @@ function buildV7(legacy: CityHubStored, newSlug: string, cityName: string, by: {
     stateUrl: '/locations/illinois',
     stateName: 'Illinois',
   };
+  // The "Which communities do you serve from {City}?" FAQ names exactly the panel's towns, A to Z — the
+  // live answers named towns the panel no longer lists (Mokena: New Lenox, Tinley Park, Orland Park,
+  // Homer Glen, Lockport; Skokie: Evanston, Wilmette, Glenview). Marketing 2026-11-19: "we need to be
+  // coherent". Same sentence frame as the live answer; "and more" is dropped because the list is now
+  // the whole panel and the panel's own closing line covers unlisted towns. A hub whose FAQ is replaced
+  // by its Nov 2026 copy (Tinley Park, Track E) is overwritten again by applyCopy.
+  const commQ = new RegExp(`^Which communities do you serve from ${cityName}\\?$`);
+  h.faq = {
+    ...h.faq,
+    items: h.faq.items.map((f) => {
+      if (!commQ.test(f.q)) return f;
+      const names = towns.map((t) => t.label);
+      const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0];
+      const a = `Along with ${cityName}, our office serves ${list}. Our phone line is open 24/7 for all of them.`;
+      return { ...f, preview: faqPreviewFromAnswer(a), a };
+    }),
+  };
   const nap = (pilotData.offices as Array<{ office: string; phone: string }>).find((o) => o.office === cityName);
   if (!nap) throw new Error(`${newSlug}: "${cityName}" is not in the NAP sheet`);
   h.office.schemaTelephone = telOf(nap.phone);
@@ -172,7 +189,33 @@ function applyCopy(h: CityHubStored, slug: string, sharedWhy: Array<{ h3: string
   out.final = { ...out.final, body: c.finalBody };
   out.seo = { titleSuffix: false };
   if (c.schemaTelephone) out.office = { ...out.office, schemaTelephone: c.schemaTelephone };
-  return out;
+  return fixStreetNames(out, slug);
+}
+
+/**
+ * Marketing 2026-11-19: "take the West out" — the Columbus office is 1387 Goodale Blvd (NAP sheet + its
+ * Google listing). The Nov 2026 MD copy is corrected at extraction (extract-phase1-copy.mjs); this also
+ * corrects the two older mentions on the same hub (the office eyebrow "On West Goodale Boulevard" and the
+ * trust item "Local office on W. Goodale Blvd") so the page never names the street two ways.
+ */
+const STREET_FIXES: Record<string, Array<[RegExp, string]>> = {
+  columbus: [
+    [/\bWest Goodale\b/g, 'Goodale'],
+    [/\bW\. Goodale\b/g, 'Goodale'],
+  ],
+};
+function fixStreetNames<T>(v: T, slug: string): T {
+  const fixes = STREET_FIXES[slug];
+  if (!fixes) return v;
+  const walk = (x: unknown): unknown =>
+    typeof x === 'string'
+      ? fixes.reduce((s, [re, to]) => s.replace(re, to), x)
+      : Array.isArray(x)
+        ? x.map(walk)
+        : x && typeof x === 'object'
+          ? Object.fromEntries(Object.entries(x as Record<string, unknown>).map(([k, y]) => [k, walk(y)]))
+          : x;
+  return walk(v) as T;
 }
 
 async function liveHub(slug: string) {
