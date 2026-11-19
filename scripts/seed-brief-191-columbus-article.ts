@@ -68,7 +68,7 @@ const TITLE = 'J. Blanton Plumbing Is Now Serving Columbus and Central Ohio';
 const DEK =
   'Our first location outside Illinois is open in Grandview Heights. Same 24/7 service, same flat-rate pricing, same promise: Make a Good Call.';
 const META_DESCRIPTION =
-  'J. Blanton Plumbing has opened its first Ohio location at 1387 W. Goodale Blvd in Columbus. 24/7 plumbing, drain, sewer and water heater service across 138 Central Ohio communities.';
+  'J. Blanton Plumbing has opened its first Ohio location at 1387 Goodale Blvd in Columbus. 24/7 plumbing, drain, sewer and water heater service across 138 Central Ohio communities.';
 
 const quote = (q: string) =>
   `<blockquote><p>${q}</p><p><img src="${IMG}/avatar-aizik-zimerman.webp" alt="" width="48" height="48"> <strong>Aizik Zimerman</strong> CEO, J. Blanton Plumbing</p></blockquote>`;
@@ -88,7 +88,7 @@ const BODY = [
   `<p>Want the longer version? Read <a href="/why-j-blanton">why homeowners choose us</a>.</p>`,
 
   `<h2>Where Is J. Blanton Plumbing Located in Columbus?</h2>`,
-  `<p>Our Columbus office is at 1387 W. Goodale Blvd, Columbus, OH 43212, in the Grandview Heights area. From there, our team serves 138 cities and neighborhoods across 17 Central Ohio counties, including Franklin, Delaware, Licking, Fairfield and Union.</p>`,
+  `<p>Our Columbus office is at 1387 Goodale Blvd, Columbus, OH 43212, in the Grandview Heights area. From there, our team serves 138 cities and neighborhoods across 17 Central Ohio counties, including Franklin, Delaware, Licking, Fairfield and Union.</p>`,
   `<p>[[office-map]]</p>`,
   `<p>That covers homeowners in Grandview Heights, Upper Arlington, Clintonville, Bexley, German Village, the Short North, Dublin, Hilliard and many more. If you live in or around Columbus, there's a good chance we're already close by.</p>`,
 
@@ -122,7 +122,7 @@ const V2 = {
   image_alt: 'Two J. Blanton Plumbing team members in red company polos, arms crossed, in front of the downtown Columbus skyline',
   image_caption: 'Our team in Columbus. Photo: Harry Acosta Photography.',
   takeaways: [
-    "We've opened our first Ohio location at 1387 W. Goodale Blvd in Columbus, in the Grandview Heights area.",
+    "We've opened our first Ohio location at 1387 Goodale Blvd in Columbus, in the Grandview Heights area.",
     'Homeowners across 138 communities in 17 Central Ohio counties are now covered.',
     'You get the same 24/7 plumbing, drain, sewer and water heater service Chicagoland has trusted for more than 30 years.',
     'Same flat-rate pricing, same No Drip Club, same promise: Make a Good Call.',
@@ -132,7 +132,7 @@ const V2 = {
   service_area_label: 'See all 138 communities we serve in Central Ohio',
   faqs: [
     { q: 'Does J. Blanton Plumbing serve Columbus, Ohio?', a: 'Yes. We now serve Columbus and 138 cities and neighborhoods across 17 Central Ohio counties. That includes Grandview Heights, Upper Arlington, Clintonville, Bexley, Dublin, Hilliard and many more communities around the city.' },
-    { q: "Where is J. Blanton Plumbing's Columbus office?", a: "Our Columbus office is at 1387 W. Goodale Blvd, Columbus, OH 43212, in the Grandview Heights area. It's our first location outside of Illinois." },
+    { q: "Where is J. Blanton Plumbing's Columbus office?", a: "Our Columbus office is at 1387 Goodale Blvd, Columbus, OH 43212, in the Grandview Heights area. It's our first location outside of Illinois." },
     { q: 'Does J. Blanton Plumbing offer 24/7 emergency plumbing in Columbus?', a: 'Yes. Our Columbus team offers 24/7 emergency plumbing, drain, sewer and water heater service. That includes nights, weekends and holidays.' },
     { q: 'Is the No Drip Club available in Central Ohio?', a: 'Yes. Central Ohio homeowners can join the No Drip Club, our home plumbing membership. Members get priority scheduling, a 10% discount on service and equipment, no emergency or trip charges, and two preventative maintenance visits per year.' },
     { q: 'Does J. Blanton Plumbing offer financing in Ohio?', a: 'Yes. Flexible financing options are available to Central Ohio homeowners. Get service now and pay over time, for emergency and planned repairs.' },

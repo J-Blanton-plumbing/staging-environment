@@ -1337,6 +1337,15 @@ npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register \
 # (NOT-APPLIED, nothing written). Idempotent - ALREADY-APPLIED from then on.
 # Exit 1 only for a code/schema fault (the new build is already serving).
 npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-brief-218-home-meta.ts commit
+# Brief 229 (Marketing review 2026-11-19): every PUBLISHED Knowledge Hub article
+# that still names the Columbus office "W./West Goodale" gets one published
+# version with the Google-profile address ("1387 Goodale Blvd") - through
+# createDraft + publishDraft in one transaction; a newer unpublished version
+# or a live row/version fork leaves that article alone (fix it in /admin).
+# POST-swap on purpose: only the new build keeps a seed-published article's
+# datePublished when it is republished (the old build would show today's date
+# until the swap). ALREADY-APPLIED from then on. Exit 1 only for a code fault.
+npx ts-node --project tsconfig.scripts.json -r tsconfig-paths/register scripts/update-brief-229-columbus-address-articles.ts commit
 # Brief 221: the Mainline ratings endpoint's URL + token arrive from GitHub
 # repo secrets (deploy.yml `envs:`) and are written into .env.local, where the
 # sync below and its daily cron read them. An unset secret arrives empty and
