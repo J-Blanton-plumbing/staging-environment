@@ -38,8 +38,10 @@ const decode = (s) =>
     .replace(/&ldquo;/g, '“')
     .replace(/&rdquo;/g, '”')
     .replace(/&middot;/g, '·')
-    .replace(/&#39;/g, "'")
-    .replace(/&quot;/g, '"');
+    .replace(/&quot;/g, '"')
+    // Numeric references, any form (&#39; and &#x27; both occur — "O&#x27;Hare" shipped undecoded on 2026-11-19).
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)));
 
 function scriptData(html) {
   const grab = (name) => {
@@ -108,6 +110,9 @@ if (index.offices.length !== 19) throw new Error(`/locations lists ${index.offic
 if (index.offices.some((o) => /german village/i.test(o.name))) throw new Error('German Village must stay out (README §4)');
 
 const out = { index, illinois, ohio };
+// No HTML entity may survive into the data: React escapes these strings again, so one would print literally.
+const leftover = JSON.stringify(out).match(/&(#x?[0-9a-f]+|[a-z]+);/gi);
+if (leftover) throw new Error(`undecoded HTML entities in the locations data: ${[...new Set(leftover)].join(' ')}`);
 const file = path.join(ROOT, 'src', 'lib', 'city-pruning', 'locations-data.json');
 fs.writeFileSync(file, JSON.stringify(out) + '\n');
 const linked = (xs) => xs.filter((x) => x.href).length;
